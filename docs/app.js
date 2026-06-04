@@ -22,7 +22,7 @@ const nameOf = (code) => {
 };
 
 async function getJSON(url) {
-  const res = await fetch(url, { cache: 'no-cache' });
+  const res = await fetch(url, { cache: 'reload' });  // force network, bypass HTTP cache
   if (!res.ok) throw new Error(url + ' → ' + res.status);
   return res.json();
 }
@@ -159,6 +159,18 @@ function calendarBlock(d) {
   return section('📅 本周注意', '<ul>' + e.map((x) => `<li>${esc(x)}</li>`).join('') + '</ul>');
 }
 
+function revenueBlock(d) {
+  const rev = d.revenue;
+  if (!rev || !(rev.candidates || []).length) return '';
+  const rows = rev.candidates.map((c) => {
+    const flag = c.accel ? ' <b class="accel">🔥連3月加速</b>' : '';
+    const ind = c.industry ? `<span class="muted small"> ${esc(c.industry)}</span>` : '';
+    return `<li>${esc(c.name)}（${esc(c.code)}）${ind} — YoY <b class="up">+${c.yoy}%</b>${flag}</li>`;
+  }).join('');
+  return section(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`,
+    `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`);
+}
+
 function picksBlock(picks) {
   if (!picks || !picks.length) return '';
   const medals = ['🥇', '🥈', '🥉'];
@@ -209,7 +221,7 @@ async function showDetail(date) {
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
   // order: TL;DR → 變化 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
   $('detailView').innerHTML =
-    tldrBanner(d) + deltaBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
+    tldrBanner(d) + deltaBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
     moversBlock(d) + newsBlock(d.news) + picksBlock(d.picks) + allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);

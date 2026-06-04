@@ -17,6 +17,7 @@ import chip_state
 import delta
 import calendar_events
 import breadth
+import revenue
 from datetime import date
 
 
@@ -267,6 +268,42 @@ class TestBreadth(unittest.TestCase):
 
     def test_empty_returns_none(self):
         self.assertIsNone(breadth.compute_breadth({}))
+
+
+class TestRevenue(unittest.TestCase):
+    def test_parse_yoy(self):
+        rows = [{"公司代號": "2330", "公司名稱": "台積電", "產業別": "半導體", "資料年月": "11504",
+                 "營業收入-當月營收": "410725118", "營業收入-上月營收": "415191699",
+                 "營業收入-去年當月營收": "349566940"}]
+        recs = revenue.parse_rows(rows)
+        self.assertEqual(recs[0]["code"], "2330")
+        self.assertAlmostEqual(recs[0]["yoy"], 17.5, delta=0.2)
+
+    def test_parse_skips_nonstock(self):
+        self.assertEqual(revenue.parse_rows([{"公司代號": "", "公司名稱": "x"}]), [])
+
+    def test_accelerating(self):
+        rising = {"stocks": {"A": {"yoy": {"11502": 10, "11503": 20, "11504": 35}}}}
+        self.assertTrue(revenue.accelerating(rising, "A"))
+        bumpy = {"stocks": {"B": {"yoy": {"11502": 30, "11503": 20, "11504": 35}}}}
+        self.assertFalse(revenue.accelerating(bumpy, "B"))
+
+    def test_rank_filters_and_sorts(self):
+        big = 5_000_000
+        recs = [{"code": "A", "name": "a", "yoy": 50, "ym": "11504", "industry": "半導體業", "cur": big, "mom": 1},
+                {"code": "B", "name": "b", "yoy": 5, "ym": "11504", "industry": "半導體業", "cur": big, "mom": 1},
+                {"code": "C", "name": "c", "yoy": 30, "ym": "11504", "industry": "半導體業", "cur": big, "mom": 1}]
+        out = revenue.rank_candidates(recs, state={"stocks": {}}, top=10, min_yoy=20)
+        self.assertEqual([r["code"] for r in out], ["A", "C"])  # B<20 filtered, sorted desc
+
+    def test_rank_rejects_baseeffect_lumpy_micro(self):
+        big = 5_000_000
+        recs = [{"code": "X", "name": "x", "yoy": 99999, "ym": "11504", "industry": "電子零組件業", "cur": big, "mom": 1},
+                {"code": "Y", "name": "y", "yoy": 50, "ym": "11504", "industry": "建材營造業", "cur": big, "mom": 1},
+                {"code": "Z", "name": "z", "yoy": 50, "ym": "11504", "industry": "電子零組件業", "cur": 1, "mom": 1},
+                {"code": "G", "name": "g", "yoy": 60, "ym": "11504", "industry": "電子零組件業", "cur": big, "mom": 1}]
+        out = revenue.rank_candidates(recs, state={"stocks": {}}, top=10, min_yoy=20)
+        self.assertEqual([r["code"] for r in out], ["G"])  # X ceiling, Y lumpy, Z micro → only G
 
 
 if __name__ == "__main__":

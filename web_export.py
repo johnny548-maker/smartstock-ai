@@ -3,10 +3,23 @@
 history index. The PWA (GitHub Pages) reads these files — no backend needed."""
 import glob
 import json
+import math
 import os
 from datetime import datetime
 
 from config import STOCK_NAMES, DISPLAY_N
+
+
+def _clean(o):
+    """Replace NaN/Inf floats with None — they are invalid JSON and break the PWA's
+    fetch().json(). Recurse through dicts/lists."""
+    if isinstance(o, float):
+        return o if math.isfinite(o) else None
+    if isinstance(o, dict):
+        return {k: _clean(v) for k, v in o.items()}
+    if isinstance(o, list):
+        return [_clean(v) for v in o]
+    return o
 
 
 def _tldr(risk, institutional, ranked, breadth=None):
@@ -25,7 +38,7 @@ def _tldr(risk, institutional, ranked, breadth=None):
 
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
-                  movers=None, level_map=None, delta=None, events=None, breadth=None):
+                  movers=None, level_map=None, delta=None, events=None, breadth=None, revenue=None):
     level_map = level_map or {}
     return {
         "date": date_str,
@@ -35,6 +48,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "delta": delta or [],
         "events": events or [],
         "breadth": breadth,
+        "revenue": revenue,
         "indices": indices,
         "news": news,
         "institutional": institutional,
@@ -90,6 +104,6 @@ def export(payload, web_dir):
     data_dir = os.path.join(web_dir, "data")
     os.makedirs(data_dir, exist_ok=True)
     with open(os.path.join(data_dir, f"{payload['date']}.json"), "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=1)
+        json.dump(_clean(payload), f, ensure_ascii=False, indent=1, allow_nan=False)
     _rebuild_index(data_dir)
     return data_dir

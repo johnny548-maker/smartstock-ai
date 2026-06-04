@@ -167,15 +167,27 @@ def _calendar_block(events):
     return "## 📅 本周注意\n\n" + "\n".join(f"- {e}" for e in events)
 
 
+def _revenue_block(rev):
+    if not rev or not rev.get("candidates"):
+        return ""
+    lines = [f"## 🚀 早期成長候選（月營收 YoY · {rev.get('ym', '')}）", "",
+             "_全上市掃描的領先基本面訊號，**非持股清單**；月營收領先股價但雜訊高，僅供觀察、需自行查證_", ""]
+    for c in rev["candidates"]:
+        flag = " 🔥連3月加速" if c.get("accel") else ""
+        ind = f" {c.get('industry', '')}" if c.get("industry") else ""
+        lines.append(f"- {c['name']}（{c['code']}）{ind} — YoY **+{c['yoy']}%**{flag}")
+    return "\n".join(lines)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
-                 events=None, breadth=None):
+                 events=None, breadth=None, revenue=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
         _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
-    for extra in (_delta_block(delta), _calendar_block(events)):
+    for extra in (_delta_block(delta), _revenue_block(revenue), _calendar_block(events)):
         if extra:
             blocks += ["", extra]
     blocks += [

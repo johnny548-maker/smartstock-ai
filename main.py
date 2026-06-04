@@ -9,6 +9,7 @@ continues with whatever data is available (never a silent drop)."""
 import argparse
 import json
 import logging
+import math
 import os
 from datetime import datetime
 
@@ -29,6 +30,7 @@ import chip_state
 import delta as delta_mod
 import calendar_events
 import breadth as breadth_mod
+import revenue as revenue_mod
 
 
 def setup_logging():
@@ -85,6 +87,12 @@ def main(web=False):
     if not breadth:
         skips.append("breadth")
 
+    # 2c. 月營收早期成長候選 (全上市一次掃描，keyless leading spine) ---------
+    try:
+        revenue_data = revenue_mod.get_early_candidates()
+    except Exception as e:
+        log.warning("SKIP revenue: %s", e); revenue_data = None; skips.append("revenue")
+
     # 3. 三大法人 ------------------------------------------------------------
     try:
         inst = institutional.get_institutional(config.STOCKS_TW)
@@ -121,7 +129,8 @@ def main(web=False):
         try:
             if len(df) >= 2:
                 pct = (df["Close"].iloc[-1] / df["Close"].iloc[-2] - 1) * 100
-                movers.append({"stock": sym, "pct": round(float(pct), 2)})
+                if math.isfinite(pct):
+                    movers.append({"stock": sym, "pct": round(float(pct), 2)})
         except Exception:
             continue
     movers.sort(key=lambda m: m["pct"], reverse=True)
@@ -155,7 +164,7 @@ def main(web=False):
         date_str=date_str, news=news, indices=indices, institutional=inst,
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
-        delta=delta_changes, events=events, breadth=breadth)
+        delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -166,7 +175,7 @@ def main(web=False):
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
-            delta=delta_changes, events=events, breadth=breadth)
+            delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

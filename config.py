@@ -160,10 +160,24 @@ TWSE_T86_URL = "https://www.twse.com.tw/rwd/zh/fund/T86"
 TWSE_TIMEOUT = 15
 TWSE_LOOKBACK_DAYS = 7
 
+# ── 月營收 (monthly revenue) — the LEADING fundamental spine (council #1) ───
+# t187ap05_L = ALL listed companies' latest-month revenue in ONE keyless JSON
+# (當月 + 去年當月 → YoY instantly). Scans the whole market without per-stock fetch.
+TWSE_REVENUE_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap05_L"
+REV_MIN_YOY = 20.0          # only surface ≥20% YoY as an early-growth candidate
+EARLY_CANDIDATE_N = 15      # how many revenue candidates to show
+REV_ACCEL_MONTHS = 3        # YoY accelerating = strictly rising over N months
+REV_BUFFER_MONTHS = 18      # keep this many months of YoY per stock
+REV_YOY_CEILING = 300.0     # >300% monthly YoY = base-effect/lumpy recognition, not growth
+REV_MIN_REVENUE = 100000.0  # 當月營收下限(千元≈1億)，排除微型股 YoY 噪音
+# lumpy / non-comparable monthly revenue → exclude (建商認列、金融、證券)
+REV_EXCLUDE_INDUSTRIES = ["建材營造", "金融保險", "證券", "存託憑證"]
+
 # ── Output ──────────────────────────────────────────────────
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
+REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
 PORTFOLIO_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portfolio_state.json")
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartstock.log")
 
