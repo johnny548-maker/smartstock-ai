@@ -6,22 +6,43 @@ import json
 import os
 from datetime import datetime
 
+from config import STOCK_NAMES
+
+
+def _tldr(risk, institutional, ranked):
+    net = sum((d.get("foreign") or 0) for d in (institutional or {}).values())
+    parts = [f"風險 {risk}"]
+    if institutional:
+        parts.append(f"外資合計 {net:+,} 股")
+    if ranked:
+        top = ranked[0]
+        nm = top.get("name") or top["stock"]
+        parts.append(f"首選 {nm}（{top['stock']}）分數 {top['score']}")
+    return "；".join(parts)
+
 
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
-                  allocation, rebalance_diff, risk, markdown, skips):
+                  allocation, rebalance_diff, risk, markdown, skips,
+                  movers=None, level_map=None):
+    level_map = level_map or {}
     return {
         "date": date_str,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "risk": risk,
+        "tldr": _tldr(risk, institutional, ranked),
         "indices": indices,
         "news": news,
         "institutional": institutional,
+        "movers": movers or [],
+        "names": STOCK_NAMES,
         "picks": [
             {
                 "stock": it["stock"],
+                "name": it.get("name"),
                 "score": it["score"],
                 "sector": it.get("sector"),
                 "factors": it["factors"],
+                "levels": level_map.get(it["stock"]),
                 "commentary": (analyses or {}).get(it["stock"]),
             }
             for it in ranked
@@ -48,6 +69,7 @@ def _rebuild_index(data_dir):
             "date": d.get("date"),
             "risk": d.get("risk"),
             "top": top["stock"] if top else None,
+            "top_name": top.get("name") if top else None,
             "top_score": top["score"] if top else None,
             "generated_at": d.get("generated_at"),
         })

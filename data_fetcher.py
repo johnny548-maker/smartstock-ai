@@ -4,7 +4,7 @@ SKIP and returns None/empty rather than crashing the daily run."""
 import logging
 import yfinance as yf
 
-from config import INDICES, MOMENTUM_LOOKBACK
+from config import INDICES, MOMENTUM_LOOKBACK, STOCK_PERIOD
 from risk_engine import market_risk
 
 log = logging.getLogger(__name__)
@@ -24,8 +24,10 @@ def _hist(ticker, period="3mo"):
         return None
 
 
-def get_stock_data(symbols, period="3mo"):
-    """Return {symbol: DataFrame} for every symbol that fetched cleanly."""
+def get_stock_data(symbols, period=None):
+    """Return {symbol: DataFrame} for every symbol that fetched cleanly.
+    Defaults to 1y (config.STOCK_PERIOD) so the 52-week-high factor works."""
+    period = period or STOCK_PERIOD
     out = {}
     for s in symbols:
         df = _hist(s, period)

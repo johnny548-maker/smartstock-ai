@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Rule-based Chinese commentary — NO LLM, NO API key.
 
-Replaces the ChatGPT design's OpenAI gpt-4o-mini call. The 點評 is derived
-deterministically from which scoring factors fired, so it is reproducible,
-instant, offline, and fully compliant with the no-API-key policy.
+Derives a multi-section 點評 from which scoring factors fired, and quotes the
+ACTUAL stop-loss / target PRICE levels (user ask #3) when provided.
 """
+from config import stock_name
 
 
 def _trend_view(factors):
@@ -19,10 +19,19 @@ def _trend_view(factors):
     return "趨勢與動能皆偏弱，暫不具進場優勢。"
 
 
-def analyze_stock(stock, score, factors, sector=None):
+def _levels_line(levels):
+    if not levels:
+        return "4. 停損與目標：建議停損 -7%，第一目標 +15~25%（依個人風險承受度調整）。"
+    return (f"4. 進出場價位：參考進場 {levels['entry']}，"
+            f"停損 {levels['stop']}（{levels['stop_pct']}%），"
+            f"目標 {levels['target']}（+{levels['target_pct']}%），"
+            f"R/R {levels['rr']}:1（波動 ATR {levels['atr_pct']}%）。")
+
+
+def analyze_stock(stock, score, factors, sector=None, levels=None):
     """Return a multi-section 中文 commentary string."""
     factors = factors or {}
-    lines = [f"📌 {stock}  | 動能分數 {score}"]
+    lines = [f"📌 {stock_name(stock)}  | 動能分數 {score}"]
 
     reasons = [k for k, v in factors.items() if v > 0]
     lines.append("1. 投資理由：" + ("、".join(reasons) + "。" if reasons else "目前無明顯正向訊號。"))
@@ -37,7 +46,7 @@ def analyze_stock(stock, score, factors, sector=None):
         entry = "訊號偏弱，暫不建議進場。"
     lines.append("3. 進出場策略：" + entry)
 
-    lines.append("4. 停損與目標：建議停損 -7%，第一目標 +15~25%（依個人風險承受度調整）。")
+    lines.append(_levels_line(levels))
 
     base_risk = "美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。"
     risks = [k for k, v in factors.items() if v < 0]

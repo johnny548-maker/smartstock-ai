@@ -11,9 +11,15 @@ const ALLOC_LABEL = {
   CRYPTO: '加密資產', CASH_BOND: '現金/債券',
 };
 
+let NAMES = {};
+
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const nameOf = (code) => {
+  const n = NAMES[code] || NAMES[code + '.TW'];
+  return n ? `${n}（${code}）` : code;
+};
 
 async function getJSON(url) {
   const res = await fetch(url, { cache: 'no-cache' });
@@ -47,27 +53,38 @@ async function showList() {
     $('listView').innerHTML = '<p class="muted">尚無報告。</p>';
     return;
   }
-  $('listView').innerHTML = index.map((d) => `
-    <a class="card row" href="#${esc(d.date)}">
+  $('listView').innerHTML = index.map((d) => {
+    const top = d.top_name ? `${d.top_name}（${d.top}）` : (d.top || '—');
+    return `<a class="card row" href="#${esc(d.date)}">
       <div class="row-main">
         <div class="row-date">${esc(d.date)}</div>
-        <div class="row-sub muted">首選 ${esc(d.top || '—')}${d.top_score != null ? ' · 分數 ' + esc(d.top_score) : ''}</div>
+        <div class="row-sub muted">首選 ${esc(top)}${d.top_score != null ? ' · 分數 ' + esc(d.top_score) : ''}</div>
       </div>
-      ${riskBadge(d.risk)}
-      <span class="chev">›</span>
-    </a>`).join('');
+      ${riskBadge(d.risk)}<span class="chev">›</span>
+    </a>`;
+  }).join('');
 }
 
-/* ---------- detail view ---------- */
+/* ---------- detail blocks ---------- */
 function section(title, inner) {
   return `<section class="block"><h2>${title}</h2>${inner}</section>`;
 }
 
+function tldrBanner(d) {
+  if (!d.tldr) return '';
+  return `<div class="tldr">📌 今日重點：${esc(d.tldr)}</div>`;
+}
+
 function newsBlock(news) {
   if (!news) return '';
-  const g = (news.global || []).map((n) =>
-    `<li><span class="src">${esc(n.source)}</span> ${esc(n.title)}</li>`).join('');
-  const tw = (news.tw || []).map((n) => `<li>${esc(n.title)}</li>`).join('');
+  const link = (n, withSrc) => {
+    const t = withSrc && n.source ? `[${esc(n.source)}] ${esc(n.title)}` : esc(n.title);
+    return (n.link || '').startsWith('http')
+      ? `<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${t}</a></li>`
+      : `<li>${t}</li>`;
+  };
+  const g = (news.global || []).map((n) => link(n, true)).join('');
+  const tw = (news.tw || []).map((n) => link(n, false)).join('');
   if (!g && !tw) return '';
   let html = g ? `<ul>${g}</ul>` : '';
   if (tw) html += `<h3>🇹🇼 台股相關</h3><ul>${tw}</ul>`;
@@ -77,7 +94,7 @@ function newsBlock(news) {
 function marketBlock(d) {
   const ix = d.indices || {};
   const rows = [];
-  const add = (lbl, v, fmt) => { if (v != null) rows.push(`<li>${lbl}：${fmt ? fmt(v) : v}</li>`); };
+  const add = (lbl, v, fmt) => { if (v != null) rows.push(`<li>${lbl}：${fmt(v)}</li>`); };
   add('加權指數 ^TWII', ix.twii, (v) => Math.round(v).toLocaleString());
   add('S&amp;P 500', ix.sp500, (v) => Math.round(v).toLocaleString());
   add('Nasdaq', ix.nasdaq, (v) => Math.round(v).toLocaleString());
@@ -89,11 +106,32 @@ function marketBlock(d) {
     inst = '<h3>三大法人（外資淨額）</h3><ul>' + ie.slice(0, 12).map(([code, o]) => {
       const f = o.foreign || 0;
       const arrow = f > 0 ? '▲買超' : (f < 0 ? '▼賣超' : '—');
-      return `<li>${esc(code)}：${arrow} ${Math.abs(f).toLocaleString()}</li>`;
+      return `<li>${esc(nameOf(code))}：${arrow} ${Math.abs(f).toLocaleString()}</li>`;
     }).join('') + '</ul>';
   }
   return section('🇹🇼 台股 / 總經焦點',
     `<ul>${rows.join('')}</ul><div class="riskline">${riskBadge(d.risk)}</div>${inst}`);
+}
+
+function moversBlock(d) {
+  const mv = d.movers || [];
+  if (!mv.length) return '';
+  const ups = mv.filter((m) => m.pct > 0).slice(0, 3);
+  const downs = mv.filter((m) => m.pct < 0).slice(-3).reverse();
+  const row = (m, cls) => `<li><span>${esc(nameOf(m.stock))}</span><b class="${cls}">${m.pct > 0 ? '+' : ''}${m.pct}%</b></li>`;
+  let html = '';
+  if (ups.length) html += '<h3>領漲</h3><ul class="movers">' + ups.map((m) => row(m, 'up')).join('') + '</ul>';
+  if (downs.length) html += '<h3>領跌</h3><ul class="movers">' + downs.map((m) => row(m, 'down')).join('') + '</ul>';
+  return section('🔥 今日漲跌', html);
+}
+
+function levelsStrip(lv) {
+  if (!lv) return '';
+  return `<div class="levels">
+    <span><i>進場</i>${lv.entry}</span>
+    <span class="lv-stop"><i>停損</i>${lv.stop}<small>${lv.stop_pct}%</small></span>
+    <span class="lv-tgt"><i>目標</i>${lv.target}<small>+${lv.target_pct}%</small></span>
+    <span><i>R/R</i>${lv.rr}</span></div>`;
 }
 
 function picksBlock(picks) {
@@ -101,13 +139,14 @@ function picksBlock(picks) {
   const medals = ['🥇', '🥈', '🥉'];
   const html = picks.map((p, i) => {
     const medal = medals[i] || '▫️';
-    const sec = p.sector ? `<span class="muted">（${esc(p.sector)}）</span>` : '';
+    const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
+    const sec = p.sector ? `<span class="muted"> · ${esc(p.sector)}</span>` : '';
     const factors = Object.entries(p.factors || {}).map(([k, v]) =>
       `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('');
-    const comm = p.commentary
-      ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
+    const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
     return `<div class="pick">
-      <div class="pick-head">${medal} <b>${esc(p.stock)}</b> ${sec}<span class="score">${p.score}</span></div>
+      <div class="pick-head">${medal} <b>${head}</b>${sec}<span class="score">${p.score}</span></div>
+      ${levelsStrip(p.levels)}
       <div class="factors">${factors}</div>${comm}</div>`;
   }).join('');
   return section('📊 今日選股', html);
@@ -140,9 +179,13 @@ async function showDetail(date) {
     return;
   }
   $('status').textContent = '';
-  const gen = d.generated_at ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
+  NAMES = d.names || {};
+  const gen = d.generated_at
+    ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
+  // proven brief order: TL;DR → 總經 → Movers → 新聞 → 選股 → 配置 → 免責
   $('detailView').innerHTML =
-    gen + newsBlock(d.news) + marketBlock(d) + picksBlock(d.picks) + allocBlock(d) +
+    tldrBanner(d) + gen + marketBlock(d) + moversBlock(d) + newsBlock(d.news) +
+    picksBlock(d.picks) + allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);
 }

@@ -1,16 +1,26 @@
 # -*- coding: utf-8 -*-
-"""Assemble the full daily report — single source of truth for both the
-local file and the email body. Pure string building (no I/O)."""
-from config import DISCLAIMER
+"""Assemble the full daily report — single source of truth for the local file
+and email body. Pure string building. Section order follows the proven
+morning-brief flow: TL;DR → 總經 → Movers → 新聞 → 選股 → 配置 → 免責."""
+from config import DISCLAIMER, stock_name
 
 RISK_LABEL = {"LOW": "低 🟢", "MID": "中 🟡", "HIGH": "高 🔴"}
 ALLOC_LABEL = {
-    "US_GROWTH": "美國成長股",
-    "TW_GROWTH": "台股成長股",
-    "ETF_CORE": "ETF 核心",
-    "CRYPTO": "加密資產",
-    "CASH_BOND": "現金/債券",
+    "US_GROWTH": "美國成長股", "TW_GROWTH": "台股成長股", "ETF_CORE": "ETF 核心",
+    "CRYPTO": "加密資產", "CASH_BOND": "現金/債券",
 }
+
+
+def _tldr_block(risk, indices, institutional, ranked):
+    net = sum((d.get("foreign") or 0) for d in (institutional or {}).values())
+    parts = [f"市場風險 {RISK_LABEL.get(risk, risk)}"]
+    if institutional:
+        parts.append(f"外資合計 {net:+,} 股")
+    if ranked:
+        top = ranked[0]
+        nm = top.get("name") or top["stock"]
+        parts.append(f"首選 {nm}（{top['stock']}）分數 {top['score']}")
+    return "## 📌 今日重點\n\n" + "；".join(parts) + "。"
 
 
 def _news_block(news):
@@ -20,12 +30,22 @@ def _news_block(news):
     if not g and not tw:
         lines.append("_（今日新聞來源無法取得，已略過）_")
         return "\n".join(lines)
-    for item in g:
-        lines.append(f"- [{item.get('source', '')}] {item.get('title', '')}")
+
+    def item_line(it, with_src=True):
+        title = it.get("title", "")
+        link = it.get("link", "")
+        src = it.get("source", "")
+        text = f"[{src}] {title}" if with_src and src else title
+        if link.startswith("http"):
+            return f"- [{text}]({link})"
+        return f"- {text}"
+
+    for it in g:
+        lines.append(item_line(it, with_src=True))
     if tw:
         lines += ["", "**🇹🇼 台股相關**"]
-        for item in tw:
-            lines.append(f"- {item.get('title', '')}")
+        for it in tw:
+            lines.append(item_line(it, with_src=False))
     return "\n".join(lines)
 
 
@@ -54,12 +74,29 @@ def _market_block(indices, institutional, risk):
             if f is None:
                 continue
             arrow = "▲買超" if f > 0 else ("▼賣超" if f < 0 else "—")
-            lines.append(f"- {code}：外資 {arrow} {abs(f):,}")
+            lines.append(f"- {stock_name(code)}：外資 {arrow} {abs(f):,}")
             shown += 1
             if shown >= 10:
                 break
     else:
         lines.append("- 三大法人資料：_本日無法取得（非交易日或來源異常），已略過_")
+    return "\n".join(lines)
+
+
+def _movers_block(movers):
+    if not movers:
+        return ""
+    lines = ["## 🔥 今日漲跌 Movers", ""]
+    ups = [m for m in movers if m["pct"] > 0][:3]
+    downs = [m for m in movers if m["pct"] < 0][-3:]
+    if ups:
+        lines.append("**領漲**")
+        for m in ups:
+            lines.append(f"- {stock_name(m['stock'])}：{m['pct']:+.2f}%")
+    if downs:
+        lines += ["", "**領跌**"]
+        for m in downs:
+            lines.append(f"- {stock_name(m['stock'])}：{m['pct']:+.2f}%")
     return "\n".join(lines)
 
 
@@ -71,8 +108,10 @@ def _picks_block(ranked, analyses):
     medals = ["🥇", "🥈", "🥉"]
     for i, item in enumerate(ranked):
         medal = medals[i] if i < len(medals) else "▫️"
-        sec = f"（{item.get('sector')}）" if item.get("sector") else ""
-        lines.append(f"### {medal} {item['stock']} {sec}— 分數 {item['score']}")
+        nm = item.get("name")
+        head = f"{nm}（{item['stock']}）" if nm else item["stock"]
+        sec = f" · {item.get('sector')}" if item.get("sector") else ""
+        lines.append(f"### {medal} {head}{sec} — 分數 {item['score']}")
         factors = item.get("factors", {})
         if factors:
             fl = "、".join(f"{k}{'+' if v > 0 else ''}{v}" for k, v in factors.items())
@@ -104,13 +143,20 @@ def _alloc_block(allocation, rebalance_diff):
 
 
 def build_report(date_str, news, indices, institutional, ranked, analyses,
-                 allocation, rebalance_diff, risk):
-    return "\n".join([
+                 allocation, rebalance_diff, risk, movers=None):
+    blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
-        _news_block(news),
+        _tldr_block(risk, indices, institutional, ranked),
         "",
         _market_block(indices, institutional, risk),
+    ]
+    mv = _movers_block(movers)
+    if mv:
+        blocks += ["", mv]
+    blocks += [
+        "",
+        _news_block(news),
         "",
         _picks_block(ranked, analyses),
         "",
@@ -119,4 +165,5 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
         "---",
         "## ⚠️ 風險提示與免責",
         DISCLAIMER,
-    ])
+    ]
+    return "\n".join(blocks)

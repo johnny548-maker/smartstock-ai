@@ -18,6 +18,7 @@ import news_digest
 import institutional
 import strategy
 import ai_analyzer
+import levels as levels_mod
 import asset_allocation
 import rebalance
 import report_builder
@@ -86,14 +87,28 @@ def main(web=False):
         data = data_fetcher.get_stock_data(all_syms)
     except Exception as e:
         log.warning("SKIP stock data: %s", e); data = {}; skips.append("stock_data")
-    ranked = strategy.rank_stocks(data, institutional_map=inst)
+    ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames)
     log.info("ranked %d / %d symbols", len(ranked), len(all_syms))
 
-    # 5. Rule-based commentary for the Top N --------------------------------
-    analyses = {}
+    # 4b. Today's movers (basket sorted by today's % change) ----------------
+    movers = []
+    for sym, df in data.items():
+        try:
+            if len(df) >= 2:
+                pct = (df["Close"].iloc[-1] / df["Close"].iloc[-2] - 1) * 100
+                movers.append({"stock": sym, "pct": round(float(pct), 2)})
+        except Exception:
+            continue
+    movers.sort(key=lambda m: m["pct"], reverse=True)
+
+    # 5. Commentary + ATR price levels for the Top N ------------------------
+    analyses, level_map = {}, {}
     for item in ranked[:config.TOP_N]:
+        df = data.get(item["stock"])
+        lv = levels_mod.compute_levels(df) if df is not None else None
+        level_map[item["stock"]] = lv
         analyses[item["stock"]] = ai_analyzer.analyze_stock(
-            item["stock"], item["score"], item["factors"], item.get("sector"))
+            item["stock"], item["score"], item["factors"], item.get("sector"), levels=lv)
 
     # 6. Allocation + rebalance ---------------------------------------------
     base = asset_allocation.base_allocation()
@@ -105,7 +120,7 @@ def main(web=False):
     markdown = report_builder.build_report(
         date_str=date_str, news=news, indices=indices, institutional=inst,
         ranked=ranked, analyses=analyses, allocation=target,
-        rebalance_diff=reb, risk=risk)
+        rebalance_diff=reb, risk=risk, movers=movers)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -115,7 +130,7 @@ def main(web=False):
     if web:
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
-            target, reb, risk, markdown, skips)
+            target, reb, risk, markdown, skips, movers=movers, level_map=level_map)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

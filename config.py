@@ -19,6 +19,21 @@ STOCKS_TW = [
 ]
 STOCKS_US = ["NVDA", "AMD", "TSM", "MSFT", "QQQ"]
 
+# Display names (中文/公司名) — shown as "名稱 (代碼)" everywhere
+STOCK_NAMES = {
+    "2330.TW": "台積電", "2317.TW": "鴻海", "3231.TW": "緯創",
+    "2382.TW": "廣達", "2308.TW": "台達電", "2454.TW": "聯發科",
+    "2891.TW": "中信金",
+    "NVDA": "NVIDIA", "AMD": "AMD", "TSM": "台積電 ADR",
+    "MSFT": "微軟", "QQQ": "Nasdaq100 ETF",
+}
+
+
+def stock_name(symbol):
+    """Return '名稱 (代碼)'; works for bare TWSE codes too (e.g. '2330')."""
+    name = STOCK_NAMES.get(symbol) or STOCK_NAMES.get(symbol + ".TW")
+    return f"{name} ({symbol})" if name else symbol
+
 # ── Sector mapping + weights (ChatGPT 升級1: 產業權重) ────────
 SECTOR_MAP = {
     "2330.TW": "半導體",
@@ -62,12 +77,39 @@ INDICES = {
     "btc": "BTC-USD",
 }
 
+# ── Data window ─────────────────────────────────────────────
+STOCK_PERIOD = "1y"             # need ~252 bars for 52-week-high factor (keyless)
+
 # ── Scoring thresholds ──────────────────────────────────────
 MOMENTUM_LOOKBACK = 63          # ~3 trading months for STRONG/WEAK momentum
 VOLATILITY_CAP = 0.03           # daily pct-change std below this = stable (+points)
-OVERHEAT_PCT = 0.30             # >30% gain in lookback → risk penalty
 MIN_BARS = 20                   # need at least this many bars to score
-TOP_N = 3                       # how many picks get full AI commentary
+TOP_N = 3                       # how many picks get full commentary + price levels
+
+# Relative strength vs index (RS): excess return over benchmark, 60-day
+RS_WINDOW = 60
+RS_STRONG = 0.05                # >+5% over index → top tier
+
+# 52-week-high proximity (George & Hwang 2004)
+HIGH_WINDOW = 252
+NEAR_HIGH = 0.95                # within 5% of 52wk high → top tier
+NEAR_MID = 0.90
+FAR_HIGH = 0.75                 # >25% below 52wk high → penalty
+
+# RSI-14 (Wilder) — replaces the old crude >30%-gain overheat rule
+RSI_WINDOW = 14
+RSI_OVERBOUGHT = 75
+RSI_OVERSOLD = 35
+
+# 法人買超佔量比 gate: |net| / 20-day avg volume → scales institutional points
+INST_RATIO_FULL = 0.30          # ≥30% of avg vol → full weight
+INST_RATIO_HALF = 0.10          # 10-30% → half; <10% → noise (zero)
+
+# ATR price levels (stop / target)
+ATR_WINDOW = 14
+ATR_STOP_MULT = 2.0             # stop = close − 2×ATR
+RR_TARGET = 2.5                 # target = close + 2.5×risk
+STOP_FLOOR_PCT = 0.93           # stop never tighter-risk than -7% (cap risk)
 
 # ── Risk engine thresholds (ChatGPT risk_engine) ───────────
 VIX_HIGH = 20.0
@@ -75,10 +117,12 @@ RATE_HIGH = 4.5
 
 # ── News RSS feeds (all keyless) ────────────────────────────
 # Google News RSS is the universal multilingual fallback.
+# zh-Hant Google News for global markets → Chinese headlines that keep English
+# proper nouns (Nvidia / Fed / S&P) intact — no translation engine, keyless.
 RSS_FEEDS = {
     "global": [
-        "https://www.cnbc.com/id/100003114/device/rss/rss.html",      # CNBC top news
-        "https://news.google.com/rss/search?q=stock+market+Fed+Nvidia&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=美股+聯準會+Fed+NVIDIA+輝達&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+        "https://news.google.com/rss/search?q=美股+科技股+Nasdaq+標普500&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
     ],
     "tw": [
         "https://news.google.com/rss/search?q=台股+外資+台積電&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
