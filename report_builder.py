@@ -1,0 +1,122 @@
+# -*- coding: utf-8 -*-
+"""Assemble the full daily report — single source of truth for both the
+local file and the email body. Pure string building (no I/O)."""
+from config import DISCLAIMER
+
+RISK_LABEL = {"LOW": "低 🟢", "MID": "中 🟡", "HIGH": "高 🔴"}
+ALLOC_LABEL = {
+    "US_GROWTH": "美國成長股",
+    "TW_GROWTH": "台股成長股",
+    "ETF_CORE": "ETF 核心",
+    "CRYPTO": "加密資產",
+    "CASH_BOND": "現金/債券",
+}
+
+
+def _news_block(news):
+    lines = ["## 🌍 全球市場焦點新聞", ""]
+    g = (news or {}).get("global", [])
+    tw = (news or {}).get("tw", [])
+    if not g and not tw:
+        lines.append("_（今日新聞來源無法取得，已略過）_")
+        return "\n".join(lines)
+    for item in g:
+        lines.append(f"- [{item.get('source', '')}] {item.get('title', '')}")
+    if tw:
+        lines += ["", "**🇹🇼 台股相關**"]
+        for item in tw:
+            lines.append(f"- {item.get('title', '')}")
+    return "\n".join(lines)
+
+
+def _market_block(indices, institutional, risk):
+    lines = ["## 🇹🇼 台股 / 總經焦點", ""]
+    if indices:
+        if indices.get("twii") is not None:
+            lines.append(f"- 加權指數 ^TWII：{indices['twii']:,.0f}")
+        if indices.get("sp500") is not None:
+            lines.append(f"- S&P 500：{indices['sp500']:,.0f}")
+        if indices.get("nasdaq") is not None:
+            lines.append(f"- Nasdaq：{indices['nasdaq']:,.0f}")
+        if indices.get("vix") is not None:
+            lines.append(f"- VIX 波動率：{indices['vix']:.1f}")
+        if indices.get("tnx") is not None:
+            lines.append(f"- 美債 10Y 殖利率：{indices['tnx']:.2f}%")
+    else:
+        lines.append("_（指數資料無法取得，已略過）_")
+    lines.append(f"- 市場風險評級：**{RISK_LABEL.get(risk, risk)}**")
+
+    if institutional:
+        lines += ["", "**三大法人買賣超（最新交易日，TWSE 原始淨額）**"]
+        shown = 0
+        for code, d in institutional.items():
+            f = d.get("foreign")
+            if f is None:
+                continue
+            arrow = "▲買超" if f > 0 else ("▼賣超" if f < 0 else "—")
+            lines.append(f"- {code}：外資 {arrow} {abs(f):,}")
+            shown += 1
+            if shown >= 10:
+                break
+    else:
+        lines.append("- 三大法人資料：_本日無法取得（非交易日或來源異常），已略過_")
+    return "\n".join(lines)
+
+
+def _picks_block(ranked, analyses):
+    lines = ["## 📊 今日選股 Top Picks", ""]
+    if not ranked:
+        lines.append("_（無足夠資料產生選股）_")
+        return "\n".join(lines)
+    medals = ["🥇", "🥈", "🥉"]
+    for i, item in enumerate(ranked):
+        medal = medals[i] if i < len(medals) else "▫️"
+        sec = f"（{item.get('sector')}）" if item.get("sector") else ""
+        lines.append(f"### {medal} {item['stock']} {sec}— 分數 {item['score']}")
+        factors = item.get("factors", {})
+        if factors:
+            fl = "、".join(f"{k}{'+' if v > 0 else ''}{v}" for k, v in factors.items())
+            lines.append(f"- 因子：{fl}")
+        a = (analyses or {}).get(item["stock"])
+        if a:
+            lines += ["", a]
+        lines.append("")
+    return "\n".join(lines)
+
+
+def _alloc_block(allocation, rebalance_diff):
+    lines = ["## 🧠 資產配置建議", ""]
+    if allocation:
+        for k, v in allocation.items():
+            lines.append(f"- {ALLOC_LABEL.get(k, k)}：{v * 100:.1f}%")
+    lines += ["", "### 🔁 再平衡建議（vs 目前持倉，百分點）"]
+    if rebalance_diff:
+        moved = False
+        for k, v in rebalance_diff.items():
+            if abs(v) >= 0.01:
+                lines.append(f"- {ALLOC_LABEL.get(k, k)}：{'加碼 +' if v > 0 else '減碼 '}{v}")
+                moved = True
+        if not moved:
+            lines.append("- 目前配置已接近目標，無需大幅調整。")
+    else:
+        lines.append("- _（無持倉紀錄，請於 portfolio_state.json 填入目前各類資產比例）_")
+    return "\n".join(lines)
+
+
+def build_report(date_str, news, indices, institutional, ranked, analyses,
+                 allocation, rebalance_diff, risk):
+    return "\n".join([
+        f"# 📈 SmartStock 每日投資日報 — {date_str}",
+        "",
+        _news_block(news),
+        "",
+        _market_block(indices, institutional, risk),
+        "",
+        _picks_block(ranked, analyses),
+        "",
+        _alloc_block(allocation, rebalance_diff),
+        "",
+        "---",
+        "## ⚠️ 風險提示與免責",
+        DISCLAIMER,
+    ])

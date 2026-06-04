@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1b2a">
+  <title>SmartStock 日報</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartStock">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="topbar">
+    <button id="backBtn" class="hidden" aria-label="返回">‹</button>
+    <h1 id="title">📈 SmartStock 日報</h1>
+    <button id="refreshBtn" aria-label="重新整理">⟳</button>
+  </header>
+
+  <main id="app">
+    <div id="status" class="status">載入中…</div>
+    <section id="listView"></section>
+    <section id="detailView" class="hidden"></section>
+  </main>
+
+  <footer id="foot">資料來源公開、僅供參考，不構成投資建議。</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
