@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v5';
+const CACHE = 'smartstock-v6';
 const SHELL = [
   './',
   'index.html',
@@ -33,21 +33,13 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  const isData = req.url.includes('/data/');
-
-  if (isData) {
-    // network-first: always try fresh report, cache the result, fall back offline
-    e.respondWith(
-      fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(req, copy));
-        return res;
-      }).catch(() => caches.match(req))
-    );
-  } else {
-    // cache-first for the app shell
-    e.respondWith(
-      caches.match(req).then((hit) => hit || fetch(req))
-    );
-  }
+  // Network-first for EVERYTHING (shell + data): a daily-updated app must never
+  // serve a stale UI. Cache is refreshed on each success and only used offline.
+  e.respondWith(
+    fetch(req).then((res) => {
+      const copy = res.clone();
+      caches.open(CACHE).then((c) => c.put(req, copy));
+      return res;
+    }).catch(() => caches.match(req))
+  );
 });

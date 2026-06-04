@@ -9,9 +9,11 @@ from datetime import datetime
 from config import STOCK_NAMES, DISPLAY_N
 
 
-def _tldr(risk, institutional, ranked):
+def _tldr(risk, institutional, ranked, breadth=None):
     net = sum((d.get("foreign") or 0) for d in (institutional or {}).values())
     parts = [f"風險 {risk}"]
+    if breadth:
+        parts.append(f"參與度 {breadth['label']}")
     if institutional:
         parts.append(f"外資合計 {net:+,} 股")
     if ranked:
@@ -29,7 +31,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "date": date_str,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "risk": risk,
-        "tldr": _tldr(risk, institutional, ranked),
+        "tldr": _tldr(risk, institutional, ranked, breadth),
         "delta": delta or [],
         "events": events or [],
         "breadth": breadth,
@@ -60,7 +62,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
 def _rebuild_index(data_dir):
     index = []
     for path in glob.glob(os.path.join(data_dir, "*.json")):
-        if os.path.basename(path) == "index.json":
+        name = os.path.basename(path)
+        if name == "index.json" or name.startswith("_"):  # skip index + state files
             continue
         try:
             with open(path, encoding="utf-8") as f:

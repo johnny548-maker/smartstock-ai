@@ -228,6 +228,14 @@ window.addEventListener('hashchange', route);
 window.addEventListener('load', () => {
   route();
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      location.reload();          // a new SW took over → load the fresh shell
+    });
+    navigator.serviceWorker.register('service-worker.js')
+      .then((reg) => reg.update())
+      .catch(() => {});
   }
 });

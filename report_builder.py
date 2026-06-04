@@ -11,9 +11,11 @@ ALLOC_LABEL = {
 }
 
 
-def _tldr_block(risk, indices, institutional, ranked):
+def _tldr_block(risk, indices, institutional, ranked, breadth=None):
     net = sum((d.get("foreign") or 0) for d in (institutional or {}).values())
     parts = [f"市場風險 {RISK_LABEL.get(risk, risk)}"]
+    if breadth:
+        parts.append(f"參與度 {breadth['label']}（{breadth['pct_above_ma20']}% 站上MA20）")
     if institutional:
         parts.append(f"外資合計 {net:+,} 股")
     if ranked:
@@ -171,7 +173,7 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
-        _tldr_block(risk, indices, institutional, ranked),
+        _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
     for extra in (_delta_block(delta), _calendar_block(events)):
         if extra:
