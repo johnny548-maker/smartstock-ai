@@ -6,7 +6,7 @@ import json
 import os
 from datetime import datetime
 
-from config import STOCK_NAMES
+from config import STOCK_NAMES, DISPLAY_N
 
 
 def _tldr(risk, institutional, ranked):
@@ -23,7 +23,7 @@ def _tldr(risk, institutional, ranked):
 
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
-                  movers=None, level_map=None, delta=None, events=None):
+                  movers=None, level_map=None, delta=None, events=None, breadth=None):
     level_map = level_map or {}
     return {
         "date": date_str,
@@ -32,6 +32,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "tldr": _tldr(risk, institutional, ranked),
         "delta": delta or [],
         "events": events or [],
+        "breadth": breadth,
         "indices": indices,
         "news": news,
         "institutional": institutional,
@@ -47,7 +48,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                 "levels": level_map.get(it["stock"]),
                 "commentary": (analyses or {}).get(it["stock"]),
             }
-            for it in ranked
+            for it in ranked[:DISPLAY_N]
         ],
         "allocation": allocation,
         "rebalance": rebalance_diff,

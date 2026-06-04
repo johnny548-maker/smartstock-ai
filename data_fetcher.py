@@ -4,7 +4,7 @@ SKIP and returns None/empty rather than crashing the daily run."""
 import logging
 import yfinance as yf
 
-from config import INDICES, MOMENTUM_LOOKBACK, STOCK_PERIOD
+from config import INDICES, MOMENTUM_LOOKBACK, STOCK_PERIOD, BREADTH_PERIOD
 from risk_engine import market_risk
 
 log = logging.getLogger(__name__)
@@ -33,6 +33,31 @@ def get_stock_data(symbols, period=None):
         df = _hist(s, period)
         if df is not None:
             out[s] = df
+    return out
+
+
+def get_universe(tickers, period=None):
+    """Batch-download a wide basket (one yf.download call) for breadth. Returns
+    {sym: DataFrame} for tickers that came back with enough bars."""
+    period = period or BREADTH_PERIOD
+    try:
+        raw = yf.download(tickers, period=period, group_by="ticker",
+                          auto_adjust=True, threads=True, progress=False)
+    except Exception as e:
+        log.warning("SKIP universe batch: %s", e)
+        return {}
+    out = {}
+    multi = hasattr(raw.columns, "levels")
+    for sym in tickers:
+        try:
+            df = raw[sym] if multi and sym in raw.columns.get_level_values(0) else (raw if not multi else None)
+            if df is None:
+                continue
+            df = df.dropna()
+            if len(df) >= 30:
+                out[sym] = df
+        except Exception:
+            continue
     return out
 
 

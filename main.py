@@ -28,6 +28,7 @@ import web_export
 import chip_state
 import delta as delta_mod
 import calendar_events
+import breadth as breadth_mod
 
 
 def setup_logging():
@@ -75,6 +76,14 @@ def main(web=False):
         news = news_digest.get_news()
     except Exception as e:
         log.warning("SKIP news: %s", e); news = {}; skips.append("news")
+
+    # 2b. Market breadth (broad basket → 參與度) ----------------------------
+    try:
+        breadth = breadth_mod.get_breadth()
+    except Exception as e:
+        log.warning("SKIP breadth: %s", e); breadth = None; skips.append("breadth")
+    if not breadth:
+        skips.append("breadth")
 
     # 3. 三大法人 ------------------------------------------------------------
     try:
@@ -146,7 +155,7 @@ def main(web=False):
         date_str=date_str, news=news, indices=indices, institutional=inst,
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
-        delta=delta_changes, events=events)
+        delta=delta_changes, events=events, breadth=breadth)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -157,7 +166,7 @@ def main(web=False):
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
-            delta=delta_changes, events=events)
+            delta=delta_changes, events=events, breadth=breadth)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

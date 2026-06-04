@@ -2,7 +2,7 @@
 """Assemble the full daily report — single source of truth for the local file
 and email body. Pure string building. Section order follows the proven
 morning-brief flow: TL;DR → 總經 → Movers → 新聞 → 選股 → 配置 → 免責."""
-from config import DISCLAIMER, stock_name
+from config import DISCLAIMER, stock_name, DISPLAY_N
 
 RISK_LABEL = {"LOW": "低 🟢", "MID": "中 🟡", "HIGH": "高 🔴"}
 ALLOC_LABEL = {
@@ -49,7 +49,15 @@ def _news_block(news):
     return "\n".join(lines)
 
 
-def _market_block(indices, institutional, risk):
+def _breadth_line(b):
+    if not b:
+        return None
+    return (f"- 市場廣度：{b['pct_above_ma20']}% 站上 MA20、{b['pct_above_ma50']}% 站上 MA50"
+            f"（{b['advancers']}漲 {b['decliners']}跌、{b['new_highs']} 檔創20日新高）"
+            f" → 參與度 **{b['label']}**（{b['total']} 檔樣本）")
+
+
+def _market_block(indices, institutional, risk, breadth=None):
     lines = ["## 🇹🇼 台股 / 總經焦點", ""]
     if indices:
         if indices.get("twii") is not None:
@@ -65,6 +73,9 @@ def _market_block(indices, institutional, risk):
     else:
         lines.append("_（指數資料無法取得，已略過）_")
     lines.append(f"- 市場風險評級：**{RISK_LABEL.get(risk, risk)}**")
+    bl = _breadth_line(breadth)
+    if bl:
+        lines.append(bl)
 
     if institutional:
         lines += ["", "**三大法人買賣超（最新交易日，TWSE 原始淨額）**"]
@@ -106,7 +117,7 @@ def _picks_block(ranked, analyses):
         lines.append("_（無足夠資料產生選股）_")
         return "\n".join(lines)
     medals = ["🥇", "🥈", "🥉"]
-    for i, item in enumerate(ranked):
+    for i, item in enumerate(ranked[:DISPLAY_N]):
         medal = medals[i] if i < len(medals) else "▫️"
         nm = item.get("name")
         head = f"{nm}（{item['stock']}）" if nm else item["stock"]
@@ -155,7 +166,8 @@ def _calendar_block(events):
 
 
 def build_report(date_str, news, indices, institutional, ranked, analyses,
-                 allocation, rebalance_diff, risk, movers=None, delta=None, events=None):
+                 allocation, rebalance_diff, risk, movers=None, delta=None,
+                 events=None, breadth=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
@@ -166,7 +178,7 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
             blocks += ["", extra]
     blocks += [
         "",
-        _market_block(indices, institutional, risk),
+        _market_block(indices, institutional, risk, breadth),
     ]
     mv = _movers_block(movers)
     if mv:

@@ -16,6 +16,7 @@ import levels
 import chip_state
 import delta
 import calendar_events
+import breadth
 from datetime import date
 
 
@@ -250,6 +251,22 @@ class TestLevelsAdvanced(unittest.TestCase):
         lv = levels.compute_levels(make_df(np.linspace(100, 120, 60)))
         for k in ["swing_stop", "chandelier", "fib_targets"]:
             self.assertIn(k, lv)
+
+
+class TestBreadth(unittest.TestCase):
+    def test_healthy_when_most_above_ma20(self):
+        uni = {}
+        for i in range(8):
+            uni[f"U{i}"] = make_df(np.linspace(100, 120, 60))
+        for i in range(2):
+            uni[f"D{i}"] = make_df(np.linspace(120, 100, 60))
+        b = breadth.compute_breadth(uni)
+        self.assertEqual(b["total"], 10)
+        self.assertGreaterEqual(b["pct_above_ma20"], 60)
+        self.assertEqual(b["label"], "健康")
+
+    def test_empty_returns_none(self):
+        self.assertIsNone(breadth.compute_breadth({}))
 
 
 if __name__ == "__main__":

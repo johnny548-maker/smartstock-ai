@@ -9,23 +9,23 @@ import os
 # ── Stock pools ─────────────────────────────────────────────
 # Taiwan (yfinance uses the .TW suffix for TWSE listings)
 STOCKS_TW = [
-    "2330.TW",  # 台積電  semiconductor
-    "2317.TW",  # 鴻海    AI server / EMS
-    "3231.TW",  # 緯創    AI server
-    "2382.TW",  # 廣達    AI server
-    "2308.TW",  # 台達電  components
-    "2454.TW",  # 聯發科  semiconductor
-    "2891.TW",  # 中信金  finance
+    "2330.TW", "2317.TW", "2454.TW", "2308.TW", "2382.TW", "3231.TW",
+    "2303.TW", "3711.TW", "2379.TW", "3008.TW",          # 半導體/光學
+    "2891.TW", "2882.TW", "2881.TW", "2412.TW",          # 金融/電信
+    "2002.TW", "2207.TW", "2603.TW", "6505.TW",          # 傳產/航運
 ]
-STOCKS_US = ["NVDA", "AMD", "TSM", "MSFT", "QQQ"]
+STOCKS_US = ["NVDA", "AMD", "TSM", "MSFT", "AAPL", "GOOGL", "AMZN", "META", "AVGO", "QQQ"]
 
 # Display names (中文/公司名) — shown as "名稱 (代碼)" everywhere
 STOCK_NAMES = {
-    "2330.TW": "台積電", "2317.TW": "鴻海", "3231.TW": "緯創",
-    "2382.TW": "廣達", "2308.TW": "台達電", "2454.TW": "聯發科",
-    "2891.TW": "中信金",
-    "NVDA": "NVIDIA", "AMD": "AMD", "TSM": "台積電 ADR",
-    "MSFT": "微軟", "QQQ": "Nasdaq100 ETF",
+    "2330.TW": "台積電", "2317.TW": "鴻海", "2454.TW": "聯發科",
+    "2308.TW": "台達電", "2382.TW": "廣達", "3231.TW": "緯創",
+    "2303.TW": "聯電", "3711.TW": "日月光投控", "2379.TW": "瑞昱", "3008.TW": "大立光",
+    "2891.TW": "中信金", "2882.TW": "國泰金", "2881.TW": "富邦金", "2412.TW": "中華電",
+    "2002.TW": "中鋼", "2207.TW": "和泰車", "2603.TW": "長榮", "6505.TW": "台塑化",
+    "NVDA": "NVIDIA", "AMD": "AMD", "TSM": "台積電 ADR", "MSFT": "微軟",
+    "AAPL": "蘋果", "GOOGL": "Alphabet", "AMZN": "亞馬遜", "META": "Meta",
+    "AVGO": "博通", "QQQ": "Nasdaq100 ETF",
 }
 
 
@@ -36,18 +36,15 @@ def stock_name(symbol):
 
 # ── Sector mapping + weights (ChatGPT 升級1: 產業權重) ────────
 SECTOR_MAP = {
-    "2330.TW": "半導體",
-    "2454.TW": "半導體",
-    "2317.TW": "AI伺服器",
-    "3231.TW": "AI伺服器",
-    "2382.TW": "AI伺服器",
+    "2330.TW": "半導體", "2454.TW": "半導體", "2303.TW": "半導體",
+    "3711.TW": "半導體", "2379.TW": "半導體", "3008.TW": "半導體",
+    "2317.TW": "AI伺服器", "3231.TW": "AI伺服器", "2382.TW": "AI伺服器",
     "2308.TW": "電子",
-    "2891.TW": "金融",
-    "NVDA": "AI伺服器",
-    "AMD": "半導體",
-    "TSM": "半導體",
-    "MSFT": "AI伺服器",
-    "QQQ": "ETF",
+    "2891.TW": "金融", "2882.TW": "金融", "2881.TW": "金融", "2412.TW": "金融",
+    "2002.TW": "傳產", "2207.TW": "傳產", "2603.TW": "傳產", "6505.TW": "傳產",
+    "NVDA": "AI伺服器", "AMD": "半導體", "TSM": "半導體", "MSFT": "AI伺服器",
+    "AVGO": "半導體", "AAPL": "AI伺服器", "GOOGL": "AI伺服器", "AMZN": "AI伺服器",
+    "META": "AI伺服器", "QQQ": "ETF",
 }
 SECTOR_WEIGHTS = {
     "AI伺服器": 20,
@@ -85,6 +82,27 @@ MOMENTUM_LOOKBACK = 63          # ~3 trading months for STRONG/WEAK momentum
 VOLATILITY_CAP = 0.03           # daily pct-change std below this = stable (+points)
 MIN_BARS = 20                   # need at least this many bars to score
 TOP_N = 3                       # how many picks get full commentary + price levels
+DISPLAY_N = 12                  # how many ranked picks to show in report/PWA
+
+# ── Market breadth basket (broad, representative — close-only, 3mo) ─────────
+# Computed over a wide sample so 參與度 is meaningful (the core watchlist alone
+# is too AI/semi-biased). Tickers only; no per-name treatment.
+BREADTH_PERIOD = "3mo"
+BREADTH_TW = [
+    "2330.TW", "2317.TW", "2454.TW", "2308.TW", "2382.TW", "3231.TW", "2303.TW",
+    "3711.TW", "2379.TW", "3008.TW", "2357.TW", "2395.TW", "4938.TW", "2412.TW",
+    "2891.TW", "2882.TW", "2881.TW", "2886.TW", "2884.TW", "2885.TW", "2880.TW",
+    "2892.TW", "2887.TW", "2890.TW", "2883.TW", "5880.TW", "2002.TW", "2207.TW",
+    "2603.TW", "2609.TW", "2615.TW", "6505.TW", "1303.TW", "1301.TW", "1326.TW",
+    "2912.TW", "1216.TW", "2105.TW", "2474.TW", "3034.TW", "2345.TW", "3045.TW",
+    "1101.TW", "2327.TW", "3037.TW",
+]
+BREADTH_US = [
+    "SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "AVGO", "TSLA",
+    "AMD", "TSM", "NFLX", "JPM", "V", "XOM", "JNJ", "WMT", "PG", "COST",
+]
+BREADTH_HEALTHY = 0.60          # ≥60% above MA20 → 健康
+BREADTH_WEAK = 0.40             # <40% → 轉弱
 
 # Relative strength vs index (RS): excess return over benchmark, 60-day
 RS_WINDOW = 60

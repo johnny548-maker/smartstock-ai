@@ -109,8 +109,15 @@ function marketBlock(d) {
       return `<li>${esc(nameOf(code))}：${arrow} ${Math.abs(f).toLocaleString()}</li>`;
     }).join('') + '</ul>';
   }
+  let bd = '';
+  if (d.breadth) {
+    const b = d.breadth;
+    bd = `<div class="breadth">市場廣度 <b>${esc(b.label)}</b>：${b.pct_above_ma20}% 站上 MA20、`
+      + `${b.pct_above_ma50}% 站上 MA50<br><span class="muted small">${b.advancers}漲 ${b.decliners}跌、`
+      + `${b.new_highs} 檔創20日新高（${b.total} 檔樣本）</span></div>`;
+  }
   return section('🇹🇼 台股 / 總經焦點',
-    `<ul>${rows.join('')}</ul><div class="riskline">${riskBadge(d.risk)}</div>${inst}`);
+    `<ul>${rows.join('')}</ul><div class="riskline">${riskBadge(d.risk)}</div>${bd}${inst}`);
 }
 
 function moversBlock(d) {
