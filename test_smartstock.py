@@ -13,6 +13,10 @@ import ai_analyzer
 import report_builder
 import indicators
 import levels
+import chip_state
+import delta
+import calendar_events
+from datetime import date
 
 
 def make_df(closes, volumes=None, hi=1.01, lo=0.99):
@@ -185,6 +189,67 @@ class TestReportBuilder(unittest.TestCase):
             self.assertIn(section, md)
         self.assertIn("台積電", md)        # name shown
         self.assertIn("https://x", md)     # news link present
+
+
+class TestChips(unittest.TestCase):
+    def test_concentration_and_streak(self):
+        st = {"stocks": {}}
+        for i in range(6):
+            chip_state.update(st, "2330.TW", f"2026-06-0{i + 1}", 1000, 500, 10000)
+        self.assertAlmostEqual(chip_state.concentration(st, "2330.TW"), 0.1, places=3)
+        self.assertEqual(chip_state.streak(st, "2330.TW"), 6)
+
+    def test_concentration_none_when_scarce(self):
+        st = {"stocks": {}}
+        chip_state.update(st, "A", "2026-06-01", 1, 1, 100)
+        self.assertIsNone(chip_state.concentration(st, "A"))
+
+    def test_streak_breaks_on_sell(self):
+        st = {"stocks": {}}
+        chip_state.update(st, "A", "2026-06-01", -1, 1, 100)
+        chip_state.update(st, "A", "2026-06-02", 1, 1, 100)
+        self.assertEqual(chip_state.streak(st, "A"), 1)
+
+    def test_score_uses_chips(self):
+        r = strategy.score_stock(make_df(np.linspace(100, 120, 30)),
+                                 chips={"conc": 0.08, "streak": 4})
+        self.assertIn("籌碼集中(法人吸籌)", r["factors"])
+        self.assertIn("外資投信連買4日", r["factors"])
+
+
+class TestDelta(unittest.TestCase):
+    def test_no_prev(self):
+        self.assertIn("首份", delta.compute_delta({"picks": []}, None)[0])
+
+    def test_new_drop_risk(self):
+        today = {"picks": [{"stock": "A"}, {"stock": "B"}], "risk": "LOW", "institutional": {}}
+        prev = {"picks": [{"stock": "B"}, {"stock": "C"}], "risk": "MID", "institutional": {}}
+        joined = " ".join(delta.compute_delta(today, prev))
+        self.assertIn("新進榜：A", joined)
+        self.assertIn("掉榜：C", joined)
+        self.assertIn("風險 MID→LOW", joined)
+
+    def test_foreign_flip(self):
+        today = {"picks": [], "institutional": {"2330": {"foreign": -5}}}
+        prev = {"picks": [], "institutional": {"2330": {"foreign": 5}}}
+        self.assertTrue(any("轉賣超" in c for c in delta.compute_delta(today, prev)))
+
+
+class TestCalendar(unittest.TestCase):
+    def test_macro_window_before_10th(self):
+        ev = calendar_events.upcoming_events([], today=date(2026, 6, 5), fetch=False)
+        self.assertTrue(any("月營收" in e for e in ev))
+
+    def test_no_macro_after_10th(self):
+        ev = calendar_events.upcoming_events([], today=date(2026, 6, 20), fetch=False)
+        self.assertEqual(ev, [])
+
+
+class TestLevelsAdvanced(unittest.TestCase):
+    def test_advanced_fields_present(self):
+        lv = levels.compute_levels(make_df(np.linspace(100, 120, 60)))
+        for k in ["swing_stop", "chandelier", "fib_targets"]:
+            self.assertIn(k, lv)
 
 
 if __name__ == "__main__":

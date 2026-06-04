@@ -43,3 +43,29 @@ def slope(series, n=20):
     if len(s) < n:
         return 0.0
     return float(np.polyfit(np.arange(n), s.iloc[-n:].to_numpy(dtype=float), 1)[0])
+
+
+def pivots(df, k=2):
+    """Return (swing_lows, swing_highs) as lists of (index, price). A bar is a
+    swing low/high if it is the min/max of the k bars on each side."""
+    lows, highs = [], []
+    lo, hi = df["Low"].to_numpy(dtype=float), df["High"].to_numpy(dtype=float)
+    n = len(df)
+    for i in range(k, n - k):
+        win_lo = lo[i - k:i + k + 1]
+        win_hi = hi[i - k:i + k + 1]
+        if lo[i] == win_lo.min() and lo[i] < win_lo[:k].min() and lo[i] < win_lo[k + 1:].min():
+            lows.append((i, float(lo[i])))
+        if hi[i] == win_hi.max() and hi[i] > win_hi[:k].max() and hi[i] > win_hi[k + 1:].max():
+            highs.append((i, float(hi[i])))
+    return lows, highs
+
+
+def chandelier(df, n=22, mult=3.0):
+    """Chandelier long trailing-stop: highest-high(n) − mult×ATR(n). None if short."""
+    if df is None or len(df) < n:
+        return None
+    a = atr(df, n)
+    if not a:
+        return None
+    return float(df["High"].iloc[-n:].max() - mult * a)

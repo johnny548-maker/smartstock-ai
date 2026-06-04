@@ -127,11 +127,29 @@ function moversBlock(d) {
 
 function levelsStrip(lv) {
   if (!lv) return '';
-  return `<div class="levels">
+  const strip = `<div class="levels">
     <span><i>進場</i>${lv.entry}</span>
     <span class="lv-stop"><i>停損</i>${lv.stop}<small>${lv.stop_pct}%</small></span>
     <span class="lv-tgt"><i>目標</i>${lv.target}<small>+${lv.target_pct}%</small></span>
     <span><i>R/R</i>${lv.rr}</span></div>`;
+  const parts = [];
+  if (lv.swing_stop) parts.push('結構停損 ' + lv.swing_stop);
+  if (lv.chandelier) parts.push('移動停損 ' + lv.chandelier);
+  if (lv.fib_targets && lv.fib_targets.length) parts.push('Fib ' + lv.fib_targets.join('/'));
+  const adv = parts.length ? `<div class="levels-adv muted small">進階：${esc(parts.join('；'))}</div>` : '';
+  return strip + adv;
+}
+
+function deltaBlock(d) {
+  const c = d.delta || [];
+  if (!c.length) return '';
+  return `<div class="delta">⚡ 今日變化<ul>${c.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+}
+
+function calendarBlock(d) {
+  const e = d.events || [];
+  if (!e.length) return '';
+  return section('📅 本周注意', '<ul>' + e.map((x) => `<li>${esc(x)}</li>`).join('') + '</ul>');
 }
 
 function picksBlock(picks) {
@@ -182,10 +200,10 @@ async function showDetail(date) {
   NAMES = d.names || {};
   const gen = d.generated_at
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
-  // proven brief order: TL;DR → 總經 → Movers → 新聞 → 選股 → 配置 → 免責
+  // order: TL;DR → 變化 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
   $('detailView').innerHTML =
-    tldrBanner(d) + gen + marketBlock(d) + moversBlock(d) + newsBlock(d.news) +
-    picksBlock(d.picks) + allocBlock(d) +
+    tldrBanner(d) + deltaBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
+    moversBlock(d) + newsBlock(d.news) + picksBlock(d.picks) + allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);
 }

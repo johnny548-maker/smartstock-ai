@@ -142,12 +142,29 @@ def _alloc_block(allocation, rebalance_diff):
     return "\n".join(lines)
 
 
+def _delta_block(delta):
+    if not delta:
+        return ""
+    return "## ⚡ 今日變化\n\n" + "\n".join(f"- {c}" for c in delta)
+
+
+def _calendar_block(events):
+    if not events:
+        return ""
+    return "## 📅 本周注意\n\n" + "\n".join(f"- {e}" for e in events)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
-                 allocation, rebalance_diff, risk, movers=None):
+                 allocation, rebalance_diff, risk, movers=None, delta=None, events=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
         _tldr_block(risk, indices, institutional, ranked),
+    ]
+    for extra in (_delta_block(delta), _calendar_block(events)):
+        if extra:
+            blocks += ["", extra]
+    blocks += [
         "",
         _market_block(indices, institutional, risk),
     ]

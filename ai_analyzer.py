@@ -22,10 +22,20 @@ def _trend_view(factors):
 def _levels_line(levels):
     if not levels:
         return "4. 停損與目標：建議停損 -7%，第一目標 +15~25%（依個人風險承受度調整）。"
-    return (f"4. 進出場價位：參考進場 {levels['entry']}，"
+    line = (f"4. 進出場價位：參考進場 {levels['entry']}，"
             f"停損 {levels['stop']}（{levels['stop_pct']}%），"
             f"目標 {levels['target']}（+{levels['target_pct']}%），"
             f"R/R {levels['rr']}:1（波動 ATR {levels['atr_pct']}%）。")
+    adv = []
+    if levels.get("swing_stop"):
+        adv.append(f"結構停損 {levels['swing_stop']}")
+    if levels.get("chandelier"):
+        adv.append(f"移動停損 {levels['chandelier']}")
+    if levels.get("fib_targets"):
+        adv.append("Fib 目標 " + "/".join(str(t) for t in levels["fib_targets"]))
+    if adv:
+        line += "\n   進階：" + "；".join(adv) + "。"
+    return line
 
 
 def analyze_stock(stock, score, factors, sector=None, levels=None):

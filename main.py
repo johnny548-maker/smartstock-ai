@@ -25,6 +25,9 @@ import report_builder
 import notifier_file
 import notifier_email
 import web_export
+import chip_state
+import delta as delta_mod
+import calendar_events
 
 
 def setup_logging():
@@ -87,7 +90,20 @@ def main(web=False):
         data = data_fetcher.get_stock_data(all_syms)
     except Exception as e:
         log.warning("SKIP stock data: %s", e); data = {}; skips.append("stock_data")
-    ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames)
+    # 4a. 籌碼 cross-run buffer: record today (trading days only), derive chips
+    chips_state = chip_state.load()
+    if inst:
+        for sym in config.STOCKS_TW:
+            di = inst.get(sym.replace(".TW", "")) or {}
+            df = data.get(sym)
+            volu = int(df["Volume"].iloc[-1]) if df is not None and len(df) else 0
+            if di:
+                chip_state.update(chips_state, sym, date_str,
+                                  di.get("foreign", 0), di.get("trust", 0), volu)
+        chip_state.save(chips_state)
+    chips_map = {sym: chip_state.chips_for(chips_state, sym) for sym in all_syms}
+
+    ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames, chips_map=chips_map)
     log.info("ranked %d / %d symbols", len(ranked), len(all_syms))
 
     # 4b. Today's movers (basket sorted by today's % change) ----------------
@@ -116,11 +132,21 @@ def main(web=False):
     current = load_portfolio_state()
     reb = rebalance.rebalance(current, target) if current else {}
 
+    # 6b. Calendar (本周注意) + yesterday delta -----------------------------
+    try:
+        events = calendar_events.upcoming_events([it["stock"] for it in ranked[:config.TOP_N]])
+    except Exception as e:
+        log.warning("SKIP calendar: %s", e); events = []
+    delta_changes = delta_mod.compute_delta(
+        {"picks": ranked, "risk": risk, "institutional": inst},
+        delta_mod.load_prev(date_str))
+
     # 7. Build the report ----------------------------------------------------
     markdown = report_builder.build_report(
         date_str=date_str, news=news, indices=indices, institutional=inst,
         ranked=ranked, analyses=analyses, allocation=target,
-        rebalance_diff=reb, risk=risk, movers=movers)
+        rebalance_diff=reb, risk=risk, movers=movers,
+        delta=delta_changes, events=events)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -130,7 +156,8 @@ def main(web=False):
     if web:
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
-            target, reb, risk, markdown, skips, movers=movers, level_map=level_map)
+            target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
+            delta=delta_changes, events=events)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

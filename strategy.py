@@ -9,7 +9,8 @@ old crude overheat rule), OBV volume-price divergence.
 from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN_BARS,
                     RS_WINDOW, RS_STRONG, HIGH_WINDOW, NEAR_HIGH, NEAR_MID, FAR_HIGH,
                     RSI_WINDOW, RSI_OVERBOUGHT, RSI_OVERSOLD,
-                    INST_RATIO_FULL, INST_RATIO_HALF)
+                    INST_RATIO_FULL, INST_RATIO_HALF,
+                    CONC_HIGH, CONC_MID, STREAK_MIN)
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 
 
@@ -26,7 +27,7 @@ def _rs_excess(df, bench, window):
         return None
 
 
-def score_stock(df, sector=None, institutional=None, bench=None):
+def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
     """Score one stock. Returns {score, factors, insufficient}."""
     if df is None or len(df) < MIN_BARS:
         return {"score": 0, "factors": {}, "insufficient": True}
@@ -101,6 +102,20 @@ def score_stock(df, sector=None, institutional=None, bench=None):
     elif price_s > 0 and obv_s < 0:
         factors["量價背離(出貨警示)"] = -15
 
+    # ── 籌碼集中度 + 外資投信連買 streak (cross-run buffer) ──
+    if chips:
+        conc = chips.get("conc")
+        if conc is not None:
+            if conc >= CONC_HIGH:
+                factors["籌碼集中(法人吸籌)"] = 15
+            elif conc >= CONC_MID:
+                factors["籌碼集中(偏多)"] = 8
+            elif conc < 0:
+                factors["籌碼分散(法人調節)"] = -15
+        st = chips.get("streak", 0) or 0
+        if st >= STREAK_MIN:
+            factors[f"外資投信連買{st}日"] = 20
+
     return {"score": int(sum(factors.values())), "factors": factors, "insufficient": False}
 
 
@@ -110,16 +125,20 @@ def _bench_for(sym, frames):
     return frames.get("twii") if sym.endswith(".TW") else frames.get("sp500")
 
 
-def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None):
-    """Score + rank {symbol: DataFrame}. frames = {twii, sp500} for RS."""
+def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None, chips_map=None):
+    """Score + rank {symbol: DataFrame}. frames = {twii, sp500} for RS;
+    chips_map = {sym: {conc, streak}} for 籌碼 factors."""
     sector_map = sector_map if sector_map is not None else SECTOR_MAP
     institutional_map = institutional_map or {}
+    chips_map = chips_map or {}
     results = []
     for sym, df in data_dict.items():
         try:
             sector = sector_map.get(sym)
             inst = institutional_map.get(sym) or institutional_map.get(sym.replace(".TW", ""))
-            r = score_stock(df, sector=sector, institutional=inst, bench=_bench_for(sym, frames))
+            chips = chips_map.get(sym) or chips_map.get(sym.replace(".TW", ""))
+            r = score_stock(df, sector=sector, institutional=inst,
+                            bench=_bench_for(sym, frames), chips=chips)
             if r.get("insufficient"):
                 continue
             results.append({

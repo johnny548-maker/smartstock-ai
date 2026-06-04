@@ -105,6 +105,11 @@ RSI_OVERSOLD = 35
 INST_RATIO_FULL = 0.30          # ≥30% of avg vol → full weight
 INST_RATIO_HALF = 0.10          # 10-30% → half; <10% → noise (zero)
 
+# 籌碼集中度 (cumulative foreign net / volume) + 外資投信連買 streak
+CONC_HIGH = 0.05                # ≥5% over window → strong accumulation
+CONC_MID = 0.02
+STREAK_MIN = 3                  # ≥3 consecutive sync-buy days → bonus
+
 # ATR price levels (stop / target)
 ATR_WINDOW = 14
 ATR_STOP_MULT = 2.0             # stop = close − 2×ATR
