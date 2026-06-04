@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v6';
+const CACHE = 'smartstock-v7';
 const SHELL = [
   './',
   'index.html',
@@ -33,10 +33,11 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  // Network-first for EVERYTHING (shell + data): a daily-updated app must never
-  // serve a stale UI. Cache is refreshed on each success and only used offline.
+  // Network-first for EVERYTHING (shell + data), and force {cache:'reload'} so we
+  // also bypass the BROWSER HTTP cache (GitHub Pages sets max-age on app.js — the
+  // real staleness culprit). Cache refreshed on success, used only offline.
   e.respondWith(
-    fetch(req).then((res) => {
+    fetch(new Request(req.url, { cache: 'reload' })).then((res) => {
       const copy = res.clone();
       caches.open(CACHE).then((c) => c.put(req, copy));
       return res;
