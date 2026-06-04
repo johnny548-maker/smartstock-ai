@@ -179,15 +179,37 @@ def _revenue_block(rev):
     return "\n".join(lines)
 
 
+def _theme_line(themes):
+    hot = [t["theme"] for t in (themes or []) if t.get("emerging")]
+    return ("🔥 主題湧現：" + "、".join(hot)) if hot else None
+
+
+def _signals_block(sig, themes=None):
+    """🔎 早期訊號雷達 — leadership tells, surfaced but NOT score-weighted yet."""
+    board = (sig or {}).get("board") or []
+    tline = _theme_line(themes)
+    if not board and not tline:
+        return ""
+    lines = ["## 🔎 早期訊號雷達", "",
+             "_領先型訊號（RS線新高／安靜吸籌／主題／月營收／型態），**尚未納入評分權重**，回測驗證後才加權_", ""]
+    if tline:
+        lines += [tline, ""]
+    for r in board:
+        nm = r.get("name") or r["stock"]
+        lines.append(f"- {nm}（{r['stock']}）×{r['count']}：{'、'.join(r['signals'])}")
+    return "\n".join(lines)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
-                 events=None, breadth=None, revenue=None):
+                 events=None, breadth=None, revenue=None, signals=None, themes=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
         _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
-    for extra in (_delta_block(delta), _revenue_block(revenue), _calendar_block(events)):
+    for extra in (_delta_block(delta), _signals_block(signals, themes),
+                  _revenue_block(revenue), _calendar_block(events)):
         if extra:
             blocks += ["", extra]
     blocks += [

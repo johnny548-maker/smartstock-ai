@@ -128,6 +128,18 @@ CONC_HIGH = 0.05                # ≥5% over window → strong accumulation
 CONC_MID = 0.02
 STREAK_MIN = 3                  # ≥3 consecutive sync-buy days → bonus
 
+# ── Leadership patterns (backtest-validated weights) ────────────────────────
+# Points assigned ONLY after run_backtest.py showed forward-return edge (lift>1)
+# over a 5y/65-ticker walk-forward (+25% in 60 bars, base rate 8.97%). Magnitudes
+# scale with measured lift. The rejected price-gated RS-line (lift 0.74) is NOT
+# here. Re-run run_backtest.py if signals change → re-justify before re-weighting.
+LEADERSHIP_WEIGHT = True
+LEAD_VCP_STAGE2 = 22            # VCP ∧ Trend Template — lift 2.00 (strongest)
+LEAD_STAGE2 = 10               # Trend Template alone — lift 1.36 (broad)
+LEAD_VCP = 8                   # VCP alone — lift 1.28
+LEAD_POCKET_PIVOT = 8          # pocket pivot — lift 1.29
+LEAD_RS_NEW_HIGH = 5           # RS-line new high (pure) — lift 1.10 (marginal)
+
 # ATR price levels (stop / target)
 ATR_WINDOW = 14
 ATR_STOP_MULT = 2.0             # stop = close − 2×ATR

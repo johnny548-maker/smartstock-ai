@@ -10,8 +10,12 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
                     RS_WINDOW, RS_STRONG, HIGH_WINDOW, NEAR_HIGH, NEAR_MID, FAR_HIGH,
                     RSI_WINDOW, RSI_OVERBOUGHT, RSI_OVERSOLD,
                     INST_RATIO_FULL, INST_RATIO_HALF,
-                    CONC_HIGH, CONC_MID, STREAK_MIN)
+                    CONC_HIGH, CONC_MID, STREAK_MIN,
+                    LEADERSHIP_WEIGHT, LEAD_VCP_STAGE2, LEAD_STAGE2, LEAD_VCP,
+                    LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH)
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
+from technical_setup import analyze_setup
+from signals import rs_line_new_high
 
 
 def _rs_excess(df, bench, window):
@@ -115,6 +119,23 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         st = chips.get("streak", 0) or 0
         if st >= STREAK_MIN:
             factors[f"外資投信連買{st}日"] = 20
+
+    # ── leadership patterns (backtest-validated weights, run_backtest.py) ────
+    # Early-leadership tells with measured forward-return edge (lift>1). VCP and
+    # Stage-2 are scored as a combo (lift 2.0) rather than additively (stacking
+    # past 2 signals backtested WORSE) — see config LEAD_* for per-pattern lift.
+    if LEADERSHIP_WEIGHT:
+        setup = analyze_setup(df)
+        if setup["stage2"] and setup["vcp"]:
+            factors["VCP+Stage2(回測lift2.0)"] = LEAD_VCP_STAGE2
+        elif setup["stage2"]:
+            factors["Stage2上升趨勢(回測lift1.36)"] = LEAD_STAGE2
+        elif setup["vcp"]:
+            factors["VCP波動收縮(回測lift1.28)"] = LEAD_VCP
+        if setup["pocket_pivot"]:
+            factors["Pocket pivot吸籌(回測lift1.29)"] = LEAD_POCKET_PIVOT
+        if bench is not None and rs_line_new_high(df, bench):
+            factors["RS線新高領先(回測lift1.1)"] = LEAD_RS_NEW_HIGH
 
     return {"score": int(sum(factors.values())), "factors": factors, "insufficient": False}
 

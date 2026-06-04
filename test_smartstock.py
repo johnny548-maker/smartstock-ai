@@ -18,6 +18,10 @@ import delta
 import calendar_events
 import breadth
 import revenue
+import theme
+import technical_setup
+import signals
+import backtest
 from datetime import date
 
 
@@ -304,6 +308,152 @@ class TestRevenue(unittest.TestCase):
                 {"code": "G", "name": "g", "yoy": 60, "ym": "11504", "industry": "電子零組件業", "cur": big, "mom": 1}]
         out = revenue.rank_candidates(recs, state={"stocks": {}}, top=10, min_yoy=20)
         self.assertEqual([r["code"] for r in out], ["G"])  # X ceiling, Y lumpy, Z micro → only G
+
+
+def ramp(waypoints, seg=8):
+    """Piecewise-linear close series through waypoints; each segment `seg` bars.
+    Waypoint bars become local extrema (for pivot/VCP tests)."""
+    out = [float(waypoints[0])]
+    for a, b in zip(waypoints, waypoints[1:]):
+        step = (b - a) / seg
+        for j in range(1, seg + 1):
+            out.append(round(a + step * j, 4))
+    return out
+
+
+class TestLeadershipWeighting(unittest.TestCase):
+    def test_stage2_leadership_factor_applied(self):
+        # clean 260-bar uptrend → Trend Template passes → leadership factor present
+        df = make_df(list(np.linspace(50, 150, 260)), volumes=[1000] * 260)
+        r = strategy.score_stock(df)
+        keys = " ".join(r["factors"].keys())
+        self.assertIn("回測lift", keys)             # a validated leadership factor scored
+
+    def test_no_leadership_for_short_history(self):
+        df = make_df(list(np.linspace(50, 60, 30)))  # 30 bars < setup minimums
+        r = strategy.score_stock(df)
+        self.assertNotIn("回測lift", " ".join(r["factors"].keys()))
+
+
+class TestTheme(unittest.TestCase):
+    def test_detect_counts_and_emerging(self):
+        titles = ["輝達 HBM4 需求爆發", "美光 HBM 報價調漲", "台積電 CoWoS 擴產"]
+        out = theme.detect_themes(titles)
+        hbm = next(t for t in out if t["theme"].startswith("HBM"))
+        self.assertEqual(hbm["count"], 2)
+        self.assertTrue(hbm["emerging"])           # ≥2 hits, no baseline → emerging
+
+    def test_below_baseline_not_emerging(self):
+        titles = ["美光 HBM 報價"]                  # only 1 hit
+        out = theme.detect_themes(titles, baseline={"HBM 高頻寬記憶體": 10.0})
+        hbm = next(t for t in out if t["theme"].startswith("HBM"))
+        self.assertFalse(hbm["emerging"])           # below min hits AND below baseline
+
+    def test_hot_tickers_from_emerging(self):
+        titles = ["矽光子 CPO 放量", "CPO 光通訊 題材", "Lumentum 訂單"]
+        tix = theme.hot_tickers(theme.detect_themes(titles))
+        self.assertIn("3081.TW", tix)               # a CPO supply-chain name
+
+    def test_update_baseline_ema(self):
+        themes = [{"theme": "X", "count": 10}]
+        st = theme.update_baseline({}, themes, alpha=0.5)
+        self.assertEqual(st["X"], 10.0)             # first obs seeds itself
+        st2 = theme.update_baseline({"X": 10.0}, [{"theme": "X", "count": 0}], alpha=0.5)
+        self.assertEqual(st2["X"], 5.0)             # EMA toward 0
+
+
+class TestTechnicalSetup(unittest.TestCase):
+    def test_trend_template_pass_uptrend(self):
+        closes = list(np.linspace(50, 150, 260))
+        df = make_df(closes, volumes=[1000] * 260)
+        tt = technical_setup.trend_template(df)
+        self.assertTrue(tt["pass"])
+
+    def test_trend_template_fail_downtrend(self):
+        closes = list(np.linspace(150, 50, 260))
+        df = make_df(closes)
+        self.assertFalse(technical_setup.trend_template(df)["pass"])
+
+    def test_vcp_tightening(self):
+        closes = ramp([60, 100, 80, 110, 96.8, 120, 112.8, 122], seg=8)
+        df = make_df(closes)
+        v = technical_setup.vcp(df)
+        self.assertTrue(v["tightening"])            # 20% → 12% → 6% shrinking
+        self.assertTrue(v["pass"])
+
+    def test_pocket_pivot(self):
+        # up day with volume bigger than every down-day volume of prior 10
+        closes = [100, 99, 98, 99, 98, 97, 98, 97, 96, 97, 96, 99]
+        vols = [500, 400, 600, 300, 700, 800, 200, 900, 650, 300, 500, 5000]
+        self.assertTrue(technical_setup.pocket_pivot(make_df(closes, vols)))
+
+    def test_analyze_setup_shape(self):
+        df = make_df(list(np.linspace(50, 150, 260)))
+        s = technical_setup.analyze_setup(df)
+        self.assertIn("setup_score", s)
+        self.assertGreaterEqual(s["setup_score"], 1)
+
+
+class TestSignals(unittest.TestCase):
+    def test_rs_line_new_high_when_bench_falls(self):
+        stock = make_df([100] * 40 + list(np.linspace(100, 90, 10)) + [90] * 40)
+        bench = make_df(list(np.linspace(100, 70, 90)))
+        self.assertTrue(signals.rs_line_new_high(stock, bench))
+
+    def test_rs_line_true_when_outperforming(self):
+        stock = make_df(list(np.linspace(80, 120, 90)))    # rising
+        bench = make_df([100] * 90)                         # flat → stock leads
+        self.assertTrue(signals.rs_line_new_high(stock, bench))
+
+    def test_rs_line_false_when_underperforming(self):
+        stock = make_df([100] * 90)                         # flat
+        bench = make_df(list(np.linspace(80, 120, 90)))    # rising → stock lags
+        self.assertFalse(signals.rs_line_new_high(stock, bench))
+
+    def test_quiet_accumulation(self):
+        closes = [100] * 25
+        vols = [2000] * 15 + [500] * 10                    # recent volume dries up
+        df = make_df(closes, vols)
+        self.assertTrue(signals.quiet_accumulation(df, {"conc": 0.03, "streak": 2}))
+
+    def test_quiet_accumulation_needs_chips(self):
+        df = make_df([100] * 25, [2000] * 15 + [500] * 10)
+        self.assertFalse(signals.quiet_accumulation(df, None))
+
+    def test_scan_board_gating(self):
+        data = {"2383.TW": make_df([100] * 60), "9999.TW": make_df([100] * 60)}
+        out = signals.scan_signals(
+            data, frames=None, chips_map={},
+            revenue_codes={"2383"}, theme_tickers={"2383.TW"})
+        board_syms = [r["stock"] for r in out["board"]]
+        self.assertIn("2383.TW", board_syms)               # fund+theme = 2 signals
+        self.assertNotIn("9999.TW", board_syms)            # no reason → off board
+
+
+class TestBacktest(unittest.TestCase):
+    def test_forward_return(self):
+        df = make_df([10, 11, 12, 15])
+        self.assertAlmostEqual(backtest.forward_return(df, 0, 3), 50.0)
+        self.assertIsNone(backtest.forward_return(df, 2, 5))
+
+    def test_backtest_precision_recall_lift(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        hist = {"AAA": df}
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0   # fire on the lows
+        m = backtest.backtest_signal(hist, sig, horizon=1, step=1,
+                                     explosive_pct=50.0, min_bars=1)
+        self.assertEqual(m["precision"], 1.0)      # every fire preceded a +100% bar
+        self.assertEqual(m["base_rate"], 0.5)
+        self.assertEqual(m["lift"], 2.0)
+        self.assertEqual(m["recall"], 1.0)
+
+    def test_backtest_no_signal(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        m = backtest.backtest_signal({"AAA": df}, lambda s, b: False,
+                                     horizon=1, step=1, explosive_pct=50.0, min_bars=1)
+        self.assertEqual(m["fired"], 0)
+        self.assertEqual(m["precision"], 0.0)
+        self.assertEqual(m["recall"], 0.0)
 
 
 if __name__ == "__main__":

@@ -171,6 +171,25 @@ function revenueBlock(d) {
     `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`);
 }
 
+function signalsBlock(d) {
+  const board = d.signals || [];
+  const themes = (d.themes || []).filter((t) => t.emerging);
+  if (!board.length && !themes.length) return '';
+  let html = '<p class="muted small">領先型訊號（RS線新高／安靜吸籌／主題／月營收／型態），'
+    + '<b>尚未納入評分權重</b>，回測驗證後才加權。</p>';
+  if (themes.length) {
+    html += '<div class="breadth">🔥 主題湧現：<b>' + themes.map((t) => esc(t.theme)).join('、') + '</b></div>';
+  }
+  if (board.length) {
+    html += '<ul class="rev">' + board.map((r) => {
+      const head = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
+      return `<li>${head} <b class="accel">×${r.count}</b><br>`
+        + `<span class="muted small">${esc((r.signals || []).join('、'))}</span></li>`;
+    }).join('') + '</ul>';
+  }
+  return section('🔎 早期訊號雷達', html);
+}
+
 function picksBlock(picks) {
   if (!picks || !picks.length) return '';
   const medals = ['🥇', '🥈', '🥉'];
@@ -219,9 +238,9 @@ async function showDetail(date) {
   NAMES = d.names || {};
   const gen = d.generated_at
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
-  // order: TL;DR → 變化 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
+  // order: TL;DR → 變化 → 早期訊號 → 月營收 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
   $('detailView').innerHTML =
-    tldrBanner(d) + deltaBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
+    tldrBanner(d) + deltaBlock(d) + signalsBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
     moversBlock(d) + newsBlock(d.news) + picksBlock(d.picks) + allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);

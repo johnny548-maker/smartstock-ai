@@ -31,6 +31,8 @@ import delta as delta_mod
 import calendar_events
 import breadth as breadth_mod
 import revenue as revenue_mod
+import theme as theme_mod
+import signals as signals_mod
 
 
 def setup_logging():
@@ -93,6 +95,12 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP revenue: %s", e); revenue_data = None; skips.append("revenue")
 
+    # 2d. 主題湧現 (news-driven theme rotation → 供應鏈 tickers) --------------
+    try:
+        themes = theme_mod.get_themes(news)
+    except Exception as e:
+        log.warning("SKIP themes: %s", e); themes = []; skips.append("themes")
+
     # 3. 三大法人 ------------------------------------------------------------
     try:
         inst = institutional.get_institutional(config.STOCKS_TW)
@@ -122,6 +130,17 @@ def main(web=False):
 
     ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames, chips_map=chips_map)
     log.info("ranked %d / %d symbols", len(ranked), len(all_syms))
+
+    # 4c. 早期訊號雷達 (RS線新高/安靜吸籌/型態 gated on 月營收/主題) — informational
+    try:
+        rev_codes = [c["code"] for c in (revenue_data or {}).get("candidates", [])]
+        hot_tix = theme_mod.hot_tickers(themes)
+        sig = signals_mod.scan_signals(data, frames=frames, chips_map=chips_map,
+                                       revenue_codes=rev_codes, theme_tickers=hot_tix,
+                                       names=config.STOCK_NAMES)
+        log.info("early signals: %d on board", len(sig["board"]))
+    except Exception as e:
+        log.warning("SKIP signals: %s", e); sig = {"per_stock": {}, "board": []}; skips.append("signals")
 
     # 4b. Today's movers (basket sorted by today's % change) ----------------
     movers = []
@@ -164,7 +183,8 @@ def main(web=False):
         date_str=date_str, news=news, indices=indices, institutional=inst,
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
-        delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data)
+        delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
+        signals=sig, themes=themes)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -175,7 +195,8 @@ def main(web=False):
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
-            delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data)
+            delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
+            signals=sig, themes=themes)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
