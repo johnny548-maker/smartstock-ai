@@ -107,6 +107,13 @@ function riskPlan(p) {
     + (r.size_formula ? `<span class="muted small">${esc(r.size_formula)}</span>` : '') + '</div>';
 }
 
+// earnings-blackout flag (analyst G5): binary event risk a chart can't see
+function earnBadge(p) {
+  const e = p && p.earnings; if (!e || !e.in_blackout) return '';
+  const d = e.days_until === 0 ? '今日' : `${e.days_until} 天內`;
+  return `<span class="earn-flag" title="財報 ${esc(e.date)}">⚠️ 財報${d}</span>`;
+}
+
 function newsBlock(news) {
   if (!news) return '';
   const link = (n, withSrc) => {
@@ -272,7 +279,7 @@ function picksBlock(picks, date) {
     const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
     const verdict = p.verdict ? `<div class="muted small verdict">${lightDot(p.light)} ${esc(p.verdict)}</div>` : '';
     return `<a class="pick pick-link" href="#${esc(date)}/${esc(p.stock)}">
-      <div class="pick-head">${medal} <b>${head}</b><span class="score">${p.score}</span></div>
+      <div class="pick-head">${medal} <b>${head}</b>${earnBadge(p)}<span class="score">${p.score}</span></div>
       ${priceLine(p)}${verdict}
       <div class="pick-spark">${sparkline(p.spark, 320, 44)}</div></a>`;
   }).join('');
@@ -405,10 +412,13 @@ function stockCard(d, code) {
     ? `<div class="sd-price"><span class="px-big">${p.price}</span>`
       + (p.change_pct != null ? ` <b class="${p.change_pct >= 0 ? 'up' : 'down'}">${p.change_pct > 0 ? '▲' : (p.change_pct < 0 ? '▼' : '')} ${Math.abs(p.change_pct)}%</b>` : '')
       + '<span class="muted small"> 收盤</span></div>' : '';
+  const earnNote = (p.earnings && p.earnings.in_blackout)
+    ? `<div class="earn-note">⚠️ 財報 ${esc(p.earnings.date)}（${p.earnings.days_until === 0 ? '今日' : p.earnings.days_until + ' 天內'}）— 二元事件，新突破單建議暫緩或減量，留意跳空風險。</div>` : '';
   const head = `<div class="sd-head">
-    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
     ${px}
     <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
+    ${earnNote}
     <div class="sd-actions">
       <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
       <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">🔗 分享</button></div></div>`;

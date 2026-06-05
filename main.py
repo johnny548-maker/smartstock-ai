@@ -38,6 +38,7 @@ import edgar as edgar_mod
 import verdict as verdict_mod
 import market_regime as regime_mod
 import correlation as correlation_mod
+import earnings_guard as earnings_mod
 
 
 def setup_logging():
@@ -202,6 +203,21 @@ def main(web=False):
         concentration = correlation_mod.concentration(pick_data, names=config.STOCK_NAMES)
     except Exception as e:
         log.warning("SKIP concentration: %s", e); concentration = None
+
+    # 5d. Earnings-blackout overlay (analyst G5): flag picks with a binary earnings
+    #     event in the next 7d — INFORMATIONAL only, never a score change.
+    try:
+        ecache = os.path.join(config.WEB_DIR, "data", "_earnings_cache.json")
+        earnings_bo = earnings_mod.annotate(
+            [it["stock"] for it in ranked[:config.DISPLAY_N]], cache_path=ecache)
+        for sym, b in earnings_bo.items():
+            if sym in pick_cards:
+                pick_cards[sym]["earnings"] = b
+        if earnings_bo:
+            log.info("earnings blackout: %d pick(s) within %dd", len(earnings_bo),
+                     earnings_mod.WITHIN_DAYS)
+    except Exception as e:
+        log.warning("SKIP earnings guard: %s", e)
 
     # 6. Allocation + rebalance ---------------------------------------------
     base = asset_allocation.base_allocation()

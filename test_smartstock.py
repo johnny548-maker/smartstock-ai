@@ -32,6 +32,7 @@ import breakout_radar
 import market_regime
 import risk_sizing
 import correlation
+import earnings_guard
 from datetime import date
 
 
@@ -830,6 +831,45 @@ class TestCorrelation(unittest.TestCase):
     def test_effective_bets_below_n(self):
         out = correlation.concentration(self._data(), window=60)
         self.assertLess(out["effective_bets"], 3)          # A,B move as one → <3 bets
+
+
+class TestEarningsGuard(unittest.TestCase):
+    def test_blackout_within_window(self):
+        from datetime import timedelta
+        t = date(2026, 6, 5)
+        b = earnings_guard.blackout_from_date(t + timedelta(days=3), today=t)
+        self.assertTrue(b and b["in_blackout"])
+        self.assertEqual(b["days_until"], 3)
+
+    def test_blackout_outside_window_is_none(self):
+        from datetime import timedelta
+        t = date(2026, 6, 5)
+        self.assertIsNone(earnings_guard.blackout_from_date(t + timedelta(days=30), today=t))
+
+    def test_blackout_past_or_none_is_none(self):
+        from datetime import timedelta
+        t = date(2026, 6, 5)
+        self.assertIsNone(earnings_guard.blackout_from_date(t - timedelta(days=1), today=t))
+        self.assertIsNone(earnings_guard.blackout_from_date(None, today=t))
+
+    def test_annotate_no_fetch_empty(self):
+        self.assertEqual(earnings_guard.annotate(["AAPL"], fetch=False), {})
+
+    def test_cache_hit_no_network(self):
+        # a FRESH cache entry must return without touching yfinance
+        from datetime import datetime as _dt, timedelta
+        t = date(2026, 6, 5)
+        now = _dt(2026, 6, 5, 10, 0, 0)
+        cache = {"AAPL": {"date": (t + timedelta(days=2)).isoformat(), "fetched": now.isoformat()}}
+        d = earnings_guard.next_earnings_date("AAPL", today=t, cache=cache, now=now)
+        self.assertEqual(d, t + timedelta(days=2))
+
+    def test_stale_cache_then_blackout(self):
+        # stale entry would re-fetch (network) — assert pure blackout math via injected date
+        from datetime import timedelta
+        t = date(2026, 6, 5)
+        b = earnings_guard.blackout_from_date(t + timedelta(days=0), today=t)
+        self.assertEqual(b["days_until"], 0)        # earnings TODAY = in blackout
 
 
 if __name__ == "__main__":
