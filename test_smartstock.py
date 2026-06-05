@@ -33,6 +33,7 @@ import market_regime
 import risk_sizing
 import correlation
 import earnings_guard
+import short_volume
 from datetime import date
 
 
@@ -904,6 +905,138 @@ class TestEarningsGuard(unittest.TestCase):
         t = date(2026, 6, 5)
         b = earnings_guard.blackout_from_date(t + timedelta(days=0), today=t)
         self.assertEqual(b["days_until"], 0)        # earnings TODAY = in blackout
+
+
+class TestShortVolume(unittest.TestCase):
+    HEADER = "Date|Symbol|ShortVolume|ShortExemptVolume|TotalVolume|Market"
+
+    def test_parse_basic(self):
+        txt = self.HEADER + "\n20260603|NVDA|600|0|1000|B,Q,N"
+        rows = short_volume.parse_short_volume(txt)
+        self.assertEqual(rows["NVDA"]["ratio"], 0.6)
+        self.assertEqual(rows["NVDA"]["short"], 600.0)
+
+    def test_parse_skips_header_and_garbage(self):
+        txt = self.HEADER + "\nfoo|BAD|1|0|2|B\n20260603|NVDA|600|0|1000|B,Q,N"
+        rows = short_volume.parse_short_volume(txt)
+        self.assertNotIn("BAD", rows)
+        self.assertIn("NVDA", rows)
+
+    def test_parse_float_values(self):
+        txt = self.HEADER + "\n20260603|AA|609114.976727|115|1617428.817145|B,Q,N"
+        rows = short_volume.parse_short_volume(txt)
+        self.assertEqual(rows["AA"]["short"], 609114.976727)
+        self.assertAlmostEqual(rows["AA"]["ratio"], 0.3766, places=4)
+
+    def test_ratio_zero_total(self):
+        self.assertIsNone(short_volume.short_ratio({"short": 5, "total": 0}))
+
+    def test_symbols_filter(self):
+        txt = (self.HEADER + "\n20260603|NVDA|600|0|1000|B,Q,N"
+               "\n20260603|AMD|300|0|900|B,Q,N")
+        rows = short_volume.parse_short_volume(txt, symbols={"NVDA"})
+        self.assertEqual(set(rows), {"NVDA"})
+
+    def test_update_cache_appends_and_trims(self):
+        state = {"updated": None, "stocks": {}}
+        for i in range(35):
+            ds = "2026-06-%02d" % (i + 1)
+            state = short_volume.update_cache(state, ds, {"NVDA": {"short": 1, "total": 2, "ratio": 0.5}})
+        buf = state["stocks"]["NVDA"]
+        self.assertEqual(len(buf), short_volume.SHORTVOL_MAX_DAYS)
+        self.assertEqual(buf[-1]["d"], "2026-06-35")   # newest retained (synthetic date ok)
+
+    def test_update_cache_same_day_overwrite(self):
+        state = {"updated": None, "stocks": {}}
+        state = short_volume.update_cache(state, "2026-06-03", {"NVDA": {"short": 1, "total": 2, "ratio": 0.50}})
+        state = short_volume.update_cache(state, "2026-06-03", {"NVDA": {"short": 9, "total": 10, "ratio": 0.90}})
+        buf = state["stocks"]["NVDA"]
+        self.assertEqual(len(buf), 1)
+        self.assertEqual(buf[0]["r"], 0.9)
+
+    def test_trend_none_when_scarce(self):
+        state = {"updated": None, "stocks": {"NVDA": [{"d": "2026-06-01", "r": 0.3},
+                                                     {"d": "2026-06-02", "r": 0.4}]}}
+        self.assertIsNone(short_volume.trend(state, "NVDA"))
+
+    def test_trend_rising(self):
+        state = {"updated": None, "stocks": {"NVDA": [{"d": "2026-06-01", "r": 0.30},
+                                                     {"d": "2026-06-02", "r": 0.40},
+                                                     {"d": "2026-06-03", "r": 0.55}]}}
+        tr = short_volume.trend(state, "NVDA")
+        self.assertTrue(tr["rising"])
+        self.assertGreater(tr["delta"], 0)
+
+    def _state_with(self, ratios):
+        rows = [{"d": "2026-06-%02d" % (i + 1), "r": r} for i, r in enumerate(ratios)]
+        return {"updated": None, "stocks": {"NVDA": rows}}
+
+    def test_overlay_flag_extreme(self):
+        st = self._state_with([0.50, 0.55, 0.62])
+        self.assertEqual(short_volume.overlay_for(st, "NVDA")["flag"], "extreme")
+
+    def test_overlay_flag_elevated(self):
+        st = self._state_with([0.40, 0.46, 0.50])
+        self.assertEqual(short_volume.overlay_for(st, "NVDA")["flag"], "elevated")
+
+    def test_overlay_flag_none_low(self):
+        # low ratio → dict IS returned (rows exist) but flag is None (not actionable)
+        st = self._state_with([0.25, 0.28, 0.30])
+        ov = short_volume.overlay_for(st, "NVDA")
+        self.assertIsNotNone(ov)
+        self.assertIsNone(ov["flag"])
+
+    def test_overlay_single_day_flags(self):
+        # FIRST cron run: only 1 day, ratio elevated → MUST flag (was dead-on-arrival)
+        st = self._state_with([0.55])
+        ov = short_volume.overlay_for(st, "NVDA")
+        self.assertEqual(ov["flag"], "elevated")
+        self.assertEqual(ov["days"], 1)
+        self.assertIn(ov["rising"], (False, None))
+
+    def test_overlay_single_day_extreme(self):
+        st = self._state_with([0.62])
+        self.assertEqual(short_volume.overlay_for(st, "NVDA")["flag"], "extreme")
+
+    def test_build_overlay_single_day_includes_flagged(self):
+        # 1-day cache: NVDA elevated (flagged), AMZN low (no flag) → only NVDA
+        st = {"updated": None, "stocks": {
+            "NVDA": [{"d": "2026-06-04", "r": 0.55}],
+            "AMZN": [{"d": "2026-06-04", "r": 0.29}]}}
+        ov = short_volume.build_overlay(st, ["NVDA", "AMZN"])
+        self.assertEqual(set(ov), {"NVDA"})
+
+    def test_overlay_easing(self):
+        # prior days elevated, latest dropped below ELEVATED and not rising → 'easing'
+        st = self._state_with([0.55, 0.50, 0.40])
+        ov = short_volume.overlay_for(st, "NVDA")
+        self.assertEqual(ov["flag"], "easing")
+        self.assertFalse(ov["rising"])
+
+    def test_overlay_for_missing_symbol_returns_none(self):
+        st = self._state_with([0.50, 0.55, 0.62])
+        self.assertIsNone(short_volume.overlay_for(st, "2330.TW"))
+
+    def test_build_overlay_skips_none(self):
+        st = self._state_with([0.50, 0.55, 0.62])
+        ov = short_volume.build_overlay(st, ["NVDA", "2330.TW"])
+        self.assertEqual(set(ov), {"NVDA"})
+
+    def test_fetch_returns_empty_on_all_404(self):
+        class _Resp:
+            status_code = 404
+            text = ""
+
+            def raise_for_status(self):
+                from requests import HTTPError
+                raise HTTPError("404")
+
+        class _Sess:
+            def get(self, *a, **k):
+                return _Resp()
+
+        out = short_volume.fetch_short_volume(session=_Sess())
+        self.assertEqual(out, {"date": None, "rows": {}})
 
 
 class TestLiquidity(unittest.TestCase):

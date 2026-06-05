@@ -136,6 +136,12 @@ function earnBadge(p) {
   return `<span class="earn-flag" title="財報 ${esc(e.date)}">⚠️ 財報${d}</span>`;
 }
 
+// FINRA RegSHO short-volume inline chip (B5): informational, US-only, never scored
+function shortVolBadge(p) {
+  const s = p && p.shortvol; if (!s || !s.flag) return '';
+  return ` <b class="down">🩳 空量 ${s.pct}%${s.rising ? '↑' : ''}</b>`;
+}
+
 function newsBlock(news) {
   if (!news) return '';
   const link = (n, withSrc) => {
@@ -273,6 +279,25 @@ function opportunityBlock(d) {
     `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。點代號看完整分析。informational，非持股。</p><ul class="rev opp-list">${rows}</ul>`, false);
 }
 
+// FINRA RegSHO daily short-volume overlay (B5) — INFORMATIONAL, US-only.
+const SHORTVOL_DOT = { extreme: '🔴', elevated: '🟡', easing: '🔵' };
+function shortVolBlock(d) {
+  const board = d.shortvol || [];
+  if (!board.length) return '';
+  const rows = board.map((r) => {
+    const nm = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
+    const dot = SHORTVOL_DOT[r.flag] || '⚪';
+    const up = r.rising ? '↑' : '';
+    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(r.stock)}">${dot} ${nm} `
+      + `<b class="down">空量佔比 ${r.pct}%${up}</b> <span class="muted small">· ${r.days}日</span></a></li>`;
+  }).join('');
+  const inner = '<p class="muted small">FINRA RegSHO 每日空量佔比（short volume／total volume）。'
+    + '🔴 極高 ≥60%／🟡 偏高 ≥45%／🔵 自高檔回落。<br>'
+    + '<b>informational</b>，回測（Wilson CI 下界>基準）驗證後才加權；<b>非賣出訊號</b>，高比率亦可能是造市避險。</p>'
+    + `<ul class="rev opp-list">${rows}</ul>`;
+  return foldSection('🩳 空方壓力／軋空情境（FINRA RegSHO 每日空量 · 僅美股）', inner, false);
+}
+
 function signalsBlock(d) {
   const board = d.signals || [];
   const themes = (d.themes || []).filter((t) => t.emerging);
@@ -301,7 +326,7 @@ function picksBlock(picks, date) {
     const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
     const verdict = p.verdict ? `<div class="muted small verdict">${lightDot(p.light)} ${esc(p.verdict)}</div>` : '';
     return `<a class="pick pick-link" href="#${esc(date)}/${esc(p.stock)}">
-      <div class="pick-head">${medal} <b>${head}</b>${earnBadge(p)}<span class="score">${p.score}</span></div>
+      <div class="pick-head">${medal} <b>${head}</b>${earnBadge(p)}${shortVolBadge(p)}<span class="score">${p.score}</span></div>
       ${priceLine(p)}${verdict}
       <div class="pick-spark">${sparkline(p.spark, 320, 44)}</div></a>`;
   }).join('');
@@ -524,7 +549,7 @@ async function showDetail(date) {
   $('detailView').innerHTML = stale +
     searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) + concentrationBlock(d) +
-    breakoutBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +
+    breakoutBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');

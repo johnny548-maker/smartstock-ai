@@ -186,6 +186,22 @@ TWSE_T86_URL = "https://www.twse.com.tw/rwd/zh/fund/T86"
 TWSE_TIMEOUT = 15
 TWSE_LOOKBACK_DAYS = 7
 
+# ── FINRA RegSHO daily short-volume overlay (B5) — keyless public .txt file ──
+# cdn.finra.org posts a pipe-delimited consolidated daily short-volume file
+# (Date|Symbol|ShortVolume|ShortExemptVolume|TotalVolume|Market) ~6pm ET same day.
+# Keyless public CDN file — NOT the OAuth developer.finra.org REST API. US-only
+# (TW has no keyless daily short-VOLUME equivalent; 融券 is a balance, not volume).
+# INFORMATIONAL OVERLAY ONLY — attached to cards like earnings_guard; never scored.
+FINRA_SHVOL_URL = "https://cdn.finra.org/equity/regsho/daily/CNMSshvol{date}.txt"
+FINRA_LOOKBACK_DAYS = 5         # walk back day-by-day to the latest posted file
+FINRA_TIMEOUT = 15
+SHORTVOL_MAX_DAYS = 30          # rolling per-symbol buffer length
+SHORTVOL_TREND_WINDOW = 10      # trailing days for trend()/avg
+SHORTVOL_MIN_DAYS = 3           # need this many days before trend/overlay
+SHORTVOL_ELEVATED = 0.45        # short/total ≥45% → 'elevated' flag
+SHORTVOL_EXTREME = 0.60         # short/total ≥60% → 'extreme' flag
+# SHORTVOL_CACHE path defined below (needs WEB_DIR)
+
 # ── 月營收 (monthly revenue) — the LEADING fundamental spine (council #1) ───
 # t187ap05_L = ALL listed companies' latest-month revenue in ONE keyless JSON
 # (當月 + 去年當月 → YoY instantly). Scans the whole market without per-stock fetch.
@@ -241,6 +257,7 @@ REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
 REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
+SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 PORTFOLIO_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portfolio_state.json")
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartstock.log")
 

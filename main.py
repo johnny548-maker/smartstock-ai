@@ -39,6 +39,7 @@ import verdict as verdict_mod
 import market_regime as regime_mod
 import correlation as correlation_mod
 import earnings_guard as earnings_mod
+import short_volume as shortvol_mod
 
 
 def setup_logging():
@@ -219,6 +220,37 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP earnings guard: %s", e)
 
+    # 5e. FINRA RegSHO short-volume overlay (B5): flag US picks with elevated/extreme
+    #     daily short-volume ratio — INFORMATIONAL only, never a score change (要做回測
+    #     才加權). US-only: TW has no keyless daily short-VOLUME equivalent (融券 is a
+    #     balance, not volume) → logged FALLBACK, never silently dropped.
+    shortvol_board = []
+    try:
+        sv_state = shortvol_mod.load_cache()
+        sv = shortvol_mod.fetch_short_volume(symbols=set(config.STOCKS_US))
+        if sv.get("rows"):
+            shortvol_mod.update_cache(sv_state, sv["date"], sv["rows"])
+            shortvol_mod.save_cache(sv_state)
+        log.info("short_volume FALLBACK: TW skipped (no keyless daily short-VOLUME; "
+                 "融券 is a balance, not volume) — US-only overlay")
+        sv_pick_syms = [it["stock"] for it in ranked[:config.DISPLAY_N]]
+        shortvol_map = shortvol_mod.build_overlay(sv_state, sv_pick_syms)
+        for sym, ov in shortvol_map.items():
+            if sym in pick_cards:
+                pick_cards[sym]["shortvol"] = ov
+        # board list (flagged names) for the payload summary block
+        for sym, ov in shortvol_map.items():
+            if ov.get("flag"):
+                shortvol_board.append({
+                    "stock": sym, "name": config.STOCK_NAMES.get(sym),
+                    "pct": ov["pct"], "flag": ov["flag"],
+                    "rising": ov["rising"], "days": ov["days"], "note": ov["note"]})
+        shortvol_board.sort(key=lambda x: x["pct"], reverse=True)
+        if shortvol_board:
+            log.info("short_volume: %d US pick(s) flagged", len(shortvol_board))
+    except Exception as e:
+        log.warning("SKIP short_volume: %s", e); skips.append("short_volume")
+
     # 6. Allocation + rebalance ---------------------------------------------
     base = asset_allocation.base_allocation()
     target = asset_allocation.adjust_allocation(base, signal)
@@ -253,7 +285,7 @@ def main(web=False):
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
-            regime=regime, concentration=concentration)
+            regime=regime, concentration=concentration, shortvol=shortvol_board)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
