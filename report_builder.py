@@ -235,15 +235,47 @@ def _breakout_block(opp):
     return "\n".join(lines)
 
 
+REGIME_LABEL = {"risk-on": "🟢 偏多可進攻", "caution": "🟡 謹慎減碼", "risk-off": "🔴 防禦/觀望"}
+
+
+def _regime_block(regime):
+    """🌡️ 市場環境 — DD/FTD 曝險轉盤 (analyst G10: gate entries by regime)."""
+    if not regime:
+        return ""
+    lab = REGIME_LABEL.get(regime["label"], regime["label"])
+    parts = []
+    for k, v in (regime.get("detail") or {}).items():
+        nm = {"twii": "台股", "sp500": "美股"}.get(k, k)
+        parts.append(f"{nm} {v['trend']}/DD{v['dd_count']}")
+    return (f"## 🌡️ 市場環境：{lab}（建議曝險 {regime['exposure']}%）\n\n"
+            f"_{'、'.join(parts)}。~75% 突破在空頭環境失敗 → 環境轉弱時降部位、暫停新突破單。_")
+
+
+def _concentration_block(con):
+    """⚠️ 相關性警示 (analyst G2: correlated names = one bet, false diversification)."""
+    if not con or not con.get("clusters"):
+        return ""
+    lines = ["## ⚠️ 相關性警示（避免假分散）", ""]
+    eb = con.get("effective_bets")
+    if eb is not None:
+        lines.append(f"_今日選股 {con.get('n')} 檔 ≈ **{eb} 個有效獨立賭注**（高相關股應視為同一部位計風險）_\n")
+    for c in con["clusters"]:
+        lines.append(f"- 高相關群（ρ={c['avg_corr']}）：{'、'.join(c['names'])} → 視為 1 個部位")
+    return "\n".join(lines)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
                  events=None, breadth=None, revenue=None, signals=None, themes=None,
-                 opportunity=None):
+                 opportunity=None, regime=None, concentration=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
         _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
+    rg = _regime_block(regime)
+    if rg:
+        blocks += ["", rg]
     for extra in (_delta_block(delta), _breakout_block(opportunity),
                   _opportunity_block(opportunity),
                   _signals_block(signals, themes), _revenue_block(revenue),
@@ -262,6 +294,11 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
         _news_block(news),
         "",
         _picks_block(ranked, analyses),
+    ]
+    cc = _concentration_block(concentration)
+    if cc:
+        blocks += ["", cc]
+    blocks += [
         "",
         _alloc_block(allocation, rebalance_diff),
         "",

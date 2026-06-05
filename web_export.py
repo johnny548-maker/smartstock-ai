@@ -60,7 +60,8 @@ def _search_index(picks, opportunity, movers):
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
-                  revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None):
+                  revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
+                  regime=None, concentration=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     picks = [
@@ -90,6 +91,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "signals": (signals or {}).get("board", []),
         "themes": [t for t in (themes or []) if t.get("emerging")],
         "opportunity": opportunity,
+        "regime": regime,
+        "concentration": concentration,
         "indices": indices,
         "news": news,
         "institutional": institutional,

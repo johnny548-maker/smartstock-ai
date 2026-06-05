@@ -1,6 +1,6 @@
 {
  "date": "2026-06-05",
- "generated_at": "2026-06-05T13:37:39",
+ "generated_at": "2026-06-05T23:17:00",
  "risk": "MID",
  "tldr": "風險 MID；參與度 健康；外資合計 +26,314,043 股；首選 國泰金（2882.TW）分數 163",
  "delta": [
@@ -14,10 +14,10 @@
  ],
  "breadth": {
   "total": 65,
-  "pct_above_ma20": 82,
-  "pct_above_ma50": 92,
-  "advancers": 26,
-  "decliners": 38,
+  "pct_above_ma20": 77,
+  "pct_above_ma50": 91,
+  "advancers": 23,
+  "decliners": 41,
   "new_highs": 8,
   "label": "健康"
  },
@@ -377,8 +377,8 @@
  ],
  "themes": [],
  "opportunity": {
-  "universe": 246,
-  "scanned": 222,
+  "universe": 260,
+  "scanned": 236,
   "leaders": [
    {
     "ticker": "AAOI",
@@ -392,14 +392,13 @@
     ],
     "count": 2,
     "light": "green",
-    "price": 185.88,
-    "change_pct": -8.38,
-    "vol_ratio": -10,
+    "price": 196.48,
+    "change_pct": -3.16,
+    "vol_ratio": -1,
     "sr": {
-     "price": 185.88,
+     "price": 196.48,
      "resistance": [
-      191.87,
-      194.96
+      233.67
      ],
      "support": [
       160.1,
@@ -467,7 +466,7 @@
      202.37,
      184.07,
      202.89,
-     185.88
+     196.48
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -486,11 +485,11 @@
     ],
     "count": 2,
     "light": "green",
-    "price": 88.7,
-    "change_pct": -5.85,
-    "vol_ratio": -12,
+    "price": 85.13,
+    "change_pct": -9.64,
+    "vol_ratio": -8,
     "sr": {
-     "price": 88.7,
+     "price": 85.13,
      "resistance": [
       104.27,
       106.28
@@ -561,7 +560,7 @@
      88.76,
      91.39,
      94.21,
-     88.7
+     85.13
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -569,99 +568,8 @@
     "rev_accel": -12.9
    },
    {
-    "ticker": "MU",
-    "name": "Micron Technology",
-    "rs_rating": 98,
-    "theme": "HBM 高頻寬記憶體",
-    "tier": "tier1",
-    "signals": [
-     "U/D量吸籌",
-     "Stage2"
-    ],
-    "count": 2,
-    "light": "green",
-    "price": 947.09,
-    "change_pct": -4.91,
-    "vol_ratio": -26,
-    "sr": {
-     "price": 947.09,
-     "resistance": [],
-     "support": [
-      652.21,
-      435.9
-     ],
-     "strong_support": 61.39
-    },
-    "spark": [
-     405.18,
-     425.95,
-     441.61,
-     461.5,
-     461.54,
-     444.08,
-     422.72,
-     404.18,
-     395.36,
-     381.93,
-     355.31,
-     357.07,
-     321.8,
-     337.84,
-     367.85,
-     366.24,
-     377.76,
-     377.58,
-     406.73,
-     421.51,
-     420.59,
-     426.56,
-     465.66,
-     456.23,
-     457.23,
-     455.07,
-     448.42,
-     449.38,
-     487.48,
-     481.72,
-     496.72,
-     524.56,
-     504.29,
-     518.46,
-     517.16,
-     542.21,
-     576.45,
-     640.2,
-     666.59,
-     646.63,
-     746.81,
-     795.33,
-     766.58,
-     803.63,
-     776.01,
-     724.66,
-     681.54,
-     698.74,
-     731.99,
-     762.1,
-     751.0,
-     895.88,
-     928.41,
-     923.52,
-     971.0,
-     1035.5,
-     1064.1,
-     1079.57,
-     996.0,
-     947.09
-    ],
-    "spark_start": "2026-03-12",
-    "spark_end": "2026-06-05",
-    "rev_yoy": 196.3,
-    "rev_accel": 139.6
-   },
-   {
     "ticker": "3037.TW",
-    "name": null,
+    "name": "欣興",
     "rs_rating": 98,
     "theme": "CoWoS 先進封裝",
     "tier": "tier2",
@@ -753,8 +661,8 @@
    },
    {
     "ticker": "3189.TW",
-    "name": null,
-    "rs_rating": 97,
+    "name": "景碩",
+    "rs_rating": 98,
     "theme": "CoWoS 先進封裝",
     "tier": "tier2",
     "signals": [
@@ -843,9 +751,281 @@
     "spark_end": "2026-06-05"
    },
    {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "rs_rating": 97,
+    "theme": "HBM 高頻寬記憶體",
+    "tier": "tier1",
+    "signals": [
+     "U/D量吸籌",
+     "Stage2"
+    ],
+    "count": 2,
+    "light": "green",
+    "price": 932.8,
+    "change_pct": -6.35,
+    "vol_ratio": -21,
+    "sr": {
+     "price": 932.8,
+     "resistance": [],
+     "support": [
+      652.21,
+      435.9
+     ],
+     "strong_support": 61.39
+    },
+    "spark": [
+     405.18,
+     425.95,
+     441.61,
+     461.5,
+     461.54,
+     444.08,
+     422.72,
+     404.18,
+     395.36,
+     381.93,
+     355.31,
+     357.07,
+     321.8,
+     337.84,
+     367.85,
+     366.24,
+     377.76,
+     377.58,
+     406.73,
+     421.51,
+     420.59,
+     426.56,
+     465.66,
+     456.23,
+     457.23,
+     455.07,
+     448.42,
+     449.38,
+     487.48,
+     481.72,
+     496.72,
+     524.56,
+     504.29,
+     518.46,
+     517.16,
+     542.21,
+     576.45,
+     640.2,
+     666.59,
+     646.63,
+     746.81,
+     795.33,
+     766.58,
+     803.63,
+     776.01,
+     724.66,
+     681.54,
+     698.74,
+     731.99,
+     762.1,
+     751.0,
+     895.88,
+     928.41,
+     923.52,
+     971.0,
+     1035.5,
+     1064.1,
+     1079.57,
+     996.0,
+     932.8
+    ],
+    "spark_start": "2026-03-12",
+    "spark_end": "2026-06-05",
+    "rev_yoy": 196.3,
+    "rev_accel": 139.6
+   },
+   {
+    "ticker": "6274.TWO",
+    "name": "台燿",
+    "rs_rating": 97,
+    "theme": "CCL 銅箔基板/載板",
+    "tier": "tier2",
+    "signals": [
+     "Stage2"
+    ],
+    "count": 1,
+    "light": "green",
+    "price": 1610.0,
+    "change_pct": -5.01,
+    "vol_ratio": 56,
+    "sr": {
+     "price": 1610.0,
+     "resistance": [
+      1815.0
+     ],
+     "support": [
+      1525.0,
+      1190.0
+     ],
+     "strong_support": 109.71
+    },
+    "spark": [
+     484.62,
+     448.91,
+     493.55,
+     499.01,
+     500.99,
+     526.79,
+     579.37,
+     549.6,
+     533.73,
+     536.71,
+     575.4,
+     601.19,
+     621.03,
+     597.22,
+     564.48,
+     618.06,
+     616.07,
+     677.58,
+     719.25,
+     790.68,
+     801.59,
+     794.64,
+     853.18,
+     938.49,
+     960.0,
+     946.0,
+     950.0,
+     963.0,
+     973.0,
+     950.0,
+     1045.0,
+     990.0,
+     966.0,
+     975.0,
+     1010.0,
+     1110.0,
+     1220.0,
+     1315.0,
+     1445.0,
+     1370.0,
+     1455.0,
+     1450.0,
+     1450.0,
+     1450.0,
+     1305.0,
+     1260.0,
+     1225.0,
+     1205.0,
+     1325.0,
+     1455.0,
+     1600.0,
+     1580.0,
+     1630.0,
+     1540.0,
+     1690.0,
+     1705.0,
+     1590.0,
+     1695.0,
+     1695.0,
+     1610.0
+    ],
+    "spark_start": "2026-03-11",
+    "spark_end": "2026-06-05"
+   },
+   {
+    "ticker": "6147.TWO",
+    "name": "頎邦",
+    "rs_rating": 96,
+    "theme": null,
+    "tier": null,
+    "signals": [
+     "U/D量吸籌",
+     "Stage2"
+    ],
+    "count": 2,
+    "light": "green",
+    "price": 270.0,
+    "change_pct": -0.37,
+    "vol_ratio": 1,
+    "sr": {
+     "price": 270.0,
+     "resistance": [
+      313.5
+     ],
+     "support": [
+      176.0,
+      102.0
+     ],
+     "strong_support": 49.93
+    },
+    "spark": [
+     55.5,
+     61.0,
+     58.8,
+     59.5,
+     65.4,
+     71.9,
+     71.1,
+     67.0,
+     64.2,
+     64.5,
+     70.8,
+     77.8,
+     76.8,
+     76.7,
+     69.5,
+     76.4,
+     84.0,
+     89.8,
+     98.7,
+     96.5,
+     106.0,
+     116.5,
+     113.0,
+     106.0,
+     114.0,
+     115.0,
+     126.5,
+     135.5,
+     141.5,
+     134.0,
+     145.0,
+     131.0,
+     144.0,
+     158.0,
+     163.0,
+     179.0,
+     177.5,
+     175.0,
+     192.5,
+     198.0,
+     196.5,
+     196.0,
+     192.0,
+     186.5,
+     205.0,
+     207.0,
+     202.5,
+     215.5,
+     222.5,
+     215.5,
+     237.0,
+     260.5,
+     265.0,
+     278.0,
+     305.5,
+     285.5,
+     281.0,
+     275.0,
+     271.0,
+     270.0
+    ],
+    "spark_start": "2026-03-11",
+    "spark_end": "2026-06-05"
+   },
+   {
     "ticker": "BE",
     "name": "Bloom Energy",
-    "rs_rating": 97,
+    "rs_rating": 96,
     "theme": null,
     "tier": null,
     "signals": [
@@ -853,11 +1033,11 @@
     ],
     "count": 1,
     "light": "green",
-    "price": 276.71,
-    "change_pct": -5.03,
-    "vol_ratio": -20,
+    "price": 271.89,
+    "change_pct": -6.69,
+    "vol_ratio": -16,
     "sr": {
-     "price": 276.71,
+     "price": 271.89,
      "resistance": [
       302.99,
       310.0
@@ -928,7 +1108,7 @@
      302.85,
      287.32,
      291.37,
-     276.71
+     271.89
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -937,7 +1117,7 @@
    },
    {
     "ticker": "3081.TWO",
-    "name": null,
+    "name": "聯亞",
     "rs_rating": 96,
     "theme": "CPO 矽光子/光通訊",
     "tier": "tier2",
@@ -1027,96 +1207,6 @@
     "spark_end": "2026-06-05"
    },
    {
-    "ticker": "6274.TWO",
-    "name": null,
-    "rs_rating": 96,
-    "theme": "CCL 銅箔基板/載板",
-    "tier": "tier2",
-    "signals": [
-     "Stage2"
-    ],
-    "count": 1,
-    "light": "green",
-    "price": 1610.0,
-    "change_pct": -5.01,
-    "vol_ratio": 56,
-    "sr": {
-     "price": 1610.0,
-     "resistance": [
-      1815.0
-     ],
-     "support": [
-      1525.0,
-      1190.0
-     ],
-     "strong_support": 109.71
-    },
-    "spark": [
-     484.62,
-     448.91,
-     493.55,
-     499.01,
-     500.99,
-     526.79,
-     579.37,
-     549.6,
-     533.73,
-     536.71,
-     575.4,
-     601.19,
-     621.03,
-     597.22,
-     564.48,
-     618.06,
-     616.07,
-     677.58,
-     719.25,
-     790.68,
-     801.59,
-     794.64,
-     853.18,
-     938.49,
-     960.0,
-     946.0,
-     950.0,
-     963.0,
-     973.0,
-     950.0,
-     1045.0,
-     990.0,
-     966.0,
-     975.0,
-     1010.0,
-     1110.0,
-     1220.0,
-     1315.0,
-     1445.0,
-     1370.0,
-     1455.0,
-     1450.0,
-     1450.0,
-     1450.0,
-     1305.0,
-     1260.0,
-     1225.0,
-     1205.0,
-     1325.0,
-     1455.0,
-     1600.0,
-     1580.0,
-     1630.0,
-     1540.0,
-     1690.0,
-     1705.0,
-     1590.0,
-     1695.0,
-     1695.0,
-     1610.0
-    ],
-    "spark_start": "2026-03-11",
-    "spark_end": "2026-06-05"
-   },
-   {
     "ticker": "LITE",
     "name": "Lumentum Holdings",
     "rs_rating": 95,
@@ -1128,14 +1218,14 @@
     ],
     "count": 2,
     "light": "green",
-    "price": 909.0,
-    "change_pct": -3.82,
-    "vol_ratio": -3,
+    "price": 928.66,
+    "change_pct": -1.74,
+    "vol_ratio": 3,
     "sr": {
-     "price": 909.0,
+     "price": 928.66,
      "resistance": [
-      925.5,
-      960.0
+      960.0,
+      977.27
      ],
      "support": [
       854.62,
@@ -1203,7 +1293,7 @@
      1029.15,
      938.0,
      945.08,
-     909.0
+     928.66
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -1211,9 +1301,99 @@
     "rev_accel": 6.3
    },
    {
+    "ticker": "WDC",
+    "name": "Western Digital",
+    "rs_rating": 95,
+    "theme": null,
+    "tier": null,
+    "signals": [
+     "Stage2"
+    ],
+    "count": 1,
+    "light": "green",
+    "price": 543.76,
+    "change_pct": -5.52,
+    "vol_ratio": -13,
+    "sr": {
+     "price": 543.76,
+     "resistance": [],
+     "support": [
+      434.0,
+      374.02
+     ],
+     "strong_support": 28.71
+    },
+    "spark": [
+     261.18,
+     272.29,
+     286.21,
+     313.81,
+     304.9,
+     316.93,
+     293.1,
+     294.79,
+     301.05,
+     296.14,
+     273.35,
+     275.34,
+     251.67,
+     270.49,
+     297.73,
+     294.97,
+     304.15,
+     311.96,
+     338.78,
+     337.88,
+     343.43,
+     350.16,
+     366.22,
+     365.0,
+     361.69,
+     372.52,
+     374.11,
+     383.81,
+     389.1,
+     403.12,
+     404.0,
+     400.73,
+     390.99,
+     412.76,
+     434.52,
+     431.52,
+     442.36,
+     465.26,
+     483.15,
+     463.91,
+     480.0,
+     515.83,
+     488.74,
+     494.09,
+     489.15,
+     482.02,
+     458.68,
+     455.8,
+     459.62,
+     486.46,
+     484.28,
+     524.65,
+     530.6,
+     531.18,
+     531.21,
+     546.2,
+     563.1,
+     594.11,
+     575.5,
+     543.76
+    ],
+    "spark_start": "2026-03-12",
+    "spark_end": "2026-06-05",
+    "rev_yoy": 45.5,
+    "rev_accel": 20.3
+   },
+   {
     "ticker": "AEHR",
     "name": "Aehr Test Systems",
-    "rs_rating": 95,
+    "rs_rating": 94,
     "theme": null,
     "tier": null,
     "signals": [
@@ -1222,11 +1402,11 @@
     ],
     "count": 2,
     "light": "green",
-    "price": 107.99,
-    "change_pct": -7.37,
-    "vol_ratio": -27,
+    "price": 107.2,
+    "change_pct": -8.05,
+    "vol_ratio": -23,
     "sr": {
-     "price": 107.99,
+     "price": 107.2,
      "resistance": [
       108.75,
       112.0
@@ -1297,7 +1477,7 @@
      113.0,
      114.59,
      116.58,
-     107.99
+     107.2
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -1305,94 +1485,93 @@
     "rev_accel": -17.2
    },
    {
-    "ticker": "WDC",
-    "name": "Western Digital",
-    "rs_rating": 95,
+    "ticker": "2344.TW",
+    "name": "華邦電",
+    "rs_rating": 94,
     "theme": null,
     "tier": null,
     "signals": [
+     "U/D量吸籌",
      "Stage2"
     ],
-    "count": 1,
+    "count": 2,
     "light": "green",
-    "price": 536.17,
-    "change_pct": -6.83,
-    "vol_ratio": -18,
+    "price": 162.0,
+    "change_pct": -9.75,
+    "vol_ratio": 0,
     "sr": {
-     "price": 536.17,
+     "price": 162.0,
      "resistance": [],
      "support": [
-      434.0,
-      374.02
+      112.0,
+      98.88
      ],
-     "strong_support": 28.71
+     "strong_support": 13.13
     },
     "spark": [
-     261.18,
-     272.29,
-     286.21,
-     313.81,
-     304.9,
-     316.93,
-     293.1,
-     294.79,
-     301.05,
-     296.14,
-     273.35,
-     275.34,
-     251.67,
-     270.49,
-     297.73,
-     294.97,
-     304.15,
-     311.96,
-     338.78,
-     337.88,
-     343.43,
-     350.16,
-     366.22,
-     365.0,
-     361.69,
-     372.52,
-     374.11,
-     383.81,
-     389.1,
-     403.12,
-     404.0,
-     400.73,
-     390.99,
-     412.76,
-     434.52,
-     431.52,
-     442.36,
-     465.26,
-     483.15,
-     463.91,
-     480.0,
-     515.83,
-     488.74,
-     494.09,
-     489.15,
-     482.02,
-     458.68,
-     455.8,
-     459.62,
-     486.46,
-     484.28,
-     524.65,
-     530.6,
-     531.18,
-     531.21,
-     546.2,
-     563.1,
-     594.11,
-     575.5,
-     536.17
+     113.41,
+     108.43,
+     108.43,
+     116.39,
+     122.86,
+     127.33,
+     121.36,
+     109.43,
+     106.94,
+     98.98,
+     97.69,
+     95.5,
+     92.4,
+     93.0,
+     90.2,
+     93.1,
+     91.8,
+     89.4,
+     95.6,
+     91.0,
+     93.5,
+     94.4,
+     93.5,
+     90.2,
+     89.6,
+     87.8,
+     85.7,
+     91.1,
+     90.6,
+     87.8,
+     88.2,
+     93.9,
+     95.5,
+     92.7,
+     89.8,
+     95.4,
+     98.8,
+     108.5,
+     114.0,
+     107.0,
+     117.5,
+     121.5,
+     122.0,
+     134.0,
+     129.5,
+     130.5,
+     117.5,
+     115.5,
+     114.0,
+     125.0,
+     128.5,
+     141.0,
+     155.0,
+     144.0,
+     158.0,
+     168.0,
+     184.5,
+     177.5,
+     179.5,
+     162.0
     ],
-    "spark_start": "2026-03-12",
-    "spark_end": "2026-06-05",
-    "rev_yoy": 45.5,
-    "rev_accel": 20.3
+    "spark_start": "2026-03-11",
+    "spark_end": "2026-06-05"
    },
    {
     "ticker": "LWLG",
@@ -1405,11 +1584,11 @@
     ],
     "count": 1,
     "light": "green",
-    "price": 11.13,
-    "change_pct": -8.62,
-    "vol_ratio": -23,
+    "price": 11.18,
+    "change_pct": -8.21,
+    "vol_ratio": -21,
     "sr": {
-     "price": 11.13,
+     "price": 11.18,
      "resistance": [
       13.58,
       13.65
@@ -1480,7 +1659,7 @@
      12.72,
      12.29,
      12.18,
-     11.13
+     11.18
     ],
     "spark_start": "2026-03-12",
     "spark_end": "2026-06-05",
@@ -1488,98 +1667,8 @@
     "rev_accel": null
    },
    {
-    "ticker": "8358.TWO",
-    "name": null,
-    "rs_rating": 94,
-    "theme": "CCL 銅箔基板/載板",
-    "tier": "tier3",
-    "signals": [
-     "Stage2"
-    ],
-    "count": 1,
-    "light": "green",
-    "price": 596.0,
-    "change_pct": 5.49,
-    "vol_ratio": 38,
-    "sr": {
-     "price": 596.0,
-     "resistance": [
-      687.0
-     ],
-     "support": [
-      368.0,
-      324.5
-     ],
-     "strong_support": 37.86
-    },
-    "spark": [
-     225.5,
-     229.0,
-     241.5,
-     250.0,
-     263.0,
-     273.5,
-     269.0,
-     245.5,
-     222.5,
-     221.5,
-     227.0,
-     249.5,
-     237.0,
-     233.5,
-     236.5,
-     243.0,
-     230.0,
-     243.5,
-     267.5,
-     272.0,
-     273.5,
-     287.0,
-     315.5,
-     333.5,
-     334.5,
-     367.5,
-     404.0,
-     393.5,
-     393.5,
-     370.0,
-     359.5,
-     335.5,
-     362.0,
-     369.5,
-     388.5,
-     402.5,
-     433.0,
-     458.5,
-     469.0,
-     454.5,
-     462.0,
-     477.0,
-     456.0,
-     427.0,
-     389.5,
-     428.0,
-     429.0,
-     460.0,
-     498.0,
-     522.0,
-     545.0,
-     533.0,
-     560.0,
-     553.0,
-     608.0,
-     668.0,
-     627.0,
-     615.0,
-     565.0,
-     596.0
-    ],
-    "spark_start": "2026-03-11",
-    "spark_end": "2026-06-05"
-   },
-   {
     "ticker": "2408.TW",
-    "name": null,
+    "name": "南亞科",
     "rs_rating": 93,
     "theme": "HBM 高頻寬記憶體",
     "tier": "tier3",
@@ -1665,102 +1754,18 @@
     ],
     "spark_start": "2026-03-11",
     "spark_end": "2026-06-05"
-   },
-   {
-    "ticker": "PL",
-    "name": "Planet Labs",
-    "rs_rating": 93,
-    "theme": null,
-    "tier": null,
-    "signals": [
-     "U/D量吸籌"
-    ],
-    "count": 1,
-    "light": "green",
-    "price": 36.52,
-    "change_pct": -16.1,
-    "vol_ratio": 11,
-    "sr": {
-     "price": 36.52,
-     "resistance": [
-      37.05,
-      38.21
-     ],
-     "support": [
-      34.93,
-      32.57
-     ],
-     "strong_support": 1.73
-    },
-    "spark": [
-     24.97,
-     24.79,
-     24.6,
-     27.08,
-     24.81,
-     26.96,
-     33.83,
-     33.82,
-     31.83,
-     35.37,
-     32.4,
-     30.86,
-     27.89,
-     27.95,
-     30.71,
-     35.88,
-     35.02,
-     35.17,
-     36.55,
-     34.23,
-     34.67,
-     34.32,
-     33.93,
-     34.41,
-     39.89,
-     38.48,
-     37.5,
-     38.03,
-     39.47,
-     38.29,
-     35.44,
-     35.45,
-     35.03,
-     34.08,
-     36.97,
-     36.9,
-     38.54,
-     37.13,
-     39.69,
-     35.24,
-     39.04,
-     41.84,
-     40.68,
-     40.74,
-     43.04,
-     41.62,
-     41.61,
-     41.59,
-     42.66,
-     42.48,
-     44.35,
-     48.32,
-     50.48,
-     51.4,
-     51.14,
-     46.46,
-     48.09,
-     43.13,
-     43.53,
-     36.52
-    ],
-    "spark_start": "2026-03-12",
-    "spark_end": "2026-06-05",
-    "rev_yoy": 42.1,
-    "rev_accel": 9.5
    }
   ],
   "breakout": [
+   {
+    "stock": "AAOI",
+    "name": "Applied Optoelectronics",
+    "ready": false,
+    "score": 1,
+    "signals": [
+     "LPS 回測支撐"
+    ]
+   },
    {
     "stock": "GHM",
     "name": "Graham Corp",
@@ -1886,37 +1891,58 @@
     "signals": [
      "LPS 回測支撐"
     ]
-   },
-   {
-    "stock": "NSYS",
-    "name": "Nortech Systems",
-    "ready": false,
-    "score": 1,
-    "signals": [
-     "LPS 回測支撐"
-    ]
    }
   ]
  },
+ "regime": {
+  "exposure": 76,
+  "label": "risk-on",
+  "detail": {
+   "twii": {
+    "exposure": 76,
+    "dd_count": 4,
+    "trend": "uptrend",
+    "ftd": true,
+    "label": "risk-on"
+   },
+   "sp500": {
+    "exposure": 100,
+    "dd_count": 2,
+    "trend": "uptrend",
+    "ftd": false,
+    "label": "risk-on"
+   }
+  }
+ },
+ "concentration": {
+  "clusters": [],
+  "effective_bets": 5.9,
+  "n": 12
+ },
  "indices": {
   "twii": 45070.94140625,
-  "sp500": 7534.919921875,
-  "nasdaq": 26516.615234375,
-  "vix": 15.9399995803833,
-  "tnx": 4.5320000648498535,
-  "btc": 62100.7109375
+  "sp500": 7496.06982421875,
+  "nasdaq": 26256.267578125,
+  "vix": 16.190000534057617,
+  "tnx": 4.5360002517700195,
+  "btc": 60486.62890625
  },
  "news": {
   "global": [
    {
+    "title": "美就業數據強勁引發升息憂慮！美股開盤走低、輝達等晶片股齊跌 | 民視新聞網 - LINE TODAY",
+    "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jbU9HZnR3ck1UNk9FakRTcDNwRmJrXzE1UC00aGhHazBBcURQQU9iWkxac1NLN0EtRm9vc3pDN1VQZDBvOEJobks2ZFZqdXEzc3E2VWZn?oc=5"
+   },
+   {
+    "title": "本週操盤筆記：AI震央迎大考！輝達財報出爐、Fed會議紀要與全球PMI齊登場 - news.cnyes.com",
+    "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
+    "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5lMzlLMUhMeFpOVW5YTjlHSWJpcTlrZndXUkEtVHBKMUNQVmlqQnlKRmtFdUhLX0k0WEdxZ1FtejlsSG43YUEyMlkyWWZsbmc?oc=5"
+   },
+   {
     "title": "美中貿易戰火升級！輝達重挫4.4％、費半急跌；Fed暗示停止縮表，金價飆破歷史新高；161億ETF股利今入帳，台股爆7千億巨震！｜1015晨間重點財經新聞摘要｜｜豐雲學堂2026 年 05 月 - sinotrade.com.tw",
     "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
     "link": "https://news.google.com/rss/articles/CBMinAZBVV95cUxNU2NsRE96TjZrU2Z1dzVMNWcxaXhEWUZXSUJqcVdvR296REZTWnR5SXhacnN2dm1Ma3FKbWxKNTZFVDZhd2lOWllBcFZHMTJ5bUpaRXBwdmhxczlwYU5EUXphMklfZFpqYTROTTBWSkE2dVgxd21UbnJyOWt1b0JvQ25XbHExUjYxeHFxRG5IREFWbjlzSnJZQXlRaWs3LWFIbHl6R1FDcUdFbUVZZFBJTUpDeFB2YklwbmU0dTMxVjRtZmZ3QkFJN1RsckdobVhKYm1KLTB1dThuUWpuWlhDR29JLVZKbDMwVTBrZmM1OTBHdkxtdnN1YjAzNHA2UV9SOFBFRnJoV296dkFmQ3BwUzA5NDRFN2pGZ1NPdlBqQklCemp1QjQzcFBXMFRQUU5ydzd2ZUtqY0huaXRaZUJxbzhwckRaTFBDdFBQLXRQanRxUG5paDhNMEd4eDZmdUFCYVdaSlE5My1JSHdoQmxRNDBEUWc1RDliNzRZRWM5cXkzdF9OOW1sYjhtMWNzUnN4QjdpcFFrMlRpX1VrSTdVQWtEV01xNkNCSlFaa1BpcDBZSFppUXhTMmxLRGNKcmtvdWVVdzh2azNEWExNNDVmaXJ5b1NmV00xNVdNZDZvY2dHSDJfOGxJZ1FTT21wd2hqdWk5OHpYSEI5RmhUcHFRekE4ak9NTmJkQWprRmVwS21NUEl4dTF4NDFsdHo5M21udVZjbWFjYXJVRWlaT3Z6N3dRUW1CNVNPZm1HRUVRR2d5UXR1X3JuRXhHSHVjT1Jnek82ZE4xeklVNDhPZG8tQk90dl9PcGRNWV9fbmItaEdCYklibUJxODFGMklkYjNXa0hwbHIwNFQxakFnSHFfRDN5UldiYTdZb2E5LXJXcHNnVFBBMGkzeUJEcVljSXdRNXVFcjFzV0tBQlpIckpnd19JUnFrZ0lMRHphYzNja0Joa1NfM1NsTF96dHFaUVVsanZCeGhUWWJXaExQNlpZSWVGZVJhV2ZleWhKMUpGRl9vU3ZDM2tLV19PWWZWNGRVeU9hRXlrc015YWlk?oc=5"
-   },
-   {
-    "title": "〈美股早盤〉 主要指數平盤波動 市場聚焦輝達財報與就業數據 - news.cnyes.com",
-    "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1hakxsbUdhUEtIN1RBem5DdVR2VE5sYVEwUGRQY0k4cXlTSXlGUXI5bXU3TEZKNWh0MnJZaXh6MWdyZlVmVE1vck0yYkxuSHc?oc=5"
    },
    {
     "title": "美股早盤／四大指數小漲！輝達市值突破5兆美元 Fed今晚利率決策 - UDN",
@@ -1924,14 +1950,9 @@
     "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1NSHdYLVp4QVZlV2RtWkhacTZSaUNCOGZnRkNPNXpmZ2FoRE1ibU1PcjBtYWVrSnpVMlR2cXAtbHJCeDBaOEw5RXZkV2ZWVEVx0gFWQVVfeXFMUHQ5cW9OXzRCV2lic0Z6Wkt5bUpCcy1iZTNUSG12SlJxWERTVE54b01qZXFxQXpjQVpQdjBZbDNDWm5LWWxtUHAyRmtpWGVzMHNOSXpWNGc?oc=5"
    },
    {
-    "title": "《美股》12月降息五五開 Tesla/輝達/記憶體跳水 - 新聞 - MoneyDJ",
+    "title": "快訊／AI疑慮+OPEC變局!費半下挫4.38% 台積電ADR跌逾4% - MSN",
     "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNUnJNbXl5TXU4OTNFS1RRWHJtQUZhbUdmeHFvcXBxQmZwbDlvYm03VS1GdmhEXzBIV29JUXFiU3p0VGtZd1UzdmpRLVZ0NWRVR2w5cHFWMjc2bTJJcTlORWdFQlNzMy04Z3NOWmlEUE9COFBJX1B5enQ1M0ROejdKRFZJcUIzMTJ6X255RHBSYzlXQQ?oc=5"
-   },
-   {
-    "title": "Fed利率走向不明+輝達Meta聯姻 美股收高、輝達大漲 | 太報 - LINE TODAY",
-    "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBZOGdDdnp3X2JMbjMtb1hYaWlaVVBVZjBuNWZ0LVlKRzIzQWotUXdiX2ZSazBybFlZOTl4Yjk4M0pFZldkek81TGJ0cy1md2hYOGp1S1B3?oc=5"
+    "link": "https://news.google.com/rss/articles/CBMisgJBVV95cUxPSmpYbzNRSGphd1Bkb1B2YnNBaTJuQXg1cWduNDIxQnVwRlZvZjBQOU1ZMXhUOE15b1YzSFg4ek04NmIwWE5ReEJqU0Z3VGc0MjJtamFFbGwwc0tpYjl4MlVKdk5ldF9DSzZ4aXdsdkg5MmJnR2ZxVFR6R2pNcDRTOXI5a21fZ2xJUW9nLWwzRkVQdDlsdmJEX1JBRmFia1gxRzVSTGd0S1QwcEtEeFhlMlBlS29PcDB0TnNlbWFxVW1hZndlX1JSa01uNVR2UjNjRjdRMEJIb3JXWXBZbHlpbGw5ekNPXzZyYjQwbTQtYmRiUlNXQ2NzU0ppcWlUS2s4UmZMRGhDZGJMWHpFNXNOYzdVVFFfMVZwcEUxTEZuZ2VWUXAyaEFlMV9lQU1xeE84QVE?oc=5"
    },
    {
     "title": "道瓊創歷史收盤新高 Broadcom重挫拖累費半與那斯達克 - news.cnyes.com",
@@ -1944,19 +1965,19 @@
     "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5kQXlIWWIyNWNTWkJFZjg5bllGMmlaYWtxNGxIeEpTcGFOdUFNY1AyQUF1anpxanpTZUZlOFBLa1VSWmI4dmdPMnkzUXRlZVZ4SDlaeWR3?oc=5"
    },
    {
-    "title": "美股收盤：道瓊指數創歷史新高，博通股價受挫致市場擔憂AI泡沫，科技股普跌 - TradingKey",
-    "source": "\"美股 科技股 Nasdaq 標普500\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQZ0IyYi11VHRFcWVxaDBtcUVQT0pxX3hCMkk1QTlRUUZFamJsMUpERGRhbkdIaHRkZF8wcWM2eXNrRnB3YlZqQkVEVGt4ZjBDS210dUtleVFXWkM0c21iWUxidHNhaFExRHpiMEJXY1FDWFhuaGE3MGhTazB5UzlycEx6NDZHSEpWLXRsaGRNakttNXJfX080OFByaE44dkdzZjVtaFQyRHpxMDU5NkhRdDFTN3gzYjM3dVlIVHhGT3lBcGh1djk4UTAtUlk0RXVoUTNzQmhQVVpmYlNRTnJPaV9hOWNVcGs?oc=5"
-   },
-   {
     "title": "科技股領漲美股收紅　標普500、那指再創新高 - 經濟日報",
     "source": "\"美股 科技股 Nasdaq 標普500\" - Google 新聞",
     "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBEalNNWGJINGwwZjBmN3F2dGk1LWF1aU00Q3pPcWdMNmtqdXdYTEwzd2VyQmVZZUV1NzMxTm5TNFRkT1pWTEZLWW9laGNkT1JOQlV5WDdfcVlfX1lL0gFiQVVfeXFMTlotOE91WmxoS1hoSTRGcEo0dTVWZzlocXNKUmk1bzB4WEVSYW5qRlFfOVZ6dG9Xa3FPTzlPWWlwc0tZN0daSXVSamN2VWtyR3RETUU4cUhoX2JyREpDaUVGNXc?oc=5"
    },
    {
-    "title": "那斯達克指數還能買嗎？新手怎麼買Nasdaq 100？ETF、期貨、CFD完整比較 - Mitrade",
+    "title": "美股收盤：道瓊指數創歷史新高，博通股價受挫致市場擔憂AI泡沫，科技股普跌 - TradingKey",
     "source": "\"美股 科技股 Nasdaq 標普500\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE8tSzI0Tm1qX3VIMG1xYmxySkhlTmF0cjdwTXRud3l4Z2t1T3RVaGhROTFSRkcySVV1bVptdWRzbmRQT1k3Q0xibHIzbEdONHN4UXFuV3MzWEV4WkF3dE4yZENJZFl0dEpxUFZTMWZsSUV0WXEySkE?oc=5"
+    "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQZ0IyYi11VHRFcWVxaDBtcUVQT0pxX3hCMkk1QTlRUUZFamJsMUpERGRhbkdIaHRkZF8wcWM2eXNrRnB3YlZqQkVEVGt4ZjBDS210dUtleVFXWkM0c21iWUxidHNhaFExRHpiMEJXY1FDWFhuaGE3MGhTazB5UzlycEx6NDZHSEpWLXRsaGRNakttNXJfX080OFByaE44dkdzZjVtaFQyRHpxMDU5NkhRdDFTN3gzYjM3dVlIVHhGT3lBcGh1djk4UTAtUlk0RXVoUTNzQmhQVVpmYlNRTnJPaV9hOWNVcGs?oc=5"
+   },
+   {
+    "title": "美伊延長停火協議助攻 美股標普、那斯達克雙創歷史新高 - 蕃新聞",
+    "source": "\"美股 科技股 Nasdaq 標普500\" - Google 新聞",
+    "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9fUUR5ZDNQSTVxek1ReUFTRnBLLUFpZHBXckRES1dPdHA1V3ZLSmZicUJlcXgzaGxVWHJxcGRwa3ZiYjUzX2xFckppVEE0ZnNoVFE?oc=5"
    }
   ],
   "tw": [
@@ -1981,9 +2002,9 @@
     "link": "https://news.google.com/rss/articles/CBMi3wNBVV95cUxORGp2c2FmelBhWVBjTTV2SlRUSlJ1WE52MEUycDlPUU10Ry1LcFBBZmwzQTlxT1psclBuUmFOX1k1MkJvTkVEaVZORFZYVk9oR19KajJ3ZUJLTFJUS3FqVWt5NFl1RGN4NTFFMVNEZl9JS3ZXZkVNZHFWbWMxVElOVDN3R2dHcmEwVmtreGRBaUhlZ3BYLWlIWHBDUVlIcTJHb1REVFZqX1I2S2l2cVBvY1k0cVg2Ujl4UmJVc0xhVUFSMUxnMkFZSWR6SnhIVW16NVlsYkpBeHlOWFJwcVFsVGExdTlVdmRaaHdnMDdIcFc4SWZzTEd2WExvMTFVUTVJQWRqejBmTVJjS2NNVlYweVhBanhTTWoxU0tpNHRWQThqLXhYUEs0M1N3ZWc2VmM5cVB6TG5yMk9ndEhmM1FJSXZDU01TcVhZa3pIbjhBNlBCRmJRRVZZNEpqYWl3Ml82bU1RVTg4ajRaczc4SDNlX1BMX2RZVFdsb2ZISDBZb014T1JQZ0lueHpNM3BFR2ZkVnBBVTVzUm1hM01rZlllNFFVZjNCMGQ4UUVuSXFJV0RJVzRKRGNFbmN4ZE42NkxyYm5aMEF3Rk1hMW1iNm1vX0tubVozc2ZSREFkb0VMaw?oc=5"
    },
    {
-    "title": "台股外資大賣 電子股「停電」 法人：多頭均線未破壞 屬健康修正 - 經濟日報",
+    "title": "【即時新聞】台積電營收有望改寫新高 激勵台股6月行情挑戰新高 - CMoney投資網誌",
     "source": "\"台股 外資 台積電\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBiWFdPcnRLUC0tSVdsSkRKRHBsYWdNYTZ2aXdOT2k5OUR5Z3Q3YmRIaldoMVFkSjJhLTk1QXhkT1ZHcU9jYlVZVTR5WGNJU0I1c0FfX0kydzRfQdIBX0FVX3lxTE5kaEhvaGhfUlFMUjcycU5kaDBSM1kteEJ6bWxoYkh3VXJzSFFXQVNKdFVmdnF0d0I2eTEzMHZtWkNzUXZFUkZaT250SkE1NTNCUXpvb3c2ZHRtZ1FPZmtR?oc=5"
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOX2Exd2M5NUV5a3NuZTFuTC0yX1VrUm1Wd3psc0xaMjVMOWwxZmloUGNURVlXbVVvblZwUjVuMHZvOWlsRlllZExCenU0NU5mQkpKYXAxcjNRa1dZcVBVM2pCRUdXV0tPWnVhWDhjMzNQb2w4QWhSUlI2bExpWE13YjZUU3U3czVVMUJPRTNJRTM?oc=5"
    }
   ]
  },
@@ -2102,27 +2123,19 @@
   },
   {
    "stock": "AAPL",
-   "pct": 0.83
-  },
-  {
-   "stock": "AMZN",
-   "pct": 0.7
+   "pct": 0.65
   },
   {
    "stock": "2002.TW",
    "pct": 0.26
   },
   {
-   "stock": "MSFT",
-   "pct": -0.03
-  },
-  {
-   "stock": "META",
-   "pct": -0.06
-  },
-  {
    "stock": "2412.TW",
    "pct": -0.35
+  },
+  {
+   "stock": "AMZN",
+   "pct": -0.4
   },
   {
    "stock": "2330.TW",
@@ -2130,11 +2143,11 @@
   },
   {
    "stock": "GOOGL",
-   "pct": -1.06
+   "pct": -0.93
   },
   {
-   "stock": "QQQ",
-   "pct": -1.53
+   "stock": "MSFT",
+   "pct": -1.39
   },
   {
    "stock": "2603.TW",
@@ -2145,8 +2158,12 @@
    "pct": -2.06
   },
   {
-   "stock": "NVDA",
-   "pct": -2.25
+   "stock": "META",
+   "pct": -2.21
+  },
+  {
+   "stock": "QQQ",
+   "pct": -2.37
   },
   {
    "stock": "3711.TW",
@@ -2177,20 +2194,24 @@
    "pct": -3.83
   },
   {
+   "stock": "NVDA",
+   "pct": -4.2
+  },
+  {
    "stock": "TSM",
-   "pct": -3.85
+   "pct": -4.33
   },
   {
    "stock": "AVGO",
-   "pct": -4.46
-  },
-  {
-   "stock": "AMD",
-   "pct": -4.84
+   "pct": -4.85
   },
   {
    "stock": "2308.TW",
    "pct": -5.15
+  },
+  {
+   "stock": "AMD",
+   "pct": -6.83
   }
  ],
  "names": {
@@ -2340,7 +2361,14 @@
     100.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {
+    "risk_per_share": 5.94,
+    "risk_pct": 5.94,
+    "size_formula": "部位 = 1%×總資金 ÷ 5.94（每股風險）",
+    "rr": 2.5,
+    "rr_ok": true
+   }
   },
   {
    "stock": "AAPL",
@@ -2358,31 +2386,31 @@
     "RS線新高領先(回測lift1.23)": 5
    },
    "levels": {
-    "entry": 313.81,
-    "stop": 303.07,
-    "target": 340.66,
-    "atr_bracket": 340.66,
+    "entry": 313.26,
+    "stop": 302.39,
+    "target": 340.43,
+    "atr_bracket": 340.43,
     "measured_move": 328.86,
     "target_band": [
      328.86,
-     340.66
+     340.43
     ],
-    "stop_pct": -3.4,
-    "target_pct": 8.6,
+    "stop_pct": -3.5,
+    "target_pct": 8.7,
     "rr": 2.5,
     "atr_pct": 1.7,
-    "swing_stop": 303.41,
-    "chandelier": 300.4,
+    "swing_stop": 303.39,
+    "chandelier": 300.27,
     "fib_targets": []
    },
-   "commentary": "📌 蘋果 (AAPL)  | 動能分數 137\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、波動穩定、產業(AI伺服器)、相對強弱(強於大盤)、接近52週高、Stage2上升趨勢(回測lift1.36)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 313.81，停損 303.07（-3.4%，波動 ATR 1.7%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：328.86–340.66；測幅目標 328.86。技術停利位（交易管理，非目標價）340.66。\n   進階：結構停損 303.41；移動停損 300.4（持有：突破跌破或移動停損觸及即出）。\n5. 風險：美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。",
+   "commentary": "📌 蘋果 (AAPL)  | 動能分數 137\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、波動穩定、產業(AI伺服器)、相對強弱(強於大盤)、接近52週高、Stage2上升趨勢(回測lift1.36)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 313.26，停損 302.39（-3.5%，波動 ATR 1.7%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：328.86–340.43；測幅目標 328.86。技術停利位（交易管理，非目標價）340.43。\n   進階：結構停損 303.39；移動停損 300.27（持有：突破跌破或移動停損觸及即出）。\n5. 風險：美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。",
    "light": "green",
    "verdict": "趨勢、動能",
-   "price": 313.81,
-   "change_pct": 0.83,
-   "vol_ratio": -14,
+   "price": 313.26,
+   "change_pct": 0.65,
+   "vol_ratio": -10,
    "sr": {
-    "price": 313.81,
+    "price": 313.26,
     "resistance": [],
     "support": [
      305.02,
@@ -2450,10 +2478,17 @@
     315.2,
     310.26,
     311.23,
-    313.81
+    313.26
    ],
    "spark_start": "2026-03-12",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {
+    "risk_per_share": 10.87,
+    "risk_pct": 3.47,
+    "size_formula": "部位 = 1%×總資金 ÷ 10.87（每股風險）",
+    "rr": 2.5,
+    "rr_ok": true
+   }
   },
   {
    "stock": "2881.TW",
@@ -2573,7 +2608,14 @@
     118.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {
+    "risk_per_share": 8.01,
+    "risk_pct": 6.79,
+    "size_formula": "部位 = 1%×總資金 ÷ 8.01（每股風險）",
+    "rr": 2.5,
+    "rr_ok": true
+   }
   },
   {
    "stock": "2382.TW",
@@ -2671,7 +2713,8 @@
     390.5
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "2379.TW",
@@ -2768,7 +2811,8 @@
     643.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "3008.TW",
@@ -2865,7 +2909,8 @@
     3680.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "2330.TW",
@@ -2963,7 +3008,8 @@
     2365.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "2303.TW",
@@ -3060,101 +3106,8 @@
     131.5
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
-  },
-  {
-   "stock": "TSM",
-   "name": "台積電 ADR",
-   "score": 102,
-   "sector": "半導體",
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "波動穩定": 10,
-    "產業(半導體)": 15,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "Stage2上升趨勢(回測lift1.36)": 12
-   },
-   "levels": null,
-   "commentary": null,
-   "light": "green",
-   "verdict": "趨勢、波動穩定",
-   "price": 427.79,
-   "change_pct": -3.85,
-   "vol_ratio": -17,
-   "sr": {
-    "price": 427.79,
-    "resistance": [],
-    "support": [
-     386.12,
-     385.06
-    ],
-    "strong_support": 204.42
-   },
-   "spark": [
-    335.76,
-    337.36,
-    339.27,
-    345.98,
-    339.57,
-    338.79,
-    329.24,
-    338.45,
-    343.25,
-    347.75,
-    326.11,
-    326.74,
-    316.5,
-    337.95,
-    341.49,
-    339.04,
-    341.76,
-    345.32,
-    365.9,
-    365.49,
-    370.6,
-    369.57,
-    379.89,
-    375.1,
-    363.35,
-    370.5,
-    366.24,
-    368.08,
-    387.44,
-    382.66,
-    402.46,
-    404.98,
-    392.34,
-    393.83,
-    396.06,
-    397.67,
-    401.61,
-    394.41,
-    419.5,
-    414.15,
-    411.68,
-    404.54,
-    397.28,
-    399.8,
-    417.72,
-    404.35,
-    395.95,
-    392.61,
-    401.62,
-    407.15,
-    404.52,
-    412.32,
-    422.73,
-    424.86,
-    418.45,
-    435.63,
-    446.69,
-    436.69,
-    444.92,
-    427.79
-   ],
-   "spark_start": "2026-03-12",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "2454.TW",
@@ -3250,103 +3203,103 @@
     4300.0
    ],
    "spark_start": "2026-03-11",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
-   "stock": "AMD",
-   "name": "AMD",
-   "score": 90,
+   "stock": "TSM",
+   "name": "台積電 ADR",
+   "score": 92,
    "sector": "半導體",
    "factors": {
     "趨勢(MA5>MA20)": 25,
+    "波動穩定": 10,
     "產業(半導體)": 15,
     "相對強弱(強於大盤)": 20,
     "逼近52週高": 10,
-    "Stage2上升趨勢(回測lift1.36)": 12,
-    "U/D量吸籌(回測lift1.39)": 8
+    "Stage2上升趨勢(回測lift1.36)": 12
    },
    "levels": null,
    "commentary": null,
    "light": "green",
-   "verdict": "趨勢、產業",
-   "price": 497.86,
-   "change_pct": -4.84,
-   "vol_ratio": -26,
+   "verdict": "趨勢、波動穩定",
+   "price": 425.67,
+   "change_pct": -4.33,
+   "vol_ratio": -11,
    "sr": {
-    "price": 497.86,
-    "resistance": [
-     527.2
-    ],
+    "price": 425.67,
+    "resistance": [],
     "support": [
-     393.36,
-     224.88
+     386.12,
+     385.06
     ],
-    "strong_support": 115.06
+    "strong_support": 204.42
    },
    "spark": [
-    197.74,
-    193.39,
-    196.58,
-    196.31,
-    199.46,
-    205.27,
-    201.33,
-    202.68,
-    205.37,
-    220.27,
-    203.77,
-    201.99,
-    196.04,
-    203.43,
-    210.21,
-    217.5,
-    220.18,
-    221.53,
-    231.82,
-    236.64,
-    245.04,
-    246.83,
-    255.07,
-    258.12,
-    278.26,
-    278.39,
-    274.95,
-    284.49,
-    303.46,
-    305.33,
-    347.81,
-    334.63,
-    323.21,
-    337.11,
-    354.49,
-    360.54,
-    341.54,
-    355.26,
-    421.39,
-    408.46,
-    455.19,
-    458.79,
-    448.29,
-    445.5,
-    449.7,
-    424.1,
-    420.99,
-    414.05,
-    447.58,
-    449.59,
-    467.51,
-    503.89,
-    495.54,
-    518.09,
-    516.1,
-    510.13,
-    521.54,
-    542.52,
-    523.2,
-    497.86
+    335.76,
+    337.36,
+    339.27,
+    345.98,
+    339.57,
+    338.79,
+    329.24,
+    338.45,
+    343.25,
+    347.75,
+    326.11,
+    326.74,
+    316.5,
+    337.95,
+    341.49,
+    339.04,
+    341.76,
+    345.32,
+    365.9,
+    365.49,
+    370.6,
+    369.57,
+    379.89,
+    375.1,
+    363.35,
+    370.5,
+    366.24,
+    368.08,
+    387.44,
+    382.66,
+    402.46,
+    404.98,
+    392.34,
+    393.83,
+    396.06,
+    397.67,
+    401.61,
+    394.41,
+    419.5,
+    414.15,
+    411.68,
+    404.54,
+    397.28,
+    399.8,
+    417.72,
+    404.35,
+    395.95,
+    392.61,
+    401.62,
+    407.15,
+    404.52,
+    412.32,
+    422.73,
+    424.86,
+    418.45,
+    435.63,
+    446.69,
+    436.69,
+    444.92,
+    425.67
    ],
    "spark_start": "2026-03-12",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
   },
   {
    "stock": "QQQ",
@@ -3364,11 +3317,11 @@
    "commentary": null,
    "light": "amber",
    "verdict": "趨勢、波動穩定",
-   "price": 729.3,
-   "change_pct": -1.53,
-   "vol_ratio": -19,
+   "price": 723.08,
+   "change_pct": -2.37,
+   "vol_ratio": -12,
    "sr": {
-    "price": 729.3,
+    "price": 723.08,
     "resistance": [],
     "support": [
      695.25,
@@ -3436,10 +3389,108 @@
     746.16,
     744.21,
     740.61,
-    729.3
+    723.08
    ],
    "spark_start": "2026-03-12",
-   "spark_end": "2026-06-05"
+   "spark_end": "2026-06-05",
+   "risk": {}
+  },
+  {
+   "stock": "2317.TW",
+   "name": "鴻海",
+   "score": 85,
+   "sector": "AI伺服器",
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "波動穩定": 10,
+    "產業(AI伺服器)": 20,
+    "投信買超": 10,
+    "相對弱勢(弱於大盤)": -10,
+    "逼近52週高": 10,
+    "Stage2上升趨勢(回測lift1.36)": 12,
+    "U/D量吸籌(回測lift1.39)": 8
+   },
+   "levels": null,
+   "commentary": null,
+   "light": "amber",
+   "verdict": "趨勢、波動穩定、注意相對弱勢",
+   "price": 284.5,
+   "change_pct": -2.9,
+   "vol_ratio": 32,
+   "sr": {
+    "price": 284.5,
+    "resistance": [],
+    "support": [
+     239.5,
+     237.0
+    ],
+    "strong_support": 146.67
+   },
+   "spark": [
+    219.0,
+    214.5,
+    214.5,
+    216.5,
+    212.0,
+    210.0,
+    205.0,
+    203.0,
+    196.0,
+    195.0,
+    200.0,
+    200.5,
+    199.5,
+    194.0,
+    187.5,
+    197.0,
+    193.0,
+    192.0,
+    201.5,
+    200.0,
+    200.5,
+    200.0,
+    207.5,
+    207.5,
+    207.0,
+    206.0,
+    207.5,
+    211.0,
+    221.0,
+    225.0,
+    221.5,
+    228.0,
+    225.5,
+    225.0,
+    219.5,
+    227.5,
+    239.5,
+    252.0,
+    253.5,
+    250.0,
+    252.0,
+    250.0,
+    251.0,
+    244.5,
+    248.5,
+    248.5,
+    245.0,
+    240.0,
+    247.5,
+    250.0,
+    261.0,
+    259.0,
+    264.0,
+    263.0,
+    289.0,
+    293.5,
+    301.5,
+    309.0,
+    293.0,
+    284.5
+   ],
+   "spark_start": "2026-03-11",
+   "spark_end": "2026-06-05",
+   "risk": {}
   }
  ],
  "search": [
@@ -3455,7 +3506,7 @@
    "name": "蘋果",
    "light": "green",
    "kind": "pick",
-   "price": 313.81
+   "price": 313.26
   },
   {
    "code": "2881.TW",
@@ -3500,13 +3551,6 @@
    "price": 131.5
   },
   {
-   "code": "TSM",
-   "name": "台積電 ADR",
-   "light": "green",
-   "kind": "pick",
-   "price": 427.79
-  },
-  {
    "code": "2454.TW",
    "name": "聯發科",
    "light": "green",
@@ -3514,123 +3558,130 @@
    "price": 4300.0
   },
   {
-   "code": "AMD",
-   "name": "AMD",
+   "code": "TSM",
+   "name": "台積電 ADR",
    "light": "green",
    "kind": "pick",
-   "price": 497.86
+   "price": 425.67
   },
   {
    "code": "QQQ",
    "name": "Nasdaq100 ETF",
    "light": "amber",
    "kind": "pick",
-   "price": 729.3
+   "price": 723.08
+  },
+  {
+   "code": "2317.TW",
+   "name": "鴻海",
+   "light": "amber",
+   "kind": "pick",
+   "price": 284.5
   },
   {
    "code": "AAOI",
    "name": "Applied Optoelectronics",
    "light": "green",
    "kind": "opportunity",
-   "price": 185.88
+   "price": 196.48
   },
   {
    "code": "MXL",
    "name": "MaxLinear",
    "light": "green",
    "kind": "opportunity",
-   "price": 88.7
-  },
-  {
-   "code": "MU",
-   "name": "Micron Technology",
-   "light": "green",
-   "kind": "opportunity",
-   "price": 947.09
+   "price": 85.13
   },
   {
    "code": "3037.TW",
-   "name": "3037.TW",
+   "name": "欣興",
    "light": "green",
    "kind": "opportunity",
    "price": 933.0
   },
   {
    "code": "3189.TW",
-   "name": "3189.TW",
+   "name": "景碩",
    "light": "green",
    "kind": "opportunity",
    "price": 712.0
+  },
+  {
+   "code": "MU",
+   "name": "Micron Technology",
+   "light": "green",
+   "kind": "opportunity",
+   "price": 932.8
+  },
+  {
+   "code": "6274.TWO",
+   "name": "台燿",
+   "light": "green",
+   "kind": "opportunity",
+   "price": 1610.0
+  },
+  {
+   "code": "6147.TWO",
+   "name": "頎邦",
+   "light": "green",
+   "kind": "opportunity",
+   "price": 270.0
   },
   {
    "code": "BE",
    "name": "Bloom Energy",
    "light": "green",
    "kind": "opportunity",
-   "price": 276.71
+   "price": 271.89
   },
   {
    "code": "3081.TWO",
-   "name": "3081.TWO",
+   "name": "聯亞",
    "light": "green",
    "kind": "opportunity",
    "price": 2655.0
-  },
-  {
-   "code": "6274.TWO",
-   "name": "6274.TWO",
-   "light": "green",
-   "kind": "opportunity",
-   "price": 1610.0
   },
   {
    "code": "LITE",
    "name": "Lumentum Holdings",
    "light": "green",
    "kind": "opportunity",
-   "price": 909.0
-  },
-  {
-   "code": "AEHR",
-   "name": "Aehr Test Systems",
-   "light": "green",
-   "kind": "opportunity",
-   "price": 107.99
+   "price": 928.66
   },
   {
    "code": "WDC",
    "name": "Western Digital",
    "light": "green",
    "kind": "opportunity",
-   "price": 536.17
+   "price": 543.76
+  },
+  {
+   "code": "AEHR",
+   "name": "Aehr Test Systems",
+   "light": "green",
+   "kind": "opportunity",
+   "price": 107.2
+  },
+  {
+   "code": "2344.TW",
+   "name": "華邦電",
+   "light": "green",
+   "kind": "opportunity",
+   "price": 162.0
   },
   {
    "code": "LWLG",
    "name": "Lightwave Logic",
    "light": "green",
    "kind": "opportunity",
-   "price": 11.13
-  },
-  {
-   "code": "8358.TWO",
-   "name": "8358.TWO",
-   "light": "green",
-   "kind": "opportunity",
-   "price": 596.0
+   "price": 11.18
   },
   {
    "code": "2408.TW",
-   "name": "2408.TW",
+   "name": "南亞科",
    "light": "green",
    "kind": "opportunity",
    "price": 360.0
-  },
-  {
-   "code": "PL",
-   "name": "Planet Labs",
-   "light": "green",
-   "kind": "opportunity",
-   "price": 36.52
   },
   {
    "code": "2207.TW",
@@ -3640,15 +3691,15 @@
    "price": null
   },
   {
-   "code": "AMZN",
-   "name": "AMZN",
+   "code": "2002.TW",
+   "name": "2002.TW",
    "light": null,
    "kind": "mover",
    "price": null
   },
   {
-   "code": "2002.TW",
-   "name": "2002.TW",
+   "code": "2412.TW",
+   "name": "2412.TW",
    "light": null,
    "kind": "mover",
    "price": null
@@ -3663,11 +3714,11 @@
  },
  "rebalance": {
   "TW_GROWTH": 5.0,
-  "US_GROWTH": 0.0,
-  "CASH_BOND": 0.0,
+  "CRYPTO": 0.0,
   "ETF_CORE": -5.0,
-  "CRYPTO": 0.0
+  "US_GROWTH": 0.0,
+  "CASH_BOND": 0.0
  },
  "skips": [],
- "markdown": "# 📈 SmartStock 每日投資日報 — 2026-06-05\n\n## 📌 今日重點\n\n市場風險 中 🟡；參與度 健康（82% 站上MA20）；外資合計 +26,314,043 股；首選 國泰金（2882.TW）分數 163。\n\n## ⚡ 今日變化\n\n- 新進榜：2882.TW、AAPL、2881.TW、2379.TW\n- 掉榜：3008.TW、TSM、2317.TW、2303.TW\n- 風險 LOW→MID\n- 3231 外資轉買超；3008 外資轉買超；3711 外資轉賣超；2881 外資轉賣超\n\n## 🚀 正要起漲雷達（拐點偵測 · 全市場掃描）\n\n_Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等**拐點**訊號（比趨勢確認更早一步）。✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。_\n\n- Graham Corp（GHM）×1：LPS 回測支撐\n- Comtech Telecommunications（CMTL）×1：LPS 回測支撐\n- Alpha & Omega Semiconductor（AOSL）×1：LPS 回測支撐\n- Arista Networks（ANET）×1：LPS 回測支撐\n- Astera Labs（ALAB）×1：LPS 回測支撐\n- Extreme Networks（EXTR）×1：LPS 回測支撐\n- Micron Technology（MU）×1：LPS 回測支撐\n- Western Digital（WDC）×1：LPS 回測支撐\n- Seagate Technology（STX）×1：LPS 回測支撐\n- Silicon Motion Technology（SIMO）×1：LPS 回測支撐\n- CEVA Inc（CEVA）×1：LPS 回測支撐\n- Sanmina Corp（SANM）×1：LPS 回測支撐\n- Flex Ltd（FLEX）×1：LPS 回測支撐\n- Plexus Corp（PLXS）×1：LPS 回測支撐\n- Nortech Systems（NSYS）×1：LPS 回測支撐\n\n## 🛰️ 機會掃描（全市場早期領導股 · 掃 222 檔）\n\n_watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股_\n\n- Applied Optoelectronics（AAOI）RS 99 · CPO 矽光子/光通訊 — U/D量吸籌、Stage2，季營收YoY +51%(加速-31)\n- MaxLinear（MXL）RS 99 — U/D量吸籌、Stage2，季營收YoY +43%(加速-13)\n- Micron Technology（MU）RS 98 · HBM 高頻寬記憶體 — U/D量吸籌、Stage2，季營收YoY +196%(加速+140)\n- 3037.TW（3037.TW）RS 98 · CoWoS 先進封裝 — U/D量吸籌、Stage2\n- 3189.TW（3189.TW）RS 97 · CoWoS 先進封裝 — U/D量吸籌、Stage2\n- Bloom Energy（BE）RS 97 — Stage2，季營收YoY +134%(加速+74)\n- 3081.TWO（3081.TWO）RS 96 · CPO 矽光子/光通訊 — Stage2\n- 6274.TWO（6274.TWO）RS 96 · CCL 銅箔基板/載板 — Stage2\n- Lumentum Holdings（LITE）RS 95 · CPO 矽光子/光通訊 — U/D量吸籌、Stage2，季營收YoY +16%(加速+6)\n- Aehr Test Systems（AEHR）RS 95 — U/D量吸籌、Stage2，季營收YoY -44%(加速-17)\n- Western Digital（WDC）RS 95 — Stage2，季營收YoY +46%(加速+20)\n- Lightwave Logic（LWLG）RS 94 — U/D量吸籌\n- 8358.TWO（8358.TWO）RS 94 · CCL 銅箔基板/載板 — Stage2\n- 2408.TW（2408.TW）RS 93 · HBM 高頻寬記憶體 — U/D量吸籌、Stage2\n- Planet Labs（PL）RS 93 — U/D量吸籌，季營收YoY +42%(加速+10)\n\n## 🔎 早期訊號雷達\n\n_領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分_\n_誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 **~70% 從未到達**；目標價為技術投影非預測_\n\n- 國泰金（2882.TW）×4：RS線新高(領先)、U/D量吸籌、Power pivot放量突破、Stage2上升趨勢\n- 廣達（2382.TW）×3：U/D量吸籌、月營收成長、Stage2上升趨勢\n- 緯創（3231.TW）×3：U/D量吸籌、月營收成長、Stage2上升趨勢\n- 富邦金（2881.TW）×3：U/D量吸籌、Power pivot放量突破、Stage2上升趨勢\n- 鴻海（2317.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 聯發科（2454.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 聯電（2303.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 大立光（3008.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 中華電（2412.TW）×2：U/D量吸籌、VCP收縮\n- 台塑化（6505.TW）×2：U/D量吸籌、Stage2上升趨勢\n- AMD（AMD）×2：U/D量吸籌、Stage2上升趨勢\n- 蘋果（AAPL）×2：RS線新高(領先)、Stage2上升趨勢\n\n## 🚀 早期成長候選（月營收 YoY · 11504）\n\n_全上市掃描的領先基本面訊號，**非持股清單**；月營收領先股價但雜訊高，僅供觀察、需自行查證_\n\n- 華邦電（2344） 半導體業 — YoY **+182.2%**\n- 麗臺（2465） 電腦及週邊設備業 — YoY **+175.8%**\n- 創意（3443） 半導體業 — YoY **+156.9%**\n- 旺宏（2337） 半導體業 — YoY **+153.7%**\n- 南港（2101） 橡膠工業 — YoY **+150.6%**\n- 國碩（2406） 光電業 — YoY **+143.3%**\n- 台船（2208） 航運業 — YoY **+132.2%**\n- 倚天酷碁-創（2432） 電腦及週邊設備業 — YoY **+130.1%**\n- 致茂（2360） 其他電子業 — YoY **+128.9%**\n- 廣達（2382） 電腦及週邊設備業 — YoY **+120.7%**\n- 志信（2611） 航運業 — YoY **+119.5%**\n- 百一（6152） 通信網路業 — YoY **+116.9%**\n- 大量（3167） 電機機械 — YoY **+114.2%**\n- 千興（2025） 鋼鐵工業 — YoY **+112.0%**\n- 緯創（3231） 電腦及週邊設備業 — YoY **+112.0%**\n\n## 📅 本周注意\n\n- 台股月營收公告期（每月 10 日前）\n\n## 🇹🇼 台股 / 總經焦點\n\n- 加權指數 ^TWII：45,071\n- S&P 500：7,535\n- Nasdaq：26,517\n- VIX 波動率：15.9\n- 美債 10Y 殖利率：4.53%\n- 市場風險評級：**中 🟡**\n- 市場廣度：82% 站上 MA20、92% 站上 MA50（26漲 38跌、8 檔創20日新高） → 參與度 **健康**（65 檔樣本）\n\n**三大法人買賣超（最新交易日，TWSE 原始淨額）**\n- 聯電 (2303)：外資 ▲買超 79,930,463\n- 國泰金 (2882)：外資 ▲買超 10,810,614\n- 中鋼 (2002)：外資 ▲買超 5,924,112\n- 緯創 (3231)：外資 ▲買超 4,079,787\n- 台塑化 (6505)：外資 ▲買超 1,704,706\n- 瑞昱 (2379)：外資 ▼賣超 2,833,213\n- 聯發科 (2454)：外資 ▲買超 414,722\n- 大立光 (3008)：外資 ▲買超 29,076\n- 和泰車 (2207)：外資 ▼賣超 461,287\n- 日月光投控 (3711)：外資 ▼賣超 850,510\n\n## 🔥 今日漲跌 Movers\n\n**領漲**\n- 國泰金 (2882.TW)：+5.93%\n- 聯電 (2303.TW)：+5.20%\n- 富邦金 (2881.TW)：+3.51%\n\n**領跌**\n- 博通 (AVGO)：-4.46%\n- AMD (AMD)：-4.84%\n- 台達電 (2308.TW)：-5.15%\n\n## 🌍 全球市場焦點新聞\n\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 美中貿易戰火升級！輝達重挫4.4％、費半急跌；Fed暗示停止縮表，金價飆破歷史新高；161億ETF股利今入帳，台股爆7千億巨震！｜1015晨間重點財經新聞摘要｜｜豐雲學堂2026 年 05 月 - sinotrade.com.tw](https://news.google.com/rss/articles/CBMinAZBVV95cUxNU2NsRE96TjZrU2Z1dzVMNWcxaXhEWUZXSUJqcVdvR296REZTWnR5SXhacnN2dm1Ma3FKbWxKNTZFVDZhd2lOWllBcFZHMTJ5bUpaRXBwdmhxczlwYU5EUXphMklfZFpqYTROTTBWSkE2dVgxd21UbnJyOWt1b0JvQ25XbHExUjYxeHFxRG5IREFWbjlzSnJZQXlRaWs3LWFIbHl6R1FDcUdFbUVZZFBJTUpDeFB2YklwbmU0dTMxVjRtZmZ3QkFJN1RsckdobVhKYm1KLTB1dThuUWpuWlhDR29JLVZKbDMwVTBrZmM1OTBHdkxtdnN1YjAzNHA2UV9SOFBFRnJoV296dkFmQ3BwUzA5NDRFN2pGZ1NPdlBqQklCemp1QjQzcFBXMFRQUU5ydzd2ZUtqY0huaXRaZUJxbzhwckRaTFBDdFBQLXRQanRxUG5paDhNMEd4eDZmdUFCYVdaSlE5My1JSHdoQmxRNDBEUWc1RDliNzRZRWM5cXkzdF9OOW1sYjhtMWNzUnN4QjdpcFFrMlRpX1VrSTdVQWtEV01xNkNCSlFaa1BpcDBZSFppUXhTMmxLRGNKcmtvdWVVdzh2azNEWExNNDVmaXJ5b1NmV00xNVdNZDZvY2dHSDJfOGxJZ1FTT21wd2hqdWk5OHpYSEI5RmhUcHFRekE4ak9NTmJkQWprRmVwS21NUEl4dTF4NDFsdHo5M21udVZjbWFjYXJVRWlaT3Z6N3dRUW1CNVNPZm1HRUVRR2d5UXR1X3JuRXhHSHVjT1Jnek82ZE4xeklVNDhPZG8tQk90dl9PcGRNWV9fbmItaEdCYklibUJxODFGMklkYjNXa0hwbHIwNFQxakFnSHFfRDN5UldiYTdZb2E5LXJXcHNnVFBBMGkzeUJEcVljSXdRNXVFcjFzV0tBQlpIckpnd19JUnFrZ0lMRHphYzNja0Joa1NfM1NsTF96dHFaUVVsanZCeGhUWWJXaExQNlpZSWVGZVJhV2ZleWhKMUpGRl9vU3ZDM2tLV19PWWZWNGRVeU9hRXlrc015YWlk?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 〈美股早盤〉 主要指數平盤波動 市場聚焦輝達財報與就業數據 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE1hakxsbUdhUEtIN1RBem5DdVR2VE5sYVEwUGRQY0k4cXlTSXlGUXI5bXU3TEZKNWh0MnJZaXh6MWdyZlVmVE1vck0yYkxuSHc?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 美股早盤／四大指數小漲！輝達市值突破5兆美元 Fed今晚利率決策 - UDN](https://news.google.com/rss/articles/CBMiUEFVX3lxTE1NSHdYLVp4QVZlV2RtWkhacTZSaUNCOGZnRkNPNXpmZ2FoRE1ibU1PcjBtYWVrSnpVMlR2cXAtbHJCeDBaOEw5RXZkV2ZWVEVx0gFWQVVfeXFMUHQ5cW9OXzRCV2lic0Z6Wkt5bUpCcy1iZTNUSG12SlJxWERTVE54b01qZXFxQXpjQVpQdjBZbDNDWm5LWWxtUHAyRmtpWGVzMHNOSXpWNGc?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 《美股》12月降息五五開 Tesla/輝達/記憶體跳水 - 新聞 - MoneyDJ](https://news.google.com/rss/articles/CBMikgFBVV95cUxNUnJNbXl5TXU4OTNFS1RRWHJtQUZhbUdmeHFvcXBxQmZwbDlvYm03VS1GdmhEXzBIV29JUXFiU3p0VGtZd1UzdmpRLVZ0NWRVR2w5cHFWMjc2bTJJcTlORWdFQlNzMy04Z3NOWmlEUE9COFBJX1B5enQ1M0ROejdKRFZJcUIzMTJ6X255RHBSYzlXQQ?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] Fed利率走向不明+輝達Meta聯姻 美股收高、輝達大漲 | 太報 - LINE TODAY](https://news.google.com/rss/articles/CBMiVkFVX3lxTFBZOGdDdnp3X2JMbjMtb1hYaWlaVVBVZjBuNWZ0LVlKRzIzQWotUXdiX2ZSazBybFlZOTl4Yjk4M0pFZldkek81TGJ0cy1md2hYOGp1S1B3?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 道瓊創歷史收盤新高 Broadcom重挫拖累費半與那斯達克 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE9qLS16VVVqRVpkVWxuSG42MmVuZjh4Z0FYSDQyZ2hMR1J1dFljTExEaS1SXzRVNDczcnM0QjF3TGt1Rm5zOVp2WXNwODBJR2c?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 美股漲跌互見！博通重挫拖累科技股 道瓊逆勢再創新高 | 民視新聞網 - LINE TODAY](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5kQXlIWWIyNWNTWkJFZjg5bllGMmlaYWtxNGxIeEpTcGFOdUFNY1AyQUF1anpxanpTZUZlOFBLa1VSWmI4dmdPMnkzUXRlZVZ4SDlaeWR3?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 美股收盤：道瓊指數創歷史新高，博通股價受挫致市場擔憂AI泡沫，科技股普跌 - TradingKey](https://news.google.com/rss/articles/CBMi5wFBVV95cUxQZ0IyYi11VHRFcWVxaDBtcUVQT0pxX3hCMkk1QTlRUUZFamJsMUpERGRhbkdIaHRkZF8wcWM2eXNrRnB3YlZqQkVEVGt4ZjBDS210dUtleVFXWkM0c21iWUxidHNhaFExRHpiMEJXY1FDWFhuaGE3MGhTazB5UzlycEx6NDZHSEpWLXRsaGRNakttNXJfX080OFByaE44dkdzZjVtaFQyRHpxMDU5NkhRdDFTN3gzYjM3dVlIVHhGT3lBcGh1djk4UTAtUlk0RXVoUTNzQmhQVVpmYlNRTnJPaV9hOWNVcGs?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 科技股領漲美股收紅　標普500、那指再創新高 - 經濟日報](https://news.google.com/rss/articles/CBMiXEFVX3lxTFBEalNNWGJINGwwZjBmN3F2dGk1LWF1aU00Q3pPcWdMNmtqdXdYTEwzd2VyQmVZZUV1NzMxTm5TNFRkT1pWTEZLWW9laGNkT1JOQlV5WDdfcVlfX1lL0gFiQVVfeXFMTlotOE91WmxoS1hoSTRGcEo0dTVWZzlocXNKUmk1bzB4WEVSYW5qRlFfOVZ6dG9Xa3FPTzlPWWlwc0tZN0daSXVSamN2VWtyR3RETUU4cUhoX2JyREpDaUVGNXc?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 那斯達克指數還能買嗎？新手怎麼買Nasdaq 100？ETF、期貨、CFD完整比較 - Mitrade](https://news.google.com/rss/articles/CBMidkFVX3lxTE8tSzI0Tm1qX3VIMG1xYmxySkhlTmF0cjdwTXRud3l4Z2t1T3RVaGhROTFSRkcySVV1bVptdWRzbmRQT1k3Q0xibHIzbEdONHN4UXFuV3MzWEV4WkF3dE4yZENJZFl0dEpxUFZTMWZsSUV0WXEySkE?oc=5)\n\n**🇹🇼 台股相關**\n- [台積電、SK海力士滿倉後買誰？外資加碼名單曝光 聯發科等4檔台股入列 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE5sQVR2OEhld2lkWF8zSzZUMzlwcFFrME9hVXhINUdoRHNrQkJUUWY3MGRXemVwSWtWckJYSmZ5bUxJUTl1Vy03LVc3aGZOV2s?oc=5)\n- [台積電開高翻黑！台股急殺近1,000點、失守45,000點大關 誰來撐盤？ - UDN](https://news.google.com/rss/articles/CBMiUEFVX3lxTE9vYnZZUElaUlJuVHFZc1ZFUE1WN3BMSjRsWFlxZlBRc3dfMTRWamtmbWgtTHU1bTJqUmgxR1RYWlYtcW11X0NWRjZVaVVsLV9u0gFWQVVfeXFMUHF4Q0FpaFJ5QXBvY0k5VjkyMmxwTVBYLXZDUThUaV9BOTlmd2Q2cjFoZWlkVnozOGpaNXhJTjZEZTFUamM2Q0syOW9TWTRTRkR6ZDVKNFE?oc=5)\n- [不只台積電，外資鎖定台灣AI供應鏈 摩根士丹利：台股續旺，只擔心兩件事 - 天下雜誌](https://news.google.com/rss/articles/CBMiTkFVX3lxTE9HMHJYN3VwdWJlU0dwdUxYM29GRXpsZWxuZE1wUGQxUEZkejBHV21nYzFFcEZFWVJhUTRTT3lMQTF6NUhWaDk4NTRUeEhWUQ?oc=5)\n- [【Follow法人】外資狠砍632億元！台積電遭狙殺1.7萬張淪提款機 記憶體四雄也中槍 - Yahoo股市](https://news.google.com/rss/articles/CBMi3wNBVV95cUxORGp2c2FmelBhWVBjTTV2SlRUSlJ1WE52MEUycDlPUU10Ry1LcFBBZmwzQTlxT1psclBuUmFOX1k1MkJvTkVEaVZORFZYVk9oR19KajJ3ZUJLTFJUS3FqVWt5NFl1RGN4NTFFMVNEZl9JS3ZXZkVNZHFWbWMxVElOVDN3R2dHcmEwVmtreGRBaUhlZ3BYLWlIWHBDUVlIcTJHb1REVFZqX1I2S2l2cVBvY1k0cVg2Ujl4UmJVc0xhVUFSMUxnMkFZSWR6SnhIVW16NVlsYkpBeHlOWFJwcVFsVGExdTlVdmRaaHdnMDdIcFc4SWZzTEd2WExvMTFVUTVJQWRqejBmTVJjS2NNVlYweVhBanhTTWoxU0tpNHRWQThqLXhYUEs0M1N3ZWc2VmM5cVB6TG5yMk9ndEhmM1FJSXZDU01TcVhZa3pIbjhBNlBCRmJRRVZZNEpqYWl3Ml82bU1RVTg4ajRaczc4SDNlX1BMX2RZVFdsb2ZISDBZb014T1JQZ0lueHpNM3BFR2ZkVnBBVTVzUm1hM01rZlllNFFVZjNCMGQ4UUVuSXFJV0RJVzRKRGNFbmN4ZE42NkxyYm5aMEF3Rk1hMW1iNm1vX0tubVozc2ZSREFkb0VMaw?oc=5)\n- [台股外資大賣 電子股「停電」 法人：多頭均線未破壞 屬健康修正 - 經濟日報](https://news.google.com/rss/articles/CBMiWkFVX3lxTFBiWFdPcnRLUC0tSVdsSkRKRHBsYWdNYTZ2aXdOT2k5OUR5Z3Q3YmRIaldoMVFkSjJhLTk1QXhkT1ZHcU9jYlVZVTR5WGNJU0I1c0FfX0kydzRfQdIBX0FVX3lxTE5kaEhvaGhfUlFMUjcycU5kaDBSM1kteEJ6bWxoYkh3VXJzSFFXQVNKdFVmdnF0d0I2eTEzMHZtWkNzUXZFUkZaT250SkE1NTNCUXpvb3c2ZHRtZ1FPZmtR?oc=5)\n\n## 📊 今日選股 Top Picks\n\n### 🥇 國泰金（2882.TW） · 金融 — 分數 163\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(金融)+5、外資買超+7、相對強弱(優於大盤)+15、接近52週高+20、RSI過熱(>75)-15、Power pivot放量突破(回測lift2.0)+18、Stage2上升趨勢(回測lift1.36)+12、Pocket pivot吸籌(回測lift1.35)+8、U/D量吸籌(回測lift1.39)+8、RS線新高領先(回測lift1.23)+5\n\n📌 國泰金 (2882.TW)  | 動能分數 163\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、量能(高於20日均量)、波動穩定、產業(金融)、外資買超、相對強弱(優於大盤)、接近52週高、Power pivot放量突破(回測lift2.0)、Stage2上升趨勢(回測lift1.36)、Pocket pivot吸籌(回測lift1.35)、U/D量吸籌(回測lift1.39)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 100.0，停損 94.06（-5.9%，波動 ATR 3.0%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：114.86。技術停利位（交易管理，非目標價）114.86。\n   進階：結構停損 75.61；移動停損 92.1（持有：突破跌破或移動停損觸及即出）。\n5. 風險：RSI過熱(>75)；美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### 🥈 蘋果（AAPL） · AI伺服器 — 分數 137\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、波動穩定+10、產業(AI伺服器)+20、相對強弱(強於大盤)+20、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12、RS線新高領先(回測lift1.23)+5\n\n📌 蘋果 (AAPL)  | 動能分數 137\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、波動穩定、產業(AI伺服器)、相對強弱(強於大盤)、接近52週高、Stage2上升趨勢(回測lift1.36)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 313.81，停損 303.07（-3.4%，波動 ATR 1.7%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：328.86–340.66；測幅目標 328.86。技術停利位（交易管理，非目標價）340.66。\n   進階：結構停損 303.41；移動停損 300.4（持有：突破跌破或移動停損觸及即出）。\n5. 風險：美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### 🥉 富邦金（2881.TW） · 金融 — 分數 128\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(金融)+5、投信買超+10、相對弱勢(弱於大盤)-10、接近52週高+20、RSI過熱(>75)-15、Power pivot放量突破(回測lift2.0)+18、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n📌 富邦金 (2881.TW)  | 動能分數 128\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、量能(高於20日均量)、波動穩定、產業(金融)、投信買超、接近52週高、Power pivot放量突破(回測lift2.0)、Stage2上升趨勢(回測lift1.36)、U/D量吸籌(回測lift1.39)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 118.0，停損 109.99（-6.8%，波動 ATR 3.4%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：138.04。技術停利位（交易管理，非目標價）138.04。\n   進階：結構停損 93.1；移動停損 108.8（持有：突破跌破或移動停損觸及即出）；Fib 延伸 101.04/102.88/104.9。\n5. 風險：相對弱勢(弱於大盤)、RSI過熱(>75)；美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### ▫️ 廣達（2382.TW） · AI伺服器 — 分數 125\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(AI伺服器)+20、外資賣超-20、投信買超+10、相對強弱(優於大盤)+15、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 瑞昱（2379.TW） · 半導體 — 分數 110\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、外資賣超-20、投信買超+10、相對強弱(優於大盤)+15、逼近52週高+10\n\n### ▫️ 大立光（3008.TW） · 半導體 — 分數 110\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 台積電（2330.TW） · 半導體 — 分數 107\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、外資賣超-20、投信買超+10、相對弱勢(弱於大盤)-10、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12\n\n### ▫️ 聯電（2303.TW） · 半導體 — 分數 107\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、產業(半導體)+15、外資買超+7、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 台積電 ADR（TSM） · 半導體 — 分數 102\n- 因子：趨勢(MA5>MA20)+25、波動穩定+10、產業(半導體)+15、相對強弱(強於大盤)+20、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12\n\n### ▫️ 聯發科（2454.TW） · 半導體 — 分數 100\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、產業(半導體)+15、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ AMD（AMD） · 半導體 — 分數 90\n- 因子：趨勢(MA5>MA20)+25、產業(半導體)+15、相對強弱(強於大盤)+20、逼近52週高+10、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ Nasdaq100 ETF（QQQ） · ETF — 分數 87\n- 因子：趨勢(MA5>MA20)+25、波動穩定+10、相對強弱(強於大盤)+20、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12\n\n\n## 🧠 資產配置建議\n\n- 美國成長股：30.0%\n- 台股成長股：30.0%\n- ETF 核心：20.0%\n- 加密資產：10.0%\n- 現金/債券：10.0%\n\n### 🔁 再平衡建議（vs 目前持倉，百分點）\n- 台股成長股：加碼 +5.0\n- ETF 核心：減碼 -5.0\n\n---\n## ⚠️ 風險提示與免責\n⚠️ 免責聲明：本報告由程式自動產生，僅為投資決策的「輔助資訊」，不構成任何買賣要約或投資建議。所有數據來自公開來源，可能有延遲或誤差。投資有風險，請自行判斷並承擔盈虧。"
+ "markdown": "# 📈 SmartStock 每日投資日報 — 2026-06-05\n\n## 📌 今日重點\n\n市場風險 中 🟡；參與度 健康（77% 站上MA20）；外資合計 +26,314,043 股；首選 國泰金（2882.TW）分數 163。\n\n## 🌡️ 市場環境：🟢 偏多可進攻（建議曝險 76%）\n\n_台股 uptrend/DD4、美股 uptrend/DD2。~75% 突破在空頭環境失敗 → 環境轉弱時降部位、暫停新突破單。_\n\n## ⚡ 今日變化\n\n- 新進榜：2882.TW、AAPL、2881.TW、2379.TW\n- 掉榜：3008.TW、TSM、2317.TW、2303.TW\n- 風險 LOW→MID\n- 3231 外資轉買超；3008 外資轉買超；3711 外資轉賣超；2881 外資轉賣超\n\n## 🚀 正要起漲雷達（拐點偵測 · 全市場掃描）\n\n_Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等**拐點**訊號（比趨勢確認更早一步）。✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。_\n\n- Applied Optoelectronics（AAOI）×1：LPS 回測支撐\n- Graham Corp（GHM）×1：LPS 回測支撐\n- Comtech Telecommunications（CMTL）×1：LPS 回測支撐\n- Alpha & Omega Semiconductor（AOSL）×1：LPS 回測支撐\n- Arista Networks（ANET）×1：LPS 回測支撐\n- Astera Labs（ALAB）×1：LPS 回測支撐\n- Extreme Networks（EXTR）×1：LPS 回測支撐\n- Micron Technology（MU）×1：LPS 回測支撐\n- Western Digital（WDC）×1：LPS 回測支撐\n- Seagate Technology（STX）×1：LPS 回測支撐\n- Silicon Motion Technology（SIMO）×1：LPS 回測支撐\n- CEVA Inc（CEVA）×1：LPS 回測支撐\n- Sanmina Corp（SANM）×1：LPS 回測支撐\n- Flex Ltd（FLEX）×1：LPS 回測支撐\n- Plexus Corp（PLXS）×1：LPS 回測支撐\n\n## 🛰️ 機會掃描（全市場早期領導股 · 掃 236 檔）\n\n_watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股_\n\n- Applied Optoelectronics（AAOI）RS 99 · CPO 矽光子/光通訊 — U/D量吸籌、Stage2，季營收YoY +51%(加速-31)\n- MaxLinear（MXL）RS 99 — U/D量吸籌、Stage2，季營收YoY +43%(加速-13)\n- 欣興（3037.TW）RS 98 · CoWoS 先進封裝 — U/D量吸籌、Stage2\n- 景碩（3189.TW）RS 98 · CoWoS 先進封裝 — U/D量吸籌、Stage2\n- Micron Technology（MU）RS 97 · HBM 高頻寬記憶體 — U/D量吸籌、Stage2，季營收YoY +196%(加速+140)\n- 台燿（6274.TWO）RS 97 · CCL 銅箔基板/載板 — Stage2\n- 頎邦（6147.TWO）RS 96 — U/D量吸籌、Stage2\n- Bloom Energy（BE）RS 96 — Stage2，季營收YoY +134%(加速+74)\n- 聯亞（3081.TWO）RS 96 · CPO 矽光子/光通訊 — Stage2\n- Lumentum Holdings（LITE）RS 95 · CPO 矽光子/光通訊 — U/D量吸籌、Stage2，季營收YoY +16%(加速+6)\n- Western Digital（WDC）RS 95 — Stage2，季營收YoY +46%(加速+20)\n- Aehr Test Systems（AEHR）RS 94 — U/D量吸籌、Stage2，季營收YoY -44%(加速-17)\n- 華邦電（2344.TW）RS 94 — U/D量吸籌、Stage2\n- Lightwave Logic（LWLG）RS 94 — U/D量吸籌\n- 南亞科（2408.TW）RS 93 · HBM 高頻寬記憶體 — U/D量吸籌、Stage2\n\n## 🔎 早期訊號雷達\n\n_領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分_\n_誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 **~70% 從未到達**；目標價為技術投影非預測_\n\n- 國泰金（2882.TW）×4：RS線新高(領先)、U/D量吸籌、Power pivot放量突破、Stage2上升趨勢\n- 廣達（2382.TW）×3：U/D量吸籌、月營收成長、Stage2上升趨勢\n- 緯創（3231.TW）×3：U/D量吸籌、月營收成長、Stage2上升趨勢\n- 富邦金（2881.TW）×3：U/D量吸籌、Power pivot放量突破、Stage2上升趨勢\n- 鴻海（2317.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 聯發科（2454.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 聯電（2303.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 大立光（3008.TW）×2：U/D量吸籌、Stage2上升趨勢\n- 中華電（2412.TW）×2：U/D量吸籌、VCP收縮\n- 台塑化（6505.TW）×2：U/D量吸籌、Stage2上升趨勢\n- AMD（AMD）×2：U/D量吸籌、Stage2上升趨勢\n- 蘋果（AAPL）×2：RS線新高(領先)、Stage2上升趨勢\n\n## 🚀 早期成長候選（月營收 YoY · 11504）\n\n_全上市掃描的領先基本面訊號，**非持股清單**；月營收領先股價但雜訊高，僅供觀察、需自行查證_\n\n- 華邦電（2344） 半導體業 — YoY **+182.2%**\n- 麗臺（2465） 電腦及週邊設備業 — YoY **+175.8%**\n- 創意（3443） 半導體業 — YoY **+156.9%**\n- 旺宏（2337） 半導體業 — YoY **+153.7%**\n- 南港（2101） 橡膠工業 — YoY **+150.6%**\n- 國碩（2406） 光電業 — YoY **+143.3%**\n- 台船（2208） 航運業 — YoY **+132.2%**\n- 倚天酷碁-創（2432） 電腦及週邊設備業 — YoY **+130.1%**\n- 致茂（2360） 其他電子業 — YoY **+128.9%**\n- 廣達（2382） 電腦及週邊設備業 — YoY **+120.7%**\n- 志信（2611） 航運業 — YoY **+119.5%**\n- 百一（6152） 通信網路業 — YoY **+116.9%**\n- 大量（3167） 電機機械 — YoY **+114.2%**\n- 千興（2025） 鋼鐵工業 — YoY **+112.0%**\n- 緯創（3231） 電腦及週邊設備業 — YoY **+112.0%**\n\n## 📅 本周注意\n\n- 台股月營收公告期（每月 10 日前）\n\n## 🇹🇼 台股 / 總經焦點\n\n- 加權指數 ^TWII：45,071\n- S&P 500：7,496\n- Nasdaq：26,256\n- VIX 波動率：16.2\n- 美債 10Y 殖利率：4.54%\n- 市場風險評級：**中 🟡**\n- 市場廣度：77% 站上 MA20、91% 站上 MA50（23漲 41跌、8 檔創20日新高） → 參與度 **健康**（65 檔樣本）\n\n**三大法人買賣超（最新交易日，TWSE 原始淨額）**\n- 聯電 (2303)：外資 ▲買超 79,930,463\n- 國泰金 (2882)：外資 ▲買超 10,810,614\n- 中鋼 (2002)：外資 ▲買超 5,924,112\n- 緯創 (3231)：外資 ▲買超 4,079,787\n- 台塑化 (6505)：外資 ▲買超 1,704,706\n- 瑞昱 (2379)：外資 ▼賣超 2,833,213\n- 聯發科 (2454)：外資 ▲買超 414,722\n- 大立光 (3008)：外資 ▲買超 29,076\n- 和泰車 (2207)：外資 ▼賣超 461,287\n- 日月光投控 (3711)：外資 ▼賣超 850,510\n\n## 🔥 今日漲跌 Movers\n\n**領漲**\n- 國泰金 (2882.TW)：+5.93%\n- 聯電 (2303.TW)：+5.20%\n- 富邦金 (2881.TW)：+3.51%\n\n**領跌**\n- 博通 (AVGO)：-4.85%\n- 台達電 (2308.TW)：-5.15%\n- AMD (AMD)：-6.83%\n\n## 🌍 全球市場焦點新聞\n\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 美就業數據強勁引發升息憂慮！美股開盤走低、輝達等晶片股齊跌 | 民視新聞網 - LINE TODAY](https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jbU9HZnR3ck1UNk9FakRTcDNwRmJrXzE1UC00aGhHazBBcURQQU9iWkxac1NLN0EtRm9vc3pDN1VQZDBvOEJobks2ZFZqdXEzc3E2VWZn?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 本週操盤筆記：AI震央迎大考！輝達財報出爐、Fed會議紀要與全球PMI齊登場 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE5lMzlLMUhMeFpOVW5YTjlHSWJpcTlrZndXUkEtVHBKMUNQVmlqQnlKRmtFdUhLX0k0WEdxZ1FtejlsSG43YUEyMlkyWWZsbmc?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 美中貿易戰火升級！輝達重挫4.4％、費半急跌；Fed暗示停止縮表，金價飆破歷史新高；161億ETF股利今入帳，台股爆7千億巨震！｜1015晨間重點財經新聞摘要｜｜豐雲學堂2026 年 05 月 - sinotrade.com.tw](https://news.google.com/rss/articles/CBMinAZBVV95cUxNU2NsRE96TjZrU2Z1dzVMNWcxaXhEWUZXSUJqcVdvR296REZTWnR5SXhacnN2dm1Ma3FKbWxKNTZFVDZhd2lOWllBcFZHMTJ5bUpaRXBwdmhxczlwYU5EUXphMklfZFpqYTROTTBWSkE2dVgxd21UbnJyOWt1b0JvQ25XbHExUjYxeHFxRG5IREFWbjlzSnJZQXlRaWs3LWFIbHl6R1FDcUdFbUVZZFBJTUpDeFB2YklwbmU0dTMxVjRtZmZ3QkFJN1RsckdobVhKYm1KLTB1dThuUWpuWlhDR29JLVZKbDMwVTBrZmM1OTBHdkxtdnN1YjAzNHA2UV9SOFBFRnJoV296dkFmQ3BwUzA5NDRFN2pGZ1NPdlBqQklCemp1QjQzcFBXMFRQUU5ydzd2ZUtqY0huaXRaZUJxbzhwckRaTFBDdFBQLXRQanRxUG5paDhNMEd4eDZmdUFCYVdaSlE5My1JSHdoQmxRNDBEUWc1RDliNzRZRWM5cXkzdF9OOW1sYjhtMWNzUnN4QjdpcFFrMlRpX1VrSTdVQWtEV01xNkNCSlFaa1BpcDBZSFppUXhTMmxLRGNKcmtvdWVVdzh2azNEWExNNDVmaXJ5b1NmV00xNVdNZDZvY2dHSDJfOGxJZ1FTT21wd2hqdWk5OHpYSEI5RmhUcHFRekE4ak9NTmJkQWprRmVwS21NUEl4dTF4NDFsdHo5M21udVZjbWFjYXJVRWlaT3Z6N3dRUW1CNVNPZm1HRUVRR2d5UXR1X3JuRXhHSHVjT1Jnek82ZE4xeklVNDhPZG8tQk90dl9PcGRNWV9fbmItaEdCYklibUJxODFGMklkYjNXa0hwbHIwNFQxakFnSHFfRDN5UldiYTdZb2E5LXJXcHNnVFBBMGkzeUJEcVljSXdRNXVFcjFzV0tBQlpIckpnd19JUnFrZ0lMRHphYzNja0Joa1NfM1NsTF96dHFaUVVsanZCeGhUWWJXaExQNlpZSWVGZVJhV2ZleWhKMUpGRl9vU3ZDM2tLV19PWWZWNGRVeU9hRXlrc015YWlk?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 美股早盤／四大指數小漲！輝達市值突破5兆美元 Fed今晚利率決策 - UDN](https://news.google.com/rss/articles/CBMiUEFVX3lxTE1NSHdYLVp4QVZlV2RtWkhacTZSaUNCOGZnRkNPNXpmZ2FoRE1ibU1PcjBtYWVrSnpVMlR2cXAtbHJCeDBaOEw5RXZkV2ZWVEVx0gFWQVVfeXFMUHQ5cW9OXzRCV2lic0Z6Wkt5bUpCcy1iZTNUSG12SlJxWERTVE54b01qZXFxQXpjQVpQdjBZbDNDWm5LWWxtUHAyRmtpWGVzMHNOSXpWNGc?oc=5)\n- [[\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞] 快訊／AI疑慮+OPEC變局!費半下挫4.38% 台積電ADR跌逾4% - MSN](https://news.google.com/rss/articles/CBMisgJBVV95cUxPSmpYbzNRSGphd1Bkb1B2YnNBaTJuQXg1cWduNDIxQnVwRlZvZjBQOU1ZMXhUOE15b1YzSFg4ek04NmIwWE5ReEJqU0Z3VGc0MjJtamFFbGwwc0tpYjl4MlVKdk5ldF9DSzZ4aXdsdkg5MmJnR2ZxVFR6R2pNcDRTOXI5a21fZ2xJUW9nLWwzRkVQdDlsdmJEX1JBRmFia1gxRzVSTGd0S1QwcEtEeFhlMlBlS29PcDB0TnNlbWFxVW1hZndlX1JSa01uNVR2UjNjRjdRMEJIb3JXWXBZbHlpbGw5ekNPXzZyYjQwbTQtYmRiUlNXQ2NzU0ppcWlUS2s4UmZMRGhDZGJMWHpFNXNOYzdVVFFfMVZwcEUxTEZuZ2VWUXAyaEFlMV9lQU1xeE84QVE?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 道瓊創歷史收盤新高 Broadcom重挫拖累費半與那斯達克 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE9qLS16VVVqRVpkVWxuSG42MmVuZjh4Z0FYSDQyZ2hMR1J1dFljTExEaS1SXzRVNDczcnM0QjF3TGt1Rm5zOVp2WXNwODBJR2c?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 美股漲跌互見！博通重挫拖累科技股 道瓊逆勢再創新高 | 民視新聞網 - LINE TODAY](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5kQXlIWWIyNWNTWkJFZjg5bllGMmlaYWtxNGxIeEpTcGFOdUFNY1AyQUF1anpxanpTZUZlOFBLa1VSWmI4dmdPMnkzUXRlZVZ4SDlaeWR3?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 科技股領漲美股收紅　標普500、那指再創新高 - 經濟日報](https://news.google.com/rss/articles/CBMiXEFVX3lxTFBEalNNWGJINGwwZjBmN3F2dGk1LWF1aU00Q3pPcWdMNmtqdXdYTEwzd2VyQmVZZUV1NzMxTm5TNFRkT1pWTEZLWW9laGNkT1JOQlV5WDdfcVlfX1lL0gFiQVVfeXFMTlotOE91WmxoS1hoSTRGcEo0dTVWZzlocXNKUmk1bzB4WEVSYW5qRlFfOVZ6dG9Xa3FPTzlPWWlwc0tZN0daSXVSamN2VWtyR3RETUU4cUhoX2JyREpDaUVGNXc?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 美股收盤：道瓊指數創歷史新高，博通股價受挫致市場擔憂AI泡沫，科技股普跌 - TradingKey](https://news.google.com/rss/articles/CBMi5wFBVV95cUxQZ0IyYi11VHRFcWVxaDBtcUVQT0pxX3hCMkk1QTlRUUZFamJsMUpERGRhbkdIaHRkZF8wcWM2eXNrRnB3YlZqQkVEVGt4ZjBDS210dUtleVFXWkM0c21iWUxidHNhaFExRHpiMEJXY1FDWFhuaGE3MGhTazB5UzlycEx6NDZHSEpWLXRsaGRNakttNXJfX080OFByaE44dkdzZjVtaFQyRHpxMDU5NkhRdDFTN3gzYjM3dVlIVHhGT3lBcGh1djk4UTAtUlk0RXVoUTNzQmhQVVpmYlNRTnJPaV9hOWNVcGs?oc=5)\n- [[\"美股 科技股 Nasdaq 標普500\" - Google 新聞] 美伊延長停火協議助攻 美股標普、那斯達克雙創歷史新高 - 蕃新聞](https://news.google.com/rss/articles/CBMiUkFVX3lxTE9fUUR5ZDNQSTVxek1ReUFTRnBLLUFpZHBXckRES1dPdHA1V3ZLSmZicUJlcXgzaGxVWHJxcGRwa3ZiYjUzX2xFckppVEE0ZnNoVFE?oc=5)\n\n**🇹🇼 台股相關**\n- [台積電、SK海力士滿倉後買誰？外資加碼名單曝光 聯發科等4檔台股入列 - news.cnyes.com](https://news.google.com/rss/articles/CBMiT0FVX3lxTE5sQVR2OEhld2lkWF8zSzZUMzlwcFFrME9hVXhINUdoRHNrQkJUUWY3MGRXemVwSWtWckJYSmZ5bUxJUTl1Vy03LVc3aGZOV2s?oc=5)\n- [台積電開高翻黑！台股急殺近1,000點、失守45,000點大關 誰來撐盤？ - UDN](https://news.google.com/rss/articles/CBMiUEFVX3lxTE9vYnZZUElaUlJuVHFZc1ZFUE1WN3BMSjRsWFlxZlBRc3dfMTRWamtmbWgtTHU1bTJqUmgxR1RYWlYtcW11X0NWRjZVaVVsLV9u0gFWQVVfeXFMUHF4Q0FpaFJ5QXBvY0k5VjkyMmxwTVBYLXZDUThUaV9BOTlmd2Q2cjFoZWlkVnozOGpaNXhJTjZEZTFUamM2Q0syOW9TWTRTRkR6ZDVKNFE?oc=5)\n- [不只台積電，外資鎖定台灣AI供應鏈 摩根士丹利：台股續旺，只擔心兩件事 - 天下雜誌](https://news.google.com/rss/articles/CBMiTkFVX3lxTE9HMHJYN3VwdWJlU0dwdUxYM29GRXpsZWxuZE1wUGQxUEZkejBHV21nYzFFcEZFWVJhUTRTT3lMQTF6NUhWaDk4NTRUeEhWUQ?oc=5)\n- [【Follow法人】外資狠砍632億元！台積電遭狙殺1.7萬張淪提款機 記憶體四雄也中槍 - Yahoo股市](https://news.google.com/rss/articles/CBMi3wNBVV95cUxORGp2c2FmelBhWVBjTTV2SlRUSlJ1WE52MEUycDlPUU10Ry1LcFBBZmwzQTlxT1psclBuUmFOX1k1MkJvTkVEaVZORFZYVk9oR19KajJ3ZUJLTFJUS3FqVWt5NFl1RGN4NTFFMVNEZl9JS3ZXZkVNZHFWbWMxVElOVDN3R2dHcmEwVmtreGRBaUhlZ3BYLWlIWHBDUVlIcTJHb1REVFZqX1I2S2l2cVBvY1k0cVg2Ujl4UmJVc0xhVUFSMUxnMkFZSWR6SnhIVW16NVlsYkpBeHlOWFJwcVFsVGExdTlVdmRaaHdnMDdIcFc4SWZzTEd2WExvMTFVUTVJQWRqejBmTVJjS2NNVlYweVhBanhTTWoxU0tpNHRWQThqLXhYUEs0M1N3ZWc2VmM5cVB6TG5yMk9ndEhmM1FJSXZDU01TcVhZa3pIbjhBNlBCRmJRRVZZNEpqYWl3Ml82bU1RVTg4ajRaczc4SDNlX1BMX2RZVFdsb2ZISDBZb014T1JQZ0lueHpNM3BFR2ZkVnBBVTVzUm1hM01rZlllNFFVZjNCMGQ4UUVuSXFJV0RJVzRKRGNFbmN4ZE42NkxyYm5aMEF3Rk1hMW1iNm1vX0tubVozc2ZSREFkb0VMaw?oc=5)\n- [【即時新聞】台積電營收有望改寫新高 激勵台股6月行情挑戰新高 - CMoney投資網誌](https://news.google.com/rss/articles/CBMikAFBVV95cUxOX2Exd2M5NUV5a3NuZTFuTC0yX1VrUm1Wd3psc0xaMjVMOWwxZmloUGNURVlXbVVvblZwUjVuMHZvOWlsRlllZExCenU0NU5mQkpKYXAxcjNRa1dZcVBVM2pCRUdXV0tPWnVhWDhjMzNQb2w4QWhSUlI2bExpWE13YjZUU3U3czVVMUJPRTNJRTM?oc=5)\n\n## 📊 今日選股 Top Picks\n\n### 🥇 國泰金（2882.TW） · 金融 — 分數 163\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(金融)+5、外資買超+7、相對強弱(優於大盤)+15、接近52週高+20、RSI過熱(>75)-15、Power pivot放量突破(回測lift2.0)+18、Stage2上升趨勢(回測lift1.36)+12、Pocket pivot吸籌(回測lift1.35)+8、U/D量吸籌(回測lift1.39)+8、RS線新高領先(回測lift1.23)+5\n\n📌 國泰金 (2882.TW)  | 動能分數 163\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、量能(高於20日均量)、波動穩定、產業(金融)、外資買超、相對強弱(優於大盤)、接近52週高、Power pivot放量突破(回測lift2.0)、Stage2上升趨勢(回測lift1.36)、Pocket pivot吸籌(回測lift1.35)、U/D量吸籌(回測lift1.39)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 100.0，停損 94.06（-5.9%，波動 ATR 3.0%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：114.86。技術停利位（交易管理，非目標價）114.86。\n   進階：結構停損 75.61；移動停損 92.1（持有：突破跌破或移動停損觸及即出）。\n5. 風險：RSI過熱(>75)；美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### 🥈 蘋果（AAPL） · AI伺服器 — 分數 137\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、波動穩定+10、產業(AI伺服器)+20、相對強弱(強於大盤)+20、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12、RS線新高領先(回測lift1.23)+5\n\n📌 蘋果 (AAPL)  | 動能分數 137\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、波動穩定、產業(AI伺服器)、相對強弱(強於大盤)、接近52週高、Stage2上升趨勢(回測lift1.36)、RS線新高領先(回測lift1.23)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 313.26，停損 302.39（-3.5%，波動 ATR 1.7%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：328.86–340.43；測幅目標 328.86。技術停利位（交易管理，非目標價）340.43。\n   進階：結構停損 303.39；移動停損 300.27（持有：突破跌破或移動停損觸及即出）。\n5. 風險：美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### 🥉 富邦金（2881.TW） · 金融 — 分數 128\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(金融)+5、投信買超+10、相對弱勢(弱於大盤)-10、接近52週高+20、RSI過熱(>75)-15、Power pivot放量突破(回測lift2.0)+18、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n📌 富邦金 (2881.TW)  | 動能分數 128\n1. 投資理由：趨勢(MA5>MA20)、動能(5日上漲)、量能(高於20日均量)、波動穩定、產業(金融)、投信買超、接近52週高、Power pivot放量突破(回測lift2.0)、Stage2上升趨勢(回測lift1.36)、U/D量吸籌(回測lift1.39)。\n2. 短中線觀點：均線多頭排列且短線動能延續，趨勢偏多。\n3. 進出場策略：可於回測 5 日線不破時分批進場。\n4. 進出場價位：進場 118.0，停損 109.99（-6.8%，波動 ATR 3.4%）。\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：138.04。技術停利位（交易管理，非目標價）138.04。\n   進階：結構停損 93.1；移動停損 108.8（持有：突破跌破或移動停損觸及即出）；Fib 延伸 101.04/102.88/104.9。\n5. 風險：相對弱勢(弱於大盤)、RSI過熱(>75)；美債殖利率上行壓抑成長股估值；AI 族群短線易過熱。\n\n### ▫️ 廣達（2382.TW） · AI伺服器 — 分數 125\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(AI伺服器)+20、外資賣超-20、投信買超+10、相對強弱(優於大盤)+15、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 瑞昱（2379.TW） · 半導體 — 分數 110\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、外資賣超-20、投信買超+10、相對強弱(優於大盤)+15、逼近52週高+10\n\n### ▫️ 大立光（3008.TW） · 半導體 — 分數 110\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 台積電（2330.TW） · 半導體 — 分數 107\n- 因子：趨勢(MA5>MA20)+25、動能(5日上漲)+25、量能(高於20日均量)+20、波動穩定+10、產業(半導體)+15、外資賣超-20、投信買超+10、相對弱勢(弱於大盤)-10、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12\n\n### ▫️ 聯電（2303.TW） · 半導體 — 分數 107\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、產業(半導體)+15、外資買超+7、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 聯發科（2454.TW） · 半導體 — 分數 100\n- 因子：趨勢(MA5>MA20)+25、量能(高於20日均量)+20、產業(半導體)+15、相對強弱(強於大盤)+20、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n### ▫️ 台積電 ADR（TSM） · 半導體 — 分數 92\n- 因子：趨勢(MA5>MA20)+25、波動穩定+10、產業(半導體)+15、相對強弱(強於大盤)+20、逼近52週高+10、Stage2上升趨勢(回測lift1.36)+12\n\n### ▫️ Nasdaq100 ETF（QQQ） · ETF — 分數 87\n- 因子：趨勢(MA5>MA20)+25、波動穩定+10、相對強弱(強於大盤)+20、接近52週高+20、Stage2上升趨勢(回測lift1.36)+12\n\n### ▫️ 鴻海（2317.TW） · AI伺服器 — 分數 85\n- 因子：趨勢(MA5>MA20)+25、波動穩定+10、產業(AI伺服器)+20、投信買超+10、相對弱勢(弱於大盤)-10、逼近52週高+10、Stage2上升趨勢(回測lift1.36)+12、U/D量吸籌(回測lift1.39)+8\n\n\n## 🧠 資產配置建議\n\n- 美國成長股：30.0%\n- 台股成長股：30.0%\n- ETF 核心：20.0%\n- 加密資產：10.0%\n- 現金/債券：10.0%\n\n### 🔁 再平衡建議（vs 目前持倉，百分點）\n- 台股成長股：加碼 +5.0\n- ETF 核心：減碼 -5.0\n\n---\n## ⚠️ 風險提示與免責\n⚠️ 免責聲明：本報告由程式自動產生，僅為投資決策的「輔助資訊」，不構成任何買賣要約或投資建議。所有數據來自公開來源，可能有延遲或誤差。投資有風險，請自行判斷並承擔盈虧。"
 }

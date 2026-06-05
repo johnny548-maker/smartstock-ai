@@ -182,3 +182,12 @@ ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
 .stale{background:rgba(255,107,107,.16);border:1px solid rgba(255,107,107,.4);color:#ffb3b3;
   border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:.86rem;font-weight:600}
 .pchart{height:135px}
+
+/* risk engine (analyst G1/G2/G10): market-regime banner + concentration warning */
+.regime{border-radius:12px;padding:10px 14px;margin-bottom:12px;border:1px solid var(--line);overflow:hidden}
+.regime>b{display:inline}
+.regime .reg-exp{float:right;font-weight:700}
+.regime .small{margin-top:5px;clear:both}
+.reg-on{background:rgba(95,227,155,.12);border-color:rgba(95,227,155,.4)}
+.reg-mid{background:rgba(255,196,84,.12);border-color:rgba(255,196,84,.45)}
+.reg-off{background:rgba(255,107,107,.14);border-color:rgba(255,107,107,.45)}

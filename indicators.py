@@ -61,6 +61,16 @@ def pivots(df, k=2):
     return lows, highs
 
 
+def adr_pct(df, n=20):
+    """Average Daily Range % = mean(High/Low − 1) over n bars, ×100. A keyless
+    volatility/liquidity read: <~2% = too quiet/dead, >~15% = too wild. None if short."""
+    if df is None or len(df) < n + 1:
+        return None
+    lo = df["Low"].replace(0, np.nan)
+    r = (df["High"] / lo - 1).rolling(n).mean().iloc[-1]
+    return None if pd.isna(r) else round(float(r) * 100, 2)
+
+
 def chandelier(df, n=22, mult=3.0):
     """Chandelier long trailing-stop: highest-high(n) − mult×ATR(n). None if short."""
     if df is None or len(df) < n:

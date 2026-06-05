@@ -10,6 +10,7 @@ backtest non-trigger rate), not its over-promised single-point targets.
 import re
 
 from indicators import pivots
+import risk_sizing
 
 GREEN_MIN = 90          # score ≥ → 🟢
 AMBER_MIN = 40          # 40-89 → 🟡 ; <40 → 🔴
@@ -109,4 +110,5 @@ def enrich(symbol, score, factors, df, levels=None):
         "spark": spark(df),
         "spark_start": sd,
         "spark_end": se,
+        "risk": risk_sizing.plan(levels),
     }

@@ -36,6 +36,8 @@ import signals as signals_mod
 import universe as universe_mod
 import edgar as edgar_mod
 import verdict as verdict_mod
+import market_regime as regime_mod
+import correlation as correlation_mod
 
 
 def setup_logging():
@@ -187,6 +189,20 @@ def main(web=False):
             item["stock"], item["score"], item["factors"],
             data.get(item["stock"]), level_map.get(item["stock"]))
 
+    # 5c. Risk overlay (analyst G1/G2/G10): market-regime gate + concentration ---
+    try:
+        regime = regime_mod.market_regime(frames)
+        if regime:
+            log.info("market regime: %s (%d%% exposure)", regime["label"], regime["exposure"])
+    except Exception as e:
+        log.warning("SKIP regime: %s", e); regime = None
+    try:
+        pick_data = {it["stock"]: data[it["stock"]] for it in ranked[:config.DISPLAY_N]
+                     if data.get(it["stock"]) is not None}
+        concentration = correlation_mod.concentration(pick_data, names=config.STOCK_NAMES)
+    except Exception as e:
+        log.warning("SKIP concentration: %s", e); concentration = None
+
     # 6. Allocation + rebalance ---------------------------------------------
     base = asset_allocation.base_allocation()
     target = asset_allocation.adjust_allocation(base, signal)
@@ -208,7 +224,7 @@ def main(web=False):
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-        signals=sig, themes=themes, opportunity=opp)
+        signals=sig, themes=themes, opportunity=opp, regime=regime, concentration=concentration)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -220,7 +236,8 @@ def main(web=False):
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-            signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards)
+            signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
+            regime=regime, concentration=concentration)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

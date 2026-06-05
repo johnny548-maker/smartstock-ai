@@ -29,6 +29,9 @@ import universe
 import edgar
 import verdict
 import breakout_radar
+import market_regime
+import risk_sizing
+import correlation
 from datetime import date
 
 
@@ -763,6 +766,70 @@ class TestBreakoutRadar(unittest.TestCase):
         self.assertIn("ready", r)
         self.assertIn("signals", r)
         self.assertFalse(r["ready"])                # a hard uptrend is not a flat base
+
+
+class TestMarketRegime(unittest.TestCase):
+    def test_distribution_count(self):
+        closes = [100, 100.1] * 12 + [99, 98, 97, 96, 95]
+        vols = [1000] * 24 + [2100, 2200, 2300, 2400, 2500]
+        self.assertEqual(market_regime.distribution_count(make_df(closes, vols)), 5)
+
+    def test_exposure_uptrend_vs_downtrend(self):
+        up = make_df(list(np.linspace(100, 160, 260)), [1000] * 260)
+        dn = make_df(list(np.linspace(160, 100, 260)), [1000] * 260)
+        self.assertEqual(market_regime.exposure_dial(up)["label"], "risk-on")
+        self.assertEqual(market_regime.exposure_dial(dn)["label"], "risk-off")
+
+    def test_regime_takes_conservative_min(self):
+        up = make_df(list(np.linspace(100, 160, 260)), [1000] * 260)
+        dn = make_df(list(np.linspace(160, 100, 260)), [1000] * 260)
+        r = market_regime.market_regime({"twii": up, "sp500": dn})
+        self.assertEqual(r["label"], "risk-off")          # min of the two
+
+
+class TestRiskSizing(unittest.TestCase):
+    def test_per_share_risk(self):
+        p = risk_sizing.per_share_risk(100, 93)
+        self.assertEqual(p["risk"], 7)
+        self.assertEqual(p["risk_pct"], 7.0)
+
+    def test_position_size(self):
+        s = risk_sizing.position_size(100000, 100, 93, risk_pct=1.0)
+        self.assertEqual(s["risk_amount"], 1000.0)
+        self.assertEqual(s["shares"], 142)                # 1000 / 7
+
+    def test_reward_risk(self):
+        self.assertEqual(risk_sizing.reward_risk(100, 93, 121), 3.0)
+
+    def test_portfolio_heat_cap(self):
+        self.assertTrue(risk_sizing.portfolio_heat([1, 1, 1, 2])["within"])
+        self.assertFalse(risk_sizing.portfolio_heat([2, 2, 2, 2])["within"])
+
+    def test_plan_from_levels(self):
+        lv = {"entry": 100, "stop": 93, "target_band": [110, 121]}
+        pl = risk_sizing.plan(lv)
+        self.assertEqual(pl["rr"], 3.0)
+        self.assertTrue(pl["rr_ok"])
+        self.assertEqual(pl["risk_pct"], 7.0)
+
+
+class TestCorrelation(unittest.TestCase):
+    def _data(self):
+        a = make_df(list(np.linspace(100, 160, 80)))
+        b = make_df(list(np.linspace(100, 160, 80)))      # identical to A → corr 1
+        c = make_df([100, 102] * 40)                       # different return pattern
+        return {"A": a, "B": b, "C": c}
+
+    def test_cluster_groups_correlated(self):
+        out = correlation.concentration(self._data(), window=60)
+        cl = out["clusters"]
+        self.assertTrue(cl)
+        self.assertIn("A", cl[0]["tickers"])
+        self.assertIn("B", cl[0]["tickers"])
+
+    def test_effective_bets_below_n(self):
+        out = correlation.concentration(self._data(), window=60)
+        self.assertLess(out["effective_bets"], 3)          # A,B move as one → <3 bets
 
 
 if __name__ == "__main__":

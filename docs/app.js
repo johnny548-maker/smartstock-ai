@@ -79,6 +79,34 @@ function tldrBanner(d) {
   return `<div class="tldr">📌 今日重點：${esc(d.tldr)}</div>`;
 }
 
+const REGIME_LABEL = { 'risk-on': '🟢 偏多可進攻', caution: '🟡 謹慎減碼', 'risk-off': '🔴 防禦/觀望' };
+function regimeBanner(d) {
+  const r = d.regime; if (!r) return '';
+  const cls = r.label === 'risk-on' ? 'reg-on' : (r.label === 'risk-off' ? 'reg-off' : 'reg-mid');
+  const det = Object.entries(r.detail || {}).map(([k, v]) =>
+    `${k === 'twii' ? '台股' : (k === 'sp500' ? '美股' : k)} ${v.trend}/DD${v.dd_count}`).join('、');
+  return `<div class="regime ${cls}"><b>🌡️ 市場環境：${esc(REGIME_LABEL[r.label] || r.label)}</b>`
+    + `<span class="reg-exp">建議曝險 ${r.exposure}%</span>`
+    + `<div class="muted small">${esc(det)}。~75% 突破在空頭失敗 → 環境轉弱降部位、暫停新突破單。</div></div>`;
+}
+
+function concentrationBlock(d) {
+  const c = d.concentration; if (!c || !(c.clusters || []).length) return '';
+  let html = '';
+  if (c.effective_bets != null) html += `<p class="muted small">今日選股 ${c.n} 檔 ≈ <b>${c.effective_bets} 個有效獨立賭注</b>。高相關股應視為同一部位計風險。</p>`;
+  html += '<ul class="rev">' + c.clusters.map((g) =>
+    `<li>高相關群（ρ=${g.avg_corr}）：<b>${g.names.map(esc).join('、')}</b> → 視為 1 個部位</li>`).join('') + '</ul>';
+  return foldSection('⚠️ 相關性警示（避免假分散）', html, true);
+}
+
+function riskPlan(p) {
+  const r = p.risk; if (!r || r.risk_pct == null) return '';
+  const rr = r.rr != null ? ` · R:R 至目標 <b class="${r.rr_ok ? 'up' : 'down'}">${r.rr}</b>${r.rr_ok ? '' : '（<2，偏弱）'}` : '';
+  return `<div class="kv" style="width:100%"><span>部位/風險（單筆風險法）</span>`
+    + `<b>每股風險 ${r.risk_per_share}（${r.risk_pct}%）${rr}</b>`
+    + (r.size_formula ? `<span class="muted small">${esc(r.size_formula)}</span>` : '') + '</div>';
+}
+
 function newsBlock(news) {
   if (!news) return '';
   const link = (n, withSrc) => {
@@ -401,7 +429,7 @@ function stockCard(d, code) {
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${rev}</div>
+    <div class="kvs">${vr}${theme}${rev}${riskPlan(p)}</div>
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;
@@ -462,8 +490,8 @@ async function showDetail(date) {
   } catch (e) {}
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + deltaBlock(d) +
-    picksBlock(d.picks, date) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + deltaBlock(d) +
+    picksBlock(d.picks, date) + concentrationBlock(d) +
     breakoutBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
