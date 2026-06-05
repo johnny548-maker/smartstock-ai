@@ -191,7 +191,9 @@ function opportunityBlock(d) {
       rev = ` <b class="up">營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%</b>`;
       if (l.rev_accel != null) rev += `<span class="muted small">(加速${l.rev_accel > 0 ? '+' : ''}${l.rev_accel})</span>`;
     }
-    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(l.ticker)}">${lightDot(l.light)} ${nm} `
+    const px = l.price != null ? ` <span class="px">${l.price}</span>`
+      + (l.change_pct != null ? `<b class="${l.change_pct >= 0 ? 'up' : 'down'} small">${l.change_pct > 0 ? '▲' : '▼'}${Math.abs(l.change_pct)}%</b>` : '') : '';
+    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(l.ticker)}">${lightDot(l.light)} ${nm}${px} `
       + `<b class="accel">RS ${l.rs_rating}</b>${th}<br>`
       + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</a></li>`;
   }).join('');
@@ -230,7 +232,7 @@ function picksBlock(picks, date) {
       <div class="pick-head">${medal} <b>${head}</b>
         <span class="spark-wrap">${sparkline(p.spark)}</span>
         <span class="score">${p.score}</span></div>
-      ${verdict}</a>`;
+      ${priceLine(p)}${verdict}</a>`;
   }).join('');
   return section('📊 今日選股（點看完整分析）', html);
 }
@@ -251,6 +253,32 @@ function sparkline(arr, w, h) {
   const col = arr[arr.length - 1] >= arr[0] ? '#5fe39b' : '#ff8e8e';
   return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">`
     + `<polyline fill="none" stroke="${col}" stroke-width="1.5" points="${pts}"/></svg>`;
+}
+
+function priceLine(p) {
+  if (p.price == null) return '';
+  const c = p.change_pct;
+  const chg = c == null ? '' : `<b class="${c >= 0 ? 'up' : 'down'}">${c > 0 ? '▲' : (c < 0 ? '▼' : '')} ${Math.abs(c)}%</b>`;
+  return `<div class="priceline"><span class="px">${p.price}</span> ${chg}</div>`;
+}
+
+// price chart WITH axes: y = price (max/last/min), x = start/end dates
+function priceChart(arr, startD, endD) {
+  if (!arr || arr.length < 2) return '';
+  const W = 320, H = 130, padL = 46, padR = 8, padT = 8, padB = 18;
+  const min = Math.min(...arr), max = Math.max(...arr), rng = (max - min) || 1;
+  const last = arr[arr.length - 1];
+  const X = (i) => padL + (i / (arr.length - 1)) * (W - padL - padR);
+  const Y = (v) => padT + (1 - (v - min) / rng) * (H - padT - padB);
+  const pts = arr.map((v, i) => X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join(' ');
+  const col = last >= arr[0] ? '#5fe39b' : '#ff8e8e';
+  const yLab = (v, cls) => `<line x1="${padL}" y1="${Y(v).toFixed(1)}" x2="${W - padR}" y2="${Y(v).toFixed(1)}" class="grid"/>`
+    + `<text x="${padL - 5}" y="${(Y(v) + 3).toFixed(1)}" class="ax ${cls || ''}" text-anchor="end">${v}</text>`;
+  const xLab = (d, i, anc) => d ? `<text x="${X(i).toFixed(1)}" y="${H - 4}" class="ax" text-anchor="${anc}">${esc(d.slice(5))}</text>` : '';
+  return `<svg class="pchart" viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="none">`
+    + yLab(max) + yLab(last, 'ax-now') + yLab(min)
+    + `<polyline fill="none" stroke="${col}" stroke-width="1.6" points="${pts}"/>`
+    + xLab(startD, 0, 'start') + xLab(endD, arr.length - 1, 'end') + `</svg>`;
 }
 
 function getPins() { try { return JSON.parse(localStorage.getItem('ss_pins') || '[]'); } catch (e) { return []; } }
@@ -279,7 +307,7 @@ window.ssSearch = (q) => {
     s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
   box.innerHTML = hits.length ? hits.map((s) =>
     `<a class="srow" href="#${CUR_DATE}/${esc(s.code)}">${lightDot(s.light)} <b>${esc(s.name)}</b>`
-    + `<span class="muted small"> ${esc(s.code)} · ${esc(s.kind)}</span></a>`).join('')
+    + `<span class="muted small"> ${esc(s.code)}${s.price != null ? ' · ' + s.price : ''} · ${esc(s.kind)}</span></a>`).join('')
     : '<div class="muted small" style="padding:6px">當日掃描名單無此股（靜態頁僅含當日掃描的約 100 檔）</div>';
 };
 
@@ -325,14 +353,19 @@ function stockCard(d, code) {
   const stock = p.stock || p.ticker;
   const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(stock);
   const pinned = getPins().includes(stock);
+  const px = p.price != null
+    ? `<div class="sd-price"><span class="px-big">${p.price}</span>`
+      + (p.change_pct != null ? ` <b class="${p.change_pct >= 0 ? 'up' : 'down'}">${p.change_pct > 0 ? '▲' : (p.change_pct < 0 ? '▼' : '')} ${Math.abs(p.change_pct)}%</b>` : '')
+      + '<span class="muted small"> 收盤</span></div>' : '';
   const head = `<div class="sd-head">
     <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+    ${px}
     <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
     <div class="sd-actions">
       <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
       <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">🔗 分享</button></div></div>`;
   const chart = p.spark && p.spark.length > 1
-    ? `<div class="sd-chart">${sparkline(p.spark, 320, 90)}<div class="muted small">近 ${p.spark.length} 日收盤走勢</div></div>` : '';
+    ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期）</div></div>` : '';
   const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
   const rev = p.rev_yoy != null ? `<div class="kv"><span>季營收 YoY</span><b class="up">${p.rev_yoy > 0 ? '+' : ''}${p.rev_yoy}%</b></div>` : '';

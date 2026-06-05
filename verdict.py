@@ -71,12 +71,42 @@ def spark(df, n=60):
     return [round(float(c), 2) for c in df["Close"].iloc[-n:]]
 
 
+def price_change(df):
+    """(current price, day change %) from the last two closes."""
+    if df is None or not len(df):
+        return None, None
+    px = round(float(df["Close"].iloc[-1]), 2)
+    if len(df) < 2:
+        return px, None
+    prev = float(df["Close"].iloc[-2])
+    return px, (round((px / prev - 1) * 100, 2) if prev else None)
+
+
+def spark_dates(df, n=60):
+    """(start_date, end_date) strings for the sparkline x-axis, or (None, None)."""
+    if df is None or not len(df) or not hasattr(df.index, "__getitem__"):
+        return None, None
+    try:
+        idx = df.index
+        end = idx[-1]
+        start = idx[-min(n, len(df))]
+        return str(getattr(start, "date", lambda: start)()), str(getattr(end, "date", lambda: end)())
+    except Exception:
+        return None, None
+
+
 def enrich(symbol, score, factors, df, levels=None):
     """Build the card-enrichment dict attached to a pick/opportunity name."""
+    px, chg = price_change(df)
+    sd, se = spark_dates(df)
     return {
         "light": light(score),
         "verdict": verdict_line(factors),
+        "price": px,
+        "change_pct": chg,
         "vol_ratio": vol_ratio(df),
         "sr": sr_tiers(df),
         "spark": spark(df),
+        "spark_start": sd,
+        "spark_end": se,
     }

@@ -704,6 +704,29 @@ class TestVerdict(unittest.TestCase):
         df = make_df(list(range(100)))
         self.assertEqual(len(verdict.spark(df, 60)), 60)
 
+    def test_price_change(self):
+        df = make_df([100, 110])
+        px, chg = verdict.price_change(df)
+        self.assertEqual(px, 110.0)
+        self.assertAlmostEqual(chg, 10.0)
+
+    def test_spark_dates(self):
+        idx = pd.date_range("2026-01-01", periods=80, freq="D")
+        df = make_df(list(range(80)))
+        df.index = idx
+        sd, se = verdict.spark_dates(df, 60)
+        self.assertEqual(se, "2026-03-21")            # last of 80 daily bars
+        self.assertTrue(sd < se)
+
+    def test_enrich_has_price_and_dates(self):
+        idx = pd.date_range("2026-01-01", periods=70, freq="D")
+        df = make_df(list(np.linspace(50, 90, 70)))
+        df.index = idx
+        e = verdict.enrich("X", 95, {"趨勢(MA5>MA20)": 25}, df)
+        self.assertIsNotNone(e["price"])
+        self.assertIsNotNone(e["spark_start"])
+        self.assertIsNotNone(e["spark_end"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -41,16 +41,17 @@ def _search_index(picks, opportunity, movers):
     where to find it). Client-side search filters this — no backend needed."""
     idx, seen = [], set()
 
-    def add(code, name, light, kind):
+    def add(code, name, light, kind, price=None):
         if not code or code in seen:
             return
         seen.add(code)
-        idx.append({"code": code, "name": name or code, "light": light, "kind": kind})
+        idx.append({"code": code, "name": name or code, "light": light,
+                    "kind": kind, "price": price})
 
     for p in picks:
-        add(p["stock"], p.get("name"), p.get("light"), "pick")
+        add(p["stock"], p.get("name"), p.get("light"), "pick", p.get("price"))
     for ld in (opportunity or {}).get("leaders", []):
-        add(ld["ticker"], ld.get("name"), ld.get("light"), "opportunity")
+        add(ld["ticker"], ld.get("name"), ld.get("light"), "opportunity", ld.get("price"))
     for m in (movers or [])[:8]:
         add(m["stock"], None, None, "mover")
     return idx

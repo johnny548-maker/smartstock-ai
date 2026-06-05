@@ -155,11 +155,14 @@ def scan_opportunities(data, names=None, top=None, rs_min=None):
             sigs.append("Stage2")
         if rr >= rs_min and sigs:
             theme, tier = supply_chain.ticker_theme(sym)
+            px, chg = verdict.price_change(df)
+            sd, se = verdict.spark_dates(df)
             leaders.append({
                 "ticker": sym, "name": names.get(sym), "rs_rating": rr,
                 "theme": theme, "tier": tier, "signals": sigs, "count": len(sigs),
-                "light": verdict.light(rr), "vol_ratio": verdict.vol_ratio(df),
-                "sr": verdict.sr_tiers(df), "spark": verdict.spark(df),
+                "light": verdict.light(rr), "price": px, "change_pct": chg,
+                "vol_ratio": verdict.vol_ratio(df), "sr": verdict.sr_tiers(df),
+                "spark": verdict.spark(df), "spark_start": sd, "spark_end": se,
             })
     leaders.sort(key=lambda x: (x["rs_rating"], x["count"]), reverse=True)
     return leaders[:top]
