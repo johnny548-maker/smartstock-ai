@@ -25,6 +25,7 @@ import rs_rating
 import technical_setup as ts
 import volume_signals as vs
 import supply_chain
+import verdict
 
 log = logging.getLogger(__name__)
 CODE_RE = re.compile(r"[1-9][0-9]{3}")          # 4-digit common stock (excludes ETF/warrant)
@@ -157,6 +158,8 @@ def scan_opportunities(data, names=None, top=None, rs_min=None):
             leaders.append({
                 "ticker": sym, "name": names.get(sym), "rs_rating": rr,
                 "theme": theme, "tier": tier, "signals": sigs, "count": len(sigs),
+                "light": verdict.light(rr), "vol_ratio": verdict.vol_ratio(df),
+                "sr": verdict.sr_tiers(df), "spark": verdict.spark(df),
             })
     leaders.sort(key=lambda x: (x["rs_rating"], x["count"]), reverse=True)
     return leaders[:top]

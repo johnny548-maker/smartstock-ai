@@ -69,6 +69,10 @@ async function showList() {
 function section(title, inner) {
   return `<section class="block"><h2>${title}</h2>${inner}</section>`;
 }
+// collapsible section for the heavy informational blocks (簡化版面)
+function foldSection(title, inner, open) {
+  return `<details class="block fold"${open ? ' open' : ''}><summary>${title}</summary>${inner}</details>`;
+}
 
 function tldrBanner(d) {
   if (!d.tldr) return '';
@@ -88,7 +92,7 @@ function newsBlock(news) {
   if (!g && !tw) return '';
   let html = g ? `<ul>${g}</ul>` : '';
   if (tw) html += `<h3>🇹🇼 台股相關</h3><ul>${tw}</ul>`;
-  return section('🌍 全球市場焦點新聞', html);
+  return foldSection('🌍 全球市場焦點新聞', html, false);
 }
 
 function marketBlock(d) {
@@ -171,8 +175,8 @@ function revenueBlock(d) {
     const ind = c.industry ? `<span class="muted small"> ${esc(c.industry)}</span>` : '';
     return `<li>${esc(c.name)}（${esc(c.code)}）${ind} — YoY <b class="up">+${c.yoy}%</b>${flag}</li>`;
   }).join('');
-  return section(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`,
-    `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`);
+  return foldSection(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`,
+    `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`, false);
 }
 
 function opportunityBlock(d) {
@@ -187,11 +191,12 @@ function opportunityBlock(d) {
       rev = ` <b class="up">營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%</b>`;
       if (l.rev_accel != null) rev += `<span class="muted small">(加速${l.rev_accel > 0 ? '+' : ''}${l.rev_accel})</span>`;
     }
-    return `<li>${nm} <b class="accel">RS ${l.rs_rating}</b>${th}<br>`
-      + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</li>`;
+    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(l.ticker)}">${lightDot(l.light)} ${nm} `
+      + `<b class="accel">RS ${l.rs_rating}</b>${th}<br>`
+      + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</a></li>`;
   }).join('');
-  return section(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`,
-    `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股。</p><ul class="rev">${rows}</ul>`);
+  return foldSection(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`,
+    `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。點代號看完整分析。informational，非持股。</p><ul class="rev opp-list">${rows}</ul>`, false);
 }
 
 function signalsBlock(d) {
@@ -214,22 +219,149 @@ function signalsBlock(d) {
   return section('🔎 早期訊號雷達', html);
 }
 
-function picksBlock(picks) {
+function picksBlock(picks, date) {
   if (!picks || !picks.length) return '';
   const medals = ['🥇', '🥈', '🥉'];
   const html = picks.map((p, i) => {
     const medal = medals[i] || '▫️';
     const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
-    const sec = p.sector ? `<span class="muted"> · ${esc(p.sector)}</span>` : '';
-    const factors = Object.entries(p.factors || {}).map(([k, v]) =>
-      `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('');
-    const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
-    return `<div class="pick">
-      <div class="pick-head">${medal} <b>${head}</b>${sec}<span class="score">${p.score}</span></div>
-      ${levelsStrip(p.levels)}
-      <div class="factors">${factors}</div>${comm}</div>`;
+    const verdict = p.verdict ? `<div class="muted small verdict">${lightDot(p.light)} ${esc(p.verdict)}</div>` : '';
+    return `<a class="pick pick-link" href="#${esc(date)}/${esc(p.stock)}">
+      <div class="pick-head">${medal} <b>${head}</b>
+        <span class="spark-wrap">${sparkline(p.spark)}</span>
+        <span class="score">${p.score}</span></div>
+      ${verdict}</a>`;
   }).join('');
-  return section('📊 今日選股', html);
+  return section('📊 今日選股（點看完整分析）', html);
+}
+
+/* ---------- sparkline / 燈號 / 釘選 / 搜尋 (Round 3, 懶人分析 ref) ---------- */
+const LIGHT_EMOJI = { green: '🟢', amber: '🟡', red: '🔴' };
+const lightDot = (l) => LIGHT_EMOJI[l] || '⚪';
+
+function sparkline(arr, w, h) {
+  if (!arr || arr.length < 2) return '';
+  w = w || 110; h = h || 30; const pad = 2;
+  const min = Math.min(...arr), max = Math.max(...arr), rng = (max - min) || 1;
+  const pts = arr.map((v, i) => {
+    const x = pad + (i / (arr.length - 1)) * (w - 2 * pad);
+    const y = pad + (1 - (v - min) / rng) * (h - 2 * pad);
+    return x.toFixed(1) + ',' + y.toFixed(1);
+  }).join(' ');
+  const col = arr[arr.length - 1] >= arr[0] ? '#5fe39b' : '#ff8e8e';
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">`
+    + `<polyline fill="none" stroke="${col}" stroke-width="1.5" points="${pts}"/></svg>`;
+}
+
+function getPins() { try { return JSON.parse(localStorage.getItem('ss_pins') || '[]'); } catch (e) { return []; } }
+function setPins(a) { try { localStorage.setItem('ss_pins', JSON.stringify(a)); } catch (e) {} }
+window.ssPin = (code, el) => {
+  const p = getPins(); const i = p.indexOf(code);
+  if (i < 0) p.push(code); else p.splice(i, 1);
+  setPins(p);
+  if (el) el.textContent = p.includes(code) ? '★ 已釘選' : '☆ 釘選';
+  return false;
+};
+window.ssShare = (date, code) => {
+  const url = location.origin + location.pathname + '#' + date + (code ? '/' + code : '');
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => {
+    $('status').textContent = '已複製連結'; setTimeout(() => { $('status').textContent = ''; }, 1500);
+  });
+  return false;
+};
+
+let CUR = null, CUR_DATE = '';
+window.ssSearch = (q) => {
+  q = (q || '').trim().toLowerCase();
+  const box = $('ssResults'); if (!box) return;
+  if (!q) { box.innerHTML = ''; return; }
+  const hits = (CUR && CUR.search || []).filter((s) =>
+    s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
+  box.innerHTML = hits.length ? hits.map((s) =>
+    `<a class="srow" href="#${CUR_DATE}/${esc(s.code)}">${lightDot(s.light)} <b>${esc(s.name)}</b>`
+    + `<span class="muted small"> ${esc(s.code)} · ${esc(s.kind)}</span></a>`).join('')
+    : '<div class="muted small" style="padding:6px">當日掃描名單無此股（靜態頁僅含當日掃描的約 100 檔）</div>';
+};
+
+function searchBar() {
+  return `<div class="searchbar">
+    <input id="ssInput" type="search" placeholder="🔍 查代號或名稱（例 2330、台積電、AAOI）"
+      oninput="ssSearch(this.value)" autocomplete="off">
+    <div id="ssResults"></div></div>`;
+}
+
+function pinsBar(d) {
+  const pins = getPins(); if (!pins.length) return '';
+  const idx = {}; (d.search || []).forEach((s) => { idx[s.code] = s; });
+  const chips = pins.map((c) => {
+    const s = idx[c];
+    return `<a class="pinchip" href="#${esc(CUR_DATE)}/${esc(c)}">${s ? lightDot(s.light) : '📌'} `
+      + `${esc(s ? s.name : c)}</a>`;
+  }).join('');
+  return `<div class="pins"><span class="muted small">📌 我的釘選：</span>${chips}</div>`;
+}
+
+function disciplineList() {
+  const items = ['進場前確認條件達成', '嚴格執行停損停利', '單筆風險 ≤ 總資金 2%',
+    '盈虧比建議 ≥ 1:2', '不預設立場、順勢操作', '避免重大消息發布前後重倉'];
+  return '<ul class="discipline">' + items.map((x) => `<li>☑ ${x}</li>`).join('') + '</ul>';
+}
+
+function srBlock(sr) {
+  if (!sr) return '';
+  const row = (lbl, v, cls) => v == null ? '' : `<li class="${cls}"><span>${lbl}</span><b>${v}</b></li>`;
+  const r = sr.resistance || [], s = sr.support || [];
+  return '<ul class="sr">'
+    + row('壓力 2', r[1], 'sr-res') + row('壓力 1', r[0], 'sr-res')
+    + row('現價', sr.price, 'sr-now')
+    + row('支撐 1', s[0], 'sr-sup') + row('支撐 2', s[1], 'sr-sup')
+    + row('強支撐', sr.strong_support, 'sr-sup') + '</ul>';
+}
+
+function stockCard(d, code) {
+  const p = (d.picks || []).find((x) => x.stock === code)
+    || (d.opportunity && d.opportunity.leaders || []).find((x) => x.ticker === code);
+  if (!p) return `<div class="status">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="muted small">靜態頁僅含當日選股+機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`;
+  const stock = p.stock || p.ticker;
+  const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(stock);
+  const pinned = getPins().includes(stock);
+  const head = `<div class="sd-head">
+    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+    <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
+    <div class="sd-actions">
+      <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
+      <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">🔗 分享</button></div></div>`;
+  const chart = p.spark && p.spark.length > 1
+    ? `<div class="sd-chart">${sparkline(p.spark, 320, 90)}<div class="muted small">近 ${p.spark.length} 日收盤走勢</div></div>` : '';
+  const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
+  const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
+  const rev = p.rev_yoy != null ? `<div class="kv"><span>季營收 YoY</span><b class="up">${p.rev_yoy > 0 ? '+' : ''}${p.rev_yoy}%</b></div>` : '';
+  const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors).map(([k, v]) =>
+    `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
+  const lv = p.levels ? `<h3>進出場價位</h3>${levelsStrip(p.levels)}` : '';
+  const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
+  const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
+  return `<section class="block sd">${head}${chart}
+    <div class="kvs">${vr}${theme}${rev}</div>
+    ${sr}${lv}${factors}${comm}
+    <h3>紀律 checklist</h3>${disciplineList()}
+    <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;
+}
+
+async function showStock(date, code) {
+  $('listView').classList.add('hidden');
+  $('detailView').classList.remove('hidden');
+  $('backBtn').classList.remove('hidden');
+  $('title').textContent = code;
+  $('status').textContent = '載入個股…';
+  try {
+    if (!CUR || CUR_DATE !== date) { CUR = await getJSON('data/' + date + '.json'); CUR_DATE = date; }
+  } catch (e) { $('status').textContent = '讀取失敗：' + e.message; return; }
+  $('status').textContent = '';
+  NAMES = CUR.names || {};
+  $('detailView').innerHTML = `<a class="backlink" href="#${esc(date)}">‹ 回 ${esc(date)} 日報</a>`
+    + searchBar() + stockCard(CUR, code);
+  window.scrollTo(0, 0);
 }
 
 function allocBlock(d) {
@@ -259,21 +391,27 @@ async function showDetail(date) {
     return;
   }
   $('status').textContent = '';
+  CUR = d; CUR_DATE = date;
   NAMES = d.names || {};
   const gen = d.generated_at
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
-  // order: TL;DR → 變化 → 早期訊號 → 月營收 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
+  // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML =
-    tldrBanner(d) + deltaBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
-    moversBlock(d) + newsBlock(d.news) + picksBlock(d.picks) + allocBlock(d) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + deltaBlock(d) +
+    picksBlock(d.picks, date) +
+    opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +
+    gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
+    allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);
 }
 
 /* ---------- routing ---------- */
 function route() {
-  const date = location.hash.replace(/^#/, '').trim();
-  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) showDetail(date);
+  const h = location.hash.replace(/^#/, '').trim();
+  const m = h.match(/^(\d{4}-\d{2}-\d{2})(?:\/(.+))?$/);
+  if (m && m[2]) showStock(m[1], decodeURIComponent(m[2]));
+  else if (m) showDetail(m[1]);
   else showList();
 }
 

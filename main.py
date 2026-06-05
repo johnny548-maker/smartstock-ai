@@ -35,6 +35,7 @@ import theme as theme_mod
 import signals as signals_mod
 import universe as universe_mod
 import edgar as edgar_mod
+import verdict as verdict_mod
 
 
 def setup_logging():
@@ -179,6 +180,13 @@ def main(web=False):
         analyses[item["stock"]] = ai_analyzer.analyze_stock(
             item["stock"], item["score"], item["factors"], item.get("sector"), levels=lv)
 
+    # 5b. Per-pick card enrichment (燈號/verdict/量比/S-R/趨勢序列) for the PWA ----
+    pick_cards = {}
+    for item in ranked[:config.DISPLAY_N]:
+        pick_cards[item["stock"]] = verdict_mod.enrich(
+            item["stock"], item["score"], item["factors"],
+            data.get(item["stock"]), level_map.get(item["stock"]))
+
     # 6. Allocation + rebalance ---------------------------------------------
     base = asset_allocation.base_allocation()
     target = asset_allocation.adjust_allocation(base, signal)
@@ -212,7 +220,7 @@ def main(web=False):
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-            signals=sig, themes=themes, opportunity=opp)
+            signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

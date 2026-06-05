@@ -36,11 +36,47 @@ def _tldr(risk, institutional, ranked, breadth=None):
     return "；".join(parts)
 
 
+def _search_index(picks, opportunity, movers):
+    """Flat searchable index of the day's actionable names (code + name + light +
+    where to find it). Client-side search filters this — no backend needed."""
+    idx, seen = [], set()
+
+    def add(code, name, light, kind):
+        if not code or code in seen:
+            return
+        seen.add(code)
+        idx.append({"code": code, "name": name or code, "light": light, "kind": kind})
+
+    for p in picks:
+        add(p["stock"], p.get("name"), p.get("light"), "pick")
+    for ld in (opportunity or {}).get("leaders", []):
+        add(ld["ticker"], ld.get("name"), ld.get("light"), "opportunity")
+    for m in (movers or [])[:8]:
+        add(m["stock"], None, None, "mover")
+    return idx
+
+
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
-                  revenue=None, signals=None, themes=None, opportunity=None):
+                  revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None):
     level_map = level_map or {}
+    pick_cards = pick_cards or {}
+    picks = [
+        {
+            "stock": it["stock"],
+            "name": it.get("name"),
+            "score": it["score"],
+            "sector": it.get("sector"),
+            "factors": it["factors"],
+            "levels": level_map.get(it["stock"]),
+            "commentary": (analyses or {}).get(it["stock"]),
+            **(pick_cards.get(it["stock"]) or {}),    # light/verdict/vol_ratio/sr/spark
+        }
+        for it in ranked[:DISPLAY_N]
+    ]
+    # search index = the day's actionable names (picks + opportunity leaders + movers)
+    search = _search_index(picks, opportunity, movers)
     return {
         "date": date_str,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -58,18 +94,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "institutional": institutional,
         "movers": movers or [],
         "names": STOCK_NAMES,
-        "picks": [
-            {
-                "stock": it["stock"],
-                "name": it.get("name"),
-                "score": it["score"],
-                "sector": it.get("sector"),
-                "factors": it["factors"],
-                "levels": level_map.get(it["stock"]),
-                "commentary": (analyses or {}).get(it["stock"]),
-            }
-            for it in ranked[:DISPLAY_N]
-        ],
+        "picks": picks,
+        "search": search,
         "allocation": allocation,
         "rebalance": rebalance_diff,
         "skips": sorted(set(skips or [])),

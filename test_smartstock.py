@@ -27,6 +27,7 @@ import volume_signals
 import supply_chain
 import universe
 import edgar
+import verdict
 from datetime import date
 
 
@@ -670,6 +671,38 @@ class TestEdgar(unittest.TestCase):
         qs = [{"end": e, "val": v} for e, v in zip(ends, [100, 100, 100, 150, 150])]
         out = edgar.growth_accel(qs)
         self.assertAlmostEqual(out[3]["yoy"], 50.0)        # 2024Q1 vs 2023Q1, not vs a shifted index
+
+
+class TestVerdict(unittest.TestCase):
+    def test_light_thresholds(self):
+        self.assertEqual(verdict.light(120), "green")
+        self.assertEqual(verdict.light(60), "amber")
+        self.assertEqual(verdict.light(10), "red")
+
+    def test_verdict_line_strips_parens(self):
+        line = verdict.verdict_line({"Stage2上升趨勢(回測lift1.36)": 12, "量能(高於20日均量)": 20})
+        self.assertNotIn("(", line)
+        self.assertNotIn("（", line)
+        self.assertIn("Stage2上升趨勢", line)
+
+    def test_verdict_line_empty(self):
+        self.assertIn("觀望", verdict.verdict_line({}))
+
+    def test_vol_ratio(self):
+        df = make_df([100] * 25, volumes=[1000] * 20 + [2000] * 5)
+        self.assertGreater(verdict.vol_ratio(df), 0)        # recent volume well above base
+
+    def test_sr_tiers(self):
+        df = make_df(ramp([60, 100, 80, 110, 96, 120, 105], seg=8))
+        sr = verdict.sr_tiers(df)
+        self.assertIn("resistance", sr)
+        self.assertIn("support", sr)
+        self.assertTrue(all(r > sr["price"] for r in sr["resistance"]))
+        self.assertTrue(all(s < sr["price"] for s in sr["support"]))
+
+    def test_spark_length(self):
+        df = make_df(list(range(100)))
+        self.assertEqual(len(verdict.spark(df, 60)), 60)
 
 
 if __name__ == "__main__":
