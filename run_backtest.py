@@ -19,6 +19,12 @@ Still survivorship-biased (yfinance survivors): every lift is an optimistic uppe
 import sys
 import logging
 
+# CJK signal names (VCP 收縮 …) crash the default cp1252 Windows console on print.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 import data_fetcher
 import technical_setup as ts
 import volume_signals as vs
