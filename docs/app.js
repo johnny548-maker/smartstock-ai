@@ -175,6 +175,25 @@ function revenueBlock(d) {
     `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`);
 }
 
+function opportunityBlock(d) {
+  const opp = d.opportunity || {};
+  const leaders = opp.leaders || [];
+  if (!leaders.length) return '';
+  const rows = leaders.map((l) => {
+    const nm = l.name ? `${esc(l.name)}（${esc(l.ticker)}）` : esc(l.ticker);
+    const th = l.theme ? `<span class="muted small"> · ${esc(l.theme)}</span>` : '';
+    let rev = '';
+    if (l.rev_yoy != null) {
+      rev = ` <b class="up">營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%</b>`;
+      if (l.rev_accel != null) rev += `<span class="muted small">(加速${l.rev_accel > 0 ? '+' : ''}${l.rev_accel})</span>`;
+    }
+    return `<li>${nm} <b class="accel">RS ${l.rs_rating}</b>${th}<br>`
+      + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</li>`;
+  }).join('');
+  return section(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`,
+    `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股。</p><ul class="rev">${rows}</ul>`);
+}
+
 function signalsBlock(d) {
   const board = d.signals || [];
   const themes = (d.themes || []).filter((t) => t.emerging);
@@ -245,7 +264,7 @@ async function showDetail(date) {
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
   // order: TL;DR → 變化 → 早期訊號 → 月營收 → 總經 → 本周注意 → Movers → 新聞 → 選股 → 配置 → 免責
   $('detailView').innerHTML =
-    tldrBanner(d) + deltaBlock(d) + signalsBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
+    tldrBanner(d) + deltaBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) + gen + marketBlock(d) + calendarBlock(d) +
     moversBlock(d) + newsBlock(d.news) + picksBlock(d.picks) + allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);

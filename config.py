@@ -190,6 +190,32 @@ REV_MIN_REVENUE = 100000.0  # 當月營收下限(千元≈1億)，排除微型�
 # lumpy / non-comparable monthly revenue → exclude (建商認列、金融、證券)
 REV_EXCLUDE_INDUSTRIES = ["建材營造", "金融保險", "證券", "存託憑證"]
 
+# ── Opportunity universe (Round 2 — decoupled scan-set, sees small/mid-caps) ─
+# The watchlist (28) is what we track; the OPPORTUNITY universe is what we SCAN to
+# surface names we don't yet hold (AAOI/NVTS-class). Keyless: US from a committed
+# CSV, TW from TWSE/TPEx open-data company lists ranked by dollar-volume.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+UNIVERSE_US_CSV = os.path.join(_HERE, "universe_us.csv")
+SUPPLY_CHAIN_MAP = os.path.join(_HERE, "supply_chain_map.json")
+TWSE_LIST_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
+TWSE_DAYALL_URL = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
+TPEX_LIST_URL = "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O"
+TPEX_DAYALL_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+HTTP_UA = {"User-Agent": "smartstock-ai/1.0 (github actions; contact johnny548@gmail.com)"}
+OPP_TW_CAP_N = 400            # top-N TW names by dollar-volume eligible for the scan
+OPP_SCAN_LIMIT = 260         # hard cap on OHLCV names fetched per daily run (429/runtime guard)
+OPP_PERIOD = "2y"            # need >252 bars for the 12-month cross-sectional RS-Rating window
+OPP_BATCH = 45               # yf.download batch size (Yahoo 429 mitigation)
+OPP_TOP_DISPLAY = 15         # opportunity early-leaders to surface in the report
+OPP_RS_MIN = 80              # cross-sectional RS-Rating floor for a leadership candidate
+# SEC EDGAR — keyless US fundamental spine (quarterly revenue acceleration)
+EDGAR_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
+EDGAR_FACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
+EDGAR_UA = "SmartStockDaily johnny548@gmail.com"   # SEC requires a descriptive UA (blank → 403)
+EDGAR_CACHE = os.path.join(_HERE, ".cache", "edgar")
+EDGAR_REVENUE_CONCEPTS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
+                          "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet"]
+
 # ── Output ──────────────────────────────────────────────────
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)

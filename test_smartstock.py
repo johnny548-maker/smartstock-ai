@@ -24,6 +24,9 @@ import signals
 import backtest
 import rs_rating
 import volume_signals
+import supply_chain
+import universe
+import edgar
 from datetime import date
 
 
@@ -560,6 +563,84 @@ class TestBacktestHardened(unittest.TestCase):
         out = backtest.bars_to_target({"AAA": df}, sig, max_horizon=3, step=1,
                                       explosive_pct=15.0, min_bars=1)
         self.assertIsNotNone(out["median_bars"])
+
+
+class TestSupplyChain(unittest.TestCase):
+    def test_map_loads_and_reverse_lookup(self):
+        m = supply_chain.load_supply_chain()
+        self.assertTrue(len(m) >= 5)
+        theme, tier = supply_chain.ticker_theme("AAOI")
+        self.assertIsNotNone(theme)                       # AAOI mapped to a CPO theme
+
+    def test_anchors_include_targets(self):
+        anchors = supply_chain.anchor_tickers()
+        self.assertIn("AAOI", anchors)
+        self.assertIn("NVTS", anchors)
+
+    def test_group_strength_counts(self):
+        m = supply_chain.load_supply_chain()
+        theme = m[0]["theme"]
+        members = set(m[0].get("tier1", []) + m[0].get("tier2", []) + m[0].get("tier3", []))
+        n = supply_chain.group_strength(theme, members)
+        self.assertEqual(n, len(members))
+
+
+class TestUniverse(unittest.TestCase):
+    def test_us_universe_loads_targets(self):
+        rows = universe.load_us_universe()
+        tickers = {r["ticker"] for r in rows}
+        self.assertGreater(len(rows), 100)
+        self.assertIn("AAOI", tickers)
+        self.assertIn("NVTS", tickers)
+
+    def test_rank_by_dollar_vol(self):
+        tw = {"2330.TW": ("台積電", 900), "9999.TW": ("x", 100), "1234.TW": ("y", 500)}
+        self.assertEqual(universe._rank_by_dollar_vol(tw, 2), ["2330.TW", "1234.TW"])
+
+    def test_merge_us_first_dedup_cap(self):
+        merged = universe._merge(["A", "B"], ["B", "C"], ["D", "A"], scan_limit=3)
+        self.assertEqual(merged, ["A", "B", "C"])         # US first, deduped, capped
+
+    def test_scan_surfaces_cross_sectional_leader(self):
+        data = {
+            "LEAD": make_df(list(np.linspace(50, 160, 300)), volumes=[1000] * 300),
+            "FLAT": make_df([100] * 300, volumes=[1000] * 300),
+            "DOWN": make_df(list(np.linspace(160, 50, 300)), volumes=[1000] * 300),
+        }
+        out = universe.scan_opportunities(data, names={"LEAD": "Leader"}, rs_min=80)
+        self.assertTrue(out)
+        self.assertEqual(out[0]["ticker"], "LEAD")
+        self.assertEqual(out[0]["rs_rating"], 99)
+
+
+class TestEdgar(unittest.TestCase):
+    def test_discrete_quarters_filters_and_dedupes(self):
+        units = [
+            {"start": "2024-01-01", "end": "2024-03-31", "val": 100, "filed": "2024-05-01"},
+            {"start": "2024-01-01", "end": "2024-12-31", "val": 500, "filed": "2025-02-01"},  # annual
+            {"start": "2024-04-01", "end": "2024-06-30", "val": 110, "filed": "2024-08-01"},
+            {"start": "2024-01-01", "end": "2024-03-31", "val": 99, "filed": "2024-04-15"},   # older dup
+        ]
+        q = edgar.discrete_quarters(units)
+        self.assertEqual(len(q), 2)                       # annual dropped, dup collapsed
+        self.assertEqual(q[0]["val"], 100)                # kept later-filed value
+
+    def test_growth_accel(self):
+        ends = ["2023-03-31", "2023-06-30", "2023-09-30", "2023-12-31",
+                "2024-03-31", "2024-06-30", "2024-09-30", "2024-12-31"]
+        vals = [100, 100, 100, 100, 130, 125, 140, 160]
+        qs = [{"end": e, "val": v} for e, v in zip(ends, vals)]
+        out = edgar.growth_accel(qs)
+        self.assertAlmostEqual(out[4]["yoy"], 30.0)       # 2024Q1 130 vs 2023Q1 100 (calendar-matched)
+        self.assertIn("accel", out[5])
+
+    def test_growth_accel_handles_gap(self):
+        # a missing quarter must not shift the YoY match (positional i-4 would break)
+        ends = ["2023-03-31", "2023-06-30", "2023-12-31",   # 2023Q3 missing
+                "2024-03-31", "2024-06-30"]
+        qs = [{"end": e, "val": v} for e, v in zip(ends, [100, 100, 100, 150, 150])]
+        out = edgar.growth_accel(qs)
+        self.assertAlmostEqual(out[3]["yoy"], 50.0)        # 2024Q1 vs 2023Q1, not vs a shifted index
 
 
 if __name__ == "__main__":

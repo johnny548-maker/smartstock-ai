@@ -39,7 +39,7 @@ def _tldr(risk, institutional, ranked, breadth=None):
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
-                  revenue=None, signals=None, themes=None):
+                  revenue=None, signals=None, themes=None, opportunity=None):
     level_map = level_map or {}
     return {
         "date": date_str,
@@ -52,6 +52,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "revenue": revenue,
         "signals": (signals or {}).get("board", []),
         "themes": [t for t in (themes or []) if t.get("emerging")],
+        "opportunity": opportunity,
         "indices": indices,
         "news": news,
         "institutional": institutional,

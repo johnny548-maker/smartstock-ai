@@ -33,6 +33,8 @@ import breadth as breadth_mod
 import revenue as revenue_mod
 import theme as theme_mod
 import signals as signals_mod
+import universe as universe_mod
+import edgar as edgar_mod
 
 
 def setup_logging():
@@ -100,6 +102,20 @@ def main(web=False):
         themes = theme_mod.get_themes(news)
     except Exception as e:
         log.warning("SKIP themes: %s", e); themes = []; skips.append("themes")
+
+    # 2e. 機會掃描 (全市場早期領導股，watchlist 外的小型成長股 — Round 2 P0-A) -----
+    try:
+        opp = universe_mod.get_opportunities()
+        cmap = edgar_mod.ticker_to_cik()                       # enrich US leaders w/ SEC 季營收
+        for ld in opp.get("leaders", []):
+            if not ld["ticker"].endswith((".TW", ".TWO")):
+                g = edgar_mod.revenue_growth(ld["ticker"], cik_map=cmap)
+                if g:
+                    ld["rev_yoy"] = g.get("yoy"); ld["rev_accel"] = g.get("accel")
+        log.info("opportunity scan: %d universe, %d scanned, %d leaders",
+                 opp["universe"], opp["scanned"], len(opp["leaders"]))
+    except Exception as e:
+        log.warning("SKIP opportunity scan: %s", e); opp = None; skips.append("opportunity")
 
     # 3. 三大法人 ------------------------------------------------------------
     try:
@@ -184,7 +200,7 @@ def main(web=False):
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-        signals=sig, themes=themes)
+        signals=sig, themes=themes, opportunity=opp)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -196,7 +212,7 @@ def main(web=False):
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-            signals=sig, themes=themes)
+            signals=sig, themes=themes, opportunity=opp)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

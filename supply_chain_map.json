@@ -1,0 +1,208 @@
+[
+ {
+  "theme": "HBM 高頻寬記憶體",
+  "tier1": [
+   "MU",
+   "2330.TW",
+   "005930.KS"
+  ],
+  "tier2": [
+   "3711.TW",
+   "3017.TW",
+   "3035.TW"
+  ],
+  "tier3": [
+   "2408.TW",
+   "4967.TW",
+   "8299.TWO",
+   "CAMT",
+   "ACMR",
+   "FORM"
+  ],
+  "note": "tier1 = HBM die makers (Micron, TSMC base-die/CoWoS host, Samsung). tier2 = 日月光投控3711 (HBM stacking/TSV assembly), ASE-adjacent. tier3 = 南亞科2408 (DRAM, HBM transition optionality, [single-source, unverified on HBM4 design-win]), globalwafers/晶豪科 4967 niche DRAM, 群聯8299.TWO (controller, HBM-adjacent [unverified direct HBM exposure]). US under-radar: CAMT (Camtek — HBM/CoWoS inspection, the pick-and-shovel), ACMR (ACM Research — HBM wafer clean), FORM (FormFactor — HBM probe cards). The alpha = test/inspection/probe (CAMT/FORM) not the memory itself."
+ },
+ {
+  "theme": "CoWoS 先進封裝",
+  "tier1": [
+   "2330.TW",
+   "3711.TW",
+   "AMKR"
+  ],
+  "tier2": [
+   "3034.TW",
+   "8046.TW",
+   "3037.TW",
+   "3189.TW"
+  ],
+  "tier3": [
+   "3131.TWO",
+   "3583.TWO",
+   "6187.TW",
+   "3680.TW",
+   "3413.TW",
+   "CAMT",
+   "ONTO"
+  ],
+  "note": "tier1 = TSMC (owns CoWoS), 日月光3711, Amkor (OSAT). tier2 = ABF substrate 欣興3037/南電8046/景碩3189 + 聯詠3034 driver. tier3 = the CoWoS equipment 三傑: 弘塑3131.TWO (wet-process/clean), 辛耘3583.TWO (etch/temp-bond-debond), 萬潤6187.TW (die-bond/dispense), 家登3680.TW (EUV pod + carrier), 京鼎3413.TW (TSMC equipment subsystem). US: CAMT (Camtek), ONTO (Onto Innovation — CoWoS metrology). tier3 equipment makers get paid per-tool on every CoWoS capacity expansion — the cleanest beneficiary."
+ },
+ {
+  "theme": "CPO 矽光子/光通訊",
+  "tier1": [
+   "COHR",
+   "LITE",
+   "2345.TW"
+  ],
+  "tier2": [
+   "3081.TWO",
+   "3363.TWO",
+   "4979.TWO",
+   "POET"
+  ],
+  "tier3": [
+   "2455.TW",
+   "3163.TWO",
+   "3450.TW",
+   "6442.TWO",
+   "6530.TWO",
+   "AAOI",
+   "POET"
+  ],
+  "note": "tier1 = Coherent COHR + Lumentum LITE (laser/transceiver giants) + 智邦2345 (switch). tier2 = 聯亞3081.TWO (GaAs/InP epi for lasers), 上詮3363.TWO (fiber array/CPO packaging), 華星光4979.TWO (optical module). tier3 = THE explosive small-caps: 全新2455.TW (磊晶/VCSEL epi — upstream of every laser), 波若威3163.TWO (WDM filter/光收發), 聯鈞3450.TW (光通訊磊晶+模組), 光聖6442.TWO (fiber connectivity), 創威6530.TWO (光通訊鑽針/drill). US under-radar: AAOI (Applied Optoelectronics — vertically-integrated transceiver, the AAOI archetype), POET (POET Technologies — optical interposer, early-revenue 14x-potential small-cap). 全新/聯亞 = the epi layer where 矽光子 alpha originates."
+ },
+ {
+  "theme": "CCL 銅箔基板/載板",
+  "tier1": [
+   "2383.TW",
+   "3037.TW",
+   "AVGO"
+  ],
+  "tier2": [
+   "6213.TW",
+   "6274.TWO",
+   "2368.TW",
+   "8046.TW"
+  ],
+  "tier3": [
+   "8358.TWO",
+   "2349.TW",
+   "1714.TW",
+   "6269.TW",
+   "4768.TWO",
+   "ROG"
+  ],
+  "note": "tier1 = 台光電2383 (M8/M9 高階CCL龍頭, iPhone+AI PCB), 欣興3037 (ABF載板), Broadcom AVGO (drives 800G/1.6T spec demand). tier2 = 台燿6274.TWO + 聯茂6213.TW (M9 CCL), 金像電2368.TW (high-layer HLC PCB), 南電8046.TW. tier3 = the material-upstream small-caps: 金居8358.TWO (高速HVLP銅箔 — the copper-foil layer under M9), 富喬2349.TW (低介電玻纖布/Low-Dk glass fabric), 台特化1714.TW [unverified AI-CCL exposure], 台郡6269.TW (FPC), 精成科4768.TWO (HDI). US: ROG (Rogers Corp — high-freq laminate). tier3 = the M9-era copper foil + Low-Dk glass cloth (金居/富喬) where the spec-upgrade margin lands first."
+ },
+ {
+  "theme": "液冷散熱",
+  "tier1": [
+   "VRT",
+   "3017.TW",
+   "3324.TW"
+  ],
+  "tier2": [
+   "2421.TW",
+   "6805.TW",
+   "3653.TW",
+   "NVT"
+  ],
+  "tier3": [
+   "8996.TWO",
+   "3338.TW",
+   "4555.TWO",
+   "6230.TWO",
+   "3680.TW",
+   "API"
+  ],
+  "note": "tier1 = Vertiv VRT (CDU/thermal mega-cap), 散熱雙雄 奇鋐3017 + 雙鴻3324 (full liquid-cooling cold-plate+manifold+CDU). tier2 = 建準2421 (fan/風扇), 富世達6805 (quick-disconnect/扣具), 健策3653 (thermal interface/均熱片), nVent NVT (US liquid-cooling enclosures). tier3 = under-radar: 高力8996.TWO (brazed-plate heat exchanger/CDU核心熱交換器 — EPS +106% growth), 泰碩3338.TW (heat pipe/vapor chamber), 尼得科超眾4555.TWO (thermal module), 超眾/雙葉6230.TWO. US: API (Advanced Energy-adjacent [unverified pure liquid-cool play]). 高力8996 = the heat-exchanger core inside every CDU, the cleanest tier3 liquid-cooling pure-play."
+ },
+ {
+  "theme": "ASIC 客製晶片",
+  "tier1": [
+   "AVGO",
+   "MRVL",
+   "2330.TW"
+  ],
+  "tier2": [
+   "3661.TW",
+   "2454.TW",
+   "3035.TW"
+  ],
+  "tier3": [
+   "3443.TW",
+   "6515.TWO",
+   "6526.TW",
+   "3529.TWO",
+   "CRDO",
+   "ALAB"
+  ],
+  "note": "tier1 = Broadcom AVGO + Marvell MRVL (the two custom-ASIC houses, Google TPU/Meta MTIA/Amazon Trainium), TSMC 2330 fab. tier2 = 創意3661.TW (Alchip — TSMC ASIC design-service, the Taiwan ASIC leader), 聯發科2454.TW, 智原3035.TW (Faraday ASIC). tier3 = the design-service/IP small-caps + connectivity: 創意-adjacent 世芯-KY3443.TW (Alchip rival, hyperscaler ASIC), 穎崴6515.TWO (test socket/測試介面 — paid per ASIC tested), M31 力旺3529.TWO (silicon IP), 愛普6531 [unverified]. US under-radar: CRDO (Credo — SerDes/AEC for custom ASIC, +85% rev growth), ALAB (Astera Labs — PCIe/retimer for ASIC platforms). 世芯3443 + Credo/Astera = where custom-ASIC beneficiary alpha sits below AVGO/MRVL."
+ },
+ {
+  "theme": "GaN 寬能隙功率",
+  "tier1": [
+   "2330.TW",
+   "POWI",
+   "IFX.DE"
+  ],
+  "tier2": [
+   "3016.TW",
+   "3707.TWO",
+   "5347.TWO"
+  ],
+  "tier3": [
+   "8016.TW",
+   "2455.TW",
+   "6438.TWO",
+   "NVTS",
+   "WOLF"
+  ],
+  "note": "tier1 = TSMC 2330 (GaN-on-Si foundry capacity), Power Integrations POWI, Infineon IFX (GaN power leader). tier2 = 嘉晶3016.TW (GaN/SiC epi-wafer — 磊晶, +73% GaN EPI YoY), 漢磊3707.TWO (3rd-gen-semi foundry+epi, GaN+SiC), 世界先進5347.TWO. tier3 = THE under-radar compound-semi names: 矽創-adjacent 全新2455.TW (also GaAs/GaN epi crossover), 嘉晶/漢磊upstream 環球晶adjacent, 茂達6438.TWO (power IC), 合晶6182 [unverified GaN]. US: NVTS (Navitas — pure-play GaN power-IC, +228% 1yr, the NVTS archetype), WOLF (Wolfspeed — SiC/GaN materials). 嘉晶3016 + 漢磊3707.TWO = the epi/foundry tier3 where Taiwan GaN转单 lands; NVTS = the US small-cap explosive move."
+ },
+ {
+  "theme": "AI 伺服器",
+  "tier1": [
+   "2317.TW",
+   "SMCI",
+   "DELL"
+  ],
+  "tier2": [
+   "2382.TW",
+   "3231.TW",
+   "2376.TW",
+   "VRT"
+  ],
+  "tier3": [
+   "2059.TW",
+   "3533.TW",
+   "3665.TW",
+   "5274.TWO",
+   "6669.TW",
+   "AMD",
+   "NVT"
+  ],
+  "note": "tier1 = 鴻海2317 (Foxconn GB200/GB300 rack整機), Super Micro SMCI, Dell DELL. tier2 = 廣達2382/緯創3231/技嘉2376 (ODM server), Vertiv VRT (rack power). tier3 = the component small/mid-caps inside the rack: 川湖2059.TW (server slide-rail/導軌 — sole-source moat), 嘉澤3533.TW (CPU socket/連接器), 貿聯-KY3665.TW (cable harness/線束), 信驊5274.TWO (Aspeed — BMC chip, every server uses it, near-monopoly), 緯穎6669.TW (hyperscale ODM). US: AMD (MI-series GPU challenger), nVent NVT (busbar/power). 信驊5274.TWO (BMC monopoly) + 川湖2059 (rail sole-source) = highest-moat tier3 picks-and-shovels of AI server."
+ },
+ {
+  "theme": "機器人",
+  "tier1": [
+   "TSLA",
+   "2049.TW",
+   "ISRG"
+  ],
+  "tier2": [
+   "1590.TW",
+   "1536.TW",
+   "2231.TW"
+  ],
+  "tier3": [
+   "4540.TWO",
+   "1597.TWO",
+   "2233.TWO",
+   "1583.TW",
+   "4912.TW",
+   "SYM",
+   "SERV"
+  ],
+  "note": "tier1 = Tesla TSLA (Optimus), 上銀2049 (HIWIN — linear guide/ballscrew/harmonic-reducer, most complete humanoid joint-drive line), Intuitive Surgical ISRG (surgical robot). tier2 = 亞德客-KY1590.TW (pneumatic/氣動), 和大1536.TW (planetary reducer/行星減速機 via 盟英), 為升2231. tier3 = the joint/transmission component small-caps (most $-value per humanoid): 全球傳動4540.TWO (ballscrew/linear actuator — arms/legs/dexterous hand), 直得1597.TWO (micro linear-guide/joint module, top-3 global), 宇隆2233.TWO (AI harmonic-reducer/減速機, supplying humanoid+animal-bots), 程泰1583.TW (machine-tool), 中砂4912 [unverified humanoid]. US: SYM (Symbotic — warehouse robotics), SERV (Serve Robotics — delivery, small-cap). 全球傳動4540 + 直得1597 + 宇隆2233 = the reducer/ballscrew tier3 where humanoid BOM value concentrates."
+ }
+]

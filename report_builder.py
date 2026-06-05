@@ -201,16 +201,37 @@ def _signals_block(sig, themes=None):
     return "\n".join(lines)
 
 
+def _opportunity_block(opp):
+    """🛰️ 機會掃描 — watchlist 外的全市場早期領導股 (Round 2 universe expansion)."""
+    leaders = (opp or {}).get("leaders") or []
+    if not leaders:
+        return ""
+    lines = [f"## 🛰️ 機會掃描（全市場早期領導股 · 掃 {opp.get('scanned', '?')} 檔）", "",
+             "_watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股_", ""]
+    for ld in leaders:
+        nm = ld.get("name") or ld["ticker"]
+        th = f" · {ld['theme']}" if ld.get("theme") else ""
+        rev = ""
+        if ld.get("rev_yoy") is not None:
+            rev = f"，季營收YoY {ld['rev_yoy']:+.0f}%"
+            if ld.get("rev_accel") is not None:
+                rev += f"(加速{ld['rev_accel']:+.0f})"
+        lines.append(f"- {nm}（{ld['ticker']}）RS {ld['rs_rating']}{th} — {'、'.join(ld['signals'])}{rev}")
+    return "\n".join(lines)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
-                 events=None, breadth=None, revenue=None, signals=None, themes=None):
+                 events=None, breadth=None, revenue=None, signals=None, themes=None,
+                 opportunity=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
         _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
-    for extra in (_delta_block(delta), _signals_block(signals, themes),
-                  _revenue_block(revenue), _calendar_block(events)):
+    for extra in (_delta_block(delta), _opportunity_block(opportunity),
+                  _signals_block(signals, themes), _revenue_block(revenue),
+                  _calendar_block(events)):
         if extra:
             blocks += ["", extra]
     blocks += [
