@@ -24,12 +24,14 @@ import technical_setup as ts
 import volume_signals as vs
 import signals
 import backtest
-from config import BREADTH_TW, BREADTH_US
+from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
-SLIP_BPS = 15.0          # ~0.15% each side
-NEXT_OPEN = True         # fill at next open (signal fires on close)
+SLIP_BPS = 15.0          # ~0.15% each side (bid/ask + impact)
+FEE_BPS = 30.0           # round-trip commission + TW transaction tax (net-of-cost, G9)
+NEXT_OPEN = True         # fill at next open (signal fires on close) — no exec look-ahead (G4)
+INCLUDE_BUSTED = True    # add boomed-then-busted peers to fight survivorship (G3)
 
 
 def rs_pure(s, b, w=50):
@@ -65,12 +67,15 @@ def main():
     explosive = float(sys.argv[3]) if len(sys.argv) > 3 else 25.0
     period = f"{years}y"
 
-    tickers = BREADTH_TW + BREADTH_US
-    print(f"Downloading {len(tickers)} tickers x {period} ...")
+    tickers = BREADTH_TW + BREADTH_US + (BUSTED_PEERS if INCLUDE_BUSTED else [])
+    print(f"Downloading {len(tickers)} tickers x {period} "
+          f"({len(BUSTED_PEERS) if INCLUDE_BUSTED else 0} busted-peer stress names) ...")
     hist = data_fetcher.get_universe(tickers, period=period)
     bench_raw = data_fetcher.get_universe(["^TWII", "^GSPC"], period=period)
     bench = {"twii": bench_raw.get("^TWII"), "sp500": bench_raw.get("^GSPC")}
-    print(f"Got {len(hist)} histories. Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps\n")
+    n_busted = sum(1 for t in BUSTED_PEERS if hist.get(t) is not None) if INCLUDE_BUSTED else 0
+    print(f"Got {len(hist)} histories ({n_busted} busted peers resolved). "
+          f"Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps, fee={FEE_BPS}bps (net-of-cost)\n")
 
     hdr = f"{'signal':<22}{'fired':>6}{'prec':>7}{'lift':>6}{'CIlo':>7}{'CI>base':>8}" \
           f"{'UP':>6}{'FLAT':>6}{'DOWN':>6}{'p50':>7}"
@@ -80,7 +85,8 @@ def main():
     for name, fn in DEFS.items():
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
                                      step=10, explosive_pct=explosive, min_bars=200,
-                                     next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS)
+                                     next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
+                                     fee_bps=FEE_BPS)
         base_rate = m["base_rate"]
         r = m["by_regime"]
         flag = "YES" if m["ci_beats_base"] else "no"
@@ -92,6 +98,10 @@ def main():
             keep.append((name, m["lift"], r["flat"]["lift"]))
 
     print(f"\nbase rate={base_rate:.2%}  horizon={horizon}  explosive=+{explosive:.0f}%")
+    print(f"coverage: {len(hist)} names ({n_busted} busted-peer stress names) · "
+          f"net-of-cost (slip {SLIP_BPS}bps + fee {FEE_BPS}bps) · next-open fill")
+    print("survivorship: partial — busted peers still trade; true delisted names "
+          "are absent (yfinance survivors). Lift remains an optimistic upper bound.")
     print("\nKEEP (CI lower bound > base rate) — eligible for live weight:")
     for name, lift, flat in sorted(keep, key=lambda x: -x[1]):
         beta_warn = "  [beta? flat-lift<=1]" if flat <= 1.0 else ""

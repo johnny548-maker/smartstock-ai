@@ -11,14 +11,17 @@ Honesty features (added per the 5-expert Wall-Street review):
     the 5y RS-line 1.10 that 15y revealed as regime-thin).
   • Regime split — lift conditioned on UP/FLAT/DOWN market over the holding window,
     exposing beta-vs-alpha (the 5y VCP∧Stage2 2.0 collapsed to 1.34 over 15y).
-  • Cost/liquidity haircut — optional next-open fill + slippage bps + ADV floor,
-    because the edge supposedly lives in thin names that gap on the open.
+  • Cost/liquidity haircut — optional next-open fill (no execution look-ahead, G4)
+    + slippage bps (spread/impact) + round-trip fee_bps (commission + TW tax, net-of-
+    cost G9) + ADV floor, because the edge supposedly lives in thin names that gap.
   • Forward-return distribution (P25/P50/P75) + non-trigger rate — the honest
     'future price' answer, replacing single-point ATR targets.
   • bars-to-target — the honest 'arrival time' answer (a distribution, not a date).
 
 NOTE: still survivorship-biased (yfinance gives today's survivors). Every lift is
-an optimistic upper bound; a curated delisted-peer set is the keyless second-best.
+an optimistic upper bound. The keyless second-best — a curated busted-momentum stress
+set (config.BUSTED_PEERS) — is mixed in by run_backtest to put loser paths back; the
+result reports n_names + a survivorship_note so the bias is never read away.
 """
 import numpy as np
 
@@ -26,9 +29,11 @@ UP_THRESH = 5.0          # bench fwd return > +5% over window → UP regime
 DOWN_THRESH = -5.0       # < -5% → DOWN regime
 
 
-def forward_return(df, i, horizon, next_open_fill=False, slippage_bps=0.0):
+def forward_return(df, i, horizon, next_open_fill=False, slippage_bps=0.0, fee_bps=0.0):
     """% return from bar i to bar i+horizon. With next_open_fill, buy at open[i+1]
-    (realistic for a signal fired on close[i]); slippage_bps haircuts both sides."""
+    (realistic for a signal fired on close[i]); slippage_bps haircuts both sides
+    (bid/ask + impact); fee_bps is the round-trip commission + transaction tax,
+    subtracted once from the net return (G9 net-of-cost)."""
     if df is None or i < 0 or i + horizon >= len(df):
         return None
     slip = slippage_bps / 10000.0
@@ -39,7 +44,7 @@ def forward_return(df, i, horizon, next_open_fill=False, slippage_bps=0.0):
     sell = float(df["Close"].iloc[i + horizon]) * (1 - slip)
     if buy <= 0:
         return None
-    return (sell / buy - 1) * 100.0
+    return (sell / buy - 1) * 100.0 - fee_bps / 100.0
 
 
 def wilson_ci(k, n, z=1.96):
@@ -64,15 +69,16 @@ def _adv_ok(df, i, floor):
 
 def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
                     explosive_pct=25.0, min_bars=200, next_open_fill=False,
-                    slippage_bps=0.0, adv_floor=0.0):
+                    slippage_bps=0.0, adv_floor=0.0, fee_bps=0.0):
     """Walk forward applying signal_fn(df_slice, bench_slice) -> bool.
     Returns metrics: precision/base_rate/lift/recall + Wilson CI + regime split +
-    forward-return distribution + non-trigger rate."""
+    forward-return distribution + non-trigger rate + survivorship coverage."""
     bench_history = bench_history or {}
     fired = fired_explosive = 0
     total = total_explosive = 0
     sum_fwd_signaled = sum_fwd_all = 0.0
     fired_fwd = []                                   # distribution of fired returns
+    names_used = set()                               # G3 coverage: names that contributed
     # regime accumulators: {regime: [fired, fired_explosive, total, total_explosive]}
     reg = {"up": [0, 0, 0, 0], "flat": [0, 0, 0, 0], "down": [0, 0, 0, 0]}
 
@@ -83,9 +89,10 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
         for i in range(min_bars, len(df) - horizon, step):
             if not _adv_ok(df, i, adv_floor):
                 continue
-            fwd = forward_return(df, i, horizon, next_open_fill, slippage_bps)
+            fwd = forward_return(df, i, horizon, next_open_fill, slippage_bps, fee_bps)
             if fwd is None:
                 continue
+            names_used.add(sym)
             # market regime over the same holding window (beta-vs-alpha attribution)
             regime = "flat"
             if bench is not None:
@@ -130,6 +137,10 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
 
     return {
         "horizon": horizon, "explosive_pct": explosive_pct,
+        "fee_bps": fee_bps, "next_open_fill": bool(next_open_fill),
+        "n_names": len(names_used),                   # G3 coverage
+        "survivorship_note": "survivor-only universe — lift is an optimistic upper bound"
+                             if len(names_used) else "",
         "total": total, "total_explosive": total_explosive,
         "fired": fired, "fired_explosive": fired_explosive,
         "precision": round(precision, 4), "base_rate": round(base_rate, 4),

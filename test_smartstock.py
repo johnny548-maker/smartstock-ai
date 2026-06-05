@@ -600,6 +600,40 @@ class TestBacktestHardened(unittest.TestCase):
         self.assertIsNotNone(out["median_bars"])
 
 
+class TestBacktestIntegrity(unittest.TestCase):
+    def test_fee_reduces_return(self):
+        # G9: a 100bps round-trip fee cuts a +50% gross move to +49.0
+        df = make_df([10, 11, 12, 15])
+        gross = backtest.forward_return(df, 0, 3)
+        net = backtest.forward_return(df, 0, 3, fee_bps=100.0)
+        self.assertAlmostEqual(gross, 50.0)
+        self.assertAlmostEqual(net, 49.0)
+
+    def test_zero_fee_unchanged(self):
+        # additive: default fee_bps=0 preserves the legacy number exactly
+        df = make_df([10, 11, 12, 15])
+        self.assertAlmostEqual(backtest.forward_return(df, 0, 3, fee_bps=0.0), 50.0)
+
+    def test_coverage_fields(self):
+        # G3: output exposes how many names contributed + the survivorship caveat
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        m = backtest.backtest_signal({"AAA": df, "BBB": df}, lambda s, b: True,
+                                     horizon=1, step=1, explosive_pct=50.0, min_bars=1)
+        self.assertEqual(m["n_names"], 2)
+        self.assertTrue(m["survivorship_note"])
+        self.assertIn("fee_bps", m)
+
+    def test_fee_lowers_signaled_return(self):
+        # threading fee into the walk-forward lowers avg fired return
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        base = backtest.backtest_signal({"AAA": df}, sig, horizon=1, step=1,
+                                        explosive_pct=50.0, min_bars=1)
+        costed = backtest.backtest_signal({"AAA": df}, sig, horizon=1, step=1,
+                                          explosive_pct=50.0, min_bars=1, fee_bps=50.0)
+        self.assertLess(costed["avg_fwd_signaled"], base["avg_fwd_signaled"])
+
+
 class TestSupplyChain(unittest.TestCase):
     def test_map_loads_and_reverse_lookup(self):
         m = supply_chain.load_supply_chain()

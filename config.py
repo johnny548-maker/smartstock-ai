@@ -101,6 +101,15 @@ BREADTH_US = [
     "SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "AVGO", "TSLA",
     "AMD", "TSM", "NFLX", "JPM", "V", "XOM", "JNJ", "WMT", "PG", "COST",
 ]
+# Busted-momentum stress set (G3 survivorship counter). These boomed then gave it
+# all back in the 2021-22 unwind — including them in the backtest universe puts
+# loser-paths back that a survivor-only list hides. NOTE: a partial fix — these still
+# trade (true delisted names vanish from yfinance), so it lowers but does not remove
+# the survivorship bias. Used only by the offline backtest gate, never the daily run.
+BUSTED_PEERS = [
+    "PTON", "BYND", "SPCE", "NKLA", "PLUG", "FSLY", "ROKU", "ZM",
+    "DOCU", "PINS", "SNAP", "AFRM", "UPST", "CVNA", "CHPT", "RIVN", "LCID",
+]
 BREADTH_HEALTHY = 0.60          # ≥60% above MA20 → 健康
 BREADTH_WEAK = 0.40             # <40% → 轉弱
 
