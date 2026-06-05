@@ -11,11 +11,12 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
                     RSI_WINDOW, RSI_OVERBOUGHT, RSI_OVERSOLD,
                     INST_RATIO_FULL, INST_RATIO_HALF,
                     CONC_HIGH, CONC_MID, STREAK_MIN,
-                    LEADERSHIP_WEIGHT, LEAD_VCP_STAGE2, LEAD_STAGE2, LEAD_VCP,
-                    LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH)
+                    LEADERSHIP_WEIGHT, LEAD_FIRST_NEW_HIGH, LEAD_POWER_PIVOT,
+                    LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH)
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
 from signals import rs_line_new_high
+from volume_signals import accumulating as ud_accumulating
 
 
 def _rs_excess(df, bench, window):
@@ -120,22 +121,25 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         if st >= STREAK_MIN:
             factors[f"外資投信連買{st}日"] = 20
 
-    # ── leadership patterns (backtest-validated weights, run_backtest.py) ────
-    # Early-leadership tells with measured forward-return edge (lift>1). VCP and
-    # Stage-2 are scored as a combo (lift 2.0) rather than additively (stacking
-    # past 2 signals backtested WORSE) — see config LEAD_* for per-pattern lift.
+    # ── leadership patterns (CI-validated weights, hardened 15y run_backtest) ──
+    # ONLY signals whose Wilson-CI lower bound cleared the base rate over 15y survive
+    # here. VCP and VCP∧Stage2 were REMOVED (the 5y lift-2.0 was a regime illusion;
+    # 15y+CI rejected them). Each factor is additive — these are orthogonal early
+    # tells; a name lighting up several is a genuine leader. See config LEAD_*.
     if LEADERSHIP_WEIGHT:
         setup = analyze_setup(df)
-        if setup["stage2"] and setup["vcp"]:
-            factors["VCP+Stage2(回測lift2.0)"] = LEAD_VCP_STAGE2
-        elif setup["stage2"]:
+        if setup["first_new_high"]:
+            factors["久盤後首次新高(回測lift2.4)"] = LEAD_FIRST_NEW_HIGH
+        if setup["power_pivot"]:
+            factors["Power pivot放量突破(回測lift2.0)"] = LEAD_POWER_PIVOT
+        if setup["stage2"]:
             factors["Stage2上升趨勢(回測lift1.36)"] = LEAD_STAGE2
-        elif setup["vcp"]:
-            factors["VCP波動收縮(回測lift1.28)"] = LEAD_VCP
         if setup["pocket_pivot"]:
-            factors["Pocket pivot吸籌(回測lift1.29)"] = LEAD_POCKET_PIVOT
+            factors["Pocket pivot吸籌(回測lift1.35)"] = LEAD_POCKET_PIVOT
+        if ud_accumulating(df):
+            factors["U/D量吸籌(回測lift1.39)"] = LEAD_UD_ACCUM
         if bench is not None and rs_line_new_high(df, bench):
-            factors["RS線新高領先(回測lift1.1)"] = LEAD_RS_NEW_HIGH
+            factors["RS線新高領先(回測lift1.23)"] = LEAD_RS_NEW_HIGH
 
     return {"score": int(sum(factors.values())), "factors": factors, "insufficient": False}
 

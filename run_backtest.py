@@ -1,82 +1,111 @@
 # -*- coding: utf-8 -*-
-"""Walk-forward backtest of the early-leadership signals over real history.
+"""Hardened walk-forward backtest — the weighting gate (credibility overhaul).
 
 Run: python run_backtest.py [years] [horizon] [explosive_pct]
-Default: 5y history, 60-bar (~3mo) horizon, +25% = 'explosive'.
+Default: 15y / 60-bar / +25%.
 
-Backtests ONLY the price/RS-derived signals (rs_line_new_high, trend_template,
-vcp, pocket_pivot, and the leadership combo). The fundamental spine (月營收) and
-news themes are point-in-time-only and have no keyless historical snapshot, so
-they are NOT backtested here — they stand on documented precedent + stay
-informational. This harness decides whether the TECHNICAL signals earn weight.
+Reports, per signal: fired count, precision, base rate, lift, Wilson-CI lower bound,
+whether CI-lower-bound > base rate (the real keep/kill test), regime-split lift
+(UP/FLAT/DOWN market), and the forward-return median. Then bars-to-target (arrival
+distribution) for the validated signals. Uses realistic fills (next-open + slippage).
+
+Only signals whose CI lower bound clears the base rate AND hold up across regimes
+deserve live score weight. (5y said VCP∧Stage2 lift 2.0; 15y says 1.34 — the gap
+was the 2020-24 AI bull. This harness makes that visible.)
+
+Backtests price/RS signals only — theme + 月營收 have no keyless history (informational).
+Still survivorship-biased (yfinance survivors): every lift is an optimistic upper bound.
 """
 import sys
 import logging
 
 import data_fetcher
-import technical_setup
+import technical_setup as ts
+import volume_signals as vs
 import signals
 import backtest
 from config import BREADTH_TW, BREADTH_US
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
+SLIP_BPS = 15.0          # ~0.15% each side
+NEXT_OPEN = True         # fill at next open (signal fires on close)
+
+
+def rs_pure(s, b, w=50):
+    try:
+        if s is None or b is None or len(s) <= w or len(b) <= w:
+            return False
+        n = min(len(s), len(b))
+        import numpy as np
+        rs = (s["Close"].iloc[-n:].to_numpy(float) / b["Close"].iloc[-n:].to_numpy(float))[-w:]
+        return rs[-1] >= rs.max() - 1e-12
+    except Exception:
+        return False
+
+
+DEFS = {
+    "Trend Template":        lambda s, b: ts.trend_template(s)["pass"],
+    "VCP 收縮":              lambda s, b: ts.vcp(s)["pass"],
+    "Pocket pivot":          lambda s, b: ts.pocket_pivot(s),
+    "Power pivot(放量突破)":  lambda s, b: ts.power_pivot(s),
+    "首次新高(久盤後)":       lambda s, b: ts.first_new_high(s),
+    "VDU→Thrust(量縮噴出)":   lambda s, b: vs.vdu_thrust(s),
+    "U/D量比吸籌":            lambda s, b: vs.accumulating(s),
+    "RS線新高(純)":           rs_pure,
+    "VCP∧TrendTemplate":     lambda s, b: ts.vcp(s)["pass"] and ts.trend_template(s)["pass"],
+    "RS純∧TrendTemplate":    lambda s, b: rs_pure(s, b) and ts.trend_template(s)["pass"],
+    "PowerPivot∧TrendTmpl":  lambda s, b: ts.power_pivot(s) and ts.trend_template(s)["pass"],
+}
+
 
 def main():
-    years = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+    years = int(sys.argv[1]) if len(sys.argv) > 1 else 15
     horizon = int(sys.argv[2]) if len(sys.argv) > 2 else 60
     explosive = float(sys.argv[3]) if len(sys.argv) > 3 else 25.0
     period = f"{years}y"
 
     tickers = BREADTH_TW + BREADTH_US
-    print(f"Downloading {len(tickers)} tickers × {period} …")
+    print(f"Downloading {len(tickers)} tickers x {period} ...")
     hist = data_fetcher.get_universe(tickers, period=period)
     bench_raw = data_fetcher.get_universe(["^TWII", "^GSPC"], period=period)
     bench = {"twii": bench_raw.get("^TWII"), "sp500": bench_raw.get("^GSPC")}
-    print(f"Got {len(hist)} stock histories; bench twii={bench['twii'] is not None} "
-          f"sp500={bench['sp500'] is not None}\n")
+    print(f"Got {len(hist)} histories. Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps\n")
 
-    def rs_pure(s, b, w=50):
-        # RS line (close/bench) at a w-bar new high — pure leadership, NO price gate
-        try:
-            if s is None or b is None or len(s) <= w or len(b) <= w:
-                return False
-            n = min(len(s), len(b))
-            rs = (s["Close"].iloc[-n:].to_numpy(float) / b["Close"].iloc[-n:].to_numpy(float))[-w:]
-            return rs[-1] >= rs.max() - 1e-12
-        except Exception:
-            return False
-
-    defs = {
-        "RS線新高(舊:壓低價)":   lambda s, b: signals.rs_line_new_high(s, b),
-        "RS線新高(純領先)":      rs_pure,
-        "RS純 ∧ TrendTemplate":  lambda s, b: rs_pure(s, b) and technical_setup.trend_template(s)["pass"],
-        "Trend Template":        lambda s, b: technical_setup.trend_template(s)["pass"],
-        "VCP 收縮":              lambda s, b: technical_setup.vcp(s)["pass"],
-        "Pocket pivot":          lambda s, b: technical_setup.pocket_pivot(s),
-        "VCP ∧ TrendTemplate":   lambda s, b: (technical_setup.vcp(s)["pass"]
-                                               and technical_setup.trend_template(s)["pass"]),
-        "VCP ∧ TT ∧ RS純":       lambda s, b: (technical_setup.vcp(s)["pass"]
-                                               and technical_setup.trend_template(s)["pass"]
-                                               and rs_pure(s, b)),
-    }
-
-    print(f"{'signal':<26}{'fired':>7}{'prec':>8}{'base':>8}{'lift':>7}{'recall':>8}"
-          f"{'avgFwd':>9}{'avgAll':>8}")
-    print("-" * 90)
-    results = {}
-    for name, fn in defs.items():
+    hdr = f"{'signal':<22}{'fired':>6}{'prec':>7}{'lift':>6}{'CIlo':>7}{'CI>base':>8}" \
+          f"{'UP':>6}{'FLAT':>6}{'DOWN':>6}{'p50':>7}"
+    print(hdr); print("-" * len(hdr))
+    keep = []
+    base_rate = None
+    for name, fn in DEFS.items():
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
-                                     step=10, explosive_pct=explosive, min_bars=200)
-        results[name] = m
-        print(f"{name:<26}{m['fired']:>7}{m['precision']:>8.2%}{m['base_rate']:>8.2%}"
-              f"{m['lift']:>7.2f}{m['recall']:>8.2%}"
-              f"{(m['avg_fwd_signaled'] or 0):>8.1f}%{(m['avg_fwd_all'] or 0):>7.1f}%")
-    print("\nhorizon=%d bars  explosive=+%.0f%%  windows tested=%d  explosive base=%d"
-          % (horizon, explosive, results[list(defs)[0]]["total"],
-             results[list(defs)[0]]["total_explosive"]))
-    print("\nReading: lift>1 ⇒ signal beats the base rate of catching a +%.0f%% move."
-          % explosive)
+                                     step=10, explosive_pct=explosive, min_bars=200,
+                                     next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS)
+        base_rate = m["base_rate"]
+        r = m["by_regime"]
+        flag = "YES" if m["ci_beats_base"] else "no"
+        print(f"{name:<22}{m['fired']:>6}{m['precision']:>7.2%}{m['lift']:>6.2f}"
+              f"{m['precision_ci'][0]:>7.2%}{flag:>8}"
+              f"{r['up']['lift']:>6.2f}{r['flat']['lift']:>6.2f}{r['down']['lift']:>6.2f}"
+              f"{(m['fwd_p50'] or 0):>6.1f}%")
+        if m["ci_beats_base"]:
+            keep.append((name, m["lift"], r["flat"]["lift"]))
+
+    print(f"\nbase rate={base_rate:.2%}  horizon={horizon}  explosive=+{explosive:.0f}%")
+    print("\nKEEP (CI lower bound > base rate) — eligible for live weight:")
+    for name, lift, flat in sorted(keep, key=lambda x: -x[1]):
+        beta_warn = "  [beta? flat-lift<=1]" if flat <= 1.0 else ""
+        print(f"  {name:<22} lift {lift:.2f} (flat-regime {flat:.2f}){beta_warn}")
+
+    print("\nARRIVAL TIME (bars-to-+%.0f%%, capped %d) — the honest 'when':" % (explosive, horizon * 2))
+    for name in ["Trend Template", "Pocket pivot", "Power pivot(放量突破)", "RS純∧TrendTemplate"]:
+        bt = backtest.bars_to_target(hist, DEFS[name], bench_history=bench,
+                                     max_horizon=horizon * 2, step=10,
+                                     explosive_pct=explosive, min_bars=200)
+        if bt["median_bars"] is not None:
+            print(f"  {name:<22} median {bt['median_bars']:.0f} bars "
+                  f"(IQR {bt['iqr_lo']:.0f}-{bt['iqr_hi']:.0f}), "
+                  f"never-hit {bt['never_rate']:.0%}")
 
 
 if __name__ == "__main__":

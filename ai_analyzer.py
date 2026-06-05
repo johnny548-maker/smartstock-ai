@@ -22,17 +22,29 @@ def _trend_view(factors):
 def _levels_line(levels):
     if not levels:
         return "4. 停損與目標：建議停損 -7%，第一目標 +15~25%（依個人風險承受度調整）。"
-    line = (f"4. 進出場價位：參考進場 {levels['entry']}，"
-            f"停損 {levels['stop']}（{levels['stop_pct']}%），"
-            f"目標 {levels['target']}（+{levels['target_pct']}%），"
-            f"R/R {levels['rr']}:1（波動 ATR {levels['atr_pct']}%）。")
+    # honest framing: ATR number is a trade-management bracket, NOT a forecast;
+    # the price-target is a STRUCTURE-based BAND (range), caveat-stamped.
+    bracket = levels.get("atr_bracket")
+    if bracket is None:
+        bracket = levels.get("target")
+    line = (f"4. 進出場價位：進場 {levels['entry']}，"
+            f"停損 {levels['stop']}（{levels['stop_pct']}%，波動 ATR {levels['atr_pct']}%）。")
+    band = levels.get("target_band") or []
+    if band:
+        lo, hi = band[0], band[-1]
+        rng = f"{lo}" if lo == hi else f"{lo}–{hi}"
+        line += (f"\n   目標區間（技術投影，非預測，含倖存者偏差，僅供參考）：{rng}"
+                 + (f"；測幅目標 {levels['measured_move']}" if levels.get("measured_move") else "")
+                 + f"。技術停利位（交易管理，非目標價）{bracket}。")
+    else:
+        line += f" 目標／技術停利位 {bracket}（交易管理，非預測目標價）。"
     adv = []
     if levels.get("swing_stop"):
         adv.append(f"結構停損 {levels['swing_stop']}")
     if levels.get("chandelier"):
-        adv.append(f"移動停損 {levels['chandelier']}")
+        adv.append(f"移動停損 {levels['chandelier']}（持有：突破跌破或移動停損觸及即出）")
     if levels.get("fib_targets"):
-        adv.append("Fib 目標 " + "/".join(str(t) for t in levels["fib_targets"]))
+        adv.append("Fib 延伸 " + "/".join(str(t) for t in levels["fib_targets"]))
     if adv:
         line += "\n   進階：" + "；".join(adv) + "。"
     return line

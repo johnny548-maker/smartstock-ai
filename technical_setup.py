@@ -98,12 +98,52 @@ def pocket_pivot(df, lookback=10):
     return today_vol > max(down_vols)
 
 
+def power_pivot(df, high_window=120, vol_mult=1.5, top_frac=0.25, range_window=20):
+    """Volume-confirmed breakout EVENT — catches the FIRST leg, not the late MA
+    cross. True when today: makes a new `high_window`-bar closing high, on volume
+    >`vol_mult`× the 50d avg, closes in the top `top_frac` of its day's range, and
+    posts the largest true-range in `range_window` bars (decisive thrust)."""
+    if df is None or len(df) < high_window + 1:
+        return False
+    close, high, low, vol = df["Close"], df["High"], df["Low"], df["Volume"]
+    c = float(close.iloc[-1])
+    new_high = c >= float(close.iloc[-high_window - 1:-1].max())
+    ma50v = vol.iloc[-50:].mean()
+    vol_ok = bool(ma50v) and vol.iloc[-1] > ma50v * vol_mult
+    rng = float(high.iloc[-1] - low.iloc[-1])
+    close_strong = rng <= 0 or (c - float(low.iloc[-1])) / rng >= (1 - top_frac)
+    tr = (high - low).iloc[-range_window:]
+    wide = rng >= float(tr.max()) - 1e-9
+    return bool(new_high and vol_ok and close_strong and wide)
+
+
+def first_new_high(df, high_window=126, drought=126):
+    """True when today makes a new `high_window`-bar closing high AND the PRIOR new
+    high was at least `drought` bars ago — emergence from a long base, not the Nth
+    high of a steady uptrend. A bar is a 'new high' when its close ≥ the max close
+    of the preceding `high_window` bars."""
+    if df is None or len(df) < high_window + 2:
+        return False
+    close = df["Close"].to_numpy(dtype=float)
+    n = len(close)
+    if close[-1] < close[-high_window - 1:-1].max():
+        return False                              # today is not a new high
+    # walk back: find the most recent prior bar that STRICTLY exceeded its window
+    # (strict > so a flat base does not register as continuous new highs)
+    for t in range(n - 2, high_window - 1, -1):
+        if close[t] > close[t - high_window:t].max():
+            return (n - 1 - t) >= drought
+    return True                                   # no prior new high in record → fresh
+
+
 def analyze_setup(df):
-    """Combine all three. Returns {stage2, vcp, pocket_pivot, setup_score, reasons}.
-    setup_score is informational (0-3), NOT added to the live strategy score."""
+    """Combine the patterns. Returns flags + reasons + an informational setup_score.
+    NOT added to the live strategy score until run_backtest validates each."""
     tt = trend_template(df)
     v = vcp(df)
     pp = pocket_pivot(df)
+    ppv = power_pivot(df)
+    fnh = first_new_high(df)
     reasons = []
     if tt["pass"]:
         reasons.append("Stage-2 上升趨勢 (價>MA50>MA150>MA200)")
@@ -111,12 +151,18 @@ def analyze_setup(df):
         reasons.append(f"VCP 收縮 {v['contractions']}")
     if pp:
         reasons.append("Pocket pivot (量能吸籌)")
+    if ppv:
+        reasons.append("Power pivot (放量突破)")
+    if fnh:
+        reasons.append("久盤後首次新高")
     return {
         "stage2": tt["pass"],
         "stage2_criteria": tt["criteria"],
         "vcp": v["pass"],
         "vcp_contractions": v["contractions"],
         "pocket_pivot": pp,
+        "power_pivot": ppv,
+        "first_new_high": fnh,
         "setup_score": int(tt["pass"]) + int(v["pass"]) + int(pp),
         "reasons": reasons,
     }

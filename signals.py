@@ -21,6 +21,7 @@ before any weight is assigned (user: 要做回測才加權).
 import logging
 
 import technical_setup
+import volume_signals
 
 log = logging.getLogger(__name__)
 
@@ -94,35 +95,49 @@ def scan_signals(data, frames=None, chips_map=None, revenue_codes=None,
         chips = chips_map.get(sym) or chips_map.get(code)
         rs = rs_line_new_high(df, bench)
         quiet = quiet_accumulation(df, chips)
+        vdu = volume_signals.vdu_thrust(df)            # keyless, works on US names
+        accum = volume_signals.accumulating(df)        # up/down volume ratio
         setup = technical_setup.analyze_setup(df)
         fund = sym in revenue_codes or code in revenue_codes
         theme = sym in theme_tickers or code in theme_tickers
 
-        signals = []
+        sigs = []
         if rs:
-            signals.append("RS線新高(領先)")
+            sigs.append("RS線新高(領先)")
+        if vdu:
+            sigs.append("量縮噴出VDU(放量)")
+        if accum:
+            sigs.append("U/D量吸籌")
         if quiet:
-            signals.append("安靜吸籌(法人)")
+            sigs.append("安靜吸籌(法人)")
+        if setup["power_pivot"]:
+            sigs.append("Power pivot放量突破")
+        if setup["first_new_high"]:
+            sigs.append("久盤後首次新高")
         if theme:
-            signals.append("主題湧現")
+            sigs.append("主題湧現")
         if fund:
-            signals.append("月營收成長")
-        # technical setup is GATED: only a 'reason' (fund/theme/rs/quiet) lets it count
-        has_reason = fund or theme or rs or quiet
-        if setup["setup_score"] >= 1 and has_reason:
-            signals.extend(setup["reasons"])
+            sigs.append("月營收成長")
+        # Stage-2 / VCP are LAGGING confirmations — gate on a leading reason
+        has_reason = bool(rs or vdu or accum or quiet or theme or fund
+                          or setup["power_pivot"] or setup["first_new_high"])
+        if setup["stage2"] and has_reason:
+            sigs.append("Stage2上升趨勢")
+        if setup["vcp"] and has_reason:
+            sigs.append("VCP收縮")
 
         rec = {
             "stock": sym,
             "name": names.get(sym) or names.get(sym + ".TW"),
             "rs_line": rs,
             "quiet": quiet,
+            "vdu": vdu,
+            "accum": accum,
             "theme": theme,
             "fund": fund,
             "setup_score": setup["setup_score"],
-            "setup_reasons": setup["reasons"] if has_reason else [],
-            "signals": signals,
-            "count": len(signals),
+            "signals": sigs,
+            "count": len(sigs),
         }
         per_stock[sym] = rec
         # board: needs ≥2 distinct early tells (so a lone weak signal is filtered)

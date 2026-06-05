@@ -22,6 +22,8 @@ import theme
 import technical_setup
 import signals
 import backtest
+import rs_rating
+import volume_signals
 from datetime import date
 
 
@@ -454,6 +456,110 @@ class TestBacktest(unittest.TestCase):
         self.assertEqual(m["fired"], 0)
         self.assertEqual(m["precision"], 0.0)
         self.assertEqual(m["recall"], 0.0)
+
+
+class TestRSRating(unittest.TestCase):
+    def test_cross_sectional_percentile(self):
+        uni = {
+            "A": make_df(list(np.linspace(50, 160, 300))),   # strong leader
+            "B": make_df([100] * 300),                        # flat
+            "C": make_df(list(np.linspace(160, 50, 300))),    # laggard
+        }
+        r = rs_rating.rs_rating(uni)
+        self.assertEqual(r["A"], 99)
+        self.assertEqual(r["C"], 1)
+        self.assertTrue(r["C"] < r["B"] < r["A"])
+
+    def test_residual_momentum_positive_when_outperforming(self):
+        rng = np.random.default_rng(0)
+        b_ret = rng.normal(0.0002, 0.01, 220)
+        s_ret = b_ret + 0.003 + rng.normal(0, 0.005, 220)    # +0.3%/day alpha
+        bench = make_df(list(100 * np.cumprod(1 + b_ret)))
+        stock = make_df(list(100 * np.cumprod(1 + s_ret)))
+        self.assertGreater(rs_rating.residual_momentum(stock, bench), 0)
+
+
+class TestVolumeSignals(unittest.TestCase):
+    def test_volume_dry_up(self):
+        df = make_df([100] * 60, volumes=[2000] * 50 + [600] * 10)
+        self.assertTrue(volume_signals.volume_dry_up(df))
+
+    def test_no_dry_up_when_volume_steady(self):
+        df = make_df([100] * 60, volumes=[1000] * 60)
+        self.assertFalse(volume_signals.volume_dry_up(df))
+
+    def test_vdu_thrust(self):
+        closes = [100] * 61 + [104]          # base then up-day
+        vols = [2000] * 51 + [600] * 10 + [4000]   # dried then surge today
+        self.assertTrue(volume_signals.vdu_thrust(make_df(closes, vols)))
+
+    def test_up_down_volume_ratio_accumulation(self):
+        closes, vols = [100.0], [1000]
+        for i in range(60):
+            if i % 2 == 0:
+                closes.append(closes[-1] + 1); vols.append(3000)   # up days heavy
+            else:
+                closes.append(closes[-1] - 1); vols.append(800)    # down days light
+        self.assertTrue(volume_signals.accumulating(make_df(closes, vols)))
+
+
+def _bar_df(rows):
+    """rows = list of (open, high, low, close, vol)."""
+    return pd.DataFrame(rows, columns=["Open", "High", "Low", "Close", "Volume"])
+
+
+class TestPowerPivot(unittest.TestCase):
+    def test_power_pivot_breakout(self):
+        rows = [(100, 100.5, 99.5, 100, 1000)] * 121
+        rows.append((100.5, 112.5, 100.5, 112.0, 6000))   # new high, big vol, wide, strong close
+        self.assertTrue(technical_setup.power_pivot(_bar_df(rows)))
+
+    def test_no_power_pivot_on_quiet_drift(self):
+        df = make_df(list(np.linspace(100, 130, 130)))    # mid-range closes, normal vol
+        self.assertFalse(technical_setup.power_pivot(df))
+
+    def test_first_new_high_after_base(self):
+        closes = [105] * 12 + [90] * 200 + [112]          # old high, long base, breakout
+        self.assertTrue(technical_setup.first_new_high(make_df(closes)))
+
+    def test_not_first_new_high_in_steady_uptrend(self):
+        df = make_df(list(np.linspace(50, 200, 300)))     # new high every bar
+        self.assertFalse(technical_setup.first_new_high(df))
+
+
+class TestLevelsHonest(unittest.TestCase):
+    def test_target_band_is_range(self):
+        lv = levels.compute_levels(make_df(list(np.linspace(80, 120, 120))))
+        self.assertIn("target_band", lv)
+        self.assertIn("atr_bracket", lv)
+        self.assertTrue(all(p > lv["entry"] for p in lv["target_band"]))
+
+    def test_measured_move_key_present(self):
+        lv = levels.compute_levels(make_df(list(np.linspace(80, 120, 120))))
+        self.assertIn("measured_move", lv)
+
+
+class TestBacktestHardened(unittest.TestCase):
+    def test_wilson_ci_bounds(self):
+        lo, hi = backtest.wilson_ci(5, 100)
+        self.assertTrue(0 <= lo < 0.05 < hi <= 1)
+
+    def test_ci_beats_base_flag(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        m = backtest.backtest_signal({"AAA": df}, sig, horizon=1, step=1,
+                                     explosive_pct=50.0, min_bars=1)
+        self.assertIn("precision_ci", m)
+        self.assertIn("by_regime", m)
+        self.assertIn("fwd_p50", m)
+
+    def test_bars_to_target(self):
+        # +25% reached exactly 2 bars after each fire on the low bars
+        df = make_df([10, 11, 13, 11, 13, 11, 13, 11, 13, 11, 13])
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 11.0
+        out = backtest.bars_to_target({"AAA": df}, sig, max_horizon=3, step=1,
+                                      explosive_pct=15.0, min_bars=1)
+        self.assertIsNotNone(out["median_bars"])
 
 
 if __name__ == "__main__":

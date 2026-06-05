@@ -134,17 +134,21 @@ function moversBlock(d) {
 
 function levelsStrip(lv) {
   if (!lv) return '';
+  const band = lv.target_band || [];
+  const bandTxt = band.length ? (band[0] === band[band.length - 1] ? `${band[0]}` : `${band[0]}–${band[band.length - 1]}`) : (lv.atr_bracket || lv.target);
   const strip = `<div class="levels">
     <span><i>進場</i>${lv.entry}</span>
     <span class="lv-stop"><i>停損</i>${lv.stop}<small>${lv.stop_pct}%</small></span>
-    <span class="lv-tgt"><i>目標</i>${lv.target}<small>+${lv.target_pct}%</small></span>
-    <span><i>R/R</i>${lv.rr}</span></div>`;
+    <span class="lv-tgt"><i>目標區間</i>${bandTxt}<small>技術投影</small></span>
+    <span><i>技術停利位</i>${lv.atr_bracket != null ? lv.atr_bracket : lv.target}</span></div>`;
   const parts = [];
+  if (lv.measured_move) parts.push('測幅 ' + lv.measured_move);
   if (lv.swing_stop) parts.push('結構停損 ' + lv.swing_stop);
   if (lv.chandelier) parts.push('移動停損 ' + lv.chandelier);
   if (lv.fib_targets && lv.fib_targets.length) parts.push('Fib ' + lv.fib_targets.join('/'));
+  const note = '<div class="muted small">目標區間=技術投影非預測，含倖存者偏差；停利位為交易管理非目標價。</div>';
   const adv = parts.length ? `<div class="levels-adv muted small">進階：${esc(parts.join('；'))}</div>` : '';
-  return strip + adv;
+  return strip + adv + note;
 }
 
 function deltaBlock(d) {
@@ -175,8 +179,9 @@ function signalsBlock(d) {
   const board = d.signals || [];
   const themes = (d.themes || []).filter((t) => t.emerging);
   if (!board.length && !themes.length) return '';
-  let html = '<p class="muted small">領先型訊號（RS線新高／安靜吸籌／主題／月營收／型態），'
-    + '<b>尚未納入評分權重</b>，回測驗證後才加權。</p>';
+  let html = '<p class="muted small">領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。'
+    + '型態類經 15 年回測+Wilson CI 驗證才納入評分。<br>誠實揭露（15年含滑價）：最佳訊號 median ~50–60 交易日達 +25%，'
+    + '但 <b>~70% 從未到達</b>；目標價為技術投影非預測。</p>';
   if (themes.length) {
     html += '<div class="breadth">🔥 主題湧現：<b>' + themes.map((t) => esc(t.theme)).join('、') + '</b></div>';
   }

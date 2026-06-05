@@ -129,16 +129,21 @@ CONC_MID = 0.02
 STREAK_MIN = 3                  # ≥3 consecutive sync-buy days → bonus
 
 # ── Leadership patterns (backtest-validated weights) ────────────────────────
-# Points assigned ONLY after run_backtest.py showed forward-return edge (lift>1)
-# over a 5y/65-ticker walk-forward (+25% in 60 bars, base rate 8.97%). Magnitudes
-# scale with measured lift. The rejected price-gated RS-line (lift 0.74) is NOT
-# here. Re-run run_backtest.py if signals change → re-justify before re-weighting.
+# Points assigned ONLY to signals whose Wilson-CI lower bound clears the base rate
+# over a HARDENED 15-year walk-forward (next-open fill + 15bps slippage, regime-
+# split, base rate 6.99%). The 5-year numbers were regime-illusory: VCP∧Stage2 read
+# lift 2.0 on 5y but 1.27 with CI-lower 6.31% < base over 15y → REJECTED. VCP-alone
+# (0.89) and VDU-thrust (CI fail) also rejected. Re-run run_backtest.py and re-check
+# the CI>base column before changing any of these.
 LEADERSHIP_WEIGHT = True
-LEAD_VCP_STAGE2 = 22            # VCP ∧ Trend Template — lift 2.00 (strongest)
-LEAD_STAGE2 = 10               # Trend Template alone — lift 1.36 (broad)
-LEAD_VCP = 8                   # VCP alone — lift 1.28
-LEAD_POCKET_PIVOT = 8          # pocket pivot — lift 1.29
-LEAD_RS_NEW_HIGH = 5           # RS-line new high (pure) — lift 1.10 (marginal)
+LEAD_FIRST_NEW_HIGH = 15       # 久盤後首次新高 — 15y lift 2.44, CI✓ (rare, n=47)
+LEAD_POWER_PIVOT = 18          # 放量突破事件 — 15y lift 2.04, CI✓ (n=112)
+LEAD_STAGE2 = 12               # Trend Template — 15y lift 1.36, CI✓ (broad, recall 35%)
+LEAD_UD_ACCUM = 8              # U/D 量比吸籌 — 15y lift 1.39, CI✓ (keyless, works on US)
+LEAD_POCKET_PIVOT = 8          # pocket pivot — 15y lift 1.35, CI✓
+LEAD_RS_NEW_HIGH = 5           # RS-line new high (pure) — 15y lift 1.23, CI✓ (modest)
+# REJECTED (failed CI-lower>base over 15y, do NOT weight): VCP-alone (0.89),
+# VCP∧Stage2 (1.27/CI6.31), VDU-thrust (1.46/CI6.19), PowerPivot∧TT (1.82/CI6.58,n=63)
 
 # ATR price levels (stop / target)
 ATR_WINDOW = 14

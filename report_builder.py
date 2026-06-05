@@ -191,7 +191,8 @@ def _signals_block(sig, themes=None):
     if not board and not tline:
         return ""
     lines = ["## 🔎 早期訊號雷達", "",
-             "_領先型訊號（RS線新高／安靜吸籌／主題／月營收／型態），**尚未納入評分權重**，回測驗證後才加權_", ""]
+             "_領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分_",
+             "_誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 **~70% 從未到達**；目標價為技術投影非預測_", ""]
     if tline:
         lines += [tline, ""]
     for r in board:
