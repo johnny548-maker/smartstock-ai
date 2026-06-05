@@ -872,5 +872,27 @@ class TestEarningsGuard(unittest.TestCase):
         self.assertEqual(b["days_until"], 0)        # earnings TODAY = in blackout
 
 
+class TestLiquidity(unittest.TestCase):
+    def test_dollar_adv(self):
+        df = make_df([100] * 25, volumes=[1000] * 25)   # 100×1000 = 100,000/day
+        self.assertEqual(indicators.dollar_adv(df, 20), 100_000)
+
+    def test_dollar_adv_short_none(self):
+        self.assertIsNone(indicators.dollar_adv(make_df([100] * 5), 20))
+
+    def test_us_thin_flag(self):
+        df = make_df([100] * 25, volumes=[1000] * 25)   # $100k ADV < $3M floor → thin
+        liq = verdict.liquidity("XYZ", df)
+        self.assertTrue(liq["thin"])
+        self.assertEqual(liq["cur"], "$")
+        self.assertEqual(liq["cap"], 1000)               # 1% of 100,000
+
+    def test_tw_not_thin(self):
+        df = make_df([600] * 25, volumes=[1_000_000] * 25)  # NT$600M ADV > NT$50M floor
+        liq = verdict.liquidity("2330.TW", df)
+        self.assertFalse(liq["thin"])
+        self.assertEqual(liq["cur"], "NT$")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -71,6 +71,16 @@ def adr_pct(df, n=20):
     return None if pd.isna(r) else round(float(r) * 100, 2)
 
 
+def dollar_adv(df, n=20):
+    """Average daily dollar volume = mean(Close×Volume) over n bars, in the stock's
+    own currency. The keyless capacity read: how much can actually trade per day.
+    None if too short or volume is missing."""
+    if df is None or len(df) < n or "Volume" not in df:
+        return None
+    dv = (df["Close"] * df["Volume"]).rolling(n).mean().iloc[-1]
+    return None if pd.isna(dv) else float(dv)
+
+
 def chandelier(df, n=22, mult=3.0):
     """Chandelier long trailing-stop: highest-high(n) − mult×ATR(n). None if short."""
     if df is None or len(df) < n:

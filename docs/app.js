@@ -107,6 +107,28 @@ function riskPlan(p) {
     + (r.size_formula ? `<span class="muted small">${esc(r.size_formula)}</span>` : '') + '</div>';
 }
 
+// compact money formatter — NT$ in 億/萬, USD in B/M/K
+function fmtMoney(n, cur) {
+  if (n == null) return '—';
+  if (cur === 'NT$') {
+    if (n >= 1e8) return 'NT$' + (n / 1e8).toFixed(1) + '億';
+    if (n >= 1e4) return 'NT$' + Math.round(n / 1e4) + '萬';
+    return 'NT$' + Math.round(n);
+  }
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+  return '$' + Math.round(n);
+}
+
+// liquidity / capacity (analyst G13): ADV + ~1%-ADV position cap + thin warning
+function liqLine(p) {
+  const l = p.liquidity; if (!l) return '';
+  const warn = l.thin ? ' <b class="down">⚠️ 量能偏低，難以建立部位</b>' : '';
+  return `<div class="kv" style="width:100%"><span>流動性（日均成交額／單筆上限）</span>`
+    + `<b>${fmtMoney(l.adv, l.cur)}／~${fmtMoney(l.cap, l.cur)}（1% ADV）${warn}</b></div>`;
+}
+
 // earnings-blackout flag (analyst G5): binary event risk a chart can't see
 function earnBadge(p) {
   const e = p && p.earnings; if (!e || !e.in_blackout) return '';
@@ -439,7 +461,7 @@ function stockCard(d, code) {
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${rev}${riskPlan(p)}</div>
+    <div class="kvs">${vr}${theme}${rev}${riskPlan(p)}${liqLine(p)}</div>
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;

@@ -9,8 +9,12 @@ backtest non-trigger rate), not its over-promised single-point targets.
 """
 import re
 
-from indicators import pivots
+from indicators import pivots, dollar_adv
 import risk_sizing
+
+THIN_FLOOR_USD = 3_000_000     # < $3M average daily $-volume = hard to act on at size
+THIN_FLOOR_TWD = 50_000_000    # < NT$50M/day
+CAP_PCT = 0.01                 # rule of thumb: one name's position ≤ ~1% of ADV
 
 GREEN_MIN = 90          # score ≥ → 🟢
 AMBER_MIN = 40          # 40-89 → 🟡 ; <40 → 🔴
@@ -96,6 +100,23 @@ def spark_dates(df, n=60):
         return None, None
 
 
+def liquidity(symbol, df):
+    """Capacity read (analyst G13): average daily $-volume + a ~1%-ADV position cap +
+    a thin flag. Keyless/pure — a microcap can be a perfect setup yet impossible to
+    enter at size without moving it. None if no volume history."""
+    adv = dollar_adv(df)
+    if adv is None:
+        return None
+    tw = symbol.endswith((".TW", ".TWO"))
+    floor = THIN_FLOOR_TWD if tw else THIN_FLOOR_USD
+    return {
+        "adv": round(adv),
+        "cur": "NT$" if tw else "$",
+        "cap": round(adv * CAP_PCT),       # max position before you ARE the volume
+        "thin": bool(adv < floor),
+    }
+
+
 def enrich(symbol, score, factors, df, levels=None):
     """Build the card-enrichment dict attached to a pick/opportunity name."""
     px, chg = price_change(df)
@@ -111,4 +132,5 @@ def enrich(symbol, score, factors, df, levels=None):
         "spark_start": sd,
         "spark_end": se,
         "risk": risk_sizing.plan(levels),
+        "liquidity": liquidity(symbol, df),
     }
