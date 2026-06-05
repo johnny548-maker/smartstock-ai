@@ -244,10 +244,9 @@ function picksBlock(picks, date) {
     const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
     const verdict = p.verdict ? `<div class="muted small verdict">${lightDot(p.light)} ${esc(p.verdict)}</div>` : '';
     return `<a class="pick pick-link" href="#${esc(date)}/${esc(p.stock)}">
-      <div class="pick-head">${medal} <b>${head}</b>
-        <span class="spark-wrap">${sparkline(p.spark)}</span>
-        <span class="score">${p.score}</span></div>
-      ${priceLine(p)}${verdict}</a>`;
+      <div class="pick-head">${medal} <b>${head}</b><span class="score">${p.score}</span></div>
+      ${priceLine(p)}${verdict}
+      <div class="pick-spark">${sparkline(p.spark, 320, 44)}</div></a>`;
   }).join('');
   return section('📊 今日選股（點看完整分析）', html);
 }
@@ -277,11 +276,14 @@ function priceLine(p) {
   return `<div class="priceline"><span class="px">${p.price}</span> ${chg}</div>`;
 }
 
-// price chart WITH axes: y = price (max/last/min), x = start/end dates
-function priceChart(arr, startD, endD) {
+// price chart WITH axes (y=price max/last/min, x=start/end dates) + optional
+// stop/target reference lines drawn dashed so the price ladder ties to the chart
+function priceChart(arr, startD, endD, lines) {
   if (!arr || arr.length < 2) return '';
-  const W = 320, H = 130, padL = 46, padR = 8, padT = 8, padB = 18;
-  const min = Math.min(...arr), max = Math.max(...arr), rng = (max - min) || 1;
+  const W = 320, H = 130, padL = 46, padR = 30, padT = 8, padB = 18;
+  let min = Math.min(...arr), max = Math.max(...arr);
+  (lines || []).forEach((l) => { if (l.v != null) { min = Math.min(min, l.v); max = Math.max(max, l.v); } });
+  const rng = (max - min) || 1;
   const last = arr[arr.length - 1];
   const X = (i) => padL + (i / (arr.length - 1)) * (W - padL - padR);
   const Y = (v) => padT + (1 - (v - min) / rng) * (H - padT - padB);
@@ -289,10 +291,13 @@ function priceChart(arr, startD, endD) {
   const col = last >= arr[0] ? '#5fe39b' : '#ff8e8e';
   const yLab = (v, cls) => `<line x1="${padL}" y1="${Y(v).toFixed(1)}" x2="${W - padR}" y2="${Y(v).toFixed(1)}" class="grid"/>`
     + `<text x="${padL - 5}" y="${(Y(v) + 3).toFixed(1)}" class="ax ${cls || ''}" text-anchor="end">${v}</text>`;
+  const refLine = (l) => l.v == null ? '' : `<line x1="${padL}" y1="${Y(l.v).toFixed(1)}" x2="${W - padR}" y2="${Y(l.v).toFixed(1)}" stroke="${l.color}" stroke-width="1" stroke-dasharray="3 3" opacity=".8"/>`
+    + `<text x="${W - padR + 2}" y="${(Y(l.v) + 3).toFixed(1)}" class="ax" fill="${l.color}" text-anchor="start">${esc(l.label)}</text>`;
   const xLab = (d, i, anc) => d ? `<text x="${X(i).toFixed(1)}" y="${H - 4}" class="ax" text-anchor="${anc}">${esc(d.slice(5))}</text>` : '';
   return `<svg class="pchart" viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="none">`
     + yLab(max) + yLab(last, 'ax-now') + yLab(min)
-    + `<polyline fill="none" stroke="${col}" stroke-width="1.6" points="${pts}"/>`
+    + (lines || []).map(refLine).join('')
+    + `<polyline fill="none" stroke="${col}" stroke-width="1.8" points="${pts}"/>`
     + xLab(startD, 0, 'start') + xLab(endD, arr.length - 1, 'end') + `</svg>`;
 }
 
@@ -379,13 +384,19 @@ function stockCard(d, code) {
     <div class="sd-actions">
       <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
       <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">🔗 分享</button></div></div>`;
+  const lv0 = p.levels || {};
+  const chartLines = [];
+  if (lv0.stop != null) chartLines.push({ v: lv0.stop, color: '#ff8e8e', label: '停損' });
+  const tgt = (lv0.target_band && lv0.target_band.length) ? lv0.target_band[lv0.target_band.length - 1] : lv0.measured_move;
+  if (tgt != null) chartLines.push({ v: tgt, color: '#7fe6ab', label: '目標' });
   const chart = p.spark && p.spark.length > 1
-    ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期）</div></div>` : '';
+    ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div></div>` : '';
   const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
   const rev = p.rev_yoy != null ? `<div class="kv"><span>季營收 YoY</span><b class="up">${p.rev_yoy > 0 ? '+' : ''}${p.rev_yoy}%</b></div>` : '';
-  const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors).map(([k, v]) =>
-    `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
+  const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors)
+    .sort((a, b) => b[1] - a[1])                       // positives first, negatives last
+    .map(([k, v]) => `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
   const lv = p.levels ? `<h3>進出場價位</h3>${levelsStrip(p.levels)}` : '';
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
@@ -443,8 +454,14 @@ async function showDetail(date) {
   NAMES = d.names || {};
   const gen = d.generated_at
     ? `<p class="muted small">產生於 ${esc(d.generated_at)}${(d.skips || []).length ? ' · 略過：' + esc(d.skips.join(', ')) : ''}</p>` : '';
+  // staleness guard (analyst G16): a static PWA can show yesterday's data with no warning
+  let stale = '';
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    if (d.date < today) stale = `<div class="stale">⚠️ 此為 ${esc(d.date)} 的報告，非今日（${today}）。若雲端排程未更新，訊號可能過時，請勿據以即時操作。</div>`;
+  } catch (e) {}
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
-  $('detailView').innerHTML =
+  $('detailView').innerHTML = stale +
     searchBar() + pinsBar(d) + tldrBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) +
     breakoutBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +

@@ -39,7 +39,8 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
 
 .block{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:14px 16px;margin-bottom:12px}
-.block h2{font-size:1rem;margin:.1rem 0 .6rem}
+.block h2{font-size:1.08rem;font-weight:700;letter-spacing:.3px;margin:.1rem 0 .7rem;
+  padding-bottom:8px;border-bottom:1px solid rgba(144,164,189,.15)}
 .block h3{font-size:.9rem;margin:.8rem 0 .3rem;color:var(--muted)}
 .block ul{margin:.2rem 0;padding-left:1.1rem}
 .block li{margin:.18rem 0}
@@ -49,8 +50,9 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
 .pick{border-top:1px solid var(--line);padding:10px 0}
 .pick:first-of-type{border-top:none}
 .pick-head{font-size:1.02rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.score{margin-left:auto;background:var(--card2);padding:2px 10px;border-radius:999px;
-  font-weight:700;color:var(--accent)}
+.score{margin-left:auto;background:rgba(46,204,113,.16);padding:3px 12px;border-radius:999px;
+  font-weight:700;color:var(--accent);min-width:42px;text-align:center;
+  font-variant-numeric:tabular-nums}
 .factors{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
 .factor{font-size:.74rem;padding:2px 7px;border-radius:6px;background:var(--card2)}
 .factor.pos{color:#7fe6ab}
@@ -102,8 +104,8 @@ ul.movers b.down{color:var(--neg)}
 
 /* ---- Round 3: search / pins / sparkline / 燈號 / 個股詳情卡 ---- */
 .searchbar{position:relative;margin-bottom:10px}
-.searchbar input{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);
-  background:var(--card);color:var(--txt);font-size:1rem;-webkit-appearance:none}
+.searchbar input{width:100%;min-height:48px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card);color:var(--txt);font-size:16px;-webkit-appearance:none}
 .searchbar input:focus{outline:none;border-color:var(--accent)}
 #ssResults{margin-top:6px}
 .srow{display:block;padding:9px 12px;background:var(--card);border:1px solid var(--line);
@@ -124,9 +126,11 @@ ul.movers b.down{color:var(--neg)}
 .pick-head{align-items:center}
 
 details.fold{padding:0}
-details.fold>summary{list-style:none;cursor:pointer;padding:14px 16px;font-size:1rem;font-weight:600}
+details.fold>summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;
+  padding:12px 16px;font-size:1.02rem;font-weight:700;letter-spacing:.3px;
+  border-bottom:1px solid rgba(144,164,189,.12)}
 details.fold>summary::-webkit-details-marker{display:none}
-details.fold>summary::after{content:'▾';float:right;color:var(--muted)}
+details.fold>summary::after{content:'▾';margin-left:auto;color:var(--muted)}
 details.fold[open]>summary::after{content:'▴'}
 details.fold>*:not(summary){padding:0 16px}
 details.fold>*:last-child{padding-bottom:14px}
@@ -137,7 +141,7 @@ details.fold>*:last-child{padding-bottom:14px}
 .sd-verdict{color:var(--muted);font-size:.9rem;margin:4px 0 8px}
 .sd-actions{display:flex;gap:8px}
 .sd-actions button{background:var(--card2);border:1px solid var(--line);color:var(--txt);
-  border-radius:999px;padding:6px 14px;font-size:.86rem;cursor:pointer}
+  border-radius:999px;min-height:44px;padding:0 18px;font-size:.9rem;cursor:pointer}
 .sd-actions button:active{background:var(--card)}
 .sd-chart{margin:10px 0}
 .sd-chart .spark{width:100%;height:90px}
@@ -167,3 +171,14 @@ ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
 .pchart .ax-now{fill:var(--accent);font-weight:700}
 .pchart .grid{stroke:var(--line);stroke-width:.5}
 .up.small,.down.small{font-size:.78rem;margin-left:3px}
+
+/* art-director round: pick sparkline own row, section spacing, stale banner */
+.pick{padding:14px}
+.pick-spark{margin-top:8px}
+.pick-spark .spark{width:100%;height:44px}
+.pick-head b{color:var(--txt)}
+.block,.block.fold,details.fold{margin-bottom:14px}
+.tldr{font-size:1rem}
+.stale{background:rgba(255,107,107,.16);border:1px solid rgba(255,107,107,.4);color:#ffb3b3;
+  border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:.86rem;font-weight:600}
+.pchart{height:135px}
