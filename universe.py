@@ -169,11 +169,13 @@ def scan_opportunities(data, names=None, top=None, rs_min=None):
 
 
 def get_opportunities():
-    """End-to-end: assemble universe → fetch → scan → top early-leaders."""
+    """End-to-end: assemble universe → fetch → scan early-leaders + 起漲 radar."""
+    import breakout_radar
     tickers, names = opportunity_universe()
     data = fetch_opportunity_ohlcv(tickers)
     return {
         "universe": len(tickers),
         "scanned": len(data),
         "leaders": scan_opportunities(data, names=names),
+        "breakout": breakout_radar.scan(data, frames=None, names=names, top=15),
     }

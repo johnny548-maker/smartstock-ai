@@ -179,6 +179,21 @@ function revenueBlock(d) {
     `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`, false);
 }
 
+function breakoutBlock(d) {
+  const board = (d.opportunity || {}).breakout || [];
+  if (!board.length) return '';
+  const rows = board.map((r) => {
+    const nm = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
+    const flag = r.ready ? '<b class="up">✅起漲就緒</b> ' : '';
+    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(r.stock)}">${flag}${nm} `
+      + `<b class="accel">×${r.score}</b><br><span class="muted small">${esc((r.signals || []).join('、'))}</span></a></li>`;
+  }).join('');
+  return foldSection('🚀 正要起漲雷達（拐點偵測 · 全市場）',
+    '<p class="muted small">Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。'
+    + '✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>'
+    + `<ul class="rev opp-list">${rows}</ul>`, true);
+}
+
 function opportunityBlock(d) {
   const opp = d.opportunity || {};
   const leaders = opp.leaders || [];
@@ -432,7 +447,7 @@ async function showDetail(date) {
   $('detailView').innerHTML =
     searchBar() + pinsBar(d) + tldrBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) +
-    opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +
+    breakoutBlock(d) + opportunityBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');

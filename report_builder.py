@@ -220,6 +220,21 @@ def _opportunity_block(opp):
     return "\n".join(lines)
 
 
+def _breakout_block(opp):
+    """🚀 正要起漲 — accumulation→markup inflection radar (council R4, informational)."""
+    board = (opp or {}).get("breakout") or []
+    if not board:
+        return ""
+    lines = ["## 🚀 正要起漲雷達（拐點偵測 · 全市場掃描）", "",
+             "_Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等**拐點**訊號（比趨勢確認更早一步）。"
+             "✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。_", ""]
+    for r in board:
+        nm = r.get("name") or r["stock"]
+        flag = "✅起漲就緒 " if r.get("ready") else ""
+        lines.append(f"- {flag}{nm}（{r['stock']}）×{r['score']}：{'、'.join(r['signals'])}")
+    return "\n".join(lines)
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
                  events=None, breadth=None, revenue=None, signals=None, themes=None,
@@ -229,7 +244,8 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
         "",
         _tldr_block(risk, indices, institutional, ranked, breadth),
     ]
-    for extra in (_delta_block(delta), _opportunity_block(opportunity),
+    for extra in (_delta_block(delta), _breakout_block(opportunity),
+                  _opportunity_block(opportunity),
                   _signals_block(signals, themes), _revenue_block(revenue),
                   _calendar_block(events)):
         if extra:

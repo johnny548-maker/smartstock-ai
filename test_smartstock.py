@@ -28,6 +28,7 @@ import supply_chain
 import universe
 import edgar
 import verdict
+import breakout_radar
 from datetime import date
 
 
@@ -726,6 +727,42 @@ class TestVerdict(unittest.TestCase):
         self.assertIsNotNone(e["price"])
         self.assertIsNotNone(e["spark_start"])
         self.assertIsNotNone(e["spark_end"])
+
+
+class TestBreakoutRadar(unittest.TestCase):
+    def test_in_flat_base(self):
+        self.assertTrue(breakout_radar.in_flat_base(make_df([100] * 50)))
+        self.assertFalse(breakout_radar.in_flat_base(make_df(list(np.linspace(50, 150, 50)))))
+
+    def test_above_rising_ma50(self):
+        self.assertTrue(breakout_radar.above_rising_ma50(make_df(list(np.linspace(50, 150, 60)))))
+        self.assertFalse(breakout_radar.above_rising_ma50(make_df(list(np.linspace(150, 50, 60)))))
+
+    def test_spring(self):
+        rows = [(100, 100.5, 99, 100, 1000)] * 60
+        rows.append((99, 100, 97, 99.5, 500))      # pierces 99 support, reclaims top-half, low vol
+        self.assertTrue(breakout_radar.spring(_bar_df(rows)))
+
+    def test_no_spring_on_breakdown(self):
+        rows = [(100, 100.5, 99, 100, 1000)] * 60
+        rows.append((99, 99.5, 96, 96.2, 3000))    # closes at low on high vol = real breakdown
+        self.assertFalse(breakout_radar.spring(_bar_df(rows)))
+
+    def test_episodic_pivot(self):
+        rows = [(100, 100.5, 99.5, 100, 1000)] * 61
+        rows.append((112, 115, 111, 114, 3000))    # +12% gap, 3x vol, out of dead base
+        self.assertTrue(breakout_radar.episodic_pivot(_bar_df(rows)))
+
+    def test_rs_line_turn_up_in_flat_base(self):
+        stock = make_df([100] * 60)                 # price flat
+        bench = make_df(list(np.linspace(110, 90, 60)))  # bench falling → RS rising
+        self.assertTrue(breakout_radar.rs_line_turn_up(stock, bench))
+
+    def test_readiness_shape_and_gate(self):
+        r = breakout_radar.readiness(make_df(list(np.linspace(50, 150, 60))))
+        self.assertIn("ready", r)
+        self.assertIn("signals", r)
+        self.assertFalse(r["ready"])                # a hard uptrend is not a flat base
 
 
 if __name__ == "__main__":
