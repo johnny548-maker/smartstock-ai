@@ -146,6 +146,67 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
     }
 
 
+def _rankdata(a):
+    order = np.argsort(a)
+    ranks = np.empty(len(a), dtype=float)
+    ranks[order] = np.arange(len(a))
+    return ranks
+
+
+def spearman(xs, ys):
+    """Spearman rank correlation (ties not averaged — fine for IC)."""
+    if len(xs) < 3:
+        return 0.0
+    rx, ry = _rankdata(xs), _rankdata(ys)
+    rx = rx - rx.mean()
+    ry = ry - ry.mean()
+    denom = np.sqrt((rx * rx).sum() * (ry * ry).sum())
+    return float((rx * ry).sum() / denom) if denom else 0.0
+
+
+def decile_forward_return(history, score_fn, bench_history=None, horizon=60, step=10,
+                          min_bars=200, slippage_bps=15.0, top_q=0.1, min_names=5):
+    """Cross-sectional composite validation (de-collinearization ship gate). At each
+    date, score every name with score_fn(df_slice, bench_slice), rank, and compare the
+    top-decile forward return to the universe mean; also the date's rank-IC. Returns the
+    averaged top-decile fwd / universe fwd / edge / rank-IC — the composite must beat
+    the flat additive score here before BUCKET_SCORING is turned on."""
+    bench_history = bench_history or {}
+    by_date = {}
+    for sym, df in (history or {}).items():
+        if df is None or len(df) < min_bars + horizon:
+            continue
+        bench = bench_history.get("twii") if sym.endswith(".TW") else bench_history.get("sp500")
+        for i in range(min_bars, len(df) - horizon, step):
+            fwd = forward_return(df, i, horizon, True, slippage_bps)
+            if fwd is None:
+                continue
+            try:
+                sc = float(score_fn(df.iloc[:i + 1], bench.iloc[:i + 1] if bench is not None else None))
+            except Exception:
+                continue
+            key = str(df.index[i].date()) if hasattr(df.index[i], "date") else i
+            by_date.setdefault(key, []).append((sc, fwd))
+    tops, unis, ics = [], [], []
+    for pairs in by_date.values():
+        if len(pairs) < min_names:
+            continue
+        pairs.sort(key=lambda x: -x[0])
+        k = max(1, int(len(pairs) * top_q))
+        tops.append(np.mean([f for _, f in pairs[:k]]))
+        unis.append(np.mean([f for _, f in pairs]))
+        ics.append(spearman([s for s, _ in pairs], [f for _, f in pairs]))
+    if not tops:
+        return {"n_dates": 0, "top_decile_fwd": None, "universe_fwd": None, "edge": None, "rank_ic": None}
+    return {
+        "n_dates": len(tops),
+        "top_decile_fwd": round(float(np.mean(tops)), 2),
+        "universe_fwd": round(float(np.mean(unis)), 2),
+        "edge": round(float(np.mean(tops) - np.mean(unis)), 2),
+        "rank_ic": round(float(np.mean(ics)), 4),
+    }
+
+
 def bars_to_target(history, signal_fn, bench_history=None, max_horizon=120, step=10,
                    explosive_pct=25.0, min_bars=200):
     """For windows where signal fired, the # of bars until cumulative return first

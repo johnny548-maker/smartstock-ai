@@ -12,11 +12,44 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
                     INST_RATIO_FULL, INST_RATIO_HALF,
                     CONC_HIGH, CONC_MID, STREAK_MIN,
                     LEADERSHIP_WEIGHT, LEAD_FIRST_NEW_HIGH, LEAD_POWER_PIVOT,
-                    LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH)
+                    LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH,
+                    BUCKET_SCORING, BUCKET_CAPS, BUCKET_IC_WEIGHTS)
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
 from signals import rs_line_new_high
 from volume_signals import accumulating as ud_accumulating
+
+
+# Factor → bucket classifier (de-collinearization). Rules are ordered; first match
+# wins. Each scored factor label maps to exactly one orthogonal bucket.
+_BUCKET_RULES = [
+    ("meanrev", ("RSI", "遠離52週高")),
+    ("relstr", ("相對強", "相對弱", "RS線新高")),
+    ("trend", ("趨勢", "動能", "接近52週高", "逼近52週高", "Stage2", "久盤後首次新高")),
+    ("volacc", ("量能", "波動穩定", "量價背離", "籌碼", "連買", "Pocket", "U/D量", "Power pivot")),
+    ("fund", ("產業", "外資", "投信")),
+]
+
+
+def _bucket_of(label):
+    for bucket, keys in _BUCKET_RULES:
+        if any(k in label for k in keys):
+            return bucket
+    return "fund"
+
+
+def _bucket_score(factors):
+    """Group factors into buckets, clamp each to ±BUCKET_CAPS (so the over-counted
+    trend factor can't dominate), then IC-weight and sum. Returns (score, subtotals)."""
+    buckets = {}
+    for label, pts in factors.items():
+        buckets[_bucket_of(label)] = buckets.get(_bucket_of(label), 0) + pts
+    capped = {}
+    for b, v in buckets.items():
+        cap = BUCKET_CAPS.get(b, 999)
+        capped[b] = max(-cap, min(cap, v))
+    score = int(round(sum(BUCKET_IC_WEIGHTS.get(b, 1.0) * v for b, v in capped.items())))
+    return score, capped
 
 
 def _rs_excess(df, bench, window):
@@ -141,7 +174,11 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         if bench is not None and rs_line_new_high(df, bench):
             factors["RS線新高領先(回測lift1.23)"] = LEAD_RS_NEW_HIGH
 
-    return {"score": int(sum(factors.values())), "factors": factors, "insufficient": False}
+    if BUCKET_SCORING:
+        score, buckets = _bucket_score(factors)
+        return {"score": score, "factors": factors, "buckets": buckets, "insufficient": False}
+    return {"score": int(sum(factors.values())), "factors": factors,
+            "buckets": None, "insufficient": False}
 
 
 def _bench_for(sym, frames):

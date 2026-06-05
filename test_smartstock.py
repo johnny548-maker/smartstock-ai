@@ -340,6 +340,35 @@ class TestLeadershipWeighting(unittest.TestCase):
         self.assertNotIn("回測lift", " ".join(r["factors"].keys()))
 
 
+class TestDecollinearization(unittest.TestCase):
+    def test_bucket_classification(self):
+        cases = {
+            "趨勢(MA5>MA20)": "trend", "動能(5日上漲)": "trend", "接近52週高": "trend",
+            "Stage2上升趨勢(回測lift1.36)": "trend", "久盤後首次新高(回測lift2.4)": "trend",
+            "量能(高於20日均量)": "volacc", "U/D量吸籌(回測lift1.39)": "volacc",
+            "Power pivot放量突破(回測lift2.0)": "volacc", "外資投信連買3日": "volacc",
+            "相對強弱(強於大盤)": "relstr", "RS線新高領先(回測lift1.23)": "relstr",
+            "RSI過熱(>75)": "meanrev", "遠離52週高": "meanrev",
+            "產業(半導體)": "fund", "外資買超": "fund", "投信買超": "fund",
+        }
+        for label, bucket in cases.items():
+            self.assertEqual(strategy._bucket_of(label), bucket, label)
+
+    def test_bucket_caps_trend(self):
+        # raw trend = 25+25+20+12+15 = 97 → must clamp to BUCKET_CAPS['trend']=30
+        factors = {"趨勢(MA5>MA20)": 25, "動能(5日上漲)": 25, "接近52週高": 20,
+                   "Stage2上升趨勢": 12, "久盤後首次新高": 15}
+        score, buckets = strategy._bucket_score(factors)
+        self.assertEqual(buckets["trend"], 30)
+        self.assertEqual(score, 30)            # only trend present, capped, weight 1.0
+
+    def test_golden_additive_default(self):
+        # with BUCKET_SCORING off (default), score must equal the flat factor sum
+        df = make_df(list(np.linspace(50, 150, 260)), volumes=[1000] * 260)
+        r = strategy.score_stock(df)
+        self.assertEqual(r["score"], int(sum(r["factors"].values())))
+
+
 class TestTheme(unittest.TestCase):
     def test_detect_counts_and_emerging(self):
         titles = ["輝達 HBM4 需求爆發", "美光 HBM 報價調漲", "台積電 CoWoS 擴產"]
