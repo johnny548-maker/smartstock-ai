@@ -10,6 +10,7 @@ backtest non-trigger rate), not its over-promised single-point targets.
 import re
 
 from indicators import pivots, dollar_adv
+from volume_signals import acc_dist_grade
 import risk_sizing
 
 THIN_FLOOR_USD = 3_000_000     # < $3M average daily $-volume = hard to act on at size
@@ -133,4 +134,5 @@ def enrich(symbol, score, factors, df, levels=None):
         "spark_end": se,
         "risk": risk_sizing.plan(levels),
         "liquidity": liquidity(symbol, df),
+        "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
     }

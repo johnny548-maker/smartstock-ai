@@ -544,6 +544,86 @@ class TestVolumeSignals(unittest.TestCase):
                 closes.append(closes[-1] - 1); vols.append(800)    # down days light
         self.assertTrue(volume_signals.accumulating(make_df(closes, vols)))
 
+    # --- B8: weighted A/D accumulation grade (recency-weighted, A-E badge) ---
+    def test_acc_dist_grade_A_on_up_ramp(self):
+        # rising 100→160 over 66 bars, HEAVY vol on up days, a few light down days
+        closes, vols = [100.0], [3000]
+        for i in range(65):
+            if i % 13 == 7:                                   # a few small down days
+                closes.append(closes[-1] - 0.5); vols.append(700)
+            else:
+                closes.append(closes[-1] + 1.0); vols.append(3000)
+        g = volume_signals.acc_dist_grade(make_df(closes, vols))
+        self.assertIsNotNone(g)
+        self.assertIn(g["grade"], ("A", "B"))
+        self.assertTrue(g["bullish"])
+
+    def test_acc_dist_grade_E_on_dump(self):
+        # falling 160→100 over 66 bars, heavy vol on down days, light on few up days
+        closes, vols = [160.0], [3000]
+        for i in range(65):
+            if i % 13 == 7:                                   # a few small up days
+                closes.append(closes[-1] + 0.5); vols.append(800)
+            else:
+                closes.append(closes[-1] - 1.0); vols.append(3000)
+        g = volume_signals.acc_dist_grade(make_df(closes, vols))
+        self.assertIsNotNone(g)
+        self.assertEqual(g["grade"], "E")
+        self.assertLess(g["ratio"], 0.65)
+        self.assertFalse(g["bullish"])
+
+    def test_acc_dist_grade_C_when_balanced(self):
+        # alternating +1/-1 closes, EQUAL volume up and down over 66 bars
+        closes, vols = [100.0], [1500]
+        for i in range(65):
+            closes.append(closes[-1] + (1.0 if i % 2 == 0 else -1.0))
+            vols.append(1500)
+        g = volume_signals.acc_dist_grade(make_df(closes, vols))
+        self.assertIsNotNone(g)
+        self.assertEqual(g["grade"], "C")
+        self.assertAlmostEqual(g["ratio"], 1.0, delta=0.1)
+        self.assertFalse(g["bullish"])
+
+    def test_acc_dist_grade_none_when_short(self):
+        self.assertIsNone(volume_signals.acc_dist_grade(make_df([100] * 33)))
+
+    def test_acc_dist_grade_none_when_no_down_volume(self):
+        # strictly monotonic up (every chg>0) over 66 bars → no down volume → None
+        closes = [100.0 + i for i in range(66)]
+        g = volume_signals.acc_dist_grade(make_df(closes, [2000] * 66))
+        self.assertIsNone(g)
+
+    def test_weighted_ratio_recency_weight(self):
+        # identical TOTAL up/down volume; one has recent-heavy-UP, other recent-heavy-DOWN.
+        # recent-heavy-up must yield a strictly higher weighted ratio (recency weighting).
+        n = 66
+        # Build alternating up/down day sequence (66 bars, last bar most-recent).
+        # closes[i] is an UP day (chg>0) when i is ODD; DOWN day when i is even (i>=1).
+        closes = [100.0]
+        for i in range(n - 1):
+            closes.append(closes[-1] + (1.0 if i % 2 == 0 else -1.0))
+        is_up = [bool(i % 2) for i in range(n)]               # up day ⇔ index odd
+        recent = [i >= n // 2 for i in range(n)]
+        # recent-heavy-up: heavy vol on recent up days + early down days (totals equal)
+        v_up = [3000 if (is_up[i] == recent[i]) else 1000 for i in range(n)]
+        # recent-heavy-down: exact mirror → heavy vol on recent down days + early up days
+        v_dn = [1000 if (is_up[i] == recent[i]) else 3000 for i in range(n)]
+        r_up = volume_signals.weighted_up_down_volume_ratio(make_df(closes, v_up))
+        r_dn = volume_signals.weighted_up_down_volume_ratio(make_df(closes, v_dn))
+        self.assertIsNotNone(r_up)
+        self.assertIsNotNone(r_dn)
+        self.assertGreater(r_up, r_dn)
+
+    def test_acc_dist_grade_keys_shape(self):
+        g = volume_signals.acc_dist_grade(
+            make_df([100.0 + (i % 3) for i in range(66)], [1500] * 66))
+        self.assertIsNotNone(g)
+        self.assertEqual(set(g.keys()), {"grade", "ratio", "label", "bullish"})
+        self.assertRegex(g["grade"], r"^[A-E]$")
+        self.assertIsInstance(g["label"], str)
+        self.assertTrue(g["label"])
+        self.assertIsInstance(g["bullish"], bool)
+
 
 def _bar_df(rows):
     """rows = list of (open, high, low, close, vol)."""

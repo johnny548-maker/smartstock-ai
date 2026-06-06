@@ -159,6 +159,13 @@ function shortVolBadge(p) {
   return ` <b class="down">🩳 空量 ${s.pct}%${s.rising ? '↑' : ''}</b>`;
 }
 
+// A/D accumulation grade chip (B8): honest analog of IBD A/D, informational only, never scored
+function accDistBadge(p) {
+  const a = p && p.acc_dist; if (!a) return '';
+  const cls = 'ad-' + a.grade;
+  return `<span class="ad-flag ${cls}" title="${esc(a.label)}（13週吸籌/派發）">A/D ${esc(a.grade)}</span>`;
+}
+
 function newsBlock(news) {
   if (!news) return '';
   const link = (n, withSrc) => {
@@ -496,7 +503,7 @@ function stockCard(d, code) {
   const earnNote = (p.earnings && p.earnings.in_blackout)
     ? `<div class="earn-note">⚠️ 財報 ${esc(p.earnings.date)}（${p.earnings.days_until === 0 ? '今日' : p.earnings.days_until + ' 天內'}）— 二元事件，新突破單建議暫緩或減量，留意跳空風險。</div>` : '';
   const head = `<div class="sd-head">
-    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
     ${px}
     <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
     ${earnNote}
@@ -514,6 +521,7 @@ function stockCard(d, code) {
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
   const grp = p.group_rank != null ? `<div class="kv"><span>族群排名</span><b>#${p.group_rank}${p.leading_group ? ' 領漲' : ''}</b></div>` : '';
   const rev = p.rev_yoy != null ? `<div class="kv"><span>季營收 YoY</span><b class="up">${p.rev_yoy > 0 ? '+' : ''}${p.rev_yoy}%</b></div>` : '';
+  const ad = p.acc_dist ? '<div class="kv"><span>吸籌/派發 (13週)</span><b class="ad-' + p.acc_dist.grade + '">' + p.acc_dist.grade + '・' + esc(p.acc_dist.label) + '（' + p.acc_dist.ratio + '×）</b></div>' : '';
   const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors)
     .sort((a, b) => b[1] - a[1])                       // positives first, negatives last
     .map(([k, v]) => `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
@@ -521,7 +529,7 @@ function stockCard(d, code) {
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${grp}${rev}${riskPlan(p)}${liqLine(p)}</div>
+    <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}</div>
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;

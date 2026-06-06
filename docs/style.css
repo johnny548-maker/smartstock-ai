@@ -199,5 +199,12 @@ ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
 /* earnings-blackout flag (analyst G5) */
 .earn-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.72rem;
   font-weight:700;color:#ffce6b;background:rgba(255,196,84,.16);border:1px solid rgba(255,196,84,.45);vertical-align:middle}
+.ad-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.72rem;font-weight:700;vertical-align:middle}
+.ad-A,.ad-B{color:#7fe6ab}
+.ad-D,.ad-E{color:#ff8e8e}
+.ad-C{color:var(--muted)}
+.ad-flag.ad-A,.ad-flag.ad-B{background:rgba(127,230,171,.16);border:1px solid rgba(127,230,171,.45)}
+.ad-flag.ad-D,.ad-flag.ad-E{background:rgba(255,142,142,.14);border:1px solid rgba(255,142,142,.4)}
+.ad-flag.ad-C{background:var(--card2);border:1px solid var(--border)}
 .earn-note{margin-top:6px;padding:8px 10px;border-radius:10px;font-size:.82rem;color:#ffd98a;
   background:rgba(255,196,84,.1);border:1px solid rgba(255,196,84,.4)}

@@ -60,6 +60,7 @@ DEFS = {
     "首次新高(久盤後)":       lambda s, b: ts.first_new_high(s),
     "VDU→Thrust(量縮噴出)":   lambda s, b: vs.vdu_thrust(s),
     "U/D量比吸籌":            lambda s, b: vs.accumulating(s),
+    "A/D吸籌A/B級":           lambda s, b: (vs.acc_dist_grade(s) or {}).get("bullish", False),
     "RS線新高(純)":           rs_pure,
     "VCP∧TrendTemplate":     lambda s, b: ts.vcp(s)["pass"] and ts.trend_template(s)["pass"],
     "RS純∧TrendTemplate":    lambda s, b: rs_pure(s, b) and ts.trend_template(s)["pass"],

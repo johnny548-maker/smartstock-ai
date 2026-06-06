@@ -20,6 +20,15 @@ THRUST_VOL_MULT = 1.5     # up-day volume > 1.5× recent dried baseline → thru
 UD_WINDOW = 50            # up/down volume ratio window
 UD_ACCUM = 1.10           # ratio above this = accumulation
 
+# A/D grade thresholds (ratio cut points; backtest can sweep these)
+AD_A = 1.50               # r ≥ → A 重度吸籌
+AD_B = 1.15               # AD_A > r ≥ → B 溫和吸籌
+AD_C_LO = 0.85            # AD_B > r ≥ → C 中性
+AD_D_LO = 0.65            # AD_C_LO > r ≥ → D 溫和派發 ; r < → E 重度派發
+
+AD_WINDOW = 65            # ~13 trading weeks
+AD_HALF_LIFE = 25         # weight halves every ~5 weeks (recency emphasis)
+
 
 def volume_dry_up(df, recent=VDU_RECENT, base=VDU_BASE, ratio=VDU_RATIO):
     """True when recent avg volume has contracted below `ratio`× the base avg."""
@@ -65,3 +74,73 @@ def accumulating(df, window=UD_WINDOW, threshold=UD_ACCUM):
     """True when up/down volume ratio signals accumulation."""
     r = up_down_volume_ratio(df, window)
     return r is not None and r >= threshold
+
+
+def weighted_up_down_volume_ratio(df, window=AD_WINDOW, half_life=AD_HALF_LIFE):
+    """Recency-weighted Σ(w·up-vol) / Σ(w·down-vol) over the last `window` bars.
+
+    Weight w_i = 0.5**((window-1-i)/half_life) so the most-recent bar weighs 1.0
+    and older bars decay with a `half_life`-bar half-life — recent accumulation/
+    distribution dominates, distinguishing this from the flat up_down_volume_ratio.
+    Unchanged days (chg==0) are excluded from BOTH sums. Returns None if the frame
+    is too short (need window+1 for the diff), has no 'Volume', or the weighted
+    down-volume sum is 0 (avoids ZeroDivision on a strictly monotonic-up run).
+    """
+    if df is None or "Volume" not in df or len(df) < window + 1:
+        return None
+    close = df["Close"]
+    vol = df["Volume"]
+    chg = close.diff().iloc[-window:].to_numpy(float)
+    v = vol.iloc[-window:].to_numpy(float)
+    up_sum = 0.0
+    dn_sum = 0.0
+    for i in range(window):
+        w = 0.5 ** ((window - 1 - i) / half_life)
+        if chg[i] > 0:
+            up_sum += w * v[i]
+        elif chg[i] < 0:
+            dn_sum += w * v[i]
+    if dn_sum == 0:
+        return None
+    return float(up_sum / dn_sum)
+
+
+_AD_LABELS = {
+    "A": "重度吸籌", "B": "溫和吸籌", "C": "中性",
+    "D": "溫和派發", "E": "重度派發",
+}
+
+
+def acc_dist_grade(df, window=AD_WINDOW, half_life=AD_HALF_LIFE):
+    """Honest ANALOG of IBD's Accumulation/Distribution A-E rating (the exact A/D
+    algorithm is proprietary). Grades a name on a recency-weighted up/down volume
+    ratio — A/B = institutions buying (吸籌), D/E = distributing (派發), C = neutral.
+
+    OVERLAY-NOT-SCORER: this is an INFORMATIONAL badge only. It rides the same
+    informational-overlay rail as earnings/liquidity (card-only) and MUST NOT enter
+    strategy.score_stock or any factor weight — purely a glance-able overlay.
+
+    Returns {'grade','ratio','label','bullish'} or None when the weighted ratio is
+    None (too short / no volume / no down-volume). Mapping by ratio r:
+      r≥AD_A→A, AD_A>r≥AD_B→B, AD_B>r≥AD_C_LO→C, AD_C_LO>r≥AD_D_LO→D, r<AD_D_LO→E.
+    bullish = grade in ('A','B').
+    """
+    r = weighted_up_down_volume_ratio(df, window, half_life)
+    if r is None:
+        return None
+    if r >= AD_A:
+        grade = "A"
+    elif r >= AD_B:
+        grade = "B"
+    elif r >= AD_C_LO:
+        grade = "C"
+    elif r >= AD_D_LO:
+        grade = "D"
+    else:
+        grade = "E"
+    return {
+        "grade": grade,
+        "ratio": round(r, 2),
+        "label": _AD_LABELS[grade],
+        "bullish": grade in ("A", "B"),
+    }
