@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """TDD suite for SmartStock pure-logic core. Run: python test_smartstock.py
 No network — synthetic OHLCV DataFrames only."""
+import os
 import unittest
 import numpy as np
 import pandas as pd
@@ -34,6 +35,7 @@ import risk_sizing
 import correlation
 import earnings_guard
 import short_volume
+import macro
 from datetime import date
 
 
@@ -1059,6 +1061,109 @@ class TestLiquidity(unittest.TestCase):
         liq = verdict.liquidity("2330.TW", df)
         self.assertFalse(liq["thin"])
         self.assertEqual(liq["cur"], "NT$")
+
+
+class TestMacro(unittest.TestCase):
+    """FRED macro spine (B6) — pure parsers + cache/overlay. No real network."""
+
+    # ── _parse_csv (PURE) ────────────────────────────────────────────────
+    def test_parse_csv_skips_header_and_empty_cells(self):
+        txt = ("observation_date,T10Y2Y\n2026-05-22,0.43\n2026-05-25,\n2026-05-26,0.49")
+        self.assertEqual(macro._parse_csv(txt),
+                         [("2026-05-22", 0.43), ("2026-05-26", 0.49)])
+
+    def test_parse_csv_handles_dot_missing(self):
+        txt = "observation_date,DGS10\n2026-05-25,.\n2026-05-26,4.41"
+        self.assertEqual(macro._parse_csv(txt), [("2026-05-26", 4.41)])
+
+    def test_parse_csv_empty_returns_empty_list(self):
+        self.assertEqual(macro._parse_csv("observation_date,T10Y2Y\n"), [])
+
+    # ── _latest ──────────────────────────────────────────────────────────
+    def test_latest_returns_last_row(self):
+        rows = [("2026-05-22", 0.43), ("2026-05-26", 0.49)]
+        self.assertEqual(macro._latest(rows), ("2026-05-26", 0.49))
+
+    def test_latest_empty_returns_none_none(self):
+        self.assertEqual(macro._latest([]), (None, None))
+
+    # ── classify: curve ──────────────────────────────────────────────────
+    def test_classify_curve_inverted_true(self):
+        c = macro.classify({"term_spread": -0.15})
+        self.assertTrue(c["curve_inverted"])
+        self.assertIn("yield-curve inverted", c["flags"])
+
+    def test_classify_curve_not_inverted(self):
+        c = macro.classify({"term_spread": 0.42})
+        self.assertFalse(c["curve_inverted"])
+        self.assertNotIn("yield-curve inverted", c["flags"])
+
+    # ── classify: credit ─────────────────────────────────────────────────
+    def test_classify_credit_calm_vs_stressed(self):
+        self.assertEqual(macro.classify({"hy_oas": 2.74})["credit_stress"], "calm")
+        self.assertEqual(macro.classify({"hy_oas": 5.5})["credit_stress"], "elevated")
+        self.assertEqual(macro.classify({"hy_oas": 8.5})["credit_stress"], "stressed")
+
+    # ── classify: financial conditions ───────────────────────────────────
+    def test_classify_financial_conditions_from_nfci(self):
+        self.assertEqual(macro.classify({"nfci": -0.50})["financial_conditions"], "loose")
+        self.assertEqual(macro.classify({"nfci": 0.10})["financial_conditions"], "neutral")
+        self.assertEqual(macro.classify({"nfci": 0.7})["financial_conditions"], "tight")
+
+    # ── classify: label escalation ───────────────────────────────────────
+    def test_classify_label_escalates(self):
+        self.assertEqual(
+            macro.classify({"term_spread": -0.2, "hy_oas": 8.5})["label"], "stress")
+        self.assertEqual(macro.classify({"hy_oas": 5.5})["label"], "watch")
+        self.assertEqual(
+            macro.classify({"term_spread": 0.5, "hy_oas": 2.7, "nfci": -0.2})["label"],
+            "benign")
+
+    def test_classify_all_none_inputs_label_benign_no_crash(self):
+        c = macro.classify({"term_spread": None, "hy_oas": None, "vix": None,
+                            "dgs10": None, "nfci": None})
+        self.assertEqual(c["label"], "benign")
+        self.assertEqual(c["flags"], [])
+
+    # ── fetch_macro: cache + failure ─────────────────────────────────────
+    def test_fetch_macro_uses_cache_when_fresh(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "_macro_cache.json")
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump({"term_spread": 0.41, "hy_oas": 3.0, "asof": {}}, f)
+
+            def _boom(*a, **k):
+                raise AssertionError("network must not be called when cache is fresh")
+            orig = macro._fetch_series
+            macro._fetch_series = _boom
+            try:
+                out = macro.fetch_macro(cache_path=path, ttl_sec=86400)
+            finally:
+                macro._fetch_series = orig
+        self.assertTrue(out.get("cached"))
+        self.assertEqual(out["term_spread"], 0.41)
+
+    def test_fetch_macro_returns_empty_dict_on_total_failure(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "nope.json")   # no cache file
+
+            def _boom(*a, **k):
+                raise RuntimeError("FRED down")
+            orig = macro._fetch_series
+            macro._fetch_series = _boom
+            try:
+                out = macro.fetch_macro(cache_path=path, ttl_sec=86400)
+            finally:
+                macro._fetch_series = orig
+        self.assertEqual(out, {})
+
+    # ── overlay-not-scorer contract ──────────────────────────────────────
+    def test_macro_context_overlay_only(self):
+        c = macro.classify({"term_spread": -0.2, "hy_oas": 8.5})
+        self.assertNotIn("score", c)
 
 
 if __name__ == "__main__":

@@ -252,12 +252,40 @@ EDGAR_CACHE = os.path.join(_HERE, ".cache", "edgar")
 EDGAR_REVENUE_CONCEPTS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
                           "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet"]
 
+# ── FRED macro spine (B6) — keyless risk-context OVERLAY, NOT a scorer ───────
+# fredgraph.csv download (no key, no auth). ALWAYS pass cosd=today-45d or it
+# downloads multi-decade history. Header is `observation_date,<SERIESID>` (DATE
+# renamed 2024). Empty cells (holidays) AND legacy '.' missing markers dropped.
+# OVERLAY-ONLY: enters payload as its own 'macro' key + a PWA banner; it is NEVER
+# summed into 'risk' or any stock score (要做回測才加權). The yfinance ^VIX/^TNX
+# risk input (risk_engine.market_risk) stays untouched — VIXCLS is cross-ref only.
+FRED_BASE = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+FRED_SERIES = {
+    "term_spread": "T10Y2Y",      # 10Y-2Y spread (<0 = inverted curve)
+    "hy_oas": "BAMLH0A0HYM2",     # HY OAS — credit stress
+    "vix": "VIXCLS",              # cross-ref only (live risk input stays yfinance ^VIX)
+    "dgs10": "DGS10",             # 10Y treasury yield
+    "nfci": "NFCI",               # Chicago Fed NFCI — WEEKLY, Fri-stamped, ~1wk lag
+}
+FRED_UA = EDGAR_UA                # reuse the descriptive UA ("SmartStockDaily <email>")
+MACRO_TIMEOUT = 15
+MACRO_LOOKBACK_DAYS = 45          # cosd = today - this many days (avoid multi-decade dump)
+MACRO_MIN_INTERVAL = 0.4          # throttle between FRED requests (mirror edgar _throttle)
+# MACRO_CACHE path defined below (needs WEB_DIR)
+# classify() thresholds
+CREDIT_OAS_ELEVATED = 4.0         # HY OAS ≥ this → 'elevated' credit stress
+CREDIT_OAS_STRESSED = 7.0         # HY OAS ≥ this → 'stressed'
+NFCI_TIGHT = 0.5                  # NFCI ≥ this → 'tight' financial conditions
+NFCI_LOOSE = -0.1                 # NFCI < this → 'loose'
+CURVE_INVERT = 0.0                # term_spread < this → yield curve inverted
+
 # ── Output ──────────────────────────────────────────────────
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
 REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
+MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
 PORTFOLIO_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portfolio_state.json")
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartstock.log")
 

@@ -251,6 +251,24 @@ def _regime_block(regime):
             f"_{'、'.join(parts)}。~75% 突破在空頭環境失敗 → 環境轉弱時降部位、暫停新突破單。_")
 
 
+MACRO_LABEL = {"benign": "🟢 環境溫和", "watch": "🟡 留意", "stress": "🔴 壓力"}
+
+
+def _macro_block(macro):
+    """🌐 總經環境 — FRED RISK-CONTEXT overlay (informational backdrop, NOT scored)."""
+    if not macro:
+        return ""
+    lab = MACRO_LABEL.get(macro.get("label"), macro.get("label"))
+    curve = "倒掛" if macro.get("curve_inverted") else "正常"
+    bits = [f"殖利率曲線 {curve}"]
+    if macro.get("hy_oas") is not None:
+        bits.append(f"HY-OAS {macro['hy_oas']}%（{macro.get('credit_stress') or '—'}）")
+    if macro.get("financial_conditions"):
+        bits.append(f"NFCI {macro['financial_conditions']}")
+    return (f"## 🌐 總經環境：{lab}\n\n"
+            f"_{'、'.join(bits)}。總經為「環境背景」，僅供參考，不計入個股評分（要做回測才加權）。_")
+
+
 def _concentration_block(con):
     """⚠️ 相關性警示 (analyst G2: correlated names = one bet, false diversification)."""
     if not con or not con.get("clusters"):
@@ -267,7 +285,7 @@ def _concentration_block(con):
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
                  events=None, breadth=None, revenue=None, signals=None, themes=None,
-                 opportunity=None, regime=None, concentration=None):
+                 opportunity=None, regime=None, concentration=None, macro=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
@@ -276,6 +294,9 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
     rg = _regime_block(regime)
     if rg:
         blocks += ["", rg]
+    mc = _macro_block(macro)
+    if mc:
+        blocks += ["", mc]
     for extra in (_delta_block(delta), _breakout_block(opportunity),
                   _opportunity_block(opportunity),
                   _signals_block(signals, themes), _revenue_block(revenue),

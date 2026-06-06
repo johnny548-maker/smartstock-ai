@@ -90,6 +90,23 @@ function regimeBanner(d) {
     + `<div class="muted small">${esc(det)}。~75% 突破在空頭失敗 → 環境轉弱降部位、暫停新突破單。</div></div>`;
 }
 
+// FRED macro RISK-CONTEXT overlay — informational backdrop, NEVER a score (要做回測才加權)
+const MACRO_LABEL = { benign: '🟢 環境溫和', watch: '🟡 留意', stress: '🔴 壓力' };
+function macroBanner(d) {
+  const m = d.macro; if (!m) return '';
+  const cls = m.label === 'stress' ? 'reg-off' : (m.label === 'watch' ? 'reg-mid' : 'reg-on');
+  const chips = [];
+  const curveOk = !m.curve_inverted;
+  chips.push(`<span class="macro-chip"><b class="${curveOk ? 'up' : 'down'}">殖利率曲線 ${curveOk ? '正常' : '倒掛'}</b></span>`);
+  if (m.hy_oas != null) chips.push(`<span class="macro-chip">信用利差 HY-OAS=${esc(m.hy_oas)}%（${esc(m.credit_stress || '—')}）</span>`);
+  if (m.financial_conditions) chips.push(`<span class="macro-chip">金融環境 NFCI ${esc(m.financial_conditions)}</span>`);
+  if (m.vix != null) chips.push(`<span class="macro-chip">VIX ${esc(m.vix)}</span>`);
+  if (m.dgs10 != null) chips.push(`<span class="macro-chip">10Y ${esc(m.dgs10)}%</span>`);
+  return `<div class="regime ${cls}"><b>🌐 總經環境：${esc(MACRO_LABEL[m.label] || m.label)}</b>`
+    + `<div class="macro-chips">${chips.join('')}</div>`
+    + `<div class="muted small">總經為「環境背景」，僅供參考，不計入個股評分（要做回測才加權）。</div></div>`;
+}
+
 function concentrationBlock(d) {
   const c = d.concentration; if (!c || !(c.clusters || []).length) return '';
   let html = '';
@@ -547,7 +564,7 @@ async function showDetail(date) {
   } catch (e) {}
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + deltaBlock(d) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) + concentrationBlock(d) +
     breakoutBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +

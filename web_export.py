@@ -61,7 +61,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
-                  regime=None, concentration=None, shortvol=None):
+                  regime=None, concentration=None, shortvol=None, macro=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     picks = [
@@ -92,6 +92,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "themes": [t for t in (themes or []) if t.get("emerging")],
         "opportunity": opportunity,
         "regime": regime,
+        "macro": macro,     # FRED macro RISK-CONTEXT overlay (informational; never scored)
         "concentration": concentration,
         "shortvol": shortvol or [],     # FINRA RegSHO short-volume board (informational, US-only)
         "indices": indices,

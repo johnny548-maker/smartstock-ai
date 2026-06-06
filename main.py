@@ -40,6 +40,7 @@ import market_regime as regime_mod
 import correlation as correlation_mod
 import earnings_guard as earnings_mod
 import short_volume as shortvol_mod
+import macro
 
 
 def setup_logging():
@@ -198,6 +199,16 @@ def main(web=False):
             log.info("market regime: %s (%d%% exposure)", regime["label"], regime["exposure"])
     except Exception as e:
         log.warning("SKIP regime: %s", e); regime = None
+    # 5c-macro. FRED macro spine (B6): yield-curve / credit / NFCI RISK-CONTEXT
+    #     OVERLAY — informational backdrop only, NEVER summed into risk or any
+    #     stock score (要做回測才加權). The live ^VIX/^TNX risk input is untouched.
+    try:
+        macro_ctx = macro.macro_context(cache_path=config.MACRO_CACHE)
+        if macro_ctx:
+            log.info("macro overlay: %s (flags: %s)",
+                     macro_ctx.get("label"), ", ".join(macro_ctx.get("flags") or []) or "—")
+    except Exception as e:
+        log.warning("SKIP macro: %s", e); macro_ctx = None; skips.append("macro")
     try:
         pick_data = {it["stock"]: data[it["stock"]] for it in ranked[:config.DISPLAY_N]
                      if data.get(it["stock"]) is not None}
@@ -272,7 +283,8 @@ def main(web=False):
         ranked=ranked, analyses=analyses, allocation=target,
         rebalance_diff=reb, risk=risk, movers=movers,
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
-        signals=sig, themes=themes, opportunity=opp, regime=regime, concentration=concentration)
+        signals=sig, themes=themes, opportunity=opp, regime=regime,
+        concentration=concentration, macro=macro_ctx)
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
@@ -285,7 +297,8 @@ def main(web=False):
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
-            regime=regime, concentration=concentration, shortvol=shortvol_board)
+            regime=regime, concentration=concentration, shortvol=shortvol_board,
+            macro=macro_ctx)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
