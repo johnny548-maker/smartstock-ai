@@ -81,6 +81,7 @@ import csv
 import io
 import json
 import logging
+import re
 import zipfile
 
 import requests
@@ -91,10 +92,41 @@ log = logging.getLogger(__name__)
 DATAGOV_DATASET_URL = "https://data.gov.tw/api/v2/rest/dataset/%s"
 # Verified-working keyless dataset (NDC 景氣指標及燈號, incl. 對策信號 燈號/分數).
 DATASET_BUSINESS_CYCLE = "6099"
-# 外銷訂單 / 工業生產指數 data.gov.tw mirror ids are NOT predictable from the probe.
-# Left as None -> fetcher graceful-skips with a TODO until a discovery run pins them.
-DATASET_EXPORT_ORDERS = None      # TODO: pin MOEA/DGBAS 外銷訂單(按貨品分類) data.gov.tw id
-DATASET_INDUSTRIAL_PROD = None    # TODO: pin MOEA 工業生產指數 data.gov.tw dataset id
+
+# ── MOEA EE521/GA direct HTML-table endpoints (keyless, no JS required) ─────────
+# Discovery run 2026-06-07: data.gov.tw API only accepts numeric IDs and its search
+# endpoints return 404. The MOEA publishes live monthly data at service.moea.gov.tw
+# with NO login — these URLs return HTML tables parseable with regex (no Playwright).
+#
+# DATASET_EXPORT_ORDERS / DATASET_INDUSTRIAL_PROD are now superseded by the
+# MOEA_EE521_* / MOEA_GA_IPI_* endpoints below.  The data.gov.tw id constants are
+# kept as None (backward compat with tests that temporarily pin them).
+DATASET_EXPORT_ORDERS = None      # superseded by MOEA_EE521_EO_YOY_URL
+DATASET_INDUSTRIAL_PROD = None    # superseded by MOEA_GA_IPI_URL
+
+# 外銷訂單 金額年增率 by product (EE521 Common code=B&no=3).
+# Verified 2026-06-07: returns live HTML table, 21 rows, no auth, keyless.
+# Columns: 年月別 | 總計 | 資訊通信 | 電子產品 | 光學器材 | ...
+# Rows: 114年 annual, monthly Apr-Dec, + 115年 recent months with YoY % values.
+MOEA_EE521_EO_YOY_URL = (
+    "https://service.moea.gov.tw/EE521/common/Common.aspx?code=B&no=3"
+)
+
+# 工業生產指數 by major industry (GA Common code=D&no=1, absolute index values).
+# Verified 2026-06-07: live HTML table, 21 rows, no auth, keyless.
+# Columns: 年月別 | 工業 | 礦業及土石採取業 | 製造業 | 電力及燃氣供應業 | 用水供應業
+# Rows: 114年 annual + monthly (Apr-Dec), 115年 recent months (absolute index, base=100).
+MOEA_GA_IPI_URL = (
+    "https://service.moea.gov.tw/GA/common/Common.aspx?code=D&no=1"
+)
+
+# 製造業生產指數 by 4 major + medium-class industries (GA code=D&no=4).
+# Includes column 電子零組件業 (electronic components) — the semiconductor-sector IPI.
+# Verified 2026-06-07: live HTML table, 22 rows, no auth, keyless.
+MOEA_GA_IPI_DETAIL_URL = (
+    "https://service.moea.gov.tw/GA/common/Common.aspx?code=D&no=4"
+)
+
 # 海關 HS 進出口 keyless CSV mirror (GA30 is CAPTCHA-gated — Playwright fallback).
 # Parameterised by HS code; left as a format template the discovery run fills in.
 CUSTOMS_HS_CSV_URL = None         # TODO: pin data.nat.gov.tw 海關 HS 進出口 CSV mirror
@@ -567,6 +599,290 @@ def hs_export_momentum(rows, hs_code=SEMI_HS_CODE):
     if rows and hs_code:
         return None
     return None
+
+
+# ── MOEA HTML-table parser + MOEA fetchers ────────────────────────────────────
+#
+# service.moea.gov.tw returns a simple HTML page with a <table> of monthly data.
+# We parse it with regex — no Playwright needed. The page is served with no auth.
+#
+# EE521 code=B&no=3: pre-computed YoY % by product (外銷訂單金額年增率).
+#   Column headers are in the FIRST <tr> row, subsequent rows hold data.
+#   Key columns: 年月別 | 總計 | 資訊通信 | 電子產品 | ... (% values already YoY)
+#   We emit normalised rows with shape {年月別: str, 貨品別: label, 年增率: pct_str}
+#   so existing pure functions (export_orders_yoy / electronics_export_yoy) work.
+#
+# GA code=D&no=1 / code=D&no=4: absolute index (base=100) by major / medium industry.
+#   We find the most recent month that appears in BOTH 114年 (prior) and 115年 (current)
+#   rows, compute YoY inline, and emit a row with 年增率 so industrial_production_yoy
+#   works unchanged. If 電子零組件業 column is present (code=D&no=4) we prefer it.
+
+# ─ HTML cell extractor ─────────────────────────────────────────────────────────
+
+_RE_TR = re.compile(r"<tr[^>]*>(.*?)</tr>", re.DOTALL | re.IGNORECASE)
+_RE_TH = re.compile(r"<th[^>]*>(.*?)</th>", re.DOTALL | re.IGNORECASE)
+_RE_TD = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL | re.IGNORECASE)
+_RE_TAG = re.compile(r"<[^>]+>")
+
+
+def _html_text(cell_html):
+    """Strip HTML tags from a table cell string; unescape &nbsp; / &amp;. Pure."""
+    t = _RE_TAG.sub("", cell_html)
+    t = t.replace("&nbsp;", " ").replace("&amp;", "&").replace("&lt;", "<")
+    return t.strip()
+
+
+def _parse_moea_html_table(html):
+    """Parse the first HTML <table> in `html` → list of dicts (header-keyed rows).
+
+    Returns [] on any error (graceful). The first <tr> with <th> cells is treated
+    as the header row; every subsequent <tr> with <td> cells is a data row. Rows
+    shorter than the header are right-padded with ''; longer rows are truncated.
+    Pure (only reads `html`)."""
+    if not html:
+        return []
+    rows = []
+    headers = []
+    try:
+        for tr_m in _RE_TR.finditer(html):
+            tr_html = tr_m.group(1)
+            # header row: <th> cells
+            ths = _RE_TH.findall(tr_html)
+            if ths and not headers:
+                headers = [_html_text(h) for h in ths]
+                continue
+            # data row: <td> cells
+            tds = _RE_TD.findall(tr_html)
+            if not tds or not headers:
+                continue
+            cells = [_html_text(c) for c in tds]
+            # pad / truncate to header width
+            if len(cells) < len(headers):
+                cells += [""] * (len(headers) - len(cells))
+            row = dict(zip(headers, cells[:len(headers)]))
+            rows.append(row)
+    except Exception as e:
+        log.warning("SKIP _parse_moea_html_table: %s", e)
+        return []
+    return rows
+
+
+# ── MOEA 外銷訂單金額年增率 (EE521 code=B&no=3) → normalised export-order rows ──
+
+_RE_ROC_YEAR_ROW = re.compile(r"^(\d+)年\d+月")   # e.g. '115年4月' → current year row
+_RE_ROC_MONTH = re.compile(r"^(\d+)年(\d+)月")    # capture year + month
+
+
+def _moea_eo_yoy_to_rows(html):
+    """Parse EE521 code=B&no=3 HTML → list of dicts shaped for export_orders_yoy.
+
+    The table contains pre-computed YoY % by product. We find the most recent
+    month that has a non-empty 總計 column. We then emit:
+      - one row with 貨品別='總計' and 年增率=<total_pct>
+      - one row with 貨品別='電子產品' and 年增率=<electronics_pct>  (if column present)
+      - one row with 貨品別='資訊通信' and 年增率=<ict_pct>  (if column present)
+    These shapes match what _row_curr_prev / _is_electronics_row expect. Pure."""
+    raw = _parse_moea_html_table(html)
+    if not raw:
+        return []
+    # columns to extract (all are pre-computed YoY %)
+    TOTAL_KEYS = ("總計",)
+    ELEC_KEYS = ("電子產品",)
+    ICT_KEYS = ("資訊通信", "資訊通信產品", "資通訊產品", "資通訊")
+    # find the most recent current-year (115年) monthly row with a usable 總計
+    best = None
+    for r in raw:
+        label = r.get("年月別", "") or r.get("", "")
+        if not _RE_ROC_MONTH.match(label.strip()):
+            continue
+        # get 總計 from whichever key matches
+        total_str = None
+        for k in TOTAL_KEYS:
+            v = r.get(k, "")
+            if v and v not in (".", "--", " "):
+                total_str = v
+                break
+        if total_str is None:
+            continue
+        best = r
+    if best is None:
+        return []
+    # build normalised rows
+    rows = []
+    label = (best.get("年月別", "") or "").strip()
+    # total row
+    total_val = None
+    for k in TOTAL_KEYS:
+        v = best.get(k, "")
+        if v and v not in (".", "--", " "):
+            total_val = v
+            break
+    if total_val is not None:
+        rows.append({"貨品別": "總計", "年月別": label, "年增率": total_val})
+    # electronics row
+    elec_val = None
+    for k in ELEC_KEYS:
+        v = best.get(k, "")
+        if v and v not in (".", "--", " "):
+            elec_val = v
+            break
+    if elec_val is not None:
+        rows.append({"貨品別": "電子產品", "年月別": label, "年增率": elec_val})
+    # ICT row (also flagged as electronics by _is_electronics_row)
+    ict_val = None
+    for k in ICT_KEYS:
+        v = best.get(k, "")
+        if v and v not in (".", "--", " "):
+            ict_val = v
+            break
+    if ict_val is not None:
+        rows.append({"貨品別": "資訊通信", "年月別": label, "年增率": ict_val})
+    return rows
+
+
+def fetch_export_orders_moea(fetch_fn=None):
+    """外銷訂單金額年增率 via MOEA EE521 live HTML table (MOEA_EE521_EO_YOY_URL).
+
+    Keyless, no auth. Returns normalised rows shaped for export_orders_yoy /
+    electronics_export_yoy pure functions. Returns [] (SKIP) on any error.
+    NEVER raises. Injectable fetch_fn for tests (no network in tests).
+
+    Note: this is NOT the data.gov.tw path (fetch_export_orders). This is the
+    direct MOEA HTML-table path enabled by the discovery run 2026-06-07."""
+    if not MOEA_EE521_EO_YOY_URL:
+        log.warning("SKIP fetch_export_orders_moea: MOEA_EE521_EO_YOY_URL not set")
+        return []
+    get = fetch_fn or _default_get_text
+    try:
+        html = get(MOEA_EE521_EO_YOY_URL)
+    except Exception as e:
+        log.warning("SKIP fetch_export_orders_moea: %s", e)
+        return []
+    rows = _moea_eo_yoy_to_rows(html)
+    if not rows:
+        log.warning("SKIP fetch_export_orders_moea: no usable rows parsed from HTML")
+    return rows
+
+
+# ── MOEA 工業生產指數 (GA code=D&no=1 / D&no=4) → normalised IPI rows ────────
+
+def _moea_ipi_to_rows(html, elec_col_hints=("電子零組件", "電子零組件業")):
+    """Parse GA code=D&no=1 or D&no=4 HTML → IPI rows shaped for industrial_production_yoy.
+
+    The table has absolute index values (base=100) for multiple years/months.
+    Row labels: '114年' (annual), '114年1月'...'114年12月', '115年1月'... etc.
+    We find the most recent month present in BOTH 114年 and 115年 rows, compute
+    YoY for the headline index (工業 / 製造業) and, if available, the
+    電子零組件業 sub-index. Returns rows with 年增率 pre-computed (%). Pure-ish."""
+    raw = _parse_moea_html_table(html)
+    if not raw:
+        return []
+    # identify the year-month label column (first column)
+    if not raw[0]:
+        return []
+    label_col = list(raw[0].keys())[0]
+    # separate rows by ROC year
+    prior_by_month = {}   # {month_int: row} for 114年 monthly rows
+    curr_by_month = {}    # {month_int: row} for 115年 monthly rows
+    ROC_PRIOR = 114
+    ROC_CURR = 115
+    for r in raw:
+        label = str(r.get(label_col, "")).strip()
+        m = _RE_ROC_MONTH.match(label)
+        if not m:
+            continue
+        roc_year = int(m.group(1))
+        month = int(m.group(2))
+        if roc_year == ROC_PRIOR:
+            prior_by_month[month] = r
+        elif roc_year == ROC_CURR:
+            curr_by_month[month] = r
+    # find most recent overlapping month
+    common_months = sorted(set(prior_by_month) & set(curr_by_month), reverse=True)
+    if not common_months:
+        log.warning("SKIP _moea_ipi_to_rows: no overlapping month between 114/115年")
+        return []
+    month = common_months[0]
+    curr_row = curr_by_month[month]
+    prior_row = prior_by_month[month]
+    label = "115年%d月" % month
+    rows = []
+    # identify headline column (工業 or 製造業)
+    HEADLINE_HINTS = ("工業", "製造業")
+    headline_col = None
+    for hint in HEADLINE_HINTS:
+        for col in curr_row:
+            if hint in col and col != label_col:
+                headline_col = col
+                break
+        if headline_col:
+            break
+    if headline_col:
+        c = _to_float(curr_row.get(headline_col))
+        p = _to_float(prior_row.get(headline_col))
+        yoy = _yoy(c, p)
+        if yoy is not None:
+            rows.append({
+                "行業別": headline_col,
+                "年月別": label,
+                "年增率": "%.4f" % (yoy * 100),
+            })
+    # electronics sub-index (電子零組件業) — preferred by industrial_production_yoy
+    elec_col = None
+    for hint in elec_col_hints:
+        for col in curr_row:
+            if hint in col and col != label_col:
+                elec_col = col
+                break
+        if elec_col:
+            break
+    if elec_col:
+        c = _to_float(curr_row.get(elec_col))
+        p = _to_float(prior_row.get(elec_col))
+        yoy = _yoy(c, p)
+        if yoy is not None:
+            rows.append({
+                "行業別": "電子零組件業",  # matched by _is_electronics_row
+                "年月別": label,
+                "年增率": "%.4f" % (yoy * 100),
+            })
+    return rows
+
+
+def fetch_industrial_production_moea(fetch_fn=None):
+    """工業生產指數 via MOEA GA live HTML tables (MOEA_GA_IPI_URL + MOEA_GA_IPI_DETAIL_URL).
+
+    Keyless, no auth. Returns normalised rows shaped for industrial_production_yoy.
+    Tries the detail table (code=D&no=4) for 電子零組件業 first; falls back to the
+    major-industry table (code=D&no=1). Returns [] (SKIP) on any error.
+    NEVER raises. Injectable fetch_fn for tests."""
+    if not MOEA_GA_IPI_URL:
+        log.warning("SKIP fetch_industrial_production_moea: MOEA_GA_IPI_URL not set")
+        return []
+    get = fetch_fn or _default_get_text
+    # try detail table first (has 電子零組件業 column)
+    rows = []
+    if MOEA_GA_IPI_DETAIL_URL:
+        try:
+            html = get(MOEA_GA_IPI_DETAIL_URL)
+            rows = _moea_ipi_to_rows(html)
+        except Exception as e:
+            log.warning("SKIP fetch_industrial_production_moea detail: %s", e)
+    # if detail failed or produced no electronics sub-row, try the major table
+    if not any("電子零組件" in r.get("行業別", "") for r in rows):
+        try:
+            html = get(MOEA_GA_IPI_URL)
+            major_rows = _moea_ipi_to_rows(html)
+            # merge: add major rows not already covered by detail
+            existing_cols = {r.get("行業別") for r in rows}
+            for r in major_rows:
+                if r.get("行業別") not in existing_cols:
+                    rows.append(r)
+        except Exception as e:
+            log.warning("SKIP fetch_industrial_production_moea major: %s", e)
+    if not rows:
+        log.warning("SKIP fetch_industrial_production_moea: no usable rows parsed")
+    return rows
 
 
 # ── environment emission (named gauges — NOT keyed by ticker) ──────────────────

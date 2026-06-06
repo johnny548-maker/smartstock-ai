@@ -551,8 +551,11 @@ def main(web=False):
     try:
         def _fetch_tw_env():
             cycle_rows = _macro_tw.fetch_business_cycle_signal()
-            export_rows = _macro_tw.fetch_export_orders()
-            ipi_rows = _macro_tw.fetch_industrial_production()
+            # export orders: try MOEA direct HTML first (keyless, verified 2026-06-07);
+            # fall back to data.gov.tw dataset path if DATASET_EXPORT_ORDERS is pinned.
+            export_rows = _macro_tw.fetch_export_orders_moea() or _macro_tw.fetch_export_orders()
+            # IPI: try MOEA GA direct HTML (detail table first for 電子零組件業).
+            ipi_rows = _macro_tw.fetch_industrial_production_moea() or _macro_tw.fetch_industrial_production()
             semi_hs_rows = _macro_tw.fetch_customs_hs(_macro_tw.SEMI_HS_CODE)
             return _macro_tw.to_environment(
                 export_rows=export_rows, ipi_rows=ipi_rows,

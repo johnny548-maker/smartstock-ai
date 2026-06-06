@@ -34,6 +34,7 @@ derive functions (parse_frame_rows / index_from_frames / qoq_pct) are offline
 unit-tested with a fixture frames JSON.
 """
 import logging
+from urllib.request import Request, urlopen
 
 log = logging.getLogger(__name__)
 
@@ -44,6 +45,24 @@ from sources.sec import SEC_UA, _real_fetch, SEC_CACHE_PATH  # noqa: E402
 FRAMES_URL = (
     "https://data.sec.gov/api/xbrl/frames/us-gaap/{concept}/{unit}/{period}.json"
 )
+
+_FRAMES_TIMEOUT = 30
+
+
+def _fetch_frames_url(url):
+    """Fetch a SEC frames JSON URL → text body. Sends ONLY the SEC User-Agent header.
+
+    Unlike sources.sec._real_fetch, this function does NOT send Accept-Encoding: gzip.
+    The SEC CDN honours gzip encoding when requested, but _real_fetch then tries to
+    decode the compressed bytes as UTF-8, producing garbage → json.loads failure.
+    By omitting Accept-Encoding the server returns plain JSON text. NOT called in
+    tests (tests inject fetch_fn). No throttling needed (frames are CDN-served)."""
+    req = Request(url, headers={"User-Agent": SEC_UA})
+    with urlopen(req, timeout=_FRAMES_TIMEOUT) as resp:
+        raw = resp.read()
+    return raw.decode("utf-8", errors="replace")
+
+
 DEFAULT_CONCEPTS = ("Revenues", "NetIncomeLoss")
 DEFAULT_UNIT = "USD"
 FRAMES_TTL = 24 * 3_600          # frames republish at most quarterly → 24h cache is safe
@@ -100,7 +119,10 @@ def fetch_frame(concept, period, fetch_fn=None, unit=DEFAULT_UNIT):
         or [] on ANY failure / non-dict payload / missing data[] (SKIP-not-abort).
     """
     import json as _json
-    fetch = fetch_fn or _real_fetch
+    # Use _fetch_frames_url (no gzip header) as the default — _real_fetch sends
+    # Accept-Encoding: gzip and then tries to decode compressed bytes as UTF-8,
+    # producing garbage → json.loads failure. _fetch_frames_url is the fix.
+    fetch = fetch_fn or _fetch_frames_url
     url = frames_url(concept, period, unit)
     try:
         body = fetch(url)
