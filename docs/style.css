@@ -3,403 +3,738 @@
    light "Bloomberg-lite"). RESKIN ONLY: same DOM app.js emits, restyled via
    tokens. The 7 --chart-* custom props are the contract app.js's K-line reads
    (chartColors() in app.js); they MUST exist in BOTH themes.
+   IA redesign: LIST = ranked picks + compact env-strip at top.
+   DETAIL = price-chart hero + tabbed progressive-disclosure data card.
    ============================================================================ */
 
 :root{
-  /* ---- DARK "Calm Terminal" — refined navy (raised contrast) ------------- */
-  --bg:#0b1722; --card:#16263a; --card2:#1d3148; --line:#2b4865;
-  --txt:#eef3f9; --muted:#93a8c2; --accent:#3ad27f; --neg:#ff6b6b;
-  --gold:#f5c451;
+  /* ---- DARK "Calm Terminal" — deep navy, higher contrast + breathing room -- */
+  --bg:#0a1520;
+  --card:#111e2e;
+  --card2:#182840;
+  --line:#1e3048;
+  --txt:#e8f0f9;
+  --muted:#7a96b8;
+  --accent:#3fcf80;
+  --neg:#f05f5f;
+  --gold:#f0c040;
 
-  /* semantic aliases → existing card/card2/line (so component CSS is theme-agnostic) */
-  --surface-1:var(--card); --surface-2:var(--card2); --border:var(--line);
+  /* semantic aliases */
+  --surface-1:var(--card);
+  --surface-2:var(--card2);
+  --border:var(--line);
 
-  /* semantic up/down/warn (charts, prices, status) */
-  --up:#5fe39b; --down:#ff8e8e; --warn:var(--gold);
+  /* semantic severity: up/down/warn */
+  --up:#4de899;
+  --down:#f07070;
+  --warn:var(--gold);
 
-  /* single warm highlight (links / focus) */
-  --link:#7db9ff; --highlight:#ffce6b;
+  /* link + highlight */
+  --link:#6aadff;
+  --highlight:#ffd060;
 
-  /* spacing scale */
+  /* spacing scale (4px base) */
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
 
-  /* radius scale */
-  --r1:10px; --r2:14px;
+  /* radius */
+  --r1:8px; --r2:12px; --r3:16px;
 
   /* type scale */
-  --t-xs:.74rem; --t-sm:.85rem; --t-md:.92rem; --t-lg:1.05rem; --t-xl:1.15rem;
+  --t-xs:.72rem; --t-sm:.82rem; --t-md:.92rem; --t-lg:1.04rem; --t-xl:1.16rem;
 
-  /* elevation (subtle shadows) + hairline */
-  --el-1:0 1px 2px rgba(0,0,0,.30); --el-2:0 4px 14px rgba(0,0,0,.38);
+  /* elevation */
+  --el-1:0 1px 3px rgba(0,0,0,.35);
+  --el-2:0 4px 16px rgba(0,0,0,.45);
   --hair:1px solid var(--border);
 
-  /* sticky stack offset (topbar ≈ 61px + tabnav ≈ 49px) → anchor jump clearance */
-  --sticky-offset:114px;
+  /* sticky stack clearance (topbar ~57px + tabnav ~48px) */
+  --sticky-offset:110px;
 
-  /* ---- 7 chart custom props (DARK): greens/reds on navy ------------------ */
-  --chart-up:#5fe39b; --chart-down:#ff8e8e;
-  --chart-bg:#0b1722; --chart-grid:#22364c; --chart-text:#c4d4e6;
-  --chart-vol-up:#2e5d4a; --chart-vol-down:#5d2e2e;
+  /* ---- 7 chart custom props (DARK) ---- */
+  --chart-up:#4de899;
+  --chart-down:#f07070;
+  --chart-bg:#0a1520;
+  --chart-grid:#1a2d42;
+  --chart-text:#b8cde0;
+  --chart-vol-up:#1d4d35;
+  --chart-vol-down:#4d1d1d;
 }
 
 :root[data-theme="light"]{
-  /* ---- LIGHT "Bloomberg-lite" — high-contrast data grid ------------------ */
-  --bg:#f7f9fc; --card:#ffffff; --card2:#eef2f8; --line:#d4dce8;
-  --txt:#0d1b2a; --muted:#5a6b82; --accent:#0c8a45; --neg:#cf2f2f;
-  --gold:#9a6b00;
+  /* ---- LIGHT "Bloomberg-lite" — high-contrast data grid ---------------- */
+  --bg:#f5f8fc;
+  --card:#ffffff;
+  --card2:#edf1f8;
+  --line:#cdd6e4;
+  --txt:#0c1a28;
+  --muted:#526478;
+  --accent:#0a8040;
+  --neg:#cc2828;
+  --gold:#8e6200;
 
-  --surface-1:var(--card); --surface-2:var(--card2); --border:var(--line);
+  --surface-1:var(--card);
+  --surface-2:var(--card2);
+  --border:var(--line);
 
-  --up:#0c8a45; --down:#cf2f2f; --warn:#9a6b00;
-  --link:#1556c4; --highlight:#8a5a00;
+  --up:#0a8040;
+  --down:#cc2828;
+  --warn:#8e6200;
 
-  --el-1:0 1px 2px rgba(13,27,42,.06); --el-2:0 3px 12px rgba(13,27,42,.10);
+  --link:#1450bc;
+  --highlight:#7a4e00;
+
+  --el-1:0 1px 2px rgba(12,26,40,.05);
+  --el-2:0 3px 12px rgba(12,26,40,.09);
   --hair:1px solid var(--border);
 
-  /* ---- 7 chart custom props (LIGHT): greens/reds on white grid ----------- */
-  --chart-up:#0c8a45; --chart-down:#cf2f2f;
-  --chart-bg:#ffffff; --chart-grid:#dde5ef; --chart-text:#2a384a;
-  --chart-vol-up:#a7d8bd; --chart-vol-down:#e6b3b3;
+  /* ---- 7 chart custom props (LIGHT) ---- */
+  --chart-up:#0a8040;
+  --chart-down:#cc2828;
+  --chart-bg:#ffffff;
+  --chart-grid:#dae2ed;
+  --chart-text:#2a3848;
+  --chart-vol-up:#9ed4b8;
+  --chart-vol-down:#e4aaaa;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
-  -webkit-font-smoothing:antialiased;line-height:1.55;
-  transition:background .2s ease,color .2s ease}
+/* ============================================================================
+   RESET + BASE
+   ============================================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC",
+    "Microsoft JhengHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+  transition:background .18s ease,color .18s ease;
+}
 .hidden{display:none!important}
 .muted{color:var(--muted)}
 .small{font-size:var(--t-sm)}
+b.up,.up{color:var(--up)}
+b.down,.down{color:var(--down)}
 
-/* tabular numerals everywhere a price/score/percent lives */
+/* tabular numerals for all price/score/numeric contexts */
 .score,.px,.px-big,.priceline,.levels,.kv,.kvs,.sr,.fx,.regime .reg-exp,
-.row-date,.spark,.movers b,.rev b,.wl-chip,.fund-row b{
-  font-variant-numeric:tabular-nums}
+.row-date,.spark,.movers b,.rev b,.wl-chip,.fund-row b,
+.env-v,.env-banner,.kpi-val,.strip-val{
+  font-variant-numeric:tabular-nums;
+}
 
-#topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--s2);
-  padding:calc(env(safe-area-inset-top) + 12px) 14px 12px;
-  background:color-mix(in srgb,var(--bg) 92%,transparent);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:var(--hair)}
-#title{flex:1;font-size:1.08rem;margin:0;text-align:center;font-weight:700;letter-spacing:.2px}
-#topbar button{background:transparent;border:none;color:var(--txt);font-size:1.4rem;
-  min-width:44px;min-height:44px;width:44px;height:44px;border-radius:var(--r1);cursor:pointer;
+/* ============================================================================
+   TOP BAR — sticky, frosted, minimal
+   ============================================================================ */
+#topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:var(--s2);
+  padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;
+  background:color-mix(in srgb,var(--bg) 90%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:var(--hair);
+}
+#title{
+  flex:1;font-size:1.06rem;text-align:center;
+  font-weight:700;letter-spacing:.2px;
+}
+#topbar button{
+  background:transparent;border:none;color:var(--txt);
+  font-size:1.35rem;min-width:44px;min-height:44px;
+  border-radius:var(--r1);cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;
-  transition:background .15s ease}
+  transition:background .12s ease;
+}
 #topbar button:active{background:var(--card2)}
-#themeBtn{font-size:1.25rem}
+#themeBtn{font-size:1.2rem}
 
-#app{padding:var(--s4);max-width:680px;margin:0 auto}
+/* ============================================================================
+   APP SHELL
+   ============================================================================ */
+#app{padding:var(--s3) var(--s4);max-width:700px;margin:0 auto}
 .status{color:var(--muted);text-align:center;padding:var(--s4) 0}
 
-.card{display:block;background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
-  padding:var(--s4);margin-bottom:var(--s3);text-decoration:none;color:var(--txt);
-  box-shadow:var(--el-1)}
+/* ============================================================================
+   CARD (list rows, generic block shell)
+   ============================================================================ */
+.card{
+  display:block;background:var(--surface-1);border:var(--hair);
+  border-radius:var(--r2);padding:var(--s4);margin-bottom:var(--s3);
+  text-decoration:none;color:var(--txt);box-shadow:var(--el-1);
+}
 .row{display:flex;align-items:center;gap:var(--s3)}
 .row:active{background:var(--card2)}
 .row-main{flex:1;min-width:0}
-.row-date{font-weight:700;font-size:1.05rem}
+.row-date{font-weight:700;font-size:1.02rem}
 .row-sub{font-size:var(--t-sm);margin-top:2px}
-.chev{color:var(--muted);font-size:1.4rem}
+.chev{color:var(--muted);font-size:1.35rem}
 
-.badge{font-size:.78rem;padding:3px 9px;border-radius:999px;white-space:nowrap;
-  border:1px solid var(--border)}
-.risk-low{background:color-mix(in srgb,var(--up) 18%,transparent);color:var(--up);border-color:transparent}
-.risk-mid{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold);border-color:transparent}
-.risk-high{background:color-mix(in srgb,var(--neg) 18%,transparent);color:var(--neg);border-color:transparent}
+/* ============================================================================
+   BADGE (risk level)
+   ============================================================================ */
+.badge{
+  font-size:.76rem;padding:2px 9px;border-radius:999px;
+  white-space:nowrap;border:1px solid var(--border);
+}
+.risk-low{
+  background:color-mix(in srgb,var(--up) 18%,transparent);
+  color:var(--up);border-color:transparent;
+}
+.risk-mid{
+  background:color-mix(in srgb,var(--gold) 18%,transparent);
+  color:var(--gold);border-color:transparent;
+}
+.risk-high{
+  background:color-mix(in srgb,var(--neg) 18%,transparent);
+  color:var(--neg);border-color:transparent;
+}
 
-.block{background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
-  padding:var(--s4) var(--s4);margin-bottom:var(--s4);box-shadow:var(--el-1)}
-.block h2{font-size:var(--t-xl);font-weight:700;letter-spacing:.3px;margin:.1rem 0 .7rem;
-  padding-bottom:var(--s2);border-bottom:var(--hair)}
+/* ============================================================================
+   GENERIC BLOCK / SECTION
+   ============================================================================ */
+.block{
+  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
+  padding:var(--s4);margin-bottom:var(--s4);box-shadow:var(--el-1);
+}
+.block h2{
+  font-size:var(--t-xl);font-weight:700;letter-spacing:.3px;
+  margin:0 0 .65rem;padding-bottom:var(--s2);border-bottom:var(--hair);
+}
 .block h3{font-size:var(--t-md);margin:.8rem 0 .3rem;color:var(--muted)}
 .block ul{margin:.2rem 0;padding-left:1.1rem}
 .block li{margin:.18rem 0}
-.src{color:var(--muted);font-size:.8rem;margin-right:4px}
+.src{color:var(--muted);font-size:.78rem;margin-right:4px}
 .riskline{margin:.5rem 0}
 
-.pick{border-top:var(--hair);padding:10px 0}
-.pick:first-of-type{border-top:none}
-.pick-head{font-size:1.02rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.score{margin-left:auto;background:color-mix(in srgb,var(--accent) 16%,transparent);
-  padding:3px 12px;border-radius:999px;font-weight:700;color:var(--accent);
-  min-width:42px;text-align:center;font-variant-numeric:tabular-nums}
-.factors{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-.factor{font-size:var(--t-xs);padding:2px 7px;border-radius:6px;background:var(--card2);color:var(--txt)}
-.factor.pos{color:var(--up)}
-.factor.neg{color:var(--neg)}
-.commentary{white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
-  background:var(--card2);border-radius:var(--r1);padding:10px;margin:6px 0 0;font-size:var(--t-md)}
+/* ============================================================================
+   COLLAPSIBLE SECTION (details/summary fold)
+   ============================================================================ */
+details.fold{
+  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
+  margin-bottom:var(--s4);box-shadow:var(--el-1);overflow:hidden;
+}
+details.fold>summary{
+  list-style:none;cursor:pointer;
+  min-height:48px;display:flex;align-items:center;
+  padding:14px 16px;font-size:1rem;font-weight:700;letter-spacing:.2px;
+  border-bottom:var(--hair);
+}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::after{
+  content:'▾';margin-left:auto;color:var(--muted);font-size:.9rem;
+}
+details.fold[open]>summary::after{content:'▴'}
+details.fold>*:not(summary){padding:0 16px}
+details.fold>*:last-child{padding-bottom:14px}
 
+/* ============================================================================
+   TLDR BANNER
+   ============================================================================ */
+.tldr{
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--accent) 10%,var(--surface-1)),var(--surface-2));
+  border:var(--hair);border-radius:var(--r2);padding:12px 14px;
+  margin-bottom:var(--s4);font-weight:600;font-size:.98rem;
+  line-height:1.55;box-shadow:var(--el-1);
+}
+
+/* ============================================================================
+   ENV STRIP — compact single-row market context bar at top of LIST view
+   Displays: regime hint + key gauges in pill chips
+   ============================================================================ */
+.env-strip{
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);
+  padding:var(--s2) var(--s3);margin-bottom:var(--s3);
+  border-radius:var(--r2);border:var(--hair);box-shadow:var(--el-1);
+  background:var(--surface-1);
+}
+.env-strip-label{
+  font-size:var(--t-sm);font-weight:700;white-space:nowrap;
+}
+.env-strip-gauges{
+  display:flex;flex-wrap:wrap;gap:6px;flex:1;
+}
+.strip-chip{
+  display:inline-flex;align-items:baseline;gap:3px;
+  font-size:var(--t-xs);padding:2px 8px;border-radius:999px;
+  border:var(--hair);background:var(--surface-2);white-space:nowrap;
+}
+.strip-key{color:var(--muted)}
+.strip-val{font-weight:600}
+.env-strip.env-on{
+  background:color-mix(in srgb,var(--up) 8%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--up) 30%,var(--border));
+}
+.env-strip.env-mid{
+  background:color-mix(in srgb,var(--gold) 8%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--gold) 35%,var(--border));
+}
+.env-strip.env-off{
+  background:color-mix(in srgb,var(--neg) 8%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--neg) 35%,var(--border));
+}
+
+/* ============================================================================
+   REGIME / MACRO banners (full-width for detail view, reused on day report)
+   ============================================================================ */
+.regime,.env-banner{
+  border-radius:var(--r2);padding:10px 14px;margin-bottom:var(--s4);
+  border:var(--hair);overflow:hidden;
+}
+.regime>b,.env-banner>b{display:inline}
+.regime .reg-exp{float:right;font-weight:700}
+.regime .small,.env-banner .small{margin-top:5px;clear:both}
+.reg-on,.env-on-banner{
+  background:color-mix(in srgb,var(--up) 10%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--up) 35%,transparent);
+}
+.reg-mid,.env-mid-banner{
+  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
+}
+.reg-off,.env-off-banner{
+  background:color-mix(in srgb,var(--neg) 12%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--neg) 40%,transparent);
+}
+.macro-chips,.env-gauges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.macro-chip,.env-gauge{
+  font-size:.84em;padding:2px 8px;border-radius:8px;
+  border:var(--hair);background:var(--surface-1);
+}
+.env-gauge{display:inline-flex;align-items:baseline;gap:4px}
+.env-gauge .env-v{font-variant-numeric:tabular-nums}
+
+/* ============================================================================
+   STALE / DELTA / MISC banners
+   ============================================================================ */
+.stale{
+  background:color-mix(in srgb,var(--neg) 14%,var(--surface-1));
+  border:1px solid color-mix(in srgb,var(--neg) 40%,transparent);
+  color:var(--neg);border-radius:var(--r2);padding:10px 14px;
+  margin-bottom:var(--s4);font-size:.85rem;font-weight:600;
+}
+.delta{
+  background:color-mix(in srgb,var(--gold) 9%,var(--surface-1));
+  border:var(--hair);border-radius:var(--r2);padding:10px 14px;
+  margin-bottom:var(--s4);font-weight:600;font-size:var(--t-md);
+}
+.delta ul{margin:.3rem 0 0;padding-left:1.1rem;font-weight:400}
+.breadth{
+  margin:.5rem 0;padding:8px 10px;background:var(--card2);
+  border-radius:var(--r1);font-size:.87rem;
+}
+.breadth b{color:var(--accent)}
+
+/* ============================================================================
+   PICKS — ranked list in the detail view
+   ============================================================================ */
+.pick{
+  border-top:var(--hair);padding:14px 0;
+}
+.pick:first-of-type{border-top:none}
+.pick-head{
+  font-size:1rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.pick-head b{color:var(--txt)}
+.score{
+  margin-left:auto;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);
+  padding:3px 11px;border-radius:999px;font-weight:700;
+  color:var(--accent);min-width:40px;text-align:center;
+}
+.factors{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.factor{
+  font-size:var(--t-xs);padding:2px 7px;border-radius:6px;
+  background:var(--card2);color:var(--txt);
+}
+.factor.pos{color:var(--up)}
+.factor.neg{color:var(--down)}
+.commentary{
+  white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+  background:var(--card2);border-radius:var(--r1);
+  padding:10px 12px;margin:6px 0 0;font-size:var(--t-md);
+}
+
+/* sparkline */
+.spark{width:110px;height:30px;display:block}
+.spark-wrap{margin-left:auto;margin-right:8px;display:flex;align-items:center}
+.verdict{margin-top:4px}
+.pick-link{text-decoration:none;color:var(--txt)}
+.pick-link:active{background:var(--card2)}
+.pick-spark{margin-top:8px}
+.pick-spark .spark{width:100%;height:44px}
+
+/* ============================================================================
+   ALLOCATION BARS
+   ============================================================================ */
 ul.alloc{list-style:none;padding:0}
 ul.alloc li{display:flex;align-items:center;gap:var(--s2)}
 .bar{flex:1;height:8px;background:var(--card2);border-radius:6px;overflow:hidden}
 .bar>span{display:block;height:100%;background:var(--accent)}
 
-.tldr{background:linear-gradient(135deg,
-  color-mix(in srgb,var(--accent) 12%,var(--surface-1)),var(--surface-2));
-  border:var(--hair);border-radius:var(--r2);padding:12px 14px;margin-bottom:var(--s4);
-  font-weight:600;font-size:1rem;line-height:1.55;box-shadow:var(--el-1)}
+/* ============================================================================
+   FX BANNER
+   ============================================================================ */
+.fx{
+  margin:6px 0;padding:6px 10px;border-radius:8px;background:var(--card2);
+  font-size:var(--t-md);display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;
+}
+.fx .fx-chg.fx-up{color:var(--up)}
+.fx .fx-chg.fx-down{color:var(--down)}
 
+/* ============================================================================
+   LEVELS / S-R
+   ============================================================================ */
 .levels{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.levels span{background:var(--card2);border-radius:8px;padding:4px 9px;font-weight:700;
-  font-size:.86rem;display:flex;align-items:baseline;gap:3px}
-.levels i{font-style:normal;color:var(--muted);font-weight:400;font-size:.72rem}
+.levels span{
+  background:var(--card2);border-radius:8px;padding:4px 9px;
+  font-weight:700;font-size:.85rem;
+  display:flex;align-items:baseline;gap:3px;
+}
+.levels i{font-style:normal;color:var(--muted);font-weight:400;font-size:.71rem}
 .levels small{color:var(--muted);font-weight:400}
 .levels .lv-stop{color:var(--down)}
 .levels .lv-tgt{color:var(--up)}
 .levels-adv{margin:4px 0 2px}
 
-/* USD/TWD spot context (B9) — DISPLAY-ONLY overlay, neutral colour on the chg only */
-.fx{margin:6px 0;padding:6px 10px;border-radius:8px;background:var(--card2);font-size:var(--t-md);
-  display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
-.fx .fx-chg.fx-up{color:var(--up)}
-.fx .fx-chg.fx-down{color:var(--down)}
+ul.sr{list-style:none;padding:0;margin:.2rem 0}
+ul.sr li{
+  display:flex;justify-content:space-between;
+  padding:6px 10px;border-bottom:var(--hair);
+}
+ul.sr li.sr-now{background:var(--card2);border-radius:8px;font-weight:700}
+ul.sr li.sr-res b{color:var(--down)}
+ul.sr li.sr-sup b{color:var(--up)}
 
-.delta{background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));border:var(--hair);
-  border-radius:var(--r2);padding:10px 14px;margin-bottom:var(--s4);font-weight:600;font-size:var(--t-md)}
-.delta ul{margin:.3rem 0 0;padding-left:1.1rem;font-weight:400}
+/* ============================================================================
+   KEY-VALUE GRID (kv chips inside detail card)
+   ============================================================================ */
+.kvs{display:flex;flex-wrap:wrap;gap:var(--s2);margin:8px 0}
+.kv{
+  background:var(--card2);border-radius:var(--r1);
+  padding:6px 12px;font-size:.87rem;
+  display:flex;flex-direction:column;gap:2px;
+}
+.kv span{color:var(--muted);font-size:.72rem}
 
-.breadth{margin:.5rem 0;padding:8px 10px;background:var(--card2);border-radius:var(--r1);font-size:.88rem}
-.breadth b{color:var(--accent)}
+/* ============================================================================
+   MOVERS / REV lists
+   ============================================================================ */
+ul.movers{list-style:none;padding:0}
+ul.movers li{display:flex;justify-content:space-between;gap:var(--s2)}
+ul.movers b.up{color:var(--up)}
+ul.movers b.down{color:var(--neg)}
 
 ul.rev{list-style:none;padding:0}
 ul.rev li{padding:6px 0;border-top:var(--hair)}
 ul.rev li:first-child{border-top:none}
 ul.rev b.up{color:var(--up)}
 ul.rev b.accel{color:var(--gold)}
-.badge-lead{background:color-mix(in srgb,var(--up) 28%,var(--surface-1));color:var(--up);
-  border-radius:6px;padding:1px 6px;font-size:.72rem;font-weight:700}
+.badge-lead{
+  background:color-mix(in srgb,var(--up) 22%,var(--surface-1));
+  color:var(--up);border-radius:6px;
+  padding:1px 6px;font-size:.71rem;font-weight:700;
+}
 .group-list{margin:0;padding-left:1.2em}
-
-ul.movers{list-style:none;padding:0}
-ul.movers li{display:flex;justify-content:space-between;gap:var(--s2)}
-ul.movers b.up{color:var(--up)}
-ul.movers b.down{color:var(--neg)}
-
 .block a{color:var(--link);text-decoration:none}
 .block a:active{text-decoration:underline}
 
-#foot{color:var(--muted);text-align:center;font-size:.74rem;
-  padding:10px 14px calc(env(safe-area-inset-bottom) + 16px)}
-
-/* ---- search / pins / sparkline / 燈號 / 個股詳情卡 ---- */
+/* ============================================================================
+   SEARCH + PINS
+   ============================================================================ */
 .searchbar{position:relative;margin-bottom:var(--s3)}
-.searchbar input{width:100%;min-height:48px;padding:11px 14px;border-radius:12px;border:var(--hair);
-  background:var(--surface-1);color:var(--txt);font-size:16px;-webkit-appearance:none}
-.searchbar input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.searchbar input{
+  width:100%;min-height:48px;padding:11px 14px;border-radius:var(--r2);
+  border:var(--hair);background:var(--surface-1);color:var(--txt);
+  font-size:16px;-webkit-appearance:none;
+}
+.searchbar input:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 28%,transparent);
+}
 #ssResults{margin-top:6px}
-.srow{display:block;padding:9px 12px;background:var(--surface-1);border:var(--hair);
-  border-radius:var(--r1);margin-bottom:5px;text-decoration:none;color:var(--txt)}
+.srow{
+  display:block;padding:9px 12px;background:var(--surface-1);
+  border:var(--hair);border-radius:var(--r1);
+  margin-bottom:5px;text-decoration:none;color:var(--txt);
+}
 .srow:active{background:var(--card2)}
 
 .pins{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:var(--s3)}
-.pinchip{background:var(--card2);border:var(--hair);border-radius:999px;
-  padding:5px 11px;font-size:var(--t-sm);text-decoration:none;color:var(--txt)}
+.pinchip{
+  background:var(--card2);border:var(--hair);border-radius:999px;
+  padding:5px 11px;font-size:var(--t-sm);text-decoration:none;color:var(--txt);
+}
 .pinchip:active{background:var(--card)}
 
-.spark{width:110px;height:30px;display:block}
-.spark-wrap{margin-left:auto;margin-right:8px;display:flex;align-items:center}
-.verdict{margin-top:4px}
+/* ============================================================================
+   STICKY SEGMENTED TAB-NAV (sits under #topbar in the detail/report view)
+   ============================================================================ */
+.tabnav{
+  position:sticky;top:57px;z-index:15;
+  display:flex;gap:var(--s1);overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding:var(--s2) 0;margin:0 0 var(--s3);
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:var(--hair);
+}
+.tabnav::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  min-height:40px;padding:0 14px;border-radius:999px;white-space:nowrap;
+  font-size:var(--t-sm);font-weight:600;text-decoration:none;
+  color:var(--muted);background:var(--card2);border:var(--hair);
+  transition:background .12s ease,color .12s ease;
+}
+.tab:hover{color:var(--txt)}
+.tab:active,.tab.tab-active{
+  color:#fff;background:var(--accent);border-color:transparent;
+}
+:root[data-theme="light"] .tab:active,
+:root[data-theme="light"] .tab.tab-active{color:#fff}
 
-.pick-link{text-decoration:none;color:var(--txt)}
-.pick-link:active{background:var(--card2)}
-.pick-head{align-items:center}
+/* scroll anchor clearance */
+.sec-anchor{scroll-margin-top:var(--sticky-offset)}
 
-details.fold{padding:0}
-details.fold>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;
-  padding:14px 16px;font-size:1.02rem;font-weight:700;letter-spacing:.3px;
-  border-bottom:var(--hair)}
-details.fold>summary::-webkit-details-marker{display:none}
-details.fold>summary::after{content:'▾';margin-left:auto;color:var(--muted)}
-details.fold[open]>summary::after{content:'▴'}
-details.fold>*:not(summary){padding:0 16px}
-details.fold>*:last-child{padding-bottom:14px}
-
-.backlink{display:inline-flex;align-items:center;min-height:44px;color:var(--link);
-  text-decoration:none;margin-bottom:6px;font-size:var(--t-md)}
-.sd-head{border-bottom:var(--hair);padding-bottom:10px;margin-bottom:10px}
-.sd-title{font-size:1.15rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+/* ============================================================================
+   STOCK DETAIL HERO (price + chart at top)
+   ============================================================================ */
+.backlink{
+  display:inline-flex;align-items:center;min-height:44px;
+  color:var(--link);text-decoration:none;
+  margin-bottom:var(--s3);font-size:var(--t-md);
+}
+.sd-hero{
+  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
+  margin-bottom:var(--s3);box-shadow:var(--el-1);overflow:hidden;
+}
+.sd-head{padding:var(--s4) var(--s4) var(--s3)}
+.sd-title{font-size:1.12rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .sd-verdict{color:var(--muted);font-size:var(--t-md);margin:4px 0 8px}
 .sd-actions{display:flex;gap:var(--s2)}
-.sd-actions button{background:var(--card2);border:var(--hair);color:var(--txt);
-  border-radius:999px;min-height:44px;padding:0 18px;font-size:var(--t-md);cursor:pointer}
+.sd-actions button{
+  background:var(--card2);border:var(--hair);color:var(--txt);
+  border-radius:999px;min-height:40px;padding:0 16px;
+  font-size:var(--t-sm);cursor:pointer;
+}
 .sd-actions button:active{background:var(--card)}
-.sd-chart{margin:10px 0}
-.sd-chart .spark{width:100%;height:90px}
-.sd-kline{height:240px;width:100%;margin:8px 0;border-radius:8px;overflow:hidden;
-  border:var(--hair);background:var(--chart-bg)}
-.kvs{display:flex;flex-wrap:wrap;gap:var(--s2);margin:8px 0}
-.kv{background:var(--card2);border-radius:var(--r1);padding:6px 12px;font-size:.88rem;
-  display:flex;flex-direction:column;gap:2px}
-.kv span{color:var(--muted);font-size:.74rem}
-.block.sd h3{margin:.9rem 0 .35rem;font-size:var(--t-md);color:var(--muted)}
-
-ul.sr{list-style:none;padding:0;margin:.2rem 0}
-ul.sr li{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:var(--hair)}
-ul.sr li.sr-now{background:var(--card2);border-radius:8px;font-weight:700}
-ul.sr li.sr-res b{color:var(--down)}
-ul.sr li.sr-sup b{color:var(--up)}
-
-ul.discipline{list-style:none;padding:0;margin:.2rem 0}
-ul.discipline li{padding:3px 0;font-size:.88rem;color:var(--muted)}
-ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
-
+.sd-price{margin:2px 0 8px}
+.px-big{font-size:1.55rem;font-weight:800;letter-spacing:.4px}
 .priceline{margin-top:3px;font-size:var(--t-md)}
 .priceline .px{font-weight:700}
 .px{font-weight:600}
-.sd-price{margin:2px 0 6px}
-.px-big{font-size:1.6rem;font-weight:800;letter-spacing:.5px}
+.up.small,.down.small{font-size:.77rem;margin-left:3px}
+
+/* chart area inside hero */
+.sd-chart{margin:0}
+.sd-kline{
+  height:250px;width:100%;background:var(--chart-bg);
+  border-top:var(--hair);
+}
+.sd-chart .spark{width:100%;height:90px}
+.sd-chart-caption{
+  padding:4px var(--s4) var(--s3);
+  font-size:var(--t-xs);color:var(--muted);
+}
+
+/* earn-note / blackout */
+.earn-note{
+  margin-top:6px;padding:8px 10px;border-radius:var(--r1);
+  font-size:.81rem;color:var(--highlight);
+  background:color-mix(in srgb,var(--gold) 9%,var(--surface-1));
+  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
+}
+
+/* svg price chart (sparkline fallback) */
 .pchart{display:block;width:100%;height:auto;background:var(--card2);border-radius:var(--r1)}
 .pchart .ax{fill:var(--muted);font-size:9px}
 .pchart .ax-now{fill:var(--accent);font-weight:700}
 .pchart .grid{stroke:var(--line);stroke-width:.5}
-.up.small,.down.small{font-size:.78rem;margin-left:3px}
-/* generic semantic up/down used throughout (prices, yoy, movers, factors) */
-b.up,.up{color:var(--up)}
-b.down,.down{color:var(--down)}
-
-/* pick sparkline own row, section spacing, stale banner */
-.pick{padding:14px}
-.pick-spark{margin-top:8px}
-.pick-spark .spark{width:100%;height:44px}
-.pick-head b{color:var(--txt)}
-.block,.block.fold,details.fold{margin-bottom:var(--s4)}
-.tldr{font-size:1rem}
-.stale{background:color-mix(in srgb,var(--neg) 16%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--neg) 45%,transparent);color:var(--neg);
-  border-radius:12px;padding:10px 14px;margin-bottom:var(--s4);font-size:.86rem;font-weight:600}
 .pchart{height:135px}
 
-/* risk engine: market-regime banner + concentration warning */
-.regime{border-radius:12px;padding:10px 14px;margin-bottom:var(--s4);border:var(--hair);overflow:hidden}
-.regime>b{display:inline}
-.regime .reg-exp{float:right;font-weight:700}
-.regime .small{margin-top:5px;clear:both}
-.reg-on{background:color-mix(in srgb,var(--up) 12%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--up) 40%,transparent)}
-.reg-mid{background:color-mix(in srgb,var(--gold) 12%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
-.reg-off{background:color-mix(in srgb,var(--neg) 14%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--neg) 45%,transparent)}
-.macro-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.macro-chip{font-size:.85em;padding:2px 7px;border-radius:8px;border:var(--hair);background:var(--surface-1)}
-
-/* P2 market/sector ENVIRONMENT banner (regime/industry/macro gauges). Informational
-   header context only — never a scorer. Coloured by regime_hint (risk_on/neutral/risk_off),
-   reusing the same --up/--gold/--neg token vars as .regime. */
-.env-banner{border-radius:12px;padding:10px 14px;margin-bottom:var(--s4);border:var(--hair);overflow:hidden}
-.env-banner>b{display:inline}
-.env-banner .small{margin-top:5px}
-.env-on{background:color-mix(in srgb,var(--up) 12%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--up) 40%,transparent)}
-.env-mid{background:color-mix(in srgb,var(--gold) 12%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
-.env-off{background:color-mix(in srgb,var(--neg) 14%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--neg) 45%,transparent)}
-.env-gauges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.env-gauge{display:inline-flex;align-items:baseline;gap:4px;font-size:.85em;
-  padding:2px 8px;border-radius:8px;border:var(--hair);background:var(--surface-1)}
-.env-gauge .env-v{font-variant-numeric:tabular-nums}
-
-/* earnings-blackout flag + A/D grade chip */
-.earn-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.72rem;
-  font-weight:700;color:var(--highlight);background:color-mix(in srgb,var(--gold) 18%,transparent);
-  border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);vertical-align:middle}
-.ad-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.72rem;font-weight:700;vertical-align:middle}
-.ad-A,.ad-B{color:var(--up)}
-.ad-D,.ad-E{color:var(--down)}
-.ad-C{color:var(--muted)}
-.ad-flag.ad-A,.ad-flag.ad-B{background:color-mix(in srgb,var(--up) 16%,transparent);
-  border:1px solid color-mix(in srgb,var(--up) 45%,transparent)}
-.ad-flag.ad-D,.ad-flag.ad-E{background:color-mix(in srgb,var(--neg) 14%,transparent);
-  border:1px solid color-mix(in srgb,var(--neg) 40%,transparent)}
-.ad-flag.ad-C{background:var(--card2);border:var(--hair)}
-.earn-note{margin-top:6px;padding:8px 10px;border-radius:var(--r1);font-size:.82rem;color:var(--highlight);
-  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
-/* B11 Kelly position-size ceiling — informational overlay line under 每股風險 */
-.kelly-ceiling{display:block;margin-top:2px}
+/* ============================================================================
+   TABBED DETAIL CARD (tabs: 評分依據 / 籌碼面 / 基本面 / 法人 / 情緒催化 / 總經環境)
+   ============================================================================ */
+.detail-tabs{margin-bottom:var(--s4)}
+.dtab-nav{
+  display:flex;gap:var(--s1);overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding:0 0 var(--s2);margin-bottom:var(--s2);
+  border-bottom:var(--hair);
+}
+.dtab-nav::-webkit-scrollbar{display:none}
+.dtab{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  min-height:36px;padding:0 12px;border-radius:999px;white-space:nowrap;
+  font-size:var(--t-sm);font-weight:600;cursor:pointer;
+  color:var(--muted);background:var(--card2);border:var(--hair);
+  transition:background .12s ease,color .12s ease;
+}
+.dtab.active,.dtab:active{
+  color:#fff;background:var(--accent);border-color:transparent;
+}
+:root[data-theme="light"] .dtab.active{color:#fff}
+.dtab-panel{display:none}
+.dtab-panel.active{display:block}
 
 /* ============================================================================
-   NEW classes app.js emits (REQ2/REQ3/REQ5) — sticky tab-nav, scroll anchors,
-   watchlist board, early board + caution banner, fundamentals row.
+   OVERLAY GROUPS — scannable cards with left-accent severity stripe
    ============================================================================ */
+.overlays{display:flex;flex-direction:column;gap:var(--s2)}
+.overlay-group{
+  background:var(--surface-2);border:var(--hair);border-radius:var(--r1);
+  overflow:hidden;margin-bottom:var(--s2);
+}
+.overlay-group-header{
+  display:flex;align-items:center;gap:var(--s2);
+  padding:8px 12px;cursor:pointer;user-select:none;
+  border-bottom:var(--hair);
+  font-weight:700;font-size:var(--t-sm);letter-spacing:.2px;
+}
+.overlay-group-header::after{
+  content:'▾';margin-left:auto;color:var(--muted);font-size:.85rem;
+}
+.overlay-group.open>.overlay-group-header::after{content:'▴'}
+.overlay-group-body{display:none;padding:var(--s2) var(--s3) var(--s3)}
+.overlay-group.open>.overlay-group-body{display:block}
+.overlay-kind-icon{font-size:1rem}
 
-/* --- sticky segmented tab-nav (sits directly under #topbar) -------------- */
-.tabnav{position:sticky;top:61px;z-index:15;display:flex;gap:var(--s1);overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding:var(--s2) var(--s1);margin:0 0 var(--s3);
-  background:color-mix(in srgb,var(--bg) 94%,transparent);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:var(--hair);border-radius:0}
-.tabnav::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
-  font-size:var(--t-sm);font-weight:600;text-decoration:none;color:var(--muted);
-  background:var(--card2);border:var(--hair);transition:background .15s ease,color .15s ease}
-.tab:hover{color:var(--txt)}
-.tab:active,.tab.tab-active{color:#fff;background:var(--accent);border-color:transparent}
-:root[data-theme="light"] .tab:active,
-:root[data-theme="light"] .tab.tab-active{color:#fff}
+.overlay-row{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:7px 0;border-bottom:var(--hair);
+}
+.overlay-row:last-child{border-bottom:none}
+.overlay-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--muted);flex:none;margin-top:5px;
+}
+.overlay-label{font-weight:600;font-size:var(--t-sm);flex:1;min-width:0}
+.overlay-asof,.overlay-src,.overlay-note{font-size:var(--t-xs)}
+.overlay-meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.overlay-note{color:var(--muted)}
 
-/* --- scroll anchors: clear the sticky topbar+tabnav on jump -------------- */
-.sec-anchor{scroll-margin-top:var(--sticky-offset)}
+/* severity accent */
+.overlay-info>.overlay-dot,.overlay-info .overlay-dot{background:var(--up)}
+.overlay-info .overlay-label{color:var(--txt)}
+.overlay-warn>.overlay-dot,.overlay-warn .overlay-dot{background:var(--warn)}
+.overlay-warn .overlay-label{color:var(--warn)}
+.overlay-risk>.overlay-dot,.overlay-risk .overlay-dot{background:var(--down)}
+.overlay-risk .overlay-label{color:var(--down)}
 
-/* --- watchlist board (持倉追蹤) + status chips ------------------------- */
+/* group accent border by kind */
+.og-chip   .overlay-group-header{border-left:3px solid var(--up)}
+.og-inst   .overlay-group-header{border-left:3px solid var(--link)}
+.og-fundamental .overlay-group-header{border-left:3px solid var(--gold)}
+.og-sentiment   .overlay-group-header{border-left:3px solid #c878f0}
+.og-catalyst    .overlay-group-header{border-left:3px solid var(--accent)}
+.og-macro       .overlay-group-header{border-left:3px solid var(--muted)}
+
+/* ============================================================================
+   WATCHLIST + STATUS CHIPS
+   ============================================================================ */
 ul.wl-list{list-style:none;padding:0;margin:.2rem 0}
 ul.wl-list li{padding:9px 0;border-top:var(--hair)}
 ul.wl-list li:first-child{border-top:none}
-.wl-chip{display:inline-block;padding:1px 9px;border-radius:999px;font-size:.74rem;
-  font-weight:700;white-space:nowrap;vertical-align:middle;border:1px solid transparent}
-.wl-active{color:var(--up);background:color-mix(in srgb,var(--up) 16%,transparent);
-  border-color:color-mix(in srgb,var(--up) 40%,transparent)}
-.wl-watch{color:var(--warn);background:color-mix(in srgb,var(--gold) 16%,transparent);
-  border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
-.wl-exit{color:var(--down);background:color-mix(in srgb,var(--neg) 16%,transparent);
-  border-color:color-mix(in srgb,var(--neg) 45%,transparent)}
+.wl-chip{
+  display:inline-block;padding:1px 9px;border-radius:999px;
+  font-size:.73rem;font-weight:700;white-space:nowrap;
+  vertical-align:middle;border:1px solid transparent;
+}
+.wl-active{
+  color:var(--up);
+  background:color-mix(in srgb,var(--up) 14%,transparent);
+  border-color:color-mix(in srgb,var(--up) 35%,transparent);
+}
+.wl-watch{
+  color:var(--warn);
+  background:color-mix(in srgb,var(--gold) 14%,transparent);
+  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
+}
+.wl-exit{
+  color:var(--down);
+  background:color-mix(in srgb,var(--neg) 14%,transparent);
+  border-color:color-mix(in srgb,var(--neg) 36%,transparent);
+}
 
-/* --- early board (正要起漲) + cautionary banner ----------------------- */
-.early-board{border:1px solid color-mix(in srgb,var(--gold) 35%,var(--border))}
-.early-board h2{border-bottom-color:color-mix(in srgb,var(--gold) 30%,var(--border))}
-.early-banner{display:flex;gap:6px;align-items:flex-start;
+/* ============================================================================
+   EARLY BOARD — prominent + cautionary
+   ============================================================================ */
+.early-board{border:1px solid color-mix(in srgb,var(--gold) 30%,var(--border))}
+.early-board h2{border-bottom-color:color-mix(in srgb,var(--gold) 25%,var(--border))}
+.early-banner{
+  display:flex;gap:6px;align-items:flex-start;
   margin:.2rem 0 .7rem;padding:9px 12px;border-radius:var(--r1);
-  font-size:.82rem;font-weight:600;line-height:1.5;color:var(--highlight);
-  background:color-mix(in srgb,var(--gold) 12%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
+  font-size:.81rem;font-weight:600;line-height:1.5;color:var(--highlight);
+  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
+  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
+}
 
-/* --- fundamentals row (REQ3a) — informational, may be stale ------------- */
+/* ============================================================================
+   FUNDAMENTALS ROW
+   ============================================================================ */
 .fund-row{width:100%}
 .fund-row span{color:var(--muted)}
-.fund-stale{display:inline-block;margin-left:4px;padding:0 6px;border-radius:6px;
+.fund-stale{
+  display:inline-block;margin-left:4px;padding:0 6px;border-radius:6px;
   font-size:.7rem;font-weight:700;color:var(--warn);
-  background:color-mix(in srgb,var(--gold) 14%,transparent);
-  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
+  background:color-mix(in srgb,var(--gold) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
+}
 
-/* ---- sources/ overlay framework (functional MVP; P4 = art-direction later) ---- */
-/* Informational chip/法人/基本面/內部人 overlays grouped by kind, severity-colored.
-   Reuses the existing token vars (--up/--warn/--down/--muted/--border/--surface-2). */
-.overlays{display:flex;flex-direction:column;gap:var(--s3)}
-.overlay-group{display:flex;flex-direction:column;gap:var(--s1)}
-.overlay-kind{margin:0 0 2px;font-size:var(--t-sm);color:var(--muted);font-weight:700;
-  letter-spacing:.3px}
-.overlay-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;
-  padding:6px 10px;border-radius:var(--r1);background:var(--surface-2);
-  border-left:3px solid var(--muted)}
-.overlay-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
-.overlay-label{font-weight:600;font-size:var(--t-sm)}
-.overlay-asof,.overlay-src,.overlay-note{font-size:var(--t-xs)}
-.overlay-note{flex-basis:100%}
-/* severity colors — info (calm), warn (amber), risk (red) */
-.overlay-info{border-left-color:var(--up)}
-.overlay-info .overlay-dot{background:var(--up)}
-.overlay-warn{border-left-color:var(--warn)}
-.overlay-warn .overlay-dot{background:var(--warn)}
-.overlay-risk{border-left-color:var(--down)}
-.overlay-risk .overlay-dot{background:var(--down)}
+/* ============================================================================
+   EARNINGS / A-D / SHORT-VOL CHIPS
+   ============================================================================ */
+.earn-flag{
+  display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;
+  font-size:.71rem;font-weight:700;color:var(--highlight);
+  background:color-mix(in srgb,var(--gold) 16%,transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);
+  vertical-align:middle;
+}
+.ad-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.71rem;font-weight:700;vertical-align:middle}
+.ad-A,.ad-B{color:var(--up)}
+.ad-D,.ad-E{color:var(--down)}
+.ad-C{color:var(--muted)}
+.ad-flag.ad-A,.ad-flag.ad-B{
+  background:color-mix(in srgb,var(--up) 14%,transparent);
+  border:1px solid color-mix(in srgb,var(--up) 40%,transparent);
+}
+.ad-flag.ad-D,.ad-flag.ad-E{
+  background:color-mix(in srgb,var(--neg) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--neg) 36%,transparent);
+}
+.ad-flag.ad-C{background:var(--card2);border:var(--hair)}
 
-/* reduced-motion: honor user preference for the smooth-scroll jumps */
+/* ============================================================================
+   KELLY / LIQUIDITY overlays
+   ============================================================================ */
+.kelly-ceiling{display:block;margin-top:2px}
+
+/* ============================================================================
+   DISCIPLINE CHECKLIST
+   ============================================================================ */
+ul.discipline{list-style:none;padding:0;margin:.2rem 0}
+ul.discipline li{padding:3px 0;font-size:.87rem;color:var(--muted)}
+ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
+
+/* ============================================================================
+   CONCENTRATION WARNING
+   ============================================================================ */
+.block.fold{margin-bottom:var(--s4)}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+#foot{
+  color:var(--muted);text-align:center;font-size:.73rem;
+  padding:10px 14px calc(env(safe-area-inset-bottom) + 16px);
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *{transition:none!important}
+  *{transition:none!important;animation:none!important}
 }

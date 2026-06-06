@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0d1b2a">
+  <meta name="theme-color" content="#0a1520">
   <title>SmartStock 日報</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="SmartStock">
   <!-- anti-FOUC: set data-theme from localStorage BEFORE css/body paint so the
        first frame already matches the saved theme (app.js's applyTheme() re-runs
-       on load, but this avoids the dark→light flash). Mirrors app.js keys. -->
+       on load, but this avoids the dark->light flash). Mirrors app.js keys. -->
   <script>
     (function () {
       try {
@@ -27,10 +27,10 @@
 </head>
 <body>
   <header id="topbar">
-    <button id="backBtn" class="hidden" aria-label="返回">‹</button>
-    <h1 id="title">📈 SmartStock 日報</h1>
-    <button id="themeBtn" onclick="toggleTheme()" aria-label="切換深色／淺色主題">🌓</button>
-    <button id="refreshBtn" aria-label="重新整理">⟳</button>
+    <button id="backBtn" class="hidden" aria-label="返回">&#8249;</button>
+    <h1 id="title">SmartStock 日報</h1>
+    <button id="themeBtn" onclick="toggleTheme()" aria-label="切換深色／淺色主題">&#9681;</button>
+    <button id="refreshBtn" aria-label="重新整理">&#10227;</button>
   </header>
 
   <main id="app">

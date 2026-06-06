@@ -85,7 +85,7 @@ async function showList() {
   $('backBtn').classList.add('hidden');
   $('detailView').classList.add('hidden');
   $('listView').classList.remove('hidden');
-  $('title').textContent = '📈 SmartStock 日報';
+  $('title').textContent = 'SmartStock 日報';
   $('status').textContent = '載入歷史…';
 
   let index;
@@ -101,7 +101,14 @@ async function showList() {
     $('listView').innerHTML = '<p class="muted">尚無報告。</p>';
     return;
   }
-  $('listView').innerHTML = index.map((d) => {
+  // Load the latest report to render an env-strip for quick market context
+  let latestEnvStrip = '';
+  try {
+    const latest = await getJSON('data/' + index[0].date + '.json');
+    latestEnvStrip = envStripCompact(latest);
+  } catch (e) { /* env strip optional — skip on error */ }
+
+  $('listView').innerHTML = latestEnvStrip + index.map((d) => {
     const top = d.top_name ? `${d.top_name}（${d.top}）` : (d.top || '—');
     return `<a class="card row" href="#${esc(d.date)}">
       <div class="row-main">
@@ -212,6 +219,44 @@ function environmentBlock(d) {
   return `<div class="env-banner ${cls}"><b>🌏 市場環境：${esc(ENV_REGIME_LABEL[hint] || hint)}</b>`
     + `<div class="env-gauges">${body}</div>`
     + `<div class="muted small">指數級／產業總經環境背景，<b>不計入個股評分與排名</b>（需回測驗證後才談加權）。</div></div>`;
+}
+
+// Compact single-row env strip for the LIST view — regime + key gauges as pill chips.
+// OVERLAY-NOT-SCORER: purely informational, never touches score/rank.
+function envStripCompact(d) {
+  const env = d && d.environment;
+  if (!env) return '';
+  const reg = env.regime || {};
+  const ind = env.industry || {};
+  const mac = env.macro || {};
+  const hint = reg.regime_hint || 'neutral';
+  const cls = hint === 'risk_on' ? 'env-on' : (hint === 'risk_off' ? 'env-off' : 'env-mid');
+  const REGIME_ICON = { risk_on: '🟢', neutral: '🟡', risk_off: '🔴' };
+  const REGIME_TXT  = { risk_on: '偏多', neutral: '中性', risk_off: '偏空' };
+  const icon = REGIME_ICON[hint] || '🟡';
+  const txt  = REGIME_TXT[hint]  || hint;
+  const chips = [];
+  const chip = (k, v) => {
+    if (v == null || v === '') return;
+    chips.push(`<span class="strip-chip"><span class="strip-key muted">${esc(k)}</span><span class="strip-val"> ${esc(v)}</span></span>`);
+  };
+  if (reg.foreign_tx_net != null)
+    chip('外資台指期淨', (reg.foreign_tx_net > 0 ? '+' : '') + reg.foreign_tx_net + '口');
+  if (reg.put_call_ratio != null)
+    chip('PCR', reg.put_call_ratio);
+  const bc = ind.business_cycle;
+  if (bc && bc.light) chip('景氣', bc.light);
+  if (mac.usd_twd != null)  chip('USD/TWD', mac.usd_twd);
+  if (mac.vix != null)       chip('VIX', mac.vix);
+  if (d.risk) {
+    const rr = RISK[d.risk] || { label: d.risk };
+    chip('市場風險', rr.label);
+  }
+  if (!chips.length) return '';
+  return `<div class="env-strip ${cls}" role="status" aria-label="市場環境概覽">` +
+    `<span class="env-strip-label">${icon} 環境 ${esc(txt)}</span>` +
+    `<div class="env-strip-gauges">${chips.join('')}</div>` +
+    `</div>`;
 }
 
 function concentrationBlock(d) {
@@ -778,7 +823,7 @@ function fundamentalBlock(p) {
     + '<span class="muted small">※ best-effort，可能延遲/缺漏，不計入評分</span></div>';
 }
 
-// sources/ overlay framework render (functional MVP — P4 art-direction is later).
+// sources/ overlay framework render.
 // Groups a card's p.overlays by kind (籌碼/法人/基本面/內部人/情緒/事件/總經), with a
 // severity color per row (info/warn/risk). OVERLAY-NOT-SCORER: purely informational,
 // never touches score/factors. Null/empty → '' (omitted). Each overlay = {source, kind,
@@ -787,7 +832,20 @@ const OVERLAY_KIND_LABEL = {
   chip: '籌碼', inst: '法人', fundamental: '基本面',
   sentiment: '情緒', catalyst: '事件', macro: '總經',
 };
+const OVERLAY_KIND_ICON = {
+  chip: '📊', inst: '🏦', fundamental: '📋',
+  sentiment: '💬', catalyst: '⚡', macro: '🌐',
+};
+const OVERLAY_KIND_CSS = {
+  chip: 'og-chip', inst: 'og-inst', fundamental: 'og-fundamental',
+  sentiment: 'og-sentiment', catalyst: 'og-catalyst', macro: 'og-macro',
+};
 const OVERLAY_KIND_ORDER = ['chip', 'inst', 'fundamental', 'catalyst', 'sentiment', 'macro'];
+// toggle a collapsible overlay group; exported on window for inline onclick
+window.ssOverlayToggle = (el) => {
+  const grp = el.closest('.overlay-group');
+  if (grp) grp.classList.toggle('open');
+};
 function overlaysBlock(p) {
   const ovs = (p && p.overlays) || [];
   if (!ovs.length) return '';
@@ -801,24 +859,45 @@ function overlaysBlock(p) {
   const kinds = OVERLAY_KIND_ORDER.filter((k) => byKind[k])
     .concat(Object.keys(byKind).filter((k) => OVERLAY_KIND_ORDER.indexOf(k) < 0));
   const groups = kinds.map((k) => {
+    const icon = OVERLAY_KIND_ICON[k] || '📌';
+    const label = OVERLAY_KIND_LABEL[k] || k;
+    const css = OVERLAY_KIND_CSS[k] || '';
     const rows = byKind[k].map((o) => {
       const sev = (o.severity === 'risk' || o.severity === 'warn' || o.severity === 'info')
         ? o.severity : 'info';
-      const src = o.source ? `<span class="overlay-src muted small">${esc(o.source)}</span>` : '';
-      const note = o.note ? `<span class="overlay-note muted small">${esc(o.note)}</span>` : '';
-      const asof = o.as_of ? `<span class="overlay-asof muted small">${esc(o.as_of)}</span>` : '';
+      const asof = o.as_of ? `<span class="overlay-asof muted">${esc(o.as_of)}</span>` : '';
+      const src  = o.source ? `<span class="overlay-src muted">${esc(o.source)}</span>` : '';
+      const note = o.note ? `<div class="overlay-note">${esc(o.note)}</div>` : '';
       return `<div class="overlay-row overlay-${sev}">`
         + `<span class="overlay-dot"></span>`
-        + `<span class="overlay-label">${esc(o.label)}</span>`
-        + `${asof}${src}${note}</div>`;
+        + `<div style="flex:1;min-width:0"><span class="overlay-label">${esc(o.label)}</span>`
+        + `<div class="overlay-meta">${asof}${src}</div>${note}</div></div>`;
     }).join('');
-    return `<div class="overlay-group"><h4 class="overlay-kind">${esc(OVERLAY_KIND_LABEL[k] || k)}</h4>${rows}</div>`;
+    // first group open by default so user sees data immediately
+    const isFirst = k === kinds[0];
+    return `<div class="overlay-group ${css}${isFirst ? ' open' : ''}">`
+      + `<div class="overlay-group-header" onclick="ssOverlayToggle(this)" role="button" tabindex="0" `
+      + `aria-expanded="${isFirst ? 'true' : 'false'}">`
+      + `<span class="overlay-kind-icon">${icon}</span>${esc(label)}`
+      + `<span class="muted small" style="margin-left:var(--s2);font-weight:400">${byKind[k].length} 項</span>`
+      + `</div><div class="overlay-group-body">${rows}</div></div>`;
   }).join('');
-  const inner = '<p class="muted small">公開資料籌碼／法人／基本面／內部人 <b>資訊性 overlay</b>，'
-    + '附註於分數旁，<b>不計入評分與排名</b>（要做回測 Wilson-CI 驗證後才考慮加權）。</p>'
-    + `<div class="overlays">${groups}</div>`;
-  return foldSection('🧩 公開資料 overlay（籌碼／法人／基本面／內部人）', inner, false);
+  const caveat = '<p class="muted small" style="margin-bottom:var(--s2)">公開資料籌碼／法人／基本面 <b>資訊性 overlay</b>，'
+    + '<b>不計入評分與排名</b>（要做回測 Wilson-CI 驗證後才考慮加權）。</p>';
+  return foldSection('🧩 公開資料 overlay（籌碼／法人／基本面／內部人）',
+    caveat + `<div class="overlays">${groups}</div>`, false);
 }
+
+// Switch tabs in the detail card. Exported on window for inline onclick.
+window.ssDtab = (navEl, tabId) => {
+  const card = navEl.closest('.detail-tabs');
+  if (!card) return;
+  card.querySelectorAll('.dtab').forEach((t) => t.classList.remove('active'));
+  card.querySelectorAll('.dtab-panel').forEach((p) => p.classList.remove('active'));
+  navEl.classList.add('active');
+  const panel = card.querySelector('#' + tabId);
+  if (panel) panel.classList.add('active');
+};
 
 function stockCard(d, code) {
   const p = (d.picks || []).find((x) => x.stock === code)
@@ -830,31 +909,43 @@ function stockCard(d, code) {
   // prefer the card's own name; else the d.names map (covers lazy/early/revenue names).
   const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(nameOf(stock));
   const pinned = getPins().includes(stock);
+
+  // ---- HERO: price + chart ----
   const px = p.price != null
     ? `<div class="sd-price"><span class="px-big">${p.price}</span>`
       + (p.change_pct != null ? ` <b class="${p.change_pct >= 0 ? 'up' : 'down'}">${p.change_pct > 0 ? '▲' : (p.change_pct < 0 ? '▼' : '')} ${Math.abs(p.change_pct)}%</b>` : '')
       + '<span class="muted small"> 收盤</span></div>' : '';
   const earnNote = (p.earnings && p.earnings.in_blackout)
     ? `<div class="earn-note">⚠️ 財報 ${esc(p.earnings.date)}（${p.earnings.days_until === 0 ? '今日' : p.earnings.days_until + ' 天內'}）— 二元事件，新突破單建議暫緩或減量，留意跳空風險。</div>` : '';
-  const head = `<div class="sd-head">
-    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${shortVolBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
-    ${px}
-    <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
-    ${earnNote}
-    <div class="sd-actions">
-      <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
-      <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">🔗 分享</button></div></div>`;
   const lv0 = p.levels || {};
   const chartLines = [];
-  if (lv0.stop != null) chartLines.push({ v: lv0.stop, color: '#ff8e8e', label: '停損' });
+  if (lv0.stop != null) chartLines.push({ v: lv0.stop, color: '#f07070', label: '停損' });
   const tgt = (lv0.target_band && lv0.target_band.length) ? lv0.target_band[lv0.target_band.length - 1] : lv0.measured_move;
-  if (tgt != null) chartLines.push({ v: tgt, color: '#7fe6ab', label: '目標' });
+  if (tgt != null) chartLines.push({ v: tgt, color: '#4de899', label: '目標' });
   // B10: interactive K-line when OHLC is present (rendered post-mount in showStock);
   // older payloads with no ohlc keep the cheap SVG sparkline fallback.
-  const chart = (p.ohlc && p.ohlc.length > 1)
-    ? `<div class="sd-chart"><div class="sd-kline" id="kline"></div><div class="muted small">近 ${p.ohlc.length} 日 K 線（含量；虛線=停損/進場/目標/壓力/支撐）</div></div>`
+  const chartHtml = (p.ohlc && p.ohlc.length > 1)
+    ? `<div class="sd-chart"><div class="sd-kline" id="kline"></div></div>`
+      + `<div class="sd-chart-caption">近 ${p.ohlc.length} 日 K 線（含量；虛線=停損/進場/目標/壓力/支撐）</div>`
     : (p.spark && p.spark.length > 1
-      ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div></div>` : '');
+      ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}</div>`
+        + `<div class="sd-chart-caption">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div>` : '');
+
+  const hero = `<div class="sd-hero">
+    <div class="sd-head">
+      <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${shortVolBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+      ${px}
+      <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
+      ${earnNote}
+      <div class="sd-actions">
+        <button onclick="return ssPin('${esc(stock)}',this)">${pinned ? '★ 已釘選' : '☆ 釘選'}</button>
+        <button onclick="return ssShare('${esc(CUR_DATE)}','${esc(stock)}')">分享</button>
+      </div>
+    </div>
+    ${chartHtml}
+  </div>`;
+
+  // ---- TABBED DATA CARD ----
   const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
   const grp = p.group_rank != null ? `<div class="kv"><span>族群排名</span><b>#${p.group_rank}${p.leading_group ? ' 領漲' : ''}</b></div>` : '';
@@ -868,12 +959,53 @@ function stockCard(d, code) {
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   const fund = fundamentalBlock(p);   // REQ3a informational fundamentals row (null → '')
   const overlaysHtml = overlaysBlock(p);   // sources/ overlay framework (chip/法人/基本面/內部人)
-  return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}${fund}</div>
-    ${overlaysHtml}
-    ${sr}${lv}${factors}${comm}
+
+  // Determine which tabs to show based on data availability
+  const hasOverlays  = !!(p.overlays && p.overlays.length);
+  const hasFund      = !!fund;
+  const hasInst      = hasOverlays && p.overlays.some((o) => o && o.kind === 'inst');
+  const hasSentiment = hasOverlays && p.overlays.some((o) => o && (o.kind === 'sentiment' || o.kind === 'catalyst'));
+  const hasMacro     = hasOverlays && p.overlays.some((o) => o && o.kind === 'macro');
+
+  // Tab 1: 評分依據 — always present
+  const panelScore = `<div id="dtab-score" class="dtab-panel active">
+    <h3 style="margin-top:0">評分因子</h3>${factors}
+    <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}</div>
+    ${sr}${lv}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
-    <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;
+    <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p>
+  </div>`;
+
+  // Tab 2: 籌碼面 — overlays grouped by chip kind
+  const chipOverlays = hasOverlays ? overlaysBlock(p) : '';
+  const panelChip = chipOverlays
+    ? `<div id="dtab-chip" class="dtab-panel">${chipOverlays}</div>`
+    : '';
+
+  // Tab 3: 基本面
+  const panelFund = hasFund
+    ? `<div id="dtab-fund" class="dtab-panel"><div class="kvs">${fund}</div></div>`
+    : '';
+
+  // Build tab nav — only tabs with content
+  const tabDefs = [
+    { id: 'dtab-score', label: '評分依據', panel: panelScore },
+    { id: 'dtab-chip',  label: '籌碼 / 法人', panel: panelChip },
+    { id: 'dtab-fund',  label: '基本面', panel: panelFund },
+  ].filter((t) => t.panel);
+
+  const tabNav2 = tabDefs.length > 1
+    ? `<div class="dtab-nav">${tabDefs.map((t, i) =>
+        `<button class="dtab${i === 0 ? ' active' : ''}" onclick="ssDtab(this,'${t.id}')">${esc(t.label)}</button>`
+      ).join('')}</div>`
+    : '';
+
+  const tabbedCard = `<div class="block detail-tabs">
+    ${tabNav2}
+    ${tabDefs.map((t) => t.panel).join('')}
+  </div>`;
+
+  return hero + tabbedCard;
 }
 
 async function showStock(date, code) {
@@ -905,7 +1037,7 @@ async function showStock(date, code) {
     } catch (e) { /* no lazy file → stockCard shows the not-in-scan message */ }
   }
   $('detailView').innerHTML = `<a class="backlink" href="#${esc(date)}">‹ 回 ${esc(date)} 日報</a>`
-    + searchBar() + stockCard(CUR, code);
+    + stockCard(CUR, code);
   // B10: render the K-line AFTER the #kline node is mounted (createChart needs a live
   // DOM node, so it can't live inside the innerHTML string). Deferred one frame.
   const p = (CUR.picks || []).find((x) => x.stock === code)
@@ -992,9 +1124,10 @@ async function showDetail(date) {
     { id: 'sec-opp',      label: '機會掃描', present: !!oppHtml },
     { id: 'sec-signals',  label: '早期訊號', present: !!sigHtml },
   ]);
-  // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
+  // IA: compact env-strip at top, then picks, watchlist, early board, etc.
+  // Heavy macro/market sections folded below. Honest caveats preserved verbatim.
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + environmentBlock(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + envStripCompact(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     nav +
     anchor('sec-picks', picksHtml) + concentrationBlock(d) +
     anchor('sec-watch', watchHtml) +
@@ -1003,7 +1136,7 @@ async function showDetail(date) {
     anchor('sec-signals', sigHtml) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
-    section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
+    section('免责聲明', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);
 }
 
