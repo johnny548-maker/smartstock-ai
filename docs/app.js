@@ -436,6 +436,56 @@ function priceChart(arr, startD, endD, lines) {
     + xLab(startD, 0, 'start') + xLab(endD, arr.length - 1, 'end') + `</svg>`;
 }
 
+// B10 interactive K-line (TradingView lightweight-charts v5, vendored + offline).
+// PURE PRESENTATION: renders the SAME OHLCV the scorer used; priceLines are the
+// SAME p.sr / p.levels numbers. Adds zero signal. Detail view only (list cards
+// keep the cheap SVG sparkline). Must run AFTER the #kline node is mounted.
+function renderCandles(elId, ohlc, sr, levels) {
+  const el = document.getElementById(elId);
+  if (!el || !window.LightweightCharts || !ohlc || ohlc.length < 2) return;
+  // memory-leak guard: tear down any prior chart on hashchange re-route
+  if (el._chart) { try { el._chart.remove(); } catch (e) {} el._chart = null; el.innerHTML = ''; }
+  const LC = window.LightweightCharts;
+  const chart = LC.createChart(el, {
+    width: el.clientWidth, height: 240,
+    layout: { background: { color: '#0d1b2a' }, textColor: '#cbd5e1' },
+    grid: { vertLines: { color: '#1e2d3d' }, horzLines: { color: '#1e2d3d' } },
+    rightPriceScale: { borderColor: '#1e2d3d' },
+    timeScale: { borderColor: '#1e2d3d' },
+  });
+  el._chart = chart;
+  // candles (v5 API: addSeries(SeriesType,...); v4's addCandlestickSeries is removed)
+  const cs = chart.addSeries(LC.CandlestickSeries, {
+    upColor: '#5fe39b', downColor: '#ff8e8e',
+    wickUpColor: '#5fe39b', wickDownColor: '#ff8e8e', borderVisible: false,
+  });
+  cs.setData(ohlc.map((b) => ({ time: b.time, open: b.o, high: b.h, low: b.l, close: b.c })));
+  // volume histogram overlay on its own bottom margin
+  const vs = chart.addSeries(LC.HistogramSeries, { priceFormat: { type: 'volume' }, priceScaleId: '' });
+  vs.priceScale().applyOptions({ scaleMargins: { top: 0.8, bottom: 0 } });
+  vs.setData(ohlc.map((b) => ({ time: b.time, value: b.v, color: b.c >= b.o ? '#2e5d4a' : '#5d2e2e' })));
+  // reference price lines — guard every field (sr/levels may be undefined/partial)
+  const fin = (x) => typeof x === 'number' && isFinite(x);
+  const addLine = (price, color, title) => {
+    if (!fin(price)) return;
+    cs.createPriceLine({ price, color, lineStyle: LC.LineStyle.Dashed, lineWidth: 1, axisLabelVisible: true, title });
+  };
+  const lv = levels || {};
+  addLine(lv.stop, '#ff8e8e', '停損');
+  addLine(lv.entry, '#9bb', '進場');
+  const tgt = (lv.target_band && lv.target_band.length) ? lv.target_band[lv.target_band.length - 1] : lv.measured_move;
+  addLine(tgt, '#7fe6ab', '目標');
+  const s = sr || {};
+  (s.resistance || []).forEach((r) => addLine(r, '#e0b15f', '壓力'));
+  (s.support || []).forEach((p) => addLine(p, '#6fa8dc', '支撐'));
+  chart.timeScale().fitContent();
+  // keep width in sync with the container (orientation change / detail re-layout)
+  try {
+    const ro = new ResizeObserver(() => { if (el._chart) el._chart.applyOptions({ width: el.clientWidth }); });
+    ro.observe(el);
+  } catch (e) {}
+}
+
 function getPins() { try { return JSON.parse(localStorage.getItem('ss_pins') || '[]'); } catch (e) { return []; } }
 function setPins(a) { try { localStorage.setItem('ss_pins', JSON.stringify(a)); } catch (e) {} }
 window.ssPin = (code, el) => {
@@ -515,7 +565,7 @@ function stockCard(d, code) {
   const earnNote = (p.earnings && p.earnings.in_blackout)
     ? `<div class="earn-note">⚠️ 財報 ${esc(p.earnings.date)}（${p.earnings.days_until === 0 ? '今日' : p.earnings.days_until + ' 天內'}）— 二元事件，新突破單建議暫緩或減量，留意跳空風險。</div>` : '';
   const head = `<div class="sd-head">
-    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+    <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${shortVolBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
     ${px}
     <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
     ${earnNote}
@@ -527,8 +577,12 @@ function stockCard(d, code) {
   if (lv0.stop != null) chartLines.push({ v: lv0.stop, color: '#ff8e8e', label: '停損' });
   const tgt = (lv0.target_band && lv0.target_band.length) ? lv0.target_band[lv0.target_band.length - 1] : lv0.measured_move;
   if (tgt != null) chartLines.push({ v: tgt, color: '#7fe6ab', label: '目標' });
-  const chart = p.spark && p.spark.length > 1
-    ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div></div>` : '';
+  // B10: interactive K-line when OHLC is present (rendered post-mount in showStock);
+  // older payloads with no ohlc keep the cheap SVG sparkline fallback.
+  const chart = (p.ohlc && p.ohlc.length > 1)
+    ? `<div class="sd-chart"><div class="sd-kline" id="kline"></div><div class="muted small">近 ${p.ohlc.length} 日 K 線（含量；虛線=停損/進場/目標/壓力/支撐）</div></div>`
+    : (p.spark && p.spark.length > 1
+      ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div></div>` : '');
   const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
   const grp = p.group_rank != null ? `<div class="kv"><span>族群排名</span><b>#${p.group_rank}${p.leading_group ? ' 領漲' : ''}</b></div>` : '';
@@ -560,6 +614,13 @@ async function showStock(date, code) {
   NAMES = CUR.names || {};
   $('detailView').innerHTML = `<a class="backlink" href="#${esc(date)}">‹ 回 ${esc(date)} 日報</a>`
     + searchBar() + stockCard(CUR, code);
+  // B10: render the K-line AFTER the #kline node is mounted (createChart needs a live
+  // DOM node, so it can't live inside the innerHTML string). Deferred one frame.
+  const p = (CUR.picks || []).find((x) => x.stock === code)
+    || (CUR.opportunity && CUR.opportunity.leaders || []).find((x) => x.ticker === code);
+  if (p && window.LightweightCharts && p.ohlc && p.ohlc.length > 1) {
+    requestAnimationFrame(() => renderCandles('kline', p.ohlc, p.sr, p.levels));
+  }
   window.scrollTo(0, 0);
 }
 

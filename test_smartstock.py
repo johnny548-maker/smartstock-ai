@@ -852,6 +852,45 @@ class TestVerdict(unittest.TestCase):
         self.assertIsNotNone(e["spark_start"])
         self.assertIsNotNone(e["spark_end"])
 
+    # --- B10: OHLC payload for the interactive K-line chart (pure presentation) ---
+    def _dated_df(self, n):
+        df = make_df(list(range(n)))
+        df.index = pd.date_range("2026-01-01", periods=n, freq="D")
+        return df
+
+    def test_ohlc_shape(self):
+        bars = verdict.ohlc(self._dated_df(80), 60)
+        self.assertEqual(len(bars), 60)
+        self.assertEqual(set(bars[0].keys()), {"time", "o", "h", "l", "c", "v"})
+
+    def test_ohlc_high_ge_low(self):
+        bars = verdict.ohlc(self._dated_df(80), 60)
+        self.assertTrue(all(b["h"] >= b["l"] for b in bars))
+
+    def test_ohlc_time_ascending(self):
+        bars = verdict.ohlc(self._dated_df(80), 60)
+        times = [b["time"] for b in bars]
+        self.assertEqual(times, sorted(times))
+        self.assertEqual(bars[-1]["time"], "2026-03-21")   # last of 80 daily bars
+
+    def test_ohlc_empty_safe(self):
+        self.assertEqual(verdict.ohlc(None), [])
+        self.assertEqual(verdict.ohlc(make_df([])), [])
+
+    def test_ohlc_no_index_safe(self):
+        # RangeIndex (no DatetimeIndex) → [] for safety, must not raise
+        self.assertEqual(verdict.ohlc(make_df([100, 110, 120])), [])
+
+    def test_enrich_has_ohlc(self):
+        e = verdict.enrich("X", 95, {"趨勢": 25}, self._dated_df(70))
+        self.assertIn("ohlc", e)
+        self.assertGreater(len(e["ohlc"]), 1)
+        self.assertIn("c", e["ohlc"][0])
+
+    def test_ohlc_volume_int(self):
+        bars = verdict.ohlc(self._dated_df(80), 60)
+        self.assertTrue(all(isinstance(b["v"], int) for b in bars))
+
 
 class TestBreakoutRadar(unittest.TestCase):
     def test_in_flat_base(self):

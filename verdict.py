@@ -77,6 +77,39 @@ def spark(df, n=60):
     return [round(float(c), 2) for c in df["Close"].iloc[-n:]]
 
 
+def ohlc(df, n=60):
+    """Last n bars as OHLCV dicts for the interactive K-line chart (B10).
+
+    Pure presentation — the SAME OHLCV the scorer already used, no new signal.
+    Each bar: {"time":"YYYY-MM-DD","o","h","l","c" (round 2),"v" (int)}.
+    Requires a DatetimeIndex (reuses spark_dates' str(idx.date()) path); returns
+    [] if df is None/empty or the index isn't date-like (RangeIndex), never raises.
+    """
+    if df is None or not len(df):
+        return []
+    try:
+        idx = df.index
+        # date-like guard: DatetimeIndex entries expose .date(); RangeIndex ints don't
+        if not hasattr(idx[-1], "date"):
+            return []
+        sub = df.iloc[-n:]
+        bars = []
+        for ts, o, h, l, c, v in zip(
+            sub.index, sub["Open"], sub["High"], sub["Low"], sub["Close"], sub["Volume"]
+        ):
+            bars.append({
+                "time": str(ts.date()),
+                "o": round(float(o), 2),
+                "h": round(float(h), 2),
+                "l": round(float(l), 2),
+                "c": round(float(c), 2),
+                "v": int(round(float(v))),
+            })
+        return bars
+    except Exception:
+        return []
+
+
 def price_change(df):
     """(current price, day change %) from the last two closes."""
     if df is None or not len(df):
@@ -132,6 +165,7 @@ def enrich(symbol, score, factors, df, levels=None):
         "spark": spark(df),
         "spark_start": sd,
         "spark_end": se,
+        "ohlc": ohlc(df),           # B10 interactive K-line bars (pure presentation)
         "risk": risk_sizing.plan(levels),
         "liquidity": liquidity(symbol, df),
         "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
