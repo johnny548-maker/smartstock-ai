@@ -274,6 +274,22 @@ function breakoutBlock(d) {
     + `<ul class="rev opp-list">${rows}</ul>`, true);
 }
 
+// Sector/theme RS leaderboard (B7) — INFORMATIONAL overlay, NOT a scorer. Groups
+// ranked by member RS median; 領漲族群 = top-quartile group with median RS ≥70.
+function groupBlock(d) {
+  const groups = (d.opportunity || {}).group_rs || [];
+  if (!groups.length) return '';
+  const rows = groups.map((g) => {
+    const lead = g.leading ? ' <span class="badge-lead small">領漲族群</span>' : '';
+    return `<li>${lightDot(g.light)} <b>${esc(g.group)}</b> `
+      + `<span class="muted small">中位RS ${g.median_rs} · ${g.count} 檔 · ${g.leaders80} 領導</span>${lead}</li>`;
+  }).join('');
+  return foldSection('🏭 族群強弱（依成員 RS 中位數排名）',
+    '<p class="muted small">把個股橫斷面 RS 上捲到族群層級排名，找「族群領漲」的方向。'
+    + 'informational，僅為顯示用途、不進評分。</p>'
+    + `<ol class="rev group-list">${rows}</ol>`, false);
+}
+
 function opportunityBlock(d) {
   const opp = d.opportunity || {};
   const leaders = opp.leaders || [];
@@ -281,6 +297,7 @@ function opportunityBlock(d) {
   const rows = leaders.map((l) => {
     const nm = l.name ? `${esc(l.name)}（${esc(l.ticker)}）` : esc(l.ticker);
     const th = l.theme ? `<span class="muted small"> · ${esc(l.theme)}</span>` : '';
+    const ld = l.leading_group ? ` <span class="badge-lead small">領漲#${l.group_rank}</span>` : '';
     let rev = '';
     if (l.rev_yoy != null) {
       rev = ` <b class="up">營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%</b>`;
@@ -289,7 +306,7 @@ function opportunityBlock(d) {
     const px = l.price != null ? ` <span class="px">${l.price}</span>`
       + (l.change_pct != null ? `<b class="${l.change_pct >= 0 ? 'up' : 'down'} small">${l.change_pct > 0 ? '▲' : '▼'}${Math.abs(l.change_pct)}%</b>` : '') : '';
     return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(l.ticker)}">${lightDot(l.light)} ${nm}${px} `
-      + `<b class="accel">RS ${l.rs_rating}</b>${th}<br>`
+      + `<b class="accel">RS ${l.rs_rating}</b>${th}${ld}<br>`
       + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</a></li>`;
   }).join('');
   return foldSection(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`,
@@ -495,6 +512,7 @@ function stockCard(d, code) {
     ? `<div class="sd-chart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}<div class="muted small">近 ${p.spark.length} 日收盤（y軸=股價、x軸=日期；虛線=停損/目標）</div></div>` : '';
   const vr = p.vol_ratio != null ? `<div class="kv"><span>量比(5日)</span><b class="${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</b></div>` : '';
   const theme = p.theme ? `<div class="kv"><span>主題</span><b>${esc(p.theme)}</b></div>` : '';
+  const grp = p.group_rank != null ? `<div class="kv"><span>族群排名</span><b>#${p.group_rank}${p.leading_group ? ' 領漲' : ''}</b></div>` : '';
   const rev = p.rev_yoy != null ? `<div class="kv"><span>季營收 YoY</span><b class="up">${p.rev_yoy > 0 ? '+' : ''}${p.rev_yoy}%</b></div>` : '';
   const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors)
     .sort((a, b) => b[1] - a[1])                       // positives first, negatives last
@@ -503,7 +521,7 @@ function stockCard(d, code) {
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${rev}${riskPlan(p)}${liqLine(p)}</div>
+    <div class="kvs">${vr}${theme}${grp}${rev}${riskPlan(p)}${liqLine(p)}</div>
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;
@@ -566,7 +584,7 @@ async function showDetail(date) {
   $('detailView').innerHTML = stale +
     searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) + concentrationBlock(d) +
-    breakoutBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
+    breakoutBlock(d) + groupBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');

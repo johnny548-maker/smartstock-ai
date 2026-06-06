@@ -26,6 +26,7 @@ import technical_setup as ts
 import volume_signals as vs
 import supply_chain
 import verdict
+import group_rs
 
 log = logging.getLogger(__name__)
 CODE_RE = re.compile(r"[1-9][0-9]{3}")          # 4-digit common stock (excludes ETF/warrant)
@@ -129,13 +130,18 @@ def fetch_opportunity_ohlcv(tickers, period=None, batch=None):
     return out
 
 
-def scan_opportunities(data, names=None, top=None, rs_min=None):
+def scan_opportunities(data, names=None, top=None, rs_min=None, ratings=None):
     """Cross-sectional early-leader scan. A leadership candidate = high RS-Rating
-    (vs the whole opportunity set) AND ≥1 validated leadership signal."""
+    (vs the whole opportunity set) AND ≥1 validated leadership signal.
+
+    `ratings` (optional) lets get_opportunities thread in the RS dict it already
+    computed for the group aggregation — avoids a double RS-Rating pass. None →
+    compute here (backward-compatible)."""
     top = top or config.OPP_TOP_DISPLAY
     rs_min = rs_min or config.OPP_RS_MIN
     names = names or {}
-    ratings = rs_rating.rs_rating(data)            # cross-sectional 1-99
+    if ratings is None:
+        ratings = rs_rating.rs_rating(data)        # cross-sectional 1-99
     leaders = []
     for sym, df in (data or {}).items():
         rr = ratings.get(sym)
@@ -173,9 +179,14 @@ def get_opportunities():
     import breakout_radar
     tickers, names = opportunity_universe()
     data = fetch_opportunity_ohlcv(tickers)
+    ratings = rs_rating.rs_rating(data)            # compute ONCE, thread into both
+    group_ranks = group_rs.rank_groups(ratings, group_rs.theme_group_of)
+    leaders = scan_opportunities(data, names=names, ratings=ratings)
+    leaders = group_rs.tag_leaders(leaders, group_ranks, group_rs.theme_group_of)
     return {
         "universe": len(tickers),
         "scanned": len(data),
-        "leaders": scan_opportunities(data, names=names),
+        "leaders": leaders,
+        "group_rs": group_ranks,
         "breakout": breakout_radar.scan(data, frames=None, names=names, top=15),
     }

@@ -27,6 +27,7 @@ import rs_rating
 import volume_signals
 import supply_chain
 import universe
+import group_rs
 import edgar
 import verdict
 import breakout_radar
@@ -1164,6 +1165,100 @@ class TestMacro(unittest.TestCase):
     def test_macro_context_overlay_only(self):
         c = macro.classify({"term_spread": -0.2, "hy_oas": 8.5})
         self.assertNotIn("score", c)
+
+
+class TestGroupRS(unittest.TestCase):
+    # synthetic ratings dicts + stub group_of — NO network.
+    def _stub(self, mapping):
+        return lambda sym: mapping.get(sym)
+
+    def test_rank_groups_orders_by_median_rs(self):
+        ratings = {"A1": 90, "A2": 85, "A3": 88, "B1": 40, "B2": 30, "B3": 35}
+        g = self._stub({"A1": "X", "A2": "X", "A3": "X", "B1": "Y", "B2": "Y", "B3": "Y"})
+        res = group_rs.rank_groups(ratings, g)
+        self.assertEqual(res[0]["group"], "X")
+        self.assertEqual(res[0]["rank"], 1)
+        self.assertEqual(res[0]["median_rs"], 88.0)
+        self.assertEqual(res[1]["group"], "Y")
+
+    def test_rank_groups_drops_thin_groups(self):
+        ratings = {"A1": 90, "A2": 85, "A3": 88, "Z1": 70, "Z2": 60}
+        g = self._stub({"A1": "X", "A2": "X", "A3": "X", "Z1": "Z", "Z2": "Z"})
+        res = group_rs.rank_groups(ratings, g, min_members=3)
+        self.assertNotIn("Z", [d["group"] for d in res])
+
+    def test_rank_groups_empty_returns_empty(self):
+        self.assertEqual(group_rs.rank_groups({}, self._stub({})), [])
+
+    def test_leading_group_flag_top25_and_threshold(self):
+        # 5 groups, medians [95,80,60,50,40] → ceil(0.25*5)=2 leading slots
+        ratings = {}
+        mapping = {}
+        for gi, med in enumerate([95, 80, 60, 50, 40]):
+            name = "G%d" % gi
+            for j in range(3):
+                sym = "%s_%d" % (name, j)
+                ratings[sym] = med
+                mapping[sym] = name
+        res = group_rs.rank_groups(ratings, self._stub(mapping))
+        by = {d["group"]: d for d in res}
+        self.assertTrue(by["G0"]["leading"])   # median 95, rank1 → leading
+        self.assertTrue(by["G1"]["leading"])   # median 80, rank2 → leading
+        self.assertFalse(by["G3"]["leading"])  # rank4 → outside top25%
+        self.assertFalse(by["G4"]["leading"])  # rank5 → outside top25%
+
+    def test_leading_group_requires_min_median(self):
+        # single group median 55 — rank1 but below the 70 threshold → not leading
+        ratings = {"A1": 55, "A2": 55, "A3": 55}
+        g = self._stub({"A1": "X", "A2": "X", "A3": "X"})
+        res = group_rs.rank_groups(ratings, g)
+        self.assertEqual(res[0]["rank"], 1)
+        self.assertFalse(res[0]["leading"])
+
+    def test_leaders80_counts_strong_members(self):
+        ratings = {"A1": 90, "A2": 82, "A3": 40}
+        g = self._stub({"A1": "X", "A2": "X", "A3": "X"})
+        res = group_rs.rank_groups(ratings, g)
+        self.assertEqual(res[0]["leaders80"], 2)
+
+    def test_tag_leaders_attaches_group_rank(self):
+        leaders = [{"ticker": "A1", "theme": "X"}]
+        group_ranks = [{"group": "X", "rank": 1, "count": 3, "leading": True,
+                        "median_rs": 88.0}]
+        g = self._stub({"A1": "X"})
+        tagged = group_rs.tag_leaders(leaders, group_ranks, g)
+        self.assertEqual(tagged[0]["group_rank"], 1)
+        self.assertTrue(tagged[0]["leading_group"])
+        self.assertEqual(tagged[0]["group_count"], 3)
+        # immutability: original leader untouched
+        self.assertNotIn("group_rank", leaders[0])
+
+    def test_tag_leaders_handles_unmapped(self):
+        leaders = [{"ticker": "Q1", "theme": None}]
+        group_ranks = [{"group": "X", "rank": 1, "count": 3, "leading": True,
+                        "median_rs": 88.0}]
+        g = self._stub({})    # Q1 → None
+        tagged = group_rs.tag_leaders(leaders, group_ranks, g)
+        self.assertIsNone(tagged[0]["group_rank"])
+        self.assertFalse(tagged[0]["leading_group"])
+
+    def test_theme_group_of_uses_supply_chain(self):
+        self.assertIsNotNone(group_rs.theme_group_of("AAOI"))   # real CPO theme
+        self.assertIsNone(group_rs.theme_group_of("ZZZZ"))
+
+    def test_pct_rank_bounds(self):
+        ratings = {}
+        mapping = {}
+        for gi in range(6):
+            name = "G%d" % gi
+            for j in range(3):
+                sym = "%s_%d" % (name, j)
+                ratings[sym] = 90 - gi * 10
+                mapping[sym] = name
+        res = group_rs.rank_groups(ratings, self._stub(mapping))
+        for d in res:
+            self.assertGreaterEqual(d["pct_rank"], 1)
+            self.assertLessEqual(d["pct_rank"], 99)
 
 
 if __name__ == "__main__":
