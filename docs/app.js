@@ -731,6 +731,48 @@ function fundamentalBlock(p) {
     + '<span class="muted small">※ best-effort，可能延遲/缺漏，不計入評分</span></div>';
 }
 
+// sources/ overlay framework render (functional MVP — P4 art-direction is later).
+// Groups a card's p.overlays by kind (籌碼/法人/基本面/內部人/情緒/事件/總經), with a
+// severity color per row (info/warn/risk). OVERLAY-NOT-SCORER: purely informational,
+// never touches score/factors. Null/empty → '' (omitted). Each overlay = {source, kind,
+// label, value, severity, as_of, note}.
+const OVERLAY_KIND_LABEL = {
+  chip: '籌碼', inst: '法人', fundamental: '基本面',
+  sentiment: '情緒', catalyst: '事件', macro: '總經',
+};
+const OVERLAY_KIND_ORDER = ['chip', 'inst', 'fundamental', 'catalyst', 'sentiment', 'macro'];
+function overlaysBlock(p) {
+  const ovs = (p && p.overlays) || [];
+  if (!ovs.length) return '';
+  // bucket by kind, preserving insertion order within a kind
+  const byKind = {};
+  ovs.forEach((o) => {
+    if (!o) return;
+    const k = o.kind || 'chip';
+    (byKind[k] = byKind[k] || []).push(o);
+  });
+  const kinds = OVERLAY_KIND_ORDER.filter((k) => byKind[k])
+    .concat(Object.keys(byKind).filter((k) => OVERLAY_KIND_ORDER.indexOf(k) < 0));
+  const groups = kinds.map((k) => {
+    const rows = byKind[k].map((o) => {
+      const sev = (o.severity === 'risk' || o.severity === 'warn' || o.severity === 'info')
+        ? o.severity : 'info';
+      const src = o.source ? `<span class="overlay-src muted small">${esc(o.source)}</span>` : '';
+      const note = o.note ? `<span class="overlay-note muted small">${esc(o.note)}</span>` : '';
+      const asof = o.as_of ? `<span class="overlay-asof muted small">${esc(o.as_of)}</span>` : '';
+      return `<div class="overlay-row overlay-${sev}">`
+        + `<span class="overlay-dot"></span>`
+        + `<span class="overlay-label">${esc(o.label)}</span>`
+        + `${asof}${src}${note}</div>`;
+    }).join('');
+    return `<div class="overlay-group"><h4 class="overlay-kind">${esc(OVERLAY_KIND_LABEL[k] || k)}</h4>${rows}</div>`;
+  }).join('');
+  const inner = '<p class="muted small">公開資料籌碼／法人／基本面／內部人 <b>資訊性 overlay</b>，'
+    + '附註於分數旁，<b>不計入評分與排名</b>（要做回測 Wilson-CI 驗證後才考慮加權）。</p>'
+    + `<div class="overlays">${groups}</div>`;
+  return foldSection('🧩 公開資料 overlay（籌碼／法人／基本面／內部人）', inner, false);
+}
+
 function stockCard(d, code) {
   const p = (d.picks || []).find((x) => x.stock === code)
     || (d.opportunity && d.opportunity.leaders || []).find((x) => x.ticker === code)
@@ -778,8 +820,10 @@ function stockCard(d, code) {
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
   const fund = fundamentalBlock(p);   // REQ3a informational fundamentals row (null → '')
+  const overlaysHtml = overlaysBlock(p);   // sources/ overlay framework (chip/法人/基本面/內部人)
   return `<section class="block sd">${head}${chart}
     <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}${fund}</div>
+    ${overlaysHtml}
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;

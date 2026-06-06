@@ -78,16 +78,36 @@ def _names_map(opportunity, revenue):
     return names
 
 
+def _overlays_for(symbol, overlays_map):
+    """Resolve a symbol's overlay list from {code -> [overlay]}, trying the full
+    symbol AND its bare TWSE code ('2330.TW' → also '2330'). Returns [] if none.
+    Pure read — never mutates overlays_map (OVERLAY-NOT-SCORER; informational only)."""
+    if not overlays_map:
+        return []
+    out = list(overlays_map.get(symbol, []))
+    bare = symbol.replace(".TWO", "").replace(".TW", "")
+    if bare != symbol:
+        out = out + list(overlays_map.get(bare, []))
+    return out
+
+
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
                   regime=None, concentration=None, shortvol=None, macro=None, fx=None,
-                  watchlist=None, early_board=None):
+                  watchlist=None, early_board=None, overlays_map=None, source_coverage=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
-    picks = [
-        {
+    overlays_map = overlays_map or {}
+    picks = []
+    for it in ranked[:DISPLAY_N]:
+        card = pick_cards.get(it["stock"]) or {}
+        # carry the attached overlays through; if attach was SKIPped on the card, fall
+        # back to overlays_map directly so the informational overlays still reach the PWA.
+        # OVERLAY-NOT-SCORER: 'overlays' is a sidecar key; score/factors are untouched.
+        overlays = card.get("overlays") or _overlays_for(it["stock"], overlays_map)
+        pick = {
             "stock": it["stock"],
             "name": it.get("name"),
             "score": it["score"],
@@ -95,10 +115,11 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
             "factors": it["factors"],
             "levels": level_map.get(it["stock"]),
             "commentary": (analyses or {}).get(it["stock"]),
-            **(pick_cards.get(it["stock"]) or {}),    # light/verdict/vol_ratio/sr/spark
+            **card,                                   # light/verdict/vol_ratio/sr/spark
         }
-        for it in ranked[:DISPLAY_N]
-    ]
+        if overlays:
+            pick["overlays"] = overlays
+        picks.append(pick)
     # search index = every displayed actionable name (picks + opportunity leaders +
     # revenue candidates + top movers) so client-side search/links resolve them all.
     search = _search_index(picks, opportunity, movers, revenue)
@@ -133,6 +154,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "search": search,
         "allocation": allocation,
         "rebalance": rebalance_diff,
+        # which overlay sources returned data today + their counts (informational).
+        "source_coverage": source_coverage or {},
         "skips": sorted(set(skips or [])),
     }
 

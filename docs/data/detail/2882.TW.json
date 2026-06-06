@@ -576,5 +576,55 @@
   "chandelier": 92.1,
   "fib_targets": []
  },
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 10,630,653 股",
+   "value": {
+    "foreign": 10810614,
+    "trust": -278827,
+    "dealer": 98866,
+    "total": 10630653
+   },
+   "severity": "info",
+   "as_of": "2026-06-06",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +24.9%",
+   "value": {
+    "fin_net": 996,
+    "fin_pct": 0.24949899799599198
+   },
+   "severity": "warn",
+   "as_of": "2026-06-06",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 15.2 / 殖利率 3.50% / PB 2.00",
+   "value": {
+    "pe": 15.17,
+    "yield": 3.5,
+    "pb": 2.0
+   },
+   "severity": "info",
+   "as_of": "2026-06-05",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶集中度",
+   "value": 85.58,
+   "severity": "info",
+   "as_of": "20260605",
+   "note": "大戶持股%=85.58"
+  }
+ ]
 }

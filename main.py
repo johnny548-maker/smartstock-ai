@@ -46,6 +46,16 @@ import fundamentals
 import watchlist_tracker
 import stock_detail
 
+# sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
+# Each fetcher is injectable + graceful-skip; the wiring below guards every source
+# independently so a dead source SKIPs without aborting the run, and NOTHING here
+# ever feeds strategy.rank_stocks / score_stock (golden-additive invariant).
+from sources import overlay as _overlay
+from sources import twse as _twse
+from sources import tpex as _tpex
+from sources import tdcc as _tdcc
+from sources import sec as _sec
+
 
 def setup_logging():
     logging.basicConfig(
@@ -383,6 +393,159 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP early board promote: %s", e); skips.append("early_board")
 
+    # 7e. sources/ overlay framework — keyless chip/法人/基本面/內部人 OVERLAYS.
+    #     OVERLAY-NOT-SCORER: nothing here touches the scoring call (ranked is already
+    #     final above); these are INFORMATIONAL overlays attached BESIDE the cards via
+    #     overlay.attach (immutable — returns NEW dicts, never mutates pick_cards/details).
+    #     Each source is independently try/except-guarded → a dead source SKIPs the run.
+    #     overlays_map {symbol -> [overlay]} is also threaded into the PWA payload, and a
+    #     source_coverage map records which sources returned data today (counts).
+    overlays_map = {}            # symbol/code -> merged list[overlay]
+    source_coverage = {}         # source name -> {"ok": bool, "codes": int, "overlays": int}
+
+    def _merge_overlays(per_code, source_name):
+        """Merge a {code -> [overlay]} map (from a fetcher's to_overlays) into the
+        running overlays_map and record coverage. Pure dict assembly — never raises
+        on a None/odd shape (the caller's try/except is the SKIP boundary)."""
+        codes = 0
+        n_ov = 0
+        for code, ovs in (per_code or {}).items():
+            if not ovs:
+                continue
+            overlays_map.setdefault(code, [])
+            overlays_map[code].extend(ovs)
+            codes += 1
+            n_ov += len(ovs)
+        source_coverage[source_name] = {"ok": codes > 0, "codes": codes, "overlays": n_ov}
+
+    # symbols of interest = the displayed picks (bare TWSE code + full symbol both kept so
+    # a {2330 -> ...} overlay map resolves to a 2330.TW card and vice-versa).
+    _pick_syms = [it["stock"] for it in ranked[:config.DISPLAY_N]]
+    _tw_codes = {s.replace(".TWO", "").replace(".TW", "") for s in _pick_syms
+                 if s.endswith((".TW", ".TWO"))}
+    _us_syms = {s for s in _pick_syms if not s.endswith((".TW", ".TWO"))}
+
+    # --- TWSE 上市 chip/法人/基本面 (T86 三大法人 + MI_MARGN 融資融券 + BWIBBU PE) -----
+    try:
+        t86_rows = _twse.fetch_t86()
+        # T86 daily snapshot → archive for net_buy_streak history (one file per trading day)
+        if t86_rows:
+            try:
+                parsed = [r for r in (_twse.parse_t86_row(x) for x in t86_rows) if r]
+                _twse_archive = os.path.join(config.WEB_DIR, "data", "_t86_archive")
+                _cache_date = date_str.replace("-", "")
+                from sources import _cache as _src_cache
+                _src_cache.archive_snapshot(_twse_archive, _cache_date, parsed)
+            except Exception as e:
+                log.warning("SKIP T86 snapshot archive: %s", e)
+        _merge_overlays(_twse.to_overlays_t86(t86_rows, symbols=_tw_codes, as_of=date_str),
+                        "twse_t86")
+        margin_rows = _twse.fetch_margin()
+        _merge_overlays(_twse.to_overlays_margin(margin_rows, symbols=_tw_codes, as_of=date_str),
+                        "twse_margin")
+        pe_rows = _twse.fetch_pe()
+        _merge_overlays(_twse.to_overlays_pe(pe_rows, symbols=_tw_codes), "twse_pe")
+    except Exception as e:
+        log.warning("SKIP twse overlays: %s", e); skips.append("twse_overlays")
+
+    # --- TPEx 上櫃 mirror (3insti + margin + PE) — OTC chip intelligence ----------------
+    try:
+        insti_metrics = _tpex.to_3insti_metrics(_tpex.fetch_tpex_3insti())
+        margin_metrics = _tpex.to_margin_metrics(_tpex.fetch_tpex_margin())
+        pe_metrics = _tpex.to_pe_metrics(_tpex.fetch_tpex_pe())
+        _merge_overlays(
+            _tpex.to_overlays(insti_metrics=insti_metrics, margin_metrics=margin_metrics,
+                              pe_metrics=pe_metrics, as_of=date_str),
+            "tpex")
+    except Exception as e:
+        log.warning("SKIP tpex overlays: %s", e); skips.append("tpex_overlays")
+
+    # --- TDCC 集保戶股權分散 (weekly 大戶集中度) — save weekly archive for WoW trend ----
+    try:
+        tdcc_rows = _tdcc.fetch_distribution()
+        if tdcc_rows:
+            # 資料日期 (AD YYYYMMDD) is the archive key; a same-week re-pull overwrites.
+            _tdcc_date = (tdcc_rows[0].get("date") or date_str.replace("-", "")).strip()
+            try:
+                _tdcc.save_weekly(tdcc_rows, _tdcc_date,
+                                  archive_dir=os.path.join(config.WEB_DIR, "data", "_tdcc_archive"))
+            except Exception as e:
+                log.warning("SKIP tdcc weekly archive: %s", e)
+            # last week's rows (if accrued) → WoW 大戶吸籌/散戶化 verdict, else snapshot-only.
+            _tdcc_hist = _tdcc.load_history(
+                archive_dir=os.path.join(config.WEB_DIR, "data", "_tdcc_archive"))
+            _prior = sorted(k for k in _tdcc_hist if k != _tdcc_date)
+            last_week_rows = _tdcc_hist.get(_prior[-1]) if _prior else None
+            _merge_overlays(
+                _tdcc.to_overlays(tdcc_rows, last_week_rows=last_week_rows,
+                                  codes=_tw_codes or None, as_of=_tdcc_date),
+                "tdcc")
+        else:
+            source_coverage["tdcc"] = {"ok": False, "codes": 0, "overlays": 0}
+    except Exception as e:
+        log.warning("SKIP tdcc overlays: %s", e); skips.append("tdcc_overlays")
+
+    # --- SEC EDGAR Form-4 內部人交易 (US picks only) ------------------------------------
+    try:
+        if _us_syms:
+            _t2c, _c2t = _sec._build_ticker_cik()
+            idx_rows, _sec_idx_date = _sec.fetch_recent_daily_index(date=date_str.replace("-", ""))
+            _sec_as_of = _sec_idx_date if _sec_idx_date else date_str
+            form4 = _sec.form4_filings_today(idx_rows)
+            records_by_issuer = {}
+            for f in form4:
+                cik = f.get("cik")
+                tkr = _sec.ticker_for_cik(cik, _maps=(_t2c, _c2t))
+                if tkr is None or tkr not in _us_syms:
+                    continue
+                try:
+                    xml_text = _sec._real_fetch(
+                        "https://www.sec.gov/Archives/" + f["path"])
+                    rec = _sec.parse_form4(xml_text)
+                except Exception:
+                    continue
+                records_by_issuer.setdefault(tkr, []).append(rec)
+            _merge_overlays(_sec.to_overlays(records_by_issuer, as_of=_sec_as_of), "sec")
+            source_coverage["sec"] = {**source_coverage.get("sec", {}), "as_of": _sec_as_of}
+        else:
+            source_coverage["sec"] = {"ok": False, "codes": 0, "overlays": 0}
+    except Exception as e:
+        log.warning("SKIP sec overlays: %s", e); skips.append("sec_overlays")
+
+    # Attach the merged overlays onto pick_cards + details (immutable — NEW dicts).
+    # A symbol resolves an overlay list under its full form OR its bare TWSE code.
+    def _overlays_for(symbol):
+        out = list(overlays_map.get(symbol, []))
+        bare = symbol.replace(".TWO", "").replace(".TW", "")
+        if bare != symbol:
+            out += overlays_map.get(bare, [])
+        return out
+
+    try:
+        n_attached = 0
+        for sym in list(pick_cards.keys()):
+            ovs = _overlays_for(sym)
+            if ovs:
+                pick_cards[sym] = _overlay.attach(pick_cards[sym], ovs)
+                n_attached += 1
+        # details may be keyed by bare codes (revenue candidates) or full symbols (picks).
+        try:
+            for code in list(details.keys()):
+                ovs = _overlays_for(code)
+                if ovs:
+                    details[code] = _overlay.attach(details[code], ovs)
+            # re-export the detail files so the attached overlays land in the per-stock JSON.
+            if details:
+                stock_detail.export_details(details, config.WEB_DIR)
+        except NameError:
+            pass    # details may not exist if section 7c SKIPped
+        if overlays_map:
+            log.info("source overlays: %d code(s), %d attached to picks; coverage=%s",
+                     len(overlays_map), n_attached,
+                     ", ".join("%s:%d" % (k, v["overlays"]) for k, v in source_coverage.items()))
+    except Exception as e:
+        log.warning("SKIP overlay attach: %s", e); skips.append("overlay_attach")
+
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
     sent = notifier_email.send_email(f"📈 SmartStock 每日投資日報 {date_str}", markdown)
@@ -395,7 +558,8 @@ def main(web=False):
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
             regime=regime, concentration=concentration, shortvol=shortvol_board,
-            macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board)
+            macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
+            overlays_map=overlays_map, source_coverage=source_coverage)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

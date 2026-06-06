@@ -212,7 +212,7 @@ def _kelly_ceiling_for(factors):
     return min(caps) if caps else None
 
 
-def enrich(symbol, score, factors, df, levels=None, fundamental=None):
+def enrich(symbol, score, factors, df, levels=None, fundamental=None, overlays=None):
     """Build the card-enrichment dict attached to a pick/opportunity name.
 
     B11 OVERLAY-NOT-SCORER: the Kelly position-size ceiling threaded into risk_sizing.plan
@@ -220,10 +220,16 @@ def enrich(symbol, score, factors, df, levels=None, fundamental=None):
     ranking. Degrades silently (no ceiling) when _kelly_state.json is absent.
 
     fundamental: optional dict from fundamentals.build_badge() — attached as-is under the
-    'fundamental' key. INFORMATIONAL ONLY; never enters scoring or ranking."""
+    'fundamental' key. INFORMATIONAL ONLY; never enters scoring or ranking.
+
+    overlays: optional list of sources/ overlay dicts (chip/法人/基本面/內部人), carried
+    through verbatim under the 'overlays' key (backward-compatible default None → key
+    omitted). INFORMATIONAL ONLY; the caller usually attaches them later via
+    sources.overlay.attach, but accepting them here lets a one-shot build carry them too.
+    NEVER enters scoring or ranking."""
     px, chg = price_change(df)
     sd, se = spark_dates(df)
-    return {
+    card = {
         "light": light(score),
         "verdict": verdict_line(factors),
         "price": px,
@@ -239,3 +245,6 @@ def enrich(symbol, score, factors, df, levels=None, fundamental=None):
         "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
         "fundamental": fundamental,        # fundamentals overlay (B12), never scored
     }
+    if overlays:
+        card["overlays"] = list(overlays)   # sources/ overlays sidecar (never scored)
+    return card

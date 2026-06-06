@@ -73,6 +73,74 @@ DEFS = {
 
 
 # ════════════════════════════════════════════════════════════════════════════
+# sources/ OVERLAY signals — REGISTERED-ONLY, NOT WEIGHTED, GATED BY OVERLAY STATUS.
+#
+# The sources/ framework (twse/tpex/tdcc/sec) emits INFORMATIONAL overlays (chip /
+# 法人 / 基本面 / 內部人). They are OVERLAY-NOT-SCORER today: NOTHING here enters the
+# live scorer (strategy.py) or the weighted DEFS/EARLY_DEFS families above. We register
+# their predicates in a SEPARATE dict so a FUTURE backtest can measure each one's edge
+# BEFORE any weight is ever considered (the same Wilson-CI keep/kill gate the price
+# signals went through). DO NOT add any of these to DEFS / EARLY_DEFS / config.LEAD_*.
+#
+# GATING: each predicate is "gated by overlay status" — it reads the overlay sidecar
+# (chip/法人/基本面/內部人) the daily run attached to a card, NOT OHLCV. A card with no
+# overlays of the relevant kind/label simply never fires the signal (graceful False),
+# so the source being SKIPped that day produces no spurious fires. These predicates take
+# a CARD dict (with an 'overlays' list), not the (s, b) OHLCV frames DEFS uses — they are
+# registered for a future overlay-aware backtest harness, not the price harness. Pure.
+# ════════════════════════════════════════════════════════════════════════════
+
+def _overlay_has(card, *, kind=None, source=None, label_contains=None, severity=None):
+    """True iff `card` carries an overlay matching ALL given filters. Reads the
+    informational 'overlays' sidecar only — never any score/factor key. Pure; a
+    card with no overlays (source SKIPped) → False (graceful, no spurious fire)."""
+    for o in (card or {}).get("overlays", []) or []:
+        if not isinstance(o, dict):
+            continue
+        if kind is not None and o.get("kind") != kind:
+            continue
+        if source is not None and str(o.get("source", "")) != source:
+            continue
+        if severity is not None and o.get("severity") != severity:
+            continue
+        if label_contains is not None and label_contains not in str(o.get("label", "")):
+            continue
+        return True
+    return False
+
+
+# Registered overlay-derived signal predicates. Signature is (card) → bool (NOT the
+# (s, b) OHLCV signature of DEFS) — these are gated by attached overlay status, to be
+# scored by a FUTURE overlay-aware backtest. UNWEIGHTED, informational, never live.
+OVERLAY_DEFS = {
+    # 三大法人買超 (TWSE T86 上市)
+    "法人買超(T86,上市,overlay)":
+        lambda card: _overlay_has(card, kind="inst", source="twse_t86", label_contains="買超"),
+    # 上櫃三大法人同步買 (TPEx 3insti, warn = foreign∧trust both buying)
+    "上櫃法人同買(TPEx,overlay)":
+        lambda card: _overlay_has(card, kind="inst", source="tpex", severity="warn"),
+    # 融資餘額單日暴增 (TWSE/TPEx margin surge — retail leverage warn)
+    "融資暴增(margin,overlay)":
+        lambda card: _overlay_has(card, kind="chip", label_contains="融資"),
+    # 融券回補 (TWSE short cover — squeeze fuel easing)
+    "融券回補(short-cover,overlay)":
+        lambda card: _overlay_has(card, kind="chip", label_contains="融券"),
+    # 大戶吸籌 (TDCC 集保戶股權分散 — rising concentration + falling holders)
+    "大戶吸籌(TDCC,overlay)":
+        lambda card: _overlay_has(card, kind="chip", source="tdcc", label_contains="吸籌"),
+    # 散戶化/出貨 (TDCC — falling 大戶 concentration, warn)
+    "散戶化(TDCC,overlay)":
+        lambda card: _overlay_has(card, kind="chip", source="tdcc", label_contains="散戶化"),
+    # 內部人買進 (SEC EDGAR Form-4 — open-market P cluster, US)
+    "內部人買進(SEC-Form4,overlay)":
+        lambda card: _overlay_has(card, kind="inst", source="sec_edgar", label_contains="買進"),
+    # 內部人賣出 (SEC EDGAR Form-4 — open-market S, warn)
+    "內部人賣出(SEC-Form4,overlay)":
+        lambda card: _overlay_has(card, kind="inst", source="sec_edgar", label_contains="賣出"),
+}
+
+
+# ════════════════════════════════════════════════════════════════════════════
 # REQ4 EARLY-BOARD pre-registered backtest (council-frozen spec).
 #
 # Tests the 正要起漲 (about-to-rise) family — every signal GATED by

@@ -580,5 +580,43 @@
    104.9
   ]
  },
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 2,332,511 股",
+   "value": {
+    "foreign": -4349520,
+    "trust": 1959746,
+    "dealer": 57263,
+    "total": -2332511
+   },
+   "severity": "info",
+   "as_of": "2026-06-06",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 16.2 / 殖利率 3.60% / PB 1.81",
+   "value": {
+    "pe": 16.23,
+    "yield": 3.6,
+    "pb": 1.81
+   },
+   "severity": "info",
+   "as_of": "2026-06-05",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶集中度",
+   "value": 86.08,
+   "severity": "info",
+   "as_of": "20260605",
+   "note": "大戶持股%=86.08"
+  }
+ ]
 }

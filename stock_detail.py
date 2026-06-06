@@ -69,6 +69,7 @@ def build_detail(
     name: str = None,
     fundamental: dict = None,
     levels: dict = None,
+    overlays: list = None,
 ) -> dict:
     """Build a self-contained per-stock detail dict for the PWA detail view.
 
@@ -80,12 +81,15 @@ def build_detail(
     name        : display name (optional)
     fundamental : arbitrary dict of fundamental data (eps, pe, revenue, …)
     levels      : entry/exit levels dict (stop, target_band, …)
+    overlays    : optional list of sources/ overlay dicts (chip/法人/基本面/內部人),
+                  carried verbatim under the 'overlays' key (backward-compatible
+                  default None → key omitted). INFORMATIONAL ONLY, never scored.
 
     Returns
     -------
     dict matching the pick-card payload shape that stockCard(d, code) reads.
     Keys: stock / name / price / change_pct / ohlc / sr / spark / spark_start
-          / spark_end / fundamental / levels / generated_for
+          / spark_end / fundamental / levels / overlays / generated_for
     Never raises.
     """
     # --- derive OHLCV-based fields safely ---
@@ -111,6 +115,8 @@ def build_detail(
         "levels": levels,
         "generated_for": "detail",
     }
+    if overlays:
+        base["overlays"] = list(overlays)   # sources/ overlays sidecar (never scored)
 
     # metadata-only path: df is None OR ohlc returned empty (too short / bad index)
     if not has_data or not ohlc_bars:

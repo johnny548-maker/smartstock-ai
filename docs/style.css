@@ -359,6 +359,28 @@ ul.wl-list li:first-child{border-top:none}
   background:color-mix(in srgb,var(--gold) 14%,transparent);
   border:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
 
+/* ---- sources/ overlay framework (functional MVP; P4 = art-direction later) ---- */
+/* Informational chip/法人/基本面/內部人 overlays grouped by kind, severity-colored.
+   Reuses the existing token vars (--up/--warn/--down/--muted/--border/--surface-2). */
+.overlays{display:flex;flex-direction:column;gap:var(--s3)}
+.overlay-group{display:flex;flex-direction:column;gap:var(--s1)}
+.overlay-kind{margin:0 0 2px;font-size:var(--t-sm);color:var(--muted);font-weight:700;
+  letter-spacing:.3px}
+.overlay-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;
+  padding:6px 10px;border-radius:var(--r1);background:var(--surface-2);
+  border-left:3px solid var(--muted)}
+.overlay-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.overlay-label{font-weight:600;font-size:var(--t-sm)}
+.overlay-asof,.overlay-src,.overlay-note{font-size:var(--t-xs)}
+.overlay-note{flex-basis:100%}
+/* severity colors — info (calm), warn (amber), risk (red) */
+.overlay-info{border-left-color:var(--up)}
+.overlay-info .overlay-dot{background:var(--up)}
+.overlay-warn{border-left-color:var(--warn)}
+.overlay-warn .overlay-dot{background:var(--warn)}
+.overlay-risk{border-left-color:var(--down)}
+.overlay-risk .overlay-dot{background:var(--down)}
+
 /* reduced-motion: honor user preference for the smooth-scroll jumps */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
