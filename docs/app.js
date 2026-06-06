@@ -79,6 +79,18 @@ function tldrBanner(d) {
   return `<div class="tldr">📌 今日重點：${esc(d.tldr)}</div>`;
 }
 
+// USD/TWD spot context (B9) — DISPLAY-ONLY header overlay, never a scorer. Neutral
+// ▲/▼ on the USD/TWD number itself (the PAIR, not 升值/貶值). caption=美股換算參考.
+function fxBanner(d) {
+  const f = d.fx;
+  if (!f) return '';
+  const arrow = f.dir === 'up' ? '▲' : (f.dir === 'down' ? '▼' : '—');
+  const cls = f.dir === 'up' ? 'fx-up' : (f.dir === 'down' ? 'fx-down' : '');
+  const chg = f.chg_pct != null ? ' <span class="fx-chg ' + cls + '">' + arrow + (f.chg_pct > 0 ? '+' : '') + f.chg_pct + '%</span>' : '';
+  const tr = f.trend_20d_pct != null ? ' · 20日 ' + (f.trend_20d_pct > 0 ? '+' : '') + f.trend_20d_pct + '%' : '';
+  return '<div class="fx">💱 ' + esc(f.pair) + ' <b>' + f.level + '</b>' + chg + '<span class="muted small">' + tr + ' · 美股換算參考</span></div>';
+}
+
 const REGIME_LABEL = { 'risk-on': '🟢 偏多可進攻', caution: '🟡 謹慎減碼', 'risk-off': '🔴 防禦/觀望' };
 function regimeBanner(d) {
   const r = d.regime; if (!r) return '';
@@ -590,7 +602,7 @@ async function showDetail(date) {
   } catch (e) {}
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     picksBlock(d.picks, date) + concentrationBlock(d) +
     breakoutBlock(d) + groupBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +

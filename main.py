@@ -41,6 +41,7 @@ import correlation as correlation_mod
 import earnings_guard as earnings_mod
 import short_volume as shortvol_mod
 import macro
+import fx_context as fx_mod
 
 
 def setup_logging():
@@ -96,6 +97,15 @@ def main(web=False):
         log.warning("SKIP breadth: %s", e); breadth = None; skips.append("breadth")
     if not breadth:
         skips.append("breadth")
+
+    # 2b-fx. FX dimension (USD/TWD spot context, B9) — DISPLAY-ONLY overlay, never
+    #     scored (no backtest gate; the Wilson-CI gate is only for weighted signals).
+    try:
+        fx = fx_mod.get_fx()
+    except Exception as e:
+        log.warning("SKIP fx: %s", e); fx = None
+    if not fx:
+        skips.append("fx")
 
     # 2c. 月營收早期成長候選 (全上市一次掃描，keyless leading spine) ---------
     try:
@@ -298,7 +308,7 @@ def main(web=False):
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
             regime=regime, concentration=concentration, shortvol=shortvol_board,
-            macro=macro_ctx)
+            macro=macro_ctx, fx=fx)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

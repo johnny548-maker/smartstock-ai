@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """TDD suite for SmartStock pure-logic core. Run: python test_smartstock.py
 No network — synthetic OHLCV DataFrames only."""
+import math
 import os
 import unittest
 import numpy as np
@@ -37,6 +38,7 @@ import correlation
 import earnings_guard
 import short_volume
 import macro
+import fx_context
 from datetime import date
 
 
@@ -1339,6 +1341,53 @@ class TestGroupRS(unittest.TestCase):
         for d in res:
             self.assertGreaterEqual(d["pct_rank"], 1)
             self.assertLessEqual(d["pct_rank"], 99)
+
+
+class TestFxContext(unittest.TestCase):
+    """B9 FX dimension (USD/TWD context) — DISPLAY-ONLY overlay, never scored."""
+
+    def test_level_and_direction_up(self):
+        fx = fx_context.compute_fx(make_df(np.linspace(30.0, 31.5, 22)))
+        self.assertEqual(fx["pair"], "USD/TWD")
+        self.assertEqual(fx["level"], round(31.5, 3))
+        self.assertEqual(fx["dir"], "up")
+        self.assertGreater(fx["chg_pct"], 0)
+        self.assertEqual(fx["n"], 22)
+
+    def test_direction_down(self):
+        fx = fx_context.compute_fx(make_df(np.linspace(32.0, 31.0, 22)))
+        self.assertEqual(fx["dir"], "down")
+        self.assertLess(fx["chg_pct"], 0)
+
+    def test_flat_single_bar(self):
+        fx = fx_context.compute_fx(make_df([31.5]))
+        self.assertEqual(fx["dir"], "flat")
+        self.assertIsNone(fx["chg_pct"])
+        self.assertIsNone(fx["prev"])
+        self.assertEqual(fx["n"], 1)
+
+    def test_empty_returns_none(self):
+        self.assertIsNone(fx_context.compute_fx(None))
+        self.assertIsNone(fx_context.compute_fx(make_df([])))
+
+    def test_trailing_null_close_dropped(self):
+        df = make_df(np.linspace(30.0, 31.5, 22))
+        df.loc[df.index[-1], "Close"] = np.nan
+        fx = fx_context.compute_fx(df)
+        self.assertTrue(math.isfinite(fx["level"]))
+
+    def test_trend_20d_pct_computed(self):
+        fx = fx_context.compute_fx(make_df(np.linspace(30.0, 31.5, 21)))
+        self.assertIsNotNone(fx["trend_20d_pct"])
+        self.assertGreater(fx["trend_20d_pct"], 0)
+
+    def test_fx_note_skips_tw(self):
+        fx = {"level": 31.5, "dir": "up", "pair": "USD/TWD"}
+        self.assertIsNone(fx_context.fx_note_for("2330.TW", fx))
+        self.assertIsNotNone(fx_context.fx_note_for("NVDA", fx))
+
+    def test_fx_note_none_when_no_fx(self):
+        self.assertIsNone(fx_context.fx_note_for("NVDA", None))
 
 
 if __name__ == "__main__":

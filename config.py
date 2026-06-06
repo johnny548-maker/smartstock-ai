@@ -77,6 +77,13 @@ INDICES = {
 # ── Data window ─────────────────────────────────────────────
 STOCK_PERIOD = "1y"             # need ~252 bars for 52-week-high factor (keyless)
 
+# FX dimension (B9) — USD/TWD spot context, keyless via yfinance 'TWD=X'.
+# DISPLAY-ONLY overlay: header context + optional per-US-stock note. NEVER scored
+# (no backtest gate — the Wilson-CI gate is only for weighted signals). Same keyless
+# _hist path as ^TNX/^VIX. Honest framing: the PAIR (USD/TWD), not 升值/貶值.
+FX_TICKER = "TWD=X"
+FX_PERIOD = "1mo"
+
 # ── Scoring thresholds ──────────────────────────────────────
 MOMENTUM_LOOKBACK = 63          # ~3 trading months for STRONG/WEAK momentum
 VOLATILITY_CAP = 0.03           # daily pct-change std below this = stable (+points)
