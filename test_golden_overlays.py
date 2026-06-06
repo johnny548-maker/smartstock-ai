@@ -95,6 +95,37 @@ def _sample_overlays_map(picks):
                 value={"kind": "approval", "brand": "測試藥"},
                 severity="info", as_of="2026-06-06",
                 note="FDA藥證核准為資訊性催化劑 overlay；需回測驗證後才加權"))
+        # P3 per-stock overlays: news_catalyst (catalyst+sentiment), altdata attention
+        # (sentiment), sec_flows FTD (chip). All additive sidecars — must not touch score/rank.
+        ovs.append(make_overlay(
+            source="news", kind="catalyst", label="測試新聞催化 %d｜2 來源確認" % i,
+            value={"headline": "測試新聞催化", "sources": ["cnyes", "udn"], "source_count": 2},
+            severity="info", as_of="2026-06-06",
+            note="新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"))
+        ovs.append(make_overlay(
+            source="news", kind="sentiment", label="新聞聲量 3 則（最高 2 來源確認）",
+            value={"headline_count": 3, "max_source_count": 2},
+            severity="info", as_of="2026-06-06",
+            note="多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"))
+        if not sym.endswith((".TW", ".TWO")):
+            ovs.append(make_overlay(
+                source="wikipedia_pageviews", kind="sentiment",
+                label="維基關注度飆升 2.1x (今日 5,000 次瀏覽)",
+                value={"metric": "pageview_spike", "ratio": 2.1, "today_views": 5000},
+                severity="info", as_of="2026-06-06",
+                note="維基瀏覽量飆升＝關注度上升，非看多訊號；高度反指標風險，資訊性 overlay，需回測"))
+            ovs.append(make_overlay(
+                source="hackernews", kind="sentiment",
+                label="HN 討論熱度 4 篇 / 350 分 / 80 留言",
+                value={"metric": "hn_buzz", "points": 350, "comments": 80, "n": 4},
+                severity="warn", as_of="2026-06-06",
+                note="Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，需回測"))
+            ovs.append(make_overlay(
+                source="sec_ftd", kind="chip",
+                label="FTD 交割失敗偏高（連續 2 個交割日、累計 200,000 股交割失敗）",
+                value={"total_shares": 200000, "days": 2, "persistent": True, "elevated": True},
+                severity="warn", as_of="2026-06-06",
+                note="交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay — 非買進訊號，需回測驗證後才加權"))
         omap[code] = ovs
     return omap
 
@@ -119,6 +150,15 @@ def _sample_environment():
         "macro": {
             "cpi_yoy": 3.1, "ppi_yoy": 2.4, "usd_twd": 31.5,
             "usd_twd_needs_backtest": False, "source": "us_macro",
+        },
+        # P3 CFTC COT sector-tilt gauge (managed-money net per future → sector crowding tilt).
+        # SECTOR/MARKET-level, NOT keyed by ticker, NEVER a score input. Mirrors the shape
+        # main.py merges from sec_flows.cot_sector_tilt() under environment['sector_tilt'].
+        "sector_tilt": {
+            "energy": {"mm_net": 120000, "tilt": "long",
+                       "markets": ["CRUDE OIL"], "as_of": "2026-06-03"},
+            "precious_metals": {"mm_net": -8000, "tilt": "short",
+                                "markets": ["GOLD"], "as_of": "2026-06-03"},
         },
     }
 

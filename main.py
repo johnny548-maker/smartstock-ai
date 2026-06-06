@@ -65,6 +65,14 @@ from sources import taifex as _taifex
 from sources import macro_us as _macro_us
 from sources import sec_frames as _sec_frames
 from sources import openfda as _openfda
+# P3 keyless news/catalyst/sentiment/attention/flows overlay producers (same OVERLAY-NOT-
+# SCORER contract). PER-STOCK producers expose to_overlays() -> {ticker:[overlay]} merged
+# into overlays_map (news catalyst/sentiment, wiki/HN attention, SEC FTD chip). SECTOR/MARKET
+# producers expose to_environment()/cot_sector_tilt() -> merged into the 'environment' dict
+# under environment['sector_tilt']. NONE of these touch the scoring call (ranked is final).
+from sources import news_catalyst as _news_catalyst
+from sources import altdata as _altdata
+from sources import sec_flows as _sec_flows
 
 
 def setup_logging():
@@ -617,6 +625,126 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP openfda overlays: %s", e); skips.append("openfda_overlays")
 
+    # 7e-P3. sources/ P3 keyless news/catalyst/sentiment/attention/flows OVERLAYS. Same
+    #     OVERLAY-NOT-SCORER contract: nothing here touches the scoring call (ranked is final).
+    #     Each source is INDEPENDENTLY try/except-guarded → a dead/429 source SKIPs without
+    #     aborting. PER-STOCK producers (news catalyst/sentiment, wiki/HN attention, SEC FTD)
+    #     merge into overlays_map via _merge_overlays; the SECTOR-level CFTC COT producer merges
+    #     into environment['sector_tilt']. News/alt fetches are cached (cached_fetch TTL) so the
+    #     daily cron stays off the live (rate-limited) endpoints.
+    #
+    #     Name map for tagless TW feeds (Yahoo-TW/CNA/UDN have no per-item ticker) + for the
+    #     revenue/leader display names: config.STOCK_NAMES plus today's revenue-candidate +
+    #     opportunity-leader names (mirrors web_export._names_map so a headline about a
+    #     revenue/leader name still resolves to its code).
+    _p3_name_map = dict(config.STOCK_NAMES)
+    for _c in (revenue_data or {}).get("candidates", []):
+        _code, _nm = _c.get("code"), _c.get("name")
+        if _code and _nm:
+            _p3_name_map.setdefault(_code, _nm)
+    for _ld in (opp or {}).get("leaders", []):
+        _code, _nm = _ld.get("ticker"), _ld.get("name")
+        if _code and _nm:
+            _p3_name_map.setdefault(_code, _nm)
+
+    # --- news_catalyst: multi-source keyless news → catalyst/sentiment per-stock overlays -----
+    #     Fetch (cached 2h — news moves intraday but a daily cron only needs one pull), normalize,
+    #     dedup across sources, map tagless feeds onto card names, emit {ticker:[overlay]}.
+    try:
+        _news_cache = os.path.join(config.WEB_DIR, "data", "_news_catalyst_cache.json")
+
+        def _fetch_news_raw():
+            _nc = _news_catalyst
+            # cnYES (ticker-tagged) + tagless TW feeds + Yahoo-US per-pick + GDELT(reuters proxy).
+            _items = []
+            for _raw in _nc.fetch_cnyes():
+                _it = _nc.normalize_item(_raw, _nc.SRC_CNYES)
+                if _it:
+                    _items.append(_it)
+            for _src, _fetch in ((_nc.SRC_YAHOO_TW, _nc.fetch_yahoo_tw),
+                                 (_nc.SRC_CNA, _nc.fetch_cna),
+                                 (_nc.SRC_UDN, _nc.fetch_udn)):
+                for _raw in _fetch():
+                    _it = _nc.normalize_item(_raw, _src)
+                    if _it:
+                        # tagless feed → best-effort name→ticker map onto a card.
+                        if not _it.get("ticker"):
+                            _tk = _nc.map_headline_to_ticker(_it.get("title"), _p3_name_map)
+                            if _tk:
+                                _bare = _tk.replace(".TWO", "").replace(".TW", "")
+                                _it = {**_it, "ticker": _bare, "tickers": [_bare]}
+                        _items.append(_it)
+            for _sym in _us_syms:
+                for _raw in _nc.fetch_yahoo_us(_sym):
+                    _it = _nc.normalize_item(_raw, _nc.SRC_YAHOO_US)
+                    if _it:
+                        _items.append({**_it, "ticker": _sym, "tickers": [_sym]})
+            # serialise to plain dicts for the cache (cached_fetch JSON round-trips).
+            return _items
+
+        _news_items = _src_cache_p2.cached_fetch(
+            _news_cache, "news_catalyst_items", 2 * 3600, _now_ts, _fetch_news_raw) or []
+        _deduped = _news_catalyst.dedup_catalysts(_news_items)
+        _merge_overlays(_news_catalyst.to_overlays(_deduped, as_of=date_str), "news_catalyst")
+    except Exception as e:
+        log.warning("SKIP news_catalyst overlays: %s", e); skips.append("news_catalyst_overlays")
+
+    # --- altdata: Wikipedia pageviews + Hacker News attention sentiment overlays ----------------
+    #     Per pick with a mappable wiki title (any) / HN tech allow-list. Cached 6h (attention is
+    #     slow-moving relative to a daily report; keeps the cron off Wikimedia/Algolia).
+    try:
+        _alt_cache = os.path.join(config.WEB_DIR, "data", "_altdata_cache.json")
+        _alt_syms = [it["stock"] for it in ranked[:config.DISPLAY_N]]
+
+        def _fetch_alt_raw():
+            _ad = _altdata
+            _out = {}        # symbol -> {"wiki": [...], "hn": [...]}
+            for _sym in _alt_syms:
+                _bare = _sym.replace(".TWO", "").replace(".TW", "")
+                _wiki = []
+                _hn = []
+                _wmap = _ad.TICKER_WIKITITLE.get(_sym.upper()) or _ad.TICKER_WIKITITLE.get(_bare)
+                if _wmap:
+                    _title, _proj = _wmap
+                    _wiki = _ad.fetch_wiki_pageviews(_title, project=_proj)
+                if _sym.upper() in _ad.HN_TECH_TICKERS:
+                    _hn = _ad.fetch_hn(_sym.upper())
+                if _wiki or _hn:
+                    _out[_sym] = {"wiki": _wiki, "hn": _hn}
+            return _out
+
+        _alt_raw = _src_cache_p2.cached_fetch(
+            _alt_cache, "altdata_attention", 6 * 3600, _now_ts, _fetch_alt_raw) or {}
+        for _sym, _bundle in _alt_raw.items():
+            _merge_overlays(
+                _altdata.to_overlays(_sym, _bundle.get("wiki") or [], _bundle.get("hn") or [],
+                                     as_of=date_str, now_ts=_now_ts),
+                "altdata")
+    except Exception as e:
+        log.warning("SKIP altdata overlays: %s", e); skips.append("altdata_overlays")
+
+    # --- sec_flows: SEC FTD per-stock chip overlays + CFTC COT sector-tilt environment ----------
+    #     FTD = US-only (the file carries the ticker; scope to US picks). COT = SECTOR/MARKET-level
+    #     → environment['sector_tilt'] (NOT per-ticker). Both informational, needs_backtest.
+    try:
+        _ftd_rows = _sec_flows.fetch_ftd()
+        # scope the FTD overlay to the US picks (symbol_map = {US_SYMBOL: US_SYMBOL}) so an
+        # unrelated heavily-failed name never lights up a card not in today's universe.
+        _ftd_symmap = {s: s for s in _us_syms} if _us_syms else None
+        _merge_overlays(_sec_flows.to_overlays(_ftd_rows, symbol_map=_ftd_symmap, as_of=date_str),
+                        "sec_ftd")
+    except Exception as e:
+        log.warning("SKIP sec_ftd overlays: %s", e); skips.append("sec_ftd_overlays")
+
+    try:
+        _cot_rows = _sec_flows.fetch_cot()
+        _cot_tilt = _sec_flows.cot_sector_tilt(_cot_rows)
+        # SECTOR/MARKET-level: surface under environment['sector_tilt'] (NOT per-ticker, NOT scored).
+        environment["sector_tilt"] = _cot_tilt
+        source_coverage["cftc_cot"] = {"ok": bool(_cot_tilt), "keys": len(_cot_tilt)}
+    except Exception as e:
+        log.warning("SKIP cftc_cot environment: %s", e); skips.append("cftc_cot_env")
+
     if environment:
         log.info("environment gauges: %s",
                  ", ".join("%s:%s" % (k, "ok" if v else "—") for k, v in environment.items()))
@@ -651,7 +779,7 @@ def main(web=False):
         if overlays_map:
             log.info("source overlays: %d code(s), %d attached to picks; coverage=%s",
                      len(overlays_map), n_attached,
-                     ", ".join("%s:%d" % (k, v["overlays"]) for k, v in source_coverage.items()))
+                     ", ".join("%s:%d" % (k, (v.get("overlays") or v.get("keys") or 0)) for k, v in source_coverage.items()))
     except Exception as e:
         log.warning("SKIP overlay attach: %s", e); skips.append("overlay_attach")
 

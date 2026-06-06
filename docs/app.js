@@ -181,7 +181,8 @@ function envGauge(label, val) {
 }
 function environmentBlock(d) {
   const env = d.environment;
-  if (!env || (!env.regime && !env.industry && !env.macro)) return '';
+  if (!env || (!env.regime && !env.industry && !env.macro
+      && !(env.sector_tilt && Object.keys(env.sector_tilt).length))) return '';
   const reg = env.regime || {}, ind = env.industry || {}, mac = env.macro || {};
   const hint = reg.regime_hint || 'neutral';
   const cls = hint === 'risk_on' ? 'env-on' : (hint === 'risk_off' ? 'env-off' : 'env-mid');
@@ -196,6 +197,16 @@ function environmentBlock(d) {
   if (ind.electronics_export_yoy != null) gauges.push(envGauge('電子訂單 YoY', pct1(ind.electronics_export_yoy)));
   if (mac.cpi_yoy != null) gauges.push(envGauge('美 CPI YoY', mac.cpi_yoy + '%'));
   if (mac.usd_twd != null) gauges.push(envGauge('USD/TWD', mac.usd_twd));
+  // P3 CFTC COT sector-tilt (managed-money net per future → energy/materials/precious_metals
+  // crowding tilt). SECTOR/MARKET-level informational gauge, NOT per-ticker, NEVER scored.
+  const TILT_LABEL = { long: '🟢偏多', short: '🔴偏空', neutral: '🟡中性' };
+  const SECTOR_LABEL = { energy: '能源', materials: '原物料', precious_metals: '貴金屬' };
+  const tilt = env.sector_tilt || {};
+  Object.keys(tilt).forEach((sec) => {
+    const t = tilt[sec];
+    if (!t || !t.tilt) return;
+    gauges.push(envGauge('COT ' + (SECTOR_LABEL[sec] || sec), TILT_LABEL[t.tilt] || t.tilt));
+  });
   const body = gauges.filter(Boolean).join('');
   if (!body) return '';
   return `<div class="env-banner ${cls}"><b>🌏 市場環境：${esc(ENV_REGIME_LABEL[hint] || hint)}</b>`

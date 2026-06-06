@@ -140,10 +140,12 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "themes": [t for t in (themes or []) if t.get("emerging")],
         "opportunity": opportunity,
         "regime": regime,
-        # P2 market/sector ENVIRONMENT gauges (taifex regime + macro_tw industry + macro_us
-        # macro). Additive top-level section, NOT keyed by ticker, NEVER scored/ranked —
-        # surfaced beside the dashboard for context only (golden-additive invariant). Backward-
-        # compatible: environment defaults to {} so older callers/payloads are unaffected.
+        # P2/P3 market/sector ENVIRONMENT gauges (taifex regime + macro_tw industry + macro_us
+        # macro + P3 cftc_cot sector_tilt). Additive top-level section, NOT keyed by ticker,
+        # NEVER scored/ranked — surfaced beside the dashboard for context only (golden-additive
+        # invariant). The whole dict is carried as-is, so any new gauge key (e.g. P3
+        # environment['sector_tilt']) flows through automatically. Backward-compatible:
+        # environment defaults to {} so older callers/payloads are unaffected.
         "environment": environment or {},
         "fx": fx,           # B9 USD/TWD spot context overlay (DISPLAY-ONLY; never scored)
         "macro": macro,     # FRED macro RISK-CONTEXT overlay (informational; never scored)

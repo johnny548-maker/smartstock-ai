@@ -149,6 +149,17 @@ def _env_yoy_positive(card, section, key):
     return isinstance(v, (int, float)) and v > 0
 
 
+def _env_sector_tilt_is(card, sector, tilt):
+    """True iff the P3 CFTC-COT environment['sector_tilt'][sector]['tilt'] == tilt
+    (long/short/neutral). SECTOR/MARKET-level gauge, NOT per-stock — registered for a
+    FUTURE env-aware backtest only. Reads the informational sidecar; graceful → False. Pure."""
+    st = _env_of(card).get("sector_tilt")
+    if not isinstance(st, dict):
+        return False
+    bucket = st.get(sector)
+    return isinstance(bucket, dict) and bucket.get("tilt") == tilt
+
+
 # Registered overlay-derived signal predicates. Signature is (card) → bool (NOT the
 # (s, b) OHLCV signature of DEFS) — these are gated by attached overlay status, to be
 # scored by a FUTURE overlay-aware backtest. UNWEIGHTED, informational, never live.
@@ -194,6 +205,42 @@ OVERLAY_DEFS = {
     # inflation-regime split; UNWEIGHTED, informational).
     "環境_通膨為正(macro_us,env)":
         lambda card: _env_yoy_positive(card, "macro", "cpi_yoy"),
+
+    # ── P3 NEWS / CATALYST / SENTIMENT / ATTENTION / FLOWS (UNWEIGHTED, never live) ──────────
+    # Same gated-by-overlay-status pattern: each predicate reads a card's attached overlay
+    # sidecar (news/wiki/HN/FTD) or the env sidecar (COT). A card with no overlay of the
+    # relevant source/kind → False (graceful, no spurious fire). HIGH anti-signal risk: high
+    # buzz / negative news / persistent FTD often = already-moved / high-volume — these are
+    # registered ONLY for a FUTURE overlay-aware Wilson-CI backtest, NEVER added to DEFS/
+    # EARLY_DEFS/config.LEAD_* and NEVER read by strategy.py.
+    # news_catalyst: any catalyst headline attached to the card (source='news').
+    "新聞催化(news,overlay)":
+        lambda card: _overlay_has(card, kind="catalyst", source="news"),
+    # news_catalyst: a NEGATIVE-tone catalyst (classify_severity → 'warn'). Anti-signal.
+    "負面新聞(news,overlay)":
+        lambda card: _overlay_has(card, kind="catalyst", source="news", severity="warn"),
+    # news_catalyst: multi-source buzz aggregate (the per-ticker sentiment overlay).
+    "新聞聲量(news-buzz,overlay)":
+        lambda card: _overlay_has(card, kind="sentiment", source="news"),
+    # altdata: Wikipedia pageview attention spike (source='wikipedia_pageviews').
+    "維基關注度(wiki,overlay)":
+        lambda card: _overlay_has(card, kind="sentiment", source="wikipedia_pageviews"),
+    # altdata: Hacker News discussion buzz (tech universe only; source='hackernews').
+    "HN討論熱度(hn,overlay)":
+        lambda card: _overlay_has(card, kind="sentiment", source="hackernews"),
+    # sec_flows: persistent/elevated FTD settlement-pressure chip (source='sec_ftd', warn).
+    "FTD交割失敗(sec-ftd,overlay)":
+        lambda card: _overlay_has(card, kind="chip", source="sec_ftd", label_contains="FTD"),
+
+    # ── P3 ENVIRONMENT-gated CFTC-COT sector tilt (market/sector level, NOT per-stock) ───────
+    # managed-money net crowding tilt per future-mapped sector (energy/materials/precious_metals).
+    # Reads environment['sector_tilt']; gated-by-environment-status; UNWEIGHTED, never live.
+    "環境_能源偏多(COT,env)":
+        lambda card: _env_sector_tilt_is(card, "energy", "long"),
+    "環境_原物料偏多(COT,env)":
+        lambda card: _env_sector_tilt_is(card, "materials", "long"),
+    "環境_貴金屬偏多(COT,env)":
+        lambda card: _env_sector_tilt_is(card, "precious_metals", "long"),
 }
 
 
