@@ -348,7 +348,7 @@ function breakoutBlock(d) {
     || (typeof d.early_board_validated !== 'undefined' && d.early_board_validated === true)
     || (board.length > 0 && board.every((r) => r && r.validated === true));
   const banner = validated ? '' :
-    '<div class="early-banner">⚠️ 未通過回測驗證 — 純資訊呈現，未納入評分；約70%此類名單最終未達+25%，勿視為買進訊號</div>';
+    '<div class="early-banner">⚠️ 純資訊 · 未納入評分。15y 回測：此「正要起漲」型態 60 日命中率僅 2.4%（lift 0.61），<b>未勝基準率 4.0%</b> — 早期型態無法可靠預測大漲，約 70% 最終未達 +25%，勿視為買進訊號</div>';
   const rows = board.map((r) => {
     const nm = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
     const flag = r.ready ? '<b class="up">✅起漲就緒</b> ' : '';
