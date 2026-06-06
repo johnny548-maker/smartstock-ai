@@ -36,9 +36,12 @@ def _tldr(risk, institutional, ranked, breadth=None):
     return "；".join(parts)
 
 
-def _search_index(picks, opportunity, movers):
+def _search_index(picks, opportunity, movers, revenue=None):
     """Flat searchable index of the day's actionable names (code + name + light +
-    where to find it). Client-side search filters this — no backend needed."""
+    where to find it). Client-side search filters this — no backend needed.
+
+    Covers EVERY displayed name so search/links resolve: picks, opportunity leaders
+    (key `.ticker`), revenue candidates (key `.code`), and the top movers."""
     idx, seen = [], set()
 
     def add(code, name, light, kind, price=None):
@@ -52,16 +55,35 @@ def _search_index(picks, opportunity, movers):
         add(p["stock"], p.get("name"), p.get("light"), "pick", p.get("price"))
     for ld in (opportunity or {}).get("leaders", []):
         add(ld["ticker"], ld.get("name"), ld.get("light"), "opportunity", ld.get("price"))
+    for c in (revenue or {}).get("candidates", []):
+        add(c.get("code"), c.get("name"), None, "revenue")
     for m in (movers or [])[:8]:
         add(m["stock"], None, None, "mover")
     return idx
+
+
+def _names_map(opportunity, revenue):
+    """Display-name map {code: name} for EVERY name the PWA might link to beyond the
+    28-stock STOCK_NAMES — opportunity leaders + revenue candidates. The PWA's detail
+    view merges this over STOCK_NAMES so a bare code never shows where a name exists."""
+    names = {}
+    for ld in (opportunity or {}).get("leaders", []):
+        code, nm = ld.get("ticker"), ld.get("name")
+        if code and nm:
+            names.setdefault(code, nm)
+    for c in (revenue or {}).get("candidates", []):
+        code, nm = c.get("code"), c.get("name")
+        if code and nm:
+            names.setdefault(code, nm)
+    return names
 
 
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
-                  regime=None, concentration=None, shortvol=None, macro=None, fx=None):
+                  regime=None, concentration=None, shortvol=None, macro=None, fx=None,
+                  watchlist=None, early_board=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     picks = [
@@ -77,8 +99,12 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         }
         for it in ranked[:DISPLAY_N]
     ]
-    # search index = the day's actionable names (picks + opportunity leaders + movers)
-    search = _search_index(picks, opportunity, movers)
+    # search index = every displayed actionable name (picks + opportunity leaders +
+    # revenue candidates + top movers) so client-side search/links resolve them all.
+    search = _search_index(picks, opportunity, movers, revenue)
+    # name map: STOCK_NAMES (the 28 watchlist) + opportunity-leader + revenue-candidate
+    # names so the detail view shows names not bare codes for every linkable name.
+    names = {**STOCK_NAMES, **_names_map(opportunity, revenue)}
     return {
         "date": date_str,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -100,13 +126,14 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "news": news,
         "institutional": institutional,
         "movers": movers or [],
-        "names": STOCK_NAMES,
+        "names": names,
+        "watchlist": watchlist or [],     # REQ3b continuous watchlist board (informational)
+        "early_board": early_board or [],  # promoted early/breakout 起漲 board (REQ1)
         "picks": picks,
         "search": search,
         "allocation": allocation,
         "rebalance": rebalance_diff,
         "skips": sorted(set(skips or [])),
-        "markdown": markdown,
     }
 
 

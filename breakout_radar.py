@@ -23,9 +23,11 @@ AND ≥2 inflection tells. Surfaced INFORMATIONAL — backtest-gated before any 
 """
 import numpy as np
 
-from indicators import atr, pivots, true_range
+from indicators import atr, pivots, rsi, true_range
 
 EPS = 1e-9
+EXT_CAP = 0.10          # max close-above-MA50 to still count as 'not yet extended'
+                        # (council may tune; 0.10 = at most ~10% above MA50)
 
 
 def _ema(s, n):
@@ -47,6 +49,28 @@ def above_rising_ma50(df):
         return False
     ma = df["Close"].rolling(50).mean()
     return bool(df["Close"].iloc[-1] > ma.iloc[-1] and ma.iloc[-1] >= ma.iloc[-6])
+
+
+def not_extended(df, ext_cap=EXT_CAP):
+    """NOT-YET-EXTENDED gate: a based name that has NOT already run. True only when
+    price sits within ext_cap ABOVE its MA50 (bounded extension — not stretched), is
+    NOT overbought (RSI<75), AND is in a flat base. This gates FLATNESS + bounded-
+    extension + not-overbought — deliberately NOT weakness: a 'far-below-MA50 / cheap'
+    term would re-introduce the depressed-price anti-signal (lift 0.74, see module
+    docstring + signals.rs_line history). Short/insufficient df → False, never raises."""
+    if df is None or len(df) < 55:
+        return False
+    close = df["Close"]
+    ma50 = close.rolling(50).mean().iloc[-1]
+    if not (ma50 and ma50 > 0):                 # NaN or zero MA → cannot judge
+        return False
+    extension = float(close.iloc[-1]) / float(ma50) - 1
+    # extension <= ext_cap admits the FLAT/just-above zone but EXCLUDES the depressed
+    # (negative extension is allowed numerically, but in_flat_base below rejects the
+    # trending decline that produces it — weakness can never satisfy all three terms).
+    bounded = extension <= ext_cap
+    not_overbought = rsi(close, 14) < 75
+    return bool(bounded and not_overbought and in_flat_base(df))
 
 
 def _base_support(df, lookback=60):
@@ -149,7 +173,9 @@ def episodic_pivot(df, gap=0.10, vol_mult=2.0, base_lookback=60, base_max_range=
 
 def readiness(df, bench=None):
     """Combine the inflection tells behind the council gate. Returns
-    {score, signals, ready}. ready = flatness/health gate AND ≥2 tells."""
+    {score, signals, ready}. ready = flatness/health gate (in_flat_base ∧
+    above_rising_ma50 ∧ not_extended) AND ≥2 tells. not_extended keeps already-RUN
+    names off the early board WITHOUT rewarding weakness (the 0.74-lift anti-signal)."""
     tells = []
     if spring(df):
         tells.append("Wyckoff spring")
@@ -161,7 +187,7 @@ def readiness(df, bench=None):
         tells.append("跳空起漲")
     if bench is not None and rs_line_turn_up(df, bench):
         tells.append("RS線平盤翻揚")
-    gate = in_flat_base(df) and above_rising_ma50(df)
+    gate = in_flat_base(df) and above_rising_ma50(df) and not_extended(df)
     return {"score": len(tells), "signals": tells, "ready": bool(gate and len(tells) >= 2)}
 
 

@@ -12,6 +12,9 @@ const ALLOC_LABEL = {
 };
 
 let NAMES = {};
+// the K-line currently mounted in the detail view, so window.toggleTheme() can re-render
+// it with the new theme's colors (null when no chart is on screen).
+let CUR_KLINE = null;
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? '' : s)
@@ -25,6 +28,51 @@ async function getJSON(url) {
   const res = await fetch(url, { cache: 'reload' });  // force network, bypass HTTP cache
   if (!res.ok) throw new Error(url + ' → ' + res.status);
   return res.json();
+}
+
+/* ---------- theme (REQ2, JS side only — style.css agent defines the vars/button) ---------- */
+// Apply the persisted theme to <html data-theme>. Default 'dark'. CSS owns the actual
+// colors (incl. the --chart-* custom props renderCandles reads via getComputedStyle).
+function applyTheme() {
+  let t = 'dark';
+  try { t = localStorage.getItem('ss_theme') || 'dark'; } catch (e) {}
+  if (t !== 'dark' && t !== 'light') t = 'dark';
+  document.documentElement.dataset.theme = t;
+  return t;
+}
+// Global toggle the index.html button calls. Flips dark/light, persists, re-applies,
+// and re-renders the live K-line so its colors follow the new theme.
+window.toggleTheme = () => {
+  const cur = document.documentElement.dataset.theme || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  try { localStorage.setItem('ss_theme', next); } catch (e) {}
+  document.documentElement.dataset.theme = next;
+  // re-render the current K-line (if a detail/stock view has one mounted)
+  try {
+    if (CUR_KLINE && CUR_KLINE.ohlc && CUR_KLINE.ohlc.length > 1) {
+      renderCandles(CUR_KLINE.elId, CUR_KLINE.ohlc, CUR_KLINE.sr, CUR_KLINE.levels);
+    }
+  } catch (e) {}
+  return next;
+};
+
+// Read a chart color from the active theme's CSS custom properties, with a hard
+// dark-theme fallback so the chart still renders if style.css hasn't defined the var.
+function chartColors() {
+  const cs = getComputedStyle(document.documentElement);
+  const v = (name, fallback) => {
+    const raw = cs.getPropertyValue(name);
+    return (raw && raw.trim()) ? raw.trim() : fallback;
+  };
+  return {
+    up:   v('--chart-up', '#5fe39b'),
+    down: v('--chart-down', '#ff8e8e'),
+    bg:   v('--chart-bg', '#0d1b2a'),
+    grid: v('--chart-grid', '#1e2d3d'),
+    text: v('--chart-text', '#cbd5e1'),
+    volUp:   v('--chart-vol-up', '#2e5d4a'),
+    volDown: v('--chart-vol-down', '#5d2e2e'),
+  };
 }
 
 function riskBadge(risk) {
@@ -278,25 +326,41 @@ function revenueBlock(d) {
   const rows = rev.candidates.map((c) => {
     const flag = c.accel ? ' <b class="accel">🔥連3月加速</b>' : '';
     const ind = c.industry ? `<span class="muted small"> ${esc(c.industry)}</span>` : '';
-    return `<li>${esc(c.name)}（${esc(c.code)}）${ind} — YoY <b class="up">+${c.yoy}%</b>${flag}</li>`;
+    // REQ1/REQ3: make each revenue candidate clickable (lazy detail file resolves it).
+    const nm = `${esc(c.name)}（${esc(c.code)}）`;
+    const head = c.code
+      ? `<a class="rev-link" href="#${esc(CUR_DATE)}/${esc(c.code)}">${nm}</a>`
+      : nm;
+    return `<li>${head}${ind} — YoY <b class="up">+${c.yoy}%</b>${flag}</li>`;
   }).join('');
   return foldSection(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`,
     `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`, false);
 }
 
+// REQ5 — first-class 早期 board promoted out of a deep fold. Renders d.early_board (the
+// promoted breakout candidates). Honest base-rate caveat kept VERBATIM. A validated banner
+// is driven by d.early_validated (default false → show the ⚠️ 未通過回測 banner).
 function breakoutBlock(d) {
-  const board = (d.opportunity || {}).breakout || [];
+  const board = d.early_board || (d.opportunity || {}).breakout || [];
   if (!board.length) return '';
+  // validated flag may ride on the payload (board-level) or each row; default NOT validated.
+  const validated = d.early_validated === true
+    || (typeof d.early_board_validated !== 'undefined' && d.early_board_validated === true)
+    || (board.length > 0 && board.every((r) => r && r.validated === true));
+  const banner = validated ? '' :
+    '<div class="early-banner">⚠️ 未通過回測驗證 — 純資訊呈現，未納入評分；約70%此類名單最終未達+25%，勿視為買進訊號</div>';
   const rows = board.map((r) => {
     const nm = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
     const flag = r.ready ? '<b class="up">✅起漲就緒</b> ' : '';
     return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(r.stock)}">${flag}${nm} `
       + `<b class="accel">×${r.score}</b><br><span class="muted small">${esc((r.signals || []).join('、'))}</span></a></li>`;
   }).join('');
-  return foldSection('🚀 正要起漲雷達（拐點偵測 · 全市場）',
-    '<p class="muted small">Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。'
-    + '✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>'
-    + `<ul class="rev opp-list">${rows}</ul>`, true);
+  // base-rate caveat kept VERBATIM (was the foldSection intro <p>); honest framing mandatory.
+  const caveat = '<p class="muted small">Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。'
+    + '✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>';
+  // prominent (not a deep fold): a normal section, placed after watchlist / before 機會掃描.
+  return `<section class="block early-board"><h2>🚀 正要起漲（早期 · 未追高）</h2>`
+    + banner + caveat + `<ul class="rev opp-list">${rows}</ul></section>`;
 }
 
 // Sector/theme RS leaderboard (B7) — INFORMATIONAL overlay, NOT a scorer. Groups
@@ -392,6 +456,86 @@ function picksBlock(picks, date) {
   return section('📊 今日選股（點看完整分析）', html);
 }
 
+// REQ3b — continuous tracking board for already-recommended stocks (持續追蹤防套牢).
+// Rows: name(code) · 進場日/價 · 現價 · 報酬% · status chip + warning. Links to #date/code.
+// CLIENT-SIDE pin handling: pinned tracked names float to TOP (★); a pinned name NOT on
+// the watchlist gets a best-effort row synthesised from picks/search/early_board if present.
+const WL_STATUS = {
+  active:    { chip: '🟢持有中', cls: 'wl-active' },
+  watch:     { chip: '🟡趨勢轉弱觀察', cls: 'wl-watch' },
+  exit_warn: { chip: '🔴跌破MA50·考慮出場', cls: 'wl-exit' },
+};
+function watchlistBlock(d) {
+  const board = d.watchlist || [];
+  const pins = getPins();
+  const pinSet = new Set(pins);
+  // index the day's other surfaces so a pinned-but-untracked name can still show a row
+  const pickIdx = {}; (d.picks || []).forEach((p) => { if (p.stock) pickIdx[p.stock] = p; });
+  const searchIdx = {}; (d.search || []).forEach((s) => { if (s.code) searchIdx[s.code] = s; });
+  const earlyIdx = {}; (d.early_board || []).forEach((e) => { if (e.stock) earlyIdx[e.stock] = e; });
+
+  // normalise watchlist rows to a common shape; remember which symbols are covered
+  const covered = new Set();
+  const rows = board.map((r) => {
+    const sym = r.symbol;
+    covered.add(sym);
+    return {
+      symbol: sym,
+      entry_date: r.entry_date,
+      entry_price: r.entry_price,
+      price: r.price,
+      pct: (r.pct == null ? null : r.pct),
+      status: r.status || 'active',
+      warning: r.warning || null,
+      pinned: pinSet.has(sym) || !!r.pinned,
+    };
+  });
+  // best-effort rows for pinned names NOT already on the watchlist
+  pins.forEach((code) => {
+    if (covered.has(code)) return;
+    const p = pickIdx[code], s = searchIdx[code], e = earlyIdx[code];
+    if (!p && !s && !e) return;   // nothing to show → skip silently
+    rows.push({
+      symbol: code,
+      entry_date: null,
+      entry_price: null,
+      price: (p && p.price != null) ? p.price : (s && s.price != null ? s.price : null),
+      pct: (p && p.change_pct != null) ? p.change_pct : null,
+      status: 'active',
+      warning: null,
+      pinned: true,
+      synthetic: true,
+    });
+  });
+  if (!rows.length) return '';
+
+  // pinned to the TOP; otherwise keep server sort order (exit_warn→watch→active)
+  rows.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+
+  const li = rows.map((r) => {
+    const meta = WL_STATUS[r.status] || WL_STATUS.active;
+    const star = r.pinned ? '★ ' : '';
+    const pctTxt = r.pct == null ? ''
+      : `<b class="${r.pct >= 0 ? 'up' : 'down'}">${r.pct > 0 ? '+' : ''}${r.pct}%</b>`;
+    const entry = (r.entry_date || r.entry_price != null)
+      ? `<span class="muted small">進場 ${esc(r.entry_date || '—')}${r.entry_price != null ? ' @ ' + r.entry_price : ''}</span>`
+      : '<span class="muted small">釘選追蹤</span>';
+    const now = r.price != null ? `<span class="px">${r.price}</span>` : '';
+    const warn = r.warning ? `<br><span class="muted small">${esc(r.warning)}</span>` : '';
+    return `<li><a class="rev-link" href="#${esc(CUR_DATE)}/${esc(r.symbol)}">`
+      + `${star}<b>${esc(nameOf(r.symbol))}</b> `
+      + `<span class="wl-chip ${meta.cls}">${meta.chip}</span><br>`
+      + `${entry} · 現價 ${now} ${pctTxt}${warn}</a></li>`;
+  }).join('');
+
+  const inner = '<p class="muted small">已建議／釘選股的持續追蹤（趨勢轉弱即提醒），<b>informational，非買賣訊號</b>。</p>'
+    + `<ul class="rev wl-list">${li}</ul>`;
+  // collapse only when long (≥6 rows) so the常見短清單預設展開
+  const html = rows.length >= 6 ? foldSection('📋 已建議股追蹤（持續追蹤防套牢）', inner, false)
+    : `<section class="block"><h2>📋 已建議股追蹤（持續追蹤防套牢）</h2>${inner}</section>`;
+  return html;
+}
+
 /* ---------- sparkline / 燈號 / 釘選 / 搜尋 (Round 3, 懶人分析 ref) ---------- */
 const LIGHT_EMOJI = { green: '🟢', amber: '🟡', red: '🔴' };
 const lightDot = (l) => LIGHT_EMOJI[l] || '⚪';
@@ -449,27 +593,32 @@ function priceChart(arr, startD, endD, lines) {
 function renderCandles(elId, ohlc, sr, levels) {
   const el = document.getElementById(elId);
   if (!el || !window.LightweightCharts || !ohlc || ohlc.length < 2) return;
+  // remember the live K-line so window.toggleTheme() can re-render it with new colors
+  CUR_KLINE = { elId, ohlc, sr, levels };
+  // theme-driven palette — colors come from CSS custom props (see chartColors()), so the
+  // chart matches whichever theme is active (style.css agent defines --chart-* per theme).
+  const col = chartColors();
   // memory-leak guard: tear down any prior chart on hashchange re-route
   if (el._chart) { try { el._chart.remove(); } catch (e) {} el._chart = null; el.innerHTML = ''; }
   const LC = window.LightweightCharts;
   const chart = LC.createChart(el, {
     width: el.clientWidth, height: 240,
-    layout: { background: { color: '#0d1b2a' }, textColor: '#cbd5e1' },
-    grid: { vertLines: { color: '#1e2d3d' }, horzLines: { color: '#1e2d3d' } },
-    rightPriceScale: { borderColor: '#1e2d3d' },
-    timeScale: { borderColor: '#1e2d3d' },
+    layout: { background: { color: col.bg }, textColor: col.text },
+    grid: { vertLines: { color: col.grid }, horzLines: { color: col.grid } },
+    rightPriceScale: { borderColor: col.grid },
+    timeScale: { borderColor: col.grid },
   });
   el._chart = chart;
   // candles (v5 API: addSeries(SeriesType,...); v4's addCandlestickSeries is removed)
   const cs = chart.addSeries(LC.CandlestickSeries, {
-    upColor: '#5fe39b', downColor: '#ff8e8e',
-    wickUpColor: '#5fe39b', wickDownColor: '#ff8e8e', borderVisible: false,
+    upColor: col.up, downColor: col.down,
+    wickUpColor: col.up, wickDownColor: col.down, borderVisible: false,
   });
   cs.setData(ohlc.map((b) => ({ time: b.time, open: b.o, high: b.h, low: b.l, close: b.c })));
   // volume histogram overlay on its own bottom margin
   const vs = chart.addSeries(LC.HistogramSeries, { priceFormat: { type: 'volume' }, priceScaleId: '' });
   vs.priceScale().applyOptions({ scaleMargins: { top: 0.8, bottom: 0 } });
-  vs.setData(ohlc.map((b) => ({ time: b.time, value: b.v, color: b.c >= b.o ? '#2e5d4a' : '#5d2e2e' })));
+  vs.setData(ohlc.map((b) => ({ time: b.time, value: b.v, color: b.c >= b.o ? col.volUp : col.volDown })));
   // reference price lines — guard every field (sr/levels may be undefined/partial)
   const fin = (x) => typeof x === 'number' && isFinite(x);
   const addLine = (price, color, title) => {
@@ -477,10 +626,10 @@ function renderCandles(elId, ohlc, sr, levels) {
     cs.createPriceLine({ price, color, lineStyle: LC.LineStyle.Dashed, lineWidth: 1, axisLabelVisible: true, title });
   };
   const lv = levels || {};
-  addLine(lv.stop, '#ff8e8e', '停損');
+  addLine(lv.stop, col.down, '停損');
   addLine(lv.entry, '#9bb', '進場');
   const tgt = (lv.target_band && lv.target_band.length) ? lv.target_band[lv.target_band.length - 1] : lv.measured_move;
-  addLine(tgt, '#7fe6ab', '目標');
+  addLine(tgt, col.up, '目標');
   const s = sr || {};
   (s.resistance || []).forEach((r) => addLine(r, '#e0b15f', '壓力'));
   (s.support || []).forEach((p) => addLine(p, '#6fa8dc', '支撐'));
@@ -557,12 +706,40 @@ function srBlock(sr) {
     + row('強支撐', sr.strong_support, 'sr-sup') + '</ul>';
 }
 
+// REQ3a — informational fundamentals row inside the detail card. Renders p.fundamental
+// = {rev_yoy, rev_accel, pe_trailing, pe_forward, eps_trailing, eps_forward, stale, source}.
+// TW names carry only rev_yoy/rev_accel (no keyless P/E → show "—"). Null → omit entirely.
+// Caveat: best-effort, may be stale/missing, NOT a scorer.
+function fundamentalBlock(p) {
+  const f = p && p.fundamental;
+  if (!f) return '';
+  const num = (v) => (v == null ? '—' : v);
+  const hasPE = f.pe_trailing != null || f.pe_forward != null;
+  const hasEPS = f.eps_trailing != null || f.eps_forward != null;
+  const hasRev = f.rev_yoy != null;
+  if (!hasPE && !hasEPS && !hasRev) return '';   // empty badge → omit
+  const parts = [];
+  if (hasPE) parts.push(`本益比(TTM/Fwd) <b>${num(f.pe_trailing)}/${num(f.pe_forward)}</b>`);
+  if (hasEPS) parts.push(`EPS(TTM/Fwd) <b>${num(f.eps_trailing)}/${num(f.eps_forward)}</b>`);
+  if (hasRev) {
+    const accel = f.rev_accel ? ' <b class="accel">🔥</b>' : '';
+    parts.push(`月營收YoY <b class="${f.rev_yoy >= 0 ? 'up' : 'down'}">${f.rev_yoy > 0 ? '+' : ''}${f.rev_yoy}%</b>${accel}`);
+  }
+  const stale = f.stale ? ' <span class="fund-stale">⏳ 可能延遲</span>' : '';
+  return `<div class="kv fund-row" style="width:100%"><span>基本面參考${stale}</span>`
+    + `<b>${parts.join(' · ')}</b>`
+    + '<span class="muted small">※ best-effort，可能延遲/缺漏，不計入評分</span></div>';
+}
+
 function stockCard(d, code) {
   const p = (d.picks || []).find((x) => x.stock === code)
-    || (d.opportunity && d.opportunity.leaders || []).find((x) => x.ticker === code);
+    || (d.opportunity && d.opportunity.leaders || []).find((x) => x.ticker === code)
+    || (d.early_board || []).find((x) => x.stock === code)
+    || (d._lazy && d._lazy.stock === code ? d._lazy : null);
   if (!p) return `<div class="status">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="muted small">靜態頁僅含當日選股+機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`;
   const stock = p.stock || p.ticker;
-  const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(stock);
+  // prefer the card's own name; else the d.names map (covers lazy/early/revenue names).
+  const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(nameOf(stock));
   const pinned = getPins().includes(stock);
   const px = p.price != null
     ? `<div class="sd-price"><span class="px-big">${p.price}</span>`
@@ -600,8 +777,9 @@ function stockCard(d, code) {
   const lv = p.levels ? `<h3>進出場價位</h3>${levelsStrip(p.levels)}` : '';
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
   const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
+  const fund = fundamentalBlock(p);   // REQ3a informational fundamentals row (null → '')
   return `<section class="block sd">${head}${chart}
-    <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}</div>
+    <div class="kvs">${vr}${theme}${grp}${rev}${ad}${riskPlan(p)}${liqLine(p)}${fund}</div>
     ${sr}${lv}${factors}${comm}
     <h3>紀律 checklist</h3>${disciplineList()}
     <p class="muted small">數字為技術投影／歷史分布，非預測；目標含倖存者偏差，最佳訊號 ~70% 從未到目標。投資自負盈虧。</p></section>`;
@@ -618,12 +796,31 @@ async function showStock(date, code) {
   } catch (e) { $('status').textContent = '讀取失敗：' + e.message; return; }
   $('status').textContent = '';
   NAMES = CUR.names || {};
+  CUR_KLINE = null;        // a fresh stock view; drop any prior chart reference
+  CUR._lazy = null;        // clear any prior lazy doc before resolving this code
+  // REQ1 lazy fallback: if the code is in none of today's in-payload surfaces
+  // (picks/leaders/early_board), try the per-stock detail file BEFORE the not-found msg.
+  const inPayload = (CUR.picks || []).some((x) => x.stock === code)
+    || (CUR.opportunity && CUR.opportunity.leaders || []).some((x) => x.ticker === code)
+    || (CUR.early_board || []).some((x) => x.stock === code);
+  if (!inPayload) {
+    try {
+      const lazy = await getJSON('data/detail/' + encodeURIComponent(code) + '.json');
+      if (lazy && typeof lazy === 'object') {
+        if (!lazy.name) lazy.name = NAMES[code] || NAMES[code + '.TW'] || null;
+        if (!lazy.stock) lazy.stock = code;
+        CUR._lazy = lazy;       // stockCard's lookup picks this up
+      }
+    } catch (e) { /* no lazy file → stockCard shows the not-in-scan message */ }
+  }
   $('detailView').innerHTML = `<a class="backlink" href="#${esc(date)}">‹ 回 ${esc(date)} 日報</a>`
     + searchBar() + stockCard(CUR, code);
   // B10: render the K-line AFTER the #kline node is mounted (createChart needs a live
   // DOM node, so it can't live inside the innerHTML string). Deferred one frame.
   const p = (CUR.picks || []).find((x) => x.stock === code)
-    || (CUR.opportunity && CUR.opportunity.leaders || []).find((x) => x.ticker === code);
+    || (CUR.opportunity && CUR.opportunity.leaders || []).find((x) => x.ticker === code)
+    || (CUR.early_board || []).find((x) => x.stock === code)
+    || (CUR._lazy && CUR._lazy.stock === code ? CUR._lazy : null);
   if (p && window.LightweightCharts && p.ohlc && p.ohlc.length > 1) {
     requestAnimationFrame(() => renderCandles('kline', p.ohlc, p.sr, p.levels));
   }
@@ -642,6 +839,27 @@ function allocBlock(d) {
   }
   return section('🧠 資產配置建議', `<ul class="alloc">${rows}</ul>${rebHtml}`);
 }
+
+// REQ2 — sticky segmented tab-nav. Jump-anchors to the heavy sections so the user never
+// scrolls past 10 folds. Smooth scroll via window.ssJump; ≥44px tap targets (style.css).
+// `secs` = [{id, label, present}] — only present sections get a tab.
+function tabNav(secs) {
+  const tabs = (secs || []).filter((s) => s.present);
+  if (tabs.length < 2) return '';   // nothing to navigate between → no nav
+  const items = tabs.map((s) =>
+    `<a class="tab" href="#sec=${esc(s.id)}" onclick="return ssJump('${esc(s.id)}')">${esc(s.label)}</a>`).join('');
+  return `<nav class="tabnav" aria-label="區塊導覽">${items}</nav>`;
+}
+// wrap a block in a scroll-anchor only when it has content (empty → unchanged, no stray anchor)
+function anchor(id, html) {
+  return html ? `<div id="${id}" class="sec-anchor">${html}</div>` : '';
+}
+// smooth-scroll to a section id; returns false so the href="#sec=..." never changes the route.
+window.ssJump = (id) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return false;
+};
 
 async function showDetail(date) {
   $('listView').classList.add('hidden');
@@ -667,11 +885,31 @@ async function showDetail(date) {
     const today = new Date().toISOString().slice(0, 10);
     if (d.date < today) stale = `<div class="stale">⚠️ 此為 ${esc(d.date)} 的報告，非今日（${today}）。若雲端排程未更新，訊號可能過時，請勿據以即時操作。</div>`;
   } catch (e) {}
+  // build the heavy sections once so the tab-nav can detect presence + jump to anchors.
+  // REQ5 order: 選股 → 持倉追蹤 → 正要起漲 → 機會掃描 → 早期訊號 (early board out of any deep fold,
+  // promoted above the broad opportunity scan).
+  const picksHtml = picksBlock(d.picks, date);
+  const watchHtml = watchlistBlock(d);
+  const earlyHtml = breakoutBlock(d);
+  const oppHtml = opportunityBlock(d);
+  const sigHtml = signalsBlock(d);
+  // REQ2 sticky segmented nav — only sections that actually rendered get a tab.
+  const nav = tabNav([
+    { id: 'sec-picks',    label: '今日選股', present: !!picksHtml },
+    { id: 'sec-early',    label: '正要起漲', present: !!earlyHtml },
+    { id: 'sec-watch',    label: '持倉追蹤', present: !!watchHtml },
+    { id: 'sec-opp',      label: '機會掃描', present: !!oppHtml },
+    { id: 'sec-signals',  label: '早期訊號', present: !!sigHtml },
+  ]);
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML = stale +
     searchBar() + pinsBar(d) + tldrBanner(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
-    picksBlock(d.picks, date) + concentrationBlock(d) +
-    breakoutBlock(d) + groupBlock(d) + opportunityBlock(d) + shortVolBlock(d) + signalsBlock(d) + revenueBlock(d) +
+    nav +
+    anchor('sec-picks', picksHtml) + concentrationBlock(d) +
+    anchor('sec-watch', watchHtml) +
+    anchor('sec-early', earlyHtml) +
+    groupBlock(d) + anchor('sec-opp', oppHtml) + shortVolBlock(d) +
+    anchor('sec-signals', sigHtml) + revenueBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
     section('⚠️ 免責', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
@@ -681,6 +919,7 @@ async function showDetail(date) {
 /* ---------- routing ---------- */
 function route() {
   const h = location.hash.replace(/^#/, '').trim();
+  if (h.startsWith('sec=') || h.startsWith('sec-')) return;   // tab-nav jump, not a route
   const m = h.match(/^(\d{4}-\d{2}-\d{2})(?:\/(.+))?$/);
   if (m && m[2]) showStock(m[1], decodeURIComponent(m[2]));
   else if (m) showDetail(m[1]);
@@ -691,6 +930,7 @@ $('backBtn').addEventListener('click', () => { location.hash = ''; });
 $('refreshBtn').addEventListener('click', () => route());
 window.addEventListener('hashchange', route);
 window.addEventListener('load', () => {
+  applyTheme();
   route();
   if ('serviceWorker' in navigator) {
     let refreshing = false;

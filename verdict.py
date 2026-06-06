@@ -212,12 +212,15 @@ def _kelly_ceiling_for(factors):
     return min(caps) if caps else None
 
 
-def enrich(symbol, score, factors, df, levels=None):
+def enrich(symbol, score, factors, df, levels=None, fundamental=None):
     """Build the card-enrichment dict attached to a pick/opportunity name.
 
     B11 OVERLAY-NOT-SCORER: the Kelly position-size ceiling threaded into risk_sizing.plan
     is INFORMATIONAL guidance shown beside the score+risk plan; it never enters scoring or
-    ranking. Degrades silently (no ceiling) when _kelly_state.json is absent."""
+    ranking. Degrades silently (no ceiling) when _kelly_state.json is absent.
+
+    fundamental: optional dict from fundamentals.build_badge() — attached as-is under the
+    'fundamental' key. INFORMATIONAL ONLY; never enters scoring or ranking."""
     px, chg = price_change(df)
     sd, se = spark_dates(df)
     return {
@@ -234,4 +237,5 @@ def enrich(symbol, score, factors, df, levels=None):
         "risk": risk_sizing.plan(levels, kelly_ceiling_frac=_kelly_ceiling_for(factors)),
         "liquidity": liquidity(symbol, df),
         "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
+        "fundamental": fundamental,        # fundamentals overlay (B12), never scored
     }

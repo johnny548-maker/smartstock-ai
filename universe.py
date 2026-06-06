@@ -169,9 +169,22 @@ def scan_opportunities(data, names=None, top=None, rs_min=None, ratings=None):
                 "light": verdict.light(rr), "price": px, "change_pct": chg,
                 "vol_ratio": verdict.vol_ratio(df), "sr": verdict.sr_tiers(df),
                 "spark": verdict.spark(df), "spark_start": sd, "spark_end": se,
+                "ohlc": verdict.ohlc(df),       # B10 interactive K-line bars (df in hand)
             })
     leaders.sort(key=lambda x: (x["rs_rating"], x["count"]), reverse=True)
     return leaders[:top]
+
+
+def _benchmark_frames():
+    """{twii, sp500, ...} index frames for breakout_radar RS, fetched keyless via
+    data_fetcher. Any network failure degrades to {} (RS tell simply stays dormant —
+    never aborts the run), matching this module's everything-is-wrapped contract."""
+    try:
+        frames, _ = data_fetcher.get_market_context()
+        return frames or {}
+    except Exception as e:
+        log.warning("SKIP benchmark frames (RS tell dormant): %s", e)
+        return {}
 
 
 def get_opportunities():
@@ -183,10 +196,18 @@ def get_opportunities():
     group_ranks = group_rs.rank_groups(ratings, group_rs.theme_group_of)
     leaders = scan_opportunities(data, names=names, ratings=ratings)
     leaders = group_rs.tag_leaders(leaders, group_ranks, group_rs.theme_group_of)
+    # Thread the REAL benchmark frames so rs_line_turn_up can fire (was frames=None →
+    # the RS tell was silently skipped for every name).
+    frames = _benchmark_frames()
+    breakout = breakout_radar.scan(data, frames=frames, names=names, top=15)
+    # Attach K-line bars to each READY candidate so the early board is clickable (REQ1).
+    for c in breakout:
+        if c.get("ready"):
+            c["ohlc"] = verdict.ohlc((data or {}).get(c["stock"]))
     return {
         "universe": len(tickers),
         "scanned": len(data),
         "leaders": leaders,
         "group_rs": group_ranks,
-        "breakout": breakout_radar.scan(data, frames=None, names=names, top=15),
+        "breakout": breakout,
     }

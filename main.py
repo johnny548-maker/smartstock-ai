@@ -42,6 +42,9 @@ import earnings_guard as earnings_mod
 import short_volume as shortvol_mod
 import macro
 import fx_context as fx_mod
+import fundamentals
+import watchlist_tracker
+import stock_detail
 
 
 def setup_logging():
@@ -149,6 +152,14 @@ def main(web=False):
         log.warning("SKIP stock data: %s", e); data = {}; skips.append("stock_data")
     # 4a. 籌碼 cross-run buffer: record today (trading days only), derive chips
     chips_state = chip_state.load()
+    # 4a-fund. Fundamentals overlay cache + revenue state (no network; B12). The
+    #     revenue STATE (full YoY buffer) is loaded separately from revenue_data
+    #     (today's candidate list) because build_badge needs the per-code YoY history.
+    fund_cache = fundamentals.load_cache()
+    try:
+        rev_state = revenue_mod.load_state()
+    except Exception as e:
+        log.warning("SKIP revenue state load: %s", e); rev_state = None; skips.append("fundamentals")
     if inst:
         for sym in config.STOCKS_TW:
             di = inst.get(sym.replace(".TW", "")) or {}
@@ -196,11 +207,30 @@ def main(web=False):
             item["stock"], item["score"], item["factors"], item.get("sector"), levels=lv)
 
     # 5b. Per-pick card enrichment (燈號/verdict/量比/S-R/趨勢序列) for the PWA ----
+    #     B12: attach an informational fundamentals badge (TW 月營收 YoY / US PE-EPS).
+    #     OVERLAY-NOT-SCORER — a badge failure must SKIP, never abort the run.
     pick_cards = {}
+    fund_attached = 0
     for item in ranked[:config.DISPLAY_N]:
-        pick_cards[item["stock"]] = verdict_mod.enrich(
+        sym = item["stock"]
+        badge = None
+        try:
+            badge = fundamentals.build_badge(
+                sym, rev_state=rev_state, fund_cache=fund_cache,
+                is_tw=sym.endswith((".TW", ".TWO")))
+            if badge:
+                fund_attached += 1
+        except Exception as e:
+            log.warning("SKIP fundamental badge %s: %s", sym, e)
+        pick_cards[sym] = verdict_mod.enrich(
             item["stock"], item["score"], item["factors"],
-            data.get(item["stock"]), level_map.get(item["stock"]))
+            data.get(item["stock"]), level_map.get(item["stock"]), fundamental=badge)
+    try:
+        fundamentals.save_cache(fund_cache)        # persist any US PE/EPS fetched/cached
+        if fund_attached:
+            log.info("fundamentals: %d pick badge(s) attached", fund_attached)
+    except Exception as e:
+        log.warning("SKIP fundamentals cache save: %s", e); skips.append("fundamentals")
 
     # 5c. Risk overlay (analyst G1/G2/G10): market-regime gate + concentration ---
     try:
@@ -296,6 +326,63 @@ def main(web=False):
         signals=sig, themes=themes, opportunity=opp, regime=regime,
         concentration=concentration, macro=macro_ctx)
 
+    # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
+    #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
+    #     order, never a score input. SKIP-not-abort: a failure must not break the run.
+    #     pins=[] server-side (user pins live in browser localStorage; client pins-to-top).
+    wl_board = []
+    try:
+        wl_path = os.path.join(config.WEB_DIR, "data", "_watchlist_state.json")
+        wl = watchlist_tracker.load(wl_path)
+        watchlist_tracker.enroll(wl, ranked[:config.DISPLAY_N], pins=[], date=date_str)
+        watchlist_tracker.reevaluate(wl, data, frames, date_str)
+        watchlist_tracker.save(wl, wl_path)
+        wl_board = watchlist_tracker.board(wl)
+        log.info("watchlist: %d tracked name(s) on board", len(wl_board))
+    except Exception as e:
+        log.warning("SKIP watchlist tracker: %s", e); skips.append("watchlist")
+
+    # 7c. Per-stock detail files (REQ1 long-tail) — standalone JSON so revenue candidates
+    #     and other displayed names open a usable detail view in the PWA WITHOUT a new
+    #     network fetch in the cron hot path. Revenue candidates have NO OHLCV in hand →
+    #     build_detail(df=None,...) is metadata-only. SKIP-not-abort.
+    try:
+        details = {}
+        # Revenue candidates: metadata-only (no df, no new fetch), name + fundamental badge.
+        for c in (revenue_data or {}).get("candidates", []):
+            code = c.get("code")
+            if not code:
+                continue
+            try:
+                badge = fundamentals.build_badge(
+                    code, rev_state=rev_state, fund_cache=fund_cache, is_tw=True)
+            except Exception:
+                badge = None
+            details[code] = stock_detail.build_detail(
+                code, df=None, name=c.get("name"), fundamental=badge)
+        # Picks: a standalone file each (df + levels in hand) so a deep-link always resolves.
+        for item in ranked[:config.DISPLAY_N]:
+            sym = item["stock"]
+            if sym in details:
+                continue
+            details[sym] = stock_detail.build_detail(
+                sym, df=data.get(sym), name=config.STOCK_NAMES.get(sym),
+                fundamental=(pick_cards.get(sym) or {}).get("fundamental"),
+                levels=level_map.get(sym))
+        if details:
+            written = stock_detail.export_details(details, config.WEB_DIR)
+            log.info("detail files: %d written", len(written))
+    except Exception as e:
+        log.warning("SKIP detail files: %s", e); skips.append("detail_files")
+
+    # 7d. Promote the early/breakout 起漲 board out of the opportunity result so the PWA
+    #     gets it as a top-level key too. SKIP-not-abort.
+    early_board = []
+    try:
+        early_board = (opp or {}).get("breakout", []) or []
+    except Exception as e:
+        log.warning("SKIP early board promote: %s", e); skips.append("early_board")
+
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)
     sent = notifier_email.send_email(f"📈 SmartStock 每日投資日報 {date_str}", markdown)
@@ -308,7 +395,7 @@ def main(web=False):
             delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
             regime=regime, concentration=concentration, shortvol=shortvol_board,
-            macro=macro_ctx, fx=fx)
+            macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

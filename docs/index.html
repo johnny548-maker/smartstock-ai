@@ -11,12 +11,25 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SmartStock">
+  <!-- anti-FOUC: set data-theme from localStorage BEFORE css/body paint so the
+       first frame already matches the saved theme (app.js's applyTheme() re-runs
+       on load, but this avoids the dark→light flash). Mirrors app.js keys. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('ss_theme');
+        if (t !== 'dark' && t !== 'light') t = 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header id="topbar">
     <button id="backBtn" class="hidden" aria-label="返回">‹</button>
     <h1 id="title">📈 SmartStock 日報</h1>
+    <button id="themeBtn" onclick="toggleTheme()" aria-label="切換深色／淺色主題">🌓</button>
     <button id="refreshBtn" aria-label="重新整理">⟳</button>
   </header>
 
