@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v25';
+const CACHE = 'smartstock-v26';
 const SHELL = [
   './',
   'index.html',

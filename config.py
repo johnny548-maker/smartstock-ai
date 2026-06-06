@@ -291,6 +291,11 @@ REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
 REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
+# B11 Kelly position-size GUIDANCE overlay — offline backtest writes per-signal edge
+# stats here; verdict.enrich reads it to map a pick's CI-validated signal → a position
+# CEILING. OVERLAY-NOT-SCORER: never an input to scoring. Absent on daily cron (the
+# heavy backtest is not part of the cron) → enrich/riskPlan degrade silently to null.
+KELLY_STATE = os.path.join(WEB_DIR, "data", "_kelly_state.json")
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
 PORTFOLIO_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portfolio_state.json")

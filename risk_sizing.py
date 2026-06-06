@@ -49,10 +49,20 @@ def portfolio_heat(open_risk_pcts, cap=PORTFOLIO_HEAT_CAP):
     return {"total_heat": round(total, 2), "cap": cap, "within": total <= cap}
 
 
-def plan(levels, risk_pct=DEFAULT_RISK_PCT):
+def plan(levels, risk_pct=DEFAULT_RISK_PCT, kelly_ceiling_frac=None):
     """Per-pick risk plan from levels dict (entry/stop/target band). Equity-agnostic:
     gives per-share risk %, R:R to the band target, the sizing formula, and a flag
-    if R:R is below MIN_RR. Returns {} when levels are missing."""
+    if R:R is below MIN_RR. Returns {} when levels are missing.
+
+    OVERLAY-NOT-SCORER (B11): when kelly_ceiling_frac is supplied (a fraction-of-capital
+    CEILING already passed the ci_beats_base weighting gate), this adds an INFORMATIONAL
+    `size_ceiling_pct` = min(ATR-implied position fraction, kelly_ceiling_frac) × 100.
+    The ATR-implied position fraction is risk_pct ÷ per-share-risk% — i.e. how big a
+    position keeps total account risk at risk_pct given this stop's per-share risk. The
+    ceiling is the MORE CONSERVATIVE of the volatility (ATR) cap and the Kelly cap. This
+    is position-size GUIDANCE only — it NEVER enters scoring/ranking. When
+    kelly_ceiling_frac is None the existing keys are untouched (backward-compatible).
+    """
     if not levels:
         return {}
     entry = levels.get("entry")
@@ -69,4 +79,17 @@ def plan(levels, risk_pct=DEFAULT_RISK_PCT):
     if rr is not None:
         out["rr"] = rr
         out["rr_ok"] = rr >= MIN_RR
+    if kelly_ceiling_frac is not None:
+        kelly_frac = max(0.0, float(kelly_ceiling_frac))
+        # ATR-implied position fraction of capital: risk_pct% account-risk ÷ per-share
+        # risk% → the largest position the stop allows at the fixed account-risk budget.
+        if psr and psr["risk_pct"] > 0:
+            atr_frac = (risk_pct / psr["risk_pct"])
+            ceiling_frac = min(atr_frac, kelly_frac)
+            binding = "atr" if atr_frac < kelly_frac else "kelly"
+        else:
+            ceiling_frac = kelly_frac
+            binding = "kelly"
+        out["size_ceiling_pct"] = round(ceiling_frac * 100, 2)
+        out["ceiling_binding"] = binding
     return out

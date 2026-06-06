@@ -131,9 +131,15 @@ function concentrationBlock(d) {
 function riskPlan(p) {
   const r = p.risk; if (!r || r.risk_pct == null) return '';
   const rr = r.rr != null ? ` · R:R 至目標 <b class="${r.rr_ok ? 'up' : 'down'}">${r.rr}</b>${r.rr_ok ? '' : '（<2，偏弱）'}` : '';
+  // B11 Kelly position-size CEILING — informational overlay, only when _kelly_state.json
+  // produced one (absent on the daily cron → render nothing). A資金比例天花板, not a promise.
+  const kelly = r.size_ceiling_pct != null
+    ? `<span class="muted small kelly-ceiling">部位上限（Kelly×½，上限25%，取與 ATR 風險法較小者）：${esc(r.size_ceiling_pct)}%（依據：${r.ceiling_binding === 'atr' ? 'ATR 風險上限' : 'Kelly'}）— 為資金比例天花板，非報酬承諾</span>`
+    : '';
   return `<div class="kv" style="width:100%"><span>部位/風險（單筆風險法）</span>`
     + `<b>每股風險 ${r.risk_per_share}（${r.risk_pct}%）${rr}</b>`
-    + (r.size_formula ? `<span class="muted small">${esc(r.size_formula)}</span>` : '') + '</div>';
+    + (r.size_formula ? `<span class="muted small">${esc(r.size_formula)}</span>` : '')
+    + kelly + '</div>';
 }
 
 // compact money formatter — NT$ in 億/萬, USD in B/M/K

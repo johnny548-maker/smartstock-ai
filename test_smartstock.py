@@ -1429,5 +1429,159 @@ class TestFxContext(unittest.TestCase):
         self.assertIsNone(fx_context.fx_note_for("NVDA", None))
 
 
+class TestExpectancyKelly(unittest.TestCase):
+    """B11 expectancy / Kelly position-size GUIDANCE — pure synthetic math, no network.
+
+    Overlay-not-scorer: these are INFORMATIONAL position-size ceilings shown beside the
+    score+risk plan; they never enter strategy.score_stock or ranking.
+    """
+
+    # --- expectancy (% per trade) ---
+    def test_expectancy_known_payoff(self):
+        self.assertEqual(backtest.expectancy(0.4, 50.0, 20.0), 8.0)
+
+    def test_expectancy_negative_edge(self):
+        self.assertEqual(backtest.expectancy(0.3, 10.0, 20.0), -11.0)
+
+    def test_expectancy_breakeven(self):
+        self.assertEqual(backtest.expectancy(0.5, 20.0, 20.0), 0.0)
+
+    def test_expectancy_rejects_bad_winrate(self):
+        with self.assertRaises(ValueError):
+            backtest.expectancy(1.5, 10.0, 10.0)
+        with self.assertRaises(ValueError):
+            backtest.expectancy(0.5, -1.0, 10.0)
+
+    # --- kelly_fraction (raw, uncapped) ---
+    def test_kelly_known(self):
+        self.assertAlmostEqual(backtest.kelly_fraction(0.6, 20.0, 10.0), 0.4)
+
+    def test_kelly_full_formula_coin(self):
+        self.assertEqual(backtest.kelly_fraction(0.5, 20.0, 10.0), 0.25)
+
+    def test_kelly_negative_when_no_edge(self):
+        self.assertAlmostEqual(backtest.kelly_fraction(0.3, 10.0, 10.0), -0.4)
+
+    def test_kelly_zero_loss_safe(self):
+        self.assertEqual(backtest.kelly_fraction(0.6, 20.0, 0.0), 0.0)
+
+    # --- signal_edge_stats (split fired forward returns) ---
+    def test_signal_edge_stats_split(self):
+        s = backtest.signal_edge_stats([50, -20, 30, -10, 40])
+        self.assertEqual(s["wins"], 3)
+        self.assertEqual(s["losses"], 2)
+        self.assertAlmostEqual(s["win_rate"], 0.6)
+        self.assertAlmostEqual(s["avg_win_pct"], 40.0)
+        self.assertAlmostEqual(s["avg_loss_pct"], 15.0)
+
+    def test_signal_edge_stats_empty(self):
+        s = backtest.signal_edge_stats([])
+        self.assertEqual(s["n"], 0)
+        self.assertEqual(s["win_rate"], 0.0)
+        self.assertEqual(s["avg_win_pct"], 0.0)
+        self.assertEqual(s["avg_loss_pct"], 0.0)
+
+    def test_signal_edge_stats_all_wins_loss_zero(self):
+        s = backtest.signal_edge_stats([10, 20, 30])
+        self.assertEqual(s["avg_loss_pct"], 0.0)
+        self.assertEqual(s["win_rate"], 1.0)
+        # all-win edge: undefined payoff → kelly claims no edge (0.0), not inf
+        self.assertEqual(backtest.kelly_fraction(1.0, 20.0, 0.0), 0.0)
+
+    # --- kelly_guidance (half-Kelly, capped, ATR-min, floored) ---
+    def test_kelly_guidance_caps_at_25pct(self):
+        g = backtest.kelly_guidance(0.7, 40.0, 10.0)
+        self.assertAlmostEqual(g["raw_kelly"], 0.625, places=3)
+        self.assertAlmostEqual(g["half_kelly"], 0.3125, places=4)
+        self.assertAlmostEqual(g["capped_kelly"], 0.25)
+        self.assertEqual(g["binding"], "kelly")
+        self.assertTrue(g["positive_edge"])
+
+    def test_kelly_guidance_floor_at_zero(self):
+        g = backtest.kelly_guidance(0.2, 10.0, 30.0)
+        self.assertLess(g["raw_kelly"], 0)
+        self.assertEqual(g["ceiling_frac"], 0.0)
+        self.assertEqual(g["binding"], "floor")
+        self.assertFalse(g["positive_edge"])
+
+    def test_kelly_guidance_atr_min_binds(self):
+        g = backtest.kelly_guidance(0.7, 40.0, 10.0, atr_risk_pct=1.0)
+        self.assertAlmostEqual(g["ceiling_frac"], 0.01)
+        self.assertEqual(g["binding"], "atr")
+
+    def test_kelly_guidance_kelly_below_atr(self):
+        g = backtest.kelly_guidance(0.55, 15.0, 12.0, kelly_cap=0.25, atr_risk_pct=20.0)
+        self.assertAlmostEqual(g["ceiling_frac"], g["capped_kelly"])
+        self.assertEqual(g["binding"], "kelly")
+
+    # --- additive backtest_signal fields ---
+    def test_backtest_signal_exposes_kelly_fields(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        m = backtest.backtest_signal({"AAA": df}, sig, horizon=1, step=1,
+                                     explosive_pct=50.0, min_bars=1)
+        for k in ("expectancy_pct", "kelly_half", "win_rate", "avg_win_pct", "avg_loss_pct"):
+            self.assertIn(k, m)
+
+    def test_backtest_signal_kelly_none_safe_when_no_fire(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        m = backtest.backtest_signal({"AAA": df}, lambda s, b: False,
+                                     horizon=1, step=1, explosive_pct=50.0, min_bars=1)
+        self.assertEqual(m["fired"], 0)
+        self.assertIn(m["kelly_half"], (None, 0.0))
+        self.assertIn(m["expectancy_pct"], (None, 0.0))
+
+    def test_existing_backtest_keys_unchanged(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        m = backtest.backtest_signal({"AAA": df}, sig, horizon=1, step=1,
+                                     explosive_pct=50.0, min_bars=1)
+        for k in ("precision", "base_rate", "lift", "recall", "precision_ci",
+                  "by_regime", "fwd_p50", "n_names"):
+            self.assertIn(k, m)
+
+    # --- risk_sizing.plan backward-compatible kelly kwarg ---
+    def test_plan_unchanged_without_kelly(self):
+        lv = {"entry": 100, "stop": 93, "target_band": [110, 121]}
+        pl = risk_sizing.plan(lv)
+        self.assertNotIn("size_ceiling_pct", pl)
+        self.assertNotIn("ceiling_binding", pl)
+
+    def test_plan_adds_ceiling_with_kelly(self):
+        lv = {"entry": 100, "stop": 93, "target_band": [110, 121]}
+        pl = risk_sizing.plan(lv, kelly_ceiling_frac=0.05)
+        self.assertIn("size_ceiling_pct", pl)
+        self.assertIn(pl["ceiling_binding"], ("atr", "kelly"))
+
+    # --- verdict overlay wiring (graceful-null + min-mapping) ---
+    def test_verdict_enrich_graceful_when_state_absent(self):
+        # _kelly_state.json is absent on the daily cron → no ceiling, never crashes
+        verdict._KELLY_STATE_CACHE = {}      # force "no state loaded"
+        idx = pd.date_range("2026-01-01", periods=70, freq="D")
+        df = make_df(list(np.linspace(50, 90, 70)))
+        df.index = idx
+        e = verdict.enrich("X", 95, {"Power pivot放量突破(回測lift2.0)": 18}, df,
+                           levels={"entry": 100, "stop": 93, "target_band": [110, 121]})
+        self.assertNotIn("size_ceiling_pct", e["risk"])
+
+    def test_verdict_kelly_ceiling_min_of_matches(self):
+        # most CONSERVATIVE kelly_capped among the pick's CI-validated signals
+        verdict._KELLY_STATE_CACHE = {
+            "Power pivot(放量突破)": {"kelly_capped": 0.20},
+            "Trend Template": {"kelly_capped": 0.08},
+        }
+        frac = verdict._kelly_ceiling_for({
+            "Power pivot放量突破(回測lift2.0)": 18,
+            "Stage2上升趨勢(回測lift1.36)": 12,
+        })
+        self.assertAlmostEqual(frac, 0.08)
+        verdict._KELLY_STATE_CACHE = {}      # reset cache for other tests
+
+    def test_verdict_kelly_ceiling_none_when_no_match(self):
+        verdict._KELLY_STATE_CACHE = {"Power pivot(放量突破)": {"kelly_capped": 0.20}}
+        self.assertIsNone(verdict._kelly_ceiling_for({"趨勢(MA5>MA20)": 25}))
+        verdict._KELLY_STATE_CACHE = {}
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

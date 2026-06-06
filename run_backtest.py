@@ -17,6 +17,9 @@ Backtests price/RS signals only — theme + 月營收 have no keyless history (i
 Still survivorship-biased (yfinance survivors): every lift is an optimistic upper bound.
 """
 import sys
+import json
+import os
+import datetime
 import logging
 
 # CJK signal names (VCP 收縮 …) crash the default cp1252 Windows console on print.
@@ -68,6 +71,35 @@ DEFS = {
 }
 
 
+def write_kelly_state(metrics_by_signal, path="docs/data/_kelly_state.json"):
+    """Offline writer for the B11 Kelly position-size GUIDANCE overlay.
+
+    Dumps per-signal edge stats for CI-VALIDATED signals ONLY (ci_beats_base==True) —
+    an overlay only gives a Kelly hint to signals that already passed the existing
+    weighting gate. OVERLAY-NOT-SCORER: this artifact feeds an informational position
+    CEILING in the PWA; it is NEVER read by strategy.score_stock or ranking. Run offline
+    by this script (not the daily cron), so a plain datetime.date.today() asof is fine.
+    """
+    state = {"asof": datetime.date.today().isoformat()}
+    for name, m in (metrics_by_signal or {}).items():
+        if not m or not m.get("ci_beats_base"):
+            continue
+        state[name] = {
+            "win_rate": m.get("win_rate"),
+            "avg_win_pct": m.get("avg_win_pct"),
+            "avg_loss_pct": m.get("avg_loss_pct"),
+            "expectancy_pct": m.get("expectancy_pct"),
+            "kelly_raw": m.get("kelly_raw"),
+            "kelly_half": m.get("kelly_half"),
+            "kelly_capped": m.get("kelly_capped"),
+            "ci_beats_base": True,
+            "fired": m.get("fired"),
+        }
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+
+
 def main():
     years = int(sys.argv[1]) if len(sys.argv) > 1 else 15
     horizon = int(sys.argv[2]) if len(sys.argv) > 2 else 60
@@ -89,11 +121,13 @@ def main():
     print(hdr); print("-" * len(hdr))
     keep = []
     base_rate = None
+    metrics = {}                                     # B11: per-signal edge stats for Kelly overlay
     for name, fn in DEFS.items():
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
                                      step=10, explosive_pct=explosive, min_bars=200,
                                      next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
                                      fee_bps=FEE_BPS)
+        metrics[name] = m
         base_rate = m["base_rate"]
         r = m["by_regime"]
         flag = "YES" if m["ci_beats_base"] else "no"
@@ -103,6 +137,14 @@ def main():
               f"{(m['fwd_p50'] or 0):>6.1f}%")
         if m["ci_beats_base"]:
             keep.append((name, m["lift"], r["flat"]["lift"]))
+
+    # B11 overlay: persist edge stats for CI-validated signals → position-size CEILING
+    try:
+        from config import KELLY_STATE
+        kelly_path = KELLY_STATE
+    except Exception:
+        kelly_path = "docs/data/_kelly_state.json"
+    write_kelly_state(metrics, kelly_path)
 
     print(f"\nbase rate={base_rate:.2%}  horizon={horizon}  explosive=+{explosive:.0f}%")
     print(f"coverage: {len(hist)} names ({n_busted} busted-peer stress names) · "

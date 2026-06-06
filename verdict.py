@@ -7,11 +7,17 @@ sparkline. All keyless/deterministic — the cron already holds the OHLCV. We bo
 the reference site's SCANNABLE structure but keep our honest numbers (ranges + the
 backtest non-trigger rate), not its over-promised single-point targets.
 """
+import json
 import re
 
 from indicators import pivots, dollar_adv
 from volume_signals import acc_dist_grade
 import risk_sizing
+
+try:
+    from config import KELLY_STATE
+except Exception:                       # pragma: no cover — config always present in app
+    KELLY_STATE = None
 
 THIN_FLOOR_USD = 3_000_000     # < $3M average daily $-volume = hard to act on at size
 THIN_FLOOR_TWD = 50_000_000    # < NT$50M/day
@@ -151,8 +157,67 @@ def liquidity(symbol, df):
     }
 
 
+# ── B11 Kelly position-size GUIDANCE overlay (informational, never scored) ──
+# Map a score_stock() factor label → its backtest (DEFS) signal name in _kelly_state.json.
+# Only the CI-validated leadership signals carry a Kelly hint (the state file stores
+# ci_beats_base==True only). Substring match on a stable token of the factor label, so
+# the 回測lift… suffix in the factor key doesn't break the lookup.
+_KELLY_FACTOR_MAP = [
+    ("久盤後首次新高", "首次新高(久盤後)"),
+    ("Power pivot", "Power pivot(放量突破)"),
+    ("Stage2", "Trend Template"),
+    ("Pocket pivot", "Pocket pivot"),
+    ("U/D量", "U/D量比吸籌"),
+    ("RS線新高", "RS線新高(純)"),
+]
+
+_KELLY_STATE_CACHE = None       # module-level cache (like chip_state/revenue state loads)
+
+
+def _load_kelly_state():
+    """Load + cache _kelly_state.json once. Returns {} on any error or when the file is
+    absent (the heavy offline backtest is NOT part of the daily cron, so this artifact
+    is routinely missing — enrich must degrade silently to no Kelly ceiling). OVERLAY:
+    this state never enters scoring; it only sizes already-validated signals."""
+    global _KELLY_STATE_CACHE
+    if _KELLY_STATE_CACHE is not None:
+        return _KELLY_STATE_CACHE
+    state = {}
+    try:
+        if KELLY_STATE:
+            with open(KELLY_STATE, encoding="utf-8") as f:
+                loaded = json.load(f)
+            if isinstance(loaded, dict):
+                state = loaded
+    except Exception:
+        state = {}
+    _KELLY_STATE_CACHE = state
+    return state
+
+
+def _kelly_ceiling_for(factors):
+    """Most CONSERVATIVE (min) kelly_capped among the pick's CI-validated triggering
+    signals, mapped from its factor labels. Returns None when no signal matches or the
+    state file is missing → risk_sizing.plan() then stays unchanged (no ceiling shown)."""
+    state = _load_kelly_state()
+    if not state or not factors:
+        return None
+    caps = []
+    for label in factors:
+        for token, sig_name in _KELLY_FACTOR_MAP:
+            if token in label and sig_name in state:
+                cap = state[sig_name].get("kelly_capped")
+                if isinstance(cap, (int, float)):
+                    caps.append(float(cap))
+    return min(caps) if caps else None
+
+
 def enrich(symbol, score, factors, df, levels=None):
-    """Build the card-enrichment dict attached to a pick/opportunity name."""
+    """Build the card-enrichment dict attached to a pick/opportunity name.
+
+    B11 OVERLAY-NOT-SCORER: the Kelly position-size ceiling threaded into risk_sizing.plan
+    is INFORMATIONAL guidance shown beside the score+risk plan; it never enters scoring or
+    ranking. Degrades silently (no ceiling) when _kelly_state.json is absent."""
     px, chg = price_change(df)
     sd, se = spark_dates(df)
     return {
@@ -166,7 +231,7 @@ def enrich(symbol, score, factors, df, levels=None):
         "spark_start": sd,
         "spark_end": se,
         "ohlc": ohlc(df),           # B10 interactive K-line bars (pure presentation)
-        "risk": risk_sizing.plan(levels),
+        "risk": risk_sizing.plan(levels, kelly_ceiling_frac=_kelly_ceiling_for(factors)),
         "liquidity": liquidity(symbol, df),
         "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
     }

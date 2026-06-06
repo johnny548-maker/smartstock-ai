@@ -28,6 +28,103 @@ import numpy as np
 UP_THRESH = 5.0          # bench fwd return > +5% over window → UP regime
 DOWN_THRESH = -5.0       # < -5% → DOWN regime
 
+# ── Kelly position-size GUIDANCE constants (B11) ────────────────────────────
+# OVERLAY-NOT-SCORER: expectancy/Kelly are INFORMATIONAL position-size guidance,
+# never inputs to strategy.score_stock or ranking. Kelly only sizes signals that
+# ALREADY passed the existing ci_beats_base gate (inherits the weighting gate,
+# creates no new one). Honest framing: a fraction-of-capital CEILING, floored at 0.
+KELLY_CAP = 0.25         # hard ceiling — never risk more than 25% of capital on one signal
+KELLY_MULT = 0.5         # half-Kelly haircut (full Kelly is too aggressive in practice)
+
+
+def expectancy(win_rate, avg_win_pct, avg_loss_pct):
+    """Expected % return per trade = win_rate·avg_win − (1−win_rate)·avg_loss.
+
+    avg_win_pct / avg_loss_pct are POSITIVE magnitudes (the loss is supplied as a
+    positive number and subtracted). Negative result = the signal has no positive
+    expectancy and should NOT be sized up. Pure overlay math — never enters scoring.
+    """
+    if not (0.0 <= win_rate <= 1.0):
+        raise ValueError(f"win_rate must be in [0,1], got {win_rate}")
+    if avg_win_pct < 0 or avg_loss_pct < 0:
+        raise ValueError("avg_win_pct / avg_loss_pct must be positive magnitudes")
+    return win_rate * avg_win_pct - (1.0 - win_rate) * avg_loss_pct
+
+
+def kelly_fraction(win_rate, avg_win_pct, avg_loss_pct):
+    """RAW (uncapped) Kelly fraction f* = win_rate − (1−win_rate)/payoff, where
+    payoff = avg_win_pct / avg_loss_pct.
+
+    Can be negative (no edge) or >1 — this is the raw number; kelly_guidance() caps
+    and floors it. Returns 0.0 when avg_loss_pct==0 or avg_win_pct==0 (undefined
+    payoff → claim NO edge rather than infinite size). Overlay math, never scored.
+    """
+    if avg_loss_pct == 0 or avg_win_pct == 0:
+        return 0.0
+    payoff = avg_win_pct / avg_loss_pct
+    return win_rate - (1.0 - win_rate) / payoff
+
+
+def signal_edge_stats(fwd_returns, win_threshold=0.0):
+    """Split a list of fired-window forward returns (%) into wins/losses.
+
+    Returns {'n','wins','losses','win_rate','avg_win_pct','avg_loss_pct'} where
+    avg_win_pct is the mean of returns > threshold (>=0) and avg_loss_pct is the mean
+    MAGNITUDE of returns <= threshold (>=0). Zeros/empty safe. Pure overlay stats.
+    """
+    rets = [float(r) for r in (fwd_returns or [])]
+    wins = [r for r in rets if r > win_threshold]
+    losses = [r for r in rets if r <= win_threshold]
+    n = len(rets)
+    win_rate = (len(wins) / n) if n else 0.0
+    avg_win = (sum(wins) / len(wins)) if wins else 0.0
+    avg_loss = (abs(sum(losses) / len(losses))) if losses else 0.0
+    return {
+        "n": n, "wins": len(wins), "losses": len(losses),
+        "win_rate": win_rate,
+        "avg_win_pct": max(0.0, avg_win),
+        "avg_loss_pct": max(0.0, avg_loss),
+    }
+
+
+def kelly_guidance(win_rate, avg_win_pct, avg_loss_pct,
+                   kelly_cap=KELLY_CAP, kelly_mult=KELLY_MULT, atr_risk_pct=None):
+    """Translate edge stats into an honest fraction-of-capital CEILING (B11).
+
+    OVERLAY-NOT-SCORER: this guidance is shown beside the score+risk plan; it NEVER
+    enters strategy.score_stock or ranking. It only sizes signals that ALREADY passed
+    the ci_beats_base gate. The ceiling is half-Kelly, capped at kelly_cap, optionally
+    floored further by the ATR per-trade risk %, and floored at 0 — never negative,
+    never a return promise. Negative expectancy/raw-Kelly → ceiling 0% + a 不建議加碼 note.
+    """
+    exp = expectancy(win_rate, avg_win_pct, avg_loss_pct)
+    raw = kelly_fraction(win_rate, avg_win_pct, avg_loss_pct)
+    half = raw * kelly_mult
+    capped = min(max(half, 0.0), kelly_cap)          # floor 0, cap at kelly_cap
+    atr_frac = None if atr_risk_pct is None else atr_risk_pct / 100.0
+    ceiling = capped if atr_frac is None else min(capped, atr_frac)
+    ceiling = max(0.0, ceiling)
+    positive_edge = exp > 0 and raw > 0
+    if ceiling <= 0.0:
+        binding = "floor"
+    elif atr_frac is not None and atr_frac < capped:
+        binding = "atr"
+    else:
+        binding = "kelly"
+    note = ("此訊號回測無正期望值，不建議加碼" if not positive_edge
+            else "部位上限為資金比例天花板，非報酬承諾")
+    return {
+        "expectancy_pct": round(exp, 2),
+        "raw_kelly": raw,
+        "half_kelly": half,
+        "capped_kelly": capped,
+        "ceiling_frac": ceiling,
+        "ceiling_pct": ceiling * 100.0,
+        "binding": binding,
+        "positive_edge": positive_edge,
+        "note": note,
+    }
+
 
 def forward_return(df, i, horizon, next_open_fill=False, slippage_bps=0.0, fee_bps=0.0):
     """% return from bar i to bar i+horizon. With next_open_fill, buy at open[i+1]
@@ -135,6 +232,24 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
         by_regime[r] = {"fired": f, "precision": round(p, 4),
                         "base_rate": round(b, 4), "lift": round(p / b, 3) if b else 0.0}
 
+    # ── B11 expectancy / Kelly overlay (additive — reuses the fired_fwd list) ──
+    # OVERLAY-NOT-SCORER: these fields are INFORMATIONAL position-size inputs, never
+    # summed into score or ranking. None-safe when nothing fired.
+    if fired:
+        edge = signal_edge_stats(fired_fwd)
+        exp_pct = expectancy(edge["win_rate"], edge["avg_win_pct"], edge["avg_loss_pct"])
+        k_raw = kelly_fraction(edge["win_rate"], edge["avg_win_pct"], edge["avg_loss_pct"])
+        win_rate = round(edge["win_rate"], 4)
+        avg_win_pct = round(edge["avg_win_pct"], 2)
+        avg_loss_pct = round(edge["avg_loss_pct"], 2)
+        expectancy_pct = round(exp_pct, 2)
+        kelly_raw = round(k_raw, 4)
+        kelly_half = round(k_raw * KELLY_MULT, 4)
+        kelly_capped = round(min(max(k_raw * KELLY_MULT, 0.0), KELLY_CAP), 4)
+    else:
+        win_rate = avg_win_pct = avg_loss_pct = expectancy_pct = None
+        kelly_raw = kelly_half = kelly_capped = None
+
     return {
         "horizon": horizon, "explosive_pct": explosive_pct,
         "fee_bps": fee_bps, "next_open_fill": bool(next_open_fill),
@@ -154,6 +269,10 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
         "fwd_p75": round(float(np.percentile(arr, 75)), 2) if arr.size else None,
         "non_trigger_rate": round(1 - precision, 4) if fired else None,
         "by_regime": by_regime,
+        # B11 expectancy / Kelly overlay (informational position-size inputs; never scored)
+        "win_rate": win_rate, "avg_win_pct": avg_win_pct, "avg_loss_pct": avg_loss_pct,
+        "expectancy_pct": expectancy_pct,
+        "kelly_raw": kelly_raw, "kelly_half": kelly_half, "kelly_capped": kelly_capped,
     }
 
 
