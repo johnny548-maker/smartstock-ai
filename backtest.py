@@ -23,6 +23,7 @@ an optimistic upper bound. The keyless second-best — a curated busted-momentum
 set (config.BUSTED_PEERS) — is mixed in by run_backtest to put loser paths back; the
 result reports n_names + a survivorship_note so the bias is never read away.
 """
+import math
 import numpy as np
 
 UP_THRESH = 5.0          # bench fwd return > +5% over window → UP regime
@@ -154,6 +155,105 @@ def wilson_ci(k, n, z=1.96):
     center = (p + z2 / (2 * n)) / denom
     margin = (z / denom) * np.sqrt(p * (1 - p) / n + z2 / (4 * n * n))
     return (max(0.0, center - margin), min(1.0, center + margin))
+
+
+# ── B12 multiple-testing correction (the keep/kill gate, family-wise + FDR aware) ──
+# OVERLAY-NOT-SCORER: these are pure stats on the BACKTEST side. They only TIGHTEN the
+# keep/kill ruler — a signal must clear ci_beats_base AND Bonferroni AND BH to earn live
+# weight. They never add an overlay and never touch the scorer. ADDITIVE: can only REMOVE
+# signals from KEEP, never add. Stdlib math only (import math) — keyless.
+def _norm_cdf(z):
+    """Standard normal CDF Φ(z) via the stdlib error function. No SciPy needed."""
+    return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
+
+
+def signal_pvalue(k, n, p0):
+    """One-sided UPPER-tail p that observed precision k/n exceeds base rate p0.
+
+    Normal approximation to Binomial(n, p0) with continuity correction:
+        z = (k - 0.5 - n*p0) / sqrt(n*p0*(1-p0));  p = 1 - Φ(z).
+    Edge cases (honest, conservative): n==0 → 1.0; p0<=0 or p0>=1 → 1.0
+    (degenerate base, no test); when (k-0.5)<=n*p0 the precision is at/below base so
+    p>=0.5. Returns a float in [0,1].
+    """
+    if n == 0:
+        return 1.0
+    if p0 <= 0.0 or p0 >= 1.0:
+        return 1.0
+    mean = n * p0
+    var = n * p0 * (1.0 - p0)
+    if var <= 0.0:
+        return 1.0
+    z = (k - 0.5 - mean) / math.sqrt(var)
+    p = 1.0 - _norm_cdf(z)
+    return min(1.0, max(0.0, p))
+
+
+def bonferroni_pass(pvals, alpha=0.05):
+    """Family-wise (Bonferroni) per-index mask: pvals[i] <= alpha/m, m=len(pvals).
+
+    m counts ALL signals (incl n==0 with p=1.0) for an honest family size. Empty → [].
+    """
+    m = len(pvals)
+    if m == 0:
+        return []
+    thr = alpha / m
+    return [p <= thr for p in pvals]
+
+
+def benjamini_hochberg_pass(pvals, q=0.10):
+    """Benjamini-Hochberg FDR STEP-UP, returned as a per-ORIGINAL-index boolean mask.
+
+    Sort p ascending; find the LARGEST rank r (1-indexed) with p_(r) <= (r/m)*q; reject
+    ALL hypotheses whose p <= p_(r) (the step-up threshold), then re-map those decisions
+    back to input order. Empty → []. NOTE the common bug this avoids: rejecting only the
+    elements that individually satisfy p_(i) <= (i/m)*q UNDER-rejects — the step-up rule
+    rejects everything up to the largest passing rank, including elements that failed
+    their own individual comparison.
+    """
+    m = len(pvals)
+    if m == 0:
+        return []
+    order = sorted(range(m), key=lambda i: pvals[i])    # original indices, p ascending
+    largest_r = 0                                        # 0 = no rejections
+    for rank, idx in enumerate(order, start=1):
+        if pvals[idx] <= (rank / m) * q:
+            largest_r = rank
+    mask = [False] * m
+    for rank, idx in enumerate(order, start=1):
+        if rank <= largest_r:                            # step-up: reject all up to r
+            mask[idx] = True
+    return mask
+
+
+def correction_gate(results, alpha=0.05, q=0.10):
+    """Annotate each backtest result with multiple-testing decisions — gate only TIGHTENS.
+
+    Each input dict carries fired_explosive, fired, base_rate, ci_beats_base. Per signal
+    compute pval = signal_pvalue(fired_explosive, fired, base_rate); run bonferroni_pass +
+    benjamini_hochberg_pass over the FULL family. Return a NEW list of COPIES (inputs are
+    NOT mutated), order preserved, each annotated with:
+        'pvalue' (float), 'bonferroni_pass' (bool), 'bh_pass' (bool),
+        'kept' (bool = ci_beats_base AND bonferroni_pass AND bh_pass),
+        'family_size' (int m).
+    ADDITIVE: 'kept' can only be a SUBSET of the old ci_beats_base KEEP — never a superset.
+    """
+    results = list(results or [])
+    m = len(results)
+    pvals = [signal_pvalue(r.get("fired_explosive", 0), r.get("fired", 0),
+                           r.get("base_rate", 0.0)) for r in results]
+    bonf = bonferroni_pass(pvals, alpha)
+    bh = benjamini_hochberg_pass(pvals, q)
+    out = []
+    for idx, r in enumerate(results):
+        g = dict(r)                                      # copy — never mutate input
+        g["pvalue"] = pvals[idx]
+        g["bonferroni_pass"] = bool(bonf[idx])
+        g["bh_pass"] = bool(bh[idx])
+        g["kept"] = bool(r.get("ci_beats_base") and bonf[idx] and bh[idx])
+        g["family_size"] = m
+        out.append(g)
+    return out
 
 
 def _adv_ok(df, i, floor):

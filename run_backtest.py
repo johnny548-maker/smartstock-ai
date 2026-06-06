@@ -74,15 +74,24 @@ DEFS = {
 def write_kelly_state(metrics_by_signal, path="docs/data/_kelly_state.json"):
     """Offline writer for the B11 Kelly position-size GUIDANCE overlay.
 
-    Dumps per-signal edge stats for CI-VALIDATED signals ONLY (ci_beats_base==True) —
-    an overlay only gives a Kelly hint to signals that already passed the existing
-    weighting gate. OVERLAY-NOT-SCORER: this artifact feeds an informational position
-    CEILING in the PWA; it is NEVER read by strategy.score_stock or ranking. Run offline
-    by this script (not the daily cron), so a plain datetime.date.today() asof is fine.
+    Dumps per-signal edge stats for MULTIPLE-TESTING SURVIVORS ONLY (B12: kept==True,
+    i.e. ci_beats_base AND Bonferroni AND BH) — an overlay only gives a Kelly hint to
+    signals that already passed the (now multiple-comparisons-aware) weighting gate.
+    OVERLAY-NOT-SCORER: this artifact feeds an informational position CEILING in the PWA;
+    it is NEVER read by strategy.score_stock or ranking. Run offline by this script (not
+    the daily cron), so a plain datetime.date.today() asof is fine.
+
+    Accepts either a {name: metrics} mapping OR a list of gated dicts (each carrying
+    'name' + the B12 'kept' annotation). Both forms gate on the corrected 'kept' so
+    _kelly_state.json signals == the corrected KEEP list.
     """
+    if isinstance(metrics_by_signal, dict):
+        items = list((metrics_by_signal or {}).items())
+    else:
+        items = [(m.get("name"), m) for m in (metrics_by_signal or [])]
     state = {"asof": datetime.date.today().isoformat()}
-    for name, m in (metrics_by_signal or {}).items():
-        if not m or not m.get("ci_beats_base"):
+    for name, m in items:
+        if not m or not m.get("kept"):
             continue
         state[name] = {
             "win_rate": m.get("win_rate"),
@@ -92,7 +101,11 @@ def write_kelly_state(metrics_by_signal, path="docs/data/_kelly_state.json"):
             "kelly_raw": m.get("kelly_raw"),
             "kelly_half": m.get("kelly_half"),
             "kelly_capped": m.get("kelly_capped"),
-            "ci_beats_base": True,
+            "ci_beats_base": bool(m.get("ci_beats_base")),
+            "kept": True,
+            "pvalue": m.get("pvalue"),
+            "bonferroni_pass": bool(m.get("bonferroni_pass")),
+            "bh_pass": bool(m.get("bh_pass")),
             "fired": m.get("fired"),
         }
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -117,41 +130,60 @@ def main():
           f"Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps, fee={FEE_BPS}bps (net-of-cost)\n")
 
     hdr = f"{'signal':<22}{'fired':>6}{'prec':>7}{'lift':>6}{'CIlo':>7}{'CI>base':>8}" \
+          f"{'p':>9}{'Bonf':>6}{'BH':>5}{'KEEP':>6}" \
           f"{'UP':>6}{'FLAT':>6}{'DOWN':>6}{'p50':>7}"
     print(hdr); print("-" * len(hdr))
-    keep = []
     base_rate = None
-    metrics = {}                                     # B11: per-signal edge stats for Kelly overlay
+    # B12: COLLECT all signal metrics first, then run the multiple-testing correction
+    # over the FULL family before deciding keep/kill — a per-signal inline decision
+    # cannot be Bonferroni/BH-aware (the family size isn't known until every signal ran).
+    results = []
     for name, fn in DEFS.items():
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
                                      step=10, explosive_pct=explosive, min_bars=200,
                                      next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
                                      fee_bps=FEE_BPS)
-        metrics[name] = m
+        m["name"] = name
+        results.append(m)
         base_rate = m["base_rate"]
-        r = m["by_regime"]
-        flag = "YES" if m["ci_beats_base"] else "no"
-        print(f"{name:<22}{m['fired']:>6}{m['precision']:>7.2%}{m['lift']:>6.2f}"
-              f"{m['precision_ci'][0]:>7.2%}{flag:>8}"
-              f"{r['up']['lift']:>6.2f}{r['flat']['lift']:>6.2f}{r['down']['lift']:>6.2f}"
-              f"{(m['fwd_p50'] or 0):>6.1f}%")
-        if m["ci_beats_base"]:
-            keep.append((name, m["lift"], r["flat"]["lift"]))
 
-    # B11 overlay: persist edge stats for CI-validated signals → position-size CEILING
+    # B12 multiple-testing correction over the full family (Bonferroni α/m + BH q=0.10).
+    # gated[] are COPIES annotated with pvalue/bonferroni_pass/bh_pass/kept/family_size.
+    gated = backtest.correction_gate(results, alpha=0.05, q=0.10)
+
+    keep = []
+    for g in gated:
+        r = g["by_regime"]
+        flag = "YES" if g["kept"] else "no"
+        print(f"{g['name']:<22}{g['fired']:>6}{g['precision']:>7.2%}{g['lift']:>6.2f}"
+              f"{g['precision_ci'][0]:>7.2%}"
+              f"{('Y' if g['ci_beats_base'] else 'n'):>8}"
+              f"{g['pvalue']:>9.4f}"
+              f"{('Y' if g['bonferroni_pass'] else 'n'):>6}"
+              f"{('Y' if g['bh_pass'] else 'n'):>5}"
+              f"{flag:>6}"
+              f"{r['up']['lift']:>6.2f}{r['flat']['lift']:>6.2f}{r['down']['lift']:>6.2f}"
+              f"{(g['fwd_p50'] or 0):>6.1f}%")
+        if g["kept"]:
+            keep.append((g["name"], g["lift"], r["flat"]["lift"]))
+
+    # B11/B12 overlay: persist edge stats for the corrected KEEP list (multiple-testing
+    # survivors only) → position-size CEILING. Gated on g['kept'], not raw ci_beats_base,
+    # so _kelly_state.json signals == the corrected KEEP list above.
     try:
         from config import KELLY_STATE
         kelly_path = KELLY_STATE
     except Exception:
         kelly_path = "docs/data/_kelly_state.json"
-    write_kelly_state(metrics, kelly_path)
+    write_kelly_state(gated, kelly_path)
 
     print(f"\nbase rate={base_rate:.2%}  horizon={horizon}  explosive=+{explosive:.0f}%")
     print(f"coverage: {len(hist)} names ({n_busted} busted-peer stress names) · "
           f"net-of-cost (slip {SLIP_BPS}bps + fee {FEE_BPS}bps) · next-open fill")
     print("survivorship: partial — busted peers still trade; true delisted names "
           "are absent (yfinance survivors). Lift remains an optimistic upper bound.")
-    print("\nKEEP (CI lower bound > base rate) — eligible for live weight:")
+    print("\nKEEP (CI>base AND Bonferroni α/m AND BH q=0.10) — multiple-testing-corrected"
+          " — eligible for live weight:")
     for name, lift, flat in sorted(keep, key=lambda x: -x[1]):
         beta_warn = "  [beta? flat-lift<=1]" if flat <= 1.0 else ""
         print(f"  {name:<22} lift {lift:.2f} (flat-regime {flat:.2f}){beta_warn}")

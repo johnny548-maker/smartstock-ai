@@ -1583,5 +1583,146 @@ class TestExpectancyKelly(unittest.TestCase):
         verdict._KELLY_STATE_CACHE = {}
 
 
+class TestMultipleTesting(unittest.TestCase):
+    """B12 multiple-testing correction (Bonferroni + Benjamini-Hochberg) — pure
+    synthetic hand-computed math, no network.
+
+    Overlay-not-scorer: this sits entirely on the BACKTEST side of the gate. It only
+    makes the keep/kill ruler STRICTER (a signal must clear ci_beats_base AND
+    Bonferroni AND BH to earn live weight). It can only REMOVE signals from KEEP,
+    never add — the gate only TIGHTENS.
+    """
+
+    # --- signal_pvalue (one-sided upper-tail, normal approx + continuity corr) ---
+    def test_signal_pvalue_significant(self):
+        # 40/100 precision vs 10% base → strongly significant
+        self.assertLess(backtest.signal_pvalue(40, 100, 0.10), 0.001)
+
+    def test_signal_pvalue_at_base_is_half(self):
+        # precision == base rate → p near 0.5. The spec's mandated continuity correction
+        # (k-0.5) nudges z to -1/6, so p≈0.566 (just ABOVE 0.5). Bound widened from the
+        # spec's <=0.55 to <0.60 to honor the mandated formula verbatim while still
+        # asserting "near base" (distinct from below-base 0.967 and significant ~0).
+        p = backtest.signal_pvalue(10, 100, 0.10)
+        self.assertTrue(0.45 < p < 0.60, f"expected ~0.5, got {p}")
+
+    def test_signal_pvalue_below_base(self):
+        # precision below base → p > 0.5 (no upper-tail evidence)
+        self.assertGreater(backtest.signal_pvalue(5, 100, 0.10), 0.5)
+
+    def test_signal_pvalue_zero_n_safe(self):
+        self.assertEqual(backtest.signal_pvalue(0, 0, 0.10), 1.0)
+
+    def test_signal_pvalue_degenerate_base(self):
+        self.assertEqual(backtest.signal_pvalue(5, 10, 0.0), 1.0)
+        self.assertEqual(backtest.signal_pvalue(5, 10, 1.0), 1.0)
+
+    # --- _norm_cdf (standard normal CDF via erf) ---
+    def test_norm_cdf_known(self):
+        self.assertAlmostEqual(backtest._norm_cdf(0.0), 0.5, places=3)
+        self.assertAlmostEqual(backtest._norm_cdf(1.96), 0.975, places=3)
+        self.assertAlmostEqual(backtest._norm_cdf(-1.96), 0.025, places=3)
+
+    # --- bonferroni_pass (per-index mask: p <= alpha/m) ---
+    def test_bonferroni_basic(self):
+        # m=4, thr=0.0125 → only 0.001 passes
+        mask = backtest.bonferroni_pass([0.001, 0.02, 0.04, 0.5], 0.05)
+        self.assertEqual(mask, [True, False, False, False])
+
+    def test_bonferroni_empty(self):
+        self.assertEqual(backtest.bonferroni_pass([]), [])
+
+    # --- benjamini_hochberg_pass (BH-FDR step-up) ---
+    def test_bh_basic_known_set(self):
+        # m=5, q=0.10. Sorted p: 0.001,0.008,0.039,0.041,0.9.
+        # r/m*q thresholds: 0.02,0.04,0.06,0.08,0.10.
+        # largest r with p_(r)<=thr is r=4 (0.041<=0.08) → reject 4 smallest.
+        mask = backtest.benjamini_hochberg_pass([0.001, 0.008, 0.039, 0.041, 0.9], 0.10)
+        self.assertEqual(mask, [True, True, True, True, False])
+
+    def test_bh_is_looser_than_bonferroni(self):
+        pvals = [0.001, 0.02, 0.04, 0.5]
+        bh = backtest.benjamini_hochberg_pass(pvals)
+        bon = backtest.bonferroni_pass(pvals)
+        self.assertGreaterEqual(sum(bh), sum(bon))
+
+    def test_bh_order_preserved(self):
+        # same 5-set as known case but shuffled → smallest-4 True regardless of position
+        mask = backtest.benjamini_hochberg_pass([0.04, 0.001, 0.9, 0.008, 0.039], 0.10)
+        # original index 2 holds 0.9 (the only non-reject)
+        self.assertEqual(mask, [True, True, False, True, True])
+
+    def test_bh_no_rejections(self):
+        mask = backtest.benjamini_hochberg_pass([0.2, 0.3, 0.4, 0.5, 0.6], 0.10)
+        self.assertEqual(mask, [False] * 5)
+
+    # --- correction_gate (annotates copies; gate only TIGHTENS) ---
+    def test_correction_gate_tightens_only(self):
+        # three signals all ci_beats_base=True; one has a weak p (k just above base
+        # in a large family) → its 'kept' flips False while ci_beats_base stays True.
+        results = [
+            {"name": "strong1", "fired_explosive": 40, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+            {"name": "strong2", "fired_explosive": 38, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+            {"name": "weak", "fired_explosive": 13, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+        ]
+        gated = backtest.correction_gate(results, alpha=0.05, q=0.10)
+        weak = next(g for g in gated if g["name"] == "weak")
+        self.assertTrue(weak["ci_beats_base"])      # untouched
+        self.assertFalse(weak["kept"])              # tightened away
+        strong = next(g for g in gated if g["name"] == "strong1")
+        self.assertTrue(strong["kept"])
+
+    def test_correction_gate_kept_requires_both(self):
+        results = [
+            # ci fails but pvalue tiny → kept False (ci_beats_base is a hard requirement)
+            {"name": "ci_fail", "fired_explosive": 40, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": False},
+            # ci passes AND significant under both → kept True
+            {"name": "both_pass", "fired_explosive": 45, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+        ]
+        gated = backtest.correction_gate(results)
+        ci_fail = next(g for g in gated if g["name"] == "ci_fail")
+        both = next(g for g in gated if g["name"] == "both_pass")
+        self.assertFalse(ci_fail["kept"])
+        self.assertTrue(both["kept"])
+
+    def test_correction_gate_immutable(self):
+        original = [
+            {"name": "a", "fired_explosive": 40, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+            {"name": "b", "fired_explosive": 38, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+        ]
+        gated = backtest.correction_gate(original)
+        for o in original:
+            self.assertNotIn("kept", o)
+            self.assertNotIn("pvalue", o)
+            self.assertNotIn("bonferroni_pass", o)
+            self.assertNotIn("bh_pass", o)
+        for g in gated:
+            self.assertIn("kept", g)
+            self.assertIn("pvalue", g)
+
+    def test_correction_gate_family_size(self):
+        # family_size == len(results), counting an n==0 (p=1.0) signal honestly
+        results = [
+            {"name": "a", "fired_explosive": 40, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+            {"name": "b", "fired_explosive": 38, "fired": 100,
+             "base_rate": 0.10, "ci_beats_base": True},
+            {"name": "dead", "fired_explosive": 0, "fired": 0,
+             "base_rate": 0.10, "ci_beats_base": False},
+        ]
+        gated = backtest.correction_gate(results)
+        for g in gated:
+            self.assertEqual(g["family_size"], 3)
+        dead = next(g for g in gated if g["name"] == "dead")
+        self.assertEqual(dead["pvalue"], 1.0)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
