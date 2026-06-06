@@ -298,6 +298,13 @@ REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
 KELLY_STATE = os.path.join(WEB_DIR, "data", "_kelly_state.json")
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
+# P2 keyless environment/overlay 24h TTL caches (sources/_cache.cached_fetch). Slow-moving
+# monthly/quarterly sources (DGBAS/NDC/BLS/Treasury/SEC frames) → a 24h cache keeps the daily
+# cron off the live endpoints. OVERLAY-NOT-SCORER: cached payloads feed the 'environment'
+# section + per-stock overlays only, never the scorer.
+ENV_TW_CACHE = os.path.join(WEB_DIR, "data", "_env_tw_cache.json")     # macro_tw industry env 24h
+ENV_US_CACHE = os.path.join(WEB_DIR, "data", "_env_us_cache.json")     # macro_us BLS/FX env 24h
+SEC_FRAMES_TTL_OK = True            # sec_frames caches internally via sources._cache (24h)
 PORTFOLIO_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portfolio_state.json")
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartstock.log")
 

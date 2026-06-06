@@ -62,21 +62,65 @@ def _make_data():
 
 def _sample_overlays_map(picks):
     """Fabricate a {code -> [overlay]} map covering several picks, all kinds/severities.
-    Keys use BOTH bare TWSE codes and full US symbols (the real wiring keys both ways)."""
+    Keys use BOTH bare TWSE codes and full US symbols (the real wiring keys both ways).
+
+    P2 EXTENSION: also emits a sec_frames 'fundamental' overlay and an openfda 'catalyst'
+    overlay on US-style symbols, so the golden test proves the new P2 per-stock overlays
+    flow through build_payload additively (never perturbing score/rank)."""
     omap = {}
     for i, p in enumerate(picks):
         sym = p["stock"]
         code = sym.replace(".TWO", "").replace(".TW", "")
         kind = ["chip", "inst", "fundamental"][i % 3]
         sev = ["info", "warn", "risk"][i % 3]
-        omap[code] = [
+        ovs = [
             make_overlay(source="twse_t86", kind=kind, label="測試 overlay %d" % i,
                          value={"x": i}, severity=sev, as_of="2026-06-06",
                          note="informational only"),
             make_overlay(source="sec_edgar", kind="inst", label="內部人買進",
                          value={"net_p_shares": 1000 + i}, severity="info"),
         ]
+        # P2 per-stock overlays: sec_frames (fundamental) + openfda (catalyst). Both are
+        # additive sidecars — they must not touch score/rank.
+        if not sym.endswith((".TW", ".TWO")):
+            ovs.append(make_overlay(
+                source="sec_frames", kind="fundamental",
+                label="Revenue (XBRL) $1.23B / QoQ +5.0%",
+                value={"Revenues": {"val": 1.23e9, "qoq_pct": 5.0}},
+                severity="info", as_of="2026-06-06",
+                note="US GAAP XBRL frames 揭露數字資訊性顯示；needs_backtest=False"))
+            ovs.append(make_overlay(
+                source="openfda", kind="catalyst",
+                label="FDA核准 測試藥",
+                value={"kind": "approval", "brand": "測試藥"},
+                severity="info", as_of="2026-06-06",
+                note="FDA藥證核准為資訊性催化劑 overlay；需回測驗證後才加權"))
+        omap[code] = ovs
     return omap
+
+
+def _sample_environment():
+    """Fabricate a P2 market/sector ENVIRONMENT dict (the additive top-level payload key).
+    Mirrors the shape main.py merges from taifex/macro_tw/macro_us to_environment() — NOT
+    keyed by ticker, never a score input."""
+    return {
+        "regime": {
+            "source": "taifex", "foreign_tx_net": -3500, "put_call_ratio": 135.0,
+            "regime_hint": "risk_off", "as_of": "2026-06-06", "needs_backtest": True,
+            "note": "informational regime",
+        },
+        "industry": {
+            "export_orders_yoy": 0.12, "electronics_export_yoy": 0.18,
+            "industrial_production_yoy": 0.07,
+            "business_cycle": {"light": "綠", "score": 29},
+            "semi_hs_export_yoy": 0.21,
+            "meta": {"overlay_only": True, "needs_backtest": True},
+        },
+        "macro": {
+            "cpi_yoy": 3.1, "ppi_yoy": 2.4, "usd_twd": 31.5,
+            "usd_twd_needs_backtest": False, "source": "us_macro",
+        },
+    }
 
 
 def _ranking_fingerprint(ranked):
@@ -152,7 +196,15 @@ class TestPayloadGolden(unittest.TestCase):
             kwargs["source_coverage"] = {
                 "twse_t86": {"ok": True, "codes": 3, "overlays": 6},
                 "sec": {"ok": True, "codes": 2, "overlays": 2},
+                "sec_frames": {"ok": True, "codes": 3, "overlays": 3},
+                "openfda": {"ok": False, "codes": 0, "overlays": 0},
+                # P2 environment-level sources record ok/keys (not codes/overlays).
+                "taifex": {"ok": True, "keys": 3},
+                "macro_tw": {"ok": True, "keys": 4},
+                "macro_us": {"ok": True, "keys": 3},
             }
+            # P2 additive top-level ENVIRONMENT section (regime/industry/macro gauges).
+            kwargs["environment"] = _sample_environment()
         return web_export.build_payload(**kwargs)
 
     def test_score_and_rank_byte_identical(self):
@@ -190,6 +242,65 @@ class TestPayloadGolden(unittest.TestCase):
         for o in carried[0]["overlays"]:
             self.assertIn("kind", o)
             self.assertIn("severity", o)
+
+    # ── P2: the new 'environment' top-level key + sec_frames/openfda overlays ──────────
+    def test_environment_is_additive_top_level(self):
+        """The P2 'environment' key is a new ADDITIVE top-level section. It must be empty
+        ({}) without P2 wiring and populated with P2 wiring — and its presence must NOT
+        change any pick's score/factors or the pick order (golden-additive invariant)."""
+        base = self._payload(with_overlays=False)
+        withov = self._payload(with_overlays=True)
+        # backward-compatible default: no-overlay payload carries an empty environment
+        self.assertEqual(base.get("environment"), {})
+        # P2 payload carries the regime/industry/macro gauges
+        env = withov.get("environment")
+        self.assertTrue(env)
+        self.assertIn("regime", env)
+        self.assertIn("industry", env)
+        self.assertIn("macro", env)
+        self.assertEqual(env["regime"]["regime_hint"], "risk_off")
+        # score/factors/order still byte-identical with environment added
+        self.assertEqual(_picks_fingerprint(base), _picks_fingerprint(withov))
+
+    def test_environment_carries_no_score_keys(self):
+        """OVERLAY-NOT-SCORER: the environment section must never carry a rank/weight/points
+        key, and no top-level/regime/macro 'score' — it is a sidecar context section, not a
+        scoring input. The ONLY 'score' allowed anywhere is the NDC 景氣對策信號 composite
+        gauge value at environment.industry.business_cycle.score (9-45), which is a named
+        macro gauge, NOT a per-stock scoring field."""
+        env = self._payload(True)["environment"]
+        flat = json.dumps(env, ensure_ascii=False)
+        for forbidden in ('"rank"', '"weight"', '"points"'):
+            self.assertNotIn(forbidden, flat,
+                             "environment leaked a scoring key — invariant violated")
+        # walk the dict: a 'score' key is permitted ONLY inside business_cycle.
+        def _assert_no_stray_score(node, path):
+            if isinstance(node, dict):
+                for k, v in node.items():
+                    if k == "score" and not path.endswith("business_cycle"):
+                        self.fail("environment carried a stray 'score' at %s.%s" % (path, k))
+                    _assert_no_stray_score(v, path + "." + str(k))
+            elif isinstance(node, list):
+                for i, v in enumerate(node):
+                    _assert_no_stray_score(v, "%s[%d]" % (path, i))
+        _assert_no_stray_score(env, "environment")
+
+    def test_sec_frames_and_openfda_overlays_present(self):
+        """The P2 per-stock producers (sec_frames=fundamental, openfda=catalyst) flow through
+        build_payload onto US picks as additive overlay sidecars (never scored)."""
+        withov = self._payload(True)
+        sources_seen = set()
+        for p in withov["picks"]:
+            for o in (p.get("overlays") or []):
+                sources_seen.add(o.get("source"))
+        self.assertIn("sec_frames", sources_seen)
+        self.assertIn("openfda", sources_seen)
+        # and they must not have perturbed score/factors vs the no-overlay payload
+        base = self._payload(False)
+        for pb, pw in zip(base["picks"], withov["picks"]):
+            self.assertEqual(pb["stock"], pw["stock"])
+            self.assertEqual(pb["score"], pw["score"])
+            self.assertEqual(pb.get("factors"), pw.get("factors"))
 
 
 class TestAttachPurity(unittest.TestCase):

@@ -55,6 +55,16 @@ from sources import twse as _twse
 from sources import tpex as _tpex
 from sources import tdcc as _tdcc
 from sources import sec as _sec
+# P2 keyless overlay/environment producers (same OVERLAY-NOT-SCORER contract). Market/
+# sector-level (macro_tw/taifex/macro_us) expose to_environment() -> a flat dict of named
+# gauges (NOT keyed by ticker) merged into a separate 'environment' payload section; the
+# per-stock producers (sec_frames/openfda) expose to_overlays() -> {ticker:[overlay]} that
+# MERGE into the existing overlays_map beside chip/法人. NONE of these touch the scoring call.
+from sources import macro_tw as _macro_tw
+from sources import taifex as _taifex
+from sources import macro_us as _macro_us
+from sources import sec_frames as _sec_frames
+from sources import openfda as _openfda
 
 
 def setup_logging():
@@ -512,6 +522,102 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP sec overlays: %s", e); skips.append("sec_overlays")
 
+    # 7e-P2. sources/ P2 keyless overlays — market/sector ENVIRONMENT + extra per-stock
+    #     overlays. Same OVERLAY-NOT-SCORER contract: nothing here touches the scoring call
+    #     (ranked is already final). Each source is INDEPENDENTLY try/except-guarded → a dead
+    #     source SKIPs without aborting. Market-level sources expose to_environment() (a flat
+    #     dict of named gauges, NOT keyed by ticker) → merged into a single 'environment' dict
+    #     {regime, industry, macro}; per-stock sources (sec_frames/openfda) expose to_overlays()
+    #     → {ticker:[overlay]} merged into overlays_map (same path as P1 via _merge_overlays).
+    import time as _time
+    from sources import _cache as _src_cache_p2
+    environment = {}             # {regime:{...}, industry:{...}, macro:{...}} (market-level)
+    _now_ts = _time.time()
+
+    # --- TAIFEX index-level regime (外資台指期淨未平倉 + Put/Call ratio) -------------------
+    try:
+        _inst_rows = _taifex.fetch_inst_futures()
+        _pcr_rows = _taifex.fetch_put_call_ratio()
+        _regime_env = _taifex.to_environment(_inst_rows, _pcr_rows, as_of=date_str)
+        environment["regime"] = _regime_env
+        source_coverage["taifex"] = {
+            "ok": bool(_inst_rows or _pcr_rows),
+            "keys": len([k for k, v in _regime_env.items() if v is not None and k != "note"]),
+        }
+    except Exception as e:
+        log.warning("SKIP taifex environment: %s", e); skips.append("taifex_env")
+
+    # --- macro_tw industry/sector environment (外銷訂單→出貨→產出 + 景氣對策信號) — 24h cache -
+    try:
+        def _fetch_tw_env():
+            cycle_rows = _macro_tw.fetch_business_cycle_signal()
+            export_rows = _macro_tw.fetch_export_orders()
+            ipi_rows = _macro_tw.fetch_industrial_production()
+            semi_hs_rows = _macro_tw.fetch_customs_hs(_macro_tw.SEMI_HS_CODE)
+            return _macro_tw.to_environment(
+                export_rows=export_rows, ipi_rows=ipi_rows,
+                cycle_rows=cycle_rows, semi_hs_rows=semi_hs_rows)
+        _industry_env = _src_cache_p2.cached_fetch(
+            config.ENV_TW_CACHE, "macro_tw_env", 24 * 3600, _now_ts, _fetch_tw_env)
+        if _industry_env:
+            environment["industry"] = _industry_env
+            _ig = [k for k, v in _industry_env.items()
+                   if k != "meta" and v not in (None, {"light": None, "score": None})]
+            source_coverage["macro_tw"] = {"ok": bool(_ig), "keys": len(_ig)}
+        else:
+            source_coverage["macro_tw"] = {"ok": False, "keys": 0}
+    except Exception as e:
+        log.warning("SKIP macro_tw environment: %s", e); skips.append("macro_tw_env")
+
+    # --- macro_us environment (BLS CPI/PPI YoY + Treasury USD/TWD book rate) — 24h cache ---
+    try:
+        def _fetch_us_env():
+            return _macro_us.to_environment()
+        _macro_env = _src_cache_p2.cached_fetch(
+            config.ENV_US_CACHE, "macro_us_env", 24 * 3600, _now_ts, _fetch_us_env)
+        if _macro_env:
+            environment["macro"] = _macro_env
+            _mg = [k for k in ("cpi_yoy", "ppi_yoy", "usd_twd") if _macro_env.get(k) is not None]
+            source_coverage["macro_us"] = {"ok": bool(_mg), "keys": len(_mg)}
+        else:
+            source_coverage["macro_us"] = {"ok": False, "keys": 0}
+    except Exception as e:
+        log.warning("SKIP macro_us environment: %s", e); skips.append("macro_us_env")
+
+    # --- SEC XBRL frames per-stock US fundamentals (Revenues/NetIncomeLoss) overlays -------
+    try:
+        if _us_syms:
+            _t2c2, _c2t2 = _sec._build_ticker_cik()
+            _frames_index = _sec_frames.build_fundamentals_index(fetch_fn=_sec._real_fetch)
+            _merge_overlays(
+                _sec_frames.to_overlays(_frames_index, _c2t2, as_of=date_str), "sec_frames")
+        else:
+            source_coverage["sec_frames"] = {"ok": False, "codes": 0, "overlays": 0}
+    except Exception as e:
+        log.warning("SKIP sec_frames overlays: %s", e); skips.append("sec_frames_overlays")
+
+    # --- openFDA drug approval/recall catalyst overlays (US pharma picks, sponsor-mapped) --
+    try:
+        # Curated sponsor->ticker map keyed off the watchlist's pharma/biotech names (narrow
+        # by design — see openfda.py docstring on the sponsor-name join pain). The current
+        # 28-name watchlist holds no pharma, so this stays silent today (graceful, no spurious
+        # fire) yet wires the source so a future pharma pick lights up with zero code change.
+        _sponsor_map = getattr(config, "OPENFDA_SPONSOR_MAP", None) or {}
+        if _sponsor_map:
+            _approvals = _openfda.fetch_recent_approvals(since_days=30)
+            _recalls = _openfda.fetch_recent_recalls(since_days=30)
+            _merge_overlays(
+                _openfda.to_overlays(_approvals, _recalls, _sponsor_map, as_of=date_str),
+                "openfda")
+        else:
+            source_coverage["openfda"] = {"ok": False, "codes": 0, "overlays": 0}
+    except Exception as e:
+        log.warning("SKIP openfda overlays: %s", e); skips.append("openfda_overlays")
+
+    if environment:
+        log.info("environment gauges: %s",
+                 ", ".join("%s:%s" % (k, "ok" if v else "—") for k, v in environment.items()))
+
     # Attach the merged overlays onto pick_cards + details (immutable — NEW dicts).
     # A symbol resolves an overlay list under its full form OR its bare TWSE code.
     def _overlays_for(symbol):
@@ -559,7 +665,8 @@ def main(web=False):
             signals=sig, themes=themes, opportunity=opp, pick_cards=pick_cards,
             regime=regime, concentration=concentration, shortvol=shortvol_board,
             macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
-            overlays_map=overlays_map, source_coverage=source_coverage)
+            overlays_map=overlays_map, source_coverage=source_coverage,
+            environment=environment)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

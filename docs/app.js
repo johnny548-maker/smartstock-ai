@@ -167,6 +167,42 @@ function macroBanner(d) {
     + `<div class="muted small">總經為「環境背景」，僅供參考，不計入個股評分（要做回測才加權）。</div></div>`;
 }
 
+// P2 market/sector ENVIRONMENT gauges (functional MVP — P4 art-direction is later).
+// d.environment = {regime:{...taifex}, industry:{...macro_tw}, macro:{...macro_us}}.
+// OVERLAY-NOT-SCORER: purely informational header context, never touches score/rank.
+// Coloured by regime_hint (risk_on/neutral/risk_off). Any missing gauge → omitted; an
+// empty/absent environment → '' (backward-compatible with pre-P2 payloads).
+const ENV_REGIME_LABEL = { risk_on: '🟢 偏多', neutral: '🟡 中性', risk_off: '🔴 偏空' };
+function pct1(v) { return v == null ? null : (v >= 0 ? '+' : '') + (v * 100).toFixed(1) + '%'; }
+function envGauge(label, val) {
+  if (val == null || val === '') return '';
+  return `<span class="env-gauge"><span class="env-k muted small">${esc(label)}</span>`
+    + `<b class="env-v">${esc(val)}</b></span>`;
+}
+function environmentBlock(d) {
+  const env = d.environment;
+  if (!env || (!env.regime && !env.industry && !env.macro)) return '';
+  const reg = env.regime || {}, ind = env.industry || {}, mac = env.macro || {};
+  const hint = reg.regime_hint || 'neutral';
+  const cls = hint === 'risk_on' ? 'env-on' : (hint === 'risk_off' ? 'env-off' : 'env-mid');
+  const gauges = [];
+  if (reg.foreign_tx_net != null)
+    gauges.push(envGauge('外資台指期淨未平倉', (reg.foreign_tx_net > 0 ? '+' : '') + reg.foreign_tx_net + ' 口'));
+  if (reg.put_call_ratio != null)
+    gauges.push(envGauge('Put/Call', reg.put_call_ratio));
+  const bc = ind.business_cycle;
+  if (bc && bc.light) gauges.push(envGauge('景氣對策信號', bc.light + (bc.score != null ? '（' + bc.score + '）' : '')));
+  if (ind.export_orders_yoy != null) gauges.push(envGauge('外銷訂單 YoY', pct1(ind.export_orders_yoy)));
+  if (ind.electronics_export_yoy != null) gauges.push(envGauge('電子訂單 YoY', pct1(ind.electronics_export_yoy)));
+  if (mac.cpi_yoy != null) gauges.push(envGauge('美 CPI YoY', mac.cpi_yoy + '%'));
+  if (mac.usd_twd != null) gauges.push(envGauge('USD/TWD', mac.usd_twd));
+  const body = gauges.filter(Boolean).join('');
+  if (!body) return '';
+  return `<div class="env-banner ${cls}"><b>🌏 市場環境：${esc(ENV_REGIME_LABEL[hint] || hint)}</b>`
+    + `<div class="env-gauges">${body}</div>`
+    + `<div class="muted small">指數級／產業總經環境背景，<b>不計入個股評分與排名</b>（需回測驗證後才談加權）。</div></div>`;
+}
+
 function concentrationBlock(d) {
   const c = d.concentration; if (!c || !(c.clusters || []).length) return '';
   let html = '';
@@ -947,7 +983,7 @@ async function showDetail(date) {
   ]);
   // 簡化版面：查詢 + 釘選 + 重點 + 選股(主) 在前；重資訊區塊可收合在後
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
+    searchBar() + pinsBar(d) + tldrBanner(d) + environmentBlock(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     nav +
     anchor('sec-picks', picksHtml) + concentrationBlock(d) +
     anchor('sec-watch', watchHtml) +

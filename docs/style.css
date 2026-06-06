@@ -285,6 +285,23 @@ b.down,.down{color:var(--down)}
 .macro-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .macro-chip{font-size:.85em;padding:2px 7px;border-radius:8px;border:var(--hair);background:var(--surface-1)}
 
+/* P2 market/sector ENVIRONMENT banner (regime/industry/macro gauges). Informational
+   header context only — never a scorer. Coloured by regime_hint (risk_on/neutral/risk_off),
+   reusing the same --up/--gold/--neg token vars as .regime. */
+.env-banner{border-radius:12px;padding:10px 14px;margin-bottom:var(--s4);border:var(--hair);overflow:hidden}
+.env-banner>b{display:inline}
+.env-banner .small{margin-top:5px}
+.env-on{background:color-mix(in srgb,var(--up) 12%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--up) 40%,transparent)}
+.env-mid{background:color-mix(in srgb,var(--gold) 12%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
+.env-off{background:color-mix(in srgb,var(--neg) 14%,var(--surface-1));
+  border-color:color-mix(in srgb,var(--neg) 45%,transparent)}
+.env-gauges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.env-gauge{display:inline-flex;align-items:baseline;gap:4px;font-size:.85em;
+  padding:2px 8px;border-radius:8px;border:var(--hair);background:var(--surface-1)}
+.env-gauge .env-v{font-variant-numeric:tabular-nums}
+
 /* earnings-blackout flag + A/D grade chip */
 .earn-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.72rem;
   font-weight:700;color:var(--highlight);background:color-mix(in srgb,var(--gold) 18%,transparent);

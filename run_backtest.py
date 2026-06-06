@@ -109,6 +109,46 @@ def _overlay_has(card, *, kind=None, source=None, label_contains=None, severity=
     return False
 
 
+# ── P2 ENVIRONMENT-gated predicates (market/sector level, NOT per-stock) ───────────────
+# The P2 market-level sources (taifex regime / macro_tw industry / macro_us macro) produce a
+# single 'environment' dict of named gauges, NOT a per-card overlay. To register them in the
+# SAME unweighted OVERLAY_DEFS family (so a FUTURE env-aware backtest can measure each gauge's
+# regime-conditioning edge), each predicate reads a card's optional '_environment' sidecar
+# (the env dict the daily run could attach for an env-aware harness). A card with no
+# '_environment' (today's price-only harness) → False (graceful, no spurious fire). These are
+# UNWEIGHTED, informational, gated-by-environment-status — NEVER added to DEFS/EARLY_DEFS/
+# config.LEAD_* and NEVER read by strategy.py.
+def _env_of(card):
+    """The market-level environment dict a card may carry under '_environment', else {}.
+    Pure read of an informational sidecar — never any score/factor key."""
+    env = (card or {}).get("_environment")
+    return env if isinstance(env, dict) else {}
+
+
+def _env_regime_is(card, hint):
+    """True iff the card's environment regime_hint == hint (risk_on/neutral/risk_off).
+    Reads environment['regime']['regime_hint'] only. Graceful → False. Pure."""
+    reg = _env_of(card).get("regime")
+    return isinstance(reg, dict) and reg.get("regime_hint") == hint
+
+
+def _env_cycle_light_in(card, lights):
+    """True iff the 景氣對策信號 燈號 ∈ lights (e.g. {'紅','黃紅'}). Reads
+    environment['industry']['business_cycle']['light']. Graceful → False. Pure."""
+    ind = _env_of(card).get("industry")
+    bc = ind.get("business_cycle") if isinstance(ind, dict) else None
+    return isinstance(bc, dict) and bc.get("light") in lights
+
+
+def _env_yoy_positive(card, section, key):
+    """True iff environment[section][key] (a YoY fraction) is > 0. Graceful → False. Pure."""
+    sec = _env_of(card).get(section)
+    if not isinstance(sec, dict):
+        return False
+    v = sec.get(key)
+    return isinstance(v, (int, float)) and v > 0
+
+
 # Registered overlay-derived signal predicates. Signature is (card) → bool (NOT the
 # (s, b) OHLCV signature of DEFS) — these are gated by attached overlay status, to be
 # scored by a FUTURE overlay-aware backtest. UNWEIGHTED, informational, never live.
@@ -137,6 +177,23 @@ OVERLAY_DEFS = {
     # 內部人賣出 (SEC EDGAR Form-4 — open-market S, warn)
     "內部人賣出(SEC-Form4,overlay)":
         lambda card: _overlay_has(card, kind="inst", source="sec_edgar", label_contains="賣出"),
+
+    # ── P2 ENVIRONMENT-gated (market/sector regime conditioning; UNWEIGHTED, never live) ──
+    # TAIFEX index-level regime: foreign-TX-net + PCR rule-of-thumb (taifex.to_environment).
+    "環境_風險偏多(TAIFEX,env)":
+        lambda card: _env_regime_is(card, "risk_on"),
+    "環境_風險偏空(TAIFEX,env)":
+        lambda card: _env_regime_is(card, "risk_off"),
+    # macro_tw 景氣對策信號 燈號 (NDC 6099): 紅/黃紅 = 景氣熱絡 backdrop.
+    "環境_景氣熱絡(macro_tw,env)":
+        lambda card: _env_cycle_light_in(card, ("紅", "黃紅")),
+    # macro_tw 電子外銷訂單 YoY > 0 — leading semiconductor-demand tailwind backdrop.
+    "環境_電子訂單擴張(macro_tw,env)":
+        lambda card: _env_yoy_positive(card, "industry", "electronics_export_yoy"),
+    # macro_us CPI YoY > 0 (always true in practice — a placeholder gauge for an env-aware
+    # inflation-regime split; UNWEIGHTED, informational).
+    "環境_通膨為正(macro_us,env)":
+        lambda card: _env_yoy_positive(card, "macro", "cpi_yoy"),
 }
 
 

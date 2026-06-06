@@ -96,7 +96,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
                   regime=None, concentration=None, shortvol=None, macro=None, fx=None,
-                  watchlist=None, early_board=None, overlays_map=None, source_coverage=None):
+                  watchlist=None, early_board=None, overlays_map=None, source_coverage=None,
+                  environment=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -139,6 +140,11 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "themes": [t for t in (themes or []) if t.get("emerging")],
         "opportunity": opportunity,
         "regime": regime,
+        # P2 market/sector ENVIRONMENT gauges (taifex regime + macro_tw industry + macro_us
+        # macro). Additive top-level section, NOT keyed by ticker, NEVER scored/ranked —
+        # surfaced beside the dashboard for context only (golden-additive invariant). Backward-
+        # compatible: environment defaults to {} so older callers/payloads are unaffected.
+        "environment": environment or {},
         "fx": fx,           # B9 USD/TWD spot context overlay (DISPLAY-ONLY; never scored)
         "macro": macro,     # FRED macro RISK-CONTEXT overlay (informational; never scored)
         "concentration": concentration,
