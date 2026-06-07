@@ -1,0 +1,41 @@
+name: SmartStock Monthly Overlay Readiness
+
+# Runs on the 1st of each month at 06:00 UTC — after enough daily snapshots have
+# accrued in docs/data/_overlay_history/ to begin measuring forward returns.
+# Also triggerable manually from the Actions tab for ad-hoc checks.
+on:
+  schedule:
+    - cron: '0 6 1 * *'   # 1st of month, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # to commit the readiness report + _overlay_history back
+
+concurrency:
+  group: smartstock-monthly-readiness
+  cancel-in-progress: false
+
+jobs:
+  overlay-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run overlay readiness report
+        run: python overlay_readiness.py
+
+      - name: Commit readiness report and accrued overlay history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/overlay_readiness_*.md docs/data/_overlay_history
+          git commit -m "overlay-readiness: $(date -u +%F)" || echo "no changes to commit"
+          git push

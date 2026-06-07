@@ -573,6 +573,21 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 53 分 / 12 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 53,
+    "comments": 12,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-06-07",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
    "source": "sec_ftd",
    "kind": "chip",
    "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 1,310,608 股交割失敗）",

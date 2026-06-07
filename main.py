@@ -45,6 +45,7 @@ import fx_context as fx_mod
 import fundamentals
 import watchlist_tracker
 import stock_detail
+import overlay_snapshot
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -782,6 +783,19 @@ def main(web=False):
                      ", ".join("%s:%d" % (k, (v.get("overlays") or v.get("keys") or 0)) for k, v in source_coverage.items()))
     except Exception as e:
         log.warning("SKIP overlay attach: %s", e); skips.append("overlay_attach")
+
+    # 7b-snapshot. Daily overlay-fired snapshot (backtestable artifact). -----
+    #     Writes docs/data/_overlay_history/<date>.json — compact list of every
+    #     pick / opp leader that had overlays attached today, with close price.
+    #     OVERLAY-NOT-SCORER: reads overlays + price only; never reads score/factors
+    #     via this path; the golden-additive invariant is intact.
+    #     Wrapped in try/except → SKIP-not-abort on any error.
+    try:
+        _opp_leaders = list((opp or {}).get("leaders", [])) if opp else []
+        overlay_snapshot.write_snapshot(
+            date_str, pick_cards, _opp_leaders, ranked=ranked)
+    except Exception as e:
+        log.warning("SKIP overlay_snapshot: %s", e); skips.append("overlay_snapshot")
 
     # 8. Deliver: local file (base) then email (additive) -------------------
     path = notifier_file.write_report(markdown, date_str)

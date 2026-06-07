@@ -671,6 +671,34 @@ ul.wl-list li:first-child{border-top:none}
 }
 
 /* ============================================================================
+   EARLY-OPP SECTION — consolidated 早期機會 with internal sub-tabs
+   Mirrors .dtab/.dtab-nav from the P4 detail card; scoped inside .early-opp.
+   ============================================================================ */
+.early-opp{border:1px solid color-mix(in srgb,var(--accent) 22%,var(--border))}
+.early-opp h2{border-bottom:none;margin-bottom:var(--s2)}
+.eo-legend{margin:.1rem 0 var(--s2);font-size:var(--t-xs)}
+.etab-nav{
+  display:flex;gap:var(--s1);overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding-bottom:var(--s2);margin-bottom:var(--s2);
+  border-bottom:var(--hair);
+}
+.etab-nav::-webkit-scrollbar{display:none}
+.etab{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  min-height:36px;padding:0 12px;border-radius:999px;white-space:nowrap;
+  font-size:var(--t-sm);font-weight:600;cursor:pointer;
+  color:var(--muted);background:var(--card2);border:var(--hair);
+  transition:background .12s ease,color .12s ease;
+}
+.etab.active,.etab:active{
+  color:#fff;background:var(--accent);border-color:transparent;
+}
+:root[data-theme="light"] .etab.active{color:#fff}
+.etab-panel{display:none}
+.etab-panel.active{display:block}
+
+/* ============================================================================
    FUNDAMENTALS ROW
    ============================================================================ */
 .fund-row{width:100%}

@@ -412,7 +412,8 @@ function calendarBlock(d) {
   return section('📅 本周注意', '<ul>' + e.map((x) => `<li>${esc(x)}</li>`).join('') + '</ul>');
 }
 
-function revenueBlock(d) {
+// Returns inner panel HTML for the 營收成長 sub-tab.
+function revenuePanelInner(d) {
   const rev = d.revenue;
   if (!rev || !(rev.candidates || []).length) return '';
   const rows = rev.candidates.map((c) => {
@@ -425,14 +426,20 @@ function revenueBlock(d) {
       : nm;
     return `<li>${head}${ind} — YoY <b class="up">+${c.yoy}%</b>${flag}</li>`;
   }).join('');
-  return foldSection(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`,
-    `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。</p><ul class="rev">${rows}</ul>`, false);
+  return `<p class="muted small">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。${esc(rev.ym || '')}</p><ul class="rev">${rows}</ul>`;
+}
+function revenueBlock(d) {
+  const inner = revenuePanelInner(d);
+  if (!inner) return '';
+  const rev = d.revenue;
+  return foldSection(`🚀 早期成長候選（月營收 YoY · ${esc(rev.ym || '')}）`, inner, false);
 }
 
 // REQ5 — first-class 早期 board promoted out of a deep fold. Renders d.early_board (the
 // promoted breakout candidates). Honest base-rate caveat kept VERBATIM. A validated banner
 // is driven by d.early_validated (default false → show the ⚠️ 未通過回測 banner).
-function breakoutBlock(d) {
+// Returns the INNER panel HTML only (no outer section wrapper) for use in earlyOppBlock sub-tab.
+function breakoutPanelInner(d) {
   const board = d.early_board || (d.opportunity || {}).breakout || [];
   if (!board.length) return '';
   // validated flag may ride on the payload (board-level) or each row; default NOT validated.
@@ -450,9 +457,13 @@ function breakoutBlock(d) {
   // base-rate caveat kept VERBATIM (was the foldSection intro <p>); honest framing mandatory.
   const caveat = '<p class="muted small">Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。'
     + '✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>';
-  // prominent (not a deep fold): a normal section, placed after watchlist / before 機會掃描.
-  return `<section class="block early-board"><h2>🚀 正要起漲（早期 · 未追高）</h2>`
-    + banner + caveat + `<ul class="rev opp-list">${rows}</ul></section>`;
+  return banner + caveat + `<ul class="rev opp-list">${rows}</ul>`;
+}
+// Legacy standalone block kept for backward compatibility (not used in day-report assembly).
+function breakoutBlock(d) {
+  const inner = breakoutPanelInner(d);
+  if (!inner) return '';
+  return `<section class="block early-board"><h2>🚀 正要起漲（早期 · 未追高）</h2>${inner}</section>`;
 }
 
 // Sector/theme RS leaderboard (B7) — INFORMATIONAL overlay, NOT a scorer. Groups
@@ -471,7 +482,8 @@ function groupBlock(d) {
     + `<ol class="rev group-list">${rows}</ol>`, false);
 }
 
-function opportunityBlock(d) {
+// Returns inner panel HTML for the RS領導(機會掃描) sub-tab.
+function opportunityPanelInner(d) {
   const opp = d.opportunity || {};
   const leaders = opp.leaders || [];
   if (!leaders.length) return '';
@@ -490,8 +502,13 @@ function opportunityBlock(d) {
       + `<b class="accel">RS ${l.rs_rating}</b>${th}${ld}<br>`
       + `<span class="muted small">${esc((l.signals || []).join('、'))}</span>${rev}</a></li>`;
   }).join('');
-  return foldSection(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`,
-    `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。點代號看完整分析。informational，非持股。</p><ul class="rev opp-list">${rows}</ul>`, false);
+  return `<p class="muted small">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。點代號看完整分析。informational，非持股。掃 ${esc(opp.scanned || '?')} 檔</p><ul class="rev opp-list">${rows}</ul>`;
+}
+function opportunityBlock(d) {
+  const inner = opportunityPanelInner(d);
+  if (!inner) return '';
+  const opp = d.opportunity || {};
+  return foldSection(`🛰️ 機會掃描（全市場早期領導股 · 掃 ${esc(opp.scanned || '?')} 檔）`, inner, false);
 }
 
 // FINRA RegSHO daily short-volume overlay (B5) — INFORMATIONAL, US-only.
@@ -513,7 +530,8 @@ function shortVolBlock(d) {
   return foldSection('🩳 空方壓力／軋空情境（FINRA RegSHO 每日空量 · 僅美股）', inner, false);
 }
 
-function signalsBlock(d) {
+// Returns inner panel HTML for the 訊號雷達 sub-tab.
+function signalsPanelInner(d) {
   const board = d.signals || [];
   const themes = (d.themes || []).filter((t) => t.emerging);
   if (!board.length && !themes.length) return '';
@@ -530,7 +548,68 @@ function signalsBlock(d) {
         + `<span class="muted small">${esc((r.signals || []).join('、'))}</span></li>`;
     }).join('') + '</ul>';
   }
-  return section('🔎 早期訊號雷達', html);
+  return html;
+}
+function signalsBlock(d) {
+  const inner = signalsPanelInner(d);
+  if (!inner) return '';
+  return section('🔎 早期訊號雷達', inner);
+}
+
+// Sub-tab toggler for the 早期機會 section. Exported on window for inline onclick.
+window.ssEarlyTab = (btnEl, panelId) => {
+  const sec = btnEl.closest('.early-opp');
+  if (!sec) return;
+  sec.querySelectorAll('.etab').forEach((b) => b.classList.remove('active'));
+  sec.querySelectorAll('.etab-panel').forEach((p) => p.classList.remove('active'));
+  btnEl.classList.add('active');
+  const panel = sec.querySelector('#' + panelId);
+  if (panel) panel.classList.add('active');
+};
+
+// Single consolidated 早期機會 section with 4 sub-tabs.
+// Replaces: 正要起漲 + 機會掃描 + 早期成長候選 + 早期訊號雷達 in the day report.
+// Only renders sub-tabs whose data is non-empty; defaults to first non-empty tab.
+function earlyOppBlock(d) {
+  const panels = [
+    {
+      id: 'eo-breakout',
+      label: '拐點(正要起漲)',
+      inner: breakoutPanelInner(d),
+    },
+    {
+      id: 'eo-rs',
+      label: 'RS領導(機會掃描)',
+      inner: opportunityPanelInner(d),
+    },
+    {
+      id: 'eo-rev',
+      label: '營收成長',
+      inner: revenuePanelInner(d),
+    },
+    {
+      id: 'eo-sig',
+      label: '訊號雷達',
+      inner: signalsPanelInner(d),
+    },
+  ].filter((p) => !!p.inner);
+
+  if (!panels.length) return '';
+
+  // Mark the first non-empty panel as active
+  const tabNav2 = `<div class="etab-nav">`
+    + panels.map((p, i) =>
+        `<button class="etab${i === 0 ? ' active' : ''}" onclick="ssEarlyTab(this,'${p.id}')">${esc(p.label)}</button>`
+      ).join('')
+    + `</div>`;
+
+  const tabPanels = panels.map((p, i) =>
+    `<div id="${p.id}" class="etab-panel${i === 0 ? ' active' : ''}">${p.inner}</div>`
+  ).join('');
+
+  const note = `<p class="muted small eo-legend">雷達=訊號總表 · RS領導=強勢動量 · 營收=基本面 · 拐點=最早但最不可靠(回測弱)</p>`;
+
+  return `<section class="block early-opp"><h2>🔭 早期機會</h2>${note}${tabNav2}${tabPanels}</section>`;
 }
 
 function picksBlock(picks, date) {
@@ -1109,31 +1188,25 @@ async function showDetail(date) {
     if (d.date < today) stale = `<div class="stale">⚠️ 此為 ${esc(d.date)} 的報告，非今日（${today}）。若雲端排程未更新，訊號可能過時，請勿據以即時操作。</div>`;
   } catch (e) {}
   // build the heavy sections once so the tab-nav can detect presence + jump to anchors.
-  // REQ5 order: 選股 → 持倉追蹤 → 正要起漲 → 機會掃描 → 早期訊號 (early board out of any deep fold,
-  // promoted above the broad opportunity scan).
-  const picksHtml = picksBlock(d.picks, date);
-  const watchHtml = watchlistBlock(d);
-  const earlyHtml = breakoutBlock(d);
-  const oppHtml = opportunityBlock(d);
-  const sigHtml = signalsBlock(d);
+  // Section order: 選股 → 持倉追蹤 → 早期機會(consolidated sub-tab) → rest.
+  const picksHtml   = picksBlock(d.picks, date);
+  const watchHtml   = watchlistBlock(d);
+  const earlyOppHtml = earlyOppBlock(d);   // consolidates 拐點 + RS領導 + 營收成長 + 訊號雷達
   // REQ2 sticky segmented nav — only sections that actually rendered get a tab.
   const nav = tabNav([
-    { id: 'sec-picks',    label: '今日選股', present: !!picksHtml },
-    { id: 'sec-early',    label: '正要起漲', present: !!earlyHtml },
-    { id: 'sec-watch',    label: '持倉追蹤', present: !!watchHtml },
-    { id: 'sec-opp',      label: '機會掃描', present: !!oppHtml },
-    { id: 'sec-signals',  label: '早期訊號', present: !!sigHtml },
+    { id: 'sec-picks',      label: '今日選股', present: !!picksHtml },
+    { id: 'sec-watch',      label: '持倉追蹤', present: !!watchHtml },
+    { id: 'sec-early-opp',  label: '早期機會', present: !!earlyOppHtml },
   ]);
-  // IA: compact env-strip at top, then picks, watchlist, early board, etc.
+  // IA: compact env-strip at top, then picks, watchlist, early-opp consolidated block, etc.
   // Heavy macro/market sections folded below. Honest caveats preserved verbatim.
   $('detailView').innerHTML = stale +
     searchBar() + pinsBar(d) + tldrBanner(d) + envStripCompact(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     nav +
     anchor('sec-picks', picksHtml) + concentrationBlock(d) +
     anchor('sec-watch', watchHtml) +
-    anchor('sec-early', earlyHtml) +
-    groupBlock(d) + anchor('sec-opp', oppHtml) + shortVolBlock(d) +
-    anchor('sec-signals', sigHtml) + revenueBlock(d) +
+    anchor('sec-early-opp', earlyOppHtml) +
+    groupBlock(d) + shortVolBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
     allocBlock(d) +
     section('免责聲明', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
