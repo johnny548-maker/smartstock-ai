@@ -3,10 +3,14 @@ name: SmartStock Daily
 # Runs in the cloud — your computer can stay off.
 on:
   schedule:
-    # 18:30 Taiwan time (UTC+8) Mon–Fri = 10:30 UTC. After TW close + 三大法人 (T86)
-    # are posted, so the report carries the freshest settled data.
-    - cron: '30 10 * * 1-5'
-  workflow_dispatch: {}   # also lets you run it manually from the Actions tab
+    # GitHub free-tier scheduled runs are best-effort: they fire ~3h late under load and are
+    # sometimes DROPPED entirely (observed 2026-06-08: 06-04/06-05 fired ~3h late, 06-08 dropped).
+    # Mitigation = two ticks at odd minutes (avoid the contended :00/:30) so a dropped primary is
+    # caught by the backup. The skip-if-exists guard below makes the backup a no-op on normal days.
+    # Times are TW close + T86 (三大法人) aware.
+    - cron: '27 10 * * 1-5'   # primary  ~18:27 TW (10:27 UTC)
+    - cron: '13 12 * * 1-5'   # backup   ~20:13 TW (12:13 UTC) — only generates if primary was dropped
+  workflow_dispatch: {}   # manual run from the Actions tab — ALWAYS regenerates (bypasses skip guard)
 
 permissions:
   contents: write          # to commit the new report JSON back to the repo
@@ -21,15 +25,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Idempotency guard: a backup scheduled run should NOT regenerate when the primary already
+      # produced today's report. Manual (workflow_dispatch) runs always proceed so you can force a
+      # rebuild. Date basis matches main.py's datetime.now() (UTC on the runner) + the commit's
+      # `date -u +%F`, so docs/data/<UTC-date>.json is the correct existence check.
+      - name: Skip duplicate scheduled run
+        id: report_check
+        run: |
+          DATE=$(date -u +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "docs/data/$DATE.json" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Report for $DATE already present — scheduled backup run is a no-op."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.report_check.outputs.skip != 'true'
         with:
           python-version: '3.11'
           cache: pip
 
       - name: Install deps
+        if: steps.report_check.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Run analysis + export PWA data
+        if: steps.report_check.outputs.skip != 'true'
         env:
           # Optional — set these as repo Secrets to also receive the report by email.
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
@@ -38,6 +60,7 @@ jobs:
         run: python main.py --web
 
       - name: Commit report to docs/data
+        if: steps.report_check.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
