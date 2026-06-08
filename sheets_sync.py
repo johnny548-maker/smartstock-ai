@@ -135,7 +135,7 @@ def _ensure_ws(sh, title, headers):
         ws = sh.add_worksheet(title=title, rows=1000, cols=max(26, len(headers)))
     first = ws.row_values(1)
     if first != headers:
-        ws.update("A1", [headers])
+        ws.update(values=[headers], range_name="A1")
     return ws
 
 
