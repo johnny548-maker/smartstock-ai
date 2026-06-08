@@ -566,7 +566,7 @@
   "pe_forward": 25.484406,
   "eps_trailing": 13.12,
   "eps_forward": 14.461,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,16 +575,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 733 分 / 808 留言",
+   "label": "HN 討論熱度 20 篇 / 98 分 / 26 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 733,
-    "comments": 808,
+    "points": 98,
+    "comments": 26,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-06-07",
+   "severity": "info",
+   "as_of": "2026-06-08",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-07",
+   "as_of": "2026-06-08",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

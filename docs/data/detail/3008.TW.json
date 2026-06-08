@@ -1,17 +1,9 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 3680.0,
- "change_pct": -3.79,
+ "price": 3535.0,
+ "change_pct": -3.94,
  "ohlc": [
-  {
-   "time": "2026-03-11",
-   "o": 2299.92,
-   "h": 2348.85,
-   "l": 2295.02,
-   "c": 2339.07,
-   "v": 885213
-  },
   {
    "time": "2026-03-12",
    "o": 2309.7,
@@ -483,11 +475,20 @@
    "l": 3570.0,
    "c": 3680.0,
    "v": 1997929
+  },
+  {
+   "time": "2026-06-08",
+   "o": 3330.0,
+   "h": 3550.0,
+   "l": 3325.0,
+   "c": 3535.0,
+   "v": 2674188
   }
  ],
  "sr": {
-  "price": 3680.0,
+  "price": 3535.0,
   "resistance": [
+   3615.0,
    3875.0
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 1976.95
  },
  "spark": [
-  2339.07,
   2304.81,
   2295.02,
   2255.88,
@@ -556,31 +556,49 @@
   3850.0,
   3985.0,
   3825.0,
-  3680.0
+  3680.0,
+  3535.0
  ],
- "spark_start": "2026-03-11",
- "spark_end": "2026-06-05",
+ "spark_start": "2026-03-12",
+ "spark_end": "2026-06-08",
  "fundamental": {
   "rev_yoy": 24.5,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": null,
+ "levels": {
+  "entry": 3535.0,
+  "stop": 3287.55,
+  "target": 4153.62,
+  "atr_bracket": 4153.62,
+  "measured_move": 5030.0,
+  "target_band": [
+   4153.62,
+   5030.0
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 7.0,
+  "swing_stop": 3345.32,
+  "chandelier": 3505.68,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人賣超 181,974 股",
+   "label": "三大法人買超 324,008 股",
    "value": {
-    "foreign": 29076,
-    "trust": -147585,
-    "dealer": -63465,
-    "total": -181974
+    "foreign": 486094,
+    "trust": -26070,
+    "dealer": -136016,
+    "total": 324008
    },
    "severity": "info",
-   "as_of": "2026-06-07",
+   "as_of": "2026-06-08",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -591,7 +609,7 @@
     "short_net": -1
    },
    "severity": "info",
-   "as_of": "2026-06-07",
+   "as_of": "2026-06-08",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {

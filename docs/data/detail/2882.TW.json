@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 100.0,
- "change_pct": 5.93,
+ "price": 95.0,
+ "change_pct": -5.0,
  "ohlc": [
-  {
-   "time": "2026-03-11",
-   "o": 71.2,
-   "h": 72.8,
-   "l": 71.2,
-   "c": 71.8,
-   "v": 10251491
-  },
   {
    "time": "2026-03-12",
    "o": 72.6,
@@ -483,10 +475,18 @@
    "l": 93.7,
    "c": 100.0,
    "v": 68728572
+  },
+  {
+   "time": "2026-06-08",
+   "o": 97.8,
+   "h": 97.8,
+   "l": 94.0,
+   "c": 95.0,
+   "v": 56974719
   }
  ],
  "sr": {
-  "price": 100.0,
+  "price": 95.0,
   "resistance": [],
   "support": [
    76.9,
@@ -495,7 +495,6 @@
   "strong_support": 60.6
  },
  "spark": [
-  71.8,
   72.5,
   71.7,
   72.4,
@@ -554,26 +553,28 @@
   89.2,
   91.8,
   94.4,
-  100.0
+  100.0,
+  95.0
  ],
- "spark_start": "2026-03-11",
- "spark_end": "2026-06-05",
+ "spark_start": "2026-03-12",
+ "spark_end": "2026-06-08",
  "fundamental": null,
  "levels": {
-  "entry": 100.0,
-  "stop": 94.06,
-  "target": 114.86,
-  "atr_bracket": 114.86,
-  "measured_move": null,
+  "entry": 95.0,
+  "stop": 88.61,
+  "target": 110.96,
+  "atr_bracket": 110.96,
+  "measured_move": 96.3,
   "target_band": [
-   114.86
+   96.3,
+   110.96
   ],
-  "stop_pct": -5.9,
-  "target_pct": 14.9,
+  "stop_pct": -6.7,
+  "target_pct": 16.8,
   "rr": 2.5,
-  "atr_pct": 3.0,
-  "swing_stop": 75.61,
-  "chandelier": 92.1,
+  "atr_pct": 3.4,
+  "swing_stop": 75.54,
+  "chandelier": 91.45,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -581,15 +582,15 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 10,630,653 股",
+   "label": "三大法人賣超 6,265,421 股",
    "value": {
-    "foreign": 10810614,
-    "trust": -278827,
-    "dealer": 98866,
-    "total": 10630653
+    "foreign": -7524591,
+    "trust": 1030000,
+    "dealer": 229170,
+    "total": -6265421
    },
    "severity": "info",
-   "as_of": "2026-06-07",
+   "as_of": "2026-06-08",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -601,7 +602,7 @@
     "fin_pct": 0.24949899799599198
    },
    "severity": "warn",
-   "as_of": "2026-06-07",
+   "as_of": "2026-06-08",
    "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
   },
   {
