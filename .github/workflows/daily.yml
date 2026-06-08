@@ -59,6 +59,17 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python main.py --web
 
+      # Mirror today's report into the Google Sheet backend (JSON in git stays source-of-truth).
+      # best-effort: continue-on-error + the script is a graceful no-op when GOOGLE_SA_JSON is
+      # unset, so the report pipeline never breaks because of the (secondary) Sheet mirror.
+      - name: Mirror to Google Sheet backend
+        if: steps.report_check.outputs.skip != 'true'
+        continue-on-error: true
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
+        run: python sheets_sync.py
+
       - name: Commit report to docs/data
         if: steps.report_check.outputs.skip != 'true'
         run: |
