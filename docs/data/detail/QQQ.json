@@ -1,17 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 705.06,
- "change_pct": -4.8,
+ "price": 718.32,
+ "change_pct": 1.88,
  "ohlc": [
-  {
-   "time": "2026-03-12",
-   "o": 602.0,
-   "h": 603.38,
-   "l": 596.3,
-   "c": 596.51,
-   "v": 71836600
-  },
   {
    "time": "2026-03-13",
    "o": 598.97,
@@ -483,12 +475,21 @@
    "l": 704.32,
    "c": 705.06,
    "v": 99178800
+  },
+  {
+   "time": "2026-06-08",
+   "o": 717.81,
+   "h": 719.21,
+   "l": 713.1,
+   "c": 718.32,
+   "v": 14888108
   }
  ],
  "sr": {
-  "price": 705.06,
+  "price": 718.32,
   "resistance": [
-   722.03
+   722.03,
+   748.65
   ],
   "support": [
    695.25,
@@ -497,7 +498,6 @@
   "strong_support": 521.71
  },
  "spark": [
-  596.51,
   592.97,
   599.62,
   602.55,
@@ -556,16 +556,17 @@
   746.16,
   744.21,
   740.61,
-  705.06
+  705.06,
+  718.32
  ],
- "spark_start": "2026-03-12",
- "spark_end": "2026-06-05",
+ "spark_start": "2026-03-13",
+ "spark_end": "2026-06-08",
  "fundamental": {
   "pe_trailing": 31.465063,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
