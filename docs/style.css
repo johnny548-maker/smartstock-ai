@@ -39,8 +39,12 @@
   /* radius */
   --r1:8px; --r2:12px; --r3:16px;
 
-  /* type scale */
-  --t-xs:.72rem; --t-sm:.82rem; --t-md:.92rem; --t-lg:1.04rem; --t-xl:1.16rem;
+  /* type scale (modular ~1.2 steps for clearer hierarchy) */
+  --t-xs:.72rem; --t-sm:.82rem; --t-md:.92rem; --t-lg:1.12rem; --t-xl:1.36rem;
+
+  /* font families — UI sans (body) + tabular mono for figures (2nd family) */
+  --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+  --font-num:"SF Mono","JetBrains Mono","Roboto Mono",ui-monospace,Consolas,Menlo,monospace;
 
   /* elevation */
   --el-1:0 1px 3px rgba(0,0,0,.35);
@@ -104,8 +108,7 @@
 html,body{
   background:var(--bg);
   color:var(--txt);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC",
-    "Microsoft JhengHei",sans-serif;
+  font-family:var(--font-ui);
   -webkit-font-smoothing:antialiased;
   line-height:1.55;
   transition:background .18s ease,color .18s ease;
@@ -123,6 +126,12 @@ b.down,.down{color:var(--down)}
   font-variant-numeric:tabular-nums;
 }
 
+/* 2nd font family: monospaced tabular digits on pure-number elements only
+   (NOT containers mixing CJK labels — mono forces CJK through ugly generic fallback) */
+.px,.px-big,.score,.strip-val,.env-v,.kpi-val{
+  font-family:var(--font-num);
+}
+
 /* ============================================================================
    TOP BAR — sticky, frosted, minimal
    ============================================================================ */
@@ -135,18 +144,18 @@ b.down,.down{color:var(--down)}
   border-bottom:var(--hair);
 }
 #title{
-  flex:1;font-size:1.06rem;text-align:center;
-  font-weight:700;letter-spacing:.2px;
+  flex:1;font-size:1.3rem;text-align:center;
+  font-weight:700;letter-spacing:.3px;
 }
 #topbar button{
   background:transparent;border:none;color:var(--txt);
-  font-size:1.35rem;min-width:44px;min-height:44px;
+  font-size:1.3rem;min-width:44px;min-height:44px;
   border-radius:var(--r1);cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;
   transition:background .12s ease;
 }
 #topbar button:active{background:var(--card2)}
-#themeBtn{font-size:1.2rem}
+#themeBtn{font-size:1.3rem}
 
 /* ============================================================================
    APP SHELL
@@ -622,13 +631,18 @@ ul.rev b.accel{color:var(--gold)}
 .overlay-risk>.overlay-dot,.overlay-risk .overlay-dot{background:var(--down)}
 .overlay-risk .overlay-label{color:var(--down)}
 
-/* group accent border by kind */
-.og-chip   .overlay-group-header{border-left:3px solid var(--up)}
-.og-inst   .overlay-group-header{border-left:3px solid var(--link)}
-.og-fundamental .overlay-group-header{border-left:3px solid var(--gold)}
-.og-sentiment   .overlay-group-header{border-left:3px solid #c878f0}
-.og-catalyst    .overlay-group-header{border-left:3px solid var(--accent)}
-.og-macro       .overlay-group-header{border-left:3px solid var(--muted)}
+/* group accent: category color as a leading dot (replaces left-stripe AI tell,
+   keeps 6-way category identity) */
+.overlay-group-header::before{
+  content:'';flex:none;width:8px;height:8px;border-radius:3px;
+  background:var(--cat,var(--muted));
+}
+.og-chip{--cat:var(--up)}
+.og-inst{--cat:var(--link)}
+.og-fundamental{--cat:var(--gold)}
+.og-sentiment{--cat:#c878f0}
+.og-catalyst{--cat:var(--accent)}
+.og-macro{--cat:var(--muted)}
 
 /* ============================================================================
    WATCHLIST + STATUS CHIPS
@@ -756,6 +770,7 @@ ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
    ============================================================================ */
 #foot{
   color:var(--muted);text-align:center;font-size:.73rem;
+  font-family:var(--font-num);
   padding:10px 14px calc(env(safe-area-inset-bottom) + 16px);
 }
 
