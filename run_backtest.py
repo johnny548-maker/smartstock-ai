@@ -34,6 +34,7 @@ import volume_signals as vs
 import signals
 import breakout_radar as br
 import backtest
+import universe
 from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
@@ -337,22 +338,74 @@ EARLY_DEFS = {
 FLAT_BETA_THRESH = 1.0
 # hard floor — fewer than this many fires → reported but flagged n-thin, INELIGIBLE for weight.
 FIRED_FLOOR = 100
+# EXTENDED early-opportunity backtest: cap on the broad eligible universe (dollar-volume-
+# ranked) used as the backtest set. ~300 names × ~10y is heavy + Yahoo-429-prone; this is
+# the FEASIBLE-scope ceiling (override via the CLI 5th arg). Busted peers are added on top.
+OPP_BACKTEST_CAP = 300
 
 
-def run_early_board(years=15, horizon=60, explosive=25.0, out_path="backtest_early_board.txt"):
+def assemble_early_opp_universe(cap=OPP_BACKTEST_CAP):
+    """Assemble the BROAD early-opportunity-eligible backtest universe.
+
+    Pulls the dollar-volume-ranked eligible names from universe.opportunity_universe()
+    (TWSE/TPEx open-data + US CSV + supply-chain anchors) — the actual POPULATION the
+    early picks are drawn from — NOT universe.scan_opportunities() (today's already-popped
+    leaders, which would be severe survivorship bias). Truncates the eligible set to `cap`
+    (feasibility / Yahoo-429), then unions in config.BUSTED_PEERS (names that popped then
+    died — a partial survivorship offset). Deduped, busted-first preserved.
+
+    Network-safe: if opportunity_universe raises (TWSE/Yahoo down), degrades to the busted
+    peers alone and logs — never aborts (mirrors universe.py's everything-is-wrapped rule).
+
+    NOTE — UNIVERSE-SELECTION CAVEAT: membership is CURRENT-DAY (today's dollar-volume
+    rank). Backtesting a signal over today's members embeds look-ahead universe-selection
+    bias that CANNOT be reconstructed point-in-time keyless. Keeping BUSTED_PEERS in only
+    partially offsets it. The runner states this caveat explicitly in its output.
+    """
+    eligible = []
+    try:
+        tickers, _names = universe.opportunity_universe()
+        eligible = list(tickers)[: max(0, int(cap))]
+    except Exception as e:                       # network down → busted-only, never abort
+        logging.warning("SKIP opportunity_universe (busted-peers only): %s", e)
+    merged, seen = [], set()
+    for t in list(BUSTED_PEERS) + eligible:      # busted first so they always survive the cap
+        if t not in seen:
+            seen.add(t)
+            merged.append(t)
+    return merged
+
+
+def run_early_board(years=15, horizon=60, explosive=25.0, out_path="backtest_early_board.txt",
+                    extended=False, opp_cap=OPP_BACKTEST_CAP):
     """Run the REQ4 early-board family + emit the structured deliverable.
 
     Gate base rate is measured on the not_extended-GATED universe (the gate itself run
     as a pseudo-signal), and keep/kill (ci_beats_base + pvalue + Bonferroni + BH) is
-    recomputed against THAT gated base — never the global 6.99%. Both bases reported."""
+    recomputed against THAT gated base — never the global 6.99%. Both bases reported.
+
+    extended=True → backtest the SAME early-board family over the BROAD early-opportunity-
+    ELIGIBLE universe (dollar-volume-ranked names from universe.opportunity_universe() via
+    assemble_early_opp_universe), capped to opp_cap, instead of the narrow 82-name
+    watchlist+busted set. Far more samples → tighter CIs + an edge estimate on the actual
+    population the early picks are drawn from. The engine (point-in-time df.iloc[:i+1],
+    next-open fill) and the multiple-testing correction_gate are UNCHANGED; only the test
+    universe widens. The output adds an EXPLICIT current-day universe-selection caveat."""
     period = f"{years}y"
-    tickers = BREADTH_TW + BREADTH_US + (BUSTED_PEERS if INCLUDE_BUSTED else [])
+    if extended:
+        tickers = assemble_early_opp_universe(cap=opp_cap)
+    else:
+        tickers = BREADTH_TW + BREADTH_US + (BUSTED_PEERS if INCLUDE_BUSTED else [])
     lines = []
 
     def emit(s=""):
         print(s)
         lines.append(s)
 
+    if extended:
+        emit(f"[EXTENDED early-opportunity universe] backtesting the early-board family over "
+             f"the BROAD dollar-volume-ranked eligible set (opportunity_universe, cap={opp_cap}) "
+             f"+ {len(BUSTED_PEERS)} busted-peer stress names — NOT the popped-leaders list.")
     emit(f"Downloading {len(tickers)} tickers x {period} "
          f"({len(BUSTED_PEERS) if INCLUDE_BUSTED else 0} busted-peer stress names) ...")
     hist = data_fetcher.get_universe(tickers, period=period)
@@ -517,6 +570,16 @@ def run_early_board(years=15, horizon=60, explosive=25.0, out_path="backtest_ear
     emit("look-ahead/survivorship: signal sees only df.iloc[:i+1] (backtest.py:306); "
          "next-open fill (backtest.py:138); BUSTED_PEERS mixed in. "
          "survivor-only universe — every lift is an OPTIMISTIC UPPER BOUND.")
+    if extended:
+        emit("UNIVERSE-SELECTION CAVEAT (extended run): the opportunity-eligible universe "
+             "membership is CURRENT-DAY (today's dollar-volume rank from opportunity_universe). "
+             "Backtesting a signal over today's members embeds look-ahead universe-selection "
+             "bias — names that survived/grew enough to rank today are over-represented in "
+             "history. This CANNOT be reconstructed point-in-time keyless (no historical "
+             "dollar-volume membership snapshots). BUSTED_PEERS (popped-then-died) are kept in "
+             "to PARTIALLY offset it, but the lift remains an OPTIMISTIC UPPER BOUND on top of "
+             "the survivor-only-yfinance bias. Signal computation itself is still strictly "
+             "point-in-time (df.iloc[:i+1]); only universe membership is current-day.")
     emit("NO live scorer touched: config.LEAD_* / strategy.py unchanged (separate user-gated decision).")
 
     # ── SECONDARY HORIZONS {20,120} — reported only, do NOT govern keep/kill ────────────
@@ -674,9 +737,21 @@ def main():
 
 
 if __name__ == "__main__":
-    # `python run_backtest.py early_board [years] [horizon] [explosive]` → REQ4 early board.
+    # `python run_backtest.py early_board [years] [horizon] [explosive]` → REQ4 early board
+    #   (narrow 82-name watchlist+busted set).
+    # `python run_backtest.py early_board_opp [years] [horizon] [explosive] [cap]` → the SAME
+    #   early-board family over the BROAD early-opportunity-eligible universe (dollar-volume-
+    #   ranked, cap names + busted peers). Writes backtest_early_board_opp.txt.
     # Anything else → the existing default leadership-weighting backtest (unchanged).
-    if len(sys.argv) > 1 and sys.argv[1] == "early_board":
+    if len(sys.argv) > 1 and sys.argv[1] == "early_board_opp":
+        eb_years = int(sys.argv[2]) if len(sys.argv) > 2 else 10
+        eb_horizon = int(sys.argv[3]) if len(sys.argv) > 3 else 60
+        eb_explosive = float(sys.argv[4]) if len(sys.argv) > 4 else 25.0
+        eb_cap = int(sys.argv[5]) if len(sys.argv) > 5 else OPP_BACKTEST_CAP
+        run_early_board(eb_years, eb_horizon, eb_explosive,
+                        out_path="backtest_early_board_opp.txt",
+                        extended=True, opp_cap=eb_cap)
+    elif len(sys.argv) > 1 and sys.argv[1] == "early_board":
         eb_years = int(sys.argv[2]) if len(sys.argv) > 2 else 15
         eb_horizon = int(sys.argv[3]) if len(sys.argv) > 3 else 60
         eb_explosive = float(sys.argv[4]) if len(sys.argv) > 4 else 25.0

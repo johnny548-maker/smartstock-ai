@@ -114,20 +114,147 @@ def opportunity_universe(cap_n=None, scan_limit=None):
     return _merge(us, tw_anchors, tw_top, scan_limit), names
 
 
+_TRANSIENT_MARKERS = ("429", "too many requests", "connectionerror", "timeout",
+                      "connection", "500", "502", "503", "504", "service unavailable",
+                      "internal server error", "bad gateway", "gateway timeout")
+
+
+def _is_transient_error(exc: Exception) -> bool:
+    """Return True for rate-limit / network / 5xx errors (safe to retry).
+    False for permanent errors (bad ticker format, KeyError, TypeError, etc.)."""
+    if isinstance(exc, (KeyError, TypeError, ValueError, AttributeError)):
+        return False
+    msg = str(exc).lower()
+    return any(marker in msg for marker in _TRANSIENT_MARKERS)
+
+
 def fetch_opportunity_ohlcv(tickers, period=None, batch=None):
-    """Batched yf download with sleeps between batches (Yahoo 429 mitigation).
-    Reuses data_fetcher.get_universe per chunk; a failed chunk is skipped, not fatal."""
+    """Legacy wrapper — delegates to fetch_opportunity_ohlcv_robust.
+    Kept so any external caller that imports by name still works."""
+    return fetch_opportunity_ohlcv_robust(tickers, period=period, batch=batch)
+
+
+def fetch_opportunity_ohlcv_robust(
+    tickers, period=None, batch=None,
+    max_retries=3, backoff_base=5, _sleep=True,
+):
+    """Batched yf download with per-batch retry + exponential backoff on transient
+    errors (429 / connection / 5xx). Permanent failures log an explicit SKIP with
+    ticker list and count — never silently drop data.
+
+    Parameters
+    ----------
+    tickers     : list of ticker strings
+    period      : yfinance period string (default config.OPP_PERIOD)
+    batch       : batch size (default config.OPP_BATCH)
+    max_retries : attempts per batch before giving up (default 3)
+    backoff_base: seconds for first retry; doubles each attempt (5 → 15 → 45)
+    _sleep      : set False in tests to skip all time.sleep calls
+
+    Returns
+    -------
+    {ticker: DataFrame}  — only tickers that downloaded cleanly.
+    Skipped batches are logged WARNING with reason and count.
+    """
     period = period or config.OPP_PERIOD
     batch = batch or config.OPP_BATCH
     out = {}
-    for i in range(0, len(tickers), batch):
+    skip_count = 0
+    total = len(tickers)
+
+    for i in range(0, total, batch):
         chunk = tickers[i:i + batch]
-        try:
-            out.update(data_fetcher.get_universe(chunk, period=period))
-        except Exception as e:
-            log.warning("SKIP opp batch %d: %s", i // batch, e)
-        time.sleep(2)
+        batch_idx = i // batch
+        fetched = False
+
+        for attempt in range(1, max_retries + 1):
+            try:
+                out.update(data_fetcher.get_universe(chunk, period=period))
+                fetched = True
+                break
+            except Exception as exc:
+                if _is_transient_error(exc):
+                    if attempt < max_retries:
+                        wait = backoff_base * (2 ** (attempt - 1))
+                        log.warning(
+                            "opp batch %d attempt %d/%d transient error: %s — retry in %ds",
+                            batch_idx, attempt, max_retries, exc, wait)
+                        if _sleep:
+                            time.sleep(wait)
+                    else:
+                        # exhausted retries — treat as permanent skip for this batch
+                        log.warning(
+                            "SKIP opp batch %d (%d tickers) after %d retries: %s",
+                            batch_idx, len(chunk), max_retries, exc)
+                        skip_count += len(chunk)
+                else:
+                    # permanent error — do not retry
+                    log.warning(
+                        "SKIP opp batch %d (%d tickers) permanent error: %s",
+                        batch_idx, len(chunk), exc)
+                    skip_count += len(chunk)
+                    break
+
+        if not fetched and _sleep:
+            time.sleep(2)   # inter-batch courtesy pause (Yahoo 429 mitigation)
+        elif _sleep:
+            time.sleep(2)
+
+    if skip_count:
+        log.warning(
+            "opp OHLCV: %d/%d tickers skipped due to fetch errors (scanned=%d universe=%d)",
+            skip_count, total, len(out), total)
+
+    log.info("opp OHLCV: scanned=%d universe=%d", len(out), total)
     return out
+
+
+def fetch_revenue_ohlcv(codes, period=None, batch=None, _sleep=True):
+    """Batch-fetch OHLCV for revenue candidates (bare TWSE codes like '2344').
+
+    Appends '.TW' to bare codes before the yf.download call and strips it
+    on the way back so the returned dict is keyed by the original bare code.
+    Reuses fetch_opportunity_ohlcv_robust for the same 429-safe retry logic.
+
+    Parameters
+    ----------
+    codes  : list of bare TWSE/TPEx codes (e.g. ['2344', '3034']) OR full
+             tickers ('2344.TW') — both are accepted.
+    period : yfinance period string (default config.OPP_PERIOD)
+    batch  : batch size (default config.OPP_BATCH)
+    _sleep : set False in tests to skip time.sleep
+
+    Returns
+    -------
+    {code: DataFrame}  — keyed by the ORIGINAL code (bare or full), only
+    codes that downloaded cleanly.
+    """
+    if not codes:
+        return {}
+    period = period or config.OPP_PERIOD
+    batch = batch or config.OPP_BATCH
+
+    # Normalise: build {yf_ticker: original_code} so we can reverse-map on return
+    ticker_to_code = {}
+    yf_tickers = []
+    for code in codes:
+        if code.endswith((".TW", ".TWO")):
+            yf_tickers.append(code)
+            ticker_to_code[code] = code
+        else:
+            yf_ticker = code + ".TW"
+            yf_tickers.append(yf_ticker)
+            ticker_to_code[yf_ticker] = code
+
+    raw = fetch_opportunity_ohlcv_robust(
+        yf_tickers, period=period, batch=batch, _sleep=_sleep)
+
+    # Reverse-map back to original codes
+    result = {}
+    for yf_ticker, df in raw.items():
+        orig = ticker_to_code.get(yf_ticker, yf_ticker)
+        result[orig] = df
+    return result
 
 
 def scan_opportunities(data, names=None, top=None, rs_min=None, ratings=None):
@@ -188,10 +315,17 @@ def _benchmark_frames():
 
 
 def get_opportunities():
-    """End-to-end: assemble universe → fetch → scan early-leaders + 起漲 radar."""
+    """End-to-end: assemble universe → fetch → scan early-leaders + 起漲 radar.
+
+    The raw OHLCV dict is threaded into the result under '_data' so main.py can
+    use it for per-stock detail-file generation (Task A3) without re-downloading.
+    '_data' is intentionally NOT serialised into the PWA JSON payload (web_export.py
+    builds the payload from named keys only; '_data' is stripped there automatically
+    because it is not listed).
+    """
     import breakout_radar
     tickers, names = opportunity_universe()
-    data = fetch_opportunity_ohlcv(tickers)
+    data = fetch_opportunity_ohlcv_robust(tickers)
     ratings = rs_rating.rs_rating(data)            # compute ONCE, thread into both
     group_ranks = group_rs.rank_groups(ratings, group_rs.theme_group_of)
     leaders = scan_opportunities(data, names=names, ratings=ratings)
@@ -210,4 +344,7 @@ def get_opportunities():
         "leaders": leaders,
         "group_rs": group_ranks,
         "breakout": breakout,
+        # Internal-only: raw OHLCV frames for detail-file generation in main.py (A3).
+        # Never serialised into the PWA payload — stripped by web_export.build_payload().
+        "_data": data,
     }

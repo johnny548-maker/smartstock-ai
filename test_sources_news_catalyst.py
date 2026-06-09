@@ -499,5 +499,104 @@ class TestEndToEndPipeline(unittest.TestCase):
         self.assertIn("2330", ov)
 
 
+class TestAgeFilter(unittest.TestCase):
+    """Tests for filter_by_age() — rolling 24h window pre-filter."""
+
+    # A fixed "now" epoch so tests are deterministic.
+    _NOW = 1_780_800_000  # arbitrary fixed reference epoch (UTC)
+
+    def _item(self, ts_offset_hours, ticker="NVDA", title="headline"):
+        """Build a normalized item with ts = _NOW + ts_offset_hours * 3600."""
+        ts = self._NOW + int(ts_offset_hours * 3600)
+        return {
+            "ticker": ticker, "tickers": [ticker],
+            "title": title, "source": nc.SRC_GDELT,
+            "ts": ts, "url": "u", "lang": "en",
+        }
+
+    def _item_no_ts(self, ticker="NVDA", title="no-ts-headline"):
+        return {
+            "ticker": ticker, "tickers": [ticker],
+            "title": title, "source": nc.SRC_CNA,
+            "ts": None, "url": "u2", "lang": "zh-Hant",
+        }
+
+    def test_recent_item_kept(self):
+        """Item 1h old is well within 24h window → kept."""
+        items = [self._item(-1)]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW)
+        self.assertEqual(len(result), 1)
+
+    def test_old_item_dropped_no_fallback(self):
+        """Item 25h old exceeds 24h window AND fallback_n=0 → empty result."""
+        items = [self._item(-25)]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW, fallback_n=0)
+        self.assertEqual(len(result), 0)
+
+    def test_old_item_fallback_when_only_stale(self):
+        """Item 25h old with fallback_n=1 → returned as fallback with _age_fallback marker."""
+        items = [self._item(-25, title="stale")]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW, fallback_n=1)
+        self.assertEqual(len(result), 1)
+        self.assertTrue(result[0].get("_age_fallback"))
+
+    def test_exactly_at_boundary_kept(self):
+        """Item exactly 24h old is at boundary → kept (≤ not <)."""
+        items = [self._item(-24)]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW)
+        self.assertEqual(len(result), 1)
+
+    def test_no_ts_item_kept(self):
+        """Item with ts=None has no parseable timestamp → kept (don't lose it)."""
+        items = [self._item_no_ts()]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW)
+        self.assertEqual(len(result), 1)
+
+    def test_mix_recent_old_no_ts(self):
+        """Mix: recent kept, old dropped, no-ts kept."""
+        items = [
+            self._item(-1, title="recent"),
+            self._item(-30, title="old"),
+            self._item_no_ts(),
+        ]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW)
+        titles = {it["title"] for it in result}
+        self.assertIn("recent", titles)
+        self.assertNotIn("old", titles)
+        self.assertIn("no-ts-headline", titles)
+        self.assertEqual(len(result), 2)
+
+    def test_all_filtered_fallback_returns_most_recent_n(self):
+        """Weekend fallback: all items older than 24h → return most-recent N with fallback flag."""
+        items = [
+            self._item(-30, title="oldest"),
+            self._item(-26, title="less old"),
+            self._item(-28, title="middle"),
+        ]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW, fallback_n=2)
+        # fallback returns 2 most-recent items
+        self.assertEqual(len(result), 2)
+        # all returned items carry the fallback marker
+        for it in result:
+            self.assertTrue(it.get("_age_fallback"), "expected _age_fallback=True on fallback items")
+        # most recent first
+        self.assertEqual(result[0]["title"], "less old")
+
+    def test_all_filtered_fallback_n_larger_than_pool(self):
+        """Fallback N bigger than available pool → returns all available."""
+        items = [self._item(-30)]
+        result = nc.filter_by_age(items, max_age_hours=24, now=self._NOW, fallback_n=5)
+        self.assertEqual(len(result), 1)
+        self.assertTrue(result[0].get("_age_fallback"))
+
+    def test_empty_input(self):
+        self.assertEqual(nc.filter_by_age([], max_age_hours=24, now=self._NOW), [])
+        self.assertEqual(nc.filter_by_age(None, max_age_hours=24, now=self._NOW), [])
+
+    def test_constant_exists(self):
+        """NEWS_MAX_AGE_HOURS module constant must exist and equal 24."""
+        self.assertEqual(nc.NEWS_MAX_AGE_HOURS, 24)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

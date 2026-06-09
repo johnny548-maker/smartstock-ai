@@ -78,6 +78,13 @@ _TIMEOUT = 20
 _GDELT_MAXRECORDS = 50      # GDELT caps at 250; 50 is plenty for a daily window
 _CNYES_LIMIT = 30           # one page (cnYES last_page~27; daily window needs ~1)
 
+# ── rolling age filter ────────────────────────────────────────────────────────
+# Drop normalized items whose publish timestamp is older than this many hours
+# from "now".  Items with no parseable timestamp are KEPT (never silently lost).
+# Weekend/holiday fallback: if ALL items are filtered out, return the most-recent
+# fallback_n items with an _age_fallback=True marker so callers can label them.
+NEWS_MAX_AGE_HOURS = 24
+
 # Source name constants (stable strings for overlays/tests).
 SRC_GDELT = "gdelt"
 SRC_CNYES = "cnyes"
@@ -644,6 +651,56 @@ def dedup_catalysts(items, sim_threshold=0.8, window_hours=48):
         for cluster in clusters:
             merged.append(_merge_group(cluster))
     return merged
+
+
+# ── rolling age pre-filter (applied before dedup) ─────────────────────────────────
+def filter_by_age(items, max_age_hours=NEWS_MAX_AGE_HOURS, now=None, fallback_n=5):
+    """PURE: drop normalized items older than max_age_hours from *now* (UTC epoch).
+
+    Contract:
+      * Items with ts=None are KEPT — a missing timestamp must never silently drop
+        a potentially fresh item (defence against sources that occasionally omit
+        pubDate).
+      * Timezone-correct: all timestamps produced by normalize_item() are already
+        UTC epoch seconds, so comparison is a simple integer subtraction.
+      * FALLBACK (weekend/holiday): when ALL timestamped items fall outside the
+        window AND no ts=None items remain, return the most-recent `fallback_n`
+        items (sorted by ts desc) each marked with ``_age_fallback=True``.  This
+        ensures the news block in the daily report is never blank.
+      * If ``items`` is empty or None → return [].
+
+    Args:
+        items:         list of normalize_item() dicts (must carry a 'ts' key).
+        max_age_hours: rolling window width (default NEWS_MAX_AGE_HOURS = 24).
+        now:           current UTC epoch seconds; defaults to time.time().  Pass
+                       an integer in tests for deterministic results.
+        fallback_n:    how many items to return in fallback mode.
+
+    Returns a new list (immutable style — never mutates input).  Pure.
+    """
+    if not items:
+        return []
+    cutoff = (now if now is not None else time.time()) - max_age_hours * 3600
+    fresh = []
+    for it in items:
+        ts = it.get("ts")
+        if ts is None or ts >= cutoff:
+            fresh.append(it)
+    if fresh:
+        return list(fresh)
+    # ── FALLBACK: all items are old (weekend / long holiday gap) ──────────────
+    # Sort by ts descending (None ts sorts last as 0; they should not reach here
+    # because items with ts=None are always kept in the fresh pass above).
+    log.info(
+        "FALLBACK news_catalyst: all %d items older than %dh; returning %d most-recent",
+        len(items), max_age_hours, fallback_n,
+    )
+    sorted_old = sorted(
+        items,
+        key=lambda x: (x.get("ts") or 0),
+        reverse=True,
+    )
+    return [{**it, "_age_fallback": True} for it in sorted_old[:fallback_n]]
 
 
 # ── severity classification ────────────────────────────────────────────────────────

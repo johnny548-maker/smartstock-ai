@@ -373,12 +373,24 @@ def main(web=False):
 
     # 7c. Per-stock detail files (REQ1 long-tail) — standalone JSON so revenue candidates
     #     and other displayed names open a usable detail view in the PWA WITHOUT a new
-    #     network fetch in the cron hot path. Revenue candidates have NO OHLCV in hand →
-    #     build_detail(df=None,...) is metadata-only. SKIP-not-abort.
+    #     network fetch in the cron hot path. SKIP-not-abort.
     try:
         details = {}
-        # Revenue candidates: metadata-only (no df, no new fetch), name + fundamental badge.
-        for c in (revenue_data or {}).get("candidates", []):
+
+        # B2: Revenue candidates — batch-fetch real OHLCV so charts render.
+        # Falls back to df=None (metadata-only) if the fetch fails entirely.
+        rev_candidates = (revenue_data or {}).get("candidates", [])
+        rev_codes = [c["code"] for c in rev_candidates if c.get("code")]
+        rev_ohlcv = {}
+        if rev_codes:
+            try:
+                rev_ohlcv = universe_mod.fetch_revenue_ohlcv(rev_codes, period=config.OPP_PERIOD)
+                if rev_ohlcv:
+                    log.info("revenue OHLCV: %d/%d candidates fetched", len(rev_ohlcv), len(rev_codes))
+            except Exception as e:
+                log.warning("SKIP revenue OHLCV batch (falling back to metadata-only): %s", e)
+
+        for c in rev_candidates:
             code = c.get("code")
             if not code:
                 continue
@@ -387,8 +399,15 @@ def main(web=False):
                     code, rev_state=rev_state, fund_cache=fund_cache, is_tw=True)
             except Exception:
                 badge = None
+            # Use real df if available from the batch fetch, else metadata-only.
+            # Explicit is-None check avoids ValueError when get() returns a DataFrame
+            # (pandas raises "The truth value of a DataFrame is ambiguous" on `or`).
+            rev_df = rev_ohlcv.get(code)
+            if rev_df is None:
+                rev_df = rev_ohlcv.get(code + ".TW")
             details[code] = stock_detail.build_detail(
-                code, df=None, name=c.get("name"), fundamental=badge)
+                code, df=rev_df, name=c.get("name"), fundamental=badge)
+
         # Picks: a standalone file each (df + levels in hand) so a deep-link always resolves.
         for item in ranked[:config.DISPLAY_N]:
             sym = item["stock"]
@@ -398,11 +417,49 @@ def main(web=False):
                 sym, df=data.get(sym), name=config.STOCK_NAMES.get(sym),
                 fundamental=(pick_cards.get(sym) or {}).get("fundamental"),
                 levels=level_map.get(sym))
+
+        # A3: Opportunity leaders + breakout candidates — build detail with real OHLCV.
+        # The opp data dict was populated by fetch_opportunity_ohlcv_robust inside
+        # get_opportunities(), but is not threaded out to main.py directly.  We access
+        # it via the already-computed opp result: if the ticker's df is in the payload
+        # (ohlc bars are attached to leaders/breakout when ready), we reconstruct it;
+        # otherwise we ask for a lightweight re-fetch via the SAME universe data already
+        # downloaded by get_opportunities — use opp_data threaded below.
+        if opp is not None:
+            opp_data_ref = (opp or {}).get("_data", {}) or {}
+            for ld in (opp or {}).get("leaders", []):
+                ticker = ld.get("ticker")
+                if not ticker or ticker in details:
+                    continue
+                df_opp = opp_data_ref.get(ticker)
+                details[ticker] = stock_detail.build_detail(
+                    ticker, df=df_opp, name=ld.get("name"))
+            for bc in (opp or {}).get("breakout", []):
+                ticker = bc.get("stock") or bc.get("ticker")
+                if not ticker or ticker in details:
+                    continue
+                df_opp = opp_data_ref.get(ticker)
+                details[ticker] = stock_detail.build_detail(
+                    ticker, df=df_opp, name=bc.get("name"))
+
         if details:
             written = stock_detail.export_details(details, config.WEB_DIR)
-            log.info("detail files: %d written", len(written))
+            log.info("detail files: %d written (picks=%d, revenue=%d, opp=%d)",
+                     len(written),
+                     len([k for k in details if k in {it["stock"] for it in ranked[:config.DISPLAY_N]}]),
+                     len([k for k in details if k in set(rev_codes)]),
+                     len([k for k in details
+                          if k not in {it["stock"] for it in ranked[:config.DISPLAY_N]}
+                          and k not in set(rev_codes)]))
     except Exception as e:
         log.warning("SKIP detail files: %s", e); skips.append("detail_files")
+
+    # Belt-and-suspenders: drop the heavy OHLCV frames from opp now that the
+    # detail-file loop (A3) has consumed them.  web_export.build_payload also
+    # strips '_data', but releasing the DataFrames here avoids keeping ~600×N
+    # frames alive in memory for the rest of the run.
+    if isinstance(opp, dict):
+        opp.pop("_data", None)
 
     # 7d. Promote the early/breakout 起漲 board out of the opportunity result so the PWA
     #     gets it as a top-level key too. SKIP-not-abort.

@@ -175,10 +175,23 @@ RATE_HIGH = 4.5
 # Google News RSS is the universal multilingual fallback.
 # zh-Hant Google News for global markets → Chinese headlines that keep English
 # proper nouns (Nvidia / Fed / S&P) intact — no translation engine, keyless.
+#
+# INTERNATIONAL additions (2026-06-09, all keyless, no API key required):
+#   * reuters  — Google News RSS scoped to reuters.com (the direct Reuters RSS
+#                feeds.reuters.com/reuters/businessNews is dead/bozo as of 2026-06-09;
+#                GNews site:-scoped proxy returns current Reuters headlines, keyless).
+#   * cnbc     — CNBC Markets RSS (direct; verified 200 OK, ~30 entries).
+#   * mktwatch — MarketWatch Top Stories RSS (verified 301→content OK, ~10 entries).
+# Any single bad URL will log "SKIP feed <url>: <err>" and continue (news_digest
+# per-feed exception handling).  Never crashes the digest.
 RSS_FEEDS = {
     "global": [
         "https://news.google.com/rss/search?q=美股+聯準會+Fed+NVIDIA+輝達&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
         "https://news.google.com/rss/search?q=美股+科技股+Nasdaq+標普500&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+        # international finance: reuters (via Google News site: proxy), CNBC, MarketWatch
+        "https://news.google.com/rss/search?q=site:reuters.com+markets+finance&hl=en-US&gl=US&ceid=US:en",
+        "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+        "https://feeds.marketwatch.com/marketwatch/topstories/",
     ],
     "tw": [
         "https://news.google.com/rss/search?q=台股+外資+台積電&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
@@ -246,7 +259,8 @@ TPEX_LIST_URL = "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O"
 TPEX_DAYALL_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 HTTP_UA = {"User-Agent": "smartstock-ai/1.0 (github actions; contact johnny548@gmail.com)"}
 OPP_TW_CAP_N = 400            # top-N TW names by dollar-volume eligible for the scan
-OPP_SCAN_LIMIT = 260         # hard cap on OHLCV names fetched per daily run (429/runtime guard)
+OPP_SCAN_LIMIT = 600         # full eligible universe: TW(400) + US CSV(~130) + anchors(~20)
+                             # Raised from 260 (old artificial cap silently dropped ~9% of names).
 OPP_PERIOD = "2y"            # need >252 bars for the 12-month cross-sectional RS-Rating window
 OPP_BATCH = 45               # yf.download batch size (Yahoo 429 mitigation)
 OPP_TOP_DISPLAY = 15         # opportunity early-leaders to surface in the report

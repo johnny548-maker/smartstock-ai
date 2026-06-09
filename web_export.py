@@ -138,7 +138,14 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "revenue": revenue,
         "signals": (signals or {}).get("board", []),
         "themes": [t for t in (themes or []) if t.get("emerging")],
-        "opportunity": opportunity,
+        # Strip the internal '_data' key (raw OHLCV DataFrames threaded from
+        # universe.get_opportunities for detail-file generation) so json.dump never
+        # sees a DataFrame and raises TypeError: Object of type DataFrame is not
+        # JSON serializable.  All other opportunity keys are preserved as-is.
+        "opportunity": (
+            {k: v for k, v in opportunity.items() if k != "_data"}
+            if isinstance(opportunity, dict) else opportunity
+        ),
         "regime": regime,
         # P2/P3 market/sector ENVIRONMENT gauges (taifex regime + macro_tw industry + macro_us
         # macro + P3 cftc_cot sector_tilt). Additive top-level section, NOT keyed by ticker,
