@@ -1,17 +1,9 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 3535.0,
- "change_pct": -3.94,
+ "price": 3885.0,
+ "change_pct": 9.9,
  "ohlc": [
-  {
-   "time": "2026-03-12",
-   "o": 2309.7,
-   "h": 2348.85,
-   "l": 2280.34,
-   "c": 2304.81,
-   "v": 924485
-  },
   {
    "time": "2026-03-13",
    "o": 2265.66,
@@ -482,14 +474,21 @@
    "h": 3550.0,
    "l": 3325.0,
    "c": 3535.0,
-   "v": 2674188
+   "v": 2484239
+  },
+  {
+   "time": "2026-06-09",
+   "o": 3800.0,
+   "h": 3885.0,
+   "l": 3755.0,
+   "c": 3885.0,
+   "v": 2231408
   }
  ],
  "sr": {
-  "price": 3535.0,
+  "price": 3885.0,
   "resistance": [
-   3615.0,
-   3875.0
+   4225.0
   ],
   "support": [
    3420.0,
@@ -498,7 +497,6 @@
   "strong_support": 1976.95
  },
  "spark": [
-  2304.81,
   2295.02,
   2255.88,
   2348.85,
@@ -557,10 +555,11 @@
   3985.0,
   3825.0,
   3680.0,
-  3535.0
+  3535.0,
+  3885.0
  ],
- "spark_start": "2026-03-12",
- "spark_end": "2026-06-08",
+ "spark_start": "2026-03-13",
+ "spark_end": "2026-06-09",
  "fundamental": {
   "rev_yoy": 24.5,
   "rev_accel": false,
@@ -568,61 +567,36 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 3535.0,
-  "stop": 3287.55,
-  "target": 4153.62,
-  "atr_bracket": 4153.62,
+  "entry": 3885.0,
+  "stop": 3613.05,
+  "target": 4564.88,
+  "atr_bracket": 4564.88,
   "measured_move": 5030.0,
   "target_band": [
-   4153.62,
+   4564.88,
    5030.0
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 7.0,
-  "swing_stop": 3345.32,
-  "chandelier": 3505.68,
+  "atr_pct": 6.7,
+  "swing_stop": 3342.32,
+  "chandelier": 3470.23,
   "fib_targets": []
  },
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 324,008 股",
-   "value": {
-    "foreign": 486094,
-    "trust": -26070,
-    "dealer": -136016,
-    "total": 324008
-   },
-   "severity": "info",
-   "as_of": "2026-06-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -1
-   },
-   "severity": "info",
-   "as_of": "2026-06-08",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 23.0 / 殖利率 2.17% / PB 2.61",
+   "label": "PE 22.1 / 殖利率 2.26% / PB 2.51",
    "value": {
-    "pe": 22.97,
-    "yield": 2.17,
-    "pb": 2.61
+    "pe": 22.06,
+    "yield": 2.26,
+    "pb": 2.51
    },
    "severity": "info",
-   "as_of": "2026-06-05",
+   "as_of": "2026-06-08",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

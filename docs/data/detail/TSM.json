@@ -1,8 +1,8 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 430.33,
- "change_pct": 3.65,
+ "price": 426.8,
+ "change_pct": 2.8,
  "ohlc": [
   {
    "time": "2026-03-13",
@@ -474,19 +474,19 @@
    "h": 433.9,
    "l": 412.79,
    "c": 415.17,
-   "v": 19590800
+   "v": 19644200
   },
   {
    "time": "2026-06-08",
    "o": 423.77,
    "h": 433.81,
-   "l": 422.54,
-   "c": 430.33,
-   "v": 6621042
+   "l": 422.53,
+   "c": 426.8,
+   "v": 11218700
   }
  ],
  "sr": {
-  "price": 430.33,
+  "price": 426.8,
   "resistance": [
    450.16
   ],
@@ -556,7 +556,7 @@
   436.69,
   444.92,
   415.17,
-  430.33
+  426.8
  ],
  "spark_start": "2026-03-13",
  "spark_end": "2026-06-08",
@@ -572,6 +572,21 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 172 分 / 45 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 172,
+    "comments": 45,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-06-09",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
    "source": "sec_ftd",
    "kind": "chip",
    "label": "FTD 交割失敗偏高（連續 4 個交割日）",
@@ -583,7 +598,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-06-08",
+   "as_of": "2026-06-09",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

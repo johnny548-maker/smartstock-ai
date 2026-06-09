@@ -1,8 +1,8 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 313.83,
- "change_pct": 2.11,
+ "price": 301.54,
+ "change_pct": -1.89,
  "ohlc": [
   {
    "time": "2026-03-13",
@@ -474,25 +474,25 @@
    "h": 315.17,
    "l": 307.15,
    "c": 307.34,
-   "v": 65246700
+   "v": 65310500
   },
   {
    "time": "2026-06-08",
    "o": 308.74,
-   "h": 315.36,
-   "l": 308.52,
-   "c": 313.83,
-   "v": 17231591
+   "h": 317.4,
+   "l": 301.17,
+   "c": 301.54,
+   "v": 77731000
   }
  ],
  "sr": {
-  "price": 313.83,
+  "price": 301.54,
   "resistance": [
-   316.94
+   303.2
   ],
   "support": [
-   305.02,
-   266.45
+   266.45,
+   266.02
   ],
   "strong_support": 194.3
  },
@@ -556,7 +556,7 @@
   310.26,
   311.23,
   307.34,
-  313.83
+  301.54
  ],
  "spark_start": "2026-03-13",
  "spark_end": "2026-06-08",
@@ -568,26 +568,24 @@
   "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 313.83,
-  "stop": 302.05,
-  "target": 343.27,
-  "atr_bracket": 343.27,
-  "measured_move": 328.86,
-  "target_band": [
-   328.86,
-   343.27
-  ],
-  "stop_pct": -3.8,
-  "target_pct": 9.4,
-  "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 303.25,
-  "chandelier": 299.57,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 98 分 / 19 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 98,
+    "comments": 19,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-06-09",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -600,7 +598,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-08",
+   "as_of": "2026-06-09",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
