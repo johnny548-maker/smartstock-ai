@@ -44,6 +44,24 @@ MARKET_HEADERS = [
     "alloc_CASH_BOND", "sources_live", "tldr",
 ]
 
+# Opportunity tab: one row per leader or breakout item.
+# Leaders use field "ticker"; breakout items use "stock". Both are normalised to "stock" here.
+# ohlc[] and spark[] are large arrays — excluded (scalars only).
+OPPORTUNITY_HEADERS = [
+    "date", "kind", "stock", "name", "rs_rating", "theme", "tier",
+    "light", "price", "change_pct", "vol_ratio", "score", "count",
+    "signals", "ready",
+]
+
+# News tab: one row per article, combining global + tw sections.
+# title embeds timestamp for Google News items (e.g. "[2026-06-05 21:41 UTC] ...").
+# link is the full URL. No separate timestamp field exists in the raw item.
+NEWS_HEADERS = [
+    "date", "region", "title", "source", "link",
+]
+
+NEWS_ROW_CAP = 50  # max combined rows per day to keep the tab bounded
+
 
 def _log(msg):
     print(f"[sheets_sync] {msg}", flush=True)
@@ -106,6 +124,81 @@ def build_market_row(payload):
     ]
 
 
+def _join_signals(signals):
+    """Join a signals list (or any iterable) into a pipe-separated string."""
+    if isinstance(signals, (list, tuple)):
+        return " | ".join(str(s) for s in signals)
+    return str(signals) if signals is not None else ""
+
+
+def build_opportunity_rows(payload):
+    """One row per leader + one per breakout. Pure — no network.
+    Leaders use field 'ticker'; breakout items use 'stock'. Both normalised to 'stock' column.
+    ohlc[] and spark[] arrays are intentionally excluded (scalars only).
+    Missing 'opportunity' key or empty lists -> returns [], never crashes."""
+    date = payload.get("date")
+    opp = payload.get("opportunity") or {}
+    rows = []
+    for ld in (opp.get("leaders") or []):
+        rows.append([
+            date,
+            "leader",
+            ld.get("ticker"),          # leaders use 'ticker' (not 'stock')
+            ld.get("name"),
+            ld.get("rs_rating"),
+            ld.get("theme"),
+            ld.get("tier"),
+            ld.get("light"),
+            ld.get("price"),
+            ld.get("change_pct"),
+            ld.get("vol_ratio"),
+            None,                      # score — not present on leaders
+            ld.get("count"),           # signal count
+            _join_signals(ld.get("signals")),
+            None,                      # ready — not present on leaders
+        ])
+    for bo in (opp.get("breakout") or []):
+        rows.append([
+            date,
+            "breakout",
+            bo.get("stock"),           # breakout items use 'stock'
+            bo.get("name"),
+            None,                      # rs_rating — not present on breakout
+            None,                      # theme — not present on breakout
+            None,                      # tier — not present on breakout
+            None,                      # light — not present on breakout
+            None,                      # price — not present on breakout
+            None,                      # change_pct — not present on breakout
+            None,                      # vol_ratio — not present on breakout
+            bo.get("score"),
+            None,                      # count — not present on breakout
+            _join_signals(bo.get("signals")),
+            bo.get("ready"),
+        ])
+    return rows
+
+
+def build_news_rows(payload):
+    """One row per news article, combining global + tw sections.
+    Capped at NEWS_ROW_CAP rows total (global first, then tw) to keep the tab bounded.
+    Missing 'news' key or empty sections -> returns [], never crashes."""
+    date = payload.get("date")
+    news = payload.get("news") or {}
+    rows = []
+    for region in ("global", "tw"):
+        for item in (news.get(region) or []):
+            rows.append([
+                date,
+                region,
+                item.get("title"),
+                item.get("source"),
+                item.get("link"),
+            ])
+            if len(rows) >= NEWS_ROW_CAP:
+                return rows
+    return rows
+
+
 def dup_row_numbers(date_column_values, date_str):
     """Given the full date column (index 0 = header), return the 1-based sheet row numbers
     whose date == date_str. Pure helper — drives idempotent delete-then-append."""
@@ -151,13 +244,34 @@ def _upsert(ws, date_str, rows):
 
 
 def sync_payload(sh, payload):
-    """Upsert one day's payload into both tabs."""
+    """Upsert one day's payload into all four tabs (picks, market, opportunity, news).
+    Each tab write is isolated: a failure logs SKIP for that tab but never crashes the sync."""
     date_str = payload.get("date")
     picks = _ensure_ws(sh, "picks", PICKS_HEADERS)
     market = _ensure_ws(sh, "market", MARKET_HEADERS)
     _upsert(picks, date_str, build_picks_rows(payload))
     _upsert(market, date_str, [build_market_row(payload)])
-    _log(f"synced {date_str}: {len(payload.get('picks') or [])} picks + 1 market row")
+
+    opp_rows = build_opportunity_rows(payload)
+    if opp_rows is not None:
+        try:
+            opportunity = _ensure_ws(sh, "opportunity", OPPORTUNITY_HEADERS)
+            _upsert(opportunity, date_str, opp_rows)
+        except Exception as exc:
+            _log(f"SKIP opportunity tab for {date_str}: {exc}")
+
+    news_rows = build_news_rows(payload)
+    if news_rows is not None:
+        try:
+            news_ws = _ensure_ws(sh, "news", NEWS_HEADERS)
+            _upsert(news_ws, date_str, news_rows)
+        except Exception as exc:
+            _log(f"SKIP news tab for {date_str}: {exc}")
+
+    _log(
+        f"synced {date_str}: {len(payload.get('picks') or [])} picks + 1 market row"
+        f" + {len(opp_rows)} opportunity rows + {len(news_rows)} news rows"
+    )
 
 
 def _load_day(day):
