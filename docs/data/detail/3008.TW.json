@@ -1,17 +1,9 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 3885.0,
- "change_pct": 9.9,
+ "price": 4130.0,
+ "change_pct": 6.31,
  "ohlc": [
-  {
-   "time": "2026-03-13",
-   "o": 2265.66,
-   "h": 2309.7,
-   "l": 2255.88,
-   "c": 2295.02,
-   "v": 761619
-  },
   {
    "time": "2026-03-16",
    "o": 2309.71,
@@ -482,11 +474,19 @@
    "h": 3885.0,
    "l": 3755.0,
    "c": 3885.0,
-   "v": 2231408
+   "v": 2084077
+  },
+  {
+   "time": "2026-06-10",
+   "o": 4180.0,
+   "h": 4270.0,
+   "l": 4100.0,
+   "c": 4130.0,
+   "v": 5956064
   }
  ],
  "sr": {
-  "price": 3885.0,
+  "price": 4130.0,
   "resistance": [
    4225.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 1976.95
  },
  "spark": [
-  2295.02,
   2255.88,
   2348.85,
   2388.0,
@@ -556,10 +555,11 @@
   3825.0,
   3680.0,
   3535.0,
-  3885.0
+  3885.0,
+  4130.0
  ],
- "spark_start": "2026-03-13",
- "spark_end": "2026-06-09",
+ "spark_start": "2026-03-16",
+ "spark_end": "2026-06-10",
  "fundamental": {
   "rev_yoy": 24.5,
   "rev_accel": false,
@@ -567,36 +567,50 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 3885.0,
-  "stop": 3613.05,
-  "target": 4564.88,
-  "atr_bracket": 4564.88,
+  "entry": 4130.0,
+  "stop": 3840.9,
+  "target": 4852.75,
+  "atr_bracket": 4852.75,
   "measured_move": 5030.0,
   "target_band": [
-   4564.88,
+   4852.75,
    5030.0
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.7,
-  "swing_stop": 3342.32,
-  "chandelier": 3470.23,
+  "atr_pct": 6.4,
+  "swing_stop": 3245.93,
+  "chandelier": 3472.95,
   "fib_targets": []
  },
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 22.1 / 殖利率 2.26% / PB 2.51",
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 945,741 股",
    "value": {
-    "pe": 22.06,
-    "yield": 2.26,
-    "pb": 2.51
+    "foreign": 922736,
+    "trust": 152937,
+    "dealer": -129932,
+    "total": 945741
    },
    "severity": "info",
-   "as_of": "2026-06-08",
+   "as_of": "2026-06-10",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 24.2 / 殖利率 2.06% / PB 2.75",
+   "value": {
+    "pe": 24.25,
+    "yield": 2.06,
+    "pb": 2.75
+   },
+   "severity": "info",
+   "as_of": "2026-06-09",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

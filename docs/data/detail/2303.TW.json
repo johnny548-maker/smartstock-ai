@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 127.5,
- "change_pct": 5.37,
+ "price": 118.5,
+ "change_pct": -7.06,
  "ohlc": [
-  {
-   "time": "2026-03-13",
-   "o": 59.8,
-   "h": 60.2,
-   "l": 59.0,
-   "c": 59.5,
-   "v": 64162838
-  },
   {
    "time": "2026-03-16",
    "o": 60.5,
@@ -482,12 +474,21 @@
    "h": 131.5,
    "l": 118.5,
    "c": 127.5,
-   "v": 374065119
+   "v": 372028410
+  },
+  {
+   "time": "2026-06-10",
+   "o": 126.5,
+   "h": 130.5,
+   "l": 117.5,
+   "c": 118.5,
+   "v": 333094608
   }
  ],
  "sr": {
-  "price": 127.5,
+  "price": 118.5,
   "resistance": [
+   120.5,
    155.5
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 40.1
  },
  "spark": [
-  59.5,
   60.5,
   60.7,
   61.1,
@@ -556,10 +556,11 @@
   125.0,
   131.5,
   121.0,
-  127.5
+  127.5,
+  118.5
  ],
- "spark_start": "2026-03-13",
- "spark_end": "2026-06-09",
+ "spark_start": "2026-03-16",
+ "spark_end": "2026-06-10",
  "fundamental": {
   "rev_yoy": 10.8,
   "rev_accel": false,
@@ -570,16 +571,53 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 30.4 / 殖利率 2.15% / PB 3.74",
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 54,415,822 股",
    "value": {
-    "pe": 30.4,
-    "yield": 2.15,
-    "pb": 3.74
+    "foreign": 14600357,
+    "trust": -71828477,
+    "dealer": 2812298,
+    "total": -54415822
    },
    "severity": "info",
-   "as_of": "2026-06-08",
+   "as_of": "2026-06-10",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +19.1%",
+   "value": {
+    "fin_net": 29514,
+    "fin_pct": 0.19114170806105862
+   },
+   "severity": "warn",
+   "as_of": "2026-06-10",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -580
+   },
+   "severity": "info",
+   "as_of": "2026-06-10",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 32.0 / 殖利率 2.04% / PB 3.94",
+   "value": {
+    "pe": 32.04,
+    "yield": 2.04,
+    "pb": 3.94
+   },
+   "severity": "info",
+   "as_of": "2026-06-09",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

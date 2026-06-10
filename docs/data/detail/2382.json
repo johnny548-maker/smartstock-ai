@@ -1,17 +1,9 @@
 {
  "stock": "2382",
  "name": "廣達",
- "price": 375.0,
- "change_pct": -0.4,
+ "price": 380.5,
+ "change_pct": 1.47,
  "ohlc": [
-  {
-   "time": "2026-03-13",
-   "o": 286.0,
-   "h": 290.0,
-   "l": 283.5,
-   "c": 289.0,
-   "v": 9844284
-  },
   {
    "time": "2026-03-16",
    "o": 290.0,
@@ -482,11 +474,19 @@
    "h": 383.0,
    "l": 373.5,
    "c": 375.0,
-   "v": 50788876
+   "v": 49988953
+  },
+  {
+   "time": "2026-06-10",
+   "o": 370.0,
+   "h": 380.5,
+   "l": 363.5,
+   "c": 380.5,
+   "v": 46073162
   }
  ],
  "sr": {
-  "price": 375.0,
+  "price": 380.5,
   "resistance": [
    438.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 166.08
  },
  "spark": [
-  289.0,
   289.0,
   289.0,
   293.0,
@@ -556,10 +555,11 @@
   404.0,
   390.5,
   376.5,
-  375.0
+  375.0,
+  380.5
  ],
- "spark_start": "2026-03-13",
- "spark_end": "2026-06-09",
+ "spark_start": "2026-03-16",
+ "spark_end": "2026-06-10",
  "fundamental": {
   "rev_yoy": 120.7,
   "rev_accel": false,
@@ -567,5 +567,54 @@
   "source": "twse_revenue"
  },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 11,008,920 股",
+   "value": {
+    "foreign": -9201330,
+    "trust": 20635544,
+    "dealer": -425294,
+    "total": 11008920
+   },
+   "severity": "info",
+   "as_of": "2026-06-10",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -21
+   },
+   "severity": "info",
+   "as_of": "2026-06-10",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 18.9 / 殖利率 4.16% / PB 6.97",
+   "value": {
+    "pe": 18.85,
+    "yield": 4.16,
+    "pb": 6.97
+   },
+   "severity": "info",
+   "as_of": "2026-06-09",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶集中度",
+   "value": 85.79,
+   "severity": "info",
+   "as_of": "20260605",
+   "note": "大戶持股%=85.79"
+  }
+ ]
 }
