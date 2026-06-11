@@ -297,5 +297,221 @@ class TestImmutability(unittest.TestCase):
         self.assertIsNot(new_card, card)
 
 
+# ── W4: short_pct_float (融券佔流通股數%) ──────────────────────────────────────
+# short_pct_float(code) computes 融券今日餘額 / 流通股數 for TWSE-listed stocks.
+# Data sources:
+#   * MI_MARGN (fetch_margin) → 融券今日餘額 per stock
+#   * t187ap03_L (fetch_t187ap03_l) → 已發行普通股數 (outstanding shares ≈ float)
+#
+# Both fetchers follow the existing injectable + graceful-skip pattern.
+
+# t187ap03_L fixture (Chinese keys — byte-for-byte from live probe)
+T187_ROWS = [
+    {
+        "公司代號": "2330",
+        "公司名稱": "台灣積體電路製造股份有限公司",
+        "公司簡稱": "台積電",
+        "已發行普通股數及TDR原股發行股數": "25930380458",
+    },
+    {
+        "公司代號": "2317",
+        "公司名稱": "鴻海精密工業股份有限公司",
+        "公司簡稱": "鴻海",
+        "已發行普通股數及TDR原股發行股數": "13861000000",
+    },
+    {
+        "公司代號": "9999",
+        "公司名稱": "壞行",
+        "公司簡稱": "",
+        "已發行普通股數及TDR原股發行股數": "",   # blank → 0 / skip
+    },
+]
+
+
+class TestFetchT187ap03L(unittest.TestCase):
+    """fetch_t187ap03_l: injectable fetcher for outstanding-shares table (W4)."""
+
+    def test_uses_injected_fetch(self):
+        seen = {}
+        def fake(url=None, params=None):
+            seen["url"] = url
+            return T187_ROWS
+        rows = twse.fetch_t187ap03_l(fetch_fn=fake)
+        self.assertIn("t187ap03_L", seen["url"])
+        self.assertEqual(rows, T187_ROWS)
+
+    def test_graceful_skip_on_exception(self):
+        self.assertEqual(twse.fetch_t187ap03_l(fetch_fn=_boom), [])
+
+    def test_graceful_skip_on_non_list(self):
+        self.assertEqual(twse.fetch_t187ap03_l(fetch_fn=_ok({"stat": "err"})), [])
+
+
+class TestBuildFloatMap(unittest.TestCase):
+    """build_float_map: rows → {code: outstanding_shares int} (W4)."""
+
+    def test_basic_mapping(self):
+        m = twse.build_float_map(T187_ROWS)
+        self.assertEqual(m["2330"], 25930380458)
+        self.assertEqual(m["2317"], 13861000000)
+
+    def test_blank_shares_excluded(self):
+        # blank '' → 0 → excluded (shares must be >0 to be useful)
+        m = twse.build_float_map(T187_ROWS)
+        self.assertNotIn("9999", m)
+
+    def test_empty_input(self):
+        self.assertEqual(twse.build_float_map([]), {})
+        self.assertEqual(twse.build_float_map(None), {})
+
+    def test_missing_code_or_shares_field_skipped(self):
+        rows = [{"公司名稱": "no-code", "已發行普通股數及TDR原股發行股數": "1000"}]
+        self.assertEqual(twse.build_float_map(rows), {})
+
+
+class TestShortPctFloat(unittest.TestCase):
+    """short_pct_float: derive 融券今日餘額 / outstanding_shares (W4)."""
+
+    def test_basic_pct(self):
+        # 融券今日餘額=150, outstanding=10000 → 1.50%
+        pct = twse.short_pct_float(
+            short_today=150,
+            outstanding=10000,
+        )
+        self.assertAlmostEqual(pct, 1.50)
+
+    def test_zero_outstanding_returns_none(self):
+        self.assertIsNone(twse.short_pct_float(short_today=100, outstanding=0))
+        self.assertIsNone(twse.short_pct_float(short_today=100, outstanding=None))
+
+    def test_zero_short_returns_zero(self):
+        self.assertAlmostEqual(twse.short_pct_float(short_today=0, outstanding=5000), 0.0)
+
+    def test_integer_truncation_guard(self):
+        # Very small ratio must not be truncated to 0 by integer division
+        pct = twse.short_pct_float(short_today=1, outstanding=1_000_000)
+        self.assertAlmostEqual(pct, 0.0001, places=6)
+
+
+class TestToOverlaysShortPct(unittest.TestCase):
+    """to_overlays_short_pct: builds {code: [overlay]} from margin+float maps (W4)."""
+
+    # MI_MARGN rows from existing fixture (MARGN_ROWS) — reuse 2330 entry
+    # 2330: 融券今日餘額=100 shares, outstanding=25930380458 → very tiny pct
+    # Use a custom fixture with a meaningful short ratio to test threshold
+
+    _MARGN_HIGH_SHORT = [
+        {
+            "股票代號": "2330",
+            "股票名稱": "台積電",
+            "融資今日餘額": "14000",
+            "融資前日餘額": "12000",
+            "融券今日餘額": "600",     # 600 / 1000 = 60% → HIGH (for testing)
+            "融券前日餘額": "500",
+        },
+        {
+            "股票代號": "2317",
+            "股票名稱": "鴻海",
+            "融資今日餘額": "5000",
+            "融資前日餘額": "5000",
+            "融券今日餘額": "10",      # 10 / 1000 = 1% → LOW
+            "融券前日餘額": "12",
+        },
+    ]
+    _FLOAT_MAP = {"2330": 1000, "2317": 1000}
+
+    def _assert_overlay_shape(self, ov):
+        self.assertEqual(set(ov.keys()),
+                         {"source", "kind", "label", "value", "severity", "as_of", "note"})
+
+    def test_emits_overlay_for_each_code_with_data(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        self.assertIn("2330", out)
+        self.assertIn("2317", out)
+
+    def test_overlay_shape_contract(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        for code, ovs in out.items():
+            for ov in ovs:
+                self._assert_overlay_shape(ov)
+                self.assertIn(ov["kind"], KINDS)
+                self.assertIn(ov["severity"], SEVERITIES)
+
+    def test_kind_is_chip(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        for code, ovs in out.items():
+            for ov in ovs:
+                self.assertEqual(ov["kind"], "chip")
+
+    def test_source_is_twse_short(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        for code, ovs in out.items():
+            for ov in ovs:
+                self.assertEqual(ov["source"], "twse_short")
+
+    def test_high_short_ratio_emits_warn(self):
+        # 2330: 600/1000 = 60% → should be warn
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        sevs = {ov["severity"] for ov in out.get("2330", [])}
+        self.assertIn("warn", sevs)
+
+    def test_value_carries_pct_and_shares(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        ov = out["2330"][0]
+        val = ov["value"]
+        self.assertIn("short_today", val)
+        self.assertIn("outstanding", val)
+        self.assertIn("short_pct", val)
+        self.assertAlmostEqual(val["short_pct"], 60.0)
+
+    def test_code_not_in_float_map_skipped(self):
+        # 2454 not in float_map → graceful skip (no crash)
+        margn = [{"股票代號": "2454", "融券今日餘額": "99", "融券前日餘額": "0",
+                  "融資今日餘額": "0", "融資前日餘額": "0"}]
+        out = twse.to_overlays_short_pct(margin_rows=margn, float_map={"2330": 1000})
+        self.assertNotIn("2454", out)
+
+    def test_zero_outstanding_skipped(self):
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map={"2330": 0, "2317": 0},   # unusable float
+        )
+        # no usable data → empty
+        self.assertEqual(out, {})
+
+    def test_empty_inputs_empty_output(self):
+        self.assertEqual(twse.to_overlays_short_pct(margin_rows=[], float_map={}), {})
+
+    def test_overlay_not_scorer_immutability(self):
+        """Overlay must never modify the input card score (golden-additive invariant)."""
+        from sources.overlay import attach
+        card = {"symbol": "2330.TW", "score": 75, "rank": 2, "overlays": []}
+        out = twse.to_overlays_short_pct(
+            margin_rows=self._MARGN_HIGH_SHORT,
+            float_map=self._FLOAT_MAP,
+        )
+        new_card = attach(card, out.get("2330", []))
+        self.assertEqual(card["score"], 75)      # original untouched
+        self.assertEqual(new_card["score"], 75)  # score never modified
+
+
 if __name__ == "__main__":
     unittest.main()

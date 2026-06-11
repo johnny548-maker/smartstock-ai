@@ -29,10 +29,13 @@ HONEST caveats baked in:
 Pure parsers (parse_form4 / insider_buy_signal) are offline unit-tested with a
 fixture XML string; every network call is wrapped try/except → graceful SKIP.
 """
+import logging
 import os
 import time
 import xml.etree.ElementTree as ET
 from urllib.request import Request, urlopen
+
+log = logging.getLogger(__name__)
 
 # ── constants (defined here; NOT added to config.py — overlay framework is self-contained)
 SEC_UA = "SmartStockDaily johnny548@gmail.com"     # SEC requires a descriptive UA (blank → 403)
@@ -148,15 +151,20 @@ def fetch_daily_index(date=None, fetch_fn=None):
     if date is None:
         date = time.strftime("%Y%m%d", time.gmtime())
     fetch = fetch_fn or _real_fetch
+    url = daily_index_url(date)
     try:
-        text = fetch(daily_index_url(date))
-    except Exception:
+        text = fetch(url)
+    except Exception as exc:
+        log.warning("SKIP fetch_daily_index fetch: url=%s exc=%s(%s)",
+                    url, type(exc).__name__, exc)
         return []
     if not text:
         return []
     try:
         return parse_daily_index(text)
-    except Exception:
+    except Exception as exc:
+        log.warning("SKIP fetch_daily_index parse: url=%s exc=%s(%s)",
+                    url, type(exc).__name__, exc)
         return []
 
 

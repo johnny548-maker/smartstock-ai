@@ -114,6 +114,50 @@ class TestStrategy(unittest.TestCase):
         self.assertEqual(ranked[0]["stock"], "A")
 
 
+class TestObvAdjudication(unittest.TestCase):
+    """OBV weighting-gate adjudication (backtest_obv.txt evidence, 15y net-of-cost):
+      • 量能流入(背離偏多,+10): FAIL (CI-lo<=base, no edge) → DEMOTE to overlay (DELETE the
+        +10 scoring branch in strategy.py).
+      • 量價背離(出貨警示,-15): PASS (avoid-filter benefit) → KEEP the -15 live weight.
+    These tests pin BOTH outcomes at the scorer level."""
+
+    @staticmethod
+    def _frame(closes, vols):
+        n = len(closes)
+        return pd.DataFrame({
+            "Open": closes, "High": [c * 1.01 for c in closes],
+            "Low": [c * 0.99 for c in closes], "Close": closes, "Volume": vols,
+        }, index=pd.date_range("2024-01-01", periods=n, freq="D"))
+
+    def _bullish_div_df(self):
+        # net-DOWN price but up-days carry far heavier volume → OBV rises = bullish divergence.
+        closes, price = [], 100.0
+        for i in range(40):
+            price += 0.5 if i % 2 == 0 else -0.6           # net down
+            closes.append(price)
+        vols = [3000 if i % 2 == 0 else 500 for i in range(40)]
+        return self._frame(closes, vols)
+
+    def _bearish_div_df(self):
+        # net-UP price but down-days carry heavier volume → OBV falls = distribution warning.
+        closes, price = [], 100.0
+        for i in range(40):
+            price += 0.6 if i % 2 == 0 else -0.5           # net up
+            closes.append(price)
+        vols = [500 if i % 2 == 0 else 3000 for i in range(40)]
+        return self._frame(closes, vols)
+
+    def test_bullish_obv_divergence_no_longer_scored(self):
+        # DEMOTED: the +10 量能流入(背離偏多) factor must NOT appear in the scored factors.
+        r = strategy.score_stock(self._bullish_div_df())
+        self.assertNotIn("量能流入(背離偏多)", r["factors"])
+
+    def test_bearish_obv_divergence_still_penalised(self):
+        # KEPT (avoid-filter PASS): 量價背離(出貨警示) stays a live -15 weight.
+        r = strategy.score_stock(self._bearish_div_df())
+        self.assertEqual(r["factors"].get("量價背離(出貨警示)"), -15)
+
+
 class TestIndicators(unittest.TestCase):
     def test_atr_positive(self):
         self.assertGreater(indicators.atr(make_df(np.linspace(100, 120, 30))), 0)
@@ -842,6 +886,39 @@ class TestVerdict(unittest.TestCase):
         sd, se = verdict.spark_dates(df, 60)
         self.assertEqual(se, "2026-03-21")            # last of 80 daily bars
         self.assertTrue(sd < se)
+
+    def test_obv_flow_fires_on_bullish_divergence(self):
+        # net-DOWN price with up-days carrying heavier volume → OBV rises = bullish divergence.
+        # Demoted from scoring (backtest FAIL) → surfaced here as an INFORMATIONAL badge.
+        closes, price = [], 100.0
+        for i in range(40):
+            price += 0.5 if i % 2 == 0 else -0.6
+            closes.append(price)
+        vols = [3000 if i % 2 == 0 else 500 for i in range(40)]
+        flow = verdict.obv_flow(make_df(closes, vols))
+        self.assertIsNotNone(flow)
+        self.assertTrue(flow["bullish"])
+        self.assertIn("量能流入", flow["label"])
+
+    def test_obv_flow_none_when_not_bullish_divergence(self):
+        # plain uptrend (price up, OBV up) → no bullish divergence → no badge.
+        df = make_df(list(np.linspace(100, 140, 40)))
+        self.assertIsNone(verdict.obv_flow(df))
+
+    def test_obv_flow_graceful_on_short_frame(self):
+        # too short for slope(20) → returns None cleanly, never raises.
+        self.assertIsNone(verdict.obv_flow(make_df([100, 101, 102])))
+
+    def test_enrich_carries_obv_flow_badge(self):
+        # the bullish-divergence frame must surface an 'obv_flow' card key (rides the A/D rail).
+        closes, price = [], 100.0
+        for i in range(40):
+            price += 0.5 if i % 2 == 0 else -0.6
+            closes.append(price)
+        vols = [3000 if i % 2 == 0 else 500 for i in range(40)]
+        e = verdict.enrich("X", 95, {}, make_df(closes, vols))
+        self.assertIn("obv_flow", e)
+        self.assertTrue(e["obv_flow"]["bullish"])
 
     def test_enrich_has_price_and_dates(self):
         idx = pd.date_range("2026-01-01", periods=70, freq="D")

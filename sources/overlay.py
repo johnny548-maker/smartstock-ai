@@ -9,7 +9,7 @@ key, and it never mutates the input card.
 """
 
 # allowed enums (kept as module constants for callers/tests to reference)
-KINDS = frozenset({"chip", "inst", "fundamental", "sentiment", "catalyst", "macro"})
+KINDS = frozenset({"chip", "inst", "fundamental", "sentiment", "catalyst", "macro", "risk"})
 SEVERITIES = frozenset({"info", "warn", "risk"})
 
 

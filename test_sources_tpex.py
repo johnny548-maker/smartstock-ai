@@ -327,5 +327,120 @@ class TestToOverlays(unittest.TestCase):
         self.assertEqual(insti, snapshot)
 
 
+# ── W4: fetch_tpex_daytrade (現股當沖比率) ────────────────────────────────────
+# TPEx tpex_intraday_trading_statistics provides MARKET-WIDE aggregate daytrade
+# stats (not per-stock). Fields: Date, DayTradingVolume, DayTradingVolumeOfTheMarket
+# (as "20.79%"), DayTradingValueOfBuys, DayTradingValueOfBuyOfTheMarket, etc.
+
+_DAYTRADE_ROWS = [
+    {
+        "Date": "1150609",
+        "DayTradingVolume": "631072000",
+        "DayTradingVolumeOfTheMarket": "20.79%",
+        "DayTradingValueOfBuys": "137004796230",
+        "DayTradingValueOfBuyOfTheMarket": "39.13%",
+        "DayTradingValueOfSells": "137598306110",
+        "DayTradingValueOfSellsOfTheMarket": "39.30%",
+    },
+    {
+        "Date": "1150610",
+        "DayTradingVolume": "900000000",
+        "DayTradingVolumeOfTheMarket": "42.50%",   # >40% → speculative-hot flag
+        "DayTradingValueOfBuys": "200000000000",
+        "DayTradingValueOfBuyOfTheMarket": "50.00%",
+        "DayTradingValueOfSells": "200100000000",
+        "DayTradingValueOfSellsOfTheMarket": "50.10%",
+    },
+]
+
+
+class TestFetchTpexDaytrade(unittest.TestCase):
+    """Tests for fetch_tpex_daytrade + parse_daytrade_rows (W4 addition)."""
+
+    def test_uses_injected_fetch_fn(self):
+        seen = {}
+        def fake(url):
+            seen["url"] = url
+            return _DAYTRADE_ROWS
+        rows = tpex.fetch_tpex_daytrade(fetch_fn=fake)
+        self.assertIn("tpex_intraday_trading_statistics", seen["url"])
+        self.assertEqual(rows, _DAYTRADE_ROWS)
+
+    def test_graceful_skip_on_exception(self):
+        def boom(url):
+            raise RuntimeError("network down")
+        self.assertEqual(tpex.fetch_tpex_daytrade(fetch_fn=boom), [])
+
+    def test_graceful_skip_on_non_list_payload(self):
+        def bad(url):
+            return {"error": "no data"}
+        self.assertEqual(tpex.fetch_tpex_daytrade(fetch_fn=bad), [])
+
+    def test_graceful_skip_on_empty_list(self):
+        self.assertEqual(tpex.fetch_tpex_daytrade(fetch_fn=lambda u: []), [])
+
+
+class TestParseDaytradeRows(unittest.TestCase):
+    """parse_daytrade_rows: raw rows → latest parsed record (dict or None)."""
+
+    def test_returns_latest_row_parsed(self):
+        result = tpex.parse_daytrade_rows(_DAYTRADE_ROWS)
+        # latest = index -1 (1150610 row; rows are date-ascending)
+        self.assertIsNotNone(result)
+        self.assertEqual(result["date"], "2026-06-10")       # ROC 1150610 → AD
+        self.assertAlmostEqual(result["vol_pct"], 42.50)     # "42.50%" → float
+        self.assertAlmostEqual(result["val_buy_pct"], 50.00)
+
+    def test_speculative_flag_above_threshold(self):
+        result = tpex.parse_daytrade_rows(_DAYTRADE_ROWS)
+        self.assertTrue(result["speculative_hot"])            # 42.5% > 40%
+
+    def test_speculative_flag_below_threshold(self):
+        result = tpex.parse_daytrade_rows([_DAYTRADE_ROWS[0]])
+        self.assertFalse(result["speculative_hot"])           # 20.79% ≤ 40%
+
+    def test_empty_rows_returns_none(self):
+        self.assertIsNone(tpex.parse_daytrade_rows([]))
+        self.assertIsNone(tpex.parse_daytrade_rows(None))
+
+    def test_missing_pct_field_graceful(self):
+        row = {"Date": "1150610", "DayTradingVolume": "1000"}   # no pct field
+        result = tpex.parse_daytrade_rows([row])
+        self.assertIsNotNone(result)
+        self.assertIsNone(result["vol_pct"])                  # missing → None
+        self.assertFalse(result["speculative_hot"])           # can't flag without data
+
+    def test_junk_pct_string_graceful(self):
+        row = dict(_DAYTRADE_ROWS[0])
+        row["DayTradingVolumeOfTheMarket"] = "--"
+        result = tpex.parse_daytrade_rows([row])
+        self.assertIsNone(result["vol_pct"])
+
+    def test_daytrade_overlay_shape(self):
+        """to_daytrade_overlay returns a valid overlay dict or None."""
+        result = tpex.parse_daytrade_rows(_DAYTRADE_ROWS)
+        ov = tpex.to_daytrade_overlay(result)
+        self.assertIsNotNone(ov)
+        self.assertEqual(set(ov.keys()),
+                         {"source", "kind", "label", "value", "severity", "as_of", "note"})
+        self.assertEqual(ov["source"], "tpex")
+        self.assertEqual(ov["kind"], "chip")
+        self.assertIn(ov["severity"], SEVERITIES)
+
+    def test_daytrade_overlay_warn_on_speculative_hot(self):
+        result = tpex.parse_daytrade_rows(_DAYTRADE_ROWS)   # 42.5% → hot
+        ov = tpex.to_daytrade_overlay(result)
+        self.assertEqual(ov["severity"], "warn")
+        self.assertIn("投機熱", ov["label"])
+
+    def test_daytrade_overlay_info_on_normal(self):
+        result = tpex.parse_daytrade_rows([_DAYTRADE_ROWS[0]])  # 20.79% → normal
+        ov = tpex.to_daytrade_overlay(result)
+        self.assertEqual(ov["severity"], "info")
+
+    def test_daytrade_overlay_none_on_none_input(self):
+        self.assertIsNone(tpex.to_daytrade_overlay(None))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -35,7 +35,7 @@ def rs_line_new_high(df, bench, window=RS_LINE_WINDOW):
     """True when the RS line (close ÷ benchmark) makes a new `window`-bar high —
     pure relative-strength leadership.
 
-    Backtest-validated form (5y/65-ticker, +25%/60-bar): lift 1.10 over base rate.
+    Backtest-validated form (15y net-of-cost hardened, 65-ticker, +25%/60-bar): lift 1.23 (CI-lower 7.27% > base 6.99%).
     NOTE: an earlier version also required price to be *depressed* (≤92% of its
     high) — that gate backtested at lift 0.74 (worse than random, it caught
     laggards) and was removed. Leadership ≠ a beaten-down price."""

@@ -133,11 +133,14 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         factors["RSI回檔買點"] = 5
 
     # ── OBV volume-price divergence ─────────────────────────
+    # ADJUDICATED (backtest_obv.txt, 15y net-of-cost): the BULLISH 量能流入(背離偏多,+10)
+    # branch FAILED the weighting gate (CI-lo<=base, no edge over base rate) → DEMOTED to an
+    # informational overlay (verdict 'obv_flow' badge / web_export), NOT a score input. The
+    # BEARISH 量價背離(出貨警示,-15) PASSED (avoid-filter benefit: flagged names underperform)
+    # → KEPT as a live weight. Slope calc retained; the bullish `if`→factor branch is removed.
     o = obv_ind(close, vol)
     obv_s, price_s = slope(o, 20), slope(close, 20)
-    if obv_s > 0 and price_s <= 0:
-        factors["量能流入(背離偏多)"] = 10
-    elif price_s > 0 and obv_s < 0:
+    if price_s > 0 and obv_s < 0:
         factors["量價背離(出貨警示)"] = -15
 
     # ── 籌碼集中度 + 外資投信連買 streak (cross-run buffer) ──

@@ -50,6 +50,19 @@ TPEX_3INSTI_URL = "https://www.tpex.org.tw/openapi/v1/tpex_3insti_daily_trading"
 TPEX_MARGIN_URL = "https://www.tpex.org.tw/openapi/v1/tpex_margin_trading_margin_used"
 TPEX_PE_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_peratio_analysis"
 
+# W4: 上櫃現股當沖市場統計 — MARKET-WIDE aggregate (NOT per-stock).
+# Probe confirmed: tpex_intraday_trading_statistics is the only OpenAPI path for
+# OTC daytrade stats. Fields: Date, DayTradingVolume, DayTradingVolumeOfTheMarket
+# (as "20.79%"), DayTradingValueOfBuys, DayTradingValueOfBuyOfTheMarket, etc.
+TPEX_DAYTRADE_URL = (
+    "https://www.tpex.org.tw/openapi/v1/tpex_intraday_trading_statistics"
+)
+
+# 當沖比率 > this threshold → "投機熱" (speculative-hot) warn overlay.
+# Probe: recent daily ratio ranged 20-43%; 40% is the community rule-of-thumb
+# for "overheated day-trading activity" in OTC market.
+DAYTRADE_HOT_PCT = 40.0
+
 # Margin-surge flag: 融資今日餘額 jumped ≥ this fraction over 前日餘額 in one day.
 # (Mirrors the spirit of the 量比/集中度 chip flags; named constant, no magic #.)
 MARGIN_SURGE_RATIO = 0.10
@@ -453,3 +466,75 @@ def to_overlays(insti_metrics=None, margin_metrics=None, pe_metrics=None,
             result[code] = overlays
 
     return result
+
+
+# ── W4: fetch_tpex_daytrade + parse_daytrade_rows + to_daytrade_overlay ───────
+
+def fetch_tpex_daytrade(fetch_fn=None):
+    """現股當沖市場統計 (tpex_intraday_trading_statistics). Returns list[dict] rows.
+
+    Market-wide aggregate (NOT per-stock). Fields include Date,
+    DayTradingVolumeOfTheMarket (as "20.79%"), etc. Graceful-skip → []."""
+    fetch_fn = fetch_fn or _http_get_json
+    try:
+        data = fetch_fn(TPEX_DAYTRADE_URL)
+    except Exception as e:
+        log.warning("SKIP tpex_daytrade: fetch failed: %s", e)
+        return []
+    if not isinstance(data, list):
+        log.warning("SKIP tpex_daytrade: unexpected payload type %s", type(data).__name__)
+        return []
+    return data
+
+
+def _parse_pct(s):
+    """'20.79%' / '42.50%' / '--' / '' → float or None. Strips trailing '%'."""
+    try:
+        txt = str(s).replace("%", "").strip()
+        if txt in ("", "--", "-", "X"):
+            return None
+        f = float(txt)
+        return f if f == f else None
+    except Exception:
+        return None
+
+
+def parse_daytrade_rows(rows):
+    """Raw daytrade rows (date-ascending) → latest record dict or None.
+
+    Returns dict with keys:
+      date          ISO date string (from ROC)
+      vol_pct       float or None — DayTradingVolumeOfTheMarket
+      val_buy_pct   float or None — DayTradingValueOfBuyOfTheMarket
+      speculative_hot  bool — True when vol_pct > DAYTRADE_HOT_PCT
+
+    Returns None when rows is empty/None (graceful)."""
+    if not rows:
+        return None
+    row = rows[-1]   # rows are date-ascending; take latest
+    vol_pct = _parse_pct(row.get("DayTradingVolumeOfTheMarket"))
+    val_buy_pct = _parse_pct(row.get("DayTradingValueOfBuyOfTheMarket"))
+    speculative_hot = bool(vol_pct is not None and vol_pct > DAYTRADE_HOT_PCT)
+    return {
+        "date": roc_to_iso(row.get("Date", "")),
+        "vol_pct": vol_pct,
+        "val_buy_pct": val_buy_pct,
+        "speculative_hot": speculative_hot,
+    }
+
+
+def to_daytrade_overlay(parsed):
+    """parsed record from parse_daytrade_rows → a single overlay dict or None.
+
+    kind='chip', source='tpex'. severity='warn' when speculative_hot, else 'info'.
+    Returns None when parsed is None (graceful)."""
+    if parsed is None:
+        return None
+    sev = "warn" if parsed.get("speculative_hot") else "info"
+    label = "上櫃當沖佔成交量投機熱" if sev == "warn" else "上櫃當沖佔成交量"
+    return make_overlay(
+        "tpex", "chip", label,
+        {"vol_pct": parsed.get("vol_pct"), "val_buy_pct": parsed.get("val_buy_pct")},
+        severity=sev, as_of=parsed.get("date"),
+        note="市場整體當沖比率，資訊性 overlay；非個股訊號",
+    )

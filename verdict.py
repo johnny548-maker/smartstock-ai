@@ -10,7 +10,7 @@ backtest non-trigger rate), not its over-promised single-point targets.
 import json
 import re
 
-from indicators import pivots, dollar_adv
+from indicators import pivots, dollar_adv, obv, slope
 from volume_signals import acc_dist_grade
 import risk_sizing
 
@@ -212,6 +212,39 @@ def _kelly_ceiling_for(factors):
     return min(caps) if caps else None
 
 
+def obv_flow(df):
+    """量能流入(背離偏多) as an INFORMATIONAL badge — DEMOTED from scoring.
+
+    backtest_obv.txt (15y net-of-cost) adjudicated the +10 量能流入(背離偏多) scoring branch
+    a FAIL (CI-lo<=base, no edge over the base rate), so it was deleted from
+    strategy.score_stock. This producer keeps the SAME predicate (slope(obv,20)>0 ∧
+    slope(close,20)<=0) but emits it card-only, riding the same informational rail as the A/D
+    grade (verdict 'acc_dist') / earnings — NEVER summed into score.
+
+    Returns {'label','bullish','obv_slope','price_slope'} when the bullish divergence fires,
+    else None (no divergence / too short / no data). Graceful — never raises.
+
+    OVERLAY-NOT-SCORER: informational only; must not enter strategy.score_stock or any weight.
+    """
+    if df is None or getattr(df, "empty", True) or len(df) < 22:
+        return None
+    try:
+        o = obv(df["Close"], df["Volume"])
+        obv_s = slope(o, 20)
+        price_s = slope(df["Close"], 20)
+    except Exception:
+        return None
+    if not (obv_s > 0 and price_s <= 0):
+        return None
+    return {
+        "label": "量能流入(背離偏多)",
+        "bullish": True,
+        "obv_slope": round(float(obv_s), 6),
+        "price_slope": round(float(price_s), 6),
+        "note": "OBV 上升而股價持平/下跌（吸籌背離）— 資訊性 badge，回測未過加權門檻，不進評分",
+    }
+
+
 def enrich(symbol, score, factors, df, levels=None, fundamental=None, overlays=None):
     """Build the card-enrichment dict attached to a pick/opportunity name.
 
@@ -243,6 +276,7 @@ def enrich(symbol, score, factors, df, levels=None, fundamental=None, overlays=N
         "risk": risk_sizing.plan(levels, kelly_ceiling_frac=_kelly_ceiling_for(factors)),
         "liquidity": liquidity(symbol, df),
         "acc_dist": acc_dist_grade(df),    # informational A/D overlay (B8), never scored
+        "obv_flow": obv_flow(df),          # 量能流入 informational badge (OBV-demote), never scored
         "fundamental": fundamental,        # fundamentals overlay (B12), never scored
     }
     if overlays:

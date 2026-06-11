@@ -65,6 +65,48 @@ def save(state, path):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
+# ── entry-price resolution (CRITICAL fix) ─────────────────────────────────────
+
+def resolve_entry_price(pick, df=None, levels=None):
+    """Resolve a REAL entry price for a pick, mirroring pick_outcomes' fallback idiom.
+
+    rank_stocks() output carries NO 'price' key, so enroll() (which reads pick['price'])
+    used to store entry_price=0.0 for every freshly-tracked name (17 historical zeros in
+    _watchlist_state.json). This helper applies the agreed fallback chain so a new name
+    enrolls with a meaningful entry price:
+
+        pick['price']  →  df's last Close (today's price the card shows)  →  levels.entry  →  0.0
+
+    Parameters
+    ----------
+    pick   : pick dict — may or may not carry a 'price' key.
+    df     : optional OHLCV DataFrame for the symbol (today's bars); its last Close is the
+             live price. None / empty → skip to the next fallback (never raises).
+    levels : optional levels dict ({entry, stop, target, ...}); levels['entry'] is the
+             ATR-derived entry band used when no live price is available.
+
+    Returns a float (0.0 only when every source is missing). PURE — no network, no mutation.
+    """
+    price = pick.get("price") if isinstance(pick, dict) else None
+    if price is not None:
+        try:
+            return float(price)
+        except (TypeError, ValueError):
+            pass
+    if df is not None and len(df):
+        try:
+            return round(float(df["Close"].iloc[-1]), 2)
+        except Exception:
+            pass
+    entry = (levels or {}).get("entry") if isinstance(levels, dict) else None
+    if entry is not None:
+        try:
+            return float(entry)
+        except (TypeError, ValueError):
+            pass
+    return 0.0
+
+
 # ── enroll ───────────────────────────────────────────────────────────────────
 
 def enroll(state, picks, pins, date):

@@ -42,6 +42,8 @@ T86_URL = "https://www.twse.com.tw/fund/T86"
 MI_MARGN_URL = "https://openapi.twse.com.tw/v1/exchangeReport/MI_MARGN"
 BWIBBU_URL = "https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL"
 STOCK_DAY_ALL_URL = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
+# W4: 已發行普通股數 (outstanding / float shares) from TWSE listed company table.
+T187AP03_L_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 
 TWSE_TIMEOUT = 15
 _HEADERS = {"User-Agent": "Mozilla/5.0"}
@@ -419,6 +421,98 @@ def to_overlays_pe(rows, symbols=None, source="twse_pe"):
             value={"pe": rec["pe"], "yield": rec["yield"], "pb": rec["pb"]},
             severity="info", as_of=rec["as_of"],
             note="本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分",
+        )
+        out[code] = [ov]
+    return out
+
+
+# ── W4: fetch_t187ap03_l / build_float_map / short_pct_float / to_overlays_short_pct
+
+# 融券佔流通股% threshold: above this → 'warn' (high short interest).
+SHORT_PCT_WARN = 5.0   # percent; community rule-of-thumb for elevated short interest
+
+# Chinese keys in t187ap03_L rows (byte-for-byte from the spec).
+T187_K_CODE = "公司代號"
+T187_K_SHARES = "已發行普通股數及TDR原股發行股數"
+
+
+def fetch_t187ap03_l(fetch_fn=None):
+    """已發行普通股數 (t187ap03_L). Returns array-of-dicts (Chinese keys).
+
+    Outstanding shares ≈ float; used as denominator for short_pct_float.
+    Graceful-skip → [] on any failure."""
+    get = fetch_fn or _default_get_json
+    try:
+        payload = get(T187AP03_L_URL, None)
+    except Exception as e:
+        log.warning("SKIP fetch_t187ap03_l: %s", e)
+        return []
+    return payload if isinstance(payload, list) else []
+
+
+def build_float_map(rows):
+    """t187ap03_L rows → {code: outstanding_shares (int)}.
+
+    Rows with blank or zero shares are excluded (not useful as denominators).
+    Rows missing the code key are skipped (graceful). Pure, no network."""
+    if not rows:
+        return {}
+    out = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        code = str(row.get(T187_K_CODE, "")).strip()
+        if not code:
+            continue
+        shares = _to_int(row.get(T187_K_SHARES, ""))
+        if shares <= 0:
+            continue
+        out[code] = shares
+    return out
+
+
+def short_pct_float(short_today, outstanding):
+    """融券今日餘額 / outstanding_shares * 100 → float percent.
+
+    Returns None when outstanding is 0 or None (can't divide). Pure, no network.
+    Uses true float division so tiny ratios are not truncated to 0."""
+    if not outstanding:
+        return None
+    return (short_today / outstanding) * 100.0
+
+
+def to_overlays_short_pct(margin_rows, float_map, source="twse_short", as_of=None):
+    """Build {code: [chip overlay]} for 融券佔流通股% from MI_MARGN + float_map.
+
+    Args:
+        margin_rows: raw MI_MARGN list-of-dicts (Chinese keys).
+        float_map:   {code: outstanding_shares int} from build_float_map.
+        source/as_of: passed through to make_overlay.
+
+    One overlay per stock where outstanding is known and >0. severity='warn'
+    when short_pct >= SHORT_PCT_WARN, else 'info'. Codes not in float_map or
+    with zero outstanding are silently skipped (graceful). Pure, no network."""
+    out = {}
+    for row in (margin_rows or []):
+        if not isinstance(row, dict):
+            continue
+        code = _norm_code(row.get(MARGN_K_CODE, ""))
+        if not code:
+            continue
+        outstanding = float_map.get(code)
+        if not outstanding:
+            continue   # not in map or zero → skip gracefully
+        short_today = _to_int(row.get(MARGN_K_SHORT_TODAY))
+        pct = short_pct_float(short_today, outstanding)
+        if pct is None:
+            continue
+        sev = "warn" if pct >= SHORT_PCT_WARN else "info"
+        ov = make_overlay(
+            source=source, kind="chip",
+            label="融券佔流通股 %.2f%%" % pct,
+            value={"short_today": short_today, "outstanding": outstanding, "short_pct": pct},
+            severity=sev, as_of=as_of,
+            note="融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權",
         )
         out[code] = [ov]
     return out

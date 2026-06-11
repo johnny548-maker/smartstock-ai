@@ -7,6 +7,7 @@ Pipeline: market data + news + 法人籌碼 → 選股打分 → 規則點評
 Every external stage is wrapped: a failure is logged as SKIP and the run
 continues with whatever data is available (never a silent drop)."""
 import argparse
+import glob
 import json
 import logging
 import math
@@ -46,6 +47,7 @@ import fundamentals
 import watchlist_tracker
 import stock_detail
 import overlay_snapshot
+import pick_outcomes
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -66,6 +68,7 @@ from sources import taifex as _taifex
 from sources import macro_us as _macro_us
 from sources import sec_frames as _sec_frames
 from sources import openfda as _openfda
+from sources import notice as _notice
 # P3 keyless news/catalyst/sentiment/attention/flows overlay producers (same OVERLAY-NOT-
 # SCORER contract). PER-STOCK producers expose to_overlays() -> {ticker:[overlay]} merged
 # into overlays_map (news catalyst/sentiment, wiki/HN attention, SEC FTD chip). SECTOR/MARKET
@@ -363,7 +366,18 @@ def main(web=False):
     try:
         wl_path = os.path.join(config.WEB_DIR, "data", "_watchlist_state.json")
         wl = watchlist_tracker.load(wl_path)
-        watchlist_tracker.enroll(wl, ranked[:config.DISPLAY_N], pins=[], date=date_str)
+        # CRITICAL FIX: rank_stocks results carry NO 'price' key, so enroll() used to
+        # store entry_price=0.0 for every new name (17 historical zeros in _watchlist_state).
+        # Resolve a REAL entry price per pick via the pick_outcomes fallback idiom
+        #   pick['price'] → df last close → levels.entry → 0.0
+        # and pass it as 'price' (enroll reads pick['price']). Immutable: each pick is a copy,
+        # the ranked items are never mutated. Existing 17 zeros are NOT backfilled (honest scar).
+        enroll_picks = [
+            {**it, "price": watchlist_tracker.resolve_entry_price(
+                it, data.get(it["stock"]), level_map.get(it["stock"]))}
+            for it in ranked[:config.DISPLAY_N]
+        ]
+        watchlist_tracker.enroll(wl, enroll_picks, pins=[], date=date_str)
         watchlist_tracker.reevaluate(wl, data, frames, date_str)
         watchlist_tracker.save(wl, wl_path)
         wl_board = watchlist_tracker.board(wl)
@@ -536,6 +550,31 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP tpex overlays: %s", e); skips.append("tpex_overlays")
 
+    # --- W2: TWSE 注意股 / 處置股 regulatory-flag overlays (kind='risk') -----------------
+    #     Per-code risk badges (⚠️注意股 / 🚫處置股第N次) beside any flagged pick. Independent
+    #     SKIP boundary: a dead TWSE endpoint never aborts the run. OVERLAY-NOT-SCORER.
+    try:
+        notice_map = _notice.fetch_notice_stocks()
+        _merge_overlays(_notice.to_overlays_notice(notice_map, as_of=date_str), "twse_notice")
+        disposition_map = _notice.fetch_disposition_stocks()
+        _merge_overlays(_notice.to_overlays_disposition(disposition_map, as_of=date_str),
+                        "twse_punish")
+    except Exception as e:
+        log.warning("SKIP notice/disposition overlays: %s", e); skips.append("notice_overlays")
+
+    # --- W4: 融券佔流通股% per-stock overlay (MI_MARGN 融券餘額 ÷ 已發行普通股數) ----------
+    #     Pairs the existing MI_MARGN 融券數據 with a t187ap03_L float map to compute the
+    #     short-interest ratio. Independent fetch (own margin pull) so this SKIPs in isolation.
+    #     OVERLAY-NOT-SCORER: informational chip badge; needs a Wilson-CI backtest before weight.
+    try:
+        _short_margin_rows = _twse.fetch_margin()
+        _float_map = _twse.build_float_map(_twse.fetch_t187ap03_l())
+        _merge_overlays(
+            _twse.to_overlays_short_pct(_short_margin_rows, _float_map, as_of=date_str),
+            "twse_short")
+    except Exception as e:
+        log.warning("SKIP short_pct overlays: %s", e); skips.append("short_pct_overlays")
+
     # --- TDCC 集保戶股權分散 (weekly 大戶集中度) — save weekly archive for WoW trend ----
     try:
         tdcc_rows = _tdcc.fetch_distribution()
@@ -613,6 +652,18 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP taifex environment: %s", e); skips.append("taifex_env")
 
+    # --- W4: TPEx 上櫃現股當沖市場統計 — MARKET-WIDE daytrade ratio (NOT per-stock) -----------
+    #     A single market-level gauge (當沖佔成交量%, 投機熱 when > threshold) → environment
+    #     section, mirroring the taifex regime placement (NOT keyed by ticker, NEVER scored).
+    try:
+        _daytrade = _tpex.to_daytrade_overlay(
+            _tpex.parse_daytrade_rows(_tpex.fetch_tpex_daytrade()))
+        if _daytrade:
+            environment["tpex_daytrade"] = _daytrade
+        source_coverage["tpex_daytrade"] = {"ok": bool(_daytrade), "keys": 1 if _daytrade else 0}
+    except Exception as e:
+        log.warning("SKIP tpex_daytrade environment: %s", e); skips.append("tpex_daytrade_env")
+
     # --- macro_tw industry/sector environment (外銷訂單→出貨→產出 + 景氣對策信號) — 24h cache -
     try:
         def _fetch_tw_env():
@@ -657,7 +708,12 @@ def main(web=False):
     try:
         if _us_syms:
             _t2c2, _c2t2 = _sec._build_ticker_cik()
-            _frames_index = _sec_frames.build_fundamentals_index(fetch_fn=_sec._real_fetch)
+            # W3: pull the EXTENDED concept set (adds StockholdersEquity / AssetsCurrent /
+            # LiabilitiesCurrent / GrossProfit / CostOfRevenue) so build_fundamentals_index
+            # derives roe / current_ratio / gross_margin onto each slot; to_overlays carries
+            # those ratios into the overlay value (None → omitted). INFORMATIONAL — never scored.
+            _frames_index = _sec_frames.build_fundamentals_index(
+                concepts=_sec_frames.EXTENDED_CONCEPTS, fetch_fn=_sec._real_fetch)
             _merge_overlays(
                 _sec_frames.to_overlays(_frames_index, _c2t2, as_of=date_str), "sec_frames")
         else:
@@ -871,6 +927,34 @@ def main(web=False):
             environment=environment)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
+
+        # 8c. W1 pick-outcome backfill — "did our picks actually work?". Runs AFTER the
+        #     payload is written (so today's <date>.json is on disk and globbable). For the
+        #     ~10 most-recent trading-day pick files, replay the post-pick prices and write
+        #     docs/data/_outcomes/<date>.json (IDEMPOTENT — a complete file is skipped, no
+        #     refetch). Then attach a rolling hit-rate onto the payload and re-export.
+        #     OVERLAY-NOT-SCORER: pick_performance is INFORMATIONAL self-evaluation only —
+        #     it NEVER feeds strategy.score_stock / rank_stocks. SKIP-not-abort throughout.
+        try:
+            _pick_files = sorted(
+                f for f in glob.glob(os.path.join(data_dir, "*.json"))
+                if not os.path.basename(f).startswith("_")
+                and os.path.basename(f) != "index.json"
+            )
+            for _fp in _pick_files[-10:]:                 # ~10 recent trading days
+                _asof = os.path.basename(_fp)[:-5]        # strip '.json'
+                try:
+                    pick_outcomes.compute_outcomes(data_dir, _asof, n_days=5)
+                except Exception as _oe:
+                    log.warning("SKIP compute_outcomes %s: %s", _asof, _oe)
+            payload["pick_performance"] = pick_outcomes.summarize_hit_rate(data_dir)
+            # re-export so the freshly-computed hit-rate lands in today's <date>.json.
+            web_export.export(payload, config.WEB_DIR)
+            _pp = payload["pick_performance"]
+            log.info("pick performance: %d scored / %d picks over %d dates",
+                     _pp.get("n_scored") or 0, _pp.get("n_picks") or 0, _pp.get("n_dates") or 0)
+        except Exception as e:
+            log.warning("SKIP pick_outcomes: %s", e); skips.append("pick_outcomes")
 
     if skips:
         log.warning("DONE — 部分來源略過: %s", ", ".join(sorted(set(skips))))

@@ -64,6 +64,19 @@ def _fetch_frames_url(url):
 
 
 DEFAULT_CONCEPTS = ("Revenues", "NetIncomeLoss")
+
+# W3 extended concept set — includes balance-sheet stocks for ratio computation.
+# Callers wiring the fundamentals tab should pass this instead of DEFAULT_CONCEPTS.
+EXTENDED_CONCEPTS = (
+    "Revenues",
+    "NetIncomeLoss",
+    "StockholdersEquity",    # instant (balance-sheet) → ROE denominator
+    "AssetsCurrent",         # instant → current ratio numerator
+    "LiabilitiesCurrent",    # instant → current ratio denominator
+    "GrossProfit",           # duration → gross margin numerator (preferred)
+    "CostOfRevenue",         # duration → gross margin fallback (Rev - COR)
+)
+
 DEFAULT_UNIT = "USD"
 FRAMES_TTL = 24 * 3_600          # frames republish at most quarterly → 24h cache is safe
 
@@ -228,6 +241,94 @@ def qoq_pct(current_val, prior_val):
     return (cur - prior) / abs(prior) * 100.0
 
 
+# ── W3 ratio helpers (pure) ────────────────────────────────────────────────────
+def compute_roe(net_income, equity):
+    """PURE: Return on Equity = NetIncomeLoss / StockholdersEquity * 100.
+
+    Returns None when either argument is None or equity is 0. Handles negative
+    equity (highly-leveraged firms) — the ratio is still computable. No network.
+    """
+    ni = _to_float(net_income)
+    eq = _to_float(equity)
+    if ni is None or eq is None or eq == 0:
+        return None
+    return ni / eq * 100.0
+
+
+def compute_current_ratio(assets_current, liabilities_current):
+    """PURE: Current Ratio = AssetsCurrent / LiabilitiesCurrent.
+
+    Returns None when either argument is None or liabilities is 0. No network.
+    """
+    ac = _to_float(assets_current)
+    lc = _to_float(liabilities_current)
+    if ac is None or lc is None or lc == 0:
+        return None
+    return ac / lc
+
+
+def compute_gross_margin(gross_profit, revenues):
+    """PURE: Gross Margin % = GrossProfit / Revenues * 100.
+
+    Returns None when either argument is None or revenues is 0. No network.
+    """
+    gp = _to_float(gross_profit)
+    rev = _to_float(revenues)
+    if gp is None or rev is None or rev == 0:
+        return None
+    return gp / rev * 100.0
+
+
+def _derive_gross_profit(gp_val, revenue_val, cor_val):
+    """PURE: Resolve gross profit from available data.
+
+    Preference order:
+      1. GrossProfit directly reported (most accurate).
+      2. Revenue − CostOfRevenue (reverse-engineering from cost structure).
+      3. None if neither path yields a usable number.
+
+    Args:
+        gp_val:      GrossProfit cell val (float or None).
+        revenue_val: Revenues cell val (float or None).
+        cor_val:     CostOfRevenue cell val (float or None).
+
+    Returns float or None. No network.
+    """
+    gp = _to_float(gp_val)
+    if gp is not None:
+        return gp
+    rev = _to_float(revenue_val)
+    cor = _to_float(cor_val)
+    if rev is not None and cor is not None:
+        return rev - cor
+    return None
+
+
+def derive_ratios(slot):
+    """PURE: Compute ROE / current_ratio / gross_margin from a CIK index slot.
+
+    Args:
+        slot: dict with concept sub-dicts {'val': float|None, ...} as built by
+              index_from_frames / _assemble_index.  Any missing concept → the
+              corresponding ratio is None (graceful, never raises).
+
+    Returns:
+        {'roe': float|None, 'current_ratio': float|None, 'gross_margin': float|None}
+
+    OVERLAY-NOT-SCORER: these ratios are informational displays only; they must
+    never enter the scoring / ranking path.
+    """
+    def _val(concept):
+        cell = slot.get(concept)
+        return cell.get("val") if isinstance(cell, dict) else None
+
+    roe = compute_roe(_val("NetIncomeLoss"), _val("StockholdersEquity"))
+    current_ratio = compute_current_ratio(_val("AssetsCurrent"), _val("LiabilitiesCurrent"))
+    gp = _derive_gross_profit(_val("GrossProfit"), _val("Revenues"), _val("CostOfRevenue"))
+    gross_margin = compute_gross_margin(gp, _val("Revenues"))
+    return {"roe": roe, "current_ratio": current_ratio, "gross_margin": gross_margin}
+
+
 # ── cached index builder (24h via framework cached_fetch) ───────────────────────
 def _prior_quarter(year, quarter):
     """(year, quarter) → the immediately-preceding calendar quarter (wraps year)."""
@@ -321,6 +422,16 @@ def _assemble_index(concept_list, period, fetch_fn, year, quarter, with_prior):
             prior_val = prior_cell.get("val") if isinstance(prior_cell, dict) else None
             cell["prior_val"] = prior_val
             cell["qoq_pct"] = qoq_pct(cell.get("val"), prior_val)
+
+    # W3: attach derived ratios (roe / current_ratio / gross_margin) at the top level.
+    # These are informational only — OVERLAY-NOT-SCORER: never enter scoring/ranking.
+    # A missing concept returns None gracefully (derive_ratios is safe on any slot).
+    for cik, slot in index.items():
+        ratios = derive_ratios(slot)
+        slot["roe"] = ratios["roe"]
+        slot["current_ratio"] = ratios["current_ratio"]
+        slot["gross_margin"] = ratios["gross_margin"]
+
     return index
 
 
@@ -427,6 +538,12 @@ def to_overlays(index, cik_to_ticker, as_of=None, concepts=None,
                     worst_severity = "warn"
             parts.append(seg)
             value[concept] = {"val": val, "qoq_pct": qoq, "end": end}
+
+        # W3: carry derived ratios into the overlay value for fundamentals tab display.
+        # These are informational only — OVERLAY-NOT-SCORER: never enter scoring/ranking.
+        value["roe"] = slot.get("roe")
+        value["current_ratio"] = slot.get("current_ratio")
+        value["gross_margin"] = slot.get("gross_margin")
 
         ov = make_overlay(
             source=source, kind="fundamental",

@@ -160,6 +160,48 @@ class TestEnroll(unittest.TestCase):
         self.assertIn("B", state["tracked"])
 
 
+# ── resolve_entry_price (CRITICAL bug fix: rank_stocks picks carry no 'price') ──
+
+class TestResolveEntryPrice(unittest.TestCase):
+    """The daily scorer's rank_stocks() output has NO 'price' key, so enroll() stored
+    entry_price=0.0 for every name (17 historical zeros). resolve_entry_price applies
+    the pick_outcomes fallback idiom: pick['price'] → df last close → levels.entry → 0.0."""
+
+    def test_prefers_explicit_pick_price(self):
+        pick = {"stock": "AAPL", "price": 150.0}
+        df = make_df([100, 101, 102])
+        self.assertEqual(wt.resolve_entry_price(pick, df, {"entry": 99.0}), 150.0)
+
+    def test_falls_back_to_df_last_close(self):
+        # rank_stocks pick (no 'price') → use today's last close (what the card shows).
+        pick = {"stock": "2330.TW", "score": 88, "factors": {}}
+        df = make_df([100, 110, 123.45])
+        self.assertEqual(wt.resolve_entry_price(pick, df, None), 123.45)
+
+    def test_falls_back_to_levels_entry_when_no_df(self):
+        pick = {"stock": "NVDA"}
+        self.assertEqual(wt.resolve_entry_price(pick, None, {"entry": 42.0}), 42.0)
+
+    def test_falls_back_to_zero_when_all_missing(self):
+        pick = {"stock": "PINONLY"}
+        self.assertEqual(wt.resolve_entry_price(pick, None, None), 0.0)
+
+    def test_empty_df_falls_through_to_levels(self):
+        pick = {"stock": "X"}
+        empty = make_df([])
+        self.assertEqual(wt.resolve_entry_price(pick, empty, {"entry": 7.0}), 7.0)
+
+    def test_resolved_price_lands_as_non_zero_entry_price_via_enroll(self):
+        # end-to-end: a rank_stocks-style pick (no price) enriched via resolve_entry_price
+        # must enroll with a real entry_price, NOT 0.0 (the bug's signature).
+        state = {"updated": None, "tracked": {}}
+        pick = {"stock": "2454.TW", "score": 75, "factors": {}}
+        df = make_df([200, 205, 210.5])
+        enriched = {**pick, "price": wt.resolve_entry_price(pick, df, None)}
+        state = wt.enroll(state, [enriched], [], "2026-06-11")
+        self.assertEqual(state["tracked"]["2454.TW"]["entry_price"], 210.5)
+
+
 # ── reevaluate ───────────────────────────────────────────────────────────────
 
 # 55 bars: MA20 / MA50 are valid; uptrend closes from 90 → 110

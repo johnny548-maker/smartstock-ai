@@ -3,7 +3,15 @@
 Design (decided 2026-06-08):
 - The dated JSON in docs/data/<date>.json (git history) is the SOURCE OF TRUTH.
   This Sheet is an append-only, human-friendly MIRROR for ad-hoc analysis / backtest / charts.
-- Two tabs: `picks` (one row per pick per day) + `market` (one row per day, market summary).
+- Tabs (all idempotent upsert-by-date, header in row 1):
+    picks       — one row per pick per day
+    market      — one row per day, market summary
+    opportunity — one row per机会-scan leader / breakout item
+    early_board — one row per "正要起漲" radar item (+ honest lift-0.61 disclosure column)
+    watchlist   — one row per tracked symbol from _watchlist_state.json (full state)
+    outcomes    — W1 realised-trade ledger from docs/data/_outcomes/*.json (graceful empty)
+    news        — one row per news article (kept; pre-existing)
+  OVERLAY-NOT-SCORER: every tab is an informational mirror — nothing here feeds the score.
 - Idempotent UPSERT by date: re-running a day deletes that day's existing rows then re-appends,
   so manual re-dispatch / backfill never duplicates.
 - GRACEFUL: if GOOGLE_SA_JSON is absent the whole sync is a logged no-op (exit 0) — the report
@@ -61,6 +69,44 @@ NEWS_HEADERS = [
 ]
 
 NEWS_ROW_CAP = 50  # max combined rows per day to keep the tab bounded
+
+# Early-board tab: one row per "正要起漲" radar item (report top-level early_board[],
+# which main.py promotes from opportunity.breakout). Each row carries the HONEST
+# disclosure column verbatim — this pattern is informational/overlay, never a buy signal.
+EARLY_BOARD_HEADERS = [
+    "date", "stock", "name", "ready", "score", "signals", "honest_warning",
+]
+
+# Verbatim 15y-backtest honesty disclosure (mirrors docs/app.js early-banner):
+# lift 0.61 < base rate => the pattern does NOT beat random; ~70% never reach +25%.
+EARLY_BOARD_WARNING = (
+    "純資訊·未納入評分。15y 回測：此「正要起漲」型態 60 日命中率僅 2.4%（lift 0.61），"
+    "未勝基準率 4.0% — 早期型態無法可靠預測大漲，約 70% 最終未達 +25%，勿視為買進訊號"
+)
+
+# Watchlist tab: one row per tracked symbol from _watchlist_state.json (the FULL state,
+# not the trimmed board()). Captures enrol fields + the daily exit-ladder evaluation.
+WATCHLIST_HEADERS = [
+    "date", "symbol", "entry_date", "entry_price", "entry_score", "peak_price",
+    "status", "pinned", "last_date", "price", "pct", "below_ma20", "below_ma50",
+    "rs_rolled_over", "warning", "entry_signal",
+]
+
+# Outcomes tab: W1's pick-outcome ledger from docs/data/_outcomes/<picked_date>.json.
+# W1 (pick_outcomes.py) writes a WRAPPER dict {picked_date, computed_at, n_days, outcomes:[...]}
+# where each outcome row is the compute_one() flat dict. Headers below mirror that exact
+# schema; every field is looked up defensively (missing -> blank) so it survives drift.
+# 'picked_date' is stamped from the wrapper so each row knows which day's picks it scores.
+OUTCOMES_HEADERS = [
+    "picked_date", "stock", "entry_price", "bars", "ret_1", "ret_3", "ret_5",
+    "period_high", "period_low", "max_gain_pct", "max_drawdown_pct",
+    "hit_stop", "hit_target",
+]
+
+# _watchlist_state.json lives beside the dated reports.
+WATCHLIST_STATE_PATH = os.path.join(DATA_DIR, "_watchlist_state.json")
+# W1 outcome ledgers live in their own subdir (may not exist yet -> graceful empty).
+OUTCOMES_DIR = os.path.join(DATA_DIR, "_outcomes")
 
 
 def _log(msg):
@@ -199,6 +245,122 @@ def build_news_rows(payload):
     return rows
 
 
+def build_early_board_rows(payload):
+    """One row per early-board ('正要起漲') item. Pure — no network.
+    Source = report top-level 'early_board' list ({stock,name,ready,score,signals}).
+    Every row carries EARLY_BOARD_WARNING verbatim (honest lift-0.61 disclosure).
+    Missing 'early_board' key or empty list -> [], never crashes."""
+    date = payload.get("date")
+    rows = []
+    for it in (payload.get("early_board") or []):
+        rows.append([
+            date,
+            it.get("stock"),
+            it.get("name"),
+            it.get("ready"),
+            it.get("score"),
+            _join_signals(it.get("signals")),
+            EARLY_BOARD_WARNING,
+        ])
+    return rows
+
+
+def build_watchlist_rows(date, state):
+    """One row per tracked symbol from a _watchlist_state.json dict. Pure — no network.
+    Captures the FULL state (enrol fields + daily exit-ladder eval), not the trimmed
+    board(). `date` stamps the snapshot (drives idempotent upsert). Missing/None state
+    or empty 'tracked' -> [], never crashes."""
+    tracked = (state or {}).get("tracked") or {}
+    rows = []
+    for sym, entry in tracked.items():
+        last = entry.get("last") or {}
+        rows.append([
+            date,
+            sym,
+            entry.get("entry_date"),
+            entry.get("entry_price"),
+            entry.get("entry_score"),
+            entry.get("peak_price"),
+            entry.get("status"),
+            entry.get("pinned"),
+            last.get("date"),
+            last.get("price"),
+            last.get("pct"),
+            last.get("below_ma20"),
+            last.get("below_ma50"),
+            last.get("rs_rolled_over"),
+            last.get("warning"),
+            _join_signals(entry.get("entry_signal")),
+        ])
+    return rows
+
+
+def build_outcomes_rows(outcomes):
+    """One row per pick-outcome record (W1 ledger). Pure — no network.
+    `outcomes` is the flat record list from load_outcomes() (each record already
+    carries 'picked_date' stamped from its wrapper). Also tolerates a dict-of-records
+    for robustness. Every field looked up by header so unknown schemas degrade to
+    blanks rather than crash. None/empty -> [], never crashes."""
+    if not outcomes:
+        return []
+    if isinstance(outcomes, dict):
+        records = list(outcomes.values())
+    elif isinstance(outcomes, list):
+        records = outcomes
+    else:
+        return []
+    rows = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        rows.append([rec.get(h) for h in OUTCOMES_HEADERS])
+    return rows
+
+
+def load_watchlist_state(path=WATCHLIST_STATE_PATH):
+    """Read _watchlist_state.json -> dict, or the default empty shape on any error.
+    GRACEFUL: a missing/corrupt state file yields an empty watchlist tab, never a crash."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:
+        _log(f"SKIP watchlist state load ({path}): {exc}")
+        return {"updated": None, "tracked": {}}
+
+
+def load_outcomes(outcomes_dir=OUTCOMES_DIR):
+    """Aggregate every docs/data/_outcomes/<picked_date>.json into a flat record list.
+    GRACEFUL: missing dir / no files -> [] (outcomes tab is created header-only).
+
+    W1 (pick_outcomes.py) writes a WRAPPER dict {picked_date, computed_at, n_days,
+    outcomes:[...]}. We extract the inner 'outcomes' list and stamp each record with
+    'picked_date' from the wrapper so a row knows which day's picks it scores.
+    Also tolerates a bare list, or a dict-of-records, for schema robustness. A single
+    unreadable file is logged + skipped, never aborts the aggregation."""
+    if not os.path.isdir(outcomes_dir):
+        return []
+    records = []
+    for fp in sorted(glob.glob(os.path.join(outcomes_dir, "*.json"))):
+        try:
+            with open(fp, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception as exc:
+            _log(f"SKIP outcome file {fp}: {exc}")
+            continue
+        if isinstance(data, dict) and isinstance(data.get("outcomes"), list):
+            # W1 wrapper shape — stamp picked_date onto each inner record.
+            picked = data.get("picked_date")
+            for rec in data["outcomes"]:
+                if isinstance(rec, dict):
+                    rec = {**rec, "picked_date": rec.get("picked_date") or picked}
+                    records.append(rec)
+        elif isinstance(data, list):
+            records.extend(r for r in data if isinstance(r, dict))
+        elif isinstance(data, dict):
+            records.extend(v for v in data.values() if isinstance(v, dict))
+    return records
+
+
 def dup_row_numbers(date_column_values, date_str):
     """Given the full date column (index 0 = header), return the 1-based sheet row numbers
     whose date == date_str. Pure helper — drives idempotent delete-then-append."""
@@ -243,34 +405,73 @@ def _upsert(ws, date_str, rows):
         ws.append_rows(rows, value_input_option="USER_ENTERED")
 
 
+def _sync_tab(sh, title, headers, date_str, rows):
+    """Ensure-then-upsert one tab in isolation. A failure logs SKIP for that tab and
+    returns -1 (sentinel) but NEVER crashes the overall sync — one bad tab must not
+    take the others down with it. The tab is always created (header-only on empty)."""
+    try:
+        ws = _ensure_ws(sh, title, headers)
+        _upsert(ws, date_str, rows)
+        return len(rows)
+    except Exception as exc:
+        _log(f"SKIP {title} tab for {date_str}: {exc}")
+        return -1
+
+
+def _replace_all(ws, rows):
+    """Full refresh: clear every data row (keep the header), then append `rows`.
+    Used by the outcomes tab, which is a rolling aggregate keyed by picked_date
+    (not the sync date) — a per-date upsert can't dedup it, so we rewrite it whole.
+    Idempotent: re-running yields the same row set."""
+    n = len(ws.col_values(1))  # includes header
+    for rn in range(n, 1, -1):  # delete bottom-up, keep row 1 (header)
+        ws.delete_rows(rn)
+    if rows:
+        ws.append_rows(rows, value_input_option="USER_ENTERED")
+
+
+def _sync_replace_tab(sh, title, headers, rows):
+    """Ensure-then-full-replace one tab in isolation (see _sync_tab for the contract)."""
+    try:
+        ws = _ensure_ws(sh, title, headers)
+        _replace_all(ws, rows)
+        return len(rows)
+    except Exception as exc:
+        _log(f"SKIP {title} tab: {exc}")
+        return -1
+
+
 def sync_payload(sh, payload):
-    """Upsert one day's payload into all four tabs (picks, market, opportunity, news).
-    Each tab write is isolated: a failure logs SKIP for that tab but never crashes the sync."""
+    """Upsert one day's payload into all tabs:
+    picks · market · opportunity · early_board · watchlist · outcomes (· news).
+    Each tab write is isolated: a failure logs SKIP for that tab but never crashes the sync.
+    watchlist + outcomes pull from sidecar files (load_watchlist_state / load_outcomes),
+    so both degrade to header-only tabs when their source is absent."""
     date_str = payload.get("date")
-    picks = _ensure_ws(sh, "picks", PICKS_HEADERS)
-    market = _ensure_ws(sh, "market", MARKET_HEADERS)
-    _upsert(picks, date_str, build_picks_rows(payload))
-    _upsert(market, date_str, [build_market_row(payload)])
 
-    opp_rows = build_opportunity_rows(payload)
-    if opp_rows is not None:
-        try:
-            opportunity = _ensure_ws(sh, "opportunity", OPPORTUNITY_HEADERS)
-            _upsert(opportunity, date_str, opp_rows)
-        except Exception as exc:
-            _log(f"SKIP opportunity tab for {date_str}: {exc}")
+    n_picks = _sync_tab(sh, "picks", PICKS_HEADERS, date_str, build_picks_rows(payload))
+    n_market = _sync_tab(sh, "market", MARKET_HEADERS, date_str, [build_market_row(payload)])
+    n_opp = _sync_tab(sh, "opportunity", OPPORTUNITY_HEADERS, date_str,
+                      build_opportunity_rows(payload))
+    n_news = _sync_tab(sh, "news", NEWS_HEADERS, date_str, build_news_rows(payload))
+    n_eb = _sync_tab(sh, "early_board", EARLY_BOARD_HEADERS, date_str,
+                     build_early_board_rows(payload))
 
-    news_rows = build_news_rows(payload)
-    if news_rows is not None:
-        try:
-            news_ws = _ensure_ws(sh, "news", NEWS_HEADERS)
-            _upsert(news_ws, date_str, news_rows)
-        except Exception as exc:
-            _log(f"SKIP news tab for {date_str}: {exc}")
+    # watchlist — full _watchlist_state.json (sidecar; graceful empty when absent).
+    wl_state = load_watchlist_state()
+    n_wl = _sync_tab(sh, "watchlist", WATCHLIST_HEADERS, date_str,
+                     build_watchlist_rows(date_str, wl_state))
+
+    # outcomes — W1 ledger aggregate keyed by picked_date (full-replace, not per-date
+    # upsert: it spans many dates so it's rewritten whole). Header-only when dir missing.
+    outcomes = load_outcomes()
+    n_oc = _sync_replace_tab(sh, "outcomes", OUTCOMES_HEADERS,
+                             build_outcomes_rows(outcomes))
 
     _log(
-        f"synced {date_str}: {len(payload.get('picks') or [])} picks + 1 market row"
-        f" + {len(opp_rows)} opportunity rows + {len(news_rows)} news rows"
+        f"synced {date_str}: picks={n_picks} market={n_market} opportunity={n_opp} "
+        f"news={n_news} early_board={n_eb} watchlist={n_wl} outcomes={n_oc} "
+        "(-1 = tab skipped)"
     )
 
 

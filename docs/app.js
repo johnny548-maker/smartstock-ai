@@ -86,6 +86,7 @@ async function showList() {
   $('detailView').classList.add('hidden');
   $('listView').classList.remove('hidden');
   $('title').textContent = 'SmartStock 日報';
+  try { document.title = 'SmartStock 日報'; } catch (e) {}
   $('status').textContent = '載入歷史…';
 
   let index;
@@ -152,7 +153,8 @@ function regimeBanner(d) {
   const cls = r.label === 'risk-on' ? 'reg-on' : (r.label === 'risk-off' ? 'reg-off' : 'reg-mid');
   const det = Object.entries(r.detail || {}).map(([k, v]) =>
     `${k === 'twii' ? '台股' : (k === 'sp500' ? '美股' : k)} ${v.trend}/DD${v.dd_count}`).join('、');
-  return `<div class="regime ${cls}"><b>🌡️ 市場環境：${esc(REGIME_LABEL[r.label] || r.label)}</b>`
+  return `<div class="regime ${cls}"><span class="env-dim" title="由台股/美股大盤的趨勢方向與回檔(drawdown)計算的技術面市場狀態，用來決定建議曝險">技術趨勢 ⓘ</span>`
+    + `<b>🌡️ 市場環境：${esc(REGIME_LABEL[r.label] || r.label)}</b>`
     + `<span class="reg-exp">建議曝險 ${r.exposure}%</span>`
     + `<div class="muted small">${esc(det)}。~75% 突破在空頭失敗 → 環境轉弱降部位、暫停新突破單。</div></div>`;
 }
@@ -169,7 +171,8 @@ function macroBanner(d) {
   if (m.financial_conditions) chips.push(`<span class="macro-chip">金融環境 NFCI ${esc(m.financial_conditions)}</span>`);
   if (m.vix != null) chips.push(`<span class="macro-chip">VIX ${esc(m.vix)}</span>`);
   if (m.dgs10 != null) chips.push(`<span class="macro-chip">10Y ${esc(m.dgs10)}%</span>`);
-  return `<div class="regime ${cls}"><b>🌐 總經環境：${esc(MACRO_LABEL[m.label] || m.label)}</b>`
+  return `<div class="regime ${cls}"><span class="env-dim" title="美國 FRED 總體經濟背景：殖利率曲線、信用利差(HY-OAS)、金融環境(NFCI)、VIX、10Y 利率，反映系統性風險溫度">總經 ⓘ</span>`
+    + `<b>🌐 總經環境：${esc(MACRO_LABEL[m.label] || m.label)}</b>`
     + `<div class="macro-chips">${chips.join('')}</div>`
     + `<div class="muted small">總經為「環境背景」，僅供參考，不計入個股評分（要做回測才加權）。</div></div>`;
 }
@@ -204,6 +207,13 @@ function environmentBlock(d) {
   if (ind.electronics_export_yoy != null) gauges.push(envGauge('電子訂單 YoY', pct1(ind.electronics_export_yoy)));
   if (mac.cpi_yoy != null) gauges.push(envGauge('美 CPI YoY', mac.cpi_yoy + '%'));
   if (mac.usd_twd != null) gauges.push(envGauge('USD/TWD', mac.usd_twd));
+  // REQ9 — TPEx 上櫃當沖市場熱度. >40% (or severity warn) → 投機熱警示.
+  const dt = env.tpex_daytrade;
+  if (dt && dt.value && dt.value.vol_pct != null) {
+    const vp = +dt.value.vol_pct;
+    const hot = dt.severity === 'warn' || vp > 40;
+    gauges.push(envGauge('上櫃當沖佔量', vp.toFixed(1) + '%' + (hot ? ' 🔥投機熱' : '')));
+  }
   // P3 CFTC COT sector-tilt (managed-money net per future → energy/materials/precious_metals
   // crowding tilt). SECTOR/MARKET-level informational gauge, NOT per-ticker, NEVER scored.
   const TILT_LABEL = { long: '🟢偏多', short: '🔴偏空', neutral: '🟡中性' };
@@ -216,7 +226,8 @@ function environmentBlock(d) {
   });
   const body = gauges.filter(Boolean).join('');
   if (!body) return '';
-  return `<div class="env-banner ${cls}"><b>🌏 市場環境：${esc(ENV_REGIME_LABEL[hint] || hint)}</b>`
+  return `<div class="env-banner ${cls}"><span class="env-dim" title="期貨/籌碼面指數級環境：外資台指期淨未平倉、Put/Call ratio、景氣對策信號、產業總經，反映法人部位與資金氛圍（不計入個股評分）">期貨籌碼 ⓘ</span>`
+    + `<b>🌏 市場環境：${esc(ENV_REGIME_LABEL[hint] || hint)}</b>`
     + `<div class="env-gauges">${body}</div>`
     + `<div class="muted small">指數級／產業總經環境背景，<b>不計入個股評分與排名</b>（需回測驗證後才談加權）。</div></div>`;
 }
@@ -248,13 +259,20 @@ function envStripCompact(d) {
   if (bc && bc.light) chip('景氣', bc.light);
   if (mac.usd_twd != null)  chip('USD/TWD', mac.usd_twd);
   if (mac.vix != null)       chip('VIX', mac.vix);
+  // REQ9 — 上櫃當沖熱度 chip (>40% 或 warn → 🔥投機熱).
+  const dt = env.tpex_daytrade;
+  if (dt && dt.value && dt.value.vol_pct != null) {
+    const vp = +dt.value.vol_pct;
+    const hot = dt.severity === 'warn' || vp > 40;
+    chip('當沖', vp.toFixed(0) + '%' + (hot ? '🔥' : ''));
+  }
   if (d.risk) {
     const rr = RISK[d.risk] || { label: d.risk };
     chip('市場風險', rr.label);
   }
   if (!chips.length) return '';
   return `<div class="env-strip ${cls}" role="status" aria-label="市場環境概覽">` +
-    `<span class="env-strip-label">${icon} 環境 ${esc(txt)}</span>` +
+    `<span class="env-strip-label" title="期貨/籌碼面指數級環境：外資台指期淨未平倉、Put/Call ratio、景氣對策信號等，反映法人部位與資金氛圍（不計入個股評分）">${icon} 期貨籌碼 ${esc(txt)} ⓘ</span>` +
     `<div class="env-strip-gauges">${chips.join('')}</div>` +
     `</div>`;
 }
@@ -322,6 +340,40 @@ function accDistBadge(p) {
   const a = p && p.acc_dist; if (!a) return '';
   const cls = 'ad-' + a.grade;
   return `<span class="ad-flag ${cls}" title="${esc(a.label)}（13週吸籌/派發）">A/D ${esc(a.grade)}</span>`;
+}
+
+// REQ9 — helper: first overlay matching a (kind, source-prefix) predicate. Graceful.
+function _findOverlay(p, pred) {
+  const ovs = (p && p.overlays) || [];
+  for (const o of ovs) { if (o && pred(o)) return o; }
+  return null;
+}
+// REQ9 — 注意股/處置股 risk badge from the twse_notice / twse_punish overlay (kind=risk).
+// 注意股 → ⚠️ ; 處置股 → 🚫(第N次). Informational regulatory flag, never scored.
+function noticeBadge(p) {
+  const o = _findOverlay(p, (x) => x.kind === 'risk'
+    && (x.source === 'twse_notice' || x.source === 'twse_punish'));
+  if (!o) return '';
+  if (o.source === 'twse_punish') {
+    const lvl = (o.value && o.value.level) != null ? o.value.level : 1;
+    return ` <span class="flag-risk" title="${esc(o.label)}">🚫 處置股（第${lvl}次）</span>`;
+  }
+  return ` <span class="flag-risk" title="${esc(o.label)}">⚠️ 注意股</span>`;
+}
+// REQ9 — 融券佔流通 warn badge from the twse_short overlay (severity=warn only).
+function shortPctBadge(p) {
+  const o = _findOverlay(p, (x) => x.kind === 'chip' && x.source === 'twse_short'
+    && x.severity === 'warn');
+  if (!o) return '';
+  const pct = o.value && o.value.short_pct != null ? (+o.value.short_pct).toFixed(1) : null;
+  if (pct == null) return '';
+  return ` <span class="flag-warn" title="${esc(o.note || '')}">🔥 融券 ${pct}% 佔流通</span>`;
+}
+// REQ9 — OBV 量能流入 informational badge from p.obv_flow (verdict producer).
+// Honest framing mandatory: 回測未過 gate，僅供參考。
+function obvFlowBadge(p) {
+  const f = p && p.obv_flow; if (!f || !f.bullish) return '';
+  return ` <span class="flag-info" title="OBV 上升而股價持平/下跌（吸籌背離）— 未過回測 gate，僅供參考，不進評分">📈 量能流入觀察</span>`;
 }
 
 function newsBlock(news) {
@@ -446,8 +498,13 @@ function breakoutPanelInner(d) {
   const validated = d.early_validated === true
     || (typeof d.early_board_validated !== 'undefined' && d.early_board_validated === true)
     || (board.length > 0 && board.every((r) => r && r.validated === true));
+  // REQ5 — collapse the回測警語 to ONE line + ⓘ expand. Full honest-disclosure text
+  // kept VERBATIM inside the <details> body (誠實揭露不得刪減).
   const banner = validated ? '' :
-    '<div class="early-banner">⚠️ 純資訊 · 未納入評分。15y 回測：此「正要起漲」型態 60 日命中率僅 2.4%（lift 0.61），<b>未勝基準率 4.0%</b> — 早期型態無法可靠預測大漲，約 70% 最終未達 +25%，勿視為買進訊號</div>';
+    '<details class="early-banner early-banner-fold">'
+    + '<summary>⚠️ 純資訊 · 未納入評分（回測未過 — 點 ⓘ 看完整警語）</summary>'
+    + '<div class="early-banner-full">15y 回測：此「正要起漲」型態 60 日命中率僅 2.4%（lift 0.61），<b>未勝基準率 4.0%</b> — 早期型態無法可靠預測大漲，約 70% 最終未達 +25%，勿視為買進訊號</div>'
+    + '</details>';
   const rows = board.map((r) => {
     const nm = r.name ? `${esc(r.name)}（${esc(r.stock)}）` : esc(r.stock);
     const flag = r.ready ? '<b class="up">✅起漲就緒</b> ' : '';
@@ -620,7 +677,7 @@ function picksBlock(picks, date) {
     const head = p.name ? `${esc(p.name)}（${esc(p.stock)}）` : esc(p.stock);
     const verdict = p.verdict ? `<div class="muted small verdict">${lightDot(p.light)} ${esc(p.verdict)}</div>` : '';
     return `<a class="pick pick-link" href="#${esc(date)}/${esc(p.stock)}">
-      <div class="pick-head">${medal} <b>${head}</b>${earnBadge(p)}${shortVolBadge(p)}<span class="score">${p.score}</span></div>
+      <div class="pick-head">${medal} <b>${head}</b>${noticeBadge(p)}${shortPctBadge(p)}${earnBadge(p)}${shortVolBadge(p)}${obvFlowBadge(p)}<span class="score">${p.score}</span></div>
       ${priceLine(p)}${verdict}
       <div class="pick-spark">${sparkline(p.spark, 320, 44)}</div></a>`;
   }).join('');
@@ -839,12 +896,30 @@ window.ssSearch = (q) => {
   box.innerHTML = hits.length ? hits.map((s) =>
     `<a class="srow" href="#${CUR_DATE}/${esc(s.code)}">${lightDot(s.light)} <b>${esc(s.name)}</b>`
     + `<span class="muted small"> ${esc(s.code)}${s.price != null ? ' · ' + s.price : ''} · ${esc(s.kind)}</span></a>`).join('')
-    : '<div class="muted small" style="padding:6px">當日掃描名單無此股（靜態頁僅含當日掃描的約 100 檔）</div>';
+    : '<div class="muted small" style="padding:6px">查無結果。<br>本搜尋僅含當日掃描名單（~30 檔 actionable 標的），非全市場代號查詢。</div>';
 };
 
-function searchBar() {
+// REQ1 — build a placeholder from TODAY's scan pool so the example is always a hit.
+// Take the first 2 actionable picks (code) + 1 name from d.search; fall back to a
+// hard-wired pair only when the pool can't yield enough live examples.
+function searchPlaceholder(d) {
+  const rows = (d && d.search) || [];
+  const picks = rows.filter((s) => s && s.kind === 'pick' && s.code);
+  const codes = picks.slice(0, 2).map((s) => s.code);
+  const named = picks.find((s) => s.name);
+  const ex = [];
+  codes.forEach((c) => ex.push(c));
+  if (named && named.name) ex.push(named.name);
+  // de-dupe while preserving order, cap at 3 tokens
+  const seen = new Set();
+  const uniq = ex.filter((t) => t && !seen.has(t) && seen.add(t)).slice(0, 3);
+  if (uniq.length < 2) return '例 2882、3008';   // graceful hard fallback
+  return '例 ' + uniq.join('、');
+}
+function searchBar(d) {
+  const ph = searchPlaceholder(d);
   return `<div class="searchbar">
-    <input id="ssInput" type="search" placeholder="🔍 查代號或名稱（例 2330、台積電、AAOI）"
+    <input id="ssInput" type="search" placeholder="🔍 查代號或名稱（${esc(ph)}）"
       oninput="ssSearch(this.value)" autocomplete="off">
     <div id="ssResults"></div></div>`;
 }
@@ -881,25 +956,112 @@ function srBlock(sr) {
 // = {rev_yoy, rev_accel, pe_trailing, pe_forward, eps_trailing, eps_forward, stale, source}.
 // TW names carry only rev_yoy/rev_accel (no keyless P/E → show "—"). Null → omit entirely.
 // Caveat: best-effort, may be stale/missing, NOT a scorer.
-function fundamentalBlock(p) {
-  const f = p && p.fundamental;
-  if (!f) return '';
-  const num = (v) => (v == null ? '—' : v);
-  const hasPE = f.pe_trailing != null || f.pe_forward != null;
-  const hasEPS = f.eps_trailing != null || f.eps_forward != null;
-  const hasRev = f.rev_yoy != null;
-  if (!hasPE && !hasEPS && !hasRev) return '';   // empty badge → omit
-  const parts = [];
-  if (hasPE) parts.push(`本益比(TTM/Fwd) <b>${num(f.pe_trailing)}/${num(f.pe_forward)}</b>`);
-  if (hasEPS) parts.push(`EPS(TTM/Fwd) <b>${num(f.eps_trailing)}/${num(f.eps_forward)}</b>`);
-  if (hasRev) {
-    const accel = f.rev_accel ? ' <b class="accel">🔥</b>' : '';
-    parts.push(`月營收YoY <b class="${f.rev_yoy >= 0 ? 'up' : 'down'}">${f.rev_yoy > 0 ? '+' : ''}${f.rev_yoy}%</b>${accel}`);
+// REQ8 — pull roe/current_ratio/gross_margin out of the sec_frames 'fundamental'
+// overlay value dict (None → omit that row). Returns a {roe,current_ratio,gross_margin}
+// of present values, or null when none present. roe/gross_margin are already percent;
+// current_ratio is a raw ratio.
+function fundamentalRatios(p) {
+  const ovs = (p && p.overlays) || [];
+  for (const o of ovs) {
+    if (!o || o.kind !== 'fundamental' || !o.value || typeof o.value !== 'object') continue;
+    const v = o.value;
+    const r = {};
+    if (v.roe != null) r.roe = v.roe;
+    if (v.current_ratio != null) r.current_ratio = v.current_ratio;
+    if (v.gross_margin != null) r.gross_margin = v.gross_margin;
+    if (Object.keys(r).length) return r;
   }
-  const stale = f.stale ? ' <span class="fund-stale">⏳ 可能延遲</span>' : '';
+  return null;
+}
+function fundamentalBlock(p) {
+  const f = (p && p.fundamental) || null;
+  const ratios = fundamentalRatios(p);     // REQ8 roe/current_ratio/gross_margin
+  const num = (v) => (v == null ? '—' : v);
+  const parts = [];
+  if (f) {
+    const hasPE = f.pe_trailing != null || f.pe_forward != null;
+    const hasEPS = f.eps_trailing != null || f.eps_forward != null;
+    const hasRev = f.rev_yoy != null;
+    if (hasPE) parts.push(`本益比(TTM/Fwd) <b>${num(f.pe_trailing)}/${num(f.pe_forward)}</b>`);
+    if (hasEPS) parts.push(`EPS(TTM/Fwd) <b>${num(f.eps_trailing)}/${num(f.eps_forward)}</b>`);
+    if (hasRev) {
+      const accel = f.rev_accel ? ' <b class="accel">🔥</b>' : '';
+      parts.push(`月營收YoY <b class="${f.rev_yoy >= 0 ? 'up' : 'down'}">${f.rev_yoy > 0 ? '+' : ''}${f.rev_yoy}%</b>${accel}`);
+    }
+  }
+  // REQ8 — derived XBRL ratios; each omitted when null. roe/gross_margin = %, current_ratio = ratio.
+  if (ratios) {
+    if (ratios.roe != null) parts.push(`ROE <b>${(+ratios.roe).toFixed(1)}%</b>`);
+    if (ratios.current_ratio != null) parts.push(`流動比 <b>${(+ratios.current_ratio).toFixed(2)}</b>`);
+    if (ratios.gross_margin != null) parts.push(`毛利率 <b>${(+ratios.gross_margin).toFixed(1)}%</b>`);
+  }
+  if (!parts.length) return '';   // empty badge → omit
+  const stale = (f && f.stale) ? ' <span class="fund-stale">⏳ 可能延遲</span>' : '';
   return `<div class="kv fund-row" style="width:100%"><span>基本面參考${stale}</span>`
     + `<b>${parts.join(' · ')}</b>`
     + '<span class="muted small">※ best-effort，可能延遲/缺漏，不計入評分</span></div>';
+}
+
+// REQ6 — split the long 評分摘要 (p.commentary) into 5 collapsible <details>, and pin
+// the three actionable numbers (進場/停損/目標) as an always-visible first row.
+// The commentary is a numbered blob: "1. 投資理由：… 2. 短中線觀點：… 3. 進出場策略：…
+// 4. 進出場價位：… 5. 風險：…". We split on the leading "N. 標題：" markers; if the
+// shape ever changes we gracefully fall back to the raw <pre> (never lose the text).
+const COMMENTARY_SECTIONS = [
+  { n: 1, key: '投資理由',     label: '投資理由' },
+  { n: 2, key: '短中線觀點',   label: '短中線觀點' },
+  { n: 3, key: '進出場策略',   label: '進出場策略' },
+  { n: 4, key: '進出場價位',   label: '價位' },
+  { n: 5, key: '風險',         label: '風險' },
+];
+function parseCommentarySections(text) {
+  if (!text) return null;
+  // split on "<newline?>N. " boundaries (1.–5.). Keep the body after the "：" title.
+  const out = {};
+  // regex captures index N and the chunk up to the next "N. " or end.
+  const re = /(?:^|\n)\s*([1-5])\.\s*([^\n：:]*[：:])?\s*([\s\S]*?)(?=(?:\n\s*[1-5]\.\s)|$)/g;
+  let m, found = 0;
+  while ((m = re.exec(text)) !== null) {
+    const idx = parseInt(m[1], 10);
+    const body = (m[3] || '').trim();
+    if (body) { out[idx] = body; found++; }
+  }
+  return found ? out : null;
+}
+function pinnedLevelsLine(p) {
+  const lv = (p && p.levels) || {};
+  if (lv.entry == null && lv.stop == null) return '';
+  const band = lv.target_band || [];
+  const tgt = band.length ? band[band.length - 1]
+    : (lv.target != null ? lv.target : (lv.measured_move != null ? lv.measured_move : null));
+  const cell = (lbl, v, cls) => v == null ? '' :
+    `<span class="cs-num ${cls || ''}"><i>${lbl}</i><b>${esc(v)}</b></span>`;
+  return `<div class="cs-pinned">`
+    + cell('進場', lv.entry, '')
+    + cell('停損', lv.stop, 'cs-stop')
+    + cell('目標', tgt, 'cs-tgt')
+    + `</div>`;
+}
+function commentaryBlock(p) {
+  const text = p && p.commentary;
+  if (!text) return '';
+  const pinned = pinnedLevelsLine(p);
+  const secs = parseCommentarySections(text);
+  if (!secs) {
+    // graceful fallback — keep the raw blob, never drop disclosure text.
+    return `<div class="commentary-summary">${pinned}<pre class="commentary">${esc(text)}</pre></div>`;
+  }
+  // first non-empty section open so the user lands on content (usually 投資理由)
+  let firstOpen = true;
+  const items = COMMENTARY_SECTIONS.map((s) => {
+    const body = secs[s.n];
+    if (!body) return '';
+    const open = firstOpen ? ' open' : '';
+    firstOpen = false;
+    return `<details class="cs-fold"${open}><summary>${esc(s.label)}</summary>`
+      + `<div class="cs-body">${esc(body)}</div></details>`;
+  }).filter(Boolean).join('');
+  return `<div class="commentary-summary"><h3 style="margin-top:0">評分摘要</h3>${pinned}${items}</div>`;
 }
 
 // sources/ overlay framework render.
@@ -964,7 +1126,7 @@ function overlaysBlock(p) {
   const caveat = '<p class="muted small" style="margin-bottom:var(--s2)">公開資料籌碼／法人／基本面 <b>資訊性 overlay</b>，'
     + '<b>不計入評分與排名</b>（要做回測 Wilson-CI 驗證後才考慮加權）。</p>';
   return foldSection('🧩 公開資料 overlay（籌碼／法人／基本面／內部人）',
-    caveat + `<div class="overlays">${groups}</div>`, false);
+    caveat + `<div class="overlays">${groups}</div>`, true);
 }
 
 // Switch tabs in the detail card. Exported on window for inline onclick.
@@ -985,8 +1147,12 @@ function stockCard(d, code) {
     || (d._lazy && d._lazy.stock === code ? d._lazy : null);
   if (!p) return `<div class="status">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="muted small">靜態頁僅含當日選股+機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`;
   const stock = p.stock || p.ticker;
-  // prefer the card's own name; else the d.names map (covers lazy/early/revenue names).
-  const nm = p.name ? `${esc(p.name)}（${esc(stock)}）` : esc(nameOf(stock));
+  // REQ7 — Chinese name PRIMARY, ticker as a muted SUBTITLE ("大立光 3008.TW").
+  // Resolve a display name from the card, else the d.names map (covers lazy/early/rev).
+  const dispName = p.name || NAMES[stock] || NAMES[stock + '.TW'] || NAMES[String(stock).replace(/\.(TW|TWO)$/, '')] || '';
+  const nm = dispName
+    ? `<span class="sd-name">${esc(dispName)}</span> <span class="sd-ticker muted">${esc(stock)}</span>`
+    : `<span class="sd-name">${esc(stock)}</span>`;
   const pinned = getPins().includes(stock);
 
   // ---- HERO: price + chart ----
@@ -1012,7 +1178,7 @@ function stockCard(d, code) {
 
   const hero = `<div class="sd-hero">
     <div class="sd-head">
-      <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${earnBadge(p)}${accDistBadge(p)}${shortVolBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
+      <div class="sd-title">${lightDot(p.light)} <b>${nm}</b>${noticeBadge(p)}${shortPctBadge(p)}${earnBadge(p)}${accDistBadge(p)}${shortVolBadge(p)}${obvFlowBadge(p)}${p.score != null ? `<span class="score">${p.score}</span>` : (p.rs_rating != null ? `<span class="score">RS ${p.rs_rating}</span>` : '')}</div>
       ${px}
       <div class="sd-verdict">${esc(p.verdict || (p.signals ? p.signals.join('、') : ''))}</div>
       ${earnNote}
@@ -1035,7 +1201,7 @@ function stockCard(d, code) {
     .map(([k, v]) => `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
   const lv = p.levels ? `<h3>進出場價位</h3>${levelsStrip(p.levels)}` : '';
   const sr = p.sr ? `<h3>關鍵價位（S/R 多層）</h3>${srBlock(p.sr)}` : '';
-  const comm = p.commentary ? `<pre class="commentary">${esc(p.commentary)}</pre>` : '';
+  const comm = commentaryBlock(p);   // REQ6 — 評分摘要 split into 5 <details> + pinned 進場/停損/目標
   const fund = fundamentalBlock(p);   // REQ3a informational fundamentals row (null → '')
   const overlaysHtml = overlaysBlock(p);   // sources/ overlay framework (chip/法人/基本面/內部人)
 
@@ -1126,7 +1292,39 @@ async function showStock(date, code) {
   if (p && window.LightweightCharts && p.ohlc && p.ohlc.length > 1) {
     requestAnimationFrame(() => renderCandles('kline', p.ohlc, p.sr, p.levels));
   }
+  // REQ7 — topbar h1 + document.title: 中文名為主、ticker 副標 ("大立光 3008.TW").
+  const _nm = (p && p.name) || NAMES[code] || NAMES[code + '.TW']
+    || NAMES[String(code).replace(/\.(TW|TWO)$/, '')] || '';
+  const _label = _nm ? `${_nm} ${code}` : code;
+  $('title').textContent = _label;
+  try { document.title = _label + ' · SmartStock'; } catch (e) {}
   window.scrollTo(0, 0);
+}
+
+// REQ10 — strategy self-evaluation card from payload.pick_performance.
+// {n_picks, n_scored, n_dates, d5_win_rate, avoid_stop_rate, avg_ret_5}.
+// Rates are fractions 0..1; avg_ret_5 is a percent. INFORMATIONAL self-eval, never a
+// scorer; honest framing — no embellishment. n_scored<10 → 樣本累積中(n=X).
+function pickPerformanceBlock(d) {
+  const pp = d && d.pick_performance;
+  if (!pp || pp.n_scored == null) return '';
+  const N = pp.n_scored || 0;
+  const pctF = (v) => (v == null ? '—' : (v * 100).toFixed(0) + '%');
+  const retF = (v) => (v == null ? '—' : (v > 0 ? '+' : '') + (+v).toFixed(2) + '%');
+  if (N < 10) {
+    const inner = `<p class="muted small">回看歷史選股 D+5 表現的自我檢核（informational，非績效承諾）。`
+      + `<br><b>樣本累積中（n=${esc(N)}）</b> — 滿 10 筆才顯示勝率/避損率，避免小樣本誤導。</p>`;
+    return foldSection('📈 策略自評（樣本累積中）', inner, false);
+  }
+  const cells = [
+    `<div class="kv"><span>D+5 勝率</span><b>${pctF(pp.d5_win_rate)}</b></div>`,
+    `<div class="kv"><span>避開停損率</span><b>${pctF(pp.avoid_stop_rate)}</b></div>`,
+    `<div class="kv"><span>平均報酬(D+5)</span><b class="${(pp.avg_ret_5 != null && pp.avg_ret_5 >= 0) ? 'up' : 'down'}">${retF(pp.avg_ret_5)}</b></div>`,
+  ].join('');
+  const inner = `<p class="muted small">回看歷史選股實際 D+5 表現的自我檢核（近 ${esc(N)} 筆 · ${esc(pp.n_dates || 0)} 日）。`
+    + `<b>informational</b>，過去表現不代表未來，非績效承諾、非買賣訊號。</p>`
+    + `<div class="kvs">${cells}</div>`;
+  return foldSection(`📈 策略自評（近 ${esc(N)} 筆）`, inner, false);
 }
 
 function allocBlock(d) {
@@ -1168,6 +1366,7 @@ async function showDetail(date) {
   $('detailView').classList.remove('hidden');
   $('backBtn').classList.remove('hidden');
   $('title').textContent = date;
+  try { document.title = date + ' · SmartStock 日報'; } catch (e) {}
   $('status').textContent = '載入報告…';
   let d;
   try {
@@ -1201,14 +1400,14 @@ async function showDetail(date) {
   // IA: compact env-strip at top, then picks, watchlist, early-opp consolidated block, etc.
   // Heavy macro/market sections folded below. Honest caveats preserved verbatim.
   $('detailView').innerHTML = stale +
-    searchBar() + pinsBar(d) + tldrBanner(d) + envStripCompact(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
+    searchBar(d) + pinsBar(d) + tldrBanner(d) + envStripCompact(d) + fxBanner(d) + regimeBanner(d) + macroBanner(d) + deltaBlock(d) +
     nav +
     anchor('sec-picks', picksHtml) + concentrationBlock(d) +
     anchor('sec-watch', watchHtml) +
     anchor('sec-early-opp', earlyOppHtml) +
     groupBlock(d) + shortVolBlock(d) +
     gen + marketBlock(d) + calendarBlock(d) + moversBlock(d) + newsBlock(d.news) +
-    allocBlock(d) +
+    allocBlock(d) + pickPerformanceBlock(d) +
     section('免责聲明', '<p class="muted small">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p>');
   window.scrollTo(0, 0);
 }
@@ -1230,12 +1429,9 @@ window.addEventListener('load', () => {
   applyTheme();
   route();
   if ('serviceWorker' in navigator) {
-    let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (refreshing) return;
-      refreshing = true;
-      location.reload();          // a new SW took over → load the fresh shell
-    });
+    // NOTE: no controllerchange→reload handler. With skipWaiting+clients.claim that
+    // pattern loops forever (the in-memory guard resets on each reload) → blank screen.
+    // New SW takes over silently; the fresh shell loads on the next natural visit.
     navigator.serviceWorker.register('service-worker.js')
       .then((reg) => reg.update())
       .catch(() => {});

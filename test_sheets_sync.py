@@ -1,8 +1,11 @@
 """Tests for sheets_sync.py — pure row-building, header alignment, dedup plan, graceful skip.
 Network/gspread are NOT exercised here (lazy-imported inside the client path), so these run
 offline with no credentials."""
+import json
 import os
+import tempfile
 import unittest
+from unittest import mock
 
 import sheets_sync as ss
 
@@ -311,6 +314,336 @@ class TestNewsRowBuilder(unittest.TestCase):
         finally:
             if old is not None:
                 os.environ["GOOGLE_SA_JSON"] = old
+
+
+# ───────────────────────── early_board / watchlist / outcomes fixtures ──────────────────
+
+SAMPLE_EARLY_BOARD = [
+    {"stock": "FN", "name": "Fabrinet", "ready": False, "score": 1,
+     "signals": ["RS線平盤翻揚"]},
+    {"stock": "MTSI", "name": "MACOM Technology Solutions", "ready": True, "score": 3,
+     "signals": ["Wyckoff spring", "站穩MA50", "放量起漲"]},
+]
+
+# Full _watchlist_state.json shape (subset of the real file).
+SAMPLE_WATCHLIST_STATE = {
+    "updated": "2026-06-09",
+    "tracked": {
+        "6505.TW": {
+            "entry_date": "2026-06-06",
+            "entry_price": 0.0,
+            "entry_score": 102,
+            "entry_signal": ["趨勢(MA5>MA20)", "外資投信連買3日"],
+            "peak_price": 55.29999923706055,
+            "status": "exit_warn",
+            "pinned": False,
+            "last": {
+                "date": "2026-06-09", "price": 52.4, "pct": -5.2,
+                "below_ma20": False, "below_ma50": True,
+                "rs_rolled_over": False,
+                "warning": "跌破MA50/RS轉弱 — 考慮出場",
+            },
+        },
+        "AMD": {
+            "entry_date": "2026-06-06",
+            "entry_price": 480.0,
+            "entry_score": 92,
+            "entry_signal": ["趨勢(MA5>MA20)", "Stage2上升趨勢(回測lift1.36)"],
+            "peak_price": 490.67,
+            "status": "active",
+            "pinned": True,
+            "last": {
+                "date": "2026-06-09", "price": 490.33, "pct": 2.15,
+                "below_ma20": False, "below_ma50": False,
+                "rs_rolled_over": False, "warning": None,
+            },
+        },
+    },
+}
+
+# W1 pick_outcomes.py compute_one() record shape (flat), already stamped with picked_date.
+SAMPLE_OUTCOMES = [
+    {
+        "picked_date": "2026-06-02", "stock": "2882.TW", "entry_price": 90.0, "bars": 5,
+        "ret_1": 1.1, "ret_3": 3.2, "ret_5": 5.56, "period_high": 96.0, "period_low": 89.0,
+        "max_gain_pct": 6.67, "max_drawdown_pct": -1.11, "hit_stop": False, "hit_target": True,
+    },
+    {
+        "picked_date": "2026-06-02", "stock": "6505.TW", "entry_price": 55.0, "bars": 5,
+        "ret_1": -0.5, "ret_3": -2.0, "ret_5": -4.73, "period_high": 55.5, "period_low": 52.0,
+        "max_gain_pct": 0.91, "max_drawdown_pct": -5.45, "hit_stop": True, "hit_target": False,
+    },
+]
+
+# W1 on-disk wrapper shape (what pick_outcomes.compute_outcomes writes per file).
+SAMPLE_OUTCOMES_WRAPPER = {
+    "picked_date": "2026-06-02",
+    "computed_at": "2026-06-09T10:00:00",
+    "n_days": 5,
+    "outcomes": [{k: v for k, v in r.items() if k != "picked_date"} for r in SAMPLE_OUTCOMES],
+}
+
+
+class TestEarlyBoardRowBuilder(unittest.TestCase):
+    def test_early_board_rows_count(self):
+        rows = ss.build_early_board_rows({"date": "2026-06-09", "early_board": SAMPLE_EARLY_BOARD})
+        self.assertEqual(len(rows), 2)
+
+    def test_early_board_row_matches_headers(self):
+        rows = ss.build_early_board_rows({"date": "2026-06-09", "early_board": SAMPLE_EARLY_BOARD})
+        for row in rows:
+            self.assertEqual(
+                len(row), len(ss.EARLY_BOARD_HEADERS),
+                f"row width {len(row)} != EARLY_BOARD_HEADERS {len(ss.EARLY_BOARD_HEADERS)}",
+            )
+
+    def test_early_board_row_values(self):
+        rows = ss.build_early_board_rows({"date": "2026-06-09", "early_board": SAMPLE_EARLY_BOARD})
+        d = dict(zip(ss.EARLY_BOARD_HEADERS, rows[1]))
+        self.assertEqual(d["date"], "2026-06-09")
+        self.assertEqual(d["stock"], "MTSI")
+        self.assertEqual(d["name"], "MACOM Technology Solutions")
+        self.assertEqual(d["ready"], True)
+        self.assertEqual(d["score"], 3)
+        self.assertIn("Wyckoff spring", d["signals"])
+        self.assertIn(" | ", d["signals"])
+
+    def test_early_board_honest_warning_column(self):
+        """Every early_board row carries the honest lift-0.61 disclosure."""
+        rows = ss.build_early_board_rows({"date": "2026-06-09", "early_board": SAMPLE_EARLY_BOARD})
+        for row in rows:
+            d = dict(zip(ss.EARLY_BOARD_HEADERS, row))
+            self.assertIn("honest_warning", ss.EARLY_BOARD_HEADERS)
+            self.assertIn("0.61", d["honest_warning"])
+
+    def test_missing_early_board_key_no_crash(self):
+        self.assertEqual(ss.build_early_board_rows({"date": "2026-06-09"}), [])
+
+    def test_empty_early_board_no_crash(self):
+        self.assertEqual(ss.build_early_board_rows({"date": "d", "early_board": []}), [])
+
+    def test_early_board_missing_fields_no_crash(self):
+        rows = ss.build_early_board_rows({"date": "d", "early_board": [{"stock": "X"}]})
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(rows[0]), len(ss.EARLY_BOARD_HEADERS))
+
+
+class TestWatchlistRowBuilder(unittest.TestCase):
+    def test_watchlist_rows_count(self):
+        rows = ss.build_watchlist_rows("2026-06-09", SAMPLE_WATCHLIST_STATE)
+        self.assertEqual(len(rows), 2)
+
+    def test_watchlist_row_matches_headers(self):
+        rows = ss.build_watchlist_rows("2026-06-09", SAMPLE_WATCHLIST_STATE)
+        for row in rows:
+            self.assertEqual(
+                len(row), len(ss.WATCHLIST_HEADERS),
+                f"row width {len(row)} != WATCHLIST_HEADERS {len(ss.WATCHLIST_HEADERS)}",
+            )
+
+    def test_watchlist_row_values(self):
+        rows = ss.build_watchlist_rows("2026-06-09", SAMPLE_WATCHLIST_STATE)
+        by_sym = {dict(zip(ss.WATCHLIST_HEADERS, r))["symbol"]: dict(zip(ss.WATCHLIST_HEADERS, r))
+                  for r in rows}
+        d = by_sym["6505.TW"]
+        self.assertEqual(d["date"], "2026-06-09")
+        self.assertEqual(d["entry_date"], "2026-06-06")
+        self.assertEqual(d["status"], "exit_warn")
+        self.assertEqual(d["below_ma50"], True)
+        self.assertIn("考慮出場", d["warning"])
+        d2 = by_sym["AMD"]
+        self.assertEqual(d2["entry_price"], 480.0)
+        self.assertEqual(d2["price"], 490.33)
+        self.assertEqual(d2["pct"], 2.15)
+        self.assertEqual(d2["pinned"], True)
+        self.assertEqual(d2["peak_price"], 490.67)
+        self.assertIn("Stage2", d2["entry_signal"])
+
+    def test_watchlist_empty_state_no_crash(self):
+        self.assertEqual(ss.build_watchlist_rows("d", {"tracked": {}}), [])
+        self.assertEqual(ss.build_watchlist_rows("d", {}), [])
+        self.assertEqual(ss.build_watchlist_rows("d", None), [])
+
+    def test_watchlist_missing_last_no_crash(self):
+        state = {"tracked": {"X": {"entry_date": "2026-06-01", "status": "active"}}}
+        rows = ss.build_watchlist_rows("d", state)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(rows[0]), len(ss.WATCHLIST_HEADERS))
+
+    def test_load_watchlist_state_missing_file(self):
+        """Missing state file -> default empty shape, never crash."""
+        with tempfile.TemporaryDirectory() as td:
+            state = ss.load_watchlist_state(os.path.join(td, "nope.json"))
+            self.assertEqual(state.get("tracked"), {})
+
+
+class TestOutcomesRowBuilder(unittest.TestCase):
+    def test_outcomes_rows_count(self):
+        rows = ss.build_outcomes_rows(SAMPLE_OUTCOMES)
+        self.assertEqual(len(rows), 2)
+
+    def test_outcomes_row_matches_headers(self):
+        rows = ss.build_outcomes_rows(SAMPLE_OUTCOMES)
+        for row in rows:
+            self.assertEqual(
+                len(row), len(ss.OUTCOMES_HEADERS),
+                f"row width {len(row)} != OUTCOMES_HEADERS {len(ss.OUTCOMES_HEADERS)}",
+            )
+
+    def test_outcomes_row_values(self):
+        # Verify fields that exist in the actual pick_outcomes.py compute_one() schema.
+        # 'result', 'ret_pct', 'exit_price' are not part of that schema — the correct
+        # fields are ret_5 (5-day forward return), period_high, and hit_target.
+        rows = ss.build_outcomes_rows(SAMPLE_OUTCOMES)
+        d = dict(zip(ss.OUTCOMES_HEADERS, rows[0]))
+        self.assertEqual(d["stock"], "2882.TW")
+        self.assertEqual(d["ret_5"], 5.56)
+        self.assertEqual(d["period_high"], 96.0)
+        self.assertEqual(d["hit_target"], True)
+
+    def test_outcomes_empty_list_no_crash(self):
+        self.assertEqual(ss.build_outcomes_rows([]), [])
+        self.assertEqual(ss.build_outcomes_rows(None), [])
+
+    def test_outcomes_dict_keyed_shape_no_crash(self):
+        """Tolerate a dict-of-records shape too (W1 schema not finalised)."""
+        rows = ss.build_outcomes_rows({"a": SAMPLE_OUTCOMES[0], "b": SAMPLE_OUTCOMES[1]})
+        self.assertEqual(len(rows), 2)
+
+    def test_outcomes_missing_fields_no_crash(self):
+        rows = ss.build_outcomes_rows([{"stock": "X"}])
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(rows[0]), len(ss.OUTCOMES_HEADERS))
+
+    def test_load_outcomes_missing_dir_returns_empty(self):
+        """No _outcomes dir -> [] (graceful header-only tab)."""
+        with tempfile.TemporaryDirectory() as td:
+            self.assertEqual(ss.load_outcomes(os.path.join(td, "_outcomes")), [])
+
+    def test_load_outcomes_reads_json_files(self):
+        with tempfile.TemporaryDirectory() as td:
+            outdir = os.path.join(td, "_outcomes")
+            os.makedirs(outdir)
+            with open(os.path.join(outdir, "2026-06-09.json"), "w", encoding="utf-8") as f:
+                json.dump(SAMPLE_OUTCOMES, f, ensure_ascii=False)
+            rows = ss.load_outcomes(outdir)
+            self.assertEqual(len(rows), 2)
+
+
+# ───────────────────────── mock-gspread sync integration (no network) ───────────────────
+
+class _FakeWorksheet:
+    """Minimal gspread.Worksheet stand-in: tracks header + appended rows in memory."""
+    def __init__(self, title):
+        self.title = title
+        self._rows = [[]]  # row 1 = header (empty until set)
+
+    def row_values(self, n):
+        return list(self._rows[n - 1]) if 0 < n <= len(self._rows) else []
+
+    def col_values(self, n):
+        return [r[n - 1] if len(r) >= n else "" for r in self._rows]
+
+    def update(self, values=None, range_name=None):
+        if range_name == "A1" and values:
+            if not self._rows:
+                self._rows = [[]]
+            self._rows[0] = list(values[0])
+
+    def append_rows(self, rows, value_input_option=None):
+        self._rows.extend([list(r) for r in rows])
+
+    def delete_rows(self, n):
+        if 0 < n <= len(self._rows):
+            del self._rows[n - 1]
+
+
+class _FakeSheet:
+    def __init__(self):
+        self.worksheets_by_title = {}
+
+    def worksheet(self, title):
+        if title not in self.worksheets_by_title:
+            raise Exception("not found")
+        return self.worksheets_by_title[title]
+
+    def add_worksheet(self, title, rows, cols):
+        ws = _FakeWorksheet(title)
+        self.worksheets_by_title[title] = ws
+        return ws
+
+
+class TestSyncAllTabsMocked(unittest.TestCase):
+    def _payload(self):
+        p = dict(SAMPLE)
+        p["opportunity"] = SAMPLE_OPPORTUNITY
+        p["news"] = SAMPLE_NEWS
+        p["early_board"] = SAMPLE_EARLY_BOARD
+        return p
+
+    def test_sync_creates_all_six_tabs(self):
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES):
+            ss.sync_payload(sh, self._payload())
+        titles = set(sh.worksheets_by_title.keys())
+        for t in ("picks", "market", "opportunity", "early_board", "watchlist", "outcomes"):
+            self.assertIn(t, titles, f"tab {t} must be created")
+
+    def test_sync_new_tabs_have_headers_and_rows(self):
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES):
+            ss.sync_payload(sh, self._payload())
+        eb = sh.worksheets_by_title["early_board"]
+        self.assertEqual(eb.row_values(1), ss.EARLY_BOARD_HEADERS)
+        self.assertEqual(len(eb._rows) - 1, 2)  # 2 early_board rows
+        wl = sh.worksheets_by_title["watchlist"]
+        self.assertEqual(wl.row_values(1), ss.WATCHLIST_HEADERS)
+        self.assertEqual(len(wl._rows) - 1, 2)
+        oc = sh.worksheets_by_title["outcomes"]
+        self.assertEqual(oc.row_values(1), ss.OUTCOMES_HEADERS)
+        self.assertEqual(len(oc._rows) - 1, 2)
+
+    def test_sync_is_idempotent_by_date(self):
+        """Re-running the same day must not duplicate rows in the new tabs."""
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES):
+            ss.sync_payload(sh, self._payload())
+            ss.sync_payload(sh, self._payload())
+        wl = sh.worksheets_by_title["watchlist"]
+        self.assertEqual(len(wl._rows) - 1, 2, "watchlist must stay 2 rows after re-run")
+        eb = sh.worksheets_by_title["early_board"]
+        self.assertEqual(len(eb._rows) - 1, 2, "early_board must stay 2 rows after re-run")
+
+    def test_outcomes_graceful_empty_header_only(self):
+        """No outcomes data -> tab is created header-only, no crash."""
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+             mock.patch.object(ss, "load_outcomes", return_value=[]):
+            ss.sync_payload(sh, self._payload())
+        oc = sh.worksheets_by_title["outcomes"]
+        self.assertEqual(oc.row_values(1), ss.OUTCOMES_HEADERS)
+        self.assertEqual(len(oc._rows) - 1, 0, "outcomes header-only when no data")
+
+    def test_one_tab_failure_does_not_break_others(self):
+        """A raising _upsert on watchlist must not stop outcomes from syncing."""
+        sh = _FakeSheet()
+        real_upsert = ss._upsert
+
+        def flaky_upsert(ws, date_str, rows):
+            if ws.title == "watchlist":
+                raise RuntimeError("boom")
+            return real_upsert(ws, date_str, rows)
+
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES), \
+             mock.patch.object(ss, "_upsert", side_effect=flaky_upsert):
+            ss.sync_payload(sh, self._payload())  # must not raise
+        self.assertIn("outcomes", sh.worksheets_by_title)
+        oc = sh.worksheets_by_title["outcomes"]
+        self.assertEqual(len(oc._rows) - 1, 2)
 
 
 if __name__ == "__main__":

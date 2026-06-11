@@ -1,0 +1,45 @@
+Downloading 82 tickers x 15y (17 busted-peer stress names) ...
+Got 81 histories (16 busted peers resolved). Fills: next-open=True, slippage=15.0bps, fee=30.0bps (net-of-cost)
+
+================================================================================================
+OBV VOLUME-PRICE DIVERGENCE — WEIGHTING-GATE ADJUDICATION (strategy.py:135-141)
+================================================================================================
+signal                     fired    prec  lift    CIlo  CI>base    UP  FLAT  DOWN    p50
+----------------------------------------------------------------------------------------
+量能流入(背離偏多,+10)              1942   9.42%  1.14   8.20%        n  1.00  1.41  1.34   2.0%
+量價背離(出貨警示,-15)              2195   6.74%  0.81   5.77%        n  0.75  0.87  1.09   1.9%
+
+base rate (P explosive >=+25%) = 8.29%  horizon=60  family: 2 OBV-divergence signals
+
+================================================================================================
+BULLISH 量能流入(背離偏多) — KEEP-THE-+10-WEIGHT ADJUDICATION
+------------------------------------------------------------------------------------------------
+  fired=1942  precision=9.42%  CI=[8.20%,10.80%]  base=8.29%  lift=1.14
+    (a) CI-lo > base (8.20% > 8.29%) = False
+    (b) fired >= 100 (1942) = True
+    (c) FLAT-regime lift > 1.0 (1.41) = True
+  => VERDICT: FAIL
+
+================================================================================================
+BEARISH 量價背離(出貨警示) — AVOID-FILTER BENEFIT (the -15 weight)
+------------------------------------------------------------------------------------------------
+  fired=2195  precision(explosive)=6.74%  CI-lo=5.77%  base=8.29%
+  avg fwd AFTER warning = 3.46%  vs  universe base avg fwd = 4.35%  => gap = -0.89%
+  => names firing 出貨警示 UNDERPERFORM the universe over the next 60 bars — AVOIDING them adds value (filter benefit confirmed).
+  => VERDICT: PASS
+
+================================================================================================
+SUMMARY — ADJUDICATION & RECOMMENDED ACTION
+------------------------------------------------------------------------------------------------
+  量能流入(背離偏多,+10): FAIL — CI-lo<=base (no edge over base rate).
+    ACTION: DEMOTE to overlay-not-scorer. Recommended wiring (NOT applied here):
+      • strategy.py: DELETE the bullish branch lines 138-139 (if obv_s>0 and price_s<=0: factors["量能流入(背離偏多)"]=10).
+      • web_export.py: surface 量能流入 as an INFORMATIONAL overlay badge (card-only, rides the same rail as A/D grade / earnings) — never summed into score.
+
+  量價背離(出貨警示,-15): PASS — fired names underperform → the avoid filter works.
+    ACTION: KEEP the -15 live weight at strategy.py:140-141.
+
+base: 8.2900%  horizon=60 (primary)  explosive=+25%  family m=2 (bullish + bearish OBV divergence)
+coverage: 81 names (16 busted-peer stress names) · net-of-cost (slip 15.0bps + fee 30.0bps) · next-open fill · INCLUDE_BUSTED=True
+look-ahead/survivorship: signal sees only df.iloc[:i+1] (backtest.py:306); next-open fill (backtest.py:138); BUSTED_PEERS mixed in. survivor-only universe — every lift is an OPTIMISTIC UPPER BOUND.
+NO live scorer touched: strategy.py:135-141 / config.LEAD_* unchanged (demote/keep is a separate user-gated decision driven by this evidence).

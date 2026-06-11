@@ -491,7 +491,7 @@ ul.rev b.accel{color:var(--gold)}
 .tabnav::-webkit-scrollbar{display:none}
 .tab{
   flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:40px;padding:0 14px;border-radius:999px;white-space:nowrap;
+  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
   font-size:var(--t-sm);font-weight:600;text-decoration:none;
   color:var(--muted);background:var(--card2);border:var(--hair);
   transition:background .12s ease,color .12s ease;
@@ -575,7 +575,7 @@ ul.rev b.accel{color:var(--gold)}
 .dtab-nav::-webkit-scrollbar{display:none}
 .dtab{
   flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:36px;padding:0 12px;border-radius:999px;white-space:nowrap;
+  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
   font-size:var(--t-sm);font-weight:600;cursor:pointer;
   color:var(--muted);background:var(--card2);border:var(--hair);
   transition:background .12s ease,color .12s ease;
@@ -700,7 +700,7 @@ ul.wl-list li:first-child{border-top:none}
 .etab-nav::-webkit-scrollbar{display:none}
 .etab{
   flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:36px;padding:0 12px;border-radius:999px;white-space:nowrap;
+  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
   font-size:var(--t-sm);font-weight:600;cursor:pointer;
   color:var(--muted);background:var(--card2);border:var(--hair);
   transition:background .12s ease,color .12s ease;
@@ -772,6 +772,100 @@ ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
   color:var(--muted);text-align:center;font-size:.73rem;
   font-family:var(--font-num);
   padding:10px 14px calc(env(safe-area-inset-bottom) + 16px);
+}
+
+/* ============================================================================
+   S2 — env dimension labels (REQ2), summary split (REQ6), inline flags (REQ9),
+   stock-detail name/ticker (REQ7), collapsed backtest warning (REQ5)
+   All use existing design tokens → both themes inherit automatically.
+   ============================================================================ */
+
+/* REQ2 — small dimension subtitle on each env widget (期貨籌碼/技術趨勢/總經) */
+.env-dim{
+  display:inline-block;font-size:var(--t-xs);font-weight:700;
+  color:var(--muted);letter-spacing:.4px;margin-right:var(--s2);
+  padding:1px 7px;border-radius:999px;background:var(--card2);
+  border:var(--hair);cursor:help;vertical-align:middle;
+}
+
+/* REQ7 — stock detail header: Chinese name primary, ticker as muted subtitle */
+.sd-name{font-weight:800}
+.sd-ticker{
+  font-weight:600;font-size:.82em;font-family:var(--font-num);
+  letter-spacing:.3px;
+}
+
+/* REQ9 — inline regulatory/chip/info flags on pick + detail cards */
+.flag-risk,.flag-warn,.flag-info{
+  display:inline-block;padding:1px 7px;border-radius:8px;
+  font-size:.71rem;font-weight:700;white-space:nowrap;
+  vertical-align:middle;border:1px solid transparent;cursor:help;
+}
+.flag-risk{
+  color:var(--down);
+  background:color-mix(in srgb,var(--neg) 14%,transparent);
+  border-color:color-mix(in srgb,var(--neg) 38%,transparent);
+}
+.flag-warn{
+  color:var(--warn);
+  background:color-mix(in srgb,var(--gold) 14%,transparent);
+  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
+}
+.flag-info{
+  color:var(--link);
+  background:color-mix(in srgb,var(--link) 14%,transparent);
+  border-color:color-mix(in srgb,var(--link) 38%,transparent);
+}
+
+/* REQ6 — 評分摘要 pinned 進場/停損/目標 row + 5 collapsible sections */
+.commentary-summary{margin:8px 0 0}
+.cs-pinned{
+  display:flex;flex-wrap:wrap;gap:6px;margin:0 0 var(--s2);
+}
+.cs-num{
+  display:flex;align-items:baseline;gap:4px;
+  background:var(--card2);border:var(--hair);border-radius:8px;
+  padding:5px 11px;font-weight:700;font-size:.9rem;
+  font-variant-numeric:tabular-nums;
+}
+.cs-num i{font-style:normal;color:var(--muted);font-weight:400;font-size:.7rem}
+.cs-num.cs-stop b{color:var(--down)}
+.cs-num.cs-tgt b{color:var(--up)}
+details.cs-fold{
+  border:var(--hair);border-radius:var(--r1);background:var(--surface-2);
+  margin-bottom:6px;overflow:hidden;
+}
+details.cs-fold>summary{
+  list-style:none;cursor:pointer;min-height:44px;
+  display:flex;align-items:center;padding:8px 12px;
+  font-size:var(--t-sm);font-weight:700;
+}
+details.cs-fold>summary::-webkit-details-marker{display:none}
+details.cs-fold>summary::after{content:'▾';margin-left:auto;color:var(--muted);font-size:.8rem}
+details.cs-fold[open]>summary::after{content:'▴'}
+.cs-body{
+  padding:0 12px 10px;font-size:var(--t-md);line-height:1.6;
+  color:var(--txt);white-space:pre-wrap;word-wrap:break-word;
+}
+
+/* REQ5 — collapsed backtest warning (1-line summary + ⓘ expand, keeps gold caution skin) */
+details.early-banner-fold{
+  display:block;flex-direction:initial;padding:0;
+  margin:.2rem 0 .7rem;border-radius:var(--r1);overflow:hidden;
+  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
+  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
+}
+details.early-banner-fold>summary{
+  list-style:none;cursor:pointer;min-height:44px;
+  display:flex;align-items:center;gap:6px;
+  padding:9px 12px;font-size:.81rem;font-weight:700;color:var(--highlight);
+}
+details.early-banner-fold>summary::-webkit-details-marker{display:none}
+details.early-banner-fold>summary::after{content:'▾';margin-left:auto;font-size:.8rem}
+details.early-banner-fold[open]>summary::after{content:'▴'}
+.early-banner-full{
+  padding:0 12px 10px;font-size:.81rem;font-weight:600;
+  line-height:1.55;color:var(--highlight);
 }
 
 /* ============================================================================
