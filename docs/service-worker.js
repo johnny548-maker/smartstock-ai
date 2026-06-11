@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v33';
+const CACHE = 'smartstock-v34';
 const SHELL = [
   './',
   'index.html',
@@ -12,6 +12,7 @@ const SHELL = [
   'style.css',
   'manifest.json',
   'vendor/lightweight-charts.standalone.production.js',
+  'vendor/fonts/ss-numerals.woff2',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/apple-touch-icon-180.png',

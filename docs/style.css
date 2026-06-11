@@ -1,877 +1,564 @@
 /* ============================================================================
-   SmartStock PWA — design-token layer + dual theme (dark "Calm Terminal" +
-   light "Bloomberg-lite"). RESKIN ONLY: same DOM app.js emits, restyled via
-   tokens. The 7 --chart-* custom props are the contract app.js's K-line reads
-   (chartColors() in app.js); they MUST exist in BOTH themes.
-   IA redesign: LIST = ranked picks + compact env-strip at top.
-   DETAIL = price-chart hero + tabbed progressive-disclosure data card.
+   SmartStock — iOS-native minimal redesign.
+   Full-screen single-pick deck (horizontal swipe) + draggable bottom sheets.
+   Aesthetic: pure white / pure black dual theme. The ONLY chromatic color is
+   the up/down red-green pair (台股慣例沿用現有方向：漲=綠 up / 跌=紅 down — matched
+   to app.js change_pct>=0 ? 'up':'down'). Everything else is ink on paper.
+   No gradients, no purple, no glassmorphism. Hairlines + huge whitespace.
+   The 7 --chart-* props are the contract app.js's K-line reads; both themes set them.
    ============================================================================ */
 
-:root{
-  /* ---- DARK "Calm Terminal" — deep navy, higher contrast + breathing room -- */
-  --bg:#0a1520;
-  --card:#111e2e;
-  --card2:#182840;
-  --line:#1e3048;
-  --txt:#e8f0f9;
-  --muted:#7a96b8;
-  --accent:#3fcf80;
-  --neg:#f05f5f;
-  --gold:#f0c040;
-
-  /* semantic aliases */
-  --surface-1:var(--card);
-  --surface-2:var(--card2);
-  --border:var(--line);
-
-  /* semantic severity: up/down/warn */
-  --up:#4de899;
-  --down:#f07070;
-  --warn:var(--gold);
-
-  /* link + highlight */
-  --link:#6aadff;
-  --highlight:#ffd060;
-
-  /* spacing scale (4px base) */
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
-
-  /* radius */
-  --r1:8px; --r2:12px; --r3:16px;
-
-  /* type scale (modular ~1.2 steps for clearer hierarchy) */
-  --t-xs:.72rem; --t-sm:.82rem; --t-md:.92rem; --t-lg:1.12rem; --t-xl:1.36rem;
-
-  /* font families — UI sans (body) + tabular mono for figures (2nd family) */
-  --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
-  --font-num:"SF Mono","JetBrains Mono","Roboto Mono",ui-monospace,Consolas,Menlo,monospace;
-
-  /* elevation */
-  --el-1:0 1px 3px rgba(0,0,0,.35);
-  --el-2:0 4px 16px rgba(0,0,0,.45);
-  --hair:1px solid var(--border);
-
-  /* sticky stack clearance (topbar ~57px + tabnav ~48px) */
-  --sticky-offset:110px;
-
-  /* ---- 7 chart custom props (DARK) ---- */
-  --chart-up:#4de899;
-  --chart-down:#f07070;
-  --chart-bg:#0a1520;
-  --chart-grid:#1a2d42;
-  --chart-text:#b8cde0;
-  --chart-vol-up:#1d4d35;
-  --chart-vol-down:#4d1d1d;
+/* ---- numeral display font: subset Space Grotesk (0-9.,%+− …), offline, 2.4KB ---- */
+@font-face{
+  font-family:"SSNum";
+  src:url("vendor/fonts/ss-numerals.woff2") format("woff2");
+  font-weight:600;font-style:normal;font-display:swap;
+  /* limit to the chars in the subset so the browser never falls back mid-string */
+  unicode-range:U+0020,U+0023-0025,U+002B-002F,U+0030-0039,U+0042,U+004B,U+004D,U+0052,U+0053,U+0058,U+0078,U+00B7,U+00D7,U+2013,U+2014,U+2212;
 }
 
-:root[data-theme="light"]{
-  /* ---- LIGHT "Bloomberg-lite" — high-contrast data grid ---------------- */
-  --bg:#f5f8fc;
-  --card:#ffffff;
-  --card2:#edf1f8;
-  --line:#cdd6e4;
-  --txt:#0c1a28;
-  --muted:#526478;
-  --accent:#0a8040;
-  --neg:#cc2828;
-  --gold:#8e6200;
+:root{
+  color-scheme:light dark;
 
-  --surface-1:var(--card);
-  --surface-2:var(--card2);
-  --border:var(--line);
+  /* ---- LIGHT — pure white paper, near-black ink ---- */
+  --bg:#ffffff;
+  --bg-soft:#f6f6f8;        /* sheet / pressed surfaces */
+  --ink:#0a0a0b;            /* primary text (near-black, not pure #000 — softer) */
+  --ink-2:#5c5c66;          /* secondary */
+  --ink-3:#9a9aa4;          /* tertiary / captions */
+  --hair-c:rgba(0,0,0,.10); /* 0.5px hairline color */
+  --hair-strong:rgba(0,0,0,.16);
 
-  --up:#0a8040;
-  --down:#cc2828;
-  --warn:#8e6200;
+  /* the only chromatic pair — 漲=綠 / 跌=紅 (sign-matched to existing app) */
+  --up:#15994f;            /* green = positive change */
+  --down:#e0322f;          /* red   = negative change */
+  --warn:#b07000;          /* caution accent (amber-ink, used sparingly) */
 
-  --link:#1450bc;
-  --highlight:#7a4e00;
+  /* sizing */
+  --r1:10px; --r2:16px; --r3:22px; --r-sheet:22px;
+  --pad:20px;
 
-  --el-1:0 1px 2px rgba(12,26,40,.05);
-  --el-2:0 3px 12px rgba(12,26,40,.09);
-  --hair:1px solid var(--border);
+  /* fonts — body = -apple-system (native feel是目的); figures = SSNum→ui-rounded→system */
+  --font-ui:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --font-num:"SSNum",ui-rounded,"SF Pro Rounded",-apple-system,system-ui,sans-serif;
 
-  /* ---- 7 chart custom props (LIGHT) ---- */
-  --chart-up:#0a8040;
-  --chart-down:#cc2828;
-  --chart-bg:#ffffff;
-  --chart-grid:#dae2ed;
-  --chart-text:#2a3848;
-  --chart-vol-up:#9ed4b8;
-  --chart-vol-down:#e4aaaa;
+  /* spring easings */
+  --spring:cubic-bezier(.22,1,.36,1);
+  --spring-soft:cubic-bezier(.34,1.3,.64,1);
+
+  /* chart props (LIGHT) — 漲綠跌紅, paper bg */
+  --chart-up:#15994f; --chart-down:#e0322f;
+  --chart-bg:#ffffff; --chart-grid:#ececf0; --chart-text:#5c5c66;
+  --chart-vol-up:#bfe6cf; --chart-vol-down:#f5c4c3;
+}
+
+:root[data-theme="dark"]{
+  --bg:#000000;            /* pure black (OLED) */
+  --bg-soft:#121214;
+  --ink:#f4f4f6;
+  --ink-2:#9a9aa6;
+  --ink-3:#6a6a74;
+  --hair-c:rgba(255,255,255,.12);
+  --hair-strong:rgba(255,255,255,.20);
+
+  --up:#30d97a;            /* brighter green for black bg */
+  --down:#ff4d4a;
+  --warn:#e0a64d;
+
+  --chart-up:#30d97a; --chart-down:#ff4d4a;
+  --chart-bg:#000000; --chart-grid:#1a1a1d; --chart-text:#9a9aa6;
+  --chart-vol-up:#173d28; --chart-vol-down:#3d1716;
 }
 
 /* ============================================================================
    RESET + BASE
    ============================================================================ */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{
-  background:var(--bg);
-  color:var(--txt);
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+html{scroll-behavior:auto}
+body{
+  background:var(--bg);color:var(--ink);
   font-family:var(--font-ui);
-  -webkit-font-smoothing:antialiased;
-  line-height:1.55;
-  transition:background .18s ease,color .18s ease;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  line-height:1.5;overflow:hidden;            /* deck owns scroll; body is fixed */
+  overscroll-behavior:none;
+  transition:background .25s var(--spring),color .25s var(--spring);
 }
-.hidden{display:none!important}
-.muted{color:var(--muted)}
-.small{font-size:var(--t-sm)}
-b.up,.up{color:var(--up)}
-b.down,.down{color:var(--down)}
-
-/* tabular numerals for all price/score/numeric contexts */
-.score,.px,.px-big,.priceline,.levels,.kv,.kvs,.sr,.fx,.regime .reg-exp,
-.row-date,.spark,.movers b,.rev b,.wl-chip,.fund-row b,
-.env-v,.env-banner,.kpi-val,.strip-val{
-  font-variant-numeric:tabular-nums;
-}
-
-/* 2nd font family: monospaced tabular digits on pure-number elements only
-   (NOT containers mixing CJK labels — mono forces CJK through ugly generic fallback) */
-.px,.px-big,.score,.strip-val,.env-v,.kpi-val{
+.num{
   font-family:var(--font-num);
+  font-feature-settings:"tnum" 1,"zero" 1;     /* tabular + slashed zero */
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
 }
+.up{color:var(--up)}
+.down{color:var(--down)}
+.muted{color:var(--ink-2)}
+.tiny{font-size:.72rem;color:var(--ink-3);line-height:1.45}
+.hide{display:none!important}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--up);outline-offset:2px;border-radius:6px}
 
 /* ============================================================================
-   TOP BAR — sticky, frosted, minimal
+   DECK — full-screen horizontal scroll-snap carousel
    ============================================================================ */
-#topbar{
-  position:sticky;top:0;z-index:20;
-  display:flex;align-items:center;gap:var(--s2);
-  padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;
-  background:color-mix(in srgb,var(--bg) 90%,transparent);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:var(--hair);
+.deck{
+  position:fixed;inset:0;
+  display:flex;flex-direction:row;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
 }
-#title{
-  flex:1;font-size:1.3rem;text-align:center;
-  font-weight:700;letter-spacing:.3px;
+.deck::-webkit-scrollbar{display:none}
+
+.page{
+  flex:0 0 100%;width:100vw;height:100%;
+  scroll-snap-align:center;scroll-snap-stop:always;
+  display:flex;flex-direction:column;
+  padding:
+    calc(env(safe-area-inset-top) + 58px)
+    max(var(--pad),env(safe-area-inset-right))
+    calc(env(safe-area-inset-bottom) + 86px)
+    max(var(--pad),env(safe-area-inset-left));
+  position:relative;
 }
-#topbar button{
-  background:transparent;border:none;color:var(--txt);
-  font-size:1.3rem;min-width:44px;min-height:44px;
-  border-radius:var(--r1);cursor:pointer;
+
+/* page-load staggered reveal (first paint only; JS removes the class after one play) */
+.deck.intro .reveal{opacity:0;transform:translateY(10px);animation:rise .55s var(--spring) forwards}
+.deck.intro .reveal:nth-child(1){animation-delay:.02s}
+.deck.intro .reveal:nth-child(2){animation-delay:.07s}
+.deck.intro .reveal:nth-child(3){animation-delay:.12s}
+.deck.intro .reveal:nth-child(4){animation-delay:.17s}
+.deck.intro .reveal:nth-child(5){animation-delay:.22s}
+.deck.intro .reveal:nth-child(6){animation-delay:.27s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ============================================================================
+   PICK PAGE — one stock, full screen
+   ============================================================================ */
+.pk{display:flex;flex-direction:column;height:100%;gap:0;z-index:2}
+.pk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pk-rank{
+  font-family:var(--font-num);font-size:.8rem;font-weight:600;
+  color:var(--ink-3);letter-spacing:.04em;
+}
+.pk-score{
+  display:inline-flex;align-items:baseline;gap:5px;
+  font-family:var(--font-num);font-size:.82rem;color:var(--ink-2);
+  padding:4px 11px;border-radius:999px;border:.5px solid var(--hair-strong);
+}
+.pk-score b{font-size:1.02rem;color:var(--ink)}
+
+.pk-name{
+  margin-top:14px;
+  font-size:clamp(1.9rem,9vw,2.6rem);font-weight:700;letter-spacing:-.02em;
+  line-height:1.08;
+}
+.pk-ticker{
+  margin-top:5px;font-family:var(--font-num);font-size:.84rem;
+  color:var(--ink-3);letter-spacing:.02em;
+}
+
+/* the hero number: massive price + change */
+.pk-price{margin-top:auto;padding-top:18px}
+.pk-px{
+  font-family:var(--font-num);font-feature-settings:"tnum" 1,"zero" 1;
+  font-size:clamp(3.6rem,21vw,5.6rem);font-weight:600;
+  line-height:.94;letter-spacing:-.035em;
+  display:block;
+}
+.pk-chg{
+  margin-top:10px;display:flex;align-items:baseline;gap:10px;
+  font-family:var(--font-num);font-size:1.3rem;font-weight:600;
+}
+.pk-chg .arrow{font-size:1.05rem}
+.pk-chg .close-lbl{font-family:var(--font-ui);font-size:.8rem;color:var(--ink-3);font-weight:400}
+
+/* verdict + light */
+.pk-verdict{
+  margin-top:16px;font-size:1.02rem;color:var(--ink);font-weight:500;
+  display:flex;align-items:center;gap:8px;line-height:1.4;
+}
+.lightdot{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
+.ld-green{background:var(--up)}.ld-amber{background:var(--warn)}.ld-red{background:var(--down)}.ld-gray{background:var(--ink-3)}
+
+/* three pinned numbers: 進 / 停 / 標 */
+.pk-levels{
+  margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;
+  background:var(--hair-c);
+}
+.pk-lv{
+  background:var(--bg);padding:13px 12px;display:flex;flex-direction:column;gap:3px;
+}
+.pk-lv i{font-style:normal;font-size:.7rem;color:var(--ink-3);letter-spacing:.02em}
+.pk-lv b{font-family:var(--font-num);font-size:1.16rem;font-weight:600;letter-spacing:-.01em}
+.pk-lv.is-stop b{color:var(--down)}
+.pk-lv.is-tgt b{color:var(--up)}
+.pk-lv .sub{font-family:var(--font-num);font-size:.66rem;color:var(--ink-3)}
+
+/* sparkline strip */
+.pk-spark{margin-top:16px;height:54px}
+.pk-spark svg{width:100%;height:100%;display:block}
+
+/* detail affordance */
+.pk-more{
+  margin-top:14px;align-self:center;
+  display:inline-flex;align-items:center;gap:6px;
+  min-height:44px;padding:0 18px;border-radius:999px;
+  font-size:.86rem;font-weight:600;color:var(--ink-2);
+  border:.5px solid var(--hair-strong);
+}
+.pk-more:active{background:var(--bg-soft);transform:scale(.97)}
+.pk-more .chev{font-size:.9rem}
+
+/* inline regulatory / chip flags row */
+.pk-flags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.flag{
+  font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:7px;
+  border:.5px solid var(--hair-strong);color:var(--ink-2);white-space:nowrap;
+}
+.flag.f-risk{color:var(--down);border-color:color-mix(in srgb,var(--down) 40%,transparent)}
+.flag.f-warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+
+/* ============================================================================
+   COVER PAGE — today's overview (first page of the deck)
+   ============================================================================ */
+.cv{display:flex;flex-direction:column;height:100%;z-index:2}
+.cv-kicker{font-size:.8rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.cv-date{
+  margin-top:6px;font-family:var(--font-num);font-size:clamp(2.4rem,13vw,3.4rem);
+  font-weight:600;letter-spacing:-.03em;line-height:1;
+}
+.cv-weekday{margin-top:4px;font-size:.9rem;color:var(--ink-2)}
+
+.cv-lights{margin-top:26px;display:flex;flex-direction:column;gap:1px;
+  border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;background:var(--hair-c)}
+.cv-light{
+  background:var(--bg);padding:13px 16px;display:flex;align-items:center;gap:12px;
+}
+.cv-light .lab{font-size:.86rem;color:var(--ink-2);flex:1}
+.cv-light .val{font-size:.92rem;font-weight:600;display:flex;align-items:center;gap:7px}
+.cv-light .val .num{font-family:var(--font-num)}
+
+.cv-top{margin-top:auto;padding-top:22px}
+.cv-top-lbl{font-size:.78rem;color:var(--ink-3);letter-spacing:.04em}
+.cv-top-name{margin-top:6px;font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1.12}
+.cv-top-meta{margin-top:6px;font-family:var(--font-num);font-size:.92rem;color:var(--ink-2)}
+.cv-search{margin-top:20px}
+.cv-hint{
+  margin-top:20px;align-self:center;display:flex;align-items:center;gap:8px;
+  font-size:.82rem;color:var(--ink-3);
+}
+.cv-hint .swipe-ico{animation:nudge 2.2s var(--spring) infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+/* ============================================================================
+   HUD (top overlay) + PAGER + DOCK
+   ============================================================================ */
+.hud{
+  position:fixed;top:0;left:0;right:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 10px) max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));
+  pointer-events:none;
+}
+.hud-date{
+  pointer-events:auto;
+  min-height:44px;padding:0 14px;border-radius:999px;
+  font-family:var(--font-num);font-size:.84rem;font-weight:600;color:var(--ink);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  border:.5px solid var(--hair-c);
+  -webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.hud-date::after{content:'▾';font-size:.62rem;color:var(--ink-3)}
+.hud-date:active{transform:scale(.96)}
+.hud-theme{
+  pointer-events:auto;min-width:44px;min-height:44px;border-radius:999px;
+  font-size:1.18rem;color:var(--ink-2);display:inline-flex;align-items:center;justify-content:center;
+}
+.hud-theme:active{transform:scale(.92)}
+
+.pager{
+  position:fixed;left:0;right:0;z-index:25;
+  bottom:calc(env(safe-area-inset-bottom) + 74px);
+  display:flex;justify-content:center;gap:7px;pointer-events:none;
+}
+.pager .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--hair-strong);
+  transition:width .3s var(--spring),background .3s var(--spring);
+}
+.pager .dot.on{width:18px;border-radius:3px;background:var(--ink-2)}
+
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  display:flex;justify-content:space-around;align-items:stretch;
+  padding:0 max(10px,env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 6px) max(10px,env(safe-area-inset-left));
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  -webkit-backdrop-filter:saturate(1.5) blur(16px);backdrop-filter:saturate(1.5) blur(16px);
+  border-top:.5px solid var(--hair-c);
+}
+.dock-btn{
+  flex:1;min-height:54px;padding:8px 4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  color:var(--ink-2);
+}
+.dock-btn:active{transform:scale(.94);color:var(--ink)}
+.dock-ico{font-size:1.18rem;line-height:1}
+.dock-lbl{font-size:.68rem;font-weight:600;letter-spacing:.02em}
+
+/* ============================================================================
+   BOTTOM SHEET — draggable (half / full), spring-up
+   ============================================================================ */
+.scrim{
+  position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.42);
+  opacity:0;transition:opacity .3s var(--spring);
+}
+.scrim.show{opacity:1}
+:root[data-theme="dark"] .scrim{background:rgba(0,0,0,.6)}
+
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  height:92vh;max-height:92dvh;
+  display:flex;flex-direction:column;
+  background:var(--bg);
+  border-top-left-radius:var(--r-sheet);border-top-right-radius:var(--r-sheet);
+  border-top:.5px solid var(--hair-c);
+  box-shadow:0 -12px 40px rgba(0,0,0,.18);
+  transform:translateY(100%);
+  transition:transform .42s var(--spring);
+  touch-action:none;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+:root[data-theme="dark"] .sheet{box-shadow:0 -12px 40px rgba(0,0,0,.55)}
+/* default open = HALF (peek). full state climbs to top. snapped via JS transform. */
+.sheet.open{transform:translateY(45%)}
+.sheet.full{transform:translateY(0)}
+.sheet.dragging{transition:none}
+
+.sheet-grip{
+  /* 44px-tall hit area; the visual 5px bar is drawn by ::after */
+  display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:44px;margin:0;padding:0;flex:none;background:none;
+}
+.sheet-grip::after{
+  content:'';width:42px;height:5px;border-radius:3px;background:var(--hair-strong);
+}
+.sheet-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:6px var(--pad) 10px;border-bottom:.5px solid var(--hair-c);flex:none;
+}
+.sheet-title{flex:1;font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+.sheet-close{
+  min-width:44px;min-height:44px;border-radius:999px;font-size:1rem;color:var(--ink-2);
   display:inline-flex;align-items:center;justify-content:center;
-  transition:background .12s ease;
 }
-#topbar button:active{background:var(--card2)}
-#themeBtn{font-size:1.3rem}
-
-/* ============================================================================
-   APP SHELL
-   ============================================================================ */
-#app{padding:var(--s3) var(--s4);max-width:700px;margin:0 auto}
-.status{color:var(--muted);text-align:center;padding:var(--s4) 0}
-
-/* ============================================================================
-   CARD (list rows, generic block shell)
-   ============================================================================ */
-.card{
-  display:block;background:var(--surface-1);border:var(--hair);
-  border-radius:var(--r2);padding:var(--s4);margin-bottom:var(--s3);
-  text-decoration:none;color:var(--txt);box-shadow:var(--el-1);
-}
-.row{display:flex;align-items:center;gap:var(--s3)}
-.row:active{background:var(--card2)}
-.row-main{flex:1;min-width:0}
-.row-date{font-weight:700;font-size:1.02rem}
-.row-sub{font-size:var(--t-sm);margin-top:2px}
-.chev{color:var(--muted);font-size:1.35rem}
-
-/* ============================================================================
-   BADGE (risk level)
-   ============================================================================ */
-.badge{
-  font-size:.76rem;padding:2px 9px;border-radius:999px;
-  white-space:nowrap;border:1px solid var(--border);
-}
-.risk-low{
-  background:color-mix(in srgb,var(--up) 18%,transparent);
-  color:var(--up);border-color:transparent;
-}
-.risk-mid{
-  background:color-mix(in srgb,var(--gold) 18%,transparent);
-  color:var(--gold);border-color:transparent;
-}
-.risk-high{
-  background:color-mix(in srgb,var(--neg) 18%,transparent);
-  color:var(--neg);border-color:transparent;
+.sheet-close:active{background:var(--bg-soft);transform:scale(.92)}
+.sheet-body{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding:16px var(--pad) calc(28px + env(safe-area-inset-bottom));
 }
 
 /* ============================================================================
-   GENERIC BLOCK / SECTION
+   SHEET CONTENT — shared primitives (rows, chips, sections, K-line, lists)
    ============================================================================ */
-.block{
-  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
-  padding:var(--s4);margin-bottom:var(--s4);box-shadow:var(--el-1);
-}
-.block h2{
-  font-size:var(--t-xl);font-weight:700;letter-spacing:.3px;
-  margin:0 0 .65rem;padding-bottom:var(--s2);border-bottom:var(--hair);
-}
-.block h3{font-size:var(--t-md);margin:.8rem 0 .3rem;color:var(--muted)}
-.block ul{margin:.2rem 0;padding-left:1.1rem}
-.block li{margin:.18rem 0}
-.src{color:var(--muted);font-size:.78rem;margin-right:4px}
-.riskline{margin:.5rem 0}
+.sh-sec{margin:0 0 26px}
+.sh-sec:last-child{margin-bottom:0}
+.sh-h{font-size:.78rem;font-weight:700;color:var(--ink-3);letter-spacing:.06em;
+  text-transform:uppercase;margin:0 0 10px}
+.sh-sub{font-size:1rem;font-weight:700;margin:18px 0 8px}
 
-/* ============================================================================
-   COLLAPSIBLE SECTION (details/summary fold)
-   ============================================================================ */
-details.fold{
-  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
-  margin-bottom:var(--s4);box-shadow:var(--el-1);overflow:hidden;
+/* key-value row grid */
+.kvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--hair-c);border:.5px solid var(--hair-c);border-radius:var(--r1);overflow:hidden}
+.kv{background:var(--bg);padding:11px 13px;display:flex;flex-direction:column;gap:3px}
+.kv .k{font-size:.72rem;color:var(--ink-3)}
+.kv .v{font-size:1.02rem;font-weight:600;font-family:var(--font-num);font-feature-settings:"tnum" 1}
+.kv .v.txt{font-family:var(--font-ui)}
+.kv.wide{grid-column:1/-1}
+
+/* simple definition rows (label … value) */
+.drow{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+  padding:9px 0;border-bottom:.5px solid var(--hair-c)}
+.drow:last-child{border-bottom:none}
+.drow .k{color:var(--ink-2);font-size:.9rem}
+.drow .v{font-weight:600;text-align:right}
+.drow .v.num{font-family:var(--font-num);font-feature-settings:"tnum" 1}
+
+/* env light rows (market sheet) */
+.env-row{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:.5px solid var(--hair-c)}
+.env-row:last-child{border-bottom:none}
+.env-row .e-lab{flex:1;font-size:.92rem;color:var(--ink)}
+.env-row .e-sub{font-size:.74rem;color:var(--ink-3)}
+.env-row .e-val{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:7px}
+
+/* chips (gauges) */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.chip{
+  font-size:.76rem;padding:4px 10px;border-radius:999px;
+  border:.5px solid var(--hair-c);color:var(--ink-2);
+  display:inline-flex;align-items:baseline;gap:5px;
 }
+.chip b{color:var(--ink);font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600}
+
+/* clickable list (opp leaders, watchlist, movers) */
+.list{list-style:none}
+.list li{border-bottom:.5px solid var(--hair-c)}
+.list li:last-child{border-bottom:none}
+.list a,.list .li-static{
+  display:flex;align-items:center;gap:10px;padding:13px 2px;min-height:46px;color:var(--ink);
+}
+.list a:active{background:var(--bg-soft)}
+.li-main{flex:1;min-width:0}
+.li-name{font-weight:600;font-size:.96rem;display:flex;align-items:center;gap:7px}
+.li-name .tk{font-family:var(--font-num);font-size:.76rem;color:var(--ink-3);font-weight:400}
+.li-sub{font-size:.76rem;color:var(--ink-3);margin-top:2px;line-height:1.4}
+.li-r{text-align:right;font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600;flex:none}
+.li-r .pct{font-size:.92rem}
+.li-r .px{font-size:.82rem;color:var(--ink-2);font-weight:600}
+.li-badge{font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:6px;
+  border:.5px solid var(--hair-strong);color:var(--ink-2)}
+
+/* segmented control (sheet sub-tabs) */
+.seg{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--bg-soft);
+  margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{
+  flex:1 0 auto;min-height:38px;padding:0 14px;border-radius:999px;white-space:nowrap;
+  font-size:.82rem;font-weight:600;color:var(--ink-2);
+  transition:background .2s var(--spring),color .2s var(--spring);
+}
+.seg button.on{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+:root[data-theme="dark"] .seg button.on{box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.seg-panel{display:none}
+.seg-panel.on{display:block;animation:fade .25s var(--spring)}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* fold (collapsible honest-disclosure / heavy info) */
+details.fold{border:.5px solid var(--hair-c);border-radius:var(--r1);margin:10px 0;overflow:hidden}
 details.fold>summary{
-  list-style:none;cursor:pointer;
-  min-height:48px;display:flex;align-items:center;
-  padding:14px 16px;font-size:1rem;font-weight:700;letter-spacing:.2px;
-  border-bottom:var(--hair);
+  list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;
+  padding:11px 14px;font-size:.86rem;font-weight:600;color:var(--ink);
 }
 details.fold>summary::-webkit-details-marker{display:none}
-details.fold>summary::after{
-  content:'▾';margin-left:auto;color:var(--muted);font-size:.9rem;
-}
-details.fold[open]>summary::after{content:'▴'}
-details.fold>*:not(summary){padding:0 16px}
-details.fold>*:last-child{padding-bottom:14px}
+details.fold>summary::after{content:'＋';margin-left:auto;color:var(--ink-3);font-size:.9rem}
+details.fold[open]>summary::after{content:'－'}
+details.fold>summary:active{background:var(--bg-soft)}
+.fold-body{padding:0 14px 13px;font-size:.86rem;line-height:1.6;color:var(--ink-2)}
 
-/* ============================================================================
-   TLDR BANNER
-   ============================================================================ */
-.tldr{
-  background:linear-gradient(135deg,
-    color-mix(in srgb,var(--accent) 10%,var(--surface-1)),var(--surface-2));
-  border:var(--hair);border-radius:var(--r2);padding:12px 14px;
-  margin-bottom:var(--s4);font-weight:600;font-size:.98rem;
-  line-height:1.55;box-shadow:var(--el-1);
+/* caution / disclosure note (honest warnings — NEVER trimmed) */
+.note{
+  font-size:.8rem;line-height:1.55;color:var(--ink-2);
+  padding:11px 13px;border-radius:var(--r1);
+  border:.5px solid color-mix(in srgb,var(--warn) 30%,var(--hair-c));
+  background:color-mix(in srgb,var(--warn) 6%,transparent);
+  margin:10px 0;
 }
+.note b{color:var(--warn)}
+.disclaimer{font-size:.74rem;color:var(--ink-3);line-height:1.55;margin-top:8px}
 
-/* ============================================================================
-   ENV STRIP — compact single-row market context bar at top of LIST view
-   Displays: regime hint + key gauges in pill chips
-   ============================================================================ */
-.env-strip{
-  display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);
-  padding:var(--s2) var(--s3);margin-bottom:var(--s3);
-  border-radius:var(--r2);border:var(--hair);box-shadow:var(--el-1);
-  background:var(--surface-1);
-}
-.env-strip-label{
-  font-size:var(--t-sm);font-weight:700;white-space:nowrap;
-}
-.env-strip-gauges{
-  display:flex;flex-wrap:wrap;gap:6px;flex:1;
-}
-.strip-chip{
-  display:inline-flex;align-items:baseline;gap:3px;
-  font-size:var(--t-xs);padding:2px 8px;border-radius:999px;
-  border:var(--hair);background:var(--surface-2);white-space:nowrap;
-}
-.strip-key{color:var(--muted)}
-.strip-val{font-weight:600}
-.env-strip.env-on{
-  background:color-mix(in srgb,var(--up) 8%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--up) 30%,var(--border));
-}
-.env-strip.env-mid{
-  background:color-mix(in srgb,var(--gold) 8%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--gold) 35%,var(--border));
-}
-.env-strip.env-off{
-  background:color-mix(in srgb,var(--neg) 8%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--neg) 35%,var(--border));
-}
-
-/* ============================================================================
-   REGIME / MACRO banners (full-width for detail view, reused on day report)
-   ============================================================================ */
-.regime,.env-banner{
-  border-radius:var(--r2);padding:10px 14px;margin-bottom:var(--s4);
-  border:var(--hair);overflow:hidden;
-}
-.regime>b,.env-banner>b{display:inline}
-.regime .reg-exp{float:right;font-weight:700}
-.regime .small,.env-banner .small{margin-top:5px;clear:both}
-.reg-on,.env-on-banner{
-  background:color-mix(in srgb,var(--up) 10%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--up) 35%,transparent);
-}
-.reg-mid,.env-mid-banner{
-  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
-}
-.reg-off,.env-off-banner{
-  background:color-mix(in srgb,var(--neg) 12%,var(--surface-1));
-  border-color:color-mix(in srgb,var(--neg) 40%,transparent);
-}
-.macro-chips,.env-gauges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.macro-chip,.env-gauge{
-  font-size:.84em;padding:2px 8px;border-radius:8px;
-  border:var(--hair);background:var(--surface-1);
-}
-.env-gauge{display:inline-flex;align-items:baseline;gap:4px}
-.env-gauge .env-v{font-variant-numeric:tabular-nums}
-
-/* ============================================================================
-   STALE / DELTA / MISC banners
-   ============================================================================ */
+/* stale banner inside sheet/cover */
 .stale{
-  background:color-mix(in srgb,var(--neg) 14%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--neg) 40%,transparent);
-  color:var(--neg);border-radius:var(--r2);padding:10px 14px;
-  margin-bottom:var(--s4);font-size:.85rem;font-weight:600;
+  font-size:.8rem;font-weight:600;color:var(--down);line-height:1.5;
+  padding:10px 13px;border-radius:var(--r1);margin:0 0 14px;
+  border:.5px solid color-mix(in srgb,var(--down) 35%,transparent);
+  background:color-mix(in srgb,var(--down) 7%,transparent);
 }
-.delta{
-  background:color-mix(in srgb,var(--gold) 9%,var(--surface-1));
-  border:var(--hair);border-radius:var(--r2);padding:10px 14px;
-  margin-bottom:var(--s4);font-weight:600;font-size:var(--t-md);
+
+/* K-line host (detail sheet) */
+.sh-kline{height:240px;width:100%;background:var(--chart-bg);border-radius:var(--r1);
+  border:.5px solid var(--hair-c);overflow:hidden;margin-top:4px}
+.sh-spark{height:120px;width:100%}
+.sh-cap{font-size:.72rem;color:var(--ink-3);margin-top:7px;line-height:1.45}
+
+/* svg sparkline / pchart axis styling */
+.pchart .ax{fill:var(--ink-3);font-size:9px}
+.pchart .ax-now{fill:var(--up);font-weight:700}
+.pchart .grid{stroke:var(--hair-c);stroke-width:.5}
+
+/* factor pills (score breakdown) */
+.factors{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.factor{font-size:.74rem;padding:3px 9px;border-radius:7px;border:.5px solid var(--hair-c);
+  color:var(--ink-2);font-family:var(--font-num);font-feature-settings:"tnum" 1}
+.factor.pos{color:var(--up);border-color:color-mix(in srgb,var(--up) 30%,transparent)}
+.factor.neg{color:var(--down);border-color:color-mix(in srgb,var(--down) 30%,transparent)}
+
+/* commentary paragraph */
+.cs-body{font-size:.9rem;line-height:1.65;color:var(--ink);white-space:pre-wrap;word-wrap:break-word}
+
+/* levels strip inside detail */
+.lvstrip{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+.lvstrip span{display:flex;align-items:baseline;gap:4px;padding:5px 11px;border-radius:9px;
+  border:.5px solid var(--hair-c);font-family:var(--font-num);font-weight:600;font-size:.86rem}
+.lvstrip i{font-style:normal;color:var(--ink-3);font-weight:400;font-size:.7rem;font-family:var(--font-ui)}
+.lvstrip small{color:var(--ink-3);font-weight:400}
+.lvstrip .lv-stop{color:var(--down)}.lvstrip .lv-tgt{color:var(--up)}
+
+/* SR ladder */
+.sr{list-style:none;margin:6px 0}
+.sr li{display:flex;justify-content:space-between;padding:7px 11px;border-bottom:.5px solid var(--hair-c);font-size:.88rem}
+.sr li.sr-now{background:var(--bg-soft);border-radius:8px;font-weight:700}
+.sr li.sr-res b{color:var(--down)}.sr li.sr-sup b{color:var(--up)}
+.sr li b{font-family:var(--font-num);font-feature-settings:"tnum" 1}
+
+/* news links */
+.news{list-style:none}
+.news li{padding:9px 0;border-bottom:.5px solid var(--hair-c);font-size:.88rem;line-height:1.5}
+.news li:last-child{border-bottom:none}
+.news a{color:var(--ink)}.news a:active{color:var(--up)}
+.news .src{font-size:.72rem;color:var(--ink-3);margin-right:5px}
+
+/* date list (date picker sheet) */
+.datelist{list-style:none}
+.datelist li{border-bottom:.5px solid var(--hair-c)}
+.datelist a{display:flex;align-items:center;gap:12px;padding:15px 4px;min-height:54px}
+.datelist a:active{background:var(--bg-soft)}
+.datelist .dl-date{font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600;font-size:1.02rem;flex:none;width:108px}
+.datelist .dl-sub{flex:1;font-size:.82rem;color:var(--ink-2)}
+.datelist a.cur{font-weight:700}
+.datelist a.cur::after{content:'●';color:var(--up);font-size:.7rem;margin-left:auto}
+.datelist .dl-risk{font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:999px;border:.5px solid var(--hair-strong)}
+
+/* search box */
+.search input{
+  width:100%;min-height:48px;padding:12px 16px;border-radius:var(--r2);
+  border:.5px solid var(--hair-strong);background:var(--bg-soft);color:var(--ink);
+  font-size:16px;-webkit-appearance:none;font-family:var(--font-ui);
 }
-.delta ul{margin:.3rem 0 0;padding-left:1.1rem;font-weight:400}
-.breadth{
-  margin:.5rem 0;padding:8px 10px;background:var(--card2);
-  border-radius:var(--r1);font-size:.87rem;
+.search input:focus{outline:none;border-color:var(--up)}
+.search-res{margin-top:8px}
+
+/* empty / loading states */
+.empty{padding:40px 20px;text-align:center;color:var(--ink-3);font-size:.92rem;line-height:1.6}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 96px);
+  transform:translateX(-50%) translateY(10px);z-index:60;
+  padding:9px 16px;border-radius:999px;font-size:.84rem;font-weight:600;
+  background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;
+  transition:opacity .25s var(--spring),transform .25s var(--spring);
+  max-width:80vw;text-align:center;
 }
-.breadth b{color:var(--accent)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ============================================================================
-   PICKS — ranked list in the detail view
+   PRESS-FEEDBACK (global :active scale) — applied to interactive cards
    ============================================================================ */
-.pick{
-  border-top:var(--hair);padding:14px 0;
-}
-.pick:first-of-type{border-top:none}
-.pick-head{
-  font-size:1rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-}
-.pick-head b{color:var(--txt)}
-.score{
-  margin-left:auto;
-  background:color-mix(in srgb,var(--accent) 14%,transparent);
-  padding:3px 11px;border-radius:999px;font-weight:700;
-  color:var(--accent);min-width:40px;text-align:center;
-}
-.factors{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-.factor{
-  font-size:var(--t-xs);padding:2px 7px;border-radius:6px;
-  background:var(--card2);color:var(--txt);
-}
-.factor.pos{color:var(--up)}
-.factor.neg{color:var(--down)}
-.commentary{
-  white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
-  background:var(--card2);border-radius:var(--r1);
-  padding:10px 12px;margin:6px 0 0;font-size:var(--t-md);
-}
-
-/* sparkline */
-.spark{width:110px;height:30px;display:block}
-.spark-wrap{margin-left:auto;margin-right:8px;display:flex;align-items:center}
-.verdict{margin-top:4px}
-.pick-link{text-decoration:none;color:var(--txt)}
-.pick-link:active{background:var(--card2)}
-.pick-spark{margin-top:8px}
-.pick-spark .spark{width:100%;height:44px}
+.press:active{transform:scale(.97);transition:transform .08s ease}
 
 /* ============================================================================
-   ALLOCATION BARS
-   ============================================================================ */
-ul.alloc{list-style:none;padding:0}
-ul.alloc li{display:flex;align-items:center;gap:var(--s2)}
-.bar{flex:1;height:8px;background:var(--card2);border-radius:6px;overflow:hidden}
-.bar>span{display:block;height:100%;background:var(--accent)}
-
-/* ============================================================================
-   FX BANNER
-   ============================================================================ */
-.fx{
-  margin:6px 0;padding:6px 10px;border-radius:8px;background:var(--card2);
-  font-size:var(--t-md);display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;
-}
-.fx .fx-chg.fx-up{color:var(--up)}
-.fx .fx-chg.fx-down{color:var(--down)}
-
-/* ============================================================================
-   LEVELS / S-R
-   ============================================================================ */
-.levels{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.levels span{
-  background:var(--card2);border-radius:8px;padding:4px 9px;
-  font-weight:700;font-size:.85rem;
-  display:flex;align-items:baseline;gap:3px;
-}
-.levels i{font-style:normal;color:var(--muted);font-weight:400;font-size:.71rem}
-.levels small{color:var(--muted);font-weight:400}
-.levels .lv-stop{color:var(--down)}
-.levels .lv-tgt{color:var(--up)}
-.levels-adv{margin:4px 0 2px}
-
-ul.sr{list-style:none;padding:0;margin:.2rem 0}
-ul.sr li{
-  display:flex;justify-content:space-between;
-  padding:6px 10px;border-bottom:var(--hair);
-}
-ul.sr li.sr-now{background:var(--card2);border-radius:8px;font-weight:700}
-ul.sr li.sr-res b{color:var(--down)}
-ul.sr li.sr-sup b{color:var(--up)}
-
-/* ============================================================================
-   KEY-VALUE GRID (kv chips inside detail card)
-   ============================================================================ */
-.kvs{display:flex;flex-wrap:wrap;gap:var(--s2);margin:8px 0}
-.kv{
-  background:var(--card2);border-radius:var(--r1);
-  padding:6px 12px;font-size:.87rem;
-  display:flex;flex-direction:column;gap:2px;
-}
-.kv span{color:var(--muted);font-size:.72rem}
-
-/* ============================================================================
-   MOVERS / REV lists
-   ============================================================================ */
-ul.movers{list-style:none;padding:0}
-ul.movers li{display:flex;justify-content:space-between;gap:var(--s2)}
-ul.movers b.up{color:var(--up)}
-ul.movers b.down{color:var(--neg)}
-
-ul.rev{list-style:none;padding:0}
-ul.rev li{padding:6px 0;border-top:var(--hair)}
-ul.rev li:first-child{border-top:none}
-ul.rev b.up{color:var(--up)}
-ul.rev b.accel{color:var(--gold)}
-.badge-lead{
-  background:color-mix(in srgb,var(--up) 22%,var(--surface-1));
-  color:var(--up);border-radius:6px;
-  padding:1px 6px;font-size:.71rem;font-weight:700;
-}
-.group-list{margin:0;padding-left:1.2em}
-.block a{color:var(--link);text-decoration:none}
-.block a:active{text-decoration:underline}
-
-/* ============================================================================
-   SEARCH + PINS
-   ============================================================================ */
-.searchbar{position:relative;margin-bottom:var(--s3)}
-.searchbar input{
-  width:100%;min-height:48px;padding:11px 14px;border-radius:var(--r2);
-  border:var(--hair);background:var(--surface-1);color:var(--txt);
-  font-size:16px;-webkit-appearance:none;
-}
-.searchbar input:focus{
-  outline:none;border-color:var(--accent);
-  box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 28%,transparent);
-}
-#ssResults{margin-top:6px}
-.srow{
-  display:block;padding:9px 12px;background:var(--surface-1);
-  border:var(--hair);border-radius:var(--r1);
-  margin-bottom:5px;text-decoration:none;color:var(--txt);
-}
-.srow:active{background:var(--card2)}
-
-.pins{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:var(--s3)}
-.pinchip{
-  background:var(--card2);border:var(--hair);border-radius:999px;
-  padding:5px 11px;font-size:var(--t-sm);text-decoration:none;color:var(--txt);
-}
-.pinchip:active{background:var(--card)}
-
-/* ============================================================================
-   STICKY SEGMENTED TAB-NAV (sits under #topbar in the detail/report view)
-   ============================================================================ */
-.tabnav{
-  position:sticky;top:57px;z-index:15;
-  display:flex;gap:var(--s1);overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding:var(--s2) 0;margin:0 0 var(--s3);
-  background:color-mix(in srgb,var(--bg) 92%,transparent);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:var(--hair);
-}
-.tabnav::-webkit-scrollbar{display:none}
-.tab{
-  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
-  font-size:var(--t-sm);font-weight:600;text-decoration:none;
-  color:var(--muted);background:var(--card2);border:var(--hair);
-  transition:background .12s ease,color .12s ease;
-}
-.tab:hover{color:var(--txt)}
-.tab:active,.tab.tab-active{
-  color:#fff;background:var(--accent);border-color:transparent;
-}
-:root[data-theme="light"] .tab:active,
-:root[data-theme="light"] .tab.tab-active{color:#fff}
-
-/* scroll anchor clearance */
-.sec-anchor{scroll-margin-top:var(--sticky-offset)}
-
-/* ============================================================================
-   STOCK DETAIL HERO (price + chart at top)
-   ============================================================================ */
-.backlink{
-  display:inline-flex;align-items:center;min-height:44px;
-  color:var(--link);text-decoration:none;
-  margin-bottom:var(--s3);font-size:var(--t-md);
-}
-.sd-hero{
-  background:var(--surface-1);border:var(--hair);border-radius:var(--r2);
-  margin-bottom:var(--s3);box-shadow:var(--el-1);overflow:hidden;
-}
-.sd-head{padding:var(--s4) var(--s4) var(--s3)}
-.sd-title{font-size:1.12rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.sd-verdict{color:var(--muted);font-size:var(--t-md);margin:4px 0 8px}
-.sd-actions{display:flex;gap:var(--s2)}
-.sd-actions button{
-  background:var(--card2);border:var(--hair);color:var(--txt);
-  border-radius:999px;min-height:40px;padding:0 16px;
-  font-size:var(--t-sm);cursor:pointer;
-}
-.sd-actions button:active{background:var(--card)}
-.sd-price{margin:2px 0 8px}
-.px-big{font-size:1.55rem;font-weight:800;letter-spacing:.4px}
-.priceline{margin-top:3px;font-size:var(--t-md)}
-.priceline .px{font-weight:700}
-.px{font-weight:600}
-.up.small,.down.small{font-size:.77rem;margin-left:3px}
-
-/* chart area inside hero */
-.sd-chart{margin:0}
-.sd-kline{
-  height:250px;width:100%;background:var(--chart-bg);
-  border-top:var(--hair);
-}
-.sd-chart .spark{width:100%;height:90px}
-.sd-chart-caption{
-  padding:4px var(--s4) var(--s3);
-  font-size:var(--t-xs);color:var(--muted);
-}
-
-/* earn-note / blackout */
-.earn-note{
-  margin-top:6px;padding:8px 10px;border-radius:var(--r1);
-  font-size:.81rem;color:var(--highlight);
-  background:color-mix(in srgb,var(--gold) 9%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
-}
-
-/* svg price chart (sparkline fallback) */
-.pchart{display:block;width:100%;height:auto;background:var(--card2);border-radius:var(--r1)}
-.pchart .ax{fill:var(--muted);font-size:9px}
-.pchart .ax-now{fill:var(--accent);font-weight:700}
-.pchart .grid{stroke:var(--line);stroke-width:.5}
-.pchart{height:135px}
-
-/* ============================================================================
-   TABBED DETAIL CARD (tabs: 評分依據 / 籌碼面 / 基本面 / 法人 / 情緒催化 / 總經環境)
-   ============================================================================ */
-.detail-tabs{margin-bottom:var(--s4)}
-.dtab-nav{
-  display:flex;gap:var(--s1);overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding:0 0 var(--s2);margin-bottom:var(--s2);
-  border-bottom:var(--hair);
-}
-.dtab-nav::-webkit-scrollbar{display:none}
-.dtab{
-  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
-  font-size:var(--t-sm);font-weight:600;cursor:pointer;
-  color:var(--muted);background:var(--card2);border:var(--hair);
-  transition:background .12s ease,color .12s ease;
-}
-.dtab.active,.dtab:active{
-  color:#fff;background:var(--accent);border-color:transparent;
-}
-:root[data-theme="light"] .dtab.active{color:#fff}
-.dtab-panel{display:none}
-.dtab-panel.active{display:block}
-
-/* ============================================================================
-   OVERLAY GROUPS — scannable cards with left-accent severity stripe
-   ============================================================================ */
-.overlays{display:flex;flex-direction:column;gap:var(--s2)}
-.overlay-group{
-  background:var(--surface-2);border:var(--hair);border-radius:var(--r1);
-  overflow:hidden;margin-bottom:var(--s2);
-}
-.overlay-group-header{
-  display:flex;align-items:center;gap:var(--s2);
-  padding:8px 12px;cursor:pointer;user-select:none;
-  border-bottom:var(--hair);
-  font-weight:700;font-size:var(--t-sm);letter-spacing:.2px;
-}
-.overlay-group-header::after{
-  content:'▾';margin-left:auto;color:var(--muted);font-size:.85rem;
-}
-.overlay-group.open>.overlay-group-header::after{content:'▴'}
-.overlay-group-body{display:none;padding:var(--s2) var(--s3) var(--s3)}
-.overlay-group.open>.overlay-group-body{display:block}
-.overlay-kind-icon{font-size:1rem}
-
-.overlay-row{
-  display:flex;align-items:flex-start;gap:8px;
-  padding:7px 0;border-bottom:var(--hair);
-}
-.overlay-row:last-child{border-bottom:none}
-.overlay-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--muted);flex:none;margin-top:5px;
-}
-.overlay-label{font-weight:600;font-size:var(--t-sm);flex:1;min-width:0}
-.overlay-asof,.overlay-src,.overlay-note{font-size:var(--t-xs)}
-.overlay-meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
-.overlay-note{color:var(--muted)}
-
-/* severity accent */
-.overlay-info>.overlay-dot,.overlay-info .overlay-dot{background:var(--up)}
-.overlay-info .overlay-label{color:var(--txt)}
-.overlay-warn>.overlay-dot,.overlay-warn .overlay-dot{background:var(--warn)}
-.overlay-warn .overlay-label{color:var(--warn)}
-.overlay-risk>.overlay-dot,.overlay-risk .overlay-dot{background:var(--down)}
-.overlay-risk .overlay-label{color:var(--down)}
-
-/* group accent: category color as a leading dot (replaces left-stripe AI tell,
-   keeps 6-way category identity) */
-.overlay-group-header::before{
-  content:'';flex:none;width:8px;height:8px;border-radius:3px;
-  background:var(--cat,var(--muted));
-}
-.og-chip{--cat:var(--up)}
-.og-inst{--cat:var(--link)}
-.og-fundamental{--cat:var(--gold)}
-.og-sentiment{--cat:#c878f0}
-.og-catalyst{--cat:var(--accent)}
-.og-macro{--cat:var(--muted)}
-
-/* ============================================================================
-   WATCHLIST + STATUS CHIPS
-   ============================================================================ */
-ul.wl-list{list-style:none;padding:0;margin:.2rem 0}
-ul.wl-list li{padding:9px 0;border-top:var(--hair)}
-ul.wl-list li:first-child{border-top:none}
-.wl-chip{
-  display:inline-block;padding:1px 9px;border-radius:999px;
-  font-size:.73rem;font-weight:700;white-space:nowrap;
-  vertical-align:middle;border:1px solid transparent;
-}
-.wl-active{
-  color:var(--up);
-  background:color-mix(in srgb,var(--up) 14%,transparent);
-  border-color:color-mix(in srgb,var(--up) 35%,transparent);
-}
-.wl-watch{
-  color:var(--warn);
-  background:color-mix(in srgb,var(--gold) 14%,transparent);
-  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
-}
-.wl-exit{
-  color:var(--down);
-  background:color-mix(in srgb,var(--neg) 14%,transparent);
-  border-color:color-mix(in srgb,var(--neg) 36%,transparent);
-}
-
-/* ============================================================================
-   EARLY BOARD — prominent + cautionary
-   ============================================================================ */
-.early-board{border:1px solid color-mix(in srgb,var(--gold) 30%,var(--border))}
-.early-board h2{border-bottom-color:color-mix(in srgb,var(--gold) 25%,var(--border))}
-.early-banner{
-  display:flex;gap:6px;align-items:flex-start;
-  margin:.2rem 0 .7rem;padding:9px 12px;border-radius:var(--r1);
-  font-size:.81rem;font-weight:600;line-height:1.5;color:var(--highlight);
-  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
-}
-
-/* ============================================================================
-   EARLY-OPP SECTION — consolidated 早期機會 with internal sub-tabs
-   Mirrors .dtab/.dtab-nav from the P4 detail card; scoped inside .early-opp.
-   ============================================================================ */
-.early-opp{border:1px solid color-mix(in srgb,var(--accent) 22%,var(--border))}
-.early-opp h2{border-bottom:none;margin-bottom:var(--s2)}
-.eo-legend{margin:.1rem 0 var(--s2);font-size:var(--t-xs)}
-.etab-nav{
-  display:flex;gap:var(--s1);overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding-bottom:var(--s2);margin-bottom:var(--s2);
-  border-bottom:var(--hair);
-}
-.etab-nav::-webkit-scrollbar{display:none}
-.etab{
-  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  min-height:44px;padding:0 14px;border-radius:999px;white-space:nowrap;
-  font-size:var(--t-sm);font-weight:600;cursor:pointer;
-  color:var(--muted);background:var(--card2);border:var(--hair);
-  transition:background .12s ease,color .12s ease;
-}
-.etab.active,.etab:active{
-  color:#fff;background:var(--accent);border-color:transparent;
-}
-:root[data-theme="light"] .etab.active{color:#fff}
-.etab-panel{display:none}
-.etab-panel.active{display:block}
-
-/* ============================================================================
-   FUNDAMENTALS ROW
-   ============================================================================ */
-.fund-row{width:100%}
-.fund-row span{color:var(--muted)}
-.fund-stale{
-  display:inline-block;margin-left:4px;padding:0 6px;border-radius:6px;
-  font-size:.7rem;font-weight:700;color:var(--warn);
-  background:color-mix(in srgb,var(--gold) 12%,transparent);
-  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
-}
-
-/* ============================================================================
-   EARNINGS / A-D / SHORT-VOL CHIPS
-   ============================================================================ */
-.earn-flag{
-  display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;
-  font-size:.71rem;font-weight:700;color:var(--highlight);
-  background:color-mix(in srgb,var(--gold) 16%,transparent);
-  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);
-  vertical-align:middle;
-}
-.ad-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:.71rem;font-weight:700;vertical-align:middle}
-.ad-A,.ad-B{color:var(--up)}
-.ad-D,.ad-E{color:var(--down)}
-.ad-C{color:var(--muted)}
-.ad-flag.ad-A,.ad-flag.ad-B{
-  background:color-mix(in srgb,var(--up) 14%,transparent);
-  border:1px solid color-mix(in srgb,var(--up) 40%,transparent);
-}
-.ad-flag.ad-D,.ad-flag.ad-E{
-  background:color-mix(in srgb,var(--neg) 12%,transparent);
-  border:1px solid color-mix(in srgb,var(--neg) 36%,transparent);
-}
-.ad-flag.ad-C{background:var(--card2);border:var(--hair)}
-
-/* ============================================================================
-   KELLY / LIQUIDITY overlays
-   ============================================================================ */
-.kelly-ceiling{display:block;margin-top:2px}
-
-/* ============================================================================
-   DISCIPLINE CHECKLIST
-   ============================================================================ */
-ul.discipline{list-style:none;padding:0;margin:.2rem 0}
-ul.discipline li{padding:3px 0;font-size:.87rem;color:var(--muted)}
-ul.rev li a.rev-link{text-decoration:none;color:var(--txt);display:block}
-
-/* ============================================================================
-   CONCENTRATION WARNING
-   ============================================================================ */
-.block.fold{margin-bottom:var(--s4)}
-
-/* ============================================================================
-   FOOTER
-   ============================================================================ */
-#foot{
-  color:var(--muted);text-align:center;font-size:.73rem;
-  font-family:var(--font-num);
-  padding:10px 14px calc(env(safe-area-inset-bottom) + 16px);
-}
-
-/* ============================================================================
-   S2 — env dimension labels (REQ2), summary split (REQ6), inline flags (REQ9),
-   stock-detail name/ticker (REQ7), collapsed backtest warning (REQ5)
-   All use existing design tokens → both themes inherit automatically.
-   ============================================================================ */
-
-/* REQ2 — small dimension subtitle on each env widget (期貨籌碼/技術趨勢/總經) */
-.env-dim{
-  display:inline-block;font-size:var(--t-xs);font-weight:700;
-  color:var(--muted);letter-spacing:.4px;margin-right:var(--s2);
-  padding:1px 7px;border-radius:999px;background:var(--card2);
-  border:var(--hair);cursor:help;vertical-align:middle;
-}
-
-/* REQ7 — stock detail header: Chinese name primary, ticker as muted subtitle */
-.sd-name{font-weight:800}
-.sd-ticker{
-  font-weight:600;font-size:.82em;font-family:var(--font-num);
-  letter-spacing:.3px;
-}
-
-/* REQ9 — inline regulatory/chip/info flags on pick + detail cards */
-.flag-risk,.flag-warn,.flag-info{
-  display:inline-block;padding:1px 7px;border-radius:8px;
-  font-size:.71rem;font-weight:700;white-space:nowrap;
-  vertical-align:middle;border:1px solid transparent;cursor:help;
-}
-.flag-risk{
-  color:var(--down);
-  background:color-mix(in srgb,var(--neg) 14%,transparent);
-  border-color:color-mix(in srgb,var(--neg) 38%,transparent);
-}
-.flag-warn{
-  color:var(--warn);
-  background:color-mix(in srgb,var(--gold) 14%,transparent);
-  border-color:color-mix(in srgb,var(--gold) 40%,transparent);
-}
-.flag-info{
-  color:var(--link);
-  background:color-mix(in srgb,var(--link) 14%,transparent);
-  border-color:color-mix(in srgb,var(--link) 38%,transparent);
-}
-
-/* REQ6 — 評分摘要 pinned 進場/停損/目標 row + 5 collapsible sections */
-.commentary-summary{margin:8px 0 0}
-.cs-pinned{
-  display:flex;flex-wrap:wrap;gap:6px;margin:0 0 var(--s2);
-}
-.cs-num{
-  display:flex;align-items:baseline;gap:4px;
-  background:var(--card2);border:var(--hair);border-radius:8px;
-  padding:5px 11px;font-weight:700;font-size:.9rem;
-  font-variant-numeric:tabular-nums;
-}
-.cs-num i{font-style:normal;color:var(--muted);font-weight:400;font-size:.7rem}
-.cs-num.cs-stop b{color:var(--down)}
-.cs-num.cs-tgt b{color:var(--up)}
-details.cs-fold{
-  border:var(--hair);border-radius:var(--r1);background:var(--surface-2);
-  margin-bottom:6px;overflow:hidden;
-}
-details.cs-fold>summary{
-  list-style:none;cursor:pointer;min-height:44px;
-  display:flex;align-items:center;padding:8px 12px;
-  font-size:var(--t-sm);font-weight:700;
-}
-details.cs-fold>summary::-webkit-details-marker{display:none}
-details.cs-fold>summary::after{content:'▾';margin-left:auto;color:var(--muted);font-size:.8rem}
-details.cs-fold[open]>summary::after{content:'▴'}
-.cs-body{
-  padding:0 12px 10px;font-size:var(--t-md);line-height:1.6;
-  color:var(--txt);white-space:pre-wrap;word-wrap:break-word;
-}
-
-/* REQ5 — collapsed backtest warning (1-line summary + ⓘ expand, keeps gold caution skin) */
-details.early-banner-fold{
-  display:block;flex-direction:initial;padding:0;
-  margin:.2rem 0 .7rem;border-radius:var(--r1);overflow:hidden;
-  background:color-mix(in srgb,var(--gold) 10%,var(--surface-1));
-  border:1px solid color-mix(in srgb,var(--gold) 36%,transparent);
-}
-details.early-banner-fold>summary{
-  list-style:none;cursor:pointer;min-height:44px;
-  display:flex;align-items:center;gap:6px;
-  padding:9px 12px;font-size:.81rem;font-weight:700;color:var(--highlight);
-}
-details.early-banner-fold>summary::-webkit-details-marker{display:none}
-details.early-banner-fold>summary::after{content:'▾';margin-left:auto;font-size:.8rem}
-details.early-banner-fold[open]>summary::after{content:'▴'}
-.early-banner-full{
-  padding:0 12px 10px;font-size:.81rem;font-weight:600;
-  line-height:1.55;color:var(--highlight);
-}
-
-/* ============================================================================
-   REDUCED MOTION
+   REDUCED MOTION — kill all transitions/animations, keep snap usable
    ============================================================================ */
 @media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{transition:none!important;animation:none!important}
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+  .deck{scroll-behavior:auto}
+  .deck.intro .reveal{opacity:1!important;transform:none!important;animation:none!important}
+  .cv-hint .swipe-ico{animation:none!important}
 }

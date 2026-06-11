@@ -2,44 +2,73 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0a1520">
-  <title>SmartStock 日報</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <title>SmartStock</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SmartStock">
-  <!-- anti-FOUC: set data-theme from localStorage BEFORE css/body paint so the
-       first frame already matches the saved theme (app.js's applyTheme() re-runs
-       on load, but this avoids the dark->light flash). Mirrors app.js keys. -->
+  <!-- preload the subset numeral font so the hero price doesn't FOIT/FOUT-flash -->
+  <link rel="preload" href="vendor/fonts/ss-numerals.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- anti-FOUC: resolve theme from saved pref OR system BEFORE first paint.
+       'auto' (no saved pref) → follow prefers-color-scheme. Mirrors app.js keys. -->
   <script>
     (function () {
       try {
         var t = localStorage.getItem('ss_theme');
-        if (t !== 'dark' && t !== 'light') t = 'dark';
+        if (t !== 'dark' && t !== 'light') {
+          t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+          document.documentElement.dataset.themeAuto = '1';
+        }
         document.documentElement.dataset.theme = t;
-      } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
     })();
   </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header id="topbar">
-    <button id="backBtn" class="hidden" aria-label="返回">&#8249;</button>
-    <h1 id="title">SmartStock 日報</h1>
-    <button id="themeBtn" onclick="toggleTheme()" aria-label="切換深色／淺色主題">&#9681;</button>
-    <button id="refreshBtn" aria-label="重新整理">&#10227;</button>
+  <!-- ===== single-file focus: full-screen horizontal pick deck ===== -->
+  <main id="deck" class="deck" tabindex="0" role="region" aria-label="今日選股 — 左右滑動切換" aria-roledescription="carousel"></main>
+
+  <!-- top hairline overlay: date pill + theme toggle. Lives over the deck. -->
+  <header id="hud" class="hud">
+    <button id="dateBtn" class="hud-date" aria-haspopup="dialog" aria-label="切換日期"></button>
+    <button id="themeBtn" class="hud-theme" aria-label="切換深色／淺色主題">&#9681;</button>
   </header>
 
-  <main id="app">
-    <div id="status" class="status">載入中…</div>
-    <section id="listView"></section>
-    <section id="detailView" class="hidden"></section>
-  </main>
+  <!-- page-dots pager (●○○○) -->
+  <nav id="pager" class="pager" aria-label="頁面指示" aria-hidden="true"></nav>
 
-  <footer id="foot">資料來源公開、僅供參考，不構成投資建議。</footer>
+  <!-- bottom dock: 市場 / 自評 / 機會 -->
+  <nav id="dock" class="dock" aria-label="功能入口">
+    <button class="dock-btn" data-sheet="market" aria-label="市場環境">
+      <span class="dock-ico" aria-hidden="true">◷</span><span class="dock-lbl">市場</span>
+    </button>
+    <button class="dock-btn" data-sheet="self" aria-label="策略自評">
+      <span class="dock-ico" aria-hidden="true">◈</span><span class="dock-lbl">自評</span>
+    </button>
+    <button class="dock-btn" data-sheet="opp" aria-label="機會掃描與持倉追蹤">
+      <span class="dock-ico" aria-hidden="true">◎</span><span class="dock-lbl">機會</span>
+    </button>
+  </nav>
+
+  <!-- ===== bottom sheet (single reusable element; content swapped per route) ===== -->
+  <div id="scrim" class="scrim" hidden></div>
+  <section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+    <button class="sheet-grip" id="sheetGrip" aria-label="拖曳調整高度／關閉"></button>
+    <header class="sheet-bar">
+      <h2 id="sheetTitle" class="sheet-title"></h2>
+      <button id="sheetClose" class="sheet-close" aria-label="關閉">&#10005;</button>
+    </header>
+    <div id="sheetBody" class="sheet-body"></div>
+  </section>
+
+  <!-- live status / toast region -->
+  <div id="status" class="toast" role="status" aria-live="polite"></div>
 
   <script src="vendor/lightweight-charts.standalone.production.js"></script>
   <script src="app.js"></script>
