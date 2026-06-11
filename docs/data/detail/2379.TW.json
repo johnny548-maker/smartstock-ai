@@ -1,17 +1,9 @@
 {
  "stock": "2379.TW",
  "name": "瑞昱",
- "price": 645.0,
- "change_pct": -0.92,
+ "price": 623.0,
+ "change_pct": -3.41,
  "ohlc": [
-  {
-   "time": "2026-03-16",
-   "o": 477.5,
-   "h": 480.0,
-   "l": 472.5,
-   "c": 480.0,
-   "v": 2246554
-  },
   {
    "time": "2026-03-17",
    "o": 480.0,
@@ -482,22 +474,30 @@
    "h": 657.0,
    "l": 633.0,
    "c": 645.0,
-   "v": 6665748
+   "v": 6551895
+  },
+  {
+   "time": "2026-06-11",
+   "o": 645.0,
+   "h": 645.0,
+   "l": 602.0,
+   "c": 623.0,
+   "v": 5726424
   }
  ],
  "sr": {
-  "price": 645.0,
+  "price": 623.0,
   "resistance": [
+   624.0,
    689.0
   ],
   "support": [
    580.0,
-   544.99
+   579.0
   ],
   "strong_support": 438.0
  },
  "spark": [
-  480.0,
   480.0,
   482.0,
   476.5,
@@ -556,34 +556,18 @@
   643.0,
   596.0,
   651.0,
-  645.0
+  645.0,
+  623.0
  ],
- "spark_start": "2026-03-16",
- "spark_end": "2026-06-10",
+ "spark_start": "2026-03-17",
+ "spark_end": "2026-06-11",
  "fundamental": {
   "rev_yoy": 11.3,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 645.0,
-  "stop": 599.85,
-  "target": 757.88,
-  "atr_bracket": 757.88,
-  "measured_move": 798.0,
-  "target_band": [
-   757.88,
-   798.0
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 5.5,
-  "swing_stop": 568.44,
-  "chandelier": 592.45,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
@@ -597,20 +581,20 @@
     "total": 1051753
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 23.4 / 殖利率 3.84% / PB 7.42",
+   "label": "PE 23.2 / 殖利率 3.88% / PB 7.36",
    "value": {
-    "pe": 23.43,
-    "yield": 3.84,
-    "pb": 7.42
+    "pe": 23.22,
+    "yield": 3.88,
+    "pb": 7.36
    },
    "severity": "info",
-   "as_of": "2026-06-09",
+   "as_of": "2026-06-10",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

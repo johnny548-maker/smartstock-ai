@@ -1,17 +1,9 @@
 {
  "stock": "2881.TW",
  "name": "富邦金",
- "price": 122.5,
- "change_pct": -2.0,
+ "price": 126.5,
+ "change_pct": 3.27,
  "ohlc": [
-  {
-   "time": "2026-03-16",
-   "o": 89.1,
-   "h": 89.6,
-   "l": 88.4,
-   "c": 88.8,
-   "v": 12979111
-  },
   {
    "time": "2026-03-17",
    "o": 89.5,
@@ -482,11 +474,19 @@
    "h": 126.0,
    "l": 122.5,
    "c": 122.5,
-   "v": 68399782
+   "v": 68093778
+  },
+  {
+   "time": "2026-06-11",
+   "o": 125.0,
+   "h": 127.5,
+   "l": 121.5,
+   "c": 126.5,
+   "v": 55422075
   }
  ],
  "sr": {
-  "price": 122.5,
+  "price": 126.5,
   "resistance": [],
   "support": [
    95.3,
@@ -495,7 +495,6 @@
   "strong_support": 77.59
  },
  "spark": [
-  88.8,
   89.8,
   89.5,
   88.2,
@@ -554,12 +553,33 @@
   118.0,
   116.0,
   125.0,
-  122.5
+  122.5,
+  126.5
  ],
- "spark_start": "2026-03-16",
- "spark_end": "2026-06-10",
+ "spark_start": "2026-03-17",
+ "spark_end": "2026-06-11",
  "fundamental": null,
- "levels": null,
+ "levels": {
+  "entry": 126.5,
+  "stop": 117.65,
+  "target": 148.64,
+  "atr_bracket": 148.64,
+  "measured_move": null,
+  "target_band": [
+   148.64
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.3,
+  "swing_stop": 92.69,
+  "chandelier": 114.79,
+  "fib_targets": [
+   101.04,
+   102.88,
+   104.9
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
@@ -573,20 +593,20 @@
     "total": -713391
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 17.2 / 殖利率 3.40% / PB 1.91",
+   "label": "PE 16.9 / 殖利率 3.47% / PB 1.88",
    "value": {
-    "pe": 17.19,
-    "yield": 3.4,
-    "pb": 1.91
+    "pe": 16.85,
+    "yield": 3.47,
+    "pb": 1.88
    },
    "severity": "info",
-   "as_of": "2026-06-09",
+   "as_of": "2026-06-10",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

@@ -1,9 +1,17 @@
 {
  "stock": "MXL",
  "name": "MaxLinear",
- "price": 75.18,
- "change_pct": 3.54,
+ "price": 72.61,
+ "change_pct": -8.4,
  "ohlc": [
+  {
+   "time": "2026-03-16",
+   "o": 17.4,
+   "h": 17.79,
+   "l": 17.32,
+   "c": 17.32,
+   "v": 965300
+  },
   {
    "time": "2026-03-17",
    "o": 17.46,
@@ -475,18 +483,10 @@
    "l": 67.77,
    "c": 72.61,
    "v": 5846000
-  },
-  {
-   "time": "2026-06-10",
-   "o": 70.42,
-   "h": 76.02,
-   "l": 70.19,
-   "c": 75.18,
-   "v": 485574
   }
  ],
  "sr": {
-  "price": 75.18,
+  "price": 72.61,
   "resistance": [
    102.0,
    104.27
@@ -498,6 +498,7 @@
   "strong_support": 8.35
  },
  "spark": [
+  17.32,
   16.81,
   16.46,
   17.1,
@@ -556,12 +557,28 @@
   94.21,
   80.92,
   79.27,
-  72.61,
-  75.18
+  72.61
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-10",
+ "spark_start": "2026-03-16",
+ "spark_end": "2026-06-09",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 17685,
+    "days": 4,
+    "max_shares": 16503,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-11",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "3231",
  "name": "緯創",
- "price": 158.0,
- "change_pct": -4.53,
+ "price": 153.0,
+ "change_pct": -3.16,
  "ohlc": [
-  {
-   "time": "2026-03-16",
-   "o": 135.5,
-   "h": 137.5,
-   "l": 134.5,
-   "c": 135.0,
-   "v": 42124952
-  },
   {
    "time": "2026-03-17",
    "o": 137.0,
@@ -482,14 +474,22 @@
    "h": 165.0,
    "l": 158.0,
    "c": 158.0,
-   "v": 42355308
+   "v": 41297501
+  },
+  {
+   "time": "2026-06-11",
+   "o": 157.0,
+   "h": 159.0,
+   "l": 150.5,
+   "c": 153.0,
+   "v": 51468485
   }
  ],
  "sr": {
-  "price": 158.0,
+  "price": 153.0,
   "resistance": [
-   161.0,
-   201.0
+   154.0,
+   156.5
   ],
   "support": [
    143.5,
@@ -498,7 +498,6 @@
   "strong_support": 71.36
  },
  "spark": [
-  135.0,
   134.0,
   130.5,
   127.5,
@@ -557,10 +556,11 @@
   171.0,
   163.5,
   165.5,
-  158.0
+  158.0,
+  153.0
  ],
- "spark_start": "2026-03-16",
- "spark_end": "2026-06-10",
+ "spark_start": "2026-03-17",
+ "spark_end": "2026-06-11",
  "fundamental": {
   "rev_yoy": 112.0,
   "rev_accel": false,
@@ -568,5 +568,43 @@
   "source": "twse_revenue"
  },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 10,202,942 股",
+   "value": {
+    "foreign": -9128654,
+    "trust": -4618,
+    "dealer": -1069670,
+    "total": -10202942
+   },
+   "severity": "info",
+   "as_of": "2026-06-11",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 15.8 / 殖利率 3.48% / PB 2.64",
+   "value": {
+    "pe": 15.85,
+    "yield": 3.48,
+    "pb": 2.64
+   },
+   "severity": "info",
+   "as_of": "2026-06-10",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶集中度",
+   "value": 66.02,
+   "severity": "info",
+   "as_of": "20260605",
+   "note": "大戶持股%=66.02"
+  }
+ ]
 }
