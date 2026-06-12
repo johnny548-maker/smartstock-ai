@@ -1,17 +1,9 @@
 {
  "stock": "2412.TW",
  "name": "中華電",
- "price": 145.0,
- "change_pct": 0.69,
+ "price": 145.5,
+ "change_pct": 0.34,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 137.0,
-   "h": 137.5,
-   "l": 136.0,
-   "c": 137.0,
-   "v": 8983971
-  },
   {
    "time": "2026-03-18",
    "o": 137.5,
@@ -482,11 +474,19 @@
    "h": 145.0,
    "l": 143.5,
    "c": 145.0,
-   "v": 15804150
+   "v": 17349970
+  },
+  {
+   "time": "2026-06-12",
+   "o": 145.0,
+   "h": 145.5,
+   "l": 143.5,
+   "c": 145.5,
+   "v": 2975506
   }
  ],
  "sr": {
-  "price": 145.0,
+  "price": 145.5,
   "resistance": [],
   "support": [
    135.0,
@@ -495,7 +495,6 @@
   "strong_support": 128.0
  },
  "spark": [
-  137.0,
   137.5,
   135.5,
   134.0,
@@ -554,12 +553,13 @@
   138.5,
   142.0,
   144.0,
-  145.0
+  145.0,
+  145.5
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": {
-  "rev_yoy": 7.6,
+  "rev_yoy": 5.4,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
@@ -568,42 +568,16 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 5,412,306 股",
-   "value": {
-    "foreign": 5096218,
-    "trust": 129025,
-    "dealer": 187063,
-    "total": 5412306
-   },
-   "severity": "info",
-   "as_of": "2026-06-11",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +35.6%",
-   "value": {
-    "fin_net": 100,
-    "fin_pct": 0.35587188612099646
-   },
-   "severity": "warn",
-   "as_of": "2026-06-11",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 28.6 / 殖利率 3.61% / PB 2.82",
+   "label": "PE 28.8 / 殖利率 3.59% / PB 2.84",
    "value": {
-    "pe": 28.63,
-    "yield": 3.61,
-    "pb": 2.82
+    "pe": 28.83,
+    "yield": 3.59,
+    "pb": 2.84
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

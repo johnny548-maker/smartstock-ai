@@ -1,17 +1,9 @@
 {
  "stock": "2382.TW",
  "name": "廣達",
- "price": 369.5,
- "change_pct": -2.89,
+ "price": 376.5,
+ "change_pct": 1.76,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 290.5,
-   "h": 292.5,
-   "l": 288.0,
-   "c": 289.0,
-   "v": 13889345
-  },
   {
    "time": "2026-03-18",
    "o": 292.0,
@@ -481,12 +473,20 @@
    "o": 373.5,
    "h": 385.0,
    "l": 359.0,
-   "c": 369.5,
-   "v": 39600791
+   "c": 370.0,
+   "v": 47724251
+  },
+  {
+   "time": "2026-06-12",
+   "o": 378.0,
+   "h": 384.0,
+   "l": 374.5,
+   "c": 376.5,
+   "v": 10411522
   }
  ],
  "sr": {
-  "price": 369.5,
+  "price": 376.5,
   "resistance": [
    438.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 252.5
  },
  "spark": [
-  289.0,
   293.0,
   286.5,
   283.5,
@@ -556,12 +555,13 @@
   376.5,
   375.0,
   380.5,
-  369.5
+  370.0,
+  376.5
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": {
-  "rev_yoy": 120.7,
+  "rev_yoy": 94.4,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
@@ -570,30 +570,27 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 11,008,920 股",
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
    "value": {
-    "foreign": -9201330,
-    "trust": 20635544,
-    "dealer": -425294,
-    "total": 11008920
+    "short_net": -571
    },
    "severity": "info",
-   "as_of": "2026-06-11",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+   "as_of": "2026-06-12",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 19.1 / 殖利率 4.10% / PB 7.07",
+   "label": "PE 18.6 / 殖利率 4.22% / PB 6.87",
    "value": {
-    "pe": 19.13,
-    "yield": 4.1,
-    "pb": 7.07
+    "pe": 18.6,
+    "yield": 4.22,
+    "pb": 6.87
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

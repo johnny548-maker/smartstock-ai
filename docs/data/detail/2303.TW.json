@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 125.0,
- "change_pct": 5.49,
+ "price": 136.0,
+ "change_pct": 8.8,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 60.9,
-   "h": 61.5,
-   "l": 60.2,
-   "c": 60.7,
-   "v": 46464259
-  },
   {
    "time": "2026-03-18",
    "o": 61.3,
@@ -482,11 +474,19 @@
    "h": 126.0,
    "l": 116.5,
    "c": 125.0,
-   "v": 319584753
+   "v": 348102661
+  },
+  {
+   "time": "2026-06-12",
+   "o": 134.0,
+   "h": 137.5,
+   "l": 132.5,
+   "c": 136.0,
+   "v": 219201143
   }
  ],
  "sr": {
-  "price": 125.0,
+  "price": 136.0,
   "resistance": [
    155.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 40.1
  },
  "spark": [
-  60.7,
   61.1,
   58.7,
   57.8,
@@ -556,12 +555,13 @@
   121.0,
   127.5,
   118.5,
-  125.0
+  125.0,
+  136.0
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": {
-  "rev_yoy": 10.8,
+  "rev_yoy": 17.8,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
@@ -570,41 +570,28 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 54,415,822 股",
-   "value": {
-    "foreign": 14600357,
-    "trust": -71828477,
-    "dealer": 2812298,
-    "total": -54415822
-   },
-   "severity": "info",
-   "as_of": "2026-06-11",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
    "source": "twse_margin",
    "kind": "chip",
-   "label": "融券餘額下降（回補）",
+   "label": "融資餘額單日大增 +18.9%",
    "value": {
-    "short_net": -657
+    "fin_net": 33158,
+    "fin_pct": 0.18884408602150538
    },
-   "severity": "info",
-   "as_of": "2026-06-11",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+   "severity": "warn",
+   "as_of": "2026-06-12",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 29.8 / 殖利率 2.19% / PB 3.67",
+   "label": "PE 31.4 / 殖利率 2.08% / PB 3.87",
    "value": {
-    "pe": 29.77,
-    "yield": 2.19,
-    "pb": 3.67
+    "pe": 31.41,
+    "yield": 2.08,
+    "pb": 3.87
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

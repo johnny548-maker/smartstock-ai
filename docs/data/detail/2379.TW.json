@@ -1,17 +1,9 @@
 {
  "stock": "2379.TW",
  "name": "瑞昱",
- "price": 623.0,
- "change_pct": -3.41,
+ "price": 641.0,
+ "change_pct": -2.14,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 480.0,
-   "h": 485.0,
-   "l": 478.5,
-   "c": 480.0,
-   "v": 2387701
-  },
   {
    "time": "2026-03-18",
    "o": 485.0,
@@ -479,16 +471,23 @@
   {
    "time": "2026-06-11",
    "o": 645.0,
-   "h": 645.0,
+   "h": 655.0,
    "l": 602.0,
-   "c": 623.0,
-   "v": 5726424
+   "c": 655.0,
+   "v": 7046272
+  },
+  {
+   "time": "2026-06-12",
+   "o": 655.0,
+   "h": 665.0,
+   "l": 640.0,
+   "c": 641.0,
+   "v": 1592420
   }
  ],
  "sr": {
-  "price": 623.0,
+  "price": 641.0,
   "resistance": [
-   624.0,
    689.0
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 438.0
  },
  "spark": [
-  480.0,
   482.0,
   476.5,
   479.5,
@@ -557,12 +555,13 @@
   596.0,
   651.0,
   645.0,
-  623.0
+  655.0,
+  641.0
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": {
-  "rev_yoy": 11.3,
+  "rev_yoy": 21.9,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
@@ -571,30 +570,16 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,051,753 股",
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 23.6 / 殖利率 3.82% / PB 7.47",
    "value": {
-    "foreign": -1418700,
-    "trust": 2572005,
-    "dealer": -101552,
-    "total": 1051753
+    "pe": 23.58,
+    "yield": 3.82,
+    "pb": 7.47
    },
    "severity": "info",
    "as_of": "2026-06-11",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 23.2 / 殖利率 3.88% / PB 7.36",
-   "value": {
-    "pe": 23.22,
-    "yield": 3.88,
-    "pb": 7.36
-   },
-   "severity": "info",
-   "as_of": "2026-06-10",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {

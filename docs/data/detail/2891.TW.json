@@ -1,17 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 67.4,
- "change_pct": -1.17,
+ "price": 68.1,
+ "change_pct": 0.89,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 52.5,
-   "h": 53.4,
-   "l": 52.1,
-   "c": 52.9,
-   "v": 37850832
-  },
   {
    "time": "2026-03-18",
    "o": 53.8,
@@ -481,13 +473,22 @@
    "o": 68.5,
    "h": 68.5,
    "l": 66.5,
-   "c": 67.4,
-   "v": 55661196
+   "c": 67.5,
+   "v": 63511328
+  },
+  {
+   "time": "2026-06-12",
+   "o": 67.8,
+   "h": 69.2,
+   "l": 67.1,
+   "c": 68.1,
+   "v": 16080348
   }
  ],
  "sr": {
-  "price": 67.4,
+  "price": 68.1,
   "resistance": [
+   69.5,
    70.5
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 40.22
  },
  "spark": [
-  52.9,
   53.3,
   51.6,
   52.1,
@@ -556,50 +556,37 @@
   65.4,
   69.2,
   68.2,
-  67.4
+  67.5,
+  68.1
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 8,102,887 股",
-   "value": {
-    "foreign": -3154730,
-    "trust": -7462736,
-    "dealer": 2514579,
-    "total": -8102887
-   },
-   "severity": "info",
-   "as_of": "2026-06-11",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
    "source": "twse_margin",
    "kind": "chip",
    "label": "融券餘額下降（回補）",
    "value": {
-    "short_net": -69
+    "short_net": -3
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-12",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 16.4 / 殖利率 3.67% / PB 2.44",
+   "label": "PE 16.3 / 殖利率 3.70% / PB 2.41",
    "value": {
-    "pe": 16.43,
-    "yield": 3.67,
-    "pb": 2.44
+    "pe": 16.27,
+    "yield": 3.7,
+    "pb": 2.41
    },
    "severity": "info",
-   "as_of": "2026-06-10",
+   "as_of": "2026-06-11",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
