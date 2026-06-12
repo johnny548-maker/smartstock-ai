@@ -97,7 +97,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
                   regime=None, concentration=None, shortvol=None, macro=None, fx=None,
                   watchlist=None, early_board=None, overlays_map=None, source_coverage=None,
-                  environment=None):
+                  environment=None, my_positions=None, attribution=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -164,6 +164,14 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         "movers": movers or [],
         "names": names,
         "watchlist": watchlist or [],     # REQ3b continuous watchlist board (informational)
+        # P2-S1 我的持倉 block (positions.summarize) — holdings-aware overnight-risk lens.
+        # OVERLAY-NOT-SCORER: informational; suggested_stop is DISPLAY-ONLY, never scored.
+        # Backward-compatible: defaults to {} so older callers/payloads are unaffected.
+        "my_positions": my_positions or {},
+        # P2-S1 attribution block (attribution.summarize) — which signals/regimes our picks
+        # rode + a hypothetical NAV replay. INFORMATIONAL self-evaluation, NEVER scored.
+        # Backward-compatible: defaults to {} (per spec) so older callers are unaffected.
+        "attribution": attribution or {},
         "early_board": early_board or [],  # promoted early/breakout 起漲 board (REQ1)
         "picks": picks,
         "search": search,

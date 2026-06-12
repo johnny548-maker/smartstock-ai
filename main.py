@@ -48,6 +48,12 @@ import watchlist_tracker
 import stock_detail
 import overlay_snapshot
 import pick_outcomes
+import positions as positions_mod
+import pretrade as pretrade_mod
+import peer_valuation as peerval_mod
+import attribution as attribution_mod
+import indicators
+import supply_chain
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -290,8 +296,9 @@ def main(web=False):
 
     # 5d. Earnings-blackout overlay (analyst G5): flag picks with a binary earnings
     #     event in the next 7d — INFORMATIONAL only, never a score change.
+    ecache = os.path.join(config.WEB_DIR, "data", "_earnings_cache.json")
+    earnings_bo = {}
     try:
-        ecache = os.path.join(config.WEB_DIR, "data", "_earnings_cache.json")
         earnings_bo = earnings_mod.annotate(
             [it["stock"] for it in ranked[:config.DISPLAY_N]], cache_path=ecache)
         for sym, b in earnings_bo.items():
@@ -302,6 +309,99 @@ def main(web=False):
                      earnings_mod.WITHIN_DAYS)
     except Exception as e:
         log.warning("SKIP earnings guard: %s", e)
+
+    # 5d-pos. 我的持倉 (P2-S1): a holdings-aware overnight-risk lens BESIDE the daily picks.
+    #     OVERLAY-NOT-SCORER / INFORMATIONAL: every output here is a SUGGESTION the user
+    #     applies by hand — suggested_stop is DISPLAY-ONLY and is NEVER written back to the
+    #     ledger; nothing here touches strategy.score_stock / rank_stocks. The ledger lives
+    #     in docs/data/_positions_state.json (schema v2, populated out-of-band by the Sheet
+    #     read-back step `sheets_sync.py --pull-positions`). SKIP-not-abort: any failure logs
+    #     a warning, records the skip, and leaves my_positions absent — the run continues.
+    my_positions = None
+    pos_evals = []
+    try:
+        _pos_path = os.path.join(config.WEB_DIR, "data", "_positions_state.json")
+        _pos_raw = positions_mod.load(_pos_path)
+        _pos_state, _pos_errs = positions_mod.validate(_pos_raw)
+        for _pe in _pos_errs:                    # bad rows → surfaced in the skips report
+            log.warning("SKIP position row: %s", _pe); skips.append("positions:" + _pe)
+        _held_syms = [p["symbol"] for p in _pos_state.get("positions", [])]
+        if _held_syms:
+            # Held names not in today's universe → batch-fetch their OHLCV so they can be
+            # evaluated (pick_outcomes._default_fetch idiom: keyed by the held symbol; it
+            # already maps .TW/.TWO/US via yahoo_symbol — the same normaliser positions
+            # used, so the keys line up). A dead fetch degrades to a null-price eval (graceful).
+            _pos_price = {s: data.get(s) for s in _held_syms if data.get(s) is not None}
+            _missing = [s for s in _held_syms if s not in _pos_price]
+            if _missing:
+                try:
+                    from datetime import timedelta as _td
+                    _end = datetime.now()
+                    _start = _end - _td(days=120)
+                    _fetched = pick_outcomes._default_fetch(
+                        _missing, _start.strftime("%Y-%m-%d"), _end.strftime("%Y-%m-%d"))
+                    _pos_price.update({s: df for s, df in (_fetched or {}).items()
+                                       if df is not None})
+                    log.info("positions: fetched %d/%d held name(s) outside universe",
+                             len(_fetched or {}), len(_missing))
+                except Exception as _fe:
+                    log.warning("SKIP positions universe-extend fetch: %s", _fe)
+            # earnings blackout for HELD names (reuse the SAME on-disk earnings cache — no
+            # extra fetch budget for names already annotated above).
+            try:
+                _held_earn = earnings_mod.annotate(_held_syms, cache_path=ecache)
+            except Exception as _ee:
+                log.warning("SKIP positions earnings annotate: %s", _ee); _held_earn = {}
+            _clusters = (concentration or {}).get("clusters") if isinstance(concentration, dict) else None
+            pos_evals = positions_mod.evaluate_positions(
+                _pos_state, _pos_price, indicators.atr, _held_earn, _clusters)
+            my_positions = positions_mod.summarize(_pos_state, pos_evals)
+            log.info("my_positions: %d held, %d alert(s)",
+                     len(_pos_state.get("positions", [])), my_positions.get("alert_count", 0))
+    except Exception as e:
+        log.warning("SKIP my_positions: %s", e); skips.append("my_positions")
+
+    # 5d-pre. Pre-trade checklist (M3): synthesise five EXISTING gates (regime / earnings
+    #     blackout / cluster crowding / liquidity / R:R) into a glanceable yes/no card BESIDE
+    #     each pick. OVERLAY-NOT-SCORER: pretrade.build_checklist reads shapes already produced
+    #     above (regime / earnings_bo / concentration / verdict.risk+liquidity) — ZERO new
+    #     signals, ZERO scoring. card['pretrade'] is a sidecar; score/factors untouched. The
+    #     whole block is SKIP-not-abort. Cluster count per pick = how many of today's DISPLAY_N
+    #     picks share its highly-correlated cluster (correlation.concentration clusters carry
+    #     'tickers' keyed by the FULL pick symbol).
+    try:
+        _clusters = (concentration or {}).get("clusters") if isinstance(concentration, dict) else []
+        _cluster_count = {}              # pick symbol -> # of same-cluster picks (incl. itself)
+        for _cl in (_clusters or []):
+            _tix = _cl.get("tickers") or []
+            for _t in _tix:
+                _cluster_count[_t] = len(_tix)
+        _pretrade_n = 0
+        for _item in ranked[:config.DISPLAY_N]:
+            _sym = _item["stock"]
+            _card = pick_cards.get(_sym)
+            if not _card:
+                continue
+            _risk = _card.get("risk") or {}
+            _liq = _card.get("liquidity") or {}
+            # Merge the verdict.liquidity + risk_sizing.plan shapes into the single risk_plan
+            # dict the pretrade gates read: liq_thin (verdict.liquidity 'thin'), size_ceiling
+            # (risk_sizing 'size_ceiling_pct', else the liquidity position cap), rr (risk 'rr').
+            _risk_plan = {
+                "liq_thin": _liq.get("thin"),
+                "size_ceiling": _risk.get("size_ceiling_pct", _liq.get("cap")),
+                "rr": _risk.get("rr"),
+            }
+            try:
+                _card["pretrade"] = pretrade_mod.build_checklist(
+                    _sym, regime, _cluster_count.get(_sym), _risk_plan, earnings_bo.get(_sym))
+                _pretrade_n += 1
+            except Exception as _pte:
+                log.warning("SKIP pretrade %s: %s", _sym, _pte)
+        if _pretrade_n:
+            log.info("pretrade checklist: %d pick card(s)", _pretrade_n)
+    except Exception as e:
+        log.warning("SKIP pretrade: %s", e); skips.append("pretrade")
 
     # 5e. FINRA RegSHO short-volume overlay (B5): flag US picks with elevated/extreme
     #     daily short-volume ratio — INFORMATIONAL only, never a score change (要做回測
@@ -721,6 +821,55 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP sec_frames overlays: %s", e); skips.append("sec_frames_overlays")
 
+    # --- peer (同業) valuation percentile overlays (M4) — where a name sits vs its peers ----
+    #     ZERO new data source: a RECOMBINATION of feeds already pulled today. US = the SEC
+    #     cross-section (sec_frames) joined to an injected yfinance market-cap batch → PS/PE/ROE
+    #     percentile within a peer cross-section; TW = the BWIBBU PE/PB/DY rows REGROUPED by the
+    #     supply_chain theme (same dimension group_rs uses) → percentile within theme peers. The
+    #     US cross-section is cached 30d (PEERVAL_CACHE_PATH) per the daily-cron budget. n<MIN_GROUP
+    #     groups emit nothing (honest). OVERLAY-NOT-SCORER: make_overlay(kind='fundamental',
+    #     severity='info') dicts merged into overlays_map via the same _merge_overlays path —
+    #     never scored. SKIP-not-abort.
+    try:
+        # US: cross-section over today's US picks, market caps via a thin yfinance fast_info batch.
+        if _us_syms:
+            _pv_t2c, _pv_c2t = _sec._build_ticker_cik()
+
+            def _pv_mktcap(tickers):
+                """Injected market-cap batch: {ticker: marketCap float|None} via yfinance
+                fast_info (graceful per-name; a missing cap → that name's PS/PE is None)."""
+                import yfinance as _yf
+                caps = {}
+                for _t in tickers:
+                    try:
+                        _fi = _yf.Ticker(_t).fast_info
+                        _mc = _fi.get("market_cap") if hasattr(_fi, "get") else getattr(_fi, "market_cap", None)
+                        caps[_t] = float(_mc) if _mc else None
+                    except Exception:
+                        caps[_t] = None
+                return caps
+
+            _pv_us = peerval_mod.us_cross_section(
+                fetch_fn=_sec._real_fetch, mktcap_fn=_pv_mktcap, cik_to_ticker=_pv_c2t)
+            _pv_us_ov = peerval_mod.to_overlays_us(
+                _pv_us, group_label="US picks", metric="ps", as_of=date_str)
+            _merge_overlays(_pv_us_ov, "peer_valuation_us")
+        # TW: BWIBBU PE rows regrouped by supply_chain theme → percentile within theme peers.
+        _pv_pe_rows = [r for r in (_twse.parse_pe_row(x) for x in (_twse.fetch_pe() or [])) if r]
+        _pv_theme_map = {}
+        for _r in _pv_pe_rows:
+            _code = str(_r.get("code", "")).strip()
+            if not _code:
+                continue
+            _theme, _ = supply_chain.ticker_theme(_code)
+            if _theme:
+                _pv_theme_map[_code] = _theme
+        _pv_groups = peerval_mod.tw_groups(_pv_pe_rows, _pv_theme_map)
+        _merge_overlays(peerval_mod.to_overlays(_pv_groups, metric="pe", as_of=date_str),
+                        "peer_valuation_tw")
+    except Exception as e:
+        log.warning("SKIP peer_valuation overlays: %s", e); skips.append("peer_valuation_overlays")
+
     # --- openFDA drug approval/recall catalyst overlays (US pharma picks, sponsor-mapped) --
     try:
         # Curated sponsor->ticker map keyed off the watchlist's pharma/biotech names (narrow
@@ -924,7 +1073,7 @@ def main(web=False):
             regime=regime, concentration=concentration, shortvol=shortvol_board,
             macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
             overlays_map=overlays_map, source_coverage=source_coverage,
-            environment=environment)
+            environment=environment, my_positions=my_positions)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
@@ -948,7 +1097,21 @@ def main(web=False):
                 except Exception as _oe:
                     log.warning("SKIP compute_outcomes %s: %s", _asof, _oe)
             payload["pick_performance"] = pick_outcomes.summarize_hit_rate(data_dir)
-            # re-export so the freshly-computed hit-rate lands in today's <date>.json.
+            # 8c-attr. Performance attribution (P2-S1): JOIN the freshly-written _outcomes rows
+            #     back to their same-day picks → which TRIGGERED signals / regimes our picks
+            #     actually rode, plus a HYPOTHETICAL equal-weight NAV replay. Runs AFTER
+            #     compute_outcomes so _outcomes/<date>.json is on disk for attribution to read.
+            #     OVERLAY-NOT-SCORER: pure read of local JSON, INFORMATIONAL self-evaluation —
+            #     NEVER summed into strategy.score_stock / rank_stocks. SKIP-not-abort.
+            try:
+                payload["attribution"] = attribution_mod.summarize(data_dir)
+                _at = payload["attribution"]
+                log.info("attribution: %d scored, %d signal(s), NAV %.2f%% (accruing=%s)",
+                         _at.get("n_scored") or 0, len(_at.get("by_signal") or {}),
+                         (_at.get("nav") or {}).get("total_ret") or 0.0, _at.get("accruing"))
+            except Exception as _ae:
+                log.warning("SKIP attribution: %s", _ae); skips.append("attribution")
+            # re-export so the freshly-computed hit-rate + attribution land in today's <date>.json.
             web_export.export(payload, config.WEB_DIR)
             _pp = payload["pick_performance"]
             log.info("pick performance: %d scored / %d picks over %d dates",

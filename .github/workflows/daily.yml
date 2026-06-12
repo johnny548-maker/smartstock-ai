@@ -50,6 +50,19 @@ jobs:
         if: steps.report_check.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
+      # P2-S1: read-back the user's holdings ledger from the Google Sheet 'my_positions' tab
+      # into docs/data/_positions_state.json BEFORE the analysis run, so main.py can evaluate
+      # held positions this run. best-effort: continue-on-error + the script is a graceful
+      # no-op when GOOGLE_SA_JSON is unset, so the REPORT is always primary (never blocked by
+      # the optional positions read-back).
+      - name: Pull positions ledger from Google Sheet
+        if: steps.report_check.outputs.skip != 'true'
+        continue-on-error: true
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
+        run: python sheets_sync.py --pull-positions
+
       - name: Run analysis + export PWA data
         if: steps.report_check.outputs.skip != 'true'
         env:

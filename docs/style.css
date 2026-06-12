@@ -551,6 +551,51 @@ details.fold>summary:active{background:var(--bg-soft)}
 .press:active{transform:scale(.97);transition:transform .08s ease}
 
 /* ============================================================================
+   P2-S2 — 我的持倉 alert badges / pre-trade checklist / 歸因 tables
+   (token-only: hairlines + ink scale; the up/down pair stays the sole chroma,
+    --warn reserved for黑窗 caution — mirrors .flag f-risk/f-warn semantics)
+   ============================================================================ */
+/* alert badge colour variants (CRITICAL=破停損紅, WARN=黑窗黃; INFO stays gray) */
+.li-badge.b-crit{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
+.li-badge.b-warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+
+/* pre-trade checklist (✓/✗/— five-gate card) */
+.ptc{list-style:none;margin:2px 0 4px}
+.ptc-row{display:flex;align-items:flex-start;gap:11px;padding:9px 2px;border-bottom:.5px solid var(--hair-c)}
+.ptc-row:last-child{border-bottom:none}
+.ptc-m{
+  flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;border:.5px solid var(--hair-strong);color:var(--ink-3);
+}
+.ptc-m.ok{color:var(--up);border-color:color-mix(in srgb,var(--up) 40%,transparent)}
+.ptc-m.no{color:var(--down);border-color:color-mix(in srgb,var(--down) 40%,transparent)}
+.ptc-main{flex:1;min-width:0}
+.ptc-lbl{font-size:.9rem;font-weight:600;line-height:1.35}
+.ptc-verdict{
+  margin-top:10px;padding:10px 13px;border-radius:var(--r1);
+  font-size:.92rem;font-weight:700;
+  border:.5px solid var(--hair-c);background:var(--bg-soft);
+}
+
+/* 歸因 tables (信號/體制 × n × 勝率) + NAV sparkline strip */
+table.attr{width:100%;border-collapse:collapse;margin:4px 0 8px}
+table.attr th{
+  font-size:.7rem;color:var(--ink-3);font-weight:600;text-align:right;
+  padding:4px 2px;border-bottom:.5px solid var(--hair-strong);
+}
+table.attr th:first-child{text-align:left}
+table.attr td{
+  font-size:.86rem;padding:8px 2px;text-align:right;
+  border-bottom:.5px solid var(--hair-c);
+}
+table.attr td:first-child{text-align:left}
+table.attr tr:last-child td{border-bottom:none}
+table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
+.attr-nav{height:54px;margin-top:6px;margin-bottom:10px}
+.attr-nav svg{width:100%;height:100%;display:block}
+
+/* ============================================================================
    REDUCED MOTION — kill all transitions/animations, keep snap usable
    ============================================================================ */
 @media (prefers-reduced-motion:reduce){

@@ -2,7 +2,7 @@
    SmartStock PWA — iOS-native deck + sheet redesign. Vanilla JS, no framework.
    Reads the SAME static JSON the cron writes to data/ (contract unchanged).
    IA: full-screen horizontal pick deck (cover + one pick/page) → swipe.
-       bottom sheets: 個股詳情 / 市場 / 自評 / 機會(+持倉) / 日期切換.
+       bottom sheets: 個股詳情(+pretrade) / 市場 / 自評(我的持倉+自評+歸因) / 機會 / 日期切換.
    Honest disclosure text (免責 / ~70% 警語 / lift 0.61 / best-effort) is preserved
    VERBATIM. Overlays remain informational-only, never scored.
    Hash deep-links kept compatible: #date and #date/code still resolve.
@@ -693,6 +693,24 @@ function newsHtmlForStock(p) {
   return '';
 }
 
+/* P2-S2 ② Pre-trade checklist (pick.pretrade = pretrade.build_checklist shape).
+   五項既有 gate（市場體制/財報黑窗/集群/流動性/R:R）的彙整卡 — OVERLAY-NOT-SCORER,
+   零新訊號、不改評分。✓=pass true / ✗=false / —=null(資料不足)。Graceful: missing → ''. */
+function pretradeHtml(p) {
+  const pt = p && p.pretrade;
+  const items = (pt && Array.isArray(pt.items)) ? pt.items : [];
+  if (!items.length) return '';
+  const li = items.map((g) => {
+    const mark = g.pass === true ? '<span class="ptc-m ok">✓</span>'
+      : (g.pass === false ? '<span class="ptc-m no">✗</span>' : '<span class="ptc-m na">—</span>');
+    const det = g.pass == null ? (g.detail || '資料不足') : (g.detail || '');
+    return `<li class="ptc-row">${mark}<div class="ptc-main"><div class="ptc-lbl">${esc(g.label || g.key || '')}</div>${det ? `<div class="li-sub">${esc(det)}</div>` : ''}</div></li>`;
+  }).join('');
+  const verdict = pt.verdict_line ? `<div class="ptc-verdict">${esc(pt.verdict_line)}</div>` : '';
+  return `<div class="sh-sec"><div class="sh-h">進場前檢查</div><ul class="ptc">${li}</ul>${verdict}
+    <p class="tiny">五項檢查為既有訊號的彙整（資訊性，不計入評分與排名）。</p></div>`;
+}
+
 async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
@@ -751,7 +769,7 @@ async function openStockSheet(code) {
     </div>
   </div>`;
 
-  const body = hero + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
+  const body = hero + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
     + `<div class="sh-sec"><p class="disclaimer">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p></div>`;
 
   openSheet(title, body, {
@@ -870,13 +888,58 @@ function marketSheetBody(d) {
 }
 
 /* ============================================================================
-   SELF-EVAL SHEET (自評) — pick_performance
+   SELF-EVAL SHEET (持倉 / 自評) — my_positions + pick_performance + 歸因
    ============================================================================ */
-function selfSheetBody(d) {
-  const pp = d.pick_performance;
-  if (!pp || pp.n_scored == null) {
-    return `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
+
+/* P2-S2 ① 我的持倉 (payload.my_positions = positions.summarize shape).
+   OVERLAY-NOT-SCORER: informational — suggested stops are SUGGESTIONS the user
+   applies by hand, never automatic. Graceful: key missing/null → no section
+   (old payloads unaffected); rows empty → one-line onboarding hint. */
+const POS_BADGE = {     // alert kind → badge text; colour class comes from level
+  stop_touch: '破停損', earnings: '財報黑窗', trailing_suggest: '停損建議', cluster: '集群',
+};
+const POS_LV_CLS = { CRITICAL: 'b-crit', WARN: 'b-warn', INFO: '' };
+function myPositionsHtml(d) {
+  const mp = d && d.my_positions;
+  if (!mp || typeof mp !== 'object' || Array.isArray(mp)) return '';
+  const rows = Array.isArray(mp.rows) ? mp.rows : [];
+  if (!rows.length) {
+    return `<div class="sh-sec"><div class="sh-h">我的持倉</div>
+      <p class="tiny">在 Google Sheet my_positions 填入持倉即可追蹤。</p></div>`;
   }
+  const totalCls = mp.total_pnl_pct == null ? '' : (mp.total_pnl_pct >= 0 ? 'up' : 'down');
+  const totalTxt = mp.total_pnl_pct == null ? '—' : (mp.total_pnl_pct > 0 ? '+' : '') + mp.total_pnl_pct + '%';
+  const li = rows.map((r) => {
+    const alerts = Array.isArray(r.alerts) ? r.alerts : [];
+    const badges = alerts.map((a) => {
+      const cls = POS_LV_CLS[a.level] || '';
+      return ` <span class="li-badge ${cls}">${esc(POS_BADGE[a.kind] || a.level || '提示')}</span>`;
+    }).join('');
+    const msgs = alerts.map((a) => {
+      if (a.kind === 'trailing_suggest' && a.suggested_stop != null) {
+        return `<div class="li-sub">建議停損上移至 ${pxNum(a.suggested_stop)}${a.current_stop != null ? `（現 ${pxNum(a.current_stop)}）` : ''} — 建議性質，須自行手動調整</div>`;
+      }
+      return a.msg ? `<div class="li-sub">${esc(a.msg)}</div>` : '';
+    }).join('');
+    const pctTxt = r.pnl_pct == null ? '' : `<span class="pct ${r.pnl_pct >= 0 ? 'up' : 'down'}">${r.pnl_pct > 0 ? '+' : ''}${r.pnl_pct}%</span>`;
+    const sub = [];
+    if (r.last_price != null) sub.push('現價 ' + pxNum(r.last_price));
+    if (r.stop != null) sub.push('停損 ' + pxNum(r.stop));
+    return `<li><a href="#${esc(CUR_DATE)}/${esc(r.symbol)}" data-close-sheet>
+      <div class="li-main"><div class="li-name">${esc(nameOf(r.symbol))} <span class="tk">${esc(r.symbol)}</span>${badges}</div>
+      <div class="li-sub">${sub.join(' · ') || '—'}</div>${msgs}</div>
+      <div class="li-r">${pctTxt}</div></a></li>`;
+  }).join('');
+  return `<div class="sh-sec"><div class="sh-h">我的持倉</div>
+    <div class="drow"><span class="k">總損益（成本加權）</span><span class="v num ${totalCls}">${totalTxt}</span></div>
+    <ul class="list">${li}</ul>
+    <p class="tiny">持倉警報為 <b>informational</b> 提醒（破停損／財報黑窗／移動停損建議／集群集中），非自動執行、非買賣指令。</p></div>`;
+}
+
+/* 既有 pick_performance 自評（文案 VERBATIM preserved；改為可組合的段落） */
+function perfHtml(d) {
+  const pp = d.pick_performance;
+  if (!pp || pp.n_scored == null) return '';
   const N = pp.n_scored || 0;
   const pctF = (v) => (v == null ? '—' : (v * 100).toFixed(0) + '%');
   const retF = (v) => (v == null ? '—' : (v > 0 ? '+' : '') + (+v).toFixed(2) + '%');
@@ -892,6 +955,58 @@ function selfSheetBody(d) {
       <div class="kv wide"><span class="k">平均報酬 (D+5)</span><span class="v ${(pp.avg_ret_5 != null && pp.avg_ret_5 >= 0) ? 'up' : 'down'}">${retF(pp.avg_ret_5)}</span></div>
     </div>
     <p class="tiny"><b>informational</b>，過去表現不代表未來，非績效承諾、非買賣訊號。</p></div>`;
+}
+
+/* P2-S2 ③ 歸因 (payload.attribution = attribution.summarize shape).
+   INFORMATIONAL self-attribution — thin buckets carry their own accruing flag;
+   the whole block is banner-flagged below OVERALL_ACCRUING_N=20. Graceful:
+   missing/{} → no section; empty tables + no NAV → no section.
+   Shape 不對稱注意：nav.max_dd 是「分數」(≤0，×100 顯示)，nav.total_ret 已是「百分比」。 */
+function attributionHtml(d) {
+  const a = d && d.attribution;
+  if (!a || typeof a !== 'object' || Array.isArray(a)) return '';
+  const sig = (a.by_signal && typeof a.by_signal === 'object') ? a.by_signal : {};
+  const reg = (a.by_regime && typeof a.by_regime === 'object') ? a.by_regime : {};
+  const nav = (a.nav && typeof a.nav === 'object') ? a.nav : {};
+  const hasNav = Array.isArray(nav.nav) && nav.nav.length > 1;
+  if (!Object.keys(sig).length && !Object.keys(reg).length && !hasNav) return '';
+  const wr = (v) => (v == null ? '—' : (v * 100).toFixed(0) + '%');
+  const tbl = (title, head, obj, nameFn) => {
+    const keys = Object.keys(obj);
+    if (!keys.length) return '';
+    const trs = keys.map((k) => {
+      const b = obj[k] || {};
+      const acc = b.accruing ? ' <span class="li-badge">樣本累積中</span>' : '';
+      return `<tr><td>${esc(nameFn ? nameFn(k) : k)}${acc}</td><td class="num">${b.n != null ? esc(b.n) : '—'}</td><td class="num">${wr(b.d5_win_rate)}</td></tr>`;
+    }).join('');
+    return `<div class="sh-sub">${title}</div><table class="attr"><thead><tr><th>${head}</th><th>n</th><th>D+5 勝率</th></tr></thead><tbody>${trs}</tbody></table>`;
+  };
+  let navHtml = '';
+  if (hasNav) {
+    const ddTxt = nav.max_dd == null ? '—' : (nav.max_dd * 100).toFixed(1) + '%';
+    const trCls = nav.total_ret == null ? '' : (nav.total_ret >= 0 ? 'up' : 'down');
+    const trTxt = nav.total_ret == null ? '—' : (nav.total_ret >= 0 ? '+' : '') + (+nav.total_ret).toFixed(1) + '%';
+    navHtml = `<div class="sh-sub">假想 NAV 重播（top-5 等權 · 含 45bps 成本）</div>
+      <div class="attr-nav">${sparkline(nav.nav, 320, 54)}</div>
+      <div class="kvgrid">
+        <div class="kv"><span class="k">總報酬</span><span class="v ${trCls}">${trTxt}</span></div>
+        <div class="kv"><span class="k">最大回撤</span><span class="v ${(nav.max_dd != null && nav.max_dd < 0) ? 'down' : ''}">${ddTxt}</span></div>
+      </div>`;
+  }
+  const banner = a.accruing
+    ? `<div class="note"><b>樣本累積中（n=${esc(a.n_scored != null ? a.n_scored : 0)}）</b> — 滿 20 筆才有統計意義，目前數字僅供參考，避免小樣本誤導。</div>` : '';
+  const regName = (k) => (REGIME[k] ? REGIME[k].txt : k);
+  return `<div class="sh-sec"><div class="sh-h">歸因</div>${banner}
+    ${tbl('依信號', '信號', sig)}${tbl('依市場體制', '體制', reg, regName)}${navHtml}
+    <p class="tiny"><b>informational</b> 自我歸因（信號/體制只統計觸發當下、NAV 為假想等權重播），過去表現不代表未來，非績效承諾、非買賣訊號。</p></div>`;
+}
+
+function selfSheetBody(d) {
+  const parts = [myPositionsHtml(d), perfHtml(d), attributionHtml(d)].filter(Boolean);
+  if (!parts.length) {
+    return `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
+  }
+  return parts.join('');
 }
 
 /* ============================================================================
@@ -1077,7 +1192,7 @@ function bindChrome() {
     const which = btn.dataset.sheet;
     if (!CUR) { toast('資料尚未載入'); return; }
     if (which === 'market') openSheet('市場環境', marketSheetBody(CUR), { full: true });
-    else if (which === 'self') openSheet('策略自評', selfSheetBody(CUR), { full: false });
+    else if (which === 'self') openSheet('持倉 / 自評', selfSheetBody(CUR), { full: false });
     else if (which === 'opp') openSheet('機會 / 持倉追蹤', oppSheetBody(CUR), { full: true });
   });
   // delegated clicks inside the sheet body: opp tabs + close-on-navigate links

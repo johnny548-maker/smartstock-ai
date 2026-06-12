@@ -37,6 +37,11 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "dat
 DEFAULT_SHEET_ID = "1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
+# P2-S1: the user position ledger the Sheet read-back (--pull-positions) writes, and the
+# daily run (main.py) reads via positions.load. Schema v2: {updated, positions:[{symbol,
+# entry, shares, stop, note?}]} — validated through positions.validate before it is written.
+POSITIONS_STATE_PATH = os.path.join(DATA_DIR, "_positions_state.json")
+
 PICKS_HEADERS = [
     "date", "stock", "name", "sector", "score", "light", "verdict", "price",
     "change_pct", "vol_ratio", "entry", "stop", "target", "target_band",
@@ -102,6 +107,14 @@ OUTCOMES_HEADERS = [
     "period_high", "period_low", "max_gain_pct", "max_drawdown_pct",
     "hit_stop", "hit_target",
 ]
+
+# my_positions tab: user-maintained position ledger (read-back).
+# Headers must match the Sheet tab exactly (row 1); note is optional.
+MY_POSITIONS_HEADERS = ["symbol", "entry", "shares", "stop", "note"]
+
+# my_positions_status tab: daily position-eval echo written back by write_positions_echo.
+# Idempotent upsert by date (same contract as the other tabs via _upsert).
+MY_POSITIONS_STATUS_HEADERS = ["date", "symbol", "status", "note", "signal"]
 
 # _watchlist_state.json lives beside the dated reports.
 WATCHLIST_STATE_PATH = os.path.join(DATA_DIR, "_watchlist_state.json")
@@ -317,6 +330,210 @@ def build_outcomes_rows(outcomes):
     return rows
 
 
+def _validate_position_row(row, headers):
+    """Parse and validate one raw Sheet row (list of strings) against MY_POSITIONS_HEADERS.
+
+    Returns (dict, None) on success or (None, reason_str) on failure.
+    Rules (aligned with M1 spec):
+    - symbol: non-empty string
+    - entry, stop: convertible to float and > 0
+    - shares: convertible to int (via float truncation) and > 0
+    - note: optional, any string including empty
+    """
+    def _get(col):
+        try:
+            idx = headers.index(col)
+            return row[idx] if idx < len(row) else ""
+        except ValueError:
+            return ""
+
+    symbol = str(_get("symbol")).strip()
+    if not symbol:
+        return None, "empty symbol"
+
+    raw_entry = str(_get("entry")).strip()
+    try:
+        entry = float(raw_entry)
+        if entry <= 0:
+            raise ValueError("entry <= 0")
+    except (ValueError, TypeError):
+        return None, f"invalid entry: {raw_entry!r}"
+
+    raw_shares = str(_get("shares")).strip()
+    try:
+        shares = int(float(raw_shares))
+        if shares <= 0:
+            raise ValueError("shares <= 0")
+    except (ValueError, TypeError):
+        return None, f"invalid shares: {raw_shares!r}"
+
+    raw_stop = str(_get("stop")).strip()
+    try:
+        stop = float(raw_stop)
+        if stop <= 0:
+            raise ValueError("stop <= 0")
+    except (ValueError, TypeError):
+        return None, f"invalid stop: {raw_stop!r}"
+
+    note = str(_get("note")).strip()
+
+    return {"symbol": symbol, "entry": entry, "shares": shares, "stop": stop, "note": note}, None
+
+
+def read_my_positions(client):
+    """Read the 'my_positions' Sheet tab and return a validated list[dict].
+
+    Tab schema (row 1 = header): symbol / entry / shares / stop / note
+    - Tab absent: create it with header row and return [].
+    - client=None: graceful no-op, returns None.
+    - Bad rows: log.warning + skip, never raise.
+    - OVERLAY-NOT-SCORER: result is informational/decision-support only.
+    """
+    import logging
+    if client is None:
+        return None
+
+    try:
+        ws = client.worksheet("my_positions")
+    except Exception:
+        # Tab does not exist — create header-only and return empty.
+        try:
+            ws = client.add_worksheet("my_positions", rows=1000,
+                                      cols=max(26, len(MY_POSITIONS_HEADERS)))
+            ws.update(values=[MY_POSITIONS_HEADERS], range_name="A1")
+        except Exception as exc:
+            _log(f"SKIP my_positions tab create: {exc}")
+        return []
+
+    # Ensure header matches (idempotent).
+    first = ws.row_values(1)
+    if first != MY_POSITIONS_HEADERS:
+        ws.update(values=[MY_POSITIONS_HEADERS], range_name="A1")
+        headers = MY_POSITIONS_HEADERS
+    else:
+        headers = first
+
+    # Read all values; row 1 is header — skip it.
+    all_vals = ws.col_values(1)  # just to detect row count cheaply
+    # Fetch the full grid via get_all_values equivalent using col_values per field.
+    # For _FakeWorksheet and real gspread both, we use get_all_values if available,
+    # otherwise reconstruct from col_values. We use a compatible approach: read each
+    # column by index.
+    n_cols = len(headers)
+    cols = [ws.col_values(i + 1) for i in range(n_cols)]
+    # Transpose: row i (0-based after header) = [cols[c][i] for c in range(n_cols)]
+    n_rows = max(len(c) for c in cols) if cols else 0
+    positions = []
+    for row_idx in range(1, n_rows):  # skip row 0 = header
+        raw_row = [cols[c][row_idx] if row_idx < len(cols[c]) else "" for c in range(n_cols)]
+        record, reason = _validate_position_row(raw_row, headers)
+        if record is None:
+            logging.warning("[sheets_sync] my_positions skip row %d: %s | raw=%r",
+                            row_idx + 1, reason, raw_row)
+            continue
+        positions.append(record)
+
+    return positions
+
+
+def write_positions_echo(client, evals):
+    """Write daily position evaluations back to the 'my_positions_status' Sheet tab.
+
+    evals: list[dict] with keys matching MY_POSITIONS_STATUS_HEADERS
+           (date, symbol, status, note, signal).
+    - client=None: graceful no-op, returns None.
+    - Idempotent upsert by date (re-running the same day replaces existing rows).
+    - Tab created (header-only) if absent.
+    - OVERLAY-NOT-SCORER: pure informational echo.
+    """
+    if client is None:
+        return None
+
+    if not evals:
+        date_str = None
+    else:
+        date_str = evals[0].get("date")
+
+    rows = []
+    for ev in evals:
+        rows.append([ev.get(h, "") for h in MY_POSITIONS_STATUS_HEADERS])
+
+    try:
+        ws = _ensure_ws(client, "my_positions_status", MY_POSITIONS_STATUS_HEADERS)
+        if date_str:
+            _upsert(ws, date_str, rows)
+        elif rows:
+            # No date sentinel — just append (edge case: heterogeneous dates).
+            ws.append_rows(rows, value_input_option="USER_ENTERED")
+    except Exception as exc:
+        _log(f"SKIP my_positions_status tab: {exc}")
+
+
+def pull_positions(client, state_path=POSITIONS_STATE_PATH):
+    """Read the 'my_positions' Sheet tab → write docs/data/_positions_state.json (schema v2).
+
+    The Sheet is the user-editable SOURCE for their holdings ledger; the daily run reads the
+    written JSON via positions.load (no live Sheet dependency in the cron hot path). The read
+    list is wrapped into the v2 state shape {updated, positions:[...]} and passed through
+    positions.validate so a malformed row is dropped (logged) rather than poisoning the ledger.
+
+    - client=None: graceful no-op, returns None (nothing written) — the read-back is optional.
+    - Returns the validated state dict that was written (so callers/tests can assert on it).
+    OVERLAY-NOT-SCORER: the ledger is informational/decision-support only; nothing here scores.
+    """
+    if client is None:
+        _log("SKIP --pull-positions: no client (GOOGLE_SA_JSON unset) — positions ledger unchanged.")
+        return None
+
+    import positions as positions_mod
+
+    rows = read_my_positions(client)              # list[dict] | None (None only when client None)
+    rows = rows or []
+    raw_state = {
+        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "positions": rows,
+    }
+    state, errors = positions_mod.validate(raw_state)
+    for err in errors:
+        _log(f"pull_positions skip row: {err}")
+    positions_mod.save(state, state_path)
+    _log(f"pulled {len(state.get('positions', []))} position(s) → {state_path} "
+         f"({len(errors)} row(s) skipped)")
+    return state
+
+
+def build_positions_echo_rows(date_str, my_positions):
+    """Map a positions.summarize() block → write_positions_echo eval rows for the day.
+
+    my_positions: {total_pnl_pct, alert_count, rows:[{symbol, pnl_pct, alerts:[...], ...}]}.
+    Each row becomes {date, symbol, status, note, signal} where:
+      status = the HIGHEST-severity alert level on that position (CRITICAL>WARN>INFO; HOLD if none),
+      note   = the pnl_pct context + the first alert message (human-glanceable),
+      signal = pipe-joined alert kinds.
+    Pure — no network. Missing/None block or empty rows → [], never crashes."""
+    rows_out = []
+    _rank = {"CRITICAL": 3, "WARN": 2, "INFO": 1}
+    for row in ((my_positions or {}).get("rows") or []):
+        sym = row.get("symbol")
+        if not sym:
+            continue
+        alerts = row.get("alerts") or []
+        if alerts:
+            top = max(alerts, key=lambda a: _rank.get(a.get("level"), 0))
+            status = top.get("level") or "HOLD"
+            first_msg = top.get("msg") or ""
+        else:
+            status, first_msg = "HOLD", ""
+        pnl = row.get("pnl_pct")
+        note = (f"P&L {pnl:+.2f}%" if isinstance(pnl, (int, float)) else "P&L —")
+        if first_msg:
+            note = f"{note}｜{first_msg}"
+        signal = " | ".join(str(a.get("kind")) for a in alerts if a.get("kind"))
+        rows_out.append({"date": date_str, "symbol": sym, "status": status,
+                         "note": note, "signal": signal})
+    return rows_out
+
+
 def load_watchlist_state(path=WATCHLIST_STATE_PATH):
     """Read _watchlist_state.json -> dict, or the default empty shape on any error.
     GRACEFUL: a missing/corrupt state file yields an empty watchlist tab, never a crash."""
@@ -468,10 +685,20 @@ def sync_payload(sh, payload):
     n_oc = _sync_replace_tab(sh, "outcomes", OUTCOMES_HEADERS,
                              build_outcomes_rows(outcomes))
 
+    # my_positions_status — P2-S1 daily position-eval ECHO from the payload's my_positions block
+    # (positions.summarize output). Idempotent upsert by date via write_positions_echo. Isolated:
+    # a failure logs SKIP but never crashes the sync. Header-only when the block is absent/empty.
+    pos_echo = build_positions_echo_rows(date_str, payload.get("my_positions"))
+    try:
+        write_positions_echo(sh, pos_echo)
+    except Exception as exc:
+        _log(f"SKIP my_positions_status echo: {exc}")
+    n_pe = len(pos_echo)
+
     _log(
         f"synced {date_str}: picks={n_picks} market={n_market} opportunity={n_opp} "
         f"news={n_news} early_board={n_eb} watchlist={n_wl} outcomes={n_oc} "
-        "(-1 = tab skipped)"
+        f"positions_echo={n_pe} (-1 = tab skipped)"
     )
 
 
@@ -488,15 +715,30 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--day", help="YYYY-MM-DD (default: today UTC)")
     ap.add_argument("--backfill", action="store_true", help="sync every docs/data/*.json")
+    ap.add_argument("--pull-positions", action="store_true",
+                    help="read the my_positions Sheet tab → docs/data/_positions_state.json "
+                         "(run BEFORE main.py; graceful no-op when GOOGLE_SA_JSON is unset)")
     ap.add_argument("--sheet-id", default=os.environ.get("SHEETS_ID", DEFAULT_SHEET_ID))
     args = ap.parse_args(argv)
 
     client = get_client()
     if client is None:
-        _log("SKIP: GOOGLE_SA_JSON not set — Sheet mirror disabled (report pipeline unaffected).")
+        # --pull-positions is part of the report PIPELINE (runs before main.py), so its no-op
+        # message is specific; all modes return 0 so a missing SA never breaks the run.
+        if args.pull_positions:
+            _log("SKIP --pull-positions: GOOGLE_SA_JSON not set — positions ledger unchanged.")
+        else:
+            _log("SKIP: GOOGLE_SA_JSON not set — Sheet mirror disabled (report pipeline unaffected).")
         return 0
 
     sh = client.open_by_key(args.sheet_id)
+
+    # --pull-positions: read-back the user's holdings ledger from the Sheet, write the v2 state
+    # JSON main.py reads. Runs as its OWN pipeline step (daily.yml) BEFORE main.py; the report is
+    # always primary, so this is continue-on-error / graceful.
+    if args.pull_positions:
+        pull_positions(sh)
+        return 0
 
     if args.backfill:
         files = sorted(glob.glob(os.path.join(DATA_DIR, "20*-*-*.json")))

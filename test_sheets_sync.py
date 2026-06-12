@@ -646,5 +646,363 @@ class TestSyncAllTabsMocked(unittest.TestCase):
         self.assertEqual(len(oc._rows) - 1, 2)
 
 
+# ───────────────────────── my_positions read / echo-write (M2) ──────────────────────────
+
+# Sample rows as they appear in the Sheet (list of lists, row 0 = header already consumed).
+SAMPLE_POSITIONS_ROWS = [
+    ["symbol", "entry", "shares", "stop", "note"],  # header (row 1 in Sheet)
+    ["2330.TW", "1000.0", "10", "950.0", "台積電主力"],
+    ["AAPL", "180.0", "5", "170.0", ""],
+    ["", "200.0", "3", "190.0", "symbol 空白應 skip"],           # bad: empty symbol
+    ["BAD", "abc", "3", "190.0", "entry 非數字應 skip"],         # bad: entry not float
+    ["BAD2", "200.0", "-1", "190.0", "shares 負數應 skip"],      # bad: shares <= 0
+    ["BAD3", "200.0", "3", "0", "stop 為 0 應 skip"],            # bad: stop <= 0
+]
+
+# Minimal valid position list returned after validation.
+VALID_POSITIONS = [
+    {"symbol": "2330.TW", "entry": 1000.0, "shares": 10, "stop": 950.0, "note": "台積電主力"},
+    {"symbol": "AAPL",   "entry": 180.0,  "shares": 5,  "stop": 170.0, "note": ""},
+]
+
+# Eval records written back by write_positions_echo (one per position per day).
+SAMPLE_EVALS = [
+    {"date": "2026-06-10", "symbol": "2330.TW", "status": "HOLD",
+     "note": "close 1010 > stop 950", "signal": ""},
+    {"date": "2026-06-10", "symbol": "AAPL", "status": "WARN",
+     "note": "close 172 near stop 170", "signal": "watch"},
+]
+
+
+class TestReadMyPositions(unittest.TestCase):
+    """read_my_positions(client) — mocked Sheet."""
+
+    def _make_sh(self, extra_rows=None):
+        """Return a _FakeSheet that has a my_positions tab populated with SAMPLE_POSITIONS_ROWS."""
+        sh = _FakeSheet()
+        ws = sh.add_worksheet("my_positions", rows=100, cols=10)
+        rows = SAMPLE_POSITIONS_ROWS if extra_rows is None else extra_rows
+        ws.update(values=[rows[0]], range_name="A1")  # header
+        ws.append_rows(rows[1:])
+        return sh
+
+    # ── tab-existence branch ──────────────────────────────────────────────
+
+    def test_tab_missing_creates_empty_tab_and_returns_empty_list(self):
+        """my_positions tab absent → create it with header, return []."""
+        sh = _FakeSheet()   # no tabs at all
+        result = ss.read_my_positions(sh)
+        self.assertEqual(result, [])
+        # tab must now exist with header
+        ws = sh.worksheets_by_title.get("my_positions")
+        self.assertIsNotNone(ws, "my_positions tab must be created")
+        self.assertEqual(ws.row_values(1), ss.MY_POSITIONS_HEADERS)
+
+    def test_no_client_returns_none(self):
+        """client=None → graceful no-op, returns None."""
+        self.assertIsNone(ss.read_my_positions(None))
+
+    # ── happy path ───────────────────────────────────────────────────────
+
+    def test_returns_two_valid_rows(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        self.assertEqual(len(result), 2)
+
+    def test_valid_row_field_types(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        r = result[0]
+        self.assertEqual(r["symbol"], "2330.TW")
+        self.assertAlmostEqual(r["entry"], 1000.0)
+        self.assertEqual(r["shares"], 10)
+        self.assertAlmostEqual(r["stop"], 950.0)
+        self.assertEqual(r["note"], "台積電主力")
+
+    def test_note_field_optional_empty_string(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        aapl = next(r for r in result if r["symbol"] == "AAPL")
+        self.assertEqual(aapl["note"], "")
+
+    # ── validation / skip ────────────────────────────────────────────────
+
+    def test_empty_symbol_skipped(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        syms = [r["symbol"] for r in result]
+        self.assertNotIn("", syms)
+
+    def test_non_numeric_entry_skipped(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        syms = [r["symbol"] for r in result]
+        self.assertNotIn("BAD", syms)
+
+    def test_negative_shares_skipped(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        syms = [r["symbol"] for r in result]
+        self.assertNotIn("BAD2", syms)
+
+    def test_zero_stop_skipped(self):
+        sh = self._make_sh()
+        result = ss.read_my_positions(sh)
+        syms = [r["symbol"] for r in result]
+        self.assertNotIn("BAD3", syms)
+
+    def test_all_invalid_rows_returns_empty_list(self):
+        """Tab with header only → []."""
+        sh = _FakeSheet()
+        ws = sh.add_worksheet("my_positions", rows=100, cols=10)
+        ws.update(values=[ss.MY_POSITIONS_HEADERS], range_name="A1")
+        result = ss.read_my_positions(sh)
+        self.assertEqual(result, [])
+
+    def test_header_only_tab_no_crash(self):
+        """Tab exists but has only the header row → []."""
+        sh = _FakeSheet()
+        ws = sh.add_worksheet("my_positions", rows=100, cols=10)
+        ws.update(values=[ss.MY_POSITIONS_HEADERS], range_name="A1")
+        result = ss.read_my_positions(sh)
+        self.assertIsInstance(result, list)
+        self.assertEqual(len(result), 0)
+
+
+class TestWritePositionsEcho(unittest.TestCase):
+    """write_positions_echo(client, evals) — mocked Sheet."""
+
+    def test_no_client_returns_none(self):
+        self.assertIsNone(ss.write_positions_echo(None, SAMPLE_EVALS))
+
+    def test_creates_my_positions_status_tab(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        self.assertIn("my_positions_status", sh.worksheets_by_title)
+
+    def test_header_row_matches_headers_constant(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        self.assertEqual(ws.row_values(1), ss.MY_POSITIONS_STATUS_HEADERS)
+
+    def test_two_eval_rows_written(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        # row 1 = header; 2 data rows
+        self.assertEqual(len(ws._rows) - 1, 2)
+
+    def test_eval_row_values(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        # row 2 is first data row
+        d = dict(zip(ss.MY_POSITIONS_STATUS_HEADERS, ws._rows[1]))
+        self.assertEqual(d["date"], "2026-06-10")
+        self.assertEqual(d["symbol"], "2330.TW")
+        self.assertEqual(d["status"], "HOLD")
+        self.assertIn("950", d["note"])
+
+    def test_idempotent_upsert_by_date(self):
+        """Re-running the same date must not duplicate rows."""
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        ss.write_positions_echo(sh, SAMPLE_EVALS)  # second run
+        ws = sh.worksheets_by_title["my_positions_status"]
+        self.assertEqual(len(ws._rows) - 1, 2, "2 rows after 2 identical runs")
+
+    def test_empty_evals_creates_header_only_tab(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, [])
+        ws = sh.worksheets_by_title["my_positions_status"]
+        self.assertEqual(ws.row_values(1), ss.MY_POSITIONS_STATUS_HEADERS)
+        self.assertEqual(len(ws._rows) - 1, 0)
+
+    def test_eval_row_width_matches_headers(self):
+        sh = _FakeSheet()
+        ss.write_positions_echo(sh, SAMPLE_EVALS)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        for row in ws._rows[1:]:
+            self.assertEqual(len(row), len(ss.MY_POSITIONS_STATUS_HEADERS))
+
+
+# ───────────────── P2-S1 CLI: --pull-positions + echo-row builder + sync echo ─────────────
+
+# A positions.summarize() block (rows + alerts) as it appears under payload['my_positions'].
+SAMPLE_MY_POSITIONS = {
+    "total_pnl_pct": 3.1,
+    "alert_count": 3,
+    "rows": [
+        {"symbol": "2330.TW", "entry": 1000.0, "shares": 10, "stop": 950.0,
+         "last_price": 1010.0, "pnl_pct": 1.0, "value": 10100.0, "alerts": []},
+        {"symbol": "AAPL", "entry": 180.0, "shares": 5, "stop": 170.0,
+         "last_price": 168.0, "pnl_pct": -6.67, "value": 840.0,
+         "alerts": [
+             {"kind": "stop_touch", "level": "CRITICAL", "msg": "今日最低 168 已觸及停損 170"},
+             {"kind": "earnings", "level": "WARN", "msg": "財報黑窗：2026-06-15（3 天內）"},
+         ]},
+        {"symbol": "NVDA", "entry": 100.0, "shares": 20, "stop": 90.0,
+         "last_price": 130.0, "pnl_pct": 30.0, "value": 2600.0,
+         "alerts": [
+             {"kind": "trailing_suggest", "level": "INFO", "msg": "獲利 ≥3×ATR — 建議移動停損"},
+         ]},
+    ],
+}
+
+
+class TestBuildPositionsEchoRows(unittest.TestCase):
+    def test_one_row_per_position(self):
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        self.assertEqual(len(rows), 3)
+
+    def test_row_keys_match_status_headers(self):
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        for r in rows:
+            self.assertEqual(set(r.keys()), set(ss.MY_POSITIONS_STATUS_HEADERS))
+
+    def test_no_alert_is_hold(self):
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        d = next(r for r in rows if r["symbol"] == "2330.TW")
+        self.assertEqual(d["status"], "HOLD")
+        self.assertEqual(d["signal"], "")
+        self.assertIn("P&L", d["note"])
+
+    def test_highest_severity_wins(self):
+        """A position with CRITICAL + WARN echoes the CRITICAL level."""
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        d = next(r for r in rows if r["symbol"] == "AAPL")
+        self.assertEqual(d["status"], "CRITICAL")
+        self.assertIn("觸及停損", d["note"])
+        self.assertIn("stop_touch", d["signal"])
+        self.assertIn("earnings", d["signal"])
+
+    def test_info_level_carried(self):
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        d = next(r for r in rows if r["symbol"] == "NVDA")
+        self.assertEqual(d["status"], "INFO")
+        self.assertEqual(d["signal"], "trailing_suggest")
+
+    def test_date_stamped(self):
+        rows = ss.build_positions_echo_rows("2026-06-10", SAMPLE_MY_POSITIONS)
+        for r in rows:
+            self.assertEqual(r["date"], "2026-06-10")
+
+    def test_none_or_empty_block_no_crash(self):
+        self.assertEqual(ss.build_positions_echo_rows("d", None), [])
+        self.assertEqual(ss.build_positions_echo_rows("d", {}), [])
+        self.assertEqual(ss.build_positions_echo_rows("d", {"rows": []}), [])
+
+    def test_missing_symbol_skipped(self):
+        block = {"rows": [{"pnl_pct": 1.0, "alerts": []}, {"symbol": "X", "alerts": []}]}
+        rows = ss.build_positions_echo_rows("d", block)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["symbol"], "X")
+
+
+class TestSyncEchoesPositions(unittest.TestCase):
+    def test_sync_writes_positions_status_tab(self):
+        sh = _FakeSheet()
+        payload = dict(SAMPLE)
+        payload["opportunity"] = SAMPLE_OPPORTUNITY
+        payload["news"] = SAMPLE_NEWS
+        payload["early_board"] = SAMPLE_EARLY_BOARD
+        payload["my_positions"] = SAMPLE_MY_POSITIONS
+        with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+             mock.patch.object(ss, "load_outcomes", return_value=[]):
+            ss.sync_payload(sh, payload)
+        self.assertIn("my_positions_status", sh.worksheets_by_title)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        self.assertEqual(ws.row_values(1), ss.MY_POSITIONS_STATUS_HEADERS)
+        self.assertEqual(len(ws._rows) - 1, 3, "one status row per held position")
+
+    def test_sync_without_positions_block_header_only(self):
+        """A payload with no my_positions still creates a header-only status tab, no crash."""
+        sh = _FakeSheet()
+        payload = dict(SAMPLE)  # SAMPLE has no my_positions key
+        with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+             mock.patch.object(ss, "load_outcomes", return_value=[]):
+            ss.sync_payload(sh, payload)
+        ws = sh.worksheets_by_title["my_positions_status"]
+        self.assertEqual(len(ws._rows) - 1, 0)
+
+
+class TestPullPositions(unittest.TestCase):
+    """pull_positions(sh) — read the my_positions tab → write the v2 state JSON."""
+
+    def _sheet_with_positions(self):
+        sh = _FakeSheet()
+        ws = sh.add_worksheet("my_positions", rows=100, cols=10)
+        ws.update(values=[SAMPLE_POSITIONS_ROWS[0]], range_name="A1")
+        ws.append_rows(SAMPLE_POSITIONS_ROWS[1:])
+        return sh
+
+    def test_no_client_returns_none(self):
+        self.assertIsNone(ss.pull_positions(None))
+
+    def test_writes_v2_state_file(self):
+        sh = self._sheet_with_positions()
+        with tempfile.TemporaryDirectory() as td:
+            path = os.path.join(td, "_positions_state.json")
+            state = ss.pull_positions(sh, state_path=path)
+            self.assertTrue(os.path.exists(path), "state file must be written")
+            with open(path, encoding="utf-8") as f:
+                on_disk = json.load(f)
+            # v2 shape
+            self.assertIn("positions", on_disk)
+            self.assertIn("updated", on_disk)
+            # 2 valid rows (the 4 bad rows in SAMPLE_POSITIONS_ROWS are dropped by validate)
+            self.assertEqual(len(on_disk["positions"]), 2)
+            syms = {p["symbol"] for p in on_disk["positions"]}
+            self.assertIn("AAPL", syms)
+            self.assertEqual(state["positions"], on_disk["positions"])
+
+    def test_validated_rows_only(self):
+        """validate() drops the empty-symbol / bad-entry / bad-shares / bad-stop rows."""
+        sh = self._sheet_with_positions()
+        with tempfile.TemporaryDirectory() as td:
+            state = ss.pull_positions(sh, state_path=os.path.join(td, "s.json"))
+            syms = {p["symbol"] for p in state["positions"]}
+            self.assertNotIn("", syms)
+            self.assertNotIn("BAD", syms)
+            self.assertNotIn("BAD2", syms)
+            self.assertNotIn("BAD3", syms)
+
+    def test_empty_tab_writes_empty_ledger(self):
+        sh = _FakeSheet()
+        ws = sh.add_worksheet("my_positions", rows=100, cols=10)
+        ws.update(values=[ss.MY_POSITIONS_HEADERS], range_name="A1")
+        with tempfile.TemporaryDirectory() as td:
+            path = os.path.join(td, "s.json")
+            state = ss.pull_positions(sh, state_path=path)
+            self.assertEqual(state["positions"], [])
+            self.assertTrue(os.path.exists(path))
+
+
+class TestPullPositionsCLI(unittest.TestCase):
+    def test_pull_positions_flag_no_creds_is_noop_exit0(self):
+        """--pull-positions with no GOOGLE_SA_JSON → graceful no-op, exit 0, no file touched."""
+        old = os.environ.pop("GOOGLE_SA_JSON", None)
+        try:
+            rc = ss.main(["--pull-positions"])
+            self.assertEqual(rc, 0)
+        finally:
+            if old is not None:
+                os.environ["GOOGLE_SA_JSON"] = old
+
+    def test_pull_positions_flag_routes_to_pull(self):
+        """With a client, --pull-positions opens the sheet and calls pull_positions."""
+        fake_sh = object()
+        fake_client = mock.Mock()
+        fake_client.open_by_key.return_value = fake_sh
+        with mock.patch.object(ss, "get_client", return_value=fake_client), \
+             mock.patch.object(ss, "pull_positions", return_value={"positions": []}) as mp, \
+             mock.patch.object(ss, "sync_payload") as msync:
+            rc = ss.main(["--pull-positions"])
+        self.assertEqual(rc, 0)
+        mp.assert_called_once_with(fake_sh)
+        msync.assert_not_called()  # pull mode must NOT run the mirror sync
+
+
 if __name__ == "__main__":
     unittest.main()
