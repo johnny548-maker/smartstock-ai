@@ -316,9 +316,13 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
             continue
         bench = bench_history.get("twii") if sym.endswith(".TW") else bench_history.get("sp500")
         # A6: per-name ADV-scaled slippage callable (market from suffix), else flat scalar.
+        # PERF: precompute the 21-bar rolling ADV ONCE per name (vectorized) so the per-window
+        # callable is an O(1) array index — a per-window df.iloc slice+mean made the 661×15y run
+        # impractical (millions of pandas ops). rolling(21,min_periods=1) == _adv(df,i) exactly.
         if adv_slippage:
             _market = "TW" if sym.endswith(".TW") else "US"
-            slip = lambda d, j, m=_market: adv_scaled_bps(_adv(d, j), market=m)
+            _adv_arr = (df["Close"] * df["Volume"]).rolling(21, min_periods=1).mean().to_numpy()
+            slip = lambda d, j, a=_adv_arr, m=_market: adv_scaled_bps(a[j], market=m)
         else:
             slip = slippage_bps
         for i in range(min_bars, len(df) - horizon, step):
