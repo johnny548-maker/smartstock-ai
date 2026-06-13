@@ -340,6 +340,7 @@ REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
 # CEILING. OVERLAY-NOT-SCORER: never an input to scoring. Absent on daily cron (the
 # heavy backtest is not part of the cron) → enrich/riskPlan degrade silently to null.
 KELLY_STATE = os.path.join(WEB_DIR, "data", "_kelly_state.json")
+VALIDATION_STATE = os.path.join(WEB_DIR, "data", "_validation_state.json")  # A2/A3 offline robustness gate (DSR/PBO/SPA/WF)
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
 # P2 keyless environment/overlay 24h TTL caches (sources/_cache.cached_fetch). Slow-moving

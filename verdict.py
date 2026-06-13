@@ -19,6 +19,11 @@ try:
 except Exception:                       # pragma: no cover — config always present in app
     KELLY_STATE = None
 
+try:
+    from config import VALIDATION_STATE
+except Exception:                       # pragma: no cover
+    VALIDATION_STATE = None
+
 THIN_FLOOR_USD = 3_000_000     # < $3M average daily $-volume = hard to act on at size
 THIN_FLOOR_TWD = 50_000_000    # < NT$50M/day
 CAP_PCT = 0.01                 # rule of thumb: one name's position ≤ ~1% of ADV
@@ -172,6 +177,52 @@ _KELLY_FACTOR_MAP = [
 ]
 
 _KELLY_STATE_CACHE = None       # module-level cache (like chip_state/revenue state loads)
+_VALIDATION_STATE_CACHE = None
+
+
+def _load_validation_state():
+    """Load + cache _validation_state.json once (A2/A3). Returns {} when absent — the heavy
+    offline run_validation.py is NOT part of the daily cron, so this is routinely missing and
+    must degrade silently. OVERLAY-NOT-SCORER: this robustness verdict is an informational
+    badge only; it NEVER enters scoring (mirrors _load_kelly_state)."""
+    global _VALIDATION_STATE_CACHE
+    if _VALIDATION_STATE_CACHE is not None:
+        return _VALIDATION_STATE_CACHE
+    state = {}
+    try:
+        if VALIDATION_STATE:
+            with open(VALIDATION_STATE, encoding="utf-8") as f:
+                loaded = json.load(f)
+            if isinstance(loaded, dict):
+                state = loaded
+    except Exception:
+        state = {}
+    _VALIDATION_STATE_CACHE = state
+    return state
+
+
+def family_robustness_badge():
+    """A single INFORMATIONAL family-level robustness badge from _validation_state.json, or
+    None when the offline gate hasn't run. kind='robustness' marks it as an OVERLAY for the
+    PWA — it carries PBO + SPA p-value + asof, and intentionally has NO 'score'/'factor' key.
+    Daily callers attach it to the payload top level, never to a pick's factors."""
+    st = _load_validation_state()
+    fam = (st or {}).get("family")
+    if not isinstance(fam, dict):
+        return None
+    pbo = fam.get("pbo")
+    spa = fam.get("spa_pvalue")
+    # honest one-liner: high PBO or non-significant SPA = treat the family's edge with caution
+    caution = (isinstance(pbo, (int, float)) and pbo > 0.5) or \
+              (isinstance(spa, (int, float)) and spa > 0.05)
+    return {
+        "kind": "robustness",
+        "asof": st.get("asof"),
+        "pbo": pbo, "spa_pvalue": spa, "n_trials": fam.get("n_trials"),
+        "label": ("⚠️ family edge 脆弱（高 PBO / SPA 不顯著）" if caution
+                  else "family edge 通過 PBO/SPA 穩健度檢驗"),
+        "caution": bool(caution),
+    }
 
 
 def _load_kelly_state():

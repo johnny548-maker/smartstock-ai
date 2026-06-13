@@ -717,6 +717,33 @@ class TestCompositeICGate(unittest.TestCase):
         self.assertFalse(v["ship"])
 
 
+class TestRobustnessBadge(unittest.TestCase):
+    """A2: the offline _validation_state.json robustness verdict surfaces as an INFORMATIONAL
+    family badge — degrade-safe when absent, and OVERLAY-NOT-SCORER (no score/factor key)."""
+
+    def tearDown(self):
+        verdict._VALIDATION_STATE_CACHE = None                 # don't leak into other tests
+
+    def test_badge_none_when_absent(self):
+        verdict._VALIDATION_STATE_CACHE = {}                   # simulate missing/empty state
+        self.assertIsNone(verdict.family_robustness_badge())
+
+    def test_badge_overlay_safe_when_present(self):
+        verdict._VALIDATION_STATE_CACHE = {
+            "asof": "2026-06-14",
+            "family": {"pbo": 0.2, "spa_pvalue": 0.01, "n_trials": 15}}
+        b = verdict.family_robustness_badge()
+        self.assertEqual(b["kind"], "robustness")
+        self.assertFalse(b["caution"])                         # low PBO + significant SPA
+        self.assertNotIn("score", b)
+        self.assertNotIn("factor", b)
+
+    def test_badge_caution_on_high_pbo(self):
+        verdict._VALIDATION_STATE_CACHE = {
+            "asof": "x", "family": {"pbo": 0.7, "spa_pvalue": 0.2, "n_trials": 15}}
+        self.assertTrue(verdict.family_robustness_badge()["caution"])
+
+
 class TestRSRating(unittest.TestCase):
     def test_cross_sectional_percentile(self):
         uni = {
