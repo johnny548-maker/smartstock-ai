@@ -110,6 +110,20 @@ def load_portfolio_state():
         return {}
 
 
+def run_stage(log, skips, name, fn, default=None, msg=None):
+    """B2: run a fail-open SINGLE-FETCH pipeline stage. On any exception, log 'SKIP <msg>:
+    <err>', record `name` in skips, and return `default` — the run continues, never a silent
+    drop (payload['skips'] is later set()-deduped). Used ONLY for the simple single-assignment
+    stages; multi-statement stages with their own side effects / nested guards / in-try logging
+    / non-appending excepts stay EXPLICIT (the fail-open is intentionally visible per-site)."""
+    try:
+        return fn()
+    except Exception as e:
+        log.warning("SKIP %s: %s", msg or name, e)
+        skips.append(name)
+        return default
+
+
 def main(web=False):
     setup_logging()
     log = logging.getLogger("main")
@@ -118,28 +132,18 @@ def main(web=False):
     log.info("=== SmartStock daily run %s ===", date_str)
 
     # 1. Market context + signal --------------------------------------------
-    frames, indices = {}, {}
-    try:
-        frames, indices = data_fetcher.get_market_context()
-    except Exception as e:
-        log.warning("SKIP market context: %s", e); skips.append("indices")
-    try:
-        signal = data_fetcher.build_market_signal(frames, indices)
-    except Exception as e:
-        log.warning("SKIP market signal: %s", e); signal = {"risk": "LOW"}; skips.append("signal")
+    frames, indices = run_stage(log, skips, "indices", data_fetcher.get_market_context,
+                                default=({}, {}), msg="market context")
+    signal = run_stage(log, skips, "signal",
+                       lambda: data_fetcher.build_market_signal(frames, indices),
+                       default={"risk": "LOW"}, msg="market signal")
     risk = signal.get("risk", "LOW")
 
     # 2. News ----------------------------------------------------------------
-    try:
-        news = news_digest.get_news()
-    except Exception as e:
-        log.warning("SKIP news: %s", e); news = {}; skips.append("news")
+    news = run_stage(log, skips, "news", news_digest.get_news, default={})
 
     # 2b. Market breadth (broad basket → 參與度) ----------------------------
-    try:
-        breadth = breadth_mod.get_breadth()
-    except Exception as e:
-        log.warning("SKIP breadth: %s", e); breadth = None; skips.append("breadth")
+    breadth = run_stage(log, skips, "breadth", breadth_mod.get_breadth, default=None)
     if not breadth:
         skips.append("breadth")
 
@@ -153,16 +157,10 @@ def main(web=False):
         skips.append("fx")
 
     # 2c. 月營收早期成長候選 (全上市一次掃描，keyless leading spine) ---------
-    try:
-        revenue_data = revenue_mod.get_early_candidates()
-    except Exception as e:
-        log.warning("SKIP revenue: %s", e); revenue_data = None; skips.append("revenue")
+    revenue_data = run_stage(log, skips, "revenue", revenue_mod.get_early_candidates, default=None)
 
     # 2d. 主題湧現 (news-driven theme rotation → 供應鏈 tickers) --------------
-    try:
-        themes = theme_mod.get_themes(news)
-    except Exception as e:
-        log.warning("SKIP themes: %s", e); themes = []; skips.append("themes")
+    themes = run_stage(log, skips, "themes", lambda: theme_mod.get_themes(news), default=[])
 
     # 2e. 機會掃描 (全市場早期領導股，watchlist 外的小型成長股 — Round 2 P0-A) -----
     try:
@@ -209,29 +207,23 @@ def main(web=False):
         log.warning("SKIP momentum lens: %s", e); momentum_lens = {}; skips.append("momentum_portfolio")
 
     # 3. 三大法人 ------------------------------------------------------------
-    try:
-        inst = institutional.get_institutional(config.STOCKS_TW)
-    except Exception as e:
-        log.warning("SKIP institutional: %s", e); inst = {}; skips.append("institutional")
+    inst = run_stage(log, skips, "institutional",
+                     lambda: institutional.get_institutional(config.STOCKS_TW), default={})
     if not inst:
         skips.append("institutional")
 
     # 4. Stock data + ranking ------------------------------------------------
     all_syms = config.STOCKS_TW + config.STOCKS_US
-    try:
-        data = data_fetcher.get_stock_data(all_syms)
-    except Exception as e:
-        log.warning("SKIP stock data: %s", e); data = {}; skips.append("stock_data")
+    data = run_stage(log, skips, "stock_data",
+                     lambda: data_fetcher.get_stock_data(all_syms), default={}, msg="stock data")
     # 4a. 籌碼 cross-run buffer: record today (trading days only), derive chips
     chips_state = chip_state.load()
     # 4a-fund. Fundamentals overlay cache + revenue state (no network; B12). The
     #     revenue STATE (full YoY buffer) is loaded separately from revenue_data
     #     (today's candidate list) because build_badge needs the per-code YoY history.
     fund_cache = fundamentals.load_cache()
-    try:
-        rev_state = revenue_mod.load_state()
-    except Exception as e:
-        log.warning("SKIP revenue state load: %s", e); rev_state = None; skips.append("fundamentals")
+    rev_state = run_stage(log, skips, "fundamentals", revenue_mod.load_state,
+                          default=None, msg="revenue state load")
     if inst:
         for sym in config.STOCKS_TW:
             di = inst.get(sym.replace(".TW", "")) or {}
