@@ -1003,7 +1003,13 @@ def main(universe_csv=None, fresh=False):
               f"fetched={lstats['n_fetched']} dropped={lstats['dropped']} "
               f"skipped={lstats['skipped']} repaired={len(lstats['fixed'])}")
         # C2: point-in-time membership when the CSV carries added_date (no-op otherwise).
-        added = load_universe_meta(universe_csv)
+        # Best-effort: a meta read failure must NEVER abort the backtest — PIT is an optional
+        # enhancement on top of the already-loaded history (graceful-skip contract).
+        try:
+            added = load_universe_meta(universe_csv)
+        except Exception as e:
+            logging.warning("SKIP PIT membership (meta unreadable): %s", e)
+            added = {}
         if any(added.values()):
             before = len(hist)
             hist = apply_pit_membership(hist, added)
