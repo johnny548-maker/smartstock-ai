@@ -11,6 +11,13 @@ Run: python run_rank_ic.py [years]
 """
 import sys
 
+# CJK / '→' in the output crash the default cp1252 Windows console (exit 1 despite a
+# successful computation). Force utf-8 stdout like run_backtest / run_validation do.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 import data_fetcher
 import strategy
 import backtest
