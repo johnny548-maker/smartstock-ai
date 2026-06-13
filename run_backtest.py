@@ -682,6 +682,47 @@ def load_universe_csv(path):
     return out
 
 
+def load_universe_meta(path):
+    """C2: read {ticker: added_date|None} from a universe CSV's optional 'added_date' column.
+    Absent column → every value None (point-in-time membership becomes a no-op, back-compat).
+    Same fail-fast boundary as load_universe_csv (a missing file raises)."""
+    import csv as _csv
+    out = {}
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
+        for row in _csv.DictReader(f):
+            t = (row.get("ticker") or "").strip()
+            if t:
+                out[t] = (row.get("added_date") or "").strip() or None
+    return out
+
+
+def apply_pit_membership(history, added_dates):
+    """C2 point-in-time membership: drop each name's bars BEFORE its added_date so a backtest
+    window only sees names that were in the universe at that date — removing the look-ahead
+    universe-selection bias of scoring a late-added name across early history (partial
+    survivorship fix; the delisting half stays a yfinance limitation). Names with no
+    added_date, or frames without a DatetimeIndex, pass through unchanged. A name whose whole
+    history precedes its added_date drops out. Returns a NEW dict; inputs are not mutated."""
+    import pandas as pd
+    out = {}
+    for sym, df in (history or {}).items():
+        if df is None:
+            continue
+        ad = (added_dates or {}).get(sym)
+        if not ad or not isinstance(getattr(df, "index", None), pd.DatetimeIndex):
+            out[sym] = df
+            continue
+        try:
+            cut = pd.Timestamp(ad)
+        except Exception:
+            out[sym] = df
+            continue
+        kept = df[df.index >= cut]
+        if len(kept):
+            out[sym] = kept
+    return out
+
+
 def _extract_universe_arg(argv):
     """Pure: pull an optional --universe arg out of argv WITHOUT disturbing the
     existing positional [years horizon explosive] CLI. Supports both
@@ -961,6 +1002,13 @@ def main(universe_csv=None, fresh=False):
         print(f"[load done] hist={len(hist)} cache={lstats['n_cache']} "
               f"fetched={lstats['n_fetched']} dropped={lstats['dropped']} "
               f"skipped={lstats['skipped']} repaired={len(lstats['fixed'])}")
+        # C2: point-in-time membership when the CSV carries added_date (no-op otherwise).
+        added = load_universe_meta(universe_csv)
+        if any(added.values()):
+            before = len(hist)
+            hist = apply_pit_membership(hist, added)
+            print(f"[PIT] point-in-time membership applied "
+                  f"({sum(1 for v in added.values() if v)} dated names; {before}→{len(hist)})")
         bench = _load_bench_cached(years)
     else:
         print(f"Downloading {len(tickers)} tickers x {period} "
