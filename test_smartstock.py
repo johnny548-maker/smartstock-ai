@@ -619,6 +619,49 @@ class TestBacktest(unittest.TestCase):
         self.assertEqual(m["recall"], 0.0)
 
 
+class TestAdvSlippage(unittest.TestCase):
+    """A6: slippage scales with name liquidity (ADV) instead of a flat 15bps — thin
+    names pay more, mega-caps pay the base floor. Default path stays flat (back-compat)."""
+
+    def test_adv_scaled_bps_thin_costs_more_than_liquid(self):
+        liquid = backtest.adv_scaled_bps(1e12, market="US")     # huge ADV → cheap
+        thin = backtest.adv_scaled_bps(1e5, market="US")        # tiny ADV → expensive
+        self.assertLess(liquid, thin)
+        self.assertGreaterEqual(liquid, 3.0)                    # base floor
+        self.assertLessEqual(thin, 25.0)                        # hard cap
+
+    def test_adv_scaled_bps_clamps(self):
+        self.assertEqual(backtest.adv_scaled_bps(0.0, market="US"), 25.0)   # zero ADV → cap
+        self.assertAlmostEqual(backtest.adv_scaled_bps(1e15, market="US"), 3.0, places=1)
+
+    def test_forward_return_accepts_callable_slippage(self):
+        df = make_df([10, 11, 12, 15])
+        f0 = backtest.forward_return(df, 0, 3, slippage_bps=lambda d, i: 0.0)
+        self.assertAlmostEqual(f0, 50.0)                        # 0 bps == no-slip path
+        fh = backtest.forward_return(df, 0, 3, slippage_bps=lambda d, i: 100.0)
+        self.assertLess(fh, f0)                                 # higher bps → lower net
+
+    def test_backtest_signal_adv_default_is_flat_backcompat(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20])
+        hist = {"AAA": df}
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        a = backtest.backtest_signal(hist, sig, horizon=1, step=1, explosive_pct=50.0,
+                                     min_bars=1, slippage_bps=15.0)
+        b = backtest.backtest_signal(hist, sig, horizon=1, step=1, explosive_pct=50.0,
+                                     min_bars=1, slippage_bps=15.0, adv_slippage=False)
+        self.assertEqual(a["avg_fwd_signaled"], b["avg_fwd_signaled"])
+
+    def test_backtest_signal_adv_costs_thin_name_more(self):
+        df = make_df([10, 20, 10, 20, 10, 20, 10, 20], volumes=[1000] * 8)  # thin ADV
+        hist = {"AAA": df}                                       # US market (no .TW)
+        sig = lambda s, b: float(s["Close"].iloc[-1]) == 10.0
+        flat = backtest.backtest_signal(hist, sig, horizon=1, step=1, explosive_pct=50.0,
+                                        min_bars=1, slippage_bps=15.0)
+        adv = backtest.backtest_signal(hist, sig, horizon=1, step=1, explosive_pct=50.0,
+                                       min_bars=1, slippage_bps=15.0, adv_slippage=True)
+        self.assertLess(adv["avg_fwd_signaled"], flat["avg_fwd_signaled"])  # cap 25 > 15
+
+
 class TestCompositeICGate(unittest.TestCase):
     """A1: the de-collinearization ship gate, extracted from run_rank_ic into a tested
     backtest unit. A continuous composite (bucket) ships ONLY if it beats the flat

@@ -42,11 +42,11 @@ import breakout_radar as br
 import backtest
 import factor_signals as fs
 import universe
-from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS
+from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS, ADV_SLIPPAGE
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
-SLIP_BPS = 15.0          # ~0.15% each side (bid/ask + impact)
+SLIP_BPS = 15.0          # ~0.15% each side (bid/ask + impact) — the flat fallback/floor
 FEE_BPS = 30.0           # round-trip commission + TW transaction tax (net-of-cost, G9)
 NEXT_OPEN = True         # fill at next open (signal fires on close) — no exec look-ahead (G4)
 INCLUDE_BUSTED = True    # add boomed-then-busted peers to fight survivorship (G3)
@@ -969,8 +969,9 @@ def main(universe_csv=None, fresh=False):
         bench_raw = data_fetcher.get_universe(["^TWII", "^GSPC"], period=period)
         bench = {"twii": bench_raw.get("^TWII"), "sp500": bench_raw.get("^GSPC")}
     n_busted = sum(1 for t in BUSTED_PEERS if hist.get(t) is not None) if INCLUDE_BUSTED else 0
+    _slip_desc = ("ADV-scaled (base/k/cap per config)" if ADV_SLIPPAGE else f"{SLIP_BPS}bps flat")
     print(f"Got {len(hist)} histories ({n_busted} busted peers resolved). "
-          f"Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps, fee={FEE_BPS}bps (net-of-cost)\n")
+          f"Fills: next-open={NEXT_OPEN}, slippage={_slip_desc}, fee={FEE_BPS}bps (net-of-cost)\n")
 
     hdr = f"{'signal':<22}{'fired':>6}{'prec':>7}{'lift':>6}{'CIlo':>7}{'CI>base':>8}" \
           f"{'p':>9}{'Bonf':>6}{'BH':>5}{'KEEP':>6}" \
@@ -1011,7 +1012,7 @@ def main(universe_csv=None, fresh=False):
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
                                      step=10, explosive_pct=explosive, min_bars=200,
                                      next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
-                                     fee_bps=FEE_BPS)
+                                     fee_bps=FEE_BPS, adv_slippage=ADV_SLIPPAGE)
         m["name"] = name
         results.append(m)
         base_rate = m["base_rate"]

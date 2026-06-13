@@ -131,10 +131,14 @@ def forward_return(df, i, horizon, next_open_fill=False, slippage_bps=0.0, fee_b
     """% return from bar i to bar i+horizon. With next_open_fill, buy at open[i+1]
     (realistic for a signal fired on close[i]); slippage_bps haircuts both sides
     (bid/ask + impact); fee_bps is the round-trip commission + transaction tax,
-    subtracted once from the net return (G9 net-of-cost)."""
+    subtracted once from the net return (G9 net-of-cost).
+
+    slippage_bps may be a FLOAT (flat, the default) OR a callable (df, i) -> bps
+    (A6 ADV-scaled: thin names cost more). Callable is evaluated at the fill bar i."""
     if df is None or i < 0 or i + horizon >= len(df):
         return None
-    slip = slippage_bps / 10000.0
+    bps = slippage_bps(df, i) if callable(slippage_bps) else slippage_bps
+    slip = bps / 10000.0
     if next_open_fill and "Open" in df.columns and i + 1 < len(df):
         buy = float(df["Open"].iloc[i + 1]) * (1 + slip)
     else:
@@ -256,20 +260,48 @@ def correction_gate(results, alpha=0.05, q=0.10):
     return out
 
 
+def _adv(df, i, window=20):
+    """20-bar average dollar volume (Close·Volume) at bar i, in the name's native ccy.
+    Single source of the ADV formula (reused by _adv_ok and the A6 slippage model)."""
+    w = df.iloc[max(0, i - window):i + 1]
+    return float((w["Close"] * w["Volume"]).mean())
+
+
 def _adv_ok(df, i, floor):
     if floor <= 0:
         return True
-    w = df.iloc[max(0, i - 20):i + 1]
-    adv = float((w["Close"] * w["Volume"]).mean())
-    return adv >= floor
+    return _adv(df, i) >= floor
+
+
+def adv_scaled_bps(adv, *, market="US", base=None, k=None, cap=None, ref_notional=None):
+    """A6: per-name slippage in bps as a function of liquidity (ADV). participation =
+    ref_notional / adv; bps = clamp(base + k·sqrt(participation), base, cap). A thin name
+    (low ADV → high participation) pays toward `cap`; a mega-cap pays the `base` floor.
+    adv <= 0 (no/zero liquidity) → the most conservative `cap`. Params default to config.
+
+    OVERLAY-NOT-SCORER-safe: this is a backtest COST model, never a score input."""
+    import config
+    base = config.SLIP_BASE_BPS if base is None else base
+    k = config.SLIP_K if k is None else k
+    cap = config.SLIP_CAP_BPS if cap is None else cap
+    if ref_notional is None:
+        ref_notional = config.SLIP_REF_NOTIONAL.get(market, config.SLIP_REF_NOTIONAL["US"])
+    if adv is None or adv <= 0:
+        return float(cap)
+    participation = ref_notional / adv
+    return float(min(cap, base + k * math.sqrt(participation)))
 
 
 def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
                     explosive_pct=25.0, min_bars=200, next_open_fill=False,
-                    slippage_bps=0.0, adv_floor=0.0, fee_bps=0.0):
+                    slippage_bps=0.0, adv_floor=0.0, fee_bps=0.0, adv_slippage=False):
     """Walk forward applying signal_fn(df_slice, bench_slice) -> bool.
     Returns metrics: precision/base_rate/lift/recall + Wilson CI + regime split +
-    forward-return distribution + non-trigger rate + survivorship coverage."""
+    forward-return distribution + non-trigger rate + survivorship coverage.
+
+    adv_slippage=True (A6) replaces the flat `slippage_bps` with a per-name ADV-scaled
+    model (config base/k/cap, market inferred from the .TW suffix) — thin names cost more.
+    Default False keeps the exact flat-bps behaviour (back-compat)."""
     bench_history = bench_history or {}
     fired = fired_explosive = 0
     total = total_explosive = 0
@@ -283,10 +315,16 @@ def backtest_signal(history, signal_fn, bench_history=None, horizon=60, step=10,
         if df is None or len(df) < min_bars + horizon:
             continue
         bench = bench_history.get("twii") if sym.endswith(".TW") else bench_history.get("sp500")
+        # A6: per-name ADV-scaled slippage callable (market from suffix), else flat scalar.
+        if adv_slippage:
+            _market = "TW" if sym.endswith(".TW") else "US"
+            slip = lambda d, j, m=_market: adv_scaled_bps(_adv(d, j), market=m)
+        else:
+            slip = slippage_bps
         for i in range(min_bars, len(df) - horizon, step):
             if not _adv_ok(df, i, adv_floor):
                 continue
-            fwd = forward_return(df, i, horizon, next_open_fill, slippage_bps, fee_bps)
+            fwd = forward_return(df, i, horizon, next_open_fill, slip, fee_bps)
             if fwd is None:
                 continue
             names_used.add(sym)

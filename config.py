@@ -264,6 +264,18 @@ BUCKET_IC_WEIGHTS = {"trend": 1.0, "volacc": 1.0, "relstr": 1.0, "meanrev": 1.0,
 # dilutes its per-date IC toward 0; those keep the event-study CI gate instead).
 IC_MIN = 0.05
 
+# ── ADV-scaled slippage (A6) — offline backtest realism ─────────────────────
+# Flat 15bps overstates mega-cap cost and UNDERSTATES thin TW small-cap cost (where the
+# supposed edge lives). Model slippage by liquidity: participation = ref_notional / ADV20,
+# bps = clamp(base + k·sqrt(participation), base, cap). ref_notional is a per-market typical
+# order clip in NATIVE currency (TWD for .TW, USD for US) so the cross-market ADV (= Close·Vol)
+# is comparable to it. OFFLINE-ONLY flag (run_backtest / validation); daily run untouched.
+ADV_SLIPPAGE = False              # default flat (back-compat); flip on for the realistic gate re-run
+SLIP_BASE_BPS = 3.0               # floor — even infinite liquidity pays spread/impact
+SLIP_K = 10.0                     # participation→bps scale
+SLIP_CAP_BPS = 25.0              # hard ceiling for the thinnest names
+SLIP_REF_NOTIONAL = {"TW": 5_000_000.0, "US": 200_000.0}   # ref order size, native ccy
+
 # ── Opportunity universe (Round 2 — decoupled scan-set, sees small/mid-caps) ─
 # The watchlist (28) is what we track; the OPPORTUNITY universe is what we SCAN to
 # surface names we don't yet hold (AAOI/NVTS-class). Keyless: US from a committed
