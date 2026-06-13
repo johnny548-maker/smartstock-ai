@@ -28,8 +28,10 @@ THIN_FLOOR_USD = 3_000_000     # < $3M average daily $-volume = hard to act on a
 THIN_FLOOR_TWD = 50_000_000    # < NT$50M/day
 CAP_PCT = 0.01                 # rule of thumb: one name's position ≤ ~1% of ADV
 
-GREEN_MIN = 90          # score ≥ → 🟢
-AMBER_MIN = 40          # 40-89 → 🟡 ; <40 → 🔴
+try:                                    # B4: 燈號 cut-offs sourced from config (one boundary)
+    from config import SCORE_GREEN_MIN as GREEN_MIN, SCORE_AMBER_MIN as AMBER_MIN
+except Exception:                       # pragma: no cover — config always present in app
+    GREEN_MIN, AMBER_MIN = 90, 40       # score ≥90 → 🟢 ; 40-89 → 🟡 ; <40 → 🔴
 _PAREN = re.compile(r"（.*?）|\(.*?\)")
 
 

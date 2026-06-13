@@ -108,6 +108,21 @@ class TestStrategy(unittest.TestCase):
         ranked = strategy.rank_stocks({"2330.TW": make_df(np.linspace(100, 120, 30))})
         self.assertEqual(ranked[0]["name"], "台積電")
 
+    def test_factor_pts_zero_demotes_factor(self):
+        # B4/A5 lever: zeroing a base-factor weight in config.FACTOR_PTS removes it from the
+        # factors dict (the reversible demotion the IC gate uses) — without editing strategy.py.
+        import config
+        orig = config.FACTOR_PTS["trend"]
+        try:
+            config.FACTOR_PTS["trend"] = 0
+            r = strategy.score_stock(make_df(np.linspace(100, 120, 30)))
+            self.assertNotIn("趨勢(MA5>MA20)", r["factors"])
+        finally:
+            config.FACTOR_PTS["trend"] = orig
+        # restored default → factor present again (golden)
+        r2 = strategy.score_stock(make_df(np.linspace(100, 120, 30)))
+        self.assertEqual(r2["factors"].get("趨勢(MA5>MA20)"), 25)
+
     def test_rank_orders_desc(self):
         strong = make_df(np.linspace(100, 140, 30))
         weak = make_df(np.linspace(140, 100, 30))

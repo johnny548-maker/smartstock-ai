@@ -14,7 +14,7 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
                     LEADERSHIP_WEIGHT, LEAD_FIRST_NEW_HIGH, LEAD_POWER_PIVOT,
                     LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH,
                     LEAD_VDU_THRUST,
-                    BUCKET_SCORING, BUCKET_CAPS, BUCKET_IC_WEIGHTS)
+                    BUCKET_SCORING, BUCKET_CAPS, BUCKET_IC_WEIGHTS, FACTOR_PTS)
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
 from signals import rs_line_new_high
@@ -78,15 +78,17 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
     ma5 = close.rolling(5).mean()
     ma20 = close.rolling(20).mean()
     up_trend = ma5.iloc[-1] > ma20.iloc[-1]
-    if up_trend:
-        factors["趨勢(MA5>MA20)"] = 25
-    if close.iloc[-1] > close.iloc[-5]:
-        factors["動能(5日上漲)"] = 25
+    # Base-factor weights come from config.FACTOR_PTS (B4) so the A5 IC gate can demote a
+    # factor by zeroing its weight; `if pts:` means a 0-weight factor is never added.
+    if up_trend and FACTOR_PTS["trend"]:
+        factors["趨勢(MA5>MA20)"] = FACTOR_PTS["trend"]
+    if close.iloc[-1] > close.iloc[-5] and FACTOR_PTS["momentum"]:
+        factors["動能(5日上漲)"] = FACTOR_PTS["momentum"]
     ma20v = vol.rolling(20).mean().iloc[-1]
-    if ma20v and vol.iloc[-1] > ma20v:
-        factors["量能(高於20日均量)"] = 20
-    if close.pct_change().std() < VOLATILITY_CAP:
-        factors["波動穩定"] = 10
+    if ma20v and vol.iloc[-1] > ma20v and FACTOR_PTS["volume"]:
+        factors["量能(高於20日均量)"] = FACTOR_PTS["volume"]
+    if close.pct_change().std() < VOLATILITY_CAP and FACTOR_PTS["vol_stable"]:
+        factors["波動穩定"] = FACTOR_PTS["vol_stable"]
     if sector and SECTOR_WEIGHTS.get(sector):
         factors[f"產業({sector})"] = SECTOR_WEIGHTS[sector]
 
@@ -96,42 +98,42 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         trust = institutional.get("trust", 0) or 0
         ratio = abs(foreign) / ma20v if ma20v else 0
         mult = 1.0 if ratio >= INST_RATIO_FULL else (0.5 if ratio >= INST_RATIO_HALF else 0.0)
-        if foreign > 0 and mult:
-            factors["外資買超"] = int(15 * mult)
-        elif foreign < 0 and mult:
-            factors["外資賣超"] = int(-20 * mult)
-        if trust > 0:
-            factors["投信買超"] = 10
+        if foreign > 0 and mult and FACTOR_PTS["inst_foreign_buy"]:
+            factors["外資買超"] = int(FACTOR_PTS["inst_foreign_buy"] * mult)
+        elif foreign < 0 and mult and FACTOR_PTS["inst_foreign_sell"]:
+            factors["外資賣超"] = int(FACTOR_PTS["inst_foreign_sell"] * mult)
+        if trust > 0 and FACTOR_PTS["inst_trust_buy"]:
+            factors["投信買超"] = FACTOR_PTS["inst_trust_buy"]
 
     # ── relative strength vs index ──────────────────────────
     if bench is not None:
         rsx = _rs_excess(df, bench, RS_WINDOW)
         if rsx is not None:
-            if rsx > RS_STRONG:
-                factors["相對強弱(強於大盤)"] = 20
-            elif rsx > 0:
-                factors["相對強弱(優於大盤)"] = 15
-            else:
-                factors["相對弱勢(弱於大盤)"] = -10
+            if rsx > RS_STRONG and FACTOR_PTS["rs_strong"]:
+                factors["相對強弱(強於大盤)"] = FACTOR_PTS["rs_strong"]
+            elif 0 < rsx <= RS_STRONG and FACTOR_PTS["rs_mild"]:
+                factors["相對強弱(優於大盤)"] = FACTOR_PTS["rs_mild"]
+            elif rsx <= 0 and FACTOR_PTS["rs_weak"]:
+                factors["相對弱勢(弱於大盤)"] = FACTOR_PTS["rs_weak"]
 
     # ── 52-week-high proximity (George & Hwang 2004) ────────
     win = min(HIGH_WINDOW, len(df))
     hi = df["High"].rolling(win).max().iloc[-1]
     if hi and hi > 0:
         near = close.iloc[-1] / hi
-        if near >= NEAR_HIGH:
-            factors["接近52週高"] = 20
-        elif near >= NEAR_MID:
-            factors["逼近52週高"] = 10
-        elif near < FAR_HIGH:
-            factors["遠離52週高"] = -10
+        if near >= NEAR_HIGH and FACTOR_PTS["near_high"]:
+            factors["接近52週高"] = FACTOR_PTS["near_high"]
+        elif NEAR_MID <= near < NEAR_HIGH and FACTOR_PTS["near_mid"]:
+            factors["逼近52週高"] = FACTOR_PTS["near_mid"]
+        elif near < FAR_HIGH and FACTOR_PTS["far_high"]:
+            factors["遠離52週高"] = FACTOR_PTS["far_high"]
 
     # ── RSI-14 (replaces old >30%-gain overheat rule) ───────
     r = rsi_ind(close, RSI_WINDOW)
-    if r > RSI_OVERBOUGHT:
-        factors["RSI過熱(>75)"] = -15
-    elif r < RSI_OVERSOLD and up_trend:
-        factors["RSI回檔買點"] = 5
+    if r > RSI_OVERBOUGHT and FACTOR_PTS["rsi_overbought"]:
+        factors["RSI過熱(>75)"] = FACTOR_PTS["rsi_overbought"]
+    elif r < RSI_OVERSOLD and up_trend and FACTOR_PTS["rsi_oversold"]:
+        factors["RSI回檔買點"] = FACTOR_PTS["rsi_oversold"]
 
     # ── OBV volume-price divergence ─────────────────────────
     # ADJUDICATED (backtest_obv.txt, 15y net-of-cost): the BULLISH 量能流入(背離偏多,+10)
@@ -141,22 +143,22 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
     # → KEPT as a live weight. Slope calc retained; the bullish `if`→factor branch is removed.
     o = obv_ind(close, vol)
     obv_s, price_s = slope(o, 20), slope(close, 20)
-    if price_s > 0 and obv_s < 0:
-        factors["量價背離(出貨警示)"] = -15
+    if price_s > 0 and obv_s < 0 and FACTOR_PTS["obv_bearish"]:
+        factors["量價背離(出貨警示)"] = FACTOR_PTS["obv_bearish"]
 
     # ── 籌碼集中度 + 外資投信連買 streak (cross-run buffer) ──
     if chips:
         conc = chips.get("conc")
         if conc is not None:
-            if conc >= CONC_HIGH:
-                factors["籌碼集中(法人吸籌)"] = 15
-            elif conc >= CONC_MID:
-                factors["籌碼集中(偏多)"] = 8
-            elif conc < 0:
-                factors["籌碼分散(法人調節)"] = -15
+            if conc >= CONC_HIGH and FACTOR_PTS["chip_conc_high"]:
+                factors["籌碼集中(法人吸籌)"] = FACTOR_PTS["chip_conc_high"]
+            elif CONC_MID <= conc < CONC_HIGH and FACTOR_PTS["chip_conc_mid"]:
+                factors["籌碼集中(偏多)"] = FACTOR_PTS["chip_conc_mid"]
+            elif conc < 0 and FACTOR_PTS["chip_disperse"]:
+                factors["籌碼分散(法人調節)"] = FACTOR_PTS["chip_disperse"]
         st = chips.get("streak", 0) or 0
-        if st >= STREAK_MIN:
-            factors[f"外資投信連買{st}日"] = 20
+        if st >= STREAK_MIN and FACTOR_PTS["streak"]:
+            factors[f"外資投信連買{st}日"] = FACTOR_PTS["streak"]
 
     # ── leadership patterns (CI-validated weights, 15y 661-universe run_backtest) ──
     # ONLY signals whose Wilson-CI lower bound cleared the base rate under the FULL

@@ -91,6 +91,38 @@ MIN_BARS = 20                   # need at least this many bars to score
 TOP_N = 3                       # how many picks get full commentary + price levels
 DISPLAY_N = 12                  # how many ranked picks to show in report/PWA
 
+# ── 燈號 score cut-offs (B4 — extracted from verdict.py so the 燈號 boundary is one source) ─
+SCORE_GREEN_MIN = 90            # score ≥ → 🟢
+SCORE_AMBER_MIN = 40           # 40-89 → 🟡 ; <40 → 🔴
+
+# ── Base-factor point values (B4 — lifted out of strategy.score_stock so the A5 cross-
+# sectional-IC gate can DEMOTE a factor by zeroing its weight, reversibly, WITHOUT editing
+# strategy.py). Defaults == the old inline literals → score_stock output is byte-identical
+# (the existing strategy tests are the golden check). A factor with weight 0 never enters the
+# factors dict (so it neither scores nor pollutes the verdict). OVERLAY-NOT-SCORER unaffected.
+FACTOR_PTS = {
+    "trend": 25,             # 趨勢(MA5>MA20)
+    "momentum": 25,          # 動能(5日上漲)
+    "volume": 20,            # 量能(高於20日均量)
+    "vol_stable": 10,        # 波動穩定
+    "inst_foreign_buy": 15,  # 外資買超 (× liquidity mult)
+    "inst_foreign_sell": -20,  # 外資賣超 (× liquidity mult)
+    "inst_trust_buy": 10,    # 投信買超
+    "rs_strong": 20,         # 相對強弱(強於大盤)
+    "rs_mild": 15,           # 相對強弱(優於大盤)
+    "rs_weak": -10,          # 相對弱勢(弱於大盤)
+    "near_high": 20,         # 接近52週高
+    "near_mid": 10,          # 逼近52週高
+    "far_high": -10,         # 遠離52週高
+    "rsi_overbought": -15,   # RSI過熱(>75)
+    "rsi_oversold": 5,       # RSI回檔買點
+    "obv_bearish": -15,      # 量價背離(出貨警示)
+    "chip_conc_high": 15,    # 籌碼集中(法人吸籌)
+    "chip_conc_mid": 8,      # 籌碼集中(偏多)
+    "chip_disperse": -15,    # 籌碼分散(法人調節)
+    "streak": 20,            # 外資投信連買N日
+}
+
 # ── Market breadth basket (broad, representative — close-only, 3mo) ─────────
 # Computed over a wide sample so 參與度 is meaningful (the core watchlist alone
 # is too AI/semi-biased). Tickers only; no per-name treatment.
