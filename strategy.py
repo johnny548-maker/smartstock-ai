@@ -6,6 +6,7 @@ Factors: trend, momentum, volume, volatility, sector, institutional (liquidity-
 gated), relative-strength-vs-index, 52-week-high proximity, RSI-14 (replaces the
 old crude overheat rule), OBV volume-price divergence.
 """
+import config
 from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN_BARS,
                     RS_WINDOW, RS_STRONG, HIGH_WINDOW, NEAR_HIGH, NEAR_MID, FAR_HIGH,
                     RSI_WINDOW, RSI_OVERBOUGHT, RSI_OVERSOLD,
@@ -13,8 +14,9 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
                     CONC_HIGH, CONC_MID, STREAK_MIN,
                     LEADERSHIP_WEIGHT, LEAD_FIRST_NEW_HIGH, LEAD_POWER_PIVOT,
                     LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH,
-                    LEAD_VDU_THRUST,
-                    BUCKET_SCORING, BUCKET_CAPS, BUCKET_IC_WEIGHTS, FACTOR_PTS)
+                    LEAD_VDU_THRUST, FACTOR_PTS)
+# NOTE: BUCKET_SCORING / BUCKET_CAPS / BUCKET_IC_WEIGHTS are read via `config.` at call-time
+# (NOT from-imported) so the A4a flag flip is live + testable — a bound bool wouldn't update.
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
 from signals import rs_line_new_high
@@ -41,16 +43,33 @@ def _bucket_of(label):
 
 def _bucket_score(factors):
     """Group factors into buckets, clamp each to ±BUCKET_CAPS (so the over-counted
-    trend factor can't dominate), then IC-weight and sum. Returns (score, subtotals)."""
+    trend factor can't dominate), then IC-weight and sum. Returns (score, subtotals).
+    Reads config.BUCKET_CAPS / config.BUCKET_IC_WEIGHTS dynamically so an offline-tuned
+    weight set takes effect without re-import. RE-AGGREGATION ONLY — the input `factors`
+    dict is never mutated (overlay-not-scorer / no-new-signal invariant)."""
     buckets = {}
     for label, pts in factors.items():
         buckets[_bucket_of(label)] = buckets.get(_bucket_of(label), 0) + pts
     capped = {}
     for b, v in buckets.items():
-        cap = BUCKET_CAPS.get(b, 999)
+        cap = config.BUCKET_CAPS.get(b, 999)
         capped[b] = max(-cap, min(cap, v))
-    score = int(round(sum(BUCKET_IC_WEIGHTS.get(b, 1.0) * v for b, v in capped.items())))
+    score = int(round(sum(config.BUCKET_IC_WEIGHTS.get(b, 1.0) * v for b, v in capped.items())))
     return score, capped
+
+
+def ic_gate_factor_pts(per_factor_ic, ic_min, base=None):
+    """A5: derive a FACTOR_PTS override that DEMOTES (zeros) every base factor whose offline
+    cross-sectional rank-IC is below ic_min. Pure — returns a NEW dict; the caller decides
+    whether to apply it to config.FACTOR_PTS (gated, reversible). A factor with no IC entry
+    keeps its weight (untested ≠ demoted). This is the base-factor analogue of the leadership
+    CI gate, using cross-sectional IC because momentum-style base factors fail as daily
+    event signals (the gap-d framework mismatch)."""
+    base = dict(config.FACTOR_PTS if base is None else base)
+    for key, ic in (per_factor_ic or {}).items():
+        if key in base and ic is not None and ic < ic_min:
+            base[key] = 0
+    return base
 
 
 def _rs_excess(df, bench, window):
@@ -186,7 +205,7 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         if LEAD_RS_NEW_HIGH > 0 and bench is not None and rs_line_new_high(df, bench):
             factors["RS線新高領先(回測lift0.99)"] = LEAD_RS_NEW_HIGH
 
-    if BUCKET_SCORING:
+    if config.BUCKET_SCORING:
         score, buckets = _bucket_score(factors)
         return {"score": score, "factors": factors, "buckets": buckets, "insufficient": False}
     return {"score": int(sum(factors.values())), "factors": factors,

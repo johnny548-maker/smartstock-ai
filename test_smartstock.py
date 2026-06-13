@@ -512,6 +512,32 @@ class TestDecollinearization(unittest.TestCase):
         r = strategy.score_stock(df)
         self.assertEqual(r["score"], int(sum(r["factors"].values())))
 
+    def test_bucket_flip_preserves_factors_dict(self):
+        # A4a OVERLAY-NOT-SCORER invariant: flipping config.BUCKET_SCORING re-AGGREGATES the
+        # SAME factors — the factors dict must be byte-identical (only `score` may change).
+        import config
+        df = make_df(list(np.linspace(50, 150, 260)), volumes=[1000] * 260)
+        flat = strategy.score_stock(df)
+        orig = config.BUCKET_SCORING
+        try:
+            config.BUCKET_SCORING = True
+            bucketed = strategy.score_stock(df)
+        finally:
+            config.BUCKET_SCORING = orig
+        self.assertEqual(flat["factors"], bucketed["factors"])     # no new/changed signal
+        self.assertIsNotNone(bucketed["buckets"])                  # bucket subtotals present
+
+    def test_ic_gate_factor_pts_demotes_below_floor(self):
+        # A5: a base factor whose offline IC < ic_min is zeroed; others keep their weight;
+        # an untested factor (no IC entry) is left alone.
+        base = {"trend": 25, "momentum": 25, "rs_strong": 20}
+        out = strategy.ic_gate_factor_pts(
+            {"trend": 0.01, "momentum": 0.20}, ic_min=0.05, base=base)
+        self.assertEqual(out["trend"], 0)        # IC 0.01 < 0.05 → demoted
+        self.assertEqual(out["momentum"], 25)    # IC 0.20 ≥ 0.05 → kept
+        self.assertEqual(out["rs_strong"], 20)   # no IC entry → untouched
+        self.assertEqual(base["trend"], 25)      # pure: input not mutated
+
 
 class TestTheme(unittest.TestCase):
     def test_detect_counts_and_emerging(self):
