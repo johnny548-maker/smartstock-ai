@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v35';
+const CACHE = 'smartstock-v37';   // 動能組合（季度）lens 區塊新增（與 app.js APP_VERSION 同步 bump）
 const SHELL = [
   './',
   'index.html',

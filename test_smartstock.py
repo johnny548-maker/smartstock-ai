@@ -39,6 +39,7 @@ import earnings_guard
 import short_volume
 import macro
 import fx_context
+import web_export
 from datetime import date
 
 
@@ -383,17 +384,89 @@ def ramp(waypoints, seg=8):
 
 
 class TestLeadershipWeighting(unittest.TestCase):
-    def test_stage2_leadership_factor_applied(self):
-        # clean 260-bar uptrend → Trend Template passes → leadership factor present
-        df = make_df(list(np.linspace(50, 150, 260)), volumes=[1000] * 260)
+    def test_a_validated_leadership_factor_can_score(self):
+        # A clean 260-bar uptrend on accumulating volume → a GATE-PASSING leadership
+        # factor (U/D量吸籌 or VDU→Thrust) carries weight. 2026-06-13: Stage2/首次新高/
+        # Power pivot/Pocket pivot/RS線新高 were DEMOTED to 0 (15y 661-univ gate fail),
+        # so we assert on a kept signal, not just any "回測lift" label.
+        # See .decisions/2026-06-13-smartstock-15y-weight-gate.md
+        closes = [100.0]
+        vols = [1000.0]
+        for i in range(260):
+            if i % 2 == 0:
+                closes.append(closes[-1] + 1.0); vols.append(3000.0)   # up day, heavy vol
+            else:
+                closes.append(closes[-1] - 0.4); vols.append(800.0)    # down day, light vol
+        df = make_df(closes, volumes=vols)
         r = strategy.score_stock(df)
-        keys = " ".join(r["factors"].keys())
-        self.assertIn("回測lift", keys)             # a validated leadership factor scored
+        self.assertIn("U/D量吸籌", " ".join(r["factors"].keys()))
 
     def test_no_leadership_for_short_history(self):
         df = make_df(list(np.linspace(50, 60, 30)))  # 30 bars < setup minimums
         r = strategy.score_stock(df)
         self.assertNotIn("回測lift", " ".join(r["factors"].keys()))
+
+
+class TestWeightGate15yAlignment(unittest.TestCase):
+    """2026-06-13 — config LEAD_* aligned to the 15y / 661-universe event-study gate
+    (full Wilson CI + Bonferroni + BH, net-of-cost). Only U/D量比吸籌 (lift 1.55) and
+    VDU→Thrust (lift 1.61) cleared the gate. 首次新高(0.68!)/Power pivot(1.24)/Trend
+    Template(1.00)/Pocket pivot(0.99)/RS線新高(0.99) FAILED → demoted to 0 weight.
+    See .decisions/2026-06-13-smartstock-15y-weight-gate.md"""
+
+    def test_demoted_factors_have_zero_weight_in_config(self):
+        import config as cfg
+        self.assertEqual(cfg.LEAD_FIRST_NEW_HIGH, 0)
+        self.assertEqual(cfg.LEAD_POWER_PIVOT, 0)
+        self.assertEqual(cfg.LEAD_STAGE2, 0)
+        self.assertEqual(cfg.LEAD_POCKET_PIVOT, 0)
+        self.assertEqual(cfg.LEAD_RS_NEW_HIGH, 0)
+
+    def test_passing_factors_carry_positive_weight_in_config(self):
+        import config as cfg
+        self.assertGreater(cfg.LEAD_UD_ACCUM, 0)          # U/D量比吸籌 — gate PASS
+        self.assertGreater(cfg.LEAD_VDU_THRUST, 0)        # VDU→Thrust — gate PASS (new)
+
+    def test_demoted_factor_never_enters_factors_dict(self):
+        # A first-new-high-after-base setup must NOT inject a 0-weight (or any) factor
+        # for the demoted signal — gated by weight>0, the label never appears.
+        closes = [105] * 12 + [90] * 240 + [112]          # old high, long base, breakout
+        df = make_df(closes, volumes=[1000] * len(closes))
+        r = strategy.score_stock(df)
+        keys = " ".join(r["factors"].keys())
+        self.assertNotIn("久盤後首次新高", keys)
+        self.assertNotIn("Power pivot", keys)
+        self.assertNotIn("Stage2", keys)
+        self.assertNotIn("Pocket pivot", keys)
+        self.assertNotIn("RS線新高", keys)
+        # and no factor in the dict may have a 0 value (clutter / verdict-pollution guard)
+        self.assertTrue(all(v != 0 for v in r["factors"].values()),
+                        "a 0-weight factor leaked into the factors dict")
+
+    def test_vdu_thrust_factor_enters_scoring_when_signal_fires(self):
+        # A VDU base resolved by an up-day on a volume surge → the VDU→Thrust leadership
+        # factor must now be scored with LEAD_VDU_THRUST (it was previously unweighted).
+        import config as cfg
+        closes = [100.0] * 251 + [104.0]                  # flat base then up-day (252 bars)
+        vols = [2000.0] * 241 + [600.0] * 10 + [4000.0]   # dried baseline then surge today
+        self.assertEqual(len(closes), len(vols))          # guard: equal-length arrays
+        df = make_df(closes, volumes=vols)
+        self.assertTrue(volume_signals.vdu_thrust(df))    # precondition: signal fires
+        r = strategy.score_stock(df)
+        self.assertIn("VDU", " ".join(r["factors"].keys()))
+        # the weight assigned equals the config knob
+        vdu_pts = [v for k, v in r["factors"].items() if "VDU" in k]
+        self.assertEqual(vdu_pts, [cfg.LEAD_VDU_THRUST])
+
+    def test_zero_weight_factor_not_shown_as_verdict_reason(self):
+        # Even if a demoted label were present with 0 weight, verdict_line must not
+        # surface it as a positive reason (defensive — verdict filters v>0).
+        line = verdict.verdict_line({
+            "久盤後首次新高(回測lift0.68)": 0,     # demoted, 0 weight
+            "U/D量吸籌(回測lift1.55)": 8,          # kept
+        })
+        self.assertIn("U/D量吸籌", line)
+        self.assertNotIn("久盤後首次新高", line)
 
 
 class TestDecollinearization(unittest.TestCase):
@@ -1799,6 +1872,126 @@ class TestMultipleTesting(unittest.TestCase):
             self.assertEqual(g["family_size"], 3)
         dead = next(g for g in gated if g["name"] == "dead")
         self.assertEqual(dead["pvalue"], 1.0)
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# PWA-R7 — 頁面整併：payload 雙份序列化去重 + report 雷達區塊合併
+# ════════════════════════════════════════════════════════════════════════════
+class TestPayloadEarlyBoardDedup(unittest.TestCase):
+    """REQ-R7: early_board 與 opportunity.breakout 不再雙份序列化。
+
+    top-level `early_board` 是唯一序列化副本；build_payload 將 'breakout'
+    從序列化後的 opportunity dict 剝除（同 '_data' 的 strip 慣例）。
+    app.js 的 fallback（d.early_board || d.opportunity.breakout）只為
+    pre-R7 歷史檔保留。"""
+
+    BOARD = [{"stock": "2884.TW", "name": "玉山金", "ready": True,
+              "score": 2, "signals": ["LPS 回測支撐", "RS線平盤翻揚"]}]
+
+    def _payload(self):
+        opp = {"universe": 100, "scanned": 50,
+               "leaders": [{"ticker": "8021.TW", "name": "尖點", "rs_rating": 99,
+                            "signals": ["放量突破"], "light": "green", "price": 562.0}],
+               "breakout": list(self.BOARD)}
+        self._opp_in = opp
+        return web_export.build_payload(
+            date_str="2026-06-12", news={}, indices={}, institutional={},
+            ranked=[], analyses={}, allocation={}, rebalance_diff={},
+            risk="LOW", markdown="", skips=[],
+            opportunity=opp, early_board=list(self.BOARD))
+
+    def test_breakout_stripped_from_serialized_opportunity(self):
+        p = self._payload()
+        self.assertNotIn("breakout", p["opportunity"],
+                         "opportunity.breakout 必須去重 — early_board 才是唯一副本")
+
+    def test_early_board_is_the_single_copy(self):
+        p = self._payload()
+        self.assertEqual(len(p["early_board"]), 1)
+        self.assertEqual(p["early_board"][0]["stock"], "2884.TW")
+        self.assertTrue(p["early_board"][0]["ready"])
+
+    def test_opportunity_other_keys_preserved(self):
+        p = self._payload()
+        self.assertEqual(p["opportunity"]["scanned"], 50)
+        self.assertEqual(p["opportunity"]["universe"], 100)
+        self.assertEqual(len(p["opportunity"]["leaders"]), 1)
+
+    def test_input_opportunity_not_mutated(self):
+        # immutability: the caller's opp dict keeps its breakout key
+        # (report_builder/sheets_sync still read it in-memory)
+        self._payload()
+        self.assertIn("breakout", self._opp_in)
+
+
+class TestReportRadarMerge(unittest.TestCase):
+    """REQ-R7: 三個早期板（正要起漲／機會掃描／早期訊號雷達）在 markdown/email
+    報告合併為單一「早期雷達」區塊：同 ticker 去重為一行多訊號、標註來源、
+    三段誠實揭露警語 VERBATIM 保留。"""
+
+    def _md(self, themes=None):
+        opp = {"scanned": 600,
+               "leaders": [{"ticker": "8021.TW", "name": "尖點", "rs_rating": 99,
+                            "signals": ["放量突破", "Stage2"]},
+                           {"ticker": "2884.TW", "name": "玉山金", "rs_rating": 88,
+                            "signals": ["量縮噴出"]}],
+               "breakout": [{"stock": "2884.TW", "name": "玉山金", "ready": True,
+                             "score": 2, "signals": ["LPS 回測支撐", "RS線平盤翻揚"]}]}
+        sig = {"board": [{"stock": "2884.TW", "name": "玉山金", "count": 2,
+                          "signals": ["U/D量吸籌", "量縮噴出"]}]}
+        return report_builder.build_report(
+            date_str="2026-06-12", news={}, indices={}, institutional={},
+            ranked=[], analyses={}, allocation={}, rebalance_diff={},
+            risk="LOW", opportunity=opp, signals=sig, themes=themes or [])
+
+    def test_single_radar_section_replaces_three(self):
+        md = self._md()
+        self.assertIn("## 🛰️ 早期雷達", md)
+        self.assertNotIn("## 🚀 正要起漲雷達", md)
+        self.assertNotIn("## 🛰️ 機會掃描", md)
+        self.assertNotIn("## 🔎 早期訊號雷達", md)
+
+    def test_dedup_one_row_per_ticker(self):
+        md = self._md()
+        self.assertEqual(md.count("（2884.TW）"), 1,
+                         "同 ticker 多板訊號必須合併為一行")
+
+    def test_merged_row_carries_all_sources(self):
+        md = self._md()
+        row = next(l for l in md.splitlines() if "2884.TW" in l)
+        # signals from all three boards on the one row, source-tagged
+        for token in ("LPS 回測支撐", "量縮噴出", "U/D量吸籌", "拐點", "領導", "訊號"):
+            self.assertIn(token, row)
+        # exact-duplicate signal strings collapse (量縮噴出 from leader+signal boards)
+        self.assertEqual(row.count("量縮噴出"), 1)
+
+    def test_ready_flag_kept(self):
+        md = self._md()
+        row = next(l for l in md.splitlines() if "2884.TW" in l)
+        self.assertIn("✅起漲就緒", row)
+
+    def test_verbatim_disclosures_preserved(self):
+        md = self._md()
+        # 機會掃描 disclosure (VERBATIM)
+        self.assertIn("watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股"
+                      "（含 AAOI/NVTS 類）。informational，非持股", md)
+        # 拐點 disclosure (VERBATIM)
+        self.assertIn("✅=平盤基底+站穩MA50+≥2訊號。"
+                      "informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。", md)
+        # 訊號雷達誠實揭露 (VERBATIM)
+        self.assertIn("誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，"
+                      "但 **~70% 從未到達**；目標價為技術投影非預測", md)
+
+    def test_theme_line_still_surfaces(self):
+        md = self._md(themes=[{"theme": "AI伺服器", "emerging": True}])
+        self.assertIn("🔥 主題湧現：AI伺服器", md)
+
+    def test_empty_boards_render_nothing(self):
+        md = report_builder.build_report(
+            date_str="2026-06-12", news={}, indices={}, institutional={},
+            ranked=[], analyses={}, allocation={}, rebalance_diff={},
+            risk="LOW", opportunity=None, signals=None, themes=[])
+        self.assertNotIn("早期雷達", md)
 
 
 if __name__ == "__main__":

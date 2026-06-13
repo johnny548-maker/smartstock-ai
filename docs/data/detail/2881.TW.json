@@ -1,8 +1,8 @@
 {
  "stock": "2881.TW",
  "name": "富邦金",
- "price": 125.0,
- "change_pct": -0.4,
+ "price": 122.0,
+ "change_pct": -2.79,
  "ohlc": [
   {
    "time": "2026-03-18",
@@ -480,13 +480,13 @@
    "time": "2026-06-12",
    "o": 127.0,
    "h": 129.0,
-   "l": 124.0,
-   "c": 125.0,
-   "v": 8246215
+   "l": 120.5,
+   "c": 122.0,
+   "v": 42253395
   }
  ],
  "sr": {
-  "price": 125.0,
+  "price": 122.0,
   "resistance": [],
   "support": [
    95.3,
@@ -554,7 +554,7 @@
   125.0,
   122.5,
   125.5,
-  125.0
+  122.0
  ],
  "spark_start": "2026-03-18",
  "spark_end": "2026-06-12",
@@ -563,26 +563,63 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 17.3 / 殖利率 3.39% / PB 1.92",
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 10,869,979 股",
    "value": {
-    "pe": 17.26,
-    "yield": 3.39,
-    "pb": 1.92
+    "foreign": -13606187,
+    "trust": 2826981,
+    "dealer": -90773,
+    "total": -10869979
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-13",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +11.7%",
+   "value": {
+    "fin_net": 894,
+    "fin_pct": 0.11747700394218134
+   },
+   "severity": "warn",
+   "as_of": "2026-06-13",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -33
+   },
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 16.8 / 殖利率 3.48% / PB 1.87",
+   "value": {
+    "pe": 16.78,
+    "yield": 3.48,
+    "pb": 1.87
+   },
+   "severity": "info",
+   "as_of": "2026-06-12",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "大戶集中度",
-   "value": 86.08,
+   "label": "大戶吸籌",
+   "value": 86.41,
    "severity": "info",
-   "as_of": "20260605",
-   "note": "大戶持股%=86.08"
+   "as_of": "20260612",
+   "note": "大戶持股%=86.41；WoW+0.33；股東人數-4211"
   }
  ]
 }

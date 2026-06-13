@@ -1,8 +1,8 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 4140.0,
- "change_pct": -0.6,
+ "price": 4020.0,
+ "change_pct": -3.48,
  "ohlc": [
   {
    "time": "2026-03-18",
@@ -480,13 +480,13 @@
    "time": "2026-06-12",
    "o": 4300.0,
    "h": 4355.0,
-   "l": 4055.0,
-   "c": 4140.0,
-   "v": 1765321
+   "l": 4020.0,
+   "c": 4020.0,
+   "v": 3219502
   }
  ],
  "sr": {
-  "price": 4140.0,
+  "price": 4020.0,
   "resistance": [
    4225.0
   ],
@@ -556,7 +556,7 @@
   3885.0,
   4130.0,
   4165.0,
-  4140.0
+  4020.0
  ],
  "spark_start": "2026-03-18",
  "spark_end": "2026-06-12",
@@ -567,69 +567,71 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 4140.0,
-  "stop": 3850.2,
-  "target": 4864.5,
-  "atr_bracket": 4864.5,
+  "entry": 4020.0,
+  "stop": 3738.6,
+  "target": 4723.5,
+  "atr_bracket": 4723.5,
   "measured_move": 5030.0,
   "target_band": [
-   4864.5,
+   4723.5,
    5030.0
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.6,
-  "swing_stop": 3242.5,
-  "chandelier": 3527.27,
+  "atr_pct": 6.9,
+  "swing_stop": 3241.75,
+  "chandelier": 3522.5,
   "fib_targets": []
  },
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +14.0%",
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 371,776 股",
    "value": {
-    "fin_net": 234,
-    "fin_pct": 0.13986849970113568
+    "foreign": -678490,
+    "trust": 219852,
+    "dealer": 86862,
+    "total": -371776
    },
-   "severity": "warn",
-   "as_of": "2026-06-12",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_margin",
    "kind": "chip",
    "label": "融券餘額下降（回補）",
    "value": {
-    "short_net": -1
+    "short_net": -4
    },
    "severity": "info",
-   "as_of": "2026-06-12",
+   "as_of": "2026-06-13",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 26.0 / 殖利率 1.92% / PB 2.95",
+   "label": "PE 25.1 / 殖利率 1.99% / PB 2.85",
    "value": {
-    "pe": 26.0,
-    "yield": 1.92,
-    "pb": 2.95
+    "pe": 25.09,
+    "yield": 1.99,
+    "pb": 2.85
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-12",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "大戶集中度",
-   "value": 56.47,
-   "severity": "info",
-   "as_of": "20260605",
-   "note": "大戶持股%=56.47"
+   "label": "散戶化/出貨",
+   "value": 56.16,
+   "severity": "warn",
+   "as_of": "20260612",
+   "note": "大戶持股%=56.16；WoW-0.31；股東人數+518"
   }
  ]
 }

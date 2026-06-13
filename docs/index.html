@@ -40,6 +40,10 @@
     <button id="themeBtn" class="hud-theme" aria-label="切換深色／淺色主題">&#9681;</button>
   </header>
 
+  <!-- R7 頁頂 staleness banner — health.overall != ok（degraded 黃 / stale 紅）。
+       premortem 最重要單一防線：資料劣化必須蓋在所有內容上方。點擊看來源清單。 -->
+  <button id="healthBanner" class="health-banner" hidden aria-live="polite"></button>
+
   <!-- page-dots pager (●○○○) -->
   <nav id="pager" class="pager" aria-label="頁面指示" aria-hidden="true"></nav>
 

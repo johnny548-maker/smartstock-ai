@@ -1,8 +1,8 @@
 {
  "stock": "2454.TW",
  "name": "聯發科",
- "price": 4185.0,
- "change_pct": 2.45,
+ "price": 4180.0,
+ "change_pct": 2.33,
  "ohlc": [
   {
    "time": "2026-03-18",
@@ -481,12 +481,12 @@
    "o": 4410.0,
    "h": 4415.0,
    "l": 4165.0,
-   "c": 4185.0,
-   "v": 3644602
+   "c": 4180.0,
+   "v": 7806177
   }
  ],
  "sr": {
-  "price": 4185.0,
+  "price": 4180.0,
   "resistance": [
    4970.0
   ],
@@ -556,7 +556,7 @@
   4475.0,
   4155.0,
   4085.0,
-  4185.0
+  4180.0
  ],
  "spark_start": "2026-03-18",
  "spark_end": "2026-06-12",
@@ -570,37 +570,51 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 23,926 股",
+   "value": {
+    "foreign": -232058,
+    "trust": 249245,
+    "dealer": 6739,
+    "total": 23926
+   },
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
    "source": "twse_margin",
    "kind": "chip",
    "label": "融券餘額下降（回補）",
    "value": {
-    "short_net": -28
+    "short_net": -6
    },
    "severity": "info",
-   "as_of": "2026-06-12",
+   "as_of": "2026-06-13",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 65.1 / 殖利率 1.31% / PB 16.71",
+   "label": "PE 66.6 / 殖利率 1.28% / PB 17.09",
    "value": {
-    "pe": 65.1,
-    "yield": 1.31,
-    "pb": 16.71
+    "pe": 66.61,
+    "yield": 1.28,
+    "pb": 17.09
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-12",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "大戶集中度",
-   "value": 75.98,
-   "severity": "info",
-   "as_of": "20260605",
-   "note": "大戶持股%=75.98"
+   "label": "散戶化/出貨",
+   "value": 75.41,
+   "severity": "warn",
+   "as_of": "20260612",
+   "note": "大戶持股%=75.41；WoW-0.57；股東人數+48962"
   }
  ]
 }

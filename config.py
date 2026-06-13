@@ -145,21 +145,33 @@ CONC_MID = 0.02
 STREAK_MIN = 3                  # ≥3 consecutive sync-buy days → bonus
 
 # ── Leadership patterns (backtest-validated weights) ────────────────────────
-# Points assigned ONLY to signals whose Wilson-CI lower bound clears the base rate
-# over a HARDENED 15-year walk-forward (next-open fill + 15bps slippage, regime-
-# split, base rate 6.99%). The 5-year numbers were regime-illusory: VCP∧Stage2 read
-# lift 2.0 on 5y but 1.27 with CI-lower 6.31% < base over 15y → REJECTED. VCP-alone
-# (0.89) and VDU-thrust (CI fail) also rejected. Re-run run_backtest.py and re-check
-# the CI>base column before changing any of these.
+# Points assigned ONLY to signals whose Wilson-CI lower bound clears the base rate.
+#
+# 2026-06-13 RE-GATE on a 661-name universe (0050 + 中型100 + S&P500, sanitised) over
+# 15y with the FULL multiple-testing family (Wilson CI + Bonferroni + BH), net-of-cost
+# (next-open + 15bps slip + 30bps fee). The earlier weights were fitted on an 82-name
+# universe and OVERFIT — the 661-universe re-run collapsed all but two signals:
+#   KEEP:  U/D量比吸籌  lift 1.55 (was 1.39)  — PASS CI/Bonf/BH, n≈47653
+#          VDU→Thrust   lift 1.61 (was CI-fail) — PASS, n≈1466 (newly earns weight)
+#   KILL:  首次新高     lift 0.68 (was 2.44!) — WORSE THAN RANDOM, was the highest weight
+#          Power pivot  lift 1.24 (was 2.04)  — FAIL (p≈0.05)
+#          Trend Template lift 1.00 (was 1.36) — FAIL
+#          Pocket pivot lift 0.99 (was 1.35)  — FAIL
+#          RS線新高(純) lift 0.99 (was 1.23)  — FAIL
+# The smoking gun: 首次新高 n=47→lift 2.44 on 82-univ, n=696→lift 0.68 on 661-univ — a
+# textbook small-sample mirage that held the LARGEST weight (15). Demoted signals stay
+# as informational overlay tells, NOT score inputs. Full table + alternatives:
+# .decisions/2026-06-13-smartstock-15y-weight-gate.md
+# Re-run run_backtest.py on the full universe and re-check the CI>base + Bonf + BH
+# columns before changing any of these.
 LEADERSHIP_WEIGHT = True
-LEAD_FIRST_NEW_HIGH = 15       # 久盤後首次新高 — 15y lift 2.44, CI✓ (rare, n=47)
-LEAD_POWER_PIVOT = 18          # 放量突破事件 — 15y lift 2.04, CI✓ (n=112)
-LEAD_STAGE2 = 12               # Trend Template — 15y lift 1.36, CI✓ (broad, recall 35%)
-LEAD_UD_ACCUM = 8              # U/D 量比吸籌 — 15y lift 1.39, CI✓ (keyless, works on US)
-LEAD_POCKET_PIVOT = 8          # pocket pivot — 15y lift 1.35, CI✓
-LEAD_RS_NEW_HIGH = 5           # RS-line new high (pure) — 15y lift 1.23, CI✓ (modest)
-# REJECTED (failed CI-lower>base over 15y, do NOT weight): VCP-alone (0.89),
-# VCP∧Stage2 (1.27/CI6.31), VDU-thrust (1.46/CI6.19), PowerPivot∧TT (1.82/CI6.58,n=63)
+LEAD_UD_ACCUM = 8              # U/D 量比吸籌 — 15y 661-univ lift 1.55 PASS gate (keyless, works on US)
+LEAD_VDU_THRUST = 10          # VDU→Thrust 量縮噴出 — 15y 661-univ lift 1.61 PASS gate → promoted 2026-06-13 (was CI-fail on 82-univ)
+LEAD_FIRST_NEW_HIGH = 0       # 15y 661-univ lift 0.68 FAIL gate (was 82-univ overfit) → demoted 2026-06-13
+LEAD_POWER_PIVOT = 0          # 15y 661-univ lift 1.24 FAIL gate (was 82-univ overfit) → demoted 2026-06-13
+LEAD_STAGE2 = 0               # 15y 661-univ lift 1.00 FAIL gate (was 82-univ overfit) → demoted 2026-06-13
+LEAD_POCKET_PIVOT = 0         # 15y 661-univ lift 0.99 FAIL gate (was 82-univ overfit) → demoted 2026-06-13
+LEAD_RS_NEW_HIGH = 0          # 15y 661-univ lift 0.99 FAIL gate (was 82-univ overfit) → demoted 2026-06-13
 
 # ATR price levels (stop / target)
 ATR_WINDOW = 14

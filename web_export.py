@@ -97,7 +97,9 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   revenue=None, signals=None, themes=None, opportunity=None, pick_cards=None,
                   regime=None, concentration=None, shortvol=None, macro=None, fx=None,
                   watchlist=None, early_board=None, overlays_map=None, source_coverage=None,
-                  environment=None, my_positions=None, attribution=None):
+                  environment=None, my_positions=None, attribution=None,
+                  strategy_health=None, shadow=None, health=None,
+                  momentum_portfolio=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -141,9 +143,15 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # Strip the internal '_data' key (raw OHLCV DataFrames threaded from
         # universe.get_opportunities for detail-file generation) so json.dump never
         # sees a DataFrame and raises TypeError: Object of type DataFrame is not
-        # JSON serializable.  All other opportunity keys are preserved as-is.
+        # JSON serializable.
+        # R7 DEDUP: also strip 'breakout' — the SAME list is already serialized once
+        # as the top-level 'early_board' key (main.py 7d promote). Keeping both
+        # doubled every payload by ~15 OHLC-heavy entries. Pure serialization-side
+        # strip: the caller's opportunity dict is NEVER mutated (report_builder /
+        # sheets_sync still read opp['breakout'] in-memory). app.js falls back to
+        # opportunity.breakout only for pre-R7 history files.
         "opportunity": (
-            {k: v for k, v in opportunity.items() if k != "_data"}
+            {k: v for k, v in opportunity.items() if k not in ("_data", "breakout")}
             if isinstance(opportunity, dict) else opportunity
         ),
         "regime": regime,
@@ -172,7 +180,21 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # rode + a hypothetical NAV replay. INFORMATIONAL self-evaluation, NEVER scored.
         # Backward-compatible: defaults to {} (per spec) so older callers are unaffected.
         "attribution": attribution or {},
+        # Premortem P-M1/2/3 self-evaluation blocks (strategy_health / shadow /
+        # health). INFORMATIONAL overlays for the PWA banner — NEVER summed into
+        # scoring/ranking. Backward-compatible: default {} so older callers and
+        # payloads are unaffected. main.py may also set these keys post-build
+        # (pick_performance idiom) before the re-export.
+        "strategy_health": strategy_health or {},
+        "shadow": shadow or {},
+        "health": health or {},
         "early_board": early_board or [],  # promoted early/breakout 起漲 board (REQ1)
+        # 動能組合（季度）lens (momentum_portfolio.build_lens shape) — quarterly top-20
+        # 12-1 momentum PORTFOLIO view. SEPARATE FRAMEWORK from the daily picks:
+        # momentum is a portfolio-construction factor (proven by backtest_portfolio.py),
+        # NEVER summed into strategy.score_stock / rank_stocks (golden-additive invariant).
+        # Backward-compatible: defaults to {} so older callers/payloads are unaffected.
+        "momentum_portfolio": momentum_portfolio or {},
         "picks": picks,
         "search": search,
         "allocation": allocation,

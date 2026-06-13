@@ -9,6 +9,12 @@
    ============================================================================ */
 'use strict';
 
+/* ---------- version stamp (R7) ----------
+   Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
+   on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
+const APP_VERSION = 'v37';
+const APP_BUILD = '2026-06-13';
+
 /* ---------- tiny utils ---------- */
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? '' : s)
@@ -109,6 +115,71 @@ function chgHtml(c, big) {
   return `<b class="${cls} num${big ? '' : ' small'}"><span class="arrow">${arrow}</span> ${Math.abs(c)}%</b>`;
 }
 function pxNum(v) { return v == null ? '—' : Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 }); }
+// already-in-% value → '+1.2%' (thousand-separated, signed). null-safe.
+function fmtPctVal(v, dp) {
+  if (v == null || !isFinite(+v)) return '—';
+  const n = +v;
+  return (n > 0 ? '+' : '') + n.toLocaleString(undefined, {
+    minimumFractionDigits: dp == null ? 1 : dp, maximumFractionDigits: dp == null ? 1 : dp,
+  }) + '%';
+}
+
+/* ---------- R7: 三層分級 + 理由/警示 chips + 分數條 ----------
+   Tiering reads ONLY the payload's existing score+light（不改打分邏輯）:
+   🟢 買入候選 score≥90 / 🟡 觀察 40–89 / 🔴 避開 <40. */
+const TIERS = [
+  { id: 'buy', min: 90, dot: 'ld-green', cls: 'tier-buy', label: '🟢 買入候選', sub: '分數 ≥ 90' },
+  { id: 'watch', min: 40, dot: 'ld-amber', cls: 'tier-watch', label: '🟡 觀察', sub: '40–89' },
+  { id: 'avoid', min: -Infinity, dot: 'ld-red', cls: 'tier-avoid', label: '🔴 避開', sub: '< 40' },
+];
+function tierOf(score) {
+  const s = score == null ? -1 : +score;
+  return TIERS.find((t) => s >= t.min) || TIERS[TIERS.length - 1];
+}
+// '趨勢(MA5>MA20)' → '趨勢'; 'Stage2上升趨勢(回測lift1.36)' → 'Stage2上升趨勢'
+function factorShort(k) { const i = String(k).indexOf('('); return i > 0 ? String(k).slice(0, i) : String(k); }
+// top-N positive factor chips（理由標籤，來自 factors 正貢獻）
+function reasonChips(p, n) {
+  const f = p && p.factors;
+  if (!f) return '';
+  return Object.entries(f).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1])
+    .slice(0, n || 2)
+    .map(([k]) => `<span class="rchip">${esc(factorShort(k))}</span>`).join('');
+}
+// {full-or-bare symbol} set of today's high-correlation cluster members
+function clusterSet(d) {
+  const out = new Set();
+  (((d || {}).concentration || {}).clusters || []).forEach((c) => {
+    (c.tickers || []).forEach((t) => { out.add(t); out.add(String(t).replace(/\.(TW|TWO)$/, '')); });
+  });
+  return out;
+}
+// warning chips：財報黑窗 / 高相關集中 / 注意股·處置股 / 外資賣超（法人）
+function warnChipsFor(p, clusters) {
+  const out = [];
+  const e = p && p.earnings;
+  if (e && e.in_blackout) out.push(`<span class="wchip">財報${e.days_until === 0 ? '今日' : e.days_until + '天'}</span>`);
+  if (clusters && (clusters.has(p.stock) || clusters.has(String(p.stock).replace(/\.(TW|TWO)$/, '')))) {
+    out.push('<span class="wchip">高相關</span>');
+  }
+  const risk = _findOverlay(p, (x) => x.kind === 'risk' && (x.source === 'twse_notice' || x.source === 'twse_punish'));
+  if (risk) out.push(`<span class="wchip w-risk">${risk.source === 'twse_punish' ? '處置股' : '注意股'}</span>`);
+  const f = (p && p.factors) || {};
+  const foreignSell = Object.entries(f).find(([k, v]) => k.indexOf('外資賣超') >= 0 && v < 0);
+  if (foreignSell) out.push('<span class="wchip">外資賣超</span>');
+  return out.join('');
+}
+// 分數條：當日相對刻度（÷ 當日最高分），顏色跟 tier
+function scoreBarHtml(score, dayMax, tier) {
+  if (score == null) return '';
+  const pct = Math.max(4, Math.min(100, (+score / (dayMax || 100)) * 100));
+  return `<div class="sbar" role="img" aria-label="分數 ${esc(score)}"><i class="${tier.cls}" style="width:${pct.toFixed(1)}%"></i></div>`;
+}
+function dayMaxScore(d) {
+  let m = 0;
+  ((d && d.picks) || []).forEach((p) => { if (p.score != null && +p.score > m) m = +p.score; });
+  return m || 100;
+}
 
 /* ---------- sparkline / price chart / K-line (preserved) ---------- */
 function sparkline(arr, w, h) {
@@ -341,17 +412,82 @@ function coverPage(d) {
       <div class="cv-lights reveal">${lights.join('')}</div>
       ${topHtml}
       <div class="cv-search reveal">${searchBox(d)}</div>
-      <div class="cv-hint reveal"><span class="swipe-ico">→</span> 向左滑看今日選股</div>
+      <div class="cv-hint reveal"><span class="swipe-ico">→</span> 向左滑看分級總覽與今日選股</div>
+      <div class="cv-ver reveal num">SmartStock ${esc(APP_VERSION)} · build ${esc(APP_BUILD)}</div>
     </div>
   </section>`;
 }
 
-// one pick page
-function pickPage(p, rank, total, date) {
+/* ---------- R7 頁頂 staleness banner（health.overall != ok）----------
+   premortem 最重要單一防線：資料劣化/過期時必須蓋在所有頁面上方。
+   degraded=黃、stale=紅；顯示報告產生時齡。點擊 → 來源健康清單 sheet。 */
+function healthAge(h) {
+  try {
+    const t = new Date(h.generated_at).getTime();
+    if (!isFinite(t)) return null;
+    const hrs = (Date.now() - t) / 36e5;
+    if (hrs < 1) return Math.max(0, Math.round(hrs * 60)) + ' 分鐘前';
+    if (hrs < 48) return hrs.toFixed(1) + ' 小時前';
+    return (hrs / 24).toFixed(1) + ' 天前';
+  } catch (e) { return null; }
+}
+function renderHealthBanner(d) {
+  const el = $('healthBanner');
+  if (!el) return;
+  const h = d && d.health;
+  const overall = h && h.overall;
+  if (!overall || overall === 'ok') {
+    el.hidden = true; el.innerHTML = '';
+    document.documentElement.classList.remove('hb-on');   // restore deck top padding
+    return;
+  }
+  document.documentElement.classList.add('hb-on');        // push deck content below the fixed banner
+  const stale = overall === 'stale';
+  const age = healthAge(h);
+  const nBad = (h.sources || []).filter((s) => s.status === 'degraded' || s.status === 'stale').length;
+  el.className = 'health-banner ' + (stale ? 'hb-stale' : 'hb-degraded');
+  el.innerHTML = `⚠️ 資料健康：${stale ? '已過期（stale）' : '部分延遲（degraded）'}`
+    + (age ? ` · 報告產生於 ${esc(age)}` : '')
+    + (nBad ? ` · ${nBad} 項異常` : '')
+    + ' <u>詳情</u>';
+  el.hidden = false;
+}
+const HEALTH_ST = {
+  ok: { dot: 'ld-green', txt: '正常' }, degraded: { dot: 'ld-amber', txt: '延遲' },
+  stale: { dot: 'ld-red', txt: '過期' }, skip: { dot: 'ld-gray', txt: '略過' },
+};
+function healthSheetBody(d) {
+  const h = (d || {}).health;
+  if (!h || !h.overall) return '<div class="empty">本日 payload 尚無 health 區塊（舊版報告）。</div>';
+  const ov = HEALTH_ST[h.overall] || HEALTH_ST.skip;
+  const age = healthAge(h);
+  const rows = (h.sources || []).map((s) => {
+    const st = HEALTH_ST[s.status] || HEALTH_ST.skip;
+    return `<li><div class="li-static"><span class="lightdot ${st.dot}"></span>
+      <div class="li-main"><div class="li-name">${esc(s.name)} <span class="li-badge">${esc(st.txt)}</span></div>
+      ${s.note ? `<div class="li-sub">${esc(s.note)}</div>` : ''}</div></div></li>`;
+  }).join('');
+  return `<div class="sh-sec">
+    <div class="env-row"><span class="lightdot ${ov.dot}"></span><span class="e-lab">整體狀態 ${esc(ov.txt)}${age ? `<div class="e-sub">報告產生於 ${esc(age)}</div>` : ''}</span></div>
+    ${h.note ? `<div class="note">${esc(h.note)}</div>` : ''}
+    <ul class="list">${rows}</ul>
+    <p class="tiny">資料健康為 fail-open 自我檢查（informational）：degraded/stale 表示部分來源延遲或整份報告過期，訊號僅供參考、勿據以即時操作。</p>
+  </div>`;
+}
+
+// one pick page — verdict 結構化（R7）：燈號 + 分數條 + 理由/警示 chips；
+// 文字長句折進「詳情」摺疊（短句保留為小字補充，不丟任何資訊）。
+function pickPage(p, rank, total, date, dayMax, clusters) {
   const medal = String(rank + 1);  // plain "1 / 12" — circled glyphs fall out of the numeral font and read as noise
   const lv = p.levels || {};
   const tgt = resolveTarget(lv);
   const verdict = p.verdict || (p.signals ? p.signals.join('、') : '');
+  const tier = tierOf(p.score);
+  const chips = reasonChips(p, 2) + warnChipsFor(p, clusters);
+  const vTxt = !verdict ? ''
+    : (verdict.length > 24
+      ? `<details class="fold reveal"><summary>詳情</summary><div class="fold-body">${esc(verdict)}</div></details>`
+      : `<div class="pk-vtxt reveal">${esc(verdict)}</div>`);
   return `<section class="page" data-page="pick" data-code="${esc(p.stock)}" aria-roledescription="slide" aria-label="${esc(p.name || p.stock)}">
     <div class="pk">
       <div class="pk-top reveal">
@@ -367,7 +503,9 @@ function pickPage(p, rank, total, date) {
         <span class="pk-px">${pxNum(p.price)}</span>
         <div class="pk-chg">${chgHtml(p.change_pct, true)}<span class="close-lbl">收盤</span></div>
       </div>
-      <div class="pk-verdict reveal">${lightDot(p.light)}<span>${esc(verdict)}</span></div>
+      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier)}<span class="pk-vscore num">${esc(p.score != null ? p.score : '—')}</span></div>
+      ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
+      ${vTxt}
       <div class="pk-levels reveal">
         <div class="pk-lv"><i>進場</i><b>${pxNum(lv.entry)}</b></div>
         <div class="pk-lv is-stop"><i>停損</i><b>${pxNum(lv.stop)}</b>${lv.stop_pct != null ? `<span class="sub">${lv.stop_pct}%</span>` : ''}</div>
@@ -379,12 +517,53 @@ function pickPage(p, rank, total, date) {
   </section>`;
 }
 
-let PAGE_CODES = [];   // index → code (or 'cover'); for pager + keyboard
+/* ---------- R7 統一建議頁：三層分級清單（deck 主卡，cover 之後第一頁） ----------
+   直接用 payload picks 既有 score+light 分級（打分邏輯不變、頁面契約不變）。
+   每檔一行卡：燈號｜代號名稱｜分數條｜前2理由 chip｜警示 chip。點列 → 詳情 sheet。 */
+function tiersPage(d) {
+  const picks = d.picks || [];
+  const dayMax = dayMaxScore(d);
+  const clusters = clusterSet(d);
+  const groups = TIERS.map((t) => ({ t, rows: [] }));
+  picks.forEach((p) => {
+    const t = tierOf(p.score);
+    groups.find((g) => g.t.id === t.id).rows.push(p);
+  });
+  const rowHtml = (p) => {
+    const t = tierOf(p.score);
+    return `<button class="trow press" data-detail="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
+      <div class="tr-l">
+        <div class="tr-name">${lightDot(p.light)} ${esc(p.name || p.stock)} <span class="tk num">${esc(p.stock)}</span>${warnChipsFor(p, clusters)}</div>
+        <div class="tr-chips">${reasonChips(p, 2)}</div>
+        ${scoreBarHtml(p.score, dayMax, t)}
+      </div>
+      <div class="tr-r"><b class="num">${esc(p.score != null ? p.score : '—')}</b>${p.change_pct != null ? `<span class="num small ${p.change_pct >= 0 ? 'up' : 'down'}">${fmtPctVal(p.change_pct, 2)}</span>` : ''}</div>
+    </button>`;
+  };
+  const secs = groups.filter((g) => g.rows.length).map((g) =>
+    `<div class="tier-h"><span>${esc(g.t.label)}</span><span class="tier-sub num">${esc(g.t.sub)} · ${g.rows.length} 檔</span></div>`
+    + g.rows.map(rowHtml).join('')).join('');
+  return `<section class="page" data-page="tiers" aria-roledescription="slide" aria-label="今日建議總覽">
+    <div class="tiers">
+      <div class="reveal">
+        <div class="cv-kicker">今日建議</div>
+        <div class="tiers-title">三層分級 <span class="num tiny">（依當日量化分數）</span></div>
+      </div>
+      <div class="tier-list reveal">${secs || '<div class="empty">今日尚無選股。</div>'}</div>
+      <p class="tiny" style="margin-top:10px">分級僅依當日量化分數與燈號（🟢≥90／🟡40–89／🔴<40），打分邏輯未變；警示 chip 為資訊性 overlay，不計入評分。僅供決策輔助，非買賣建議。</p>
+    </div>
+  </section>`;
+}
+
+let PAGE_CODES = [];   // index → code (or 'cover'/'tiers'); for pager + keyboard
 function buildDeck(d) {
   PAGE_CODES = ['cover'];
   const picks = d.picks || [];
+  const dayMax = dayMaxScore(d);
+  const clusters = clusterSet(d);
   let html = coverPage(d);
-  picks.forEach((p, i) => { html += pickPage(p, i, picks.length, d.date); PAGE_CODES.push(p.stock); });
+  if (picks.length) { html += tiersPage(d); PAGE_CODES.push('tiers'); }
+  picks.forEach((p, i) => { html += pickPage(p, i, picks.length, d.date, dayMax, clusters); PAGE_CODES.push(p.stock); });
   if (!picks.length) {
     html += `<section class="page" data-page="empty"><div class="empty reveal">今日尚無選股。<br><span class="tiny">雲端排程跑過後即會出現。</span></div></section>`;
     PAGE_CODES.push('empty');
@@ -537,7 +716,7 @@ function bindSheetDrag() {
 function findCard(d, code) {
   return (d.picks || []).find((x) => x.stock === code)
     || ((d.opportunity || {}).leaders || []).find((x) => x.ticker === code)
-    || (d.early_board || []).find((x) => x.stock === code)
+    || earlyBoardOf(d).find((x) => x.stock === code)
     || (d._lazy && d._lazy.stock === code ? d._lazy : null);
 }
 
@@ -783,103 +962,144 @@ async function openStockSheet(code) {
 }
 
 /* ============================================================================
-   MARKET SHEET — regime + macro + breadth + FX + 當沖熱度 + env gauges
+   MARKET SHEET — R7 可讀性改版：大段文字 → 指標卡網格（名稱/值/紅綠箭頭/一句話）。
+   regime + env gauges + macro + FX + breadth + indices + 集中度 + movers。
+   既有誠實揭露 tiny 文字 VERBATIM 保留（每節下方一行）。
    ============================================================================ */
 function pct1(v) { return v == null ? null : (v >= 0 ? '+' : '') + (v * 100).toFixed(1) + '%'; }
+// 指標卡：名稱／值／紅綠箭頭／一句話。dir>0 綠▲、dir<0 紅▼、null 無箭頭。
+function mcard(label, value, opts) {
+  opts = opts || {};
+  const dirCls = opts.dir == null ? '' : (opts.dir > 0 ? 'up' : (opts.dir < 0 ? 'down' : ''));
+  const arrow = opts.dir == null || opts.dir === 0 ? '' : `<span class="mc-a">${opts.dir > 0 ? '▲' : '▼'}</span>`;
+  const dot = opts.dot ? `<span class="lightdot ${opts.dot}"></span>` : '';
+  return `<div class="mcard">
+    <div class="mc-k">${label}</div>
+    <div class="mc-v ${opts.txt ? '' : 'num'} ${dirCls}">${dot}${value}${arrow}</div>
+    ${opts.sub ? `<div class="mc-s">${opts.sub}</div>` : ''}
+  </div>`;
+}
+const mgrid = (cards) => (cards.length ? `<div class="mgrid">${cards.join('')}</div>` : '');
+
 function marketSheetBody(d) {
   let html = '';
 
-  // 技術趨勢 regime
+  // 技術趨勢 regime → 指標卡
   const r = d.regime;
   if (r) {
     const reg = REGIME[r.label] || { dot: 'ld-gray', txt: r.label };
-    const det = Object.entries(r.detail || {}).map(([k, v]) =>
-      `${k === 'twii' ? '台股' : (k === 'sp500' ? '美股' : k)} ${v.trend}/DD${v.dd_count}`).join('、');
-    html += `<div class="sh-sec"><div class="sh-h">技術趨勢市場環境</div>
-      <div class="env-row"><span class="lightdot ${reg.dot}"></span><span class="e-lab">${esc(reg.txt)}<div class="e-sub">${esc(det)}</div></span><span class="e-val num">曝險 ${esc(r.exposure)}%</span></div>
+    const cards = [
+      mcard('技術趨勢', esc(reg.txt), { dot: reg.dot, txt: true, sub: '台股/美股趨勢+回檔合成' }),
+      mcard('建議曝險', esc(r.exposure) + '%', { sub: '環境轉弱→降部位' }),
+    ];
+    Object.entries(r.detail || {}).forEach(([k, v]) => {
+      const nm = k === 'twii' ? '台股' : (k === 'sp500' ? '美股' : k);
+      const tt = String(v.trend).toLowerCase();   // neutral → 無箭頭（勿誤標紅▼）
+      const dir = tt.indexOf('up') >= 0 ? 1 : (tt.indexOf('down') >= 0 ? -1 : 0);
+      cards.push(mcard(nm + '趨勢', esc(v.trend), { txt: true, dir, sub: '回檔次數 DD' + esc(v.dd_count) }));
+    });
+    html += `<div class="sh-sec"><div class="sh-h">技術趨勢市場環境</div>${mgrid(cards)}
       <p class="tiny">由台股/美股大盤趨勢方向與回檔(drawdown)計算的技術面狀態，決定建議曝險。~75% 突破在空頭失敗 → 環境轉弱降部位、暫停新突破單。</p></div>`;
   }
 
-  // 期貨籌碼 environment gauges
+  // 期貨籌碼 environment gauges → 指標卡
   const env = d.environment || {};
   const ereg = env.regime || {}, ind = env.industry || {}, mac = env.macro || {};
   const hint = ereg.regime_hint || 'neutral';
   const eh = ENV_HINT[hint] || { dot: 'ld-gray', txt: hint };
-  const chips = [];
-  const chip = (k, v) => { if (v == null || v === '') return; chips.push(`<span class="chip">${esc(k)} <b>${esc(v)}</b></span>`); };
-  if (ereg.foreign_tx_net != null) chip('外資台指期淨', (ereg.foreign_tx_net > 0 ? '+' : '') + ereg.foreign_tx_net + '口');
-  if (ereg.put_call_ratio != null) chip('Put/Call', ereg.put_call_ratio);
+  const ec = [];
+  ec.push(mcard('市場氛圍', esc(eh.txt), { dot: eh.dot, txt: true, sub: '期貨籌碼合成' }));
+  if (ereg.foreign_tx_net != null) ec.push(mcard('外資台指期淨', (ereg.foreign_tx_net > 0 ? '+' : '') + Number(ereg.foreign_tx_net).toLocaleString() + ' 口', { dir: ereg.foreign_tx_net > 0 ? 1 : (ereg.foreign_tx_net < 0 ? -1 : 0), sub: '未平倉淨口數' }));
+  if (ereg.put_call_ratio != null) ec.push(mcard('Put/Call', esc(ereg.put_call_ratio), { sub: '>100 避險偏重' }));
   const bc = ind.business_cycle;
-  if (bc && bc.light) chip('景氣對策信號', bc.light + (bc.score != null ? '（' + bc.score + '）' : ''));
-  if (ind.export_orders_yoy != null) chip('外銷訂單YoY', pct1(ind.export_orders_yoy));
-  if (ind.electronics_export_yoy != null) chip('電子訂單YoY', pct1(ind.electronics_export_yoy));
-  if (mac.cpi_yoy != null) chip('美CPI YoY', mac.cpi_yoy + '%');
-  if (mac.usd_twd != null) chip('USD/TWD', mac.usd_twd);
+  if (bc && bc.light) ec.push(mcard('景氣對策信號', esc(bc.light) + (bc.score != null ? ' ' + esc(bc.score) : ''), { txt: true, sub: '國發會綜合判斷' }));
+  if (ind.export_orders_yoy != null) ec.push(mcard('外銷訂單YoY', pct1(ind.export_orders_yoy), { dir: ind.export_orders_yoy > 0 ? 1 : -1, sub: '領先製造業景氣' }));
+  if (ind.electronics_export_yoy != null) ec.push(mcard('電子訂單YoY', pct1(ind.electronics_export_yoy), { dir: ind.electronics_export_yoy > 0 ? 1 : -1, sub: '電子業動能' }));
+  if (mac.cpi_yoy != null) ec.push(mcard('美 CPI YoY', esc(mac.cpi_yoy) + '%', { sub: '通膨壓力' }));
+  if (mac.usd_twd != null) ec.push(mcard('USD/TWD', esc(mac.usd_twd), { sub: '官方匯率參考' }));
   const dt = env.tpex_daytrade;
   if (dt && dt.value && dt.value.vol_pct != null) {
     const vp = +dt.value.vol_pct; const hot = dt.severity === 'warn' || vp > 40;
-    chip('上櫃當沖佔量', vp.toFixed(1) + '%' + (hot ? ' 🔥投機熱' : ''));
+    ec.push(mcard('上櫃當沖佔量', vp.toFixed(1) + '%', { dir: hot ? -1 : 0, sub: hot ? '🔥投機熱（留意追高）' : '當沖佔成交量' }));
   }
   const TILT = { long: '🟢偏多', short: '🔴偏空', neutral: '🟡中性' };
   const SEC = { energy: '能源', materials: '原物料', precious_metals: '貴金屬' };
-  Object.entries(env.sector_tilt || {}).forEach(([sec, t]) => { if (t && t.tilt) chip('COT ' + (SEC[sec] || sec), TILT[t.tilt] || t.tilt); });
-  if (chips.length) {
-    html += `<div class="sh-sec"><div class="sh-h">期貨 / 籌碼面環境</div>
-      <div class="env-row"><span class="lightdot ${eh.dot}"></span><span class="e-lab">市場氛圍 ${esc(eh.txt)}</span></div>
-      <div class="chips">${chips.join('')}</div>
+  Object.entries(env.sector_tilt || {}).forEach(([sec, t]) => {
+    if (t && t.tilt) ec.push(mcard('COT ' + (SEC[sec] || sec), TILT[t.tilt] || esc(t.tilt), { txt: true, sub: '管理基金淨部位' }));
+  });
+  if (ec.length > 1) {
+    html += `<div class="sh-sec"><div class="sh-h">期貨 / 籌碼面環境</div>${mgrid(ec)}
       <p class="tiny">指數級／產業總經環境背景，<b>不計入個股評分與排名</b>（需回測驗證後才談加權）。</p></div>`;
   }
 
-  // 總經 FRED
+  // 總經 FRED → 指標卡
   const m = d.macro;
   if (m) {
     const MACRO = { benign: '環境溫和', watch: '留意', stress: '壓力' };
     const dot = m.label === 'stress' ? 'ld-red' : (m.label === 'watch' ? 'ld-amber' : 'ld-green');
-    const mc = [];
-    mc.push(`<span class="chip">殖利率曲線 <b>${m.curve_inverted ? '倒掛' : '正常'}</b></span>`);
-    if (m.hy_oas != null) mc.push(`<span class="chip">信用利差HY-OAS <b>${m.hy_oas}%</b></span>`);
-    if (m.financial_conditions) mc.push(`<span class="chip">金融環境NFCI <b>${esc(m.financial_conditions)}</b></span>`);
-    if (m.vix != null) mc.push(`<span class="chip">VIX <b>${m.vix}</b></span>`);
-    if (m.dgs10 != null) mc.push(`<span class="chip">10Y <b>${m.dgs10}%</b></span>`);
-    html += `<div class="sh-sec"><div class="sh-h">美國總經背景（FRED）</div>
-      <div class="env-row"><span class="lightdot ${dot}"></span><span class="e-lab">${esc(MACRO[m.label] || m.label)}</span></div>
-      <div class="chips">${mc.join('')}</div>
+    const mc = [mcard('總經背景', esc(MACRO[m.label] || m.label), { dot, txt: true, sub: 'FRED 合成判讀' })];
+    mc.push(mcard('殖利率曲線', m.curve_inverted ? '倒掛' : '正常', { txt: true, dir: m.curve_inverted ? -1 : 1, sub: m.curve_inverted ? '歷史上常先於衰退' : '期限結構健康' }));
+    if (m.hy_oas != null) mc.push(mcard('信用利差 HY-OAS', esc(m.hy_oas) + '%', { sub: '走闊=信用壓力' }));
+    if (m.financial_conditions) mc.push(mcard('金融環境 NFCI', esc(m.financial_conditions), { txt: true, sub: '<0 寬鬆 / >0 緊縮' }));
+    if (m.vix != null) mc.push(mcard('VIX', esc(m.vix), { sub: '恐慌指數' }));
+    if (m.dgs10 != null) mc.push(mcard('美債 10Y', esc(m.dgs10) + '%', { sub: '無風險利率錨' }));
+    html += `<div class="sh-sec"><div class="sh-h">美國總經背景（FRED）</div>${mgrid(mc)}
       <p class="tiny">總經為「環境背景」，僅供參考，不計入個股評分（要做回測才加權）。</p></div>`;
   }
 
-  // FX detail
+  // FX → 指標卡
   const fx = d.fx;
   if (fx) {
-    html += `<div class="sh-sec"><div class="sh-h">匯率（美股換算參考）</div>
-      <div class="drow"><span class="k">${esc(fx.pair)}</span><span class="v num">${esc(fx.level)} ${chgHtml(fx.chg_pct, false)}</span></div>
-      ${fx.trend_20d_pct != null ? `<div class="drow"><span class="k">20日趨勢</span><span class="v num ${fx.trend_20d_pct >= 0 ? 'up' : 'down'}">${fx.trend_20d_pct > 0 ? '+' : ''}${fx.trend_20d_pct}%</span></div>` : ''}
+    const fc = [mcard(esc(fx.pair), esc(fx.level), { dir: fx.chg_pct == null ? null : (fx.chg_pct > 0 ? 1 : (fx.chg_pct < 0 ? -1 : 0)), sub: fx.chg_pct != null ? '今日 ' + fmtPctVal(fx.chg_pct, 2) : '即期匯率' })];
+    if (fx.trend_20d_pct != null) fc.push(mcard('20日趨勢', fmtPctVal(fx.trend_20d_pct, 2), { dir: fx.trend_20d_pct >= 0 ? 1 : -1, sub: '貶值=美股換算加成' }));
+    html += `<div class="sh-sec"><div class="sh-h">匯率（美股換算參考）</div>${mgrid(fc)}
       <p class="tiny">USD/TWD 為顯示用途的美股換算參考，不是評分因子。</p></div>`;
   }
 
-  // breadth + indices + institutional + movers
+  // 市場廣度 → 指標卡
   const b = d.breadth;
   if (b) {
-    html += `<div class="sh-sec"><div class="sh-h">市場廣度</div>
-      <div class="drow"><span class="k">站上 MA20 / MA50</span><span class="v num">${b.pct_above_ma20}% / ${b.pct_above_ma50}%</span></div>
-      <div class="drow"><span class="k">漲 / 跌</span><span class="v num"><span class="up">${b.advancers}</span> / <span class="down">${b.decliners}</span></span></div>
-      <div class="drow"><span class="k">創20日新高</span><span class="v num">${b.new_highs} 檔（樣本 ${b.total}）</span></div></div>`;
+    const bcards = [
+      mcard('站上 MA20', esc(b.pct_above_ma20) + '%', { dir: b.pct_above_ma20 >= 50 ? 1 : -1, sub: '短線參與度' }),
+      mcard('站上 MA50', esc(b.pct_above_ma50) + '%', { dir: b.pct_above_ma50 >= 50 ? 1 : -1, sub: '中線參與度' }),
+      mcard('漲 / 跌家數', `<span class="up">${esc(b.advancers)}</span> / <span class="down">${esc(b.decliners)}</span>`, { sub: '樣本 ' + esc(b.total) + ' 檔' }),
+      mcard('創20日新高', esc(b.new_highs) + ' 檔', { dir: b.new_highs > 0 ? 1 : 0, sub: '領導股動能' }),
+    ];
+    html += `<div class="sh-sec"><div class="sh-h">市場廣度</div>${mgrid(bcards)}</div>`;
   }
-  const ix = d.indices || {};
-  const ixRows = [];
-  const addIx = (lbl, v, fmt) => { if (v != null) ixRows.push(`<div class="drow"><span class="k">${lbl}</span><span class="v num">${fmt(v)}</span></div>`); };
-  addIx('加權指數 ^TWII', ix.twii, (v) => Math.round(v).toLocaleString());
-  addIx('S&amp;P 500', ix.sp500, (v) => Math.round(v).toLocaleString());
-  addIx('Nasdaq', ix.nasdaq, (v) => Math.round(v).toLocaleString());
-  addIx('VIX', ix.vix, (v) => v.toFixed(1));
-  addIx('美債 10Y', ix.tnx, (v) => v.toFixed(2) + '%');
-  if (ixRows.length) html += `<div class="sh-sec"><div class="sh-h">指數焦點</div>${ixRows.join('')}</div>`;
 
-  // movers
+  // 指數焦點 → 指標卡
+  const ix = d.indices || {};
+  const ic = [];
+  const addIx = (lbl, v, fmt, sub) => { if (v != null) ic.push(mcard(lbl, fmt(v), { sub })); };
+  addIx('加權指數 ^TWII', ix.twii, (v) => Math.round(v).toLocaleString(), '台股大盤');
+  addIx('S&amp;P 500', ix.sp500, (v) => Math.round(v).toLocaleString(), '美股大盤');
+  addIx('Nasdaq', ix.nasdaq, (v) => Math.round(v).toLocaleString(), '科技股');
+  addIx('VIX', ix.vix, (v) => v.toFixed(1), '波動率');
+  addIx('美債 10Y', ix.tnx, (v) => v.toFixed(2) + '%', '殖利率');
+  if (ic.length) html += `<div class="sh-sec"><div class="sh-h">指數焦點</div>${mgrid(ic)}</div>`;
+
+  // R7：持股集中度警示卡（原 payload concentration dead key → 正式渲染）
+  const con = d.concentration;
+  if (con && (con.clusters || []).length) {
+    const cc = [];
+    if (con.effective_bets != null) {
+      cc.push(mcard('有效獨立賭注', esc(con.effective_bets), { dir: -1, sub: `今日 ${esc(con.n)} 檔 ≈ ${esc(con.effective_bets)} 個獨立部位` }));
+    }
+    const rows = con.clusters.map((c) => `<li><div class="li-static"><div class="li-main">
+      <div class="li-name">高相關群 <span class="li-badge b-warn">ρ=${esc(c.avg_corr)}</span></div>
+      <div class="li-sub">${esc((c.names || []).join('、'))} → 風險上視為 1 個部位</div></div></div></li>`).join('');
+    html += `<div class="sh-sec"><div class="sh-h">持股集中度（避免假分散）</div>${mgrid(cc)}
+      <ul class="list">${rows}</ul>
+      <p class="tiny">高相關股實質上是同一個賭注：分散檔數 ≠ 分散風險。informational，不計入評分。</p></div>`;
+  }
+
+  // movers（導覽用，保留清單）
   const mv = d.movers || [];
   if (mv.length) {
     const ups = mv.filter((x) => x.pct > 0).slice(0, 3);
     const downs = mv.filter((x) => x.pct < 0).slice(-3).reverse();
-    const li = (m) => `<li><a href="#${esc(CUR_DATE)}/${esc(m.stock)}" data-close-sheet><div class="li-main"><div class="li-name">${esc(nameOf(m.stock))}</div></div><div class="li-r"><span class="pct ${m.pct >= 0 ? 'up' : 'down'}">${m.pct > 0 ? '+' : ''}${m.pct}%</span></div></a></li>`;
+    const li = (mm) => `<li><a href="#${esc(CUR_DATE)}/${esc(mm.stock)}" data-close-sheet><div class="li-main"><div class="li-name">${esc(nameOf(mm.stock))}</div></div><div class="li-r"><span class="pct ${mm.pct >= 0 ? 'up' : 'down'}">${mm.pct > 0 ? '+' : ''}${mm.pct}%</span></div></a></li>`;
     html += `<div class="sh-sec"><div class="sh-h">今日漲跌</div><ul class="list">${ups.map(li).join('')}${downs.map(li).join('')}</ul></div>`;
   }
 
@@ -1001,8 +1221,73 @@ function attributionHtml(d) {
     <p class="tiny"><b>informational</b> 自我歸因（信號/體制只統計觸發當下、NAV 為假想等權重播），過去表現不代表未來，非績效承諾、非買賣訊號。</p></div>`;
 }
 
+/* R7 P-M2 影子組合 (payload.shadow = shadow_portfolio.payload_from_state shape).
+   策略曲線 vs 我的執行：NAV sparkline + CAGR / vs 大盤 對比。
+   INFORMATIONAL 假想等權重播 — 非實際交易、非績效承諾。Graceful: 無 key → 無區塊。 */
+function shadowHtml(d) {
+  const s = d && d.shadow;
+  if (!s || typeof s !== 'object' || Array.isArray(s) || s.nav == null) return '';
+  const series = (Array.isArray(s.nav_series) ? s.nav_series : []).map((x) => x && x.nav).filter((v) => v != null);
+  const spark = series.length > 1 ? `<div class="attr-nav">${sparkline(series, 320, 54)}</div>` : '';
+  const accr = s.accruing
+    ? `<div class="note"><b>樣本累積中（${esc(s.n_steps || 0)} 個交易日）</b> — 鏈長不足，CAGR 暫不顯示，避免短樣本誤導。</div>` : '';
+  const cards = [];
+  const trDir = s.total_ret_pct == null ? null : (s.total_ret_pct > 0 ? 1 : (s.total_ret_pct < 0 ? -1 : 0));
+  cards.push(mcard('策略總報酬', fmtPctVal(s.total_ret_pct, 2), { dir: trDir, sub: `top-${esc(s.top_n || 5)} 等權 · D+${esc(s.hold_days || 60)} 輪換` }));
+  if (s.cagr_to_date != null) {
+    const cg = s.cagr_to_date * 100;
+    cards.push(mcard('年化 CAGR（至今）', fmtPctVal(cg, 2), { dir: cg > 0 ? 1 : -1, sub: `鏈長 ${esc(s.n_steps)} 交易日` }));
+  }
+  const BENCH_NM = { '0050.TW': 'vs 0050', SPY: 'vs SPY' };
+  Object.entries(s.bench || {}).forEach(([sym, b]) => {
+    if (!b || b.excess_pct == null) return;
+    cards.push(mcard(BENCH_NM[sym] || 'vs ' + esc(sym), fmtPctVal(b.excess_pct, 2), {
+      dir: b.excess_pct > 0 ? 1 : (b.excess_pct < 0 ? -1 : 0),
+      sub: b.excess_pct >= 0 ? '超越單純持有指數' : '落後單純持有指數',
+    }));
+  });
+  // 我的執行（手填持倉的實際總損益）— 與策略曲線並排對照
+  const mp = d.my_positions;
+  if (mp && mp.total_pnl_pct != null) {
+    cards.push(mcard('我的執行（持倉總損益）', fmtPctVal(mp.total_pnl_pct, 2), {
+      dir: mp.total_pnl_pct > 0 ? 1 : (mp.total_pnl_pct < 0 ? -1 : 0), sub: '成本加權 · 手填持倉',
+    }));
+  }
+  if (s.n_open != null) cards.push(mcard('影子持倉', esc(s.n_open) + ' 檔', { sub: `${esc(s.n_cohorts || 0)} 個進場批次` }));
+  return `<div class="sh-sec"><div class="sh-h">策略曲線 vs 我的執行（影子組合）</div>
+    ${accr}${spark}${mgrid(cards)}
+    <p class="tiny"><b>informational</b> — 影子組合為假想 top-N 等權重播（含到期輪換），分離「策略本身」與「執行落差」；非實際交易、過去表現不代表未來、非績效承諾。</p></div>`;
+}
+
+/* R7 P-M1 訊號健康 (payload.strategy_health = strategy_health.summarize shape).
+   live 勝率 vs 回測精度的 demote/watch/healthy 燈號表。INFORMATIONAL —
+   權重仍由人工 + 回測 CI gate 決定。Graceful: 無 key/空 signals → 無區塊。 */
+const SH_STATUS = {
+  healthy: { dot: 'ld-green', txt: '正常' },
+  watch: { dot: 'ld-amber', txt: '觀察' },
+  demote: { dot: 'ld-red', txt: '建議降權' },
+  accruing: { dot: 'ld-gray', txt: '樣本累積中' },
+};
+function strategyHealthHtml(d) {
+  const sh = d && d.strategy_health;
+  const sigs = sh && sh.signals;
+  if (!sigs || !Object.keys(sigs).length) return '';
+  const pf = (v) => (v == null ? '—' : (v * 100).toFixed(0) + '%');
+  const trs = Object.entries(sigs).map(([name, s]) => {
+    const st = SH_STATUS[s.status] || SH_STATUS.accruing;
+    return `<tr><td><span class="lightdot ${st.dot}"></span> ${esc(name)}<div class="li-sub">${esc(st.txt)}${s.consec_bad_months ? ` · 連續 ${esc(s.consec_bad_months)} 月偏弱` : ''}</div></td>
+      <td class="num">${s.n != null ? esc(s.n) : '—'}</td>
+      <td class="num">${pf(s.live_win_rate)}</td>
+      <td class="num">${pf(s.backtest_precision)}</td></tr>`;
+  }).join('');
+  const rule = sh.rule || {};
+  return `<div class="sh-sec"><div class="sh-h">訊號健康（live vs 回測）</div>
+    <table class="attr"><thead><tr><th>訊號</th><th>n</th><th>live勝率</th><th>回測精度</th></tr></thead><tbody>${trs}</tbody></table>
+    <p class="tiny"><b>informational</b> 自我監測：以 rolling ${esc(rule.rolling_n || 60)} 筆 live 樣本對照回測精度（樣本 ≥${esc(rule.min_eval_n || 10)} 才評估；連續 ${esc(rule.demote_consec_months || 2)} 月低於下界 → 建議降權）。死訊號須自我降權，但權重變更仍由人工＋回測 CI gate 決定。${sh.baseline_asof ? ` 基準 ${esc(sh.baseline_asof)}。` : ''}</p></div>`;
+}
+
 function selfSheetBody(d) {
-  const parts = [myPositionsHtml(d), perfHtml(d), attributionHtml(d)].filter(Boolean);
+  const parts = [myPositionsHtml(d), shadowHtml(d), strategyHealthHtml(d), perfHtml(d), attributionHtml(d)].filter(Boolean);
   if (!parts.length) {
     return `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
   }
@@ -1010,17 +1295,18 @@ function selfSheetBody(d) {
 }
 
 /* ============================================================================
-   OPPORTUNITY SHEET (機會) — leaders + 早期板 + 訊號 + 持倉追蹤 (segmented)
+   OPPORTUNITY SHEET (機會) — R7 整併：持倉追蹤 + 單一「雷達」 + 營收成長。
+   原「機會掃描／拐點起漲／訊號雷達」三板詞彙互疊（使用者：「太雜」）→
+   合併去重為單一雷達區（同 ticker 多訊號 → 一卡多 chip，標註訊號來源）。
    ============================================================================ */
-let _oppTab = 'opp';
+let _oppTab = 'radar';
 function oppSheetBody(d) {
   const tabs = [];
-  // 持倉追蹤 first (most personal), then 機會掃描, 拐點, 訊號
+  // 持倉追蹤 first (most personal), then 雷達 (merged), 營收成長
   if (watchHtml(d)) tabs.push({ id: 'watch', label: '持倉追蹤', html: watchHtml(d) });
-  if (leadersHtml(d)) tabs.push({ id: 'opp', label: '機會掃描', html: leadersHtml(d) });
-  if (breakoutHtml(d)) tabs.push({ id: 'early', label: '拐點起漲', html: breakoutHtml(d) });
+  if (radarHtml(d)) tabs.push({ id: 'radar', label: '雷達', html: radarHtml(d) });
+  if (momentumHtml(d)) tabs.push({ id: 'mom', label: '動能組合', html: momentumHtml(d) });
   if (revenueHtml(d)) tabs.push({ id: 'rev', label: '營收成長', html: revenueHtml(d) });
-  if (signalsHtml(d)) tabs.push({ id: 'sig', label: '訊號雷達', html: signalsHtml(d) });
   if (!tabs.length) return '<div class="empty">今日無機會掃描資料。</div>';
   if (!tabs.some((t) => t.id === _oppTab)) _oppTab = tabs[0].id;
   const seg = `<div class="seg" role="tablist">${tabs.map((t) =>
@@ -1043,7 +1329,7 @@ function watchHtml(d) {
   const pins = getPins(); const pinSet = new Set(pins);
   const pickIdx = {}; (d.picks || []).forEach((p) => { if (p.stock) pickIdx[p.stock] = p; });
   const searchIdx = {}; (d.search || []).forEach((s) => { if (s.code) searchIdx[s.code] = s; });
-  const earlyIdx = {}; (d.early_board || []).forEach((e) => { if (e.stock) earlyIdx[e.stock] = e; });
+  const earlyIdx = {}; earlyBoardOf(d).forEach((e) => { if (e.stock) earlyIdx[e.stock] = e; });
   const covered = new Set();
   let rows = board.map((r) => {
     covered.add(r.symbol);
@@ -1071,41 +1357,84 @@ function watchHtml(d) {
   return `<p class="tiny">已建議／釘選股的持續追蹤（趨勢轉弱即提醒），<b>informational，非買賣訊號</b>。</p><ul class="list">${li}</ul>`;
 }
 
-function leadersHtml(d) {
-  const opp = d.opportunity || {};
-  const leaders = opp.leaders || [];
-  if (!leaders.length) return '';
-  const li = leaders.map((l) => {
-    const th = l.theme ? ` · ${esc(l.theme)}` : '';
-    const ld = l.leading_group ? ` <span class="li-badge">領漲#${l.group_rank}</span>` : '';
-    let rev = '';
-    if (l.rev_yoy != null) rev = ` · 營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%`;
-    const pct = l.change_pct != null ? `<span class="pct ${l.change_pct >= 0 ? 'up' : 'down'}">${l.change_pct > 0 ? '+' : ''}${l.change_pct}%</span>` : '';
-    return `<li><a href="#${esc(CUR_DATE)}/${esc(l.ticker)}" data-close-sheet>
-      <div class="li-main"><div class="li-name">${lightDot(l.light)} ${esc(l.name || l.ticker)} <span class="tk">${esc(l.ticker)}</span>${ld}</div>
-      <div class="li-sub">RS ${esc(l.rs_rating)}${th}${rev}<br>${esc((l.signals || []).join('、'))}</div></div>
-      <div class="li-r">${l.price != null ? `<div class="px">${pxNum(l.price)}</div>` : ''}${pct}</div></a></li>`;
-  }).join('');
-  return `<p class="tiny">watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股。點代號看完整分析。informational，非持股。掃 ${esc(opp.scanned || '?')} 檔。</p><ul class="list">${li}</ul>`;
+/* R7 雷達 — 機會掃描(leaders) + 拐點起漲(early_board) + 訊號雷達(signals)
+   合併去重：同 ticker 多板訊號 → 一卡多 chip，並以 badge 標註訊號來源。
+   d.early_board 為唯一序列化副本；opportunity.breakout fallback 只為 pre-R7 歷史檔。 */
+function earlyBoardOf(d) { return d.early_board || ((d.opportunity || {}).breakout) || []; }
+
+function radarMerge(d) {
+  const rows = new Map();   // ticker -> row（保插入序）
+  const rowFor = (tk, name) => {
+    let r = rows.get(tk);
+    if (!r) {
+      r = { ticker: tk, name: name || tk, ready: false, rs: null, light: null,
+            price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null };
+      rows.set(tk, r);
+    } else if (name && r.name === tk) r.name = name;
+    return r;
+  };
+  const addSig = (r, sigs) => (sigs || []).forEach((s) => { if (s && r.signals.indexOf(s) < 0) r.signals.push(s); });
+  earlyBoardOf(d).forEach((b) => {
+    const tk = b.stock || b.ticker; if (!tk) return;
+    const r = rowFor(tk, b.name);
+    r.sources.push('拐點×' + (b.score != null ? b.score : '?'));
+    r.ready = r.ready || !!b.ready;
+    addSig(r, b.signals);
+  });
+  (((d.opportunity || {}).leaders) || []).forEach((l) => {
+    const tk = l.ticker; if (!tk) return;
+    const r = rowFor(tk, l.name);
+    r.sources.push('領導RS' + (l.rs_rating != null ? l.rs_rating : '?'));
+    r.rs = l.rs_rating; r.light = l.light || r.light;
+    if (l.price != null) r.price = l.price;
+    if (l.change_pct != null) r.change_pct = l.change_pct;
+    if (l.theme) r.theme = l.theme;
+    if (l.rev_yoy != null) r.rev = `營收YoY ${l.rev_yoy > 0 ? '+' : ''}${l.rev_yoy}%`;
+    addSig(r, l.signals);
+  });
+  (d.signals || []).forEach((s) => {
+    const tk = s.stock; if (!tk) return;
+    const r = rowFor(tk, s.name);
+    r.sources.push('訊號×' + (s.count != null ? s.count : '?'));
+    addSig(r, s.signals);
+  });
+  return Array.from(rows.values()).sort((a, b) =>
+    (b.sources.length - a.sources.length) || ((b.ready ? 1 : 0) - (a.ready ? 1 : 0)) || ((b.rs || 0) - (a.rs || 0)));
 }
 
-function breakoutHtml(d) {
-  const board = d.early_board || ((d.opportunity || {}).breakout) || [];
-  if (!board.length) return '';
+function radarHtml(d) {
+  const rows = radarMerge(d);
+  const themes = (d.themes || []).filter((t) => t.emerging);
+  if (!rows.length && !themes.length) return '';
+  const board = earlyBoardOf(d);
   const validated = d.early_validated === true || (d.early_board_validated === true) || (board.length > 0 && board.every((r) => r && r.validated === true));
   // lift 0.61 警語 — VERBATIM, collapsible but never trimmed.
-  const banner = validated ? '' :
+  const banner = (validated || !board.length) ? '' :
     `<details class="fold"><summary>⚠️ 純資訊 · 未納入評分（回測未過 — 點開看完整警語）</summary>
       <div class="fold-body">15y 回測：此「正要起漲」型態 60 日命中率僅 2.4%（lift 0.61），<b>未勝基準率 4.0%</b> — 早期型態無法可靠預測大漲，約 70% 最終未達 +25%，勿視為買進訊號。</div></details>`;
-  const li = board.map((r) => {
-    const flag = r.ready ? '<span class="li-badge">✅起漲就緒</span> ' : '';
-    return `<li><a href="#${esc(CUR_DATE)}/${esc(r.stock)}" data-close-sheet>
-      <div class="li-main"><div class="li-name">${flag}${esc(r.name || r.stock)} <span class="tk">${esc(r.stock)}</span></div>
-      <div class="li-sub">×${esc(r.score)} · ${esc((r.signals || []).join('、'))}</div></div></a></li>`;
+  // 三板原始說明 + 誠實揭露 — VERBATIM，折疊但絕不刪減。
+  const opp = d.opportunity || {};
+  const info = `<details class="fold"><summary>ℹ️ 三類訊號說明與誠實揭露（點開）</summary><div class="fold-body">
+      <p><b>領導</b>：watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股。點代號看完整分析。informational，非持股。掃 ${esc(opp.scanned || '?')} 檔。</p>
+      <p><b>拐點</b>：Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>
+      <p><b>訊號</b>：領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分。<br>誠實揭露（15年含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 <b>~70% 從未到達</b>；目標價為技術投影非預測。</p>
+    </div></details>`;
+  const themeLine = themes.length ? `<div class="note">🔥 主題湧現：<b>${themes.map((t) => esc(t.theme)).join('、')}</b></div>` : '';
+  const li = rows.map((r) => {
+    const ready = r.ready ? '<span class="li-badge">✅起漲就緒</span>' : '';
+    const srcs = r.sources.map((s) => `<span class="li-badge src-badge num">${esc(s)}</span>`).join('');
+    const chips = r.signals.map((s) => `<span class="rchip">${esc(s)}</span>`).join('');
+    const meta = [r.theme ? esc(r.theme) : '', r.rev ? esc(r.rev) : ''].filter(Boolean).join(' · ');
+    const pct = r.change_pct != null ? `<span class="pct ${r.change_pct >= 0 ? 'up' : 'down'}">${fmtPctVal(r.change_pct, 2)}</span>` : '';
+    return `<li><a href="#${esc(CUR_DATE)}/${esc(r.ticker)}" data-close-sheet>
+      <div class="li-main"><div class="li-name">${r.light ? lightDot(r.light) + ' ' : ''}${esc(r.name)} <span class="tk num">${esc(r.ticker)}</span>${ready}</div>
+      <div class="li-srcs">${srcs}</div>
+      <div class="tr-chips">${chips}</div>${meta ? `<div class="li-sub">${meta}</div>` : ''}</div>
+      <div class="li-r">${r.price != null ? `<div class="px">${pxNum(r.price)}</div>` : ''}${pct}</div></a></li>`;
   }).join('');
-  return banner
-    + `<p class="tiny">Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等<b>拐點</b>訊號（比趨勢確認更早）。✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。</p>`
-    + `<ul class="list">${li}</ul>`;
+  return banner + info + themeLine
+    + `<p class="tiny">單一雷達整併原「機會掃描／拐點起漲／訊號雷達」三板：同檔多訊號合併為一卡，badge 標註來源（領導=全市場領導股掃描、拐點=起漲拐點偵測、訊號=領先訊號雷達）。informational，非持股、非買賣訊號。</p>`
+    + (rows.length ? `<ul class="list radar">${li}</ul>` : '');
 }
 
 function revenueHtml(d) {
@@ -1120,17 +1449,76 @@ function revenueHtml(d) {
   return `<p class="tiny">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。${esc(rev.ym || '')}</p><ul class="list">${li}</ul>`;
 }
 
-function signalsHtml(d) {
-  const board = d.signals || [];
-  const themes = (d.themes || []).filter((t) => t.emerging);
-  if (!board.length && !themes.length) return '';
-  let html = `<p class="tiny">領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分。<br>誠實揭露（15年含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 <b>~70% 從未到達</b>；目標價為技術投影非預測。</p>`;
-  if (themes.length) html += `<div class="note">🔥 主題湧現：<b>${themes.map((t) => esc(t.theme)).join('、')}</b></div>`;
-  if (board.length) {
-    html += '<ul class="list">' + board.map((r) =>
-      `<li><div class="li-static"><div class="li-main"><div class="li-name">${esc(r.name || r.stock)}${r.stock && r.name ? ` <span class="tk">${esc(r.stock)}</span>` : ''} <span class="li-badge">×${esc(r.count)}</span></div><div class="li-sub">${esc((r.signals || []).join('、'))}</div></div></div></li>`).join('') + '</ul>';
+/* ============================================================================
+   動能組合（季度）LENS — payload.momentum_portfolio = momentum_portfolio.build_lens.
+   決策 2026-06-13：動能是「組合構建因子」(rank+hold，組合回測證明)，NOT 每日爆發訊號
+   (事件研究 lift 0.89<1 → 否決入 score_stock)。故為獨立 LENS，明確標示與每日精選不同框架。
+   上方 track-record 卡（TW/US 15y CAGR/Sharpe/MaxDD/OOS，紅綠語義），下方 top-20 持股清單。
+   顯著揭露 VERBATIM（季度非當日／月勝率~50%/survivorship 上界／不同框架）。
+   INFORMATIONAL，非買賣訊號；OVERLAY-NOT-SCORER（從不入評分）。Graceful: 無 key → 無 tab。
+   ============================================================================ */
+function _momPct(v, dp) { return v == null ? '—' : (v * 100).toFixed(dp == null ? 1 : dp) + '%'; }
+function _momPctSigned(v, dp) { return v == null ? '—' : (v >= 0 ? '+' : '') + (v * 100).toFixed(dp == null ? 0 : dp) + '%'; }
+
+function momTrackCards(tr) {
+  if (!tr) return '<p class="tiny">回測 track record 暫不可得（informational）。</p>';
+  const oos = tr.oos || {};
+  const cagrDir = tr.cagr == null ? null : (tr.cagr > 0 ? 1 : -1);
+  const cards = [
+    mcard('15y CAGR', _momPct(tr.cagr), { dir: cagrDir, sub: `擴大 universe ${tr.n_universe != null ? esc(tr.n_universe) : '?'} 檔 · top-${esc(tr.top_n != null ? tr.top_n : 20)} 季度再平衡` }),
+    mcard('Sharpe', tr.sharpe == null ? '—' : (+tr.sharpe).toFixed(2), { dir: tr.sharpe == null ? null : (tr.sharpe >= 1 ? 1 : 0), sub: '風險調整後報酬' }),
+    mcard('最大回撤 MaxDD', _momPct(tr.max_dd), { dir: tr.max_dd == null ? null : -1, sub: '峰至谷最大跌幅' }),
+    mcard('OOS 2y CAGR', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '末 2 年獨立樣本外' }),
+  ];
+  // 勝過基準（等權 / 買進持有）— 對照卡，誠實顯示 edge 大小
+  if (tr.equal_weight_cagr != null) {
+    const beat = tr.cagr != null && tr.cagr > tr.equal_weight_cagr;
+    cards.push(mcard('vs 等權', _momPct(tr.equal_weight_cagr), { dir: beat ? 1 : -1, sub: beat ? '動能勝過等權持有' : '未勝等權' }));
   }
-  return html;
+  if (tr.buy_hold_cagr != null) {
+    const beat = tr.cagr != null && tr.cagr > tr.buy_hold_cagr;
+    cards.push(mcard('vs 買進持有', _momPct(tr.buy_hold_cagr), { dir: beat ? 1 : -1, sub: beat ? '動能勝過買進持有' : '未勝買進持有' }));
+  }
+  const winLine = tr.monthly_win_rate != null
+    ? `<p class="tiny">月勝率 ${_momPct(tr.monthly_win_rate, 0)}（WilsonLo ${tr.monthly_win_lo != null ? (tr.monthly_win_lo * 100).toFixed(0) + '%' : '—'}）— edge 在幅度非頻率，並非月月穩贏。</p>`
+    : '';
+  return mgrid(cards) + winLine;
+}
+
+function momHoldingsList(holdings) {
+  if (!holdings || !holdings.length) return '<p class="tiny">本日無足夠資料計算動能持股（需 ~252 bar）。</p>';
+  const li = holdings.map((h) => {
+    const momTxt = h.mom == null ? '' : `<span class="pct ${h.mom >= 0 ? 'up' : 'down'}">${_momPctSigned(h.mom)}</span>`;
+    const px = h.price != null ? `<div class="px">${pxNum(h.price)}</div>` : '';
+    return `<li><a href="#${esc(CUR_DATE)}/${esc(h.ticker)}" data-close-sheet>
+      <div class="li-main"><div class="li-name">${esc(h.name || h.ticker)} <span class="tk num">${esc(h.ticker)}</span></div>
+      <div class="li-sub">12-1 動能（過去約 12 月、跳過最近 1 月）</div></div>
+      <div class="li-r">${px}${momTxt}</div></a></li>`;
+  }).join('');
+  return `<ul class="list">${li}</ul>`;
+}
+
+function momentumHtml(d) {
+  const mpf = d && d.momentum_portfolio;
+  if (!mpf || typeof mpf !== 'object' || Array.isArray(mpf)) return '';
+  const tw = mpf.tw || {}, us = mpf.us || {};
+  const twH = tw.holdings || [], usH = us.holdings || [];
+  if (!twH.length && !usH.length && !tw.track_record && !us.track_record) return '';
+  // 顯著揭露 chip/footnote — VERBATIM（決策 §3 + §Momentum），折疊但絕不刪減。
+  const disc = (mpf.disclaimers || []);
+  const discFold = disc.length
+    ? `<details class="fold" open><summary>⚠️ 重要揭露（季度策略 · 與每日精選不同框架 — 點開）</summary>
+        <div class="fold-body">${disc.map((x) => `<p>${esc(x)}</p>`).join('')}</div></details>`
+    : '';
+  const sleeve = (label, s, holdings) => {
+    if (!holdings.length && !s.track_record) return '';
+    return `<div class="sh-sec"><div class="sh-h">${esc(label)}</div>
+      ${momTrackCards(s.track_record)}
+      <div class="sh-sub">前 ${esc((holdings.length || (mpf.top_n != null ? mpf.top_n : 20)))} 動能持股</div>
+      ${momHoldingsList(holdings)}</div>`;
+  };
+  const head = `<div class="note">🏆 <b>動能組合（季度 top-20）</b>：以 12-1 動能排序、季度再平衡的<b>組合構建</b>策略，與「每日精選」是<b>不同框架</b>。組合回測證明勝過等權與買進持有；informational，非買賣訊號。</div>`;
+  return head + discFold + sleeve('台股 sleeve', tw, twH) + sleeve('美股 sleeve', us, usH);
 }
 
 /* ============================================================================
@@ -1185,6 +1573,8 @@ function dateSheetBody() {
 function bindChrome() {
   $('themeBtn').addEventListener('click', () => toggleTheme());
   $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: false }));
+  const hb = $('healthBanner');
+  if (hb) hb.addEventListener('click', () => { if (CUR) openSheet('資料健康', healthSheetBody(CUR), { full: false }); });
   $('sheetClose').addEventListener('click', closeSheet);
   $('scrim').addEventListener('click', closeSheet);
   $('dock').addEventListener('click', (e) => {
@@ -1260,6 +1650,7 @@ async function showDay(date) {
   setHudDate(date);
   try { document.title = date + ' · SmartStock'; } catch (e) {}
   buildDeck(CUR);
+  renderHealthBanner(CUR);   // R7 premortem 防線：degraded/stale 必須蓋頂顯示
 }
 
 async function route() {

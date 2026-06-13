@@ -596,6 +596,115 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
 .attr-nav svg{width:100%;height:100%;display:block}
 
 /* ============================================================================
+   R7 — 頁面整併 + 可讀性改版
+   (token-only: hairlines + ink scale; chroma stays the up/down/warn trio)
+   ============================================================================ */
+
+/* ---- 頁頂 staleness banner（health.overall != ok）---- */
+.health-banner{
+  position:fixed;z-index:28;left:10px;right:10px;
+  top:calc(env(safe-area-inset-top) + 58px);
+  padding:8px 14px;border-radius:var(--r1);
+  font-size:.78rem;font-weight:600;line-height:1.4;text-align:left;
+  -webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px);
+}
+.health-banner u{text-decoration:underline;text-underline-offset:2px;font-weight:700}
+.health-banner.hb-degraded{
+  color:var(--warn);
+  border:.5px solid color-mix(in srgb,var(--warn) 45%,transparent);
+  background:color-mix(in srgb,var(--warn) 10%,var(--bg));
+}
+.health-banner.hb-stale{
+  color:var(--down);
+  border:.5px solid color-mix(in srgb,var(--down) 45%,transparent);
+  background:color-mix(in srgb,var(--down) 10%,var(--bg));
+}
+/* banner 顯示時把 deck 內容往下推，避免蓋住頁內第一個元素（如封面過期警示） */
+:root.hb-on .page{
+  padding-top:calc(env(safe-area-inset-top) + 122px);
+}
+
+/* ---- 封面版本戳記（讓使用者自證看到新版）---- */
+.cv-ver{margin-top:10px;align-self:center;font-size:.66rem;color:var(--ink-3);letter-spacing:.04em}
+
+/* ---- 統一建議頁：三層分級清單 ---- */
+.tiers{display:flex;flex-direction:column;height:100%;z-index:2;min-height:0}
+.tiers-title{margin-top:6px;font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.tier-list{
+  margin-top:14px;flex:1;min-height:0;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;
+  border-top:.5px solid var(--hair-c);
+}
+.tier-h{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:14px 2px 7px;font-size:.86rem;font-weight:700;
+  position:sticky;top:0;background:var(--bg);z-index:1;
+}
+.tier-h .tier-sub{font-size:.68rem;color:var(--ink-3);font-weight:600}
+.trow{
+  width:100%;display:flex;align-items:center;gap:12px;text-align:left;
+  padding:11px 2px;border-bottom:.5px solid var(--hair-c);min-height:56px;
+}
+.trow:active{background:var(--bg-soft)}
+.tr-l{flex:1;min-width:0}
+.tr-name{font-weight:600;font-size:.94rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tr-name .tk{font-size:.72rem;color:var(--ink-3);font-weight:400}
+.tr-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.tr-r{flex:none;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.tr-r b{font-family:var(--font-num);font-feature-settings:"tnum" 1;font-size:1.06rem}
+.tr-r .small{font-size:.72rem}
+
+/* ---- 分數條（當日相對刻度；顏色=分級）---- */
+.sbar{
+  margin-top:6px;height:4px;border-radius:2px;overflow:hidden;
+  background:var(--hair-c);
+}
+.sbar i{display:block;height:100%;border-radius:2px}
+.sbar i.tier-buy{background:var(--up)}
+.sbar i.tier-watch{background:var(--warn)}
+.sbar i.tier-avoid{background:var(--down)}
+
+/* ---- 理由 chip（factors 正貢獻）/ 警示 chip（overlay 資訊性）---- */
+.rchip{
+  font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:999px;
+  border:.5px solid color-mix(in srgb,var(--up) 28%,transparent);
+  color:var(--up);white-space:nowrap;
+}
+.wchip{
+  font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;
+  border:.5px solid color-mix(in srgb,var(--warn) 45%,transparent);
+  color:var(--warn);white-space:nowrap;
+}
+.wchip.w-risk{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
+
+/* ---- pick 頁結構化 verdict（燈號+分數條+分數）---- */
+.pk-verdict .sbar{flex:1;margin-top:0}
+.pk-vscore{font-size:.92rem;font-weight:600;color:var(--ink-2);flex:none}
+.pk-vchips{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.pk-vtxt{margin-top:8px;font-size:.82rem;color:var(--ink-2);line-height:1.45}
+
+/* ---- 市場 sheet 指標卡網格 ---- */
+.mgrid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--hair-c);border:.5px solid var(--hair-c);
+  border-radius:var(--r1);overflow:hidden;margin-bottom:8px;
+}
+.mcard{background:var(--bg);padding:11px 13px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.mc-k{font-size:.7rem;color:var(--ink-3);letter-spacing:.01em}
+.mc-v{
+  font-size:1.06rem;font-weight:600;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.mc-v.num{font-family:var(--font-num);font-feature-settings:"tnum" 1}
+.mc-a{font-size:.72rem}
+.mc-s{font-size:.68rem;color:var(--ink-3);line-height:1.35}
+
+/* ---- 雷達合併卡（來源 badge 列）---- */
+.li-srcs{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.src-badge{font-feature-settings:"tnum" 1;color:var(--ink-2)}
+.list.radar .tr-chips{margin-top:5px}
+
+/* ============================================================================
    REDUCED MOTION — kill all transitions/animations, keep snap usable
    ============================================================================ */
 @media (prefers-reduced-motion:reduce){

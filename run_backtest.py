@@ -17,6 +17,7 @@ Backtests price/RS signals only — theme + 月營收 have no keyless history (i
 Still survivorship-biased (yfinance survivors): every lift is an optimistic upper bound.
 """
 import sys
+import functools
 import json
 import os
 import datetime
@@ -28,12 +29,18 @@ try:
 except Exception:
     pass
 
+# The 653×15y background run died after 37min CPU with stdout FULLY BUFFERED —
+# zero progress lines, zero traceback in the redirected log. Every print in this
+# module must flush so background/redirected runs are observable in real time.
+print = functools.partial(print, flush=True)  # noqa: A001
+
 import data_fetcher
 import technical_setup as ts
 import volume_signals as vs
 import signals
 import breakout_radar as br
 import backtest
+import factor_signals as fs
 import universe
 from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS
 
@@ -70,6 +77,11 @@ DEFS = {
     "VCP∧TrendTemplate":     lambda s, b: ts.vcp(s)["pass"] and ts.trend_template(s)["pass"],
     "RS純∧TrendTemplate":    lambda s, b: rs_pure(s, b) and ts.trend_template(s)["pass"],
     "PowerPivot∧TrendTmpl":  lambda s, b: ts.power_pivot(s) and ts.trend_template(s)["pass"],
+    # factor_signals family — 12-1 momentum / SMA200 (REGISTERED-ONLY, not weighted;
+    # candidates for the 15y factor run; b unused — pure OHLCV, graceful False).
+    "Mom12-1>0":             lambda s, b: fs.mom_12_1_positive(s),
+    "Close>SMA200":          lambda s, b: fs.above_sma200(s),
+    "Mom12-1∧SMA200":        lambda s, b: fs.mom_with_sma200(s),
 }
 
 
@@ -650,18 +662,312 @@ def write_kelly_state(metrics_by_signal, path="docs/data/_kelly_state.json"):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
-def main():
+def load_universe_csv(path):
+    """Read a universe CSV (header: ticker,market,name,source) → ordered, deduped
+    ticker list. Used by the 15y factor run to consume universe_15y_draft.csv.
+
+    Fail-fast at the boundary: a missing file raises (FileNotFoundError/OSError)
+    and a CSV that parses to ZERO tickers raises ValueError — silently backtesting
+    an empty universe would be a far worse failure mode than aborting."""
+    import csv as _csv
+    out, seen = [], set()
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
+        for row in _csv.DictReader(f):
+            t = (row.get("ticker") or "").strip()
+            if t and t not in seen:
+                seen.add(t)
+                out.append(t)
+    if not out:
+        raise ValueError(f"universe csv has no usable 'ticker' rows: {path}")
+    return out
+
+
+def _extract_universe_arg(argv):
+    """Pure: pull an optional --universe arg out of argv WITHOUT disturbing the
+    existing positional [years horizon explosive] CLI. Supports both
+    '--universe=path' and '--universe path'. Returns (path_or_None, rest_argv)."""
+    rest, csv_path, i = [], None, 0
+    argv = list(argv or [])
+    while i < len(argv):
+        a = argv[i]
+        if a.startswith("--universe="):
+            csv_path = a.split("=", 1)[1]
+        elif a == "--universe" and i + 1 < len(argv):
+            csv_path = argv[i + 1]
+            i += 1
+        else:
+            rest.append(a)
+        i += 1
+    return csv_path, rest
+
+
+def _extract_fresh_arg(argv):
+    """Pure: pull the optional `--fresh` flag out of argv WITHOUT disturbing the
+    positional [years horizon explosive] CLI. `--fresh` forces a full recompute
+    (ignore any `_event_15y_partial.json`). Returns (is_fresh, rest_argv)."""
+    argv = list(argv or [])
+    rest = [a for a in argv if a != "--fresh"]
+    return (len(rest) != len(argv)), rest
+
+
+def _resume_plan(state, cur_meta, *, names, fresh):
+    """Pure: decide, from a read partial `state`, the current run's `cur_meta`,
+    the ordered signal `names`, and the `--fresh` flag, which signals reuse the
+    partial's metrics vs which must recompute.
+
+    META-MATCH GUARD (critical correctness): a partial is reusable ONLY when its
+    meta's (period, universe_csv, n_names) ALL equal the current run's — otherwise
+    it is a stale partial from a different universe/window and EVERY signal
+    recomputes (never serve another universe's old numbers). `fresh=True` forces a
+    full recompute regardless. Returns:
+        {'meta_match': bool,
+         'cached':    {name: metrics}  # reuse partial metrics, no backtest_signal
+         'recompute': [name, ...]}     # ordered subset of `names` to compute
+    """
+    names = list(names or [])
+    p_meta = (state or {}).get("meta") or {}
+    signals = (state or {}).get("signals") or {}
+    keys = ("period", "universe_csv", "n_names")
+    meta_match = bool(p_meta) and all(p_meta.get(k) == cur_meta.get(k) for k in keys)
+    if fresh or not meta_match:
+        return {"meta_match": meta_match, "cached": {}, "recompute": names}
+    cached = {n: signals[n] for n in names if n in signals}
+    recompute = [n for n in names if n not in cached]
+    return {"meta_match": True, "cached": cached, "recompute": recompute}
+
+
+def assemble_main_universe(universe_csv=None):
+    """Ticker assembly for the default weighting backtest.
+
+    universe_csv=None → the EXISTING behavior, unchanged: BREADTH_TW + BREADTH_US
+    (+ BUSTED_PEERS when INCLUDE_BUSTED). With a csv path → the csv tickers (e.g.
+    universe_15y_draft.csv, 653 TW150+US503 names) with BUSTED_PEERS appended
+    (deduped, csv order preserved) so the survivorship stress set always rides."""
+    if not universe_csv:
+        return BREADTH_TW + BREADTH_US + (BUSTED_PEERS if INCLUDE_BUSTED else [])
+    tickers = load_universe_csv(universe_csv)
+    if INCLUDE_BUSTED:
+        seen = set(tickers)
+        tickers = tickers + [b for b in BUSTED_PEERS if b not in seen]
+    return tickers
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Cache-first history loading + sanitize (the --universe 15y run).
+#
+# The one-shot yf.download of 653×15y is exactly what killed the first run; the
+# cache builder (build_ohlcv_cache.py) already persisted 652 frames under
+# .cache/ohlcv_15y/. Loading goes cache-first, falls back to ONE batch network
+# fetch for the misses only, and every admitted frame passes through
+# backtest_portfolio.sanitize_ohlcv (TW limit-rule spike/level-shift repair, US
+# spike-revert) — 0050.TW carries a non-backadjusted 2025 split level shift and
+# ~44 single names have similar artifacts that would pollute the event study.
+# Imports of backtest_portfolio/build_ohlcv_cache stay LOCAL (inside functions):
+# no top-level cycle is possible even if those modules ever import run_backtest.
+# ════════════════════════════════════════════════════════════════════════════
+
+def _slice_years(df, years):
+    """Last ~years of daily bars (bar-based: years×252) — tz-safe, no date math."""
+    bars = max(1, int(years) * 252)
+    return df.iloc[-bars:] if len(df) > bars else df
+
+
+def load_universe_history(tickers, years, cache_dir=None, fetch_missing=None,
+                          max_fix=None, progress_every=25):
+    """Cache-first, sanitize-always history loader → (hist, stats).
+
+    Per ticker: .cache/ohlcv_15y/<safe>.pkl via build_ohlcv_cache.load_df; cache
+    MISS → collected and fetched in ONE fallback batch (injectable fetch_missing
+    for tests; default = data_fetcher.get_universe over the misses only). Every
+    admitted frame is sliced to `years` then cleaned by sanitize_ohlcv with the
+    market inferred from the suffix (.TW → TW limit rules, else US). Tickers
+    needing > max_fix repairs are DROPPED (recorded, never silently kept);
+    misses that fetch empty (delisted, e.g. NKLA) are recorded in skipped.
+    Progress prints every `progress_every` names (flush=True module-wide).
+    """
+    import build_ohlcv_cache as boc            # local: keep import graph acyclic
+    import backtest_portfolio as bp            # local: sanitize_ohlcv / MAX_FIXED_BARS
+    cache_dir = cache_dir or boc.CACHE_DIR
+    max_fix = bp.MAX_FIXED_BARS if max_fix is None else max_fix
+
+    hist, fixed_log, dropped, skipped, missing = {}, {}, [], [], []
+    n_cache = n_fetched = 0
+
+    def _admit(t, df):
+        df = _slice_years(df, years)
+        market = "TW" if t.endswith(".TW") else "US"
+        clean, fixed = bp.sanitize_ohlcv(df, market, max_fix=max_fix)
+        if len(fixed) > max_fix:
+            dropped.append(t)
+            logging.warning("SKIP %s: %d repairs > max_fix=%d (dropped)",
+                            t, len(fixed), max_fix)
+            return False
+        if fixed:
+            fixed_log[t] = fixed
+        hist[t] = clean
+        return True
+
+    n = len(tickers)
+    for idx, t in enumerate(tickers, 1):
+        df = boc.load_df(t, cache_dir)
+        if df is None or getattr(df, "empty", True):
+            missing.append(t)
+        elif _admit(t, df):
+            n_cache += 1
+        if progress_every and (idx % progress_every == 0 or idx == n):
+            print(f"[load] {idx}/{n} cache={n_cache} miss={len(missing)} "
+                  f"dropped={len(dropped)}")
+
+    if missing:
+        fetch = fetch_missing or (
+            lambda ts: data_fetcher.get_universe(ts, period=f"{int(years)}y"))
+        try:
+            fetched = fetch(missing) or {}
+        except Exception as e:                 # network down → record, never abort
+            logging.warning("SKIP fallback fetch (%d misses): %s", len(missing), e)
+            fetched = {}
+        for t in missing:
+            df = fetched.get(t)
+            if df is None or getattr(df, "empty", True):
+                skipped.append(t)
+                logging.warning("SKIP %s: cache miss + fetch empty (delisted?)", t)
+            elif _admit(t, df):
+                n_fetched += 1
+
+    stats = {"n_cache": n_cache, "n_fetched": n_fetched,
+             "skipped": skipped, "dropped": dropped, "fixed": fixed_log}
+    return hist, stats
+
+
+def _load_bench_cached(years, cache_dir=None, fetch_missing=None):
+    """Benchmarks (^TWII/^GSPC) cache-first → {'twii': df|None, 'sp500': df|None}.
+
+    Index levels carry no TW limit rules / split artifacts the stock sanitizer
+    targets, so benches are NOT sanitized — sliced to `years` only. A bench that
+    is neither cached nor fetchable comes back None (backtest_signal handles a
+    None bench gracefully) — recorded, never raises."""
+    import build_ohlcv_cache as boc
+    cache_dir = cache_dir or boc.CACHE_DIR
+    out = {}
+    missing = []
+    for sym in ("^TWII", "^GSPC"):
+        df = boc.load_df(sym, cache_dir)
+        out[sym] = None if df is None or getattr(df, "empty", True) else df
+        if out[sym] is None:
+            missing.append(sym)
+    if missing:
+        fetch = fetch_missing or (
+            lambda ts: data_fetcher.get_universe(ts, period=f"{int(years)}y"))
+        try:
+            fetched = fetch(missing) or {}
+        except Exception as e:
+            logging.warning("SKIP bench fetch %s: %s", missing, e)
+            fetched = {}
+        for sym in missing:
+            df = fetched.get(sym)
+            if df is None or getattr(df, "empty", True):
+                logging.warning("SKIP bench %s: not cached, not fetchable", sym)
+            else:
+                out[sym] = df
+    return {"twii": _slice_years(out["^TWII"], years) if out["^TWII"] is not None else None,
+            "sp500": _slice_years(out["^GSPC"], years) if out["^GSPC"] is not None else None}
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Incremental per-signal flush (crash-safe partial results).
+# ════════════════════════════════════════════════════════════════════════════
+
+PARTIAL_PATH = "_event_15y_partial.json"
+
+
+def _jsonable(v):
+    """Recursively coerce metrics into JSON-safe primitives (numpy scalars →
+    python, tuples → lists). Unknown leaf types fall back to str — the partial
+    file must NEVER abort the run."""
+    if isinstance(v, dict):
+        return {str(k): _jsonable(x) for k, x in v.items()}
+    if isinstance(v, (list, tuple)):
+        return [_jsonable(x) for x in v]
+    if isinstance(v, bool) or v is None or isinstance(v, (int, float, str)):
+        return v
+    try:
+        import numpy as _np
+        if isinstance(v, _np.integer):
+            return int(v)
+        if isinstance(v, _np.floating):
+            return float(v)
+    except Exception:
+        pass
+    return str(v)
+
+
+def _atomic_write_json(path, state):
+    """temp → os.replace: a mid-run kill never leaves a torn/half-written file."""
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, path)
+
+
+def _read_partial(path):
+    """Existing partial state, or {} on absent/corrupt (a torn file from a prior
+    crash must not abort the new run — SKIP, log, restart fresh)."""
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logging.warning("SKIP corrupt partial %s (restart fresh): %s", path, e)
+        return {}
+
+
+def append_partial_result(path, signal_name, metrics, meta=None):
+    """Flush ONE signal's metrics into the incremental partial file (atomic).
+
+    Called right after each backtest_signal returns, so a process death mid-run
+    still leaves every completed signal's metrics on disk and usable."""
+    state = _read_partial(path)
+    if meta:
+        state["meta"] = _jsonable(meta)
+    state.setdefault("signals", {})[str(signal_name)] = _jsonable(metrics)
+    state["done"] = False
+    state["updated"] = datetime.datetime.now().isoformat(timespec="seconds")
+    _atomic_write_json(path, state)
+
+
+def finalize_partial(path, gated):
+    """Mark the partial file complete + attach the multiple-testing-gated list."""
+    state = _read_partial(path)
+    state["gated"] = _jsonable(list(gated or []))
+    state["done"] = True
+    state["updated"] = datetime.datetime.now().isoformat(timespec="seconds")
+    _atomic_write_json(path, state)
+
+
+def main(universe_csv=None, fresh=False):
     years = int(sys.argv[1]) if len(sys.argv) > 1 else 15
     horizon = int(sys.argv[2]) if len(sys.argv) > 2 else 60
     explosive = float(sys.argv[3]) if len(sys.argv) > 3 else 25.0
     period = f"{years}y"
 
-    tickers = BREADTH_TW + BREADTH_US + (BUSTED_PEERS if INCLUDE_BUSTED else [])
-    print(f"Downloading {len(tickers)} tickers x {period} "
-          f"({len(BUSTED_PEERS) if INCLUDE_BUSTED else 0} busted-peer stress names) ...")
-    hist = data_fetcher.get_universe(tickers, period=period)
-    bench_raw = data_fetcher.get_universe(["^TWII", "^GSPC"], period=period)
-    bench = {"twii": bench_raw.get("^TWII"), "sp500": bench_raw.get("^GSPC")}
+    tickers = assemble_main_universe(universe_csv)
+    if universe_csv:
+        # cache-first (.cache/ohlcv_15y) + sanitize — the 653×15y one-shot
+        # yf.download is exactly what hung/killed the first background run.
+        print(f"[universe csv] {universe_csv} → {len(tickers)} tickers "
+              f"(busted peers appended: {INCLUDE_BUSTED}); cache-first + sanitize")
+        hist, lstats = load_universe_history(tickers, years)
+        print(f"[load done] hist={len(hist)} cache={lstats['n_cache']} "
+              f"fetched={lstats['n_fetched']} dropped={lstats['dropped']} "
+              f"skipped={lstats['skipped']} repaired={len(lstats['fixed'])}")
+        bench = _load_bench_cached(years)
+    else:
+        print(f"Downloading {len(tickers)} tickers x {period} "
+              f"({len(BUSTED_PEERS) if INCLUDE_BUSTED else 0} busted-peer stress names) ...")
+        hist = data_fetcher.get_universe(tickers, period=period)
+        bench_raw = data_fetcher.get_universe(["^TWII", "^GSPC"], period=period)
+        bench = {"twii": bench_raw.get("^TWII"), "sp500": bench_raw.get("^GSPC")}
     n_busted = sum(1 for t in BUSTED_PEERS if hist.get(t) is not None) if INCLUDE_BUSTED else 0
     print(f"Got {len(hist)} histories ({n_busted} busted peers resolved). "
           f"Fills: next-open={NEXT_OPEN}, slippage={SLIP_BPS}bps, fee={FEE_BPS}bps (net-of-cost)\n")
@@ -675,7 +981,33 @@ def main():
     # over the FULL family before deciding keep/kill — a per-signal inline decision
     # cannot be Bonferroni/BH-aware (the family size isn't known until every signal ran).
     results = []
-    for name, fn in DEFS.items():
+    partial_meta = {"asof": datetime.date.today().isoformat(), "period": period,
+                    "horizon": horizon, "explosive_pct": explosive,
+                    "universe_csv": universe_csv, "n_names": len(hist)}
+    # IDEMPOTENT RESUME: a mid-run death (e.g. rate-limit at signal 9/15) left every
+    # finished signal's metrics in PARTIAL_PATH. Reuse them so a restart only recomputes
+    # the missing tail — but ONLY if the partial's meta matches THIS run's
+    # (period, universe_csv, n_names); a stale partial from another universe is fully
+    # recomputed. `--fresh` (fresh=True) forces a full recompute regardless.
+    plan = _resume_plan(_read_partial(PARTIAL_PATH), partial_meta,
+                        names=list(DEFS.keys()), fresh=fresh)
+    if plan["cached"]:
+        print(f"[resume] partial meta matches — reusing {len(plan['cached'])} cached "
+              f"signal(s), recomputing {len(plan['recompute'])} "
+              f"(--fresh to force full recompute)")
+    elif fresh:
+        print("[resume] --fresh → ignoring partial, recomputing all "
+              f"{len(DEFS)} signals")
+    for sig_i, (name, fn) in enumerate(DEFS.items(), 1):
+        if name in plan["cached"]:
+            # CACHED: reuse the partial's metrics — DO NOT call backtest_signal.
+            m = dict(plan["cached"][name])
+            m["name"] = name
+            results.append(m)
+            if m.get("base_rate") is not None:
+                base_rate = m["base_rate"]   # full-universe base rate (signal-invariant)
+            print(f"[signal {sig_i}/{len(DEFS)}] {name} (cached from partial)")
+            continue
         m = backtest.backtest_signal(hist, fn, bench_history=bench, horizon=horizon,
                                      step=10, explosive_pct=explosive, min_bars=200,
                                      next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
@@ -683,10 +1015,15 @@ def main():
         m["name"] = name
         results.append(m)
         base_rate = m["base_rate"]
+        # incremental flush: a mid-run death keeps every finished signal usable.
+        append_partial_result(PARTIAL_PATH, name, m, meta=partial_meta)
+        print(f"[signal {sig_i}/{len(DEFS)}] {name} fired={m['fired']} "
+              f"prec={m['precision']:.2%}")
 
     # B12 multiple-testing correction over the full family (Bonferroni α/m + BH q=0.10).
     # gated[] are COPIES annotated with pvalue/bonferroni_pass/bh_pass/kept/family_size.
     gated = backtest.correction_gate(results, alpha=0.05, q=0.10)
+    finalize_partial(PARTIAL_PATH, gated)
 
     keep = []
     for g in gated:
@@ -727,6 +1064,8 @@ def main():
 
     print("\nARRIVAL TIME (bars-to-+%.0f%%, capped %d) — the honest 'when':" % (explosive, horizon * 2))
     for name in ["Trend Template", "Pocket pivot", "Power pivot(放量突破)", "RS純∧TrendTemplate"]:
+        if name not in DEFS:
+            continue   # arrival-time list is fixed; skip names absent from the active DEFS family
         bt = backtest.bars_to_target(hist, DEFS[name], bench_history=bench,
                                      max_horizon=horizon * 2, step=10,
                                      explosive_pct=explosive, min_bars=200)
@@ -742,7 +1081,12 @@ if __name__ == "__main__":
     # `python run_backtest.py early_board_opp [years] [horizon] [explosive] [cap]` → the SAME
     #   early-board family over the BROAD early-opportunity-eligible universe (dollar-volume-
     #   ranked, cap names + busted peers). Writes backtest_early_board_opp.txt.
+    # Optional anywhere: `--universe path.csv` (or --universe=path.csv) → run the default
+    #   weighting backtest over a CSV universe (e.g. universe_15y_draft.csv). Extracted
+    #   BEFORE positional parsing so the existing [years horizon explosive] CLI is intact.
     # Anything else → the existing default leadership-weighting backtest (unchanged).
+    _universe_csv, sys.argv = _extract_universe_arg(sys.argv)
+    _fresh, sys.argv = _extract_fresh_arg(sys.argv)   # --fresh → ignore partial, full recompute
     if len(sys.argv) > 1 and sys.argv[1] == "early_board_opp":
         eb_years = int(sys.argv[2]) if len(sys.argv) > 2 else 10
         eb_horizon = int(sys.argv[3]) if len(sys.argv) > 3 else 60
@@ -757,4 +1101,4 @@ if __name__ == "__main__":
         eb_explosive = float(sys.argv[4]) if len(sys.argv) > 4 else 25.0
         run_early_board(eb_years, eb_horizon, eb_explosive)
     else:
-        main()
+        main(universe_csv=_universe_csv, fresh=_fresh)

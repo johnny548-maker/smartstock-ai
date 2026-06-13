@@ -1,17 +1,9 @@
 {
  "stock": "4973.TWO",
  "name": "廣穎電通",
- "price": 191.5,
- "change_pct": -0.78,
+ "price": 191.0,
+ "change_pct": -0.26,
  "ohlc": [
-  {
-   "time": "2026-03-17",
-   "o": 79.67,
-   "h": 80.16,
-   "l": 79.67,
-   "c": 80.16,
-   "v": 2361111
-  },
   {
    "time": "2026-03-18",
    "o": 88.16,
@@ -482,11 +474,19 @@
    "h": 194.0,
    "l": 175.0,
    "c": 191.5,
-   "v": 3540566
+   "v": 3588067
+  },
+  {
+   "time": "2026-06-12",
+   "o": 198.5,
+   "h": 199.0,
+   "l": 191.0,
+   "c": 191.0,
+   "v": 2179288
   }
  ],
  "sr": {
-  "price": 191.5,
+  "price": 191.0,
   "resistance": [],
   "support": [
    154.5,
@@ -495,7 +495,6 @@
   "strong_support": 19.7
  },
  "spark": [
-  80.16,
   88.16,
   96.94,
   87.27,
@@ -554,10 +553,11 @@
   160.0,
   176.0,
   193.0,
-  191.5
+  191.5,
+  191.0
  ],
- "spark_start": "2026-03-17",
- "spark_end": "2026-06-11",
+ "spark_start": "2026-03-18",
+ "spark_end": "2026-06-12",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 161815,
+    "foreign": -90000,
     "trust": 0,
-    "dealer": 12288,
-    "total": 174103
+    "dealer": 10999,
+    "total": -79001
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-13",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -586,7 +586,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-13",
    "note": "OTC valuation context"
   }
  ]

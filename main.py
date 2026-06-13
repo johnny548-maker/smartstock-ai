@@ -48,12 +48,16 @@ import watchlist_tracker
 import stock_detail
 import overlay_snapshot
 import pick_outcomes
+import strategy_health as strategy_health_mod
+import shadow_portfolio as shadow_mod
+import data_health as data_health_mod
 import positions as positions_mod
 import pretrade as pretrade_mod
 import peer_valuation as peerval_mod
 import attribution as attribution_mod
 import indicators
 import supply_chain
+import momentum_portfolio as momentum_mod
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -173,6 +177,36 @@ def main(web=False):
                  opp["universe"], opp["scanned"], len(opp["leaders"]))
     except Exception as e:
         log.warning("SKIP opportunity scan: %s", e); opp = None; skips.append("opportunity")
+
+    # 2e-mom. 動能組合（季度）lens — quarterly top-20 12-1 momentum PORTFOLIO view.
+    #     Decision 2026-06-13: momentum is a PORTFOLIO-CONSTRUCTION factor (rank+hold,
+    #     proven by backtest_portfolio.py), NOT a daily explosive signal (event-study
+    #     lift 0.89 < 1 → vetoed from score_stock). So it's a SEPARATE lens that
+    #     consumes the opportunity universe's ALREADY-FETCHED OHLCV (NO extra network)
+    #     + reads the committed backtest_portfolio_*.json track record (never recomputes).
+    #     OVERLAY-NOT-SCORER: nothing here touches strategy.score_stock / rank_stocks.
+    #     FAIL-OPEN: a lens failure SKIPs to an empty lens, never aborts the daily report.
+    momentum_lens = {}
+    try:
+        _mom_data = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
+        _tw_hist = {t: df for t, df in _mom_data.items() if t.endswith((".TW", ".TWO"))}
+        _us_hist = {t: df for t, df in _mom_data.items() if not t.endswith((".TW", ".TWO"))}
+        _opp_names = {}
+        for _ld in (opp or {}).get("leaders", []):
+            if _ld.get("ticker") and _ld.get("name"):
+                _opp_names.setdefault(_ld["ticker"], _ld["name"])
+        _here = os.path.dirname(os.path.abspath(__file__))
+        momentum_lens = momentum_mod.build_lens(
+            _tw_hist, _us_hist,
+            os.path.join(_here, "backtest_portfolio_tw.json"),
+            os.path.join(_here, "backtest_portfolio_us.json"),
+            tw_names={**config.STOCK_NAMES, **_opp_names},
+            us_names={**config.STOCK_NAMES, **_opp_names})
+        log.info("momentum lens: TW %d holding(s), US %d holding(s)",
+                 len(momentum_lens.get("tw", {}).get("holdings", [])),
+                 len(momentum_lens.get("us", {}).get("holdings", [])))
+    except Exception as e:
+        log.warning("SKIP momentum lens: %s", e); momentum_lens = {}; skips.append("momentum_portfolio")
 
     # 3. 三大法人 ------------------------------------------------------------
     try:
@@ -456,7 +490,8 @@ def main(web=False):
         rebalance_diff=reb, risk=risk, movers=movers,
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
         signals=sig, themes=themes, opportunity=opp, regime=regime,
-        concentration=concentration, macro=macro_ctx)
+        concentration=concentration, macro=macro_ctx,
+        momentum_portfolio=momentum_lens)
 
     # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
     #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
@@ -1073,7 +1108,8 @@ def main(web=False):
             regime=regime, concentration=concentration, shortvol=shortvol_board,
             macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
             overlays_map=overlays_map, source_coverage=source_coverage,
-            environment=environment, my_positions=my_positions)
+            environment=environment, my_positions=my_positions,
+            momentum_portfolio=momentum_lens)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
@@ -1118,6 +1154,46 @@ def main(web=False):
                      _pp.get("n_scored") or 0, _pp.get("n_picks") or 0, _pp.get("n_dates") or 0)
         except Exception as e:
             log.warning("SKIP pick_outcomes: %s", e); skips.append("pick_outcomes")
+
+        # 8d. Premortem countermeasures (P-M1/2/3): strategy death-criteria,
+        #     shadow portfolio (strategy curve vs execution curve), data-health
+        #     gate. All three are INFORMATIONAL payload overlays — OVERLAY-NOT-
+        #     SCORER: they NEVER feed strategy.score_stock / rank_stocks.
+        #     SKIP-not-abort for P-M1/2; P-M3 (health) is FAIL-OPEN: it is
+        #     ALWAYS computed and ALWAYS shipped — a crash inside the health
+        #     check degrades the block, never blocks the daily report.
+        try:
+            # why: P-M1 — a dead signal must demote itself; the PWA banner
+            # reads strategy_health, the weights stay human+CI-gated.
+            payload["strategy_health"] = strategy_health_mod.summarize(data_dir)
+        except Exception as e:
+            log.warning("SKIP strategy_health: %s", e); skips.append("strategy_health")
+        try:
+            # why: P-M2 — chain today's top-N picks into the shadow NAV so the
+            # strategy curve is separable from any execution drift.
+            payload["shadow"] = shadow_mod.update(data_dir, date_str)
+        except Exception as e:
+            log.warning("SKIP shadow_portfolio: %s", e); skips.append("shadow_portfolio")
+        try:
+            # why: P-M3 — health must always ship (fail-open), so silent data
+            # rot is bannered instead of rendered as a fresh report.
+            payload["health"] = data_health_mod.summarize(payload, data_dir)
+        except Exception as e:
+            log.warning("data_health failed (fail-open → degraded): %s", e)
+            payload["health"] = {"generated_at": payload.get("generated_at"),
+                                 "sources": [], "overall": "degraded",
+                                 "note": f"health check crashed: {e}"}
+        try:
+            web_export.export(payload, config.WEB_DIR)   # land 8d keys in <date>.json
+            _h = payload.get("health") or {}
+            log.info("health: %s (%d checks) | strategy_health: %d signal(s) | "
+                     "shadow NAV %.4f (%d open)",
+                     _h.get("overall"), len(_h.get("sources") or []),
+                     len((payload.get("strategy_health") or {}).get("signals") or {}),
+                     (payload.get("shadow") or {}).get("nav") or 1.0,
+                     (payload.get("shadow") or {}).get("n_open") or 0)
+        except Exception as e:
+            log.warning("SKIP 8d re-export: %s", e); skips.append("health_export")
 
     if skips:
         log.warning("DONE — 部分來源略過: %s", ", ".join(sorted(set(skips))))

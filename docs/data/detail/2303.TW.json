@@ -1,8 +1,8 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 136.0,
- "change_pct": 8.8,
+ "price": 133.5,
+ "change_pct": 6.8,
  "ohlc": [
   {
    "time": "2026-03-18",
@@ -481,12 +481,12 @@
    "o": 134.0,
    "h": 137.5,
    "l": 132.5,
-   "c": 136.0,
-   "v": 219201143
+   "c": 133.5,
+   "v": 388715812
   }
  ],
  "sr": {
-  "price": 136.0,
+  "price": 133.5,
   "resistance": [
    155.5
   ],
@@ -556,7 +556,7 @@
   127.5,
   118.5,
   125.0,
-  136.0
+  133.5
  ],
  "spark_start": "2026-03-18",
  "spark_end": "2026-06-12",
@@ -566,42 +566,72 @@
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": null,
+ "levels": {
+  "entry": 133.5,
+  "stop": 124.16,
+  "target": 156.86,
+  "atr_bracket": 156.86,
+  "measured_move": 240.3,
+  "target_band": [
+   156.86,
+   240.3
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 8.9,
+  "swing_stop": 67.12,
+  "chandelier": 122.28,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 37,955,298 股",
+   "value": {
+    "foreign": 15230108,
+    "trust": 17459251,
+    "dealer": 5265939,
+    "total": 37955298
+   },
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
    "source": "twse_margin",
    "kind": "chip",
-   "label": "融資餘額單日大增 +18.9%",
+   "label": "融券餘額下降（回補）",
    "value": {
-    "fin_net": 33158,
-    "fin_pct": 0.18884408602150538
+    "short_net": -186
    },
-   "severity": "warn",
-   "as_of": "2026-06-12",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 31.4 / 殖利率 2.08% / PB 3.87",
+   "label": "PE 33.5 / 殖利率 1.95% / PB 4.13",
    "value": {
-    "pe": 31.41,
-    "yield": 2.08,
-    "pb": 3.87
+    "pe": 33.54,
+    "yield": 1.95,
+    "pb": 4.13
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-12",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "大戶集中度",
-   "value": 77.15,
-   "severity": "info",
-   "as_of": "20260605",
-   "note": "大戶持股%=77.15"
+   "label": "散戶化/出貨",
+   "value": 76.52,
+   "severity": "warn",
+   "as_of": "20260612",
+   "note": "大戶持股%=76.52；WoW-0.63；股東人數+33193"
   }
  ]
 }

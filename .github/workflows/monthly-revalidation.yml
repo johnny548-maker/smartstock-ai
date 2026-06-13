@@ -1,0 +1,59 @@
+name: SmartStock Monthly Revalidation
+
+# Premortem P-M4 對策: the live system cites offline backtest precision as its
+# baseline (verdict Kelly ceiling + strategy_health death criterion). A baseline
+# that is never re-run silently expires — regime change leaves the daily report
+# quoting stale lifts. This re-runs the FULL 15y / horizon-60 / +25% backtest
+# over the pinned universe every month and commits:
+#   • docs/data/_revalidation/<YYYY-MM>.txt — the run's full stdout (audit trail)
+#   • docs/data/_kelly_state.json           — the refreshed corrected KEEP list
+#     (written by run_backtest.write_kelly_state; feeds verdict's Kelly ceiling
+#     and strategy_health's live-vs-backtest comparison)
+#
+# Runs on the 5th (after monthly-overlay-readiness on the 1st, so the two heavy
+# jobs never collide). Minute 43 — GitHub free-tier scheduled runs at :00/:30
+# are contended and get dropped (observed on the daily cron); odd minutes fire
+# far more reliably.
+on:
+  schedule:
+    - cron: '43 5 5 * *'   # 5th of month, 05:43 UTC (~13:43 TW)
+  workflow_dispatch: {}    # manual re-validation from the Actions tab
+
+permissions:
+  contents: write   # to commit the revalidation report + refreshed kelly state
+
+concurrency:
+  group: smartstock-monthly-revalidation
+  cancel-in-progress: false
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    # The 15y x ~650-ticker download + signal sweep is the heaviest job in the
+    # repo — cap below GitHub's 360-min hard limit so a hung fetch fails loudly.
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run 15y backtest revalidation
+        run: |
+          set -euo pipefail
+          mkdir -p docs/data/_revalidation
+          python -X utf8 run_backtest.py 15 60 25 --universe universe_15y_draft.csv \
+            | tee "docs/data/_revalidation/$(date -u +%Y-%m).txt"
+
+      - name: Commit revalidation report and refreshed kelly state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/_revalidation docs/data/_kelly_state.json
+          git commit -m "revalidation: $(date -u +%Y-%m)" || echo "no changes to commit"
+          git push

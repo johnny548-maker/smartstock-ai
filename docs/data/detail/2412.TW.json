@@ -1,8 +1,8 @@
 {
  "stock": "2412.TW",
  "name": "中華電",
- "price": 145.5,
- "change_pct": 0.34,
+ "price": 145.0,
+ "change_pct": 0.0,
  "ohlc": [
   {
    "time": "2026-03-18",
@@ -481,12 +481,12 @@
    "o": 145.0,
    "h": 145.5,
    "l": 143.5,
-   "c": 145.5,
-   "v": 2975506
+   "c": 145.0,
+   "v": 8974047
   }
  ],
  "sr": {
-  "price": 145.5,
+  "price": 145.0,
   "resistance": [],
   "support": [
    135.0,
@@ -554,7 +554,7 @@
   142.0,
   144.0,
   145.0,
-  145.5
+  145.0
  ],
  "spark_start": "2026-03-18",
  "spark_end": "2026-06-12",
@@ -568,6 +568,31 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 1,133,586 股",
+   "value": {
+    "foreign": -1045349,
+    "trust": -48797,
+    "dealer": -39440,
+    "total": -1133586
+   },
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -1
+   },
+   "severity": "info",
+   "as_of": "2026-06-13",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
    "source": "twse_pe",
    "kind": "fundamental",
    "label": "PE 28.8 / 殖利率 3.59% / PB 2.84",
@@ -577,17 +602,17 @@
     "pb": 2.84
    },
    "severity": "info",
-   "as_of": "2026-06-11",
+   "as_of": "2026-06-12",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "大戶集中度",
-   "value": 79.72,
+   "label": "大戶吸籌",
+   "value": 79.91,
    "severity": "info",
-   "as_of": "20260605",
-   "note": "大戶持股%=79.72"
+   "as_of": "20260612",
+   "note": "大戶持股%=79.91；WoW+0.19；股東人數-1086"
   }
  ]
 }

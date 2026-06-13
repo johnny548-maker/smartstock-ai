@@ -1,18 +1,33 @@
 {
-  "asof": "2026-06-09",
-  "U/D量比吸籌": {
-    "win_rate": 0.629,
-    "avg_win_pct": 29.05,
-    "avg_loss_pct": 13.85,
-    "expectancy_pct": 13.14,
-    "kelly_raw": 0.4522,
-    "kelly_half": 0.2261,
-    "kelly_capped": 0.2261,
+  "asof": "2026-06-13",
+  "VDU→Thrust(量縮噴出)": {
+    "win_rate": 0.605,
+    "avg_win_pct": 16.21,
+    "avg_loss_pct": 10.06,
+    "expectancy_pct": 5.83,
+    "kelly_raw": 0.3599,
+    "kelly_half": 0.18,
+    "kelly_capped": 0.18,
     "ci_beats_base": true,
     "kept": true,
-    "pvalue": 3.6670986758302604e-07,
+    "pvalue": 5.714575479487394e-10,
     "bonferroni_pass": true,
     "bh_pass": true,
-    "fired": 558
+    "fired": 1466
+  },
+  "U/D量比吸籌": {
+    "win_rate": 0.5828,
+    "avg_win_pct": 16.14,
+    "avg_loss_pct": 10.17,
+    "expectancy_pct": 5.16,
+    "kelly_raw": 0.3199,
+    "kelly_half": 0.1599,
+    "kelly_capped": 0.1599,
+    "ci_beats_base": true,
+    "kept": true,
+    "pvalue": 0.0,
+    "bonferroni_pass": true,
+    "bh_pass": true,
+    "fired": 47653
   }
 }

@@ -184,54 +184,93 @@ def _theme_line(themes):
     return ("🔥 主題湧現：" + "、".join(hot)) if hot else None
 
 
-def _signals_block(sig, themes=None):
-    """🔎 早期訊號雷達 — leadership tells, surfaced but NOT score-weighted yet."""
-    board = (sig or {}).get("board") or []
-    tline = _theme_line(themes)
-    if not board and not tline:
-        return ""
-    lines = ["## 🔎 早期訊號雷達", "",
-             "_領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分_",
-             "_誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 **~70% 從未到達**；目標價為技術投影非預測_", ""]
-    if tline:
-        lines += [tline, ""]
-    for r in board:
-        nm = r.get("name") or r["stock"]
-        lines.append(f"- {nm}（{r['stock']}）×{r['count']}：{'、'.join(r['signals'])}")
-    return "\n".join(lines)
+def _radar_merge(opp, sig):
+    """Merge the three early boards (breakout 拐點 / opportunity leaders 領導 /
+    signals 訊號) into ONE row per ticker. Pure dict assembly, no I/O.
 
+    Returns an ordered list of rows:
+      {ticker, name, ready, rs, sources: [拐點|領導|訊號…], signals: [deduped…],
+       theme, rev}
+    Order: more sources first, then ready, then RS desc. Signal strings are
+    deduped exactly (same text from two boards collapses to one chip)."""
+    rows = {}        # ticker -> row (insertion-ordered)
 
-def _opportunity_block(opp):
-    """🛰️ 機會掃描 — watchlist 外的全市場早期領導股 (Round 2 universe expansion)."""
-    leaders = (opp or {}).get("leaders") or []
-    if not leaders:
-        return ""
-    lines = [f"## 🛰️ 機會掃描（全市場早期領導股 · 掃 {opp.get('scanned', '?')} 檔）", "",
-             "_watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股_", ""]
-    for ld in leaders:
-        nm = ld.get("name") or ld["ticker"]
-        th = f" · {ld['theme']}" if ld.get("theme") else ""
-        rev = ""
+    def row_for(ticker, name):
+        r = rows.get(ticker)
+        if r is None:
+            r = {"ticker": ticker, "name": name or ticker, "ready": False,
+                 "rs": None, "sources": [], "signals": [], "theme": None, "rev": ""}
+            rows[ticker] = r
+        elif name and r["name"] == ticker:
+            r["name"] = name
+        return r
+
+    def add_signals(r, sigs):
+        for s in (sigs or []):
+            if s and s not in r["signals"]:
+                r["signals"].append(s)
+
+    for b in (opp or {}).get("breakout") or []:
+        tk = b.get("stock") or b.get("ticker")
+        if not tk:
+            continue
+        r = row_for(tk, b.get("name"))
+        r["sources"].append(f"拐點×{b.get('score', '?')}")
+        r["ready"] = r["ready"] or bool(b.get("ready"))
+        add_signals(r, b.get("signals"))
+    for ld in (opp or {}).get("leaders") or []:
+        tk = ld.get("ticker")
+        if not tk:
+            continue
+        r = row_for(tk, ld.get("name"))
+        r["sources"].append(f"領導RS{ld.get('rs_rating', '?')}")
+        r["rs"] = ld.get("rs_rating")
+        if ld.get("theme"):
+            r["theme"] = ld["theme"]
         if ld.get("rev_yoy") is not None:
             rev = f"，季營收YoY {ld['rev_yoy']:+.0f}%"
             if ld.get("rev_accel") is not None:
                 rev += f"(加速{ld['rev_accel']:+.0f})"
-        lines.append(f"- {nm}（{ld['ticker']}）RS {ld['rs_rating']}{th} — {'、'.join(ld['signals'])}{rev}")
-    return "\n".join(lines)
+            r["rev"] = rev
+        add_signals(r, ld.get("signals"))
+    for s in (sig or {}).get("board") or []:
+        tk = s.get("stock")
+        if not tk:
+            continue
+        r = row_for(tk, s.get("name"))
+        r["sources"].append(f"訊號×{s.get('count', '?')}")
+        add_signals(r, s.get("signals"))
+
+    return sorted(rows.values(),
+                  key=lambda r: (-len(r["sources"]), not r["ready"], -(r["rs"] or 0)))
 
 
-def _breakout_block(opp):
-    """🚀 正要起漲 — accumulation→markup inflection radar (council R4, informational)."""
-    board = (opp or {}).get("breakout") or []
-    if not board:
+def _radar_block(opp, sig, themes=None):
+    """🛰️ 早期雷達 — R7 merge of the three former early boards（正要起漲／機會掃描／
+    早期訊號雷達）into ONE deduped section: one row per ticker, multi-source tagged.
+    ALL three honest-disclosure lines are preserved VERBATIM (never trimmed)."""
+    rows = _radar_merge(opp, sig)
+    tline = _theme_line(themes)
+    if not rows and not tline:
         return ""
-    lines = ["## 🚀 正要起漲雷達（拐點偵測 · 全市場掃描）", "",
+    scanned = (opp or {}).get("scanned")
+    head = "## 🛰️ 早期雷達（拐點 / 領導股 / 訊號 整併"
+    head += f" · 掃 {scanned} 檔）" if scanned else "）"
+    lines = [head, "",
+             # —— 誠實揭露（VERBATIM，依來源板逐段保留，絕不刪減）——
+             "_watchlist 以外、橫斷面 RS-Rating≥80 + 領導訊號的小型成長股（含 AAOI/NVTS 類）。informational，非持股_",
              "_Wyckoff spring／LPS／ATR擠壓／RS平盤翻揚／跳空起漲 等**拐點**訊號（比趨勢確認更早一步）。"
-             "✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。_", ""]
-    for r in board:
-        nm = r.get("name") or r["stock"]
-        flag = "✅起漲就緒 " if r.get("ready") else ""
-        lines.append(f"- {flag}{nm}（{r['stock']}）×{r['score']}：{'、'.join(r['signals'])}")
+             "✅=平盤基底+站穩MA50+≥2訊號。informational、回測驗證後才加權；最佳訊號仍 ~70% 未達。_",
+             "_領先型訊號（RS線新高／量縮噴出／U-D量吸籌／放量突破／首次新高／主題／月營收）。型態類經 15 年回測+Wilson CI 驗證才納入評分_",
+             "_誠實揭露（15年回測含滑價）：最佳訊號 median ~50–60 交易日達 +25%，但 **~70% 從未到達**；目標價為技術投影非預測_", ""]
+    if tline:
+        lines += [tline, ""]
+    for r in rows:
+        flag = "✅起漲就緒 " if r["ready"] else ""
+        th = f" · {r['theme']}" if r["theme"] else ""
+        src = "｜".join(r["sources"])
+        lines.append(f"- {flag}{r['name']}（{r['ticker']}）〔{src}〕{th}："
+                     f"{'、'.join(r['signals'])}{r['rev']}")
     return "\n".join(lines)
 
 
@@ -282,10 +321,68 @@ def _concentration_block(con):
     return "\n".join(lines)
 
 
+def _pct(v):
+    """A backtest ratio (0.3647) → '36.5%'. None → '—'. Pure formatting."""
+    return "—" if v is None else f"{v * 100:.1f}%"
+
+
+def _momentum_portfolio_block(mp):
+    """🏆 動能組合（季度）— quarterly top-20 12-1 momentum PORTFOLIO lens.
+
+    Decision 2026-06-13: momentum is a PORTFOLIO-CONSTRUCTION factor (rank+hold,
+    proven by backtest_portfolio.py), NOT a daily explosive signal — so this is a
+    SEPARATE framework from the daily picks. Renders a TW + US track-record line
+    and top holdings, with the four mandated honest-disclosure lines VERBATIM.
+    Graceful: missing/empty lens → no section (backward-compatible)."""
+    if not mp or not isinstance(mp, dict):
+        return ""
+    tw = mp.get("tw") or {}
+    us = mp.get("us") or {}
+    tw_h = tw.get("holdings") or []
+    us_h = us.get("holdings") or []
+    if not tw_h and not us_h:
+        return ""
+    lines = ["## 🏆 動能組合（季度 top-20 · 與每日精選為不同框架）", ""]
+    # disclaimers VERBATIM (never trimmed)
+    for d in (mp.get("disclaimers") or []):
+        lines.append(f"_{d}_")
+    lines.append("")
+
+    def sleeve_block(label, sleeve, holdings):
+        out = []
+        tr = sleeve.get("track_record")
+        if tr:
+            oos = tr.get("oos") or {}
+            out.append(
+                f"**{label}**（15y 擴大 universe {tr.get('n_universe', '?')} 檔回測）："
+                f"CAGR **{_pct(tr.get('cagr'))}**／Sharpe {tr.get('sharpe'):.2f}"
+                f"／MaxDD {_pct(tr.get('max_dd'))}"
+                f"／OOS 2y CAGR {_pct(oos.get('cagr'))}"
+                f"（等權 {_pct(tr.get('equal_weight_cagr'))}、買進持有 {_pct(tr.get('buy_hold_cagr'))}）"
+                if tr.get("sharpe") is not None else
+                f"**{label}**：CAGR **{_pct(tr.get('cagr'))}**／OOS 2y {_pct(oos.get('cagr'))}")
+        else:
+            out.append(f"**{label}**：_回測 track record 暫不可得_")
+        for h in holdings:
+            nm = h.get("name") or h.get("ticker")
+            mom = h.get("mom")
+            momtxt = "—" if mom is None else f"{mom * 100:+.0f}%"
+            pxtxt = "" if h.get("price") is None else f"，現價 {h['price']}"
+            out.append(f"- {nm}（{h['ticker']}）— 動能 {momtxt}{pxtxt}")
+        return out
+
+    if tw_h or tw.get("track_record"):
+        lines += sleeve_block("台股 sleeve", tw, tw_h) + [""]
+    if us_h or us.get("track_record"):
+        lines += sleeve_block("美股 sleeve", us, us_h)
+    return "\n".join(lines).rstrip()
+
+
 def build_report(date_str, news, indices, institutional, ranked, analyses,
                  allocation, rebalance_diff, risk, movers=None, delta=None,
                  events=None, breadth=None, revenue=None, signals=None, themes=None,
-                 opportunity=None, regime=None, concentration=None, macro=None):
+                 opportunity=None, regime=None, concentration=None, macro=None,
+                 momentum_portfolio=None):
     blocks = [
         f"# 📈 SmartStock 每日投資日報 — {date_str}",
         "",
@@ -297,9 +394,9 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
     mc = _macro_block(macro)
     if mc:
         blocks += ["", mc]
-    for extra in (_delta_block(delta), _breakout_block(opportunity),
-                  _opportunity_block(opportunity),
-                  _signals_block(signals, themes), _revenue_block(revenue),
+    for extra in (_delta_block(delta),
+                  _radar_block(opportunity, signals, themes),
+                  _revenue_block(revenue),
                   _calendar_block(events)):
         if extra:
             blocks += ["", extra]
@@ -319,6 +416,9 @@ def build_report(date_str, news, indices, institutional, ranked, analyses,
     cc = _concentration_block(concentration)
     if cc:
         blocks += ["", cc]
+    mpb = _momentum_portfolio_block(momentum_portfolio)
+    if mpb:
+        blocks += ["", mpb]
     blocks += [
         "",
         _alloc_block(allocation, rebalance_diff),
