@@ -7,20 +7,18 @@ gated), relative-strength-vs-index, 52-week-high proximity, RSI-14 (replaces the
 old crude overheat rule), OBV volume-price divergence.
 """
 import config
+import signal_registry
 from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN_BARS,
                     RS_WINDOW, RS_STRONG, HIGH_WINDOW, NEAR_HIGH, NEAR_MID, FAR_HIGH,
                     RSI_WINDOW, RSI_OVERBOUGHT, RSI_OVERSOLD,
                     INST_RATIO_FULL, INST_RATIO_HALF,
                     CONC_HIGH, CONC_MID, STREAK_MIN,
-                    LEADERSHIP_WEIGHT, LEAD_FIRST_NEW_HIGH, LEAD_POWER_PIVOT,
-                    LEAD_STAGE2, LEAD_UD_ACCUM, LEAD_POCKET_PIVOT, LEAD_RS_NEW_HIGH,
-                    LEAD_VDU_THRUST, FACTOR_PTS)
+                    LEADERSHIP_WEIGHT, FACTOR_PTS)
 # NOTE: BUCKET_SCORING / BUCKET_CAPS / BUCKET_IC_WEIGHTS are read via `config.` at call-time
 # (NOT from-imported) so the A4a flag flip is live + testable — a bound bool wouldn't update.
+# LEAD_* weights + the leadership predicates now live in signal_registry (B1, read via config.*).
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
-from signals import rs_line_new_high
-from volume_signals import accumulating as ud_accumulating, vdu_thrust as ud_vdu_thrust
 
 
 # Factor → bucket classifier (de-collinearization). Rules are ordered; first match
@@ -189,21 +187,15 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
     # enters the factors dict (no verdict pollution). See config LEAD_* + the decision file
     # .decisions/2026-06-13-smartstock-15y-weight-gate.md
     if LEADERSHIP_WEIGHT:
+        # B1: data-driven over signal_registry.LEADERSHIP (the single source the backtest also
+        # references) instead of 7 hand-repeated if-blocks. Byte-identical: same order, labels,
+        # config weight attrs, and predicates. Weight read via config.* so an offline-tuned
+        # weight (or an A5 demotion to 0) takes effect without re-import; 0-weight never enters.
         setup = analyze_setup(df)
-        if LEAD_FIRST_NEW_HIGH > 0 and setup["first_new_high"]:
-            factors["久盤後首次新高(回測lift0.68)"] = LEAD_FIRST_NEW_HIGH
-        if LEAD_POWER_PIVOT > 0 and setup["power_pivot"]:
-            factors["Power pivot放量突破(回測lift1.24)"] = LEAD_POWER_PIVOT
-        if LEAD_STAGE2 > 0 and setup["stage2"]:
-            factors["Stage2上升趨勢(回測lift1.00)"] = LEAD_STAGE2
-        if LEAD_POCKET_PIVOT > 0 and setup["pocket_pivot"]:
-            factors["Pocket pivot吸籌(回測lift0.99)"] = LEAD_POCKET_PIVOT
-        if LEAD_UD_ACCUM > 0 and ud_accumulating(df):
-            factors["U/D量吸籌(回測lift1.55)"] = LEAD_UD_ACCUM
-        if LEAD_VDU_THRUST > 0 and ud_vdu_thrust(df):
-            factors["VDU→Thrust噴出(回測lift1.61)"] = LEAD_VDU_THRUST
-        if LEAD_RS_NEW_HIGH > 0 and bench is not None and rs_line_new_high(df, bench):
-            factors["RS線新高領先(回測lift0.99)"] = LEAD_RS_NEW_HIGH
+        for _sig in signal_registry.LEADERSHIP:
+            _w = getattr(config, _sig.weight_attr)
+            if _w > 0 and _sig.fires(df, bench, setup):
+                factors[_sig.label] = _w
 
     if config.BUCKET_SCORING:
         score, buckets = _bucket_score(factors)
