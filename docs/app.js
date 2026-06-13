@@ -12,8 +12,12 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v37';
-const APP_BUILD = '2026-06-13';
+const APP_VERSION = 'v38';
+const APP_BUILD = '2026-06-14';
+/* C1: the max payload schema_version this build understands. A payload newer than this
+   means the service worker is serving a stale app.js → soft-banner the user to refresh.
+   Old payloads have no field (read as 0) → always supported (back-compat). */
+const SUPPORTED_SCHEMA = 1;
 
 /* ---------- tiny utils ---------- */
 const $ = (id) => document.getElementById(id);
@@ -1635,6 +1639,9 @@ async function loadDay(date) {
   CUR = d; CUR_DATE = date; NAMES = d.names || {};
   CUR._lazy = null;
   toast('', 1);
+  // C1 schema guard: a payload newer than this build = stale cached app.js → ask to refresh.
+  const sv = (d && typeof d.schema_version === 'number') ? d.schema_version : 0;
+  if (sv > SUPPORTED_SCHEMA) toast('資料格式較新 (v' + sv + ')，請重新整理以更新 App', 8000);
   return d;
 }
 

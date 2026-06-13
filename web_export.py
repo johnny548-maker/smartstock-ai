@@ -9,6 +9,12 @@ from datetime import datetime
 
 from config import STOCK_NAMES, DISPLAY_N
 
+# PWA payload schema version (C1). Bump when a breaking shape change ships; the client
+# (docs/app.js) soft-banners on a version it doesn't understand. ADDITIVE history rule:
+# keep old keys readable / fall back on removal (see the 'breakout' strip) so _rebuild_index
+# and the client keep loading mixed-version files. Payloads with no field read as v0.
+SCHEMA_VERSION = 1
+
 
 def _clean(o):
     """Replace NaN/Inf floats with None — they are invalid JSON and break the PWA's
@@ -130,6 +136,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
     # names so the detail view shows names not bare codes for every linkable name.
     names = {**STOCK_NAMES, **_names_map(opportunity, revenue)}
     return {
+        "schema_version": SCHEMA_VERSION,   # C1: client compatibility guard
         "date": date_str,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "risk": risk,

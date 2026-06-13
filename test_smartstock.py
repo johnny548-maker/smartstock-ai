@@ -785,6 +785,38 @@ class TestRobustnessBadge(unittest.TestCase):
         self.assertTrue(verdict.family_robustness_badge()["caution"])
 
 
+class TestSchemaVersion(unittest.TestCase):
+    """C1: PWA payload carries a schema_version; _rebuild_index loads mixed-version files."""
+
+    def _payload(self):
+        return web_export.build_payload(
+            "2026-06-14", news=[], indices={}, institutional={},
+            ranked=[{"stock": "2330.TW", "name": "台積電", "score": 50, "factors": {}}],
+            analyses={}, allocation={}, rebalance_diff={}, risk="LOW",
+            markdown="", skips=[])
+
+    def test_schema_version_present(self):
+        p = self._payload()
+        self.assertIsInstance(p["schema_version"], int)
+        self.assertEqual(p["schema_version"], web_export.SCHEMA_VERSION)
+
+    def test_rebuild_index_mixed_versions(self):
+        import json
+        import tempfile
+        d = tempfile.mkdtemp()
+        with open(os.path.join(d, "2026-06-13.json"), "w", encoding="utf-8") as f:
+            json.dump({"date": "2026-06-13", "risk": "LOW",       # v0: no schema_version
+                       "picks": [{"stock": "AAA", "name": "a", "score": 10}]}, f)
+        with open(os.path.join(d, "2026-06-14.json"), "w", encoding="utf-8") as f:
+            json.dump({"schema_version": 1, "date": "2026-06-14", "risk": "MID",
+                       "picks": [{"stock": "BBB", "name": "b", "score": 20}]}, f)
+        idx = web_export._rebuild_index(d)
+        dates = [r["date"] for r in idx]
+        self.assertIn("2026-06-13", dates)                        # old unversioned still loads
+        self.assertIn("2026-06-14", dates)
+        self.assertEqual(dates[0], "2026-06-14")                  # sorted desc
+
+
 class TestRSRating(unittest.TestCase):
     def test_cross_sectional_percentile(self):
         uni = {
