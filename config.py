@@ -302,7 +302,8 @@ IC_MIN = 0.05
 # bps = clamp(base + k·sqrt(participation), base, cap). ref_notional is a per-market typical
 # order clip in NATIVE currency (TWD for .TW, USD for US) so the cross-market ADV (= Close·Vol)
 # is comparable to it. OFFLINE-ONLY flag (run_backtest / validation); daily run untouched.
-ADV_SLIPPAGE = False              # default flat (back-compat); flip on for the realistic gate re-run
+ADV_SLIPPAGE = True               # OFFLINE-ONLY (run_backtest/run_validation; daily main.py never reads it):
+                                  # realistic liquidity-scaled cost for the gate verdict. 2026-06-14.
 SLIP_BASE_BPS = 3.0               # floor — even infinite liquidity pays spread/impact
 SLIP_K = 10.0                     # participation→bps scale
 SLIP_CAP_BPS = 25.0              # hard ceiling for the thinnest names
