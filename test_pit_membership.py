@@ -64,5 +64,31 @@ class TestLoadUniverseMeta(unittest.TestCase):
         self.assertIsNone(rb.load_universe_meta(p)["AAA"])       # no column → PIT no-op
 
 
+class TestFirstBarDate(unittest.TestCase):
+    """C2 data: added_date derived from the cached frame's first (oldest) bar."""
+
+    def test_first_bar_date_from_frame(self):
+        import build_added_dates as bad
+        import build_ohlcv_cache as boc
+        idx = pd.date_range("2021-03-15", periods=10, freq="D")
+        df = pd.DataFrame({"Close": [1] * 10, "Volume": [1] * 10}, index=idx)
+        orig = boc.load_df
+        boc.load_df = lambda t, d=None: df
+        try:
+            self.assertEqual(bad.first_bar_date("X"), "2021-03-15")
+        finally:
+            boc.load_df = orig
+
+    def test_uncached_returns_none(self):
+        import build_added_dates as bad
+        import build_ohlcv_cache as boc
+        orig = boc.load_df
+        boc.load_df = lambda t, d=None: None
+        try:
+            self.assertIsNone(bad.first_bar_date("X"))
+        finally:
+            boc.load_df = orig
+
+
 if __name__ == "__main__":
     unittest.main()
