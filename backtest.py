@@ -437,6 +437,35 @@ def decile_forward_return(history, score_fn, bench_history=None, horizon=60, ste
     }
 
 
+def composite_ic_gate(history, additive_fn, bucket_fn, bench_history=None,
+                      ic_min=0.0, horizon=60, step=10, min_bars=200, slippage_bps=15.0):
+    """De-collinearization SHIP GATE (gap e) — the run_rank_ic stdout logic extracted into
+    a tested, checkable unit. Cross-sectionally compares the FLAT additive composite vs the
+    capped/IC-weighted BUCKET composite via decile_forward_return: the bucket ships ONLY if
+    it beats additive on BOTH top-decile forward-return edge AND rank-IC, AND its rank-IC
+    clears ic_min (config.IC_MIN). Pure read; OVERLAY-NOT-SCORER-safe — it only decides
+    whether to FLIP BUCKET_SCORING (a re-aggregation of the SAME factors), never adds a score.
+    Returns a verdict dict {additive, bucket, edge_better, ic_better, ic_floor_ok, ic_min, ship}.
+    """
+    a = decile_forward_return(history, additive_fn, bench_history, horizon=horizon,
+                              step=step, min_bars=min_bars, slippage_bps=slippage_bps)
+    c = decile_forward_return(history, bucket_fn, bench_history, horizon=horizon,
+                              step=step, min_bars=min_bars, slippage_bps=slippage_bps)
+    c_edge = c["edge"] if c["edge"] is not None else -9.0
+    a_edge = a["edge"] if a["edge"] is not None else 0.0
+    c_ic = c["rank_ic"] if c["rank_ic"] is not None else -9.0
+    a_ic = a["rank_ic"] if a["rank_ic"] is not None else 0.0
+    edge_better = c_edge > a_edge
+    ic_better = c_ic > a_ic
+    ic_floor_ok = c_ic >= ic_min
+    return {
+        "additive": a, "bucket": c,
+        "edge_better": bool(edge_better), "ic_better": bool(ic_better),
+        "ic_floor_ok": bool(ic_floor_ok), "ic_min": ic_min,
+        "ship": bool(edge_better and ic_better and ic_floor_ok),
+    }
+
+
 def bars_to_target(history, signal_fn, bench_history=None, max_horizon=120, step=10,
                    explosive_pct=25.0, min_bars=200):
     """For windows where signal fired, the # of bars until cumulative return first

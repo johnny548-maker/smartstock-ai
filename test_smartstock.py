@@ -619,6 +619,61 @@ class TestBacktest(unittest.TestCase):
         self.assertEqual(m["recall"], 0.0)
 
 
+class TestCompositeICGate(unittest.TestCase):
+    """A1: the de-collinearization ship gate, extracted from run_rank_ic into a tested
+    backtest unit. A continuous composite (bucket) ships ONLY if it beats the flat
+    additive composite on BOTH top-decile fwd edge AND rank-IC, and clears IC_MIN."""
+
+    def _drift_universe(self, n=30, bars=600, seed=0):
+        # Each name has a hidden per-bar drift + noise; drift drives future return.
+        # Names are inserted in SHUFFLED drift order so a constant ("flat") score — whose
+        # tied ranks fall back to insertion order — does NOT spuriously correlate with fwd.
+        rng = np.random.default_rng(seed)
+        drifts = [(k - n / 2) * 0.0006 for k in range(n)]
+        rng.shuffle(drifts)
+        uni = {}
+        for k, d in enumerate(drifts):
+            rets = d + rng.normal(0.0, 0.012, bars)        # signal + noise → imperfect IC
+            uni[f"S{k}"] = make_df(list(100.0 * np.cumprod(1 + rets)))
+        return uni
+
+    @staticmethod
+    def _mom20(df, b):                            # recent 20-bar return — a real fwd proxy
+        c = df["Close"].to_numpy(float)
+        return float(c[-1] / c[-21] - 1) if len(c) > 21 else 0.0
+
+    @staticmethod
+    def _flat(df, b):                             # constant — no cross-sectional ranking power
+        return 1.0
+
+    _GATE_KW = dict(horizon=60, step=20, min_bars=200)
+
+    def test_ship_when_bucket_ranks_better(self):
+        v = backtest.composite_ic_gate(
+            self._drift_universe(), additive_fn=self._flat, bucket_fn=self._mom20,
+            ic_min=0.0, **self._GATE_KW)
+        self.assertTrue(v["edge_better"])
+        self.assertTrue(v["ic_better"])
+        self.assertTrue(v["ship"])
+
+    def test_keep_additive_when_bucket_not_better(self):
+        v = backtest.composite_ic_gate(
+            self._drift_universe(), additive_fn=self._mom20, bucket_fn=self._flat,
+            ic_min=0.0, **self._GATE_KW)
+        self.assertFalse(v["ship"])
+
+    def test_ic_min_floor_blocks_ship(self):
+        uni = self._drift_universe()
+        base = backtest.composite_ic_gate(
+            uni, additive_fn=self._flat, bucket_fn=self._mom20, ic_min=0.0, **self._GATE_KW)
+        self.assertTrue(base["ship"])                          # ships with no floor
+        floor = (base["bucket"]["rank_ic"] or 0.0) + 0.05      # just above the achieved IC
+        v = backtest.composite_ic_gate(
+            uni, additive_fn=self._flat, bucket_fn=self._mom20, ic_min=floor, **self._GATE_KW)
+        self.assertFalse(v["ic_floor_ok"])
+        self.assertFalse(v["ship"])
+
+
 class TestRSRating(unittest.TestCase):
     def test_cross_sectional_percentile(self):
         uni = {

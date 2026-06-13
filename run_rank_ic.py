@@ -14,7 +14,7 @@ import sys
 import data_fetcher
 import strategy
 import backtest
-from config import BREADTH_TW, BREADTH_US
+from config import BREADTH_TW, BREADTH_US, IC_MIN
 
 
 def additive_fn(df, bench):
@@ -34,19 +34,20 @@ def main():
     bench = {"twii": braw.get("^TWII"), "sp500": braw.get("^GSPC")}
     print(f"Got {len(hist)} histories.\n")
 
-    a = backtest.decile_forward_return(hist, additive_fn, bench)
-    c = backtest.decile_forward_return(hist, bucket_fn, bench)
+    # Single source of truth for the ship gate — the tested backtest.composite_ic_gate
+    # (also persisted by run_validation.py). IC_MIN floors the bucket's rank-IC.
+    v = backtest.composite_ic_gate(hist, additive_fn, bucket_fn, bench, ic_min=IC_MIN)
+    a, c = v["additive"], v["bucket"]
 
     print(f"{'score':<10}{'dates':>7}{'topDecileFwd':>14}{'uniFwd':>9}{'edge':>8}{'rankIC':>9}")
     print("-" * 60)
     for name, m in [("additive", a), ("bucket", c)]:
         print(f"{name:<10}{m['n_dates']:>7}{m['top_decile_fwd']:>13}%{m['universe_fwd']:>8}%"
               f"{m['edge']:>7}%{m['rank_ic']:>9}")
-    edge_better = (c["edge"] or -9) > (a["edge"] or 0)
-    ic_better = (c["rank_ic"] or -9) > (a["rank_ic"] or 0)
-    verdict = "SHIP (turn BUCKET_SCORING on)" if (edge_better and ic_better) else \
-              "KEEP additive (composite did not beat it)"
-    print(f"\nedge_better={edge_better}  ic_better={ic_better}  →  {verdict}")
+    verdict = "SHIP (turn BUCKET_SCORING on)" if v["ship"] else \
+              "KEEP additive (composite did not beat it / IC<IC_MIN)"
+    print(f"\nedge_better={v['edge_better']}  ic_better={v['ic_better']}  "
+          f"ic_floor_ok={v['ic_floor_ok']} (IC_MIN={IC_MIN})  →  {verdict}")
 
 
 if __name__ == "__main__":

@@ -257,6 +257,12 @@ REV_EXCLUDE_INDUSTRIES = ["建材營造", "金融保險", "證券", "存託憑�
 BUCKET_SCORING = False
 BUCKET_CAPS = {"trend": 30, "volacc": 25, "relstr": 25, "meanrev": 15, "fund": 20}
 BUCKET_IC_WEIGHTS = {"trend": 1.0, "volacc": 1.0, "relstr": 1.0, "meanrev": 1.0, "fund": 1.0}
+# rank-IC gate floor (alphalens-style): a CONTINUOUS composite/factor earns or keeps weight
+# only if its cross-sectional Spearman IC clears this. 0.05 ≈ "weak but real" alpha. Used by
+# the offline validation job + the run_rank_ic ship gate (backtest.composite_ic_gate) — NEVER
+# the daily run, and NOT applied to rare boolean leadership signals (a sparse 0/1 score
+# dilutes its per-date IC toward 0; those keep the event-study CI gate instead).
+IC_MIN = 0.05
 
 # ── Opportunity universe (Round 2 — decoupled scan-set, sees small/mid-caps) ─
 # The watchlist (28) is what we track; the OPPORTUNITY universe is what we SCAN to
