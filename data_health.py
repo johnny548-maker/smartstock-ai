@@ -54,6 +54,11 @@ ROW_MIN_PREV = 4
 # why: an occasional missing quote is tolerable; >20% of picks without a
 # price means the quote source itself is rotting.
 NAN_RATE_MAX = 0.2
+# why (C3): sources/ TTL caches serve LAST-GOOD on a dead source — a cache frozen far past
+# its TTL means the overlay is silently stale even though source_coverage looked "ok" once.
+# Most caches are 24h TTL; >3 days = suspect, >7 days = certainly frozen (generous TTL×N).
+CACHE_DEGRADED_AGE_H = 72.0
+CACHE_STALE_AGE_H = 168.0
 
 _DATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 _ROW_COUNT_KEYS = ("picks", "news", "movers")
@@ -235,6 +240,58 @@ def _check_picks_nan(payload):
                         f"(rate {rate:.2f})")]
 
 
+def _newest_cache_age_h(state, now):
+    """Hours since the newest timestamp in a sources/_cache state, or None if undatable.
+    Handles BOTH the cached_fetch {key:{ts:unix}} shape and a top-level 'updated' ISO/date."""
+    if not isinstance(state, dict):
+        return None
+    newest = _parse_dt(state.get("updated"))                 # *_state / chip_state shape
+    for v in state.values():                                 # cached_fetch {key:{ts}} shape
+        if isinstance(v, dict) and isinstance(v.get("ts"), (int, float)):
+            try:
+                t = dt.datetime.fromtimestamp(v["ts"])
+            except (OverflowError, OSError, ValueError):
+                continue
+            if newest is None or t > newest:
+                newest = t
+    return None if newest is None else (now - newest).total_seconds() / 3600.0
+
+
+def _default_cache_paths():
+    """The known sources/ TTL-cache files from config (absent attrs skipped)."""
+    import config
+    paths = {}
+    for attr in ("MACRO_CACHE", "ENV_TW_CACHE", "ENV_US_CACHE", "SHORTVOL_CACHE"):
+        p = getattr(config, attr, None)
+        if p:
+            paths[attr.lower()] = p
+    return paths
+
+
+def _check_cache_age(now, cache_paths):
+    """C3: flag sources/ caches frozen past their TTL (a dead source serving last-good).
+    Missing file or undatable cache → SKIP (graceful, never fabricated)."""
+    from sources._cache import load_state
+    entries = []
+    for name, path in (cache_paths or {}).items():
+        if not path or not os.path.isfile(path):
+            entries.append(_entry(f"cache:{name}", "skip", note="cache file absent (SKIP)"))
+            continue
+        age_h = _newest_cache_age_h(load_state(path, {}), now)
+        if age_h is None:
+            entries.append(_entry(f"cache:{name}", "skip", note="cache carries no timestamp (SKIP)"))
+        elif age_h >= CACHE_STALE_AGE_H:
+            entries.append(_entry(f"cache:{name}", "stale", age_h=age_h,
+                                  note=f"cache frozen {age_h / 24:.1f} days (source dead?)"))
+        elif age_h >= CACHE_DEGRADED_AGE_H:
+            entries.append(_entry(f"cache:{name}", "degraded", age_h=age_h,
+                                  note=f"cache aging {age_h / 24:.1f} days"))
+        else:
+            entries.append(_entry(f"cache:{name}", "ok", age_h=age_h,
+                                  note=f"cache {age_h:.1f}h old"))
+    return entries
+
+
 # ── orchestration (fail-open) ─────────────────────────────────────────────────
 
 def summarize(payload, data_dir=None, now=None):
@@ -255,6 +312,7 @@ def summarize(payload, data_dir=None, now=None):
         ("sources", lambda: _check_sources(payload)),
         ("row_counts", lambda: _check_row_counts(payload, data_dir)),
         ("picks_nan", lambda: _check_picks_nan(payload)),
+        ("cache_age", lambda: _check_cache_age(now, _default_cache_paths())),
     )
     sources = []
     for name, run in checks:

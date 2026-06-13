@@ -232,5 +232,37 @@ class TestPayloadPassthrough(unittest.TestCase):
         self.assertEqual(self._build()["health"], {})
 
 
+class TestCacheAge(unittest.TestCase):
+    """C3: frozen sources/ TTL caches (dead source serving last-good) are flagged stale."""
+
+    def test_fresh_ok_stale_flagged(self):
+        now = dt.datetime(2026, 6, 14, 12, 0, 0)
+        d = tempfile.mkdtemp()
+        fresh = os.path.join(d, "fresh.json")
+        stale = os.path.join(d, "stale.json")
+        with open(fresh, "w", encoding="utf-8") as f:
+            json.dump({"k": {"ts": (now - dt.timedelta(hours=1)).timestamp(), "val": 1}}, f)
+        with open(stale, "w", encoding="utf-8") as f:
+            json.dump({"k": {"ts": (now - dt.timedelta(days=10)).timestamp(), "val": 1}}, f)
+        out = {e["name"]: e for e in dh._check_cache_age(now, {"fresh": fresh, "stale": stale})}
+        self.assertEqual(out["cache:fresh"]["status"], "ok")
+        self.assertEqual(out["cache:stale"]["status"], "stale")
+
+    def test_missing_cache_skips(self):
+        now = dt.datetime(2026, 6, 14, 12, 0, 0)
+        out = dh._check_cache_age(now, {"gone": "/no/such/_cache.json"})
+        self.assertEqual(out[0]["status"], "skip")
+
+    def test_updated_iso_shape_dated(self):
+        # the *_state / chip_state top-level 'updated' date is also read
+        now = dt.datetime(2026, 6, 14, 12, 0, 0)
+        d = tempfile.mkdtemp()
+        p = os.path.join(d, "state.json")
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump({"updated": "2026-06-01", "stocks": {}}, f)   # 13 days → stale
+        out = dh._check_cache_age(now, {"s": p})
+        self.assertEqual(out[0]["status"], "stale")
+
+
 if __name__ == "__main__":
     unittest.main()

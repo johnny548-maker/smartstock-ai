@@ -5,7 +5,6 @@ One cron run only sees one trading day, so we persist a rolling per-stock buffer
 of {date, foreign, trust, volume} in docs/data/_chips_state.json (committed to
 the repo each run). Concentration / streak are derived from the accumulated
 buffer; before enough days exist they return None (graceful)."""
-import json
 import os
 
 from config import WEB_DIR
@@ -17,11 +16,11 @@ MIN_DAYS = 5
 
 
 def load():
-    try:
-        with open(CHIP_STATE, encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {"updated": None, "stocks": {}}
+    # B3: delegate to the shared sources/_cache layer (single source of the load/save idiom
+    # it itself documents as "copied from chip_state.py"). Same JSON shape + default; _cache
+    # additionally abspath-guards the makedirs edge. Lazy import avoids any package-init cycle.
+    from sources._cache import load_state
+    return load_state(CHIP_STATE, {"updated": None, "stocks": {}})
 
 
 def update(state, sym, date, foreign, trust, volume):
@@ -38,9 +37,8 @@ def update(state, sym, date, foreign, trust, volume):
 
 
 def save(state):
-    os.makedirs(os.path.dirname(CHIP_STATE), exist_ok=True)
-    with open(CHIP_STATE, "w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False)
+    from sources._cache import save_state
+    save_state(CHIP_STATE, state)
 
 
 def concentration(state, sym, window=CONC_WINDOW):
