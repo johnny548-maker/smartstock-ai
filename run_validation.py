@@ -117,10 +117,16 @@ def build_validation_state(history, defs, bench_history=None, asof=None, horizon
         sharpe = (mean / sd) if sd > 0 else 0.0
         dsr = validation.deflated_sharpe_ratio(sharpe, n_trials=n_trials,
                                                n_obs=max(len(r), 2), skew=skew, kurt=kurt)
-        wf = validation.walk_forward_folds(
-            history, defs[name], bench_history, n_folds=wf_folds, horizon=horizon,
-            step=step, min_bars=min_bars, next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
-            fee_bps=FEE_BPS, adv_slippage=adv_slippage)
+        # walk_forward is the heavy part (n_folds × full backtest per signal). wf_folds<=0
+        # skips it (the matrix + DSR + PBO + SPA already give the robustness verdict) so an
+        # interactive --quick run finishes in minutes instead of hours.
+        if wf_folds and wf_folds > 0:
+            wf = validation.walk_forward_folds(
+                history, defs[name], bench_history, n_folds=wf_folds, horizon=horizon,
+                step=step, min_bars=min_bars, next_open_fill=NEXT_OPEN, slippage_bps=SLIP_BPS,
+                fee_bps=FEE_BPS, adv_slippage=adv_slippage)
+        else:
+            wf = {"stable": None, "min_lift": 0.0, "mean_lift": 0.0}
         per_signal[name] = {
             "n_fired": len(r), "sharpe": round(sharpe, 4),
             "dsr": round(dsr, 4), "skew": round(skew, 3), "kurt": round(kurt, 3),
@@ -163,7 +169,12 @@ def main():
     quick = "--quick" in argv
     argv = [a for a in argv if a != "--quick"]
     years = int(argv[1]) if len(argv) > 1 else 15
+    # --quick: skip the heavy walk_forward (n_folds=0) + coarsen the step + fewer bootstraps.
+    # The matrix + DSR + PBO + SPA still give the full robustness verdict in minutes (the full
+    # run with 5 walk-forward folds × the 15-signal family is a >3h WEEKLY-offline job).
     n_boot = 200 if quick else 1000
+    wf_folds = 0 if quick else 5
+    step = 20 if quick else 10
 
     tickers = rb.assemble_main_universe(universe_csv)
     print(f"[validation] universe={len(tickers)} years={years} "
@@ -189,7 +200,7 @@ def main():
     print(f"[load done] {len(hist)} histories")
 
     state = build_validation_state(hist, rb.DEFS, bench, adv_slippage=ADV_SLIPPAGE,
-                                   n_boot=n_boot)
+                                   n_boot=n_boot, wf_folds=wf_folds, step=step)
     path = write_validation_state(state)
     fam = state["family"]
     print(f"\n[written] {path}")
