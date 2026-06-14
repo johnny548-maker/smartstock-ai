@@ -1,6 +1,6 @@
 # ADR 2026-06-14 — Quant-rigor architecture upgrade (anti-overfitting gates + scorer flip protocol)
 
-> Status: **Accepted (mechanisms shipped; scorer flip PENDING offline gate)** · Branch: `feat/quant-rigor-arch-upgrade`
+> Status: **Accepted (mechanisms shipped; offline gate RUN 2026-06-14 → no scorer flip, config validated)** · Branch: `feat/quant-rigor-arch-upgrade`
 
 ## Context
 
@@ -87,9 +87,22 @@ correctly configured — every proposed scorer change was REJECTED by the eviden
   full opportunity universe, and consider restructuring the score around the validated leadership
   signals + the momentum-portfolio lens rather than per-factor demotion. `ic_gate_factor_pts` stands
   ready as the lever once a family is approved.
-- **DSR / PBO / SPA family robustness** (`run_validation`) — see `docs/data/_validation_state.json`.
-  Read DSR as a probability ∈[0,1]; gate "robust" at **DSR > 0.95** (NOT >0), and treat n_trials as
-  the *effective* (de-duplicated) independent-trial count, per [[reference_deflated_sharpe_probability]].
+- **DSR / PBO / SPA family robustness** (`run_validation 15 --universe --quick`, 661-name×15y, ADV cost
+  + PIT, 2026-06-14) — `docs/data/_validation_state.json`. Read DSR as a probability ∈[0,1]; gate
+  "robust" at **DSR > 0.95** (NOT >0), n_trials as the *effective* independent-trial count, per
+  [[reference_deflated_sharpe_probability]]. **Results corroborate the event-study verdict on a third
+  independent axis:**
+  - **Family**: PBO = **0.0** (12870 CSCV combos — IS-best never below OOS median) · SPA p = **0.0**,
+    t = 17.10 (best = Mom12-1>0) — the family edge survives data-snooping at N=15 trials.
+  - **The 2 KEPT leadership signals are robust**: VDU→Thrust **DSR 1.0** (Sharpe 0.307, the single
+    highest) · U/D量比吸籌 **DSR 1.0** (Sharpe 0.243) — both ≫ 0.95, re-confirming the `LEAD_*` config.
+  - **The gate fired in reverse (self-validation)**: 首次新高(久盤後) **DSR 0.43 < 0.95 (FAIL)** — the
+    SAME signal whose lift collapsed 2.44→0.68 at the 661-universe and was caught manually. The DSR
+    haircut independently re-flags it, proving this guard would have stopped that class of overfit.
+  - **Caveat**: DSR ≈ 1.0 for nearly every signal = survivor-only optimistic upper bound (skew 3–4.5,
+    kurt up to 81 = positively-skewed fat tails; DSR corrects for moments but survivorship still
+    inflates). `wf_stable=null` throughout — `--quick` skips walk_forward (5 folds × 15-signal family
+    = >3h); the walk-forward stability dimension is deferred to the full weekly-offline run.
 
 **Net: the gate did its job in BOTH directions — rejected the bucket flip, confirmed the leadership
 weights, flagged (without recklessly acting on) the thin base-factor IC. The scorer config is

@@ -1,0 +1,171 @@
+{
+  "asof": "2026-06-14",
+  "config": {
+    "horizon": 60,
+    "step": 20,
+    "min_bars": 200,
+    "adv_slippage": true,
+    "n_dates": 3075
+  },
+  "per_signal": {
+    "Trend Template": {
+      "n_fired": 29110,
+      "sharpe": 0.2421,
+      "dsr": 1.0,
+      "skew": 4.506,
+      "kurt": 67.322,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "VCP 收縮": {
+      "n_fired": 6080,
+      "sharpe": 0.1977,
+      "dsr": 1.0,
+      "skew": 1.946,
+      "kurt": 24.459,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "Pocket pivot": {
+      "n_fired": 11408,
+      "sharpe": 0.2218,
+      "dsr": 1.0,
+      "skew": 4.276,
+      "kurt": 81.402,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "Power pivot(放量突破)": {
+      "n_fired": 365,
+      "sharpe": 0.2021,
+      "dsr": 0.9958,
+      "skew": 2.663,
+      "kurt": 17.184,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "首次新高(久盤後)": {
+      "n_fired": 328,
+      "sharpe": 0.0876,
+      "dsr": 0.4277,
+      "skew": -0.138,
+      "kurt": 6.894,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "VDU→Thrust(量縮噴出)": {
+      "n_fired": 758,
+      "sharpe": 0.3071,
+      "dsr": 1.0,
+      "skew": 3.612,
+      "kurt": 27.771,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "U/D量比吸籌": {
+      "n_fired": 23865,
+      "sharpe": 0.2433,
+      "dsr": 1.0,
+      "skew": 3.557,
+      "kurt": 35.775,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "A/D吸籌A/B級": {
+      "n_fired": 48533,
+      "sharpe": 0.2154,
+      "dsr": 1.0,
+      "skew": 4.096,
+      "kurt": 62.249,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "RS線新高(純)": {
+      "n_fired": 8252,
+      "sharpe": 0.2489,
+      "dsr": 1.0,
+      "skew": 2.203,
+      "kurt": 21.698,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "VCP∧TrendTemplate": {
+      "n_fired": 1802,
+      "sharpe": 0.2682,
+      "dsr": 1.0,
+      "skew": 2.721,
+      "kurt": 26.3,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "RS純∧TrendTemplate": {
+      "n_fired": 4159,
+      "sharpe": 0.2547,
+      "dsr": 1.0,
+      "skew": 3.04,
+      "kurt": 27.128,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "PowerPivot∧TrendTmpl": {
+      "n_fired": 248,
+      "sharpe": 0.2109,
+      "dsr": 0.9739,
+      "skew": 2.47,
+      "kurt": 15.118,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "Mom12-1>0": {
+      "n_fired": 74548,
+      "sharpe": 0.2494,
+      "dsr": 1.0,
+      "skew": 3.1,
+      "kurt": 42.498,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "Close>SMA200": {
+      "n_fired": 72529,
+      "sharpe": 0.2391,
+      "dsr": 1.0,
+      "skew": 3.604,
+      "kurt": 53.918,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    },
+    "Mom12-1∧SMA200": {
+      "n_fired": 60416,
+      "sharpe": 0.2418,
+      "dsr": 1.0,
+      "skew": 3.276,
+      "kurt": 43.22,
+      "wf_stable": null,
+      "wf_min_lift": 0.0,
+      "wf_mean_lift": 0.0
+    }
+  },
+  "family": {
+    "n_trials": 15,
+    "pbo": 0.0,
+    "pbo_combos": 12870,
+    "spa_pvalue": 0.0,
+    "spa_tstat": 17.103,
+    "spa_best_trial": "Mom12-1>0"
+  },
+  "note": "OVERLAY-NOT-SCORER: robustness badge only. DSR haircuts Sharpe by n_trials+skew/kurt; PBO=P(IS-best underperforms OOS median); SPA p=family data-snooping. Survivor-only universe — an optimistic upper bound."
+}
