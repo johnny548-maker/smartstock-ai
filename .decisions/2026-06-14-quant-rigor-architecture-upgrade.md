@@ -60,6 +60,41 @@ so they ship **OFF** and flip only on offline evidence — never a blind edit:
 - **ML meta-labeling** (AFML) to gate picks — rejected: breaks the keyless light-install mandate
   (sklearn/torch) and adds an opaque scorer; excluded by design.
 
+## Gate RESULTS — executed 2026-06-14 (PIT + ADV-scaled cost, 661-name 15y)
+
+The protocol was actually RUN on the cached 658-name universe with `ADV_SLIPPAGE=True` + PIT
+(`added_date` from cached first-bar; 80 names start ≥2013). Outcome: **the scorer is already
+correctly configured — every proposed scorer change was REJECTED by the evidence. No config flip.**
+
+- **A4a bucket scoring → KEEP additive (do NOT flip).** `run_rank_ic 15`: bucket beats additive on
+  edge (1.87→2.27%) and rank-IC (0.0286→0.0288) but bucket rank-IC **0.0288 < IC_MIN 0.05** — both
+  composites are below the trust floor, so the IC floor correctly blocks a weak-IC flip.
+- **LEAD_* leadership weights → UNCHANGED (validated).** `run_backtest 15 --universe --fresh` net-of-
+  ADV-cost + PIT KEEP list = **VDU→Thrust lift 1.58 (flat 1.74)** and **U/D量比吸籌 lift 1.54 (flat
+  1.71)** — the exact same 2 signals as the current config (`LEAD_VDU_THRUST=10`, `LEAD_UD_ACCUM=8`,
+  rest=0). Realistic cost trimmed lift slightly (1.61→1.58, 1.55→1.54) but both still clear
+  CI/Bonferroni/BH well above 1.0. The re-gate converts "we think these are right" into "validated
+  net-of-realistic-cost, point-in-time."
+- **A5 base-factor IC → FLAG, do NOT demote.** `run_factor_ic 15` cross-sectional rank-IC per family
+  (breadth basket): **every** base family is below the 0.05 floor — trend −0.011, momentum −0.032,
+  volume −0.043, vol_stable −0.060, **RS +0.026 (best)**, high52 −0.005, RSI −0.068, OBV −0.038. The
+  additive base score has thin/negative cross-sectional alpha. **NOT acted on** because: (a) the
+  breadth basket (65 mega-caps) is NOT the scoring universe (600+ small/mid-caps carry the real
+  cross-sectional dispersion); (b) negative momentum/RSI IC is the known mean-reversion-among-leaders
+  sign (the gap-d "momentum is a portfolio factor, not a daily signal" effect cross-sectionally), not
+  noise; (c) zeroing all base factors would leave only the 2 leadership signals scoring → catastrophic
+  to picks. **Recommendation (separate investigation, user sign-off):** re-run `run_factor_ic` on the
+  full opportunity universe, and consider restructuring the score around the validated leadership
+  signals + the momentum-portfolio lens rather than per-factor demotion. `ic_gate_factor_pts` stands
+  ready as the lever once a family is approved.
+- **DSR / PBO / SPA family robustness** (`run_validation`) — see `docs/data/_validation_state.json`.
+  Read DSR as a probability ∈[0,1]; gate "robust" at **DSR > 0.95** (NOT >0), and treat n_trials as
+  the *effective* (de-duplicated) independent-trial count, per [[reference_deflated_sharpe_probability]].
+
+**Net: the gate did its job in BOTH directions — rejected the bucket flip, confirmed the leadership
+weights, flagged (without recklessly acting on) the thin base-factor IC. The scorer config is
+unchanged because the evidence says it is already right; that is a successful gate run, not a no-op.**
+
 ## Consequences / caveats
 
 - Until step 2–4 run on live data, the scorer is **unchanged** (flags OFF) — this branch adds
