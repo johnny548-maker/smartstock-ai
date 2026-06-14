@@ -172,6 +172,15 @@ def main():
         hist, lstats = rb.load_universe_history(tickers, years)
         bench = rb._load_bench_cached(years)
         print(f"[load] hist={len(hist)} cache={lstats['n_cache']} fetched={lstats['n_fetched']}")
+        # C2: same point-in-time membership as run_backtest (graceful no-op if no added_date).
+        try:
+            added = rb.load_universe_meta(universe_csv)
+            if any(added.values()):
+                before = len(hist)
+                hist = rb.apply_pit_membership(hist, added)
+                print(f"[PIT] applied ({sum(1 for v in added.values() if v)} dated; {before}->{len(hist)})")
+        except Exception as e:
+            print(f"[PIT] SKIP meta ({e})")
     else:
         import data_fetcher
         hist = data_fetcher.get_universe(tickers, period=f"{years}y")
