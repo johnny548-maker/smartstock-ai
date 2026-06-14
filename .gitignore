@@ -26,5 +26,7 @@ REMAINING_BATCHES.md
 
 # 15y backtest scratch + intermediate sanitize artifacts (regenerable)
 _event_15y_partial.json
-universe_15y_draft.csv
 *_pre_sanitize.json
+# NOTE: universe_15y_draft.csv is NOW committed (pinned universe) — the offline
+# monthly-revalidation + robustness CI jobs check it out by name; gitignoring it
+# made those jobs fail-fast (FileNotFoundError) in a clean CI checkout.

@@ -108,10 +108,35 @@ correctly configured — every proposed scorer change was REJECTED by the eviden
 weights, flagged (without recklessly acting on) the thin base-factor IC. The scorer config is
 unchanged because the evidence says it is already right; that is a successful gate run, not a no-op.**
 
+## Production landing — 2026-06-14 (merge to main + durable offline schedule)
+
+The branch ships to `main` (19 commits, 1592 tests green) with three landing fixes:
+
+- **Durable offline schedule wired.** `run_validation` had no scheduled home — the badge would
+  write once and rot. Added a second job `revalidate-robustness` to `monthly-revalidation.yml`
+  (`needs: revalidate`, own 350-min cap, FULL run so walk-forward fold-stability is populated, not
+  just the `--quick` DSR/PBO/SPA). It commits `_validation_state.json` monthly → the daily badge
+  stays fresh on GitHub Actions, keyless, no local machine dependency.
+- **Latent-broken CI fixed: `universe_15y_draft.csv` is now committed.** It was `.gitignore`d as
+  "regenerable scratch", yet `monthly-revalidation.yml` checks it out by name — so the existing
+  monthly job would `FileNotFoundError` at the boundary (run_backtest.py:669 fail-fast). No
+  `revalidation:` commit had ever landed (confirmed via `git log --all --grep`). Un-ignoring the
+  pinned 653-name universe (652/653 `added_date` populated) unblocks BOTH the monthly backtest and
+  the new robustness job, AND lands the C2 point-in-time data into the repo (no secrets, 38 KB).
+- **`ADV_SLIPPAGE=True` reaches production via the kelly_state refresh — intended, evidence-backed.**
+  The flag comment says "daily main.py never reads it", which is literally true, but
+  `monthly-revalidation` runs `run_backtest` (which DOES read it) and commits `_kelly_state.json`,
+  which the daily `verdict` Kelly ceiling reads. So from the next monthly run the live position-size
+  ceiling becomes **net-of-realistic-ADV-cost**, not flat-15bps. This is the A6 improvement actually
+  landing, not a leak — and it is now justified by *this* validation run (family PBO 0.0, SPA p 0.0,
+  the KEPT signals DSR 1.0). It changes position SIZING, never the SCORE (overlay-not-scorer holds).
+  The 2026-06-14 `_kelly_state.json` refresh committed alongside is this net-of-ADV recompute (VDU
+  kelly 0.18→0.185, U/D similar — mega/large names sit near the 3 bps floor so the shift is mild).
+
 ## Consequences / caveats
 
-- Until step 2–4 run on live data, the scorer is **unchanged** (flags OFF) — this branch adds
-  capability + guards, not a behaviour change.
+- The scorer **score** is unchanged (A4a/A5 flags OFF, validated correct). The only production
+  behaviour change is position SIZING going net-of-ADV-cost via the monthly kelly refresh (above).
 - All backtests remain survivorship-biased (`BUSTED_PEERS` is a partial counter); every lift/DSR
   is an optimistic upper bound. The robustness badge says so.
 - New statistics are pure numpy/stdlib (Acklam `norm_ppf`, hand-rolled skew/kurt) — no new heavy

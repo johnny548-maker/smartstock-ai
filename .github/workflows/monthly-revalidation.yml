@@ -57,3 +57,42 @@ jobs:
           git add docs/data/_revalidation docs/data/_kelly_state.json
           git commit -m "revalidation: $(date -u +%Y-%m)" || echo "no changes to commit"
           git push
+
+  # A2/A3 robustness gate — the offline weekly/monthly home for run_validation.
+  # Runs AFTER `revalidate` (needs:) so the two heavy jobs never collide and the
+  # git push never races. FULL run (no --quick) so the walk-forward fold-stability
+  # dimension is populated, not just DSR/PBO/SPA. ADV_SLIPPAGE=True (config) →
+  # this verdict, and the kelly_state above, are BOTH net-of-realistic-cost.
+  # Writes docs/data/_validation_state.json = the daily family_robustness_badge
+  # data source (overlay-not-scorer; daily main.py only READS it, degrade-safe).
+  revalidate-robustness:
+    needs: revalidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # full walk_forward (5 folds x 15-signal family) is the >3h tail
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run 15y robustness gate (DSR + PBO + SPA + walk-forward)
+        run: |
+          set -euo pipefail
+          mkdir -p docs/data/_revalidation
+          python -X utf8 run_validation.py 15 --universe universe_15y_draft.csv \
+            | tee "docs/data/_revalidation/$(date -u +%Y-%m)-validation.txt"
+
+      - name: Commit refreshed validation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # `revalidate` pushed a commit before us — rebase onto it so our push fast-forwards.
+          git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" || true
+          git add docs/data/_validation_state.json docs/data/_revalidation
+          git commit -m "robustness gate: $(date -u +%Y-%m)" || echo "no changes to commit"
+          git push
