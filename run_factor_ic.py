@@ -172,6 +172,10 @@ def main():
 
     results, n_used = stream_factor_ic(tickers, load_fn, bench, FAMILIES)
     print(f"\nscored {n_used} names\n")
+    if n_used == 0:                                # fail LOUD, never commit an empty result
+        print("ERROR: n_used=0 — no frames loaded (cache absent + load_fn did not fetch?). "
+              "Build the cache first (build_ohlcv_cache.py) or check the universe path.")
+        sys.exit(1)
 
     print(f"{'factor family':<14}{'dates':>7}{'topDecileFwd':>14}{'uniFwd':>9}{'edge':>8}{'rankIC':>9}{'gate':>8}")
     print("-" * 72)

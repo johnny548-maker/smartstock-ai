@@ -38,6 +38,14 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
+      # run_factor_ic streams from .cache/ohlcv_15y/ (memory-frugal) but a clean CI checkout
+      # has NO cache (it is a local gitignored artifact) → load_fn returns None for every name
+      # → n_used=0 silent-empty result (observed run 27521828937: exit 0, all rank_ic null).
+      # Build the cache first (batch download, same data the revalidation backtest fetches) so
+      # the streaming loader has frames to read.
+      - name: Build 15y OHLCV cache
+        run: python -X utf8 build_ohlcv_cache.py --csv universe_15y_draft.csv
+
       - name: Run full-universe base-factor IC
         run: |
           set -euo pipefail
