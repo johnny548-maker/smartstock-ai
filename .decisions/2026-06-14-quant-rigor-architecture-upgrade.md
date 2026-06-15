@@ -87,6 +87,24 @@ correctly configured — every proposed scorer change was REJECTED by the eviden
   full opportunity universe, and consider restructuring the score around the validated leadership
   signals + the momentum-portfolio lens rather than per-factor demotion. `ic_gate_factor_pts` stands
   ready as the lever once a family is approved.
+- **A5 full-universe re-check → still FLAG, still DEMOTE none (recommended re-run EXECUTED 2026-06-15).**
+  The recommended full-opportunity-universe re-run was run on CI (`monthly-factor-ic.yml` workflow_dispatch,
+  streaming `run_factor_ic`, n_used=**644** names × 2172 dates, ADV-cost + PIT) → `docs/data/_factor_ic_state.json`.
+  **The full universe REFUTES the breadth-basket negativity** — per-family rank-IC (full-univ vs 65-name basket):
+  trend **+0.0112** (−0.011) · momentum **+0.0166** (−0.032) · volume +0.0043 (−0.043) · vol_stable −0.025
+  (−0.060) · **rs +0.0306 (best)** (+0.026) · high52 +0.0065 (−0.005) · rsi −0.0115 (−0.068) · obv +0.0019
+  (−0.038). Six families flip positive; the two still faintly negative (vol_stable, rsi) compress toward
+  zero. **Every one of the 8 families has POSITIVE top-decile edge** (rs +4.18%, trend +2.62%, rsi +2.31%,
+  obv +2.29%, volume +1.95%, momentum +1.87%, high52 +1.34%, vol_stable +0.56%) — each surfaces
+  outperformers in the decile that is actually bought. No family clears IC_MIN=0.05 on either universe, but
+  the floor is a *trust/IC-weighting* gate, NOT a harm test; "below floor → demote" would zero the entire
+  base score → collapse onto the leadership overlay (catastrophic, violates OVERLAY-NOT-SCORER). An
+  **adversarial 3-lens judge panel** (24 agents, majority vote per family; mean-reversion-artifact / OOS-pick-
+  impact / overlay-floor-discipline lenses) returned **0 net demote verdicts** — all 8 KEEP (only vol_stable
+  drew 1 dissent, overruled 2-1: weakest-positive edge +0.56% is not "harmful"). **Verdict: scorer UNCHANGED,
+  demote none.** Residual risk (thin IC, survivorship-inflated edge as an optimistic upper bound, trend/rs
+  collinearity) is handled by `BUCKET_CAPS` clamping (informational), not by zeroing any family. The verdict
+  matches the `_factor_ic_state.json` REPORTED-ONLY HITL design exactly.
 - **DSR / PBO / SPA family robustness** (`run_validation 15 --universe --quick`, 661-name×15y, ADV cost
   + PIT, 2026-06-14) — `docs/data/_validation_state.json`. Read DSR as a probability ∈[0,1]; gate
   "robust" at **DSR > 0.95** (NOT >0), n_trials as the *effective* independent-trial count, per
