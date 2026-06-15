@@ -2,98 +2,98 @@
   "asof": "2026-06-15",
   "universe": "full",
   "n_universe": 669,
-  "n_used": 0,
+  "n_used": 644,
   "ic_min": 0.05,
   "families": {
     "trend": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 8.04,
+      "universe_fwd": 5.42,
+      "edge": 2.62,
+      "rank_ic": 0.0112
     },
     "momentum": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 7.29,
+      "universe_fwd": 5.42,
+      "edge": 1.87,
+      "rank_ic": 0.0166
     },
     "volume": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 7.37,
+      "universe_fwd": 5.42,
+      "edge": 1.95,
+      "rank_ic": 0.0043
     },
     "vol_stable": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 5.98,
+      "universe_fwd": 5.42,
+      "edge": 0.56,
+      "rank_ic": -0.025
     },
     "rs": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 9.59,
+      "universe_fwd": 5.42,
+      "edge": 4.18,
+      "rank_ic": 0.0306
     },
     "high52": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 6.76,
+      "universe_fwd": 5.42,
+      "edge": 1.34,
+      "rank_ic": 0.0065
     },
     "rsi": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 7.73,
+      "universe_fwd": 5.42,
+      "edge": 2.31,
+      "rank_ic": -0.0115
     },
     "obv": {
-      "n_dates": 0,
-      "top_decile_fwd": null,
-      "universe_fwd": null,
-      "edge": null,
-      "rank_ic": null
+      "n_dates": 2172,
+      "top_decile_fwd": 7.71,
+      "universe_fwd": 5.42,
+      "edge": 2.29,
+      "rank_ic": 0.0019
     }
   },
   "demote_candidates": [
     {
       "family": "trend",
-      "rank_ic": null
+      "rank_ic": 0.0112
     },
     {
       "family": "momentum",
-      "rank_ic": null
+      "rank_ic": 0.0166
     },
     {
       "family": "volume",
-      "rank_ic": null
+      "rank_ic": 0.0043
     },
     {
       "family": "vol_stable",
-      "rank_ic": null
+      "rank_ic": -0.025
     },
     {
       "family": "rs",
-      "rank_ic": null
+      "rank_ic": 0.0306
     },
     {
       "family": "high52",
-      "rank_ic": null
+      "rank_ic": 0.0065
     },
     {
       "family": "rsi",
-      "rank_ic": null
+      "rank_ic": -0.0115
     },
     {
       "family": "obv",
-      "rank_ic": null
+      "rank_ic": 0.0019
     }
   ],
   "note": "A5 evidence — REPORTED ONLY; flipping a base weight changes every pick (HITL). full opportunity universe (small/mid-caps included; survivorship still a partial upper bound)"
