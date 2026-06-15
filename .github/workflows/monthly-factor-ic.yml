@@ -1,0 +1,56 @@
+name: SmartStock Monthly Base-Factor IC (A5 evidence)
+
+# A5 re-check: per-base-factor cross-sectional rank-IC on the FULL opportunity universe
+# (653 names, small/mid-caps included) — NOT the 65-name breadth basket whose all-negative
+# IC the ADR flagged as a small-sample artifact. Reported-only evidence: a family below
+# config.IC_MIN is a DEMOTION CANDIDATE that still needs human sign-off (flipping a base
+# weight changes every pick). The daily run does NOT read this — it informs the HITL
+# scorer-flip protocol in .decisions/2026-06-14-quant-rigor-architecture-upgrade.md.
+#
+# Own workflow (not a job in monthly-revalidation) so it is independently dispatchable for a
+# one-shot answer without waiting behind the multi-hour backtest + robustness jobs. Runs the
+# memory-frugal streaming run_factor_ic (the naive resident-frame version OOM-killed locally).
+# 6th of month, 05:47 UTC — a day after revalidation, odd minute (GitHub drops :00/:30).
+on:
+  schedule:
+    - cron: '47 5 6 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: smartstock-monthly-factor-ic
+  cancel-in-progress: false
+
+jobs:
+  factor-ic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # streaming single-pass over 653 names x 15y is the heavy tail
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run full-universe base-factor IC
+        run: |
+          set -euo pipefail
+          mkdir -p docs/data/_revalidation
+          python -X utf8 run_factor_ic.py 15 --universe universe_15y_draft.csv \
+            --out docs/data/_factor_ic_state.json \
+            | tee "docs/data/_revalidation/$(date -u +%Y-%m)-factor-ic.txt"
+
+      - name: Commit factor-IC evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" || true
+          git add docs/data/_factor_ic_state.json docs/data/_revalidation
+          git commit -m "factor-ic: $(date -u +%Y-%m)" || echo "no changes to commit"
+          git push

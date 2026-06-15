@@ -11,6 +11,7 @@ A family with IC < IC_MIN is a candidate for A5 demotion (strategy.ic_gate_facto
 this is REPORTED ONLY; flipping a base-factor weight to 0 changes every pick and needs user
 sign-off (HITL, same as the leadership gate). Run: python run_factor_ic.py [years]
 """
+import os
 import sys
 import functools
 
@@ -143,6 +144,11 @@ def _cache_load_fn(years, added):
 
 def main():
     universe_csv, argv = rb._extract_universe_arg(sys.argv)
+    out_path = None
+    if "--out" in argv:                            # machine-readable result for CI / agents
+        k = argv.index("--out")
+        out_path = argv[k + 1] if k + 1 < len(argv) else None
+        argv = argv[:k] + argv[k + 2:]
     years = int(argv[1]) if len(argv) > 1 else 15
     if universe_csv:
         print(f"[A5 重查] FULL universe {universe_csv} x {years}y (streaming, cache-first, PIT) ...")
@@ -191,6 +197,23 @@ def main():
             "upper bound)" if universe_csv else "breadth-basket IC (survivor-biased upper bound)")
     print(f"\nNOTE: {note}. NOT applied — "
           "strategy.ic_gate_factor_pts is the lever once a family is user-approved for demotion.")
+
+    if out_path:
+        import json
+        import datetime
+        payload = {
+            "asof": datetime.date.today().isoformat(),
+            "universe": "full" if universe_csv else "breadth",
+            "n_universe": len(tickers), "n_used": n_used, "ic_min": IC_MIN,
+            "families": {name: results[name] for name in FAMILIES},
+            "demote_candidates": [{"family": n, "rank_ic": ic} for n, ic in demote],
+            "note": ("A5 evidence — REPORTED ONLY; flipping a base weight changes every pick "
+                     "(HITL). " + note),
+        }
+        os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"\n[out] {out_path}")
 
 
 if __name__ == "__main__":
