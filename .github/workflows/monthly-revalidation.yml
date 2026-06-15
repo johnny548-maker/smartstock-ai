@@ -54,6 +54,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # The 15y backtest takes ~83 min; main can advance in that window (a concurrent
+          # push). Rebase before pushing so this commit fast-forwards — without it the push
+          # is rejected non-fast-forward and the whole job fails AFTER the heavy compute
+          # (observed 2026-06-14 run 27493998692: step 5 success, step 6 push-race failure).
+          git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" || true
           git add docs/data/_revalidation docs/data/_kelly_state.json
           git commit -m "revalidation: $(date -u +%Y-%m)" || echo "no changes to commit"
           git push
