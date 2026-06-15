@@ -1,0 +1,31 @@
+[A5 重查] FULL universe universe_15y_draft.csv x 15y (streaming, cache-first, PIT) ...
+[PIT] 652/653 dated
+universe=669  IC_MIN=0.05
+
+
+scored 0 names
+
+factor family   dates  topDecileFwd   uniFwd    edge   rankIC    gate
+------------------------------------------------------------------------
+trend               0         None%    None%   None%      n/a demote?
+momentum            0         None%    None%   None%      n/a demote?
+volume              0         None%    None%   None%      n/a demote?
+vol_stable          0         None%    None%   None%      n/a demote?
+rs                  0         None%    None%   None%      n/a demote?
+high52              0         None%    None%   None%      n/a demote?
+rsi                 0         None%    None%   None%      n/a demote?
+obv                 0         None%    None%   None%      n/a demote?
+
+IC_MIN floor = 0.05. Families below floor (A5 demotion CANDIDATES — REPORTED ONLY, need user sign-off; flipping a base weight changes every pick):
+  trend          rank-IC n/a < 0.05
+  momentum       rank-IC n/a < 0.05
+  volume         rank-IC n/a < 0.05
+  vol_stable     rank-IC n/a < 0.05
+  rs             rank-IC n/a < 0.05
+  high52         rank-IC n/a < 0.05
+  rsi            rank-IC n/a < 0.05
+  obv            rank-IC n/a < 0.05
+
+NOTE: full opportunity universe (small/mid-caps included; survivorship still a partial upper bound). NOT applied — strategy.ic_gate_factor_pts is the lever once a family is user-approved for demotion.
+
+[out] docs/data/_factor_ic_state.json
