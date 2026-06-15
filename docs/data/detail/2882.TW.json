@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 100.5,
- "change_pct": 0.0,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-03-18",
-   "o": 74.2,
-   "h": 74.3,
-   "l": 72.8,
-   "c": 73.4,
-   "v": 15804364
-  },
   {
    "time": "2026-03-19",
    "o": 73.0,
@@ -483,19 +475,23 @@
    "l": 99.7,
    "c": 100.5,
    "v": 31979247
+  },
+  {
+   "time": "2026-06-15",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 25323798
   }
  ],
  "sr": {
-  "price": 100.5,
+  "price": null,
   "resistance": [],
-  "support": [
-   76.9,
-   76.1
-  ],
+  "support": [],
   "strong_support": 60.6
  },
  "spark": [
-  73.4,
   71.6,
   72.0,
   71.7,
@@ -554,43 +550,27 @@
   104.0,
   99.9,
   100.5,
-  100.5
+  100.5,
+  null
  ],
- "spark_start": "2026-03-18",
- "spark_end": "2026-06-12",
+ "spark_start": "2026-03-19",
+ "spark_end": "2026-06-15",
  "fundamental": null,
- "levels": {
-  "entry": 100.5,
-  "stop": 93.47,
-  "target": 118.09,
-  "atr_bracket": 118.09,
-  "measured_move": 131.5,
-  "target_band": [
-   118.09,
-   131.5
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.3,
-  "swing_stop": 75.2,
-  "chandelier": 94.97,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 1,149,237 股",
+   "label": "三大法人買超 6,689,343 股",
    "value": {
-    "foreign": 10927741,
-    "trust": -9667900,
-    "dealer": -110604,
-    "total": 1149237
+    "foreign": 12274093,
+    "trust": -6401000,
+    "dealer": 816250,
+    "total": 6689343
    },
    "severity": "info",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-15",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {

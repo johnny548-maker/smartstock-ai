@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 133.5,
- "change_pct": 6.8,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-03-18",
-   "o": 61.3,
-   "h": 61.5,
-   "l": 60.4,
-   "c": 61.1,
-   "v": 65532503
-  },
   {
    "time": "2026-03-19",
    "o": 60.4,
@@ -483,21 +475,23 @@
    "l": 132.5,
    "c": 133.5,
    "v": 388715812
+  },
+  {
+   "time": "2026-06-15",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 328524300
   }
  ],
  "sr": {
-  "price": 133.5,
-  "resistance": [
-   155.5
-  ],
-  "support": [
-   70.7,
-   58.6
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 40.1
  },
  "spark": [
-  61.1,
   58.7,
   57.8,
   56.7,
@@ -556,48 +550,32 @@
   127.5,
   118.5,
   125.0,
-  133.5
+  133.5,
+  null
  ],
- "spark_start": "2026-03-18",
- "spark_end": "2026-06-12",
+ "spark_start": "2026-03-19",
+ "spark_end": "2026-06-15",
  "fundamental": {
   "rev_yoy": 17.8,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 133.5,
-  "stop": 124.16,
-  "target": 156.86,
-  "atr_bracket": 156.86,
-  "measured_move": 240.3,
-  "target_band": [
-   156.86,
-   240.3
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 8.9,
-  "swing_stop": 67.12,
-  "chandelier": 122.28,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 37,955,298 股",
+   "label": "三大法人賣超 1,155,665 股",
    "value": {
-    "foreign": 15230108,
-    "trust": 17459251,
-    "dealer": 5265939,
-    "total": 37955298
+    "foreign": -24057874,
+    "trust": 15859412,
+    "dealer": 7042797,
+    "total": -1155665
    },
    "severity": "info",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-15",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -608,7 +586,7 @@
     "short_net": -186
    },
    "severity": "info",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-15",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {

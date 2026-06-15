@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 511.57,
- "change_pct": 4.73,
+ "price": 547.24,
+ "change_pct": 6.97,
  "ohlc": [
-  {
-   "time": "2026-03-19",
-   "o": 195.03,
-   "h": 205.88,
-   "l": 192.83,
-   "c": 205.27,
-   "v": 32245300
-  },
   {
    "time": "2026-03-20",
    "o": 204.89,
@@ -483,14 +475,19 @@
    "l": 494.0,
    "c": 511.57,
    "v": 31553100
+  },
+  {
+   "time": "2026-06-15",
+   "o": 535.75,
+   "h": 558.37,
+   "l": 530.5,
+   "c": 547.24,
+   "v": 15790711
   }
  ],
  "sr": {
-  "price": 511.57,
-  "resistance": [
-   527.2,
-   546.44
-  ],
+  "price": 547.24,
+  "resistance": [],
   "support": [
    437.23,
    393.36
@@ -498,7 +495,6 @@
   "strong_support": 133.5
  },
  "spark": [
-  205.27,
   201.33,
   202.68,
   205.37,
@@ -557,36 +553,39 @@
   475.51,
   452.4,
   488.45,
-  511.57
+  511.57,
+  547.24
  ],
- "spark_start": "2026-03-19",
- "spark_end": "2026-06-12",
+ "spark_start": "2026-03-20",
+ "spark_end": "2026-06-15",
  "fundamental": {
-  "pe_trailing": 169.39404,
-  "pe_forward": 39.040714,
+  "pe_trailing": 181.23013,
+  "pe_forward": 41.768612,
   "eps_trailing": 3.02,
   "eps_forward": 13.1035,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 547.24,
+  "stop": 508.93,
+  "target": 643.01,
+  "atr_bracket": 643.01,
+  "measured_move": 606.08,
+  "target_band": [
+   606.08,
+   643.01
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 6.5,
+  "swing_stop": 426.55,
+  "chandelier": 458.57,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 114 分 / 12 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 114,
-    "comments": 12,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-06-13",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -599,7 +598,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
