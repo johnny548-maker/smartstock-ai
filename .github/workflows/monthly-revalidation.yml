@@ -27,6 +27,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Keyless failure alert (see daily.yml): dedup one open GitHub issue per workflow via GITHUB_TOKEN.
+  notify-failure:
+    needs: [revalidate, revalidate-robustness]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
   revalidate:
     runs-on: ubuntu-latest
     # The 15y x ~650-ticker download + signal sweep is the heaviest job in the
