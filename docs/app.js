@@ -12,8 +12,8 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v38';
-const APP_BUILD = '2026-06-14';
+const APP_VERSION = 'v39';
+const APP_BUILD = '2026-06-16';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
    Old payloads have no field (read as 0) → always supported (back-compat). */
@@ -190,20 +190,29 @@ function sparkline(arr, w, h) {
   if (!arr || arr.length < 2) return '';
   w = w || 320; h = h || 54; const pad = 3;
   const min = Math.min(...arr), max = Math.max(...arr), rng = (max - min) || 1;
-  const pts = arr.map((v, i) => {
-    const x = pad + (i / (arr.length - 1)) * (w - 2 * pad);
-    const y = pad + (1 - (v - min) / rng) * (h - 2 * pad);
-    return x.toFixed(1) + ',' + y.toFixed(1);
-  }).join(' ');
+  const xy = (v, i) => [
+    pad + (i / (arr.length - 1)) * (w - 2 * pad),
+    pad + (1 - (v - min) / rng) * (h - 2 * pad),
+  ];
+  const pts = arr.map((v, i) => { const p = xy(v, i); return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
   const cs = getComputedStyle(document.documentElement);
   const up = (cs.getPropertyValue('--up') || '#15994f').trim();
   const dn = (cs.getPropertyValue('--down') || '#e0322f').trim();
+  const hc = (cs.getPropertyValue('--hair-c') || 'rgba(0,0,0,.1)').trim();
   const col = arr[arr.length - 1] >= arr[0] ? up : dn;
-  // soft area fill under the line
+  const gid = 'spg' + (sparkline._n = (sparkline._n || 0) + 1);   // unique gradient id per call
+  const baseY = xy(arr[0], 0)[1];
+  const lastP = xy(arr[arr.length - 1], arr.length - 1);
+  // gradient area fill (more contrast than the old flat .09 opacity) + start baseline + end dot
   const area = `${pad},${h - pad} ${pts} ${w - pad},${h - pad}`;
   return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">`
-    + `<polyline fill="${col}" opacity=".09" stroke="none" points="${area}"/>`
-    + `<polyline fill="none" stroke="${col}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" points="${pts}"/></svg>`;
+    + `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">`
+    + `<stop offset="0" stop-color="${col}" stop-opacity=".22"/>`
+    + `<stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>`
+    + `<line x1="${pad}" y1="${baseY.toFixed(1)}" x2="${w - pad}" y2="${baseY.toFixed(1)}" stroke="${hc}" stroke-width="1" stroke-dasharray="2 3"/>`
+    + `<polyline fill="url(#${gid})" stroke="none" points="${area}"/>`
+    + `<polyline fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${pts}"/>`
+    + `<circle cx="${lastP[0].toFixed(1)}" cy="${lastP[1].toFixed(1)}" r="2.2" fill="${col}"/></svg>`;
 }
 
 // SVG price chart with axes + reference lines (sparkline fallback when no OHLC)
@@ -226,10 +235,16 @@ function priceChart(arr, startD, endD, lines) {
   const refLine = (l) => l.v == null ? '' : `<line x1="${padL}" y1="${Y(l.v).toFixed(1)}" x2="${W - padR}" y2="${Y(l.v).toFixed(1)}" stroke="${l.color}" stroke-width="1" stroke-dasharray="3 3" opacity=".85"/>`
     + `<text x="${W - padR + 2}" y="${(Y(l.v) + 3).toFixed(1)}" class="ax" fill="${l.color}" text-anchor="start">${esc(l.label)}</text>`;
   const xLab = (d, i, anc) => d ? `<text x="${X(i).toFixed(1)}" y="${H - 4}" class="ax" text-anchor="${anc}">${esc(d.slice(5))}</text>` : '';
+  const gid = 'pcg' + (priceChart._n = (priceChart._n || 0) + 1);
+  const areaPts = `${padL},${(H - padB).toFixed(1)} ${pts} ${(W - padR).toFixed(1)},${(H - padB).toFixed(1)}`;
   return `<svg class="pchart" viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="none">`
+    + `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">`
+    + `<stop offset="0" stop-color="${col}" stop-opacity=".18"/>`
+    + `<stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>`
     + yLab(max) + yLab(last, 'ax-now') + yLab(min)
+    + `<polyline fill="url(#${gid})" stroke="none" points="${areaPts}"/>`
     + (lines || []).map(refLine).join('')
-    + `<polyline fill="none" stroke="${col}" stroke-width="1.8" points="${pts}"/>`
+    + `<polyline fill="none" stroke="${col}" stroke-width="2" points="${pts}"/>`
     + xLab(startD, 0, 'start') + xLab(endD, arr.length - 1, 'end') + `</svg>`;
 }
 
@@ -511,9 +526,9 @@ function pickPage(p, rank, total, date, dayMax, clusters) {
       ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
       ${vTxt}
       <div class="pk-levels reveal">
-        <div class="pk-lv"><i>進場</i><b>${pxNum(lv.entry)}</b></div>
-        <div class="pk-lv is-stop"><i>停損</i><b>${pxNum(lv.stop)}</b>${lv.stop_pct != null ? `<span class="sub">${lv.stop_pct}%</span>` : ''}</div>
-        <div class="pk-lv is-tgt"><i>目標</i><b>${targetBandTxt(lv)}</b><span class="sub">技術投影</span></div>
+        <div class="pk-lv"><i><span class="lv-ic">◆</span>進場</i><b>${pxNum(lv.entry)}</b></div>
+        <div class="pk-lv is-stop"><i><span class="lv-ic">▼</span>停損</i><b>${pxNum(lv.stop)}</b>${lv.stop_pct != null ? `<span class="sub">${lv.stop_pct}%</span>` : ''}</div>
+        <div class="pk-lv is-tgt"><i><span class="lv-ic">▲</span>目標</i><b>${targetBandTxt(lv)}</b><span class="sub">技術投影</span></div>
       </div>
       <div class="pk-spark reveal">${sparkline(p.spark, 320, 54)}</div>
       <button class="pk-more reveal press" data-detail="${esc(p.stock)}">完整分析 <span class="chev">▴</span></button>
@@ -535,7 +550,7 @@ function tiersPage(d) {
   });
   const rowHtml = (p) => {
     const t = tierOf(p.score);
-    return `<button class="trow press" data-detail="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
+    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
       <div class="tr-l">
         <div class="tr-name">${lightDot(p.light)} ${esc(p.name || p.stock)} <span class="tk num">${esc(p.stock)}</span>${warnChipsFor(p, clusters)}</div>
         <div class="tr-chips">${reasonChips(p, 2)}</div>
@@ -545,7 +560,7 @@ function tiersPage(d) {
     </button>`;
   };
   const secs = groups.filter((g) => g.rows.length).map((g) =>
-    `<div class="tier-h"><span>${esc(g.t.label)}</span><span class="tier-sub num">${esc(g.t.sub)} · ${g.rows.length} 檔</span></div>`
+    `<div class="tier-h tier-${g.t.id}"><span>${esc(g.t.label)}</span><span class="tier-sub num">${esc(g.t.sub)} · ${g.rows.length} 檔</span></div>`
     + g.rows.map(rowHtml).join('')).join('');
   return `<section class="page" data-page="tiers" aria-roledescription="slide" aria-label="今日建議總覽">
     <div class="tiers">

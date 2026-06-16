@@ -1,11 +1,17 @@
 /* ============================================================================
-   SmartStock — iOS-native minimal redesign.
+   SmartStock — "quiet instrument panel" redesign (2026-06).
    Full-screen single-pick deck (horizontal swipe) + draggable bottom sheets.
-   Aesthetic: pure white / pure black dual theme. The ONLY chromatic color is
-   the up/down red-green pair (台股慣例沿用現有方向：漲=綠 up / 跌=紅 down — matched
-   to app.js change_pct>=0 ? 'up':'down'). Everything else is ink on paper.
-   No gradients, no purple, no glassmorphism. Hairlines + huge whitespace.
-   The 7 --chart-* props are the contract app.js's K-line reads; both themes set them.
+   Aesthetic: dark-first graphite foundation (#0c0d10, not pure black) so soft
+   elevation shadows read and DATA is the brightest thing on screen.
+   Color discipline:
+     · 漲=綠 (--up) / 跌=紅 (--down) — Taiwan convention, sign-matched to app.js,
+       reserved for numeric change values + tier rails. NEVER flipped.
+     · --accent (indigo) is the ONLY new hue — interactivity only (links, CTA,
+       active seg, focus). Keeps color from overloading red/green meaning.
+     · tier surfaces (🟢🟡🔴) add a faint tint + colored rail ON TOP OF the
+       existing color-independent cues (燈號 dot, ▲▼, text labels) for a11y.
+   Token system: spacing / type / elevation scales + surface levels. Both light
+   and dark themes set the 7 --chart-* props (the contract app.js's K-line reads).
    ============================================================================ */
 
 /* ---- numeral display font: subset Space Grotesk (0-9.,%+− …), offline, 2.4KB ---- */
@@ -20,12 +26,14 @@
 :root{
   color-scheme:light dark;
 
-  /* ---- LIGHT — pure white paper, near-black ink ---- */
+  /* ---- LIGHT — paper white, near-black ink, one indigo accent ---- */
   --bg:#ffffff;
-  --bg-soft:#f6f6f8;        /* sheet / pressed surfaces */
+  --surface-1:#f7f7f9;      /* raised card / sheet / pressed surface */
+  --surface-2:#eeeef1;      /* deeper press / active-seg track */
+  --bg-soft:var(--surface-1); /* legacy alias — kept so existing rules不需改名 */
   --ink:#0a0a0b;            /* primary text (near-black, not pure #000 — softer) */
   --ink-2:#5c5c66;          /* secondary */
-  --ink-3:#9a9aa4;          /* tertiary / captions */
+  --ink-3:#8a8a94;          /* tertiary / captions (lifted for legibility) */
   --hair-c:rgba(0,0,0,.10); /* 0.5px hairline color */
   --hair-strong:rgba(0,0,0,.16);
 
@@ -34,9 +42,32 @@
   --down:#e0322f;          /* red   = negative change */
   --warn:#b07000;          /* caution accent (amber-ink, used sparingly) */
 
+  /* indigo accent — interactivity ONLY (links / CTA / active seg / focus) */
+  --accent:#3b5bdb;
+  --accent-soft:rgba(59,91,219,.10);
+
+  /* tier surfaces — 🟢買入 / 🟡觀察 / 🔴避開 (faint tint + colored rail) */
+  --tier-buy-bg:rgba(21,153,79,.07);   --tier-buy-rail:#15994f;
+  --tier-watch-bg:rgba(176,112,0,.07); --tier-watch-rail:#b07000;
+  --tier-avoid-bg:rgba(224,50,47,.06); --tier-avoid-rail:#e0322f;
+
+  /* spacing scale (replaces hardcoded 4–40px) */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:28px; --sp-7:40px;
+
+  /* type scale (smallest legible = --fs-cap .74rem) */
+  --fs-cap:.74rem; --fs-sm:.82rem; --fs-base:.94rem; --fs-md:1.02rem;
+  --fs-lg:1.18rem; --fs-xl:1.6rem; --fs-2xl:2.2rem;
+  --fw-reg:400; --fw-med:500; --fw-semi:600; --fw-bold:700;
+
+  /* elevation scale (soft shadows; dark theme deepens opacity below) */
+  --el-1:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
+  --el-2:0 2px 8px rgba(0,0,0,.08);
+  --el-3:0 8px 28px rgba(0,0,0,.14);
+  --el-sheet:0 -12px 40px rgba(0,0,0,.18);
+
   /* sizing */
   --r1:10px; --r2:16px; --r3:22px; --r-sheet:22px;
-  --pad:20px;
+  --pad:var(--sp-5);
 
   /* fonts — body = -apple-system (native feel是目的); figures = SSNum→ui-rounded→system */
   --font-ui:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
@@ -53,20 +84,35 @@
 }
 
 :root[data-theme="dark"]{
-  --bg:#000000;            /* pure black (OLED) */
-  --bg-soft:#121214;
+  --bg:#0c0d10;            /* graphite (was pure #000) — soft shadows now read */
+  --surface-1:#16181d;     /* raised card / sheet */
+  --surface-2:#1f2228;     /* deeper press / active-seg track */
+  --bg-soft:var(--surface-1);
   --ink:#f4f4f6;
-  --ink-2:#9a9aa6;
-  --ink-3:#6a6a74;
+  --ink-2:#a2a3ad;
+  --ink-3:#71727c;
   --hair-c:rgba(255,255,255,.12);
   --hair-strong:rgba(255,255,255,.20);
 
-  --up:#30d97a;            /* brighter green for black bg */
-  --down:#ff4d4a;
+  --up:#30d97a;            /* brighter green for dark bg */
+  --down:#ff5a57;          /* +contrast vs old #ff4d4a */
   --warn:#e0a64d;
 
-  --chart-up:#30d97a; --chart-down:#ff4d4a;
-  --chart-bg:#000000; --chart-grid:#1a1a1d; --chart-text:#9a9aa6;
+  --accent:#7c8cff;
+  --accent-soft:rgba(124,140,255,.14);
+
+  --tier-buy-bg:rgba(48,217,122,.10);   --tier-buy-rail:#30d97a;
+  --tier-watch-bg:rgba(224,166,77,.10); --tier-watch-rail:#e0a64d;
+  --tier-avoid-bg:rgba(255,90,87,.10);  --tier-avoid-rail:#ff5a57;
+
+  /* elevation — deepen opacity on dark so shadows stay visible on graphite */
+  --el-1:0 1px 2px rgba(0,0,0,.5),0 1px 1px rgba(0,0,0,.4);
+  --el-2:0 2px 10px rgba(0,0,0,.55);
+  --el-3:0 10px 30px rgba(0,0,0,.6);
+  --el-sheet:0 -12px 40px rgba(0,0,0,.6);
+
+  --chart-up:#30d97a; --chart-down:#ff5a57;
+  --chart-bg:#0c0d10; --chart-grid:#20222a; --chart-text:#a2a3ad;
   --chart-vol-up:#173d28; --chart-vol-down:#3d1716;
 }
 
@@ -97,7 +143,7 @@ body{
 .hide{display:none!important}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
-:focus-visible{outline:2px solid var(--up);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 
 /* ============================================================================
    DECK — full-screen horizontal scroll-snap carousel
@@ -163,56 +209,60 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 }
 
 /* the hero number: massive price + change */
-.pk-price{margin-top:auto;padding-top:18px}
+.pk-price{margin-top:auto;padding-top:var(--sp-3)}
 .pk-px{
   font-family:var(--font-num);font-feature-settings:"tnum" 1,"zero" 1;
-  font-size:clamp(3.6rem,21vw,5.6rem);font-weight:600;
+  font-size:clamp(3.2rem,17vw,4.6rem);font-weight:600;
   line-height:.94;letter-spacing:-.035em;
   display:block;
 }
 .pk-chg{
-  margin-top:10px;display:flex;align-items:baseline;gap:10px;
-  font-family:var(--font-num);font-size:1.3rem;font-weight:600;
+  margin-top:var(--sp-2);display:flex;align-items:baseline;gap:10px;
+  font-family:var(--font-num);font-size:1.5rem;font-weight:700;
 }
 .pk-chg .arrow{font-size:1.05rem}
 .pk-chg .close-lbl{font-family:var(--font-ui);font-size:.8rem;color:var(--ink-3);font-weight:400}
 
 /* verdict + light */
 .pk-verdict{
-  margin-top:16px;font-size:1.02rem;color:var(--ink);font-weight:500;
+  margin-top:var(--sp-3);font-size:var(--fs-md);color:var(--ink);font-weight:500;
   display:flex;align-items:center;gap:8px;line-height:1.4;
 }
 .lightdot{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
 .ld-green{background:var(--up)}.ld-amber{background:var(--warn)}.ld-red{background:var(--down)}.ld-gray{background:var(--ink-3)}
 
-/* three pinned numbers: 進 / 停 / 標 */
+/* three pinned numbers: 進 / 停 / 標 — raised strip (elevation reads on graphite) */
 .pk-levels{
-  margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  margin-top:var(--sp-5);flex:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;
-  background:var(--hair-c);
+  background:var(--hair-c);box-shadow:var(--el-1);
 }
 .pk-lv{
-  background:var(--bg);padding:13px 12px;display:flex;flex-direction:column;gap:3px;
+  background:var(--surface-1);padding:var(--sp-4) var(--sp-3);display:flex;flex-direction:column;gap:var(--sp-1);
 }
-.pk-lv i{font-style:normal;font-size:.7rem;color:var(--ink-3);letter-spacing:.02em}
-.pk-lv b{font-family:var(--font-num);font-size:1.16rem;font-weight:600;letter-spacing:-.01em}
+.pk-lv i{font-style:normal;font-size:var(--fs-cap);color:var(--ink-3);letter-spacing:.02em;
+  display:flex;align-items:center;gap:4px}
+.pk-lv i .lv-ic{font-size:.62rem;line-height:1;color:var(--ink-3)}
+.pk-lv.is-stop i .lv-ic{color:var(--down)}
+.pk-lv.is-tgt i .lv-ic{color:var(--up)}
+.pk-lv b{font-family:var(--font-num);font-size:var(--fs-lg);font-weight:700;letter-spacing:-.01em}
 .pk-lv.is-stop b{color:var(--down)}
 .pk-lv.is-tgt b{color:var(--up)}
-.pk-lv .sub{font-family:var(--font-num);font-size:.66rem;color:var(--ink-3)}
+.pk-lv .sub{font-family:var(--font-num);font-size:var(--fs-cap);color:var(--ink-3)}
 
 /* sparkline strip */
-.pk-spark{margin-top:16px;height:54px}
+.pk-spark{margin-top:var(--sp-3);height:46px}
 .pk-spark svg{width:100%;height:100%;display:block}
 
 /* detail affordance */
 .pk-more{
-  margin-top:14px;align-self:center;
+  margin-top:var(--sp-4);align-self:center;
   display:inline-flex;align-items:center;gap:6px;
-  min-height:44px;padding:0 18px;border-radius:999px;
-  font-size:.86rem;font-weight:600;color:var(--ink-2);
-  border:.5px solid var(--hair-strong);
+  min-height:44px;padding:0 var(--sp-5);border-radius:999px;
+  font-size:var(--fs-sm);font-weight:700;color:var(--accent);
+  border:.5px solid color-mix(in srgb,var(--accent) 38%,transparent);
 }
-.pk-more:active{background:var(--bg-soft);transform:scale(.97)}
+.pk-more:active{background:var(--accent-soft);transform:scale(.97)}
 .pk-more .chev{font-size:.9rem}
 
 /* inline regulatory / chip flags row */
@@ -235,25 +285,34 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 }
 .cv-weekday{margin-top:4px;font-size:.9rem;color:var(--ink-2)}
 
-.cv-lights{margin-top:26px;display:flex;flex-direction:column;gap:1px;
-  border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;background:var(--hair-c)}
+/* market lights — compact 2-col grid (was a tall vertical stack eating ⅓ screen) */
+.cv-lights{margin-top:var(--sp-6);display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;
+  background:var(--hair-c);box-shadow:var(--el-1)}
 .cv-light{
-  background:var(--bg);padding:13px 16px;display:flex;align-items:center;gap:12px;
+  background:var(--surface-1);padding:var(--sp-3) var(--sp-4);
+  display:grid;grid-template-columns:auto 1fr;grid-template-areas:"dot lab" "val val";
+  align-items:center;gap:3px 8px;
 }
-.cv-light .lab{font-size:.86rem;color:var(--ink-2);flex:1}
-.cv-light .val{font-size:.92rem;font-weight:600;display:flex;align-items:center;gap:7px}
+.cv-light .lightdot{grid-area:dot}
+.cv-light .lab{grid-area:lab;font-size:var(--fs-sm);color:var(--ink-2)}
+.cv-light .val{grid-area:val;font-size:var(--fs-md);font-weight:600;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .cv-light .val .num{font-family:var(--font-num)}
+/* a lone 5th light gets the full row instead of leaving an empty tile */
+.cv-light:nth-child(odd):last-child{grid-column:1 / -1}
 
-.cv-top{margin-top:auto;padding-top:22px}
-.cv-top-lbl{font-size:.78rem;color:var(--ink-3);letter-spacing:.04em}
-.cv-top-name{margin-top:6px;font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1.12}
-.cv-top-meta{margin-top:6px;font-family:var(--font-num);font-size:.92rem;color:var(--ink-2)}
-.cv-search{margin-top:20px}
+/* today's top pick — elevated highlight card */
+.cv-top{margin-top:auto;background:var(--surface-1);border:.5px solid var(--hair-c);
+  border-radius:var(--r2);box-shadow:var(--el-2);padding:var(--sp-4) var(--sp-4) var(--sp-5)}
+.cv-top-lbl{font-size:var(--fs-cap);color:var(--accent);letter-spacing:.06em;font-weight:700;text-transform:uppercase}
+.cv-top-name{margin-top:6px;font-size:var(--fs-xl);font-weight:700;letter-spacing:-.02em;line-height:1.12}
+.cv-top-meta{margin-top:var(--sp-2);font-family:var(--font-num);font-size:var(--fs-base);color:var(--ink-2)}
+.cv-search{margin-top:var(--sp-5)}
 .cv-hint{
-  margin-top:20px;align-self:center;display:flex;align-items:center;gap:8px;
-  font-size:.82rem;color:var(--ink-3);
+  margin-top:var(--sp-5);align-self:center;display:flex;align-items:center;gap:8px;
+  font-size:var(--fs-sm);color:var(--ink-3);
 }
-.cv-hint .swipe-ico{animation:nudge 2.2s var(--spring) infinite}
+.cv-hint .swipe-ico{animation:nudge 2.2s var(--spring) 3}
 @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 
 /* ============================================================================
@@ -308,7 +367,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 }
 .dock-btn:active{transform:scale(.94);color:var(--ink)}
 .dock-ico{font-size:1.18rem;line-height:1}
-.dock-lbl{font-size:.68rem;font-weight:600;letter-spacing:.02em}
+.dock-lbl{font-size:var(--fs-cap);font-weight:600;letter-spacing:.02em}
 
 /* ============================================================================
    BOTTOM SHEET — draggable (half / full), spring-up
@@ -345,7 +404,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
   width:100%;min-height:44px;margin:0;padding:0;flex:none;background:none;
 }
 .sheet-grip::after{
-  content:'';width:42px;height:5px;border-radius:3px;background:var(--hair-strong);
+  content:'';width:48px;height:5px;border-radius:3px;background:var(--hair-strong);
 }
 .sheet-bar{
   display:flex;align-items:center;gap:10px;
@@ -369,14 +428,14 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 .sh-sec:last-child{margin-bottom:0}
 .sh-h{font-size:.78rem;font-weight:700;color:var(--ink-3);letter-spacing:.06em;
   text-transform:uppercase;margin:0 0 10px}
-.sh-sub{font-size:1rem;font-weight:700;margin:18px 0 8px}
+.sh-sub{font-size:var(--fs-md);font-weight:700;margin:18px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
 
 /* key-value row grid */
 .kvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
-  background:var(--hair-c);border:.5px solid var(--hair-c);border-radius:var(--r1);overflow:hidden}
-.kv{background:var(--bg);padding:11px 13px;display:flex;flex-direction:column;gap:3px}
-.kv .k{font-size:.72rem;color:var(--ink-3)}
-.kv .v{font-size:1.02rem;font-weight:600;font-family:var(--font-num);font-feature-settings:"tnum" 1}
+  background:var(--hair-c);border:.5px solid var(--hair-c);border-radius:var(--r1);overflow:hidden;box-shadow:var(--el-1)}
+.kv{background:var(--surface-1);padding:11px 13px;display:flex;flex-direction:column;gap:3px}
+.kv .k{font-size:var(--fs-cap);color:var(--ink-3);line-height:1.35}
+.kv .v{font-size:var(--fs-md);font-weight:600;font-family:var(--font-num);font-feature-settings:"tnum" 1}
 .kv .v.txt{font-family:var(--font-ui)}
 .kv.wide{grid-column:1/-1}
 
@@ -403,6 +462,9 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
   display:inline-flex;align-items:baseline;gap:5px;
 }
 .chip b{color:var(--ink);font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600}
+/* action chips (釘選 / 分享) are buttons — give them a real tap target + accent press */
+button.chip{min-height:42px;padding:0 16px;align-items:center;font-weight:600;color:var(--ink)}
+button.chip:active{background:var(--accent-soft);transform:scale(.97)}
 
 /* clickable list (opp leaders, watchlist, movers) */
 .list{list-style:none}
@@ -411,7 +473,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 .list a,.list .li-static{
   display:flex;align-items:center;gap:10px;padding:13px 2px;min-height:46px;color:var(--ink);
 }
-.list a:active{background:var(--bg-soft)}
+.list a:active{background:var(--surface-2)}
 .li-main{flex:1;min-width:0}
 .li-name{font-weight:600;font-size:.96rem;display:flex;align-items:center;gap:7px}
 .li-name .tk{font-family:var(--font-num);font-size:.76rem;color:var(--ink-3);font-weight:400}
@@ -419,7 +481,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 .li-r{text-align:right;font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600;flex:none}
 .li-r .pct{font-size:.92rem}
 .li-r .px{font-size:.82rem;color:var(--ink-2);font-weight:600}
-.li-badge{font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:6px;
+.li-badge{font-size:var(--fs-cap);font-weight:700;padding:1px 6px;border-radius:6px;
   border:.5px solid var(--hair-strong);color:var(--ink-2)}
 
 /* segmented control (sheet sub-tabs) */
@@ -431,8 +493,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
   font-size:.82rem;font-weight:600;color:var(--ink-2);
   transition:background .2s var(--spring),color .2s var(--spring);
 }
-.seg button.on{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
-:root[data-theme="dark"] .seg button.on{box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.seg button.on{background:var(--bg);color:var(--ink);box-shadow:var(--el-1)}
 .seg-panel{display:none}
 .seg-panel.on{display:block;animation:fade .25s var(--spring)}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -470,21 +531,21 @@ details.fold>summary:active{background:var(--bg-soft)}
 
 /* K-line host (detail sheet) */
 .sh-kline{height:240px;width:100%;background:var(--chart-bg);border-radius:var(--r1);
-  border:.5px solid var(--hair-c);overflow:hidden;margin-top:4px}
+  border:.5px solid var(--hair-c);overflow:hidden;margin-top:4px;box-shadow:var(--el-1)}
 .sh-spark{height:120px;width:100%}
 .sh-cap{font-size:.72rem;color:var(--ink-3);margin-top:7px;line-height:1.45}
 
 /* svg sparkline / pchart axis styling */
 .pchart .ax{fill:var(--ink-3);font-size:9px}
-.pchart .ax-now{fill:var(--up);font-weight:700}
+.pchart .ax-now{fill:var(--ink);font-weight:700}
 .pchart .grid{stroke:var(--hair-c);stroke-width:.5}
 
 /* factor pills (score breakdown) */
 .factors{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .factor{font-size:.74rem;padding:3px 9px;border-radius:7px;border:.5px solid var(--hair-c);
   color:var(--ink-2);font-family:var(--font-num);font-feature-settings:"tnum" 1}
-.factor.pos{color:var(--up);border-color:color-mix(in srgb,var(--up) 30%,transparent)}
-.factor.neg{color:var(--down);border-color:color-mix(in srgb,var(--down) 30%,transparent)}
+.factor.pos{color:var(--up);border-color:color-mix(in srgb,var(--up) 30%,transparent);background:color-mix(in srgb,var(--up) 6%,transparent)}
+.factor.neg{color:var(--down);border-color:color-mix(in srgb,var(--down) 30%,transparent);background:color-mix(in srgb,var(--down) 6%,transparent)}
 
 /* commentary paragraph */
 .cs-body{font-size:.9rem;line-height:1.65;color:var(--ink);white-space:pre-wrap;word-wrap:break-word}
@@ -493,7 +554,7 @@ details.fold>summary:active{background:var(--bg-soft)}
 .lvstrip{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
 .lvstrip span{display:flex;align-items:baseline;gap:4px;padding:5px 11px;border-radius:9px;
   border:.5px solid var(--hair-c);font-family:var(--font-num);font-weight:600;font-size:.86rem}
-.lvstrip i{font-style:normal;color:var(--ink-3);font-weight:400;font-size:.7rem;font-family:var(--font-ui)}
+.lvstrip i{font-style:normal;color:var(--ink-3);font-weight:400;font-size:var(--fs-cap);font-family:var(--font-ui)}
 .lvstrip small{color:var(--ink-3);font-weight:400}
 .lvstrip .lv-stop{color:var(--down)}.lvstrip .lv-tgt{color:var(--up)}
 
@@ -528,7 +589,7 @@ details.fold>summary:active{background:var(--bg-soft)}
   border:.5px solid var(--hair-strong);background:var(--bg-soft);color:var(--ink);
   font-size:16px;-webkit-appearance:none;font-family:var(--font-ui);
 }
-.search input:focus{outline:none;border-color:var(--up)}
+.search input:focus{outline:none;border-color:var(--accent)}
 .search-res{margin-top:8px}
 
 /* empty / loading states */
@@ -581,7 +642,7 @@ details.fold>summary:active{background:var(--bg-soft)}
 /* 歸因 tables (信號/體制 × n × 勝率) + NAV sparkline strip */
 table.attr{width:100%;border-collapse:collapse;margin:4px 0 8px}
 table.attr th{
-  font-size:.7rem;color:var(--ink-3);font-weight:600;text-align:right;
+  font-size:var(--fs-cap);color:var(--ink-3);font-weight:600;text-align:right;
   padding:4px 2px;border-bottom:.5px solid var(--hair-strong);
 }
 table.attr th:first-child{text-align:left}
@@ -640,12 +701,22 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
   padding:14px 2px 7px;font-size:.86rem;font-weight:700;
   position:sticky;top:0;background:var(--bg);z-index:1;
 }
-.tier-h .tier-sub{font-size:.68rem;color:var(--ink-3);font-weight:600}
+.tier-h .tier-sub{font-size:var(--fs-cap);color:var(--ink-3);font-weight:600}
 .trow{
   width:100%;display:flex;align-items:center;gap:12px;text-align:left;
   padding:11px 2px;border-bottom:.5px solid var(--hair-c);min-height:56px;
 }
-.trow:active{background:var(--bg-soft)}
+.trow:active{background:var(--surface-2)}
+/* tier color-coding: faint tinted band + colored left rail (on top of 燈號 dot + text label) */
+.trow.tier-buy{border-left:3px solid var(--tier-buy-rail);background:var(--tier-buy-bg);padding-left:11px}
+.trow.tier-watch{border-left:3px solid var(--tier-watch-rail);background:var(--tier-watch-bg);padding-left:11px}
+.trow.tier-avoid{border-left:3px solid var(--tier-avoid-rail);background:var(--tier-avoid-bg);padding-left:11px}
+.trow.tier-buy:active{background:color-mix(in srgb,var(--tier-buy-rail) 16%,transparent)}
+.trow.tier-watch:active{background:color-mix(in srgb,var(--tier-watch-rail) 16%,transparent)}
+.trow.tier-avoid:active{background:color-mix(in srgb,var(--tier-avoid-rail) 16%,transparent)}
+.tier-h.tier-buy>span:first-child{color:var(--tier-buy-rail)}
+.tier-h.tier-watch>span:first-child{color:var(--tier-watch-rail)}
+.tier-h.tier-avoid>span:first-child{color:var(--tier-avoid-rail)}
 .tr-l{flex:1;min-width:0}
 .tr-name{font-weight:600;font-size:.94rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .tr-name .tk{font-size:.72rem;color:var(--ink-3);font-weight:400}
@@ -656,48 +727,50 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
 
 /* ---- 分數條（當日相對刻度；顏色=分級）---- */
 .sbar{
-  margin-top:6px;height:4px;border-radius:2px;overflow:hidden;
+  margin-top:6px;height:6px;border-radius:3px;overflow:hidden;
   background:var(--hair-c);
 }
-.sbar i{display:block;height:100%;border-radius:2px}
+.sbar i{display:block;height:100%;border-radius:3px}
 .sbar i.tier-buy{background:var(--up)}
 .sbar i.tier-watch{background:var(--warn)}
 .sbar i.tier-avoid{background:var(--down)}
 
 /* ---- 理由 chip（factors 正貢獻）/ 警示 chip（overlay 資訊性）---- */
 .rchip{
-  font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:999px;
+  font-size:var(--fs-cap);font-weight:600;padding:3px 9px;border-radius:999px;
   border:.5px solid color-mix(in srgb,var(--up) 28%,transparent);
+  background:color-mix(in srgb,var(--up) 6%,transparent);
   color:var(--up);white-space:nowrap;
 }
 .wchip{
-  font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;
+  font-size:var(--fs-cap);font-weight:700;padding:3px 9px;border-radius:999px;
   border:.5px solid color-mix(in srgb,var(--warn) 45%,transparent);
+  background:color-mix(in srgb,var(--warn) 8%,transparent);
   color:var(--warn);white-space:nowrap;
 }
 .wchip.w-risk{color:var(--down);border-color:color-mix(in srgb,var(--down) 45%,transparent)}
 
 /* ---- pick 頁結構化 verdict（燈號+分數條+分數）---- */
 .pk-verdict .sbar{flex:1;margin-top:0}
-.pk-vscore{font-size:.92rem;font-weight:600;color:var(--ink-2);flex:none}
-.pk-vchips{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-.pk-vtxt{margin-top:8px;font-size:.82rem;color:var(--ink-2);line-height:1.45}
+.pk-vscore{font-family:var(--font-num);font-size:var(--fs-lg);font-weight:700;color:var(--ink);flex:none}
+.pk-vchips{margin-top:var(--sp-2);display:flex;flex-wrap:wrap;gap:6px}
+.pk-vtxt{margin-top:var(--sp-2);font-size:var(--fs-sm);color:var(--ink-2);line-height:1.45}
 
 /* ---- 市場 sheet 指標卡網格 ---- */
 .mgrid{
   display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--hair-c);border:.5px solid var(--hair-c);
-  border-radius:var(--r1);overflow:hidden;margin-bottom:8px;
+  border-radius:var(--r1);overflow:hidden;margin-bottom:8px;box-shadow:var(--el-1);
 }
-.mcard{background:var(--bg);padding:11px 13px;display:flex;flex-direction:column;gap:3px;min-width:0}
-.mc-k{font-size:.7rem;color:var(--ink-3);letter-spacing:.01em}
+.mcard{background:var(--surface-1);padding:11px 13px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.mc-k{font-size:var(--fs-cap);color:var(--ink-3);letter-spacing:.01em;line-height:1.3}
 .mc-v{
   font-size:1.06rem;font-weight:600;letter-spacing:-.01em;
   display:flex;align-items:center;gap:6px;flex-wrap:wrap;
 }
 .mc-v.num{font-family:var(--font-num);font-feature-settings:"tnum" 1}
 .mc-a{font-size:.72rem}
-.mc-s{font-size:.68rem;color:var(--ink-3);line-height:1.35}
+.mc-s{font-size:var(--fs-cap);color:var(--ink-3);line-height:1.35}
 
 /* ---- 雷達合併卡（來源 badge 列）---- */
 .li-srcs{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
