@@ -1,0 +1,95 @@
+name: SmartStock Report Watchdog
+
+# WHY THIS EXISTS
+# `daily.yml`'s notify-failure job only fires on failure() of a run that actually STARTED.
+# GitHub free-tier scheduled runs are best-effort: they fire 3-6h late under load and are
+# sometimes DROPPED entirely (observed: 2026-06-15 the daily fired ~16:06 UTC instead of the
+# scheduled 10:27 UTC). A DROPPED run emits no event, so notify-failure can never catch it ->
+# the report is silently missing AND you get zero alert. That is exactly the "didn't run + no
+# notification" failure mode.
+#
+# This watchdog closes that gap. It runs AFTER the daily generation window (incl. GitHub lag)
+# and, if today's weekday report file is absent, it (1) SELF-HEALS by dispatching daily.yml
+# (workflow_dispatch bypasses daily's skip-if-exists guard, so it regenerates), and (2) opens or
+# dedups ONE GitHub issue using the built-in GITHUB_TOKEN. A bot-authored issue is what actually
+# delivers the email + mobile notification (issues you open yourself are not notified to you).
+#
+# Liveness check is sound: main.py is fully fail-open (every source SKIPs, never aborts), so a
+# report file is ALWAYS written whenever the run executes -- even on a no-trade TW holiday. A
+# missing file therefore means "the run never executed", never "the market was closed".
+
+on:
+  schedule:
+    # Both ticks are well past the daily window (~10:27-12:13 UTC nominal, up to ~17:30 UTC when
+    # GitHub is lagging) so a merely-late run is NOT mistaken for a dropped one. Odd minutes avoid
+    # the contended :00/:30. Weekdays only -- daily.yml itself is Mon-Fri.
+    - cron: '17 18 * * 1-5'   # ~02:17 TW (next day) -- primary watchdog
+    - cron: '47 20 * * 1-5'   # ~04:47 TW (next day) -- backup, in case the self-heal dispatch also lagged
+  workflow_dispatch:
+    inputs:
+      force_alert:
+        description: 'Run the full self-heal + alert path (default = safe check-only: report present/absent, no dispatch, no issue)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: write     # to dispatch daily.yml for self-heal
+  issues: write      # to open / comment the alert issue
+
+concurrency:
+  group: smartstock-watchdog
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify today's report; self-heal + alert if missing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          FORCE_ALERT: ${{ github.event.inputs.force_alert }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          # Date basis matches web_export.export() which keys the file by the runner's UTC date.
+          DATE=$(date -u +%F)
+          REPORT="docs/data/$DATE.json"
+
+          if [ -f "$REPORT" ]; then
+            echo "::notice::Report $REPORT present — watchdog no-op."
+            exit 0
+          fi
+
+          # FULL mode = real scheduled run, or a manual dispatch with force_alert=true.
+          # A plain manual dispatch is check-only so it can be tested safely with no side effects.
+          FULL="false"
+          if [ "$EVENT" = "schedule" ] || [ "$FORCE_ALERT" = "true" ]; then FULL="true"; fi
+
+          if [ "$FULL" != "true" ]; then
+            echo "::warning::Report $REPORT MISSING (check-only manual run — no dispatch, no issue). Re-run with force_alert=true to exercise the alert path."
+            exit 0
+          fi
+
+          echo "::warning::Report $REPORT MISSING — self-healing (re-dispatch daily) + alerting."
+
+          # 1) self-heal: regenerate via workflow_dispatch (bypasses daily's skip-if-exists guard).
+          gh workflow run daily.yml --repo "$REPO" --ref main \
+            && echo "Re-dispatched daily.yml." \
+            || echo "WARN: daily.yml re-dispatch failed — continuing to alert."
+
+          # 2) notify: open or dedup ONE open issue (bot-authored => you actually get notified).
+          TITLE="🔴 SmartStock daily report MISSING"
+          BODY="No report for **$DATE** after the generation window — most likely a GitHub dropped/late schedule (daily.yml's notify-failure cannot see a run that never started). The watchdog re-dispatched daily.yml to self-heal; check that ${DATE}.json appears within ~10 min. Watchdog run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+            echo "Commented on existing issue #$NUM."
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+            echo "Opened new alert issue."
+          fi
