@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 547.24,
- "change_pct": 6.97,
+ "price": 523.5,
+ "change_pct": 2.33,
  "ohlc": [
   {
    "time": "2026-03-20",
@@ -477,17 +477,20 @@
    "v": 31553100
   },
   {
-   "time": "2026-06-15",
-   "o": 535.75,
-   "h": 558.37,
-   "l": 530.5,
-   "c": 547.24,
-   "v": 15790711
+   "time": "2026-06-16",
+   "o": 546.89,
+   "h": 548.95,
+   "l": 521.01,
+   "c": 523.5,
+   "v": 10457257
   }
  ],
  "sr": {
-  "price": 547.24,
-  "resistance": [],
+  "price": 523.5,
+  "resistance": [
+   527.2,
+   546.44
+  ],
   "support": [
    437.23,
    393.36
@@ -554,38 +557,36 @@
   452.4,
   488.45,
   511.57,
-  547.24
+  523.5
  ],
  "spark_start": "2026-03-20",
- "spark_end": "2026-06-15",
+ "spark_end": "2026-06-16",
  "fundamental": {
   "pe_trailing": 181.23013,
   "pe_forward": 41.768612,
   "eps_trailing": 3.02,
   "eps_forward": 13.1035,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 547.24,
-  "stop": 508.93,
-  "target": 643.01,
-  "atr_bracket": 643.01,
-  "measured_move": 606.08,
-  "target_band": [
-   606.08,
-   643.01
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.5,
-  "swing_stop": 426.55,
-  "chandelier": 458.57,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 53 分 / 9 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 53,
+    "comments": 9,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-06-16",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -598,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-15",
+   "as_of": "2026-06-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

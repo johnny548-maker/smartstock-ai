@@ -1,8 +1,8 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 372.48,
- "change_pct": 3.56,
+ "price": 375.31,
+ "change_pct": 4.35,
  "ohlc": [
   {
    "time": "2026-03-20",
@@ -477,16 +477,16 @@
    "v": 24704600
   },
   {
-   "time": "2026-06-15",
-   "o": 367.95,
-   "h": 372.99,
-   "l": 366.56,
-   "c": 372.48,
-   "v": 11339547
+   "time": "2026-06-16",
+   "o": 369.68,
+   "h": 375.75,
+   "l": 367.08,
+   "c": 375.31,
+   "v": 8490906
   }
  ],
  "sr": {
-  "price": 372.48,
+  "price": 375.31,
   "resistance": [
    393.64,
    408.37
@@ -557,51 +557,34 @@
   356.38,
   357.77,
   359.68,
-  372.48
+  375.31
  ],
  "spark_start": "2026-03-20",
- "spark_end": "2026-06-15",
+ "spark_end": "2026-06-16",
  "fundamental": {
   "pe_trailing": 28.451488,
   "pe_forward": 25.71922,
   "eps_trailing": 13.09,
   "eps_forward": 14.48061,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 372.48,
-  "stop": 350.22,
-  "target": 428.14,
-  "atr_bracket": 428.14,
-  "measured_move": 386.29,
-  "target_band": [
-   386.29,
-   428.14
-  ],
-  "stop_pct": -6.0,
-  "target_pct": 14.9,
-  "rr": 2.5,
-  "atr_pct": 3.0,
-  "swing_stop": 343.02,
-  "chandelier": 377.01,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 302 分 / 186 留言",
+   "label": "HN 討論熱度 20 篇 / 434 分 / 221 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 302,
-    "comments": 186,
+    "points": 434,
+    "comments": 221,
     "n": 20,
     "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-06-15",
+   "as_of": "2026-06-16",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -616,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-15",
+   "as_of": "2026-06-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

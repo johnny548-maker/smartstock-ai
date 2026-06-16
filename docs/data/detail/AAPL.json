@@ -1,8 +1,8 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 297.3,
- "change_pct": 2.12,
+ "price": 298.23,
+ "change_pct": 2.44,
  "ohlc": [
   {
    "time": "2026-03-20",
@@ -477,16 +477,16 @@
    "v": 38742100
   },
   {
-   "time": "2026-06-15",
-   "o": 294.12,
-   "h": 297.78,
-   "l": 291.7,
-   "c": 297.3,
-   "v": 16448997
+   "time": "2026-06-16",
+   "o": 295.24,
+   "h": 298.28,
+   "l": 293.97,
+   "c": 298.23,
+   "v": 11009449
   }
  ],
  "sr": {
-  "price": 297.3,
+  "price": 298.23,
   "resistance": [
    303.2,
    317.4
@@ -557,36 +557,21 @@
   291.58,
   295.63,
   291.13,
-  297.3
+  298.23
  ],
  "spark_start": "2026-03-20",
- "spark_end": "2026-06-15",
+ "spark_end": "2026-06-16",
  "fundamental": {
   "pe_trailing": 35.94861,
   "pe_forward": 30.984402,
   "eps_trailing": 8.27,
   "eps_forward": 9.59499,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 452 分 / 188 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 452,
-    "comments": 188,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-06-15",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -599,7 +584,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-15",
+   "as_of": "2026-06-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

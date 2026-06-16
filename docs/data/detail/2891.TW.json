@@ -1,25 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 67.6,
- "change_pct": 0.15,
+ "price": 70.8,
+ "change_pct": 1.0,
  "ohlc": [
-  {
-   "time": "2026-03-18",
-   "o": 53.8,
-   "h": 53.9,
-   "l": 53.0,
-   "c": 53.3,
-   "v": 24316820
-  },
-  {
-   "time": "2026-03-19",
-   "o": 52.4,
-   "h": 52.4,
-   "l": 51.5,
-   "c": 51.6,
-   "v": 42476779
-  },
   {
    "time": "2026-03-20",
    "o": 51.4,
@@ -483,14 +467,27 @@
    "l": 66.9,
    "c": 67.6,
    "v": 82270335
+  },
+  {
+   "time": "2026-06-15",
+   "o": 71.7,
+   "h": 72.6,
+   "l": 69.0,
+   "c": 70.1,
+   "v": 42661199
+  },
+  {
+   "time": "2026-06-16",
+   "o": 70.4,
+   "h": 71.7,
+   "l": 69.6,
+   "c": 70.8,
+   "v": 40945164
   }
  ],
  "sr": {
-  "price": 67.6,
-  "resistance": [
-   69.5,
-   70.5
-  ],
+  "price": 70.8,
+  "resistance": [],
   "support": [
    52.6,
    52.3
@@ -498,8 +495,6 @@
   "strong_support": 40.22
  },
  "spark": [
-  53.3,
-  51.6,
   52.1,
   51.5,
   52.0,
@@ -557,26 +552,45 @@
   69.2,
   68.2,
   67.5,
-  67.6
+  67.6,
+  70.1,
+  70.8
  ],
- "spark_start": "2026-03-18",
- "spark_end": "2026-06-12",
+ "spark_start": "2026-03-20",
+ "spark_end": "2026-06-16",
  "fundamental": null,
- "levels": null,
+ "levels": {
+  "entry": 70.8,
+  "stop": 65.84,
+  "target": 83.19,
+  "atr_bracket": 83.19,
+  "measured_move": 74.5,
+  "target_band": [
+   74.5,
+   83.19
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.3,
+  "swing_stop": 63.59,
+  "chandelier": 65.03,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 12,156,518 股",
+   "label": "三大法人買超 5,604,526 股",
    "value": {
-    "foreign": 40901104,
-    "trust": -29617082,
-    "dealer": 872496,
-    "total": 12156518
+    "foreign": 3764746,
+    "trust": 2182845,
+    "dealer": -343065,
+    "total": 5604526
    },
    "severity": "info",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-16",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -584,23 +598,23 @@
    "kind": "chip",
    "label": "融券餘額下降（回補）",
    "value": {
-    "short_net": -3
+    "short_net": -1
    },
    "severity": "info",
-   "as_of": "2026-06-13",
+   "as_of": "2026-06-16",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 16.3 / 殖利率 3.70% / PB 2.42",
+   "label": "PE 16.9 / 殖利率 3.57% / PB 2.51",
    "value": {
-    "pe": 16.29,
-    "yield": 3.7,
-    "pb": 2.42
+    "pe": 16.89,
+    "yield": 3.57,
+    "pb": 2.51
    },
    "severity": "info",
-   "as_of": "2026-06-12",
+   "as_of": "2026-06-15",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
