@@ -33,14 +33,16 @@
   --bg-soft:var(--surface-1); /* legacy alias — kept so existing rules不需改名 */
   --ink:#0a0a0b;            /* primary text (near-black, not pure #000 — softer) */
   --ink-2:#5c5c66;          /* secondary */
-  --ink-3:#8a8a94;          /* tertiary / captions (lifted for legibility) */
+  --ink-3:#6a6a73;          /* tertiary / captions — AA 4.5:1 on bg + surface-1 + tier tints */
   --hair-c:rgba(0,0,0,.10); /* 0.5px hairline color */
   --hair-strong:rgba(0,0,0,.16);
 
-  /* the only chromatic pair — 漲=綠 / 跌=紅 (sign-matched to existing app) */
-  --up:#15994f;            /* green = positive change */
-  --down:#e0322f;          /* red   = negative change */
-  --warn:#b07000;          /* caution accent (amber-ink, used sparingly) */
+  /* chromatic pair — 漲=綠 / 跌=紅 (sign-matched). Darkened in LIGHT so the small
+     %-change/chip/factor TEXT clears WCAG AA 4.5:1 on white + faint tints; still
+     vivid enough as fills (sbar/lightdot/rail/sparkline). DARK theme keeps bright. */
+  --up:#0e7a3e;            /* green = positive change (AA text on light) */
+  --down:#cc2e2b;          /* red   = negative change (AA text on light) */
+  --warn:#8f5a00;          /* caution accent (amber-ink, AA text on light) */
 
   /* indigo accent — interactivity ONLY (links / CTA / active seg / focus) */
   --accent:#3b5bdb;
@@ -90,7 +92,7 @@
   --bg-soft:var(--surface-1);
   --ink:#f4f4f6;
   --ink-2:#a2a3ad;
-  --ink-3:#71727c;
+  --ink-3:#82838d;          /* AA 4.5:1 on --surface-1 cards, not just page bg */
   --hair-c:rgba(255,255,255,.12);
   --hair-strong:rgba(255,255,255,.20);
 
@@ -185,7 +187,9 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 /* ============================================================================
    PICK PAGE — one stock, full screen
    ============================================================================ */
-.pk{display:flex;flex-direction:column;height:100%;gap:0;z-index:2}
+.pk{display:flex;flex-direction:column;height:100%;gap:0;z-index:2;
+  min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pk::-webkit-scrollbar{display:none}
 .pk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .pk-rank{
   font-family:var(--font-num);font-size:.8rem;font-weight:600;
@@ -277,7 +281,9 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 /* ============================================================================
    COVER PAGE — today's overview (first page of the deck)
    ============================================================================ */
-.cv{display:flex;flex-direction:column;height:100%;z-index:2}
+.cv{display:flex;flex-direction:column;height:100%;z-index:2;
+  min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cv::-webkit-scrollbar{display:none}
 .cv-kicker{font-size:.8rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
 .cv-date{
   margin-top:6px;font-family:var(--font-num);font-size:clamp(2.4rem,13vw,3.4rem);
@@ -286,7 +292,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 .cv-weekday{margin-top:4px;font-size:.9rem;color:var(--ink-2)}
 
 /* market lights — compact 2-col grid (was a tall vertical stack eating ⅓ screen) */
-.cv-lights{margin-top:var(--sp-6);display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+.cv-lights{margin-top:var(--sp-6);flex:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   border:.5px solid var(--hair-c);border-radius:var(--r2);overflow:hidden;
   background:var(--hair-c);box-shadow:var(--el-1)}
 .cv-light{
@@ -306,7 +312,10 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
   border-radius:var(--r2);box-shadow:var(--el-2);padding:var(--sp-4) var(--sp-4) var(--sp-5)}
 .cv-top-lbl{font-size:var(--fs-cap);color:var(--accent);letter-spacing:.06em;font-weight:700;text-transform:uppercase}
 .cv-top-name{margin-top:6px;font-size:var(--fs-xl);font-weight:700;letter-spacing:-.02em;line-height:1.12}
-.cv-top-meta{margin-top:var(--sp-2);font-family:var(--font-num);font-size:var(--fs-base);color:var(--ink-2)}
+.cv-top-meta{margin-top:var(--sp-2);font-family:var(--font-num);font-size:var(--fs-md);color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.cv-top-px{font-size:var(--fs-lg);font-weight:700}
+.cv-top-score{color:var(--ink-2);font-weight:600}
+.cv-top-tags{margin-top:4px;font-size:var(--fs-sm);color:var(--ink-2)}
 .cv-search{margin-top:var(--sp-5)}
 .cv-hint{
   margin-top:var(--sp-5);align-self:center;display:flex;align-items:center;gap:8px;
@@ -463,7 +472,7 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 }
 .chip b{color:var(--ink);font-family:var(--font-num);font-feature-settings:"tnum" 1;font-weight:600}
 /* action chips (釘選 / 分享) are buttons — give them a real tap target + accent press */
-button.chip{min-height:42px;padding:0 16px;align-items:center;font-weight:600;color:var(--ink)}
+button.chip{min-height:44px;padding:0 16px;align-items:center;font-weight:600;color:var(--ink)}
 button.chip:active{background:var(--accent-soft);transform:scale(.97)}
 
 /* clickable list (opp leaders, watchlist, movers) */
@@ -714,9 +723,9 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
 .trow.tier-buy:active{background:color-mix(in srgb,var(--tier-buy-rail) 16%,transparent)}
 .trow.tier-watch:active{background:color-mix(in srgb,var(--tier-watch-rail) 16%,transparent)}
 .trow.tier-avoid:active{background:color-mix(in srgb,var(--tier-avoid-rail) 16%,transparent)}
-.tier-h.tier-buy>span:first-child{color:var(--tier-buy-rail)}
-.tier-h.tier-watch>span:first-child{color:var(--tier-watch-rail)}
-.tier-h.tier-avoid>span:first-child{color:var(--tier-avoid-rail)}
+.tier-h.tier-buy>span:first-child{color:var(--up)}
+.tier-h.tier-watch>span:first-child{color:var(--warn)}
+.tier-h.tier-avoid>span:first-child{color:var(--down)}
 .tr-l{flex:1;min-width:0}
 .tr-name{font-weight:600;font-size:.94rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .tr-name .tk{font-size:.72rem;color:var(--ink-3);font-weight:400}
@@ -763,6 +772,8 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
   border-radius:var(--r1);overflow:hidden;margin-bottom:8px;box-shadow:var(--el-1);
 }
 .mcard{background:var(--surface-1);padding:11px 13px;display:flex;flex-direction:column;gap:3px;min-width:0}
+/* a lone trailing metric (odd count, e.g. 7-card 期貨/籌碼面環境) spans the full row */
+.mgrid>.mcard:nth-child(odd):last-child{grid-column:1 / -1}
 .mc-k{font-size:var(--fs-cap);color:var(--ink-3);letter-spacing:.01em;line-height:1.3}
 .mc-v{
   font-size:1.06rem;font-weight:600;letter-spacing:-.01em;

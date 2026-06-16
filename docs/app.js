@@ -198,7 +198,7 @@ function sparkline(arr, w, h) {
   const cs = getComputedStyle(document.documentElement);
   const up = (cs.getPropertyValue('--up') || '#15994f').trim();
   const dn = (cs.getPropertyValue('--down') || '#e0322f').trim();
-  const hc = (cs.getPropertyValue('--hair-c') || 'rgba(0,0,0,.1)').trim();
+  const hc = (cs.getPropertyValue('--hair-strong') || 'rgba(0,0,0,.16)').trim();  // baseline ref (more visible than --hair-c)
   const col = arr[arr.length - 1] >= arr[0] ? up : dn;
   const gid = 'spg' + (sparkline._n = (sparkline._n || 0) + 1);   // unique gradient id per call
   const baseY = xy(arr[0], 0)[1];
@@ -279,13 +279,16 @@ function renderCandles(elId, ohlc, sr, levels) {
     candle.createPriceLine({ price, color, lineStyle: LC.LineStyle.Dashed, lineWidth: 1, axisLabelVisible: true, title });
   };
   const lv = levels || {};
+  const lastC = ohlc[ohlc.length - 1] && ohlc[ohlc.length - 1].c;
   addLine(lv.stop, col.down, '停損');
-  addLine(lv.entry, col.text, '進場');
+  // skip 進場 line when it duplicates the live close axis label (entry ≈ last close)
+  if (!(fin(lastC) && fin(lv.entry) && Math.abs(lv.entry - lastC) / lastC < 0.005)) addLine(lv.entry, col.text, '進場');
   const tgt = (lv.target_band && lv.target_band.length) ? lv.target_band[lv.target_band.length - 1] : lv.measured_move;
   addLine(tgt, col.up, '目標');
   const s = sr || {};
-  (s.resistance || []).forEach((r) => addLine(r, col.down, '壓力'));
-  (s.support || []).forEach((p) => addLine(p, col.up, '支撐'));
+  // cap to the single nearest level each side — keeps the right-axis labels readable
+  (s.resistance || []).slice(0, 1).forEach((r) => addLine(r, col.down, '壓力'));
+  (s.support || []).slice(0, 1).forEach((p) => addLine(p, col.up, '支撐'));
   chart.timeScale().fitContent();
   try {
     const ro = new ResizeObserver(() => { if (el._chart) el._chart.applyOptions({ width: el.clientWidth }); });
@@ -416,7 +419,8 @@ function coverPage(d) {
     topHtml = `<div class="cv-top reveal">
       <div class="cv-top-lbl">今日首選</div>
       <div class="cv-top-name">${lightDot(top.light)} ${esc(top.name || top.stock)}</div>
-      <div class="cv-top-meta"><span class="num">${pxNum(top.price)}</span> ${chgHtml(top.change_pct, false)} · 分數 <span class="num">${esc(top.score)}</span> · ${esc(top.verdict || '')}</div>
+      <div class="cv-top-meta"><span class="cv-top-px num">${pxNum(top.price)}</span> ${chgHtml(top.change_pct, false)} <span class="cv-top-score num">分數 ${esc(top.score)}</span></div>
+      ${top.verdict ? `<div class="cv-top-tags">${esc(top.verdict)}</div>` : ''}
     </div>`;
   }
 
