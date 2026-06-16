@@ -57,9 +57,9 @@ jobs:
     # repo — cap below GitHub's 360-min hard limit so a hung fetch fails loudly.
     timeout-minutes: 350
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: pip
@@ -99,9 +99,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350   # full walk_forward (5 folds x 15-signal family) is the >3h tail
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: pip
