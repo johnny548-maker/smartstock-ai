@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 109.5,
- "change_pct": 5.29,
+ "price": 113.5,
+ "change_pct": 3.65,
  "ohlc": [
-  {
-   "time": "2026-03-20",
-   "o": 71.3,
-   "h": 72.7,
-   "l": 71.3,
-   "c": 72.0,
-   "v": 24877113
-  },
   {
    "time": "2026-03-23",
    "o": 70.1,
@@ -482,11 +474,19 @@
    "h": 109.5,
    "l": 104.0,
    "c": 109.5,
-   "v": 54267316
+   "v": 53990536
+  },
+  {
+   "time": "2026-06-17",
+   "o": 110.0,
+   "h": 117.0,
+   "l": 108.0,
+   "c": 113.5,
+   "v": 49504968
   }
  ],
  "sr": {
-  "price": 109.5,
+  "price": 113.5,
   "resistance": [],
   "support": [
    76.9,
@@ -495,7 +495,6 @@
   "strong_support": 60.6
  },
  "spark": [
-  72.0,
   71.7,
   70.8,
   71.4,
@@ -554,67 +553,40 @@
   100.5,
   100.5,
   104.0,
-  109.5
+  109.5,
+  113.5
  ],
- "spark_start": "2026-03-20",
- "spark_end": "2026-06-16",
+ "spark_start": "2026-03-23",
+ "spark_end": "2026-06-17",
  "fundamental": null,
- "levels": {
-  "entry": 109.5,
-  "stop": 101.84,
-  "target": 128.66,
-  "atr_bracket": 128.66,
-  "measured_move": 131.5,
-  "target_band": [
-   128.66,
-   131.5
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.2,
-  "swing_stop": 75.1,
-  "chandelier": 98.21,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 8,710,883 股",
+   "label": "三大法人賣超 4,617,640 股",
    "value": {
-    "foreign": -147329,
-    "trust": 7719686,
-    "dealer": 1138526,
-    "total": 8710883
+    "foreign": -5810605,
+    "trust": 2452547,
+    "dealer": -1259582,
+    "total": -4617640
    },
    "severity": "info",
-   "as_of": "2026-06-16",
+   "as_of": "2026-06-17",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -23
-   },
-   "severity": "info",
-   "as_of": "2026-06-16",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 15.8 / 殖利率 3.37% / PB 2.08",
+   "label": "PE 16.6 / 殖利率 3.20% / PB 2.19",
    "value": {
-    "pe": 15.78,
-    "yield": 3.37,
-    "pb": 2.08
+    "pe": 16.62,
+    "yield": 3.2,
+    "pb": 2.19
    },
    "severity": "info",
-   "as_of": "2026-06-15",
+   "as_of": "2026-06-16",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
