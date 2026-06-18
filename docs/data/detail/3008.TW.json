@@ -1,17 +1,9 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 5145.0,
- "change_pct": 5.86,
+ "price": 5195.0,
+ "change_pct": 0.97,
  "ohlc": [
-  {
-   "time": "2026-03-23",
-   "o": 2305.0,
-   "h": 2305.0,
-   "l": 2220.0,
-   "c": 2235.0,
-   "v": 1139719
-  },
   {
    "time": "2026-03-24",
    "o": 2255.0,
@@ -482,11 +474,19 @@
    "h": 5310.0,
    "l": 4960.0,
    "c": 5145.0,
-   "v": 5572027
+   "v": 5202371
+  },
+  {
+   "time": "2026-06-18",
+   "o": 5115.0,
+   "h": 5295.0,
+   "l": 5090.0,
+   "c": 5195.0,
+   "v": 2971148
   }
  ],
  "sr": {
-  "price": 5145.0,
+  "price": 5195.0,
   "resistance": [],
   "support": [
    3420.0,
@@ -495,7 +495,6 @@
   "strong_support": 1976.95
  },
  "spark": [
-  2235.0,
   2240.0,
   2220.0,
   2210.0,
@@ -554,10 +553,11 @@
   4020.0,
   4420.0,
   4860.0,
-  5145.0
+  5145.0,
+  5195.0
  ],
- "spark_start": "2026-03-23",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-18",
  "fundamental": {
   "rev_yoy": 42.7,
   "rev_accel": false,
@@ -565,20 +565,20 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 5145.0,
-  "stop": 4784.85,
-  "target": 6045.37,
-  "atr_bracket": 6045.37,
+  "entry": 5195.0,
+  "stop": 4831.35,
+  "target": 6104.12,
+  "atr_bracket": 6104.12,
   "measured_move": null,
   "target_band": [
-   6045.37
+   6104.12
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
   "atr_pct": 6.3,
-  "swing_stop": 3227.82,
-  "chandelier": 4426.36,
+  "swing_stop": 3227.18,
+  "chandelier": 4442.73,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -586,28 +586,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 770,946 股",
+   "label": "三大法人買超 46,497 股",
    "value": {
-    "foreign": 311668,
-    "trust": 470834,
-    "dealer": -11556,
-    "total": 770946
+    "foreign": -188525,
+    "trust": 184463,
+    "dealer": 50559,
+    "total": 46497
    },
    "severity": "info",
-   "as_of": "2026-06-17",
+   "as_of": "2026-06-18",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 30.3 / 殖利率 1.65% / PB 3.44",
+   "label": "PE 32.1 / 殖利率 1.55% / PB 3.65",
    "value": {
-    "pe": 30.34,
-    "yield": 1.65,
-    "pb": 3.44
+    "pe": 32.11,
+    "yield": 1.55,
+    "pb": 3.65
    },
    "severity": "info",
-   "as_of": "2026-06-16",
+   "as_of": "2026-06-17",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
