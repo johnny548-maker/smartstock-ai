@@ -482,7 +482,7 @@
    "h": 5295.0,
    "l": 5090.0,
    "c": 5195.0,
-   "v": 2971148
+   "v": 2793257
   }
  ],
  "sr": {
@@ -564,23 +564,7 @@
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 5195.0,
-  "stop": 4831.35,
-  "target": 6104.12,
-  "atr_bracket": 6104.12,
-  "measured_move": null,
-  "target_band": [
-   6104.12
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.3,
-  "swing_stop": 3227.18,
-  "chandelier": 4442.73,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
@@ -594,30 +578,32 @@
     "total": 46497
    },
    "severity": "info",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-19",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -13
+   },
+   "severity": "info",
+   "as_of": "2026-06-19",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 32.1 / 殖利率 1.55% / PB 3.65",
+   "label": "PE 32.4 / 殖利率 1.54% / PB 3.68",
    "value": {
-    "pe": 32.11,
-    "yield": 1.55,
-    "pb": 3.65
+    "pe": 32.43,
+    "yield": 1.54,
+    "pb": 3.68
    },
    "severity": "info",
-   "as_of": "2026-06-17",
+   "as_of": "2026-06-18",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 56.16,
-   "severity": "warn",
-   "as_of": "20260612",
-   "note": "大戶持股%=56.16；WoW-0.31；股東人數+518"
   }
  ]
 }

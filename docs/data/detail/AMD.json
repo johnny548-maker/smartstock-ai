@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 533.32,
- "change_pct": 4.07,
+ "price": 537.37,
+ "change_pct": 4.86,
  "ohlc": [
   {
    "time": "2026-03-25",
@@ -474,19 +474,19 @@
    "h": 532.5,
    "l": 507.3,
    "c": 512.48,
-   "v": 26981000
+   "v": 27085300
   },
   {
    "time": "2026-06-18",
-   "o": 532.4,
-   "h": 536.0,
-   "l": 527.0,
-   "c": 533.32,
-   "v": 6182361
+   "o": 531.58,
+   "h": 539.69,
+   "l": 526.32,
+   "c": 537.37,
+   "v": 43743300
   }
  ],
  "sr": {
-  "price": 533.32,
+  "price": 537.37,
   "resistance": [
    546.44,
    558.37
@@ -557,36 +557,21 @@
   547.26,
   507.29,
   512.48,
-  533.32
+  537.37
  ],
  "spark_start": "2026-03-25",
  "spark_end": "2026-06-18",
  "fundamental": {
-  "pe_trailing": 171.59364,
-  "pe_forward": 39.154804,
+  "pe_trailing": 179.72241,
+  "pe_forward": 41.00965,
   "eps_trailing": 2.99,
   "eps_forward": 13.1035,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 163 分 / 89 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 163,
-    "comments": 89,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-06-18",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -599,7 +584,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

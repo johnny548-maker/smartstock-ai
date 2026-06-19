@@ -1,8 +1,8 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 447.28,
- "change_pct": 3.5,
+ "price": 462.12,
+ "change_pct": 6.94,
  "ohlc": [
   {
    "time": "2026-03-25",
@@ -474,22 +474,20 @@
    "h": 442.5,
    "l": 431.64,
    "c": 432.15,
-   "v": 10911100
+   "v": 10934100
   },
   {
    "time": "2026-06-18",
    "o": 438.88,
-   "h": 448.39,
-   "l": 438.5,
-   "c": 447.28,
-   "v": 1822120
+   "h": 465.22,
+   "l": 438.39,
+   "c": 462.12,
+   "v": 25776200
   }
  ],
  "sr": {
-  "price": 447.28,
-  "resistance": [
-   449.11
-  ],
+  "price": 462.12,
+  "resistance": [],
   "support": [
    404.56,
    385.22
@@ -556,36 +554,38 @@
   441.4,
   425.83,
   432.15,
-  447.28
+  462.12
  ],
  "spark_start": "2026-03-25",
  "spark_end": "2026-06-18",
  "fundamental": {
-  "pe_trailing": 37.4684,
-  "pe_forward": 22.169016,
+  "pe_trailing": 39.73517,
+  "pe_forward": 23.510199,
   "eps_trailing": 11.63,
   "eps_forward": 19.65615,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 462.12,
+  "stop": 429.77,
+  "target": 542.99,
+  "atr_bracket": 542.99,
+  "measured_move": 480.6,
+  "target_band": [
+   480.6,
+   542.99
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.5,
+  "swing_stop": 398.31,
+  "chandelier": 411.64,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 53 分 / 2 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 53,
-    "comments": 2,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-06-18",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -598,7 +598,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

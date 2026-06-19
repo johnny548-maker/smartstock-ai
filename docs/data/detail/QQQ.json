@@ -1,8 +1,8 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 734.06,
- "change_pct": 1.6,
+ "price": 740.62,
+ "change_pct": 2.51,
  "ohlc": [
   {
    "time": "2026-03-25",
@@ -474,19 +474,19 @@
    "h": 735.68,
    "l": 720.85,
    "c": 722.51,
-   "v": 51282500
+   "v": 51669300
   },
   {
    "time": "2026-06-18",
-   "o": 737.1,
-   "h": 737.64,
-   "l": 732.53,
-   "c": 734.06,
-   "v": 6555757
+   "o": 737.2,
+   "h": 741.82,
+   "l": 732.51,
+   "c": 740.62,
+   "v": 49914100
   }
  ],
  "sr": {
-  "price": 734.06,
+  "price": 740.62,
   "resistance": [
    744.76,
    748.65
@@ -557,16 +557,16 @@
   744.0,
   729.86,
   722.51,
-  734.06
+  740.62
  ],
  "spark_start": "2026-03-25",
  "spark_end": "2026-06-18",
  "fundamental": {
-  "pe_trailing": 33.64444,
+  "pe_trailing": 34.004364,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -584,7 +584,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

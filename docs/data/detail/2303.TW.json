@@ -482,7 +482,7 @@
    "h": 146.0,
    "l": 138.5,
    "c": 145.5,
-   "v": 295448011
+   "v": 293666572
   }
  ],
  "sr": {
@@ -602,41 +602,21 @@
     "total": 24756560
    },
    "severity": "info",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-19",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -150
-   },
-   "severity": "info",
-   "as_of": "2026-06-18",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 35.2 / 殖利率 1.86% / PB 4.33",
+   "label": "PE 36.6 / 殖利率 1.79% / PB 4.50",
    "value": {
-    "pe": 35.18,
-    "yield": 1.86,
-    "pb": 4.33
+    "pe": 36.56,
+    "yield": 1.79,
+    "pb": 4.5
    },
    "severity": "info",
-   "as_of": "2026-06-17",
+   "as_of": "2026-06-18",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 76.52,
-   "severity": "warn",
-   "as_of": "20260612",
-   "note": "大戶持股%=76.52；WoW-0.63；股東人數+33193"
   }
  ]
 }
