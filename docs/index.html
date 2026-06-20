@@ -75,6 +75,10 @@
   <div id="status" class="toast" role="status" aria-live="polite"></div>
 
   <script src="vendor/lightweight-charts.standalone.production.js"></script>
+  <!-- GSAP core (standalone UMD, no plugins) — count-up number tweens only; gated on
+       prefers-reduced-motion in app.js. Progressive enhancement: numbers render their
+       final value in HTML, so a failed load just skips the animation. -->
+  <script src="vendor/gsap.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

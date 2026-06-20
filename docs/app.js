@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v39';
+const APP_VERSION = 'v40';
 const APP_BUILD = '2026-06-16';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -523,10 +523,10 @@ function pickPage(p, rank, total, date, dayMax, clusters) {
       </div>
       ${flagsRow(p)}
       <div class="pk-price reveal">
-        <span class="pk-px">${pxNum(p.price)}</span>
+        <span class="pk-px"${p.price != null && isFinite(+p.price) ? ` data-cu="${+p.price}" data-cu-kind="px"` : ''}>${pxNum(p.price)}</span>
         <div class="pk-chg">${chgHtml(p.change_pct, true)}<span class="close-lbl">收盤</span></div>
       </div>
-      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier)}<span class="pk-vscore num">${esc(p.score != null ? p.score : '—')}</span></div>
+      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier)}<span class="pk-vscore num"${p.score != null && isFinite(+p.score) ? ` data-cu="${+p.score}" data-cu-kind="int"` : ''}>${esc(p.score != null ? p.score : '—')}</span></div>
       ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
       ${vTxt}
       <div class="pk-levels reveal">
@@ -554,7 +554,7 @@ function tiersPage(d) {
   });
   const rowHtml = (p) => {
     const t = tierOf(p.score);
-    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
+    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" data-flip-id="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
       <div class="tr-l">
         <div class="tr-name">${lightDot(p.light)} ${esc(p.name || p.stock)} <span class="tk num">${esc(p.stock)}</span>${warnChipsFor(p, clusters)}</div>
         <div class="tr-chips">${reasonChips(p, 2)}</div>
@@ -578,8 +578,62 @@ function tiersPage(d) {
   </section>`;
 }
 
+/* ---------- count-up number tweens (GSAP, progressive enhancement) ----------
+   Numbers ([data-cu]) render their FINAL value in HTML, so no-JS, a failed GSAP load,
+   or reduced-motion all show the correct number — the tween is pure polish on top.
+   GSAP only animates 0→value when a pick page snaps into view (IntersectionObserver on
+   the deck, NOT ScrollTrigger — avoids fighting the native scroll-snap). Every deck
+   rebuild kills prior tweens + disconnects the observer (mirrors the K-line teardown). */
+const _cuMM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+let _cuIO = null;
+let _cuTweens = [];
+function _cuFmt(v, kind) {
+  return kind === 'px'
+    ? Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 })
+    : String(Math.round(v));
+}
+function _cuAnimate(el) {
+  if (el._cuDone) return;            // one play per element
+  el._cuDone = true;
+  const target = +el.dataset.cu;
+  if (!isFinite(target)) return;
+  const kind = el.dataset.cuKind;
+  const finalText = el.textContent;  // exact formatted final value is authoritative
+  const obj = { v: 0 };
+  el.textContent = _cuFmt(0, kind);
+  const tw = window.gsap.to(obj, {
+    v: target, duration: 0.6, ease: 'power2.out',
+    onUpdate() { el.textContent = _cuFmt(obj.v, kind); },
+    onComplete() { el.textContent = finalText; },   // restore exact formatting on land
+  });
+  _cuTweens.push({ tw, el, finalText });
+}
+function teardownCountUps() {
+  if (_cuIO) { _cuIO.disconnect(); _cuIO = null; }
+  _cuTweens.forEach(({ tw, el, finalText }) => {
+    try { tw.kill(); } catch (e) {}
+    if (el && el.isConnected) el.textContent = finalText;   // never leave a mid-tween value
+  });
+  _cuTweens = [];
+}
+function initCountUps(root) {
+  teardownCountUps();
+  // numbers already show their final value — skip the animation entirely when the user
+  // opted out of motion, GSAP failed to load, or IO is unavailable.
+  if (_cuMM.matches || !window.gsap || !('IntersectionObserver' in window)) return;
+  _cuIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting && en.intersectionRatio >= 0.55) {
+        en.target.querySelectorAll('[data-cu]').forEach(_cuAnimate);
+      }
+    });
+  }, { root, threshold: [0, 0.55, 1] });
+  root.querySelectorAll('.page').forEach((pg) => _cuIO.observe(pg));
+}
+
 let PAGE_CODES = [];   // index → code (or 'cover'/'tiers'); for pager + keyboard
 function buildDeck(d) {
+  teardownCountUps();          // kill any tweens bound to the deck we're about to replace
   PAGE_CODES = ['cover'];
   const picks = d.picks || [];
   const dayMax = dayMaxScore(d);
@@ -595,6 +649,8 @@ function buildDeck(d) {
   deck.innerHTML = html;
   // reset to the cover — a rebuilt deck must not inherit the prior date's scroll offset
   deck.scrollTo({ left: 0, behavior: 'auto' });
+  initCountUps(deck);   // arm count-up tweens for the freshly-rendered pick pages
+
   // pager dots
   const pager = $('pager');
   pager.innerHTML = PAGE_CODES.map((_, i) => `<span class="dot${i === 0 ? ' on' : ''}"></span>`).join('');
@@ -651,6 +707,22 @@ function bindDeck() {
    BOTTOM SHEET — open / drag / snap (half / full) / close
    ============================================================================ */
 let SHEET_STATE = 'closed';   // closed | open(half) | full
+/* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
+   open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
+   Gated on reduced-motion + GSAP presence; killed on close (clearProps leaves no residue). */
+let _sheetTween = null;
+function revealSheet() {
+  if (_sheetTween) { try { _sheetTween.kill(); } catch (e) {} _sheetTween = null; }
+  if (_cuMM.matches || !window.gsap) return;
+  const body = $('sheetBody');
+  let els = [...body.children];
+  if (els.length <= 1 && els[0]) els = [...els[0].children];   // dig one level if single wrapper
+  if (!els.length) return;
+  _sheetTween = window.gsap.from(els, {
+    opacity: 0, y: 8, duration: 0.32, stagger: 0.035, ease: 'power2.out',
+    overwrite: true, clearProps: 'opacity,transform',
+  });
+}
 function openSheet(title, bodyHtml, opts) {
   opts = opts || {};
   $('sheetTitle').innerHTML = title;
@@ -667,9 +739,11 @@ function openSheet(title, bodyHtml, opts) {
     SHEET_STATE = opts.full ? 'full' : 'open';
     if (opts.full) { sheet.classList.remove('open'); sheet.classList.add('full'); }
   });
+  requestAnimationFrame(() => requestAnimationFrame(revealSheet));   // settle content after open
   if (opts.after) requestAnimationFrame(() => requestAnimationFrame(opts.after));
 }
 function closeSheet() {
+  if (_sheetTween) { try { _sheetTween.kill(); } catch (e) {} _sheetTween = null; }
   const sheet = $('sheet'), scrim = $('scrim');
   sheet.classList.remove('open', 'full', 'dragging');
   sheet.style.transform = '';
