@@ -75,6 +75,14 @@
   <div id="status" class="toast" role="status" aria-live="polite"></div>
 
   <script src="vendor/lightweight-charts.standalone.production.js"></script>
+  <!-- GSAP core (standalone UMD, no plugins) — count-up number tweens only; gated on
+       prefers-reduced-motion in app.js. Progressive enhancement: numbers render their
+       final value in HTML, so a failed load just skips the animation. -->
+  <script src="vendor/gsap.min.js"></script>
+  <!-- GSAP Flip — animates tier-list rows gliding to new positions when the user
+       re-sorts (phase 3). Optional: if it fails to load the sort still works, just
+       without the glide. -->
+  <script src="vendor/gsap-flip.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

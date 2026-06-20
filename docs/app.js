@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v39';
+const APP_VERSION = 'v42';
 const APP_BUILD = '2026-06-16';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -199,10 +199,10 @@ function warnChipsFor(p, clusters) {
   return out.join('');
 }
 // 分數條：當日相對刻度（÷ 當日最高分），顏色跟 tier
-function scoreBarHtml(score, dayMax, tier) {
+function scoreBarHtml(score, dayMax, tier, anim) {
   if (score == null) return '';
   const pct = Math.max(4, Math.min(100, (+score / (dayMax || 100)) * 100));
-  return `<div class="sbar" role="img" aria-label="分數 ${esc(score)}"><i class="${tier.cls}" style="width:${pct.toFixed(1)}%"></i></div>`;
+  return `<div class="sbar" role="img" aria-label="分數 ${esc(score)}"><i class="${tier.cls}"${anim ? ' data-fill="1"' : ''} style="width:${pct.toFixed(1)}%"></i></div>`;
 }
 function dayMaxScore(d) {
   let m = 0;
@@ -548,10 +548,10 @@ function pickPage(p, rank, total, date, dayMax, clusters) {
       </div>
       ${flagsRow(p)}
       <div class="pk-price reveal">
-        <span class="pk-px">${pxNum(p.price)}</span>
+        <span class="pk-px"${p.price != null && isFinite(+p.price) ? ` data-cu="${+p.price}" data-cu-kind="px"` : ''}>${pxNum(p.price)}</span>
         <div class="pk-chg">${chgHtml(p.change_pct, true)}<span class="close-lbl">收盤</span></div>
       </div>
-      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier)}<span class="pk-vscore num">${esc(p.score != null ? p.score : '—')}</span></div>
+      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier, true)}<span class="pk-vscore num"${p.score != null && isFinite(+p.score) ? ` data-cu="${+p.score}" data-cu-kind="int"` : ''}>${esc(p.score != null ? p.score : '—')}</span></div>
       ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
       ${vTxt}
       <div class="pk-levels reveal">
@@ -579,7 +579,7 @@ function tiersPage(d) {
   });
   const rowHtml = (p) => {
     const t = tierOf(p.score);
-    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
+    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" data-flip-id="${esc(p.stock)}" data-score="${p.score != null ? +p.score : ''}" data-chg="${p.change_pct != null ? +p.change_pct : ''}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
       <div class="tr-l">
         <div class="tr-name">${lightDot(p.light)} ${esc(p.name || p.stock)} <span class="tk num">${esc(p.stock)}</span>${warnChipsFor(p, clusters)}</div>
         <div class="tr-chips">${reasonChips(p, 2)}</div>
@@ -590,21 +590,134 @@ function tiersPage(d) {
   };
   const secs = groups.filter((g) => g.rows.length).map((g) =>
     `<div class="tier-h tier-${g.t.id}"><span>${esc(g.t.label)}</span><span class="tier-sub num">${esc(g.t.sub)} · ${g.rows.length} 檔</span></div>`
-    + g.rows.map(rowHtml).join('')).join('');
+    + g.rows.slice().sort(pickCmp(TIER_SORT)).map(rowHtml).join('')).join('');
+  const sortBtn = (k, label) => `<button type="button" data-sort="${k}"${TIER_SORT === k ? ' class="on"' : ''}>${label}</button>`;
   return `<section class="page" data-page="tiers" aria-roledescription="slide" aria-label="今日建議總覽">
     <div class="tiers">
       <div class="reveal">
         <div class="cv-kicker">今日建議</div>
         <div class="tiers-title">三層分級 <span class="num tiny">（依當日量化分數）</span></div>
       </div>
+      <div class="seg tier-sort reveal" role="tablist" aria-label="排序方式">${sortBtn('score', '分數')}${sortBtn('change', '漲跌')}${sortBtn('code', '代號')}</div>
       <div class="tier-list reveal">${secs || '<div class="empty">今日尚無選股。</div>'}</div>
       <p class="tiny" style="margin-top:10px">分級僅依當日量化分數與燈號（🟢≥90／🟡40–89／🔴<40），打分邏輯未變；警示 chip 為資訊性 overlay，不計入評分。僅供決策輔助，非買賣建議。</p>
     </div>
   </section>`;
 }
 
+/* ---------- count-up number tweens (GSAP, progressive enhancement) ----------
+   Numbers ([data-cu]) render their FINAL value in HTML, so no-JS, a failed GSAP load,
+   or reduced-motion all show the correct number — the tween is pure polish on top.
+   GSAP only animates 0→value when a pick page snaps into view (IntersectionObserver on
+   the deck, NOT ScrollTrigger — avoids fighting the native scroll-snap). Every deck
+   rebuild kills prior tweens + disconnects the observer (mirrors the K-line teardown). */
+const _cuMM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+if (window.gsap && window.Flip) { try { window.gsap.registerPlugin(window.Flip); } catch (e) {} }
+let _cuIO = null;
+let _cuTweens = [];
+function _cuFmt(v, kind) {
+  return kind === 'px'
+    ? Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 })
+    : String(Math.round(v));
+}
+function _cuAnimate(el) {
+  if (el._cuDone) return;            // one play per element
+  el._cuDone = true;
+  const target = +el.dataset.cu;
+  if (!isFinite(target)) return;
+  const kind = el.dataset.cuKind;
+  const finalText = el.textContent;  // exact formatted final value is authoritative
+  const obj = { v: 0 };
+  el.textContent = _cuFmt(0, kind);
+  const tw = window.gsap.to(obj, {
+    v: target, duration: 0.6, ease: 'power2.out',
+    onUpdate() { el.textContent = _cuFmt(obj.v, kind); },
+    onComplete() { el.textContent = finalText; },   // restore exact formatting on land
+  });
+  _cuTweens.push({ tw, el, finalText });
+}
+// score-bar fill: grow the colored <i> from scaleX 0 -> 1 (transform only, GPU-friendly).
+// The bar's final width stays in inline style:width% (correct with no JS); clearProps drops
+// the residual transform on land so the width% / responsiveness is untouched.
+function _fillAnimate(el) {
+  if (el._cuDone) return;
+  el._cuDone = true;
+  if (!window.gsap) return;
+  const tw = window.gsap.from(el, {
+    scaleX: 0, transformOrigin: 'left center', duration: 0.6, ease: 'power2.out',
+    clearProps: 'transform',
+  });
+  _cuTweens.push({ tw, el, fill: true });
+}
+function teardownCountUps() {
+  if (_cuIO) { _cuIO.disconnect(); _cuIO = null; }
+  _cuTweens.forEach(({ tw, el, finalText, fill }) => {
+    try { tw.kill(); } catch (e) {}
+    if (!el || !el.isConnected) return;
+    if (fill) { el.style.transform = ''; }                   // drop any residual scale
+    else if (finalText != null) el.textContent = finalText;  // never leave a mid-tween value
+  });
+  _cuTweens = [];
+}
+function initCountUps(root) {
+  teardownCountUps();
+  // numbers already show their final value — skip the animation entirely when the user
+  // opted out of motion, GSAP failed to load, or IO is unavailable.
+  if (_cuMM.matches || !window.gsap || !('IntersectionObserver' in window)) return;
+  _cuIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting && en.intersectionRatio >= 0.55) {
+        en.target.querySelectorAll('[data-cu]').forEach(_cuAnimate);
+        en.target.querySelectorAll('[data-fill]').forEach(_fillAnimate);
+      }
+    });
+  }, { root, threshold: [0, 0.55, 1] });
+  root.querySelectorAll('.page').forEach((pg) => _cuIO.observe(pg));
+}
+
+/* ---------- tiers in-page sort + GSAP Flip reorder (phase 3) ----------
+   The 三層分級 list can be re-sorted in place (by score / change% / ticker) WITHOUT
+   rebuilding the deck, so the page stays in view and rows GLIDE to their new spot via
+   Flip. Sort persists in localStorage; reduced-motion (or no Flip) reorders instantly. */
+let TIER_SORT = 'score';
+try { const s = localStorage.getItem('ss_tier_sort'); if (s === 'change' || s === 'code') TIER_SORT = s; } catch (e) {}
+const _sortNum = (v) => { const n = parseFloat(v); return isFinite(n) ? n : -Infinity; };
+// comparator over pick OBJECTS (build-time order)
+function pickCmp(key) {
+  if (key === 'change') return (a, b) => _sortNum(b.change_pct) - _sortNum(a.change_pct);
+  if (key === 'code') return (a, b) => String(a.stock).localeCompare(String(b.stock));
+  return (a, b) => _sortNum(b.score) - _sortNum(a.score);   // score desc (default)
+}
+// comparator over DOM .trow rows (live re-sort, reads data-* attrs)
+function rowCmp(key) {
+  if (key === 'change') return (a, b) => _sortNum(b.dataset.chg) - _sortNum(a.dataset.chg);
+  if (key === 'code') return (a, b) => (a.dataset.flipId || '').localeCompare(b.dataset.flipId || '');
+  return (a, b) => _sortNum(b.dataset.score) - _sortNum(a.dataset.score);
+}
+// re-order rows WITHIN each tier section in place; Flip glides the moves
+function applyTierSort(key) {
+  const list = document.querySelector('.page[data-page="tiers"] .tier-list');
+  if (!list) return;
+  const groups = []; let cur = null;
+  [...list.children].forEach((el) => {
+    if (el.classList.contains('tier-h')) { cur = { header: el, rows: [] }; groups.push(cur); }
+    else if (el.classList.contains('trow') && cur) cur.rows.push(el);
+  });
+  const canFlip = !_cuMM.matches && window.gsap && window.Flip;
+  const state = canFlip ? window.Flip.getState(list.querySelectorAll('.trow')) : null;
+  const cmp = rowCmp(key);
+  // appendChild MOVES existing nodes; iterating tiers in order rebuilds the correct
+  // header→sorted-rows sequence. Headers keep their order (not in the Flip state).
+  groups.forEach((g) => {
+    list.appendChild(g.header);
+    g.rows.slice().sort(cmp).forEach((r) => list.appendChild(r));
+  });
+  if (state) window.Flip.from(state, { duration: 0.5, ease: 'power2.out', absolute: true });
+}
+
 let PAGE_CODES = [];   // index → code (or 'cover'/'tiers'); for pager + keyboard
 function buildDeck(d) {
+  teardownCountUps();          // kill any tweens bound to the deck we're about to replace
   PAGE_CODES = ['cover'];
   const picks = d.picks || [];
   const dayMax = dayMaxScore(d);
@@ -620,6 +733,8 @@ function buildDeck(d) {
   deck.innerHTML = html;
   // reset to the cover — a rebuilt deck must not inherit the prior date's scroll offset
   deck.scrollTo({ left: 0, behavior: 'auto' });
+  initCountUps(deck);   // arm count-up tweens for the freshly-rendered pick pages
+
   // pager dots
   const pager = $('pager');
   pager.innerHTML = PAGE_CODES.map((_, i) => `<span class="dot${i === 0 ? ' on' : ''}"></span>`).join('');
@@ -668,6 +783,17 @@ function bindDeck() {
       if (e.clientX > w * 0.86) goToPage(currentPageIndex() + 1);
       else if (e.clientX < w * 0.14) goToPage(currentPageIndex() - 1);
     });
+    // phase 3: tier-sort segmented control → in-place Flip reorder (no deck rebuild)
+    deck.addEventListener('click', (e) => {
+      const b = e.target.closest('.tier-sort [data-sort]');
+      if (!b) return;
+      const key = b.dataset.sort;
+      if (key === TIER_SORT) return;
+      TIER_SORT = key;
+      try { localStorage.setItem('ss_tier_sort', key); } catch (_) {}
+      b.parentNode.querySelectorAll('[data-sort]').forEach((x) => x.classList.toggle('on', x === b));
+      applyTierSort(key);
+    });
     _deckBound = true;
   }
 }
@@ -678,6 +804,22 @@ function bindDeck() {
 let SHEET_STATE = 'closed';   // closed | open(half) | full
 let CUR_SHEET_ID = null;      // #2: which logical sheet is open (market/self/opp/stock/…)
 let RETURN_SHEET = null;      // #2: {id, scroll} of the sheet to re-open when a stock detail is dismissed
+/* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
+   open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
+   Gated on reduced-motion + GSAP presence; killed on close (clearProps leaves no residue). */
+let _sheetTween = null;
+function revealSheet() {
+  if (_sheetTween) { try { _sheetTween.kill(); } catch (e) {} _sheetTween = null; }
+  if (_cuMM.matches || !window.gsap) return;
+  const body = $('sheetBody');
+  let els = [...body.children];
+  if (els.length <= 1 && els[0]) els = [...els[0].children];   // dig one level if single wrapper
+  if (!els.length) return;
+  _sheetTween = window.gsap.from(els, {
+    opacity: 0, y: 8, duration: 0.32, stagger: 0.035, ease: 'power2.out',
+    overwrite: true, clearProps: 'opacity,transform',
+  });
+}
 function openSheet(title, bodyHtml, opts) {
   opts = opts || {};
   CUR_SHEET_ID = opts.id || null;
@@ -695,9 +837,11 @@ function openSheet(title, bodyHtml, opts) {
     SHEET_STATE = opts.full ? 'full' : 'open';
     if (opts.full) { sheet.classList.remove('open'); sheet.classList.add('full'); }
   });
+  requestAnimationFrame(() => requestAnimationFrame(revealSheet));   // settle content after open
   if (opts.after) requestAnimationFrame(() => requestAnimationFrame(opts.after));
 }
 function closeSheet() {
+  if (_sheetTween) { try { _sheetTween.kill(); } catch (e) {} _sheetTween = null; }
   const sheet = $('sheet'), scrim = $('scrim');
   sheet.classList.remove('open', 'full', 'dragging');
   sheet.style.transform = '';

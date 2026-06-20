@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v39';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
+const CACHE = 'smartstock-v42';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
 const SHELL = [
   './',
   'index.html',
@@ -12,6 +12,8 @@ const SHELL = [
   'style.css',
   'manifest.json',
   'vendor/lightweight-charts.standalone.production.js',
+  'vendor/gsap.min.js',
+  'vendor/gsap-flip.min.js',
   'vendor/fonts/ss-numerals.woff2',
   'icons/icon-192.png',
   'icons/icon-512.png',
