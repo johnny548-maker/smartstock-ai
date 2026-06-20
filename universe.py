@@ -32,10 +32,23 @@ log = logging.getLogger(__name__)
 CODE_RE = re.compile(r"[1-9][0-9]{3}")          # 4-digit common stock (excludes ETF/warrant)
 
 
-def _get(url):
-    r = requests.get(url, headers=config.HTTP_UA, timeout=30)
-    r.raise_for_status()
-    return r.json()
+def _get(url, retries=3, backoff=2):
+    """GET + JSON with a bounded transient retry (429 / 5xx / connection / timeout). These are
+    one-call WHOLE-MARKET TWSE/TPEx endpoints, so a single un-retried blip would drop the entire
+    TW universe/panel/index for the day; permanent 4xx still raise immediately."""
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers=config.HTTP_UA, timeout=30)
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            status = getattr(getattr(e, "response", None), "status_code", None)
+            transient = (status in (429, 500, 502, 503, 504)
+                         or isinstance(e, (requests.ConnectionError, requests.Timeout)))
+            if transient and attempt < retries - 1:
+                time.sleep(backoff * (2 ** attempt))
+                continue
+            raise
 
 
 def load_us_universe(path=None):

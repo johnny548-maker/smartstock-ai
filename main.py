@@ -734,6 +734,22 @@ def main(web=False):
     overlays_map = {}            # symbol/code -> merged list[overlay]
     source_coverage = {}         # source name -> {"ok": bool, "codes": int, "overlays": int}
 
+    # #7: record the opportunity-OHLCV scan + US verdict batch coverage so a Yahoo rate-limit
+    #   episode that collapses the wide universe DEGRADES health (visible in the banner) instead
+    #   of shipping silent 'ok' — data_health._check_sources reads every source_coverage entry.
+    try:
+        _opp_scanned = (opp or {}).get("scanned", 0) if isinstance(opp, dict) else 0
+        source_coverage["opp_ohlcv"] = {
+            "ok": _opp_scanned >= int(config.OPP_SCAN_LIMIT * 0.5), "codes": _opp_scanned}
+    except Exception:
+        pass
+    try:
+        source_coverage["us_batch"] = {"ok": bool(_fresh), "codes": len(_fresh or {})}
+    except NameError:
+        pass                     # US coverage disabled / SKIPped → no entry
+    except Exception:
+        pass
+
     def _merge_overlays(per_code, source_name):
         """Merge a {code -> [overlay]} map (from a fetcher's to_overlays) into the
         running overlays_map and record coverage. Pure dict assembly — never raises
