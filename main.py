@@ -628,6 +628,8 @@ def main(web=False):
             for _r in _opp_ranked:
                 if not _r.get("name"):
                     _r["name"] = _opp_names.get(_r["stock"]) or config.STOCK_NAMES.get(_r["stock"])
+                if not _r.get("light") and _r.get("score") is not None:
+                    _r["light"] = verdict_mod.light(_r["score"])   # self-name the verdict light
                 _rdf = _opp_data.get(_r["stock"])
                 if _rdf is not None and not getattr(_rdf, "empty", True) and len(_rdf) >= 1:
                     try:

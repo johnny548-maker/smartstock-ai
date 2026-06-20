@@ -58,5 +58,29 @@ class TestHistRetry(unittest.TestCase):
         self.assertEqual(tk.calls, dfetch._HIST_RETRIES)      # bounded, never unbounded
 
 
+class TestGetUniverseRaiseOnEmpty(unittest.TestCase):
+    """Audit fix #5: a 429-swallowed empty batch must RAISE (not silently return {}) when
+    raise_on_empty=True, so the opportunity retry/backoff layer actually fires."""
+
+    def test_empty_result_raises_transient_when_flagged(self):
+        with mock.patch.object(dfetch.yf, "download", return_value=pd.DataFrame()):
+            with self.assertRaises(RuntimeError) as ctx:
+                dfetch.get_universe(["AAA", "BBB"], raise_on_empty=True)
+            self.assertIn("429", str(ctx.exception))            # tagged transient → retry layer retries
+
+    def test_empty_result_silent_by_default(self):
+        with mock.patch.object(dfetch.yf, "download", return_value=pd.DataFrame()):
+            self.assertEqual(dfetch.get_universe(["AAA", "BBB"]), {})   # legacy graceful-skip contract
+
+    def test_download_exception_reraises_when_flagged(self):
+        with mock.patch.object(dfetch.yf, "download", side_effect=Exception("429 rate limit")):
+            with self.assertRaises(Exception):
+                dfetch.get_universe(["AAA"], raise_on_empty=True)
+
+    def test_download_exception_silent_by_default(self):
+        with mock.patch.object(dfetch.yf, "download", side_effect=Exception("429 rate limit")):
+            self.assertEqual(dfetch.get_universe(["AAA"]), {})
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

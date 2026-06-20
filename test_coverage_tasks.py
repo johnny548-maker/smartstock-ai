@@ -75,7 +75,7 @@ class TestFetchOpportunityOhlcvRobust(unittest.TestCase):
         good = {"SYM0": GOOD_DF, "SYM1": GOOD_DF}
         call_count = {"n": 0}
 
-        def side_effect(chunk, period):
+        def side_effect(chunk, period=None, **kwargs):
             call_count["n"] += 1
             if call_count["n"] == 1:
                 raise Exception("429 Too Many Requests")
@@ -108,7 +108,7 @@ class TestFetchOpportunityOhlcvRobust(unittest.TestCase):
         """Non-transient errors (e.g. KeyError, ValueError) are NOT retried — only one attempt."""
         call_count = {"n": 0}
 
-        def side_effect(chunk, period):
+        def side_effect(chunk, period=None, **kwargs):
             call_count["n"] += 1
             raise ValueError("bad ticker format")
 
@@ -141,7 +141,7 @@ class TestFetchOpportunityOhlcvRobust(unittest.TestCase):
 
     def test_skip_count_logged_after_all_batches(self):
         """A count of permanently-skipped tickers is logged at WARNING level."""
-        def side_effect(chunk, period):
+        def side_effect(chunk, period=None, **kwargs):
             raise Exception("429 Too Many Requests")
 
         with patch("universe.data_fetcher") as mock_df:

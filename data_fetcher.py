@@ -51,14 +51,22 @@ def get_stock_data(symbols, period=None):
     return out
 
 
-def get_universe(tickers, period=None):
+def get_universe(tickers, period=None, raise_on_empty=False):
     """Batch-download a wide basket (one yf.download call) for breadth. Returns
-    {sym: DataFrame} for tickers that came back with enough bars."""
+    {sym: DataFrame} for tickers that came back with enough bars.
+
+    raise_on_empty=True makes a transient yf.download failure — OR an all-empty result for a
+    non-empty ticker batch (yfinance swallows 429s internally and returns an empty frame, so an
+    empty batch of valid tickers is almost always a rate-limit, not a real delisting) — RAISE a
+    transient-tagged error so the caller's retry/backoff layer actually fires instead of silently
+    shrinking the universe. Default False keeps the legacy graceful-skip contract for other callers."""
     period = period or BREADTH_PERIOD
     try:
         raw = yf.download(tickers, period=period, group_by="ticker",
                           auto_adjust=True, threads=True, progress=False)
     except Exception as e:
+        if raise_on_empty:
+            raise                       # let the caller retry/back-off (transient classification)
         log.warning("SKIP universe batch: %s", e)
         return {}
     out = {}
@@ -73,6 +81,9 @@ def get_universe(tickers, period=None):
                 out[sym] = df
         except Exception:
             continue
+    if raise_on_empty and tickers and not out:
+        # non-empty batch, zero usable frames → yfinance most likely swallowed a 429 → retry
+        raise RuntimeError("empty batch for %d tickers — likely transient (429)" % len(tickers))
     return out
 
 

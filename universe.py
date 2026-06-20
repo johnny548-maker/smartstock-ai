@@ -260,7 +260,9 @@ def fetch_opportunity_ohlcv_robust(
 
         for attempt in range(1, max_retries + 1):
             try:
-                out.update(data_fetcher.get_universe(chunk, period=period))
+                # raise_on_empty=True so a 429-swallowed empty batch raises → this retry fires
+                out.update(data_fetcher.get_universe(
+                    chunk, period=period, raise_on_empty=True))
                 fetched = True
                 break
             except Exception as exc:
@@ -286,10 +288,8 @@ def fetch_opportunity_ohlcv_robust(
                     skip_count += len(chunk)
                     break
 
-        if not fetched and _sleep:
-            time.sleep(2)   # inter-batch courtesy pause (Yahoo 429 mitigation)
-        elif _sleep:
-            time.sleep(2)
+        if _sleep:
+            time.sleep(4 if not fetched else 2)   # inter-batch pause; back off longer after a failed batch
 
     if skip_count:
         log.warning(
