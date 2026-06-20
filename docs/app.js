@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v43';
+const APP_VERSION = 'v44';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -31,10 +31,21 @@ let CUR_DATE = '';       // current loaded date
 let INDEX = [];          // data/index.json
 let CUR_KLINE = null;    // live K-line ref so theme toggle can re-color it
 
+let NAME_IDX = {};       // {code: name} from data/_universe.json — full TWSE/TPEx/US directory
 const nameOf = (code) => {
-  const n = NAMES[code] || NAMES[code + '.TW'] || NAMES[String(code).replace(/\.(TW|TWO)$/, '')];
+  const bare = String(code).replace(/\.(TW|TWO)$/, '');
+  const n = NAMES[code] || NAMES[code + '.TW'] || NAMES[bare]
+    || NAME_IDX[code] || NAME_IDX[code + '.TW'] || NAME_IDX[bare];
   return n || code;
 };
+// verdict light: prefer the loaded verdict store; else compute from a raw score
+// (matches verdict.light — green≥90 / amber 40-89 / red<40).
+function lightOf(code, score) {
+  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  if (v && v.l) return v.l;
+  if (score == null) return null;
+  return score >= 90 ? 'green' : (score >= 40 ? 'amber' : 'red');
+}
 async function getJSON(url) {
   const res = await fetch(url, { cache: 'reload' });   // bypass HTTP cache, get fresh
   if (!res.ok) throw new Error(url + ' → ' + res.status);
@@ -964,7 +975,29 @@ function findCard(d, code) {
   return (d.picks || []).find((x) => x.stock === code)
     || ((d.opportunity || {}).leaders || []).find((x) => x.ticker === code)
     || earlyBoardOf(d).find((x) => x.stock === code)
+    || (d.scored_universe || []).find((x) => x.stock === code)   // Bug3: 全市場精選股
+    || (d.signals || []).find((x) => x.stock === code)           // Bug3: 訊號雷達股
     || (d._lazy && d._lazy.stock === code ? d._lazy : null);
+}
+
+// Bug3: a 全市場精選/雷達 stock has a score but no full pattern/risk card. Give it real
+// content — its verdict (建議買入/觀望/不持有 + score) and WHY it surfaced (radar sources/signals).
+function thinVerdictHtml(p, d) {
+  const code = p.stock || p.ticker;
+  const score = p.score;
+  const hasFull = p.factors && Object.keys(p.factors).length;
+  if (hasFull || score == null) return '';      // a full pick already shows the score panel
+  const light = p.light || lightOf(code, score);
+  const lab = VLABEL[light] || '—';
+  const cls = light === 'green' ? 'up' : (light === 'red' ? 'down' : '');
+  const row = (radarMerge(d) || []).find((r) => r.ticker === code) || {};
+  const srcs = (row.sources || []).map((s) => `<span class="li-badge src-badge num">${esc(s)}</span>`).join('');
+  const sigs = (row.signals || []).map((s) => `<span class="rchip">${esc(s)}</span>`).join('');
+  return `<div class="sh-sec"><div class="sh-h">系統評分</div>
+    <div class="drow"><span class="k">${lightDot(light)} ${esc(lab)}</span><span class="v num ${cls}">${esc(score)}</span></div>
+    ${srcs ? `<div class="li-srcs">${srcs}</div>` : ''}
+    ${sigs ? `<div class="tr-chips" style="margin-top:8px">${sigs}</div>` : ''}
+    <p class="tiny">全市場精選／雷達名單股（採同一回測閘評分公式），非當日核心精選 → 無完整型態／停損／風險計算。informational，非買賣訊號。</p></div>`;
 }
 
 // score factor pills + key chips
@@ -1195,7 +1228,7 @@ async function openStockSheet(code) {
     </div>
   </div>`;
 
-  const body = hero + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
+  const body = hero + thinVerdictHtml(p, CUR) + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
     + `<div class="sh-sec"><p class="disclaimer">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p></div>`;
 
   openSheet(title, body, {
@@ -1625,11 +1658,12 @@ function radarMerge(d) {
   const rowFor = (tk, name) => {
     let r = rows.get(tk);
     if (!r) {
-      r = { ticker: tk, name: name || tk, ready: false, rs: null, light: null,
+      r = { ticker: tk, name: name || nameOf(tk), ready: false, rs: null, light: null,
             price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null,
             score: null };
       rows.set(tk, r);
     } else if (name && r.name === tk) r.name = name;
+    if (r.name === tk) { const nm = nameOf(tk); if (nm && nm !== tk) r.name = nm; }  // upgrade via index
     return r;
   };
   const addSig = (r, sigs) => (sigs || []).forEach((s) => { if (s && r.signals.indexOf(s) < 0) r.signals.push(s); });
@@ -1666,7 +1700,7 @@ function radarMerge(d) {
     const r = rowFor(tk, s.name);
     r.sources.push('精選分' + (s.score != null ? s.score : '?'));
     if (s.score != null) r.score = s.score;
-    if (s.light) r.light = s.light || r.light;
+    r.light = s.light || r.light || lightOf(tk, s.score);   // backend omits light → derive it
     if (s.price != null && r.price == null) r.price = s.price;
     if (s.change_pct != null && r.change_pct == null) r.change_pct = s.change_pct;
   });
@@ -1883,7 +1917,7 @@ function dateSheetBody() {
    ============================================================================ */
 function bindChrome() {
   $('themeBtn').addEventListener('click', () => toggleTheme());
-  $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: false }));
+  $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: true }));
   const hb = $('healthBanner');
   if (hb) hb.addEventListener('click', () => { if (CUR) openSheet('資料健康', healthSheetBody(CUR), { full: false }); });
   $('sheetClose').addEventListener('click', dismissSheet);
@@ -1940,7 +1974,7 @@ function bindPullDown() {
   deck.addEventListener('touchend', (e) => {
     if (!pulling || SHEET_STATE !== 'closed') return;
     const dy = ((e.changedTouches[0] || {}).clientY || sy) - sy;
-    if (dy > 80) openSheet('切換日期', dateSheetBody(), { full: false });
+    if (dy > 80) openSheet('切換日期', dateSheetBody(), { full: true });
     pulling = false;
   });
 }
@@ -2006,6 +2040,12 @@ window.addEventListener('load', async () => {
   applyTheme();
   bindChrome();
   try { INDEX = await getJSON('data/index.json'); } catch (e) { INDEX = []; }
+  // Bug3: background-load the full-market name index + verdict store so radar/detail resolve
+  // ANY listed name (e.g. 6257.TW → 矽格) + its current verdict, not just the ~58 payload names.
+  loadUniverseIdx().then((idx) => {
+    (idx || []).forEach((r) => { if (r && r[0]) NAME_IDX[r[0]] = r[1]; });
+  }).catch(() => {});
+  loadVerdicts().catch(() => {});
   await route();
   if ('serviceWorker' in navigator) {
     // NOTE: deliberately NO controllerchange→reload handler (skipWaiting+clientsClaim
