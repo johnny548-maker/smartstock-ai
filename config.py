@@ -385,6 +385,9 @@ KELLY_STATE = os.path.join(WEB_DIR, "data", "_kelly_state.json")
 VALIDATION_STATE = os.path.join(WEB_DIR, "data", "_validation_state.json")  # A2/A3 offline robustness gate (DSR/PBO/SPA/WF)
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
+US_VERDICTS_STATE = os.path.join(WEB_DIR, "data", "_us_verdicts.json")  # itemC full-US verdict store (rotating coverage)
+US_SYMBOL_DIR_CACHE = os.path.join(_HERE, ".cache", "us_symbol_dir.json")  # Nasdaq Trader directory cache
+US_COVERAGE_BATCH = 500  # itemC: US symbols re-scored per daily run (full ~5653 cycles in ~12 days)
 # P2 keyless environment/overlay 24h TTL caches (sources/_cache.cached_fetch). Slow-moving
 # monthly/quarterly sources (DGBAS/NDC/BLS/Treasury/SEC frames) → a 24h cache keeps the daily
 # cron off the live endpoints. OVERLAY-NOT-SCORER: cached payloads feed the 'environment'

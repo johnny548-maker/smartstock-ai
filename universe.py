@@ -185,7 +185,24 @@ def full_market_index():
         log.warning("SKIP full_market_index TPEx: %s", e)
     for r in load_us_universe():
         add(r.get("ticker"), r.get("name"), "US")
+    try:                                           # itemC: full keyless US directory (~5653)
+        for sym, nm in us_full_market()[1].items():
+            add(sym, nm, "US")
+    except Exception as e:
+        log.warning("SKIP full_market_index US directory: %s", e)
     return rows
+
+
+def us_full_market():
+    """itemC: (sorted yfinance symbols, {sym: name}) for the full keyless US common-stock
+    universe (Nasdaq Trader directory; ~5653 names). ([], {}) if source + cache both down."""
+    try:
+        from sources import nasdaq_trader
+        named = nasdaq_trader.fetch_us_named()
+        return sorted(named.keys()), named
+    except Exception as e:
+        log.warning("SKIP us_full_market: %s", e)
+        return [], {}
 
 
 _TRANSIENT_MARKERS = ("429", "too many requests", "connectionerror", "timeout",

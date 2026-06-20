@@ -54,6 +54,7 @@ import strategy_health as strategy_health_mod
 import shadow_portfolio as shadow_mod
 import data_health as data_health_mod
 import positions as positions_mod
+import us_market
 import pretrade as pretrade_mod
 import peer_valuation as peerval_mod
 import attribution as attribution_mod
@@ -643,6 +644,30 @@ def main(web=False):
                      len(_opp_ranked), len(scored_universe))
     except Exception as e:
         log.warning("SKIP scored universe: %s", e); skips.append("scored_universe")
+
+    # itemC: full-US-market verdict coverage. No keyless bulk OHLC exists for US, so a ROTATING
+    #   ~500-name batch of the full Nasdaq Trader directory (~5653 common stocks) is scored each
+    #   run through the SAME gated rank_stocks and accumulated in a persistent store → full
+    #   coverage cycles in ~12 days. The whole store merges into verdict_map so the all-market
+    #   search shows a US verdict. SKIP-not-abort; set env US_COVERAGE=0 to disable.
+    try:
+        if os.environ.get("US_COVERAGE", "1") != "0":
+            _us_syms, _us_names = universe_mod.us_full_market()
+            if _us_syms:
+                _batch = us_market.rotating_slice(
+                    _us_syms, datetime.now().toordinal(), config.US_COVERAGE_BATCH)
+                _us_frames = us_market.fetch_batch(_batch)
+                _fresh = us_market.score_batch(
+                    _us_frames, (frames or {}).get("sp500"), names=_us_names)
+                _store = us_market.merge_store(
+                    us_market.load_store(config.US_VERDICTS_STATE), _fresh, date_str)
+                us_market.save_store(config.US_VERDICTS_STATE, _store)
+                for _sym, _v in _store.items():
+                    verdict_map.setdefault(_sym, {"s": _v.get("s"), "l": _v.get("l")})
+                log.info("US coverage: batch=%d fresh=%d store=%d",
+                         len(_batch), len(_fresh), len(_store))
+    except Exception as e:
+        log.warning("SKIP US coverage: %s", e); skips.append("us_coverage")
 
     # P2 item8: holdings ↔ verdict second-pass. Positions were evaluated early (line ~386,
     #   before verdict_map existed). Now that verdict_map (core + opportunity universe) is

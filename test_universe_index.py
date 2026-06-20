@@ -29,35 +29,48 @@ class TestWriteUniverseIndex(unittest.TestCase):
 
 
 class TestFullMarketIndex(unittest.TestCase):
+    def setUp(self):
+        # mock every source incl. the itemC full-US directory (else it hits the network/cache)
+        self._orig = (universe.twse_universe, universe.tpex_universe,
+                      universe.load_us_universe, universe.us_full_market)
+        universe.us_full_market = lambda: ([], {})        # directory empty by default
+
+    def tearDown(self):
+        (universe.twse_universe, universe.tpex_universe,
+         universe.load_us_universe, universe.us_full_market) = self._orig
+
     def test_merges_all_sources(self):
-        orig = (universe.twse_universe, universe.tpex_universe, universe.load_us_universe)
-        try:
-            universe.twse_universe = lambda: {"2330.TW": ("台積電", 999)}
-            universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
-            universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
-            rows = universe.full_market_index()
-            self.assertEqual({r[0] for r in rows}, {"2330.TW", "6488.TWO", "AAPL"})
-            markets = {r[0]: r[2] for r in rows}
-            self.assertEqual(markets["2330.TW"], "TW")
-            self.assertEqual(markets["6488.TWO"], "TWO")
-            self.assertEqual(markets["AAPL"], "US")
-        finally:
-            (universe.twse_universe, universe.tpex_universe,
-             universe.load_us_universe) = orig
+        universe.twse_universe = lambda: {"2330.TW": ("台積電", 999)}
+        universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
+        universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
+        rows = universe.full_market_index()
+        self.assertEqual({r[0] for r in rows}, {"2330.TW", "6488.TWO", "AAPL"})
+        markets = {r[0]: r[2] for r in rows}
+        self.assertEqual(markets["2330.TW"], "TW")
+        self.assertEqual(markets["6488.TWO"], "TWO")
+        self.assertEqual(markets["AAPL"], "US")
 
     def test_partial_source_failure_degrades(self):
-        orig = (universe.twse_universe, universe.tpex_universe, universe.load_us_universe)
-        try:
-            def _boom():
-                raise RuntimeError("429")
-            universe.twse_universe = _boom            # TWSE down
-            universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
-            universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
-            rows = universe.full_market_index()
-            self.assertEqual({r[0] for r in rows}, {"6488.TWO", "AAPL"})   # never aborts
-        finally:
-            (universe.twse_universe, universe.tpex_universe,
-             universe.load_us_universe) = orig
+        def _boom():
+            raise RuntimeError("429")
+        universe.twse_universe = _boom            # TWSE down
+        universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
+        universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
+        rows = universe.full_market_index()
+        self.assertEqual({r[0] for r in rows}, {"6488.TWO", "AAPL"})   # never aborts
+
+    def test_includes_full_us_directory(self):
+        # itemC: the ~5653-name keyless US directory makes every listed US ticker searchable.
+        universe.twse_universe = lambda: {}
+        universe.tpex_universe = lambda: {}
+        universe.load_us_universe = lambda path=None: []
+        universe.us_full_market = lambda: (["NVDA", "BRK-B"],
+                                           {"NVDA": "NVIDIA", "BRK-B": "Berkshire B"})
+        rows = universe.full_market_index()
+        by = {r[0]: r for r in rows}
+        self.assertEqual(by["NVDA"][1], "NVIDIA")
+        self.assertEqual(by["NVDA"][2], "US")
+        self.assertIn("BRK-B", by)
 
 
 if __name__ == "__main__":

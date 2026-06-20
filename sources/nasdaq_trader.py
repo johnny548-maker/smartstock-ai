@@ -74,28 +74,39 @@ def _fetch_text(url):
     return r.text
 
 
-def fetch_us_universe(cache_path=None, now_ts=0, force=False):
-    """Keyless full-US common-stock universe as yfinance symbols (sorted, de-duped).
+def _default_cache_path():
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        ".cache", "us_symbol_dir.json")
+
+
+def fetch_us_named(cache_path=None, now_ts=0, force=False):
+    """Keyless full-US common-stock universe as {yahoo_symbol: name} (de-duped, first-wins).
 
     TTL-cached with last-good fallback (cached_fetch): a transient Nasdaq Trader outage
-    returns the previously cached list rather than crashing the daily run. Returns [] only
-    when there is no network AND no cache. now_ts lets the caller inject a clock (no
-    Date.now in this codebase's offline tests)."""
-    cache_path = cache_path or os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        ".cache", "us_symbol_dir.json")
+    returns the previously cached map rather than crashing the daily run. {} only when there
+    is no network AND no cache. now_ts injects a clock (no Date.now in this codebase)."""
+    cache_path = cache_path or _default_cache_path()
 
     def _do():
         pairs = (parse_listing(_fetch_text(URL_NASDAQ), "Symbol")
                  + parse_listing(_fetch_text(URL_OTHER), "ACT Symbol"))
-        syms = {y for sym, _ in pairs if (y := to_yahoo(sym))}
-        return sorted(syms)
+        out = {}
+        for sym, name in pairs:
+            y = to_yahoo(sym)
+            if y:
+                out.setdefault(y, name)          # first listing wins the name
+        return out
 
     if force:
         try:
             res = _do()
-            _cache.save_state(cache_path, {"universe": {"ts": now_ts, "val": res}})
+            _cache.save_state(cache_path, {"named": {"ts": now_ts, "val": res}})
             return res
         except Exception:
             pass
-    return _cache.cached_fetch(cache_path, "universe", _CACHE_TTL, now_ts, _do) or []
+    return _cache.cached_fetch(cache_path, "named", _CACHE_TTL, now_ts, _do) or {}
+
+
+def fetch_us_universe(cache_path=None, now_ts=0, force=False):
+    """Backward-compatible: the sorted list of yfinance symbols (keys of fetch_us_named)."""
+    return sorted(fetch_us_named(cache_path=cache_path, now_ts=now_ts, force=force).keys())
