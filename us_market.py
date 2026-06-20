@@ -50,7 +50,9 @@ def fetch_batch(tickers, period="3mo"):
     for t in tickers:
         try:
             df = raw[t] if multi else raw
-            df = df.dropna(how="all")
+            # drop rows with a NaN Close (incl. the trailing not-yet-settled bar) so the last
+            # close / price + rolling factors aren't poisoned — matches data_fetcher.get_universe.
+            df = df.dropna(subset=["Close"]) if (df is not None and "Close" in df.columns) else df
             if df is not None and len(df) >= _MIN_BARS and "Close" in df.columns:
                 out[t] = df
         except Exception:

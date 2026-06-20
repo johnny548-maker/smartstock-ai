@@ -264,5 +264,23 @@ class TestCacheAge(unittest.TestCase):
         self.assertEqual(out[0]["status"], "stale")
 
 
+class TestBdayLag(unittest.TestCase):
+    """Audit fix: a weekend report date must not over-count the freshness lag (false degraded)."""
+
+    def test_thu_bar_sat_report_is_one_day(self):
+        # newest bar Thu 06-18, report ran Sat 06-20 → only Fri is a missing trading day → lag 1
+        self.assertEqual(dh._bday_lag(dt.date(2026, 6, 18), dt.date(2026, 6, 20)), 1)
+
+    def test_thu_bar_fri_report_is_one_day(self):
+        self.assertEqual(dh._bday_lag(dt.date(2026, 6, 18), dt.date(2026, 6, 19)), 1)
+
+    def test_thu_bar_mon_report_is_two_days(self):
+        self.assertEqual(dh._bday_lag(dt.date(2026, 6, 18), dt.date(2026, 6, 22)), 2)
+
+    def test_same_or_future_bar_is_zero(self):
+        self.assertEqual(dh._bday_lag(dt.date(2026, 6, 19), dt.date(2026, 6, 19)), 0)
+        self.assertEqual(dh._bday_lag(dt.date(2026, 6, 19), dt.date(2026, 6, 20)), 0)  # Fri bar, Sat report
+
+
 if __name__ == "__main__":
     unittest.main()

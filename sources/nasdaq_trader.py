@@ -17,6 +17,7 @@ We keep COMMON STOCK only: drop ETFs, Test Issues, and obvious non-common instru
 """
 import csv
 import os
+import time
 
 try:
     import requests
@@ -86,6 +87,8 @@ def fetch_us_named(cache_path=None, now_ts=0, force=False):
     returns the previously cached map rather than crashing the daily run. {} only when there
     is no network AND no cache. now_ts injects a clock (no Date.now in this codebase)."""
     cache_path = cache_path or _default_cache_path()
+    if not now_ts:                       # falsy now_ts froze the 7-day TTL forever (0-0<ttl)
+        now_ts = time.time()
 
     def _do():
         pairs = (parse_listing(_fetch_text(URL_NASDAQ), "Symbol")

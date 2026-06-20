@@ -207,7 +207,7 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
 def _bench_for(sym, frames):
     if not frames:
         return None
-    return frames.get("twii") if sym.endswith(".TW") else frames.get("sp500")
+    return frames.get("twii") if sym.endswith((".TW", ".TWO")) else frames.get("sp500")
 
 
 def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None, chips_map=None):

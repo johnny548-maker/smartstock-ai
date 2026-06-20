@@ -94,6 +94,11 @@ def _bday_lag(newest, ref):
     """Business days between *newest* and *ref* dates (0 when newest >= ref)."""
     if newest >= ref:
         return 0
+    # Anchor a weekend/holiday-ish report date to the last weekday on/before it, else the loop
+    # decrements through the weekend and miscounts the newest bar's own day (Sat ref vs Thu bar
+    # tallied 2 instead of 1 → false 'degraded' health banner).
+    while ref.weekday() >= 5:        # Sat/Sun → step back to Fri
+        ref -= dt.timedelta(days=1)
     lag = 0
     day = ref
     while day > newest:

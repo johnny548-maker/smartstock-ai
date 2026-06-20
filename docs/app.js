@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v45';
+const APP_VERSION = 'v46';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -1179,7 +1179,15 @@ async function openStockSheet(code) {
   // ohlc/spark/sr/levels onto the (live-scored) card so every clickable stock shows its 技術線圖.
   if (!p || !(p.ohlc && p.ohlc.length > 1)) {
     try {
-      const lazy = await getJSON('data/detail/' + encodeURIComponent(code) + '.json');
+      // try the exact code, then the alternate form (bare↔.TW/.TWO) so a board that links a
+      // different code form than the detail filename still resolves a chart instead of 404ing.
+      const forms = [code];
+      if (/\.(TW|TWO)$/.test(code)) forms.push(code.replace(/\.(TW|TWO)$/, ''));
+      else { forms.push(code + '.TW', code + '.TWO'); }
+      let lazy = null;
+      for (const f of forms) {
+        try { lazy = await getJSON('data/detail/' + encodeURIComponent(f) + '.json'); if (lazy) break; } catch (e) { /* try next form */ }
+      }
       if (lazy && typeof lazy === 'object') {
         const merged = p ? { ...lazy, ...p } : lazy;   // keep live score/factors, gain chart data
         merged.ohlc = lazy.ohlc;
@@ -1219,7 +1227,7 @@ async function openStockSheet(code) {
     ? `<div class="sh-kline" id="kline"></div><div class="sh-cap">近 ${p.ohlc.length} 日 K 線（含量；虛線=停損/進場/目標/壓力/支撐）</div>`
     : (p.spark && p.spark.length > 1
       ? `<div class="sh-spark pchart">${priceChart(p.spark, p.spark_start, p.spark_end, chartLines)}</div><div class="sh-cap">近 ${p.spark.length} 日收盤（y=股價、x=日期；虛線=停損/目標）</div>`
-      : '');
+      : `<div class="sh-cap" style="padding:18px 0;text-align:center;color:var(--ink-3)">技術線圖尚未抓取（全市場輪批中，下次掃到此檔即補上）</div>`);
 
   // price hero row + earnings note
   const earnNote = (p.earnings && p.earnings.in_blackout)

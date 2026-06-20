@@ -2192,5 +2192,21 @@ class TestReportRadarMerge(unittest.TestCase):
         self.assertNotIn("早期雷達", md)
 
 
+class TestBenchmarkRouting(unittest.TestCase):
+    """Audit fix: TPEx (.TWO) names must bench against the Taiwan index, not the S&P 500."""
+
+    def test_two_routes_to_twii(self):
+        import strategy
+        self.assertEqual(strategy._bench_for("6488.TWO", {"twii": "TW", "sp500": "US"}), "TW")
+
+    def test_tw_routes_to_twii(self):
+        import strategy
+        self.assertEqual(strategy._bench_for("2330.TW", {"twii": "TW", "sp500": "US"}), "TW")
+
+    def test_us_routes_to_sp500(self):
+        import strategy
+        self.assertEqual(strategy._bench_for("AAPL", {"twii": "TW", "sp500": "US"}), "US")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

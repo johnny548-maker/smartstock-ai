@@ -1255,6 +1255,24 @@ def main(web=False):
                     for _pr in _panel_ranked:
                         verdict_map.setdefault(
                             _pr["stock"], {"s": _pr["score"], "l": verdict_mod.light(_pr["score"])})
+                    # Chart coverage: panel-scored TW names are clickable in all-market search
+                    #   (verdict badge) but had NO detail file → no 技術線圖. Write one per panel
+                    #   frame (reconstructed OHLC already in hand). Own export (main details flushed
+                    #   at the overlay-attach step). SKIP-not-abort.
+                    try:
+                        _pnames = (opp or {}).get("names") or {}
+                        _pdetails = {}
+                        for _pcode, _pdf in _pf.items():
+                            if _pdf is None or getattr(_pdf, "empty", True):
+                                continue
+                            _pdetails[_pcode] = stock_detail.build_detail(
+                                _pcode, df=_pdf,
+                                name=_pnames.get(_pcode) or config.STOCK_NAMES.get(_pcode))
+                        if _pdetails:
+                            stock_detail.export_details(_pdetails, config.WEB_DIR)
+                            log.info("panel chart detail files: +%d", len(_pdetails))
+                    except Exception as _pde:
+                        log.warning("SKIP panel detail files: %s", _pde)
                     log.info("market panel: %d names accumulated, %d scored into verdicts",
                              len(_panel), len(_panel_ranked))
         except Exception as _pe:
