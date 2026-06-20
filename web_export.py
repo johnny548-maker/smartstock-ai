@@ -144,6 +144,11 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
             "commentary": (analyses or {}).get(it["stock"]),
             **card,                                   # light/verdict/vol_ratio/sr/spark
         }
+        # Perf (#15): the full 60-bar `ohlc` is duplicated byte-identical in the lazy-loaded
+        # per-stock detail file (data/detail/<code>.json) which the PWA fetches on click. Drop it
+        # from the daily payload (~5KB/pick) — the deck mini-chart uses `spark`, and the detail
+        # K-line re-fetches ohlc from the detail file. ~60KB off every visitor's initial download.
+        pick.pop("ohlc", None)
         if overlays:
             pick["overlays"] = overlays
         picks.append(pick)
