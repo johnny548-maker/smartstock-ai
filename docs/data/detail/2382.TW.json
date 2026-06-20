@@ -1,17 +1,9 @@
 {
  "stock": "2382.TW",
  "name": "廣達",
- "price": 374.0,
- "change_pct": 3.17,
+ "price": 376.0,
+ "change_pct": 0.53,
  "ohlc": [
-  {
-   "time": "2026-03-23",
-   "o": 278.5,
-   "h": 282.5,
-   "l": 275.5,
-   "c": 280.0,
-   "v": 15239375
-  },
   {
    "time": "2026-03-24",
    "o": 283.0,
@@ -482,22 +474,30 @@
    "h": 374.0,
    "l": 358.0,
    "c": 374.0,
-   "v": 20080526
+   "v": 19621163
+  },
+  {
+   "time": "2026-06-18",
+   "o": 374.5,
+   "h": 379.5,
+   "l": 372.5,
+   "c": 376.0,
+   "v": 22067558
   }
  ],
  "sr": {
-  "price": 374.0,
+  "price": 376.0,
   "resistance": [
+   386.5,
    438.0
   ],
   "support": [
    357.0,
    317.0
   ],
-  "strong_support": 252.5
+  "strong_support": 166.08
  },
  "spark": [
-  280.0,
   281.5,
   285.0,
   287.0,
@@ -556,65 +556,12 @@
   372.0,
   370.0,
   362.5,
-  374.0
+  374.0,
+  376.0
  ],
- "spark_start": "2026-03-23",
- "spark_end": "2026-06-17",
- "fundamental": {
-  "rev_yoy": 94.4,
-  "rev_accel": false,
-  "stale": false,
-  "source": "twse_revenue"
- },
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-18",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 2,113,632 股",
-   "value": {
-    "foreign": 1704196,
-    "trust": 951179,
-    "dealer": -541743,
-    "total": 2113632
-   },
-   "severity": "info",
-   "as_of": "2026-06-17",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -21
-   },
-   "severity": "info",
-   "as_of": "2026-06-17",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 18.2 / 殖利率 4.30% / PB 6.73",
-   "value": {
-    "pe": 18.23,
-    "yield": 4.3,
-    "pb": 6.73
-   },
-   "severity": "info",
-   "as_of": "2026-06-16",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 85.52,
-   "severity": "warn",
-   "as_of": "20260612",
-   "note": "大戶持股%=85.52；WoW-0.27；股東人數+8750"
-  }
- ]
+ "generated_for": "detail"
 }

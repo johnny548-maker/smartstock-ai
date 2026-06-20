@@ -563,7 +563,7 @@
   "pe_forward": 23.510199,
   "eps_trailing": 11.65,
   "eps_forward": 19.65615,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
@@ -589,15 +589,15 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 373 分 / 138 留言",
+   "label": "HN 討論熱度 20 篇 / 295 分 / 134 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 373,
-    "comments": 138,
+    "points": 295,
+    "comments": 134,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
+   "severity": "info",
    "as_of": "2026-06-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
