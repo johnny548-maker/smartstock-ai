@@ -209,6 +209,31 @@ class TestTrackRecord(unittest.TestCase):
         path = self._write("bt.json", {"strategies": {"equal_weight": {}}})
         self.assertIsNone(mp.read_track_record(path))
 
+    def test_voltgt_segment_read_by_strategy_arg(self):
+        # P4: the constant-vol variant is read via the strategy= argument; absent → None.
+        obj = _bt_json(0.48, 1.54, -0.389, 0.93, 1.88, -0.389)
+        obj["strategies"]["momentum_voltgt"] = {
+            "cagr": 0.20, "sharpe": 1.50, "max_dd": -0.22,
+            "oos": {"cagr": 0.294, "sharpe": 1.57, "max_dd": -0.218},
+        }
+        path = self._write("bt.json", obj)
+        trv = mp.read_track_record(path, strategy="momentum_voltgt")
+        self.assertAlmostEqual(trv["max_dd"], -0.22, places=4)        # shallower than -0.389
+        self.assertAlmostEqual(trv["oos"]["max_dd"], -0.218, places=4)
+        # absent variant → None (graceful), base momentum still read by default
+        bare = self._write("bare.json", _bt_json(0.4, 1.5, -0.39, 0.9, 1.8, -0.39))
+        self.assertIsNone(mp.read_track_record(bare, strategy="momentum_voltgt"))
+        self.assertIsNotNone(mp.read_track_record(bare))
+
+    def test_build_lens_surfaces_voltgt(self):
+        obj = _bt_json(0.48, 1.54, -0.389, 0.93, 1.88, -0.389)
+        obj["strategies"]["momentum_voltgt"] = {"cagr": 0.20, "sharpe": 1.5, "max_dd": -0.22}
+        path = self._write("bt.json", obj)
+        lens = mp.build_lens({}, {}, path, path)
+        self.assertIn("track_record_voltgt", lens["tw"])
+        self.assertAlmostEqual(lens["tw"]["track_record_voltgt"]["max_dd"], -0.22, places=4)
+        self.assertIn("voltgt_note", lens)
+
 
 class TestBuildLens(unittest.TestCase):
     def setUp(self):

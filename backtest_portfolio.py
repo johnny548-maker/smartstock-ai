@@ -55,6 +55,14 @@ TOP_N = 10                # #4 Calmar-winner: top-10 concentrated cohort (was 20
 SMA_WINDOW = 200
 TRADING_DAYS = 252
 
+# P4 vol-targeting (decision B): a SEPARATE constant-vol variant of the momentum sleeve. Each
+# rebalance scales the (same) momentum picks by σ_target / realised_portfolio_vol, clamped — when
+# realised vol runs hot the basket de-grosses to cash, taming the momentum-crash drawdown. This is
+# an ADDED track record shown ALONGSIDE the champion (lower DD, lower CAGR), never a replacement.
+VOLTGT_SIGMA = 0.15       # annualised target vol (σ0.15 start)
+VOLTGT_LOOKBACK = 60      # bars of realised-vol estimation
+VOLTGT_CLAMP = 1.5        # max gross scale (never lever beyond 1.5×)
+
 # repo cost convention (run_backtest.py)
 SLIP_BPS = 15.0           # one-way slippage
 FEE_BPS = 30.0            # round-trip commission (charged half per side)
@@ -78,7 +86,7 @@ REGIMES = [
     ("2023-26", "2023-01-01", "2026-12-31"),
 ]
 
-STRATEGIES = ("momentum", "momentum_sma200", "equal_weight", "buy_hold")
+STRATEGIES = ("momentum", "momentum_voltgt", "momentum_sma200", "equal_weight", "buy_hold")
 
 
 # ── panels ───────────────────────────────────────────────────────────────────
@@ -441,6 +449,30 @@ def _metric_block(nav, bench_nav):
     }
 
 
+def _realized_port_vol(close_ff, picks, asof, lookback=VOLTGT_LOOKBACK):
+    """Annualised realised vol of the equal-weight `picks` basket over the lookback window
+    ending at `asof` (lookback-ONLY, no peek). None when history is too thin to estimate."""
+    if not picks:
+        return None
+    window = close_ff.loc[:asof, picks].tail(lookback + 1)
+    if len(window) < max(5, lookback // 2):
+        return None
+    port = window.pct_change().dropna(how="all").mean(axis=1)
+    if len(port) < 5:
+        return None
+    sd = float(port.std())
+    return sd * (TRADING_DAYS ** 0.5) if sd == sd else None   # NaN guard
+
+
+def _voltgt_scale(close_ff, picks, asof):
+    """cMOM constant-vol gross scale ∈ [0, VOLTGT_CLAMP] for this rebalance. 1.0 when vol can't
+    be estimated (degrade to plain momentum), else σ_target / realised_vol clamped."""
+    rv = _realized_port_vol(close_ff, picks, asof)
+    if not rv or rv <= 0:
+        return 1.0
+    return min(VOLTGT_CLAMP, VOLTGT_SIGMA / rv)
+
+
 def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
     """Run all four strategies for one sleeve on pre-loaded {ticker: OHLCV df}.
 
@@ -485,13 +517,17 @@ def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
         warnings.append(f"index {index_t} missing — SMA200 filter inactive "
                         "(momentum_sma200 == momentum)")
 
-    t_mom, t_filt, t_eq = {}, {}, {}
+    t_mom, t_filt, t_eq, t_mvt = {}, {}, {}, {}
     n_filtered = 0
     for sig, ex in sched:
         row = mom.loc[sig][close_ff.loc[sig].notna()]
         picks = select_top_n(row, top_n)
         w = {t: 1.0 / len(picks) for t in picks} if picks else {}
         t_mom[ex] = w
+
+        # P4 vol-target: SAME picks, gross-scaled to constant vol (rest implicitly cash).
+        scale = _voltgt_scale(close_ff, picks, sig) if picks else 1.0
+        t_mvt[ex] = {t: ww * scale for t, ww in w.items()}
 
         risk_off = False
         if idx_close is not None:
@@ -507,6 +543,8 @@ def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
     navs = {
         "momentum": simulate_portfolio(open_df, close_df, t_mom,
                                        sell_tax_bps=sell_tax),
+        "momentum_voltgt": simulate_portfolio(open_df, close_df, t_mvt,
+                                              sell_tax_bps=sell_tax),
         "momentum_sma200": simulate_portfolio(open_df, close_df, t_filt,
                                               sell_tax_bps=sell_tax),
         "equal_weight": simulate_portfolio(open_df, close_df, t_eq,

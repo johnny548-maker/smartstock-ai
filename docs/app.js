@@ -1729,6 +1729,20 @@ function momTrackCards(tr) {
   return mgrid(cards) + winLine;
 }
 
+// P4: vol-target variant — a collapsible side-by-side so the user weighs the trade-off
+// (lower drawdown vs lower CAGR) on real numbers. Additive; absent → renders nothing.
+function momVoltgtCards(trv) {
+  if (!trv) return '';
+  const oos = trv.oos || {};
+  const cards = [
+    mcard('vol-target CAGR', _momPct(trv.cagr), { dir: trv.cagr == null ? null : (trv.cagr > 0 ? 1 : -1), sub: 'σ0.15 定波動版（CAGR 較低）' }),
+    mcard('vol-target MaxDD', _momPct(trv.max_dd), { dir: -1, sub: '回撤大降（換較低報酬）' }),
+    mcard('vol-target OOS 2y', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '末 2 年樣本外' }),
+  ];
+  return `<details class="fold"><summary>🛡️ 低回撤版（vol-target σ0.15）— 點開與冠軍對比</summary>
+    <div class="fold-body">${mgrid(cards)}<p class="tiny">同一批持股縮放至定波動：回撤大降（OOS -39%→約-22%）、CAGR 較低。低回撤偏好者用此版，非取代冠軍。</p></div></details>`;
+}
+
 function momHoldingsList(holdings) {
   if (!holdings || !holdings.length) return '<p class="tiny">本日無足夠資料計算動能持股（需 ~252 bar）。</p>';
   const li = holdings.map((h) => {
@@ -1758,6 +1772,7 @@ function momentumHtml(d) {
     if (!holdings.length && !s.track_record) return '';
     return `<div class="sh-sec"><div class="sh-h">${esc(label)}</div>
       ${momTrackCards(s.track_record)}
+      ${momVoltgtCards(s.track_record_voltgt)}
       <div class="sh-sub">前 ${esc((holdings.length || (mpf.top_n != null ? mpf.top_n : 20)))} 動能持股</div>
       ${momHoldingsList(holdings)}</div>`;
   };

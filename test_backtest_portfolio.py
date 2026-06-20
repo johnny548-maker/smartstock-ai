@@ -427,9 +427,9 @@ def test_run_sleeve_e2e_synthetic(tmp_path):
     json_fp = str(tmp_path / "out.json")
     bp.write_outputs(res, txt_fp, json_fp)
 
-    # Assert — all four strategies reported with full metric set
+    # Assert — all strategies (incl P4 vol-target variant) reported with full metric set
     strats = res["strategies"]
-    assert set(strats.keys()) == {"momentum", "momentum_sma200",
+    assert set(strats.keys()) == {"momentum", "momentum_voltgt", "momentum_sma200",
                                   "equal_weight", "buy_hold"}
     for name, m in strats.items():
         assert isinstance(m["cagr"], float)
@@ -608,3 +608,47 @@ def test_run_sleeve_momentum_picks_winners():
     # Assert
     assert (res["strategies"]["momentum"]["final_nav"]
             > res["strategies"]["equal_weight"]["final_nav"])
+
+
+# ── P4 vol-target ────────────────────────────────────────────────────────────
+
+def test_voltgt_scale_clamps_and_degrades():
+    dates = pd.bdate_range("2021-01-04", periods=200)
+    # calm low-vol series → realised vol << σ_target → scale clamps at VOLTGT_CLAMP
+    calm = _trend_df(dates, daily=0.0002)
+    _, calm_close = bp.build_panels({"A": calm})
+    sc_calm = bp._voltgt_scale(calm_close.ffill(), ["A"], calm_close.index[-1])
+    assert sc_calm == pytest.approx(bp.VOLTGT_CLAMP)            # clamped, never unbounded
+    # a high-vol basket → scale de-grosses below 1.0
+    rng = np.random.default_rng(0)
+    noisy = _mk_df(dates, 100.0 * np.cumprod(1.0 + rng.normal(0, 0.05, len(dates))))
+    _, nz_close = bp.build_panels({"A": noisy})
+    sc_noisy = bp._voltgt_scale(nz_close.ffill(), ["A"], nz_close.index[-1])
+    assert 0.0 <= sc_noisy < 1.0
+    # missing picks / no history → neutral 1.0 (degrade to plain momentum)
+    assert bp._voltgt_scale(calm_close.ffill(), [], calm_close.index[-1]) == 1.0
+
+
+def test_run_sleeve_voltgt_present_and_not_worse_dd():
+    # Realistic regime: realised vol (~0.21 ann) RUNS ABOVE σ_target 0.15 so vol-target
+    # DE-GROSSES (scale < 1) and holds a smaller line into the crash → shallower drawdown.
+    # (On an artificially calm series vol-target instead LEVERS to the clamp — see the real
+    # 15y run for the DD reduction; this asserts the de-gross mechanism, not magnitude.)
+    dates = pd.bdate_range("2021-01-04", periods=700)
+    n = len(dates)
+    rng = np.random.default_rng(1)
+    tail = 120
+    calm = 100.0 * np.cumprod(1.0 + rng.normal(0.0010, 0.013, n - tail))   # ann vol ~0.21
+    crash = calm[-1] * np.cumprod(1.0 + rng.normal(-0.004, 0.045, tail))
+    prices = {
+        "A": _mk_df(dates, np.concatenate([calm, crash])),
+        "B": _trend_df(dates, daily=0.0003),       # lower momentum → not held at top_n=1
+        "SPY": _trend_df(dates, daily=0.0004),
+        "^GSPC": _trend_df(dates, daily=0.0004),
+    }
+    res = bp.run_sleeve(prices, sleeve="us", universe_tickers=["A", "B"], top_n=1)
+    s = res["strategies"]
+    assert "momentum_voltgt" in s
+    assert s["momentum_voltgt"]["max_dd"] <= 0.0
+    # vol-target drawdown shallower-or-equal (max_dd is negative; closer to 0 = shallower)
+    assert s["momentum_voltgt"]["max_dd"] >= s["momentum"]["max_dd"] - 1e-9

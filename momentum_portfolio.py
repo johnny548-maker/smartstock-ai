@@ -80,12 +80,13 @@ def rank_momentum(histories, top_n=DEFAULT_TOP_N, names=None, lookback=DEFAULT_L
     return rows[:top_n]
 
 
-def read_track_record(path):
-    """Read the `momentum` strategy segment of a backtest_portfolio_*.json file.
+def read_track_record(path, strategy="momentum"):
+    """Read a strategy segment (default `momentum`; pass `momentum_voltgt` for the P4
+    constant-vol variant) of a backtest_portfolio_*.json file.
 
     Returns a flat dict of the metrics the lens displays, or None if the file is
-    missing / corrupt / has no momentum segment (graceful — never raises). This
-    NEVER recomputes the backtest; it only surfaces the committed numbers.
+    missing / corrupt / has no such segment (graceful — never raises). This NEVER
+    recomputes the backtest; it only surfaces the committed numbers.
     """
     try:
         with open(path, encoding="utf-8") as f:
@@ -94,7 +95,7 @@ def read_track_record(path):
         log.warning("SKIP track record %s: %s", path, e)
         return None
     strategies = (data or {}).get("strategies") or {}
-    mom = strategies.get("momentum")
+    mom = strategies.get(strategy)
     if not mom:
         return None
     win = mom.get("monthly_win_vs_bench") or {}
@@ -145,12 +146,16 @@ def build_lens(tw_histories, us_histories, backtest_tw_json, backtest_us_json,
             "holdings": rank_momentum(tw_histories, top_n=top_n, names=tw_names,
                                       lookback=lookback),
             "track_record": read_track_record(backtest_tw_json),
+            "track_record_voltgt": read_track_record(backtest_tw_json, "momentum_voltgt"),
         },
         "us": {
             "holdings": rank_momentum(us_histories, top_n=top_n, names=us_names,
                                       lookback=lookback),
             "track_record": read_track_record(backtest_us_json),
+            "track_record_voltgt": read_track_record(backtest_us_json, "momentum_voltgt"),
         },
         "disclaimers": list(DISCLAIMERS),
+        "voltgt_note": ("vol-target σ%.2f：縮放同批持股至定波動，回撤大降（OOS -39%%→約-22%%）"
+                        "但 CAGR 較低——低回撤版，非取代。" % 0.15),
         "top_n": top_n,
     }
