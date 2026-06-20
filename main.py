@@ -644,6 +644,16 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP scored universe: %s", e); skips.append("scored_universe")
 
+    # P2 item8: holdings ↔ verdict second-pass. Positions were evaluated early (line ~386,
+    #   before verdict_map existed). Now that verdict_map (core + opportunity universe) is
+    #   built, flag any HELD stock whose current verdict turned 'red' (不持有). OVERLAY-NOT-
+    #   SCORER: appends an informational alert only. SKIP-not-abort.
+    try:
+        if my_positions:
+            my_positions = positions_mod.merge_verdict_alerts(my_positions, verdict_map)
+    except Exception as e:
+        log.warning("SKIP holdings↔verdict merge: %s", e)
+
     # Belt-and-suspenders: drop the heavy OHLCV frames from opp now that the
     # detail-file loop (A3) has consumed them.  web_export.build_payload also
     # strips '_data', but releasing the DataFrames here avoids keeping ~600×N

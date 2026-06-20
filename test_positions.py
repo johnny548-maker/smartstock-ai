@@ -328,5 +328,40 @@ class TestSummarize(unittest.TestCase):
         self.assertIsNone(summary["total_pnl_pct"])
 
 
+class TestVerdictAlerts(unittest.TestCase):
+    """P2 item8: holdings ↔ verdict second-pass — held-red stocks get a downgrade alert."""
+
+    def _summary(self):
+        return {"total_pnl_pct": 1.0, "alert_count": 1, "rows": [
+            {"symbol": "2330.TW", "alerts": []},
+            {"symbol": "AAPL", "alerts": [{"kind": "stop_touch", "level": "CRITICAL"}]},
+        ]}
+
+    def test_red_held_gets_alert(self):
+        vm = {"2330.TW": {"s": 30, "l": "red"}, "AAPL": {"s": 120, "l": "green"}}
+        out = ps.merge_verdict_alerts(self._summary(), vm)
+        tw = next(r for r in out["rows"] if r["symbol"] == "2330.TW")
+        ap = next(r for r in out["rows"] if r["symbol"] == "AAPL")
+        self.assertTrue(any(a["kind"] == "verdict_downgrade" for a in tw["alerts"]))
+        self.assertFalse(any(a["kind"] == "verdict_downgrade" for a in ap["alerts"]))
+        self.assertEqual(out["alert_count"], 2)            # +1 over the base summary
+
+    def test_bare_twse_code_resolves(self):
+        vm = {"2330": {"s": 25, "l": "red"}}               # bare code → resolves 2330.TW
+        out = ps.merge_verdict_alerts(self._summary(), vm)
+        tw = next(r for r in out["rows"] if r["symbol"] == "2330.TW")
+        self.assertTrue(any(a["kind"] == "verdict_downgrade" for a in tw["alerts"]))
+
+    def test_graceful_no_verdicts(self):
+        s = self._summary()
+        self.assertIs(ps.merge_verdict_alerts(s, None), s)
+        self.assertIs(ps.merge_verdict_alerts(s, {}), s)
+
+    def test_does_not_mutate_input(self):
+        s = self._summary()
+        ps.merge_verdict_alerts(s, {"2330.TW": {"s": 30, "l": "red"}})
+        self.assertEqual(s["rows"][0]["alerts"], [])       # original untouched
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
