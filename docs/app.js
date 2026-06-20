@@ -40,6 +40,15 @@ async function getJSON(url) {
   if (!res.ok) throw new Error(url + ' → ' + res.status);
   return res.json();
 }
+// Fix 3 (GAP A): lazily-loaded ALL-MARKET search index [[code,name,market],…]. Loaded once
+// on first search; degrades to actionable-only search if the file isn't generated yet/offline.
+let UNIVERSE_IDX = null;
+async function loadUniverseIdx() {
+  if (UNIVERSE_IDX) return UNIVERSE_IDX;
+  try { UNIVERSE_IDX = await getJSON('data/_universe.json'); }
+  catch (e) { UNIVERSE_IDX = []; }
+  return UNIVERSE_IDX;
+}
 function toast(msg, ms) {
   const t = $('status'); if (!t) return;
   t.textContent = msg; t.classList.add('show');
@@ -1391,7 +1400,8 @@ function radarMerge(d) {
     let r = rows.get(tk);
     if (!r) {
       r = { ticker: tk, name: name || tk, ready: false, rs: null, light: null,
-            price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null };
+            price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null,
+            score: null };
       rows.set(tk, r);
     } else if (name && r.name === tk) r.name = name;
     return r;
@@ -1421,7 +1431,22 @@ function radarMerge(d) {
     r.sources.push('訊號×' + (s.count != null ? s.count : '?'));
     addSig(r, s.signals);
   });
+  // Fix 1 (GAP C) + Fix 6 (GAP B): merge the 全市場精選 board — the ~600 opportunity universe
+  //   scored through the SAME backtest-gated rank_stocks formula — so the radar carries a
+  //   unified recommendation score, and sort by it FIRST (照推薦順序). Names with no quant
+  //   score (pure breakout/signal tells) fall after, ordered by the prior keys.
+  (d.scored_universe || []).forEach((s) => {
+    const tk = s.stock; if (!tk) return;
+    const r = rowFor(tk, s.name);
+    r.sources.push('精選分' + (s.score != null ? s.score : '?'));
+    if (s.score != null) r.score = s.score;
+    if (s.light) r.light = s.light || r.light;
+    if (s.price != null && r.price == null) r.price = s.price;
+    if (s.change_pct != null && r.change_pct == null) r.change_pct = s.change_pct;
+  });
+  const _sk = (x) => (x.score == null ? -1e9 : x.score);
   return Array.from(rows.values()).sort((a, b) =>
+    (_sk(b) - _sk(a)) ||
     (b.sources.length - a.sources.length) || ((b.ready ? 1 : 0) - (a.ready ? 1 : 0)) || ((b.rs || 0) - (a.rs || 0)));
 }
 
@@ -1559,18 +1584,36 @@ function searchPlaceholder(d) {
   return uniq.length < 2 ? '例 2882、3008' : '例 ' + uniq.join('、');
 }
 function searchBox(d) {
-  return `<div class="search"><input id="ssInput" type="search" placeholder="🔍 查代號或名稱（${esc(searchPlaceholder(d))}）" oninput="ssSearch(this.value)" autocomplete="off" aria-label="搜尋當日掃描名單">
+  return `<div class="search"><input id="ssInput" type="search" placeholder="🔍 查代號或名稱（${esc(searchPlaceholder(d))}）" oninput="ssSearch(this.value)" autocomplete="off" aria-label="搜尋全市場代號或名稱">
     <div id="ssResults" class="search-res"></div></div>`;
 }
-window.ssSearch = (q) => {
+// Fix 3 (GAP A): two-group search — today's actionable names (rich: 燈號/price/kind) FIRST,
+// then the ALL-MARKET index (every listed TWSE/TPEx/US code+name) so search resolves ANY
+// stock, not just the ~30 scanned ones. Async: the all-market group fills after the index
+// loads; a stale-query guard prevents a late result clobbering newer keystrokes.
+window.ssSearch = async (q) => {
   q = (q || '').trim().toLowerCase();
   const box = $('ssResults'); if (!box) return;
   if (!q) { box.innerHTML = ''; return; }
-  const hits = (CUR && CUR.search || []).filter((s) =>
+  const rich = (CUR && CUR.search || []).filter((s) =>
     s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
-  box.innerHTML = hits.length ? `<ul class="list">` + hits.map((s) =>
-    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span></div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>'
-    : '<div class="empty">查無結果。<br><span class="tiny">本搜尋僅含當日掃描名單（~30 檔 actionable 標的），非全市場代號查詢。</span></div>';
+  const richCodes = new Set(rich.map((s) => s.code));
+  const richHtml = rich.length ? `<div class="note">當日掃描名單</div><ul class="list">` + rich.map((s) =>
+    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span></div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>' : '';
+  box.innerHTML = richHtml + '<div class="empty tiny" id="ssMore">全市場搜尋中…</div>';
+  const idx = await loadUniverseIdx();
+  const live = $('ssInput'); if (!live || live.value.trim().toLowerCase() !== q) return;  // user moved on
+  const more = idx.filter((r) => r && r[0] && !richCodes.has(r[0]) &&
+    (String(r[0]).toLowerCase().includes(q) || String(r[1] || '').toLowerCase().includes(q))).slice(0, 20);
+  const moreBox = $('ssMore'); if (!moreBox) return;
+  if (!rich.length && !more.length) {
+    moreBox.outerHTML = '<div class="empty">查無結果。<br><span class="tiny">全市場代號／名稱皆無相符。</span></div>';
+    return;
+  }
+  moreBox.outerHTML = more.length
+    ? `<div class="note">全市場（${idx.length} 檔）</div><ul class="list">` + more.map((r) =>
+        `<li><a href="#${esc(CUR_DATE)}/${esc(r[0])}" data-close-sheet><div class="li-main"><div class="li-name">${esc(r[1] || r[0])} <span class="tk">${esc(r[0])}</span></div><div class="li-sub tiny">${esc(r[2] || '')} · 全市場（非當日精選，明細較簡）</div></div></a></li>`).join('') + '</ul>'
+    : '';
 };
 
 /* ============================================================================

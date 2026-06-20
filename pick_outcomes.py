@@ -33,7 +33,9 @@ log = logging.getLogger(__name__)
 # ── module constants ──────────────────────────────────────────────────────────
 
 DEFAULT_N_DAYS = 5
-HORIZONS = (1, 3, 5)              # D+1 / D+3 / D+5 forward-return checkpoints
+HORIZONS = (1, 3, 5, 20)          # D+1 / D+3 / D+5 / D+20 forward-return checkpoints
+                                  # (Fix 5: D+20 computed only when n_days>=20, in its own
+                                  #  _outcomes_20 subdir — the D+5 stop/idempotency path skips it)
 OUTCOMES_SUBDIR = "_outcomes"
 # Calendar buffer for the price fetch window: N trading days span at most ~N*2
 # calendar days plus weekends/holidays slack. Over-fetch is harmless (we slice).
@@ -115,7 +117,7 @@ def _null_outcome(stock, entry, levels):
     return {
         "stock": stock,
         "entry_price": (float(entry) if entry not in (None, "") else None),
-        "ret_1": None, "ret_3": None, "ret_5": None,
+        "ret_1": None, "ret_3": None, "ret_5": None, "ret_20": None,
         "period_high": None, "period_low": None,
         "max_gain_pct": None, "max_drawdown_pct": None,
         "hit_stop": None, "hit_target": None,
@@ -264,17 +266,21 @@ def _is_complete(doc, n_days):
 
 # ── orchestration ─────────────────────────────────────────────────────────────
 
-def compute_outcomes(data_dir, asof_date, n_days=DEFAULT_N_DAYS, fetch_fn=None):
+def compute_outcomes(data_dir, asof_date, n_days=DEFAULT_N_DAYS, fetch_fn=None,
+                     out_subdir=OUTCOMES_SUBDIR, picks_loader=None):
     """Backfill outcomes for the picks made on *asof_date*.
 
     Reads docs/data/<asof_date>.json picks[], fetches the post-pick price window
     for each symbol, computes per-stock outcomes, and writes
-    docs/data/_outcomes/<asof_date>.json. IDEMPOTENT: if a complete outcomes file
-    already exists it is skipped (no refetch). GRACEFUL-SKIP throughout.
+    docs/data/<out_subdir>/<asof_date>.json. IDEMPOTENT: if a complete outcomes
+    file already exists it is skipped (no refetch). GRACEFUL-SKIP throughout.
+
+    out_subdir lets the D+20 pass (n_days=20) write to its own '_outcomes_20'
+    ledger so the default D+5 stop/idempotency path is left byte-identical (Fix 5).
 
     Returns {'status': 'written'|'skip', 'picked_date': ..., 'n_outcomes': int}.
     """
-    out_dir = os.path.join(data_dir, OUTCOMES_SUBDIR)
+    out_dir = os.path.join(data_dir, out_subdir)
     out_path = os.path.join(out_dir, f"{asof_date}.json")
 
     # Idempotency: skip when a complete file already exists.
@@ -288,7 +294,7 @@ def compute_outcomes(data_dir, asof_date, n_days=DEFAULT_N_DAYS, fetch_fn=None):
         except Exception:
             pass   # corrupt/partial → fall through and recompute
 
-    picks = load_picks(data_dir, asof_date)
+    picks = (picks_loader or load_picks)(data_dir, asof_date)
     if not picks:
         log.warning("SKIP compute_outcomes %s: no picks", asof_date)
         return {"status": "skip", "picked_date": asof_date, "n_outcomes": 0}
@@ -395,6 +401,45 @@ def summarize_hit_rate(data_dir):
         "d5_win_rate": (wins / n_scored) if n_scored else None,
         "avoid_stop_rate": (stop_avoided / stop_denom) if stop_denom else None,
         "avg_ret_5": (round(sum(rets) / n_scored, 3) if n_scored else None),
+    }
+
+
+def summarize_horizon(data_dir, out_subdir, ret_key):
+    """Generic rolling rollup of one forward-return horizon over an outcomes subdir.
+
+    Fix 5: surfaces the D+20 ledger (out_subdir='_outcomes_20', ret_key='ret_20')
+    as {n_scored, win_rate, avg_ret} — same fraction-0..1 + percent conventions as
+    summarize_hit_rate. Immature (None) rows are excluded. OVERLAY-NOT-SCORER:
+    self-evaluation context only, never a score input. Graceful → zeros on no data."""
+    out_dir = os.path.join(data_dir, out_subdir)
+    rets, wins, n_dates = [], 0, set()
+    for fp in sorted(glob.glob(os.path.join(out_dir, "*.json"))):
+        if os.path.basename(fp).startswith("_"):
+            continue
+        try:
+            with open(fp, encoding="utf-8") as f:
+                doc = json.load(f)
+        except Exception as e:
+            log.warning("SKIP summarize_horizon: bad file %s (%s)", fp, e)
+            continue
+        outcomes = doc.get("outcomes") if isinstance(doc, dict) else None
+        if not isinstance(outcomes, list):
+            continue
+        n_dates.add(doc.get("picked_date"))
+        for o in outcomes:
+            if not isinstance(o, dict):
+                continue
+            v = o.get(ret_key)
+            if v is not None:
+                rets.append(float(v))
+                if float(v) > 0:
+                    wins += 1
+    n = len(rets)
+    return {
+        "n_scored": n,
+        "n_dates": len(n_dates),
+        "win_rate": (wins / n) if n else None,
+        "avg_ret": (round(sum(rets) / n, 3) if n else None),
     }
 
 

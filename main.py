@@ -47,6 +47,7 @@ import fundamentals
 import watchlist_tracker
 import stock_detail
 import overlay_snapshot
+import radar_outcomes
 import pick_outcomes
 import strategy_health as strategy_health_mod
 import shadow_portfolio as shadow_mod
@@ -595,6 +596,39 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP detail files: %s", e); skips.append("detail_files")
 
+    # 7c-score. Fix 1 (GAP C): score the WIDE opportunity universe (~600 names) through the
+    #     SAME backtest-gated rank_stocks formula as the 28-name core board, and surface a
+    #     全市場精選 'scored_universe' board. Resource-thin small-caps simply don't fire the
+    #     chip/法人 factors (graceful None in score_stock) → they rank lower, not penalised.
+    #     Runs BEFORE the opp['_data'] pop below (consumes the already-fetched OHLCV — NO extra
+    #     network). OVERLAY-NOT-SCORER for the core picks: this is a SEPARATE board; `ranked`
+    #     above is already final and untouched. SKIP-not-abort: a failure → empty board.
+    scored_universe = []
+    try:
+        _opp_data = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
+        if _opp_data:
+            _core_syms = {it["stock"] for it in ranked}
+            _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst, frames=frames)
+            # Enrich each scored row with last close + 1-day %chg from the already-fetched
+            # OHLCV so the PWA board + radar ledger (Fix 2) have a price. Graceful per row.
+            for _r in _opp_ranked:
+                _rdf = _opp_data.get(_r["stock"])
+                if _rdf is not None and not getattr(_rdf, "empty", True) and len(_rdf) >= 1:
+                    try:
+                        _c = float(_rdf["Close"].iloc[-1]); _r["price"] = round(_c, 2)
+                        if len(_rdf) >= 2:
+                            _p = float(_rdf["Close"].iloc[-2])
+                            if _p > 0:
+                                _r["change_pct"] = round((_c / _p - 1) * 100, 2)
+                    except Exception:
+                        pass
+            scored_universe = web_export.select_scored_universe(
+                _opp_ranked, exclude=_core_syms, top_n=config.SCORED_UNIVERSE_N)
+            log.info("scored universe: %d ranked, %d on board",
+                     len(_opp_ranked), len(scored_universe))
+    except Exception as e:
+        log.warning("SKIP scored universe: %s", e); skips.append("scored_universe")
+
     # Belt-and-suspenders: drop the heavy OHLCV frames from opp now that the
     # detail-file loop (A3) has consumed them.  web_export.build_payload also
     # strips '_data', but releasing the DataFrames here avoids keeping ~600×N
@@ -637,10 +671,19 @@ def main(web=False):
 
     # symbols of interest = the displayed picks (bare TWSE code + full symbol both kept so
     # a {2330 -> ...} overlay map resolves to a 2330.TW card and vice-versa).
+    # Fix 4 (GAP D): WIDEN coverage beyond the ~12 displayed picks to the radar cohort —
+    #     opportunity leaders + the Fix-1 scored_universe — so the whole-market keyless data
+    #     we already fetch (BWIBBU PE / T86 三大法人 / 融資券 margin / FINRA short%) attaches to
+    #     MANY more names instead of being thrown away. The fetch is already whole-market; this
+    #     only widens the to_overlays_* `symbols` filter. OVERLAY-NOT-SCORER: informational only.
     _pick_syms = [it["stock"] for it in ranked[:config.DISPLAY_N]]
-    _tw_codes = {s.replace(".TWO", "").replace(".TW", "") for s in _pick_syms
-                 if s.endswith((".TW", ".TWO"))}
-    _us_syms = {s for s in _pick_syms if not s.endswith((".TW", ".TWO"))}
+    _overlay_syms = list(_pick_syms)
+    _overlay_syms += [ld.get("ticker") for ld in (opp or {}).get("leaders", [])
+                      if isinstance(ld, dict) and ld.get("ticker")]
+    _overlay_syms += [r.get("stock") for r in (scored_universe or []) if r.get("stock")]
+    _tw_codes = {s.replace(".TWO", "").replace(".TW", "") for s in _overlay_syms
+                 if s and s.endswith((".TW", ".TWO"))}
+    _us_syms = {s for s in _overlay_syms if s and not s.endswith((".TW", ".TWO"))}
 
     # --- TWSE 上市 chip/法人/基本面 (T86 三大法人 + MI_MARGN 融資融券 + BWIBBU PE) -----
     try:
@@ -1101,9 +1144,20 @@ def main(web=False):
             macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
             overlays_map=overlays_map, source_coverage=source_coverage,
             environment=environment, my_positions=my_positions,
-            momentum_portfolio=momentum_lens)
+            momentum_portfolio=momentum_lens, scored_universe=scored_universe)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
+
+        # Fix 3 (GAP A): emit the all-market search index so the PWA can resolve ANY listed
+        #     code/name, not just the ~30 actionable names. SEPARATE lightweight cached file —
+        #     never inlined into the per-day payload. SKIP-not-abort (partial sources degrade).
+        try:
+            _uni_rows = universe_mod.full_market_index()
+            if _uni_rows:
+                _up = web_export.write_universe_index(_uni_rows, config.WEB_DIR)
+                log.info("universe index: %d names → %s", len(_uni_rows), _up)
+        except Exception as _ue:
+            log.warning("SKIP universe index: %s", _ue); skips.append("universe_index")
 
         # 8c. W1 pick-outcome backfill — "did our picks actually work?". Runs AFTER the
         #     payload is written (so today's <date>.json is on disk and globbable). For the
@@ -1125,6 +1179,44 @@ def main(web=False):
                 except Exception as _oe:
                     log.warning("SKIP compute_outcomes %s: %s", _asof, _oe)
             payload["pick_performance"] = pick_outcomes.summarize_hit_rate(data_dir)
+            # Fix 5: D+20 horizon — a SEPARATE ledger (n_days=20, _outcomes_20 subdir) so the
+            #     D+5 stop/idempotency path above stays byte-identical. Merged additively into
+            #     pick_performance as d20_win_rate / avg_ret_20 / n_scored_20. SKIP-not-abort.
+            try:
+                for _fp20 in _pick_files[-10:]:
+                    _asof20 = os.path.basename(_fp20)[:-5]
+                    try:
+                        pick_outcomes.compute_outcomes(data_dir, _asof20, n_days=20,
+                                                       out_subdir="_outcomes_20")
+                    except Exception as _oe20:
+                        log.warning("SKIP compute_outcomes(D+20) %s: %s", _asof20, _oe20)
+                _d20 = pick_outcomes.summarize_horizon(data_dir, "_outcomes_20", "ret_20")
+                payload["pick_performance"]["d20_win_rate"] = _d20["win_rate"]
+                payload["pick_performance"]["avg_ret_20"] = _d20["avg_ret"]
+                payload["pick_performance"]["n_scored_20"] = _d20["n_scored"]
+            except Exception as _e20:
+                log.warning("SKIP D+20 pass: %s", _e20)
+            # 8c-radar. Fix 2 (GAP E): radar forward-accuracy ledger — track the opportunity-
+            #     leader + scored_universe cohort the SAME way picks are tracked, in a SEPARATE
+            #     _radar_outcomes ledger (custom picks_loader). Surfaced as radar_performance so
+            #     "雷達準確率" is answerable. OVERLAY-NOT-SCORER: never feeds scoring. SKIP-not-abort.
+            try:
+                for _fpr in _pick_files[-10:]:
+                    _asofr = os.path.basename(_fpr)[:-5]
+                    try:
+                        pick_outcomes.compute_outcomes(
+                            data_dir, _asofr, n_days=5,
+                            out_subdir=radar_outcomes.RADAR_SUBDIR,
+                            picks_loader=radar_outcomes.load_leaders)
+                    except Exception as _oer:
+                        log.warning("SKIP radar outcomes %s: %s", _asofr, _oer)
+                payload["radar_performance"] = radar_outcomes.summarize_radar(data_dir)
+                _rp = payload["radar_performance"]
+                log.info("radar performance: %d scored over %d dates, win %.0f%%",
+                         _rp.get("n_scored") or 0, _rp.get("n_dates") or 0,
+                         100 * (_rp.get("win_rate") or 0.0))
+            except Exception as _er:
+                log.warning("SKIP radar performance: %s", _er); skips.append("radar_performance")
             # 8c-attr. Performance attribution (P2-S1): JOIN the freshly-written _outcomes rows
             #     back to their same-day picks → which TRIGGERED signals / regimes our picks
             #     actually rode, plus a HYPOTHETICAL equal-weight NAV replay. Runs AFTER

@@ -114,6 +114,35 @@ def opportunity_universe(cap_n=None, scan_limit=None):
     return _merge(us, tw_anchors, tw_top, scan_limit), names
 
 
+def full_market_index():
+    """[[code, name, market], …] for the ENTIRE keyless searchable universe.
+
+    Fix 3 (GAP A): the full TWSE + TPEx common-stock lists (NOT capped to the
+    top-400 scan set) + the US opportunity CSV, so the PWA all-market search can
+    resolve ANY listed code/name — not just the ~30 actionable picks. Each source
+    is independently wrapped: a dead source degrades the index, never aborts."""
+    rows, seen = [], set()
+
+    def add(code, name, market):
+        if code and code not in seen:
+            seen.add(code)
+            rows.append([code, name or code, market])
+
+    try:
+        for c, (nm, _dv) in twse_universe().items():
+            add(c, nm, "TW")
+    except Exception as e:
+        log.warning("SKIP full_market_index TWSE: %s", e)
+    try:
+        for c, (nm, _dv) in tpex_universe().items():
+            add(c, nm, "TWO")
+    except Exception as e:
+        log.warning("SKIP full_market_index TPEx: %s", e)
+    for r in load_us_universe():
+        add(r.get("ticker"), r.get("name"), "US")
+    return rows
+
+
 _TRANSIENT_MARKERS = ("429", "too many requests", "connectionerror", "timeout",
                       "connection", "500", "502", "503", "504", "service unavailable",
                       "internal server error", "bad gateway", "gateway timeout")

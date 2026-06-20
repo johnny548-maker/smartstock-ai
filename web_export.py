@@ -97,6 +97,19 @@ def _overlays_for(symbol, overlays_map):
     return out
 
 
+def select_scored_universe(opp_ranked, exclude=None, top_n=12):
+    """Top-N of the WIDE-universe rank_stocks output, minus the core picks.
+
+    Fix 1 (GAP C): rank_stocks (strategy.py) is universe-agnostic + pure, so the
+    daily run scores the ~600-name opportunity universe through the SAME
+    backtest-gated formula. This selector trims that scored list to a display
+    board: drop any symbol already shown as a core pick, keep rank order, cap N.
+    Pure — returns a NEW list, never mutates its input (OVERLAY-NOT-SCORER)."""
+    exclude = exclude or set()
+    out = [r for r in (opp_ranked or []) if r.get("stock") not in exclude]
+    return out[:top_n]
+
+
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
@@ -105,7 +118,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   watchlist=None, early_board=None, overlays_map=None, source_coverage=None,
                   environment=None, my_positions=None, attribution=None,
                   strategy_health=None, shadow=None, health=None,
-                  momentum_portfolio=None):
+                  momentum_portfolio=None, scored_universe=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -202,6 +215,12 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # NEVER summed into strategy.score_stock / rank_stocks (golden-additive invariant).
         # Backward-compatible: defaults to {} so older callers/payloads are unaffected.
         "momentum_portfolio": momentum_portfolio or {},
+        # Fix 1 (GAP C) 全市場精選 — top-N of the ~600 opportunity universe scored
+        # through the SAME gated rank_stocks formula as the core picks (resource-thin
+        # names simply don't fire chip/法人 factors → lower, not penalised). ADDITIVE
+        # top-level board; NEVER perturbs picks/score/rank (golden-additive invariant).
+        # Backward-compatible: defaults to [] so older callers/payloads are unaffected.
+        "scored_universe": scored_universe or [],
         "picks": picks,
         "search": search,
         "allocation": allocation,
@@ -246,3 +265,32 @@ def export(payload, web_dir):
         json.dump(_clean(payload), f, ensure_ascii=False, indent=1, allow_nan=False)
     _rebuild_index(data_dir)
     return data_dir
+
+
+def write_universe_index(rows, web_dir):
+    """Write data/_universe.json = deduped [[code,name,market],…] for all-market search.
+
+    Fix 3 (GAP A): a SEPARATE lightweight, idempotently-overwritten file (its own
+    cache) — never inlined into the per-day payloads. Dedup by code (first wins),
+    drop blank codes. Compact separators keep the ~1800-row file small. Returns the
+    path. Pure shape; the only side effect is the single file write."""
+    seen, out = set(), []
+    for r in (rows or []):
+        if not r:
+            continue
+        if isinstance(r, (list, tuple)):
+            code = r[0] if len(r) > 0 else None
+            name = r[1] if len(r) > 1 else None
+            market = r[2] if len(r) > 2 else None
+        else:
+            code, name, market = r.get("code"), r.get("name"), r.get("market")
+        if not code or code in seen:
+            continue
+        seen.add(code)
+        out.append([code, name or code, market or ""])
+    data_dir = os.path.join(web_dir, "data")
+    os.makedirs(data_dir, exist_ok=True)
+    path = os.path.join(data_dir, "_universe.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
+    return path
