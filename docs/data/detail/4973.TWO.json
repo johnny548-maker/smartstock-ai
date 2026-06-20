@@ -482,7 +482,7 @@
    "h": 197.5,
    "l": 188.0,
    "c": 193.5,
-   "v": 3967334
+   "v": 3913408
   }
  ],
  "sr": {
@@ -573,7 +573,7 @@
     "total": -288044
    },
    "severity": "info",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-20",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -586,8 +586,17 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-20",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 26.54,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=26.54；WoW-4.95；股東人數+1507"
   }
  ]
 }

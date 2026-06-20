@@ -33,7 +33,8 @@ from factor_signals import mom_12_1
 
 log = logging.getLogger(__name__)
 
-DEFAULT_TOP_N = 20
+DEFAULT_TOP_N = 10        # #4 Calmar-winner: top-10 (was 20) — concentrated cohort
+DEFAULT_LOOKBACK = 126    # #4 Calmar-winner: 6-1 momentum (was 12-1/252) — 6mo beat 12mo
 
 # VERBATIM honest-disclosure lines (decision §3 揭露 + §Momentum 框架錯配). These
 # are the canonical strings the PWA + report render; do NOT trim or paraphrase.
@@ -45,8 +46,8 @@ DISCLAIMERS = [
 ]
 
 
-def rank_momentum(histories, top_n=DEFAULT_TOP_N, names=None):
-    """Rank a {ticker: OHLCV-DataFrame} map by 12-1 momentum, descending.
+def rank_momentum(histories, top_n=DEFAULT_TOP_N, names=None, lookback=DEFAULT_LOOKBACK):
+    """Rank a {ticker: OHLCV-DataFrame} map by N-1 momentum, descending.
 
     Returns the top_n rows as dicts: {ticker, name, mom, price}. A name with
     insufficient bars / a bad frame (mom_12_1 → None) is EXCLUDED (never ranked
@@ -61,7 +62,7 @@ def rank_momentum(histories, top_n=DEFAULT_TOP_N, names=None):
     names = names or {}
     rows = []
     for ticker, df in (histories or {}).items():
-        m = mom_12_1(df)              # None on short/None/bad frame → skip
+        m = mom_12_1(df, lookback=lookback)   # None on short/None/bad frame → skip
         if m is None:
             continue
         price = None
@@ -122,7 +123,8 @@ def read_track_record(path):
 
 
 def build_lens(tw_histories, us_histories, backtest_tw_json, backtest_us_json,
-               top_n=DEFAULT_TOP_N, tw_names=None, us_names=None):
+               top_n=DEFAULT_TOP_N, tw_names=None, us_names=None,
+               lookback=DEFAULT_LOOKBACK):
     """Assemble the full 動能組合 lens dict for the PWA payload / report.
 
     Returns:
@@ -140,11 +142,13 @@ def build_lens(tw_histories, us_histories, backtest_tw_json, backtest_us_json,
     """
     return {
         "tw": {
-            "holdings": rank_momentum(tw_histories, top_n=top_n, names=tw_names),
+            "holdings": rank_momentum(tw_histories, top_n=top_n, names=tw_names,
+                                      lookback=lookback),
             "track_record": read_track_record(backtest_tw_json),
         },
         "us": {
-            "holdings": rank_momentum(us_histories, top_n=top_n, names=us_names),
+            "holdings": rank_momentum(us_histories, top_n=top_n, names=us_names,
+                                      lookback=lookback),
             "track_record": read_track_record(backtest_us_json),
         },
         "disclaimers": list(DISCLAIMERS),

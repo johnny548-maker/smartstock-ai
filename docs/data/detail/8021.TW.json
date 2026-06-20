@@ -482,7 +482,7 @@
    "h": 554.0,
    "l": 531.0,
    "c": 543.0,
-   "v": 1181678
+   "v": 1091314
   }
  ],
  "sr": {
@@ -565,6 +565,44 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 252,938 股",
+   "value": {
+    "foreign": 234398,
+    "trust": 0,
+    "dealer": 18540,
+    "total": 252938
+   },
+   "severity": "info",
+   "as_of": "2026-06-20",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -8
+   },
+   "severity": "info",
+   "as_of": "2026-06-20",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 155.6 / 殖利率 0.37% / PB 14.64",
+   "value": {
+    "pe": 155.59,
+    "yield": 0.37,
+    "pb": 14.64
+   },
+   "severity": "info",
+   "as_of": "2026-06-18",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_punish",
    "kind": "risk",
    "label": "🚫 處置股（第2次） 處置期間：115/06/16～115/06/30",
@@ -574,8 +612,17 @@
     "period": "115/06/16～115/06/30"
    },
    "severity": "risk",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-20",
    "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 46.57,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=46.57；WoW-5.73；股東人數+11595"
   }
  ]
 }

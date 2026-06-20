@@ -144,7 +144,7 @@ def test_load_universe_parses_markets():
 # ── 12-1 momentum (self-contained, LOOKBACK=252 / SKIP=21) ──────────────────
 
 def test_momentum_constants():
-    assert bp.LOOKBACK == 252
+    assert bp.LOOKBACK == 126        # #4 Calmar-winner: 6mo lookback (was 252)
     assert bp.SKIP == 21
 
 
@@ -156,9 +156,9 @@ def test_mom_12_1_known_value():
     # Act
     mom = bp._mom_12_1(close)
 
-    # Assert — at last row: close[t-21] / close[t-252] - 1
+    # Assert — at last row: close[t-21] / close[t-LOOKBACK] - 1 (LOOKBACK=126 per #4)
     t = len(dates) - 1
-    expected = close["A"].iloc[t - 21] / close["A"].iloc[t - 252] - 1.0
+    expected = close["A"].iloc[t - 21] / close["A"].iloc[t - bp.LOOKBACK] - 1.0
     assert mom["A"].iloc[-1] == pytest.approx(expected, rel=1e-12)
 
 

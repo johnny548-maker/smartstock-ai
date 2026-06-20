@@ -1,0 +1,831 @@
+{
+ "sleeve": "tw",
+ "objective": "calmar",
+ "quick": false,
+ "period": "15y",
+ "gate": {
+  "n_trials": 48,
+  "dsr": 0.9996930537179929,
+  "pbo": 0.002331002331002331,
+  "dsr_pass": true,
+  "pbo_pass": true
+ },
+ "ranked": [
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.4834905285860067,
+   "sharpe": 1.5402309607844014,
+   "max_dd": -0.38941828400063594,
+   "calmar": 1.2415712062077116,
+   "n_obs": 3520,
+   "oos_cagr": 0.934180924892998,
+   "oos_max_dd": -0.38941828400063594,
+   "oos_calmar": 2.398913875578252
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.4540869045918301,
+   "sharpe": 1.4663444492554534,
+   "max_dd": -0.4070520127205315,
+   "calmar": 1.115550078126235,
+   "n_obs": 3520,
+   "oos_cagr": 0.7570708451527906,
+   "oos_max_dd": -0.40580071025773345,
+   "oos_calmar": 1.8656222771812234
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.2792095495502229,
+   "sharpe": 1.5540014748725632,
+   "max_dd": -0.2556724088478899,
+   "calmar": 1.092059760411364,
+   "n_obs": 3520,
+   "oos_cagr": 0.36166904874391315,
+   "oos_max_dd": -0.2253524928257924,
+   "oos_calmar": 1.604903696465872
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.36661936213767343,
+   "sharpe": 1.5661023883715743,
+   "max_dd": -0.33912237305048865,
+   "calmar": 1.081082792738924,
+   "n_obs": 3520,
+   "oos_cagr": 0.8555070322842369,
+   "oos_max_dd": -0.3261876947797955,
+   "oos_calmar": 2.6227446527735423
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.4015906339110147,
+   "sharpe": 1.5625797722868906,
+   "max_dd": -0.37647514509644897,
+   "calmar": 1.0667122096682675,
+   "n_obs": 3520,
+   "oos_cagr": 0.8715699037899842,
+   "oos_max_dd": -0.37647514509644897,
+   "oos_calmar": 2.3150795348433886
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.33945520687802677,
+   "sharpe": 1.493193570508126,
+   "max_dd": -0.32079185867513993,
+   "calmar": 1.0581789958135654,
+   "n_obs": 3520,
+   "oos_cagr": 0.36759120112058485,
+   "oos_max_dd": -0.2834514205300973,
+   "oos_calmar": 1.2968402149233662
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.2481816832068071,
+   "sharpe": 1.5481307266502542,
+   "max_dd": -0.23873295961234708,
+   "calmar": 1.039578630490749,
+   "n_obs": 3520,
+   "oos_cagr": 0.3561711098310414,
+   "oos_max_dd": -0.21967600486225025,
+   "oos_calmar": 1.621347356778368
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.3885805241919964,
+   "sharpe": 1.5143270751592057,
+   "max_dd": -0.3827069501987619,
+   "calmar": 1.0153474453238542,
+   "n_obs": 3520,
+   "oos_cagr": 0.7063221070248571,
+   "oos_max_dd": -0.37181474696208605,
+   "oos_calmar": 1.8996613576945638
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.34528318578455885,
+   "sharpe": 1.5152648708693532,
+   "max_dd": -0.353790698142719,
+   "calmar": 0.9759532616238309,
+   "n_obs": 3520,
+   "oos_cagr": 0.38967818085061,
+   "oos_max_dd": -0.30427030433026736,
+   "oos_calmar": 1.280697377643654
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.38690191929604056,
+   "sharpe": 1.4825627898172282,
+   "max_dd": -0.3968277670882061,
+   "calmar": 0.9749870129678722,
+   "n_obs": 3401,
+   "oos_cagr": 0.6851079742526058,
+   "oos_max_dd": -0.3968277670882061,
+   "oos_calmar": 1.7264617828528148
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.26757992050498824,
+   "sharpe": 1.5491270142504943,
+   "max_dd": -0.27639232076411213,
+   "calmar": 0.9681163346551699,
+   "n_obs": 3520,
+   "oos_cagr": 0.34209289383949537,
+   "oos_max_dd": -0.23477297634886884,
+   "oos_calmar": 1.4571221064691486
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.3513938967647998,
+   "sharpe": 1.5091403438302704,
+   "max_dd": -0.3629746464647676,
+   "calmar": 0.9680948798689941,
+   "n_obs": 3401,
+   "oos_cagr": 0.6998396660807602,
+   "oos_max_dd": -0.3629746464647676,
+   "oos_calmar": 1.9280676292323096
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.264920211201642,
+   "sharpe": 1.509772477833325,
+   "max_dd": -0.2737933874044919,
+   "calmar": 0.9675917074295846,
+   "n_obs": 3401,
+   "oos_cagr": 0.39221294861180467,
+   "oos_max_dd": -0.26390970965294025,
+   "oos_calmar": 1.4861633894698008
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.26984056275030555,
+   "sharpe": 1.5450450844293968,
+   "max_dd": -0.27924415160064187,
+   "calmar": 0.9663248494321744,
+   "n_obs": 3401,
+   "oos_cagr": 0.3325155228425203,
+   "oos_max_dd": -0.24756519196522409,
+   "oos_calmar": 1.3431432755265098
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.45443817633782535,
+   "sharpe": 1.476099850065111,
+   "max_dd": -0.470600682840432,
+   "calmar": 0.9656555821273917,
+   "n_obs": 3401,
+   "oos_cagr": 0.963672702649381,
+   "oos_max_dd": -0.470600682840432,
+   "oos_calmar": 2.0477503280124574
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.23207348052676458,
+   "sharpe": 1.5748908124353365,
+   "max_dd": -0.2407842864870543,
+   "calmar": 0.9638231959095966,
+   "n_obs": 3401,
+   "oos_cagr": 0.33223163975820214,
+   "oos_max_dd": -0.2169191191053471,
+   "oos_calmar": 1.5315922410548481
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.3423604094952848,
+   "sharpe": 1.4977036551615923,
+   "max_dd": -0.35564648105125773,
+   "calmar": 0.9626424771118203,
+   "n_obs": 3401,
+   "oos_cagr": 0.3724723250470716,
+   "oos_max_dd": -0.3192693409806969,
+   "oos_calmar": 1.1666398154703848
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 20,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.23160584129114437,
+   "sharpe": 1.587491993757824,
+   "max_dd": -0.2406517051634235,
+   "calmar": 0.9624109712161142,
+   "n_obs": 3520,
+   "oos_cagr": 0.34422077797303285,
+   "oos_max_dd": -0.20482394691862793,
+   "oos_calmar": 1.6805690113460425
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.44710783275377475,
+   "sharpe": 1.4409257066311745,
+   "max_dd": -0.46941958750518586,
+   "calmar": 0.9524694849867877,
+   "n_obs": 3401,
+   "oos_cagr": 0.8246841084107972,
+   "oos_max_dd": -0.46941958750518586,
+   "oos_calmar": 1.7568165674417806
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.3289499129056006,
+   "sharpe": 1.4590252284242842,
+   "max_dd": -0.3478663468262896,
+   "calmar": 0.9456215466276906,
+   "n_obs": 3401,
+   "oos_cagr": 0.40610728886138303,
+   "oos_max_dd": -0.31859568841552366,
+   "oos_calmar": 1.274679173723543
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.34936173050818864,
+   "sharpe": 1.512409387435818,
+   "max_dd": -0.37084504181692224,
+   "calmar": 0.9420693041938001,
+   "n_obs": 3520,
+   "oos_cagr": 0.6721113288833436,
+   "oos_max_dd": -0.35338231008318566,
+   "oos_calmar": 1.901938239990365
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.335287372012671,
+   "sharpe": 1.4762349830895765,
+   "max_dd": -0.3592548550664565,
+   "calmar": 0.9332855695176288,
+   "n_obs": 3520,
+   "oos_cagr": 0.37392734746809664,
+   "oos_max_dd": -0.3186889090992763,
+   "oos_calmar": 1.1733302816371711
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.22142900722646575,
+   "sharpe": 1.5482392964457496,
+   "max_dd": -0.2381419535950965,
+   "calmar": 0.9298193950443225,
+   "n_obs": 3401,
+   "oos_cagr": 0.339528179865356,
+   "oos_max_dd": -0.20551161777210591,
+   "oos_calmar": 1.652111854045461
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.3210698159218903,
+   "sharpe": 1.4503336984101722,
+   "max_dd": -0.3470750265806227,
+   "calmar": 0.9250732300882166,
+   "n_obs": 3401,
+   "oos_cagr": 0.40874058172058136,
+   "oos_max_dd": -0.3142299906295124,
+   "oos_calmar": 1.3007688441887142
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 10,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.2388848571297919,
+   "sharpe": 1.504845576102315,
+   "max_dd": -0.259335012886978,
+   "calmar": 0.9211438689688284,
+   "n_obs": 3401,
+   "oos_cagr": 0.38340278912991943,
+   "oos_max_dd": -0.259335012886978,
+   "oos_calmar": 1.478407349866838
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.2227851094565605,
+   "sharpe": 1.5667126802972406,
+   "max_dd": -0.24334137397411104,
+   "calmar": 0.915524991982097,
+   "n_obs": 3520,
+   "oos_cagr": 0.3263271703482853,
+   "oos_max_dd": -0.19962149102629867,
+   "oos_calmar": 1.6347296509537346
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 126
+   },
+   "cagr": 0.26390627255568355,
+   "sharpe": 1.5214672480498383,
+   "max_dd": -0.2904963626297231,
+   "calmar": 0.9084667021874824,
+   "n_obs": 3520,
+   "oos_cagr": 0.3259813071611912,
+   "oos_max_dd": -0.24588562017477744,
+   "oos_calmar": 1.325743680860561
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.3308563184814719,
+   "sharpe": 1.4360692386898275,
+   "max_dd": -0.36492512085757833,
+   "calmar": 0.9066416631005167,
+   "n_obs": 3401,
+   "oos_cagr": 0.7381940556395032,
+   "oos_max_dd": -0.36492512085757833,
+   "oos_calmar": 2.0228644547811303
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 30,
+    "rebalance": "monthly",
+    "lookback": 252
+   },
+   "cagr": 0.26251082156663563,
+   "sharpe": 1.5066865964391853,
+   "max_dd": -0.2912044963317124,
+   "calmar": 0.9014655504069151,
+   "n_obs": 3401,
+   "oos_cagr": 0.3489696815546699,
+   "oos_max_dd": -0.2466211458947999,
+   "oos_calmar": 1.4150030821101138
+  },
+  {
+   "config": {
+    "vol_target": false,
+    "sigma_target": null,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.3647607137094633,
+   "sharpe": 1.420176431500545,
+   "max_dd": -0.4074932250652208,
+   "calmar": 0.895133197984045,
+   "n_obs": 3401,
+   "oos_cagr": 0.7241185781021537,
+   "oos_max_dd": -0.4074932250652208,
+   "oos_calmar": 1.7770076496026552
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.2623127711683759,
+   "sharpe": 1.551482427907524,
+   "max_dd": -0.3001667390128576,
+   "calmar": 0.8738901985977193,
+   "n_obs": 3520,
+   "oos_cagr": 0.43791922416697004,
+   "oos_max_dd": -0.20757203224247733,
+   "oos_calmar": 2.1097217165336146
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.2858521973758126,
+   "sharpe": 1.5018521293102214,
+   "max_dd": -0.37123032917895227,
+   "calmar": 0.7700130482550551,
+   "n_obs": 3520,
+   "oos_cagr": 0.42543264630666267,
+   "oos_max_dd": -0.22126552354120033,
+   "oos_calmar": 1.9227245144110567
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.24561985062476555,
+   "sharpe": 1.475424586385157,
+   "max_dd": -0.3351745834923555,
+   "calmar": 0.7328116829907764,
+   "n_obs": 3401,
+   "oos_cagr": 0.4564147908876557,
+   "oos_max_dd": -0.25496828278493344,
+   "oos_calmar": 1.7900845779811876
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.23311562384334317,
+   "sharpe": 1.5106894464195266,
+   "max_dd": -0.32198516663782495,
+   "calmar": 0.7239949165284253,
+   "n_obs": 3520,
+   "oos_cagr": 0.39663462030488383,
+   "oos_max_dd": -0.2199448355736976,
+   "oos_calmar": 1.8033368197544346
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.3411897403592119,
+   "sharpe": 1.4166736843695102,
+   "max_dd": -0.48637916106010015,
+   "calmar": 0.7014892242002373,
+   "n_obs": 3520,
+   "oos_cagr": 0.44175732584136496,
+   "oos_max_dd": -0.2850951982788119,
+   "oos_calmar": 1.5495081239823045
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.2636611422420969,
+   "sharpe": 1.4347548869290119,
+   "max_dd": -0.3975464327609888,
+   "calmar": 0.6632209988930128,
+   "n_obs": 3520,
+   "oos_cagr": 0.38679982891557296,
+   "oos_max_dd": -0.25907627948204903,
+   "oos_calmar": 1.4929959226250726
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.3267381856729321,
+   "sharpe": 1.3651459561677541,
+   "max_dd": -0.49574914483525945,
+   "calmar": 0.659079675833852,
+   "n_obs": 3520,
+   "oos_cagr": 0.45229149214200115,
+   "oos_max_dd": -0.3205965033541077,
+   "oos_calmar": 1.4107811139862392
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.3340138936493908,
+   "sharpe": 1.3748591156485612,
+   "max_dd": -0.5124613211564706,
+   "calmar": 0.6517836173384213,
+   "n_obs": 3520,
+   "oos_cagr": 0.43844478242996554,
+   "oos_max_dd": -0.33545236009422164,
+   "oos_calmar": 1.3070254813733178
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.2224868719530535,
+   "sharpe": 1.458587830622059,
+   "max_dd": -0.34167211800261266,
+   "calmar": 0.6511706991301883,
+   "n_obs": 3520,
+   "oos_cagr": 0.3866054265615573,
+   "oos_max_dd": -0.2006365338734989,
+   "oos_calmar": 1.9268944648202084
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.2163316362488299,
+   "sharpe": 1.399741977814514,
+   "max_dd": -0.3339945964612584,
+   "calmar": 0.6477099885474441,
+   "n_obs": 3401,
+   "oos_cagr": 0.33836138177820674,
+   "oos_max_dd": -0.2266620362569881,
+   "oos_calmar": 1.4928012973225677
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.2672388473950722,
+   "sharpe": 1.4338467534439494,
+   "max_dd": -0.413711915213551,
+   "calmar": 0.6459539538693927,
+   "n_obs": 3401,
+   "oos_cagr": 0.44556869337181215,
+   "oos_max_dd": -0.26601613605625274,
+   "oos_calmar": 1.6749686691095709
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 126
+   },
+   "cagr": 0.2597140217969722,
+   "sharpe": 1.3960040644602258,
+   "max_dd": -0.42154955077640066,
+   "calmar": 0.6160936984006665,
+   "n_obs": 3520,
+   "oos_cagr": 0.3903375382457108,
+   "oos_max_dd": -0.24689023407236266,
+   "oos_calmar": 1.5810165181799143
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.24586069103487662,
+   "sharpe": 1.3393202659537806,
+   "max_dd": -0.4140995694262809,
+   "calmar": 0.593723609458245,
+   "n_obs": 3401,
+   "oos_cagr": 0.32423728758542447,
+   "oos_max_dd": -0.27251634874787334,
+   "oos_calmar": 1.189790223871678
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 10,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.3171440587064902,
+   "sharpe": 1.337085391245668,
+   "max_dd": -0.5403179698603267,
+   "calmar": 0.5869581920225097,
+   "n_obs": 3401,
+   "oos_cagr": 0.44719984867926565,
+   "oos_max_dd": -0.34301877212019627,
+   "oos_calmar": 1.3037182948184642
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.289235746070472,
+   "sharpe": 1.243039953008015,
+   "max_dd": -0.5001247949244556,
+   "calmar": 0.5783271475555644,
+   "n_obs": 3401,
+   "oos_cagr": 0.3733768989802011,
+   "oos_max_dd": -0.355563334435139,
+   "oos_calmar": 1.0500995541999891
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.2,
+    "top_n": 20,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.303945567835608,
+   "sharpe": 1.2755093050673136,
+   "max_dd": -0.5259048717439083,
+   "calmar": 0.5779478079899127,
+   "n_obs": 3401,
+   "oos_cagr": 0.35325481679179993,
+   "oos_max_dd": -0.3592301234211639,
+   "oos_calmar": 0.9833663542120089
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.12,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.2004376250155313,
+   "sharpe": 1.3109077073022615,
+   "max_dd": -0.3797261128043601,
+   "calmar": 0.5278478836634536,
+   "n_obs": 3401,
+   "oos_cagr": 0.3324022114963445,
+   "oos_max_dd": -0.2203981931908875,
+   "oos_calmar": 1.5081893670900017
+  },
+  {
+   "config": {
+    "vol_target": true,
+    "sigma_target": 0.15,
+    "top_n": 30,
+    "rebalance": "quarterly",
+    "lookback": 252
+   },
+   "cagr": 0.23179421984003357,
+   "sharpe": 1.242555385767636,
+   "max_dd": -0.4701574712397961,
+   "calmar": 0.4930140091761101,
+   "n_obs": 3401,
+   "oos_cagr": 0.33119252390230347,
+   "oos_max_dd": -0.27197046155610904,
+   "oos_calmar": 1.2177518176325064
+  }
+ ]
+}

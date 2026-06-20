@@ -40,6 +40,31 @@ async function getJSON(url) {
   if (!res.ok) throw new Error(url + ' → ' + res.status);
   return res.json();
 }
+// Fix 3 (GAP A): lazily-loaded ALL-MARKET search index [[code,name,market],…]. Loaded once
+// on first search; degrades to actionable-only search if the file isn't generated yet/offline.
+let UNIVERSE_IDX = null;
+async function loadUniverseIdx() {
+  if (UNIVERSE_IDX) return UNIVERSE_IDX;
+  try { UNIVERSE_IDX = await getJSON('data/_universe.json'); }
+  catch (e) { UNIVERSE_IDX = []; }
+  return UNIVERSE_IDX;
+}
+// #3: lazily-loaded verdict map {code:{s:score,l:light}} for every scored name → search
+// shows a current 買入/觀望/不持有 recommendation. Degrades silently if not generated yet.
+let VERDICTS = null;
+async function loadVerdicts() {
+  if (VERDICTS) return VERDICTS;
+  try { VERDICTS = await getJSON('data/_verdicts.json'); }
+  catch (e) { VERDICTS = {}; }
+  return VERDICTS;
+}
+const VLABEL = { green: '建議買入', amber: '觀望', red: '不持有' };
+function verdictBadge(code) {
+  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  if (!v || !VLABEL[v.l]) return '';
+  const cls = v.l === 'green' ? 'up' : (v.l === 'red' ? 'down' : '');
+  return ` <span class="vbadge ${cls}">${VLABEL[v.l]}${v.s != null ? ' ·' + esc(v.s) : ''}</span>`;
+}
 function toast(msg, ms) {
   const t = $('status'); if (!t) return;
   t.textContent = msg; t.classList.add('show');
@@ -777,6 +802,8 @@ function bindDeck() {
    BOTTOM SHEET — open / drag / snap (half / full) / close
    ============================================================================ */
 let SHEET_STATE = 'closed';   // closed | open(half) | full
+let CUR_SHEET_ID = null;      // #2: which logical sheet is open (market/self/opp/stock/…)
+let RETURN_SHEET = null;      // #2: {id, scroll} of the sheet to re-open when a stock detail is dismissed
 /* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
    open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
    Gated on reduced-motion + GSAP presence; killed on close (clearProps leaves no residue). */
@@ -795,6 +822,7 @@ function revealSheet() {
 }
 function openSheet(title, bodyHtml, opts) {
   opts = opts || {};
+  CUR_SHEET_ID = opts.id || null;
   $('sheetTitle').innerHTML = title;
   $('sheetBody').innerHTML = bodyHtml;
   $('sheetBody').scrollTop = 0;
@@ -819,6 +847,7 @@ function closeSheet() {
   sheet.style.transform = '';
   scrim.classList.remove('show');
   SHEET_STATE = 'closed';
+  CUR_SHEET_ID = null;
   // tear down any live K-line in the sheet
   const k = sheet.querySelector('[id^="kline"]');
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
@@ -833,6 +862,37 @@ function closeSheet() {
   }
 }
 window.ssCloseSheet = closeSheet;
+
+// #2: a stock detail opened FROM a sheet (機會/自評/市場) should, on ✕/Esc, RETURN to
+// that sheet (restoring scroll) instead of dropping all the way out to the deck.
+const SHEET_REOPEN = {
+  market: ['市場環境', () => marketSheetBody(CUR), true],
+  self: ['持倉 / 自評', () => selfSheetBody(CUR), false],
+  opp: ['機會 / 持倉追蹤', () => oppSheetBody(CUR), true],
+};
+function reopenSheet(id, scroll) {
+  const cfg = SHEET_REOPEN[id];
+  if (!cfg || !CUR) { closeSheet(); return; }
+  // tear down any live K-line from the stock sheet we're leaving
+  const sheet = $('sheet');
+  const k = sheet.querySelector('[id^="kline"]');
+  if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
+  CUR_KLINE = null;
+  // leaving the stock route → restore the hash to the bare day first
+  const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
+  if (m) history.replaceState(null, '', '#' + m[1]);
+  openSheet(cfg[0], cfg[1](), { full: cfg[2], id: id, after: () => { if (scroll) $('sheetBody').scrollTop = scroll; } });
+}
+function dismissSheet() {
+  if (CUR_SHEET_ID === 'stock' && RETURN_SHEET) {
+    const ret = RETURN_SHEET; RETURN_SHEET = null;
+    reopenSheet(ret.id, ret.scroll);
+  } else {
+    RETURN_SHEET = null;
+    closeSheet();
+  }
+}
+window.ssDismissSheet = dismissSheet;
 
 // drag-to-resize / dismiss via the grip
 function bindSheetDrag() {
@@ -1073,7 +1133,7 @@ async function openStockSheet(code) {
     } catch (e) { /* fall through to not-found */ }
   }
   if (!p) {
-    openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`);
+    openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`, { id: 'stock' });
     return;
   }
   const stock = p.stock || p.ticker;
@@ -1120,6 +1180,7 @@ async function openStockSheet(code) {
 
   openSheet(title, body, {
     full: true,
+    id: 'stock',
     after: () => {
       if (hasKline && window.LightweightCharts) renderCandles('kline', p.ohlc, p.sr, p.levels);
     },
@@ -1535,7 +1596,8 @@ function radarMerge(d) {
     let r = rows.get(tk);
     if (!r) {
       r = { ticker: tk, name: name || tk, ready: false, rs: null, light: null,
-            price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null };
+            price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null,
+            score: null };
       rows.set(tk, r);
     } else if (name && r.name === tk) r.name = name;
     return r;
@@ -1565,7 +1627,22 @@ function radarMerge(d) {
     r.sources.push('訊號×' + (s.count != null ? s.count : '?'));
     addSig(r, s.signals);
   });
+  // Fix 1 (GAP C) + Fix 6 (GAP B): merge the 全市場精選 board — the ~600 opportunity universe
+  //   scored through the SAME backtest-gated rank_stocks formula — so the radar carries a
+  //   unified recommendation score, and sort by it FIRST (照推薦順序). Names with no quant
+  //   score (pure breakout/signal tells) fall after, ordered by the prior keys.
+  (d.scored_universe || []).forEach((s) => {
+    const tk = s.stock; if (!tk) return;
+    const r = rowFor(tk, s.name);
+    r.sources.push('精選分' + (s.score != null ? s.score : '?'));
+    if (s.score != null) r.score = s.score;
+    if (s.light) r.light = s.light || r.light;
+    if (s.price != null && r.price == null) r.price = s.price;
+    if (s.change_pct != null && r.change_pct == null) r.change_pct = s.change_pct;
+  });
+  const _sk = (x) => (x.score == null ? -1e9 : x.score);
   return Array.from(rows.values()).sort((a, b) =>
+    (_sk(b) - _sk(a)) ||
     (b.sources.length - a.sources.length) || ((b.ready ? 1 : 0) - (a.ready ? 1 : 0)) || ((b.rs || 0) - (a.rs || 0)));
 }
 
@@ -1703,18 +1780,40 @@ function searchPlaceholder(d) {
   return uniq.length < 2 ? '例 2882、3008' : '例 ' + uniq.join('、');
 }
 function searchBox(d) {
-  return `<div class="search"><input id="ssInput" type="search" placeholder="🔍 查代號或名稱（${esc(searchPlaceholder(d))}）" oninput="ssSearch(this.value)" autocomplete="off" aria-label="搜尋當日掃描名單">
+  return `<div class="search"><input id="ssInput" type="search" placeholder="🔍 查代號或名稱（${esc(searchPlaceholder(d))}）" oninput="ssSearch(this.value)" autocomplete="off" aria-label="搜尋全市場代號或名稱">
     <div id="ssResults" class="search-res"></div></div>`;
 }
-window.ssSearch = (q) => {
+// Fix 3 (GAP A): two-group search — today's actionable names (rich: 燈號/price/kind) FIRST,
+// then the ALL-MARKET index (every listed TWSE/TPEx/US code+name) so search resolves ANY
+// stock, not just the ~30 scanned ones. Async: the all-market group fills after the index
+// loads; a stale-query guard prevents a late result clobbering newer keystrokes.
+window.ssSearch = async (q) => {
   q = (q || '').trim().toLowerCase();
   const box = $('ssResults'); if (!box) return;
   if (!q) { box.innerHTML = ''; return; }
-  const hits = (CUR && CUR.search || []).filter((s) =>
+  await loadVerdicts();   // #3: so every result can show 建議買入/觀望/不持有 (cached after 1st call)
+  const rich = (CUR && CUR.search || []).filter((s) =>
     s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
-  box.innerHTML = hits.length ? `<ul class="list">` + hits.map((s) =>
-    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span></div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>'
-    : '<div class="empty">查無結果。<br><span class="tiny">本搜尋僅含當日掃描名單（~30 檔 actionable 標的），非全市場代號查詢。</span></div>';
+  const richCodes = new Set(rich.map((s) => s.code));
+  const richHtml = rich.length ? `<div class="note">當日掃描名單</div><ul class="list">` + rich.map((s) =>
+    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span>${verdictBadge(s.code)}</div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>' : '';
+  box.innerHTML = richHtml + '<div class="empty tiny" id="ssMore">全市場搜尋中…</div>';
+  const idx = await loadUniverseIdx();
+  const live = $('ssInput'); if (!live || live.value.trim().toLowerCase() !== q) return;  // user moved on
+  const more = idx.filter((r) => r && r[0] && !richCodes.has(r[0]) &&
+    (String(r[0]).toLowerCase().includes(q) || String(r[1] || '').toLowerCase().includes(q))).slice(0, 20);
+  const moreBox = $('ssMore'); if (!moreBox) return;
+  if (!rich.length && !more.length) {
+    moreBox.outerHTML = '<div class="empty">查無結果。<br><span class="tiny">全市場代號／名稱皆無相符。</span></div>';
+    return;
+  }
+  moreBox.outerHTML = more.length
+    ? `<div class="note">全市場（${idx.length} 檔）</div><ul class="list">` + more.map((r) => {
+        const vb = verdictBadge(r[0]);
+        const tail = vb ? '' : ' · <span class="tiny">尚未評分（資料累積中）</span>';
+        return `<li><a href="#${esc(CUR_DATE)}/${esc(r[0])}" data-close-sheet><div class="li-main"><div class="li-name">${esc(r[1] || r[0])} <span class="tk">${esc(r[0])}</span>${vb}</div><div class="li-sub tiny">${esc(r[2] || '')}${tail}</div></div></a></li>`;
+      }).join('') + '</ul>'
+    : '';
 };
 
 /* ============================================================================
@@ -1742,15 +1841,15 @@ function bindChrome() {
   $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: false }));
   const hb = $('healthBanner');
   if (hb) hb.addEventListener('click', () => { if (CUR) openSheet('資料健康', healthSheetBody(CUR), { full: false }); });
-  $('sheetClose').addEventListener('click', closeSheet);
+  $('sheetClose').addEventListener('click', dismissSheet);
   $('scrim').addEventListener('click', closeSheet);
   $('dock').addEventListener('click', (e) => {
     const btn = e.target.closest('.dock-btn'); if (!btn) return;
     const which = btn.dataset.sheet;
     if (!CUR) { toast('資料尚未載入'); return; }
-    if (which === 'market') openSheet('市場環境', marketSheetBody(CUR), { full: true });
-    else if (which === 'self') openSheet('持倉 / 自評', selfSheetBody(CUR), { full: false });
-    else if (which === 'opp') openSheet('機會 / 持倉追蹤', oppSheetBody(CUR), { full: true });
+    if (which === 'market') openSheet('市場環境', marketSheetBody(CUR), { full: true, id: 'market' });
+    else if (which === 'self') openSheet('持倉 / 自評', selfSheetBody(CUR), { full: false, id: 'self' });
+    else if (which === 'opp') openSheet('機會 / 持倉追蹤', oppSheetBody(CUR), { full: true, id: 'opp' });
   });
   // delegated clicks inside the sheet body: opp tabs + close-on-navigate links
   $('sheetBody').addEventListener('click', (e) => {
@@ -1761,14 +1860,23 @@ function bindChrome() {
       // let the hash change route; close current sheet so the new one (stock) is clean
       const href = link.getAttribute('href') || '';
       const m = href.match(/^#(\d{4}-\d{2}-\d{2})\/(.+)$/);
-      if (m) { e.preventDefault(); closeSheet(); setTimeout(() => { location.hash = m[1] + '/' + m[2]; }, 60); }
+      if (m) {
+        e.preventDefault();
+        // #2: remember the originating sheet (機會/自評/市場) + its scroll so ✕ on the
+        // stock detail returns here instead of dropping out to the deck. Don't overwrite
+        // when drilling stock→stock (keep the original origin).
+        if (CUR_SHEET_ID && CUR_SHEET_ID !== 'stock') {
+          RETURN_SHEET = { id: CUR_SHEET_ID, scroll: $('sheetBody').scrollTop };
+        }
+        closeSheet(); setTimeout(() => { location.hash = m[1] + '/' + m[2]; }, 60);
+      }
       else if (/^#\d{4}-\d{2}-\d{2}$/.test(href)) { e.preventDefault(); closeSheet(); setTimeout(() => { location.hash = href.slice(1); }, 60); }
     }
   });
   bindSheetDrag();
   // keyboard: ←/→ deck nav, Esc closes sheet
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && SHEET_STATE !== 'closed') { closeSheet(); return; }
+    if (e.key === 'Escape' && SHEET_STATE !== 'closed') { dismissSheet(); return; }
     if (SHEET_STATE !== 'closed') return;
     if (e.key === 'ArrowRight') { goToPage(currentPageIndex() + 1); }
     else if (e.key === 'ArrowLeft') { goToPage(currentPageIndex() - 1); }

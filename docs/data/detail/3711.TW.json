@@ -567,24 +567,7 @@
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 613.0,
-  "stop": 570.09,
-  "target": 720.27,
-  "atr_bracket": 720.27,
-  "measured_move": 725.0,
-  "target_band": [
-   720.27,
-   725.0
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 5.4,
-  "swing_stop": 511.12,
-  "chandelier": 558.48,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
@@ -598,7 +581,7 @@
     "total": 5896912
    },
    "severity": "info",
-   "as_of": "2026-06-19",
+   "as_of": "2026-06-20",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -613,6 +596,15 @@
    "severity": "info",
    "as_of": "2026-06-18",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 87.07,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=87.07；WoW+0.02；股東人數-4033"
   }
  ]
 }

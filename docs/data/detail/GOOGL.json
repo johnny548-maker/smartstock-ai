@@ -482,7 +482,7 @@
    "h": 369.48,
    "l": 358.67,
    "c": 368.03,
-   "v": 44428200
+   "v": 44470100
   }
  ],
  "sr": {
@@ -575,16 +575,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 70 分 / 22 留言",
+   "label": "HN 討論熱度 20 篇 / 51 分 / 10 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 70,
-    "comments": 22,
+    "points": 51,
+    "comments": 10,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-06-19",
+   "as_of": "2026-06-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-19",
+   "as_of": "2026-06-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

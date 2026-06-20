@@ -90,6 +90,8 @@ VOLATILITY_CAP = 0.03           # daily pct-change std below this = stable (+poi
 MIN_BARS = 20                   # need at least this many bars to score
 TOP_N = 3                       # how many picks get full commentary + price levels
 DISPLAY_N = 12                  # how many ranked picks to show in report/PWA
+SCORED_UNIVERSE_N = 12          # Fix 1 (GAP C) 全市場精選: top-N of the ~600 opportunity
+                                # universe scored through the SAME gated rank_stocks formula
 
 # ── 燈號 score cut-offs (B4 — extracted from verdict.py so the 燈號 boundary is one source) ─
 SCORE_GREEN_MIN = 90            # score ≥ → 🟢

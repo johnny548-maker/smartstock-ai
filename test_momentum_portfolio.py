@@ -128,10 +128,19 @@ class TestRankMomentum(unittest.TestCase):
         self.assertEqual(mp.rank_momentum({}, top_n=20), [])
         self.assertEqual(mp.rank_momentum(None, top_n=20), [])
 
-    def test_default_top_n_is_20(self):
+    def test_default_top_n_is_10(self):
+        # #4 Calmar-winner: the lens cohort is top-10 (was 20).
         hist = {f"T{i:03d}": _mom_frame(400, 100.0, 100.0 + i) for i in range(30)}
         out = mp.rank_momentum(hist)
-        self.assertEqual(len(out), 20)
+        self.assertEqual(len(out), 10)
+        self.assertEqual(mp.DEFAULT_TOP_N, 10)
+        self.assertEqual(mp.DEFAULT_LOOKBACK, 126)
+
+    def test_lookback_param_passed_through(self):
+        # A 150-bar linear frame: long enough for 126 (computable) but too short for 252 (None).
+        hist = {"X": _frame([100.0 + i * 0.1 for i in range(150)])}
+        self.assertEqual(len(mp.rank_momentum(hist, lookback=126)), 1)
+        self.assertEqual(mp.rank_momentum(hist, lookback=252), [])
 
     def test_does_not_mutate_input_frame(self):
         hist = self._histories()

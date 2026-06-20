@@ -482,7 +482,7 @@
    "h": 329.51,
    "l": 294.81,
    "c": 328.91,
-   "v": 15971800
+   "v": 16009200
   }
  ],
  "sr": {
@@ -560,5 +560,22 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 52382,
+    "days": 4,
+    "max_shares": 31489,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-20",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

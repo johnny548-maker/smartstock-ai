@@ -1,0 +1,95 @@
+name: SmartStock Optimize Sleeve
+
+# #4: disciplined Calmar/Sharpe/DD optimisation of the momentum sleeve (vol-targeting grid +
+# DSR/PBO gates). HEAVY 15y x ~650-name compute → runs in the cloud, NOT on a local machine.
+# Manual (workflow_dispatch) + a monthly refresh. The 15y OHLCV cache is persisted via a rolling
+# actions/cache so the first run pays the ~350min download once and later runs reuse it.
+on:
+  workflow_dispatch:
+    inputs:
+      sleeve:
+        description: 'Which sleeve to optimise'
+        type: choice
+        options: [both, tw, us]
+        default: both
+      objective:
+        description: 'Objective function'
+        type: choice
+        options: [calmar, sharpe, maxdd_capped]
+        default: calmar
+      maxdd_cap:
+        description: 'MaxDD cap (only used when objective=maxdd_capped), e.g. 0.35'
+        default: '0.35'
+  schedule:
+    - cron: '43 6 7 * *'   # 7th of each month, 06:43 UTC — monthly re-optimise
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: smartstock-optimize
+  cancel-in-progress: false
+
+jobs:
+  notify-failure:
+    needs: [optimize]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
+  optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      # Persist the 15y OHLCV cache across runs: first run downloads (~350min), later runs reuse.
+      - name: Restore 15y OHLCV cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/ohlcv_15y
+          key: smartstock-ohlcv15y-${{ github.run_id }}
+          restore-keys: |
+            smartstock-ohlcv15y-
+
+      - name: Optimise sleeve(s)
+        env:
+          SLEEVE: ${{ github.event.inputs.sleeve || 'both' }}
+          OBJ: ${{ github.event.inputs.objective || 'calmar' }}
+          CAP: ${{ github.event.inputs.maxdd_cap || '0.35' }}
+        run: |
+          set -euo pipefail
+          run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP"; }
+          if [ "$SLEEVE" = "both" ]; then run_one tw; run_one us; else run_one "$SLEEVE"; fi
+
+      - name: Commit optimisation results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add optimize_*.txt optimize_*.json 2>/dev/null || true
+          git commit -m "optimize: $(date -u +%F) (${{ github.event.inputs.objective || 'calmar' }})" || echo "no changes to commit"
+          git push
