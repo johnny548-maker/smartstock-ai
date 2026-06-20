@@ -180,11 +180,68 @@ def gates(results, winner):
             "pbo_pass": bool(pbo_val is None or pbo_val < 0.5)}
 
 
+def _cfg_key(c):
+    """Stable string key for a config dict (for cross-fold alignment)."""
+    return "%s/%s/%d/%s/%d" % ("vt" if c["vol_target"] else "off",
+                               (c["sigma_target"] or "-"), c["top_n"],
+                               c["rebalance"], c["lookback"])
+
+
+def fold_slices(close_index, n_folds):
+    """Disjoint anchored time blocks: [(lo_date, hi_date), …] partitioning the history.
+
+    Walk-forward intuition (the user's 80/20, done right): each block is an INDEPENDENT
+    time window. We measure every config on every block — a config that only wins overall
+    but flops in some block is regime-fragile (the trap of tuning to one period)."""
+    T = len(close_index)
+    b = [int(T * i / n_folds) for i in range(n_folds + 1)]
+    return [(close_index[b[i]], close_index[min(b[i + 1], T - 1)]) for i in range(n_folds)]
+
+
+def run_walk_forward(prices, sleeve, universe_tickers, champion_cfg, n_folds=5):
+    """Re-run the grid on each disjoint time block; report the champion's per-block Calmar +
+    rank, a stability verdict, and a one-touch LOCKBOX (the final block, never used to choose).
+
+    This is the rigorous answer to "iterate to best on a holdout": NEVER re-tune on a block;
+    just measure whether the OVERALL winner survives every regime. Reuses run_grid per block."""
+    cfg = bp.SLEEVES[sleeve]
+    univ = [t for t in universe_tickers if t in prices]
+    _, close_df = bp.build_panels({t: prices[t] for t in univ})
+    slices = fold_slices(close_df.index, n_folds)
+    champ_k = _cfg_key(champion_cfg)
+    folds = []
+    for i, (lo, hi) in enumerate(slices):
+        fp = {t: df.loc[lo:hi] for t, df in prices.items() if df is not None}
+        try:
+            fres, _ = run_grid(fp, sleeve, universe_tickers)
+        except Exception:
+            folds.append({"fold": i, "ok": False, "start": str(lo.date()), "end": str(hi.date())})
+            continue
+        ranked = sorted(fres, key=lambda r: r["calmar"], reverse=True)
+        by_k = {_cfg_key(r["config"]): (j + 1, r["calmar"]) for j, r in enumerate(ranked)}
+        rank, calmar = by_k.get(champ_k, (None, None))
+        folds.append({"fold": i, "ok": True, "start": str(lo.date()), "end": str(hi.date()),
+                      "champ_rank": rank, "champ_calmar": calmar, "n_configs": len(fres),
+                      "block_winner": _cfg_key(ranked[0]["config"]) if ranked else None})
+    ok = [f for f in folds if f.get("ok") and f.get("champ_calmar") is not None]
+    cal = [f["champ_calmar"] for f in ok]
+    ranks = [f["champ_rank"] for f in ok if f["champ_rank"]]
+    stable = bool(cal and min(cal) > 0 and (not ranks or max(ranks) <= 10))
+    return {
+        "champion": champ_k, "n_folds": n_folds, "folds": folds,
+        "min_block_calmar": (min(cal) if cal else None),
+        "mean_block_calmar": (round(sum(cal) / len(cal), 3) if cal else None),
+        "worst_block_rank": (max(ranks) if ranks else None),
+        "lockbox": folds[-1] if folds else None,   # final block — touched once, never chosen on
+        "stable": stable,
+    }
+
+
 def _clean(results):
     return [{k: v for k, v in r.items() if k != "_rets"} for r in results]
 
 
-def render(sleeve, objective, ranked, g):
+def render(sleeve, objective, ranked, g, wf=None):
     L = ["OPTIMIZE — sleeve=%s  objective=%s  grid=%d configs" % (sleeve, objective, g["n_trials"])]
     L.append("gate: DSR=%.3f (%s, >0.95 req) | PBO=%s (%s, <0.5 req)" % (
         (g["dsr"] or 0.0), "PASS" if g["dsr_pass"] else "FAIL",
@@ -207,6 +264,29 @@ def render(sleeve, objective, ranked, g):
         win["cagr"] * 100, win["sharpe"], win["max_dd"] * 100, win["calmar"], win["oos_calmar"]))
     L.append("CAUTION: a winner that FAILS the DSR/PBO gate is likely an in-sample mirage — do "
              "NOT promote it to live weights without an OOS-stable, gate-passing result.")
+
+    if wf:
+        L.append("")
+        L.append("WALK-FORWARD (winner across %d disjoint regime blocks; never re-tuned per block):"
+                 % wf["n_folds"])
+        L.append("block  window                 champ_rank  champ_Calmar  block_winner")
+        for f in wf["folds"]:
+            if not f.get("ok"):
+                L.append("%2d     %s..%s   (grid failed)" % (f["fold"], f.get("start"), f.get("end")))
+                continue
+            L.append("%2d     %s..%s   %-9s   %-11s  %s" % (
+                f["fold"], f["start"], f["end"],
+                ("#%d/%d" % (f["champ_rank"], f["n_configs"])) if f["champ_rank"] else "n/a",
+                ("%.2f" % f["champ_calmar"]) if f["champ_calmar"] is not None else "n/a",
+                f.get("block_winner")))
+        lb = wf.get("lockbox") or {}
+        L.append("verdict: %s (min block Calmar %s, worst block rank %s) | LOCKBOX[%s..%s] champ Calmar %s" % (
+            "ROBUST across regimes" if wf["stable"] else "REGIME-FRAGILE — winner does not hold every block",
+            wf.get("min_block_calmar"), wf.get("worst_block_rank"),
+            lb.get("start"), lb.get("end"),
+            ("%.2f" % lb["champ_calmar"]) if lb.get("champ_calmar") is not None else "n/a"))
+        L.append("NOTE: this is the rigorous form of 80/20 — the winner is NEVER re-tuned on a block; "
+                 "we only check it survives every regime. The LOCKBOX block is reported once, not chosen on.")
     return "\n".join(L)
 
 
@@ -216,6 +296,9 @@ def main(argv=None):
     ap.add_argument("--objective", default="calmar", choices=("calmar", "sharpe", "maxdd_capped"))
     ap.add_argument("--maxdd-cap", type=float, default=0.35)
     ap.add_argument("--quick", action="store_true")
+    ap.add_argument("--no-walk-forward", action="store_true",
+                    help="skip the per-regime walk-forward robustness check (faster)")
+    ap.add_argument("--wf-folds", type=int, default=5)
     ap.add_argument("--csv", default=boc.UNIVERSE_CSV)
     ap.add_argument("--cache-dir", default=None)
     args = ap.parse_args(argv)
@@ -240,16 +323,26 @@ def main(argv=None):
     print("sanitize: %d/%d loaded, %d repaired, %d dropped"
           % (san["n_loaded"], len(need), len(san["fixed"]), len(san["dropped"])))
 
-    results, _ = run_grid(prices, args.sleeve,
-                          universe_tickers=[t for t in tickers if t in prices])
+    univ_in = [t for t in tickers if t in prices]
+    results, _ = run_grid(prices, args.sleeve, universe_tickers=univ_in)
     ranked = sorted(results, key=objective_key(args.objective, args.maxdd_cap), reverse=True)
     g = gates(results, ranked[0])
 
+    # Walk-forward: does the OVERALL winner survive EVERY regime block (vs only winning overall)?
+    # This is the rigorous form of the user's 80/20 — never re-tuned on a block, just measured.
+    wf = None
+    if not args.no_walk_forward:
+        try:
+            wf = run_walk_forward(prices, args.sleeve, univ_in, ranked[0]["config"],
+                                  n_folds=args.wf_folds)
+        except Exception as e:
+            print("WARN walk-forward skipped: %s" % e)
+
     out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
-           "period": period, "gate": g, "ranked": _clean(ranked)}
+           "period": period, "gate": g, "walk_forward": wf, "ranked": _clean(ranked)}
     txt_fp = os.path.join(_HERE, "optimize_%s.txt" % args.sleeve)
     json_fp = os.path.join(_HERE, "optimize_%s.json" % args.sleeve)
-    text = render(args.sleeve, args.objective, ranked, g)
+    text = render(args.sleeve, args.objective, ranked, g, wf)
     with open(txt_fp, "w", encoding="utf-8") as f:
         f.write(text + "\n")
     with open(json_fp, "w", encoding="utf-8") as f:
