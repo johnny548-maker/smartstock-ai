@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v46';
+const APP_VERSION = 'v47';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -977,7 +977,14 @@ function findCard(d, code) {
     || earlyBoardOf(d).find((x) => x.stock === code)
     || (d.scored_universe || []).find((x) => x.stock === code)   // Bug3: 全市場精選股
     || (d.signals || []).find((x) => x.stock === code)           // Bug3: 訊號雷達股
+    || _moverCard(d, code)                                       // #13: 漲跌榜股可點（顯漲跌+圖）
     || (d._lazy && d._lazy.stock === code ? d._lazy : null);
+}
+// #13: a 今日漲跌 mover (payload row is only {stock, pct}) → wrap as a thin card so a click
+// resolves to name + move + (detail-fetched) chart instead of the misleading 「不在掃描名單」.
+function _moverCard(d, code) {
+  const m = (d.movers || []).find((x) => x.stock === code);
+  return m ? { stock: code, change_pct: m.pct } : null;
 }
 
 // Bug3: a 全市場精選/雷達 stock has a score but no full pattern/risk card. Give it real

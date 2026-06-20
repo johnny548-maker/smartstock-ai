@@ -7,6 +7,7 @@ common stocks) is covered by scoring a ROTATING ~500-name batch each daily run t
 SAME backtest-gated rank_stocks, accumulating verdicts in a persistent store. Full coverage
 cycles in ~ceil(N/500) ≈ 12 days; each name refreshes on its next rotation. The store feeds
 the all-market search verdict index. OVERLAY-NOT-SCORER (display only, never feeds scoring)."""
+import datetime as dt
 import logging
 
 try:
@@ -83,9 +84,20 @@ def score_batch(frames, sp500_frame=None, names=None):
     return out
 
 
-def merge_store(store, fresh, asof):
-    """Accumulate fresh verdicts into the persistent store with an asof stamp. Pure (new dict)."""
-    out = dict(store or {})
+def merge_store(store, fresh, asof, max_age_days=21):
+    """Accumulate fresh verdicts into the persistent store with an asof stamp, EXPIRING entries
+    older than max_age_days (~1.5 rotation cycles) so a name scored once and never revisited does
+    not serve an indefinitely-stale verdict. Pure (new dict). asof is an ISO date string; the
+    cutoff is derived from it (deterministic, no wall clock)."""
+    try:
+        cutoff = (dt.date.fromisoformat(asof) - dt.timedelta(days=max_age_days)).isoformat()
+    except Exception:
+        cutoff = None                    # bad asof → don't expire (safety)
+    out = {}
+    for sym, v in (store or {}).items():
+        a = v.get("asof")
+        if cutoff is None or not a or a >= cutoff:   # keep fresh-enough (or un-stamped legacy)
+            out[sym] = v
     for sym, v in (fresh or {}).items():
         out[sym] = {**v, "asof": asof}
     return out

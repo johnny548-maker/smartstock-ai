@@ -50,6 +50,16 @@ class TestStore(unittest.TestCase):
         self.assertEqual(out["NVDA"]["s"], 95)
         self.assertEqual(out["NVDA"]["asof"], "2026-06-21")
 
+    def test_merge_expires_stale_entries(self):
+        # an entry 30 days old is dropped at the default 21-day max age; a recent one survives
+        store = {"OLD": {"s": 90, "l": "green", "asof": "2026-05-20"},
+                 "NEW": {"s": 80, "l": "amber", "asof": "2026-06-18"}}
+        out = um.merge_store(store, {"FRESH": {"s": 70, "l": "amber"}}, "2026-06-21")
+        self.assertNotIn("OLD", out)            # >21 days → expired
+        self.assertIn("NEW", out)               # 3 days → kept
+        self.assertIn("FRESH", out)             # just scored
+        self.assertEqual(out["FRESH"]["asof"], "2026-06-21")
+
 
 class TestScoreBatch(unittest.TestCase):
     def test_scores_frames_to_verdicts(self):
