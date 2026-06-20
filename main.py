@@ -645,6 +645,24 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP scored universe: %s", e); skips.append("scored_universe")
 
+    # Chart-for-every-stock: write a per-stock detail file (K-line OHLC) for EVERY opportunity-
+    #   universe name from the already-fetched OHLCV — so clicking ANY 機會/全市場精選/動能/雷達
+    #   stock (not just the core picks) shows its 技術線圖. Reuses the live `details` dict, which is
+    #   exported with the rest at the overlay-attach step (~line 1159). SKIP-not-abort.
+    try:
+        _opp_frames = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
+        _opp_nm = (opp or {}).get("names") or {}
+        _n_chart = 0
+        for _csym, _cdf in _opp_frames.items():
+            if _csym in details or _cdf is None or getattr(_cdf, "empty", True):
+                continue
+            details[_csym] = stock_detail.build_detail(
+                _csym, df=_cdf, name=_opp_nm.get(_csym) or config.STOCK_NAMES.get(_csym))
+            _n_chart += 1
+        log.info("opportunity chart detail files: +%d", _n_chart)
+    except Exception as e:
+        log.warning("SKIP opportunity detail files: %s", e)
+
     # itemC: full-US-market verdict coverage. No keyless bulk OHLC exists for US, so a ROTATING
     #   ~500-name batch of the full Nasdaq Trader directory (~5653 common stocks) is scored each
     #   run through the SAME gated rank_stocks and accumulated in a persistent store → full
@@ -659,6 +677,16 @@ def main(web=False):
                 _us_frames = us_market.fetch_batch(_batch)
                 _fresh = us_market.score_batch(
                     _us_frames, (frames or {}).get("sp500"), names=_us_names)
+                # Chart-for-every-stock: write a detail file per US batch stock (frames already
+                #   fetched) so each US verdict is clickable with its K-line. Same `details` dict.
+                try:
+                    for _usym, _udf in (_us_frames or {}).items():
+                        if _usym in details or _udf is None or getattr(_udf, "empty", True):
+                            continue
+                        details[_usym] = stock_detail.build_detail(
+                            _usym, df=_udf, name=_us_names.get(_usym))
+                except Exception as _de:
+                    log.warning("SKIP US detail files: %s", _de)
                 _store = us_market.merge_store(
                     us_market.load_store(config.US_VERDICTS_STATE), _fresh, date_str)
                 us_market.save_store(config.US_VERDICTS_STATE, _store)

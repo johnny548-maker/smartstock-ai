@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v44';
+const APP_VERSION = 'v45';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -1174,16 +1174,25 @@ async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
   let p = findCard(CUR, code);
-  if (!p) {
-    // lazy per-stock detail file
+  // A thin card (scored_universe / radar / leader without ohlc) makes findCard succeed but has
+  // NO chart. So whenever the card lacks a K-line, fetch the per-stock detail file and MERGE its
+  // ohlc/spark/sr/levels onto the (live-scored) card so every clickable stock shows its 技術線圖.
+  if (!p || !(p.ohlc && p.ohlc.length > 1)) {
     try {
       const lazy = await getJSON('data/detail/' + encodeURIComponent(code) + '.json');
       if (lazy && typeof lazy === 'object') {
-        if (!lazy.name) lazy.name = nameOf(code);
-        if (!lazy.stock) lazy.stock = code;
-        CUR._lazy = lazy; p = lazy;
+        const merged = p ? { ...lazy, ...p } : lazy;   // keep live score/factors, gain chart data
+        merged.ohlc = lazy.ohlc;
+        merged.spark = lazy.spark;
+        merged.spark_start = lazy.spark_start;
+        merged.spark_end = lazy.spark_end;
+        merged.sr = merged.sr || lazy.sr;
+        merged.levels = merged.levels || lazy.levels;
+        merged.name = merged.name || lazy.name || nameOf(code);
+        merged.stock = merged.stock || code;
+        p = merged; CUR._lazy = merged;
       }
-    } catch (e) { /* fall through to not-found */ }
+    } catch (e) { /* fall through — render whatever the card already has */ }
   }
   if (!p) {
     openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`, { id: 'stock' });
