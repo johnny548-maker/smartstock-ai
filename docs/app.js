@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v41';
+const APP_VERSION = 'v42';
 const APP_BUILD = '2026-06-16';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -554,7 +554,7 @@ function tiersPage(d) {
   });
   const rowHtml = (p) => {
     const t = tierOf(p.score);
-    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" data-flip-id="${esc(p.stock)}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
+    return `<button class="trow press tier-${t.id}" data-detail="${esc(p.stock)}" data-flip-id="${esc(p.stock)}" data-score="${p.score != null ? +p.score : ''}" data-chg="${p.change_pct != null ? +p.change_pct : ''}" aria-label="${esc(p.name || p.stock)} 分數 ${esc(p.score)}">
       <div class="tr-l">
         <div class="tr-name">${lightDot(p.light)} ${esc(p.name || p.stock)} <span class="tk num">${esc(p.stock)}</span>${warnChipsFor(p, clusters)}</div>
         <div class="tr-chips">${reasonChips(p, 2)}</div>
@@ -565,13 +565,15 @@ function tiersPage(d) {
   };
   const secs = groups.filter((g) => g.rows.length).map((g) =>
     `<div class="tier-h tier-${g.t.id}"><span>${esc(g.t.label)}</span><span class="tier-sub num">${esc(g.t.sub)} · ${g.rows.length} 檔</span></div>`
-    + g.rows.map(rowHtml).join('')).join('');
+    + g.rows.slice().sort(pickCmp(TIER_SORT)).map(rowHtml).join('')).join('');
+  const sortBtn = (k, label) => `<button type="button" data-sort="${k}"${TIER_SORT === k ? ' class="on"' : ''}>${label}</button>`;
   return `<section class="page" data-page="tiers" aria-roledescription="slide" aria-label="今日建議總覽">
     <div class="tiers">
       <div class="reveal">
         <div class="cv-kicker">今日建議</div>
         <div class="tiers-title">三層分級 <span class="num tiny">（依當日量化分數）</span></div>
       </div>
+      <div class="seg tier-sort reveal" role="tablist" aria-label="排序方式">${sortBtn('score', '分數')}${sortBtn('change', '漲跌')}${sortBtn('code', '代號')}</div>
       <div class="tier-list reveal">${secs || '<div class="empty">今日尚無選股。</div>'}</div>
       <p class="tiny" style="margin-top:10px">分級僅依當日量化分數與燈號（🟢≥90／🟡40–89／🔴<40），打分邏輯未變；警示 chip 為資訊性 overlay，不計入評分。僅供決策輔助，非買賣建議。</p>
     </div>
@@ -585,6 +587,7 @@ function tiersPage(d) {
    the deck, NOT ScrollTrigger — avoids fighting the native scroll-snap). Every deck
    rebuild kills prior tweens + disconnects the observer (mirrors the K-line teardown). */
 const _cuMM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+if (window.gsap && window.Flip) { try { window.gsap.registerPlugin(window.Flip); } catch (e) {} }
 let _cuIO = null;
 let _cuTweens = [];
 function _cuFmt(v, kind) {
@@ -645,6 +648,46 @@ function initCountUps(root) {
     });
   }, { root, threshold: [0, 0.55, 1] });
   root.querySelectorAll('.page').forEach((pg) => _cuIO.observe(pg));
+}
+
+/* ---------- tiers in-page sort + GSAP Flip reorder (phase 3) ----------
+   The 三層分級 list can be re-sorted in place (by score / change% / ticker) WITHOUT
+   rebuilding the deck, so the page stays in view and rows GLIDE to their new spot via
+   Flip. Sort persists in localStorage; reduced-motion (or no Flip) reorders instantly. */
+let TIER_SORT = 'score';
+try { const s = localStorage.getItem('ss_tier_sort'); if (s === 'change' || s === 'code') TIER_SORT = s; } catch (e) {}
+const _sortNum = (v) => { const n = parseFloat(v); return isFinite(n) ? n : -Infinity; };
+// comparator over pick OBJECTS (build-time order)
+function pickCmp(key) {
+  if (key === 'change') return (a, b) => _sortNum(b.change_pct) - _sortNum(a.change_pct);
+  if (key === 'code') return (a, b) => String(a.stock).localeCompare(String(b.stock));
+  return (a, b) => _sortNum(b.score) - _sortNum(a.score);   // score desc (default)
+}
+// comparator over DOM .trow rows (live re-sort, reads data-* attrs)
+function rowCmp(key) {
+  if (key === 'change') return (a, b) => _sortNum(b.dataset.chg) - _sortNum(a.dataset.chg);
+  if (key === 'code') return (a, b) => (a.dataset.flipId || '').localeCompare(b.dataset.flipId || '');
+  return (a, b) => _sortNum(b.dataset.score) - _sortNum(a.dataset.score);
+}
+// re-order rows WITHIN each tier section in place; Flip glides the moves
+function applyTierSort(key) {
+  const list = document.querySelector('.page[data-page="tiers"] .tier-list');
+  if (!list) return;
+  const groups = []; let cur = null;
+  [...list.children].forEach((el) => {
+    if (el.classList.contains('tier-h')) { cur = { header: el, rows: [] }; groups.push(cur); }
+    else if (el.classList.contains('trow') && cur) cur.rows.push(el);
+  });
+  const canFlip = !_cuMM.matches && window.gsap && window.Flip;
+  const state = canFlip ? window.Flip.getState(list.querySelectorAll('.trow')) : null;
+  const cmp = rowCmp(key);
+  // appendChild MOVES existing nodes; iterating tiers in order rebuilds the correct
+  // header→sorted-rows sequence. Headers keep their order (not in the Flip state).
+  groups.forEach((g) => {
+    list.appendChild(g.header);
+    g.rows.slice().sort(cmp).forEach((r) => list.appendChild(r));
+  });
+  if (state) window.Flip.from(state, { duration: 0.5, ease: 'power2.out', absolute: true });
 }
 
 let PAGE_CODES = [];   // index → code (or 'cover'/'tiers'); for pager + keyboard
@@ -714,6 +757,17 @@ function bindDeck() {
       const w = window.innerWidth;
       if (e.clientX > w * 0.86) goToPage(currentPageIndex() + 1);
       else if (e.clientX < w * 0.14) goToPage(currentPageIndex() - 1);
+    });
+    // phase 3: tier-sort segmented control → in-place Flip reorder (no deck rebuild)
+    deck.addEventListener('click', (e) => {
+      const b = e.target.closest('.tier-sort [data-sort]');
+      if (!b) return;
+      const key = b.dataset.sort;
+      if (key === TIER_SORT) return;
+      TIER_SORT = key;
+      try { localStorage.setItem('ss_tier_sort', key); } catch (_) {}
+      b.parentNode.querySelectorAll('[data-sort]').forEach((x) => x.classList.toggle('on', x === b));
+      applyTierSort(key);
     });
     _deckBound = true;
   }
