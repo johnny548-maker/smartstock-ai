@@ -12,8 +12,8 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v42';
-const APP_BUILD = '2026-06-16';
+const APP_VERSION = 'v45';
+const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
    Old payloads have no field (read as 0) → always supported (back-compat). */
@@ -31,10 +31,21 @@ let CUR_DATE = '';       // current loaded date
 let INDEX = [];          // data/index.json
 let CUR_KLINE = null;    // live K-line ref so theme toggle can re-color it
 
+let NAME_IDX = {};       // {code: name} from data/_universe.json — full TWSE/TPEx/US directory
 const nameOf = (code) => {
-  const n = NAMES[code] || NAMES[code + '.TW'] || NAMES[String(code).replace(/\.(TW|TWO)$/, '')];
+  const bare = String(code).replace(/\.(TW|TWO)$/, '');
+  const n = NAMES[code] || NAMES[code + '.TW'] || NAMES[bare]
+    || NAME_IDX[code] || NAME_IDX[code + '.TW'] || NAME_IDX[bare];
   return n || code;
 };
+// verdict light: prefer the loaded verdict store; else compute from a raw score
+// (matches verdict.light — green≥90 / amber 40-89 / red<40).
+function lightOf(code, score) {
+  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  if (v && v.l) return v.l;
+  if (score == null) return null;
+  return score >= 90 ? 'green' : (score >= 40 ? 'amber' : 'red');
+}
 async function getJSON(url) {
   const res = await fetch(url, { cache: 'reload' });   // bypass HTTP cache, get fresh
   if (!res.ok) throw new Error(url + ' → ' + res.status);
@@ -324,6 +335,25 @@ function renderCandles(elId, ohlc, sr, levels) {
 /* ---------- pins (localStorage ss_pins, preserved) ---------- */
 function getPins() { try { return JSON.parse(localStorage.getItem('ss_pins') || '[]'); } catch (e) { return []; } }
 function setPins(a) { try { localStorage.setItem('ss_pins', JSON.stringify(a)); } catch (e) {} }
+
+// P2 item6: account size (client-side only, never leaves the device) turns the backend
+// size_ceiling_pct into a concrete $ position estimate.
+function getAccount() { try { const v = parseFloat(localStorage.getItem('ss_account') || ''); return isFinite(v) && v > 0 ? v : null; } catch (e) { return null; } }
+function setAccount(v) { try { const n = parseFloat(v); if (isFinite(n) && n > 0) localStorage.setItem('ss_account', String(n)); else localStorage.removeItem('ss_account'); } catch (e) {} }
+window.ssSetAccount = (v) => { setAccount(v); renderNotionals(); };
+// Fill every .ss-notional span in the live DOM from the current account size — reactive,
+// no re-render. Called after each sheet opens + whenever the account input changes.
+function renderNotionals() {
+  const acc = getAccount();
+  document.querySelectorAll('.ss-notional').forEach((el) => {
+    const pct = parseFloat(el.dataset.pct), px = parseFloat(el.dataset.px);
+    if (!acc) { el.innerHTML = ' · <span class="tiny">設帳戶總額（自評頁）估 $</span>'; return; }
+    if (!isFinite(pct)) { el.textContent = ''; return; }
+    const dollars = acc * pct / 100;
+    const sh = (isFinite(px) && px > 0) ? Math.floor(dollars / px) : null;
+    el.textContent = ` · ≈ $${Math.round(dollars).toLocaleString()}${sh != null ? `（~${sh} 股）` : ''}`;
+  });
+}
 window.ssPin = (code, el) => {
   const p = getPins(); const i = p.indexOf(code);
   if (i < 0) p.push(code); else p.splice(i, 1);
@@ -826,6 +856,7 @@ function openSheet(title, bodyHtml, opts) {
   $('sheetTitle').innerHTML = title;
   $('sheetBody').innerHTML = bodyHtml;
   $('sheetBody').scrollTop = 0;
+  renderNotionals();                              // P2 item6: fill $ estimates in the new content
   const sheet = $('sheet'), scrim = $('scrim');
   sheet.hidden = false; scrim.hidden = false;
   // force reflow so the transform transition plays from translateY(100%)
@@ -944,7 +975,29 @@ function findCard(d, code) {
   return (d.picks || []).find((x) => x.stock === code)
     || ((d.opportunity || {}).leaders || []).find((x) => x.ticker === code)
     || earlyBoardOf(d).find((x) => x.stock === code)
+    || (d.scored_universe || []).find((x) => x.stock === code)   // Bug3: 全市場精選股
+    || (d.signals || []).find((x) => x.stock === code)           // Bug3: 訊號雷達股
     || (d._lazy && d._lazy.stock === code ? d._lazy : null);
+}
+
+// Bug3: a 全市場精選/雷達 stock has a score but no full pattern/risk card. Give it real
+// content — its verdict (建議買入/觀望/不持有 + score) and WHY it surfaced (radar sources/signals).
+function thinVerdictHtml(p, d) {
+  const code = p.stock || p.ticker;
+  const score = p.score;
+  const hasFull = p.factors && Object.keys(p.factors).length;
+  if (hasFull || score == null) return '';      // a full pick already shows the score panel
+  const light = p.light || lightOf(code, score);
+  const lab = VLABEL[light] || '—';
+  const cls = light === 'green' ? 'up' : (light === 'red' ? 'down' : '');
+  const row = (radarMerge(d) || []).find((r) => r.ticker === code) || {};
+  const srcs = (row.sources || []).map((s) => `<span class="li-badge src-badge num">${esc(s)}</span>`).join('');
+  const sigs = (row.signals || []).map((s) => `<span class="rchip">${esc(s)}</span>`).join('');
+  return `<div class="sh-sec"><div class="sh-h">系統評分</div>
+    <div class="drow"><span class="k">${lightDot(light)} ${esc(lab)}</span><span class="v num ${cls}">${esc(score)}</span></div>
+    ${srcs ? `<div class="li-srcs">${srcs}</div>` : ''}
+    ${sigs ? `<div class="tr-chips" style="margin-top:8px">${sigs}</div>` : ''}
+    <p class="tiny">全市場精選／雷達名單股（採同一回測閘評分公式），非當日核心精選 → 無完整型態／停損／風險計算。informational，非買賣訊號。</p></div>`;
 }
 
 // score factor pills + key chips
@@ -962,7 +1015,7 @@ function scorePanel(p) {
   if (r) {
     const rr = r.rr != null ? ` · R:R ${r.rr}${r.rr_ok ? '' : '（<2 偏弱）'}` : '';
     kv.push(`<div class="kv wide"><span class="k">部位/風險（單筆風險法）</span><span class="v txt">每股風險 ${r.risk_per_share}（${r.risk_pct}%）${rr}</span></div>`);
-    if (r.size_ceiling_pct != null) kv.push(`<div class="kv wide"><span class="k">部位上限（Kelly×½，上限25%，取與 ATR 較小者）</span><span class="v txt">${esc(r.size_ceiling_pct)}%（依據：${r.ceiling_binding === 'atr' ? 'ATR 風險上限' : 'Kelly'}）— 資金比例天花板，非報酬承諾</span></div>`);
+    if (r.size_ceiling_pct != null) kv.push(`<div class="kv wide"><span class="k">部位上限（Kelly×½ 已內建，上限25%，取與 ATR 較小者）</span><span class="v txt">${esc(r.size_ceiling_pct)}%（依據：${r.ceiling_binding === 'atr' ? 'ATR 風險上限' : 'Kelly'}）<span class="ss-notional" data-pct="${esc(r.size_ceiling_pct)}" data-px="${p.price != null ? esc(p.price) : ''}"></span> — 資金比例天花板，非報酬承諾</span></div>`);
   }
   const l = p.liquidity;
   if (l) {
@@ -1121,16 +1174,25 @@ async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
   let p = findCard(CUR, code);
-  if (!p) {
-    // lazy per-stock detail file
+  // A thin card (scored_universe / radar / leader without ohlc) makes findCard succeed but has
+  // NO chart. So whenever the card lacks a K-line, fetch the per-stock detail file and MERGE its
+  // ohlc/spark/sr/levels onto the (live-scored) card so every clickable stock shows its 技術線圖.
+  if (!p || !(p.ohlc && p.ohlc.length > 1)) {
     try {
       const lazy = await getJSON('data/detail/' + encodeURIComponent(code) + '.json');
       if (lazy && typeof lazy === 'object') {
-        if (!lazy.name) lazy.name = nameOf(code);
-        if (!lazy.stock) lazy.stock = code;
-        CUR._lazy = lazy; p = lazy;
+        const merged = p ? { ...lazy, ...p } : lazy;   // keep live score/factors, gain chart data
+        merged.ohlc = lazy.ohlc;
+        merged.spark = lazy.spark;
+        merged.spark_start = lazy.spark_start;
+        merged.spark_end = lazy.spark_end;
+        merged.sr = merged.sr || lazy.sr;
+        merged.levels = merged.levels || lazy.levels;
+        merged.name = merged.name || lazy.name || nameOf(code);
+        merged.stock = merged.stock || code;
+        p = merged; CUR._lazy = merged;
       }
-    } catch (e) { /* fall through to not-found */ }
+    } catch (e) { /* fall through — render whatever the card already has */ }
   }
   if (!p) {
     openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`, { id: 'stock' });
@@ -1175,7 +1237,7 @@ async function openStockSheet(code) {
     </div>
   </div>`;
 
-  const body = hero + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
+  const body = hero + thinVerdictHtml(p, CUR) + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
     + `<div class="sh-sec"><p class="disclaimer">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p></div>`;
 
   openSheet(title, body, {
@@ -1514,12 +1576,22 @@ function strategyHealthHtml(d) {
     <p class="tiny"><b>informational</b> 自我監測：以 rolling ${esc(rule.rolling_n || 60)} 筆 live 樣本對照回測精度（樣本 ≥${esc(rule.min_eval_n || 10)} 才評估；連續 ${esc(rule.demote_consec_months || 2)} 月低於下界 → 建議降權）。死訊號須自我降權，但權重變更仍由人工＋回測 CI gate 決定。${sh.baseline_asof ? ` 基準 ${esc(sh.baseline_asof)}。` : ''}</p></div>`;
 }
 
+function accountSettingsHtml() {
+  const v = getAccount();
+  return `<div class="sh-sec"><div class="sh-h">帳戶設定（估算部位金額）</div>
+    <div class="kv wide"><span class="k">帳戶總額（僅存本機，把「部位上限 %」換成 $ 金額）</span>
+      <input class="acct-in" type="number" inputmode="numeric" min="0" step="1000" placeholder="例 1000000"
+        value="${v != null ? esc(v) : ''}" oninput="ssSetAccount(this.value)" aria-label="帳戶總額"></div>
+    <p class="tiny">設定後，個股詳情的「部位上限」會顯示估算 $ 金額與約略股數。Kelly×½ 已內建於上限，是資金天花板非建議買入額。</p></div>`;
+}
+
 function selfSheetBody(d) {
+  const acct = accountSettingsHtml();
   const parts = [myPositionsHtml(d), shadowHtml(d), strategyHealthHtml(d), perfHtml(d), attributionHtml(d)].filter(Boolean);
   if (!parts.length) {
-    return `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
+    return acct + `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
   }
-  return parts.join('');
+  return acct + parts.join('');
 }
 
 /* ============================================================================
@@ -1595,11 +1667,12 @@ function radarMerge(d) {
   const rowFor = (tk, name) => {
     let r = rows.get(tk);
     if (!r) {
-      r = { ticker: tk, name: name || tk, ready: false, rs: null, light: null,
+      r = { ticker: tk, name: name || nameOf(tk), ready: false, rs: null, light: null,
             price: null, change_pct: null, sources: [], signals: [], theme: null, rev: null,
             score: null };
       rows.set(tk, r);
     } else if (name && r.name === tk) r.name = name;
+    if (r.name === tk) { const nm = nameOf(tk); if (nm && nm !== tk) r.name = nm; }  // upgrade via index
     return r;
   };
   const addSig = (r, sigs) => (sigs || []).forEach((s) => { if (s && r.signals.indexOf(s) < 0) r.signals.push(s); });
@@ -1636,7 +1709,7 @@ function radarMerge(d) {
     const r = rowFor(tk, s.name);
     r.sources.push('精選分' + (s.score != null ? s.score : '?'));
     if (s.score != null) r.score = s.score;
-    if (s.light) r.light = s.light || r.light;
+    r.light = s.light || r.light || lightOf(tk, s.score);   // backend omits light → derive it
     if (s.price != null && r.price == null) r.price = s.price;
     if (s.change_pct != null && r.change_pct == null) r.change_pct = s.change_pct;
   });
@@ -1729,6 +1802,20 @@ function momTrackCards(tr) {
   return mgrid(cards) + winLine;
 }
 
+// P4: vol-target variant — a collapsible side-by-side so the user weighs the trade-off
+// (lower drawdown vs lower CAGR) on real numbers. Additive; absent → renders nothing.
+function momVoltgtCards(trv) {
+  if (!trv) return '';
+  const oos = trv.oos || {};
+  const cards = [
+    mcard('vol-target CAGR', _momPct(trv.cagr), { dir: trv.cagr == null ? null : (trv.cagr > 0 ? 1 : -1), sub: 'σ0.15 定波動版（CAGR 較低）' }),
+    mcard('vol-target MaxDD', _momPct(trv.max_dd), { dir: -1, sub: '回撤大降（換較低報酬）' }),
+    mcard('vol-target OOS 2y', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '末 2 年樣本外' }),
+  ];
+  return `<details class="fold"><summary>🛡️ 低回撤版（vol-target σ0.15）— 點開與冠軍對比</summary>
+    <div class="fold-body">${mgrid(cards)}<p class="tiny">同一批持股縮放至定波動：回撤大降（OOS -39%→約-22%）、CAGR 較低。低回撤偏好者用此版，非取代冠軍。</p></div></details>`;
+}
+
 function momHoldingsList(holdings) {
   if (!holdings || !holdings.length) return '<p class="tiny">本日無足夠資料計算動能持股（需 ~252 bar）。</p>';
   const li = holdings.map((h) => {
@@ -1758,6 +1845,7 @@ function momentumHtml(d) {
     if (!holdings.length && !s.track_record) return '';
     return `<div class="sh-sec"><div class="sh-h">${esc(label)}</div>
       ${momTrackCards(s.track_record)}
+      ${momVoltgtCards(s.track_record_voltgt)}
       <div class="sh-sub">前 ${esc((holdings.length || (mpf.top_n != null ? mpf.top_n : 20)))} 動能持股</div>
       ${momHoldingsList(holdings)}</div>`;
   };
@@ -1838,7 +1926,7 @@ function dateSheetBody() {
    ============================================================================ */
 function bindChrome() {
   $('themeBtn').addEventListener('click', () => toggleTheme());
-  $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: false }));
+  $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: true }));
   const hb = $('healthBanner');
   if (hb) hb.addEventListener('click', () => { if (CUR) openSheet('資料健康', healthSheetBody(CUR), { full: false }); });
   $('sheetClose').addEventListener('click', dismissSheet);
@@ -1895,7 +1983,7 @@ function bindPullDown() {
   deck.addEventListener('touchend', (e) => {
     if (!pulling || SHEET_STATE !== 'closed') return;
     const dy = ((e.changedTouches[0] || {}).clientY || sy) - sy;
-    if (dy > 80) openSheet('切換日期', dateSheetBody(), { full: false });
+    if (dy > 80) openSheet('切換日期', dateSheetBody(), { full: true });
     pulling = false;
   });
 }
@@ -1961,6 +2049,12 @@ window.addEventListener('load', async () => {
   applyTheme();
   bindChrome();
   try { INDEX = await getJSON('data/index.json'); } catch (e) { INDEX = []; }
+  // Bug3: background-load the full-market name index + verdict store so radar/detail resolve
+  // ANY listed name (e.g. 6257.TW → 矽格) + its current verdict, not just the ~58 payload names.
+  loadUniverseIdx().then((idx) => {
+    (idx || []).forEach((r) => { if (r && r[0]) NAME_IDX[r[0]] = r[1]; });
+  }).catch(() => {});
+  loadVerdicts().catch(() => {});
   await route();
   if ('serviceWorker' in navigator) {
     // NOTE: deliberately NO controllerchange→reload handler (skipWaiting+clientsClaim

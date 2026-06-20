@@ -2,6 +2,8 @@
 """Market data via yfinance — keyless. Robust: any per-ticker failure logs a
 SKIP and returns None/empty rather than crashing the daily run."""
 import logging
+import time
+
 import yfinance as yf
 
 from config import INDICES, MOMENTUM_LOOKBACK, STOCK_PERIOD, BREADTH_PERIOD
@@ -11,17 +13,30 @@ log = logging.getLogger(__name__)
 
 MOMENTUM_STRONG_THRESHOLD = 0.02  # >2% over the lookback window = STRONG tilt
 
+# yfinance is the only keyless price source for the daily picks (a known SPOF — there is no
+# keyless multi-year history alternative: stooq now gates with a JS anti-bot wall, and TWSE
+# STOCK_DAY_ALL only serves the latest bar). So the resilience we CAN add is a bounded retry
+# on TRANSIENT failures (network / 429 / timeout). A clean-empty result (delisted / no data)
+# is NOT retried. The data-staleness alert (daily.yml notify-stale) catches a total outage.
+_HIST_RETRIES = 3
+_HIST_BACKOFF = 0.6   # seconds, exponential (0.6 / 1.2 / …)
+
 
 def _hist(ticker, period="3mo"):
-    try:
-        df = yf.Ticker(ticker).history(period=period, auto_adjust=True)
-        if df is None or df.empty:
-            log.warning("SKIP %s: empty history", ticker)
-            return None
-        return df
-    except Exception as e:
-        log.warning("SKIP %s: %s", ticker, e)
-        return None
+    last = None
+    for attempt in range(_HIST_RETRIES):
+        try:
+            df = yf.Ticker(ticker).history(period=period, auto_adjust=True)
+            if df is None or df.empty:
+                log.warning("SKIP %s: empty history", ticker)
+                return None                       # delisted / no data → retrying won't help
+            return df
+        except Exception as e:                    # transient → exponential backoff + retry
+            last = e
+            if attempt < _HIST_RETRIES - 1:
+                time.sleep(_HIST_BACKOFF * (2 ** attempt))
+    log.warning("SKIP %s after %d tries: %s", ticker, _HIST_RETRIES, last)
+    return None
 
 
 def get_stock_data(symbols, period=None):

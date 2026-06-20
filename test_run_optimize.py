@@ -53,5 +53,33 @@ class TestHelpers(unittest.TestCase):
             self.assertAlmostEqual(v, 1.0 / len(w), places=6)
 
 
+class TestWalkForward(unittest.TestCase):
+    """P3 item1: walk-forward fold partitioning + stable config key (pure pieces;
+    the per-fold grid is exercised by run_optimize --quick + CI)."""
+
+    def test_fold_slices_disjoint_ordered_cover(self):
+        idx = pd.bdate_range("2011-01-01", periods=2000)
+        sl = ro.fold_slices(idx, 5)
+        self.assertEqual(len(sl), 5)
+        # ordered within + across; first starts at index head, last ends at tail
+        prev_hi = None
+        for lo, hi in sl:
+            self.assertLessEqual(lo, hi)
+            if prev_hi is not None:
+                self.assertGreaterEqual(lo, prev_hi)   # blocks advance forward
+            prev_hi = hi
+        self.assertEqual(sl[0][0], idx[0])
+        self.assertEqual(sl[-1][1], idx[-1])
+
+    def test_cfg_key_stable_and_discriminating(self):
+        base = {"vol_target": False, "sigma_target": None, "top_n": 10,
+                "rebalance": "quarterly", "lookback": 126}
+        self.assertEqual(ro._cfg_key(base), ro._cfg_key(dict(base)))     # same → same
+        other = dict(base, lookback=252)
+        self.assertNotEqual(ro._cfg_key(base), ro._cfg_key(other))       # differ → differ
+        vt = dict(base, vol_target=True, sigma_target=0.15)
+        self.assertIn("vt", ro._cfg_key(vt))
+
+
 if __name__ == "__main__":
     unittest.main()

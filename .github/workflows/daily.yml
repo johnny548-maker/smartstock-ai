@@ -46,6 +46,47 @@ jobs:
             gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
           fi
 
+  # P1 item4: data-staleness HARD alert. The build job exits 0 even when data is STALE
+  # (graceful per-source SKIP). This job reads the freshly-committed report's health.overall
+  # and, ONLY when 'stale', opens/updates a deduped GitHub issue (+ optional email). stale-only
+  # by design — 'degraded' is logged but not alerted, to avoid alert fatigue.
+  notify-stale:
+    needs: [build]
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Pull the build job's freshly-committed report
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}" || true
+      - name: Alert if today's report is STALE
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          set -euo pipefail
+          DATE=$(date -u +%F)
+          F="docs/data/$DATE.json"
+          if [ ! -f "$F" ]; then echo "::notice::no report for $DATE — skip stale check"; exit 0; fi
+          OVERALL=$(jq -r '.health.overall // "unknown"' "$F")
+          echo "health.overall=$OVERALL"
+          if [ "$OVERALL" != "stale" ]; then echo "not stale — no alert"; exit 0; fi
+          TITLE="🔴 SmartStock 資料停滯 (stale)"
+          BODY="Daily report health=**stale** for ${DATE}. Data has not refreshed (生成時間過舊 / OHLCV 落後 / 來源大量失效). Run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+          fi
+          # Optional email (no-op if secrets unset — notifier_email degrades gracefully).
+          python -c "import notifier_email; notifier_email.send_email('🔴 SmartStock 資料停滯警報', '今日報告 health=stale，資料未刷新，請查 GitHub Actions。')" || true
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -121,6 +162,25 @@ jobs:
           SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
         run: python sheets_sync.py
 
+      # P1 item9: PWA payload smoke test — fail the run BEFORE committing a broken deploy.
+      # Validates the freshly-written payload is non-empty + well-formed (picks present,
+      # verdict map non-empty, health block present). Catches a silently-broken export.
+      - name: Smoke-test PWA payload
+        if: steps.report_check.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          DATE=$(date -u +%F)
+          F="docs/data/$DATE.json"
+          test -f "$F" || { echo "::error::no payload $F"; exit 1; }
+          N_PICKS=$(jq '.picks | length' "$F")
+          HAS_HEALTH=$(jq 'has("health")' "$F")
+          test "$N_PICKS" -ge 1 || { echo "::error::payload has 0 picks"; exit 1; }
+          test "$HAS_HEALTH" = "true" || { echo "::error::payload missing health block"; exit 1; }
+          test -f docs/data/_verdicts.json || { echo "::error::missing _verdicts.json"; exit 1; }
+          N_V=$(jq 'length' docs/data/_verdicts.json)
+          test "$N_V" -ge 1 || { echo "::error::_verdicts.json empty"; exit 1; }
+          echo "::notice::smoke ok — picks=$N_PICKS verdicts=$N_V health=present"
+
       - name: Commit report to docs/data
         if: steps.report_check.outputs.skip != 'true'
         run: |
@@ -129,3 +189,17 @@ jobs:
           git add docs/data
           git commit -m "report: $(date -u +%F)" || echo "no changes to commit"
           git push
+
+      # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
+      # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the
+      # index from the actual report files EVERY run (unconditional) so the picker always lists
+      # exactly the reports that exist. Self-heals a clobbered index without waiting for new data.
+      - name: Rebuild date index (always — self-heal stale picker)
+        if: always()
+        run: |
+          python -c "import web_export, os; n=len(web_export._rebuild_index(os.path.join('docs','data'))); print('::notice::date index rebuilt with %d dates' % n)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/index.json
+          git commit -m "chore: rebuild date index" || echo "index already current"
+          git push || echo "nothing to push"

@@ -604,6 +604,15 @@ details.fold>summary:active{background:var(--bg-soft)}
 .search input:focus{outline:none;border-color:var(--accent)}
 .search-res{margin-top:8px}
 
+/* P2 item6: account-size input (estimate $ position from size_ceiling_pct) */
+.acct-in{
+  width:100%;min-height:44px;padding:10px 14px;margin-top:6px;border-radius:var(--r2);
+  border:.5px solid var(--hair-strong);background:var(--bg-soft);color:var(--ink);
+  font-size:16px;-webkit-appearance:none;font-family:var(--font-num,var(--font-ui));
+}
+.acct-in:focus{outline:none;border-color:var(--accent)}
+.ss-notional{color:var(--accent);font-variant-numeric:tabular-nums}
+
 /* empty / loading states */
 .empty{padding:40px 20px;text-align:center;color:var(--ink-3);font-size:.92rem;line-height:1.6}
 

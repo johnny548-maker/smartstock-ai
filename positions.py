@@ -365,3 +365,37 @@ def summarize(state, evals):
         "alert_count": alert_count,
         "rows": rows,
     }
+
+
+def _verdict_alert(sym, verdict_map):
+    """⑤ verdict downgrade (WARN): a HELD stock whose current daily verdict is 'red'
+    (score < 燈號 amber cutoff, i.e. 不持有). Reads verdict_map {sym: {s,l}}, trying the
+    bare TWSE code too ('2330.TW' → '2330'). None when not held-red. INFORMATIONAL."""
+    if not verdict_map or not sym:
+        return None
+    v = (verdict_map.get(sym)
+         or verdict_map.get(str(sym).replace(".TW", "").replace(".TWO", "")))
+    if v and v.get("l") == "red":
+        return _alert("verdict_downgrade", "WARN",
+                      f"系統當前評為『不持有』（評分 {v.get('s')}）— 建議檢視是否續抱",
+                      verdict_score=v.get("s"), verdict_light="red")
+    return None
+
+
+def merge_verdict_alerts(summary, verdict_map):
+    """Second-pass: append a verdict-downgrade alert to held rows whose CURRENT verdict is red.
+
+    Positions are evaluated EARLY in the daily run (before the verdict map exists), so this
+    runs as a separate pass once the verdict map is built. Pure — returns a NEW summary
+    (rows + alerts copied), never mutates the input. OVERLAY-NOT-SCORER: informational only."""
+    if not summary or not verdict_map:
+        return summary
+    rows, added = [], 0
+    for r in (summary.get("rows") or []):
+        a = _verdict_alert(r.get("symbol"), verdict_map)
+        if a:
+            r = {**r, "alerts": list(r.get("alerts") or []) + [a]}
+            added += 1
+        rows.append(r)
+    return {**summary, "rows": rows,
+            "alert_count": (summary.get("alert_count") or 0) + added}

@@ -26,8 +26,18 @@ import numpy as np
 import data_fetcher
 import strategy
 import backtest
+import config
 import run_backtest as rb
 from config import BREADTH_TW, BREADTH_US, IC_MIN
+
+# A5 family → the POSITIVE-weight FACTOR_PTS keys it covers (penalties like rs_weak / far_high /
+# rsi_overbought / obv_bearish are excluded — "demote" means dropping a REWARD factor, not
+# removing a penalty). Used only for the REPORT-ONLY dry-run override (decision A).
+FAMILY_TO_PTS = {
+    "trend": ["trend"], "momentum": ["momentum"], "volume": ["volume"],
+    "vol_stable": ["vol_stable"], "rs": ["rs_strong", "rs_mild"],
+    "high52": ["near_high", "near_mid"], "rsi": ["rsi_oversold"], "obv": [],
+}
 
 # factor family -> the label substrings whose score_stock contributions sum to that family.
 FAMILIES = {
@@ -197,6 +207,26 @@ def main():
             print(f"  {name:<14} rank-IC {ic if ic is not None else 'n/a'} < {IC_MIN}")
     else:
         print("  (none — every base factor family clears the IC floor; NO A5 demotion)")
+    # DRY-RUN override (decision A): show the EXACT FACTOR_PTS change a demotion would make,
+    # WITHOUT writing config. The user approves specific flips; only then is it applied + golden
+    # re-baselined. Penalties are excluded (FAMILY_TO_PTS), so this only ever zeros reward weights.
+    per_pts_ic = {}
+    for fam in FAMILIES:
+        ic = results[fam]["rank_ic"]
+        for key in FAMILY_TO_PTS.get(fam, []):
+            per_pts_ic[key] = ic
+    override = strategy.ic_gate_factor_pts(per_pts_ic, IC_MIN)
+    flips = {k: (config.FACTOR_PTS[k], override[k]) for k in config.FACTOR_PTS
+             if override.get(k) != config.FACTOR_PTS[k]}
+    print("\nDRY-RUN demotion override (strategy.ic_gate_factor_pts) — NOT written to config:")
+    if flips:
+        for k, (old, new) in flips.items():
+            print(f"  FACTOR_PTS['{k}']: {old} -> {new}")
+        print("  ⚠ Applying these flips changes EVERY daily pick + breaks test_golden_overlays — "
+              "needs explicit user sign-off, then a golden re-baseline.")
+    else:
+        print("  (no positive base factor is below the IC floor — nothing to demote)")
+
     note = ("full opportunity universe (small/mid-caps included; survivorship still a partial "
             "upper bound)" if universe_csv else "breadth-basket IC (survivor-biased upper bound)")
     print(f"\nNOTE: {note}. NOT applied — "
@@ -211,8 +241,11 @@ def main():
             "n_universe": len(tickers), "n_used": n_used, "ic_min": IC_MIN,
             "families": {name: results[name] for name in FAMILIES},
             "demote_candidates": [{"family": n, "rank_ic": ic} for n, ic in demote],
+            "dry_run_override": override,
+            "would_flip": {k: {"from": old, "to": new} for k, (old, new) in flips.items()},
             "note": ("A5 evidence — REPORTED ONLY; flipping a base weight changes every pick "
-                     "(HITL). " + note),
+                     "(HITL). dry_run_override shows the exact FACTOR_PTS a user-approved demotion "
+                     "would produce; NOT applied. " + note),
         }
         os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
