@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v40';
+const APP_VERSION = 'v41';
 const APP_BUILD = '2026-06-16';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -174,10 +174,10 @@ function warnChipsFor(p, clusters) {
   return out.join('');
 }
 // 分數條：當日相對刻度（÷ 當日最高分），顏色跟 tier
-function scoreBarHtml(score, dayMax, tier) {
+function scoreBarHtml(score, dayMax, tier, anim) {
   if (score == null) return '';
   const pct = Math.max(4, Math.min(100, (+score / (dayMax || 100)) * 100));
-  return `<div class="sbar" role="img" aria-label="分數 ${esc(score)}"><i class="${tier.cls}" style="width:${pct.toFixed(1)}%"></i></div>`;
+  return `<div class="sbar" role="img" aria-label="分數 ${esc(score)}"><i class="${tier.cls}"${anim ? ' data-fill="1"' : ''} style="width:${pct.toFixed(1)}%"></i></div>`;
 }
 function dayMaxScore(d) {
   let m = 0;
@@ -526,7 +526,7 @@ function pickPage(p, rank, total, date, dayMax, clusters) {
         <span class="pk-px"${p.price != null && isFinite(+p.price) ? ` data-cu="${+p.price}" data-cu-kind="px"` : ''}>${pxNum(p.price)}</span>
         <div class="pk-chg">${chgHtml(p.change_pct, true)}<span class="close-lbl">收盤</span></div>
       </div>
-      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier)}<span class="pk-vscore num"${p.score != null && isFinite(+p.score) ? ` data-cu="${+p.score}" data-cu-kind="int"` : ''}>${esc(p.score != null ? p.score : '—')}</span></div>
+      <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier, true)}<span class="pk-vscore num"${p.score != null && isFinite(+p.score) ? ` data-cu="${+p.score}" data-cu-kind="int"` : ''}>${esc(p.score != null ? p.score : '—')}</span></div>
       ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
       ${vTxt}
       <div class="pk-levels reveal">
@@ -608,11 +608,26 @@ function _cuAnimate(el) {
   });
   _cuTweens.push({ tw, el, finalText });
 }
+// score-bar fill: grow the colored <i> from scaleX 0 -> 1 (transform only, GPU-friendly).
+// The bar's final width stays in inline style:width% (correct with no JS); clearProps drops
+// the residual transform on land so the width% / responsiveness is untouched.
+function _fillAnimate(el) {
+  if (el._cuDone) return;
+  el._cuDone = true;
+  if (!window.gsap) return;
+  const tw = window.gsap.from(el, {
+    scaleX: 0, transformOrigin: 'left center', duration: 0.6, ease: 'power2.out',
+    clearProps: 'transform',
+  });
+  _cuTweens.push({ tw, el, fill: true });
+}
 function teardownCountUps() {
   if (_cuIO) { _cuIO.disconnect(); _cuIO = null; }
-  _cuTweens.forEach(({ tw, el, finalText }) => {
+  _cuTweens.forEach(({ tw, el, finalText, fill }) => {
     try { tw.kill(); } catch (e) {}
-    if (el && el.isConnected) el.textContent = finalText;   // never leave a mid-tween value
+    if (!el || !el.isConnected) return;
+    if (fill) { el.style.transform = ''; }                   // drop any residual scale
+    else if (finalText != null) el.textContent = finalText;  // never leave a mid-tween value
   });
   _cuTweens = [];
 }
@@ -625,6 +640,7 @@ function initCountUps(root) {
     entries.forEach((en) => {
       if (en.isIntersecting && en.intersectionRatio >= 0.55) {
         en.target.querySelectorAll('[data-cu]').forEach(_cuAnimate);
+        en.target.querySelectorAll('[data-fill]').forEach(_fillAnimate);
       }
     });
   }, { root, threshold: [0, 0.55, 1] });

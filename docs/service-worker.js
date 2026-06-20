@@ -4,7 +4,7 @@
    subpath hosting. Bump CACHE on any shell change. */
 'use strict';
 
-const CACHE = 'smartstock-v40';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
+const CACHE = 'smartstock-v41';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
 const SHELL = [
   './',
   'index.html',
