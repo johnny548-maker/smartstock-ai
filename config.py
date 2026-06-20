@@ -106,7 +106,14 @@ FACTOR_PTS = {
     "trend": 25,             # 趨勢(MA5>MA20)
     "momentum": 25,          # 動能(5日上漲)
     "volume": 20,            # 量能(高於20日均量)
-    "vol_stable": 10,        # 波動穩定
+    "vol_stable": 0,         # 波動穩定 — A5 DEMOTED 2026-06-21 (was 10): full-universe 15y
+                             #   cross-sectional rank-IC -0.025 (NEGATIVE, anti-predictive) +
+                             #   weakest top-decile edge 0.56 (<½ of every other family). The
+                             #   ONLY base factor weak on BOTH metrics → demoted (user-approved,
+                             #   "依你建議"). IC_MIN=0.05 floor is miscalibrated for single base
+                             #   factors (normal single-factor IC ~0.01-0.05); rsi's negative IC
+                             #   is expected (non-monotonic) with a healthy edge 2.31 → KEPT.
+                             #   See .decisions/2026-06-21-vol-stable-demotion.md.
     "inst_foreign_buy": 15,  # 外資買超 (× liquidity mult)
     "inst_foreign_sell": -20,  # 外資賣超 (× liquidity mult)
     "inst_trust_buy": 10,    # 投信買超
