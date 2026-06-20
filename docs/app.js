@@ -12,8 +12,8 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v42';
-const APP_BUILD = '2026-06-16';
+const APP_VERSION = 'v43';
+const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
    Old payloads have no field (read as 0) → always supported (back-compat). */
@@ -324,6 +324,25 @@ function renderCandles(elId, ohlc, sr, levels) {
 /* ---------- pins (localStorage ss_pins, preserved) ---------- */
 function getPins() { try { return JSON.parse(localStorage.getItem('ss_pins') || '[]'); } catch (e) { return []; } }
 function setPins(a) { try { localStorage.setItem('ss_pins', JSON.stringify(a)); } catch (e) {} }
+
+// P2 item6: account size (client-side only, never leaves the device) turns the backend
+// size_ceiling_pct into a concrete $ position estimate.
+function getAccount() { try { const v = parseFloat(localStorage.getItem('ss_account') || ''); return isFinite(v) && v > 0 ? v : null; } catch (e) { return null; } }
+function setAccount(v) { try { const n = parseFloat(v); if (isFinite(n) && n > 0) localStorage.setItem('ss_account', String(n)); else localStorage.removeItem('ss_account'); } catch (e) {} }
+window.ssSetAccount = (v) => { setAccount(v); renderNotionals(); };
+// Fill every .ss-notional span in the live DOM from the current account size — reactive,
+// no re-render. Called after each sheet opens + whenever the account input changes.
+function renderNotionals() {
+  const acc = getAccount();
+  document.querySelectorAll('.ss-notional').forEach((el) => {
+    const pct = parseFloat(el.dataset.pct), px = parseFloat(el.dataset.px);
+    if (!acc) { el.innerHTML = ' · <span class="tiny">設帳戶總額（自評頁）估 $</span>'; return; }
+    if (!isFinite(pct)) { el.textContent = ''; return; }
+    const dollars = acc * pct / 100;
+    const sh = (isFinite(px) && px > 0) ? Math.floor(dollars / px) : null;
+    el.textContent = ` · ≈ $${Math.round(dollars).toLocaleString()}${sh != null ? `（~${sh} 股）` : ''}`;
+  });
+}
 window.ssPin = (code, el) => {
   const p = getPins(); const i = p.indexOf(code);
   if (i < 0) p.push(code); else p.splice(i, 1);
@@ -826,6 +845,7 @@ function openSheet(title, bodyHtml, opts) {
   $('sheetTitle').innerHTML = title;
   $('sheetBody').innerHTML = bodyHtml;
   $('sheetBody').scrollTop = 0;
+  renderNotionals();                              // P2 item6: fill $ estimates in the new content
   const sheet = $('sheet'), scrim = $('scrim');
   sheet.hidden = false; scrim.hidden = false;
   // force reflow so the transform transition plays from translateY(100%)
@@ -962,7 +982,7 @@ function scorePanel(p) {
   if (r) {
     const rr = r.rr != null ? ` · R:R ${r.rr}${r.rr_ok ? '' : '（<2 偏弱）'}` : '';
     kv.push(`<div class="kv wide"><span class="k">部位/風險（單筆風險法）</span><span class="v txt">每股風險 ${r.risk_per_share}（${r.risk_pct}%）${rr}</span></div>`);
-    if (r.size_ceiling_pct != null) kv.push(`<div class="kv wide"><span class="k">部位上限（Kelly×½，上限25%，取與 ATR 較小者）</span><span class="v txt">${esc(r.size_ceiling_pct)}%（依據：${r.ceiling_binding === 'atr' ? 'ATR 風險上限' : 'Kelly'}）— 資金比例天花板，非報酬承諾</span></div>`);
+    if (r.size_ceiling_pct != null) kv.push(`<div class="kv wide"><span class="k">部位上限（Kelly×½ 已內建，上限25%，取與 ATR 較小者）</span><span class="v txt">${esc(r.size_ceiling_pct)}%（依據：${r.ceiling_binding === 'atr' ? 'ATR 風險上限' : 'Kelly'}）<span class="ss-notional" data-pct="${esc(r.size_ceiling_pct)}" data-px="${p.price != null ? esc(p.price) : ''}"></span> — 資金比例天花板，非報酬承諾</span></div>`);
   }
   const l = p.liquidity;
   if (l) {
@@ -1514,12 +1534,22 @@ function strategyHealthHtml(d) {
     <p class="tiny"><b>informational</b> 自我監測：以 rolling ${esc(rule.rolling_n || 60)} 筆 live 樣本對照回測精度（樣本 ≥${esc(rule.min_eval_n || 10)} 才評估；連續 ${esc(rule.demote_consec_months || 2)} 月低於下界 → 建議降權）。死訊號須自我降權，但權重變更仍由人工＋回測 CI gate 決定。${sh.baseline_asof ? ` 基準 ${esc(sh.baseline_asof)}。` : ''}</p></div>`;
 }
 
+function accountSettingsHtml() {
+  const v = getAccount();
+  return `<div class="sh-sec"><div class="sh-h">帳戶設定（估算部位金額）</div>
+    <div class="kv wide"><span class="k">帳戶總額（僅存本機，把「部位上限 %」換成 $ 金額）</span>
+      <input class="acct-in" type="number" inputmode="numeric" min="0" step="1000" placeholder="例 1000000"
+        value="${v != null ? esc(v) : ''}" oninput="ssSetAccount(this.value)" aria-label="帳戶總額"></div>
+    <p class="tiny">設定後，個股詳情的「部位上限」會顯示估算 $ 金額與約略股數。Kelly×½ 已內建於上限，是資金天花板非建議買入額。</p></div>`;
+}
+
 function selfSheetBody(d) {
+  const acct = accountSettingsHtml();
   const parts = [myPositionsHtml(d), shadowHtml(d), strategyHealthHtml(d), perfHtml(d), attributionHtml(d)].filter(Boolean);
   if (!parts.length) {
-    return `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
+    return acct + `<div class="empty">尚無策略自評資料。<br><span class="tiny">回看歷史選股 D+5 表現的自我檢核會在累積足夠樣本後出現。</span></div>`;
   }
-  return parts.join('');
+  return acct + parts.join('');
 }
 
 /* ============================================================================
