@@ -48,10 +48,10 @@ import build_ohlcv_cache as boc
 _HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ── 12-1 momentum (self-contained for now; unify with factor_signals later) ──
-LOOKBACK = 252            # ~12 months of trading days
+LOOKBACK = 126            # #4 Calmar-winner: 6mo lookback (was 252) — 6mo beat 12mo on Calmar
 SKIP = 21                 # skip the most recent month (short-term reversal)
 
-TOP_N = 20
+TOP_N = 10                # #4 Calmar-winner: top-10 concentrated cohort (was 20)
 SMA_WINDOW = 200
 TRADING_DAYS = 252
 

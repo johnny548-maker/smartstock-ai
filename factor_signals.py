@@ -19,19 +19,21 @@ MOM_SKIP = 21        # ~1 month skipped (short-term reversal exclusion)
 SMA_WINDOW = 200     # full SMA200 trend filter (no degraded short-window variant)
 
 
-def mom_12_1(df):
-    """12-1 month momentum: return from bar -(MOM_LOOKBACK+1) to bar -(MOM_SKIP+1).
+def mom_12_1(df, lookback=MOM_LOOKBACK, skip=MOM_SKIP):
+    """N-1 month momentum: return from bar -(lookback+1) to bar -(skip+1).
 
-    Needs at least MOM_LOOKBACK+1 bars so both endpoints exist; otherwise None.
-    None is also returned on NaN endpoints, non-positive start price, or any
-    malformed frame (graceful — never raises). Pure; input is never mutated.
+    Defaults to the canonical 12-1 (lookback=252 / skip=21) so existing callers are
+    byte-identical. The momentum LENS may pass lookback=126 (6-1, the #4 Calmar-winner
+    config). Needs >= lookback+1 bars so both endpoints exist; otherwise None. None is
+    also returned on NaN endpoints, non-positive start price, or any malformed frame
+    (graceful — never raises). Pure; input is never mutated.
     """
-    if df is None or len(df) < MOM_LOOKBACK + 1:
+    if df is None or len(df) < lookback + 1:
         return None
     try:
         close = df["Close"]
-        start = float(close.iloc[-(MOM_LOOKBACK + 1)])
-        end = float(close.iloc[-(MOM_SKIP + 1)])
+        start = float(close.iloc[-(lookback + 1)])
+        end = float(close.iloc[-(skip + 1)])
         if start != start or end != end:        # NaN guard
             return None
         if start <= 0:
