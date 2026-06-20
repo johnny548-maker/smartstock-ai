@@ -660,8 +660,11 @@ function bindDeck() {
    BOTTOM SHEET — open / drag / snap (half / full) / close
    ============================================================================ */
 let SHEET_STATE = 'closed';   // closed | open(half) | full
+let CUR_SHEET_ID = null;      // #2: which logical sheet is open (market/self/opp/stock/…)
+let RETURN_SHEET = null;      // #2: {id, scroll} of the sheet to re-open when a stock detail is dismissed
 function openSheet(title, bodyHtml, opts) {
   opts = opts || {};
+  CUR_SHEET_ID = opts.id || null;
   $('sheetTitle').innerHTML = title;
   $('sheetBody').innerHTML = bodyHtml;
   $('sheetBody').scrollTop = 0;
@@ -684,6 +687,7 @@ function closeSheet() {
   sheet.style.transform = '';
   scrim.classList.remove('show');
   SHEET_STATE = 'closed';
+  CUR_SHEET_ID = null;
   // tear down any live K-line in the sheet
   const k = sheet.querySelector('[id^="kline"]');
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
@@ -698,6 +702,37 @@ function closeSheet() {
   }
 }
 window.ssCloseSheet = closeSheet;
+
+// #2: a stock detail opened FROM a sheet (機會/自評/市場) should, on ✕/Esc, RETURN to
+// that sheet (restoring scroll) instead of dropping all the way out to the deck.
+const SHEET_REOPEN = {
+  market: ['市場環境', () => marketSheetBody(CUR), true],
+  self: ['持倉 / 自評', () => selfSheetBody(CUR), false],
+  opp: ['機會 / 持倉追蹤', () => oppSheetBody(CUR), true],
+};
+function reopenSheet(id, scroll) {
+  const cfg = SHEET_REOPEN[id];
+  if (!cfg || !CUR) { closeSheet(); return; }
+  // tear down any live K-line from the stock sheet we're leaving
+  const sheet = $('sheet');
+  const k = sheet.querySelector('[id^="kline"]');
+  if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
+  CUR_KLINE = null;
+  // leaving the stock route → restore the hash to the bare day first
+  const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
+  if (m) history.replaceState(null, '', '#' + m[1]);
+  openSheet(cfg[0], cfg[1](), { full: cfg[2], id: id, after: () => { if (scroll) $('sheetBody').scrollTop = scroll; } });
+}
+function dismissSheet() {
+  if (CUR_SHEET_ID === 'stock' && RETURN_SHEET) {
+    const ret = RETURN_SHEET; RETURN_SHEET = null;
+    reopenSheet(ret.id, ret.scroll);
+  } else {
+    RETURN_SHEET = null;
+    closeSheet();
+  }
+}
+window.ssDismissSheet = dismissSheet;
 
 // drag-to-resize / dismiss via the grip
 function bindSheetDrag() {
@@ -938,7 +973,7 @@ async function openStockSheet(code) {
     } catch (e) { /* fall through to not-found */ }
   }
   if (!p) {
-    openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`);
+    openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`, { id: 'stock' });
     return;
   }
   const stock = p.stock || p.ticker;
@@ -985,6 +1020,7 @@ async function openStockSheet(code) {
 
   openSheet(title, body, {
     full: true,
+    id: 'stock',
     after: () => {
       if (hasKline && window.LightweightCharts) renderCandles('kline', p.ohlc, p.sr, p.levels);
     },
@@ -1641,15 +1677,15 @@ function bindChrome() {
   $('dateBtn').addEventListener('click', () => openSheet('切換日期', dateSheetBody(), { full: false }));
   const hb = $('healthBanner');
   if (hb) hb.addEventListener('click', () => { if (CUR) openSheet('資料健康', healthSheetBody(CUR), { full: false }); });
-  $('sheetClose').addEventListener('click', closeSheet);
+  $('sheetClose').addEventListener('click', dismissSheet);
   $('scrim').addEventListener('click', closeSheet);
   $('dock').addEventListener('click', (e) => {
     const btn = e.target.closest('.dock-btn'); if (!btn) return;
     const which = btn.dataset.sheet;
     if (!CUR) { toast('資料尚未載入'); return; }
-    if (which === 'market') openSheet('市場環境', marketSheetBody(CUR), { full: true });
-    else if (which === 'self') openSheet('持倉 / 自評', selfSheetBody(CUR), { full: false });
-    else if (which === 'opp') openSheet('機會 / 持倉追蹤', oppSheetBody(CUR), { full: true });
+    if (which === 'market') openSheet('市場環境', marketSheetBody(CUR), { full: true, id: 'market' });
+    else if (which === 'self') openSheet('持倉 / 自評', selfSheetBody(CUR), { full: false, id: 'self' });
+    else if (which === 'opp') openSheet('機會 / 持倉追蹤', oppSheetBody(CUR), { full: true, id: 'opp' });
   });
   // delegated clicks inside the sheet body: opp tabs + close-on-navigate links
   $('sheetBody').addEventListener('click', (e) => {
@@ -1660,14 +1696,23 @@ function bindChrome() {
       // let the hash change route; close current sheet so the new one (stock) is clean
       const href = link.getAttribute('href') || '';
       const m = href.match(/^#(\d{4}-\d{2}-\d{2})\/(.+)$/);
-      if (m) { e.preventDefault(); closeSheet(); setTimeout(() => { location.hash = m[1] + '/' + m[2]; }, 60); }
+      if (m) {
+        e.preventDefault();
+        // #2: remember the originating sheet (機會/自評/市場) + its scroll so ✕ on the
+        // stock detail returns here instead of dropping out to the deck. Don't overwrite
+        // when drilling stock→stock (keep the original origin).
+        if (CUR_SHEET_ID && CUR_SHEET_ID !== 'stock') {
+          RETURN_SHEET = { id: CUR_SHEET_ID, scroll: $('sheetBody').scrollTop };
+        }
+        closeSheet(); setTimeout(() => { location.hash = m[1] + '/' + m[2]; }, 60);
+      }
       else if (/^#\d{4}-\d{2}-\d{2}$/.test(href)) { e.preventDefault(); closeSheet(); setTimeout(() => { location.hash = href.slice(1); }, 60); }
     }
   });
   bindSheetDrag();
   // keyboard: ←/→ deck nav, Esc closes sheet
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && SHEET_STATE !== 'closed') { closeSheet(); return; }
+    if (e.key === 'Escape' && SHEET_STATE !== 'closed') { dismissSheet(); return; }
     if (SHEET_STATE !== 'closed') return;
     if (e.key === 'ArrowRight') { goToPage(currentPageIndex() + 1); }
     else if (e.key === 'ArrowLeft') { goToPage(currentPageIndex() - 1); }

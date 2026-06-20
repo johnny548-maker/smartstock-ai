@@ -609,9 +609,14 @@ def main(web=False):
         if _opp_data:
             _core_syms = {it["stock"] for it in ranked}
             _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst, frames=frames)
-            # Enrich each scored row with last close + 1-day %chg from the already-fetched
-            # OHLCV so the PWA board + radar ledger (Fix 2) have a price. Graceful per row.
+            # #1 fix: back-fill the Chinese NAME (rank_stocks rows carry none) from the
+            # opportunity-universe names map (universe.get_opportunities now exports it),
+            # falling back to the 28-name STOCK_NAMES. Also enrich price + 1-day %chg from the
+            # already-fetched OHLCV so the PWA board + radar ledger have a price. Graceful per row.
+            _opp_names = (opp or {}).get("names") or {}
             for _r in _opp_ranked:
+                if not _r.get("name"):
+                    _r["name"] = _opp_names.get(_r["stock"]) or config.STOCK_NAMES.get(_r["stock"])
                 _rdf = _opp_data.get(_r["stock"])
                 if _rdf is not None and not getattr(_rdf, "empty", True) and len(_rdf) >= 1:
                     try:

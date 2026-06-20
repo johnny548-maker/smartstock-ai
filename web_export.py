@@ -68,10 +68,11 @@ def _search_index(picks, opportunity, movers, revenue=None):
     return idx
 
 
-def _names_map(opportunity, revenue):
+def _names_map(opportunity, revenue, scored_universe=None):
     """Display-name map {code: name} for EVERY name the PWA might link to beyond the
-    28-stock STOCK_NAMES — opportunity leaders + revenue candidates. The PWA's detail
-    view merges this over STOCK_NAMES so a bare code never shows where a name exists."""
+    28-stock STOCK_NAMES — opportunity leaders + revenue candidates + the Fix-1
+    scored_universe (#1 fix). The PWA's detail view merges this over STOCK_NAMES so a
+    bare code never shows where a name exists."""
     names = {}
     for ld in (opportunity or {}).get("leaders", []):
         code, nm = ld.get("ticker"), ld.get("name")
@@ -79,6 +80,10 @@ def _names_map(opportunity, revenue):
             names.setdefault(code, nm)
     for c in (revenue or {}).get("candidates", []):
         code, nm = c.get("code"), c.get("name")
+        if code and nm:
+            names.setdefault(code, nm)
+    for s in (scored_universe or []):
+        code, nm = s.get("stock"), s.get("name")
         if code and nm:
             names.setdefault(code, nm)
     return names
@@ -147,7 +152,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
     search = _search_index(picks, opportunity, movers, revenue)
     # name map: STOCK_NAMES (the 28 watchlist) + opportunity-leader + revenue-candidate
     # names so the detail view shows names not bare codes for every linkable name.
-    names = {**STOCK_NAMES, **_names_map(opportunity, revenue)}
+    names = {**STOCK_NAMES, **_names_map(opportunity, revenue, scored_universe)}
     return {
         "schema_version": SCHEMA_VERSION,   # C1: client compatibility guard
         "date": date_str,

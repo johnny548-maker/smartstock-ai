@@ -373,6 +373,9 @@ def get_opportunities():
         "leaders": leaders,
         "group_rs": group_ranks,
         "breakout": breakout,
+        # Full opportunity-universe {ticker: name} so scored_universe rows (which come from
+        # rank_stocks and carry no name) can be back-filled with their Chinese name (#1 fix).
+        "names": names,
         # Internal-only: raw OHLCV frames for detail-file generation in main.py (A3).
         # Never serialised into the PWA payload — stripped by web_export.build_payload().
         "_data": data,

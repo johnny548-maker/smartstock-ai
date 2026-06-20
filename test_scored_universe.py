@@ -56,5 +56,25 @@ class TestScoredUniversePayload(unittest.TestCase):
         self.assertEqual(base["picks"], withb["picks"])
 
 
+class TestScoredUniverseNames(unittest.TestCase):
+    """#1 fix: scored_universe names flow into the payload names map + each row carries name."""
+
+    def test_names_map_includes_scored_universe(self):
+        scored = [{"stock": "6257.TW", "name": "矽格", "score": 138}]
+        nm = web_export._names_map(opportunity=None, revenue=None, scored_universe=scored)
+        self.assertEqual(nm.get("6257.TW"), "矽格")
+
+    def test_names_map_graceful_without_scored(self):
+        self.assertEqual(web_export._names_map(None, None), {})
+
+    def test_payload_names_carry_scored_universe(self):
+        p = web_export.build_payload(
+            "2026-06-20", news=[], indices={}, institutional={},
+            ranked=[{"stock": "2330.TW", "name": "台積電", "score": 50, "factors": {}}],
+            analyses={}, allocation={}, rebalance_diff={}, risk="LOW", markdown="", skips=[],
+            scored_universe=[{"stock": "3317.TWO", "name": "尼克森", "score": 138}])
+        self.assertEqual(p["names"].get("3317.TWO"), "尼克森")
+
+
 if __name__ == "__main__":
     unittest.main()
