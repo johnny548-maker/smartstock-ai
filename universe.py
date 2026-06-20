@@ -114,6 +114,51 @@ def opportunity_universe(cap_n=None, scan_limit=None):
     return _merge(us, tw_anchors, tw_top, scan_limit), names
 
 
+def _f(v):
+    try:
+        return float(str(v).replace(",", ""))
+    except (TypeError, ValueError):
+        return None
+
+
+def market_ohlc_snapshot():
+    """One-call keyless whole-market OHLC rows [{code,o,h,l,c,v}] for the #3 panel.
+
+    TWSE STOCK_DAY_ALL + TPEx daily close quotes are single-call whole-market snapshots
+    (no per-stock fetch, no 429). Each exchange is independently wrapped — a dead source
+    degrades the snapshot (e.g. TW-only), never aborts. Rows with incomplete OHLC are dropped."""
+    out = []
+    try:
+        for r in _get(config.TWSE_DAYALL_URL):
+            code = r.get("Code")
+            if not code or not CODE_RE.fullmatch(code):
+                continue
+            o, h, l, c = (_f(r.get("OpeningPrice")), _f(r.get("HighestPrice")),
+                          _f(r.get("LowestPrice")), _f(r.get("ClosingPrice")))
+            if None in (o, h, l, c):
+                continue
+            out.append({"code": code + ".TW", "o": o, "h": h, "l": l, "c": c,
+                        "v": _f(r.get("TradeVolume")) or 0})
+    except Exception as e:
+        log.warning("SKIP TWSE OHLC snapshot: %s", e)
+    try:
+        for r in _get(config.TPEX_DAYALL_URL):
+            code = r.get("SecuritiesCompanyCode") or r.get("Code")
+            if not code or not CODE_RE.fullmatch(code):
+                continue
+            o = _f(r.get("Open") or r.get("OpeningPrice"))
+            h = _f(r.get("High") or r.get("HighestPrice"))
+            l = _f(r.get("Low") or r.get("LowestPrice"))
+            c = _f(r.get("Close") or r.get("ClosingPrice"))
+            if None in (o, h, l, c):
+                continue
+            out.append({"code": code + ".TWO", "o": o, "h": h, "l": l, "c": c,
+                        "v": _f(r.get("TradingShares") or r.get("TradeVolume")) or 0})
+    except Exception as e:
+        log.warning("SKIP TPEx OHLC snapshot: %s", e)
+    return out
+
+
 def full_market_index():
     """[[code, name, market], …] for the ENTIRE keyless searchable universe.
 

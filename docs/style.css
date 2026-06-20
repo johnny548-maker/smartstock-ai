@@ -492,6 +492,9 @@ button.chip:active{background:var(--accent-soft);transform:scale(.97)}
 .li-r .px{font-size:.82rem;color:var(--ink-2);font-weight:600}
 .li-badge{font-size:var(--fs-cap);font-weight:700;padding:1px 6px;border-radius:6px;
   border:.5px solid var(--hair-strong);color:var(--ink-2)}
+/* #3: search recommendation pill (買入/觀望/不持有) — colour inherits .up/.down */
+.vbadge{font-size:.68rem;font-weight:700;padding:1px 6px;border-radius:6px;margin-left:6px;
+  vertical-align:middle;background:var(--surface-2,rgba(127,127,127,.12))}
 
 /* segmented control (sheet sub-tabs) */
 .seg{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--bg-soft);

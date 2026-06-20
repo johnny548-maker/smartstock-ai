@@ -299,3 +299,18 @@ def write_universe_index(rows, web_dir):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
     return path
+
+
+def write_verdicts_index(verdict_map, web_dir):
+    """Write data/_verdicts.json = {code: {s: score, l: light}} for every scored name.
+
+    #3 (full-market verdict): so the all-market search can show a CURRENT recommendation
+    (light → 買入/觀望/不持有) for any name the daily run scored — core picks + the full
+    scored opportunity universe + (over time) the keyless panel. A SEPARATE compact cached
+    file, idempotently overwritten; never inlined into the per-day payload. Returns the path."""
+    data_dir = os.path.join(web_dir, "data")
+    os.makedirs(data_dir, exist_ok=True)
+    path = os.path.join(data_dir, "_verdicts.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(verdict_map or {}, f, ensure_ascii=False, separators=(",", ":"))
+    return path

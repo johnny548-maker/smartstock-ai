@@ -48,6 +48,7 @@ import watchlist_tracker
 import stock_detail
 import overlay_snapshot
 import radar_outcomes
+import market_panel
 import pick_outcomes
 import strategy_health as strategy_health_mod
 import shadow_portfolio as shadow_mod
@@ -604,11 +605,20 @@ def main(web=False):
     #     network). OVERLAY-NOT-SCORER for the core picks: this is a SEPARATE board; `ranked`
     #     above is already final and untouched. SKIP-not-abort: a failure → empty board.
     scored_universe = []
+    # #3 full-market verdict map {code: {s: score, l: light}} for EVERY scored name, so the
+    #   all-market search shows a current recommendation (買入≥90 / 觀望40-89 / 不持有<40).
+    #   Seeded with the core picks; the opportunity universe + (over time) the keyless panel
+    #   widen it. OVERLAY-NOT-SCORER: a display map, never feeds scoring.
+    verdict_map = {it["stock"]: {"s": it["score"], "l": verdict_mod.light(it["score"])}
+                   for it in ranked}
     try:
         _opp_data = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
         if _opp_data:
             _core_syms = {it["stock"] for it in ranked}
             _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst, frames=frames)
+            for _sr in _opp_ranked:
+                verdict_map.setdefault(_sr["stock"],
+                                       {"s": _sr["score"], "l": verdict_mod.light(_sr["score"])})
             # #1 fix: back-fill the Chinese NAME (rank_stocks rows carry none) from the
             # opportunity-universe names map (universe.get_opportunities now exports it),
             # falling back to the 28-name STOCK_NAMES. Also enrich price + 1-day %chg from the
@@ -1163,6 +1173,37 @@ def main(web=False):
                 log.info("universe index: %d names → %s", len(_uni_rows), _up)
         except Exception as _ue:
             log.warning("SKIP universe index: %s", _ue); skips.append("universe_index")
+
+        # #3 option B: accumulate the keyless whole-market OHLC panel (one-call TWSE+TPEx
+        #     snapshot, no per-stock fetch / no 429) and score names with enough history into
+        #     the verdict map — widening daily coverage from the ~600 opp universe toward full
+        #     TW over time. Panel is gitignored + CI-cached (raw, reconstructable); only the
+        #     scored OUTPUT (_verdicts.json) is served. SKIP-not-abort; cold-start ramps.
+        try:
+            _panel_path = os.path.join(config.WEB_DIR, "data", "_panel.json.gz")
+            _panel = market_panel.load(_panel_path)
+            _snap = universe_mod.market_ohlc_snapshot()
+            if _snap:
+                market_panel.append_snapshot(_panel, date_str, _snap)
+                market_panel.save(_panel_path, _panel)
+                _pf = market_panel.panel_frames(_panel, min_bars=config.MIN_BARS)
+                if _pf:
+                    _panel_ranked = strategy.rank_stocks(_pf, frames=frames)
+                    for _pr in _panel_ranked:
+                        verdict_map.setdefault(
+                            _pr["stock"], {"s": _pr["score"], "l": verdict_mod.light(_pr["score"])})
+                    log.info("market panel: %d names accumulated, %d scored into verdicts",
+                             len(_panel), len(_panel_ranked))
+        except Exception as _pe:
+            log.warning("SKIP market panel: %s", _pe); skips.append("market_panel")
+
+        # #3: emit the verdict map so all-market search shows 買入/觀望/不持有 for every scored
+        #     name (core + opportunity universe + panel). SKIP-not-abort.
+        try:
+            _vp = web_export.write_verdicts_index(verdict_map, config.WEB_DIR)
+            log.info("verdicts index: %d scored names → %s", len(verdict_map), _vp)
+        except Exception as _ve:
+            log.warning("SKIP verdicts index: %s", _ve); skips.append("verdicts_index")
 
         # 8c. W1 pick-outcome backfill — "did our picks actually work?". Runs AFTER the
         #     payload is written (so today's <date>.json is on disk and globbable). For the

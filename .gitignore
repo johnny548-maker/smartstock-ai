@@ -24,6 +24,11 @@ REMAINING_BATCHES.md
 .tmp_font/
 .github/skills/
 
+# #3 keyless all-market OHLC panel — large + reconstructable from daily snapshots;
+# persisted via the CI rolling cache, never committed. Only its scored OUTPUT
+# (docs/data/_verdicts.json) is served.
+docs/data/_panel.json.gz
+
 # 15y backtest scratch + intermediate sanitize artifacts (regenerable)
 _event_15y_partial.json
 *_pre_sanitize.json

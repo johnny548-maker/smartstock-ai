@@ -89,6 +89,18 @@ jobs:
           SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
         run: python sheets_sync.py --pull-positions
 
+      # #3: restore the keyless all-market OHLC panel (gitignored, reconstructable) so the daily
+      # run appends one more snapshot + scores names with enough history into the verdict map.
+      # Rolling key (unique per run + prefix restore-keys) → restore the latest, save a new one.
+      - name: Restore market panel cache
+        if: steps.report_check.outputs.skip != 'true'
+        uses: actions/cache@v4
+        with:
+          path: docs/data/_panel.json.gz
+          key: smartstock-panel-${{ github.run_id }}
+          restore-keys: |
+            smartstock-panel-
+
       - name: Run analysis + export PWA data
         if: steps.report_check.outputs.skip != 'true'
         env:

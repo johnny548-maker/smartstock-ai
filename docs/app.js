@@ -49,6 +49,22 @@ async function loadUniverseIdx() {
   catch (e) { UNIVERSE_IDX = []; }
   return UNIVERSE_IDX;
 }
+// #3: lazily-loaded verdict map {code:{s:score,l:light}} for every scored name → search
+// shows a current 買入/觀望/不持有 recommendation. Degrades silently if not generated yet.
+let VERDICTS = null;
+async function loadVerdicts() {
+  if (VERDICTS) return VERDICTS;
+  try { VERDICTS = await getJSON('data/_verdicts.json'); }
+  catch (e) { VERDICTS = {}; }
+  return VERDICTS;
+}
+const VLABEL = { green: '建議買入', amber: '觀望', red: '不持有' };
+function verdictBadge(code) {
+  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  if (!v || !VLABEL[v.l]) return '';
+  const cls = v.l === 'green' ? 'up' : (v.l === 'red' ? 'down' : '');
+  return ` <span class="vbadge ${cls}">${VLABEL[v.l]}${v.s != null ? ' ·' + esc(v.s) : ''}</span>`;
+}
 function toast(msg, ms) {
   const t = $('status'); if (!t) return;
   t.textContent = msg; t.classList.add('show');
@@ -1631,11 +1647,12 @@ window.ssSearch = async (q) => {
   q = (q || '').trim().toLowerCase();
   const box = $('ssResults'); if (!box) return;
   if (!q) { box.innerHTML = ''; return; }
+  await loadVerdicts();   // #3: so every result can show 建議買入/觀望/不持有 (cached after 1st call)
   const rich = (CUR && CUR.search || []).filter((s) =>
     s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
   const richCodes = new Set(rich.map((s) => s.code));
   const richHtml = rich.length ? `<div class="note">當日掃描名單</div><ul class="list">` + rich.map((s) =>
-    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span></div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>' : '';
+    `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span>${verdictBadge(s.code)}</div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>' : '';
   box.innerHTML = richHtml + '<div class="empty tiny" id="ssMore">全市場搜尋中…</div>';
   const idx = await loadUniverseIdx();
   const live = $('ssInput'); if (!live || live.value.trim().toLowerCase() !== q) return;  // user moved on
@@ -1647,8 +1664,11 @@ window.ssSearch = async (q) => {
     return;
   }
   moreBox.outerHTML = more.length
-    ? `<div class="note">全市場（${idx.length} 檔）</div><ul class="list">` + more.map((r) =>
-        `<li><a href="#${esc(CUR_DATE)}/${esc(r[0])}" data-close-sheet><div class="li-main"><div class="li-name">${esc(r[1] || r[0])} <span class="tk">${esc(r[0])}</span></div><div class="li-sub tiny">${esc(r[2] || '')} · 全市場（非當日精選，明細較簡）</div></div></a></li>`).join('') + '</ul>'
+    ? `<div class="note">全市場（${idx.length} 檔）</div><ul class="list">` + more.map((r) => {
+        const vb = verdictBadge(r[0]);
+        const tail = vb ? '' : ' · <span class="tiny">尚未評分（資料累積中）</span>';
+        return `<li><a href="#${esc(CUR_DATE)}/${esc(r[0])}" data-close-sheet><div class="li-main"><div class="li-name">${esc(r[1] || r[0])} <span class="tk">${esc(r[0])}</span>${vb}</div><div class="li-sub tiny">${esc(r[2] || '')}${tail}</div></div></a></li>`;
+      }).join('') + '</ul>'
     : '';
 };
 
