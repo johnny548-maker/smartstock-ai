@@ -1,0 +1,19 @@
+OPTIMIZE — sleeve=tw  objective=calmar  grid=48 configs
+gate: DSR=1.000 (PASS, >0.95 req) | PBO=0.002 (PASS, <0.5 req)
+
+rank  cfg(vol/σ/topN/rebal/lookback)            CAGR   Sharpe   MaxDD  Calmar  OOS-Calmar
+ 1   off/-/10/q/126                          48.35%   1.54   -38.9%   1.24     2.40
+ 2   off/-/10/m/126                          45.41%   1.47   -40.7%   1.12     1.87
+ 3   vt/0.15/10/m/126                        27.92%   1.55   -25.6%   1.09     1.60
+ 4   off/-/30/q/126                          36.66%   1.57   -33.9%   1.08     2.62
+ 5   off/-/20/q/126                          40.16%   1.56   -37.6%   1.07     2.32
+ 6   vt/0.2/10/m/126                         33.95%   1.49   -32.1%   1.06     1.30
+ 7   vt/0.12/10/m/126                        24.82%   1.55   -23.9%   1.04     1.62
+ 8   off/-/20/m/126                          38.86%   1.51   -38.3%   1.02     1.90
+ 9   vt/0.2/20/m/126                         34.53%   1.52   -35.4%   0.98     1.28
+10   off/-/20/m/252                          38.69%   1.48   -39.7%   0.97     1.73
+11   vt/0.15/20/m/126                        26.76%   1.55   -27.6%   0.97     1.46
+12   off/-/30/m/252                          35.14%   1.51   -36.3%   0.97     1.93
+
+WINNER: {"vol_target": false, "sigma_target": null, "top_n": 10, "rebalance": "quarterly", "lookback": 126} → CAGR 48.35% / Sharpe 1.54 / MaxDD -38.9% / Calmar 1.24 / OOS-Calmar 2.40
+CAUTION: a winner that FAILS the DSR/PBO gate is likely an in-sample mirage — do NOT promote it to live weights without an OOS-stable, gate-passing result.
