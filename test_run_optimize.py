@@ -211,6 +211,40 @@ class TestFactorFamilies(unittest.TestCase):
         for fam, cfg in ro.PREREG_CONFIGS.items():
             self.assertEqual(cfg["family"], fam)
 
+    def test_aux_prereg_configs_cover_all_aux_families(self):
+        # iteration-2 chip/fundamental candidate set is self-consistent + kept separate from price
+        self.assertEqual(set(ro.AUX_PREREG_CONFIGS), set(ro.AUX_FACTOR_FAMILIES))
+        for fam, cfg in ro.AUX_PREREG_CONFIGS.items():
+            self.assertEqual(cfg["family"], fam)
+        self.assertFalse(set(ro.AUX_FACTOR_FAMILIES) & set(ro.FACTOR_FAMILIES))
+
+    def test_factor_panel_aux_reindexes_prebuilt_panel(self):
+        close = self._panel()                                  # dates x {A,B,...}
+        # a prebuilt aux panel covering ONLY a subset of dates/cols must reindex without KeyError
+        sub = close.iloc[10:, :2] * 0.0 + 1.0                  # 'instflow'=constant on a subset
+        out = ro.factor_panel("instflow", close, 20, aux={"instflow": sub})
+        self.assertEqual(out.shape, close.shape)               # aligned to the full price grid
+        self.assertTrue(out.iloc[0].isna().all())              # pre-subset rows → NaN (no leak)
+
+    def test_factor_panel_aux_none_still_raises_for_unknown(self):
+        with self.assertRaises(ValueError):
+            ro.factor_panel("instflow", self._panel(), 20, aux=None)
+
+    def test_sleeve_daily_rets_runs_for_aux_family(self):
+        idx = pd.bdate_range("2018-01-01", periods=500)
+        def ohlc(mult):
+            p = np.linspace(100, 100 * mult, 500)
+            return pd.DataFrame({"Open": p, "High": p * 1.01, "Low": p * 0.99,
+                                 "Close": p, "Volume": 1e6}, index=idx)
+        prices = {"%04d.TW" % (1000 + i): ohlc(1.0 + 0.1 * i) for i in range(8)}
+        # synthetic value panel: constant cross-section rank (cheapest = first ticker)
+        cols = list(prices)
+        vpanel = pd.DataFrame({c: float(len(cols) - j) for j, c in enumerate(cols)}, index=idx)
+        rets = ro.sleeve_daily_rets(ro.AUX_PREREG_CONFIGS["value"], prices, "tw", cols,
+                                    aux={"value": vpanel})
+        self.assertGreater(len(rets), 100)
+        self.assertTrue(np.isfinite(rets.to_numpy()).all())
+
 
 class TestCombo(unittest.TestCase):
     """A (expansion): inverse-vol diversified blend — the honest Sharpe-additive combiner."""

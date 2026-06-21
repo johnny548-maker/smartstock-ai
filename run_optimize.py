@@ -55,14 +55,40 @@ PREREG_CONFIGS = {
                "top_n": 20, "rebalance": "quarterly", "lookback": 126, "trend_ma": None},
 }
 
+# ── Iteration-2 chip/fundamental expansion (KEYLESS, pre-registered — see
+# .decisions/2026-06-22-chip-fundamental-extension). Panels are PREBUILT (factor_panels_aux, with
+# the PIT availability-lag baked in) and threaded through `aux`; configs are FIXED (not searched)
+# so the extended combo's DSR uses n_trials=2 (iteration-1 price combo=1 + this extension=1). The
+# Phase-0 IC screen prunes this candidate set to the survivors actually pre-registered in the ADR
+# before the gated run. Kept SEPARATE from PREREG_CONFIGS so the price-only combo stays valid.
+AUX_FACTOR_FAMILIES = ("instflow", "revmom", "value", "margincontra", "quality", "size")
+AUX_PREREG_CONFIGS = {
+    "instflow":     {"family": "instflow",     "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
+    "revmom":       {"family": "revmom",       "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
+    "value":        {"family": "value",        "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
+    "margincontra": {"family": "margincontra", "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
+    "quality":      {"family": "quality",      "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "quarterly", "lookback": 20, "trend_ma": None},
+    "size":         {"family": "size",         "vol_target": False, "sigma_target": None,
+                     "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
+}
 
-def factor_panel(family, close_df, lookback):
+
+def factor_panel(family, close_df, lookback, aux=None):
     """Cross-sectional factor panel (dates x tickers); HIGHER = better to pick (select_top_n picks
-    the largest). All price-only / keyless from the OHLCV close panel.
+    the largest). Price-only families derive from the OHLCV close panel; the iteration-2 aux
+    families (chip/fundamental, see factor_panels_aux) are PREBUILT keyless panels passed via
+    `aux` and just reindexed to close_df — the pipeline below (build_targets/simulate) is panel-
+    agnostic, so a new data family needs no downstream change.
 
       mom    : 12-1 momentum  close.shift(skip)/close.shift(lookback) - 1   (winners)
       lowvol : -(trailing realised vol of daily returns over `lookback`)    (low-vol wins)
       strev  : -(close/close.shift(lookback) - 1)                           (last period's losers)
+      aux    : instflow/revmom/value/margincontra/quality/size (PIT-lagged, from factor_panels_aux)
     """
     if family == "mom":
         return bp._mom_12_1(close_df, lookback=lookback)
@@ -71,6 +97,9 @@ def factor_panel(family, close_df, lookback):
         return -rv
     if family == "strev":
         return -(close_df / close_df.shift(int(lookback)) - 1.0)
+    if aux is not None and family in aux and aux[family] is not None:
+        # prebuilt aux panel (PIT-lag already baked in) → align to the survivor price grid
+        return aux[family].reindex(index=close_df.index, columns=close_df.columns)
     raise ValueError("unknown factor family: %s" % family)
 
 
@@ -195,9 +224,10 @@ def _pooled_metrics(rets_list):
             "calmar": (cg / abs(mdd)) if mdd else 0.0, "n_obs": int(n), "_rets": pooled}
 
 
-def sleeve_daily_rets(cfg, prices, sleeve, universe_tickers):
+def sleeve_daily_rets(cfg, prices, sleeve, universe_tickers, aux=None):
     """Daily return series for ONE pre-registered factor-sleeve config (any family). Reuses the
-    full backtest engine (panel → targets → next-open-fill simulate → pct_change)."""
+    full backtest engine (panel → targets → next-open-fill simulate → pct_change). `aux` carries
+    the prebuilt iteration-2 chip/fundamental panels for non-price families (None for price)."""
     scfg = bp.SLEEVES[sleeve]
     univ = [t for t in universe_tickers if t in prices]
     if not univ:
@@ -206,7 +236,7 @@ def sleeve_daily_rets(cfg, prices, sleeve, universe_tickers):
     if close_df.empty:
         return pd.Series(dtype=float)
     close_ff = close_df.ffill()
-    panel = factor_panel(cfg["family"], close_df, cfg["lookback"])
+    panel = factor_panel(cfg["family"], close_df, cfg["lookback"], aux=aux)
     sched = [(s, e) for s, e in schedule_for(close_df.index, cfg["rebalance"])
              if panel.loc[s].notna().any()]
     if not sched:
@@ -311,11 +341,15 @@ def gate_combo(sleeve_rets, split_date, index_rets, n_trials=1, maxdd_tol=0.40):
     }
 
 
-def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=0.2):
+def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=0.2,
+                   aux=None, n_trials=1):
     """Build the pre-registered factor sleeves, inverse-vol-blend them, and gate the combo on a
-    true terminal lockbox. Returns the gate dict (see gate_combo) + per-sleeve diagnostics."""
+    true terminal lockbox. Returns the gate dict (see gate_combo) + per-sleeve diagnostics.
+    `aux` carries the prebuilt iteration-2 chip/fundamental panels (None = price-only combo).
+    `n_trials` deflates DSR: iteration-1 price combo = 1; the chip/fundamental extension = 2
+    (cumulative pre-registered retries, see .decisions/2026-06-22-chip-fundamental-extension)."""
     configs = configs or PREREG_CONFIGS
-    sleeve_rets = {name: sleeve_daily_rets(cfg, prices, sleeve, universe_tickers)
+    sleeve_rets = {name: sleeve_daily_rets(cfg, prices, sleeve, universe_tickers, aux=aux)
                    for name, cfg in configs.items()}
     sleeve_rets = {k: v for k, v in sleeve_rets.items() if v is not None and len(v) > 60}
     if len(sleeve_rets) < 2:
@@ -330,7 +364,7 @@ def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=
     index_rets = (idx_df["Close"].pct_change().dropna()
                   if idx_df is not None and "Close" in idx_df else pd.Series(dtype=float))
     out = gate_combo(sleeve_rets, split_date, index_rets,
-                     n_trials=1, maxdd_tol=0.40)
+                     n_trials=n_trials, maxdd_tol=0.40)
     out["sleeves"] = sorted(sleeve_rets)
     out["combo_configs"] = {k: configs[k] for k in sleeve_rets}
     return out
