@@ -28,8 +28,8 @@ block  window                 champ_rank  champ_Calmar  block_winner
 verdict: REGIME-FRAGILE — winner does not hold every block (min block Calmar 0.19193213941906095, worst block rank 17) | LOCKBOX[2023-06-09..2026-06-18] champ Calmar 1.35
 CAVEAT (audit 2026-06-21): this is NOT a true terminal holdout. The champion was selected — and DSR/PBO computed — on the FULL history, which INCLUDES the 'LOCKBOX' block; the walk-forward only re-MEASURES the already-chosen winner per block, it never re-SELECTS out-of-sample, so it cannot detect selection-stage overfit. A real 80/20 would select on data up to lockbox_start and score the frozen config once on the held-out tail (with a >=lookback embargo). Treat the block ranks as a regime-robustness check, not an out-of-sample proof.
 
-嚴謹版 — TRUE out-of-sample selection (champion chosen by cross-fold MEAN on a search span EXCLUDING the terminal lockbox; 48 configs):
-  OOS-selected champion: {"vol_target": false, "sigma_target": null, "top_n": 10, "rebalance": "quarterly", "lookback": 252}
-  cross-fold OOS calmar = 8.366
-  LOCKBOX[2023-06-12..2026-06-18] (scored ONCE, never searched): calmar = 1.101 | CAGR 53.85% | MaxDD -48.9%
-  → the LOCKBOX number is the honest forward estimate. If it collapses vs the cross-fold OOS, the search overfit; if they agree, the edge is real.
+嚴謹版 — TRUE out-of-sample selection (champion chosen by the objective on POOLED cross-fold returns on a search span EXCLUDING the terminal lockbox; 48 configs):
+  OOS-selected champion: {"vol_target": true, "sigma_target": 0.2, "top_n": 30, "rebalance": "quarterly", "lookback": 252}
+  pooled OOS:  calmar = 3.548 | CAGR 48.32% | MaxDD -13.62%
+  LOCKBOX[2023-06-12..2026-06-18] (scored ONCE, never searched): calmar = 0.881 | CAGR 28.37% | MaxDD -32.18%
+  → compare the POOLED-OOS and LOCKBOX rows on the SAME metric: agree = the edge is real; lockbox collapses vs pooled-OOS = the search overfit. Mind the MaxDD — a high-CAGR/high-drawdown 'winner' may be one you can't actually hold.
