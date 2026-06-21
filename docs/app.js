@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v51';
+const APP_VERSION = 'v52';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -844,6 +844,11 @@ function bindDeck() {
 let SHEET_STATE = 'closed';   // closed | open(half) | full
 let CUR_SHEET_ID = null;      // #2: which logical sheet is open (market/self/opp/stock/…)
 let RETURN_SHEET = null;      // #2: {id, scroll} of the sheet to re-open when a stock detail is dismissed
+let SHEET_TRIGGER = null;     // a11y: element focused before the sheet opened, to restore on close
+const _SHEET_BG = ['deck', 'hud', 'dock', 'pager'];   // background regions to inert while a sheet is open
+function _bgInert(on) {       // a11y: make the occluded deck unreachable to keyboard / VoiceOver
+  _SHEET_BG.forEach((id) => { const n = document.getElementById(id); if (n) n.inert = on; });
+}
 /* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
    open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
    Gated on reduced-motion + GSAP presence; killed on close (clearProps leaves no residue). */
@@ -868,6 +873,10 @@ function openSheet(title, bodyHtml, opts) {
   $('sheetBody').scrollTop = 0;
   renderNotionals();                              // P2 item6: fill $ estimates in the new content
   const sheet = $('sheet'), scrim = $('scrim');
+  // a11y: remember the trigger, inert the background (aria-modal=true was a false promise — the
+  // deck/dock stayed keyboard/VoiceOver-reachable behind the scrim), then move focus into the dialog.
+  if (SHEET_STATE === 'closed') SHEET_TRIGGER = document.activeElement;
+  _bgInert(true);
   sheet.hidden = false; scrim.hidden = false;
   // force reflow so the transform transition plays from translateY(100%)
   void sheet.offsetHeight;
@@ -877,6 +886,7 @@ function openSheet(title, bodyHtml, opts) {
     sheet.classList.add('open');
     SHEET_STATE = opts.full ? 'full' : 'open';
     if (opts.full) { sheet.classList.remove('open'); sheet.classList.add('full'); }
+    try { sheet.tabIndex = -1; sheet.focus({ preventScroll: true }); } catch (e) {}
   });
   requestAnimationFrame(() => requestAnimationFrame(revealSheet));   // settle content after open
   if (opts.after) requestAnimationFrame(() => requestAnimationFrame(opts.after));
@@ -889,6 +899,10 @@ function closeSheet() {
   scrim.classList.remove('show');
   SHEET_STATE = 'closed';
   CUR_SHEET_ID = null;
+  // a11y: un-inert the background and restore focus to the element that opened the sheet
+  _bgInert(false);
+  try { if (SHEET_TRIGGER && SHEET_TRIGGER.focus) SHEET_TRIGGER.focus({ preventScroll: true }); } catch (e) {}
+  SHEET_TRIGGER = null;
   // tear down any live K-line in the sheet
   const k = sheet.querySelector('[id^="kline"]');
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
