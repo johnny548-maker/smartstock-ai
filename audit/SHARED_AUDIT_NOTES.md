@@ -45,7 +45,31 @@
 - [x] #6 lockbox 洩漏（champion+DSR/PBO 含 lockbox）→ render CAVEAT 誠實化
 - [x] #7 docstring 過時 top-20/12-1 → 同步 top-10/6-1；#18 WilsonLo 0.51-0.54
 
-## 待辦（第二波 MED/LOW + CRITICAL 完整修）
+### 3c MED（d79e3bb）+ 瀏覽器驗
+- [x] #13 bare-code verdict badge → _verdictOf 試 +.TW/+.TWO（驗 9999→建議買入、8888.TWO→不持有）
+- [x] #16 opp/US detail 立即 flush（防 late-export exception 全失）；#12 cMOM clamp 統一 VOLTGT_FLOOR=0.5
+
+## Wave 4（第三波稽核 wkph4k5qy：8 agents, 4 HIGH）
+### 4a CRITICAL + robustness（7e76f3c）
+- [x] **CRITICAL `_bench_for` DataFrame crash**：我 Wave3a 寫 `frames.get("nasdaq") or ...` → `DataFrame or X` raise「ambiguous」→ rank_stocks try/except 靜默**丟掉所有美股**（06-21 picks 0 美股）。我的單元測試用 string 沒抓到。修=explicit `is not None` + bool-raising 回歸測試。**驗：picks US 4(TSM/AMD/QQQ/GOOGL)、verdicts US 791 恢復**
+- [x] #3 incomplete：us_market.score_batch 只收 sp500 → 整個輪轉美股仍比 S&P。加 nasdaq_frame
+- [x] revenue.parse_rows isinstance guard；_clean numpy scalar(.item())；_rebuild_index log+.get()；detail bare 去重；ResizeObserver 洩漏；OOS relabel 漏網
+### 4b HIGH iOS 返回手勢（76888ed）
+- [x] openStockSheet pushState（可 pop）+ route() code-less hash 關閉 sheet。驗：open→back→關閉+留 app
+### 4c HIGH 無障礙（c1e611e）
+- [x] openSheet inert 背景+focus 入 sheet；close un-inert+還原。驗 0000→1111→0000
+### CI race（bc2a16e）
+- [x] daily.yml report+index push 改 rebase-retry×5（CI 27889451150 曾因 push race 丟整份報告）
+### 4d LOW polish（389fd49）
+- [x] chgHtml toFixed(2)；revenue code-less 列改 static 非 dead <a>
+
+## 待辦（Deferred — 低值/風險/數據限制）
+- SW network-first 全部（MED，**SW 改動風險高**，PWA 白屏前科 → 暫不動，網路慢非用戶抱怨）
+- detail 檔不 prune（MED，與「完整」衝突 → 用戶選完整，接受）；24 revenue bare 無 badge（MED，cold-start ramp benign）
+- 核心 fetcher 無 last-good cache（LOW resilience）；universe/institutional schema KeyError（LOW）；date_str UTC（LOW latent）
+- #8 .TWO vs 櫃買（無 keyless TPEx index，TWSE 是可辯護 proxy）；#11 delisting=price-freeze（與 #1 同數據限制）
+
+## 待辦（第二波 MED/LOW — 已於 Wave3c/4 處理）
 - #1 完整 PIT：**數據限制，不做 masking 重跑**。added_date 86%(563/653)回填到 2011(窗起點，非真 index-add)，CSV=2026 snapshot 無下市名 → mask near-no-op（bulk 本就從 2011 可選）且救不了真 survivorship（缺失名不在 CSV）。誠實標註（已部署 1f9ee78）= operative fix。完整 PIT 須歷史成分數據集（含下市名）= data-acquisition 任務非 code。
 - #8 .TWO 仍比 TWSE 非櫃買（無 TPEx index）；#11 delisting=price-freeze；#12 cMOM clamp 不一致
 - #13 d.search 15 bare TW code → verdict badge miss；#14 26 bare detail 重複檔
