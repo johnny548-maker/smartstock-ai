@@ -172,6 +172,131 @@ class TestRigorousWalkForward(unittest.TestCase):
         self.assertIsNone(ro._pooled_metrics([pd.Series([0.001] * 3)]))   # too short
 
 
+class TestFactorFamilies(unittest.TestCase):
+    """A (expansion): pre-registered price-only factor panels. HIGHER = better to pick."""
+
+    def _panel(self):
+        dates = pd.bdate_range("2020-01-01", periods=300)
+        # A = steady low-vol riser; B = high-vol; C = recent loser (fell last month); D = decliner
+        a = np.linspace(100, 140, 300)
+        b = 100 + 30 * np.sin(np.linspace(0, 30, 300))            # choppy = high vol
+        c = np.concatenate([np.linspace(100, 160, 279), np.linspace(160, 120, 21)])  # crashed last 21d
+        d = np.linspace(140, 100, 300)                            # steady decliner (12-1 loser)
+        return pd.DataFrame({"A": a, "B": b, "C": c, "D": d}, index=dates)
+
+    def test_lowvol_prefers_low_volatility_name(self):
+        close = self._panel()
+        p = ro.factor_panel("lowvol", close, 60)
+        last = p.iloc[-1]
+        self.assertGreater(last["A"], last["B"])                 # steady A > choppy B (higher factor)
+
+    def test_strev_prefers_recent_loser(self):
+        close = self._panel()
+        p = ro.factor_panel("strev", close, 21)
+        last = p.iloc[-1]
+        self.assertGreater(last["C"], last["A"])                 # C (fell last 21d) > A (rose)
+
+    def test_mom_prefers_winner(self):
+        close = self._panel()
+        p = ro.factor_panel("mom", close, 126)
+        last = p.iloc[-1]
+        self.assertGreater(last["A"], last["D"])                 # 12-1 winner A > decliner D
+
+    def test_unknown_family_raises(self):
+        with self.assertRaises(ValueError):
+            ro.factor_panel("bogus", self._panel(), 60)
+
+    def test_prereg_configs_cover_all_families(self):
+        self.assertEqual(set(ro.PREREG_CONFIGS), set(ro.FACTOR_FAMILIES))
+        for fam, cfg in ro.PREREG_CONFIGS.items():
+            self.assertEqual(cfg["family"], fam)
+
+
+class TestCombo(unittest.TestCase):
+    """A (expansion): inverse-vol diversified blend — the honest Sharpe-additive combiner."""
+
+    def test_inverse_vol_overweights_low_vol_sleeve(self):
+        np.random.seed(0)
+        idx = pd.bdate_range("2020-01-01", periods=400)
+        low = pd.Series(np.random.normal(0.0005, 0.004, 400), index=idx)    # low vol
+        high = pd.Series(np.random.normal(0.0005, 0.020, 400), index=idx)   # ~5x vol
+        combo = ro.inverse_vol_combo({"low": low, "high": high}, vol_win=60)
+        self.assertGreater(len(combo), 200)
+        j = combo.index
+        # combo tracks the LOW-vol sleeve more than the HIGH-vol one (inverse-vol overweight)
+        self.assertGreater(combo.corr(low.reindex(j)), combo.corr(high.reindex(j)))
+        # diversification: combo vol is below the high sleeve's vol
+        self.assertLess(combo.std(), high.reindex(j).std())
+
+    def test_inverse_vol_combo_no_lookahead_uses_shifted_weights(self):
+        # a vol spike on day T must not change the combo return ON day T (weights are from T-1).
+        idx = pd.bdate_range("2020-01-01", periods=200)
+        a = pd.Series(0.001, index=idx)
+        b = pd.Series(0.001, index=idx)
+        base = ro.inverse_vol_combo({"a": a, "b": b}, vol_win=30)
+        b2 = b.copy(); b2.iloc[-1] = 0.5                      # huge spike on the LAST day only
+        spiked = ro.inverse_vol_combo({"a": a, "b": b2}, vol_win=30)
+        common = base.index.intersection(spiked.index)[:-1]  # all but the spiked day
+        pd.testing.assert_series_equal(base.reindex(common), spiked.reindex(common))
+
+    def test_inverse_vol_empty(self):
+        self.assertEqual(len(ro.inverse_vol_combo({})), 0)
+
+    def test_sleeve_daily_rets_smoke(self):
+        idx = pd.bdate_range("2018-01-01", periods=500)
+        def ohlc(mult):
+            p = np.linspace(100, 100 * mult, 500)
+            return pd.DataFrame({"Open": p, "High": p * 1.01, "Low": p * 0.99,
+                                 "Close": p, "Volume": 1e6}, index=idx)
+        prices = {"%04d.TW" % (1000 + i): ohlc(1.0 + 0.1 * i) for i in range(8)}
+        rets = ro.sleeve_daily_rets(ro.PREREG_CONFIGS["mom"], prices, "tw", list(prices))
+        self.assertGreater(len(rets), 100)
+        self.assertTrue(np.isfinite(rets.to_numpy()).all())
+
+
+class TestComboGate(unittest.TestCase):
+    """A (expansion): the combo gate + the cardinal anti-p-hacking TOXICITY test (ADR §7)."""
+
+    def test_toxicity_random_sleeves_are_blocked(self):
+        # CARDINAL: pure-noise sleeves MUST fail the gate. If noise passes, n_trials accounting is
+        # broken — stop and fix. (ADR §7)
+        np.random.seed(42)
+        idx = pd.bdate_range("2014-01-01", periods=2000)
+        sr = {"noise%d" % i: pd.Series(np.random.normal(0.0, 0.012, 2000), index=idx)
+              for i in range(3)}
+        index_rets = pd.Series(np.random.normal(0.0, 0.01, 2000), index=idx)
+        g = ro.gate_combo(sr, idx[1600], index_rets, n_trials=1)
+        self.assertFalse(g["pass"])              # noise must NOT pass
+        self.assertFalse(g["dsr_pass"])          # ~0 Sharpe → DSR << 0.95
+
+    def test_gate_high_sharpe_passes_dsr(self):
+        # isolate DSR: a genuinely high-Sharpe combo (n_trials=1, pre-registered) clears DSR>0.95.
+        np.random.seed(7)
+        idx = pd.bdate_range("2014-01-01", periods=2000)
+        sr = {"s%d" % i: pd.Series(np.random.normal(0.0010, 0.006, 2000), index=idx)
+              for i in range(3)}
+        g = ro.gate_combo(sr, idx[1600], pd.Series(0.0, index=idx), n_trials=1)
+        self.assertTrue(g["dsr_pass"])
+
+    def test_flat_regime_lift_pure_beta_is_about_one(self):
+        np.random.seed(1)
+        idx = pd.bdate_range("2015-01-01", periods=1000)
+        index_rets = pd.Series(np.random.normal(0.0003, 0.01, 1000), index=idx)
+        lift = ro.flat_regime_lift(index_rets * 1.0, index_rets)   # combo == index → pure beta
+        self.assertIsNotNone(lift)
+        self.assertAlmostEqual(lift, 1.0, places=1)               # ~1, not >1 → no alpha
+
+    def test_gate_dict_shape(self):
+        np.random.seed(3)
+        idx = pd.bdate_range("2016-01-01", periods=800)
+        sr = {"a": pd.Series(np.random.normal(0, 0.01, 800), index=idx),
+              "b": pd.Series(np.random.normal(0, 0.01, 800), index=idx)}
+        g = ro.gate_combo(sr, idx[640], pd.Series(0.0, index=idx), n_trials=1)
+        for k in ("pass", "dsr_pass", "pbo_pass", "spa_pass", "lockbox_pass", "flat_pass", "n_trials"):
+            self.assertIn(k, g)
+        self.assertEqual(g["n_trials"], 1)
+
+
 class TestTrendFilter(unittest.TestCase):
     """C: a time-series-momentum regime filter — when the index is below its trailing MA at a
     rebalance signal date, the sleeve goes to CASH that period (the classic momentum drawdown cut)."""

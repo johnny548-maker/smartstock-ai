@@ -37,6 +37,10 @@ on:
                       committed PINNED universe so results are reproducible run-to-run)'
         type: boolean
         default: false
+      combo:
+        description: 'also run the pre-registered multi-factor inverse-vol COMBO + gate (LOWVOL+STREV+MOM)'
+        type: boolean
+        default: false
   schedule:
     - cron: '43 6 7 * *'   # 7th of each month, 06:43 UTC — monthly re-optimise
 
@@ -122,12 +126,14 @@ jobs:
           CAP: ${{ github.event.inputs.maxdd_cap || '0.35' }}
           UNIVERSE: ${{ github.event.inputs.universe || 'draft' }}
           RIGOROUS: ${{ github.event.inputs.rigorous }}
+          COMBO: ${{ github.event.inputs.combo }}
         run: |
           set -euo pipefail
           EXTRA=""
           if [ "$UNIVERSE" = "full" ]; then EXTRA="--csv universe_full_market.csv"; fi
           # default true on schedule/blank; only 'false' disables the嚴謹 path
           if [ "$RIGOROUS" != "false" ]; then EXTRA="$EXTRA --rigorous --embargo 252"; fi
+          if [ "$COMBO" = "true" ]; then EXTRA="$EXTRA --combo"; fi
           run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP" $EXTRA; }
           if [ "$SLEEVE" = "both" ]; then run_one tw; run_one us; else run_one "$SLEEVE"; fi
 

@@ -21,6 +21,7 @@ import json
 import math
 import os
 
+import numpy as np
 import pandas as pd
 
 import backtest_portfolio as bp
@@ -39,6 +40,38 @@ SCALE_CLAMP = (0.5, 1.5)               # leverage bounds (no <0.5x de-risk, no >
 TREND_MAS = (None, 200)                # time-series-momentum regime filter: None=always-invested,
                                        # 200=cash when index < its 200d SMA (drawdown cut)
 REALIZED_WIN = 60                      # trailing days for realised-vol estimate
+
+# ── Multi-factor expansion (pre-registered — see .decisions/2026-06-21-factor-family-preregistration)
+# Each family is a price-only cross-sectional factor panel (higher value = better to hold). The
+# combined sleeve inverse-vol-blends the PRE-REGISTERED fixed configs below; because the components
+# are pre-registered (not search-selected), the combo's DSR may honestly use n_trials=1.
+FACTOR_FAMILIES = ("mom", "lowvol", "strev")
+PREREG_CONFIGS = {
+    "lowvol": {"family": "lowvol", "vol_target": False, "sigma_target": None,
+               "top_n": 20, "rebalance": "monthly", "lookback": 60, "trend_ma": None},
+    "strev":  {"family": "strev", "vol_target": False, "sigma_target": None,
+               "top_n": 20, "rebalance": "monthly", "lookback": 21, "trend_ma": None},
+    "mom":    {"family": "mom", "vol_target": True, "sigma_target": 0.20,
+               "top_n": 20, "rebalance": "quarterly", "lookback": 126, "trend_ma": None},
+}
+
+
+def factor_panel(family, close_df, lookback):
+    """Cross-sectional factor panel (dates x tickers); HIGHER = better to pick (select_top_n picks
+    the largest). All price-only / keyless from the OHLCV close panel.
+
+      mom    : 12-1 momentum  close.shift(skip)/close.shift(lookback) - 1   (winners)
+      lowvol : -(trailing realised vol of daily returns over `lookback`)    (low-vol wins)
+      strev  : -(close/close.shift(lookback) - 1)                           (last period's losers)
+    """
+    if family == "mom":
+        return bp._mom_12_1(close_df, lookback=lookback)
+    if family == "lowvol":
+        rv = close_df.pct_change().rolling(int(lookback), min_periods=max(10, int(lookback) // 2)).std()
+        return -rv
+    if family == "strev":
+        return -(close_df / close_df.shift(int(lookback)) - 1.0)
+    raise ValueError("unknown factor family: %s" % family)
 
 
 def monthly_rebalance_schedule(dates):
@@ -160,6 +193,147 @@ def _pooled_metrics(rets_list):
     sh = float(pooled.mean() / sd * (252.0 ** 0.5)) if sd else 0.0
     return {"cagr": cg, "max_dd": mdd, "sharpe": sh,
             "calmar": (cg / abs(mdd)) if mdd else 0.0, "n_obs": int(n), "_rets": pooled}
+
+
+def sleeve_daily_rets(cfg, prices, sleeve, universe_tickers):
+    """Daily return series for ONE pre-registered factor-sleeve config (any family). Reuses the
+    full backtest engine (panel → targets → next-open-fill simulate → pct_change)."""
+    scfg = bp.SLEEVES[sleeve]
+    univ = [t for t in universe_tickers if t in prices]
+    if not univ:
+        return pd.Series(dtype=float)
+    open_df, close_df = bp.build_panels({t: prices[t] for t in univ})
+    if close_df.empty:
+        return pd.Series(dtype=float)
+    close_ff = close_df.ffill()
+    panel = factor_panel(cfg["family"], close_df, cfg["lookback"])
+    sched = [(s, e) for s, e in schedule_for(close_df.index, cfg["rebalance"])
+             if panel.loc[s].notna().any()]
+    if not sched:
+        return pd.Series(dtype=float)
+    tgt = build_targets(close_ff, panel, sched, cfg["top_n"],
+                        cfg["vol_target"], cfg["sigma_target"])
+    nav = bp.simulate_portfolio(open_df, close_df, tgt, sell_tax_bps=scfg["sell_tax_bps"])
+    return nav.pct_change().dropna()
+
+
+def inverse_vol_combo(rets_dict, vol_win=REALIZED_WIN):
+    """Inverse-volatility (ERC-lite) blend of sleeve daily returns → one combo return series.
+    Weights use each sleeve's trailing `vol_win`-day vol, SHIFTED one day (no look-ahead), so the
+    combo holds yesterday-known inverse-vol weights today. Low-correlation sleeves → higher Sharpe;
+    THIS is the only honest way to clear DSR (diversification, not config-mining)."""
+    df = pd.DataFrame({k: v for k, v in rets_dict.items() if v is not None and len(v)})
+    if df.shape[1] < 1:
+        return pd.Series(dtype=float)
+    vol = df.rolling(int(vol_win), min_periods=max(10, int(vol_win) // 2)).std()
+    inv = (1.0 / vol.replace(0.0, np.nan))
+    w = inv.div(inv.sum(axis=1), axis=0).shift(1)          # yesterday's weights → no look-ahead
+    combo = (w * df).sum(axis=1, min_count=1)
+    # only keep rows where weights were fully formed (all sleeves have a vol estimate)
+    return combo[w.notna().all(axis=1)].dropna()
+
+
+def flat_regime_lift(combo_rets, index_rets, fwd=21):
+    """Alpha-not-beta check: in the FLAT index regime (middle tercile of forward index returns),
+    does the combo BEAT the index? lift = combo_cum / index_cum over flat days; >1 = real alpha,
+    <=1 = the 'edge' is just beta riding up-markets (the V-recovery false-positive killer)."""
+    idx = index_rets.reindex(combo_rets.index).dropna()
+    if len(idx) < 60:
+        return None
+    c = combo_rets.reindex(idx.index)
+    fwd_ret = idx.rolling(fwd).sum().shift(-fwd)
+    lo, hi = fwd_ret.quantile(1.0 / 3), fwd_ret.quantile(2.0 / 3)
+    flat = (fwd_ret >= lo) & (fwd_ret <= hi)
+    cf, xf = c[flat].dropna(), idx[flat].dropna()
+    j = cf.index.intersection(xf.index)
+    if len(j) < 20:
+        return None
+    icum = float((1.0 + xf.reindex(j)).prod())
+    if icum <= 0:
+        return None
+    return float((1.0 + cf.reindex(j)).prod() / icum)
+
+
+def gate_combo(sleeve_rets, split_date, index_rets, n_trials=1, maxdd_tol=0.40):
+    """Gate the inverse-vol COMBO of pre-registered sleeves. All five must pass (pre-registered,
+    see ADR 2026-06-21): DSR>0.95 (n_trials=1, combo is pre-registered) AND PBO<0.5 (CSCV over the
+    sleeve panel) AND SPA p<0.05 (sleeves beat the index after data-snooping) AND lockbox obj>0 with
+    tolerable MaxDD AND FLAT-regime lift>1. Pure on return series → directly toxicity-testable."""
+    df = pd.DataFrame({k: v for k, v in sleeve_rets.items()
+                       if v is not None and len(v)}).dropna(how="all")
+    combo = inverse_vol_combo(sleeve_rets)
+    search = combo[combo.index < split_date].dropna()
+    lock = combo[combo.index >= split_date].dropna()
+
+    sd = float(search.std())
+    sr_daily = float(search.mean() / sd) if sd else 0.0
+    dsr = val.deflated_sharpe_ratio(sr_daily, n_trials=n_trials, n_obs=int(len(search)),
+                                    skew=float(search.skew()),
+                                    kurt=float(search.kurtosis() + 3.0)) if len(search) > 30 else None
+    dsr_pass = bool(dsr is not None and dsr > 0.95)
+
+    panel = df[df.index < split_date].dropna()
+    pbo_val = None
+    try:
+        if panel.shape[1] >= 2 and panel.shape[0] >= 32:
+            pbo = val.pbo_cscv(panel.to_numpy())
+            pbo_val = pbo if isinstance(pbo, (int, float)) else (pbo or {}).get("pbo")
+    except Exception:
+        pbo_val = None
+    pbo_pass = bool(pbo_val is None or pbo_val < 0.5)
+
+    spa_p = None
+    try:
+        ex = panel.sub(index_rets.reindex(panel.index), axis=0).dropna()
+        if ex.shape[1] >= 1 and ex.shape[0] >= 32:
+            spa_p = val.spa_test(ex.to_numpy()).get("p_value")
+    except Exception:
+        spa_p = None
+    spa_pass = bool(spa_p is not None and spa_p < 0.05)
+
+    lm = _pooled_metrics([lock]) if len(lock) else None
+    lock_pass = bool(lm is not None and lm["calmar"] > 0 and abs(lm["max_dd"]) <= maxdd_tol)
+
+    flift = flat_regime_lift(combo, index_rets)
+    flat_pass = bool(flift is not None and flift > 1.0)
+
+    overall = bool(dsr_pass and pbo_pass and spa_pass and lock_pass and flat_pass)
+    return {
+        "pass": overall, "n_trials": n_trials,
+        "dsr": dsr, "dsr_pass": dsr_pass,
+        "pbo": pbo_val, "pbo_pass": pbo_pass,
+        "spa_p": spa_p, "spa_pass": spa_pass,
+        "lockbox": (lm and {"calmar": round(lm["calmar"], 3), "cagr": round(lm["cagr"], 4),
+                            "max_dd": round(lm["max_dd"], 4)}) or None,
+        "lockbox_pass": lock_pass,
+        "flat_lift": (round(flift, 3) if flift is not None else None), "flat_pass": flat_pass,
+        "n_search": int(len(search)), "n_lock": int(len(lock)),
+    }
+
+
+def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=0.2):
+    """Build the pre-registered factor sleeves, inverse-vol-blend them, and gate the combo on a
+    true terminal lockbox. Returns the gate dict (see gate_combo) + per-sleeve diagnostics."""
+    configs = configs or PREREG_CONFIGS
+    sleeve_rets = {name: sleeve_daily_rets(cfg, prices, sleeve, universe_tickers)
+                   for name, cfg in configs.items()}
+    sleeve_rets = {k: v for k, v in sleeve_rets.items() if v is not None and len(v) > 60}
+    if len(sleeve_rets) < 2:
+        return {"pass": False, "error": "fewer than 2 sleeves produced returns"}
+    combo = inverse_vol_combo(sleeve_rets)
+    if len(combo) < 100:
+        return {"pass": False, "error": "combo track too short"}
+    search_idx, lock_idx = split_lockbox(combo.index, lockbox_frac)
+    split_date = lock_idx[0]
+    scfg = bp.SLEEVES[sleeve]
+    idx_df = prices.get(scfg["index"])
+    index_rets = (idx_df["Close"].pct_change().dropna()
+                  if idx_df is not None and "Close" in idx_df else pd.Series(dtype=float))
+    out = gate_combo(sleeve_rets, split_date, index_rets,
+                     n_trials=1, maxdd_tol=0.40)
+    out["sleeves"] = sorted(sleeve_rets)
+    out["combo_configs"] = {k: configs[k] for k in sleeve_rets}
+    return out
 
 
 def run_grid(prices, sleeve, universe_tickers):
@@ -377,7 +551,7 @@ def _clean(results):
     return [{k: v for k, v in r.items() if k != "_rets"} for r in results]
 
 
-def render(sleeve, objective, ranked, g, wf=None, rigorous=None):
+def render(sleeve, objective, ranked, g, wf=None, rigorous=None, combo=None):
     L = ["OPTIMIZE — sleeve=%s  objective=%s  grid=%d configs" % (sleeve, objective, g["n_trials"])]
     L.append("gate: DSR=%.3f (%s, >0.95 req) | PBO=%s (%s, <0.5 req)" % (
         (g["dsr"] or 0.0), "PASS" if g["dsr_pass"] else "FAIL",
@@ -448,6 +622,26 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None):
         L.append("  → compare the POOLED-OOS and LOCKBOX rows on the SAME metric: agree = the edge "
                  "is real; lockbox collapses vs pooled-OOS = the search overfit. Mind the MaxDD — a "
                  "high-CAGR/high-drawdown 'winner' may be one you can't actually hold.")
+    if combo:
+        L.append("")
+        L.append("多因子擴張 COMBO (pre-registered LOWVOL+STREV+MOM, inverse-vol; ADR 2026-06-21) — "
+                 "diversification, NOT config-mining:")
+        if combo.get("error"):
+            L.append("  ERROR: %s" % combo["error"])
+        else:
+            v = lambda x: ("%.3f" % x) if isinstance(x, (int, float)) else "n/a"
+            L.append("  sleeves: %s" % ", ".join(combo.get("sleeves", [])))
+            L.append("  GATE (all 5 must pass; n_trials=%d): DSR %s>0.95 [%s] · PBO %s<0.5 [%s] · "
+                     "SPA_p %s<0.05 [%s] · lockbox>0&MaxDD ok [%s] · FLAT-lift %s>1 [%s]" % (
+                         combo.get("n_trials", 1), v(combo.get("dsr")), combo.get("dsr_pass"),
+                         v(combo.get("pbo")), combo.get("pbo_pass"), v(combo.get("spa_p")),
+                         combo.get("spa_pass"), combo.get("lockbox_pass"),
+                         v(combo.get("flat_lift")), combo.get("flat_pass")))
+            L.append("  lockbox: %s" % json.dumps(combo.get("lockbox"), ensure_ascii=False))
+            L.append("  ==> COMBO %s" % ("PASS — deployable candidate (verify lockbox MaxDD holdable)"
+                     if combo.get("pass") else
+                     "FAIL — pre-registered combo did NOT clear the gate. Per ADR §8 this is a VALID "
+                     "negative result; do NOT loosen the gate or add families to chase a pass."))
     return "\n".join(L)
 
 
@@ -470,6 +664,9 @@ def main(argv=None):
                     help="terminal fraction held out as the never-searched lockbox (default 0.2)")
     ap.add_argument("--csv", default=boc.UNIVERSE_CSV)
     ap.add_argument("--cache-dir", default=None)
+    ap.add_argument("--combo", action="store_true",
+                    help="run the pre-registered multi-factor inverse-vol COMBO + its gate "
+                         "(DSR n_trials=1 / PBO / SPA / lockbox / FLAT-regime lift) — see ADR 2026-06-21")
     args = ap.parse_args(argv)
 
     cfg = bp.SLEEVES[args.sleeve]
@@ -524,16 +721,31 @@ def main(argv=None):
         except Exception as e:
             print("WARN rigorous selection skipped: %s" % e)
 
+    # 多因子擴張 (pre-registered, ADR 2026-06-21): inverse-vol COMBO of LOWVOL+STREV+MOM, gated on a
+    # true lockbox. The honest "expand the search to beat the gate" — via DIVERSIFICATION, not
+    # config-mining. Reports PASS/FAIL; a FAIL is a valid scientific result (do NOT loosen the gate).
+    combo = None
+    if args.combo:
+        try:
+            combo = rigorous_combo(prices, args.sleeve, univ_in, lockbox_frac=args.lockbox_frac)
+            print("COMBO gate: PASS=%s | DSR=%s(%s) PBO=%s(%s) SPA_p=%s(%s) lockbox=%s(%s) flat_lift=%s(%s)"
+                  % (combo.get("pass"), combo.get("dsr"), combo.get("dsr_pass"),
+                     combo.get("pbo"), combo.get("pbo_pass"), combo.get("spa_p"), combo.get("spa_pass"),
+                     combo.get("lockbox_pass"), combo.get("lockbox"),
+                     combo.get("flat_lift"), combo.get("flat_pass")))
+        except Exception as e:
+            print("WARN combo skipped: %s" % e)
+
     out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
            "period": period, "gate": g, "walk_forward": wf, "rigorous": rigorous,
-           "ranked": _clean(ranked)}
+           "combo": combo, "ranked": _clean(ranked)}
     # Non-default objectives get an objective suffix so two objective runs (e.g. calmar +
     # maxdd_capped) write DISTINCT files — same-name files made the second CI commit conflict on
     # rebase and the result was lost. Default 'calmar' keeps the canonical optimize_<sleeve>.txt.
     _suffix = "" if args.objective == "calmar" else "_" + args.objective
     txt_fp = os.path.join(_HERE, "optimize_%s%s.txt" % (args.sleeve, _suffix))
     json_fp = os.path.join(_HERE, "optimize_%s%s.json" % (args.sleeve, _suffix))
-    text = render(args.sleeve, args.objective, ranked, g, wf, rigorous)
+    text = render(args.sleeve, args.objective, ranked, g, wf, rigorous, combo)
     with open(txt_fp, "w", encoding="utf-8") as f:
         f.write(text + "\n")
     with open(json_fp, "w", encoding="utf-8") as f:
