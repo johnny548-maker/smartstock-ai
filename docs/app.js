@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v53';
+const APP_VERSION = 'v54';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -845,9 +845,24 @@ let SHEET_STATE = 'closed';   // closed | open(half) | full
 let CUR_SHEET_ID = null;      // #2: which logical sheet is open (market/self/opp/stock/…)
 let RETURN_SHEET = null;      // #2: {id, scroll} of the sheet to re-open when a stock detail is dismissed
 let SHEET_TRIGGER = null;     // a11y: element focused before the sheet opened, to restore on close
+let _sheetPushed = false;     // did the current open PUSH a #date/code history entry? (vs deep-link)
+let _suppressRoute = false;   // when a close pops that entry via history.back(), skip route() once
 const _SHEET_BG = ['deck', 'hud', 'dock', 'pager'];   // background regions to inert while a sheet is open
 function _bgInert(on) {       // a11y: make the occluded deck unreachable to keyboard / VoiceOver
   _SHEET_BG.forEach((id) => { const n = document.getElementById(id); if (n) n.inert = on; });
+}
+// Restore the hash to the bare #date on close. If the open PUSHED an entry, POP it via
+// history.back() (symmetric — leaves a clean single #date so the NEXT Back works); else (deep-link
+// open, no push) replaceState. Without this, replaceState would duplicate #date and the following
+// Back press would navigate between two identical hashes → no hashchange → dead Back.
+function _restoreDayHash() {
+  if (_sheetPushed) {
+    _sheetPushed = false; _suppressRoute = true;
+    history.back();
+  } else {
+    const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
+    if (m) history.replaceState(null, '', '#' + m[1]);
+  }
 }
 /* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
    open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
@@ -911,11 +926,8 @@ function closeSheet() {
   setTimeout(() => {
     if (SHEET_STATE === 'closed') { sheet.hidden = true; scrim.hidden = true; $('sheetBody').innerHTML = ''; }
   }, 420);
-  // restore hash to the day view if we were in a stock route
-  if (/\/[^/]+$/.test(location.hash)) {
-    const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
-    if (m) history.replaceState(null, '', '#' + m[1]);
-  }
+  // restore hash to the day view if we were in a stock route (POP the pushed entry if any)
+  if (/\/[^/]+$/.test(location.hash)) _restoreDayHash();
 }
 window.ssCloseSheet = closeSheet;
 
@@ -935,9 +947,8 @@ function reopenSheet(id, scroll) {
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
   if (k && k._ro) { try { k._ro.disconnect(); } catch (e) {} k._ro = null; }   // leak: drop observer
   CUR_KLINE = null;
-  // leaving the stock route → restore the hash to the bare day first
-  const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
-  if (m) history.replaceState(null, '', '#' + m[1]);
+  // leaving the stock route → restore the hash to the bare day first (POP the pushed entry if any)
+  _restoreDayHash();
   openSheet(cfg[0], cfg[1](), { full: cfg[2], id: id, after: () => { if (scroll) $('sheetBody').scrollTop = scroll; } });
 }
 function dismissSheet() {
@@ -1210,7 +1221,8 @@ async function openStockSheet(code) {
   // POPS the sheet (route() closes it on the code-less hash) instead of exiting the app or leaving
   // a stranded modal. Guard so a route()-driven open (hash already #date/code) doesn't double-push.
   const _wantHash = '#' + CUR_DATE + '/' + code;
-  if (location.hash !== _wantHash) history.pushState(null, '', _wantHash);
+  _sheetPushed = location.hash !== _wantHash;        // remember so close can POP (not duplicate) it
+  if (_sheetPushed) history.pushState(null, '', _wantHash);
   let p = findCard(CUR, code);
   // A thin card (scored_universe / radar / leader without ohlc) makes findCard succeed but has
   // NO chart. So whenever the card lacks a K-line, fetch the per-stock detail file and MERGE its
@@ -2072,6 +2084,9 @@ async function showDay(date) {
 }
 
 async function route() {
+  // a close-path POP (history.back from closeSheet/reopenSheet) already handled the UI — skip the
+  // hashchange it fires so we don't double-dismiss / re-render.
+  if (_suppressRoute) { _suppressRoute = false; return; }
   let h = location.hash.replace(/^#/, '').trim();
   const m = h.match(/^(\d{4}-\d{2}-\d{2})(?:\/(.+))?$/);
   if (!m) {

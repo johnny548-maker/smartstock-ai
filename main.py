@@ -711,7 +711,7 @@ def main(web=False):
     #   (re-writing the already-flushed picks is harmless). Mirrors the panel block's own flush.
     try:
         log.info("opp/US chart detail files flushed: %d total",
-                 stock_detail.export_details(details, config.WEB_DIR))
+                 len(stock_detail.export_details(details, config.WEB_DIR)))   # returns a list, not int
     except Exception as _fe:
         log.warning("SKIP opp/US detail flush: %s", _fe)
 
