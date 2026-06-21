@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v52';
+const APP_VERSION = 'v53';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -160,7 +160,7 @@ function chgHtml(c, big) {
   if (c == null) return '';
   const cls = c >= 0 ? 'up' : 'down';
   const arrow = c > 0 ? '▲' : (c < 0 ? '▼' : '–');
-  return `<b class="${cls} num${big ? '' : ' small'}"><span class="arrow">${arrow}</span> ${Math.abs(c)}%</b>`;
+  return `<b class="${cls} num${big ? '' : ' small'}"><span class="arrow">${arrow}</span> ${Math.abs(Number(c)).toFixed(2)}%</b>`;
 }
 function pxNum(v) { return v == null ? '—' : Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 }); }
 // already-in-% value → '+1.2%' (thousand-separated, signed). null-safe.
@@ -1808,8 +1808,12 @@ function revenueHtml(d) {
   const li = rev.candidates.map((c) => {
     const flag = c.accel ? ' <span class="li-badge">🔥連3月加速</span>' : '';
     const ind = c.industry ? ` · ${esc(c.industry)}` : '';
-    const href = c.code ? `href="#${esc(CUR_DATE)}/${esc(c.code)}" data-close-sheet` : '';
-    return `<li><a ${href}><div class="li-main"><div class="li-name">${esc(c.name)}${c.code ? ` <span class="tk">${esc(c.code)}</span>` : ''}${flag}</div><div class="li-sub">月營收YoY${ind}</div></div><div class="li-r"><span class="pct up">+${c.yoy}%</span></div></a></li>`;
+    const inner = `<div class="li-main"><div class="li-name">${esc(c.name)}${c.code ? ` <span class="tk">${esc(c.code)}</span>` : ''}${flag}</div><div class="li-sub">月營收YoY${ind}</div></div><div class="li-r"><span class="pct up">+${c.yoy}%</span></div>`;
+    // a code-less candidate has nowhere to link — render a static row, not a dead <a> that looks
+    // tappable but ignores taps and isn't keyboard-focusable.
+    return c.code
+      ? `<li><a href="#${esc(CUR_DATE)}/${esc(c.code)}" data-close-sheet>${inner}</a></li>`
+      : `<li class="li-static">${inner}</li>`;
   }).join('');
   return `<p class="tiny">全上市掃描的領先基本面訊號，<b>非持股清單</b>；月營收領先股價但雜訊高，僅供觀察、需自行查證。${esc(rev.ym || '')}</p><ul class="list">${li}</ul>`;
 }
