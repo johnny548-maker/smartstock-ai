@@ -1,0 +1,107 @@
+name: SmartStock Optimize Aux (iter-2 chip/fundamental)
+
+# Iteration-2: KEYLESS chip/fundamental factor extension (see
+# .decisions/2026-06-22-chip-fundamental-extension). Backfills the date-parameterized TWSE RWD
+# endpoints (T86 / BWIBBU_d / MI_MARGN — all keyless, no login) day-by-day into a rolling
+# actions/cache, then runs run_aux_combo.py: Phase-0 IC screen → pre-registered 5-gate combo
+# (n_trials=2). HEAVY (date-by-date fetch) → cloud only, INCREMENTAL across runs (the aux cache
+# persists, already-cached dates are skipped) so a fortnightly cron extends the history.
+on:
+  workflow_dispatch:
+    inputs:
+      backfill_start:
+        description: 'aux backfill start (YYYY-MM-DD). Incremental: cached dates are skipped.'
+        default: '2012-01-02'
+      backfill_end:
+        description: 'aux backfill end (YYYY-MM-DD)'
+        default: '2026-06-20'
+      years:
+        description: 'price history years to slice for the panel'
+        default: '15'
+  schedule:
+    - cron: '17 5 14 * *'   # 14th of each month — extend the aux history + re-gate
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: smartstock-optimize-aux
+  cancel-in-progress: false
+
+jobs:
+  notify-failure:
+    needs: [optimize-aux]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
+  optimize-aux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      # 15y OHLCV cache (shared with optimize-sleeve / warm-us — same rolling key family)
+      - name: Restore 15y OHLCV cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/ohlcv_15y
+          key: smartstock-ohlcv15y-${{ github.run_id }}
+          restore-keys: |
+            smartstock-ohlcv15y-
+
+      # Aux chip/fundamental raw panels — rolling cache, EXTENDED each run (incremental backfill)
+      - name: Restore aux 15y cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/aux_15y
+          key: smartstock-aux15y-${{ github.run_id }}
+          restore-keys: |
+            smartstock-aux15y-
+
+      - name: Backfill aux + IC screen + gate
+        env:
+          START: ${{ github.event.inputs.backfill_start || '2012-01-02' }}
+          END: ${{ github.event.inputs.backfill_end || '2026-06-20' }}
+          YEARS: ${{ github.event.inputs.years || '15' }}
+        run: |
+          set -euo pipefail
+          python -X utf8 run_aux_combo.py --csv universe_full_market.csv --years "$YEARS" \
+                 --backfill "$START" "$END"
+
+      - name: Commit aux results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add optimize_tw_aux.txt optimize_tw_aux.json 2>/dev/null || true
+          git commit -m "optimize-aux: $(date -u +%F) (iter-2 chip/fundamental IC+gate)" || echo "no changes"
+          for i in 1 2 3 4 5; do
+            git push && break
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done

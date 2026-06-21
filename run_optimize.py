@@ -237,8 +237,11 @@ def sleeve_daily_rets(cfg, prices, sleeve, universe_tickers, aux=None):
         return pd.Series(dtype=float)
     close_ff = close_df.ffill()
     panel = factor_panel(cfg["family"], close_df, cfg["lookback"], aux=aux)
+    # require >=2 names with a signal at the rebalance date — a non-z-scored aux panel (instflow)
+    # can have a width-1 cross-section on a thin day, which select_top_n would turn into a degenerate
+    # 100%-single-name basket polluting the gated track. Dense price/value rows are unaffected.
     sched = [(s, e) for s, e in schedule_for(close_df.index, cfg["rebalance"])
-             if panel.loc[s].notna().any()]
+             if int(panel.loc[s].notna().sum()) >= 2]
     if not sched:
         return pd.Series(dtype=float)
     tgt = build_targets(close_ff, panel, sched, cfg["top_n"],
