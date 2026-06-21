@@ -33,3 +33,9 @@ CAVEAT (audit 2026-06-21): this is NOT a true terminal holdout. The champion was
   pooled OOS:  calmar = 1.786 | CAGR 29.21% | MaxDD -16.35%
   LOCKBOX[2023-06-12..2026-06-18] (scored ONCE, never searched): calmar = 0.552 | CAGR 19.73% | MaxDD -35.72%
   → compare the POOLED-OOS and LOCKBOX rows on the SAME metric: agree = the edge is real; lockbox collapses vs pooled-OOS = the search overfit. Mind the MaxDD — a high-CAGR/high-drawdown 'winner' may be one you can't actually hold.
+
+多因子擴張 COMBO (pre-registered LOWVOL+STREV+MOM, inverse-vol; ADR 2026-06-21) — diversification, NOT config-mining:
+  sleeves: lowvol, mom, strev
+  GATE (all 5 must pass; n_trials=1): DSR 0.998>0.95 [True] · PBO 0.293<0.5 [True] · SPA_p 0.170<0.05 [False] · lockbox>0&MaxDD ok [True] · FLAT-lift 0.813>1 [False]
+  lockbox: {"calmar": 0.501, "cagr": 0.1074, "max_dd": -0.2144}
+  ==> COMBO FAIL — pre-registered combo did NOT clear the gate. Per ADR §8 this is a VALID negative result; do NOT loosen the gate or add families to chase a pass.
