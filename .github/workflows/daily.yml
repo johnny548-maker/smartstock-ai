@@ -188,7 +188,15 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data
           git commit -m "report: $(date -u +%F)" || echo "no changes to commit"
-          git push
+          # rebase-retry: a concurrent push (the index-rebuild job, a manual dispatch, or a
+          # human commit) can move main between commit and push; without this the whole run
+          # fails and the freshly-generated report is LOST. Rebase onto remote and retry.
+          for i in 1 2 3 4 5; do
+            git push && break
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done
 
       # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
       # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the
@@ -202,4 +210,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/index.json
           git commit -m "chore: rebuild date index" || echo "index already current"
-          git push || echo "nothing to push"
+          for i in 1 2 3 4 5; do
+            git push && break
+            echo "index push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done || echo "nothing to push"
