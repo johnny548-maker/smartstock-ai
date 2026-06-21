@@ -187,15 +187,34 @@ def _cfg_key(c):
                                c["rebalance"], c["lookback"])
 
 
-def fold_slices(close_index, n_folds):
+def fold_slices(close_index, n_folds, embargo=0):
     """Disjoint anchored time blocks: [(lo_date, hi_date), …] partitioning the history.
 
     Walk-forward intuition (the user's 80/20, done right): each block is an INDEPENDENT
     time window. We measure every config on every block — a config that only wins overall
-    but flops in some block is regime-fragile (the trap of tuning to one period)."""
+    but flops in some block is regime-fragile (the trap of tuning to one period).
+
+    embargo>0 purges `embargo` bars off the START of every block after the first, so a rebalance
+    near a boundary cannot draw its lookback from the prior block's bars (cross-fold leakage)."""
     T = len(close_index)
     b = [int(T * i / n_folds) for i in range(n_folds + 1)]
-    return [(close_index[b[i]], close_index[min(b[i + 1], T - 1)]) for i in range(n_folds)]
+    out = []
+    for i in range(n_folds):
+        lo_i = b[i] + (embargo if i > 0 else 0)
+        hi_i = min(b[i + 1], T - 1)
+        if lo_i > hi_i:
+            continue                       # embargo consumed a tiny tail block
+        out.append((close_index[lo_i], close_index[hi_i]))
+    return out
+
+
+def split_lockbox(index, lockbox_frac=0.2):
+    """Carve a TRUE terminal holdout: (search_index, lockbox_index). The lockbox is the final
+    `lockbox_frac` of the timeline and is NEVER used to search/select — the champion is chosen on
+    the search span alone, then scored ONCE on the lockbox for an honest forward estimate."""
+    T = len(index)
+    cut = T - int(T * lockbox_frac)
+    return index[:cut], index[cut:]
 
 
 def run_walk_forward(prices, sleeve, universe_tickers, champion_cfg, n_folds=5):
@@ -237,11 +256,66 @@ def run_walk_forward(prices, sleeve, universe_tickers, champion_cfg, n_folds=5):
     }
 
 
+def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
+                            n_folds=4, embargo=0, lockbox_frac=0.2):
+    """嚴謹版 selection — the honest form of 'iterate the strategy until return is maximised':
+
+    1. Carve a TRUE terminal LOCKBOX (last lockbox_frac) — never touched during the search.
+    2. Split the pre-lockbox span into embargoed walk-forward folds.
+    3. Score EVERY config on each fold; the champion is the config with the best per-fold MEAN
+       objective — i.e. you maximise OUT-OF-SAMPLE (cross-fold) generalisation, NOT a single
+       in-sample peak (that peak is the overfitting trap — repo lesson 2.44→0.68).
+    4. Score the champion ONCE on the held-out lockbox = the honest forward estimate.
+
+    Returns {champion, oos_objective, per_fold, lockbox, n_trials}. Reuses run_grid (no fork)."""
+    _, close_df = bp.build_panels({t: prices[t] for t in universe_tickers if t in prices})
+    if close_df.empty:
+        raise ValueError("walk_forward_oos_select: empty price panel")
+    search_idx, lock_idx = split_lockbox(close_df.index, lockbox_frac)
+    by_key = {}                                # cfg_key -> {"config":…, "scores":[per-fold obj]}
+    per_fold = []
+    for i, (lo, hi) in enumerate(fold_slices(search_idx, n_folds, embargo)):
+        fp = {t: df.loc[lo:hi] for t, df in prices.items() if df is not None}
+        try:
+            res, _ = run_grid(fp, sleeve, universe_tickers)
+        except Exception:
+            per_fold.append({"fold": i, "ok": False, "start": str(lo.date()), "end": str(hi.date())})
+            continue
+        for r in res:
+            k = _cfg_key(r["config"])
+            by_key.setdefault(k, {"config": r["config"], "scores": []})["scores"].append(
+                objective_key_fn(r))
+        per_fold.append({"fold": i, "ok": True, "start": str(lo.date()), "end": str(hi.date()),
+                         "n_configs": len(res)})
+    if not by_key:
+        raise ValueError("walk_forward_oos_select: no config scored on any fold")
+
+    def _mean(k):
+        s = by_key[k]["scores"]
+        return (sum(s) / len(s)) if s else float("-inf")
+
+    champ_key = max(by_key, key=_mean)
+    champion = by_key[champ_key]["config"]
+    lockbox = {"start": str(lock_idx[0].date()), "end": str(lock_idx[-1].date())}
+    try:                                        # score the champion ONCE on the untouched lockbox
+        lp = {t: df.loc[lock_idx[0]:lock_idx[-1]] for t, df in prices.items() if df is not None}
+        lres, _ = run_grid(lp, sleeve, universe_tickers)
+        lm = next((r for r in lres if _cfg_key(r["config"]) == champ_key), None)
+        if lm:
+            lockbox.update({"cagr": lm.get("cagr"), "calmar": lm.get("calmar"),
+                            "sharpe": lm.get("sharpe"), "max_dd": lm.get("max_dd"),
+                            "objective": objective_key_fn(lm)})
+    except Exception as e:
+        lockbox["error"] = str(e)
+    return {"champion": champion, "oos_objective": round(_mean(champ_key), 4),
+            "per_fold": per_fold, "lockbox": lockbox, "n_trials": len(by_key)}
+
+
 def _clean(results):
     return [{k: v for k, v in r.items() if k != "_rets"} for r in results]
 
 
-def render(sleeve, objective, ranked, g, wf=None):
+def render(sleeve, objective, ranked, g, wf=None, rigorous=None):
     L = ["OPTIMIZE — sleeve=%s  objective=%s  grid=%d configs" % (sleeve, objective, g["n_trials"])]
     L.append("gate: DSR=%.3f (%s, >0.95 req) | PBO=%s (%s, <0.5 req)" % (
         (g["dsr"] or 0.0), "PASS" if g["dsr_pass"] else "FAIL",
@@ -292,6 +366,21 @@ def render(sleeve, objective, ranked, g, wf=None):
                  "80/20 would select on data up to lockbox_start and score the frozen config once on "
                  "the held-out tail (with a >=lookback embargo). Treat the block ranks as a regime-"
                  "robustness check, not an out-of-sample proof.")
+
+    if rigorous:
+        lb = rigorous.get("lockbox") or {}
+        L.append("")
+        L.append("嚴謹版 — TRUE out-of-sample selection (champion chosen by cross-fold MEAN on a "
+                 "search span EXCLUDING the terminal lockbox; %d configs):" % rigorous["n_trials"])
+        L.append("  OOS-selected champion: %s" % json.dumps(rigorous["champion"], ensure_ascii=False))
+        L.append("  cross-fold OOS %s = %.3f" % (objective, rigorous["oos_objective"]))
+        L.append("  LOCKBOX[%s..%s] (scored ONCE, never searched): %s = %s | CAGR %s | MaxDD %s" % (
+            lb.get("start"), lb.get("end"), objective,
+            ("%.3f" % lb["objective"]) if isinstance(lb.get("objective"), (int, float)) else "n/a",
+            ("%.2f%%" % (lb["cagr"] * 100)) if isinstance(lb.get("cagr"), (int, float)) else "n/a",
+            ("%.1f%%" % (lb["max_dd"] * 100)) if isinstance(lb.get("max_dd"), (int, float)) else "n/a"))
+        L.append("  → the LOCKBOX number is the honest forward estimate. If it collapses vs the "
+                 "cross-fold OOS, the search overfit; if they agree, the edge is real.")
     return "\n".join(L)
 
 
@@ -304,6 +393,14 @@ def main(argv=None):
     ap.add_argument("--no-walk-forward", action="store_true",
                     help="skip the per-regime walk-forward robustness check (faster)")
     ap.add_argument("--wf-folds", type=int, default=5)
+    ap.add_argument("--rigorous", action="store_true",
+                    help="嚴謹版: select the champion by cross-fold OUT-OF-SAMPLE mean on a search "
+                         "span excluding a terminal lockbox, then score it once on that lockbox")
+    ap.add_argument("--embargo", type=int, default=21,
+                    help="bars purged between walk-forward folds (>= max lookback, e.g. 252, for "
+                         "fully leak-free; default 21)")
+    ap.add_argument("--lockbox-frac", type=float, default=0.2,
+                    help="terminal fraction held out as the never-searched lockbox (default 0.2)")
     ap.add_argument("--csv", default=boc.UNIVERSE_CSV)
     ap.add_argument("--cache-dir", default=None)
     args = ap.parse_args(argv)
@@ -343,11 +440,29 @@ def main(argv=None):
         except Exception as e:
             print("WARN walk-forward skipped: %s" % e)
 
+    # 嚴謹版 (user-chosen): TRUE out-of-sample selection — champion chosen by cross-fold mean on a
+    # search span that EXCLUDES a terminal lockbox, then scored once on that untouched lockbox.
+    # This is the honest "maximise return by iterating the strategy": you maximise the OOS number,
+    # not the in-sample peak. Contrast the full-period `ranked`/`gate` above (in-sample selection).
+    rigorous = None
+    if args.rigorous:
+        try:
+            rigorous = walk_forward_oos_select(
+                prices, args.sleeve, univ_in, objective_key(args.objective, args.maxdd_cap),
+                n_folds=args.wf_folds, embargo=args.embargo, lockbox_frac=args.lockbox_frac)
+            lb = rigorous["lockbox"]
+            print("RIGOROUS champion (OOS-selected): %s | OOS-obj=%.3f | lockbox[%s..%s] obj=%s" % (
+                json.dumps(rigorous["champion"], ensure_ascii=False), rigorous["oos_objective"],
+                lb.get("start"), lb.get("end"), lb.get("objective")))
+        except Exception as e:
+            print("WARN rigorous selection skipped: %s" % e)
+
     out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
-           "period": period, "gate": g, "walk_forward": wf, "ranked": _clean(ranked)}
+           "period": period, "gate": g, "walk_forward": wf, "rigorous": rigorous,
+           "ranked": _clean(ranked)}
     txt_fp = os.path.join(_HERE, "optimize_%s.txt" % args.sleeve)
     json_fp = os.path.join(_HERE, "optimize_%s.json" % args.sleeve)
-    text = render(args.sleeve, args.objective, ranked, g, wf)
+    text = render(args.sleeve, args.objective, ranked, g, wf, rigorous)
     with open(txt_fp, "w", encoding="utf-8") as f:
         f.write(text + "\n")
     with open(json_fp, "w", encoding="utf-8") as f:
