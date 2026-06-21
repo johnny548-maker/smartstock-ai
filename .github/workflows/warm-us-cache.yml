@@ -54,12 +54,18 @@ jobs:
           restore-keys: |
             smartstock-ohlcv15y-
 
-      - name: Assemble full-market universe
+      # Use the committed PINNED universe by default so the warmer fetches exactly the US names the
+      # optimiser will read (only regenerate if the file is missing from the checkout).
+      - name: Ensure full-market universe present
         env:
           TW_TOP_N: ${{ github.event.inputs.tw_top_n || '800' }}
         run: |
           set -euo pipefail
-          python -X utf8 build_universe.py --out universe_full_market.csv --tw-top-n "${TW_TOP_N}"
+          if [ ! -f universe_full_market.csv ]; then
+            python -X utf8 build_universe.py --out universe_full_market.csv --tw-top-n "${TW_TOP_N}"
+          else
+            echo "using PINNED universe_full_market.csv ($(wc -l < universe_full_market.csv) rows)"
+          fi
 
       - name: Warm the next US slice
         env:

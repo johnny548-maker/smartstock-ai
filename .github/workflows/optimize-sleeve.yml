@@ -32,6 +32,11 @@ on:
         description: 'use the嚴謹 walk-forward OOS selection (true terminal lockbox + embargo)'
         type: boolean
         default: true
+      rebuild_universe:
+        description: 'regenerate universe_full_market.csv from LIVE liquidity (default false = use the
+                      committed PINNED universe so results are reproducible run-to-run)'
+        type: boolean
+        default: false
   schedule:
     - cron: '43 6 7 * *'   # 7th of each month, 06:43 UTC — monthly re-optimise
 
@@ -92,15 +97,23 @@ jobs:
       # + the full US directory) into universe_full_market.csv. The 15y OHLC fetch for it is the
       # heavy part — names lacking long history are skipped by build_cache, so the effective
       # universe is "names with 15y history". draft = the curated 653-name CSV (default, fast).
+      # PINNED by default: the committed universe_full_market.csv is reused so the backtest is
+      # reproducible run-to-run (live liquidity ranking otherwise reshuffles the TW top-N → the
+      # champion drifts). Only regenerate when rebuild_universe=true or the file is missing.
       - name: Assemble full-market universe (universe=full only)
         if: ${{ github.event.inputs.universe == 'full' }}
         env:
           TW_TOP_N: ${{ github.event.inputs.tw_top_n || '800' }}
+          REBUILD: ${{ github.event.inputs.rebuild_universe }}
         run: |
           set -euo pipefail
-          ARGS=""
-          if [ -n "${TW_TOP_N}" ]; then ARGS="--tw-top-n ${TW_TOP_N}"; fi
-          python -X utf8 build_universe.py --out universe_full_market.csv $ARGS
+          if [ "$REBUILD" = "true" ] || [ ! -f universe_full_market.csv ]; then
+            ARGS=""
+            if [ -n "${TW_TOP_N}" ]; then ARGS="--tw-top-n ${TW_TOP_N}"; fi
+            python -X utf8 build_universe.py --out universe_full_market.csv $ARGS
+          else
+            echo "using PINNED universe_full_market.csv ($(wc -l < universe_full_market.csv) rows)"
+          fi
 
       - name: Optimise sleeve(s)
         env:
