@@ -20,6 +20,18 @@ on:
       maxdd_cap:
         description: 'MaxDD cap (only used when objective=maxdd_capped), e.g. 0.35'
         default: '0.35'
+      universe:
+        description: 'draft (653 names) or full (whole keyless market — HEAVY first cache build)'
+        type: choice
+        options: [draft, full]
+        default: draft
+      tw_top_n:
+        description: 'when universe=full, cap TW to the N most liquid by dollar-vol (blank = all)'
+        default: '800'
+      rigorous:
+        description: 'use the嚴謹 walk-forward OOS selection (true terminal lockbox + embargo)'
+        type: boolean
+        default: true
   schedule:
     - cron: '43 6 7 * *'   # 7th of each month, 06:43 UTC — monthly re-optimise
 
@@ -76,20 +88,45 @@ jobs:
           restore-keys: |
             smartstock-ohlcv15y-
 
+      # Phase 2: when universe=full, assemble the whole keyless market (TWSE+TPEx liquidity-capped
+      # + the full US directory) into universe_full_market.csv. The 15y OHLC fetch for it is the
+      # heavy part — names lacking long history are skipped by build_cache, so the effective
+      # universe is "names with 15y history". draft = the curated 653-name CSV (default, fast).
+      - name: Assemble full-market universe (universe=full only)
+        if: ${{ github.event.inputs.universe == 'full' }}
+        env:
+          TW_TOP_N: ${{ github.event.inputs.tw_top_n || '800' }}
+        run: |
+          set -euo pipefail
+          ARGS=""
+          if [ -n "${TW_TOP_N}" ]; then ARGS="--tw-top-n ${TW_TOP_N}"; fi
+          python -X utf8 build_universe.py --out universe_full_market.csv $ARGS
+
       - name: Optimise sleeve(s)
         env:
           SLEEVE: ${{ github.event.inputs.sleeve || 'both' }}
           OBJ: ${{ github.event.inputs.objective || 'calmar' }}
           CAP: ${{ github.event.inputs.maxdd_cap || '0.35' }}
+          UNIVERSE: ${{ github.event.inputs.universe || 'draft' }}
+          RIGOROUS: ${{ github.event.inputs.rigorous }}
         run: |
           set -euo pipefail
-          run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP"; }
+          EXTRA=""
+          if [ "$UNIVERSE" = "full" ]; then EXTRA="--csv universe_full_market.csv"; fi
+          # default true on schedule/blank; only 'false' disables the嚴謹 path
+          if [ "$RIGOROUS" != "false" ]; then EXTRA="$EXTRA --rigorous --embargo 252"; fi
+          run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP" $EXTRA; }
           if [ "$SLEEVE" = "both" ]; then run_one tw; run_one us; else run_one "$SLEEVE"; fi
 
       - name: Commit optimisation results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add optimize_*.txt optimize_*.json 2>/dev/null || true
+          git add optimize_*.txt optimize_*.json universe_full_market.csv 2>/dev/null || true
           git commit -m "optimize: $(date -u +%F) (${{ github.event.inputs.objective || 'calmar' }})" || echo "no changes to commit"
-          git push
+          for i in 1 2 3 4 5; do
+            git push && break
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done
