@@ -1,9 +1,17 @@
 {
  "stock": "NSYS",
  "name": "Nortech Systems",
- "price": 17.49,
- "change_pct": 12.84,
+ "price": 15.5,
+ "change_pct": -3.49,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 9.89,
+   "h": 10.41,
+   "l": 9.89,
+   "c": 10.33,
+   "v": 7200
+  },
   {
    "time": "2026-03-25",
    "o": 10.33,
@@ -475,21 +483,13 @@
    "l": 15.5,
    "c": 15.5,
    "v": 28400
-  },
-  {
-   "time": "2026-06-18",
-   "o": 16.3,
-   "h": 17.49,
-   "l": 16.0,
-   "c": 17.49,
-   "v": 44200
   }
  ],
  "sr": {
-  "price": 17.49,
+  "price": 15.5,
   "resistance": [
-   17.75,
-   18.01
+   15.55,
+   17.75
   ],
   "support": [
    15.42,
@@ -498,6 +498,7 @@
   "strong_support": 6.5
  },
  "spark": [
+  10.33,
   10.0,
   9.87,
   11.83,
@@ -556,29 +557,11 @@
   16.46,
   16.23,
   16.06,
-  15.5,
-  17.49
+  15.5
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 1219,
-    "days": 4,
-    "max_shares": 611,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

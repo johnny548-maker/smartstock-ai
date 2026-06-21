@@ -1,9 +1,17 @@
 {
  "stock": "AMUB",
  "name": "ETRACS Alerian MLP Index ETN Series B due July 18, 2042",
- "price": 21.14,
- "change_pct": 0.52,
+ "price": 21.03,
+ "change_pct": -1.01,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 22.06,
+   "h": 22.06,
+   "l": 21.99,
+   "c": 21.99,
+   "v": 3700
+  },
   {
    "time": "2026-03-25",
    "o": 21.85,
@@ -475,18 +483,10 @@
    "l": 21.03,
    "c": 21.03,
    "v": 2100
-  },
-  {
-   "time": "2026-06-18",
-   "o": 21.08,
-   "h": 21.14,
-   "l": 21.08,
-   "c": 21.14,
-   "v": 200
   }
  ],
  "sr": {
-  "price": 21.14,
+  "price": 21.03,
   "resistance": [
    21.76,
    22.06
@@ -497,6 +497,7 @@
   "strong_support": 20.7
  },
  "spark": [
+  21.99,
   21.85,
   22.03,
   21.83,
@@ -555,11 +556,10 @@
   21.9,
   21.43,
   21.25,
-  21.03,
-  21.14
+  21.03
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

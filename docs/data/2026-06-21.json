@@ -1,11 +1,12 @@
 {
  "schema_version": 1,
  "date": "2026-06-21",
- "generated_at": "2026-06-21T01:34:18",
+ "generated_at": "2026-06-21T02:15:34",
  "risk": "LOW",
  "tldr": "風險 LOW；參與度 健康；外資合計 +390,603,825 股；首選 日月光投控（3711.TW）分數 138",
  "delta": [
-  "與昨日無重大變化。"
+  "新進榜：2891.TW",
+  "掉榜：AMD"
  ],
  "events": [],
  "breadth": {
@@ -174,6 +175,23 @@
  },
  "signals": [
   {
+   "stock": "3008.TW",
+   "name": "大立光",
+   "rs_line": true,
+   "quiet": false,
+   "vdu": false,
+   "accum": true,
+   "theme": false,
+   "fund": false,
+   "setup_score": 1,
+   "signals": [
+    "RS線新高(領先)",
+    "U/D量吸籌",
+    "Stage2上升趨勢"
+   ],
+   "count": 3
+  },
+  {
    "stock": "2882.TW",
    "name": "國泰金",
    "rs_line": true,
@@ -251,22 +269,6 @@
    "setup_score": 2,
    "signals": [
     "U/D量吸籌",
-    "Stage2上升趨勢"
-   ],
-   "count": 2
-  },
-  {
-   "stock": "TSM",
-   "name": "台積電 ADR",
-   "rs_line": true,
-   "quiet": false,
-   "vdu": false,
-   "accum": false,
-   "theme": false,
-   "fund": false,
-   "setup_score": 2,
-   "signals": [
-    "RS線新高(領先)",
     "Stage2上升趨勢"
    ],
    "count": 2
@@ -368,22 +370,6 @@
    "count": 2
   },
   {
-   "stock": "3008.TW",
-   "name": "大立光",
-   "rs_line": false,
-   "quiet": false,
-   "vdu": false,
-   "accum": true,
-   "theme": false,
-   "fund": false,
-   "setup_score": 1,
-   "signals": [
-    "U/D量吸籌",
-    "Stage2上升趨勢"
-   ],
-   "count": 2
-  },
-  {
    "stock": "2891.TW",
    "name": "中信金",
    "rs_line": false,
@@ -428,22 +414,6 @@
    "signals": [
     "U/D量吸籌",
     "安靜吸籌(法人)"
-   ],
-   "count": 2
-  },
-  {
-   "stock": "QQQ",
-   "name": "Nasdaq100 ETF",
-   "rs_line": true,
-   "quiet": false,
-   "vdu": false,
-   "accum": false,
-   "theme": false,
-   "fund": false,
-   "setup_score": 1,
-   "signals": [
-    "RS線新高(領先)",
-    "Stage2上升趨勢"
    ],
    "count": 2
   }
@@ -9098,7 +9068,7 @@
    {
     "group": "HBM 高頻寬記憶體",
     "median_rs": 82.5,
-    "mean_rs": 72.7,
+    "mean_rs": 73.0,
     "count": 10,
     "leaders80": 6,
     "rank": 1,
@@ -9109,9 +9079,9 @@
    {
     "group": "CPO 矽光子/光通訊",
     "median_rs": 77.0,
-    "mean_rs": 72.1,
+    "mean_rs": 72.6,
     "count": 11,
-    "leaders80": 3,
+    "leaders80": 4,
     "rank": 2,
     "pct_rank": 87,
     "leading": true,
@@ -9119,8 +9089,8 @@
    },
    {
     "group": "CoWoS 先進封裝",
-    "median_rs": 71.5,
-    "mean_rs": 65.8,
+    "median_rs": 71.0,
+    "mean_rs": 65.6,
     "count": 8,
     "leaders80": 3,
     "rank": 3,
@@ -9130,8 +9100,8 @@
    },
    {
     "group": "ASIC 客製晶片",
-    "median_rs": 70.0,
-    "mean_rs": 57.3,
+    "median_rs": 71.0,
+    "mean_rs": 57.6,
     "count": 7,
     "leaders80": 2,
     "rank": 4,
@@ -9142,7 +9112,7 @@
    {
     "group": "CCL 銅箔基板/載板",
     "median_rs": 67.0,
-    "mean_rs": 61.8,
+    "mean_rs": 62.1,
     "count": 9,
     "leaders80": 2,
     "rank": 5,
@@ -9152,8 +9122,8 @@
    },
    {
     "group": "GaN 寬能隙功率",
-    "median_rs": 50.0,
-    "mean_rs": 56.8,
+    "median_rs": 51.0,
+    "mean_rs": 57.7,
     "count": 6,
     "leaders80": 1,
     "rank": 6,
@@ -9164,7 +9134,7 @@
    {
     "group": "液冷散熱",
     "median_rs": 35.5,
-    "mean_rs": 35.3,
+    "mean_rs": 36.3,
     "count": 6,
     "leaders80": 0,
     "rank": 7,
@@ -9174,8 +9144,8 @@
    },
    {
     "group": "AI 伺服器",
-    "median_rs": 34.5,
-    "mean_rs": 42.9,
+    "median_rs": 35.0,
+    "mean_rs": 43.5,
     "count": 10,
     "leaders80": 2,
     "rank": 8,
@@ -9185,8 +9155,8 @@
    },
    {
     "group": "機器人",
-    "median_rs": 13.0,
-    "mean_rs": 12.7,
+    "median_rs": 14.0,
+    "mean_rs": 13.0,
     "count": 7,
     "leaders80": 0,
     "rank": 9,
@@ -9380,8 +9350,8 @@
   }
  },
  "regime": {
-  "exposure": 64,
-  "label": "caution",
+  "exposure": 36,
+  "label": "risk-off",
   "detail": {
    "twii": {
     "exposure": 64,
@@ -9391,11 +9361,11 @@
     "label": "caution"
    },
    "sp500": {
-    "exposure": 76,
+    "exposure": 36,
     "dd_count": 4,
-    "trend": "uptrend",
+    "trend": "neutral",
     "ftd": true,
-    "label": "risk-on"
+    "label": "risk-off"
    }
   }
  },
@@ -9501,12 +9471,12 @@
   }
  ],
  "indices": {
-  "twii": 46465.19921875,
-  "sp500": 7500.580078125,
-  "nasdaq": 26517.9296875,
-  "vix": 16.399999618530273,
+  "twii": 45877.390625,
+  "sp500": null,
+  "nasdaq": null,
+  "vix": 18.440000534057617,
   "tnx": 4.486999988555908,
-  "btc": 64145.96875
+  "btc": 64167.890625
  },
  "news": {
   "global": [
@@ -9531,9 +9501,9 @@
     "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9zalVZMXN6YnBLcmNiQkxSMUtGTmxEM1BLSjNzVGxEd0pDaGxzYjhwRUhxMFJWRVpzcjZ2a0Ffb3d4cVhPSnA1U2xGNA?oc=5"
    },
    {
-    "title": "[2026-05-21 07:00 UTC] 美股反彈！輝達財報前夕晶片股領漲，那指大漲逾1.5% - 民視財經網",
+    "title": "[2026-05-18 07:00 UTC] 快訊／輝達關鍵財報還沒開 美股開盤4大指數先齊漲 - 三立新聞網SETN.com",
     "source": "\"美股 聯準會 Fed NVIDIA 輝達\" - Google 新聞",
-    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB1UjMzcmhIamlCSHNUMmtVcnpJOV9vT3VCbFhjd1E5ZGdWNFpmV0xsWG5UVFpISVZNRFdpcFhjRkNrRUFvekZmYmFWRVN6MVZlc0o1dGQ1blJ4YU5MVTlQRXFOMlZjZw?oc=5"
+    "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9VN1JYYi1WekdLMXBlZDNWbVhWR0ExZ1J6X3BNbzdBRS1YN0ZZeElvazZNc2VhUXpQdU14ZE9yOUk1X0lLYW5RR0Ricw?oc=5"
    },
    {
     "title": "[2026-06-18 20:24 UTC] 美股收盤：那指漲1.91%，費城半導體指數漲逾6%創歷史新高，SpaceX尾盤急拉收復盤中跌幅 - TradingKey",
@@ -9566,24 +9536,24 @@
     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPREhONU9SaTJfdDI3cTdCRnVwcUtHRjhEVWdFRktCV1l3MXR6Z3FKRVU0TGZ3UlN0VFREY053a2FYQ3dQRmxsSE93QjRjVTVzTzBNOVQ2ZnZnY1NMUFh2ZTcxcW42Ui1rS3I4VHhCYk9FbXNnSWI4ckFSbW12QnBzY2s4WGRrS2tSNDMwM3RtbXV6TFVUTmZaaDcxMkk3Qk82V1N1eGFrS3JxRFpLMDFta2RrRzctNmJkdmtfMTJn?oc=5"
    },
    {
-    "title": "Greece deploys firefighters, planes and helicopters to fight fire on Evia Island - Reuters",
-    "source": "\"site:reuters.com markets finance\" - Google News",
-    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOV0F1OGJFY0NlWHd0RHM5QW9FU090UDBSZEF6aFdLcGNucm81QXBpaFBsMlZZTkhGMUpvUTFpcXVySldjLWdDQXVMZGswWjRkMkQzVlMzQUdmVm9hVmNrbk5WaDBkWjdxeVRtTzFaWkdTX2loejMxZUtQOHJpWnFxQ1NmMF9zSWdySTZEdnVVZXBGTnlBdVg1c292T1BXaXF5eW9OTHpIT0lLWmFEb09YVzFtbzJDRG1mYzZtanZvbG1xZGNl?oc=5"
-   },
-   {
     "title": "Toronto beer prices a test for German fans at World Cup - Reuters",
     "source": "\"site:reuters.com markets finance\" - Google News",
     "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOc3ZUamJldk9GQ0VFa0R6dE5fdUNnamFjb2dOYno5X2RFU2pGSUN0MHdGb2E5VS1XU29OU2J5ZEFBNlZwNjN2THRiSWZmeUhaWk5mUEY2Y0xvYVE0VEp4SHRKQmhKZTRYbzNPcFJ2UDJncXNJZWNBQTNNaUZWbzFuR2hqXy01X09FTG96ejlVTHVOVS0yaXFXT0c5Qng?oc=5"
    },
    {
-    "title": "Italy's Meloni tells Trump to focus on his own popularity as row rumbles on - Reuters",
-    "source": "\"site:reuters.com markets finance\" - Google News",
-    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZGFwdGl0Q2V5UFJVUnEwYnlzTjhFOUEzSGhRU0JENTVqYlFISUpNQ3dHVFVzTUYxaG5XYjRsX1NVbGN5cHMydWVXMEJhQkFxRmJudWRreU41Tld4R1ZXRlhsSVF0QVlRRHJsaXE4a3A2NldMR1FYbFNRMXdNMFQ5eWhWUzhnSjVmYjNsa21yVlY3VDBXQ25fTU9sOEd3VmZNUmt2UEZoQl9YbzlpY3RmMjVwTk9laGtud096T1dR?oc=5"
-   },
-   {
     "title": "Mexico City looks to rein in street drinking after massive World Cup party - Reuters",
     "source": "\"site:reuters.com markets finance\" - Google News",
     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYTk1Q1U4ZkpfX21Kc2U1NTdhaUZSOEd5eDlRSTNtM1RTWHFCX2hqcTFNLXlsaFZLbC1fNHYyNmtqQzYzR3BGY1YyY0JsZk1MaGN1dzltVUxSdWlhamhBY0gwcXBrUjB0OGVTOTRzS0duQW1xazJrcUJDMDVoRDl0a09Xbm1TblVldVVyMmtMNnV1bnVNakpydTR3LTRlcTlDcmVsMFc5dF9yMlFIY3JZcmF1dkJxTmxTV1E?oc=5"
+   },
+   {
+    "title": "Ubisoft's co-founder Claude Guillemot dies in plane crash - Reuters",
+    "source": "\"site:reuters.com markets finance\" - Google News",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNLUd5d0U4YnQ4U3B3Q0d1cGdzbGs1Vm9PUE5mTHFCVHNoOEx6ZE9jckVSVjZ0a2NKc1hwOF9vblVob2h4Wmtyb1BJSHFJVnYzMHExZjl0dUhfd2VnYzNTcDZpMnFsODY3VzZEc2V4SDdaSUNHSURjRkM5bndwU2xmR3J1b3BxY1N2eU1wYTN6ZmJ2THpzVGhGNEF4VQ?oc=5"
+   },
+   {
+    "title": "Trump says no toll on Strait of Hormuz unless US imposes one - Reuters",
+    "source": "\"site:reuters.com markets finance\" - Google News",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcTlFTUJWal9HaWxJLTBvcWZDT1BnOGlTdGxOWWdzZWMtWlpsTXQ1V0NLVVFXY29oSGxwRVotLVFMU2ptbS11M21nM2pSdExIM1E3OTFSUTc0d0xqeEZCblZtb0VHOEpPWXhzN2NDc2hvXzZ3bGFZSHlKak9VeUVIcElMSk5IcXlfZlh1QTh5emxIT25yQVRMZ09GOHduTDFkVFRIWkZuaXZLZjNK?oc=5"
    },
    {
     "title": "Iran reportedly closes Strait of Hormuz again as Vance heads to Switzerland for talks",
@@ -9924,12 +9894,9 @@
   "4739": "康普",
   "7631": "聚賢研發-創",
   "2465": "麗臺",
-  "DIOD": "Diodes Inc",
   "ALAB": "Astera Labs",
   "CEVA": "CEVA Inc",
-  "KLIC": "Kulicke and Soffa Industries",
   "BHE": "Benchmark Electronics",
-  "NSYS": "Nortech Systems",
   "CIFR": "Cipher Mining",
   "CORZ": "Core Scientific",
   "NBIS": "Nebius Group",
@@ -10191,9 +10158,9 @@
  "attribution": {
   "n_scored": 75,
   "by_signal": {
-   "量能(高於20日均量)": {
-    "n": 52,
-    "d5_win_rate": 0.5384615384615384,
+   "趨勢(MA5>MA20)": {
+    "n": 69,
+    "d5_win_rate": 0.5652173913043478,
     "avg_ret5": null,
     "accruing": false
    },
@@ -10203,21 +10170,15 @@
     "avg_ret5": null,
     "accruing": false
    },
-   "投信買超": {
-    "n": 34,
-    "d5_win_rate": 0.4411764705882353,
+   "產業(半導體)": {
+    "n": 33,
+    "d5_win_rate": 0.6666666666666666,
     "avg_ret5": null,
     "accruing": false
    },
-   "動能(5日上漲)": {
-    "n": 37,
-    "d5_win_rate": 0.5135135135135135,
-    "avg_ret5": null,
-    "accruing": false
-   },
-   "趨勢(MA5>MA20)": {
-    "n": 69,
-    "d5_win_rate": 0.5652173913043478,
+   "量能(高於20日均量)": {
+    "n": 52,
+    "d5_win_rate": 0.5384615384615384,
     "avg_ret5": null,
     "accruing": false
    },
@@ -10227,21 +10188,21 @@
     "avg_ret5": null,
     "accruing": false
    },
-   "產業(半導體)": {
-    "n": 33,
-    "d5_win_rate": 0.6666666666666666,
-    "avg_ret5": null,
-    "accruing": false
-   },
    "波動穩定": {
     "n": 61,
     "d5_win_rate": 0.5409836065573771,
     "avg_ret5": null,
     "accruing": false
    },
-   "產業(AI伺服器)": {
-    "n": 17,
-    "d5_win_rate": 0.17647058823529413,
+   "動能(5日上漲)": {
+    "n": 37,
+    "d5_win_rate": 0.5135135135135135,
+    "avg_ret5": null,
+    "accruing": false
+   },
+   "投信買超": {
+    "n": 34,
+    "d5_win_rate": 0.4411764705882353,
     "avg_ret5": null,
     "accruing": false
    },
@@ -10251,21 +10212,15 @@
     "avg_ret5": null,
     "accruing": false
    },
-   "接近52週高": {
-    "n": 27,
-    "d5_win_rate": 0.6666666666666666,
+   "產業(AI伺服器)": {
+    "n": 17,
+    "d5_win_rate": 0.17647058823529413,
     "avg_ret5": null,
     "accruing": false
    },
-   "Pocket pivot吸籌": {
-    "n": 5,
-    "d5_win_rate": 0.8,
-    "avg_ret5": 3.588,
-    "accruing": true
-   },
-   "產業(金融)": {
-    "n": 17,
-    "d5_win_rate": 0.8235294117647058,
+   "接近52週高": {
+    "n": 27,
+    "d5_win_rate": 0.6666666666666666,
     "avg_ret5": null,
     "accruing": false
    },
@@ -10275,28 +10230,40 @@
     "avg_ret5": null,
     "accruing": false
    },
-   "U/D量吸籌": {
-    "n": 38,
-    "d5_win_rate": 0.6052631578947368,
-    "avg_ret5": null,
-    "accruing": false
-   },
    "Power pivot放量突破": {
     "n": 7,
     "d5_win_rate": 1.0,
     "avg_ret5": 2.4671,
     "accruing": true
    },
-   "外資買超": {
-    "n": 14,
-    "d5_win_rate": 0.7142857142857143,
+   "U/D量吸籌": {
+    "n": 38,
+    "d5_win_rate": 0.6052631578947368,
     "avg_ret5": null,
     "accruing": false
+   },
+   "Pocket pivot吸籌": {
+    "n": 5,
+    "d5_win_rate": 0.8,
+    "avg_ret5": 3.588,
+    "accruing": true
    },
    "RS線新高領先": {
     "n": 11,
     "d5_win_rate": 0.6363636363636364,
     "avg_ret5": 2.25,
+    "accruing": false
+   },
+   "產業(金融)": {
+    "n": 17,
+    "d5_win_rate": 0.8235294117647058,
+    "avg_ret5": null,
+    "accruing": false
+   },
+   "外資買超": {
+    "n": 14,
+    "d5_win_rate": 0.7142857142857143,
+    "avg_ret5": null,
     "accruing": false
    },
    "外資投信連買3日": {
@@ -10450,7 +10417,7 @@
   }
  },
  "health": {
-  "generated_at": "2026-06-21T01:34:18",
+  "generated_at": "2026-06-21T02:15:34",
   "sources": [
    {
     "name": "generated_at",
@@ -10534,7 +10501,7 @@
     "name": "sec_ftd",
     "status": "ok",
     "age_h": null,
-    "note": "rows=22"
+    "note": "rows=18"
    },
    {
     "name": "taifex",
@@ -10546,7 +10513,7 @@
     "name": "tdcc",
     "status": "ok",
     "age_h": null,
-    "note": "rows=13"
+    "note": "rows=17"
    },
    {
     "name": "tpex",
@@ -10564,7 +10531,7 @@
     "name": "twse_margin",
     "status": "ok",
     "age_h": null,
-    "note": "rows=5"
+    "note": "rows=6"
    },
    {
     "name": "twse_notice",
@@ -10576,7 +10543,7 @@
     "name": "twse_pe",
     "status": "ok",
     "age_h": null,
-    "note": "rows=11"
+    "note": "rows=14"
    },
    {
     "name": "twse_punish",
@@ -10594,13 +10561,13 @@
     "name": "twse_t86",
     "status": "ok",
     "age_h": null,
-    "note": "rows=11"
+    "note": "rows=14"
    },
    {
     "name": "us_batch",
     "status": "ok",
     "age_h": null,
-    "note": "rows=492"
+    "note": "rows=491"
    },
    {
     "name": "row_counts",
@@ -10623,116 +10590,25 @@
    {
     "name": "cache:env_tw_cache",
     "status": "ok",
-    "age_h": 12.68,
-    "note": "cache 12.7h old"
+    "age_h": 13.36,
+    "note": "cache 13.4h old"
    },
    {
     "name": "cache:env_us_cache",
     "status": "ok",
-    "age_h": 12.68,
-    "note": "cache 12.7h old"
+    "age_h": 13.36,
+    "note": "cache 13.4h old"
    },
    {
     "name": "cache:shortvol_cache",
     "status": "degraded",
-    "age_h": 73.59,
+    "age_h": 74.27,
     "note": "cache aging 3.1 days"
    }
   ],
   "overall": "degraded"
  },
  "early_board": [
-  {
-   "stock": "INTT",
-   "name": "inTEST Corp",
-   "ready": false,
-   "score": 2,
-   "signals": [
-    "LPS 回測支撐",
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "COHR",
-   "name": "Coherent Corp",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "MTSI",
-   "name": "MACOM Technology Solutions",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "IPGP",
-   "name": "IPG Photonics",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "NVTS",
-   "name": "Navitas Semiconductor",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "SLAB",
-   "name": "Silicon Labs",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "RMBS",
-   "name": "Rambus",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "TSEM",
-   "name": "Tower Semiconductor",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "NXPI",
-   "name": "NXP Semiconductors",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
-  {
-   "stock": "EOSE",
-   "name": "Eos Energy Enterprises",
-   "ready": false,
-   "score": 1,
-   "signals": [
-    "RS線平盤翻揚"
-   ]
-  },
   {
    "stock": "CRDO",
    "name": "Credo Technology",
@@ -10743,17 +10619,89 @@
    ]
   },
   {
-   "stock": "CALX",
-   "name": "Calix Inc",
+   "stock": "COHU",
+   "name": "Cohu Inc",
    "ready": false,
    "score": 1,
    "signals": [
-    "ATR 擠壓蓄勢"
+    "LPS 回測支撐"
    ]
   },
   {
-   "stock": "AUDC",
-   "name": "AudioCodes",
+   "stock": "ONTO",
+   "name": "Onto Innovation",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "NVMI",
+   "name": "Nova Ltd",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "AMKR",
+   "name": "Amkor Technology",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "BELFB",
+   "name": "Bel Fuse",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "AEIS",
+   "name": "Advanced Energy Industries",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "INTT",
+   "name": "inTEST Corp",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "PDFS",
+   "name": "PDF Solutions",
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "1714.TW",
+   "name": null,
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "3016.TW",
+   "name": null,
    "ready": false,
    "score": 1,
    "signals": [
@@ -10761,8 +10709,8 @@
    ]
   },
   {
-   "stock": "INDI",
-   "name": "indie Semiconductor",
+   "stock": "3037.TW",
+   "name": null,
    "ready": false,
    "score": 1,
    "signals": [
@@ -10770,12 +10718,21 @@
    ]
   },
   {
-   "stock": "SYNA",
-   "name": "Synaptics",
+   "stock": "6274.TWO",
+   "name": null,
    "ready": false,
    "score": 1,
    "signals": [
-    "RS線平盤翻揚"
+    "LPS 回測支撐"
+   ]
+  },
+  {
+   "stock": "8358.TWO",
+   "name": null,
+   "ready": false,
+   "score": 1,
+   "signals": [
+    "LPS 回測支撐"
    ]
   }
  ],
@@ -10937,16 +10894,16 @@
      "price": 121.28
     },
     {
+     "ticker": "QUIK",
+     "name": "QUIK",
+     "mom": 2.03618409804525,
+     "price": 20.86
+    },
+    {
      "ticker": "LUNR",
      "name": "LUNR",
      "mom": 2.01113171507714,
      "price": 22.85
-    },
-    {
-     "ticker": "MU",
-     "name": "Micron Technology",
-     "mom": 2.0076810682481825,
-     "price": 1133.99
     }
    ],
    "track_record": {
@@ -11003,194 +10960,6 @@
  },
  "scored_universe": [
   {
-   "stock": "DIOD",
-   "name": "Diodes Inc",
-   "score": 128,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8,
-    "VDU→Thrust噴出(回測lift1.61)": 10
-   },
-   "sector": null,
-   "light": "green",
-   "price": 119.46,
-   "change_pct": 9.8
-  },
-  {
-   "stock": "ALAB",
-   "name": "Astera Labs",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 417.07,
-   "change_pct": 11.31
-  },
-  {
-   "stock": "CEVA",
-   "name": "CEVA Inc",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 49.72,
-   "change_pct": 10.71
-  },
-  {
-   "stock": "KLIC",
-   "name": "Kulicke and Soffa Industries",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 121.87,
-   "change_pct": 4.78
-  },
-  {
-   "stock": "ICHR",
-   "name": "Ichor Holdings",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 98.61,
-   "change_pct": 10.24
-  },
-  {
-   "stock": "BHE",
-   "name": "Benchmark Electronics",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 92.17,
-   "change_pct": 1.23
-  },
-  {
-   "stock": "NSYS",
-   "name": "Nortech Systems",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 17.49,
-   "change_pct": 12.84
-  },
-  {
-   "stock": "CIFR",
-   "name": "Cipher Mining",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 29.18,
-   "change_pct": 10.74
-  },
-  {
-   "stock": "CORZ",
-   "name": "Core Scientific",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 29.16,
-   "change_pct": 2.75
-  },
-  {
-   "stock": "NBIS",
-   "name": "Nebius Group",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 286.69,
-   "change_pct": 2.06
-  },
-  {
-   "stock": "UCTT",
-   "name": "Ultra Clean Holdings",
-   "score": 118,
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "U/D量吸籌(回測lift1.55)": 8
-   },
-   "sector": null,
-   "light": "green",
-   "price": 121.28,
-   "change_pct": 8.66
-  },
-  {
    "stock": "2408.TW",
    "name": null,
    "score": 118,
@@ -11206,6 +10975,186 @@
    "light": "green",
    "price": 459.5,
    "change_pct": 5.15
+  },
+  {
+   "stock": "3131.TWO",
+   "name": null,
+   "score": 118,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "相對強弱(強於大盤)": 20,
+    "逼近52週高": 10,
+    "U/D量吸籌(回測lift1.55)": 8,
+    "VDU→Thrust噴出(回測lift1.61)": 10
+   },
+   "sector": null,
+   "light": "green",
+   "price": 3520.0,
+   "change_pct": 8.47
+  },
+  {
+   "stock": "8016.TW",
+   "name": null,
+   "score": 118,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "相對強弱(強於大盤)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 300.5,
+   "change_pct": 1.69
+  },
+  {
+   "stock": "3034.TW",
+   "name": null,
+   "score": 113,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "相對強弱(優於大盤)": 15,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 516.0,
+   "change_pct": 0.19
+  },
+  {
+   "stock": "ALAB",
+   "name": "Astera Labs",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 417.07,
+   "change_pct": 11.31
+  },
+  {
+   "stock": "CEVA",
+   "name": "CEVA Inc",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 49.72,
+   "change_pct": 10.71
+  },
+  {
+   "stock": "ICHR",
+   "name": "Ichor Holdings",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 98.61,
+   "change_pct": 10.24
+  },
+  {
+   "stock": "BHE",
+   "name": "Benchmark Electronics",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 91.05,
+   "change_pct": 2.12
+  },
+  {
+   "stock": "CIFR",
+   "name": "Cipher Mining",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 29.18,
+   "change_pct": 10.74
+  },
+  {
+   "stock": "CORZ",
+   "name": "Core Scientific",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 29.16,
+   "change_pct": 2.75
+  },
+  {
+   "stock": "NBIS",
+   "name": "Nebius Group",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 286.69,
+   "change_pct": 2.06
+  },
+  {
+   "stock": "UCTT",
+   "name": "Ultra Clean Holdings",
+   "score": 98,
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "sector": null,
+   "light": "green",
+   "price": 121.28,
+   "change_pct": 8.66
   }
  ],
  "picks": [
@@ -11355,8 +11304,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -11383,7 +11332,7 @@
       "detail": "R:R 2.6（門檻 ≥ 2.0）"
      }
     ],
-    "verdict_line": "4/5——部分條件未達"
+    "verdict_line": "3/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -11569,8 +11518,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -11597,7 +11546,7 @@
       "detail": "R:R 2.5（門檻 ≥ 2.0）"
      }
     ],
-    "verdict_line": "4/5——部分條件未達"
+    "verdict_line": "3/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -11801,8 +11750,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -11829,7 +11778,7 @@
       "detail": "R:R 10.6（門檻 ≥ 2.0）"
      }
     ],
-    "verdict_line": "4/5——部分條件未達"
+    "verdict_line": "3/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -11871,16 +11820,210 @@
    ]
   },
   {
+   "stock": "2891.TW",
+   "name": "中信金",
+   "score": 120,
+   "sector": "金融",
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "產業(金融)": 5,
+    "外資買超": 15,
+    "相對強弱(優於大盤)": 15,
+    "接近52週高": 20,
+    "籌碼集中(法人吸籌)": 15
+   },
+   "levels": null,
+   "commentary": null,
+   "light": "green",
+   "verdict": "趨勢、動能",
+   "price": 71.9,
+   "change_pct": 1.27,
+   "vol_ratio": -15,
+   "sr": {
+    "price": 71.9,
+    "resistance": [],
+    "support": [
+     52.6,
+     52.3
+    ],
+    "strong_support": 40.22
+   },
+   "spark": [
+    52.0,
+    52.8,
+    53.0,
+    53.0,
+    51.9,
+    51.3,
+    53.7,
+    54.5,
+    55.8,
+    56.5,
+    54.8,
+    54.0,
+    53.3,
+    53.1,
+    52.8,
+    53.4,
+    53.1,
+    53.1,
+    53.0,
+    53.5,
+    52.7,
+    52.9,
+    52.7,
+    53.3,
+    53.1,
+    52.3,
+    52.9,
+    53.5,
+    54.7,
+    56.2,
+    56.4,
+    55.3,
+    53.5,
+    54.9,
+    54.8,
+    54.8,
+    54.8,
+    55.4,
+    57.8,
+    57.5,
+    57.6,
+    57.3,
+    57.6,
+    59.2,
+    59.3,
+    60.5,
+    62.1,
+    64.1,
+    70.5,
+    68.0,
+    66.6,
+    65.4,
+    69.2,
+    68.2,
+    67.5,
+    67.6,
+    70.1,
+    70.8,
+    71.0,
+    71.9
+   ],
+   "spark_start": "2026-03-24",
+   "spark_end": "2026-06-18",
+   "risk": {},
+   "liquidity": {
+    "adv": 3988788051,
+    "cur": "NT$",
+    "cap": 39887881,
+    "thin": false
+   },
+   "acc_dist": {
+    "grade": "A",
+    "ratio": 1.67,
+    "label": "重度吸籌",
+    "bullish": true
+   },
+   "obv_flow": null,
+   "fundamental": null,
+   "pretrade": {
+    "items": [
+     {
+      "key": "regime",
+      "label": "市場體制（曝險度 ≥ 50%）",
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
+     },
+     {
+      "key": "blackout",
+      "label": "財報黑窗（7 日內無財報）",
+      "pass": true,
+      "detail": "無近期財報（7 日內）"
+     },
+     {
+      "key": "cluster",
+      "label": "集群集中度（同群 < 3 檔）",
+      "pass": null,
+      "detail": "資料不足（無集群資料）"
+     },
+     {
+      "key": "liquidity",
+      "label": "流動性/部位上限",
+      "pass": true,
+      "detail": "部位上限 39,887,881"
+     },
+     {
+      "key": "rr",
+      "label": "R:R ≥ 2.0",
+      "pass": null,
+      "detail": "資料不足（無 R:R 資料）"
+     }
+    ],
+    "verdict_line": "2/5——市場體制不佳，等"
+   },
+   "overlays": [
+    {
+     "source": "twse_t86",
+     "kind": "inst",
+     "label": "三大法人買超 8,435,342 股",
+     "value": {
+      "foreign": 19244555,
+      "trust": -11319036,
+      "dealer": 509823,
+      "total": 8435342
+     },
+     "severity": "info",
+     "as_of": "2026-06-21",
+     "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+    },
+    {
+     "source": "twse_margin",
+     "kind": "chip",
+     "label": "融資餘額單日大增 +15.9%",
+     "value": {
+      "fin_net": 465,
+      "fin_pct": 0.15897435897435896
+     },
+     "severity": "warn",
+     "as_of": "2026-06-21",
+     "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+    },
+    {
+     "source": "twse_pe",
+     "kind": "fundamental",
+     "label": "PE 17.3 / 殖利率 3.48% / PB 2.57",
+     "value": {
+      "pe": 17.33,
+      "yield": 3.48,
+      "pb": 2.57
+     },
+     "severity": "info",
+     "as_of": "2026-06-18",
+     "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+    },
+    {
+     "source": "tdcc",
+     "kind": "chip",
+     "label": "大戶吸籌",
+     "value": 82.13,
+     "severity": "info",
+     "as_of": "20260618",
+     "note": "大戶持股%=82.13；WoW+0.02；股東人數-1119"
+    }
+   ]
+  },
+  {
    "stock": "TSM",
    "name": "台積電 ADR",
-   "score": 125,
+   "score": 105,
    "sector": "半導體",
    "factors": {
     "趨勢(MA5>MA20)": 25,
     "動能(5日上漲)": 25,
     "量能(高於20日均量)": 20,
     "產業(半導體)": 15,
-    "相對強弱(強於大盤)": 20,
     "接近52週高": 20
    },
    "levels": null,
@@ -11990,8 +12133,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -12018,7 +12161,7 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -12046,379 +12189,6 @@
       "max_shares": 13082,
       "persistent": true,
       "elevated": false
-     },
-     "severity": "warn",
-     "as_of": "2026-06-21",
-     "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-    }
-   ]
-  },
-  {
-   "stock": "AMD",
-   "name": "AMD",
-   "score": 110,
-   "sector": "半導體",
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "產業(半導體)": 15,
-    "相對強弱(強於大盤)": 20,
-    "接近52週高": 20,
-    "量價背離(出貨警示)": -15
-   },
-   "levels": null,
-   "commentary": null,
-   "light": "green",
-   "verdict": "趨勢、動能、注意量價背離",
-   "price": 537.37,
-   "change_pct": 4.86,
-   "vol_ratio": 3,
-   "sr": {
-    "price": 537.37,
-    "resistance": [
-     546.44,
-     558.37
-    ],
-    "support": [
-     437.23,
-     393.36
-    ],
-    "strong_support": 133.5
-   },
-   "spark": [
-    220.27,
-    203.77,
-    201.99,
-    196.04,
-    203.43,
-    210.21,
-    217.5,
-    220.18,
-    221.53,
-    231.82,
-    236.64,
-    245.04,
-    246.83,
-    255.07,
-    258.12,
-    278.26,
-    278.39,
-    274.95,
-    284.49,
-    303.46,
-    305.33,
-    347.81,
-    334.63,
-    323.21,
-    337.11,
-    354.49,
-    360.54,
-    341.54,
-    355.26,
-    421.39,
-    408.46,
-    455.19,
-    458.79,
-    448.29,
-    445.5,
-    449.7,
-    424.1,
-    420.99,
-    414.05,
-    447.58,
-    449.59,
-    467.51,
-    503.89,
-    495.54,
-    518.09,
-    516.1,
-    510.13,
-    521.54,
-    542.52,
-    523.2,
-    466.38,
-    490.33,
-    475.51,
-    452.4,
-    488.45,
-    511.57,
-    547.26,
-    507.29,
-    512.48,
-    537.37
-   ],
-   "spark_start": "2026-03-25",
-   "spark_end": "2026-06-18",
-   "risk": {},
-   "liquidity": {
-    "adv": 16026145262,
-    "cur": "$",
-    "cap": 160261453,
-    "thin": false
-   },
-   "acc_dist": {
-    "grade": "A",
-    "ratio": 1.77,
-    "label": "重度吸籌",
-    "bullish": true
-   },
-   "obv_flow": null,
-   "fundamental": {
-    "pe_trailing": 178.52824,
-    "pe_forward": 41.00965,
-    "eps_trailing": 3.01,
-    "eps_forward": 13.1035,
-    "stale": true,
-    "source": "yfinance"
-   },
-   "pretrade": {
-    "items": [
-     {
-      "key": "regime",
-      "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
-     },
-     {
-      "key": "blackout",
-      "label": "財報黑窗（7 日內無財報）",
-      "pass": true,
-      "detail": "無近期財報（7 日內）"
-     },
-     {
-      "key": "cluster",
-      "label": "集群集中度（同群 < 3 檔）",
-      "pass": null,
-      "detail": "資料不足（無集群資料）"
-     },
-     {
-      "key": "liquidity",
-      "label": "流動性/部位上限",
-      "pass": true,
-      "detail": "部位上限 160,261,453"
-     },
-     {
-      "key": "rr",
-      "label": "R:R ≥ 2.0",
-      "pass": null,
-      "detail": "資料不足（無 R:R 資料）"
-     }
-    ],
-    "verdict_line": "3/5——部分條件未達"
-   },
-   "shortvol": {
-    "ratio": 0.4879,
-    "pct": 49,
-    "flag": "elevated",
-    "rising": true,
-    "days": 7,
-    "note": "空量佔比偏高 — 可能造市避險，informational、回測驗證後才加權"
-   },
-   "overlays": [
-    {
-     "source": "hackernews",
-     "kind": "sentiment",
-     "label": "HN 討論熱度 20 篇 / 155 分 / 54 留言",
-     "value": {
-      "metric": "hn_buzz",
-      "points": 155,
-      "comments": 54,
-      "n": 20,
-      "window_hours": 72
-     },
-     "severity": "info",
-     "as_of": "2026-06-21",
-     "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-    },
-    {
-     "source": "sec_ftd",
-     "kind": "chip",
-     "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 1,310,608 股交割失敗）",
-     "value": {
-      "total_shares": 1310608,
-      "days": 10,
-      "max_shares": 848354,
-      "persistent": true,
-      "elevated": true
-     },
-     "severity": "warn",
-     "as_of": "2026-06-21",
-     "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-    }
-   ]
-  },
-  {
-   "stock": "QQQ",
-   "name": "Nasdaq100 ETF",
-   "score": 105,
-   "sector": "ETF",
-   "factors": {
-    "趨勢(MA5>MA20)": 25,
-    "動能(5日上漲)": 25,
-    "量能(高於20日均量)": 20,
-    "相對強弱(優於大盤)": 15,
-    "接近52週高": 20
-   },
-   "levels": null,
-   "commentary": null,
-   "light": "green",
-   "verdict": "趨勢、動能",
-   "price": 740.62,
-   "change_pct": 2.51,
-   "vol_ratio": 0,
-   "sr": {
-    "price": 740.62,
-    "resistance": [
-     744.76,
-     748.65
-    ],
-    "support": [
-     695.25,
-     686.37
-    ],
-    "strong_support": 549.52
-   },
-   "spark": [
-    587.82,
-    573.79,
-    562.58,
-    558.28,
-    577.18,
-    584.31,
-    584.98,
-    588.5,
-    588.59,
-    606.09,
-    610.19,
-    611.07,
-    617.39,
-    628.6,
-    637.4,
-    640.47,
-    648.85,
-    646.79,
-    644.33,
-    655.11,
-    651.42,
-    663.88,
-    664.23,
-    657.55,
-    661.57,
-    667.74,
-    674.15,
-    672.88,
-    681.61,
-    695.77,
-    694.94,
-    711.23,
-    713.29,
-    707.24,
-    714.71,
-    719.79,
-    708.93,
-    705.88,
-    701.53,
-    713.15,
-    714.51,
-    717.54,
-    730.28,
-    729.45,
-    735.6,
-    738.31,
-    742.74,
-    746.16,
-    744.21,
-    740.61,
-    705.06,
-    716.07,
-    707.83,
-    693.69,
-    717.12,
-    721.34,
-    744.0,
-    729.86,
-    722.51,
-    740.62
-   ],
-   "spark_start": "2026-03-25",
-   "spark_end": "2026-06-18",
-   "risk": {},
-   "liquidity": {
-    "adv": 35269878516,
-    "cur": "$",
-    "cap": 352698785,
-    "thin": false
-   },
-   "acc_dist": {
-    "grade": "B",
-    "ratio": 1.2,
-    "label": "溫和吸籌",
-    "bullish": true
-   },
-   "obv_flow": null,
-   "fundamental": {
-    "pe_trailing": 34.004364,
-    "pe_forward": null,
-    "eps_trailing": null,
-    "eps_forward": null,
-    "stale": true,
-    "source": "yfinance"
-   },
-   "pretrade": {
-    "items": [
-     {
-      "key": "regime",
-      "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
-     },
-     {
-      "key": "blackout",
-      "label": "財報黑窗（7 日內無財報）",
-      "pass": true,
-      "detail": "無近期財報（7 日內）"
-     },
-     {
-      "key": "cluster",
-      "label": "集群集中度（同群 < 3 檔）",
-      "pass": null,
-      "detail": "資料不足（無集群資料）"
-     },
-     {
-      "key": "liquidity",
-      "label": "流動性/部位上限",
-      "pass": true,
-      "detail": "部位上限 352,698,785"
-     },
-     {
-      "key": "rr",
-      "label": "R:R ≥ 2.0",
-      "pass": null,
-      "detail": "資料不足（無 R:R 資料）"
-     }
-    ],
-    "verdict_line": "3/5——部分條件未達"
-   },
-   "shortvol": {
-    "ratio": 0.5042,
-    "pct": 50,
-    "flag": "elevated",
-    "rising": false,
-    "days": 7,
-    "note": "空量佔比偏高 — 可能造市避險，informational、回測驗證後才加權"
-   },
-   "overlays": [
-    {
-     "source": "sec_ftd",
-     "kind": "chip",
-     "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 2,240,906 股交割失敗）",
-     "value": {
-      "total_shares": 2240906,
-      "days": 9,
-      "max_shares": 1389690,
-      "persistent": true,
-      "elevated": true
      },
      "severity": "warn",
      "as_of": "2026-06-21",
@@ -12547,8 +12317,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -12575,7 +12345,7 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -12742,8 +12512,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -12770,7 +12540,7 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -12812,314 +12582,120 @@
    ]
   },
   {
-   "stock": "2891.TW",
-   "name": "中信金",
-   "score": 95,
-   "sector": "金融",
+   "stock": "AMD",
+   "name": "AMD",
+   "score": 90,
+   "sector": "半導體",
    "factors": {
     "趨勢(MA5>MA20)": 25,
     "動能(5日上漲)": 25,
-    "產業(金融)": 5,
-    "外資買超": 15,
-    "相對弱勢(弱於大盤)": -10,
-    "接近52週高": 20,
-    "籌碼集中(法人吸籌)": 15
-   },
-   "levels": null,
-   "commentary": null,
-   "light": "green",
-   "verdict": "趨勢、動能、注意相對弱勢",
-   "price": 71.9,
-   "change_pct": 1.27,
-   "vol_ratio": -15,
-   "sr": {
-    "price": 71.9,
-    "resistance": [],
-    "support": [
-     52.6,
-     52.3
-    ],
-    "strong_support": 40.22
-   },
-   "spark": [
-    52.0,
-    52.8,
-    53.0,
-    53.0,
-    51.9,
-    51.3,
-    53.7,
-    54.5,
-    55.8,
-    56.5,
-    54.8,
-    54.0,
-    53.3,
-    53.1,
-    52.8,
-    53.4,
-    53.1,
-    53.1,
-    53.0,
-    53.5,
-    52.7,
-    52.9,
-    52.7,
-    53.3,
-    53.1,
-    52.3,
-    52.9,
-    53.5,
-    54.7,
-    56.2,
-    56.4,
-    55.3,
-    53.5,
-    54.9,
-    54.8,
-    54.8,
-    54.8,
-    55.4,
-    57.8,
-    57.5,
-    57.6,
-    57.3,
-    57.6,
-    59.2,
-    59.3,
-    60.5,
-    62.1,
-    64.1,
-    70.5,
-    68.0,
-    66.6,
-    65.4,
-    69.2,
-    68.2,
-    67.5,
-    67.6,
-    70.1,
-    70.8,
-    71.0,
-    71.9
-   ],
-   "spark_start": "2026-03-24",
-   "spark_end": "2026-06-18",
-   "risk": {},
-   "liquidity": {
-    "adv": 3988788051,
-    "cur": "NT$",
-    "cap": 39887881,
-    "thin": false
-   },
-   "acc_dist": {
-    "grade": "A",
-    "ratio": 1.67,
-    "label": "重度吸籌",
-    "bullish": true
-   },
-   "obv_flow": null,
-   "fundamental": null,
-   "pretrade": {
-    "items": [
-     {
-      "key": "regime",
-      "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
-     },
-     {
-      "key": "blackout",
-      "label": "財報黑窗（7 日內無財報）",
-      "pass": true,
-      "detail": "無近期財報（7 日內）"
-     },
-     {
-      "key": "cluster",
-      "label": "集群集中度（同群 < 3 檔）",
-      "pass": null,
-      "detail": "資料不足（無集群資料）"
-     },
-     {
-      "key": "liquidity",
-      "label": "流動性/部位上限",
-      "pass": true,
-      "detail": "部位上限 39,887,881"
-     },
-     {
-      "key": "rr",
-      "label": "R:R ≥ 2.0",
-      "pass": null,
-      "detail": "資料不足（無 R:R 資料）"
-     }
-    ],
-    "verdict_line": "3/5——部分條件未達"
-   },
-   "overlays": [
-    {
-     "source": "twse_t86",
-     "kind": "inst",
-     "label": "三大法人買超 8,435,342 股",
-     "value": {
-      "foreign": 19244555,
-      "trust": -11319036,
-      "dealer": 509823,
-      "total": 8435342
-     },
-     "severity": "info",
-     "as_of": "2026-06-21",
-     "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-    },
-    {
-     "source": "twse_margin",
-     "kind": "chip",
-     "label": "融資餘額單日大增 +15.9%",
-     "value": {
-      "fin_net": 465,
-      "fin_pct": 0.15897435897435896
-     },
-     "severity": "warn",
-     "as_of": "2026-06-21",
-     "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-    },
-    {
-     "source": "twse_pe",
-     "kind": "fundamental",
-     "label": "PE 17.3 / 殖利率 3.48% / PB 2.57",
-     "value": {
-      "pe": 17.33,
-      "yield": 3.48,
-      "pb": 2.57
-     },
-     "severity": "info",
-     "as_of": "2026-06-18",
-     "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-    },
-    {
-     "source": "tdcc",
-     "kind": "chip",
-     "label": "大戶吸籌",
-     "value": 82.13,
-     "severity": "info",
-     "as_of": "20260618",
-     "note": "大戶持股%=82.13；WoW+0.02；股東人數-1119"
-    }
-   ]
-  },
-  {
-   "stock": "GOOGL",
-   "name": "Alphabet",
-   "score": 90,
-   "sector": "AI伺服器",
-   "factors": {
-    "動能(5日上漲)": 25,
     "量能(高於20日均量)": 20,
-    "產業(AI伺服器)": 20,
-    "相對強弱(優於大盤)": 15,
-    "逼近52週高": 10
+    "產業(半導體)": 15,
+    "接近52週高": 20,
+    "量價背離(出貨警示)": -15
    },
    "levels": null,
    "commentary": null,
    "light": "green",
-   "verdict": "動能、量能",
-   "price": 368.03,
-   "change_pct": 1.17,
-   "vol_ratio": -10,
+   "verdict": "趨勢、動能、注意量價背離",
+   "price": 537.37,
+   "change_pct": 4.86,
+   "vol_ratio": 3,
    "sr": {
-    "price": 368.03,
+    "price": 537.37,
     "resistance": [
-     393.64,
-     408.37
+     546.44,
+     558.37
     ],
     "support": [
-     357.87,
-     346.36
+     437.23,
+     393.36
     ],
-    "strong_support": 172.28
+    "strong_support": 133.5
    },
    "spark": [
-    290.76,
-    280.75,
-    274.18,
-    273.34,
-    287.39,
-    297.21,
-    295.59,
-    299.81,
-    305.28,
-    317.13,
-    318.3,
-    317.05,
-    321.12,
-    332.71,
-    336.92,
-    335.82,
-    341.48,
-    337.22,
-    332.09,
-    339.12,
-    338.69,
-    344.19,
-    350.13,
-    349.57,
-    349.73,
-    384.57,
-    385.46,
-    383.02,
-    388.2,
-    397.8,
-    397.75,
-    400.56,
-    388.41,
-    387.12,
-    402.38,
-    400.83,
-    396.54,
-    396.7,
-    387.43,
-    388.68,
-    387.43,
-    382.74,
-    388.65,
-    388.6,
-    389.9,
-    380.11,
-    376.15,
-    361.63,
-    358.78,
-    371.97,
-    368.31,
-    363.31,
-    364.26,
-    356.38,
-    357.77,
-    359.68,
-    369.35,
-    373.25,
-    363.79,
-    368.03
+    220.27,
+    203.77,
+    201.99,
+    196.04,
+    203.43,
+    210.21,
+    217.5,
+    220.18,
+    221.53,
+    231.82,
+    236.64,
+    245.04,
+    246.83,
+    255.07,
+    258.12,
+    278.26,
+    278.39,
+    274.95,
+    284.49,
+    303.46,
+    305.33,
+    347.81,
+    334.63,
+    323.21,
+    337.11,
+    354.49,
+    360.54,
+    341.54,
+    355.26,
+    421.39,
+    408.46,
+    455.19,
+    458.79,
+    448.29,
+    445.5,
+    449.7,
+    424.1,
+    420.99,
+    414.05,
+    447.58,
+    449.59,
+    467.51,
+    503.89,
+    495.54,
+    518.09,
+    516.1,
+    510.13,
+    521.54,
+    542.52,
+    523.2,
+    466.38,
+    490.33,
+    475.51,
+    452.4,
+    488.45,
+    511.57,
+    547.26,
+    507.29,
+    512.48,
+    537.37
    ],
    "spark_start": "2026-03-25",
    "spark_end": "2026-06-18",
    "risk": {},
    "liquidity": {
-    "adv": 12077322697,
+    "adv": 16026145262,
     "cur": "$",
-    "cap": 120773227,
+    "cap": 160261453,
     "thin": false
    },
    "acc_dist": {
-    "grade": "C",
-    "ratio": 1.05,
-    "label": "中性",
-    "bullish": false
+    "grade": "A",
+    "ratio": 1.77,
+    "label": "重度吸籌",
+    "bullish": true
    },
    "obv_flow": null,
    "fundamental": {
-    "pe_trailing": 28.093893,
-    "pe_forward": 25.415365,
-    "eps_trailing": 13.1,
-    "eps_forward": 14.48061,
+    "pe_trailing": 178.52824,
+    "pe_forward": 41.00965,
+    "eps_trailing": 3.01,
+    "eps_forward": 13.1035,
     "stale": true,
     "source": "yfinance"
    },
@@ -13128,8 +12704,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -13147,7 +12723,7 @@
       "key": "liquidity",
       "label": "流動性/部位上限",
       "pass": true,
-      "detail": "部位上限 120,773,227"
+      "detail": "部位上限 160,261,453"
      },
      {
       "key": "rr",
@@ -13156,17 +12732,25 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
+   },
+   "shortvol": {
+    "ratio": 0.4879,
+    "pct": 49,
+    "flag": "elevated",
+    "rising": true,
+    "days": 7,
+    "note": "空量佔比偏高 — 可能造市避險，informational、回測驗證後才加權"
    },
    "overlays": [
     {
      "source": "hackernews",
      "kind": "sentiment",
-     "label": "HN 討論熱度 20 篇 / 201 分 / 57 留言",
+     "label": "HN 討論熱度 20 篇 / 155 分 / 54 留言",
      "value": {
       "metric": "hn_buzz",
-      "points": 201,
-      "comments": 57,
+      "points": 155,
+      "comments": 54,
       "n": 20,
       "window_hours": 72
      },
@@ -13177,11 +12761,188 @@
     {
      "source": "sec_ftd",
      "kind": "chip",
-     "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 444,598 股交割失敗）",
+     "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 1,310,608 股交割失敗）",
      "value": {
-      "total_shares": 444598,
-      "days": 8,
-      "max_shares": 394588,
+      "total_shares": 1310608,
+      "days": 10,
+      "max_shares": 848354,
+      "persistent": true,
+      "elevated": true
+     },
+     "severity": "warn",
+     "as_of": "2026-06-21",
+     "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+    }
+   ]
+  },
+  {
+   "stock": "QQQ",
+   "name": "Nasdaq100 ETF",
+   "score": 90,
+   "sector": "ETF",
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "接近52週高": 20
+   },
+   "levels": null,
+   "commentary": null,
+   "light": "green",
+   "verdict": "趨勢、動能",
+   "price": 740.62,
+   "change_pct": 2.51,
+   "vol_ratio": 0,
+   "sr": {
+    "price": 740.62,
+    "resistance": [
+     744.76,
+     748.65
+    ],
+    "support": [
+     695.25,
+     686.37
+    ],
+    "strong_support": 549.52
+   },
+   "spark": [
+    587.82,
+    573.79,
+    562.58,
+    558.28,
+    577.18,
+    584.31,
+    584.98,
+    588.5,
+    588.59,
+    606.09,
+    610.19,
+    611.07,
+    617.39,
+    628.6,
+    637.4,
+    640.47,
+    648.85,
+    646.79,
+    644.33,
+    655.11,
+    651.42,
+    663.88,
+    664.23,
+    657.55,
+    661.57,
+    667.74,
+    674.15,
+    672.88,
+    681.61,
+    695.77,
+    694.94,
+    711.23,
+    713.29,
+    707.24,
+    714.71,
+    719.79,
+    708.93,
+    705.88,
+    701.53,
+    713.15,
+    714.51,
+    717.54,
+    730.28,
+    729.45,
+    735.6,
+    738.31,
+    742.74,
+    746.16,
+    744.21,
+    740.61,
+    705.06,
+    716.07,
+    707.83,
+    693.69,
+    717.12,
+    721.34,
+    744.0,
+    729.86,
+    722.51,
+    740.62
+   ],
+   "spark_start": "2026-03-25",
+   "spark_end": "2026-06-18",
+   "risk": {},
+   "liquidity": {
+    "adv": 35269878516,
+    "cur": "$",
+    "cap": 352698785,
+    "thin": false
+   },
+   "acc_dist": {
+    "grade": "B",
+    "ratio": 1.2,
+    "label": "溫和吸籌",
+    "bullish": true
+   },
+   "obv_flow": null,
+   "fundamental": {
+    "pe_trailing": 34.004364,
+    "pe_forward": null,
+    "eps_trailing": null,
+    "eps_forward": null,
+    "stale": true,
+    "source": "yfinance"
+   },
+   "pretrade": {
+    "items": [
+     {
+      "key": "regime",
+      "label": "市場體制（曝險度 ≥ 50%）",
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
+     },
+     {
+      "key": "blackout",
+      "label": "財報黑窗（7 日內無財報）",
+      "pass": true,
+      "detail": "無近期財報（7 日內）"
+     },
+     {
+      "key": "cluster",
+      "label": "集群集中度（同群 < 3 檔）",
+      "pass": null,
+      "detail": "資料不足（無集群資料）"
+     },
+     {
+      "key": "liquidity",
+      "label": "流動性/部位上限",
+      "pass": true,
+      "detail": "部位上限 352,698,785"
+     },
+     {
+      "key": "rr",
+      "label": "R:R ≥ 2.0",
+      "pass": null,
+      "detail": "資料不足（無 R:R 資料）"
+     }
+    ],
+    "verdict_line": "2/5——市場體制不佳，等"
+   },
+   "shortvol": {
+    "ratio": 0.5042,
+    "pct": 50,
+    "flag": "elevated",
+    "rising": false,
+    "days": 7,
+    "note": "空量佔比偏高 — 可能造市避險，informational、回測驗證後才加權"
+   },
+   "overlays": [
+    {
+     "source": "sec_ftd",
+     "kind": "chip",
+     "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 2,240,906 股交割失敗）",
+     "value": {
+      "total_shares": 2240906,
+      "days": 9,
+      "max_shares": 1389690,
       "persistent": true,
       "elevated": true
      },
@@ -13313,8 +13074,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -13341,7 +13102,7 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -13505,8 +13266,8 @@
      {
       "key": "regime",
       "label": "市場體制（曝險度 ≥ 50%）",
-      "pass": true,
-      "detail": "曝險度 64%（caution）— 門檻 ≥ 50%"
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
      },
      {
       "key": "blackout",
@@ -13533,7 +13294,7 @@
       "detail": "資料不足（無 R:R 資料）"
      }
     ],
-    "verdict_line": "3/5——部分條件未達"
+    "verdict_line": "2/5——市場體制不佳，等"
    },
    "overlays": [
     {
@@ -13573,6 +13334,198 @@
      "note": "大戶持股%=89.20；WoW-0.48；股東人數+627"
     }
    ]
+  },
+  {
+   "stock": "6505.TW",
+   "name": "台塑化",
+   "score": 88,
+   "sector": "傳產",
+   "factors": {
+    "趨勢(MA5>MA20)": 25,
+    "動能(5日上漲)": 25,
+    "量能(高於20日均量)": 20,
+    "產業(傳產)": -10,
+    "外資買超": 15,
+    "相對弱勢(弱於大盤)": -10,
+    "籌碼集中(法人吸籌)": 15,
+    "U/D量吸籌(回測lift1.55)": 8
+   },
+   "levels": null,
+   "commentary": null,
+   "light": "amber",
+   "verdict": "趨勢、動能、注意產業",
+   "price": 53.5,
+   "change_pct": 1.71,
+   "vol_ratio": -19,
+   "sr": {
+    "price": 53.5,
+    "resistance": [
+     54.6,
+     56.7
+    ],
+    "support": [
+     53.4,
+     51.9
+    ],
+    "strong_support": 34.9
+   },
+   "spark": [
+    55.1,
+    54.5,
+    55.7,
+    56.3,
+    56.4,
+    55.1,
+    55.7,
+    54.7,
+    56.8,
+    54.3,
+    52.7,
+    52.0,
+    55.1,
+    56.2,
+    54.4,
+    55.1,
+    54.9,
+    54.0,
+    53.0,
+    52.7,
+    51.7,
+    51.6,
+    51.8,
+    52.9,
+    54.0,
+    56.4,
+    54.0,
+    55.4,
+    54.8,
+    52.3,
+    53.0,
+    54.0,
+    53.1,
+    52.9,
+    52.4,
+    51.3,
+    51.2,
+    51.3,
+    51.2,
+    51.3,
+    51.0,
+    49.5,
+    49.3,
+    50.1,
+    49.9,
+    51.4,
+    53.3,
+    54.5,
+    55.9,
+    57.5,
+    55.3,
+    52.6,
+    52.4,
+    51.0,
+    51.4,
+    52.8,
+    53.3,
+    52.7,
+    52.6,
+    53.5
+   ],
+   "spark_start": "2026-03-24",
+   "spark_end": "2026-06-18",
+   "risk": {},
+   "liquidity": {
+    "adv": 515782273,
+    "cur": "NT$",
+    "cap": 5157823,
+    "thin": false
+   },
+   "acc_dist": {
+    "grade": "C",
+    "ratio": 1.08,
+    "label": "中性",
+    "bullish": false
+   },
+   "obv_flow": null,
+   "fundamental": {
+    "rev_yoy": 26.9,
+    "rev_accel": false,
+    "stale": false,
+    "source": "twse_revenue"
+   },
+   "pretrade": {
+    "items": [
+     {
+      "key": "regime",
+      "label": "市場體制（曝險度 ≥ 50%）",
+      "pass": false,
+      "detail": "曝險度 36%（risk-off）— 門檻 ≥ 50%"
+     },
+     {
+      "key": "blackout",
+      "label": "財報黑窗（7 日內無財報）",
+      "pass": true,
+      "detail": "無近期財報（7 日內）"
+     },
+     {
+      "key": "cluster",
+      "label": "集群集中度（同群 < 3 檔）",
+      "pass": null,
+      "detail": "資料不足（無集群資料）"
+     },
+     {
+      "key": "liquidity",
+      "label": "流動性/部位上限",
+      "pass": true,
+      "detail": "部位上限 5,157,823"
+     },
+     {
+      "key": "rr",
+      "label": "R:R ≥ 2.0",
+      "pass": null,
+      "detail": "資料不足（無 R:R 資料）"
+     }
+    ],
+    "verdict_line": "2/5——市場體制不佳，等"
+   },
+   "overlays": [
+    {
+     "source": "twse_t86",
+     "kind": "inst",
+     "label": "三大法人買超 2,332,892 股",
+     "value": {
+      "foreign": 3813660,
+      "trust": -1410991,
+      "dealer": -69777,
+      "total": 2332892
+     },
+     "severity": "info",
+     "as_of": "2026-06-21",
+     "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+    },
+    {
+     "source": "twse_pe",
+     "kind": "fundamental",
+     "label": "PE 19.2 / 殖利率 2.24% / PB 1.36",
+     "value": {
+      "pe": 19.18,
+      "yield": 2.24,
+      "pb": 1.36
+     },
+     "severity": "info",
+     "as_of": "2026-06-18",
+     "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+    },
+    {
+     "source": "tdcc",
+     "kind": "chip",
+     "label": "大戶吸籌",
+     "value": 94.78,
+     "severity": "info",
+     "as_of": "20260618",
+     "note": "大戶持股%=94.78；WoW+0.03；股東人數-788"
+    }
+   ]
   }
  ],
  "search": [
@@ -13598,25 +13551,18 @@
    "price": 145.5
   },
   {
+   "code": "2891.TW",
+   "name": "中信金",
+   "light": "green",
+   "kind": "pick",
+   "price": 71.9
+  },
+  {
    "code": "TSM",
    "name": "台積電 ADR",
    "light": "green",
    "kind": "pick",
    "price": 462.12
-  },
-  {
-   "code": "AMD",
-   "name": "AMD",
-   "light": "green",
-   "kind": "pick",
-   "price": 537.37
-  },
-  {
-   "code": "QQQ",
-   "name": "Nasdaq100 ETF",
-   "light": "green",
-   "kind": "pick",
-   "price": 740.62
   },
   {
    "code": "2379.TW",
@@ -13633,18 +13579,18 @@
    "price": 115.5
   },
   {
-   "code": "2891.TW",
-   "name": "中信金",
+   "code": "AMD",
+   "name": "AMD",
    "light": "green",
    "kind": "pick",
-   "price": 71.9
+   "price": 537.37
   },
   {
-   "code": "GOOGL",
-   "name": "Alphabet",
+   "code": "QQQ",
+   "name": "Nasdaq100 ETF",
    "light": "green",
    "kind": "pick",
-   "price": 368.03
+   "price": 740.62
   },
   {
    "code": "2330.TW",
@@ -13659,6 +13605,13 @@
    "light": "amber",
    "kind": "pick",
    "price": 482.0
+  },
+  {
+   "code": "6505.TW",
+   "name": "台塑化",
+   "light": "amber",
+   "kind": "pick",
+   "price": 53.5
   },
   {
    "code": "MXL",
@@ -13886,18 +13839,18 @@
   }
  ],
  "allocation": {
-  "US_GROWTH": 0.3,
+  "US_GROWTH": 0.25,
   "TW_GROWTH": 0.3,
-  "ETF_CORE": 0.2,
+  "ETF_CORE": 0.25,
   "CRYPTO": 0.1,
   "CASH_BOND": 0.1
  },
  "rebalance": {
+  "US_GROWTH": -5.0,
   "CASH_BOND": 0.0,
   "TW_GROWTH": 5.0,
-  "ETF_CORE": -5.0,
   "CRYPTO": 0.0,
-  "US_GROWTH": 0.0
+  "ETF_CORE": 0.0
  },
  "source_coverage": {
   "opp_ohlcv": {
@@ -13906,22 +13859,22 @@
   },
   "us_batch": {
    "ok": true,
-   "codes": 492
+   "codes": 491
   },
   "twse_t86": {
    "ok": true,
-   "codes": 11,
-   "overlays": 11
+   "codes": 14,
+   "overlays": 14
   },
   "twse_margin": {
    "ok": true,
-   "codes": 5,
-   "overlays": 5
+   "codes": 6,
+   "overlays": 6
   },
   "twse_pe": {
    "ok": true,
-   "codes": 11,
-   "overlays": 11
+   "codes": 14,
+   "overlays": 14
   },
   "tpex": {
    "ok": true,
@@ -13945,8 +13898,8 @@
   },
   "tdcc": {
    "ok": true,
-   "codes": 13,
-   "overlays": 13
+   "codes": 17,
+   "overlays": 17
   },
   "sec": {
    "ok": false,
@@ -14002,8 +13955,8 @@
   },
   "sec_ftd": {
    "ok": true,
-   "codes": 22,
-   "overlays": 22
+   "codes": 18,
+   "overlays": 18
   },
   "cftc_cot": {
    "ok": false,

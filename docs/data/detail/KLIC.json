@@ -1,9 +1,17 @@
 {
  "stock": "KLIC",
  "name": "Kulicke and Soffa Industries",
- "price": 121.87,
- "change_pct": 4.78,
+ "price": 116.31,
+ "change_pct": -0.64,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 64.26,
+   "h": 68.22,
+   "l": 64.26,
+   "c": 67.92,
+   "v": 561300
+  },
   {
    "time": "2026-03-25",
    "o": 68.92,
@@ -475,18 +483,10 @@
    "l": 115.96,
    "c": 116.31,
    "v": 871300
-  },
-  {
-   "time": "2026-06-18",
-   "o": 121.5,
-   "h": 125.14,
-   "l": 121.15,
-   "c": 121.87,
-   "v": 1806200
   }
  ],
  "sr": {
-  "price": 121.87,
+  "price": 116.31,
   "resistance": [],
   "support": [
    98.83,
@@ -495,6 +495,7 @@
   "strong_support": 26.09
  },
  "spark": [
+  67.92,
   68.68,
   64.64,
   64.57,
@@ -553,29 +554,11 @@
   112.93,
   115.24,
   117.06,
-  116.31,
-  121.87
+  116.31
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 21550,
-    "days": 3,
-    "max_shares": 20973,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

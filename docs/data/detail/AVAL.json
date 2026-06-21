@@ -1,9 +1,17 @@
 {
  "stock": "AVAL",
  "name": "Grupo Aval Acciones y Valores S.A. ADR (Each representing 20 preferred shares)",
- "price": 5.75,
- "change_pct": 3.05,
+ "price": 5.58,
+ "change_pct": 2.01,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 4.14,
+   "h": 4.26,
+   "l": 4.06,
+   "c": 4.16,
+   "v": 88900
+  },
   {
    "time": "2026-03-25",
    "o": 4.19,
@@ -475,19 +483,13 @@
    "l": 5.39,
    "c": 5.58,
    "v": 162100
-  },
-  {
-   "time": "2026-06-18",
-   "o": 5.64,
-   "h": 5.8,
-   "l": 5.46,
-   "c": 5.75,
-   "v": 460700
   }
  ],
  "sr": {
-  "price": 5.75,
-  "resistance": [],
+  "price": 5.58,
+  "resistance": [
+   5.75
+  ],
   "support": [
    4.72,
    4.28
@@ -495,6 +497,7 @@
   "strong_support": 3.91
  },
  "spark": [
+  4.16,
   4.28,
   4.15,
   4.09,
@@ -553,11 +556,10 @@
   5.55,
   5.47,
   5.47,
-  5.58,
-  5.75
+  5.58
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

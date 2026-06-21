@@ -1,9 +1,17 @@
 {
  "stock": "ALUB",
  "name": "Alussa Energy Acquisition Corp. II Class A Ordinary Shares",
- "price": 10.05,
+ "price": 10.04,
  "change_pct": 0.1,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 10.02,
+   "h": 10.02,
+   "l": 9.98,
+   "c": 9.98,
+   "v": 1900
+  },
   {
    "time": "2026-03-25",
    "o": 9.98,
@@ -475,19 +483,13 @@
    "l": 10.04,
    "c": 10.04,
    "v": 1900
-  },
-  {
-   "time": "2026-06-18",
-   "o": 10.05,
-   "h": 10.05,
-   "l": 10.05,
-   "c": 10.05,
-   "v": 3400
   }
  ],
  "sr": {
-  "price": 10.05,
-  "resistance": [],
+  "price": 10.04,
+  "resistance": [
+   10.05
+  ],
   "support": [
    9.97
   ],
@@ -501,6 +503,7 @@
   9.98,
   9.98,
   9.98,
+  9.98,
   10.03,
   10.0,
   10.0,
@@ -552,11 +555,10 @@
   10.04,
   10.03,
   10.03,
-  10.04,
-  10.05
+  10.04
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
