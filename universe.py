@@ -40,7 +40,14 @@ def _get(url, retries=3, backoff=2):
         try:
             r = requests.get(url, headers=config.HTTP_UA, timeout=30)
             r.raise_for_status()
-            return r.json()
+            data = r.json()
+            # every _get caller iterates a list of row-dicts; a TWSE maintenance/error day can
+            # return a {"stat":"error"} dict or a bare string, which would iterate to keys/chars
+            # and AttributeError on r.get(...). Coerce non-list → [] (a graceful empty universe).
+            if not isinstance(data, list):
+                log.warning("SKIP %s: non-list payload (%s)", url, type(data).__name__)
+                return []
+            return data
         except Exception as e:
             status = getattr(getattr(e, "response", None), "status_code", None)
             transient = (status in (429, 500, 502, 503, 504)

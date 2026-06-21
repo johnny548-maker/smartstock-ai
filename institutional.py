@@ -79,7 +79,13 @@ def get_institutional(symbols=None, lookback_days=TWSE_LOOKBACK_DAYS):
         log.warning("SKIP institutional: no trading-day data in last %d days", lookback_days)
         return {}
 
-    fields = payload["fields"]
+    # .get() not [] — a stat=OK response that omits/renames 'fields' or 'data' (schema drift) must
+    # SKIP gracefully, not KeyError out of the (untried) overlay path.
+    fields = payload.get("fields")
+    rows = payload.get("data")
+    if not isinstance(fields, list) or not isinstance(rows, list):
+        log.warning("SKIP institutional: T86 payload missing fields/data")
+        return {}
     i_code = _col_index(fields, CODE_FIELD, "證券", "代號")
     i_for = _col_index(fields, FOREIGN_FIELD, "外陸資", "買賣超")
     i_trust = _col_index(fields, TRUST_FIELD, "投信", "買賣超")
@@ -89,7 +95,7 @@ def get_institutional(symbols=None, lookback_days=TWSE_LOOKBACK_DAYS):
         return {}
 
     out = {}
-    for row in payload["data"]:
+    for row in rows:
         try:
             code = str(row[i_code]).strip()
         except Exception:
