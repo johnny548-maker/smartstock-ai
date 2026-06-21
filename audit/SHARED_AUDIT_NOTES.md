@@ -46,7 +46,7 @@
 - [x] #7 docstring 過時 top-20/12-1 → 同步 top-10/6-1；#18 WilsonLo 0.51-0.54
 
 ## 待辦（第二波 MED/LOW + CRITICAL 完整修）
-- #1 完整 PIT：plumb added_date → run_sleeve/run_grid mask added_date<=sig → 重跑 TW/US（數字會降）
+- #1 完整 PIT：**數據限制，不做 masking 重跑**。added_date 86%(563/653)回填到 2011(窗起點，非真 index-add)，CSV=2026 snapshot 無下市名 → mask near-no-op（bulk 本就從 2011 可選）且救不了真 survivorship（缺失名不在 CSV）。誠實標註（已部署 1f9ee78）= operative fix。完整 PIT 須歷史成分數據集（含下市名）= data-acquisition 任務非 code。
 - #8 .TWO 仍比 TWSE 非櫃買（無 TPEx index）；#11 delisting=price-freeze；#12 cMOM clamp 不一致
 - #13 d.search 15 bare TW code → verdict badge miss；#14 26 bare detail 重複檔
 - #16 opp/US detail 只在 late export flush（exception 全失）；#19 _us_verdicts 冗餘；#20 QQQ 無 universe

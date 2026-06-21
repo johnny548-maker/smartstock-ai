@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v48';
+const APP_VERSION = 'v49';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -38,10 +38,18 @@ const nameOf = (code) => {
     || NAME_IDX[code] || NAME_IDX[code + '.TW'] || NAME_IDX[bare];
   return n || code;
 };
+// #13: resolve a verdict trying every code form (suffixed/bare), mirroring nameOf — the daily-scan
+// search group emits some TW codes in bare numeric form (no .TW), so a bare '3006' must still find
+// its '3006.TW' verdict instead of silently losing its badge.
+function _verdictOf(code) {
+  if (!VERDICTS) return null;
+  const bare = String(code).replace(/\.(TW|TWO)$/, '');
+  return VERDICTS[code] || VERDICTS[bare] || VERDICTS[bare + '.TW'] || VERDICTS[bare + '.TWO'] || null;
+}
 // verdict light: prefer the loaded verdict store; else compute from a raw score
 // (matches verdict.light — green≥90 / amber 40-89 / red<40).
 function lightOf(code, score) {
-  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  const v = _verdictOf(code);
   if (v && v.l) return v.l;
   if (score == null) return null;
   return score >= 90 ? 'green' : (score >= 40 ? 'amber' : 'red');
@@ -71,7 +79,7 @@ async function loadVerdicts() {
 }
 const VLABEL = { green: '建議買入', amber: '觀望', red: '不持有' };
 function verdictBadge(code) {
-  const v = VERDICTS && (VERDICTS[code] || VERDICTS[String(code).replace(/\.(TW|TWO)$/, '')]);
+  const v = _verdictOf(code);
   if (!v || !VLABEL[v.l]) return '';
   const cls = v.l === 'green' ? 'up' : (v.l === 'red' ? 'down' : '');
   return ` <span class="vbadge ${cls}">${VLABEL[v.l]}${v.s != null ? ' ·' + esc(v.s) : ''}</span>`;

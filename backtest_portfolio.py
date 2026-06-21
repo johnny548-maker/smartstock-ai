@@ -61,7 +61,10 @@ TRADING_DAYS = 252
 # an ADDED track record shown ALONGSIDE the champion (lower DD, lower CAGR), never a replacement.
 VOLTGT_SIGMA = 0.15       # annualised target vol (σ0.15 start)
 VOLTGT_LOOKBACK = 60      # bars of realised-vol estimation
-VOLTGT_CLAMP = 1.5        # max gross scale (never lever beyond 1.5×)
+VOLTGT_FLOOR = 0.5        # #12: min gross scale — MUST match run_optimize.SCALE_CLAMP[0] so the
+                          #   committed momentum_voltgt sleeve and the optimizer's cMOM grid are
+                          #   the SAME strategy (no <0.5× de-gross); were [0,1.5] vs [0.5,1.5].
+VOLTGT_CLAMP = 1.5        # max gross scale (never lever beyond 1.5×) == run_optimize.SCALE_CLAMP[1]
 
 # repo cost convention (run_backtest.py)
 SLIP_BPS = 15.0           # one-way slippage
@@ -465,12 +468,13 @@ def _realized_port_vol(close_ff, picks, asof, lookback=VOLTGT_LOOKBACK):
 
 
 def _voltgt_scale(close_ff, picks, asof):
-    """cMOM constant-vol gross scale ∈ [0, VOLTGT_CLAMP] for this rebalance. 1.0 when vol can't
-    be estimated (degrade to plain momentum), else σ_target / realised_vol clamped."""
+    """cMOM constant-vol gross scale ∈ [VOLTGT_FLOOR, VOLTGT_CLAMP] for this rebalance. 1.0 when
+    vol can't be estimated (degrade to plain momentum), else σ_target / realised_vol clamped to the
+    SAME bounds as run_optimize's cMOM grid so the named sleeve and the optimizer agree."""
     rv = _realized_port_vol(close_ff, picks, asof)
     if not rv or rv <= 0:
         return 1.0
-    return min(VOLTGT_CLAMP, VOLTGT_SIGMA / rv)
+    return min(VOLTGT_CLAMP, max(VOLTGT_SIGMA / rv, VOLTGT_FLOOR))
 
 
 def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):

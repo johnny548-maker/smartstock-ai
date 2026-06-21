@@ -699,6 +699,17 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP US coverage: %s", e); skips.append("us_coverage")
 
+    # #16: flush the opportunity + US detail-file additions to disk NOW with their own export.
+    #   They were added to the shared `details` dict AFTER the early export (line ~590); the only
+    #   other flush is the late re-export inside the overlay-attach try, so a non-NameError there
+    #   would silently strand EVERY opp/US/leader chart (→ '技術線圖尚未抓取' on click). Idempotent
+    #   (re-writing the already-flushed picks is harmless). Mirrors the panel block's own flush.
+    try:
+        log.info("opp/US chart detail files flushed: %d total",
+                 stock_detail.export_details(details, config.WEB_DIR))
+    except Exception as _fe:
+        log.warning("SKIP opp/US detail flush: %s", _fe)
+
     # P2 item8: holdings ↔ verdict second-pass. Positions were evaluated early (line ~386,
     #   before verdict_map existed). Now that verdict_map (core + opportunity universe) is
     #   built, flag any HELD stock whose current verdict turned 'red' (不持有). OVERLAY-NOT-
