@@ -32,6 +32,33 @@ import factor_panels_aux as fpa
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE_DIR = os.path.join(_HERE, ".cache", "aux_15y")
+
+# serializer: parquet when pyarrow is importable, else pandas pickle (mirrors build_ohlcv_cache —
+# the local box has no pyarrow, so parquet-only would silently lose a completed backfill).
+try:
+    import pyarrow  # noqa: F401
+    _EXT = ".parquet"
+except ImportError:
+    _EXT = ".pkl"
+
+
+def _panel_path(key, cache_dir):
+    return os.path.join(cache_dir, f"aux_{key}{_EXT}")
+
+
+def _save_panel(df, key, cache_dir):
+    fp = _panel_path(key, cache_dir)
+    if _EXT == ".parquet":
+        df.to_parquet(fp)
+    else:
+        df.to_pickle(fp)
+
+
+def _read_panel(key, cache_dir):
+    fp = _panel_path(key, cache_dir)
+    if not os.path.exists(fp):
+        return None
+    return pd.read_parquet(fp) if _EXT == ".parquet" else pd.read_pickle(fp)
 UA = {"User-Agent": "Mozilla/5.0"}
 TIMEOUT = 25
 THROTTLE_S = 0.4                                           # be gentle to the TWSE RWD host
@@ -184,17 +211,17 @@ def backfill(dates, cache_dir=CACHE_DIR, _get_fn=None, throttle=THROTTLE_S, prog
             merged = new if not new.empty else (old if old is not None else new)
         panels[k] = merged
         if merged is not None and not merged.empty:
-            merged.to_parquet(os.path.join(cache_dir, f"aux_{k}.parquet"))
+            _save_panel(merged, k, cache_dir)
     return panels
 
 
 def load_raw_panels(cache_dir=CACHE_DIR):
-    """Load the backfilled raw panels from parquet (CI restores them via actions/cache)."""
+    """Load the backfilled raw panels (CI restores them via actions/cache). parquet or pickle."""
     out = {}
     for k in ("instflow", "pb", "yield", "margin"):
-        fp = os.path.join(cache_dir, f"aux_{k}.parquet")
-        if os.path.exists(fp):
-            out[k] = pd.read_parquet(fp)
+        p = _read_panel(k, cache_dir)
+        if p is not None:
+            out[k] = p
     return out
 
 

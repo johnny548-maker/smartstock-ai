@@ -68,6 +68,25 @@ class TestPanelAssembly(unittest.TestCase):
         self.assertTrue(bap.rows_to_panel({}).empty)
 
 
+class TestSerializer(unittest.TestCase):
+    def test_ext_matches_pyarrow_availability(self):
+        try:
+            import pyarrow  # noqa: F401
+            self.assertEqual(bap._EXT, ".parquet")
+        except ImportError:
+            self.assertEqual(bap._EXT, ".pkl")
+
+    def test_save_load_roundtrip(self):
+        import tempfile
+        df = bap.rows_to_panel({"2024-01-02": {"2330": 1.0}, "2024-01-03": {"2330": 2.0}})
+        with tempfile.TemporaryDirectory() as d:
+            bap._save_panel(df, "instflow", d)
+            back = bap._read_panel("instflow", d)
+            self.assertIsNotNone(back)
+            self.assertEqual(back.loc["2024-01-03", "2330"], 2.0)
+        self.assertIsNone(bap._read_panel("missing", tempfile.gettempdir() + "/nope_xyz"))
+
+
 class TestBuildFactorPanels(unittest.TestCase):
     def _raw(self, idx, codes):
         mk = lambda base: pd.DataFrame({c: float(base + j) for j, c in enumerate(codes)}, index=idx)
