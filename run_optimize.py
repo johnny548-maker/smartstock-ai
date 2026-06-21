@@ -495,8 +495,12 @@ def main(argv=None):
     out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
            "period": period, "gate": g, "walk_forward": wf, "rigorous": rigorous,
            "ranked": _clean(ranked)}
-    txt_fp = os.path.join(_HERE, "optimize_%s.txt" % args.sleeve)
-    json_fp = os.path.join(_HERE, "optimize_%s.json" % args.sleeve)
+    # Non-default objectives get an objective suffix so two objective runs (e.g. calmar +
+    # maxdd_capped) write DISTINCT files — same-name files made the second CI commit conflict on
+    # rebase and the result was lost. Default 'calmar' keeps the canonical optimize_<sleeve>.txt.
+    _suffix = "" if args.objective == "calmar" else "_" + args.objective
+    txt_fp = os.path.join(_HERE, "optimize_%s%s.txt" % (args.sleeve, _suffix))
+    json_fp = os.path.join(_HERE, "optimize_%s%s.json" % (args.sleeve, _suffix))
     text = render(args.sleeve, args.objective, ranked, g, wf, rigorous)
     with open(txt_fp, "w", encoding="utf-8") as f:
         f.write(text + "\n")
