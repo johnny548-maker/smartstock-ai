@@ -1,6 +1,6 @@
 {
  "stock": "AMD",
- "name": "AMD",
+ "name": "Advanced Micro Devices, Inc. - Common Stock",
  "price": 537.37,
  "change_pct": 4.86,
  "ohlc": [
@@ -495,7 +495,7 @@
    437.23,
    393.36
   ],
-  "strong_support": 133.5
+  "strong_support": 192.87
  },
  "spark": [
   220.27,
@@ -561,14 +561,7 @@
  ],
  "spark_start": "2026-03-25",
  "spark_end": "2026-06-18",
- "fundamental": {
-  "pe_trailing": 178.52824,
-  "pe_forward": 41.00965,
-  "eps_trailing": 3.01,
-  "eps_forward": 13.1035,
-  "stale": true,
-  "source": "yfinance"
- },
+ "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
@@ -584,7 +577,7 @@
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +592,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

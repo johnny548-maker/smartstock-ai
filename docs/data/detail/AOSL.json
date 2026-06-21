@@ -1,9 +1,17 @@
 {
  "stock": "AOSL",
- "name": "Alpha & Omega Semiconductor",
- "price": 48.04,
- "change_pct": 11.33,
+ "name": "Alpha and Omega Semiconductor Limited - Common Shares",
+ "price": 43.15,
+ "change_pct": -4.47,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 21.46,
+   "h": 22.93,
+   "l": 21.46,
+   "c": 22.66,
+   "v": 221200
+  },
   {
    "time": "2026-03-25",
    "o": 23.06,
@@ -475,29 +483,22 @@
    "l": 43.0,
    "c": 43.15,
    "v": 618100
-  },
-  {
-   "time": "2026-06-18",
-   "o": 45.54,
-   "h": 49.13,
-   "l": 45.54,
-   "c": 48.04,
-   "v": 2927900
   }
  ],
  "sr": {
-  "price": 48.04,
+  "price": 43.15,
   "resistance": [
-   49.97,
-   50.0
+   43.6,
+   45.97
   ],
   "support": [
    43.13,
-   40.4
+   37.78
   ],
-  "strong_support": 15.9
+  "strong_support": 20.76
  },
  "spark": [
+  22.66,
   23.31,
   22.57,
   22.05,
@@ -556,12 +557,28 @@
   45.21,
   47.36,
   45.17,
-  43.15,
-  48.04
+  43.15
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 374,
+    "days": 3,
+    "max_shares": 344,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

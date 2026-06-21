@@ -492,7 +492,7 @@
    95.3,
    94.3
   ],
-  "strong_support": 66.0
+  "strong_support": 77.59
  },
  "spark": [
   87.1,
@@ -560,5 +560,54 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 2,595,142 股",
+   "value": {
+    "foreign": 5402015,
+    "trust": -8139610,
+    "dealer": 142453,
+    "total": -2595142
+   },
+   "severity": "info",
+   "as_of": "2026-06-21",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -181
+   },
+   "severity": "info",
+   "as_of": "2026-06-21",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 19.0 / 殖利率 3.08% / PB 2.11",
+   "value": {
+    "pe": 18.98,
+    "yield": 3.08,
+    "pb": 2.11
+   },
+   "severity": "info",
+   "as_of": "2026-06-18",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 86.4,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=86.40；WoW-0.01；股東人數+1949"
+  }
+ ]
 }

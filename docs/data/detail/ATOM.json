@@ -1,6 +1,6 @@
 {
  "stock": "ATOM",
- "name": "Atomera",
+ "name": "Atomera Incorporated - Common Stock",
  "price": 9.0,
  "change_pct": 10.16,
  "ohlc": [
@@ -489,13 +489,13 @@
   "price": 9.0,
   "resistance": [
    9.59,
-   9.6
+   9.82
   ],
   "support": [
-   8.3,
-   7.87
+   7.71,
+   7.28
   ],
-  "strong_support": 1.89
+  "strong_support": 3.45
  },
  "spark": [
   4.55,
@@ -563,5 +563,22 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
+   "value": {
+    "total_shares": 71040,
+    "days": 7,
+    "max_shares": 20412,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

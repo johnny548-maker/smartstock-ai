@@ -488,14 +488,14 @@
  "sr": {
   "price": 53.5,
   "resistance": [
-   54.59,
-   54.6
+   54.6,
+   56.7
   ],
   "support": [
    53.4,
    51.9
   ],
-  "strong_support": 29.93
+  "strong_support": 34.9
  },
  "spark": [
   55.1,
@@ -561,7 +561,50 @@
  ],
  "spark_start": "2026-03-24",
  "spark_end": "2026-06-18",
- "fundamental": null,
+ "fundamental": {
+  "rev_yoy": 26.9,
+  "rev_accel": false,
+  "stale": false,
+  "source": "twse_revenue"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 2,332,892 股",
+   "value": {
+    "foreign": 3813660,
+    "trust": -1410991,
+    "dealer": -69777,
+    "total": 2332892
+   },
+   "severity": "info",
+   "as_of": "2026-06-21",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 19.2 / 殖利率 2.24% / PB 1.36",
+   "value": {
+    "pe": 19.18,
+    "yield": 2.24,
+    "pb": 1.36
+   },
+   "severity": "info",
+   "as_of": "2026-06-18",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 94.78,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=94.78；WoW+0.03；股東人數-788"
+  }
+ ]
 }

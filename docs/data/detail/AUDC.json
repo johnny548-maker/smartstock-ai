@@ -1,9 +1,17 @@
 {
  "stock": "AUDC",
- "name": "AudioCodes",
- "price": 9.11,
- "change_pct": 1.0,
+ "name": "AudioCodes Ltd. - Ordinary Shares",
+ "price": 9.02,
+ "change_pct": -3.63,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 8.42,
+   "h": 8.6,
+   "l": 8.38,
+   "c": 8.51,
+   "v": 91000
+  },
   {
    "time": "2026-03-25",
    "o": 8.59,
@@ -475,29 +483,22 @@
    "l": 9.02,
    "c": 9.02,
    "v": 93700
-  },
-  {
-   "time": "2026-06-18",
-   "o": 9.13,
-   "h": 9.21,
-   "l": 8.92,
-   "c": 9.11,
-   "v": 112900
   }
  ],
  "sr": {
-  "price": 9.11,
+  "price": 9.02,
   "resistance": [
-   9.24,
-   9.25
+   9.3,
+   9.6
   ],
   "support": [
-   8.98,
-   8.96
+   8.64,
+   8.56
   ],
-  "strong_support": 6.76
+  "strong_support": 8.13
  },
  "spark": [
+  8.51,
   8.67,
   8.54,
   8.33,
@@ -556,12 +557,28 @@
   9.81,
   9.66,
   9.36,
-  9.02,
-  9.11
+  9.02
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 296,
+    "days": 2,
+    "max_shares": 255,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

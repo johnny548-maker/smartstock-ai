@@ -1,9 +1,17 @@
 {
  "stock": "AEIS",
- "name": "Advanced Energy Industries",
- "price": 372.59,
- "change_pct": 5.45,
+ "name": "Advanced Energy Industries, Inc. - Common Stock",
+ "price": 353.32,
+ "change_pct": 0.82,
  "ohlc": [
+  {
+   "time": "2026-03-24",
+   "o": 324.64,
+   "h": 358.14,
+   "l": 324.64,
+   "c": 356.27,
+   "v": 1069700
+  },
   {
    "time": "2026-03-25",
    "o": 357.29,
@@ -475,29 +483,22 @@
    "l": 349.19,
    "c": 353.32,
    "v": 521300
-  },
-  {
-   "time": "2026-06-18",
-   "o": 363.29,
-   "h": 374.51,
-   "l": 362.6,
-   "c": 372.59,
-   "v": 792100
   }
  ],
  "sr": {
-  "price": 372.59,
+  "price": 353.32,
   "resistance": [
-   380.06,
+   359.89,
    386.13
   ],
   "support": [
-   362.43,
-   354.98
+   334.84,
+   295.51
   ],
-  "strong_support": 74.81
+  "strong_support": 288.45
  },
  "spark": [
+  356.27,
   342.76,
   313.01,
   310.66,
@@ -556,12 +557,28 @@
   354.37,
   370.66,
   350.45,
-  353.32,
-  372.59
+  353.32
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-24",
+ "spark_end": "2026-06-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 8086,
+    "days": 3,
+    "max_shares": 6424,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
