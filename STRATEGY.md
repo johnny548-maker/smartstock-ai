@@ -5,6 +5,15 @@
 
 ---
 
+## ⚠️ 現況（2026-06-21 稽核，先讀這段）
+
+1. **這個 champion 沒過品質 gate → 不該上線。** DSR=0.854 < 0.95 門檻（`dsr_pass=false`），walk-forward `stable=false`，lockbox calmar 0.55 vs pooled-OOS 1.79 崩盤。`run_optimize` 自己標：「likely in-sample mirage — do NOT promote to live weights」。**所以下面的冠軍是「目前最不爛的候選」，不是「可部署的最佳策略」。**
+2. **這個 champion 沒有接進 live app。** `optimize_tw.json` 是死檔，全 repo 無任何 `.py` 讀它。你 PWA 每天看到的選股跑的是**另一套** `strategy.rank_stocks` 多因子 scorer（config.py FACTOR_PTS），跟這個動能 champion **無關**。
+3. **app 裡的「動能 lens」也是舊的**（top10/lookback126/σ0.15，舊 Calmar-winner），不是這個 champion（top20/252/σ0.20），且只是旁觀資訊、不驅動選股。
+4. **誠實結論：嚴謹搜尋在 TW 動能上沒找到「過 gate 可部署」的策略。** 這本身是有價值的結論（防止上線海市蜃樓），但代表「最佳可部署策略 = 尚未找到」。
+
+---
+
 ## 1. 策略本體：vol-targeted 橫斷面動能
 
 - **選股**：12-1 動能（過去 12 個月報酬，跳過最近 1 個月）取前 N 名（cross-sectional momentum）。
