@@ -115,6 +115,32 @@ def _metrics(nav):
             "n_obs": int(len(rets)), "_rets": rets}
 
 
+def _pooled_metrics(rets_list):
+    """Metrics over the POOLED out-of-sample returns (concat all folds → one track). Observation-
+    based annualisation (252/n) so the inter-fold calendar gaps don't distort it. Returns a
+    result-shaped dict {cagr, max_dd, sharpe, calmar, n_obs, _rets} or None if too little data.
+
+    WHY pooled, not mean-of-per-fold-calmar: per-fold calmar = CAGR/|MaxDD| explodes when a single
+    fold has a tiny drawdown, so averaging per-fold calmars lets one lucky low-DD fold dominate and
+    MIS-select the champion (observed on the TW full-market run: cross-fold calmar 8.37 vs honest
+    lockbox 1.10). Pooling the returns first gives ONE statistically-sound calmar over more data."""
+    parts = [r for r in (rets_list or []) if r is not None and len(r)]
+    if not parts:
+        return None
+    pooled = pd.concat(parts).dropna()
+    if len(pooled) < 5:
+        return None
+    nav = (1.0 + pooled.to_numpy()).cumprod()
+    n = len(nav)
+    cg = float(nav[-1]) ** (252.0 / n) - 1.0
+    peak = pd.Series(nav).cummax().to_numpy()
+    mdd = float((nav / peak - 1.0).min())
+    sd = float(pooled.std())
+    sh = float(pooled.mean() / sd * (252.0 ** 0.5)) if sd else 0.0
+    return {"cagr": cg, "max_dd": mdd, "sharpe": sh,
+            "calmar": (cg / abs(mdd)) if mdd else 0.0, "n_obs": int(n), "_rets": pooled}
+
+
 def run_grid(prices, sleeve, universe_tickers):
     """Sweep the grid on a pre-loaded sleeve. Returns (results, close_df)."""
     cfg = bp.SLEEVES[sleeve]
@@ -272,7 +298,7 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
     if close_df.empty:
         raise ValueError("walk_forward_oos_select: empty price panel")
     search_idx, lock_idx = split_lockbox(close_df.index, lockbox_frac)
-    by_key = {}                                # cfg_key -> {"config":…, "scores":[per-fold obj]}
+    by_key = {}                                # cfg_key -> {"config":…, "rets":[per-fold _rets]}
     per_fold = []
     for i, (lo, hi) in enumerate(fold_slices(search_idx, n_folds, embargo)):
         fp = {t: df.loc[lo:hi] for t, df in prices.items() if df is not None}
@@ -283,18 +309,20 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
             continue
         for r in res:
             k = _cfg_key(r["config"])
-            by_key.setdefault(k, {"config": r["config"], "scores": []})["scores"].append(
-                objective_key_fn(r))
+            by_key.setdefault(k, {"config": r["config"], "rets": []})["rets"].append(r.get("_rets"))
         per_fold.append({"fold": i, "ok": True, "start": str(lo.date()), "end": str(hi.date()),
                          "n_configs": len(res)})
     if not by_key:
         raise ValueError("walk_forward_oos_select: no config scored on any fold")
 
-    def _mean(k):
-        s = by_key[k]["scores"]
-        return (sum(s) / len(s)) if s else float("-inf")
+    # champion = best objective on POOLED out-of-sample returns (concat folds → one track), NOT the
+    # mean of per-fold calmars (a single low-DD fold inflates that mean and mis-selects — see
+    # _pooled_metrics). Configs whose pooled track is too short to score sink to -inf.
+    def _oos(k):
+        m = _pooled_metrics(by_key[k]["rets"])
+        return objective_key_fn(m) if m else float("-inf")
 
-    champ_key = max(by_key, key=_mean)
+    champ_key = max(by_key, key=_oos)
     champion = by_key[champ_key]["config"]
     lockbox = {"start": str(lock_idx[0].date()), "end": str(lock_idx[-1].date())}
     try:                                        # score the champion ONCE on the untouched lockbox
@@ -307,7 +335,10 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
                             "objective": objective_key_fn(lm)})
     except Exception as e:
         lockbox["error"] = str(e)
-    return {"champion": champion, "oos_objective": round(_mean(champ_key), 4),
+    _cm = _pooled_metrics(by_key[champ_key]["rets"])      # champion's pooled OOS metrics (full set)
+    return {"champion": champion, "oos_objective": round(_oos(champ_key), 4),
+            "oos_cagr": (round(_cm["cagr"], 4) if _cm else None),
+            "oos_max_dd": (round(_cm["max_dd"], 4) if _cm else None),
             "per_fold": per_fold, "lockbox": lockbox, "n_trials": len(by_key)}
 
 
@@ -370,17 +401,21 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None):
     if rigorous:
         lb = rigorous.get("lockbox") or {}
         L.append("")
-        L.append("嚴謹版 — TRUE out-of-sample selection (champion chosen by cross-fold MEAN on a "
-                 "search span EXCLUDING the terminal lockbox; %d configs):" % rigorous["n_trials"])
+        L.append("嚴謹版 — TRUE out-of-sample selection (champion chosen by the objective on POOLED "
+                 "cross-fold returns on a search span EXCLUDING the terminal lockbox; %d configs):"
+                 % rigorous["n_trials"])
         L.append("  OOS-selected champion: %s" % json.dumps(rigorous["champion"], ensure_ascii=False))
-        L.append("  cross-fold OOS %s = %.3f" % (objective, rigorous["oos_objective"]))
+        _pct = lambda v: ("%.2f%%" % (v * 100)) if isinstance(v, (int, float)) else "n/a"
+        L.append("  pooled OOS:  %s = %.3f | CAGR %s | MaxDD %s" % (
+            objective, rigorous["oos_objective"], _pct(rigorous.get("oos_cagr")),
+            _pct(rigorous.get("oos_max_dd"))))
         L.append("  LOCKBOX[%s..%s] (scored ONCE, never searched): %s = %s | CAGR %s | MaxDD %s" % (
             lb.get("start"), lb.get("end"), objective,
             ("%.3f" % lb["objective"]) if isinstance(lb.get("objective"), (int, float)) else "n/a",
-            ("%.2f%%" % (lb["cagr"] * 100)) if isinstance(lb.get("cagr"), (int, float)) else "n/a",
-            ("%.1f%%" % (lb["max_dd"] * 100)) if isinstance(lb.get("max_dd"), (int, float)) else "n/a"))
-        L.append("  → the LOCKBOX number is the honest forward estimate. If it collapses vs the "
-                 "cross-fold OOS, the search overfit; if they agree, the edge is real.")
+            _pct(lb.get("cagr")), _pct(lb.get("max_dd"))))
+        L.append("  → compare the POOLED-OOS and LOCKBOX rows on the SAME metric: agree = the edge "
+                 "is real; lockbox collapses vs pooled-OOS = the search overfit. Mind the MaxDD — a "
+                 "high-CAGR/high-drawdown 'winner' may be one you can't actually hold.")
     return "\n".join(L)
 
 

@@ -105,11 +105,14 @@ class TestRigorousWalkForward(unittest.TestCase):
         idx = pd.bdate_range("2011-01-01", periods=1000)
         self.assertEqual(ro.fold_slices(idx, 5), ro.fold_slices(idx, 5, embargo=0))
 
-    def test_oos_select_champion_by_cross_fold_mean_not_in_sample_max(self):
-        # Core invariant: the champion is chosen by the per-fold MEAN objective (out-of-sample
-        # generalisation), NOT a single in-sample spike. FLASHY spikes once (5,0,0 → mean 1.67);
-        # STEADY generalises (3,3,3 → mean 3). The rigorous selector must pick STEADY, and must
-        # score the lockbox EXACTLY ONCE, separately, never letting it drive selection.
+    def test_oos_select_champion_by_pooled_returns_not_mean_of_calmars(self):
+        # The champion must be chosen by the objective on the config's POOLED out-of-sample RETURNS
+        # (concat across folds → one track), NOT the mean of per-fold calmars (a single low-drawdown
+        # fold makes per-fold calmar explode and inflates the mean → mis-selects). Here:
+        #   STEADY: mild up/down every fold → net-positive POOLED track, moderate DD → good calmar.
+        #   FLASHY: one huge-up fold then two big-down folds → POOLED net-NEGATIVE, huge DD → bad
+        #           calmar, BUT its per-fold `calmar` FIELD is set high (50/0/0 → mean ~16.7).
+        # A mean-of-calmar selector picks FLASHY; a pooled-returns selector must pick STEADY.
         STEADY = {"vol_target": False, "sigma_target": None, "top_n": 10,
                   "rebalance": "quarterly", "lookback": 126}
         FLASHY = dict(STEADY, top_n=20)
@@ -118,22 +121,29 @@ class TestRigorousWalkForward(unittest.TestCase):
         prices = {"A": pd.DataFrame({"Open": 1.0, "High": 1.0, "Low": 1.0, "Close": 1.0,
                                      "Volume": 1.0}, index=idx)}
         calls = {"lockbox_scored": 0, "search_folds": 0}
-        # STEADY generalises (calmar 3,3,3 → mean 3); FLASHY spikes once (5,0,0 → mean 1.67)
-        SEARCH_SCORES = {1: (3.0, 5.0), 2: (3.0, 0.0), 3: (3.0, 0.0)}
+
+        def _rets(vals):
+            return pd.Series(vals, index=pd.bdate_range("2011-01-01", periods=len(vals)))
 
         def fake_run_grid(prices_, sleeve, universe_tickers):
             span = prices_["A"].index
-            if span[-1] == FULL_LAST:                         # the lockbox call (terminal tail)
+            if span[-1] == FULL_LAST:
                 calls["lockbox_scored"] += 1
-                s_steady, s_flashy = 2.0, 2.0                 # lockbox scores never drive selection
+                steady_r, flashy_r = _rets([0.001] * 40), _rets([0.001] * 40)
+                steady_field = flashy_field = 1.0
             else:
                 calls["search_folds"] += 1
-                s_steady, s_flashy = SEARCH_SCORES.get(calls["search_folds"], (0.0, 0.0))
+                f = calls["search_folds"]
+                steady_r = _rets(([0.004, -0.002] * 20))          # net-positive, mild DD, every fold
+                steady_field = 2.0
+                if f == 1:
+                    flashy_r, flashy_field = _rets([0.02] * 40), 50.0   # huge up, tiny DD → field huge
+                else:
+                    flashy_r, flashy_field = _rets([-0.012] * 40), 0.0  # big down → tanks pooled
             res = []
-            for cfg, base in ((STEADY, s_steady), (FLASHY, s_flashy)):
-                rets = pd.Series([base * 0.001] * 40, index=pd.bdate_range("2011-01-01", periods=40))
-                res.append({"config": cfg, "calmar": base, "sharpe": base, "cagr": base * 0.1,
-                            "max_dd": -0.1, "oos_calmar": base, "n_obs": 40, "_rets": rets})
+            for cfg, r, field in ((STEADY, steady_r, steady_field), (FLASHY, flashy_r, flashy_field)):
+                res.append({"config": cfg, "calmar": field, "sharpe": field, "cagr": 0.1,
+                            "max_dd": -0.1, "oos_calmar": field, "n_obs": len(r), "_rets": r})
             return res, prices_["A"]
 
         orig = ro.run_grid
@@ -144,11 +154,22 @@ class TestRigorousWalkForward(unittest.TestCase):
                 n_folds=3, embargo=0, lockbox_frac=0.2)
         finally:
             ro.run_grid = orig
-        self.assertEqual(ro._cfg_key(out["champion"]), ro._cfg_key(STEADY))  # mean-best, not spike
+        self.assertEqual(ro._cfg_key(out["champion"]), ro._cfg_key(STEADY))  # pooled-best, not field-spike
         self.assertEqual(calls["lockbox_scored"], 1)        # lockbox scored exactly ONCE
-        self.assertEqual(calls["search_folds"], 3)          # 3 search folds, lockbox separate
+        self.assertEqual(calls["search_folds"], 3)
         self.assertEqual(out["n_trials"], 2)
-        self.assertIn("objective", out["lockbox"])          # champion scored on the holdout
+        self.assertIn("objective", out["lockbox"])
+
+    def test_pooled_metrics_observation_based(self):
+        # pooled metrics ignore inter-fold calendar gaps (observation-based annualisation) and
+        # compute a single objective over the concatenated returns.
+        up = pd.Series([0.001] * 100)
+        m = ro._pooled_metrics([up, up])
+        self.assertIsNotNone(m)
+        self.assertGreater(m["cagr"], 0)
+        self.assertEqual(m["n_obs"], 200)
+        self.assertIsNone(ro._pooled_metrics([]))           # nothing to pool
+        self.assertIsNone(ro._pooled_metrics([pd.Series([0.001] * 3)]))   # too short
 
 
 if __name__ == "__main__":
