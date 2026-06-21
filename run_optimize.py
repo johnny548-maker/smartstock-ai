@@ -232,7 +232,7 @@ def run_walk_forward(prices, sleeve, universe_tickers, champion_cfg, n_folds=5):
         "min_block_calmar": (min(cal) if cal else None),
         "mean_block_calmar": (round(sum(cal) / len(cal), 3) if cal else None),
         "worst_block_rank": (max(ranks) if ranks else None),
-        "lockbox": folds[-1] if folds else None,   # final block — touched once, never chosen on
+        "lockbox": folds[-1] if folds else None,   # final block — NOTE: not a true holdout (champion + DSR/PBO were selected on the full sample incl this block); see render CAVEAT
         "stable": stable,
     }
 
@@ -285,8 +285,13 @@ def render(sleeve, objective, ranked, g, wf=None):
             wf.get("min_block_calmar"), wf.get("worst_block_rank"),
             lb.get("start"), lb.get("end"),
             ("%.2f" % lb["champ_calmar"]) if lb.get("champ_calmar") is not None else "n/a"))
-        L.append("NOTE: this is the rigorous form of 80/20 — the winner is NEVER re-tuned on a block; "
-                 "we only check it survives every regime. The LOCKBOX block is reported once, not chosen on.")
+        L.append("CAVEAT (audit 2026-06-21): this is NOT a true terminal holdout. The champion was "
+                 "selected — and DSR/PBO computed — on the FULL history, which INCLUDES the 'LOCKBOX' "
+                 "block; the walk-forward only re-MEASURES the already-chosen winner per block, it "
+                 "never re-SELECTS out-of-sample, so it cannot detect selection-stage overfit. A real "
+                 "80/20 would select on data up to lockbox_start and score the frozen config once on "
+                 "the held-out tail (with a >=lookback embargo). Treat the block ranks as a regime-"
+                 "robustness check, not an out-of-sample proof.")
     return "\n".join(L)
 
 

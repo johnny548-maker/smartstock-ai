@@ -1,15 +1,22 @@
 # -*- coding: utf-8 -*-
-"""動能組合（季度）lens — quarterly top-20 12-1 momentum PORTFOLIO view.
+"""動能組合（季度）lens — quarterly top-10 6-1 momentum PORTFOLIO view.
 
 Decision: .decisions/2026-06-13-smartstock-15y-weight-gate.md.
 
 Momentum is a PORTFOLIO-CONSTRUCTION factor (rank + hold + quarterly rebalance),
 NOT a daily explosive signal: its event-study lift (0.89 < 1) vetoes it from the
 live daily scorer (strategy.score_stock / rank_stocks). But the PORTFOLIO backtest
-(backtest_portfolio.py, top-20 equal-weight quarterly rebalance, TW + US sleeves,
-OOS last 2y) proved it beats equal-weight + buy-hold (TW 36.5%/Sharpe 1.42,
-US 32.3%/Sharpe 1.13). The SAME factor draws OPPOSITE conclusions in the two
-frameworks — this module surfaces the PORTFOLIO conclusion as a SEPARATE lens.
+(backtest_portfolio.py, top-10 equal-weight quarterly rebalance, TW + US sleeves)
+beats equal-weight + buy-hold (committed JSON: TW 48.3%/Sharpe 1.54, US 43.7%/1.29).
+The SAME factor draws OPPOSITE conclusions in the two frameworks — this module
+surfaces the PORTFOLIO conclusion as a SEPARATE lens.
+
+⚠ BIAS (audit 2026-06-21): these CAGRs are a CURRENT-CONSTITUENT UPPER BOUND, not
+point-in-time. The backtest uses TODAY's index members across the whole 15y history
+(added_date is not yet masked), so it carries BOTH survivorship bias (failed/delisted
+names never entered) AND constituent look-ahead (2026 membership filters the 2012
+cross-section). The true PIT figure is materially lower. Wiring added_date masking
+into run_sleeve/run_grid is the pending fix.
 
 CONTRACT (golden-additive invariant):
   * PURE, injectable functions — ZERO network. Live universe histories are passed
@@ -17,13 +24,14 @@ CONTRACT (golden-additive invariant):
     record is READ from backtest_portfolio_*.json, NEVER recomputed here.
   * NOTHING here touches strategy.score_stock / rank_stocks. The lens is an
     informational sidecar in a separate payload key (`momentum_portfolio`).
-  * 12-1 momentum comes from factor_signals.mom_12_1 (LOOKBACK=252 / SKIP=21) —
-    imported, never modified.
+  * momentum comes from factor_signals.mom_12_1 — imported, never modified. The LENS
+    OVERRIDES the lookback to 126 (6-1), while factor_signals' default stays 252 (12-1)
+    for the event-study harness.
 
 Honest disclosure (decision §3 + §Momentum) is shipped ON-PAGE verbatim:
   - 季度再平衡策略，非當日進出
-  - 月勝率 ~50%，edge 在幅度而非頻率（WilsonLo ≈ 0.50）
-  - 以現行成分回測，報酬為樂觀上界（survivorship）
+  - 月勝率 ~50%，edge 在幅度而非頻率（WilsonLo ≈ 0.51-0.54）
+  - 以現行成分回測，報酬為樂觀上界（survivorship + 成分 look-ahead）
   - 與每日精選為不同框架
 """
 import json
@@ -40,8 +48,9 @@ DEFAULT_LOOKBACK = 126    # #4 Calmar-winner: 6-1 momentum (was 12-1/252) — 6m
 # are the canonical strings the PWA + report render; do NOT trim or paraphrase.
 DISCLAIMERS = [
     "季度再平衡策略，非當日進出 — 與每日精選為不同框架，請勿混用。",
-    "月勝率約 50%（WilsonLo ≈ 0.50），edge 在好月份的『幅度』而非『頻率』，並非月月穩贏。",
-    "以現行成分股回測，存在 survivorship bias，報酬為樂觀『上界』。",
+    "月勝率約 50%（WilsonLo ≈ 0.51-0.54），edge 在好月份的『幅度』而非『頻率』，並非月月穩贏。",
+    "報酬為樂觀『上界』：以『現在』的成分股回測整段 15 年（survivorship bias + 成分 look-ahead — "
+    "2026 的成分名單拿去篩 2012 的橫斷面），真實 point-in-time 數字會明顯較低。",
     "與每日精選清單為不同框架（組合構建 vs 當日爆發訊號），informational，非買賣訊號。",
 ]
 

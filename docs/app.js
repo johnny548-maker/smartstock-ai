@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v47';
+const APP_VERSION = 'v48';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -1800,7 +1800,7 @@ function momTrackCards(tr) {
     mcard('15y CAGR', _momPct(tr.cagr), { dir: cagrDir, sub: `擴大 universe ${tr.n_universe != null ? esc(tr.n_universe) : '?'} 檔 · top-${esc(tr.top_n != null ? tr.top_n : 20)} 季度再平衡` }),
     mcard('Sharpe', tr.sharpe == null ? '—' : (+tr.sharpe).toFixed(2), { dir: tr.sharpe == null ? null : (tr.sharpe >= 1 ? 1 : 0), sub: '風險調整後報酬' }),
     mcard('最大回撤 MaxDD', _momPct(tr.max_dd), { dir: tr.max_dd == null ? null : -1, sub: '峰至谷最大跌幅' }),
-    mcard('OOS 2y CAGR', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '末 2 年獨立樣本外' }),
+    mcard('近2年尾段 CAGR', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '同樣本尾段（非獨立 holdout）· 動能友善 regime 偏高' }),
   ];
   // 勝過基準（等權 / 買進持有）— 對照卡，誠實顯示 edge 大小
   if (tr.equal_weight_cagr != null) {
@@ -1825,7 +1825,7 @@ function momVoltgtCards(trv) {
   const cards = [
     mcard('vol-target CAGR', _momPct(trv.cagr), { dir: trv.cagr == null ? null : (trv.cagr > 0 ? 1 : -1), sub: 'σ0.15 定波動版（CAGR 較低）' }),
     mcard('vol-target MaxDD', _momPct(trv.max_dd), { dir: -1, sub: '回撤大降（換較低報酬）' }),
-    mcard('vol-target OOS 2y', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '末 2 年樣本外' }),
+    mcard('vol-target 近2年尾段', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '同樣本尾段（非獨立 holdout）' }),
   ];
   return `<details class="fold"><summary>🛡️ 低回撤版（vol-target σ0.15）— 點開與冠軍對比</summary>
     <div class="fold-body">${mgrid(cards)}<p class="tiny">同一批持股縮放至定波動：回撤大降（OOS -39%→約-22%）、CAGR 較低。低回撤偏好者用此版，非取代冠軍。</p></div></details>`;

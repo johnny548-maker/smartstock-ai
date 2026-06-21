@@ -679,7 +679,8 @@ def render_text(results):
                                         f"{r['max_dd']:.0%}" if r else "—"))
         L.append(f"  {name:<18}" + "  ".join(segs))
     L.append("")
-    L.append("OOS — last 2 years reported separately:")
+    L.append("近 2 年尾段（同一組已選定參數的 IN-SAMPLE 尾巴，非真正樣本外 holdout — 與 2023-26 "
+             "regime 列重疊；數字偏高因近 2 年為動能友善 regime）:")
     for name in STRATEGIES:
         m = results["strategies"].get(name)
         if not m:
