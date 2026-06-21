@@ -61,13 +61,22 @@ def fetch_batch(tickers, period="3mo"):
     return out
 
 
-def score_batch(frames, sp500_frame=None, names=None):
+def score_batch(frames, sp500_frame=None, names=None, nasdaq_frame=None):
     """Score {sym: OHLC} through the gated rank_stocks → {sym: {s,l,name,price}}. US names
-    carry no institutional/chip data (graceful None) → scored on price factors only."""
+    carry no institutional/chip data (graceful None) → scored on price factors only.
+
+    Pass BOTH the nasdaq (^IXIC) and sp500 (^GSPC) index frames: strategy._bench_for prefers the
+    NASDAQ frame for US tickers (this universe is NASDAQ/tech-heavy), so omitting it silently
+    benched the whole rotating US-coverage batch against the broad S&P — the exact RS mis-crediting
+    the _bench_for fix removed for the core/opportunity paths."""
     if not frames:
         return {}
-    bench = {"sp500": sp500_frame} if sp500_frame is not None else None
-    ranked = strategy.rank_stocks(frames, frames=bench)
+    bench = {}
+    if nasdaq_frame is not None:
+        bench["nasdaq"] = nasdaq_frame
+    if sp500_frame is not None:
+        bench["sp500"] = sp500_frame
+    ranked = strategy.rank_stocks(frames, frames=bench or None)
     names = names or {}
     out = {}
     for it in ranked:

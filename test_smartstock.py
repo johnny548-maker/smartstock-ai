@@ -2220,6 +2220,18 @@ class TestBenchmarkRouting(unittest.TestCase):
         self.assertEqual(
             strategy._bench_for("NVDA", {"twii": "TW", "sp500": "US", "nasdaq": "IXIC"}), "IXIC")
 
+    def test_bench_uses_none_check_not_truthiness(self):
+        # nasdaq/twii frames are DataFrames at runtime; `frames.get('nasdaq') or sp500` would raise
+        # 'truth value of a DataFrame is ambiguous' and silently drop EVERY US stock. Lock in that
+        # _bench_for tests `is not None`, never truthiness, with a bool-raising value.
+        import strategy
+
+        class Ambiguous:
+            def __bool__(self):
+                raise ValueError("truth value is ambiguous (DataFrame-like)")
+        nd = Ambiguous()
+        self.assertIs(strategy._bench_for("NVDA", {"sp500": "US", "nasdaq": nd}), nd)
+
     def test_bare_strips_two_suffix_correctly(self):
         import strategy
         self.assertEqual(strategy._bare("8069.TWO"), "8069")   # not the '8069O' .replace bug

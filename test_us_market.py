@@ -76,6 +76,14 @@ class TestScoreBatch(unittest.TestCase):
     def test_empty_frames(self):
         self.assertEqual(um.score_batch({}, None), {})
 
+    def test_accepts_nasdaq_frame(self):
+        # #3: US-coverage batch must be able to bench against ^IXIC, not only ^GSPC
+        frames = {"AAA": _frame(0.002)}
+        out = um.score_batch(frames, sp500_frame=_frame(0.0005), nasdaq_frame=_frame(0.001),
+                             names={"AAA": "Alpha"})
+        self.assertIn("AAA", out)
+        self.assertIn(out["AAA"]["l"], ("green", "amber", "red"))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

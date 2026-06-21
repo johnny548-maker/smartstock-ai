@@ -23,13 +23,19 @@ import verdict as _verdict
 # ---------------------------------------------------------------------------
 
 def _clean(o):
-    """Recursively replace NaN/Inf with None (invalid JSON)."""
+    """Recursively replace NaN/Inf with None (invalid JSON). Normalise numpy scalars
+    (np.float32/int64 aren't python float/int → json.dumps would raise) via .item()."""
     if isinstance(o, float):
         return o if math.isfinite(o) else None
     if isinstance(o, dict):
         return {k: _clean(v) for k, v in o.items()}
     if isinstance(o, list):
         return [_clean(v) for v in o]
+    if hasattr(o, "item") and not isinstance(o, (str, bytes)):   # numpy scalar / 0-d array
+        try:
+            return _clean(o.item())
+        except Exception:
+            return None
     return o
 
 

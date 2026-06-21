@@ -37,9 +37,16 @@ def _num(s):
 
 
 def parse_rows(rows):
-    """Pure: TWSE rows → [{code,name,industry,ym,cur,yoy,mom}] (YoY/MoM from raw)."""
+    """Pure: TWSE rows → [{code,name,industry,ym,cur,yoy,mom}] (YoY/MoM from raw).
+    Defensive: the TWSE OpenAPI normally returns a JSON array but can return a {"stat":"error"}
+    dict / bare string on a maintenance day — iterating those would AttributeError on r.get, so
+    guard the shape (non-list → no rows) and skip any non-dict row."""
+    if not isinstance(rows, list):
+        return []
     out = []
     for r in rows:
+        if not isinstance(r, dict):
+            continue
         code = str(r.get(K_CODE, "")).strip()
         if not (code.isdigit() and len(code) == 4):
             continue

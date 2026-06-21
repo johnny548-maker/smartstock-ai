@@ -3,11 +3,14 @@
 history index. The PWA (GitHub Pages) reads these files — no backend needed."""
 import glob
 import json
+import logging
 import math
 import os
 from datetime import datetime
 
 from config import STOCK_NAMES, DISPLAY_N
+
+log = logging.getLogger(__name__)
 
 # PWA payload schema version (C1). Bump when a breaking shape change ships; the client
 # (docs/app.js) soft-banners on a version it doesn't understand. ADDITIVE history rule:
@@ -18,13 +21,20 @@ SCHEMA_VERSION = 1
 
 def _clean(o):
     """Replace NaN/Inf floats with None — they are invalid JSON and break the PWA's
-    fetch().json(). Recurse through dicts/lists."""
+    fetch().json(). Recurse through dicts/lists. Also normalise numpy scalars (np.float32/int64
+    are NOT python float/int subclasses, so json.dumps(allow_nan=False) would raise on them and
+    abort the WHOLE day's export) via their .item() → native python scalar, then re-clean."""
     if isinstance(o, float):
         return o if math.isfinite(o) else None
     if isinstance(o, dict):
         return {k: _clean(v) for k, v in o.items()}
     if isinstance(o, list):
         return [_clean(v) for v in o]
+    if hasattr(o, "item") and not isinstance(o, (str, bytes)):   # numpy scalar / 0-d array
+        try:
+            return _clean(o.item())
+        except Exception:
+            return None
     return o
 
 
@@ -250,17 +260,18 @@ def _rebuild_index(data_dir):
         try:
             with open(path, encoding="utf-8") as f:
                 d = json.load(f)
-        except Exception:
+            top = d["picks"][0] if d.get("picks") else None
+            index.append({
+                "date": d.get("date"),
+                "risk": d.get("risk"),
+                "top": top.get("stock") if top else None,      # .get(): a malformed pick must not
+                "top_name": top.get("name") if top else None,  #   nuke an otherwise-valid day from
+                "top_score": top.get("score") if top else None,  # the history index
+                "generated_at": d.get("generated_at"),
+            })
+        except Exception as e:
+            log.warning("SKIP index entry %s: %s", name, e)   # never silently drop a date
             continue
-        top = d["picks"][0] if d.get("picks") else None
-        index.append({
-            "date": d.get("date"),
-            "risk": d.get("risk"),
-            "top": top["stock"] if top else None,
-            "top_name": top.get("name") if top else None,
-            "top_score": top["score"] if top else None,
-            "generated_at": d.get("generated_at"),
-        })
     index.sort(key=lambda x: x.get("date") or "", reverse=True)
     with open(os.path.join(data_dir, "index.json"), "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=1)

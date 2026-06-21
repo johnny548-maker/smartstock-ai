@@ -656,7 +656,11 @@ def main(web=False):
         _opp_nm = (opp or {}).get("names") or {}
         _n_chart = 0
         for _csym, _cdf in _opp_frames.items():
-            if _csym in details or _cdf is None or getattr(_cdf, "empty", True):
+            # dedup against the BARE form too: section 7c writes revenue details under a bare code
+            # ('2344'), so writing '2344.TW' here would land a byte-identical duplicate file. app.js
+            # resolves bare↔.TW on click, so one canonical file suffices.
+            _cbare = _csym.replace(".TWO", "").replace(".TW", "")
+            if _csym in details or _cbare in details or _cdf is None or getattr(_cdf, "empty", True):
                 continue
             details[_csym] = stock_detail.build_detail(
                 _csym, df=_cdf, name=_opp_nm.get(_csym) or config.STOCK_NAMES.get(_csym))
@@ -678,7 +682,8 @@ def main(web=False):
                     _us_syms, datetime.now().toordinal(), config.US_COVERAGE_BATCH)
                 _us_frames = us_market.fetch_batch(_batch)
                 _fresh = us_market.score_batch(
-                    _us_frames, (frames or {}).get("sp500"), names=_us_names)
+                    _us_frames, (frames or {}).get("sp500"), names=_us_names,
+                    nasdaq_frame=(frames or {}).get("nasdaq"))   # #3: US benches vs ^IXIC, not ^GSPC
                 # Chart-for-every-stock: write a detail file per US batch stock (frames already
                 #   fetched) so each US verdict is clickable with its K-line. Same `details` dict.
                 try:

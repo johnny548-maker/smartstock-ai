@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v49';
+const APP_VERSION = 'v50';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -300,6 +300,7 @@ function renderCandles(elId, ohlc, sr, levels) {
   CUR_KLINE = { elId, ohlc, sr, levels };
   const col = chartColors();
   if (el._chart) { try { el._chart.remove(); } catch (e) {} el._chart = null; el.innerHTML = ''; }
+  if (el._ro) { try { el._ro.disconnect(); } catch (e) {} el._ro = null; }   // leak: drop prior observer
   const LC = window.LightweightCharts;
   const chart = LC.createChart(el, {
     width: el.clientWidth, height: el.clientHeight || 240,
@@ -337,6 +338,7 @@ function renderCandles(elId, ohlc, sr, levels) {
   try {
     const ro = new ResizeObserver(() => { if (el._chart) el._chart.applyOptions({ width: el.clientWidth }); });
     ro.observe(el);
+    el._ro = ro;   // store so it can be disconnected on chart replace / sheet close (no leak)
   } catch (e) {}
 }
 
@@ -890,6 +892,7 @@ function closeSheet() {
   // tear down any live K-line in the sheet
   const k = sheet.querySelector('[id^="kline"]');
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
+  if (k && k._ro) { try { k._ro.disconnect(); } catch (e) {} k._ro = null; }   // leak: drop observer
   CUR_KLINE = null;
   setTimeout(() => {
     if (SHEET_STATE === 'closed') { sheet.hidden = true; scrim.hidden = true; $('sheetBody').innerHTML = ''; }
@@ -916,6 +919,7 @@ function reopenSheet(id, scroll) {
   const sheet = $('sheet');
   const k = sheet.querySelector('[id^="kline"]');
   if (k && k._chart) { try { k._chart.remove(); } catch (e) {} k._chart = null; }
+  if (k && k._ro) { try { k._ro.disconnect(); } catch (e) {} k._ro = null; }   // leak: drop observer
   CUR_KLINE = null;
   // leaving the stock route → restore the hash to the bare day first
   const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})\//);
@@ -1836,7 +1840,7 @@ function momVoltgtCards(trv) {
     mcard('vol-target 近2年尾段', _momPct(oos.cagr), { dir: oos.cagr == null ? null : (oos.cagr > 0 ? 1 : -1), sub: '同樣本尾段（非獨立 holdout）' }),
   ];
   return `<details class="fold"><summary>🛡️ 低回撤版（vol-target σ0.15）— 點開與冠軍對比</summary>
-    <div class="fold-body">${mgrid(cards)}<p class="tiny">同一批持股縮放至定波動：回撤大降（OOS -39%→約-22%）、CAGR 較低。低回撤偏好者用此版，非取代冠軍。</p></div></details>`;
+    <div class="fold-body">${mgrid(cards)}<p class="tiny">同一批持股縮放至定波動：回撤大降（近2年尾段 -39%→約-22%，同樣本非獨立 holdout）、CAGR 較低。低回撤偏好者用此版，非取代冠軍。</p></div></details>`;
 }
 
 function momHoldingsList(holdings) {

@@ -222,8 +222,11 @@ def _bench_for(sym, frames):
     # US: this app's US universe is NASDAQ/tech-heavy (the entire core watchlist is NASDAQ-listed),
     # so the NASDAQ Composite (^IXIC) is the more-correct RS benchmark than the broad S&P 500 — in
     # a tech-led tape ^GSPC over-credits tech names with rs_strong they didn't earn, and in a tech
-    # selloff lets them dodge rs_weak. Fall back to sp500 if the nasdaq frame is absent (e.g. tests).
-    return frames.get("nasdaq") or frames.get("sp500")
+    # selloff lets them dodge rs_weak. Fall back to sp500 if the nasdaq frame is absent.
+    # NOTE: explicit `is not None` — `frames.get("nasdaq") or ...` raises "truth value of a DataFrame
+    # is ambiguous" when the frame is a real DataFrame, silently dropping EVERY US stock.
+    nd = frames.get("nasdaq")
+    return nd if nd is not None else frames.get("sp500")
 
 
 def _bare(sym):
