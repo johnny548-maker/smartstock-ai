@@ -193,11 +193,31 @@ def sanitize_ohlcv(df, market, max_fix=MAX_FIXED_BARS):
     out = df.copy()
     close = out["Close"].astype(float)
     open_ = out["Open"].astype(float) if "Open" in out.columns else None
+
+    # Non-positive prices (bad adjusted data) crash the repair math: math.log in _is_level_shift,
+    # a negative rescale ratio in the level-shift branch, and math.sqrt in the spike interp all hit
+    # "ValueError: math domain error" on a <=0 value — which killed a whole full-market optimise
+    # run. Neutralise them up front so the repair loop only ever sees positives; count each as a fix
+    # so a frame riddled with them (or all-bad) is DROPPED upstream (len(fixed) > max_fix).
+    pre_fixes = []
+    nonpos = (close <= 0)                           # NaN-safe: NaN <= 0 is False (legit NaN kept)
+    if bool(nonpos.any()):
+        if not (close > 0).any():                  # nothing usable → force a drop upstream
+            return out, [{"date": "n/a", "kind": "nonpositive"}] * (max_fix + 1)
+        repl = close.mask(nonpos).ffill().bfill()   # non-positive → neighbour price
+        close = close.where(~nonpos, repl)          # overwrite ONLY the non-positive bars
+        if open_ is not None:
+            o_bad = (open_ <= 0)
+            if bool(o_bad.any()):
+                open_ = open_.where(~o_bad, open_.mask(o_bad).ffill().bfill())
+        pre_fixes = [{"date": str(close.index[i].date()), "kind": "nonpositive"}
+                     for i in np.nonzero(nonpos.to_numpy())[0]]
+
     thr = (np.where(pd.DatetimeIndex(close.index) >= TW_LIMIT_SPLIT,
                     TW_RET_THR_NEW, TW_RET_THR_OLD)
            if market == "TW" else None)
 
-    fixed, fixed_pos = [], set()
+    fixed, fixed_pos = list(pre_fixes), set()
     for _ in range(max_fix + 25):                  # hard safety bound
         if len(fixed) > max_fix:                   # verdict already "drop"
             break

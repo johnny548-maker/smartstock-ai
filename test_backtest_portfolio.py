@@ -498,6 +498,35 @@ def test_sanitize_tw_level_shift_rescales_pre_segment():
     assert df["Close"].iloc[0] == 400.0
 
 
+def test_sanitize_neutralizes_nonpositive_price_no_math_domain_error():
+    # A bad adjusted-close glitch: a single NEGATIVE price. The repair math (math.log in the
+    # level-shift test, math.sqrt in the spike interp) raises "ValueError: math domain error" on a
+    # non-positive value — which killed a whole full-market optimise run. Neutralise it up front.
+    dates = pd.bdate_range("2020-01-02", periods=300)
+    close = [100.0] * 300
+    close[5] = -50.0                               # invalid negative price (bad adjusted data)
+    df = _mk_df(dates, close)
+    clean, fixed = bp.sanitize_ohlcv(df, "TW")     # must NOT raise math domain error
+    assert (clean["Close"] > 0).all()              # no non-positive price survives
+    assert clean["Close"].iloc[5] == pytest.approx(100.0, rel=1e-9)   # filled from neighbour
+
+
+def test_sanitize_zero_price_neutralized():
+    dates = pd.bdate_range("2021-01-04", periods=120)
+    close = [50.0] * 120
+    close[60] = 0.0                                # zero price → division/log blow-ups
+    df = _mk_df(dates, close)
+    clean, _ = bp.sanitize_ohlcv(df, "US")         # must NOT raise
+    assert (clean["Close"] > 0).all()
+
+
+def test_sanitize_all_nonpositive_drops_ticker():
+    dates = pd.bdate_range("2021-01-04", periods=60)
+    df = _mk_df(dates, [-1.0] * 60)                # entirely unusable
+    clean, fixed = bp.sanitize_ohlcv(df, "US")
+    assert len(fixed) > bp.MAX_FIXED_BARS          # flagged for upstream DROP
+
+
 def test_sanitize_tw_keeps_real_limit_down():
     # Arrange — a genuine -10% limit-down (legal after 2015-06) that holds
     # at the new level (e.g. 2025-04-07) must NOT be touched
