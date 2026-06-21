@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v50';
+const APP_VERSION = 'v51';
 const APP_BUILD = '2026-06-21';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -1192,6 +1192,11 @@ function pretradeHtml(p) {
 async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
+  // History model: make every open a single back-poppable entry so the iOS/browser Back gesture
+  // POPS the sheet (route() closes it on the code-less hash) instead of exiting the app or leaving
+  // a stranded modal. Guard so a route()-driven open (hash already #date/code) doesn't double-push.
+  const _wantHash = '#' + CUR_DATE + '/' + code;
+  if (location.hash !== _wantHash) history.pushState(null, '', _wantHash);
   let p = findCard(CUR, code);
   // A thin card (scored_universe / radar / leader without ohlc) makes findCard succeed but has
   // NO chart. So whenever the card lacks a K-line, fetch the per-stock detail file and MERGE its
@@ -1226,8 +1231,10 @@ async function openStockSheet(code) {
     return;
   }
   const stock = p.stock || p.ticker;
-  // update hash for deep-link compatibility (#date/code)
-  history.replaceState(null, '', '#' + CUR_DATE + '/' + stock);
+  // canonicalise the hash to the stock's full form WITHOUT adding a second history entry (the
+  // back-poppable entry was already pushed at the top of openStockSheet).
+  const _canon = '#' + CUR_DATE + '/' + stock;
+  if (location.hash !== _canon) history.replaceState(null, '', _canon);
 
   const dispName = p.name || nameOf(stock);
   const title = `${lightDot(p.light)} ${esc(dispName)} <span class="num" style="font-size:.66em;color:var(--ink-3);font-weight:400">${esc(stock)}</span>`;
@@ -2065,7 +2072,13 @@ async function route() {
     setHudDate(date);
   }
   // #date/code → open the stock detail sheet over the deck.
-  if (code) openStockSheet(code);
+  if (code) {
+    openStockSheet(code);
+  } else if (CUR_SHEET_ID === 'stock') {
+    // navigated to a code-less #date (e.g. hardware/gesture Back popped the stock entry) while a
+    // stock sheet is open → dismiss it, so Back reliably pops the modal instead of stranding it.
+    dismissSheet();
+  }
 }
 
 window.addEventListener('hashchange', route);
