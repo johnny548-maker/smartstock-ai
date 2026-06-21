@@ -172,5 +172,42 @@ class TestRigorousWalkForward(unittest.TestCase):
         self.assertIsNone(ro._pooled_metrics([pd.Series([0.001] * 3)]))   # too short
 
 
+class TestTrendFilter(unittest.TestCase):
+    """C: a time-series-momentum regime filter — when the index is below its trailing MA at a
+    rebalance signal date, the sleeve goes to CASH that period (the classic momentum drawdown cut)."""
+
+    def test_trend_risk_on_flags_below_ma_as_risk_off(self):
+        dates = pd.bdate_range("2020-01-01", periods=300)
+        vals = list(np.linspace(100, 200, 200)) + list(np.linspace(200, 120, 100))  # rise then crash
+        idx = pd.DataFrame({"Close": vals}, index=dates)
+        ron = ro.trend_risk_on(idx, trend_ma=100)
+        self.assertIsNotNone(ron)
+        self.assertTrue(bool(ron.iloc[150]))        # uptrend → above MA → risk-on
+        self.assertFalse(bool(ron.iloc[-1]))        # post-crash → below MA → risk-off
+        self.assertIsNone(ro.trend_risk_on(idx, None))           # filter off
+        self.assertIsNone(ro.trend_risk_on(None, 100))           # no index → off
+
+    def test_trend_filter_forces_cash_when_risk_off(self):
+        dates = pd.bdate_range("2024-01-01", periods=320)
+        close = pd.DataFrame(
+            {"S%d" % i: np.linspace(100, 100 + i + 1, 320) for i in range(6)}, index=dates)
+        close_ff = close.ffill()
+        mom = ro.bp._mom_12_1(close)
+        sched = [(s, e) for s, e in ro.schedule_for(close.index, "quarterly")
+                 if mom.loc[s].notna().any()]
+        self.assertTrue(sched)
+        risk_off = pd.Series(False, index=close.index)           # risk-OFF everywhere
+        tgt = ro.build_targets(close_ff, mom, sched, top_n=3, vol_target=False,
+                               sigma_target=None, risk_on=risk_off)
+        self.assertTrue(all(w == {} for w in tgt.values()))      # every period CASH
+        risk_on = pd.Series(True, index=close.index)             # risk-ON everywhere
+        tgt2 = ro.build_targets(close_ff, mom, sched, top_n=3, vol_target=False,
+                                sigma_target=None, risk_on=risk_on)
+        self.assertTrue(any(w for w in tgt2.values()))           # normal picks
+        # default (no risk_on) is backward-compatible = always invested
+        tgt3 = ro.build_targets(close_ff, mom, sched, top_n=3, vol_target=False, sigma_target=None)
+        self.assertEqual({k: v for k, v in tgt2.items()}, tgt3)  # risk_on=all-True == no filter
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -36,6 +36,8 @@ REBALANCES = ("monthly", "quarterly")
 LOOKBACKS = (126, 252)                 # 6M vs 12M momentum
 SIGMA_TARGETS = (0.12, 0.15, 0.20)     # annualised vol target for cMOM constant-vol scaling
 SCALE_CLAMP = (0.5, 1.5)               # leverage bounds (no <0.5x de-risk, no >1.5x lever)
+TREND_MAS = (None, 200)                # time-series-momentum regime filter: None=always-invested,
+                                       # 200=cash when index < its 200d SMA (drawdown cut)
 REALIZED_WIN = 60                      # trailing days for realised-vol estimate
 
 
@@ -74,11 +76,30 @@ def realized_vol(close_ff, picks, sig, win=REALIZED_WIN):
     return sd * math.sqrt(bp.TRADING_DAYS)
 
 
-def build_targets(close_ff, mom, sched, top_n, vol_target, sigma_target):
+def trend_risk_on(index_df, trend_ma):
+    """date→bool regime mask: index Close >= its trailing trend_ma-day SMA (time-series momentum).
+    Below the MA = risk-OFF (go to cash). None trend_ma / no index → None (filter disabled).
+    Early bars with an incomplete MA default risk-ON (don't penalise pre-history)."""
+    if trend_ma is None or index_df is None or "Close" not in getattr(index_df, "columns", []):
+        return None
+    c = index_df["Close"].dropna()
+    if c.empty:
+        return None
+    ma = c.rolling(int(trend_ma), min_periods=max(20, int(trend_ma) // 2)).mean()
+    risk_on = c >= ma
+    risk_on[ma.isna()] = True                 # insufficient history → invested, not forced cash
+    return risk_on
+
+
+def build_targets(close_ff, mom, sched, top_n, vol_target, sigma_target, risk_on=None):
     """{exec_date: {ticker: weight}} for one config. cMOM: scale exposure by
-    clamp(sigma_target / realised_vol). vol_target off → plain 1/N equal weight."""
+    clamp(sigma_target / realised_vol). vol_target off → plain 1/N equal weight.
+    risk_on (optional date→bool): at a signal date flagged risk-OFF, hold CASH ({}) that period."""
     targets = {}
     for sig, ex in sched:
+        if risk_on is not None and not bool(risk_on.get(sig, True)):
+            targets[ex] = {}                  # regime risk-off → cash
+            continue
         row = mom.loc[sig][close_ff.loc[sig].notna()]
         picks = bp.select_top_n(row, top_n)
         if not picks:
@@ -151,6 +172,13 @@ def run_grid(prices, sleeve, universe_tickers):
     if close_df.empty:
         raise ValueError("run_grid: empty price panel")
     close_ff = close_df.ffill()
+    # Regime masks for the time-series-momentum trend filter (precompute once per MA window).
+    idx_df = prices.get(cfg["index"])
+    risk_masks = {}
+    for tma in TREND_MAS:
+        ron = trend_risk_on(idx_df, tma)
+        risk_masks[tma] = (ron.reindex(close_df.index).ffill().fillna(True)
+                           if ron is not None else None)
     results = []
     for lookback in LOOKBACKS:
         mom = bp._mom_12_1(close_df, lookback=lookback)
@@ -161,7 +189,9 @@ def run_grid(prices, sleeve, universe_tickers):
                 continue
             for top_n in TOP_NS:
                 for vt, sig_t in [(False, None)] + [(True, s) for s in SIGMA_TARGETS]:
-                    tgt = build_targets(close_ff, mom, sched, top_n, vt, sig_t)
+                  for tma in TREND_MAS:
+                    tgt = build_targets(close_ff, mom, sched, top_n, vt, sig_t,
+                                        risk_on=risk_masks[tma])
                     nav = bp.simulate_portfolio(open_df, close_df, tgt,
                                                 sell_tax_bps=cfg["sell_tax_bps"])
                     m = _metrics(nav)
@@ -172,7 +202,7 @@ def run_grid(prices, sleeve, universe_tickers):
                     results.append({
                         "config": {"vol_target": vt, "sigma_target": sig_t,
                                    "top_n": top_n, "rebalance": rebalance,
-                                   "lookback": lookback},
+                                   "lookback": lookback, "trend_ma": tma},
                         "cagr": m["cagr"], "sharpe": m["sharpe"], "max_dd": m["max_dd"],
                         "calmar": m["calmar"], "n_obs": m["n_obs"],
                         "oos_cagr": oos.get("cagr"), "oos_max_dd": oos_dd,
@@ -208,9 +238,10 @@ def gates(results, winner):
 
 def _cfg_key(c):
     """Stable string key for a config dict (for cross-fold alignment)."""
-    return "%s/%s/%d/%s/%d" % ("vt" if c["vol_target"] else "off",
-                               (c["sigma_target"] or "-"), c["top_n"],
-                               c["rebalance"], c["lookback"])
+    return "%s/%s/%d/%s/%d/%s" % ("vt" if c["vol_target"] else "off",
+                                  (c["sigma_target"] or "-"), c["top_n"],
+                                  c["rebalance"], c["lookback"],
+                                  ("t%d" % c["trend_ma"] if c.get("trend_ma") else "t-"))
 
 
 def fold_slices(close_index, n_folds, embargo=0):
@@ -353,12 +384,13 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None):
         ("%.3f" % g["pbo"]) if g["pbo"] is not None else "n/a",
         "PASS" if g["pbo_pass"] else "FAIL"))
     L.append("")
-    L.append("rank  cfg(vol/σ/topN/rebal/lookback)            CAGR   Sharpe   MaxDD  Calmar  OOS-Calmar")
+    L.append("rank  cfg(vol/σ/topN/rebal/lookback/trend)      CAGR   Sharpe   MaxDD  Calmar  OOS-Calmar")
     for i, r in enumerate(ranked[:12], 1):
         c = r["config"]
-        cstr = "%s/%s/%d/%s/%d" % ("vt" if c["vol_target"] else "off",
-                                   (c["sigma_target"] or "-"), c["top_n"],
-                                   c["rebalance"][:1], c["lookback"])
+        cstr = "%s/%s/%d/%s/%d/%s" % ("vt" if c["vol_target"] else "off",
+                                      (c["sigma_target"] or "-"), c["top_n"],
+                                      c["rebalance"][:1], c["lookback"],
+                                      ("t%d" % c["trend_ma"] if c.get("trend_ma") else "t-"))
         L.append("%2d   %-38s %6.2f%%  %5.2f  %6.1f%% %6.2f   %6.2f" % (
             i, cstr, r["cagr"] * 100, r["sharpe"], r["max_dd"] * 100,
             r["calmar"], r["oos_calmar"]))
