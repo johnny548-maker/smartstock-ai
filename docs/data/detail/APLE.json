@@ -1,17 +1,9 @@
 {
  "stock": "APLE",
  "name": "Apple Hospitality REIT, Inc. Common Shares",
- "price": 16.25,
- "change_pct": -0.73,
+ "price": 16.59,
+ "change_pct": 2.09,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 11.49,
-   "h": 11.69,
-   "l": 11.49,
-   "c": 11.55,
-   "v": 2403500
-  },
   {
    "time": "2026-03-25",
    "o": 11.69,
@@ -483,10 +475,18 @@
    "l": 16.13,
    "c": 16.25,
    "v": 2928100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 16.42,
+   "h": 16.71,
+   "l": 16.42,
+   "c": 16.59,
+   "v": 4425200
   }
  ],
  "sr": {
-  "price": 16.25,
+  "price": 16.59,
   "resistance": [],
   "support": [
    14.49,
@@ -495,7 +495,6 @@
   "strong_support": 11.23
  },
  "spark": [
-  11.55,
   11.75,
   11.68,
   11.28,
@@ -554,28 +553,12 @@
   16.22,
   16.15,
   16.37,
-  16.25
+  16.25,
+  16.59
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 91,
-    "days": 2,
-    "max_shares": 71,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

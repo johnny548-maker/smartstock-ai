@@ -1,17 +1,9 @@
 {
  "stock": "AER",
  "name": "AerCap Holdings N.V. Ordinary Shares",
- "price": 144.12,
- "change_pct": 0.8,
+ "price": 145.06,
+ "change_pct": 0.65,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 133.31,
-   "h": 136.83,
-   "l": 132.79,
-   "c": 136.11,
-   "v": 1045500
-  },
   {
    "time": "2026-03-25",
    "o": 137.88,
@@ -483,10 +475,18 @@
    "l": 142.4,
    "c": 144.12,
    "v": 1451300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 145.72,
+   "h": 146.84,
+   "l": 144.56,
+   "c": 145.06,
+   "v": 1193900
   }
  ],
  "sr": {
-  "price": 144.12,
+  "price": 145.06,
   "resistance": [
    150.26,
    152.1
@@ -498,7 +498,6 @@
   "strong_support": 131.15
  },
  "spark": [
-  136.11,
   137.44,
   133.78,
   133.01,
@@ -557,28 +556,12 @@
   140.0,
   141.49,
   142.98,
-  144.12
+  144.12,
+  145.06
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 6992,
-    "days": 4,
-    "max_shares": 5949,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

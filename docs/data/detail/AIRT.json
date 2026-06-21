@@ -1,17 +1,9 @@
 {
  "stock": "AIRT",
  "name": "Air T, Inc. - Common Stock",
- "price": 22.33,
- "change_pct": 4.84,
+ "price": 23.13,
+ "change_pct": 3.58,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 22.37,
-   "h": 22.37,
-   "l": 22.37,
-   "c": 22.37,
-   "v": 400
-  },
   {
    "time": "2026-03-25",
    "o": 22.37,
@@ -483,13 +475,21 @@
    "l": 21.35,
    "c": 22.33,
    "v": 4900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 21.95,
+   "h": 23.2,
+   "l": 21.95,
+   "c": 23.13,
+   "v": 3400
   }
  ],
  "sr": {
-  "price": 22.33,
+  "price": 23.13,
   "resistance": [
-   22.38,
-   23.12
+   23.28,
+   23.54
   ],
   "support": [
    21.48,
@@ -498,7 +498,6 @@
   "strong_support": 20.14
  },
  "spark": [
-  22.37,
   22.37,
   21.97,
   21.97,
@@ -557,28 +556,12 @@
   21.55,
   21.8,
   21.3,
-  22.33
+  22.33,
+  23.13
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 233,
-    "days": 5,
-    "max_shares": 85,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

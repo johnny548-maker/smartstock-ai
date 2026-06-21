@@ -1,17 +1,9 @@
 {
  "stock": "AMOD",
  "name": "Alpha Modus Holdings, Inc. - Class A Common Stock",
- "price": 4.33,
- "change_pct": -15.43,
+ "price": 4.01,
+ "change_pct": -7.39,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 0.35,
-   "h": 0.39,
-   "l": 0.35,
-   "c": 0.36,
-   "v": 232800
-  },
   {
    "time": "2026-03-25",
    "o": 0.37,
@@ -483,10 +475,18 @@
    "l": 4.32,
    "c": 4.33,
    "v": 100800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 4.5,
+   "h": 4.53,
+   "l": 3.79,
+   "c": 4.01,
+   "v": 91800
   }
  ],
  "sr": {
-  "price": 4.33,
+  "price": 4.01,
   "resistance": [
    7.52
   ],
@@ -497,7 +497,6 @@
   "strong_support": 0.19
  },
  "spark": [
-  0.36,
   0.36,
   0.38,
   0.37,
@@ -556,28 +555,12 @@
   5.32,
   5.72,
   5.12,
-  4.33
+  4.33,
+  4.01
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 555,914 股交割失敗）",
-   "value": {
-    "total_shares": 555914,
-    "days": 10,
-    "max_shares": 218809,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AMPH",
  "name": "Amphastar Pharmaceuticals, Inc. - Common Stock",
- "price": 19.41,
- "change_pct": -2.76,
+ "price": 18.81,
+ "change_pct": -3.09,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 19.1,
-   "h": 19.57,
-   "l": 18.98,
-   "c": 19.23,
-   "v": 367800
-  },
   {
    "time": "2026-03-25",
    "o": 19.45,
@@ -483,22 +475,29 @@
    "l": 19.15,
    "c": 19.41,
    "v": 1008500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 19.51,
+   "h": 19.66,
+   "l": 18.7,
+   "c": 18.81,
+   "v": 1327600
   }
  ],
  "sr": {
-  "price": 19.41,
+  "price": 18.81,
   "resistance": [
    19.55,
    20.77
   ],
   "support": [
-   18.92,
-   17.73
+   17.73,
+   16.65
   ],
   "strong_support": 16.65
  },
  "spark": [
-  19.23,
   19.57,
   19.53,
   19.01,
@@ -557,28 +556,12 @@
   20.09,
   19.71,
   19.96,
-  19.41
+  19.41,
+  18.81
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 9566,
-    "days": 5,
-    "max_shares": 3893,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

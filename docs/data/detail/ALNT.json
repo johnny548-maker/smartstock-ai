@@ -1,17 +1,9 @@
 {
  "stock": "ALNT",
  "name": "Allient Inc. - Common Stock",
- "price": 93.69,
- "change_pct": -2.13,
+ "price": 95.85,
+ "change_pct": 2.31,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 62.61,
-   "h": 65.4,
-   "l": 62.61,
-   "c": 65.02,
-   "v": 82700
-  },
   {
    "time": "2026-03-25",
    "o": 65.39,
@@ -483,10 +475,18 @@
    "l": 93.53,
    "c": 93.69,
    "v": 308400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 96.95,
+   "h": 99.38,
+   "l": 94.52,
+   "c": 95.85,
+   "v": 302900
   }
  ],
  "sr": {
-  "price": 93.69,
+  "price": 95.85,
   "resistance": [],
   "support": [
    82.67,
@@ -495,7 +495,6 @@
   "strong_support": 57.19
  },
  "spark": [
-  65.02,
   65.99,
   61.47,
   62.38,
@@ -554,28 +553,12 @@
   91.37,
   95.09,
   95.73,
-  93.69
+  93.69,
+  95.85
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 281,
-    "days": 5,
-    "max_shares": 262,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

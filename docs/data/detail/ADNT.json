@@ -1,17 +1,9 @@
 {
  "stock": "ADNT",
  "name": "Adient plc Ordinary Shares",
- "price": 20.44,
- "change_pct": -5.33,
+ "price": 20.75,
+ "change_pct": 1.52,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 20.49,
-   "h": 21.03,
-   "l": 20.42,
-   "c": 20.86,
-   "v": 879900
-  },
   {
    "time": "2026-03-25",
    "o": 21.16,
@@ -483,10 +475,18 @@
    "l": 20.4,
    "c": 20.44,
    "v": 1101800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 20.53,
+   "h": 20.81,
+   "l": 20.38,
+   "c": 20.75,
+   "v": 1228400
   }
  ],
  "sr": {
-  "price": 20.44,
+  "price": 20.75,
   "resistance": [
    21.73,
    21.77
@@ -498,7 +498,6 @@
   "strong_support": 19.19
  },
  "spark": [
-  20.86,
   21.44,
   21.36,
   20.25,
@@ -557,28 +556,12 @@
   22.68,
   22.84,
   21.59,
-  20.44
+  20.44,
+  20.75
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 50612,
-    "days": 3,
-    "max_shares": 30798,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

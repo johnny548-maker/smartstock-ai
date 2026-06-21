@@ -1,17 +1,9 @@
 {
  "stock": "ABX",
  "name": "Abacus Global Management, Inc. Class A Common Stock",
- "price": 9.66,
- "change_pct": -0.82,
+ "price": 9.25,
+ "change_pct": -4.24,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 8.93,
-   "h": 9.03,
-   "l": 8.76,
-   "c": 8.92,
-   "v": 371900
-  },
   {
    "time": "2026-03-25",
    "o": 9.04,
@@ -483,13 +475,21 @@
    "l": 9.57,
    "c": 9.66,
    "v": 641700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 9.69,
+   "h": 9.72,
+   "l": 9.14,
+   "c": 9.25,
+   "v": 865200
   }
  ],
  "sr": {
-  "price": 9.66,
+  "price": 9.25,
   "resistance": [
-   9.7,
-   9.73
+   9.66,
+   9.7
   ],
   "support": [
    8.97,
@@ -498,7 +498,6 @@
   "strong_support": 7.32
  },
  "spark": [
-  8.92,
   8.89,
   8.83,
   8.34,
@@ -557,28 +556,12 @@
   9.59,
   9.65,
   9.74,
-  9.66
+  9.66,
+  9.25
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 195,521 股交割失敗）",
-   "value": {
-    "total_shares": 195521,
-    "days": 9,
-    "max_shares": 66252,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

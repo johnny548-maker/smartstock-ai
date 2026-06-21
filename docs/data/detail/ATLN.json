@@ -1,17 +1,9 @@
 {
  "stock": "ATLN",
  "name": "Atlantic International Corp. - Common Stock",
- "price": 0.56,
- "change_pct": 6.46,
+ "price": 0.55,
+ "change_pct": -1.96,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 3.68,
-   "h": 3.7,
-   "l": 3.18,
-   "c": 3.45,
-   "v": 93700
-  },
   {
    "time": "2026-03-25",
    "o": 3.45,
@@ -483,10 +475,18 @@
    "l": 0.52,
    "c": 0.56,
    "v": 489800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 0.56,
+   "h": 0.72,
+   "l": 0.51,
+   "c": 0.55,
+   "v": 1377500
   }
  ],
  "sr": {
-  "price": 0.56,
+  "price": 0.55,
   "resistance": [
    1.58,
    1.73
@@ -495,7 +495,6 @@
   "strong_support": 0.65
  },
  "spark": [
-  3.45,
   3.19,
   3.35,
   3.2,
@@ -554,28 +553,12 @@
   0.6,
   0.57,
   0.53,
-  0.56
+  0.56,
+  0.55
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 504,150 股交割失敗）",
-   "value": {
-    "total_shares": 504150,
-    "days": 10,
-    "max_shares": 281793,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

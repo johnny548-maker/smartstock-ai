@@ -1,17 +1,9 @@
 {
  "stock": "ACH",
  "name": "Accendra Health, Inc. Common Stock",
- "price": 3.16,
- "change_pct": 2.93,
+ "price": 3.23,
+ "change_pct": 2.22,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 2.01,
-   "h": 2.08,
-   "l": 1.97,
-   "c": 2.01,
-   "v": 729900
-  },
   {
    "time": "2026-03-25",
    "o": 2.08,
@@ -483,22 +475,29 @@
    "l": 3.02,
    "c": 3.16,
    "v": 842700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 3.18,
+   "h": 3.39,
+   "l": 3.07,
+   "c": 3.23,
+   "v": 2196300
   }
  ],
  "sr": {
-  "price": 3.16,
+  "price": 3.23,
   "resistance": [
    3.42,
    3.94
   ],
   "support": [
-   2.89,
-   2.58
+   3.18,
+   2.89
   ],
   "strong_support": 2.53
  },
  "spark": [
-  2.01,
   2.07,
   2.1,
   2.09,
@@ -557,28 +556,12 @@
   3.33,
   3.03,
   3.07,
-  3.16
+  3.16,
+  3.23
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 10508,
-    "days": 2,
-    "max_shares": 7894,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

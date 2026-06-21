@@ -1,17 +1,9 @@
 {
  "stock": "ACIU",
  "name": "AC Immune SA - Common Stock",
- "price": 2.34,
- "change_pct": -1.27,
+ "price": 2.4,
+ "change_pct": 2.56,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 2.86,
-   "h": 2.89,
-   "l": 2.77,
-   "c": 2.86,
-   "v": 109400
-  },
   {
    "time": "2026-03-25",
    "o": 2.92,
@@ -483,10 +475,18 @@
    "l": 2.33,
    "c": 2.34,
    "v": 180700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 2.4,
+   "h": 2.42,
+   "l": 2.34,
+   "c": 2.4,
+   "v": 213300
   }
  ],
  "sr": {
-  "price": 2.34,
+  "price": 2.4,
   "resistance": [
    3.16,
    3.24
@@ -495,7 +495,6 @@
   "strong_support": 2.55
  },
  "spark": [
-  2.86,
   2.94,
   2.89,
   2.7,
@@ -554,28 +553,12 @@
   2.31,
   2.34,
   2.37,
-  2.34
+  2.34,
+  2.4
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 6346,
-    "days": 2,
-    "max_shares": 6000,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

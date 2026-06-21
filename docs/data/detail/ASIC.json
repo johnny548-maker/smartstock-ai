@@ -1,17 +1,9 @@
 {
  "stock": "ASIC",
  "name": "Ategrity Specialty Insurance Company Holdings Common Stock",
- "price": 21.01,
- "change_pct": -1.27,
+ "price": 21.16,
+ "change_pct": 0.71,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 19.0,
-   "h": 19.54,
-   "l": 18.81,
-   "c": 18.81,
-   "v": 111700
-  },
   {
    "time": "2026-03-25",
    "o": 18.9,
@@ -483,22 +475,29 @@
    "l": 20.67,
    "c": 21.01,
    "v": 42300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 21.04,
+   "h": 21.28,
+   "l": 20.83,
+   "c": 21.16,
+   "v": 71100
   }
  ],
  "sr": {
-  "price": 21.01,
+  "price": 21.16,
   "resistance": [
    21.28,
    21.42
   ],
   "support": [
-   20.12,
-   19.05
+   20.5,
+   20.12
   ],
   "strong_support": 18.44
  },
  "spark": [
-  18.81,
   18.9,
   19.25,
   19.02,
@@ -557,28 +556,12 @@
   20.77,
   20.75,
   21.28,
-  21.01
+  21.01,
+  21.16
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 733,
-    "days": 3,
-    "max_shares": 402,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

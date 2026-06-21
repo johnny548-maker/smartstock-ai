@@ -1,17 +1,9 @@
 {
  "stock": "AARD",
  "name": "Aardvark Therapeutics, Inc. - Common Stock",
- "price": 3.82,
- "change_pct": 2.69,
+ "price": 3.93,
+ "change_pct": 2.88,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 4.0,
-   "h": 4.09,
-   "l": 3.55,
-   "c": 3.77,
-   "v": 462100
-  },
   {
    "time": "2026-03-25",
    "o": 3.88,
@@ -483,13 +475,21 @@
    "l": 3.64,
    "c": 3.82,
    "v": 87200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 3.9,
+   "h": 3.98,
+   "l": 3.71,
+   "c": 3.93,
+   "v": 152700
   }
  ],
  "sr": {
-  "price": 3.82,
+  "price": 3.93,
   "resistance": [
-   4.39,
-   4.8
+   4.1,
+   4.39
   ],
   "support": [
    3.8,
@@ -498,7 +498,6 @@
   "strong_support": 3.35
  },
  "spark": [
-  3.77,
   3.54,
   3.51,
   3.55,
@@ -557,28 +556,12 @@
   3.9,
   3.84,
   3.72,
-  3.82
+  3.82,
+  3.93
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 525,
-    "days": 2,
-    "max_shares": 327,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

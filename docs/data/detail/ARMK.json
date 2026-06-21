@@ -1,17 +1,9 @@
 {
  "stock": "ARMK",
  "name": "Aramark Common Stock",
- "price": 53.49,
- "change_pct": -1.62,
+ "price": 53.33,
+ "change_pct": -0.3,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 39.95,
-   "h": 40.44,
-   "l": 39.77,
-   "c": 40.14,
-   "v": 1574400
-  },
   {
    "time": "2026-03-25",
    "o": 41.03,
@@ -483,13 +475,21 @@
    "l": 53.39,
    "c": 53.49,
    "v": 2591200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 54.02,
+   "h": 54.16,
+   "l": 52.97,
+   "c": 53.33,
+   "v": 2578400
   }
  ],
  "sr": {
-  "price": 53.49,
+  "price": 53.33,
   "resistance": [
-   54.57,
-   54.93
+   53.45,
+   54.57
   ],
   "support": [
    52.79,
@@ -498,7 +498,6 @@
   "strong_support": 39.6
  },
  "spark": [
-  40.14,
   41.37,
   40.46,
   39.75,
@@ -557,28 +556,12 @@
   54.27,
   54.2,
   54.37,
-  53.49
+  53.49,
+  53.33
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 1,500,182 股交割失敗）",
-   "value": {
-    "total_shares": 1500182,
-    "days": 4,
-    "max_shares": 500000,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

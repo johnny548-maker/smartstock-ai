@@ -1,17 +1,9 @@
 {
  "stock": "AIN",
  "name": "Albany International Corporation Common Stock",
- "price": 70.37,
- "change_pct": 0.11,
+ "price": 71.08,
+ "change_pct": 1.01,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 49.93,
-   "h": 52.1,
-   "l": 49.65,
-   "c": 51.8,
-   "v": 368100
-  },
   {
    "time": "2026-03-25",
    "o": 52.57,
@@ -483,10 +475,18 @@
    "l": 69.6,
    "c": 70.37,
    "v": 306300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 71.15,
+   "h": 72.31,
+   "l": 70.51,
+   "c": 71.08,
+   "v": 446600
   }
  ],
  "sr": {
-  "price": 70.37,
+  "price": 71.08,
   "resistance": [
    72.85
   ],
@@ -497,7 +497,6 @@
   "strong_support": 49.94
  },
  "spark": [
-  51.8,
   52.65,
   51.96,
   50.62,
@@ -556,28 +555,12 @@
   70.95,
   70.71,
   70.29,
-  70.37
+  70.37,
+  71.08
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 7052,
-    "days": 4,
-    "max_shares": 7037,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

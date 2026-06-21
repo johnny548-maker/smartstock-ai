@@ -1,17 +1,9 @@
 {
  "stock": "ANIP",
  "name": "ANI Pharmaceuticals, Inc. - Common Stock",
- "price": 80.52,
- "change_pct": -2.99,
+ "price": 79.49,
+ "change_pct": -1.28,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 73.19,
-   "h": 74.43,
-   "l": 72.82,
-   "c": 73.31,
-   "v": 219700
-  },
   {
    "time": "2026-03-25",
    "o": 73.98,
@@ -483,10 +475,18 @@
    "l": 79.98,
    "c": 80.52,
    "v": 301600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 81.0,
+   "h": 81.0,
+   "l": 78.38,
+   "c": 79.49,
+   "v": 351400
   }
  ],
  "sr": {
-  "price": 80.52,
+  "price": 79.49,
   "resistance": [
    81.6,
    82.08
@@ -498,7 +498,6 @@
   "strong_support": 72.6
  },
  "spark": [
-  73.31,
   74.07,
   74.14,
   72.82,
@@ -557,28 +556,12 @@
   81.68,
   82.29,
   83.0,
-  80.52
+  80.52,
+  79.49
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 156,
-    "days": 4,
-    "max_shares": 82,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

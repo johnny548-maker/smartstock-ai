@@ -1,17 +1,9 @@
 {
  "stock": "ALNY",
  "name": "Alnylam Pharmaceuticals, Inc. - Common Stock",
- "price": 282.72,
- "change_pct": 0.29,
+ "price": 278.09,
+ "change_pct": -1.64,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 303.42,
-   "h": 308.91,
-   "l": 299.62,
-   "c": 308.05,
-   "v": 1497300
-  },
   {
    "time": "2026-03-25",
    "o": 313.34,
@@ -483,10 +475,18 @@
    "l": 277.78,
    "c": 282.72,
    "v": 1322200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 280.11,
+   "h": 282.98,
+   "l": 273.11,
+   "c": 278.09,
+   "v": 2204500
   }
  ],
  "sr": {
-  "price": 282.72,
+  "price": 278.09,
   "resistance": [
    305.98,
    310.53
@@ -495,7 +495,6 @@
   "strong_support": 283.1
  },
  "spark": [
-  308.05,
   328.7,
   328.16,
   317.36,
@@ -554,28 +553,12 @@
   282.85,
   287.8,
   281.9,
-  282.72
+  282.72,
+  278.09
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 18575,
-    "days": 3,
-    "max_shares": 18560,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

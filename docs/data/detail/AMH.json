@@ -1,17 +1,9 @@
 {
  "stock": "AMH",
  "name": "American Homes 4 Rent Common Shares of Beneficial Interest",
- "price": 31.83,
- "change_pct": -1.85,
+ "price": 31.71,
+ "change_pct": -0.38,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 27.09,
-   "h": 27.61,
-   "l": 26.98,
-   "c": 27.29,
-   "v": 2790900
-  },
   {
    "time": "2026-03-25",
    "o": 27.47,
@@ -483,10 +475,18 @@
    "l": 31.75,
    "c": 31.83,
    "v": 2282700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 32.13,
+   "h": 32.23,
+   "l": 31.6,
+   "c": 31.71,
+   "v": 5134400
   }
  ],
  "sr": {
-  "price": 31.83,
+  "price": 31.71,
   "resistance": [
    32.28,
    32.5
@@ -498,7 +498,6 @@
   "strong_support": 30.17
  },
  "spark": [
-  27.29,
   27.27,
   27.61,
   27.21,
@@ -557,28 +556,12 @@
   32.96,
   32.62,
   32.43,
-  31.83
+  31.83,
+  31.71
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 824,
-    "days": 2,
-    "max_shares": 426,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

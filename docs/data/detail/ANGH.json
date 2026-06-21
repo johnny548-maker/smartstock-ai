@@ -1,17 +1,9 @@
 {
  "stock": "ANGH",
  "name": "Anghami Inc. - Ordinary Shares",
- "price": 5.9,
- "change_pct": 2.25,
+ "price": 5.69,
+ "change_pct": -3.56,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 3.24,
-   "h": 3.68,
-   "l": 3.2,
-   "c": 3.68,
-   "v": 5400
-  },
   {
    "time": "2026-03-25",
    "o": 3.4,
@@ -483,10 +475,18 @@
    "l": 5.3,
    "c": 5.9,
    "v": 7300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 5.72,
+   "h": 5.89,
+   "l": 5.65,
+   "c": 5.69,
+   "v": 6200
   }
  ],
  "sr": {
-  "price": 5.9,
+  "price": 5.69,
   "resistance": [
    7.89
   ],
@@ -497,7 +497,6 @@
   "strong_support": 2.78
  },
  "spark": [
-  3.68,
   3.5,
   3.46,
   3.3,
@@ -556,28 +555,12 @@
   5.65,
   5.54,
   5.77,
-  5.9
+  5.9,
+  5.69
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 15847,
-    "days": 4,
-    "max_shares": 5989,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

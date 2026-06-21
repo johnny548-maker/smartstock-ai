@@ -1,17 +1,9 @@
 {
  "stock": "ARW",
  "name": "Arrow Electronics, Inc. Common Stock",
- "price": 225.99,
- "change_pct": -1.21,
+ "price": 232.7,
+ "change_pct": 2.97,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 140.23,
-   "h": 145.66,
-   "l": 137.87,
-   "c": 144.24,
-   "v": 453600
-  },
   {
    "time": "2026-03-25",
    "o": 146.12,
@@ -483,10 +475,18 @@
    "l": 225.8,
    "c": 225.99,
    "v": 421800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 230.84,
+   "h": 233.01,
+   "l": 228.11,
+   "c": 232.7,
+   "v": 875600
   }
  ],
  "sr": {
-  "price": 225.99,
+  "price": 232.7,
   "resistance": [
    233.3
   ],
@@ -497,7 +497,6 @@
   "strong_support": 135.29
  },
  "spark": [
-  144.24,
   146.13,
   143.24,
   139.63,
@@ -556,28 +555,12 @@
   226.78,
   229.27,
   228.76,
-  225.99
+  225.99,
+  232.7
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 9637,
-    "days": 5,
-    "max_shares": 3193,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

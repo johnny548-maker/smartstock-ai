@@ -1,17 +1,9 @@
 {
  "stock": "ARTC",
  "name": "Art Technology Acquisition Corp. - Class A Ordinary Shares",
- "price": 9.92,
- "change_pct": -0.0,
+ "price": 9.91,
+ "change_pct": -0.1,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 9.81,
-   "h": 9.81,
-   "l": 9.81,
-   "c": 9.81,
-   "v": 100
-  },
   {
    "time": "2026-03-25",
    "o": 9.81,
@@ -483,18 +475,25 @@
    "l": 9.92,
    "c": 9.92,
    "v": 104100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 9.93,
+   "h": 9.93,
+   "l": 9.91,
+   "c": 9.91,
+   "v": 223600
   }
  ],
  "sr": {
-  "price": 9.92,
+  "price": 9.91,
   "resistance": [
    9.94
   ],
   "support": [],
-  "strong_support": 9.92
+  "strong_support": 9.91
  },
  "spark": [
-  9.81,
   9.81,
   9.81,
   9.81,
@@ -553,28 +552,12 @@
   9.92,
   9.92,
   9.92,
-  9.92
+  9.92,
+  9.91
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 580,
-    "days": 2,
-    "max_shares": 319,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

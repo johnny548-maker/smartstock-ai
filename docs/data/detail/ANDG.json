@@ -1,17 +1,9 @@
 {
  "stock": "ANDG",
  "name": "Andersen Group Inc. Class A Common Stock",
- "price": 38.37,
- "change_pct": 2.32,
+ "price": 37.17,
+ "change_pct": -3.13,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 27.54,
-   "h": 27.99,
-   "l": 25.76,
-   "c": 26.67,
-   "v": 270900
-  },
   {
    "time": "2026-03-25",
    "o": 27.25,
@@ -483,10 +475,18 @@
    "l": 37.53,
    "c": 38.37,
    "v": 184900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 38.01,
+   "h": 38.3,
+   "l": 36.35,
+   "c": 37.17,
+   "v": 370600
   }
  ],
  "sr": {
-  "price": 38.37,
+  "price": 37.17,
   "resistance": [
    39.54,
    40.11
@@ -498,7 +498,6 @@
   "strong_support": 25.0
  },
  "spark": [
-  26.67,
   26.07,
   26.04,
   25.41,
@@ -557,28 +556,12 @@
   37.78,
   37.42,
   37.5,
-  38.37
+  38.37,
+  37.17
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 3671,
-    "days": 3,
-    "max_shares": 3294,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

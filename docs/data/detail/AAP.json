@@ -1,17 +1,9 @@
 {
  "stock": "AAP",
  "name": "Advance Auto Parts Inc.",
- "price": 58.1,
- "change_pct": -3.76,
+ "price": 60.1,
+ "change_pct": 3.44,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 49.78,
-   "h": 51.03,
-   "l": 49.01,
-   "c": 50.67,
-   "v": 995300
-  },
   {
    "time": "2026-03-25",
    "o": 51.18,
@@ -483,13 +475,21 @@
    "l": 57.94,
    "c": 58.1,
    "v": 1380000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 58.38,
+   "h": 61.55,
+   "l": 58.3,
+   "c": 60.1,
+   "v": 2156400
   }
  ],
  "sr": {
-  "price": 58.1,
+  "price": 60.1,
   "resistance": [
-   60.05,
-   60.94
+   60.94,
+   62.19
   ],
   "support": [
    55.33,
@@ -498,7 +498,6 @@
   "strong_support": 47.13
  },
  "spark": [
-  50.67,
   52.5,
   51.62,
   51.34,
@@ -557,28 +556,12 @@
   60.8,
   61.04,
   60.37,
-  58.1
+  58.1,
+  60.1
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 10424,
-    "days": 5,
-    "max_shares": 6941,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

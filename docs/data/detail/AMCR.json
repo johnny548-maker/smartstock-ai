@@ -1,17 +1,9 @@
 {
  "stock": "AMCR",
  "name": "Amcor plc Ordinary Shares",
- "price": 40.77,
- "change_pct": -1.57,
+ "price": 41.08,
+ "change_pct": 0.76,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 38.37,
-   "h": 39.01,
-   "l": 38.21,
-   "c": 38.49,
-   "v": 5367200
-  },
   {
    "time": "2026-03-25",
    "o": 39.25,
@@ -483,10 +475,18 @@
    "l": 40.49,
    "c": 40.77,
    "v": 4064400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 41.12,
+   "h": 41.83,
+   "l": 40.93,
+   "c": 41.08,
+   "v": 6421300
   }
  ],
  "sr": {
-  "price": 40.77,
+  "price": 41.08,
   "resistance": [
    41.79,
    41.8
@@ -498,7 +498,6 @@
   "strong_support": 35.66
  },
  "spark": [
-  38.49,
   39.89,
   39.22,
   37.99,
@@ -557,28 +556,12 @@
   40.6,
   41.11,
   41.42,
-  40.77
+  40.77,
+  41.08
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 297,057 股交割失敗）",
-   "value": {
-    "total_shares": 297057,
-    "days": 8,
-    "max_shares": 234356,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ACNB",
  "name": "ACNB Corporation - Common Stock",
- "price": 56.17,
- "change_pct": -1.13,
+ "price": 57.22,
+ "change_pct": 1.87,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 45.98,
-   "h": 46.72,
-   "l": 45.43,
-   "c": 46.29,
-   "v": 63900
-  },
   {
    "time": "2026-03-25",
    "o": 46.47,
@@ -483,10 +475,18 @@
    "l": 55.69,
    "c": 56.17,
    "v": 42800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 56.91,
+   "h": 57.48,
+   "l": 56.17,
+   "c": 57.22,
+   "v": 104400
   }
  ],
  "sr": {
-  "price": 56.17,
+  "price": 57.22,
   "resistance": [
    58.54
   ],
@@ -497,7 +497,6 @@
   "strong_support": 46.2
  },
  "spark": [
-  46.29,
   46.4,
   46.65,
   46.45,
@@ -556,28 +555,12 @@
   57.5,
   56.48,
   56.81,
-  56.17
+  56.17,
+  57.22
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 4103,
-    "days": 4,
-    "max_shares": 3237,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

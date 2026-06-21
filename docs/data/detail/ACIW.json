@@ -1,17 +1,9 @@
 {
  "stock": "ACIW",
  "name": "ACI Worldwide, Inc. - Common Stock",
- "price": 44.64,
- "change_pct": -1.89,
+ "price": 44.09,
+ "change_pct": -1.23,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 40.4,
-   "h": 40.52,
-   "l": 39.45,
-   "c": 39.86,
-   "v": 677000
-  },
   {
    "time": "2026-03-25",
    "o": 40.13,
@@ -483,10 +475,18 @@
    "l": 44.51,
    "c": 44.64,
    "v": 1153500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 44.61,
+   "h": 44.99,
+   "l": 43.62,
+   "c": 44.09,
+   "v": 1588500
   }
  ],
  "sr": {
-  "price": 44.64,
+  "price": 44.09,
   "resistance": [
    45.49,
    46.04
@@ -498,7 +498,6 @@
   "strong_support": 38.7
  },
  "spark": [
-  39.86,
   40.04,
   40.86,
   39.88,
@@ -557,28 +556,12 @@
   45.24,
   44.79,
   45.5,
-  44.64
+  44.64,
+  44.09
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 31,
-    "days": 2,
-    "max_shares": 18,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

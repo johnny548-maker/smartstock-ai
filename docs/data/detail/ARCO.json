@@ -1,17 +1,9 @@
 {
  "stock": "ARCO",
  "name": "Arcos Dorados Holdings Inc. Class A Shares",
- "price": 8.56,
- "change_pct": -1.5,
+ "price": 8.55,
+ "change_pct": -0.12,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 7.84,
-   "h": 8.11,
-   "l": 7.81,
-   "c": 8.02,
-   "v": 1401800
-  },
   {
    "time": "2026-03-25",
    "o": 8.12,
@@ -483,13 +475,21 @@
    "l": 8.53,
    "c": 8.56,
    "v": 738600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 8.63,
+   "h": 8.82,
+   "l": 8.48,
+   "c": 8.55,
+   "v": 1249000
   }
  ],
  "sr": {
-  "price": 8.56,
+  "price": 8.55,
   "resistance": [
-   9.26,
-   9.75
+   9.07,
+   9.26
   ],
   "support": [
    8.51,
@@ -498,7 +498,6 @@
   "strong_support": 7.85
  },
  "spark": [
-  8.02,
   8.3,
   8.2,
   8.0,
@@ -557,28 +556,12 @@
   8.83,
   8.78,
   8.69,
-  8.56
+  8.56,
+  8.55
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 3829,
-    "days": 2,
-    "max_shares": 1925,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

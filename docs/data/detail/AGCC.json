@@ -1,17 +1,9 @@
 {
  "stock": "AGCC",
  "name": "Agencia Comercial Spirits Ltd - Class A Ordinary Share",
- "price": 15.72,
- "change_pct": 17.58,
+ "price": 15.6,
+ "change_pct": -0.73,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 15.3,
-   "h": 16.54,
-   "l": 14.76,
-   "c": 14.99,
-   "v": 322600
-  },
   {
    "time": "2026-03-25",
    "o": 15.06,
@@ -483,22 +475,29 @@
    "l": 13.49,
    "c": 15.72,
    "v": 38700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 15.72,
+   "h": 15.72,
+   "l": 14.36,
+   "c": 15.6,
+   "v": 30600
   }
  ],
  "sr": {
-  "price": 15.72,
+  "price": 15.6,
   "resistance": [
    19.0,
    21.69
   ],
   "support": [
-   15.68,
-   14.27
+   14.27,
+   14.04
   ],
   "strong_support": 13.07
  },
  "spark": [
-  14.99,
   15.55,
   15.4,
   15.34,
@@ -557,28 +556,12 @@
   14.4,
   14.15,
   13.37,
-  15.72
+  15.72,
+  15.6
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日）",
-   "value": {
-    "total_shares": 37131,
-    "days": 9,
-    "max_shares": 11777,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

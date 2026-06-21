@@ -1,17 +1,9 @@
 {
  "stock": "ADC",
  "name": "Agree Realty Corporation Common Stock",
- "price": 73.81,
- "change_pct": -1.23,
+ "price": 73.25,
+ "change_pct": -0.76,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 74.66,
-   "h": 75.26,
-   "l": 74.29,
-   "c": 74.45,
-   "v": 1252600
-  },
   {
    "time": "2026-03-25",
    "o": 74.41,
@@ -483,10 +475,18 @@
    "l": 73.37,
    "c": 73.81,
    "v": 1158600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 73.86,
+   "h": 74.33,
+   "l": 72.99,
+   "c": 73.25,
+   "v": 1829900
   }
  ],
  "sr": {
-  "price": 73.81,
+  "price": 73.25,
   "resistance": [
    75.62,
    76.08
@@ -498,7 +498,6 @@
   "strong_support": 71.22
  },
  "spark": [
-  74.45,
   73.44,
   73.62,
   73.63,
@@ -557,28 +556,12 @@
   75.83,
   74.47,
   74.73,
-  73.81
+  73.81,
+  73.25
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 23,
-    "days": 2,
-    "max_shares": 18,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

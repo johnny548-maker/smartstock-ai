@@ -1,17 +1,9 @@
 {
  "stock": "ATKR",
  "name": "Atkore Inc. Common Stock",
- "price": 76.84,
- "change_pct": -2.56,
+ "price": 81.17,
+ "change_pct": 5.64,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 56.95,
-   "h": 60.29,
-   "l": 56.95,
-   "c": 60.06,
-   "v": 221700
-  },
   {
    "time": "2026-03-25",
    "o": 60.84,
@@ -483,22 +475,29 @@
    "l": 76.71,
    "c": 76.84,
    "v": 360900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 77.88,
+   "h": 81.24,
+   "l": 77.5,
+   "c": 81.17,
+   "v": 621500
   }
  ],
  "sr": {
-  "price": 76.84,
+  "price": 81.17,
   "resistance": [
-   78.68,
-   85.36
+   85.36,
+   90.16
   ],
   "support": [
-   76.12,
-   73.26
+   79.82,
+   76.12
   ],
   "strong_support": 57.64
  },
  "spark": [
-  60.06,
   60.62,
   60.25,
   58.87,
@@ -557,28 +556,12 @@
   79.27,
   79.25,
   78.86,
-  76.84
+  76.84,
+  81.17
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 30894,
-    "days": 2,
-    "max_shares": 30889,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

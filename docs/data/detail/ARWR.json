@@ -1,17 +1,9 @@
 {
  "stock": "ARWR",
  "name": "Arrowhead Pharmaceuticals, Inc. - Common Stock",
- "price": 81.04,
- "change_pct": 5.87,
+ "price": 81.82,
+ "change_pct": 0.96,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 56.03,
-   "h": 56.88,
-   "l": 55.01,
-   "c": 56.27,
-   "v": 1982600
-  },
   {
    "time": "2026-03-25",
    "o": 57.28,
@@ -483,10 +475,18 @@
    "l": 75.93,
    "c": 81.04,
    "v": 3100000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 82.57,
+   "h": 84.55,
+   "l": 79.8,
+   "c": 81.82,
+   "v": 3863400
   }
  ],
  "sr": {
-  "price": 81.04,
+  "price": 81.82,
   "resistance": [
    82.26
   ],
@@ -497,7 +497,6 @@
   "strong_support": 59.25
  },
  "spark": [
-  56.27,
   60.77,
   60.77,
   57.78,
@@ -556,28 +555,12 @@
   74.52,
   77.15,
   76.55,
-  81.04
+  81.04,
+  81.82
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 263,
-    "days": 6,
-    "max_shares": 82,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

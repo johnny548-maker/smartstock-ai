@@ -1,17 +1,9 @@
 {
  "stock": "ADUS",
  "name": "Addus HomeCare Corporation - Common Stock",
- "price": 93.87,
- "change_pct": -0.89,
+ "price": 94.23,
+ "change_pct": 0.38,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 98.85,
-   "h": 100.72,
-   "l": 97.79,
-   "c": 99.31,
-   "v": 226000
-  },
   {
    "time": "2026-03-25",
    "o": 99.23,
@@ -483,10 +475,18 @@
    "l": 92.74,
    "c": 93.87,
    "v": 186200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 94.71,
+   "h": 96.46,
+   "l": 93.86,
+   "c": 94.23,
+   "v": 389800
   }
  ],
  "sr": {
-  "price": 93.87,
+  "price": 94.23,
   "resistance": [
    95.22,
    96.07
@@ -498,7 +498,6 @@
   "strong_support": 87.95
  },
  "spark": [
-  99.31,
   99.32,
   97.67,
   95.19,
@@ -557,28 +556,12 @@
   93.28,
   94.83,
   94.71,
-  93.87
+  93.87,
+  94.23
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 45,
-    "days": 2,
-    "max_shares": 40,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ARBB",
  "name": "ARB IOT Group Limited - Ordinary Shares",
- "price": 4.91,
- "change_pct": -6.48,
+ "price": 4.77,
+ "change_pct": -2.85,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 4.43,
-   "h": 4.49,
-   "l": 4.2,
-   "c": 4.2,
-   "v": 4800
-  },
   {
    "time": "2026-03-25",
    "o": 4.22,
@@ -483,10 +475,18 @@
    "l": 4.9,
    "c": 4.91,
    "v": 7900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 4.68,
+   "h": 5.05,
+   "l": 4.68,
+   "c": 4.77,
+   "v": 8300
   }
  ],
  "sr": {
-  "price": 4.91,
+  "price": 4.77,
   "resistance": [
    5.05,
    5.1
@@ -498,7 +498,6 @@
   "strong_support": 3.71
  },
  "spark": [
-  4.2,
   4.39,
   4.18,
   4.3,
@@ -557,28 +556,12 @@
   5.58,
   5.6,
   5.25,
-  4.91
+  4.91,
+  4.77
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
-   "value": {
-    "total_shares": 54558,
-    "days": 8,
-    "max_shares": 42485,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

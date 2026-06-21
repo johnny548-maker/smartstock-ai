@@ -1,6 +1,6 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
+ "name": "AMD",
  "price": 537.37,
  "change_pct": 4.86,
  "ohlc": [
@@ -495,7 +495,7 @@
    437.23,
    393.36
   ],
-  "strong_support": 192.87
+  "strong_support": 133.5
  },
  "spark": [
   220.27,
@@ -561,18 +561,25 @@
  ],
  "spark_start": "2026-03-25",
  "spark_end": "2026-06-18",
- "fundamental": null,
+ "fundamental": {
+  "pe_trailing": 178.52824,
+  "pe_forward": 41.00965,
+  "eps_trailing": 3.01,
+  "eps_forward": 13.1035,
+  "stale": true,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 68 分 / 41 留言",
+   "label": "HN 討論熱度 20 篇 / 155 分 / 54 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 68,
-    "comments": 41,
+    "points": 155,
+    "comments": 54,
     "n": 20,
     "window_hours": 72
    },

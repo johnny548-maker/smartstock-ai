@@ -1,17 +1,9 @@
 {
  "stock": "ACCS",
  "name": "ACCESS Newswire Inc. Common Stock",
- "price": 6.2,
- "change_pct": 4.91,
+ "price": 5.8,
+ "change_pct": -6.45,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 7.3,
-   "h": 7.82,
-   "l": 7.17,
-   "c": 7.24,
-   "v": 10300
-  },
   {
    "time": "2026-03-25",
    "o": 7.15,
@@ -483,22 +475,26 @@
    "l": 6.06,
    "c": 6.2,
    "v": 27400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 6.2,
+   "h": 6.36,
+   "l": 5.8,
+   "c": 5.8,
+   "v": 79900
   }
  ],
  "sr": {
-  "price": 6.2,
+  "price": 5.8,
   "resistance": [
    6.47,
    8.6
   ],
-  "support": [
-   5.99,
-   5.82
-  ],
+  "support": [],
   "strong_support": 5.82
  },
  "spark": [
-  7.24,
   7.96,
   8.56,
   8.59,
@@ -557,28 +553,12 @@
   6.37,
   6.01,
   5.91,
-  6.2
+  6.2,
+  5.8
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 4305,
-    "days": 5,
-    "max_shares": 1900,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

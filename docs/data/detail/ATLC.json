@@ -1,17 +1,9 @@
 {
  "stock": "ATLC",
  "name": "Atlanticus Holdings Corporation - Common Stock",
- "price": 95.77,
- "change_pct": -0.49,
+ "price": 100.12,
+ "change_pct": 4.54,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 56.02,
-   "h": 57.15,
-   "l": 55.62,
-   "c": 55.97,
-   "v": 46700
-  },
   {
    "time": "2026-03-25",
    "o": 56.81,
@@ -483,10 +475,18 @@
    "l": 94.63,
    "c": 95.77,
    "v": 142000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 97.74,
+   "h": 100.57,
+   "l": 95.37,
+   "c": 100.12,
+   "v": 169500
   }
  ],
  "sr": {
-  "price": 95.77,
+  "price": 100.12,
   "resistance": [],
   "support": [
    80.45,
@@ -495,7 +495,6 @@
   "strong_support": 50.67
  },
  "spark": [
-  55.97,
   54.13,
   53.14,
   52.7,
@@ -554,28 +553,12 @@
   92.38,
   95.06,
   96.24,
-  95.77
+  95.77,
+  100.12
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 992,
-    "days": 4,
-    "max_shares": 465,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

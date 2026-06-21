@@ -1,17 +1,9 @@
 {
  "stock": "APTV",
  "name": "Aptiv PLC Ordinary Shares",
- "price": 62.87,
- "change_pct": -4.28,
+ "price": 63.68,
+ "change_pct": 1.29,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 70.09,
-   "h": 72.14,
-   "l": 70.03,
-   "c": 70.92,
-   "v": 2135300
-  },
   {
    "time": "2026-03-25",
    "o": 71.15,
@@ -483,13 +475,21 @@
    "l": 62.56,
    "c": 62.87,
    "v": 3227200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 63.77,
+   "h": 64.86,
+   "l": 62.93,
+   "c": 63.68,
+   "v": 5457100
   }
  ],
  "sr": {
-  "price": 62.87,
+  "price": 63.68,
   "resistance": [
-   72.18,
-   78.49
+   70.36,
+   72.18
   ],
   "support": [
    58.26,
@@ -498,7 +498,6 @@
   "strong_support": 51.68
  },
  "spark": [
-  70.92,
   70.89,
   70.95,
   67.04,
@@ -557,28 +556,12 @@
   68.05,
   66.62,
   65.68,
-  62.87
+  62.87,
+  63.68
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 17767,
-    "days": 5,
-    "max_shares": 15863,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

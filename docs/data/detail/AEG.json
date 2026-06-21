@@ -1,17 +1,9 @@
 {
  "stock": "AEG",
  "name": "Aegon Ltd. New York Registry Shares",
- "price": 8.52,
- "change_pct": -1.5,
+ "price": 8.42,
+ "change_pct": -1.17,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 6.68,
-   "h": 6.8,
-   "l": 6.68,
-   "c": 6.76,
-   "v": 8338600
-  },
   {
    "time": "2026-03-25",
    "o": 6.95,
@@ -483,10 +475,18 @@
    "l": 8.49,
    "c": 8.52,
    "v": 7672000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 8.51,
+   "h": 8.53,
+   "l": 8.42,
+   "c": 8.42,
+   "v": 6382200
   }
  ],
  "sr": {
-  "price": 8.52,
+  "price": 8.42,
   "resistance": [
    8.56
   ],
@@ -497,7 +497,6 @@
   "strong_support": 6.64
  },
  "spark": [
-  6.76,
   6.87,
   6.8,
   6.66,
@@ -556,28 +555,12 @@
   8.41,
   8.52,
   8.65,
-  8.52
+  8.52,
+  8.42
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 21607,
-    "days": 2,
-    "max_shares": 21603,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ABM",
  "name": "ABM Industries Incorporated Common Stock",
- "price": 43.48,
- "change_pct": -1.14,
+ "price": 44.15,
+ "change_pct": 1.54,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 37.51,
-   "h": 38.03,
-   "l": 37.23,
-   "c": 37.72,
-   "v": 510900
-  },
   {
    "time": "2026-03-25",
    "o": 38.22,
@@ -483,10 +475,18 @@
    "l": 42.97,
    "c": 43.48,
    "v": 816500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 43.53,
+   "h": 44.3,
+   "l": 43.01,
+   "c": 44.15,
+   "v": 1027000
   }
  ],
  "sr": {
-  "price": 43.48,
+  "price": 44.15,
   "resistance": [
    47.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 36.95
  },
  "spark": [
-  37.72,
   38.23,
   37.93,
   37.21,
@@ -556,28 +555,12 @@
   45.93,
   44.0,
   43.98,
-  43.48
+  43.48,
+  44.15
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 27,
-    "days": 2,
-    "max_shares": 25,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ATEN",
  "name": "A10 Networks, Inc. Common Stock",
- "price": 32.92,
- "change_pct": 1.51,
+ "price": 33.26,
+ "change_pct": 1.03,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 22.29,
-   "h": 22.74,
-   "l": 21.98,
-   "c": 22.37,
-   "v": 1115000
-  },
   {
    "time": "2026-03-25",
    "o": 22.95,
@@ -483,12 +475,20 @@
    "l": 32.44,
    "c": 32.92,
    "v": 1174800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 33.32,
+   "h": 33.58,
+   "l": 32.05,
+   "c": 33.26,
+   "v": 3795400
   }
  ],
  "sr": {
-  "price": 32.92,
+  "price": 33.26,
   "resistance": [
-   32.95
+   33.64
   ],
   "support": [
    29.83,
@@ -497,7 +497,6 @@
   "strong_support": 22.16
  },
  "spark": [
-  22.37,
   23.21,
   23.13,
   22.29,
@@ -556,28 +555,12 @@
   31.76,
   32.7,
   32.43,
-  32.92
+  32.92,
+  33.26
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 58543,
-    "days": 4,
-    "max_shares": 31708,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

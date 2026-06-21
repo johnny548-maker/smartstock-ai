@@ -1,17 +1,9 @@
 {
  "stock": "ATS",
  "name": "ATS Corporation Common Shares",
- "price": 28.32,
- "change_pct": 1.25,
+ "price": 28.03,
+ "change_pct": -1.02,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 30.09,
-   "h": 30.72,
-   "l": 30.05,
-   "c": 30.09,
-   "v": 169500
-  },
   {
    "time": "2026-03-25",
    "o": 30.6,
@@ -483,10 +475,18 @@
    "l": 28.17,
    "c": 28.32,
    "v": 261000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 28.72,
+   "h": 28.72,
+   "l": 27.65,
+   "c": 28.03,
+   "v": 174300
   }
  ],
  "sr": {
-  "price": 28.32,
+  "price": 28.03,
   "resistance": [
    29.61,
    34.33
@@ -498,7 +498,6 @@
   "strong_support": 26.17
  },
  "spark": [
-  30.09,
   30.39,
   29.59,
   28.08,
@@ -557,28 +556,12 @@
   27.37,
   28.24,
   27.97,
-  28.32
+  28.32,
+  28.03
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 19803,
-    "days": 4,
-    "max_shares": 12982,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

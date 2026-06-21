@@ -1,17 +1,9 @@
 {
  "stock": "ATMU",
  "name": "Atmus Filtration Technologies Inc. Common Stock",
- "price": 50.87,
- "change_pct": -1.55,
+ "price": 51.79,
+ "change_pct": 1.81,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 57.02,
-   "h": 59.66,
-   "l": 57.02,
-   "c": 59.21,
-   "v": 694000
-  },
   {
    "time": "2026-03-25",
    "o": 60.08,
@@ -483,10 +475,18 @@
    "l": 50.66,
    "c": 50.87,
    "v": 852000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 51.48,
+   "h": 52.32,
+   "l": 51.28,
+   "c": 51.79,
+   "v": 2138200
   }
  ],
  "sr": {
-  "price": 50.87,
+  "price": 51.79,
   "resistance": [
    57.03,
    60.66
@@ -498,7 +498,6 @@
   "strong_support": 44.13
  },
  "spark": [
-  59.21,
   60.47,
   59.12,
   58.0,
@@ -557,28 +556,12 @@
   49.8,
   50.02,
   51.67,
-  50.87
+  50.87,
+  51.79
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 32251,
-    "days": 4,
-    "max_shares": 31459,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ALMS",
  "name": "Alumis Inc. - Common Stock",
- "price": 23.05,
- "change_pct": 3.27,
+ "price": 23.41,
+ "change_pct": 1.56,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 23.19,
-   "h": 23.31,
-   "l": 22.08,
-   "c": 23.07,
-   "v": 1106900
-  },
   {
    "time": "2026-03-25",
    "o": 23.47,
@@ -483,13 +475,21 @@
    "l": 22.18,
    "c": 23.05,
    "v": 1423500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 23.8,
+   "h": 24.2,
+   "l": 22.81,
+   "c": 23.41,
+   "v": 1883300
   }
  ],
  "sr": {
-  "price": 23.05,
+  "price": 23.41,
   "resistance": [
-   25.39,
-   26.4
+   24.83,
+   25.39
   ],
   "support": [
    22.84,
@@ -498,7 +498,6 @@
   "strong_support": 18.36
  },
  "spark": [
-  23.07,
   24.81,
   26.32,
   24.8,
@@ -557,28 +556,12 @@
   24.15,
   23.0,
   22.32,
-  23.05
+  23.05,
+  23.41
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 2354,
-    "days": 2,
-    "max_shares": 2347,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

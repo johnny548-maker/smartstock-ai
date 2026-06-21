@@ -1,17 +1,9 @@
 {
  "stock": "ATNM",
  "name": "Actinium Pharmaceuticals, Inc. (Delaware) Common Stock",
- "price": 1.02,
- "change_pct": 4.08,
+ "price": 1.03,
+ "change_pct": 0.98,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 1.12,
-   "h": 1.15,
-   "l": 1.07,
-   "c": 1.07,
-   "v": 197200
-  },
   {
    "time": "2026-03-25",
    "o": 1.1,
@@ -483,10 +475,18 @@
    "l": 0.98,
    "c": 1.02,
    "v": 149600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 1.05,
+   "h": 1.11,
+   "l": 1.02,
+   "c": 1.03,
+   "v": 130700
   }
  ],
  "sr": {
-  "price": 1.02,
+  "price": 1.03,
   "resistance": [
    1.22,
    1.29
@@ -497,7 +497,6 @@
   "strong_support": 0.95
  },
  "spark": [
-  1.07,
   1.08,
   1.05,
   1.03,
@@ -556,28 +555,12 @@
   1.01,
   1.0,
   0.98,
-  1.02
+  1.02,
+  1.03
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 22623,
-    "days": 5,
-    "max_shares": 13621,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

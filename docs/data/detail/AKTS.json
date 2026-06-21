@@ -1,17 +1,9 @@
 {
  "stock": "AKTS",
  "name": "Aktis Oncology, Inc. - Common stock",
- "price": 23.53,
- "change_pct": 3.98,
+ "price": 24.09,
+ "change_pct": 2.38,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 17.82,
-   "h": 18.87,
-   "l": 17.19,
-   "c": 18.63,
-   "v": 540700
-  },
   {
    "time": "2026-03-25",
    "o": 18.59,
@@ -483,10 +475,18 @@
    "l": 23.02,
    "c": 23.53,
    "v": 523300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 24.41,
+   "h": 24.82,
+   "l": 23.38,
+   "c": 24.09,
+   "v": 552100
   }
  ],
  "sr": {
-  "price": 23.53,
+  "price": 24.09,
   "resistance": [],
   "support": [
    18.52,
@@ -495,7 +495,6 @@
   "strong_support": 14.72
  },
  "spark": [
-  18.63,
   18.64,
   17.62,
   15.19,
@@ -554,28 +553,12 @@
   21.93,
   20.69,
   22.63,
-  23.53
+  23.53,
+  24.09
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 7253,
-    "days": 2,
-    "max_shares": 7251,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

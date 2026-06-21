@@ -1,17 +1,9 @@
 {
  "stock": "ARX",
  "name": "Accelerant Holdings Class A Common Shares",
- "price": 13.12,
- "change_pct": -1.72,
+ "price": 12.99,
+ "change_pct": -0.99,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 12.79,
-   "h": 13.17,
-   "l": 12.62,
-   "c": 13.15,
-   "v": 1309200
-  },
   {
    "time": "2026-03-25",
    "o": 13.21,
@@ -483,10 +475,18 @@
    "l": 13.12,
    "c": 13.12,
    "v": 1009300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 12.95,
+   "h": 13.2,
+   "l": 12.4,
+   "c": 12.99,
+   "v": 1517600
   }
  ],
  "sr": {
-  "price": 13.12,
+  "price": 12.99,
   "resistance": [
    13.6,
    13.77
@@ -498,7 +498,6 @@
   "strong_support": 12.32
  },
  "spark": [
-  13.15,
   12.91,
   13.23,
   13.01,
@@ -557,28 +556,12 @@
   13.03,
   13.0,
   13.35,
-  13.12
+  13.12,
+  12.99
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 19132,
-    "days": 2,
-    "max_shares": 16347,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

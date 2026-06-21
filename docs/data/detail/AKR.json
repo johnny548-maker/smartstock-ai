@@ -1,17 +1,9 @@
 {
  "stock": "AKR",
  "name": "Acadia Realty Trust Common Stock",
- "price": 21.17,
- "change_pct": -2.49,
+ "price": 21.13,
+ "change_pct": -0.19,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 19.05,
-   "h": 19.29,
-   "l": 18.91,
-   "c": 18.98,
-   "v": 918600
-  },
   {
    "time": "2026-03-25",
    "o": 19.24,
@@ -483,10 +475,18 @@
    "l": 21.13,
    "c": 21.17,
    "v": 1921400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 21.22,
+   "h": 21.37,
+   "l": 20.96,
+   "c": 21.13,
+   "v": 2389700
   }
  ],
  "sr": {
-  "price": 21.17,
+  "price": 21.13,
   "resistance": [
    21.76,
    22.27
@@ -498,7 +498,6 @@
   "strong_support": 18.55
  },
  "spark": [
-  18.98,
   18.96,
   18.95,
   18.57,
@@ -557,28 +556,12 @@
   22.09,
   21.72,
   21.71,
-  21.17
+  21.17,
+  21.13
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 24766,
-    "days": 2,
-    "max_shares": 24028,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AIZ",
  "name": "Assurant, Inc. Common Stock",
- "price": 262.13,
- "change_pct": 0.61,
+ "price": 259.86,
+ "change_pct": -0.87,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 215.11,
-   "h": 218.92,
-   "l": 214.3,
-   "c": 216.78,
-   "v": 257600
-  },
   {
    "time": "2026-03-25",
    "o": 218.26,
@@ -483,11 +475,21 @@
    "l": 260.56,
    "c": 262.13,
    "v": 384500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 265.26,
+   "h": 265.26,
+   "l": 258.44,
+   "c": 259.86,
+   "v": 863100
   }
  ],
  "sr": {
-  "price": 262.13,
-  "resistance": [],
+  "price": 259.86,
+  "resistance": [
+   260.08
+  ],
   "support": [
    248.81,
    244.71
@@ -495,7 +497,6 @@
   "strong_support": 211.39
  },
  "spark": [
-  216.78,
   216.28,
   216.67,
   212.55,
@@ -554,28 +555,12 @@
   260.99,
   259.46,
   260.55,
-  262.13
+  262.13,
+  259.86
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 3565,
-    "days": 4,
-    "max_shares": 3122,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

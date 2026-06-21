@@ -1,17 +1,9 @@
 {
  "stock": "AME",
  "name": "AMETEK, Inc.",
- "price": 231.27,
- "change_pct": -0.27,
+ "price": 237.42,
+ "change_pct": 2.66,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 209.87,
-   "h": 217.35,
-   "l": 209.28,
-   "c": 216.66,
-   "v": 883700
-  },
   {
    "time": "2026-03-25",
    "o": 219.03,
@@ -483,13 +475,21 @@
    "l": 230.53,
    "c": 231.27,
    "v": 1129900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 234.0,
+   "h": 238.67,
+   "l": 234.0,
+   "c": 237.42,
+   "v": 2439200
   }
  ],
  "sr": {
-  "price": 231.27,
+  "price": 237.42,
   "resistance": [
-   231.58,
-   235.83
+   238.04,
+   241.64
   ],
   "support": [
    229.76,
@@ -498,7 +498,6 @@
   "strong_support": 207.01
  },
  "spark": [
-  216.66,
   215.01,
   211.15,
   208.93,
@@ -557,28 +556,12 @@
   226.78,
   230.45,
   231.9,
-  231.27
+  231.27,
+  237.42
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 82,
-    "days": 2,
-    "max_shares": 81,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

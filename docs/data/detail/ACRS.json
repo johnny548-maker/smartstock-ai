@@ -1,17 +1,9 @@
 {
  "stock": "ACRS",
  "name": "Aclaris Therapeutics, Inc. - Common Stock",
- "price": 4.42,
- "change_pct": 1.84,
+ "price": 4.5,
+ "change_pct": 1.81,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 3.53,
-   "h": 3.62,
-   "l": 3.2,
-   "c": 3.3,
-   "v": 3906700
-  },
   {
    "time": "2026-03-25",
    "o": 3.32,
@@ -483,10 +475,18 @@
    "l": 4.3,
    "c": 4.42,
    "v": 1187700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 4.56,
+   "h": 4.58,
+   "l": 4.36,
+   "c": 4.5,
+   "v": 4322800
   }
  ],
  "sr": {
-  "price": 4.42,
+  "price": 4.5,
   "resistance": [
    4.56,
    4.68
@@ -498,7 +498,6 @@
   "strong_support": 3.2
  },
  "spark": [
-  3.3,
   3.59,
   3.52,
   3.52,
@@ -557,28 +556,12 @@
   4.32,
   4.36,
   4.34,
-  4.42
+  4.42,
+  4.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 18158,
-    "days": 2,
-    "max_shares": 17833,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

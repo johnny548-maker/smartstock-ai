@@ -1,17 +1,9 @@
 {
  "stock": "ALSN",
  "name": "Allison Transmission Holdings, Inc. Common Stock",
- "price": 118.86,
- "change_pct": -1.79,
+ "price": 119.1,
+ "change_pct": 0.2,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 113.51,
-   "h": 118.8,
-   "l": 113.51,
-   "c": 117.6,
-   "v": 783700
-  },
   {
    "time": "2026-03-25",
    "o": 118.42,
@@ -483,10 +475,18 @@
    "l": 117.96,
    "c": 118.86,
    "v": 696400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 120.62,
+   "h": 121.53,
+   "l": 118.94,
+   "c": 119.1,
+   "v": 1824200
   }
  ],
  "sr": {
-  "price": 118.86,
+  "price": 119.1,
   "resistance": [
    119.39,
    119.74
@@ -498,7 +498,6 @@
   "strong_support": 106.12
  },
  "spark": [
-  117.6,
   118.68,
   116.03,
   114.18,
@@ -557,28 +556,12 @@
   117.35,
   119.47,
   121.03,
-  118.86
+  118.86,
+  119.1
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 23,
-    "days": 2,
-    "max_shares": 22,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

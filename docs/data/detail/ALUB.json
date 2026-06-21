@@ -1,17 +1,9 @@
 {
  "stock": "ALUB",
  "name": "Alussa Energy Acquisition Corp. II Class A Ordinary Shares",
- "price": 10.04,
+ "price": 10.05,
  "change_pct": 0.1,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.02,
-   "h": 10.02,
-   "l": 9.98,
-   "c": 9.98,
-   "v": 1900
-  },
   {
    "time": "2026-03-25",
    "o": 9.98,
@@ -483,13 +475,19 @@
    "l": 10.04,
    "c": 10.04,
    "v": 1900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 10.05,
+   "h": 10.05,
+   "l": 10.05,
+   "c": 10.05,
+   "v": 3400
   }
  ],
  "sr": {
-  "price": 10.04,
-  "resistance": [
-   10.05
-  ],
+  "price": 10.05,
+  "resistance": [],
   "support": [
    9.97
   ],
@@ -503,7 +501,6 @@
   9.98,
   9.98,
   9.98,
-  9.98,
   10.03,
   10.0,
   10.0,
@@ -555,28 +552,12 @@
   10.04,
   10.03,
   10.03,
-  10.04
+  10.04,
+  10.05
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 46,
-    "days": 4,
-    "max_shares": 20,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

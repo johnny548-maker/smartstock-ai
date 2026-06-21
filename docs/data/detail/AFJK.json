@@ -1,17 +1,9 @@
 {
  "stock": "AFJK",
  "name": "Aimei Health Technology Co., Ltd - Ordinary Share",
- "price": 34.0,
- "change_pct": 6.22,
+ "price": 34.02,
+ "change_pct": 0.06,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 26.22,
-   "h": 26.22,
-   "l": 26.22,
-   "c": 26.22,
-   "v": 1200
-  },
   {
    "time": "2026-03-25",
    "o": 26.22,
@@ -483,10 +475,18 @@
    "l": 30.08,
    "c": 34.0,
    "v": 7000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 30.34,
+   "h": 35.0,
+   "l": 30.26,
+   "c": 34.02,
+   "v": 3100
   }
  ],
  "sr": {
-  "price": 34.0,
+  "price": 34.02,
   "resistance": [
    45.32,
    47.0
@@ -495,7 +495,6 @@
   "strong_support": 43.0
  },
  "spark": [
-  26.22,
   26.22,
   26.22,
   24.37,
@@ -554,28 +553,12 @@
   33.01,
   35.0,
   32.01,
-  34.0
+  34.0,
+  34.02
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日）",
-   "value": {
-    "total_shares": 13387,
-    "days": 10,
-    "max_shares": 1787,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

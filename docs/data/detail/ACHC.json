@@ -1,17 +1,9 @@
 {
  "stock": "ACHC",
  "name": "Acadia Healthcare Company, Inc. - Common Stock",
- "price": 23.5,
- "change_pct": -5.96,
+ "price": 24.87,
+ "change_pct": 5.83,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 23.06,
-   "h": 23.06,
-   "l": 21.61,
-   "c": 22.69,
-   "v": 3202500
-  },
   {
    "time": "2026-03-25",
    "o": 22.69,
@@ -483,22 +475,29 @@
    "l": 23.43,
    "c": 23.5,
    "v": 3213600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 23.88,
+   "h": 24.92,
+   "l": 23.79,
+   "c": 24.87,
+   "v": 3076600
   }
  ],
  "sr": {
-  "price": 23.5,
+  "price": 24.87,
   "resistance": [
-   24.23,
-   24.52
+   26.13,
+   26.84
   ],
   "support": [
-   22.66,
-   22.43
+   24.34,
+   23.78
   ],
   "strong_support": 21.6
  },
  "spark": [
-  22.69,
   24.31,
   23.85,
   22.91,
@@ -557,28 +556,12 @@
   24.6,
   24.99,
   24.99,
-  23.5
+  23.5,
+  24.87
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 35273,
-    "days": 6,
-    "max_shares": 17968,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

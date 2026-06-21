@@ -1,17 +1,9 @@
 {
  "stock": "AHT",
  "name": "Ashford Hospitality Trust Inc Common Stock",
- "price": 3.0,
- "change_pct": 1.01,
+ "price": 3.17,
+ "change_pct": 5.67,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 3.03,
-   "h": 3.05,
-   "l": 2.87,
-   "c": 2.92,
-   "v": 53700
-  },
   {
    "time": "2026-03-25",
    "o": 2.93,
@@ -483,12 +475,19 @@
    "l": 2.97,
    "c": 3.0,
    "v": 20300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 2.99,
+   "h": 3.18,
+   "l": 2.98,
+   "c": 3.17,
+   "v": 159000
   }
  ],
  "sr": {
-  "price": 3.0,
+  "price": 3.17,
   "resistance": [
-   3.14,
    3.21
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 2.5
  },
  "spark": [
-  2.92,
   2.85,
   2.76,
   2.86,
@@ -557,28 +555,12 @@
   2.96,
   3.06,
   2.97,
-  3.0
+  3.0,
+  3.17
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 6575,
-    "days": 3,
-    "max_shares": 4248,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

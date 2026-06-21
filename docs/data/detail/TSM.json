@@ -566,39 +566,22 @@
   "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 462.12,
-  "stop": 429.77,
-  "target": 542.99,
-  "atr_bracket": 542.99,
-  "measured_move": 480.6,
-  "target_band": [
-   480.6,
-   542.99
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.5,
-  "swing_stop": 398.31,
-  "chandelier": 411.64,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 295 分 / 134 留言",
+   "label": "HN 討論熱度 20 篇 / 420 分 / 153 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 295,
-    "comments": 134,
+    "points": 420,
+    "comments": 153,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-06-20",
+   "severity": "warn",
+   "as_of": "2026-06-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -613,7 +596,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

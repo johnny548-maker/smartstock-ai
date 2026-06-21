@@ -1,17 +1,9 @@
 {
  "stock": "AEBI",
  "name": "Aebi Schmidt Holding AG - Common Stock",
- "price": 12.01,
- "change_pct": -2.2,
+ "price": 12.33,
+ "change_pct": 2.66,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 9.83,
-   "h": 9.99,
-   "l": 9.07,
-   "c": 9.85,
-   "v": 1853700
-  },
   {
    "time": "2026-03-25",
    "o": 10.06,
@@ -483,13 +475,21 @@
    "l": 11.77,
    "c": 12.01,
    "v": 191300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 12.21,
+   "h": 12.44,
+   "l": 12.11,
+   "c": 12.33,
+   "v": 355500
   }
  ],
  "sr": {
-  "price": 12.01,
+  "price": 12.33,
   "resistance": [
-   12.13,
-   12.38
+   12.38,
+   12.52
   ],
   "support": [
    11.43,
@@ -498,7 +498,6 @@
   "strong_support": 8.89
  },
  "spark": [
-  9.85,
   9.57,
   9.22,
   9.39,
@@ -557,28 +556,12 @@
   12.34,
   12.2,
   12.28,
-  12.01
+  12.01,
+  12.33
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
-   "value": {
-    "total_shares": 6985,
-    "days": 7,
-    "max_shares": 3077,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

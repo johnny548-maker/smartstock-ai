@@ -1,17 +1,9 @@
 {
  "stock": "ASB",
  "name": "Associated Banc-Corp Common Stock",
- "price": 28.94,
- "change_pct": -1.36,
+ "price": 29.2,
+ "change_pct": 0.9,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 24.2,
-   "h": 24.96,
-   "l": 24.2,
-   "c": 24.74,
-   "v": 2677000
-  },
   {
    "time": "2026-03-25",
    "o": 25.01,
@@ -483,11 +475,21 @@
    "l": 28.69,
    "c": 28.94,
    "v": 3207900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 29.11,
+   "h": 29.47,
+   "l": 29.04,
+   "c": 29.2,
+   "v": 4116400
   }
  ],
  "sr": {
-  "price": 28.94,
-  "resistance": [],
+  "price": 29.2,
+  "resistance": [
+   29.96
+  ],
   "support": [
    27.0,
    26.87
@@ -495,7 +497,6 @@
   "strong_support": 26.83
  },
  "spark": [
-  24.74,
   25.02,
   25.16,
   24.66,
@@ -554,28 +555,12 @@
   29.56,
   29.22,
   29.34,
-  28.94
+  28.94,
+  29.2
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 40682,
-    "days": 2,
-    "max_shares": 40681,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

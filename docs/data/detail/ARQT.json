@@ -1,17 +1,9 @@
 {
  "stock": "ARQT",
  "name": "Arcutis Biotherapeutics, Inc. - Common stock",
- "price": 26.22,
- "change_pct": 2.14,
+ "price": 26.21,
+ "change_pct": -0.04,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 22.09,
-   "h": 22.25,
-   "l": 21.57,
-   "c": 21.83,
-   "v": 1199800
-  },
   {
    "time": "2026-03-25",
    "o": 22.03,
@@ -483,10 +475,18 @@
    "l": 25.66,
    "c": 26.22,
    "v": 1625100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 26.69,
+   "h": 27.0,
+   "l": 25.43,
+   "c": 26.21,
+   "v": 5480600
   }
  ],
  "sr": {
-  "price": 26.22,
+  "price": 26.21,
   "resistance": [],
   "support": [
    22.97,
@@ -495,7 +495,6 @@
   "strong_support": 19.3
  },
  "spark": [
-  21.83,
   22.74,
   22.38,
   21.22,
@@ -554,28 +553,12 @@
   24.38,
   25.58,
   25.67,
-  26.22
+  26.22,
+  26.21
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 16706,
-    "days": 2,
-    "max_shares": 14724,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

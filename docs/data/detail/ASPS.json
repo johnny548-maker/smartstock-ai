@@ -1,17 +1,9 @@
 {
  "stock": "ASPS",
  "name": "Altisource Portfolio Solutions S.A. - Common Stock",
- "price": 6.8,
- "change_pct": 0.15,
+ "price": 6.93,
+ "change_pct": 1.91,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 6.99,
-   "h": 7.13,
-   "l": 6.57,
-   "c": 6.64,
-   "v": 28400
-  },
   {
    "time": "2026-03-25",
    "o": 6.52,
@@ -483,10 +475,18 @@
    "l": 6.69,
    "c": 6.8,
    "v": 6700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 6.76,
+   "h": 6.94,
+   "l": 6.51,
+   "c": 6.93,
+   "v": 34500
   }
  ],
  "sr": {
-  "price": 6.8,
+  "price": 6.93,
   "resistance": [
    7.07,
    7.13
@@ -498,7 +498,6 @@
   "strong_support": 5.8
  },
  "spark": [
-  6.64,
   6.59,
   6.5,
   6.8,
@@ -557,28 +556,12 @@
   6.42,
   6.66,
   6.79,
-  6.8
+  6.8,
+  6.93
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 49,
-    "days": 2,
-    "max_shares": 32,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

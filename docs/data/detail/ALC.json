@@ -1,17 +1,9 @@
 {
  "stock": "ALC",
  "name": "Alcon Inc. Ordinary Shares",
- "price": 64.14,
- "change_pct": -2.58,
+ "price": 64.68,
+ "change_pct": 0.84,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 73.44,
-   "h": 74.32,
-   "l": 72.76,
-   "c": 73.88,
-   "v": 1074700
-  },
   {
    "time": "2026-03-25",
    "o": 74.54,
@@ -483,13 +475,21 @@
    "l": 63.81,
    "c": 64.14,
    "v": 3026000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 63.87,
+   "h": 64.92,
+   "l": 63.84,
+   "c": 64.68,
+   "v": 1999200
   }
  ],
  "sr": {
-  "price": 64.14,
+  "price": 64.68,
   "resistance": [
    68.0,
-   68.48
+   68.02
   ],
   "support": [
    64.01,
@@ -498,7 +498,6 @@
   "strong_support": 61.83
  },
  "spark": [
-  73.88,
   74.89,
   74.11,
   72.98,
@@ -557,28 +556,12 @@
   66.85,
   66.29,
   65.84,
-  64.14
+  64.14,
+  64.68
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 360,671 股交割失敗）",
-   "value": {
-    "total_shares": 360671,
-    "days": 10,
-    "max_shares": 172560,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

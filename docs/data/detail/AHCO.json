@@ -1,17 +1,9 @@
 {
  "stock": "AHCO",
  "name": "AdaptHealth Corp.  - Common Stock",
- "price": 9.53,
- "change_pct": -6.02,
+ "price": 9.65,
+ "change_pct": 1.26,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.46,
-   "h": 11.69,
-   "l": 10.41,
-   "c": 11.48,
-   "v": 2812100
-  },
   {
    "time": "2026-03-25",
    "o": 11.54,
@@ -483,10 +475,18 @@
    "l": 9.44,
    "c": 9.53,
    "v": 2337300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 9.55,
+   "h": 9.7,
+   "l": 9.53,
+   "c": 9.65,
+   "v": 2315700
   }
  ],
  "sr": {
-  "price": 9.53,
+  "price": 9.65,
   "resistance": [
    11.75,
    12.87
@@ -497,7 +497,6 @@
   "strong_support": 9.52
  },
  "spark": [
-  11.48,
   11.39,
   11.41,
   11.2,
@@ -556,28 +555,12 @@
   10.16,
   9.96,
   10.14,
-  9.53
+  9.53,
+  9.65
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 1246,
-    "days": 5,
-    "max_shares": 806,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

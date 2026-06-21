@@ -1,17 +1,9 @@
 {
  "stock": "AAUC",
  "name": "Allied Gold Corporation Common Shares",
- "price": 25.58,
- "change_pct": -5.01,
+ "price": 25.64,
+ "change_pct": 0.23,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 31.13,
-   "h": 31.16,
-   "l": 31.0,
-   "c": 31.14,
-   "v": 301000
-  },
   {
    "time": "2026-03-25",
    "o": 31.5,
@@ -483,10 +475,18 @@
    "l": 25.38,
    "c": 25.58,
    "v": 460700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 25.6,
+   "h": 26.28,
+   "l": 25.47,
+   "c": 25.64,
+   "v": 237900
   }
  ],
  "sr": {
-  "price": 25.58,
+  "price": 25.64,
   "resistance": [
    26.64,
    30.26
@@ -498,7 +498,6 @@
   "strong_support": 24.38
  },
  "spark": [
-  31.14,
   31.07,
   30.98,
   31.04,
@@ -557,28 +556,12 @@
   25.26,
   26.38,
   26.93,
-  25.58
+  25.58,
+  25.64
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 5462,
-    "days": 3,
-    "max_shares": 2713,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

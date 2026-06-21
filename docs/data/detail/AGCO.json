@@ -1,17 +1,9 @@
 {
  "stock": "AGCO",
  "name": "AGCO Corporation Common Stock",
- "price": 111.97,
- "change_pct": -1.1,
+ "price": 113.66,
+ "change_pct": 1.51,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 111.99,
-   "h": 117.58,
-   "l": 111.98,
-   "c": 116.07,
-   "v": 549900
-  },
   {
    "time": "2026-03-25",
    "o": 117.79,
@@ -483,22 +475,29 @@
    "l": 111.41,
    "c": 111.97,
    "v": 756700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 112.87,
+   "h": 114.91,
+   "l": 112.87,
+   "c": 113.66,
+   "v": 820300
   }
  ],
  "sr": {
-  "price": 111.97,
+  "price": 113.66,
   "resistance": [
    115.98,
-   118.66
+   116.96
   ],
   "support": [
-   111.3,
-   109.28
+   113.6,
+   112.88
   ],
   "strong_support": 108.01
  },
  "spark": [
-  116.07,
   117.06,
   115.64,
   113.24,
@@ -557,28 +556,12 @@
   112.49,
   112.54,
   113.21,
-  111.97
+  111.97,
+  113.66
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 5372,
-    "days": 2,
-    "max_shares": 4962,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

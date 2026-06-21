@@ -1,17 +1,9 @@
 {
  "stock": "ALKS",
  "name": "Alkermes plc - Ordinary Shares",
- "price": 44.51,
- "change_pct": 0.95,
+ "price": 44.99,
+ "change_pct": 1.08,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 27.39,
-   "h": 28.53,
-   "l": 27.31,
-   "c": 28.4,
-   "v": 2999200
-  },
   {
    "time": "2026-03-25",
    "o": 28.7,
@@ -483,21 +475,28 @@
    "l": 44.03,
    "c": 44.51,
    "v": 1417800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 45.25,
+   "h": 45.76,
+   "l": 43.98,
+   "c": 44.99,
+   "v": 7751300
   }
  ],
  "sr": {
-  "price": 44.51,
+  "price": 44.99,
   "resistance": [
    45.76
   ],
   "support": [
-   36.25,
-   33.12
+   43.34,
+   36.25
   ],
   "strong_support": 32.47
  },
  "spark": [
-  28.4,
   29.37,
   29.92,
   29.39,
@@ -556,28 +555,12 @@
   44.28,
   44.36,
   44.09,
-  44.51
+  44.51,
+  44.99
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日、累計 185,998 股交割失敗）",
-   "value": {
-    "total_shares": 185998,
-    "days": 2,
-    "max_shares": 182241,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

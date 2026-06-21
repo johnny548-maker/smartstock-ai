@@ -1,17 +1,9 @@
 {
  "stock": "ATLX",
  "name": "Atlas Lithium Corporation - Common Stock",
- "price": 3.83,
- "change_pct": -0.52,
+ "price": 3.91,
+ "change_pct": 2.09,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 4.06,
-   "h": 4.17,
-   "l": 4.0,
-   "c": 4.13,
-   "v": 345700
-  },
   {
    "time": "2026-03-25",
    "o": 4.25,
@@ -483,13 +475,21 @@
    "l": 3.83,
    "c": 3.83,
    "v": 546100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 3.86,
+   "h": 3.95,
+   "l": 3.83,
+   "c": 3.91,
+   "v": 444700
   }
  ],
  "sr": {
-  "price": 3.83,
+  "price": 3.91,
   "resistance": [
-   4.43,
-   4.57
+   4.17,
+   4.43
   ],
   "support": [
    3.32
@@ -497,7 +497,6 @@
   "strong_support": 3.32
  },
  "spark": [
-  4.13,
   4.22,
   4.04,
   4.01,
@@ -556,28 +555,12 @@
   3.73,
   4.01,
   3.85,
-  3.83
+  3.83,
+  3.91
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 8049,
-    "days": 4,
-    "max_shares": 6097,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

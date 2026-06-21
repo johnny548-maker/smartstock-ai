@@ -1,17 +1,9 @@
 {
  "stock": "ALRM",
  "name": "Alarm.com Holdings, Inc. - Common Stock",
- "price": 45.23,
- "change_pct": -1.63,
+ "price": 44.38,
+ "change_pct": -1.88,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 44.61,
-   "h": 44.61,
-   "l": 43.4,
-   "c": 43.53,
-   "v": 470300
-  },
   {
    "time": "2026-03-25",
    "o": 44.01,
@@ -483,22 +475,29 @@
    "l": 44.05,
    "c": 45.23,
    "v": 672600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 45.33,
+   "h": 45.33,
+   "l": 43.62,
+   "c": 44.38,
+   "v": 1481000
   }
  ],
  "sr": {
-  "price": 45.23,
+  "price": 44.38,
   "resistance": [
-   45.77,
-   46.39
+   45.12,
+   45.77
   ],
   "support": [
-   44.74,
-   43.59
+   43.59,
+   42.9
   ],
   "strong_support": 41.49
  },
  "spark": [
-  43.53,
   42.87,
   43.21,
   42.49,
@@ -557,28 +556,12 @@
   46.65,
   45.47,
   45.98,
-  45.23
+  45.23,
+  44.38
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 528,
-    "days": 3,
-    "max_shares": 367,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

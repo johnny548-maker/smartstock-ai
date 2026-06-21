@@ -1,17 +1,9 @@
 {
  "stock": "APLM",
  "name": "Apollomics Inc. - Class A Ordinary Shares",
- "price": 13.96,
- "change_pct": -3.66,
+ "price": 17.5,
+ "change_pct": 25.36,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 18.0,
-   "h": 18.47,
-   "l": 17.5,
-   "c": 17.54,
-   "v": 2400
-  },
   {
    "time": "2026-03-25",
    "o": 17.6,
@@ -483,22 +475,26 @@
    "l": 12.88,
    "c": 13.96,
    "v": 8100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 13.88,
+   "h": 18.93,
+   "l": 13.88,
+   "c": 17.5,
+   "v": 45600
   }
  ],
  "sr": {
-  "price": 13.96,
-  "resistance": [
-   15.28,
-   15.65
-  ],
+  "price": 17.5,
+  "resistance": [],
   "support": [
-   13.52,
-   13.27
+   14.0,
+   13.52
   ],
   "strong_support": 12.58
  },
  "spark": [
-  17.54,
   17.87,
   17.62,
   17.26,
@@ -557,28 +553,12 @@
   14.31,
   13.85,
   14.49,
-  13.96
+  13.96,
+  17.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 513,
-    "days": 2,
-    "max_shares": 372,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

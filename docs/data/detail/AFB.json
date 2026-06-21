@@ -1,17 +1,9 @@
 {
  "stock": "AFB",
  "name": "AllianceBernstein National Municipal Income Fund Inc",
- "price": 11.36,
- "change_pct": 0.62,
+ "price": 11.38,
+ "change_pct": 0.18,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.44,
-   "h": 10.44,
-   "l": 10.33,
-   "c": 10.38,
-   "v": 94200
-  },
   {
    "time": "2026-03-25",
    "o": 10.38,
@@ -483,10 +475,18 @@
    "l": 11.28,
    "c": 11.36,
    "v": 106800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 11.38,
+   "h": 11.41,
+   "l": 11.34,
+   "c": 11.38,
+   "v": 78800
   }
  ],
  "sr": {
-  "price": 11.36,
+  "price": 11.38,
   "resistance": [],
   "support": [
    11.08,
@@ -495,7 +495,6 @@
   "strong_support": 10.25
  },
  "spark": [
-  10.38,
   10.38,
   10.36,
   10.27,
@@ -554,28 +553,12 @@
   11.33,
   11.31,
   11.29,
-  11.36
+  11.36,
+  11.38
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
-   "value": {
-    "total_shares": 71874,
-    "days": 7,
-    "max_shares": 31428,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

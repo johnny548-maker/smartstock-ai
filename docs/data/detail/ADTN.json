@@ -1,17 +1,9 @@
 {
  "stock": "ADTN",
  "name": "ADTRAN Holdings, Inc. - Common Stock",
- "price": 15.09,
- "change_pct": 2.03,
+ "price": 15.18,
+ "change_pct": 0.6,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 11.91,
-   "h": 12.74,
-   "l": 11.84,
-   "c": 12.53,
-   "v": 2381100
-  },
   {
    "time": "2026-03-25",
    "o": 12.7,
@@ -483,10 +475,18 @@
    "l": 14.61,
    "c": 15.09,
    "v": 1800300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 15.69,
+   "h": 15.86,
+   "l": 15.1,
+   "c": 15.18,
+   "v": 3036000
   }
  ],
  "sr": {
-  "price": 15.09,
+  "price": 15.18,
   "resistance": [
    16.28,
    17.99
@@ -498,7 +498,6 @@
   "strong_support": 12.11
  },
  "spark": [
-  12.53,
   12.64,
   12.97,
   12.93,
@@ -557,28 +556,12 @@
   15.26,
   15.13,
   14.79,
-  15.09
+  15.09,
+  15.18
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 29446,
-    "days": 4,
-    "max_shares": 14794,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

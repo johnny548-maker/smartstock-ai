@@ -1,17 +1,9 @@
 {
  "stock": "ARE",
  "name": "Alexandria Real Estate Equities, Inc. Common Stock",
- "price": 49.21,
- "change_pct": -4.93,
+ "price": 51.03,
+ "change_pct": 3.7,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 46.86,
-   "h": 47.85,
-   "l": 46.4,
-   "c": 46.64,
-   "v": 1571900
-  },
   {
    "time": "2026-03-25",
    "o": 46.16,
@@ -483,22 +475,29 @@
    "l": 48.86,
    "c": 49.21,
    "v": 1320300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 50.31,
+   "h": 51.5,
+   "l": 49.79,
+   "c": 51.03,
+   "v": 2351100
   }
  ],
  "sr": {
-  "price": 49.21,
+  "price": 51.03,
   "resistance": [
    53.37,
-   55.14
+   54.69
   ],
   "support": [
-   47.88,
-   44.81
+   50.19,
+   47.88
   ],
   "strong_support": 39.41
  },
  "spark": [
-  46.64,
   46.54,
   47.26,
   45.32,
@@ -557,28 +556,12 @@
   53.17,
   52.38,
   51.76,
-  49.21
+  49.21,
+  51.03
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（累計 168,828 股交割失敗）",
-   "value": {
-    "total_shares": 168828,
-    "days": 1,
-    "max_shares": 168828,
-    "persistent": false,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

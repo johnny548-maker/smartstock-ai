@@ -1,17 +1,9 @@
 {
  "stock": "ATEC",
  "name": "Alphatec Holdings, Inc. - Common Stock",
- "price": 8.24,
- "change_pct": -2.37,
+ "price": 8.81,
+ "change_pct": 6.92,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 12.11,
-   "h": 12.21,
-   "l": 11.64,
-   "c": 11.75,
-   "v": 2038800
-  },
   {
    "time": "2026-03-25",
    "o": 11.8,
@@ -483,13 +475,21 @@
    "l": 8.22,
    "c": 8.24,
    "v": 5025700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 8.35,
+   "h": 8.83,
+   "l": 8.28,
+   "c": 8.81,
+   "v": 4526700
   }
  ],
  "sr": {
-  "price": 8.24,
+  "price": 8.81,
   "resistance": [
-   8.39,
-   8.42
+   10.81,
+   11.78
   ],
   "support": [
    7.86,
@@ -498,7 +498,6 @@
   "strong_support": 6.82
  },
  "spark": [
-  11.75,
   11.49,
   11.52,
   10.93,
@@ -557,28 +556,12 @@
   8.28,
   8.29,
   8.44,
-  8.24
+  8.24,
+  8.81
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 625,614 股交割失敗）",
-   "value": {
-    "total_shares": 625614,
-    "days": 5,
-    "max_shares": 163571,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

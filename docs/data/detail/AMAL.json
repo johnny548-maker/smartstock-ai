@@ -1,17 +1,9 @@
 {
  "stock": "AMAL",
  "name": "Amalgamated Financial Corp. - Common Stock",
- "price": 43.18,
- "change_pct": -1.82,
+ "price": 43.96,
+ "change_pct": 1.81,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 37.65,
-   "h": 38.84,
-   "l": 37.64,
-   "c": 38.4,
-   "v": 116300
-  },
   {
    "time": "2026-03-25",
    "o": 38.81,
@@ -483,12 +475,20 @@
    "l": 42.74,
    "c": 43.18,
    "v": 163000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 43.8,
+   "h": 44.5,
+   "l": 43.39,
+   "c": 43.96,
+   "v": 225300
   }
  ],
  "sr": {
-  "price": 43.18,
+  "price": 43.96,
   "resistance": [
-   43.83
+   45.23
   ],
   "support": [
    40.84,
@@ -497,7 +497,6 @@
   "strong_support": 36.25
  },
  "spark": [
-  38.4,
   38.41,
   38.18,
   37.79,
@@ -556,28 +555,12 @@
   44.65,
   43.68,
   43.98,
-  43.18
+  43.18,
+  43.96
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 4583,
-    "days": 4,
-    "max_shares": 4474,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AM",
  "name": "Antero Midstream Corporation Common Stock",
- "price": 21.39,
- "change_pct": -0.28,
+ "price": 21.71,
+ "change_pct": 1.5,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 22.49,
-   "h": 23.34,
-   "l": 22.49,
-   "c": 23.04,
-   "v": 2656800
-  },
   {
    "time": "2026-03-25",
    "o": 23.05,
@@ -483,22 +475,29 @@
    "l": 21.28,
    "c": 21.39,
    "v": 2934500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 21.35,
+   "h": 21.86,
+   "l": 21.19,
+   "c": 21.71,
+   "v": 6315800
   }
  ],
  "sr": {
-  "price": 21.39,
+  "price": 21.71,
   "resistance": [
    21.92,
    22.25
   ],
   "support": [
-   21.05,
-   21.01
+   21.15,
+   21.05
   ],
   "strong_support": 20.19
  },
  "spark": [
-  23.04,
   23.36,
   23.31,
   22.95,
@@ -557,28 +556,12 @@
   21.67,
   21.33,
   21.45,
-  21.39
+  21.39,
+  21.71
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 48487,
-    "days": 2,
-    "max_shares": 30182,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

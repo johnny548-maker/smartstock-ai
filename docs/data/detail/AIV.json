@@ -2,16 +2,8 @@
  "stock": "AIV",
  "name": "Apartment Investment and Management Company Common Stock",
  "price": 2.9,
- "change_pct": -0.34,
+ "change_pct": -0.0,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 2.84,
-   "h": 2.85,
-   "l": 2.8,
-   "c": 2.81,
-   "v": 2724100
-  },
   {
    "time": "2026-03-25",
    "o": 2.82,
@@ -483,6 +475,14 @@
    "l": 2.86,
    "c": 2.9,
    "v": 3061400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 2.89,
+   "h": 2.93,
+   "l": 2.89,
+   "c": 2.9,
+   "v": 2420800
   }
  ],
  "sr": {
@@ -493,12 +493,11 @@
   ],
   "support": [
    2.89,
-   2.81
+   2.85
   ],
   "strong_support": 2.74
  },
  "spark": [
-  2.81,
   2.83,
   2.8,
   2.75,
@@ -557,28 +556,12 @@
   2.88,
   2.87,
   2.91,
+  2.9,
   2.9
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 18645,
-    "days": 2,
-    "max_shares": 14677,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

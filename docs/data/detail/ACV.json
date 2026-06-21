@@ -1,17 +1,9 @@
 {
  "stock": "ACV",
  "name": "Virtus Diversified Income & Convertible Fund Common Shares of Beneficial Interest",
- "price": 28.12,
- "change_pct": 0.29,
+ "price": 28.19,
+ "change_pct": 0.25,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 24.47,
-   "h": 25.01,
-   "l": 24.29,
-   "c": 24.34,
-   "v": 20900
-  },
   {
    "time": "2026-03-25",
    "o": 24.36,
@@ -483,12 +475,21 @@
    "l": 27.24,
    "c": 28.12,
    "v": 13700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 28.44,
+   "h": 28.44,
+   "l": 28.01,
+   "c": 28.19,
+   "v": 15600
   }
  ],
  "sr": {
-  "price": 28.12,
+  "price": 28.19,
   "resistance": [
-   28.36
+   28.36,
+   28.5
   ],
   "support": [
    26.3,
@@ -497,7 +498,6 @@
   "strong_support": 23.17
  },
  "spark": [
-  24.34,
   24.89,
   24.36,
   23.72,
@@ -556,28 +556,12 @@
   27.41,
   28.03,
   28.04,
-  28.12
+  28.12,
+  28.19
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 48,
-    "days": 3,
-    "max_shares": 40,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

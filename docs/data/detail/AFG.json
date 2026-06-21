@@ -1,17 +1,9 @@
 {
  "stock": "AFG",
  "name": "American Financial Group, Inc. Common Stock",
- "price": 133.35,
- "change_pct": -0.96,
+ "price": 132.9,
+ "change_pct": -0.34,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 126.09,
-   "h": 127.35,
-   "l": 125.36,
-   "c": 126.87,
-   "v": 400000
-  },
   {
    "time": "2026-03-25",
    "o": 127.66,
@@ -483,13 +475,21 @@
    "l": 132.55,
    "c": 133.35,
    "v": 723200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 133.35,
+   "h": 133.48,
+   "l": 131.4,
+   "c": 132.9,
+   "v": 1319000
   }
  ],
  "sr": {
-  "price": 133.35,
+  "price": 132.9,
   "resistance": [
-   134.87,
-   138.0
+   133.04,
+   133.13
   ],
   "support": [
    130.03,
@@ -498,7 +498,6 @@
   "strong_support": 123.09
  },
  "spark": [
-  126.87,
   126.0,
   128.06,
   124.93,
@@ -557,28 +556,12 @@
   134.1,
   133.8,
   134.64,
-  133.35
+  133.35,
+  132.9
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 120,
-    "days": 2,
-    "max_shares": 104,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

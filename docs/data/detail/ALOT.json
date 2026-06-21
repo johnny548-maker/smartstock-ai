@@ -1,17 +1,9 @@
 {
  "stock": "ALOT",
  "name": "AstroNova, Inc. - Common Stock",
- "price": 28.35,
- "change_pct": 69.86,
+ "price": 28.57,
+ "change_pct": 0.78,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 8.52,
-   "h": 8.67,
-   "l": 8.35,
-   "c": 8.35,
-   "v": 6800
-  },
   {
    "time": "2026-03-25",
    "o": 8.59,
@@ -483,10 +475,18 @@
    "l": 28.25,
    "c": 28.35,
    "v": 2394600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 28.36,
+   "h": 28.6,
+   "l": 28.32,
+   "c": 28.57,
+   "v": 1027200
   }
  ],
  "sr": {
-  "price": 28.35,
+  "price": 28.57,
   "resistance": [],
   "support": [
    14.35,
@@ -495,7 +495,6 @@
   "strong_support": 13.39
  },
  "spark": [
-  8.35,
   8.94,
   9.05,
   9.5,
@@ -554,28 +553,12 @@
   16.97,
   16.66,
   16.69,
-  28.35
+  28.35,
+  28.57
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 13047,
-    "days": 3,
-    "max_shares": 4349,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ADMA",
  "name": "ADMA Biologics Inc - Common Stock",
- "price": 8.42,
- "change_pct": -1.86,
+ "price": 8.31,
+ "change_pct": -1.31,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 13.4,
-   "h": 13.51,
-   "l": 10.9,
-   "c": 11.33,
-   "v": 22855300
-  },
   {
    "time": "2026-03-25",
    "o": 11.45,
@@ -483,10 +475,18 @@
    "l": 8.39,
    "c": 8.42,
    "v": 3223400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 8.52,
+   "h": 8.62,
+   "l": 8.29,
+   "c": 8.31,
+   "v": 8922000
   }
  ],
  "sr": {
-  "price": 8.42,
+  "price": 8.31,
   "resistance": [
    8.78,
    8.79
@@ -498,7 +498,6 @@
   "strong_support": 7.21
  },
  "spark": [
-  11.33,
   9.63,
   8.29,
   9.25,
@@ -557,28 +556,12 @@
   8.21,
   8.5,
   8.58,
-  8.42
+  8.42,
+  8.31
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 2618,
-    "days": 4,
-    "max_shares": 1324,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

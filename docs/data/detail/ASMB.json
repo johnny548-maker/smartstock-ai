@@ -1,17 +1,9 @@
 {
  "stock": "ASMB",
  "name": "Assembly Biosciences, Inc. - Common Stock",
- "price": 24.15,
- "change_pct": 3.51,
+ "price": 24.44,
+ "change_pct": 1.2,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 28.1,
-   "h": 28.45,
-   "l": 27.5,
-   "c": 28.23,
-   "v": 70500
-  },
   {
    "time": "2026-03-25",
    "o": 28.45,
@@ -483,10 +475,18 @@
    "l": 23.2,
    "c": 24.15,
    "v": 133800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 24.6,
+   "h": 25.93,
+   "l": 24.22,
+   "c": 24.44,
+   "v": 298900
   }
  ],
  "sr": {
-  "price": 24.15,
+  "price": 24.44,
   "resistance": [
    30.19,
    30.72
@@ -497,7 +497,6 @@
   "strong_support": 21.8
  },
  "spark": [
-  28.23,
   28.67,
   28.87,
   27.7,
@@ -556,28 +555,12 @@
   22.96,
   23.34,
   23.33,
-  24.15
+  24.15,
+  24.44
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 666,
-    "days": 2,
-    "max_shares": 463,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

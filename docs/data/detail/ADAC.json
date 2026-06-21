@@ -1,17 +1,9 @@
 {
  "stock": "ADAC",
  "name": "American Drive Acquisition Company - Class A Ordinary Shares",
- "price": 10.02,
- "change_pct": -0.0,
+ "price": 10.03,
+ "change_pct": 0.1,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 9.9,
-   "h": 9.9,
-   "l": 9.9,
-   "c": 9.9,
-   "v": 100
-  },
   {
    "time": "2026-03-25",
    "o": 9.9,
@@ -483,10 +475,18 @@
    "l": 10.01,
    "c": 10.02,
    "v": 7900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 10.02,
+   "h": 10.03,
+   "l": 10.01,
+   "c": 10.03,
+   "v": 5200
   }
  ],
  "sr": {
-  "price": 10.02,
+  "price": 10.03,
   "resistance": [
    10.73
   ],
@@ -497,7 +497,6 @@
   "strong_support": 9.87
  },
  "spark": [
-  9.9,
   9.9,
   9.9,
   9.9,
@@ -556,28 +555,12 @@
   10.03,
   10.02,
   10.02,
-  10.02
+  10.02,
+  10.03
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 3,
-    "days": 3,
-    "max_shares": 1,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

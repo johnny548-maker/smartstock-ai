@@ -1,17 +1,9 @@
 {
  "stock": "AMTM",
  "name": "Amentum Holdings, Inc. Common Stock",
- "price": 21.5,
- "change_pct": -2.98,
+ "price": 21.66,
+ "change_pct": 0.74,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 26.48,
-   "h": 26.84,
-   "l": 26.14,
-   "c": 26.59,
-   "v": 1704000
-  },
   {
    "time": "2026-03-25",
    "o": 26.96,
@@ -483,19 +475,26 @@
    "l": 21.38,
    "c": 21.5,
    "v": 1986000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 21.4,
+   "h": 21.67,
+   "l": 20.99,
+   "c": 21.66,
+   "v": 3296500
   }
  ],
  "sr": {
-  "price": 21.5,
+  "price": 21.66,
   "resistance": [
-   24.53,
-   25.53
+   23.45,
+   24.53
   ],
   "support": [],
   "strong_support": 21.74
  },
  "spark": [
-  26.59,
   26.74,
   26.54,
   25.84,
@@ -554,28 +553,12 @@
   22.86,
   22.42,
   22.16,
-  21.5
+  21.5,
+  21.66
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 7741,
-    "days": 3,
-    "max_shares": 6469,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

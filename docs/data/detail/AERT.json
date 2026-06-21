@@ -1,17 +1,9 @@
 {
  "stock": "AERT",
  "name": "Aeries Technology, Inc. - Class A Ordinary Share",
- "price": 6.99,
- "change_pct": 8.88,
+ "price": 7.22,
+ "change_pct": 3.29,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 2.64,
-   "h": 2.76,
-   "l": 2.4,
-   "c": 2.44,
-   "v": 74300
-  },
   {
    "time": "2026-03-25",
    "o": 2.68,
@@ -483,10 +475,18 @@
    "l": 6.1,
    "c": 6.99,
    "v": 67700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 7.13,
+   "h": 7.3,
+   "l": 6.59,
+   "c": 7.22,
+   "v": 62600
   }
  ],
  "sr": {
-  "price": 6.99,
+  "price": 7.22,
   "resistance": [],
   "support": [
    5.6,
@@ -495,7 +495,6 @@
   "strong_support": 2.43
  },
  "spark": [
-  2.44,
   2.44,
   2.45,
   2.48,
@@ -554,28 +553,12 @@
   5.8,
   5.37,
   6.42,
-  6.99
+  6.99,
+  7.22
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 169,664 股交割失敗）",
-   "value": {
-    "total_shares": 169664,
-    "days": 8,
-    "max_shares": 47229,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

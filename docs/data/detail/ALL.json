@@ -1,17 +1,9 @@
 {
  "stock": "ALL",
  "name": "Allstate Corporation (The) Common Stock",
- "price": 221.66,
- "change_pct": -0.64,
+ "price": 221.17,
+ "change_pct": -0.22,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 206.75,
-   "h": 209.2,
-   "l": 206.02,
-   "c": 206.22,
-   "v": 1298100
-  },
   {
    "time": "2026-03-25",
    "o": 206.32,
@@ -483,10 +475,18 @@
    "l": 221.08,
    "c": 221.66,
    "v": 1577200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 221.65,
+   "h": 222.21,
+   "l": 218.29,
+   "c": 221.17,
+   "v": 5024700
   }
  ],
  "sr": {
-  "price": 221.66,
+  "price": 221.17,
   "resistance": [
    225.27,
    226.43
@@ -498,7 +498,6 @@
   "strong_support": 200.55
  },
  "spark": [
-  206.22,
   203.64,
   206.07,
   201.65,
@@ -557,28 +556,12 @@
   221.63,
   221.81,
   223.09,
-  221.66
+  221.66,
+  221.17
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 53307,
-    "days": 3,
-    "max_shares": 49708,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AN",
  "name": "AutoNation, Inc. Common Stock",
- "price": 186.36,
- "change_pct": -4.85,
+ "price": 188.74,
+ "change_pct": 1.28,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 187.35,
-   "h": 191.89,
-   "l": 186.55,
-   "c": 189.66,
-   "v": 392700
-  },
   {
    "time": "2026-03-25",
    "o": 190.75,
@@ -483,10 +475,18 @@
    "l": 185.17,
    "c": 186.36,
    "v": 401200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 188.88,
+   "h": 191.0,
+   "l": 186.87,
+   "c": 188.74,
+   "v": 597900
   }
  ],
  "sr": {
-  "price": 186.36,
+  "price": 188.74,
   "resistance": [
    199.19,
    199.99
@@ -498,7 +498,6 @@
   "strong_support": 176.62
  },
  "spark": [
-  189.66,
   193.55,
   195.0,
   192.48,
@@ -557,28 +556,12 @@
   191.53,
   193.39,
   195.86,
-  186.36
+  186.36,
+  188.74
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 446,
-    "days": 2,
-    "max_shares": 232,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

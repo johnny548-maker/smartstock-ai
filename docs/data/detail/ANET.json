@@ -1,6 +1,6 @@
 {
  "stock": "ANET",
- "name": "Arista Networks, Inc. Common Stock",
+ "name": "Arista Networks",
  "price": 169.67,
  "change_pct": 2.87,
  "ohlc": [
@@ -495,7 +495,7 @@
    162.25,
    145.32
   ],
-  "strong_support": 115.42
+  "strong_support": 59.43
  },
  "spark": [
   135.01,
@@ -563,22 +563,5 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日、累計 162,478 股交割失敗）",
-   "value": {
-    "total_shares": 162478,
-    "days": 2,
-    "max_shares": 162476,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "ACT",
  "name": "Enact Holdings, Inc. - Common Stock",
- "price": 42.64,
- "change_pct": -1.14,
+ "price": 42.39,
+ "change_pct": -0.59,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 39.91,
-   "h": 40.55,
-   "l": 39.75,
-   "c": 40.13,
-   "v": 273900
-  },
   {
    "time": "2026-03-25",
    "o": 40.47,
@@ -483,10 +475,18 @@
    "l": 42.2,
    "c": 42.64,
    "v": 302500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 43.08,
+   "h": 43.1,
+   "l": 42.1,
+   "c": 42.39,
+   "v": 938300
   }
  ],
  "sr": {
-  "price": 42.64,
+  "price": 42.39,
   "resistance": [
    42.84,
    42.89
@@ -498,7 +498,6 @@
   "strong_support": 39.58
  },
  "spark": [
-  40.13,
   40.07,
   40.57,
   39.94,
@@ -557,28 +556,12 @@
   42.41,
   42.34,
   43.13,
-  42.64
+  42.64,
+  42.39
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 2640,
-    "days": 2,
-    "max_shares": 2473,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

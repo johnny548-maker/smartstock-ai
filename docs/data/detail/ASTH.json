@@ -1,17 +1,9 @@
 {
  "stock": "ASTH",
  "name": "Astrana Health Inc. - Common Stock",
- "price": 38.16,
- "change_pct": -0.57,
+ "price": 39.17,
+ "change_pct": 2.65,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 23.5,
-   "h": 24.17,
-   "l": 23.0,
-   "c": 24.02,
-   "v": 335200
-  },
   {
    "time": "2026-03-25",
    "o": 24.32,
@@ -483,13 +475,21 @@
    "l": 37.75,
    "c": 38.16,
    "v": 429400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 38.89,
+   "h": 39.34,
+   "l": 38.42,
+   "c": 39.17,
+   "v": 936300
   }
  ],
  "sr": {
-  "price": 38.16,
+  "price": 39.17,
   "resistance": [
-   39.09,
-   39.87
+   39.87,
+   39.93
   ],
   "support": [
    36.95,
@@ -498,7 +498,6 @@
   "strong_support": 23.0
  },
  "spark": [
-  24.02,
   24.48,
   24.27,
   24.19,
@@ -557,28 +556,12 @@
   38.62,
   38.38,
   38.38,
-  38.16
+  38.16,
+  39.17
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 93,
-    "days": 2,
-    "max_shares": 92,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

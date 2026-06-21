@@ -1,17 +1,9 @@
 {
  "stock": "AGL",
  "name": "agilon health, inc. Common Stock",
- "price": 104.67,
- "change_pct": -7.59,
+ "price": 113.8,
+ "change_pct": 8.72,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.75,
-   "h": 12.18,
-   "l": 9.5,
-   "c": 10.93,
-   "v": 223252
-  },
   {
    "time": "2026-03-25",
    "o": 11.0,
@@ -483,10 +475,18 @@
    "l": 104.29,
    "c": 104.67,
    "v": 288000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 105.0,
+   "h": 114.41,
+   "l": 102.32,
+   "c": 113.8,
+   "v": 417100
   }
  ],
  "sr": {
-  "price": 104.67,
+  "price": 113.8,
   "resistance": [
    118.25
   ],
@@ -497,7 +497,6 @@
   "strong_support": 7.48
  },
  "spark": [
-  10.93,
   10.68,
   9.52,
   9.9,
@@ -556,28 +555,12 @@
   112.91,
   114.34,
   113.27,
-  104.67
+  104.67,
+  113.8
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日）",
-   "value": {
-    "total_shares": 12328,
-    "days": 9,
-    "max_shares": 10360,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

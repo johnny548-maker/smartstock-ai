@@ -1,17 +1,9 @@
 {
  "stock": "AIOS",
  "name": "AIOS Tech Inc. - Class A Common Shares",
- "price": 12.2,
- "change_pct": -2.48,
+ "price": 13.45,
+ "change_pct": 10.25,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 12.6,
-   "h": 12.66,
-   "l": 11.12,
-   "c": 11.22,
-   "v": 1170
-  },
   {
    "time": "2026-03-25",
    "o": 11.78,
@@ -483,22 +475,29 @@
    "l": 10.8,
    "c": 12.2,
    "v": 109300
+  },
+  {
+   "time": "2026-06-18",
+   "o": 12.35,
+   "h": 13.45,
+   "l": 11.23,
+   "c": 13.45,
+   "v": 64000
   }
  ],
  "sr": {
-  "price": 12.2,
+  "price": 13.45,
   "resistance": [
-   12.4,
-   15.2
+   15.2,
+   16.4
   ],
   "support": [
-   9.2,
-   6.54
+   13.01,
+   9.2
   ],
   "strong_support": 6.54
  },
  "spark": [
-  11.22,
   11.62,
   10.66,
   9.6,
@@ -557,28 +556,12 @@
   12.0,
   12.25,
   12.51,
-  12.2
+  12.2,
+  13.45
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 260,300 股交割失敗）",
-   "value": {
-    "total_shares": 260300,
-    "days": 10,
-    "max_shares": 89958,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

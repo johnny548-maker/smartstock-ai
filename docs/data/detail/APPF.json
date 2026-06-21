@@ -1,17 +1,9 @@
 {
  "stock": "APPF",
  "name": "AppFolio, Inc. - Class A Common Stock",
- "price": 148.59,
- "change_pct": -5.89,
+ "price": 151.5,
+ "change_pct": 1.96,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 165.05,
-   "h": 165.05,
-   "l": 158.71,
-   "c": 161.05,
-   "v": 473300
-  },
   {
    "time": "2026-03-25",
    "o": 163.23,
@@ -483,22 +475,29 @@
    "l": 148.32,
    "c": 148.59,
    "v": 375600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 147.76,
+   "h": 152.91,
+   "l": 146.19,
+   "c": 151.5,
+   "v": 855800
   }
  ],
  "sr": {
-  "price": 148.59,
+  "price": 151.5,
   "resistance": [
    163.73,
    168.18
   ],
   "support": [
-   145.14,
-   142.73
+   150.12,
+   149.46
   ],
   "strong_support": 142.73
  },
  "spark": [
-  161.05,
   158.57,
   158.63,
   155.68,
@@ -557,28 +556,12 @@
   161.21,
   158.21,
   157.89,
-  148.59
+  148.59,
+  151.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 7461,
-    "days": 3,
-    "max_shares": 4941,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

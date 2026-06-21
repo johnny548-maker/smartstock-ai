@@ -1,17 +1,9 @@
 {
  "stock": "ADT",
  "name": "ADT Inc. Common Stock",
- "price": 6.48,
- "change_pct": -3.57,
+ "price": 6.58,
+ "change_pct": 1.54,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 6.45,
-   "h": 6.53,
-   "l": 6.45,
-   "c": 6.49,
-   "v": 8136100
-  },
   {
    "time": "2026-03-25",
    "o": 6.61,
@@ -483,21 +475,29 @@
    "l": 6.45,
    "c": 6.48,
    "v": 8214700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 6.46,
+   "h": 6.63,
+   "l": 6.45,
+   "c": 6.58,
+   "v": 17846400
   }
  ],
  "sr": {
-  "price": 6.48,
+  "price": 6.58,
   "resistance": [
    6.65,
    6.77
   ],
   "support": [
+   6.55,
    6.38
   ],
   "strong_support": 6.38
  },
  "spark": [
-  6.49,
   6.56,
   6.57,
   6.41,
@@ -556,28 +556,12 @@
   6.8,
   6.7,
   6.72,
-  6.48
+  6.48,
+  6.58
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 310,478 股交割失敗）",
-   "value": {
-    "total_shares": 310478,
-    "days": 3,
-    "max_shares": 299970,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

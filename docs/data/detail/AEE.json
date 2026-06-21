@@ -1,17 +1,9 @@
 {
  "stock": "AEE",
  "name": "Ameren Corporation Common Stock",
- "price": 108.92,
- "change_pct": -1.41,
+ "price": 108.67,
+ "change_pct": -0.23,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 105.64,
-   "h": 108.08,
-   "l": 105.6,
-   "c": 106.94,
-   "v": 1463600
-  },
   {
    "time": "2026-03-25",
    "o": 107.83,
@@ -483,22 +475,29 @@
    "l": 108.34,
    "c": 108.92,
    "v": 1664400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 109.11,
+   "h": 110.09,
+   "l": 108.17,
+   "c": 108.67,
+   "v": 2403600
   }
  ],
  "sr": {
-  "price": 108.92,
+  "price": 108.67,
   "resistance": [
    111.38,
    112.33
   ],
   "support": [
-   107.75,
-   106.95
+   107.9,
+   107.75
   ],
   "strong_support": 104.32
  },
  "spark": [
-  106.94,
   107.05,
   107.81,
   107.96,
@@ -557,28 +556,12 @@
   109.0,
   109.57,
   110.48,
-  108.92
+  108.92,
+  108.67
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 93,
-    "days": 3,
-    "max_shares": 31,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

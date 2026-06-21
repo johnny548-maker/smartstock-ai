@@ -1,17 +1,9 @@
 {
  "stock": "ABEO",
  "name": "Abeona Therapeutics Inc. - Common Stock",
- "price": 5.65,
- "change_pct": -0.0,
+ "price": 5.77,
+ "change_pct": 2.12,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 4.39,
-   "h": 4.43,
-   "l": 4.29,
-   "c": 4.33,
-   "v": 1848700
-  },
   {
    "time": "2026-03-25",
    "o": 4.35,
@@ -483,13 +475,21 @@
    "l": 5.56,
    "c": 5.65,
    "v": 2193700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 5.76,
+   "h": 5.86,
+   "l": 5.68,
+   "c": 5.77,
+   "v": 1111200
   }
  ],
  "sr": {
-  "price": 5.65,
+  "price": 5.77,
   "resistance": [
-   5.74,
-   5.93
+   5.93,
+   5.95
   ],
   "support": [
    5.24,
@@ -498,7 +498,6 @@
   "strong_support": 4.23
  },
  "spark": [
-  4.33,
   4.42,
   4.33,
   4.29,
@@ -557,28 +556,12 @@
   5.53,
   5.67,
   5.65,
-  5.65
+  5.65,
+  5.77
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 56396,
-    "days": 4,
-    "max_shares": 46445,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AESI",
  "name": "Atlas Energy Solutions Inc. Common Stock",
- "price": 16.08,
- "change_pct": -1.71,
+ "price": 16.2,
+ "change_pct": 0.75,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 12.9,
-   "h": 13.81,
-   "l": 12.9,
-   "c": 13.47,
-   "v": 2362100
-  },
   {
    "time": "2026-03-25",
    "o": 13.27,
@@ -483,10 +475,18 @@
    "l": 16.02,
    "c": 16.08,
    "v": 1605900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 16.32,
+   "h": 16.34,
+   "l": 15.56,
+   "c": 16.2,
+   "v": 3109300
   }
  ],
  "sr": {
-  "price": 16.08,
+  "price": 16.2,
   "resistance": [
    18.72,
    19.38
@@ -498,7 +498,6 @@
   "strong_support": 10.52
  },
  "spark": [
-  13.47,
   13.56,
   14.0,
   13.22,
@@ -557,28 +556,12 @@
   16.97,
   16.61,
   16.36,
-  16.08
+  16.08,
+  16.2
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 550,550 股交割失敗）",
-   "value": {
-    "total_shares": 550550,
-    "days": 9,
-    "max_shares": 272407,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "APC",
  "name": "ARKO Petroleum Corp. - Class A Common Stock",
- "price": 18.56,
- "change_pct": -5.02,
+ "price": 18.39,
+ "change_pct": -0.92,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 17.81,
-   "h": 17.92,
-   "l": 17.67,
-   "c": 17.75,
-   "v": 53500
-  },
   {
    "time": "2026-03-25",
    "o": 17.71,
@@ -483,10 +475,18 @@
    "l": 18.34,
    "c": 18.56,
    "v": 248600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 18.57,
+   "h": 20.34,
+   "l": 18.19,
+   "c": 18.39,
+   "v": 298300
   }
  ],
  "sr": {
-  "price": 18.56,
+  "price": 18.39,
   "resistance": [
    18.89,
    18.96
@@ -498,7 +498,6 @@
   "strong_support": 16.84
  },
  "spark": [
-  17.75,
   17.8,
   17.69,
   17.4,
@@ -557,28 +556,12 @@
   20.52,
   19.43,
   19.54,
-  18.56
+  18.56,
+  18.39
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 534,
-    "days": 3,
-    "max_shares": 307,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

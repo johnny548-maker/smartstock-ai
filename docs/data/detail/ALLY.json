@@ -1,17 +1,9 @@
 {
  "stock": "ALLY",
  "name": "Ally Financial Inc. Common Stock",
- "price": 45.5,
- "change_pct": -0.35,
+ "price": 45.49,
+ "change_pct": -0.02,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 38.38,
-   "h": 39.6,
-   "l": 38.38,
-   "c": 39.25,
-   "v": 3316700
-  },
   {
    "time": "2026-03-25",
    "o": 39.69,
@@ -483,10 +475,18 @@
    "l": 45.1,
    "c": 45.5,
    "v": 3803800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 46.01,
+   "h": 46.46,
+   "l": 45.43,
+   "c": 45.49,
+   "v": 4230200
   }
  ],
  "sr": {
-  "price": 45.5,
+  "price": 45.49,
   "resistance": [
    46.7
   ],
@@ -497,7 +497,6 @@
   "strong_support": 37.4
  },
  "spark": [
-  39.25,
   38.96,
   38.88,
   37.53,
@@ -556,28 +555,12 @@
   44.37,
   45.44,
   45.66,
-  45.5
+  45.5,
+  45.49
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 2487,
-    "days": 2,
-    "max_shares": 2472,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

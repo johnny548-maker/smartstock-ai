@@ -1,17 +1,9 @@
 {
  "stock": "AGBK",
  "name": "AGI Inc Class A Common Shares",
- "price": 7.16,
- "change_pct": 2.29,
+ "price": 6.93,
+ "change_pct": -3.21,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 8.5,
-   "h": 9.0,
-   "l": 8.01,
-   "c": 8.23,
-   "v": 830300
-  },
   {
    "time": "2026-03-25",
    "o": 8.41,
@@ -483,22 +475,29 @@
    "l": 7.01,
    "c": 7.16,
    "v": 186800
+  },
+  {
+   "time": "2026-06-18",
+   "o": 7.28,
+   "h": 7.32,
+   "l": 6.79,
+   "c": 6.93,
+   "v": 595500
   }
  ],
  "sr": {
-  "price": 7.16,
+  "price": 6.93,
   "resistance": [
    7.39,
-   7.56
+   7.49
   ],
   "support": [
-   7.12,
-   6.98
+   6.85,
+   6.46
   ],
   "strong_support": 6.4
  },
  "spark": [
-  8.23,
   7.69,
   7.32,
   6.91,
@@ -557,28 +556,12 @@
   7.17,
   6.94,
   7.0,
-  7.16
+  7.16,
+  6.93
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 163,813 股交割失敗）",
-   "value": {
-    "total_shares": 163813,
-    "days": 4,
-    "max_shares": 69139,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

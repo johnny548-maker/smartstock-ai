@@ -1,17 +1,9 @@
 {
  "stock": "ASTE",
  "name": "Astec Industries, Inc. - Common Stock",
- "price": 53.17,
- "change_pct": 1.14,
+ "price": 56.12,
+ "change_pct": 5.55,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 51.62,
-   "h": 54.44,
-   "l": 51.62,
-   "c": 53.66,
-   "v": 141800
-  },
   {
    "time": "2026-03-25",
    "o": 54.4,
@@ -483,13 +475,21 @@
    "l": 52.61,
    "c": 53.17,
    "v": 148000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 54.36,
+   "h": 56.28,
+   "l": 54.0,
+   "c": 56.12,
+   "v": 341100
   }
  ],
  "sr": {
-  "price": 53.17,
+  "price": 56.12,
   "resistance": [
-   54.17,
-   55.13
+   56.56,
+   62.29
   ],
   "support": [
    51.06,
@@ -498,7 +498,6 @@
   "strong_support": 45.89
  },
  "spark": [
-  53.66,
   54.73,
   52.96,
   52.0,
@@ -557,28 +556,12 @@
   51.37,
   52.17,
   52.57,
-  53.17
+  53.17,
+  56.12
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 154,
-    "days": 2,
-    "max_shares": 93,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

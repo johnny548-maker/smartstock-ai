@@ -1,17 +1,9 @@
 {
  "stock": "AUBN",
  "name": "Auburn National Bancorporation, Inc. - Common Stock",
- "price": 25.0,
- "change_pct": 0.0,
+ "price": 25.4,
+ "change_pct": 1.6,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 22.69,
-   "h": 22.72,
-   "l": 21.77,
-   "c": 22.72,
-   "v": 9200
-  },
   {
    "time": "2026-03-25",
    "o": 22.89,
@@ -483,13 +475,21 @@
    "l": 25.0,
    "c": 25.0,
    "v": 500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 25.0,
+   "h": 25.4,
+   "l": 25.0,
+   "c": 25.4,
+   "v": 2800
   }
  ],
  "sr": {
-  "price": 25.0,
+  "price": 25.4,
   "resistance": [
-   25.23,
-   25.55
+   25.55,
+   25.68
   ],
   "support": [
    23.27,
@@ -498,7 +498,6 @@
   "strong_support": 22.64
  },
  "spark": [
-  22.72,
   22.7,
   22.7,
   23.69,
@@ -557,28 +556,12 @@
   24.8,
   24.95,
   25.0,
-  25.0
+  25.0,
+  25.4
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 370,
-    "days": 2,
-    "max_shares": 368,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

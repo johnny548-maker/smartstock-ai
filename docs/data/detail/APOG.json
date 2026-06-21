@@ -1,17 +1,9 @@
 {
  "stock": "APOG",
  "name": "Apogee Enterprises, Inc. - Common Stock",
- "price": 39.89,
- "change_pct": -0.57,
+ "price": 41.27,
+ "change_pct": 3.46,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 32.08,
-   "h": 32.66,
-   "l": 31.69,
-   "c": 32.17,
-   "v": 753300
-  },
   {
    "time": "2026-03-25",
    "o": 32.68,
@@ -483,10 +475,18 @@
    "l": 39.73,
    "c": 39.89,
    "v": 302900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 40.29,
+   "h": 42.11,
+   "l": 40.29,
+   "c": 41.27,
+   "v": 512900
   }
  ],
  "sr": {
-  "price": 39.89,
+  "price": 41.27,
   "resistance": [],
   "support": [
    36.81,
@@ -495,7 +495,6 @@
   "strong_support": 32.84
  },
  "spark": [
-  32.17,
   32.63,
   32.47,
   32.21,
@@ -554,28 +553,12 @@
   40.14,
   40.04,
   40.12,
-  39.89
+  39.89,
+  41.27
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 1709,
-    "days": 2,
-    "max_shares": 1639,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

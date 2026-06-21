@@ -1,17 +1,9 @@
 {
  "stock": "ALZN",
  "name": "Alzamend Neuro, Inc. - Common Stock",
- "price": 1.25,
- "change_pct": -2.34,
+ "price": 1.22,
+ "change_pct": -2.4,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 1.86,
-   "h": 1.86,
-   "l": 1.76,
-   "c": 1.8,
-   "v": 65000
-  },
   {
    "time": "2026-03-25",
    "o": 1.81,
@@ -483,13 +475,21 @@
    "l": 1.22,
    "c": 1.25,
    "v": 55700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 1.25,
+   "h": 1.26,
+   "l": 1.22,
+   "c": 1.22,
+   "v": 45000
   }
  ],
  "sr": {
-  "price": 1.25,
+  "price": 1.22,
   "resistance": [
    1.29,
-   1.93
+   1.31
   ],
   "support": [
    1.03,
@@ -498,7 +498,6 @@
   "strong_support": 0.84
  },
  "spark": [
-  1.8,
   1.93,
   1.5,
   1.05,
@@ -557,28 +556,12 @@
   1.21,
   1.23,
   1.28,
-  1.25
+  1.25,
+  1.22
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
-   "value": {
-    "total_shares": 35143,
-    "days": 8,
-    "max_shares": 11046,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

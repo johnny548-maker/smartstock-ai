@@ -1,8 +1,8 @@
 {
  "stock": "ALMR",
  "name": "Alamar Biosciences, Inc. - Class A common stock",
- "price": 20.2,
- "change_pct": 0.7,
+ "price": 21.96,
+ "change_pct": 8.71,
  "ohlc": [
   {
    "time": "2026-04-17",
@@ -347,10 +347,18 @@
    "l": 19.81,
    "c": 20.2,
    "v": 253200
+  },
+  {
+   "time": "2026-06-18",
+   "o": 20.45,
+   "h": 22.24,
+   "l": 20.2,
+   "c": 21.96,
+   "v": 996600
   }
  ],
  "sr": {
-  "price": 20.2,
+  "price": 21.96,
   "resistance": [
    22.1,
    22.5
@@ -404,28 +412,12 @@
   22.0,
   20.69,
   20.06,
-  20.2
+  20.2,
+  21.96
  ],
  "spark_start": "2026-04-17",
- "spark_end": "2026-06-17",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 19263,
-    "days": 4,
-    "max_shares": 13922,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

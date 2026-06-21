@@ -1,17 +1,9 @@
 {
  "stock": "ARDT",
  "name": "Ardent Health, Inc. Common Stock",
- "price": 9.08,
- "change_pct": -1.94,
+ "price": 8.91,
+ "change_pct": -1.87,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 8.55,
-   "h": 8.64,
-   "l": 8.37,
-   "c": 8.59,
-   "v": 381500
-  },
   {
    "time": "2026-03-25",
    "o": 8.67,
@@ -483,22 +475,29 @@
    "l": 9.05,
    "c": 9.08,
    "v": 342600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 9.09,
+   "h": 9.38,
+   "l": 8.84,
+   "c": 8.91,
+   "v": 505800
   }
  ],
  "sr": {
-  "price": 9.08,
+  "price": 8.91,
   "resistance": [
-   9.52,
-   9.74
+   8.98,
+   9.52
   ],
   "support": [
-   8.98,
-   8.25
+   8.25,
+   7.71
   ],
   "strong_support": 7.71
  },
  "spark": [
-  8.59,
   8.78,
   8.78,
   8.59,
@@ -557,28 +556,12 @@
   9.35,
   9.5,
   9.26,
-  9.08
+  9.08,
+  8.91
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 681,
-    "days": 2,
-    "max_shares": 570,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AOS",
  "name": "A.O. Smith Corporation Common Stock",
- "price": 57.88,
- "change_pct": -3.92,
+ "price": 58.22,
+ "change_pct": 0.59,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 63.94,
-   "h": 65.45,
-   "l": 63.78,
-   "c": 65.08,
-   "v": 1152000
-  },
   {
    "time": "2026-03-25",
    "o": 65.7,
@@ -483,10 +475,18 @@
    "l": 57.72,
    "c": 57.88,
    "v": 1835100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 58.97,
+   "h": 60.1,
+   "l": 58.07,
+   "c": 58.22,
+   "v": 4224600
   }
  ],
  "sr": {
-  "price": 57.88,
+  "price": 58.22,
   "resistance": [
    59.47,
    65.3
@@ -498,7 +498,6 @@
   "strong_support": 54.16
  },
  "spark": [
-  65.08,
   66.52,
   65.24,
   64.06,
@@ -557,28 +556,12 @@
   59.08,
   60.02,
   60.24,
-  57.88
+  57.88,
+  58.22
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 8445,
-    "days": 2,
-    "max_shares": 7900,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

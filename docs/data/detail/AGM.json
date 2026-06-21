@@ -1,17 +1,9 @@
 {
  "stock": "AGM",
  "name": "Federal Agricultural Mortgage Corporation Common Stock",
- "price": 183.21,
- "change_pct": -0.43,
+ "price": 183.47,
+ "change_pct": 0.14,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 140.75,
-   "h": 142.61,
-   "l": 139.76,
-   "c": 142.02,
-   "v": 75000
-  },
   {
    "time": "2026-03-25",
    "o": 143.89,
@@ -483,10 +475,18 @@
    "l": 181.81,
    "c": 183.21,
    "v": 112700
+  },
+  {
+   "time": "2026-06-18",
+   "o": 184.78,
+   "h": 185.86,
+   "l": 182.96,
+   "c": 183.47,
+   "v": 121700
   }
  ],
  "sr": {
-  "price": 183.21,
+  "price": 183.47,
   "resistance": [
    184.24,
    184.86
@@ -498,7 +498,6 @@
   "strong_support": 167.46
  },
  "spark": [
-  142.02,
   143.24,
   144.19,
   140.38,
@@ -557,28 +556,12 @@
   180.51,
   183.46,
   184.01,
-  183.21
+  183.21,
+  183.47
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 402,
-    "days": 2,
-    "max_shares": 347,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

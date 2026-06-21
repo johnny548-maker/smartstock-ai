@@ -1,17 +1,9 @@
 {
  "stock": "AD",
  "name": "Array Digital Infrastructure, Inc. Common Shares",
- "price": 39.01,
- "change_pct": -1.71,
+ "price": 38.86,
+ "change_pct": -0.38,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 36.38,
-   "h": 37.36,
-   "l": 36.38,
-   "c": 36.75,
-   "v": 158100
-  },
   {
    "time": "2026-03-25",
    "o": 37.06,
@@ -483,10 +475,18 @@
    "l": 38.88,
    "c": 39.01,
    "v": 309000
+  },
+  {
+   "time": "2026-06-18",
+   "o": 38.72,
+   "h": 39.12,
+   "l": 38.4,
+   "c": 38.86,
+   "v": 504300
   }
  ],
  "sr": {
-  "price": 39.01,
+  "price": 38.86,
   "resistance": [
    39.22,
    39.38
@@ -498,7 +498,6 @@
   "strong_support": 35.76
  },
  "spark": [
-  36.75,
   36.56,
   36.76,
   36.12,
@@ -557,28 +556,12 @@
   40.76,
   39.78,
   39.69,
-  39.01
+  39.01,
+  38.86
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 5,
-    "days": 2,
-    "max_shares": 3,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

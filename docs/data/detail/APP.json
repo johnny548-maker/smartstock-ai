@@ -1,6 +1,6 @@
 {
  "stock": "APP",
- "name": "Applovin Corporation - Class A Common Stock",
+ "name": "AppLovin",
  "price": 469.71,
  "change_pct": -2.04,
  "ohlc": [
@@ -488,14 +488,14 @@
  "sr": {
   "price": 469.71,
   "resistance": [
-   491.99,
-   512.69
+   473.0,
+   473.7
   ],
   "support": [
    461.0,
-   443.0
+   452.25
   ],
-  "strong_support": 364.64
+  "strong_support": 60.67
  },
  "spark": [
   436.69,
@@ -563,22 +563,5 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 23082,
-    "days": 4,
-    "max_shares": 19644,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

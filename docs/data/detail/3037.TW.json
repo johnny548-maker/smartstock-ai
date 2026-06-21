@@ -1,6 +1,6 @@
 {
  "stock": "3037.TW",
- "name": "欣興",
+ "name": null,
  "price": 968.0,
  "change_pct": -2.02,
  "ohlc": [
@@ -562,5 +562,54 @@
  "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 4,077,763 股",
+   "value": {
+    "foreign": -3201799,
+    "trust": -991556,
+    "dealer": 115592,
+    "total": -4077763
+   },
+   "severity": "info",
+   "as_of": "2026-06-21",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -21
+   },
+   "severity": "info",
+   "as_of": "2026-06-21",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 142.3 / 殖利率 0.21% / PB 13.56",
+   "value": {
+    "pe": 142.35,
+    "yield": 0.21,
+    "pb": 13.56
+   },
+   "severity": "info",
+   "as_of": "2026-06-18",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 75.72,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=75.72；WoW+0.42；股東人數-13519"
+  }
+ ]
 }

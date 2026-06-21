@@ -1,17 +1,9 @@
 {
  "stock": "ALGT",
  "name": "Allegiant Travel Company - Common Stock",
- "price": 95.89,
- "change_pct": -0.03,
+ "price": 100.76,
+ "change_pct": 5.08,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 81.01,
-   "h": 84.51,
-   "l": 80.04,
-   "c": 83.64,
-   "v": 273900
-  },
   {
    "time": "2026-03-25",
    "o": 86.04,
@@ -483,10 +475,18 @@
    "l": 95.78,
    "c": 95.89,
    "v": 564500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 98.66,
+   "h": 102.56,
+   "l": 98.32,
+   "c": 100.76,
+   "v": 754300
   }
  ],
  "sr": {
-  "price": 95.89,
+  "price": 100.76,
   "resistance": [],
   "support": [
    81.67,
@@ -495,7 +495,6 @@
   "strong_support": 69.64
  },
  "spark": [
-  83.64,
   84.89,
   83.93,
   79.4,
@@ -554,28 +553,12 @@
   91.59,
   95.24,
   95.92,
-  95.89
+  95.89,
+  100.76
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 364,
-    "days": 4,
-    "max_shares": 250,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

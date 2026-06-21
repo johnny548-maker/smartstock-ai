@@ -1,17 +1,9 @@
 {
  "stock": "AIDX",
  "name": "20/20 Biolabs, Inc. - Common Stock",
- "price": 0.64,
- "change_pct": 12.28,
+ "price": 0.66,
+ "change_pct": 3.13,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 1.65,
-   "h": 1.78,
-   "l": 1.51,
-   "c": 1.64,
-   "v": 3132300
-  },
   {
    "time": "2026-03-25",
    "o": 1.64,
@@ -483,10 +475,18 @@
    "l": 0.54,
    "c": 0.64,
    "v": 1294100
+  },
+  {
+   "time": "2026-06-18",
+   "o": 0.66,
+   "h": 0.69,
+   "l": 0.61,
+   "c": 0.66,
+   "v": 617500
   }
  ],
  "sr": {
-  "price": 0.64,
+  "price": 0.66,
   "resistance": [
    0.99,
    1.66
@@ -495,7 +495,6 @@
   "strong_support": 0.78
  },
  "spark": [
-  1.64,
   1.62,
   1.73,
   1.8,
@@ -554,28 +553,12 @@
   0.96,
   0.6,
   0.57,
-  0.64
+  0.64,
+  0.66
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 2424,
-    "days": 3,
-    "max_shares": 1280,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

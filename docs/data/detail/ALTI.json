@@ -1,17 +1,9 @@
 {
  "stock": "ALTI",
  "name": "AlTi Global, Inc. - Class A Common Stock",
- "price": 3.0,
- "change_pct": 3.09,
+ "price": 2.89,
+ "change_pct": -3.67,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 3.41,
-   "h": 3.47,
-   "l": 3.35,
-   "c": 3.42,
-   "v": 94300
-  },
   {
    "time": "2026-03-25",
    "o": 3.45,
@@ -483,19 +475,28 @@
    "l": 2.89,
    "c": 3.0,
    "v": 179600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 3.04,
+   "h": 3.24,
+   "l": 2.87,
+   "c": 2.89,
+   "v": 223100
   }
  ],
  "sr": {
-  "price": 3.0,
+  "price": 2.89,
   "resistance": [
    3.15,
    3.84
   ],
-  "support": [],
-  "strong_support": 3.24
+  "support": [
+   2.75
+  ],
+  "strong_support": 2.75
  },
  "spark": [
-  3.42,
   3.37,
   3.36,
   3.28,
@@ -554,10 +555,11 @@
   3.06,
   2.88,
   2.91,
-  3.0
+  3.0,
+  2.89
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

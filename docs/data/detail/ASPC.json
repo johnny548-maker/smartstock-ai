@@ -2,16 +2,8 @@
  "stock": "ASPC",
  "name": "A SPAC III Acquisition Corp. - Class A Ordinary Shares",
  "price": 10.78,
- "change_pct": -0.92,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.95,
-   "h": 10.95,
-   "l": 10.8,
-   "c": 10.86,
-   "v": 3600
-  },
   {
    "time": "2026-03-25",
    "o": 10.92,
@@ -483,6 +475,14 @@
    "l": 10.78,
    "c": 10.78,
    "v": 600
+  },
+  {
+   "time": "2026-06-18",
+   "o": 10.81,
+   "h": 10.81,
+   "l": 10.78,
+   "c": 10.78,
+   "v": 2700
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 10.6
  },
  "spark": [
-  10.86,
   10.84,
   10.94,
   10.7,
@@ -557,28 +556,12 @@
   10.78,
   10.88,
   10.88,
+  10.78,
   10.78
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 54883,
-    "days": 6,
-    "max_shares": 14605,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

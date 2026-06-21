@@ -1,17 +1,9 @@
 {
  "stock": "ADV",
  "name": "Advantage Solutions Inc.  - Class A Common Stock",
- "price": 37.72,
- "change_pct": -0.03,
+ "price": 34.81,
+ "change_pct": -7.71,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 19.42,
-   "h": 21.0,
-   "l": 19.25,
-   "c": 19.65,
-   "v": 34720
-  },
   {
    "time": "2026-03-25",
    "o": 20.67,
@@ -483,13 +475,21 @@
    "l": 37.43,
    "c": 37.72,
    "v": 182500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 38.42,
+   "h": 38.42,
+   "l": 34.19,
+   "c": 34.81,
+   "v": 188500
   }
  ],
  "sr": {
-  "price": 37.72,
+  "price": 34.81,
   "resistance": [
-   41.1,
-   43.5
+   35.27,
+   41.1
   ],
   "support": [
    33.79,
@@ -498,7 +498,6 @@
   "strong_support": 17.87
  },
  "spark": [
-  19.65,
   20.5,
   22.58,
   25.57,
@@ -557,28 +556,12 @@
   39.2,
   38.9,
   37.73,
-  37.72
+  37.72,
+  34.81
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 5632,
-    "days": 6,
-    "max_shares": 1781,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

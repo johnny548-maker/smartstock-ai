@@ -1,17 +1,9 @@
 {
  "stock": "ARI",
  "name": "Apollo Commercial Real Estate Finance, Inc",
- "price": 10.72,
- "change_pct": -1.02,
+ "price": 10.83,
+ "change_pct": 1.03,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.13,
-   "h": 10.34,
-   "l": 10.08,
-   "c": 10.22,
-   "v": 1597100
-  },
   {
    "time": "2026-03-25",
    "o": 10.32,
@@ -483,22 +475,29 @@
    "l": 10.7,
    "c": 10.72,
    "v": 3531900
+  },
+  {
+   "time": "2026-06-18",
+   "o": 10.73,
+   "h": 10.85,
+   "l": 10.68,
+   "c": 10.83,
+   "v": 5047000
   }
  ],
  "sr": {
-  "price": 10.72,
+  "price": 10.83,
   "resistance": [
    11.06,
    11.07
   ],
   "support": [
-   10.7,
-   10.62
+   10.81,
+   10.7
   ],
   "strong_support": 10.62
  },
  "spark": [
-  10.22,
   10.38,
   10.39,
   10.18,
@@ -557,28 +556,12 @@
   10.74,
   10.66,
   10.83,
-  10.72
+  10.72,
+  10.83
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 8,
-    "days": 2,
-    "max_shares": 4,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

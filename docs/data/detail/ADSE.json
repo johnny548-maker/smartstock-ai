@@ -2,16 +2,8 @@
  "stock": "ADSE",
  "name": "ADS-TEC ENERGY PLC - Ordinary Shares",
  "price": 11.4,
- "change_pct": -0.61,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 10.6,
-   "h": 11.0,
-   "l": 10.6,
-   "c": 11.0,
-   "v": 1600
-  },
   {
    "time": "2026-03-25",
    "o": 10.79,
@@ -483,6 +475,14 @@
    "l": 11.02,
    "c": 11.4,
    "v": 2400
+  },
+  {
+   "time": "2026-06-18",
+   "o": 11.4,
+   "h": 11.4,
+   "l": 11.4,
+   "c": 11.4,
+   "v": 1600
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 9.66
  },
  "spark": [
-  11.0,
   10.56,
   10.75,
   11.37,
@@ -557,28 +556,12 @@
   11.49,
   11.5,
   11.47,
+  11.4,
   11.4
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日）",
-   "value": {
-    "total_shares": 1753,
-    "days": 10,
-    "max_shares": 432,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

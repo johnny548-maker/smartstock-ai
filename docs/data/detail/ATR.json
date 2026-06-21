@@ -1,17 +1,9 @@
 {
  "stock": "ATR",
  "name": "AptarGroup, Inc. Common Stock",
- "price": 119.99,
- "change_pct": -0.55,
+ "price": 120.32,
+ "change_pct": 0.28,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 122.68,
-   "h": 124.73,
-   "l": 122.39,
-   "c": 123.66,
-   "v": 405000
-  },
   {
    "time": "2026-03-25",
    "o": 124.95,
@@ -483,10 +475,18 @@
    "l": 119.46,
    "c": 119.99,
    "v": 680500
+  },
+  {
+   "time": "2026-06-18",
+   "o": 120.46,
+   "h": 122.55,
+   "l": 119.11,
+   "c": 120.32,
+   "v": 750600
   }
  ],
  "sr": {
-  "price": 119.99,
+  "price": 120.32,
   "resistance": [
    126.47,
    126.84
@@ -498,7 +498,6 @@
   "strong_support": 110.95
  },
  "spark": [
-  123.66,
   125.33,
   124.2,
   121.51,
@@ -557,28 +556,12 @@
   117.72,
   118.08,
   120.65,
-  119.99
+  119.99,
+  120.32
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-17",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 2869,
-    "days": 3,
-    "max_shares": 2742,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
