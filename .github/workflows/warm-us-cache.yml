@@ -1,0 +1,70 @@
+name: Warm US 15y OHLCV cache (incremental)
+
+# Option B: the full US market (~5.6k Nasdaq-Trader common stocks) cannot be 15y-fetched in one
+# 350min CI job, so this warms the cache INCREMENTALLY — each run fetches the next slice of names
+# that don't yet have a cache file (build_ohlcv_cache --uncached-only --limit) and persists them to
+# the SHARED rolling actions/cache (same key prefix as optimize-sleeve.yml). After ~5-6 runs the US
+# universe is covered; from then on the slice is empty and the job is a cheap no-op.
+#
+# STOP CONDITION: when coverage hits ~100% the uncached slice is empty → build_cache fetches nothing
+# (fast no-op). Once the run log shows coverage[US] 100%, disable this schedule (it self-throttles
+# to a cheap no-op but there's no reason to keep paying ~3min/run). The cache the optimiser reads is
+# the side effect; nothing is committed to the repo.
+on:
+  workflow_dispatch:
+    inputs:
+      slice:
+        description: 'how many uncached US names to fetch this run (bounded so it fits the timeout)'
+        default: '1000'
+      tw_top_n:
+        description: 'TW liquidity cap passed to build_universe (kept consistent with the optimiser)'
+        default: '800'
+  schedule:
+    - cron: '23 */6 * * *'   # every 6h — ~4 runs/day fills the US universe in ~2 days, then no-ops
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smartstock-ohlcv-cache    # never two cache writers at once
+  cancel-in-progress: false
+
+jobs:
+  warm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340           # < the 350 cap; a ~1000-name slice fetches well inside this
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      # Share the SAME rolling cache as optimize-sleeve.yml so warmed names are visible to the
+      # optimiser. restore-keys prefix-match restores the latest; we save a fresh run_id key.
+      - name: Restore 15y OHLCV cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/ohlcv_15y
+          key: smartstock-ohlcv15y-${{ github.run_id }}
+          restore-keys: |
+            smartstock-ohlcv15y-
+
+      - name: Assemble full-market universe
+        env:
+          TW_TOP_N: ${{ github.event.inputs.tw_top_n || '800' }}
+        run: |
+          set -euo pipefail
+          python -X utf8 build_universe.py --out universe_full_market.csv --tw-top-n "${TW_TOP_N}"
+
+      - name: Warm the next US slice
+        env:
+          SLICE: ${{ github.event.inputs.slice || '1000' }}
+        run: |
+          set -euo pipefail
+          python -X utf8 build_ohlcv_cache.py \
+            --csv universe_full_market.csv --market US --uncached-only --limit "${SLICE}"

@@ -100,6 +100,29 @@ def load_universe(csv_path=UNIVERSE_CSV):
     return rows
 
 
+def select_tickers(rows, cache_dir=CACHE_DIR, market=None, uncached_only=False, limit=0):
+    """Pick the tickers to build from universe rows.
+
+    market        : keep only that market's rows (e.g. 'US'); None = all.
+    uncached_only : drop tickers that already have a cache file — this makes REPEATED runs ADVANCE
+                    coverage (each run takes the next `limit` MISSING names) instead of re-chewing
+                    the same head. Essential for warming a huge US universe across many CI runs.
+    limit         : keep only the first N after the above filters (0 = all)."""
+    tickers = [r["ticker"] for r in rows
+               if not market or (r.get("market") or "").upper() == market.upper()]
+    if uncached_only:
+        tickers = [t for t in tickers if not os.path.isfile(cache_path(t, cache_dir))]
+    return tickers[:limit] if limit else tickers
+
+
+def coverage(rows, cache_dir=CACHE_DIR, market=None):
+    """(cached, total) for the (optionally market-filtered) universe — the warming progress gauge."""
+    tickers = [r["ticker"] for r in rows
+               if not market or (r.get("market") or "").upper() == market.upper()]
+    cached = sum(1 for t in tickers if os.path.isfile(cache_path(t, cache_dir)))
+    return cached, len(tickers)
+
+
 # ── cache builder ────────────────────────────────────────────────────────────
 
 def build_cache(tickers, cache_dir=CACHE_DIR, period=DEFAULT_PERIOD,
@@ -167,12 +190,16 @@ def main(argv=None):
     ap.add_argument("--csv", default=UNIVERSE_CSV)
     ap.add_argument("--cache-dir", default=CACHE_DIR)
     ap.add_argument("--batch", type=int, default=DEFAULT_BATCH)
+    ap.add_argument("--market", default=None,
+                    help="only this market's rows (e.g. US) — for the incremental US warmer")
+    ap.add_argument("--uncached-only", action="store_true",
+                    help="fetch only the next N tickers WITHOUT a cache file (advances coverage "
+                         "across repeated runs — pair with --limit to bound a slice)")
     args = ap.parse_args(argv)
 
     rows = load_universe(args.csv)
-    tickers = [r["ticker"] for r in rows]
-    if args.limit:
-        tickers = tickers[:args.limit]
+    tickers = select_tickers(rows, cache_dir=args.cache_dir, market=args.market,
+                             uncached_only=args.uncached_only, limit=args.limit)
 
     res = build_cache(tickers, cache_dir=args.cache_dir,
                       period=args.period, batch=args.batch)
@@ -180,7 +207,10 @@ def main(argv=None):
     print(f"saved={len(res['saved'])}  already={len(res['already'])}  "
           f"skipped={len(res['skipped'])}")
     if res["skipped"]:
-        print("SKIP list: " + ", ".join(res["skipped"]))
+        print("SKIP list: " + ", ".join(res["skipped"][:30]))
+    if args.market:
+        c, t = coverage(rows, cache_dir=args.cache_dir, market=args.market)
+        print(f"coverage[{args.market}]: {c}/{t} cached ({(100.0 * c / t if t else 0):.1f}%)")
     return res
 
 
