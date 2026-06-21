@@ -62,10 +62,17 @@ class TestStrategy(unittest.TestCase):
         self.assertTrue(r["insufficient"])
 
     def test_uptrend_scores_trend_and_momentum(self):
-        r = strategy.score_stock(make_df(np.linspace(100, 120, 30)))
+        # full-year frame so the 52w-high band can fire (the +20 bonus is now gated to ≥0.8*252 bars)
+        r = strategy.score_stock(make_df(np.linspace(100, 120, 252)))
         self.assertIn("趨勢(MA5>MA20)", r["factors"])
         self.assertIn("動能(5日上漲)", r["factors"])
         self.assertGreaterEqual(r["score"], 50)
+
+    def test_52wk_high_gated_on_short_history(self):
+        # a 30-bar uptrend must NOT earn 接近52週高 (it's only a 1-month high) — audit fix
+        r = strategy.score_stock(make_df(np.linspace(100, 120, 30)))
+        self.assertNotIn("接近52週高", r["factors"])
+        self.assertNotIn("逼近52週高", r["factors"])
 
     def test_sector_weight_applied(self):
         r = strategy.score_stock(make_df(np.linspace(100, 120, 30)), sector="AI伺服器")
@@ -101,7 +108,8 @@ class TestStrategy(unittest.TestCase):
         self.assertTrue(any(k.startswith("相對強弱") for k in r["factors"]))
 
     def test_52wk_near_high(self):
-        r = strategy.score_stock(make_df(np.linspace(100, 130, 60)))
+        # ≥0.8*252 bars so the 52w-high band is allowed to fire (audit gate)
+        r = strategy.score_stock(make_df(np.linspace(100, 130, 252)))
         self.assertIn("接近52週高", r["factors"])
 
     def test_rank_carries_name(self):
@@ -2203,9 +2211,20 @@ class TestBenchmarkRouting(unittest.TestCase):
         import strategy
         self.assertEqual(strategy._bench_for("2330.TW", {"twii": "TW", "sp500": "US"}), "TW")
 
-    def test_us_routes_to_sp500(self):
+    def test_us_routes_to_sp500_when_no_nasdaq(self):
         import strategy
         self.assertEqual(strategy._bench_for("AAPL", {"twii": "TW", "sp500": "US"}), "US")
+
+    def test_us_prefers_nasdaq_when_present(self):
+        import strategy
+        self.assertEqual(
+            strategy._bench_for("NVDA", {"twii": "TW", "sp500": "US", "nasdaq": "IXIC"}), "IXIC")
+
+    def test_bare_strips_two_suffix_correctly(self):
+        import strategy
+        self.assertEqual(strategy._bare("8069.TWO"), "8069")   # not the '8069O' .replace bug
+        self.assertEqual(strategy._bare("2330.TW"), "2330")
+        self.assertEqual(strategy._bare("AAPL"), "AAPL")
 
 
 if __name__ == "__main__":

@@ -129,6 +129,14 @@ class TestSources(_TmpDirTest):
         self.assertEqual(entry(report, "sec")["status"], "skip")
         self.assertEqual(report["overall"], "ok")    # 抽不到標 SKIP，不硬造
 
+    def test_critical_coverage_collapse_degrades(self):
+        # audit: opp_ohlcv / us_batch collapse is real rot → must DEGRADE, not pass as benign SKIP
+        p = make_payload(source_coverage={"twse_t86": {"ok": True, "codes": 12},
+                                          "opp_ohlcv": {"ok": False, "codes": 8}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "opp_ohlcv")["status"], "degraded")
+        self.assertEqual(report["overall"], "degraded")   # collapse no longer ships as 'ok'
+
     def test_pipeline_skips_surface_as_skip_entries(self):
         p = make_payload(skips=["news", "macro"])
         report = dh.summarize(p, self.data_dir, now=NOW)

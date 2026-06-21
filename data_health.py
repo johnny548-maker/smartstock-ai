@@ -62,6 +62,8 @@ CACHE_STALE_AGE_H = 168.0
 
 _DATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 _ROW_COUNT_KEYS = ("picks", "news", "movers")
+# coverage keys whose ok=False is real rot (universe collapse), not a benign empty source → degrade
+_COVERAGE_CRITICAL = ("opp_ohlcv", "us_batch")
 
 
 # ── small helpers ─────────────────────────────────────────────────────────────
@@ -176,10 +178,17 @@ def _check_sources(payload):
                 if isinstance(meta, dict) else None
             # why: routinely-empty sources (sec/openfda on TW-only days) are a
             # known shape, not rot — they are surfaced as SKIP, not degraded.
-            entries.append(_entry(
-                name, "ok" if ok else "skip",
-                note=(f"rows={n}" if ok
-                      else "source returned no data this run (SKIP)")))
+            # BUT the PRIMARY coverage paths (opportunity OHLCV scan + US verdict batch) collapsing
+            # is real data rot — a Yahoo rate-limit episode halving the universe — so an ok=False
+            # there must DEGRADE health, not pass as a benign SKIP (else the #7 monitor is a no-op).
+            if not ok and name in _COVERAGE_CRITICAL:
+                entries.append(_entry(
+                    name, "degraded", note="coverage collapsed this run (universe shrank)"))
+            else:
+                entries.append(_entry(
+                    name, "ok" if ok else "skip",
+                    note=(f"rows={n}" if ok
+                          else "source returned no data this run (SKIP)")))
     for name in payload.get("skips") or []:
         entries.append(_entry(f"skip:{name}", "skip",
                               note="pipeline recorded a SKIP for this step"))

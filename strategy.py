@@ -20,6 +20,11 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
 
+# The 52-week-high momentum premium needs most of a year of history to be meaningful — below
+# this, `hi` is just a recent high and the +20/+10 bonus would be unearned (and mislabel a short
+# high as 「接近52週高」). Gate the positive branches on it; the far_high penalty is unaffected.
+HIGH_MIN_BARS = int(HIGH_WINDOW * 0.8)
+
 
 # Factor → bucket classifier (de-collinearization). Rules are ordered; first match
 # wins. Each scored factor label maps to exactly one orthogonal bucket.
@@ -116,9 +121,9 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
         ratio = abs(foreign) / ma20v if ma20v else 0
         mult = 1.0 if ratio >= INST_RATIO_FULL else (0.5 if ratio >= INST_RATIO_HALF else 0.0)
         if foreign > 0 and mult and FACTOR_PTS["inst_foreign_buy"]:
-            factors["外資買超"] = int(FACTOR_PTS["inst_foreign_buy"] * mult)
+            factors["外資買超"] = round(FACTOR_PTS["inst_foreign_buy"] * mult)   # round, not int-truncate
         elif foreign < 0 and mult and FACTOR_PTS["inst_foreign_sell"]:
-            factors["外資賣超"] = int(FACTOR_PTS["inst_foreign_sell"] * mult)
+            factors["外資賣超"] = round(FACTOR_PTS["inst_foreign_sell"] * mult)
         if trust > 0 and FACTOR_PTS["inst_trust_buy"]:
             factors["投信買超"] = FACTOR_PTS["inst_trust_buy"]
 
@@ -138,9 +143,14 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
     hi = df["High"].rolling(win).max().iloc[-1]
     if hi and hi > 0:
         near = close.iloc[-1] / hi
-        if near >= NEAR_HIGH and FACTOR_PTS["near_high"]:
+        # The 52-week-high momentum premium is only meaningful with enough history. On a 20-30
+        # bar cold-start frame `hi` is just a 1-month high, so don't award the +20/+10 bonus (nor
+        # mislabel a 1-month high as 「接近52週高」). The far_high PENALTY still applies — a real
+        # downtrend is bearish regardless of window length.
+        enough = len(df) >= HIGH_MIN_BARS
+        if enough and near >= NEAR_HIGH and FACTOR_PTS["near_high"]:
             factors["接近52週高"] = FACTOR_PTS["near_high"]
-        elif NEAR_MID <= near < NEAR_HIGH and FACTOR_PTS["near_mid"]:
+        elif enough and NEAR_MID <= near < NEAR_HIGH and FACTOR_PTS["near_mid"]:
             factors["逼近52週高"] = FACTOR_PTS["near_mid"]
         elif near < FAR_HIGH and FACTOR_PTS["far_high"]:
             factors["遠離52週高"] = FACTOR_PTS["far_high"]
@@ -207,7 +217,23 @@ def score_stock(df, sector=None, institutional=None, bench=None, chips=None):
 def _bench_for(sym, frames):
     if not frames:
         return None
-    return frames.get("twii") if sym.endswith((".TW", ".TWO")) else frames.get("sp500")
+    if sym.endswith((".TW", ".TWO")):
+        return frames.get("twii")
+    # US: this app's US universe is NASDAQ/tech-heavy (the entire core watchlist is NASDAQ-listed),
+    # so the NASDAQ Composite (^IXIC) is the more-correct RS benchmark than the broad S&P 500 — in
+    # a tech-led tape ^GSPC over-credits tech names with rs_strong they didn't earn, and in a tech
+    # selloff lets them dodge rs_weak. Fall back to sp500 if the nasdaq frame is absent (e.g. tests).
+    return frames.get("nasdaq") or frames.get("sp500")
+
+
+def _bare(sym):
+    """Bare code: '2330.TW'->'2330', '8069.TWO'->'8069'. Replaces the sym.replace('.TW','') bug
+    which corrupted '.TWO' tickers to '8069O' (so the bare-code institutional/chips fallback never
+    matched any TPEx name). Strip '.TWO' BEFORE '.TW' (longer suffix first)."""
+    for sfx in (".TWO", ".TW"):
+        if sym.endswith(sfx):
+            return sym[: -len(sfx)]
+    return sym
 
 
 def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None, chips_map=None):
@@ -220,8 +246,8 @@ def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None,
     for sym, df in data_dict.items():
         try:
             sector = sector_map.get(sym)
-            inst = institutional_map.get(sym) or institutional_map.get(sym.replace(".TW", ""))
-            chips = chips_map.get(sym) or chips_map.get(sym.replace(".TW", ""))
+            inst = institutional_map.get(sym) or institutional_map.get(_bare(sym))
+            chips = chips_map.get(sym) or chips_map.get(_bare(sym))
             r = score_stock(df, sector=sector, institutional=inst,
                             bench=_bench_for(sym, frames), chips=chips)
             if r.get("insufficient"):

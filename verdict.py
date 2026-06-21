@@ -48,13 +48,14 @@ def _clean(label):
 
 
 def verdict_line(factors):
-    """One short Chinese sentence from the dominant factors."""
+    """One short Chinese sentence from the DOMINANT (highest-magnitude) factors — not whichever
+    happened to be inserted first. Surfaces the two biggest positive drivers + the biggest penalty."""
     factors = factors or {}
-    pos = [_clean(k) for k, v in factors.items() if v > 0]
-    neg = [_clean(k) for k, v in factors.items() if v < 0]
+    pos = [_clean(k) for k, v in sorted(factors.items(), key=lambda kv: kv[1], reverse=True) if v > 0]
+    neg = sorted((kv for kv in factors.items() if kv[1] < 0), key=lambda kv: kv[1])  # most negative first
     parts = pos[:2]
     if neg:
-        parts.append("注意" + neg[0])
+        parts.append("注意" + _clean(neg[0][0]))
     return "、".join(parts) if parts else "訊號平淡，觀望"
 
 
