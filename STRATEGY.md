@@ -10,7 +10,12 @@
 1. **這個 champion 沒過品質 gate → 不該上線。** DSR=0.854 < 0.95 門檻（`dsr_pass=false`），walk-forward `stable=false`，lockbox calmar 0.55 vs pooled-OOS 1.79 崩盤。`run_optimize` 自己標：「likely in-sample mirage — do NOT promote to live weights」。**所以下面的冠軍是「目前最不爛的候選」，不是「可部署的最佳策略」。**
 2. **這個 champion 沒有接進 live app。** `optimize_tw.json` 是死檔，全 repo 無任何 `.py` 讀它。你 PWA 每天看到的選股跑的是**另一套** `strategy.rank_stocks` 多因子 scorer（config.py FACTOR_PTS），跟這個動能 champion **無關**。
 3. **app 裡的「動能 lens」也是舊的**（top10/lookback126/σ0.15，舊 Calmar-winner），不是這個 champion（top20/252/σ0.20），且只是旁觀資訊、不驅動選股。
-4. **誠實結論：嚴謹搜尋在 TW 動能上沒找到「過 gate 可部署」的策略。** 這本身是有價值的結論（防止上線海市蜃樓），但代表「最佳可部署策略 = 尚未找到」。
+4. **多因子擴張（LOWVOL+STREV+MOM inverse-vol 組合，預登記）結果 = 真實但贏不了大盤。**
+   - **分散有效**：組合 DSR **0.998**（動能單體 0.854→組合 0.998）+ PBO 0.293 + lockbox CAGR **10.7%** / MaxDD **-21.4%** → **不是過擬合、是真的、抱得住**（回撤從動能單體 -36% 降到 -21%）。
+   - **但贏不了大盤**：SPA p=**0.170**（沒顯著贏 0050，需<0.05）+ FLAT-regime lift **0.813**（平盤時輸大盤 = 偏 beta 非 alpha）→ **5 關 FAIL**。
+5. **最終誠實結論（目標答案）：keyless TW 沒有顯著贏大盤的主動策略 → 最佳投資策略 = 買大盤指數（0050）。** 嚴謹擴張搜尋（含分散組合）證實：能做出真實、抱得住、~10.7%/-21% 的因子組合，**但統計上贏不了被動持有指數**。這是合法的科學終點（factor-zoo：多數異象經多重檢定後失效），照 ADR §8 **不鬆 gate 硬湊**。
+
+> **白話**：你問「最佳策略並 push 進 app 了嗎」→ 答案是 **(a) 嚴謹找過了，(b) 沒有主動策略過 gate 贏大盤，(c) 所以最佳 = 買 0050 被動持有。** 你的 11-因子 app 可當「觀察名單/輔助」，但別當成能贏大盤的 alpha 機器。
 
 ---
 
