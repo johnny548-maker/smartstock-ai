@@ -70,7 +70,7 @@ class TestBuildChecklist(unittest.TestCase):
         self.assertIsInstance(result["items"], list)
         self.assertIsInstance(result["verdict_line"], str)
 
-    def test_exactly_five_items(self):
+    def test_exactly_six_items(self):
         result = pretrade.build_checklist(
             pick="NVDA",
             regime=_regime(80),
@@ -78,7 +78,7 @@ class TestBuildChecklist(unittest.TestCase):
             risk_plan=_risk_plan(rr=2.5),
             earnings_flag=None,
         )
-        self.assertEqual(len(result["items"]), 5)
+        self.assertEqual(len(result["items"]), 6)   # +⑥ market-timing (200dma) gate
 
     def test_each_item_has_required_keys(self):
         result = pretrade.build_checklist(
@@ -306,15 +306,18 @@ class TestBuildChecklist(unittest.TestCase):
 
     # ── verdict_line ──────────────────────────────────────────────────────────
 
-    def test_verdict_5_5_when_all_pass(self):
+    def test_verdict_6_6_when_all_pass(self):
+        # regime with an uptrend in detail so gate ⑥ (market-timing) also passes
+        regime = {"exposure": 80, "label": "risk-on",
+                  "detail": {"twii": {"trend": "uptrend"}, "sp500": {"trend": "uptrend"}}}
         result = pretrade.build_checklist(
-            pick="NVDA", regime=_regime(80), concentration=1,
+            pick="NVDA", regime=regime, concentration=1,
             risk_plan=_risk_plan(2.5), earnings_flag=None,
         )
-        self.assertIn("5/5", result["verdict_line"])
+        self.assertIn("6/6", result["verdict_line"])
 
     def test_verdict_contains_pass_count_when_partial(self):
-        """2 gates fail → verdict shows n<5."""
+        """2 gates fail → verdict shows n<6."""
         result = pretrade.build_checklist(
             pick="NVDA",
             regime=_regime(25),          # fail: exposure < 50
@@ -323,8 +326,8 @@ class TestBuildChecklist(unittest.TestCase):
             earnings_flag=None,
         )
         vl = result["verdict_line"]
-        self.assertIn("/5", vl)
-        self.assertNotIn("5/5", vl)
+        self.assertIn("/6", vl)
+        self.assertNotIn("6/6", vl)
 
     def test_verdict_is_nonempty_string(self):
         result = pretrade.build_checklist(
@@ -395,7 +398,7 @@ class TestBuildChecklistEdgeCases(unittest.TestCase):
             risk_plan=None, earnings_flag=None,
         )
         self.assertIn("items", result)
-        self.assertEqual(len(result["items"]), 5)
+        self.assertEqual(len(result["items"]), 6)
 
     def test_empty_risk_plan_dict_no_crash(self):
         result = pretrade.build_checklist(
@@ -432,6 +435,33 @@ class TestBuildChecklistEdgeCases(unittest.TestCase):
         item = next(i for i in result["items"] if i["key"] == "cluster")
         # -1 < 3 → pass
         self.assertIs(item["pass"], True)
+
+
+def _regime_trend(*trends):
+    """regime dict carrying per-index 200dma trend states for the market-timing gate ⑥."""
+    return {"exposure": 60, "label": "caution",
+            "detail": {f"idx{i}": {"trend": t} for i, t in enumerate(trends)}}
+
+
+class TestTimingGate(unittest.TestCase):
+    """⑥ market-timing gate — 200dma trend direction (validated keyless risk tool)."""
+
+    def test_downtrend_fails(self):
+        p, d = pretrade._gate_timing(_regime_trend("downtrend", "neutral"))
+        self.assertFalse(p)
+        self.assertIn("200", d)
+
+    def test_uptrend_passes(self):
+        p, _ = pretrade._gate_timing(_regime_trend("uptrend", "uptrend"))
+        self.assertTrue(p)
+
+    def test_neutral_passes(self):
+        p, _ = pretrade._gate_timing(_regime_trend("neutral", "uptrend"))
+        self.assertTrue(p)
+
+    def test_no_trend_data_is_null(self):
+        p, _ = pretrade._gate_timing({"exposure": 60, "label": "caution", "detail": {}})
+        self.assertIsNone(p)
 
 
 if __name__ == "__main__":

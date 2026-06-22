@@ -62,6 +62,7 @@ import indicators
 import supply_chain
 import momentum_portfolio as momentum_mod
 import validated_portfolio as validated_mod
+import risk_lens
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -286,6 +287,17 @@ def main(web=False):
     ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames, chips_map=chips_map)
     log.info("ranked %d / %d symbols", len(ranked), len(all_syms))
 
+    # 4b. 風險透鏡 — 每檔 beta/相關 vs 指數（OVERLAY-NOT-SCORER，純警示，不進評分）。把「可信選股=
+    #     集中高 beta ≈ 槓桿版指數」這個 session 教訓直接顯示在卡上。fail-open。
+    try:
+        for _it in ranked[:config.DISPLAY_N]:
+            _bench = frames.get("twii") if _it["stock"].endswith((".TW", ".TWO")) else frames.get("sp500")
+            _b = risk_lens.beta_to_bench(data.get(_it["stock"]), _bench)
+            if _b:
+                _it["beta_60"], _it["corr_idx"] = _b["beta"], _b["corr"]
+    except Exception as e:
+        log.warning("SKIP beta lens: %s", e)
+
     # 4c. 早期訊號雷達 (RS線新高/安靜吸籌/型態 gated on 月營收/主題) — informational
     try:
         rev_codes = [c["code"] for c in (revenue_data or {}).get("candidates", [])]
@@ -365,8 +377,11 @@ def main(web=False):
         pick_data = {it["stock"]: data[it["stock"]] for it in ranked[:config.DISPLAY_N]
                      if data.get(it["stock"]) is not None}
         concentration = correlation_mod.concentration(pick_data, names=config.STOCK_NAMES)
+        conc_summary = risk_lens.sector_concentration(
+            ranked[:config.DISPLAY_N], sector_map=getattr(config, "SECTOR_MAP", {}),
+            top_n=config.DISPLAY_N, conc_data=pick_data, names=config.STOCK_NAMES)
     except Exception as e:
-        log.warning("SKIP concentration: %s", e); concentration = None
+        log.warning("SKIP concentration: %s", e); concentration = None; conc_summary = {}
 
     # 5d. Earnings-blackout overlay (analyst G5): flag picks with a binary earnings
     #     event in the next 7d — INFORMATIONAL only, never a score change.
@@ -1303,7 +1318,8 @@ def main(web=False):
             overlays_map=overlays_map, source_coverage=source_coverage,
             environment=environment, my_positions=my_positions,
             momentum_portfolio=momentum_lens, scored_universe=scored_universe,
-            validated_portfolio=validated_lens, factor_validation=factor_validation)
+            validated_portfolio=validated_lens, factor_validation=factor_validation,
+            concentration_summary=conc_summary)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

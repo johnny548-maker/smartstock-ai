@@ -815,3 +815,32 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
   .deck.intro .reveal{opacity:1!important;transform:none!important;animation:none!important}
   .cv-hint .swipe-ico{animation:none!important}
 }
+
+/* ---- Decision-cockpit overlays: 集中/beta 警示 + 因子 IC + 200dma 時機 (A/C/D) ---- */
+.cv-warn{
+  margin:8px 0;padding:9px 12px;border-radius:10px;font-size:.8rem;line-height:1.5;
+  border:.5px solid color-mix(in srgb,var(--warn) 40%,var(--hair-c));
+  background:color-mix(in srgb,var(--warn) 9%,var(--bg));color:var(--ink);
+}
+.cv-warn b{color:var(--warn)}
+.cv-warn.conc{
+  border-color:color-mix(in srgb,var(--down) 40%,var(--hair-c));
+  background:color-mix(in srgb,var(--down) 8%,var(--bg));
+}
+.cv-warn.conc b{color:var(--down)}
+.cv-warn .warn-src{display:block;margin-top:2px;font-size:.7rem;color:var(--ink-3)}
+
+.pk-beta{
+  display:inline-flex;align-items:center;gap:6px;margin:4px 0 2px;
+  font-size:var(--fs-cap);font-weight:700;color:var(--ink-2);
+}
+.pk-beta.is-hot{color:var(--down)}
+.pk-beta .beta-note{font-weight:500;font-size:.68rem;color:var(--ink-3)}
+.pk-beta.is-hot .beta-note{color:color-mix(in srgb,var(--down) 70%,var(--ink-3))}
+
+.fic{
+  margin-left:5px;font-size:.64rem;font-weight:600;padding:1px 5px;border-radius:6px;
+  border:.5px solid var(--hair-c);color:var(--ink-3);vertical-align:middle;
+}
+.fic-keep{color:var(--up);border-color:color-mix(in srgb,var(--up) 35%,transparent)}
+.fic-weak{color:var(--ink-3)}

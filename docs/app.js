@@ -194,6 +194,29 @@ function reasonChips(p, n) {
     .slice(0, n || 2)
     .map(([k]) => `<span class="rchip">${esc(factorShort(k))}</span>`).join('');
 }
+// β to index + correlation (risk lens, Feature A): surfaces that a 'credible' pick may be a
+// high-beta index proxy (≈leveraged 0050), not alpha. Display only — never a score input.
+function betaBadge(p) {
+  if (!p || p.beta_60 == null || !isFinite(+p.beta_60)) return '';
+  const b = +p.beta_60;
+  const hot = b >= 1.2;
+  const corr = (p.corr_idx != null && isFinite(+p.corr_idx)) ? ` ·相關${(+p.corr_idx).toFixed(2)}` : '';
+  return `<div class="pk-beta reveal${hot ? ' is-hot' : ''}">β ${b.toFixed(2)}${corr}`
+    + `<span class="beta-note">${hot ? '高beta·近槓桿指數' : 'vs 大盤'}</span></div>`;
+}
+// 15y rank-IC tag for a fired factor (Feature C transparency): match the factor label to its
+// family in CUR.factor_meta and show its backtested IC + KEEP/弱. Informational; never scored.
+function factorIcTag(label) {
+  const meta = (CUR && CUR.factor_meta) || [];
+  for (const m of meta) {
+    if ((m.kws || []).some((kw) => String(label).indexOf(kw) >= 0)) {
+      if (m.rank_ic == null) return '';
+      return `<span class="fic ${m.keep ? 'fic-keep' : 'fic-weak'}" title="全市場15年回測 rank-IC">`
+        + `IC${(+m.rank_ic).toFixed(3)}${m.keep ? '' : '·弱'}</span>`;
+    }
+  }
+  return '';
+}
 // {full-or-bare symbol} set of today's high-correlation cluster members
 function clusterSet(d) {
   const out = new Set();
@@ -450,6 +473,30 @@ const REGIME = { 'risk-on': { dot: 'ld-green', txt: '偏多可進攻' }, caution
 const ENV_HINT = { risk_on: { dot: 'ld-green', txt: '偏多' }, neutral: { dot: 'ld-amber', txt: '中性' }, risk_off: { dot: 'ld-red', txt: '偏空' } };
 const RISK_LABEL = { LOW: '低', MID: '中', HIGH: '高' };
 
+// 200dma market-timing banner (Feature D, warn+suggest) — the one validated keyless risk tool.
+// Only nags when the market is actually weak (downtrend or low exposure); silent in a healthy tape.
+function timingBanner(d) {
+  const reg = d.regime; if (!reg) return '';
+  const trends = Object.values(reg.detail || {}).map((v) => v && v.trend).filter(Boolean);
+  if (!trends.length) return '';
+  const down = trends.indexOf('downtrend') >= 0;
+  const exp = reg.exposure;
+  const lowExp = (exp != null && +exp < 40);
+  if (!down && !lowExp) return '';
+  const ZH = { uptrend: '多頭', neutral: '中性', downtrend: '空頭(跌破200日線)' };
+  const states = trends.map((t) => ZH[t] || t).join('／');
+  return `<div class="cv-warn timing reveal">⏱️ 市場時機：大盤 ${esc(states)}${exp != null ? ` ·建議曝險 ${esc(exp)}%` : ''}`
+    + ` → <b>降低新進場曝險</b>，優先既有部位／分批進場。`
+    + `<span class="warn-src">（200日線擇時：全15年實證可降回撤）</span></div>`;
+}
+// 板塊集中 + beta 警示 (Feature A, warn+suggest) — surfaces the 'concentrated high-beta ≈ leveraged
+// index' truth. Display + suggestion only; the picks list is never changed (user-approved).
+function concentrationBanner(d) {
+  const c = d.concentration_summary;
+  if (!c || !c.warn || !c.suggestion) return '';
+  return `<div class="cv-warn conc reveal">⚠️ 集中度：${esc(c.suggestion)}</div>`;
+}
+
 // cover page = date + market lights + top pick + search entry
 function coverPage(d) {
   const today = new Date().toISOString().slice(0, 10);
@@ -498,6 +545,8 @@ function coverPage(d) {
         <div class="cv-weekday">${weekdayOf(d.date)} · ${(d.picks || []).length} 檔今日精選</div>
       </div>
       <div class="cv-lights reveal">${lights.join('')}</div>
+      ${timingBanner(d)}
+      ${concentrationBanner(d)}
       ${topHtml}
       <div class="cv-search reveal">${searchBox(d)}</div>
       <div class="cv-hint reveal"><span class="swipe-ico">→</span> 向左滑看分級總覽與今日選股</div>
@@ -592,6 +641,7 @@ function pickPage(p, rank, total, date, dayMax, clusters) {
         <div class="pk-chg">${chgHtml(p.change_pct, true)}<span class="close-lbl">收盤</span></div>
       </div>
       <div class="pk-verdict reveal">${lightDot(p.light)}${scoreBarHtml(p.score, dayMax, tier, true)}<span class="pk-vscore num"${p.score != null && isFinite(+p.score) ? ` data-cu="${+p.score}" data-cu-kind="int"` : ''}>${esc(p.score != null ? p.score : '—')}</span></div>
+      ${betaBadge(p)}
       ${chips ? `<div class="pk-vchips reveal">${chips}</div>` : ''}
       ${vTxt}
       <div class="pk-levels reveal">
@@ -1048,7 +1098,8 @@ function thinVerdictHtml(p, d) {
 function scorePanel(p) {
   const factors = p.factors ? '<div class="factors">' + Object.entries(p.factors)
     .sort((a, b) => b[1] - a[1])
-    .map(([k, v]) => `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}</span>`).join('') + '</div>' : '';
+    .map(([k, v]) => `<span class="factor ${v < 0 ? 'neg' : 'pos'}">${esc(k)}${v > 0 ? '+' : ''}${v}${factorIcTag(k)}</span>`).join('') + '</div>'
+    + '<p class="tiny">分數＝11 因子加總（<b>非贏大盤保證</b>）；IC 為全市場 15 年回測，因子多為弱正 edge——本工具助你判斷，非自動買賣訊號。</p>' : '';
   const kv = [];
   if (p.vol_ratio != null) kv.push(`<div class="kv"><span class="k">量比(5日)</span><span class="v ${p.vol_ratio >= 0 ? 'up' : 'down'}">${p.vol_ratio > 0 ? '+' : ''}${p.vol_ratio}%</span></div>`);
   if (p.theme) kv.push(`<div class="kv"><span class="k">主題</span><span class="v txt">${esc(p.theme)}</span></div>`);
@@ -1211,7 +1262,7 @@ function pretradeHtml(p) {
   }).join('');
   const verdict = pt.verdict_line ? `<div class="ptc-verdict">${esc(pt.verdict_line)}</div>` : '';
   return `<div class="sh-sec"><div class="sh-h">進場前檢查</div><ul class="ptc">${li}</ul>${verdict}
-    <p class="tiny">五項檢查為既有訊號的彙整（資訊性，不計入評分與排名）。</p></div>`;
+    <p class="tiny">六項檢查為既有訊號的彙整（含市場時機 200 日線；資訊性，不計入評分與排名）。</p></div>`;
 }
 
 async function openStockSheet(code) {

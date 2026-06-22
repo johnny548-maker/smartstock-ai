@@ -125,6 +125,31 @@ def select_scored_universe(opp_ranked, exclude=None, top_n=12):
     return out[:top_n]
 
 
+# family -> Chinese label substrings present in a pick's `factors` dict keys (mirror of
+# run_factor_ic.FAMILIES). Lets the PWA match a fired factor label to its 15y rank-IC.
+_FACTOR_KW = {
+    "trend": ["趨勢"], "momentum": ["動能"], "volume": ["量能"],
+    "vol_stable": ["波動穩定"], "rs": ["相對強", "相對弱"],
+    "high52": ["52週高", "接近52", "逼近52"], "rsi": ["RSI"], "obv": ["量價背離"],
+}
+_FACTOR_IC_KEEP = 0.03   # |rank_ic| >= this → 'KEEP'; below → '弱' (honest: base factors mostly weak)
+
+
+def _factor_meta(factor_validation):
+    """Join factor_validation {family:{rank_ic,edge}} → [{family, kws, rank_ic, edge, keep}] so the
+    PWA annotates each FIRED factor on a pick card with its 15y rank-IC (KEEP/弱). Pure display
+    join — NEVER a scoring input (OVERLAY-NOT-SCORER). Empty list if no validation state."""
+    out = []
+    for fam, kws in _FACTOR_KW.items():
+        fv = (factor_validation or {}).get(fam)
+        if not fv:
+            continue
+        ic = fv.get("rank_ic")
+        out.append({"family": fam, "kws": kws, "rank_ic": ic, "edge": fv.get("edge"),
+                    "keep": bool(ic is not None and abs(ic) >= _FACTOR_IC_KEEP)})
+    return out
+
+
 def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   allocation, rebalance_diff, risk, markdown, skips,
                   movers=None, level_map=None, delta=None, events=None, breadth=None,
@@ -134,7 +159,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   environment=None, my_positions=None, attribution=None,
                   strategy_health=None, shadow=None, health=None,
                   momentum_portfolio=None, scored_universe=None, validated_portfolio=None,
-                  factor_validation=None):
+                  factor_validation=None, concentration_summary=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -150,6 +175,8 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
             "name": it.get("name"),
             "score": it["score"],
             "sector": it.get("sector"),
+            "beta_60": it.get("beta_60"),       # risk lens: per-pick beta vs index (OVERLAY)
+            "corr_idx": it.get("corr_idx"),      # correlation to index (concentration awareness)
             "factors": it["factors"],
             "levels": level_map.get(it["stock"]),
             "commentary": (analyses or {}).get(it["stock"]),
@@ -246,6 +273,13 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # _factor_ic_state.json. Lets the PWA show the daily picks ARE 15y-validated AND the honest
         # truth that every base factor is weak (IC<0.05). Additive; never a scoring input.
         "factor_validation": factor_validation or {},
+        # factor_meta: server-side merge of factor_validation → [{kw, rank_ic, edge, keep}] so the
+        # PWA can annotate each FIRED factor on a pick card with its 15y rank-IC (KEEP/弱). Pure
+        # display join; NEVER a scoring input (OVERLAY-NOT-SCORER). Empty if no validation state.
+        "factor_meta": _factor_meta(factor_validation),
+        # 板塊集中度 + beta 摘要 (risk_lens.sector_concentration) — warns when the shortlist is a
+        # concentrated high-beta bet (≈leveraged index). Display+suggest only; picks unchanged.
+        "concentration_summary": concentration_summary or {},
         # Fix 1 (GAP C) 全市場精選 — top-N of the ~600 opportunity universe scored
         # through the SAME gated rank_stocks formula as the core picks (resource-thin
         # names simply don't fire chip/法人 factors → lower, not penalised). ADDITIVE
