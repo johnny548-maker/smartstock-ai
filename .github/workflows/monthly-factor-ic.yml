@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  issues: write          # Phase 4: open a HITL drift-review issue (never auto-applies a weight)
 
 concurrency:
   group: smartstock-monthly-factor-ic
@@ -77,6 +78,30 @@ jobs:
           python -X utf8 run_factor_ic.py 15 --universe universe_15y_draft.csv \
             --out docs/data/_factor_ic_state.json \
             | tee "docs/data/_revalidation/$(date -u +%Y-%m)-factor-ic.txt"
+
+      # Phase 4 HITL drift monitor — REPORTS only, NEVER auto-applies a weight. A factor crossing
+      # the keep/demote boundary (rank_ic<0 AND edge<1.0 for a kept factor, or a demoted factor
+      # recovering) writes docs/data/_factor_drift_alert.txt → the next step opens a review issue.
+      - name: Factor-IC drift check (HITL)
+        run: python -X utf8 check_factor_drift.py docs/data/_factor_ic_state.json
+
+      - name: Open HITL drift-review issue if a factor crossed the boundary
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          [ -f docs/data/_factor_drift_alert.txt ] || { echo "no drift — no issue"; exit 0; }
+          TITLE="🟡 Factor-IC drift — HITL review"
+          BODY=$(printf 'Monthly factor-IC drift crossed the keep/demote boundary (run %s):\n\n```\n%s\n```\n\nREPORT-ONLY — do NOT flip any weight without the HITL scorer-flip protocol (evidence review + config change + golden re-baseline + ADR). See .decisions/2026-06-22-scorer-15y-revalidation.md.' "$RUN_URL" "$(cat docs/data/_factor_drift_alert.txt)")
+          NUM=$(gh issue list --repo "$REPO" --state open --search "Factor-IC drift in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+          fi
 
       - name: Commit factor-IC evidence
         run: |

@@ -15,7 +15,13 @@
    - **但贏不了大盤**：SPA p=**0.170**（沒顯著贏 0050，需<0.05）+ FLAT-regime lift **0.813**（平盤時輸大盤 = 偏 beta 非 alpha）→ **5 關 FAIL**。
 5. **最終誠實結論（目標答案）：keyless TW 沒有顯著贏大盤的主動策略 → 最佳投資策略 = 買大盤指數（0050）。** 嚴謹擴張搜尋（含分散組合）證實：能做出真實、抱得住、~10.7%/-21% 的因子組合，**但統計上贏不了被動持有指數**。這是合法的科學終點（factor-zoo：多數異象經多重檢定後失效），照 ADR §8 **不鬆 gate 硬湊**。
 
-> **白話**：你問「最佳策略並 push 進 app 了嗎」→ 答案是 **(a) 嚴謹找過了，(b) 沒有主動策略過 gate 贏大盤，(c) 所以最佳 = 買 0050 被動持有。** 你的 11-因子 app 可當「觀察名單/輔助」，但別當成能贏大盤的 alpha 機器。
+6. **迭代2（籌碼面+基本面，keyless，2026-06-22）= 同樣負結果。** 用戶問「加市值/營收/籌碼/法人買賣超等更多資料能不能找到 alpha」。3 輪窮盡研究（官方→FinMind→社群）+ 對抗驗證（16 findings 全修）後，誠實答案：
+   - **可 keyless 多年回測的新因子（純 TWSE 官方直連）= 法人流(instflow, T86) + 價值(value, BWIBBU PB/殖利率)。**
+   - **全 14 年史（2012-2026, 3664日×144檔）跨橫斷面 rank-IC ≈ 0**：instflow **+0.0002**、value **+0.0141**，**皆未過 0.05 floor → IC 篩 FAIL，沒有任何因子進 gate**（`optimize_tw_aux.json`、`run_aux_combo.py`、ADR `2026-06-22`）。
+   - **真卡死、誠實排除**：券商分點(付費/無 keyless 多年存檔)、多年籌碼集中度(TDCC 只1年/FinMind 付費)、margincontra(無 keyless 流通股；絕不用成交量當 proxy 虛胖過關)。
+   - 結論：**籌碼面+基本面因子在 keyless TW 同樣無 cross-sectional edge**，強化「最佳=被動 0050」。`run_aux_combo`/`build_aux_panels` 是 research-only，**從不接進 live app**（同 optimize_tw.json）。
+
+> **白話**：你問「最佳策略並 push 進 app 了嗎」→ 答案是 **(a) 嚴謹找過了（價格+籌碼+基本面三類都試），(b) 沒有主動策略過 gate 贏大盤，(c) 所以最佳 = 買 0050 被動持有。** 你的 11-因子 app 可當「觀察名單/輔助」，但別當成能贏大盤的 alpha 機器。
 
 ---
 
@@ -83,3 +89,14 @@ gh workflow run optimize-sleeve.yml -f sleeve=tw -f objective=calmar -f universe
 ```
 
 結果寫 `optimize_tw.txt` / `optimize_tw.json`（嚴謹版區塊 = pooled-OOS vs lockbox）。
+
+## 8. 迭代總結（2026-06-22）— 15y 驗證版報告 + 誠實框架
+
+用戶重新框定「找最佳可部署分析接進 app + 每日報告」後（非贏大盤 alpha）：
+
+- **Phase 0 事件型 TA 訊號**：布林 squeeze→突破 / Donchian / KD / MACD 跑 event-study lift gate（VDU/U-D 過關的同條路；gate 自證：U/D 重現 lift 1.35 KEEP）。全 FAIL：布林 lift 1.03/平盤 0.68(beta)、Donchian 0.89、MACD 0.84；**KD 黃金交叉(超賣) 最強 lift 1.21、贏 base、非 beta，但敗 Bonferroni**(p=0.0134>0.0125)。橫斷面 TA 早證死(|IC|≤0.0146)。**不加任何訊號。**（`ta_event_signals.py`/`run_ta_event_backtest.py`）
+- **Phase 1 scorer 15y 重驗**：8 個 base 因子全 rank-IC<0.05 但 reward 因子 top-decile edge 全正(rs 4.18..obv 2.29)→ 照 vol_stable 雙指標規則**無新降權**→ scorer 不動、**零 golden churn**。誠實：現有選股是 15y 驗證過的**觀察名單/輔助**，從未 SPA-vs-指數測過，**非贏大盤機器**。
+- **Phase 2/3 已接進 app（informational，非 scorer）**：`validated_portfolio.py` 把預註冊 LOWVOL+STREV+MOM 風控組合(`optimize_tw.json[combo]`：DSR 0.998✓/PBO 0.293✓/lockbox 10.7%/-21%✓ 但 **SPA p=0.17✗/flat 0.81✗→overall 未過**)當每日 track，**並列被動 0050/SPY 基準**。實證：被動 0050 15y CAGR **11.4%** > 組合 lockbox 10.7%——**被動贏報酬，組合只贏回撤**。PWA「驗證組合」tab + 永遠在頂「不承諾贏大盤」banner + 每因子 15y-IC 信心。
+- **Phase 4 CI**：`check_factor_drift.py` 月度監控因子跨越保留/降權邊界→開 HITL issue，**CI 絕不自動改權**。
+
+**底線不變**：keyless 公開資料**無**「過 gate 且大贏大盤」策略（含這輪布林等 TA 全證偽）。最誠實「最佳策略」= 被動指數；風控組合是可選主動 sleeve（抱得住但不贏指數）。ADR `.decisions/2026-06-22-scorer-15y-revalidation.md`。

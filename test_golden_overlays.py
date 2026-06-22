@@ -325,6 +325,37 @@ class TestPayloadGolden(unittest.TestCase):
                     _assert_no_stray_score(v, "%s[%d]" % (path, i))
         _assert_no_stray_score(env, "environment")
 
+    # ── Phase 2: the 'validated_portfolio' top-level key is a new ADDITIVE sidecar ──────
+    def test_validated_portfolio_is_additive_top_level(self):
+        """The 驗證組合 track is an INFORMATIONAL top-level key: empty ({}) when not wired,
+        carried verbatim when passed, and its presence must NOT change any pick's score/
+        factors or the pick order (golden-additive invariant)."""
+        base_kwargs = dict(
+            date_str="2026-06-06", news={}, indices={}, institutional={},
+            ranked=self.ranked, analyses={}, allocation={}, rebalance_diff={},
+            risk="LOW", markdown="", skips=[], pick_cards=dict(self.pick_cards),
+        )
+        base = web_export.build_payload(**base_kwargs)
+        sample = {"tw": {"holdings": [{"ticker": "2330.TW", "sleeves": ["mom"], "weight": 0.5}],
+                         "track_record": {"cagr": 0.1074, "overall_pass": False, "spa_pass": False}},
+                  "us": {"holdings": [], "track_record": None},
+                  "passive_benchmark": {"tw": {"label": "0050", "cagr": 0.08}},
+                  "disclaimers": ["不承諾贏過大盤指數"]}
+        fv = {"rs": {"rank_ic": 0.0306, "edge": 4.18}, "vol_stable": {"rank_ic": -0.025, "edge": 0.56}}
+        withvp = web_export.build_payload(validated_portfolio=sample, factor_validation=fv,
+                                          **base_kwargs)
+        # backward-compatible defaults
+        self.assertEqual(base.get("validated_portfolio"), {})
+        self.assertEqual(base.get("factor_validation"), {})
+        # carried verbatim, including the honest FAIL fields
+        vp = withvp.get("validated_portfolio")
+        self.assertEqual(vp["tw"]["track_record"]["cagr"], 0.1074)
+        self.assertFalse(vp["tw"]["track_record"]["overall_pass"])
+        self.assertIn("disclaimers", vp)
+        self.assertEqual(withvp.get("factor_validation")["rs"]["rank_ic"], 0.0306)
+        # picks byte-identical with the track + factor_validation added
+        self.assertEqual(_picks_fingerprint(base), _picks_fingerprint(withvp))
+
     def test_sec_frames_and_openfda_overlays_present(self):
         """The P2 per-stock producers (sec_frames=fundamental, openfda=catalyst) flow through
         build_payload onto US picks as additive overlay sidecars (never scored)."""

@@ -1666,6 +1666,7 @@ function oppSheetBody(d) {
   if (watchHtml(d)) tabs.push({ id: 'watch', label: '持倉追蹤', html: watchHtml(d) });
   if (radarHtml(d)) tabs.push({ id: 'radar', label: '雷達', html: radarHtml(d) });
   if (momentumHtml(d)) tabs.push({ id: 'mom', label: '動能組合', html: momentumHtml(d) });
+  if (validatedHtml(d)) tabs.push({ id: 'valport', label: '驗證組合', html: validatedHtml(d) });
   if (revenueHtml(d)) tabs.push({ id: 'rev', label: '營收成長', html: revenueHtml(d) });
   if (!tabs.length) return '<div class="empty">今日無機會掃描資料。</div>';
   if (!tabs.some((t) => t.id === _oppTab)) _oppTab = tabs[0].id;
@@ -1915,6 +1916,130 @@ function momentumHtml(d) {
   };
   const head = `<div class="note">🏆 <b>動能組合（季度 top-20）</b>：以 12-1 動能排序、季度再平衡的<b>組合構建</b>策略，與「每日精選」是<b>不同框架</b>。組合回測證明勝過等權與買進持有；informational，非買賣訊號。</div>`;
   return head + discFold + sleeve('台股 sleeve', tw, twH) + sleeve('美股 sleeve', us, usH);
+}
+
+/* ============================================================================
+   驗證組合 track (validated_portfolio.build_track shape) — the 15y-validated
+   risk-MANAGED combo (LOWVOL+STREV+MOM) + the PASSIVE 0050/SPY benchmark.
+   HONEST: passes DSR/PBO/lockbox but does NOT beat the index (SPA fail) — every
+   gate verdict shown, no alpha claim. INFORMATIONAL; never a buy/sell signal.
+   ============================================================================ */
+function valGate(label, ok) {
+  // a compact green(pass)/red(fail) gate badge — self-contained inline style, no CSS dep
+  const color = ok ? '#16a34a' : '#dc2626';
+  const mark = ok ? '✓' : '✗';
+  return `<span style="display:inline-block;margin:2px 4px 2px 0;padding:1px 7px;border-radius:10px;` +
+    `font-size:11px;border:1px solid ${color};color:${color}">${mark} ${esc(label)}</span>`;
+}
+
+function valTrackCards(tr) {
+  if (!tr) return '<p class="tiny">回測 track record 暫不可得（informational）。</p>';
+  const cagrDir = tr.cagr == null ? null : (tr.cagr > 0 ? 1 : -1);
+  const cards = [
+    mcard('lockbox CAGR', _momPct(tr.cagr), { dir: cagrDir, sub: '真實終端 holdout 年化（非樣本內最大化）' }),
+    mcard('最大回撤 MaxDD', _momPct(tr.max_dd), { dir: tr.max_dd == null ? null : -1, sub: '風險管理後峰至谷跌幅' }),
+    mcard('Calmar', tr.calmar == null ? '—' : (+tr.calmar).toFixed(2), { dir: tr.calmar == null ? null : (tr.calmar > 0 ? 1 : 0), sub: 'CAGR / |MaxDD|（風險調整）' }),
+  ];
+  // gate verdict badges — the WHOLE truth, including the FAILs (SPA-vs-index, flat-lift)
+  const gates = valGate('DSR ' + (tr.dsr != null ? (+tr.dsr).toFixed(2) : '?'), !!tr.dsr_pass)
+    + valGate('PBO ' + (tr.pbo != null ? (+tr.pbo).toFixed(2) : '?'), !!tr.pbo_pass)
+    + valGate('lockbox', !!tr.lockbox_pass)
+    + valGate('SPA vs 指數 p=' + (tr.spa_p != null ? tr.spa_p : '?'), !!tr.spa_pass)
+    + valGate('平盤 lift ' + (tr.flat_lift != null ? tr.flat_lift : '?'), !!tr.flat_pass);
+  const overall = tr.overall_pass
+    ? '<span style="color:#16a34a">整體：通過</span>'
+    : '<span style="color:#dc2626">整體：未通過（過 DSR/PBO/lockbox，但<b>未顯著贏指數</b> SPA p=' + esc(tr.spa_p != null ? tr.spa_p : '?') + '）</span>';
+  return mgrid(cards)
+    + `<div style="margin:6px 0">${gates}</div>`
+    + `<p class="tiny"><b>${overall}</b> · n_trials=${esc(tr.n_trials != null ? tr.n_trials : '?')}（預註冊，未挖配置）</p>`;
+}
+
+function valPassiveCards(pb, twLabel, usLabel) {
+  if (!pb) return '';
+  const one = (b, fallbackLabel) => {
+    if (!b) return '';
+    return mcard((b.label || fallbackLabel) + ' 被動 CAGR', _momPct(b.cagr),
+      { dir: b.cagr == null ? null : (b.cagr > 0 ? 1 : -1), sub: '推薦核心基準 · MaxDD ' + _momPct(b.max_dd) + '（指數代理）' });
+  };
+  const cards = [one(pb.tw, twLabel), one(pb.us, usLabel)].filter(Boolean);
+  return cards.length ? mgrid(cards) : '';
+}
+
+function valHoldingsList(holdings) {
+  if (!holdings || !holdings.length) return '<p class="tiny">本日無足夠資料計算組合持股（需足夠歷史）。</p>';
+  const li = holdings.map((h) => {
+    const tags = (h.sleeves || []).map((s) => `<span class="tk num">${esc(s)}</span>`).join(' ');
+    const w = h.weight != null ? `<span class="pct">${(h.weight * 100).toFixed(1)}%</span>` : '';
+    const px = h.price != null ? `<div class="px">${pxNum(h.price)}</div>` : '';
+    return `<li><a href="#${esc(CUR_DATE)}/${esc(h.ticker)}" data-close-sheet>
+      <div class="li-main"><div class="li-name">${esc(h.name || h.ticker)} <span class="tk num">${esc(h.ticker)}</span></div>
+      <div class="li-sub">sleeve：${tags || '—'}（indicative 籃子，非買賣訊號）</div></div>
+      <div class="li-r">${px}${w}</div></a></li>`;
+  }).join('');
+  return `<ul class="list">${li}</ul>`;
+}
+
+const _FIC_LABELS = {
+  trend: '趨勢', momentum: '動能', volume: '量能', vol_stable: '波動穩定(已降權)',
+  rs: '相對強弱', high52: '接近52週高', rsi: 'RSI', obv: 'OBV量價',
+};
+function factorValidationSection(d) {
+  const fv = d && d.factor_validation;
+  if (!fv || typeof fv !== 'object' || !Object.keys(fv).length) return '';
+  const rows = Object.keys(fv).map((k) => {
+    const m = fv[k] || {};
+    const ic = m.rank_ic, edge = m.edge;
+    const icTxt = ic == null ? '—' : (ic >= 0 ? '+' : '') + (+ic).toFixed(4);
+    // honest: every base factor IC<0.05; a positive top-decile edge = still beats the universe avg
+    const kept = edge != null && edge >= 1.0 && !(k === 'vol_stable');
+    const badge = valGate(kept ? 'KEEP' : (k === 'vol_stable' ? '已降權' : '弱'), kept);
+    return `<li><div class="li-main"><div class="li-name">${esc(_FIC_LABELS[k] || k)}
+      <span class="tk num">15y IC ${esc(icTxt)}</span></div>
+      <div class="li-sub">top-decile edge ${edge == null ? '—' : (+edge).toFixed(2)}（贏 universe 均值幅度）</div></div>
+      <div class="li-r">${badge}</div></li>`;
+  }).join('');
+  return `<div class="sh-sec"><div class="sh-h">📊 選股因子 15y 驗證信心</div>
+    <ul class="list">${rows}</ul>
+    <p class="tiny">每個選股因子的 15 年全市場橫斷面 rank-IC。<b>誠實事實：全部 &lt;0.05</b> —
+    每日選股是 15y 驗證過的<b>觀察名單/輔助</b>（弱正 edge），<b>非已證實贏大盤的機器</b>。</p></div>`;
+}
+
+function validatedHtml(d) {
+  const fvSection = factorValidationSection(d);
+  const vpRaw = d && d.validated_portfolio;
+  const hasVp = vpRaw && typeof vpRaw === 'object' && !Array.isArray(vpRaw);
+  const vp = hasVp ? vpRaw : {};
+  const tw = vp.tw || {}, us = vp.us || {};
+  const twH = tw.holdings || [], usH = us.holdings || [];
+  const hasTrack = twH.length || usH.length || tw.track_record || us.track_record
+    || (vp.passive_benchmark && (vp.passive_benchmark.tw || vp.passive_benchmark.us));
+  if (!hasTrack && !fvSection) return '';
+  // 決策3 — 永遠在頂的「不承諾贏大盤」banner（涵蓋整個 app，非只此 track）
+  const banner = `<div class="note" style="border-left:3px solid #dc2626">🛡️ <b>本工具協助決策，不承諾贏過大盤指數。</b>` +
+    ` keyless 嚴謹搜尋（價格＋籌碼＋基本面＋月營收＋技術指標）未找到顯著贏過指數的主動策略 →` +
+    ` <b>被動持有 0050/SPY 仍是合理基準</b>。下方組合為「風險管理」用途，非贏大盤機器。</div>`;
+  const disc = (vp.disclaimers || []);
+  const discFold = disc.length
+    ? `<details class="fold" open><summary>⚠️ 重要揭露（誠實全文 — 點開）</summary>
+        <div class="fold-body">${disc.map((x) => `<p>${esc(x)}</p>`).join('')}</div></details>`
+    : '';
+  const passive = valPassiveCards(vp.passive_benchmark || null, '0050', 'SPY');
+  const passiveSec = passive
+    ? `<div class="sh-sec"><div class="sh-h">🟢 被動基準（推薦核心）</div>${passive}
+        <p class="tiny">最誠實的「最佳策略」：長期持有大盤指數。下方主動組合僅在你想要時作為可選 sleeve。</p></div>`
+    : '';
+  const sleeve = (label, s, holdings) => {
+    if (!holdings.length && !s.track_record) return '';
+    return `<div class="sh-sec"><div class="sh-h">${esc(label)}</div>
+      ${valTrackCards(s.track_record)}
+      <div class="sh-sub">今日 indicative 持股（因子配方套今日 universe）</div>
+      ${valHoldingsList(holdings)}</div>`;
+  };
+  const head = `<div class="note">🧪 <b>驗證組合（風險管理，可選主動 sleeve）</b>：經 15 年嚴謹回測的 LOWVOL+STREV+MOM` +
+    ` 反向波動加權組合，過 DSR/PBO/lockbox（TW ~10.7%/-21%），<b>但未顯著贏指數</b>。與每日精選為不同框架。</div>`;
+  return banner + head + passiveSec
+    + sleeve('台股 sleeve', tw, twH) + sleeve('美股 sleeve（更弱，僅 informational）', us, usH)
+    + fvSection + discFold;
 }
 
 /* ============================================================================

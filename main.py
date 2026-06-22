@@ -61,6 +61,7 @@ import attribution as attribution_mod
 import indicators
 import supply_chain
 import momentum_portfolio as momentum_mod
+import validated_portfolio as validated_mod
 
 # sources/ overlay framework (keyless informational overlays — OVERLAY-NOT-SCORER).
 # Each fetcher is injectable + graceful-skip; the wiring below guards every source
@@ -208,6 +209,50 @@ def main(web=False):
                  len(momentum_lens.get("us", {}).get("holdings", [])))
     except Exception as e:
         log.warning("SKIP momentum lens: %s", e); momentum_lens = {}; skips.append("momentum_portfolio")
+
+    # 2e-val. 驗證組合 track — the 15y-validated risk-MANAGED combo (LOWVOL+STREV+MOM inverse-vol)
+    #     surfaced alongside the PASSIVE 0050/SPY benchmark. Reads optimize_<sleeve>.json["combo"]
+    #     (the rigorous-gate output: PASSES DSR/PBO/lockbox ~10.7%/-21% TW, FAILS SPA-vs-index
+    #     p=0.17 → overall not-pass). Same NO-extra-network pattern as the momentum lens (reuses the
+    #     opp universe OHLCV + the already-fetched index frames as the 0050/SPY proxy). HONEST: does
+    #     NOT and is NOT claimed to beat the index. OVERLAY-NOT-SCORER. FAIL-OPEN → empty on error.
+    validated_lens = {}
+    try:
+        _vt_data = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
+        _vt_tw = {t: df for t, df in _vt_data.items() if t.endswith((".TW", ".TWO"))}
+        _vt_us = {t: df for t, df in _vt_data.items() if not t.endswith((".TW", ".TWO"))}
+        _vt_names = {**config.STOCK_NAMES}
+        for _ld in (opp or {}).get("leaders", []):
+            if _ld.get("ticker") and _ld.get("name"):
+                _vt_names.setdefault(_ld["ticker"], _ld["name"])
+        _vt_here = os.path.dirname(os.path.abspath(__file__))
+        validated_lens = validated_mod.build_track(
+            _vt_tw, _vt_us,
+            os.path.join(_vt_here, "optimize_tw.json"),
+            os.path.join(_vt_here, "optimize_us.json"),
+            tw_index=frames.get("twii"), us_index=frames.get("sp500"),
+            tw_names=_vt_names, us_names=_vt_names)
+        log.info("validated lens: TW %d holding(s), US %d holding(s), overall_pass=%s",
+                 len(validated_lens.get("tw", {}).get("holdings", [])),
+                 len(validated_lens.get("us", {}).get("holdings", [])),
+                 (validated_lens.get("tw", {}).get("track_record") or {}).get("overall_pass"))
+    except Exception as e:
+        log.warning("SKIP validated lens: %s", e); validated_lens = {}; skips.append("validated_portfolio")
+
+    # 2e-fic. 每因子 15y 驗證信心 — surface each base factor's full-universe 15y cross-sectional
+    #     rank-IC (committed docs/data/_factor_ic_state.json) so the PWA can show the daily picks
+    #     ARE 15y-validated AND the HONEST truth that every base factor is weak (IC<0.05). Read-only,
+    #     additive; no scorer change. FAIL-OPEN → empty.
+    factor_validation = {}
+    try:
+        _fic_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 "docs", "data", "_factor_ic_state.json")
+        with open(_fic_path, encoding="utf-8") as _ff:
+            _fic = json.load(_ff)
+        factor_validation = {k: {"rank_ic": v.get("rank_ic"), "edge": v.get("edge")}
+                             for k, v in (_fic.get("families") or {}).items()}
+    except Exception as e:
+        log.warning("SKIP factor_validation: %s", e); skips.append("factor_validation")
 
     # 3. 三大法人 ------------------------------------------------------------
     inst = run_stage(log, skips, "institutional",
@@ -486,7 +531,8 @@ def main(web=False):
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
         signals=sig, themes=themes, opportunity=opp, regime=regime,
         concentration=concentration, macro=macro_ctx,
-        momentum_portfolio=momentum_lens)
+        momentum_portfolio=momentum_lens, validated_portfolio=validated_lens,
+        factor_validation=factor_validation)
 
     # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
     #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
@@ -1256,7 +1302,8 @@ def main(web=False):
             macro=macro_ctx, fx=fx, watchlist=wl_board, early_board=early_board,
             overlays_map=overlays_map, source_coverage=source_coverage,
             environment=environment, my_positions=my_positions,
-            momentum_portfolio=momentum_lens, scored_universe=scored_universe)
+            momentum_portfolio=momentum_lens, scored_universe=scored_universe,
+            validated_portfolio=validated_lens, factor_validation=factor_validation)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
