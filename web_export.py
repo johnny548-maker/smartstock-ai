@@ -133,7 +133,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
                   watchlist=None, early_board=None, overlays_map=None, source_coverage=None,
                   environment=None, my_positions=None, attribution=None,
                   strategy_health=None, shadow=None, health=None,
-                  momentum_portfolio=None, scored_universe=None):
+                  momentum_portfolio=None, scored_universe=None, validated_portfolio=None):
     level_map = level_map or {}
     pick_cards = pick_cards or {}
     overlays_map = overlays_map or {}
@@ -235,6 +235,12 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # NEVER summed into strategy.score_stock / rank_stocks (golden-additive invariant).
         # Backward-compatible: defaults to {} so older callers/payloads are unaffected.
         "momentum_portfolio": momentum_portfolio or {},
+        # 驗證組合 track (validated_portfolio.build_track shape) — the 15y-validated risk-MANAGED
+        # combo (LOWVOL+STREV+MOM) + the PASSIVE 0050/SPY benchmark. INFORMATIONAL sidecar: the
+        # combo PASSES DSR/PBO/lockbox but FAILS SPA-vs-index (overall not-pass) — surfaced with
+        # the full honest verdict. NEVER summed into the scorer (golden-additive invariant).
+        # Backward-compatible: defaults to {} so older callers/payloads are unaffected.
+        "validated_portfolio": validated_portfolio or {},
         # Fix 1 (GAP C) 全市場精選 — top-N of the ~600 opportunity universe scored
         # through the SAME gated rank_stocks formula as the core picks (resource-thin
         # names simply don't fire chip/法人 factors → lower, not penalised). ADDITIVE
