@@ -179,7 +179,10 @@ jobs:
           test -f docs/data/_verdicts.json || { echo "::error::missing _verdicts.json"; exit 1; }
           N_V=$(jq 'length' docs/data/_verdicts.json)
           test "$N_V" -ge 1 || { echo "::error::_verdicts.json empty"; exit 1; }
-          echo "::notice::smoke ok — picks=$N_PICKS verdicts=$N_V health=present"
+          # additive keys present (default {} is fine — only assert the key exists, never breaks picks)
+          test "$(jq 'has("validated_portfolio")' "$F")" = "true" || { echo "::error::missing validated_portfolio key"; exit 1; }
+          test "$(jq 'has("factor_validation")' "$F")" = "true" || { echo "::error::missing factor_validation key"; exit 1; }
+          echo "::notice::smoke ok — picks=$N_PICKS verdicts=$N_V health=present validated_portfolio+factor_validation=present"
 
       - name: Commit report to docs/data
         if: steps.report_check.outputs.skip != 'true'
