@@ -89,3 +89,14 @@ gh workflow run optimize-sleeve.yml -f sleeve=tw -f objective=calmar -f universe
 ```
 
 結果寫 `optimize_tw.txt` / `optimize_tw.json`（嚴謹版區塊 = pooled-OOS vs lockbox）。
+
+## 8. 迭代總結（2026-06-22）— 15y 驗證版報告 + 誠實框架
+
+用戶重新框定「找最佳可部署分析接進 app + 每日報告」後（非贏大盤 alpha）：
+
+- **Phase 0 事件型 TA 訊號**：布林 squeeze→突破 / Donchian / KD / MACD 跑 event-study lift gate（VDU/U-D 過關的同條路；gate 自證：U/D 重現 lift 1.35 KEEP）。全 FAIL：布林 lift 1.03/平盤 0.68(beta)、Donchian 0.89、MACD 0.84；**KD 黃金交叉(超賣) 最強 lift 1.21、贏 base、非 beta，但敗 Bonferroni**(p=0.0134>0.0125)。橫斷面 TA 早證死(|IC|≤0.0146)。**不加任何訊號。**（`ta_event_signals.py`/`run_ta_event_backtest.py`）
+- **Phase 1 scorer 15y 重驗**：8 個 base 因子全 rank-IC<0.05 但 reward 因子 top-decile edge 全正(rs 4.18..obv 2.29)→ 照 vol_stable 雙指標規則**無新降權**→ scorer 不動、**零 golden churn**。誠實：現有選股是 15y 驗證過的**觀察名單/輔助**，從未 SPA-vs-指數測過，**非贏大盤機器**。
+- **Phase 2/3 已接進 app（informational，非 scorer）**：`validated_portfolio.py` 把預註冊 LOWVOL+STREV+MOM 風控組合(`optimize_tw.json[combo]`：DSR 0.998✓/PBO 0.293✓/lockbox 10.7%/-21%✓ 但 **SPA p=0.17✗/flat 0.81✗→overall 未過**)當每日 track，**並列被動 0050/SPY 基準**。實證：被動 0050 15y CAGR **11.4%** > 組合 lockbox 10.7%——**被動贏報酬，組合只贏回撤**。PWA「驗證組合」tab + 永遠在頂「不承諾贏大盤」banner + 每因子 15y-IC 信心。
+- **Phase 4 CI**：`check_factor_drift.py` 月度監控因子跨越保留/降權邊界→開 HITL issue，**CI 絕不自動改權**。
+
+**底線不變**：keyless 公開資料**無**「過 gate 且大贏大盤」策略（含這輪布林等 TA 全證偽）。最誠實「最佳策略」= 被動指數；風控組合是可選主動 sleeve（抱得住但不贏指數）。ADR `.decisions/2026-06-22-scorer-15y-revalidation.md`。
