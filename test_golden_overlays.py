@@ -255,6 +255,34 @@ class TestPayloadGolden(unittest.TestCase):
             "overlays perturbed the score/rank — GOLDEN-ADDITIVE INVARIANT VIOLATED",
         )
 
+    def test_risk_lens_keys_additive(self):
+        # Decision-cockpit additions (beta_60 per pick + factor_meta + concentration_summary) must
+        # be PURE sidecars: the picks fingerprint (stock/score/factors/order) stays byte-identical.
+        ranked2 = [dict(r, beta_60=1.3, corr_idx=0.85) for r in self.ranked]
+        common = dict(date_str="2026-06-06", news={}, indices={}, institutional={},
+                      analyses={}, allocation={}, rebalance_diff={}, risk="LOW",
+                      markdown="", skips=[], pick_cards=dict(self.pick_cards))
+        base = web_export.build_payload(ranked=self.ranked, **common)
+        withlens = web_export.build_payload(
+            ranked=ranked2,
+            factor_validation={"trend": {"rank_ic": 0.011, "edge": 2.6},
+                               "rs": {"rank_ic": 0.06, "edge": 1.2}},
+            concentration_summary={"warn": True, "suggestion": "半導體佔 8/12 …",
+                                   "dominant": {"sector": "半導體", "count": 8, "share": 0.67}},
+            **common)
+        # 1) beta_60 is a sidecar → fingerprint unchanged
+        self.assertEqual(_picks_fingerprint(base), _picks_fingerprint(withlens),
+                         "beta_60/factor_meta/concentration perturbed score/rank — INVARIANT VIOLATED")
+        # 2) beta surfaces on the pick dict additively
+        self.assertEqual(withlens["picks"][0]["beta_60"], 1.3)
+        # 3) factor_meta is the joined shape; 0.011→weak, 0.06→keep (honest IC labelling)
+        keep = {m["family"]: m["keep"] for m in withlens["factor_meta"]}
+        self.assertFalse(keep["trend"]); self.assertTrue(keep["rs"])
+        # 4) concentration_summary passes through; both keys default empty without inputs
+        self.assertTrue(withlens["concentration_summary"]["warn"])
+        self.assertEqual(base["concentration_summary"], {})
+        self.assertEqual(base["factor_meta"], [])
+
     def test_pick_order_identical(self):
         base = [p["stock"] for p in self._payload(False)["picks"]]
         withov = [p["stock"] for p in self._payload(True)["picks"]]

@@ -163,6 +163,30 @@ def _gate_rr(risk_plan):
     return passed, detail
 
 
+def _gate_timing(regime):
+    """⑥ 市場時機：大盤站在 200 日線上方（趨勢非空頭）？
+
+    Reads market_regime()'s per-index 200dma trend states (detail[idx]['trend'] ∈
+    uptrend/neutral/downtrend). Conservative: any index in a downtrend → fail. Validated keyless
+    risk tool — 200dma timing improved the index's risk-adjusted return (Sharpe 0.98→1.07, drawdown
+    -34%→-21% over 15y). Complements gate ① (exposure magnitude) with explicit trend DIRECTION.
+    """
+    if not regime or not isinstance(regime, dict):
+        return None, "資料不足（無市場體制資料）"
+    detail = regime.get("detail") or {}
+    trends = [v.get("trend") for v in detail.values()
+              if isinstance(v, dict) and v.get("trend")]
+    if not trends:
+        return None, "資料不足（無 200 日線趨勢資料）"
+    zh = {"uptrend": "多頭(站上200日線)", "neutral": "中性", "downtrend": "空頭(跌破200日線)"}
+    passed = "downtrend" not in trends
+    names = "/".join(zh.get(t, str(t)) for t in trends)
+    exp = regime.get("exposure")
+    extra = f"；建議曝險 {exp}%" if isinstance(exp, (int, float)) else ""
+    detail_str = f"大盤趨勢 {names}{extra} — 跌破 200 日線時降低新進場、優先既有部位/分批"
+    return passed, detail_str
+
+
 # ── public API ────────────────────────────────────────────────────────────────
 
 def build_checklist(pick, regime, concentration, risk_plan, earnings_flag):
@@ -232,6 +256,13 @@ def build_checklist(pick, regime, concentration, risk_plan, earnings_flag):
         p, d = None, "資料不足（計算錯誤）"
     gates.append({"key": "rr", "label": "R:R ≥ 2.0", "pass": p, "detail": d})
 
+    try:
+        p, d = _gate_timing(regime)
+    except Exception as exc:
+        log.warning("pretrade timing gate error: %s", exc)
+        p, d = None, "資料不足（計算錯誤）"
+    gates.append({"key": "timing", "label": "市場時機（站上 200 日線）", "pass": p, "detail": d})
+
     # ── verdict_line ──────────────────────────────────────────────────────────
     verdict = _build_verdict(gates)
 
@@ -261,6 +292,7 @@ def _build_verdict(gates):
         "cluster": "集群擁擠",
         "liquidity": "流動性不足",
         "rr": "R:R 不足",
+        "timing": "大盤跌破200線",
     }
 
     if passed == total:

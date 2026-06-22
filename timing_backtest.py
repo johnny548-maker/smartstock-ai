@@ -120,7 +120,11 @@ def portfolio_nav(positions_df, returns_df, k, cost_bps=45.0):
     traded. Returns (daily_net_return Series, NAV Series). k = max concurrent positions."""
     held = positions_df.fillna(0.0).astype(float)
     rets = returns_df.reindex(index=held.index, columns=held.columns).fillna(0.0)
-    gross = ((held / float(k)) * rets).sum(axis=1)
+    # equal-weight across held names, but NEVER exceed 100% invested: if >K names are held the slot
+    # weight is 1/n_held (fully invested, no leverage); if <=K it is 1/K (cash drag on empty slots).
+    denom = held.sum(axis=1).clip(lower=float(k))
+    w = held.div(denom, axis=0)
+    gross = (w * rets).sum(axis=1)
     dpos = held.diff()
     if len(dpos):
         dpos.iloc[0] = held.iloc[0]                          # day-0 entries come from cash
