@@ -341,15 +341,19 @@ class TestPayloadGolden(unittest.TestCase):
                   "us": {"holdings": [], "track_record": None},
                   "passive_benchmark": {"tw": {"label": "0050", "cagr": 0.08}},
                   "disclaimers": ["不承諾贏過大盤指數"]}
-        withvp = web_export.build_payload(validated_portfolio=sample, **base_kwargs)
-        # backward-compatible default
+        fv = {"rs": {"rank_ic": 0.0306, "edge": 4.18}, "vol_stable": {"rank_ic": -0.025, "edge": 0.56}}
+        withvp = web_export.build_payload(validated_portfolio=sample, factor_validation=fv,
+                                          **base_kwargs)
+        # backward-compatible defaults
         self.assertEqual(base.get("validated_portfolio"), {})
+        self.assertEqual(base.get("factor_validation"), {})
         # carried verbatim, including the honest FAIL fields
         vp = withvp.get("validated_portfolio")
         self.assertEqual(vp["tw"]["track_record"]["cagr"], 0.1074)
         self.assertFalse(vp["tw"]["track_record"]["overall_pass"])
         self.assertIn("disclaimers", vp)
-        # picks byte-identical with the track added
+        self.assertEqual(withvp.get("factor_validation")["rs"]["rank_ic"], 0.0306)
+        # picks byte-identical with the track + factor_validation added
         self.assertEqual(_picks_fingerprint(base), _picks_fingerprint(withvp))
 
     def test_sec_frames_and_openfda_overlays_present(self):

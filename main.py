@@ -239,6 +239,21 @@ def main(web=False):
     except Exception as e:
         log.warning("SKIP validated lens: %s", e); validated_lens = {}; skips.append("validated_portfolio")
 
+    # 2e-fic. 每因子 15y 驗證信心 — surface each base factor's full-universe 15y cross-sectional
+    #     rank-IC (committed docs/data/_factor_ic_state.json) so the PWA can show the daily picks
+    #     ARE 15y-validated AND the HONEST truth that every base factor is weak (IC<0.05). Read-only,
+    #     additive; no scorer change. FAIL-OPEN → empty.
+    factor_validation = {}
+    try:
+        _fic_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 "docs", "data", "_factor_ic_state.json")
+        with open(_fic_path, encoding="utf-8") as _ff:
+            _fic = json.load(_ff)
+        factor_validation = {k: {"rank_ic": v.get("rank_ic"), "edge": v.get("edge")}
+                             for k, v in (_fic.get("families") or {}).items()}
+    except Exception as e:
+        log.warning("SKIP factor_validation: %s", e); skips.append("factor_validation")
+
     # 3. 三大法人 ------------------------------------------------------------
     inst = run_stage(log, skips, "institutional",
                      lambda: institutional.get_institutional(config.STOCKS_TW), default={})
@@ -516,7 +531,8 @@ def main(web=False):
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
         signals=sig, themes=themes, opportunity=opp, regime=regime,
         concentration=concentration, macro=macro_ctx,
-        momentum_portfolio=momentum_lens, validated_portfolio=validated_lens)
+        momentum_portfolio=momentum_lens, validated_portfolio=validated_lens,
+        factor_validation=factor_validation)
 
     # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
     #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
@@ -1287,7 +1303,7 @@ def main(web=False):
             overlays_map=overlays_map, source_coverage=source_coverage,
             environment=environment, my_positions=my_positions,
             momentum_portfolio=momentum_lens, scored_universe=scored_universe,
-            validated_portfolio=validated_lens)
+            validated_portfolio=validated_lens, factor_validation=factor_validation)
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 

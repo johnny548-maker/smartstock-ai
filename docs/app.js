@@ -1979,13 +1979,41 @@ function valHoldingsList(holdings) {
   return `<ul class="list">${li}</ul>`;
 }
 
+const _FIC_LABELS = {
+  trend: '趨勢', momentum: '動能', volume: '量能', vol_stable: '波動穩定(已降權)',
+  rs: '相對強弱', high52: '接近52週高', rsi: 'RSI', obv: 'OBV量價',
+};
+function factorValidationSection(d) {
+  const fv = d && d.factor_validation;
+  if (!fv || typeof fv !== 'object' || !Object.keys(fv).length) return '';
+  const rows = Object.keys(fv).map((k) => {
+    const m = fv[k] || {};
+    const ic = m.rank_ic, edge = m.edge;
+    const icTxt = ic == null ? '—' : (ic >= 0 ? '+' : '') + (+ic).toFixed(4);
+    // honest: every base factor IC<0.05; a positive top-decile edge = still beats the universe avg
+    const kept = edge != null && edge >= 1.0 && !(k === 'vol_stable');
+    const badge = valGate(kept ? 'KEEP' : (k === 'vol_stable' ? '已降權' : '弱'), kept);
+    return `<li><div class="li-main"><div class="li-name">${esc(_FIC_LABELS[k] || k)}
+      <span class="tk num">15y IC ${esc(icTxt)}</span></div>
+      <div class="li-sub">top-decile edge ${edge == null ? '—' : (+edge).toFixed(2)}（贏 universe 均值幅度）</div></div>
+      <div class="li-r">${badge}</div></li>`;
+  }).join('');
+  return `<div class="sh-sec"><div class="sh-h">📊 選股因子 15y 驗證信心</div>
+    <ul class="list">${rows}</ul>
+    <p class="tiny">每個選股因子的 15 年全市場橫斷面 rank-IC。<b>誠實事實：全部 &lt;0.05</b> —
+    每日選股是 15y 驗證過的<b>觀察名單/輔助</b>（弱正 edge），<b>非已證實贏大盤的機器</b>。</p></div>`;
+}
+
 function validatedHtml(d) {
-  const vp = d && d.validated_portfolio;
-  if (!vp || typeof vp !== 'object' || Array.isArray(vp)) return '';
+  const fvSection = factorValidationSection(d);
+  const vpRaw = d && d.validated_portfolio;
+  const hasVp = vpRaw && typeof vpRaw === 'object' && !Array.isArray(vpRaw);
+  const vp = hasVp ? vpRaw : {};
   const tw = vp.tw || {}, us = vp.us || {};
   const twH = tw.holdings || [], usH = us.holdings || [];
-  if (!twH.length && !usH.length && !tw.track_record && !us.track_record
-    && !(vp.passive_benchmark && (vp.passive_benchmark.tw || vp.passive_benchmark.us))) return '';
+  const hasTrack = twH.length || usH.length || tw.track_record || us.track_record
+    || (vp.passive_benchmark && (vp.passive_benchmark.tw || vp.passive_benchmark.us));
+  if (!hasTrack && !fvSection) return '';
   // 決策3 — 永遠在頂的「不承諾贏大盤」banner（涵蓋整個 app，非只此 track）
   const banner = `<div class="note" style="border-left:3px solid #dc2626">🛡️ <b>本工具協助決策，不承諾贏過大盤指數。</b>` +
     ` keyless 嚴謹搜尋（價格＋籌碼＋基本面＋月營收＋技術指標）未找到顯著贏過指數的主動策略 →` +
@@ -2011,7 +2039,7 @@ function validatedHtml(d) {
     ` 反向波動加權組合，過 DSR/PBO/lockbox（TW ~10.7%/-21%），<b>但未顯著贏指數</b>。與每日精選為不同框架。</div>`;
   return banner + head + passiveSec
     + sleeve('台股 sleeve', tw, twH) + sleeve('美股 sleeve（更弱，僅 informational）', us, usH)
-    + discFold;
+    + fvSection + discFold;
 }
 
 /* ============================================================================
