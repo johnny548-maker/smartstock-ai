@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v57';
+const APP_VERSION = 'v58';
 const APP_BUILD = '2026-06-22';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -230,6 +230,10 @@ function warnChipsFor(p, clusters) {
   const out = [];
   const e = p && p.earnings;
   if (e && e.in_blackout) out.push(`<span class="wchip">財報${e.days_until === 0 ? '今日' : e.days_until + '天'}</span>`);
+  const ew = p && p.earn_watch;   // 30d forewarning (7<d≤30): softer volatility watch (de-scoped补)
+  if (!(e && e.in_blackout) && ew && ew.watch_vol && ew.days_until != null) {
+    out.push(`<span class="wchip">財報約${ew.days_until}天</span>`);
+  }
   if (clusters && (clusters.has(p.stock) || clusters.has(String(p.stock).replace(/\.(TW|TWO)$/, '')))) {
     out.push('<span class="wchip">高相關</span>');
   }
@@ -1416,6 +1420,12 @@ function marketSheetBody(d) {
   if (bc && bc.light) ec.push(mcard('景氣對策信號', esc(bc.light) + (bc.score != null ? ' ' + esc(bc.score) : ''), { txt: true, sub: '國發會綜合判斷' }));
   if (ind.export_orders_yoy != null) ec.push(mcard('外銷訂單YoY', pct1(ind.export_orders_yoy), { dir: ind.export_orders_yoy > 0 ? 1 : -1, sub: '領先製造業景氣' }));
   if (ind.electronics_export_yoy != null) ec.push(mcard('電子訂單YoY', pct1(ind.electronics_export_yoy), { dir: ind.electronics_export_yoy > 0 ? 1 : -1, sub: '電子業動能' }));
+  const cyc = env.electronics_cycle;   // de-scoped补 D-B: honest MACRO-level cycle gauge (not per-stock)
+  if (cyc && cyc.state) {
+    const CYC = { up: { t: '🟢 升溫', d: 1 }, flat: { t: '🟡 持平', d: 0 }, down: { t: '🔴 降溫', d: -1 } };
+    const cv = CYC[cyc.state] || { t: esc(cyc.state), d: 0 };
+    ec.push(mcard('電子景氣動能', cv.t, { dir: cv.d, txt: true, sub: '總經級·非個股 ' + esc((cyc.drivers || []).slice(0, 2).join('／')) }));
+  }
   if (mac.cpi_yoy != null) ec.push(mcard('美 CPI YoY', esc(mac.cpi_yoy) + '%', { sub: '通膨壓力' }));
   if (mac.usd_twd != null) ec.push(mcard('USD/TWD', esc(mac.usd_twd), { sub: '官方匯率參考' }));
   const dt = env.tpex_daytrade;

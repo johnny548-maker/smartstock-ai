@@ -73,5 +73,30 @@ class TestSectorConcentration(unittest.TestCase):
         self.assertEqual(out["by_sector"], {})
 
 
+class TestCycleMomentum(unittest.TestCase):
+    """Feature D de-scoped补: honest MACRO-level electronics/semi cycle momentum (NOT per-stock)."""
+
+    def test_strong_positive_is_up(self):
+        out = rl.electronics_cycle_momentum(
+            {"electronics_export_yoy": 0.18, "semi_hs_export_yoy": 0.21,
+             "business_cycle": {"light": "紅", "score": 38}})
+        self.assertEqual(out["state"], "up")
+        self.assertTrue(out["drivers"])
+
+    def test_negative_is_down(self):
+        out = rl.electronics_cycle_momentum(
+            {"electronics_export_yoy": -0.10, "semi_hs_export_yoy": -0.08})
+        self.assertEqual(out["state"], "down")
+
+    def test_small_is_flat(self):
+        out = rl.electronics_cycle_momentum({"electronics_export_yoy": 0.02})
+        self.assertEqual(out["state"], "flat")
+
+    def test_no_data_is_none_state(self):
+        out = rl.electronics_cycle_momentum({})
+        self.assertIsNone(out["state"])
+        self.assertIsNone(rl.electronics_cycle_momentum(None)["state"])
+
+
 if __name__ == "__main__":
     unittest.main()

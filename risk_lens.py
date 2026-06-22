@@ -75,3 +75,29 @@ def sector_concentration(ranked, sector_map=None, top_n=12, conc_data=None, name
     return {"by_sector": by,
             "dominant": {"sector": dom_sec, "count": dom_cnt, "share": round(share, 2)},
             "effective_bets": eff, "warn": warn, "suggestion": suggestion}
+
+
+def electronics_cycle_momentum(industry_env, up=0.05, down=-0.05):
+    """Honest MACRO-LEVEL electronics/semiconductor cycle-momentum gauge from the macro_tw industry
+    environment (electronics-export-orders YoY [leading] + HS-8542 IC-export YoY [confirming] + NDC
+    business-cycle signal). Returns {state: up|flat|down|None, yoy, drivers, note}.
+
+    INFORMATIONAL context for CYCLICAL electronics/semi positions — NOT a per-stock prediction and
+    NEVER a score input. state=None when no macro data is available."""
+    e = industry_env or {}
+    yoys = [v for v in (e.get("electronics_export_yoy"), e.get("semi_hs_export_yoy"))
+            if isinstance(v, (int, float))]
+    if not yoys:
+        return {"state": None, "yoy": None, "drivers": [], "note": "總經景氣資料不足"}
+    avg = sum(yoys) / len(yoys)
+    state = "up" if avg >= up else ("down" if avg <= down else "flat")
+    drivers = []
+    if isinstance(e.get("electronics_export_yoy"), (int, float)):
+        drivers.append(f"電子外銷訂單 YoY {e['electronics_export_yoy'] * 100:+.0f}%")
+    if isinstance(e.get("semi_hs_export_yoy"), (int, float)):
+        drivers.append(f"IC 出口 YoY {e['semi_hs_export_yoy'] * 100:+.0f}%")
+    bc = e.get("business_cycle") or {}
+    if bc.get("light"):
+        drivers.append(f"景氣燈號 {bc['light']}")
+    return {"state": state, "yoy": round(avg, 4), "drivers": drivers,
+            "note": "電子/半導體景氣動能＝總經級訊號（非個股預測）；週期股部位的環境參考。"}

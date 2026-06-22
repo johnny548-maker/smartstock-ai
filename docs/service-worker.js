@@ -8,7 +8,7 @@
    loops forever into a blank screen. Updates ride the CACHE-version bump + cache-first serving. */
 'use strict';
 
-const CACHE = 'smartstock-v57';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
+const CACHE = 'smartstock-v58';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
 const DATA_TIMEOUT_MS = 3500;     // stalled-network cutoff before falling back to cached data
 const SHELL = [
   './',
