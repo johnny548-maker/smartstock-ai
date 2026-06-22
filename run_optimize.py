@@ -77,6 +77,17 @@ AUX_PREREG_CONFIGS = {
                      "top_n": 20, "rebalance": "monthly",   "lookback": 20, "trend_ma": None},
 }
 
+# ── Iteration-3 price-only anomaly families (KEYLESS, no new data — derived from the OHLCV close
+# panel; pre-registered. Each is a documented academic anomaly untested in iter-1/2). Kept SEPARATE
+# from PREREG_CONFIGS so the existing combo is unchanged. n_trials accrues cumulatively when gated.
+NEW_PRICE_FAMILIES = ("lottery", "lowbeta")
+NEW_PRICE_CONFIGS = {
+    "lottery": {"family": "lottery", "vol_target": False, "sigma_target": None,
+                "top_n": 20, "rebalance": "monthly", "lookback": 21, "trend_ma": None},
+    "lowbeta": {"family": "lowbeta", "vol_target": False, "sigma_target": None,
+                "top_n": 20, "rebalance": "monthly", "lookback": 120, "trend_ma": None},
+}
+
 
 def factor_panel(family, close_df, lookback, aux=None):
     """Cross-sectional factor panel (dates x tickers); HIGHER = better to pick (select_top_n picks
@@ -97,6 +108,21 @@ def factor_panel(family, close_df, lookback, aux=None):
         return -rv
     if family == "strev":
         return -(close_df / close_df.shift(int(lookback)) - 1.0)
+    if family == "lottery":
+        # -(max single-day return over trailing lookback): avoid lottery-like names (Bali-Cakici-
+        # Whitelaw 2011, the MAX effect — high-max stocks underperform). HIGHER = less lottery.
+        L = int(lookback)
+        r = close_df.pct_change()
+        return -r.rolling(L, min_periods=max(10, L // 2)).max()
+    if family == "lowbeta":
+        # -(rolling beta vs the equal-weight market proxy): betting-against-beta (Frazzini-Pedersen
+        # 2014). Market = cross-sectional mean daily return (keyless, no index ticker needed).
+        L = int(lookback)
+        r = close_df.pct_change()
+        mkt = r.mean(axis=1)
+        var_m = mkt.rolling(L, min_periods=max(20, L // 2)).var()
+        cov_im = r.rolling(L, min_periods=max(20, L // 2)).cov(mkt)
+        return -cov_im.div(var_m.replace(0.0, np.nan), axis=0)
     if aux is not None and family in aux and aux[family] is not None:
         # prebuilt aux panel (PIT-lag already baked in) → align to the survivor price grid
         return aux[family].reindex(index=close_df.index, columns=close_df.columns)
