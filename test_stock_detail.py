@@ -273,5 +273,36 @@ class TestFilenameSanitization(unittest.TestCase):
             self.assertNotIn(" ", basename)
 
 
+class TestWindowsReservedNames(unittest.TestCase):
+    """Windows reserved device names (CON/PRN/AUX/NUL/COM1-9/LPT1-9) can't be filenames even with
+    an extension (CON.json is blocked) — a US ticker 'CON' broke local Windows git checkout. The
+    sanitizer suffixes '_' so the detail file is writable/checkout-able on Windows."""
+
+    def test_bare_reserved_gets_suffix(self):
+        self.assertEqual(stock_detail._sanitize_code("CON"), "CON_")
+        self.assertEqual(stock_detail._sanitize_code("NUL"), "NUL_")
+        self.assertEqual(stock_detail._sanitize_code("COM3"), "COM3_")
+        self.assertEqual(stock_detail._sanitize_code("LPT9"), "LPT9_")
+
+    def test_case_insensitive(self):
+        self.assertEqual(stock_detail._sanitize_code("con"), "con_")
+
+    def test_reserved_with_extension(self):
+        # 'CON.TW' → file 'CON.TW.json' whose stem 'CON' is still reserved on Windows
+        self.assertEqual(stock_detail._sanitize_code("CON.TW"), "CON_.TW")
+
+    def test_non_reserved_unchanged(self):
+        self.assertEqual(stock_detail._sanitize_code("2330.TW"), "2330.TW")
+        self.assertEqual(stock_detail._sanitize_code("AAPL"), "AAPL")
+        self.assertEqual(stock_detail._sanitize_code("CONCEPT"), "CONCEPT")   # stem != exactly CON
+
+    def test_export_writes_safe_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            written = export_details({"CON": build_detail("CON", df=None, name="Concord")}, tmp)
+            names = [os.path.basename(p) for p in written]
+            self.assertIn("CON_.json", names)
+            self.assertNotIn("CON.json", names)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

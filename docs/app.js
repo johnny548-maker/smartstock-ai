@@ -12,7 +12,7 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v58';
+const APP_VERSION = 'v59';
 const APP_BUILD = '2026-06-22';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
@@ -1269,6 +1269,18 @@ function pretradeHtml(p) {
     <p class="tiny">六項檢查為既有訊號的彙整（含市場時機 200 日線；資訊性，不計入評分與排名）。</p></div>`;
 }
 
+// Mirror of stock_detail._sanitize_code's Windows-reserved-name dodge: a detail file for ticker
+// 'CON' is written as 'CON_.json' (CON/PRN/AUX/NUL/COM1-9/LPT1-9 are reserved on Windows). The PWA
+// must request the same sanitized name or it 404s the chart for those tickers.
+const WIN_RESERVED = new Set(['CON', 'PRN', 'AUX', 'NUL',
+  'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9',
+  'LPT1', 'LPT2', 'LPT3', 'LPT4', 'LPT5', 'LPT6', 'LPT7', 'LPT8', 'LPT9']);
+function safeDetailCode(code) {
+  const s = String(code);
+  const stem = s.split('.', 1)[0];
+  return WIN_RESERVED.has(stem.toUpperCase()) ? stem + '_' + s.slice(stem.length) : s;
+}
+
 async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
@@ -1291,7 +1303,7 @@ async function openStockSheet(code) {
       else { forms.push(code + '.TW', code + '.TWO'); }
       let lazy = null;
       for (const f of forms) {
-        try { lazy = await getJSON('data/detail/' + encodeURIComponent(f) + '.json'); if (lazy) break; } catch (e) { /* try next form */ }
+        try { lazy = await getJSON('data/detail/' + encodeURIComponent(safeDetailCode(f)) + '.json'); if (lazy) break; } catch (e) { /* try next form */ }
       }
       if (lazy && typeof lazy === 'object') {
         const merged = p ? { ...lazy, ...p } : lazy;   // keep live score/factors, gain chart data

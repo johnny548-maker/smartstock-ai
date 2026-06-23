@@ -49,20 +49,33 @@ def _safe_sr(df):
 
 _SAFE_CHARS = re.compile(r"[^\w.\-]")   # keep alnum, underscore, dot, hyphen
 
+# Windows reserved DEVICE names: a file whose stem (text before the first dot) is one of these is
+# rejected by the OS even WITH an extension ('CON.json' is blocked). A real US ticker 'CON' broke
+# local Windows `git checkout` of the cron-committed detail file. Suffix '_' to make it writable.
+_WIN_RESERVED = ({"CON", "PRN", "AUX", "NUL"}
+                 | {"COM%d" % i for i in range(1, 10)}
+                 | {"LPT%d" % i for i in range(1, 10)})
+
 
 def _sanitize_code(code: str) -> str:
-    """Strip characters that would break a filename or allow path traversal.
+    """Strip characters that would break a filename or allow path traversal, and dodge Windows
+    reserved device names.
 
     '2330.TW' → '2330.TW' (dots kept)
     '../evil' → '..evil'  → then strip leading dots to block traversal
     'A B C'   → 'A_B_C'  (spaces → underscore via \\w complement)
+    'CON'     → 'CON_' ; 'CON.TW' → 'CON_.TW'  (Windows reserved-name dodge, case-insensitive)
 
     The regex replaces anything that is NOT [a-zA-Z0-9_.-] with '_'.
     Leading dots are then stripped to prevent directory traversal.
     """
     safe = _SAFE_CHARS.sub("_", code)
     safe = safe.lstrip(".")         # block  ../  or  ..evil
-    return safe or "_unknown"
+    safe = safe or "_unknown"
+    stem = safe.split(".", 1)[0]
+    if stem.upper() in _WIN_RESERVED:
+        safe = stem + "_" + safe[len(stem):]     # CON → CON_ ; CON.TW → CON_.TW
+    return safe
 
 
 # ---------------------------------------------------------------------------
