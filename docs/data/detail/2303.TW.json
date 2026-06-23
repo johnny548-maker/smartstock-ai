@@ -1,8 +1,8 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 169.0,
- "change_pct": 5.62,
+ "price": 174.5,
+ "change_pct": 9.06,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 173.0,
    "h": 176.0,
-   "l": 168.5,
-   "c": 169.0,
-   "v": 280358476
+   "l": 167.5,
+   "c": 174.5,
+   "v": 350741436
   }
  ],
  "sr": {
-  "price": 169.0,
+  "price": 174.5,
   "resistance": [],
   "support": [
    116.5,
@@ -554,7 +554,7 @@
   140.0,
   145.5,
   160.0,
-  169.0
+  174.5
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -565,20 +565,20 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 169.0,
-  "stop": 157.17,
-  "target": 198.57,
-  "atr_bracket": 198.57,
+  "entry": 174.5,
+  "stop": 162.28,
+  "target": 205.04,
+  "atr_bracket": 205.04,
   "measured_move": 240.3,
   "target_band": [
-   198.57,
+   205.04,
    240.3,
    273.21
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.3,
+  "atr_pct": 6.1,
   "swing_stop": 132.82,
   "chandelier": 142.52,
   "fib_targets": [
@@ -589,33 +589,6 @@
  },
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 12,777,093 股",
-   "value": {
-    "foreign": -11971079,
-    "trust": -590405,
-    "dealer": -215609,
-    "total": -12777093
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 40.2 / 殖利率 1.63% / PB 4.95",
-   "value": {
-    "pe": 40.2,
-    "yield": 1.63,
-    "pb": 4.95
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

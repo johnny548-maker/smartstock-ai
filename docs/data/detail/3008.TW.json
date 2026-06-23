@@ -1,8 +1,8 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 5055.0,
- "change_pct": -2.51,
+ "price": 5035.0,
+ "change_pct": -2.89,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -481,12 +481,12 @@
    "o": 5165.0,
    "h": 5185.0,
    "l": 5015.0,
-   "c": 5055.0,
-   "v": 657939
+   "c": 5035.0,
+   "v": 866684
   }
  ],
  "sr": {
-  "price": 5055.0,
+  "price": 5035.0,
   "resistance": [],
   "support": [
    3420.0,
@@ -554,7 +554,7 @@
   5145.0,
   5195.0,
   5185.0,
-  5055.0
+  5035.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -567,44 +567,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 29,503 股",
-   "value": {
-    "foreign": 8909,
-    "trust": -1400,
-    "dealer": 21994,
-    "total": 29503
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -4
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 32.4 / 殖利率 1.54% / PB 3.67",
-   "value": {
-    "pe": 32.36,
-    "yield": 1.54,
-    "pb": 3.67
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

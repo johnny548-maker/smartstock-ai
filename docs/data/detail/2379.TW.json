@@ -1,8 +1,8 @@
 {
  "stock": "2379.TW",
  "name": "瑞昱",
- "price": 895.0,
- "change_pct": -0.56,
+ "price": 884.0,
+ "change_pct": -1.78,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 948.0,
    "h": 970.0,
-   "l": 893.0,
-   "c": 895.0,
-   "v": 3214552
+   "l": 877.0,
+   "c": 884.0,
+   "v": 4241707
   }
  ],
  "sr": {
-  "price": 895.0,
+  "price": 884.0,
   "resistance": [],
   "support": [
    580.0,
@@ -554,7 +554,7 @@
   745.0,
   819.0,
   900.0,
-  895.0
+  884.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -567,33 +567,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 851,596 股",
-   "value": {
-    "foreign": 744501,
-    "trust": 99736,
-    "dealer": 7359,
-    "total": 851596
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 32.4 / 殖利率 2.78% / PB 10.26",
-   "value": {
-    "pe": 32.4,
-    "yield": 2.78,
-    "pb": 10.26
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

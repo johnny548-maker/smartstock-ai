@@ -482,7 +482,7 @@
    "h": 115.5,
    "l": 113.0,
    "c": 114.5,
-   "v": 5760842
+   "v": 9243249
   }
  ],
  "sr": {
@@ -562,44 +562,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 9,294 股",
-   "value": {
-    "foreign": 910354,
-    "trust": -982372,
-    "dealer": 81312,
-    "total": 9294
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -50
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 17.1 / 殖利率 3.10% / PB 2.26",
-   "value": {
-    "pe": 17.15,
-    "yield": 3.1,
-    "pb": 2.26
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

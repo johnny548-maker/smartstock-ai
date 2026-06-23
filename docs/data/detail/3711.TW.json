@@ -1,8 +1,8 @@
 {
  "stock": "3711.TW",
  "name": "日月光投控",
- "price": 670.0,
- "change_pct": -0.59,
+ "price": 681.0,
+ "change_pct": 1.04,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -481,12 +481,12 @@
    "o": 679.0,
    "h": 700.0,
    "l": 666.0,
-   "c": 670.0,
-   "v": 19399482
+   "c": 681.0,
+   "v": 22963892
   }
  ],
  "sr": {
-  "price": 670.0,
+  "price": 681.0,
   "resistance": [],
   "support": [
    573.0,
@@ -554,7 +554,7 @@
   595.0,
   613.0,
   674.0,
-  670.0
+  681.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -565,20 +565,20 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 670.0,
-  "stop": 623.1,
-  "target": 787.25,
-  "atr_bracket": 787.25,
+  "entry": 681.0,
+  "stop": 633.33,
+  "target": 800.17,
+  "atr_bracket": 800.17,
   "measured_move": 725.0,
   "target_band": [
    725.0,
    738.04,
-   787.25
+   800.17
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 5.4,
+  "atr_pct": 5.3,
   "swing_stop": 562.09,
   "chandelier": 583.55,
   "fib_targets": [
@@ -589,44 +589,6 @@
  },
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 9,312,628 股",
-   "value": {
-    "foreign": 15662506,
-    "trust": -6790000,
-    "dealer": 440122,
-    "total": 9312628
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -81
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 62.6 / 殖利率 0.98% / PB 8.44",
-   "value": {
-    "pe": 62.58,
-    "yield": 0.98,
-    "pb": 8.44
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

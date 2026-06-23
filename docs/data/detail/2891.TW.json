@@ -1,8 +1,8 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 71.8,
- "change_pct": 1.84,
+ "price": 72.5,
+ "change_pct": 2.84,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -479,14 +479,14 @@
   {
    "time": "2026-06-23",
    "o": 70.3,
-   "h": 71.9,
+   "h": 72.7,
    "l": 70.3,
-   "c": 71.8,
-   "v": 11488865
+   "c": 72.5,
+   "v": 20937531
   }
  ],
  "sr": {
-  "price": 71.8,
+  "price": 72.5,
   "resistance": [],
   "support": [
    52.6,
@@ -554,7 +554,7 @@
   71.0,
   71.9,
   70.5,
-  71.8
+  72.5
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -562,44 +562,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 10,605,759 股",
-   "value": {
-    "foreign": -5117319,
-    "trust": -5209267,
-    "dealer": -279173,
-    "total": -10605759
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -25
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 17.0 / 殖利率 3.55% / PB 2.52",
-   "value": {
-    "pe": 16.99,
-    "yield": 3.55,
-    "pb": 2.52
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

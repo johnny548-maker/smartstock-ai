@@ -1,8 +1,8 @@
 {
  "stock": "8016.TW",
- "name": "矽創",
- "price": 317.0,
- "change_pct": 0.63,
+ "name": null,
+ "price": 322.0,
+ "change_pct": 2.22,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 316.5,
    "h": 328.5,
-   "l": 315.0,
-   "c": 317.0,
-   "v": 1640116
+   "l": 313.5,
+   "c": 322.0,
+   "v": 2355659
   }
  ],
  "sr": {
-  "price": 317.0,
+  "price": 322.0,
   "resistance": [],
   "support": [
    284.72,
@@ -554,11 +554,22 @@
   295.5,
   300.5,
   315.0,
-  317.0
+  322.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 43.15,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=43.15；WoW-1.27；股東人數+222"
+  }
+ ]
 }

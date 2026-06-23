@@ -1,8 +1,8 @@
 {
  "stock": "3035.TW",
- "name": "智原",
- "price": 234.0,
- "change_pct": 1.96,
+ "name": null,
+ "price": 235.0,
+ "change_pct": 2.4,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -481,12 +481,12 @@
    "o": 232.5,
    "h": 245.0,
    "l": 232.0,
-   "c": 234.0,
-   "v": 17807048
+   "c": 235.0,
+   "v": 21236791
   }
  ],
  "sr": {
-  "price": 234.0,
+  "price": 235.0,
   "resistance": [
    235.35,
    237.3
@@ -557,7 +557,7 @@
   202.0,
   209.0,
   229.5,
-  234.0
+  235.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -565,45 +565,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 6,039,143 股",
-   "value": {
-    "foreign": 5604585,
-    "trust": -3000,
-    "dealer": 437558,
-    "total": 6039143
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +11.8%",
-   "value": {
-    "fin_net": 1472,
-    "fin_pct": 0.11764705882352941
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 122.1 / 殖利率 0.78% / PB 4.38",
-   "value": {
-    "pe": 122.07,
-    "yield": 0.78,
-    "pb": 4.38
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

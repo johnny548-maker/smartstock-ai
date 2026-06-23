@@ -1,8 +1,8 @@
 {
  "stock": "2454.TW",
  "name": "聯發科",
- "price": 4525.0,
- "change_pct": 1.34,
+ "price": 4660.0,
+ "change_pct": 4.37,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 4720.0,
    "h": 4785.0,
-   "l": 4525.0,
-   "c": 4525.0,
-   "v": 7057865
+   "l": 4515.0,
+   "c": 4660.0,
+   "v": 8825734
   }
  ],
  "sr": {
-  "price": 4525.0,
+  "price": 4660.0,
   "resistance": [
    4970.0
   ],
@@ -556,7 +556,7 @@
   4460.0,
   4390.0,
   4465.0,
-  4525.0
+  4660.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -569,33 +569,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,941,225 股",
-   "value": {
-    "foreign": 3651046,
-    "trust": -1912579,
-    "dealer": 202758,
-    "total": 1941225
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 71.2 / 殖利率 1.20% / PB 18.26",
-   "value": {
-    "pe": 71.16,
-    "yield": 1.2,
-    "pb": 18.26
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

@@ -1,8 +1,8 @@
 {
  "stock": "2408.TW",
- "name": "南亞科",
- "price": 474.5,
- "change_pct": -6.04,
+ "name": null,
+ "price": 473.0,
+ "change_pct": -6.34,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 488.0,
    "h": 500.0,
-   "l": 471.0,
-   "c": 474.5,
-   "v": 60814006
+   "l": 468.0,
+   "c": 473.0,
+   "v": 78143196
   }
  ],
  "sr": {
-  "price": 474.5,
+  "price": 473.0,
   "resistance": [],
   "support": [
    324.0,
@@ -554,11 +554,22 @@
   437.0,
   459.5,
   505.0,
-  474.5
+  473.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 84.12,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=84.12；WoW+2.31；股東人數-44995"
+  }
+ ]
 }

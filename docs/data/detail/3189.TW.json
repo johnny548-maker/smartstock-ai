@@ -1,8 +1,8 @@
 {
  "stock": "3189.TW",
- "name": "景碩",
- "price": 751.0,
- "change_pct": -5.65,
+ "name": null,
+ "price": 774.0,
+ "change_pct": -2.76,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 780.0,
    "h": 788.0,
-   "l": 744.0,
-   "c": 751.0,
-   "v": 14479172
+   "l": 738.0,
+   "c": 774.0,
+   "v": 21483026
   }
  ],
  "sr": {
-  "price": 751.0,
+  "price": 774.0,
   "resistance": [
    778.0
   ],
@@ -556,11 +556,22 @@
   706.0,
   724.0,
   796.0,
-  751.0
+  774.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 73.08,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=73.08；WoW+0.76；股東人數-3723"
+  }
+ ]
 }

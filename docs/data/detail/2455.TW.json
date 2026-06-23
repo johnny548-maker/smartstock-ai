@@ -1,8 +1,8 @@
 {
  "stock": "2455.TW",
- "name": "全新",
- "price": 390.0,
- "change_pct": -4.76,
+ "name": null,
+ "price": 400.0,
+ "change_pct": -2.32,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -481,19 +481,19 @@
    "o": 408.0,
    "h": 408.0,
    "l": 390.0,
-   "c": 390.0,
-   "v": 441424
+   "c": 400.0,
+   "v": 647633
   }
  ],
  "sr": {
-  "price": 390.0,
+  "price": 400.0,
   "resistance": [
-   390.5,
-   428.5
+   428.5,
+   460.0
   ],
   "support": [
-   335.0,
-   329.0
+   391.5,
+   335.0
   ],
   "strong_support": 81.28
  },
@@ -557,26 +557,11 @@
   428.0,
   416.0,
   409.5,
-  390.0
+  400.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第2次） 處置期間：115/06/22～115/07/03",
-   "value": {
-    "level": 2,
-    "reason": "連續五次",
-    "period": "115/06/22～115/07/03"
-   },
-   "severity": "risk",
-   "as_of": "2026-06-23",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

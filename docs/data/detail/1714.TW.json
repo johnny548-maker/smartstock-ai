@@ -1,8 +1,8 @@
 {
  "stock": "1714.TW",
- "name": "和桐",
- "price": 17.4,
- "change_pct": -5.18,
+ "name": null,
+ "price": 17.25,
+ "change_pct": -5.99,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 18.0,
    "h": 18.0,
-   "l": 17.4,
-   "c": 17.4,
-   "v": 6505098
+   "l": 17.05,
+   "c": 17.25,
+   "v": 12895256
   }
  ],
  "sr": {
-  "price": 17.4,
+  "price": 17.25,
   "resistance": [],
   "support": [
    9.6,
@@ -554,26 +554,11 @@
   19.25,
   20.35,
   18.35,
-  17.4
+  17.25
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第1次） 處置期間：115/06/16～115/06/30",
-   "value": {
-    "level": 1,
-    "reason": "最近十個營業日已有六次",
-    "period": "115/06/16～115/06/30"
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

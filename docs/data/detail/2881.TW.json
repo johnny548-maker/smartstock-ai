@@ -1,8 +1,8 @@
 {
  "stock": "2881.TW",
  "name": "富邦金",
- "price": 139.5,
- "change_pct": 0.72,
+ "price": 139.0,
+ "change_pct": 0.36,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -481,12 +481,12 @@
    "o": 137.0,
    "h": 140.5,
    "l": 137.0,
-   "c": 139.5,
-   "v": 6682944
+   "c": 139.0,
+   "v": 8893591
   }
  ],
  "sr": {
-  "price": 139.5,
+  "price": 139.0,
   "resistance": [],
   "support": [
    95.3,
@@ -554,7 +554,7 @@
   135.5,
   138.0,
   138.5,
-  139.5
+  139.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
@@ -562,44 +562,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 169,165 股",
-   "value": {
-    "foreign": 925822,
-    "trust": -849962,
-    "dealer": -245025,
-    "total": -169165
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -53
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 19.1 / 殖利率 3.07% / PB 2.12",
-   "value": {
-    "pe": 19.05,
-    "yield": 3.07,
-    "pb": 2.12
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

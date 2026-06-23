@@ -1,8 +1,8 @@
 {
  "stock": "6669.TW",
- "name": "緯穎",
- "price": 4685.0,
- "change_pct": -3.5,
+ "name": null,
+ "price": 4745.0,
+ "change_pct": -2.27,
  "ohlc": [
   {
    "time": "2026-03-26",
@@ -480,13 +480,13 @@
    "time": "2026-06-23",
    "o": 4930.0,
    "h": 4930.0,
-   "l": 4680.0,
-   "c": 4685.0,
-   "v": 719338
+   "l": 4675.0,
+   "c": 4745.0,
+   "v": 950648
   }
  ],
  "sr": {
-  "price": 4685.0,
+  "price": 4745.0,
   "resistance": [],
   "support": [
    1495.42,
@@ -554,11 +554,22 @@
   1550.35,
   1565.61,
   4855.0,
-  4685.0
+  4745.0
  ],
  "spark_start": "2026-03-26",
  "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶集中度",
+   "value": 64.23,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=64.23；WoW+0.59；股東人數+3744"
+  }
+ ]
 }
