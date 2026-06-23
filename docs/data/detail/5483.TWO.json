@@ -1,17 +1,9 @@
 {
  "stock": "5483.TWO",
  "name": "中美晶",
- "price": 181.0,
- "change_pct": -0.82,
+ "price": 180.5,
+ "change_pct": -0.28,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 119.0,
-   "h": 120.5,
-   "l": 115.0,
-   "c": 115.0,
-   "v": 4987861
-  },
   {
    "time": "2026-03-25",
    "o": 118.0,
@@ -483,10 +475,18 @@
    "l": 178.0,
    "c": 181.0,
    "v": 21820638
+  },
+  {
+   "time": "2026-06-22",
+   "o": 186.0,
+   "h": 192.0,
+   "l": 180.0,
+   "c": 180.5,
+   "v": 23137827
   }
  ],
  "sr": {
-  "price": 181.0,
+  "price": 180.5,
   "resistance": [
    186.87,
    188.75
@@ -498,7 +498,6 @@
   "strong_support": 81.74
  },
  "spark": [
-  115.0,
   118.0,
   118.5,
   114.5,
@@ -557,10 +556,11 @@
   174.5,
   175.0,
   182.5,
-  181.0
+  181.0,
+  180.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -3563534,
-    "trust": 228000,
-    "dealer": -148391,
-    "total": -3483925
+    "foreign": -5216183,
+    "trust": 294244,
+    "dealer": 108814,
+    "total": -4813125
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.93,
+    "yield": 1.94,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

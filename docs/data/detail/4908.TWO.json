@@ -1,17 +1,9 @@
 {
  "stock": "4908.TWO",
  "name": "前鼎",
- "price": 212.0,
- "change_pct": 9.84,
+ "price": 201.0,
+ "change_pct": -5.19,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 111.0,
-   "h": 116.0,
-   "l": 106.5,
-   "c": 109.0,
-   "v": 10827389
-  },
   {
    "time": "2026-03-25",
    "o": 114.5,
@@ -483,13 +475,21 @@
    "l": 192.0,
    "c": 212.0,
    "v": 1862614
+  },
+  {
+   "time": "2026-06-22",
+   "o": 212.5,
+   "h": 213.5,
+   "l": 199.0,
+   "c": 201.0,
+   "v": 2969215
   }
  ],
  "sr": {
-  "price": 212.0,
+  "price": 201.0,
   "resistance": [
-   249.0,
-   255.0
+   210.0,
+   249.0
   ],
   "support": [
    184.5,
@@ -498,7 +498,6 @@
   "strong_support": 58.32
  },
  "spark": [
-  109.0,
   114.0,
   106.5,
   112.5,
@@ -557,10 +556,11 @@
   196.0,
   198.0,
   193.0,
-  212.0
+  212.0,
+  201.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 77171,
+    "foreign": -986365,
     "trust": 0,
-    "dealer": 22234,
-    "total": 99405
+    "dealer": -28009,
+    "total": -1014374
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.47,
+    "yield": 0.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "3317.TWO",
  "name": "尼克森",
- "price": 88.3,
- "change_pct": 9.96,
+ "price": 97.1,
+ "change_pct": 9.97,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 45.05,
-   "h": 45.25,
-   "l": 43.95,
-   "c": 44.2,
-   "v": 271008
-  },
   {
    "time": "2026-03-25",
    "o": 44.75,
@@ -483,10 +475,18 @@
    "l": 84.7,
    "c": 88.3,
    "v": 11325940
+  },
+  {
+   "time": "2026-06-22",
+   "o": 95.0,
+   "h": 97.1,
+   "l": 94.8,
+   "c": 97.1,
+   "v": 8300493
   }
  ],
  "sr": {
-  "price": 88.3,
+  "price": 97.1,
   "resistance": [],
   "support": [
    77.5,
@@ -495,7 +495,6 @@
   "strong_support": 29.29
  },
  "spark": [
-  44.2,
   46.95,
   47.35,
   49.9,
@@ -554,10 +553,11 @@
   81.2,
   77.4,
   80.3,
-  88.3
+  88.3,
+  97.1
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 2875425,
+    "foreign": 397845,
     "trust": 0,
-    "dealer": 76937,
-    "total": 2952362
+    "dealer": 63537,
+    "total": 461382
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,21 +582,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.57,
+    "yield": 0.51,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 28.99,
-   "severity": "info",
-   "as_of": "20260618",
-   "note": "大戶持股%=28.99；WoW+1.05；股東人數-274"
   }
  ]
 }

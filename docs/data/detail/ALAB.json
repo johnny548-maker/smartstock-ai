@@ -1,17 +1,9 @@
 {
  "stock": "ALAB",
  "name": "Astera Labs",
- "price": 417.07,
- "change_pct": 11.31,
+ "price": 439.66,
+ "change_pct": 5.42,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 124.66,
-   "h": 126.53,
-   "l": 119.33,
-   "c": 120.33,
-   "v": 2733300
-  },
   {
    "time": "2026-03-26",
    "o": 117.17,
@@ -483,10 +475,18 @@
    "l": 384.73,
    "c": 417.07,
    "v": 22605900
+  },
+  {
+   "time": "2026-06-22",
+   "o": 425.61,
+   "h": 440.99,
+   "l": 412.27,
+   "c": 439.66,
+   "v": 5423832
   }
  ],
  "sr": {
-  "price": 417.07,
+  "price": 439.66,
   "resistance": [],
   "support": [
    303.0,
@@ -495,7 +495,6 @@
   "strong_support": 36.22
  },
  "spark": [
-  120.33,
   113.61,
   112.47,
   100.27,
@@ -554,28 +553,12 @@
   389.2,
   361.71,
   374.68,
-  417.07
+  417.07,
+  439.66
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 95336,
-    "days": 6,
-    "max_shares": 90271,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

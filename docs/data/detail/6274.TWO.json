@@ -1,17 +1,9 @@
 {
  "stock": "6274.TWO",
- "name": null,
- "price": 1835.0,
- "change_pct": 9.88,
+ "name": "台燿",
+ "price": 1900.0,
+ "change_pct": 3.54,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 553.57,
-   "h": 557.54,
-   "l": 523.81,
-   "c": 536.71,
-   "v": 15408766
-  },
   {
    "time": "2026-03-25",
    "o": 553.57,
@@ -483,10 +475,18 @@
    "l": 1770.0,
    "c": 1835.0,
    "v": 3466139
+  },
+  {
+   "time": "2026-06-22",
+   "o": 1900.0,
+   "h": 1920.0,
+   "l": 1835.0,
+   "c": 1900.0,
+   "v": 7374095
   }
  ],
  "sr": {
-  "price": 1835.0,
+  "price": 1900.0,
   "resistance": [],
   "support": [
    1525.0,
@@ -495,7 +495,6 @@
   "strong_support": 109.71
  },
  "spark": [
-  536.71,
   575.4,
   601.19,
   621.03,
@@ -554,10 +553,11 @@
   1570.0,
   1610.0,
   1670.0,
-  1835.0
+  1835.0,
+  1900.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 619448,
-    "trust": 290700,
-    "dealer": 206721,
-    "total": 1116869
+    "foreign": 66028,
+    "trust": 627000,
+    "dealer": -136840,
+    "total": 556188
    },
    "severity": "warn",
-   "as_of": "2026-06-21",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.41,
+    "yield": 0.4,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-21",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   },
   {

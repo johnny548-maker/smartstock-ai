@@ -1,17 +1,9 @@
 {
  "stock": "5351.TWO",
  "name": "鈺創",
- "price": 94.0,
- "change_pct": 2.17,
+ "price": 99.8,
+ "change_pct": 6.17,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 77.3,
-   "h": 77.3,
-   "l": 67.2,
-   "c": 70.0,
-   "v": 10232610
-  },
   {
    "time": "2026-03-25",
    "o": 72.5,
@@ -483,13 +475,19 @@
    "l": 90.9,
    "c": 94.0,
    "v": 28148433
+  },
+  {
+   "time": "2026-06-22",
+   "o": 97.1,
+   "h": 103.0,
+   "l": 97.1,
+   "c": 99.8,
+   "v": 47990469
   }
  ],
  "sr": {
-  "price": 94.0,
-  "resistance": [
-   96.0
-  ],
+  "price": 99.8,
+  "resistance": [],
   "support": [
    77.6,
    72.6
@@ -497,7 +495,6 @@
   "strong_support": 20.65
  },
  "spark": [
-  70.0,
   74.1,
   71.6,
   71.0,
@@ -556,10 +553,11 @@
   90.6,
   90.6,
   92.0,
-  94.0
+  94.0,
+  99.8
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 3652281,
-    "trust": 0,
-    "dealer": 213,
-    "total": 3652494
+    "foreign": 4347926,
+    "trust": 15000,
+    "dealer": 58954,
+    "total": 4421880
    },
-   "severity": "info",
-   "as_of": "2026-06-20",
+   "severity": "warn",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -588,7 +586,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

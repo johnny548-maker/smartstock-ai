@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 115.3,
- "change_pct": 2.38,
+ "price": 113.33,
+ "change_pct": -1.71,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 40.16,
-   "h": 41.09,
-   "l": 38.29,
-   "c": 39.03,
-   "v": 1152100
-  },
   {
    "time": "2026-03-26",
    "o": 37.25,
@@ -483,10 +475,18 @@
    "l": 111.59,
    "c": 115.3,
    "v": 1398700
+  },
+  {
+   "time": "2026-06-22",
+   "o": 116.28,
+   "h": 117.33,
+   "l": 110.3,
+   "c": 113.33,
+   "v": 1074080
   }
  ],
  "sr": {
-  "price": 115.3,
+  "price": 113.33,
   "resistance": [
    121.8,
    126.62
@@ -498,7 +498,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  39.03,
   34.57,
   32.52,
   30.12,
@@ -557,28 +556,12 @@
   115.88,
   104.83,
   112.62,
-  115.3
+  115.3,
+  113.33
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 17397,
-    "days": 5,
-    "max_shares": 16882,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

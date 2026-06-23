@@ -1,17 +1,9 @@
 {
  "stock": "6138.TWO",
  "name": "茂達",
- "price": 358.5,
- "change_pct": 9.97,
+ "price": 394.0,
+ "change_pct": 9.9,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 227.0,
-   "h": 227.0,
-   "l": 220.0,
-   "c": 222.0,
-   "v": 251065
-  },
   {
    "time": "2026-03-25",
    "o": 225.0,
@@ -483,13 +475,19 @@
    "l": 342.0,
    "c": 358.5,
    "v": 2388341
+  },
+  {
+   "time": "2026-06-22",
+   "o": 389.0,
+   "h": 394.0,
+   "l": 389.0,
+   "c": 394.0,
+   "v": 2197275
   }
  ],
  "sr": {
-  "price": 358.5,
-  "resistance": [
-   383.5
-  ],
+  "price": 394.0,
+  "resistance": [],
   "support": [
    283.5,
    276.5
@@ -497,7 +495,6 @@
   "strong_support": 119.95
  },
  "spark": [
-  222.0,
   225.5,
   221.0,
   219.5,
@@ -556,10 +553,11 @@
   327.0,
   312.5,
   326.0,
-  358.5
+  358.5,
+  394.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 299000,
+    "foreign": 531964,
     "trust": 0,
-    "dealer": 64901,
-    "total": 363901
+    "dealer": -7572,
+    "total": 524392
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.07,
+    "yield": 2.79,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

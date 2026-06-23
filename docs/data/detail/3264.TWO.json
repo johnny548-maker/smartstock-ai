@@ -1,17 +1,9 @@
 {
  "stock": "3264.TWO",
  "name": "欣銓",
- "price": 232.5,
- "change_pct": 9.93,
+ "price": 242.0,
+ "change_pct": 4.09,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 149.5,
-   "h": 151.0,
-   "l": 143.5,
-   "c": 145.5,
-   "v": 3864254
-  },
   {
    "time": "2026-03-25",
    "o": 150.5,
@@ -483,13 +475,21 @@
    "l": 213.0,
    "c": 232.5,
    "v": 13928151
+  },
+  {
+   "time": "2026-06-22",
+   "o": 238.0,
+   "h": 248.0,
+   "l": 238.0,
+   "c": 242.0,
+   "v": 14402775
   }
  ],
  "sr": {
-  "price": 232.5,
+  "price": 242.0,
   "resistance": [
-   238.0,
-   241.0
+   249.0,
+   259.0
   ],
   "support": [
    216.5,
@@ -498,7 +498,6 @@
   "strong_support": 47.18
  },
  "spark": [
-  145.5,
   154.5,
   150.0,
   158.0,
@@ -557,10 +556,11 @@
   228.0,
   220.0,
   211.5,
-  232.5
+  232.5,
+  242.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 4300304,
-    "trust": 336000,
-    "dealer": 339533,
-    "total": 4975837
+    "foreign": 3451273,
+    "trust": 42074,
+    "dealer": 219092,
+    "total": 3712439
    },
    "severity": "warn",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.81,
+    "yield": 1.74,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

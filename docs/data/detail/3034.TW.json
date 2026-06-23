@@ -1,17 +1,9 @@
 {
  "stock": "3034.TW",
- "name": null,
- "price": 516.0,
- "change_pct": 0.19,
+ "name": "聯詠",
+ "price": 567.0,
+ "change_pct": 9.88,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 375.5,
-   "h": 378.5,
-   "l": 370.0,
-   "c": 370.0,
-   "v": 2166474
-  },
   {
    "time": "2026-03-25",
    "o": 377.5,
@@ -483,14 +475,19 @@
    "l": 514.0,
    "c": 516.0,
    "v": 9752706
+  },
+  {
+   "time": "2026-06-22",
+   "o": 529.0,
+   "h": 567.0,
+   "l": 526.0,
+   "c": 567.0,
+   "v": 10695591
   }
  ],
  "sr": {
-  "price": 516.0,
-  "resistance": [
-   521.16,
-   523.06
-  ],
+  "price": 567.0,
+  "resistance": [],
   "support": [
    509.79,
    506.0
@@ -498,7 +495,6 @@
   "strong_support": 352.0
  },
  "spark": [
-  370.0,
   377.5,
   392.0,
   399.0,
@@ -557,49 +553,12 @@
   495.0,
   500.0,
   515.0,
-  516.0
+  516.0,
+  567.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 66,828 股",
-   "value": {
-    "foreign": 1398951,
-    "trust": -1674198,
-    "dealer": 208419,
-    "total": -66828
-   },
-   "severity": "info",
-   "as_of": "2026-06-21",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 21.1 / 殖利率 4.46% / PB 4.37",
-   "value": {
-    "pe": 21.15,
-    "yield": 4.46,
-    "pb": 4.37
-   },
-   "severity": "info",
-   "as_of": "2026-06-18",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 70.41,
-   "severity": "info",
-   "as_of": "20260618",
-   "note": "大戶持股%=70.41；WoW+0.42；股東人數-2293"
-  }
- ]
+ "generated_for": "detail"
 }

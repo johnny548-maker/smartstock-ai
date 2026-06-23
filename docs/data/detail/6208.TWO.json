@@ -1,17 +1,9 @@
 {
  "stock": "6208.TWO",
  "name": "日揚",
- "price": 99.0,
- "change_pct": 7.84,
+ "price": 106.0,
+ "change_pct": 7.07,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 48.5,
-   "h": 48.5,
-   "l": 47.0,
-   "c": 47.4,
-   "v": 32140
-  },
   {
    "time": "2026-03-25",
    "o": 47.9,
@@ -483,10 +475,18 @@
    "l": 93.1,
    "c": 99.0,
    "v": 5898466
+  },
+  {
+   "time": "2026-06-22",
+   "o": 108.5,
+   "h": 108.5,
+   "l": 105.0,
+   "c": 106.0,
+   "v": 4960213
   }
  ],
  "sr": {
-  "price": 99.0,
+  "price": 106.0,
   "resistance": [
    108.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 35.52
  },
  "spark": [
-  47.4,
   48.35,
   47.7,
   47.55,
@@ -556,10 +555,11 @@
   93.2,
   86.3,
   91.8,
-  99.0
+  99.0,
+  106.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -14091,
+    "foreign": -112045,
     "trust": 0,
-    "dealer": 466,
-    "total": -13625
+    "dealer": 0,
+    "total": -112045
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.02,
+    "yield": 1.89,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

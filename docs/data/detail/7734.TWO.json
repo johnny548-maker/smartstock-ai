@@ -1,17 +1,9 @@
 {
  "stock": "7734.TWO",
  "name": "印能科技",
- "price": 3615.0,
- "change_pct": 7.91,
+ "price": 3560.0,
+ "change_pct": -1.52,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 1805.0,
-   "h": 1820.0,
-   "l": 1660.0,
-   "c": 1660.0,
-   "v": 401315
-  },
   {
    "time": "2026-03-25",
    "o": 1730.0,
@@ -483,10 +475,18 @@
    "l": 3300.0,
    "c": 3615.0,
    "v": 257881
+  },
+  {
+   "time": "2026-06-22",
+   "o": 3685.0,
+   "h": 3790.0,
+   "l": 3345.0,
+   "c": 3560.0,
+   "v": 315192
   }
  ],
  "sr": {
-  "price": 3615.0,
+  "price": 3560.0,
   "resistance": [
    3795.0,
    3895.0
@@ -498,7 +498,6 @@
   "strong_support": 619.23
  },
  "spark": [
-  1660.0,
   1825.0,
   1820.0,
   1845.0,
@@ -557,10 +556,11 @@
   2930.0,
   3220.0,
   3350.0,
-  3615.0
+  3615.0,
+  3560.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 17952,
-    "trust": 31900,
-    "dealer": 2842,
-    "total": 52694
+    "foreign": -9703,
+    "trust": 14000,
+    "dealer": -3673,
+    "total": 624
    },
-   "severity": "warn",
-   "as_of": "2026-06-20",
+   "severity": "info",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.55,
+    "yield": 0.56,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

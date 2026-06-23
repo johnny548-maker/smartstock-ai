@@ -1,17 +1,9 @@
 {
  "stock": "6725.TWO",
  "name": "矽科宏晟",
- "price": 367.0,
- "change_pct": 9.88,
+ "price": 346.0,
+ "change_pct": -5.72,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 281.0,
-   "h": 281.0,
-   "l": 268.5,
-   "c": 281.0,
-   "v": 2291885
-  },
   {
    "time": "2026-03-25",
    "o": 293.0,
@@ -483,12 +475,21 @@
    "l": 328.0,
    "c": 367.0,
    "v": 1499408
+  },
+  {
+   "time": "2026-06-22",
+   "o": 367.0,
+   "h": 388.5,
+   "l": 346.0,
+   "c": 346.0,
+   "v": 1180496
   }
  ],
  "sr": {
-  "price": 367.0,
+  "price": 346.0,
   "resistance": [
-   424.0
+   350.0,
+   357.0
   ],
   "support": [
    327.5,
@@ -497,7 +498,6 @@
   "strong_support": 119.71
  },
  "spark": [
-  281.0,
   294.0,
   274.5,
   267.0,
@@ -556,10 +556,11 @@
   301.0,
   320.0,
   334.0,
-  367.0
+  367.0,
+  346.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 289011,
+    "foreign": -80969,
     "trust": 0,
-    "dealer": 47639,
-    "total": 336650
+    "dealer": -42133,
+    "total": -123102
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.91,
+    "yield": 2.02,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

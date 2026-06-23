@@ -1,17 +1,9 @@
 {
  "stock": "4958.TW",
  "name": "臻鼎-KY",
- "price": 642.0,
- "change_pct": 0.47,
+ "price": 622.0,
+ "change_pct": -3.12,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 205.59,
-   "h": 207.08,
-   "l": 188.71,
-   "c": 195.66,
-   "v": 21060991
-  },
   {
    "time": "2026-03-25",
    "o": 202.62,
@@ -483,10 +475,18 @@
    "l": 628.0,
    "c": 642.0,
    "v": 52039171
+  },
+  {
+   "time": "2026-06-22",
+   "o": 639.0,
+   "h": 653.0,
+   "l": 622.0,
+   "c": 622.0,
+   "v": 32557875
   }
  ],
  "sr": {
-  "price": 642.0,
+  "price": 622.0,
   "resistance": [],
   "support": [
    475.75,
@@ -495,7 +495,6 @@
   "strong_support": 79.88
  },
  "spark": [
-  195.66,
   206.09,
   217.02,
   228.44,
@@ -554,49 +553,12 @@
   590.0,
   624.0,
   639.0,
-  642.0
+  642.0,
+  622.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,643,703 股",
-   "value": {
-    "foreign": -18103445,
-    "trust": 19702830,
-    "dealer": 44318,
-    "total": 1643703
-   },
-   "severity": "info",
-   "as_of": "2026-06-20",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 90.5 / 殖利率 0.53% / PB 5.46",
-   "value": {
-    "pe": 90.55,
-    "yield": 0.53,
-    "pb": 5.46
-   },
-   "severity": "info",
-   "as_of": "2026-06-18",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 75.73,
-   "severity": "info",
-   "as_of": "20260618",
-   "note": "大戶持股%=75.73；WoW+1.31；股東人數-9367"
-  }
- ]
+ "generated_for": "detail"
 }

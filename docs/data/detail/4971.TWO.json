@@ -1,17 +1,9 @@
 {
  "stock": "4971.TWO",
  "name": "IET-KY",
- "price": 578.0,
- "change_pct": 9.89,
+ "price": 571.0,
+ "change_pct": -1.21,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 454.5,
-   "h": 455.0,
-   "l": 432.0,
-   "c": 435.5,
-   "v": 442128
-  },
   {
    "time": "2026-03-25",
    "o": 470.5,
@@ -483,10 +475,18 @@
    "l": 516.0,
    "c": 578.0,
    "v": 1402015
+  },
+  {
+   "time": "2026-06-22",
+   "o": 605.0,
+   "h": 610.0,
+   "l": 565.0,
+   "c": 571.0,
+   "v": 1589298
   }
  ],
  "sr": {
-  "price": 578.0,
+  "price": 571.0,
   "resistance": [
    635.0,
    830.0
@@ -498,7 +498,6 @@
   "strong_support": 44.2
  },
  "spark": [
-  435.5,
   479.0,
   526.0,
   578.0,
@@ -557,10 +556,11 @@
   551.0,
   547.0,
   526.0,
-  578.0
+  578.0,
+  571.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 254101,
+    "foreign": -555272,
     "trust": 0,
-    "dealer": -2437,
-    "total": 251664
+    "dealer": -9122,
+    "total": -564394
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.17,
+    "yield": 0.18,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

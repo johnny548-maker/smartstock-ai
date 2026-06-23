@@ -1,17 +1,9 @@
 {
  "stock": "3293.TWO",
  "name": "鈊象",
- "price": 793.0,
- "change_pct": 2.32,
+ "price": 778.0,
+ "change_pct": -1.89,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 739.0,
-   "h": 739.0,
-   "l": 728.0,
-   "c": 735.0,
-   "v": 1074439
-  },
   {
    "time": "2026-03-25",
    "o": 745.0,
@@ -483,22 +475,29 @@
    "l": 774.0,
    "c": 793.0,
    "v": 2817268
+  },
+  {
+   "time": "2026-06-22",
+   "o": 800.0,
+   "h": 800.0,
+   "l": 775.0,
+   "c": 778.0,
+   "v": 1735671
   }
  ],
  "sr": {
-  "price": 793.0,
+  "price": 778.0,
   "resistance": [
-   794.0,
-   798.0
+   787.0,
+   788.0
   ],
   "support": [
-   784.14,
-   783.18
+   777.0,
+   776.0
   ],
   "strong_support": 593.12
  },
  "spark": [
-  735.0,
   749.0,
   784.0,
   796.0,
@@ -557,10 +556,11 @@
   751.0,
   772.0,
   775.0,
-  793.0
+  793.0,
+  778.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 1241909,
-    "trust": 53250,
-    "dealer": 94205,
-    "total": 1389364
+    "foreign": -559449,
+    "trust": 46002,
+    "dealer": -38289,
+    "total": -551736
    },
-   "severity": "warn",
-   "as_of": "2026-06-20",
+   "severity": "info",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.54,
+    "yield": 4.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

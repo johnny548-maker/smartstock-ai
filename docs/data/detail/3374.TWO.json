@@ -1,17 +1,9 @@
 {
  "stock": "3374.TWO",
  "name": "精材",
- "price": 251.0,
- "change_pct": 2.66,
+ "price": 276.0,
+ "change_pct": 9.96,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 165.0,
-   "h": 166.0,
-   "l": 156.0,
-   "c": 157.0,
-   "v": 2933458
-  },
   {
    "time": "2026-03-25",
    "o": 161.0,
@@ -483,13 +475,21 @@
    "l": 242.0,
    "c": 251.0,
    "v": 6360054
+  },
+  {
+   "time": "2026-06-22",
+   "o": 263.0,
+   "h": 276.0,
+   "l": 263.0,
+   "c": 276.0,
+   "v": 10690915
   }
  ],
  "sr": {
-  "price": 251.0,
+  "price": 276.0,
   "resistance": [
-   252.38,
-   272.51
+   277.91,
+   279.5
   ],
   "support": [
    240.1,
@@ -498,7 +498,6 @@
   "strong_support": 109.0
  },
  "spark": [
-  157.0,
   165.0,
   159.0,
   162.5,
@@ -557,10 +556,11 @@
   240.0,
   234.5,
   244.5,
-  251.0
+  251.0,
+  276.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 984119,
-    "trust": -900,
-    "dealer": 353039,
-    "total": 1336258
+    "foreign": 1838189,
+    "trust": 0,
+    "dealer": 888007,
+    "total": 2726196
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.0,
+    "yield": 0.91,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

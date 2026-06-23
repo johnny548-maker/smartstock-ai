@@ -1,17 +1,9 @@
 {
  "stock": "CEVA",
  "name": "CEVA Inc",
- "price": 49.72,
- "change_pct": 10.71,
+ "price": 48.41,
+ "change_pct": -2.63,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 19.5,
-   "h": 19.8,
-   "l": 19.29,
-   "c": 19.42,
-   "v": 238100
-  },
   {
    "time": "2026-03-26",
    "o": 19.26,
@@ -483,10 +475,18 @@
    "l": 47.0,
    "c": 49.72,
    "v": 1897500
+  },
+  {
+   "time": "2026-06-22",
+   "o": 51.19,
+   "h": 51.6,
+   "l": 47.81,
+   "c": 48.41,
+   "v": 560458
   }
  ],
  "sr": {
-  "price": 49.72,
+  "price": 48.41,
   "resistance": [
    50.44,
    51.25
@@ -498,7 +498,6 @@
   "strong_support": 16.02
  },
  "spark": [
-  19.42,
   18.82,
   18.22,
   17.21,
@@ -557,28 +556,12 @@
   48.45,
   45.8,
   44.91,
-  49.72
+  49.72,
+  48.41
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 272,
-    "days": 2,
-    "max_shares": 200,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

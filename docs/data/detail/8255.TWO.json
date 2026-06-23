@@ -1,17 +1,9 @@
 {
  "stock": "8255.TWO",
  "name": "朋程",
- "price": 195.0,
- "change_pct": 9.86,
+ "price": 214.5,
+ "change_pct": 10.0,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 131.0,
-   "h": 133.0,
-   "l": 129.0,
-   "c": 130.0,
-   "v": 699062
-  },
   {
    "time": "2026-03-25",
    "o": 133.0,
@@ -483,22 +475,26 @@
    "l": 191.5,
    "c": 195.0,
    "v": 2745984
+  },
+  {
+   "time": "2026-06-22",
+   "o": 214.0,
+   "h": 214.5,
+   "l": 212.0,
+   "c": 214.5,
+   "v": 3576016
   }
  ],
  "sr": {
-  "price": 195.0,
-  "resistance": [
-   201.2,
-   205.0
-  ],
+  "price": 214.5,
+  "resistance": [],
   "support": [
-   166.46,
-   163.08
+   197.82,
+   166.46
   ],
   "strong_support": 100.36
  },
  "spark": [
-  130.0,
   134.5,
   131.0,
   127.0,
@@ -557,10 +553,11 @@
   183.0,
   175.5,
   177.5,
-  195.0
+  195.0,
+  214.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 320950,
+    "foreign": 909470,
     "trust": 0,
-    "dealer": 24247,
-    "total": 345197
+    "dealer": -23538,
+    "total": 885932
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.79,
+    "yield": 1.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "4931.TWO",
  "name": "新盛力",
- "price": 261.5,
- "change_pct": 3.36,
+ "price": 267.0,
+ "change_pct": 2.1,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 136.5,
-   "h": 143.5,
-   "l": 135.0,
-   "c": 143.5,
-   "v": 6450059
-  },
   {
    "time": "2026-03-25",
    "o": 150.0,
@@ -483,10 +475,18 @@
    "l": 254.0,
    "c": 261.5,
    "v": 7511864
+  },
+  {
+   "time": "2026-06-22",
+   "o": 263.0,
+   "h": 272.5,
+   "l": 255.0,
+   "c": 267.0,
+   "v": 8161430
   }
  ],
  "sr": {
-  "price": 261.5,
+  "price": 267.0,
   "resistance": [
    287.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 23.17
  },
  "spark": [
-  143.5,
   153.5,
   145.0,
   145.0,
@@ -556,10 +555,11 @@
   252.0,
   250.5,
   253.0,
-  261.5
+  261.5,
+  267.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -69886,
+    "foreign": -286559,
     "trust": 0,
-    "dealer": 11165,
-    "total": -58721
+    "dealer": 110485,
+    "total": -176074
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.96,
+    "yield": 0.94,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-20",
+   "as_of": "2026-06-23",
    "note": "OTC valuation context"
   }
  ]

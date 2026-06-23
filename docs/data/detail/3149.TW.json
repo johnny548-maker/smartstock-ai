@@ -1,17 +1,9 @@
 {
  "stock": "3149.TW",
  "name": "正達",
- "price": 95.0,
- "change_pct": 1.39,
+ "price": 104.5,
+ "change_pct": 10.0,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 46.2,
-   "h": 46.7,
-   "l": 42.85,
-   "c": 42.85,
-   "v": 5065460
-  },
   {
    "time": "2026-03-25",
    "o": 44.2,
@@ -483,13 +475,19 @@
    "l": 93.7,
    "c": 95.0,
    "v": 5381510
+  },
+  {
+   "time": "2026-06-22",
+   "o": 99.0,
+   "h": 104.5,
+   "l": 99.0,
+   "c": 104.5,
+   "v": 7223077
   }
  ],
  "sr": {
-  "price": 95.0,
-  "resistance": [
-   96.5
-  ],
+  "price": 104.5,
+  "resistance": [],
   "support": [
    76.0,
    49.55
@@ -497,7 +495,6 @@
   "strong_support": 20.3
  },
  "spark": [
-  42.85,
   44.1,
   46.6,
   46.0,
@@ -556,26 +553,12 @@
   87.4,
   88.0,
   93.7,
-  95.0
+  95.0,
+  104.5
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第1次） 處置期間：115/06/08～115/06/22",
-   "value": {
-    "level": 1,
-    "reason": "連續五次",
-    "period": "115/06/08～115/06/22"
-   },
-   "severity": "warn",
-   "as_of": "2026-06-20",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

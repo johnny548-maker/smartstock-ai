@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 145.5,
- "change_pct": 3.93,
+ "price": 160.0,
+ "change_pct": 9.97,
  "ohlc": [
-  {
-   "time": "2026-03-24",
-   "o": 57.5,
-   "h": 57.5,
-   "l": 55.7,
-   "c": 56.5,
-   "v": 52694700
-  },
   {
    "time": "2026-03-25",
    "o": 58.0,
@@ -483,13 +475,19 @@
    "l": 138.5,
    "c": 145.5,
    "v": 293666572
+  },
+  {
+   "time": "2026-06-22",
+   "o": 160.0,
+   "h": 160.0,
+   "l": 160.0,
+   "c": 160.0,
+   "v": 63984566
   }
  ],
  "sr": {
-  "price": 145.5,
-  "resistance": [
-   155.5
-  ],
+  "price": 160.0,
+  "resistance": [],
   "support": [
    116.5,
    70.7
@@ -497,7 +495,6 @@
   "strong_support": 40.1
  },
  "spark": [
-  56.5,
   59.1,
   58.2,
   57.8,
@@ -556,10 +553,11 @@
   141.5,
   141.0,
   140.0,
-  145.5
+  145.5,
+  160.0
  ],
- "spark_start": "2026-03-24",
- "spark_end": "2026-06-18",
+ "spark_start": "2026-03-25",
+ "spark_end": "2026-06-22",
  "fundamental": {
   "rev_yoy": 17.8,
   "rev_accel": false,
@@ -567,26 +565,26 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 145.5,
-  "stop": 135.31,
-  "target": 170.96,
-  "atr_bracket": 170.96,
+  "entry": 160.0,
+  "stop": 148.8,
+  "target": 188.0,
+  "atr_bracket": 188.0,
   "measured_move": 240.3,
   "target_band": [
-   170.96,
+   188.0,
    240.3,
-   253.71
+   273.21
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 7.4,
-  "swing_stop": 113.29,
-  "chandelier": 123.66,
+  "atr_pct": 6.7,
+  "swing_stop": 132.81,
+  "chandelier": 127.34,
   "fib_targets": [
-   224.37,
-   253.71,
-   286.1
+   243.87,
+   273.21,
+   305.6
   ]
  },
  "generated_for": "detail",
@@ -594,28 +592,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 24,756,560 股",
+   "label": "三大法人賣超 12,777,093 股",
    "value": {
-    "foreign": 65777401,
-    "trust": -49325866,
-    "dealer": 8305025,
-    "total": 24756560
+    "foreign": -11971079,
+    "trust": -590405,
+    "dealer": -215609,
+    "total": -12777093
    },
    "severity": "info",
-   "as_of": "2026-06-21",
+   "as_of": "2026-06-23",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 36.6 / 殖利率 1.79% / PB 4.50",
+   "label": "PE 40.2 / 殖利率 1.63% / PB 4.95",
    "value": {
-    "pe": 36.56,
-    "yield": 1.79,
-    "pb": 4.5
+    "pe": 40.2,
+    "yield": 1.63,
+    "pb": 4.95
    },
    "severity": "info",
-   "as_of": "2026-06-18",
+   "as_of": "2026-06-22",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
