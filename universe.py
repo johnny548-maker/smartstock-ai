@@ -27,6 +27,7 @@ import volume_signals as vs
 import supply_chain
 import verdict
 import group_rs
+from sources import _cache
 
 log = logging.getLogger(__name__)
 CODE_RE = re.compile(r"[1-9][0-9]{3}")          # 4-digit common stock (excludes ETF/warrant)
@@ -100,6 +101,38 @@ def tpex_universe():
     return {c + ".TWO": (base[c], dv.get(c, 0)) for c in base}
 
 
+def tw_listing():
+    """{code.TW/.TWO: (name, dollar_volume)} for ALL TWSE+TPEx common stocks, backed by a
+    committed last-good NAME snapshot (config.TW_LISTING_CACHE, committed by the daily cron).
+
+    Why: the live TWSE/TPEx company-list fetch is the ONLY source of TW names beyond the
+    28-name STOCK_NAMES. When it failed on a cron run, EVERY non-watchlist TW name vanished
+    from the payload `names` dict AND _universe.json → the PWA radar showed bare codes
+    (3035/3189). This wrapper makes names durable: a successful fetch refreshes the snapshot;
+    a transient failure reuses it. Live dollar-volume wins where fetched; snapshot-only names
+    (a source that failed this run) come back with dollar-vol 0 (rank last, but NAME present).
+    """
+    live = {}
+    for fn, label in ((twse_universe, "TWSE"), (tpex_universe, "TPEx")):
+        try:
+            live.update(fn())
+        except Exception as e:
+            log.warning("SKIP %s listing (snapshot fallback): %s", label, e)
+    snap = _cache.load_state(config.TW_LISTING_CACHE, {})   # {code: name}
+    if live:
+        merged_names = dict(snap)
+        merged_names.update({c: nm for c, (nm, _dv) in live.items()})   # live names win, old retained
+        try:
+            _cache.save_state(config.TW_LISTING_CACHE, merged_names)
+        except Exception as e:
+            log.warning("SKIP TW listing snapshot save: %s", e)
+    else:
+        merged_names = snap
+    out = {c: (nm, 0) for c, nm in merged_names.items()}   # snapshot names (dv 0) for failed sources
+    out.update(live)                                       # live (name + real dv) wins where available
+    return out
+
+
 def _rank_by_dollar_vol(tw_map, cap_n):
     return [t for t, _ in sorted(tw_map.items(), key=lambda kv: kv[1][1], reverse=True)[:cap_n]]
 
@@ -125,7 +158,7 @@ def opportunity_universe(cap_n=None, scan_limit=None):
     tw_anchors = sorted(a for a in supply_chain.anchor_tickers() if a.endswith((".TW", ".TWO")))
     tw_top = []
     try:
-        tw_map = {**twse_universe(), **tpex_universe()}
+        tw_map = tw_listing()   # snapshot-backed: names survive a transient listing-fetch failure
         for t, (nm, _) in tw_map.items():
             names.setdefault(t, nm)
         tw_top = _rank_by_dollar_vol(tw_map, cap_n)
@@ -193,16 +226,11 @@ def full_market_index():
             seen.add(code)
             rows.append([code, name or code, market])
 
-    try:
-        for c, (nm, _dv) in twse_universe().items():
-            add(c, nm, "TW")
+    try:                                           # snapshot-backed TWSE+TPEx (durable names)
+        for c, (nm, _dv) in tw_listing().items():
+            add(c, nm, "TWO" if c.endswith(".TWO") else "TW")
     except Exception as e:
-        log.warning("SKIP full_market_index TWSE: %s", e)
-    try:
-        for c, (nm, _dv) in tpex_universe().items():
-            add(c, nm, "TWO")
-    except Exception as e:
-        log.warning("SKIP full_market_index TPEx: %s", e)
+        log.warning("SKIP full_market_index TW listing: %s", e)
     for r in load_us_universe():
         add(r.get("ticker"), r.get("name"), "US")
     try:                                           # itemC: full keyless US directory (~5653)

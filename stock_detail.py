@@ -89,6 +89,7 @@ def build_detail(
     fundamental: dict = None,
     levels: dict = None,
     overlays: list = None,
+    trends: dict = None,
 ) -> dict:
     """Build a self-contained per-stock detail dict for the PWA detail view.
 
@@ -103,6 +104,9 @@ def build_detail(
     overlays    : optional list of sources/ overlay dicts (chip/法人/基本面/內部人),
                   carried verbatim under the 'overlays' key (backward-compatible
                   default None → key omitted). INFORMATIONAL ONLY, never scored.
+    trends      : optional {inst_cum/holder_pct/rev_yoy: [{t,v}]} 籌碼/基本面 history
+                  series (trends.build_trends) under the 'trends' key — only attached
+                  when at least one series is non-empty. INFORMATIONAL ONLY.
 
     Returns
     -------
@@ -136,6 +140,8 @@ def build_detail(
     }
     if overlays:
         base["overlays"] = list(overlays)   # sources/ overlays sidecar (never scored)
+    if trends and any(trends.get(k) for k in ("inst_cum", "holder_pct", "rev_yoy")):
+        base["trends"] = trends             # 籌碼/基本面 history series (never scored)
 
     # metadata-only path: df is None OR ohlc returned empty (too short / bad index)
     if not has_data or not ohlc_bars:
