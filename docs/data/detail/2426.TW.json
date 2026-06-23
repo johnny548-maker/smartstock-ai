@@ -1,17 +1,9 @@
 {
  "stock": "2426.TW",
  "name": "鼎元",
- "price": 89.9,
- "change_pct": 9.9,
+ "price": 96.9,
+ "change_pct": 7.79,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 34.31,
-   "h": 36.16,
-   "l": 34.31,
-   "c": 36.16,
-   "v": 3684328
-  },
   {
    "time": "2026-03-26",
    "o": 37.21,
@@ -483,10 +475,18 @@
    "l": 82.2,
    "c": 89.9,
    "v": 36897397
+  },
+  {
+   "time": "2026-06-23",
+   "o": 98.7,
+   "h": 98.8,
+   "l": 93.5,
+   "c": 96.9,
+   "v": 26155901
   }
  ],
  "sr": {
-  "price": 89.9,
+  "price": 96.9,
   "resistance": [],
   "support": [
    73.5,
@@ -495,7 +495,6 @@
   "strong_support": 12.96
  },
  "spark": [
-  36.16,
   33.56,
   35.96,
   34.96,
@@ -554,11 +553,50 @@
   68.9,
   74.4,
   81.8,
-  89.9
+  89.9,
+  96.9
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 9,774,455 股",
+   "value": {
+    "foreign": 9444754,
+    "trust": 0,
+    "dealer": 329701,
+    "total": 9774455
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "殖利率 0.11% / PB 7.19",
+   "value": {
+    "pe": null,
+    "yield": 0.11,
+    "pb": 7.19
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 43.65,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=43.65；WoW-0.36；股東人數-139"
+  }
+ ]
 }

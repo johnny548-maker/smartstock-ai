@@ -1,17 +1,9 @@
 {
  "stock": "2408.TW",
  "name": "南亞科",
- "price": 505.0,
- "change_pct": 9.9,
+ "price": 474.5,
+ "change_pct": -6.04,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 226.5,
-   "h": 229.5,
-   "l": 218.5,
-   "c": 226.5,
-   "v": 96516285
-  },
   {
    "time": "2026-03-26",
    "o": 249.0,
@@ -483,10 +475,18 @@
    "l": 480.0,
    "c": 505.0,
    "v": 94025445
+  },
+  {
+   "time": "2026-06-23",
+   "o": 488.0,
+   "h": 500.0,
+   "l": 471.0,
+   "c": 474.5,
+   "v": 60814006
   }
  ],
  "sr": {
-  "price": 505.0,
+  "price": 474.5,
   "resistance": [],
   "support": [
    324.0,
@@ -495,7 +495,6 @@
   "strong_support": 24.7
  },
  "spark": [
-  226.5,
   225.5,
   219.5,
   220.5,
@@ -554,49 +553,12 @@
   425.0,
   437.0,
   459.5,
-  505.0
+  505.0,
+  474.5
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 15,527,110 股",
-   "value": {
-    "foreign": 9625608,
-    "trust": 4046000,
-    "dealer": 1855502,
-    "total": 15527110
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 45.2 / 殖利率 0.27% / PB 8.11",
-   "value": {
-    "pe": 45.21,
-    "yield": 0.27,
-    "pb": 8.11
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 84.12,
-   "severity": "info",
-   "as_of": "20260618",
-   "note": "大戶持股%=84.12；WoW+2.31；股東人數-44995"
-  }
- ]
+ "generated_for": "detail"
 }

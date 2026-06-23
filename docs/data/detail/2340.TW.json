@@ -1,17 +1,9 @@
 {
  "stock": "2340.TW",
  "name": "台亞",
- "price": 42.8,
- "change_pct": 7.13,
+ "price": 44.2,
+ "change_pct": 3.27,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 28.9,
-   "h": 29.25,
-   "l": 28.25,
-   "c": 28.3,
-   "v": 2747297
-  },
   {
    "time": "2026-03-26",
    "o": 28.8,
@@ -483,13 +475,21 @@
    "l": 42.0,
    "c": 42.8,
    "v": 22155281
+  },
+  {
+   "time": "2026-06-23",
+   "o": 42.9,
+   "h": 45.45,
+   "l": 42.45,
+   "c": 44.2,
+   "v": 12070434
   }
  ],
  "sr": {
-  "price": 42.8,
+  "price": 44.2,
   "resistance": [
-   43.35,
-   44.38
+   44.38,
+   44.45
   ],
   "support": [
    41.41,
@@ -498,7 +498,6 @@
   "strong_support": 17.8
  },
  "spark": [
-  28.3,
   27.8,
   26.8,
   25.35,
@@ -557,11 +556,50 @@
   39.1,
   38.5,
   39.95,
-  42.8
+  42.8,
+  44.2
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 4,171,731 股",
+   "value": {
+    "foreign": 3985382,
+    "trust": 0,
+    "dealer": 186349,
+    "total": 4171731
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PB 2.96",
+   "value": {
+    "pe": null,
+    "yield": null,
+    "pb": 2.96
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 38.3,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=38.30；WoW+1.00；股東人數-605"
+  }
+ ]
 }

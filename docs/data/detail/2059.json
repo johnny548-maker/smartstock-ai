@@ -1,17 +1,9 @@
 {
  "stock": "2059",
  "name": "川湖",
- "price": 7550.0,
- "change_pct": 9.98,
+ "price": 7285.0,
+ "change_pct": -3.51,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 3550.0,
-   "h": 3680.0,
-   "l": 3550.0,
-   "c": 3615.0,
-   "v": 744614
-  },
   {
    "time": "2026-03-26",
    "o": 3620.0,
@@ -483,19 +475,26 @@
    "l": 7045.0,
    "c": 7550.0,
    "v": 913371
+  },
+  {
+   "time": "2026-06-23",
+   "o": 7600.0,
+   "h": 7600.0,
+   "l": 7250.0,
+   "c": 7285.0,
+   "v": 150821
   }
  ],
  "sr": {
-  "price": 7550.0,
+  "price": 7285.0,
   "resistance": [],
   "support": [
-   4945.0,
-   4615.0
+   6480.0,
+   4945.0
   ],
   "strong_support": 859.58
  },
  "spark": [
-  3615.0,
   3615.0,
   3600.0,
   3460.0,
@@ -554,10 +553,11 @@
   6650.0,
   6620.0,
   6865.0,
-  7550.0
+  7550.0,
+  7285.0
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": {
   "rev_yoy": 172.1,
   "rev_accel": false,
@@ -565,43 +565,5 @@
   "source": "twse_revenue"
  },
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 144,385 股",
-   "value": {
-    "foreign": 123692,
-    "trust": 29420,
-    "dealer": -8727,
-    "total": 144385
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 66.5 / 殖利率 0.68% / PB 22.82",
-   "value": {
-    "pe": 66.55,
-    "yield": 0.68,
-    "pb": 22.82
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 66.8,
-   "severity": "warn",
-   "as_of": "20260618",
-   "note": "大戶持股%=66.80；WoW-0.32；股東人數+672"
-  }
- ]
+ "generated_for": "detail"
 }

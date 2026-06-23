@@ -1,17 +1,9 @@
 {
  "stock": "6257.TW",
  "name": "矽格",
- "price": 242.5,
- "change_pct": 3.19,
+ "price": 239.0,
+ "change_pct": -1.44,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 132.0,
-   "h": 138.5,
-   "l": 130.5,
-   "c": 137.0,
-   "v": 9695901
-  },
   {
    "time": "2026-03-26",
    "o": 139.5,
@@ -483,19 +475,28 @@
    "l": 238.5,
    "c": 242.5,
    "v": 24673375
+  },
+  {
+   "time": "2026-06-23",
+   "o": 245.0,
+   "h": 252.5,
+   "l": 238.5,
+   "c": 239.0,
+   "v": 7034242
   }
  ],
  "sr": {
-  "price": 242.5,
-  "resistance": [],
+  "price": 239.0,
+  "resistance": [
+   242.0
+  ],
   "support": [
    213.5,
-   206.0
+   209.0
   ],
   "strong_support": 53.54
  },
  "spark": [
-  137.0,
   146.0,
   146.0,
   148.0,
@@ -554,60 +555,12 @@
   214.0,
   214.0,
   235.0,
-  242.5
+  242.5,
+  239.0
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 9,285,854 股",
-   "value": {
-    "foreign": 7694687,
-    "trust": 1030202,
-    "dealer": 560965,
-    "total": 9285854
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -19
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 36.2 / 殖利率 1.73% / PB 5.37",
-   "value": {
-    "pe": 36.25,
-    "yield": 1.73,
-    "pb": 5.37
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 48.55,
-   "severity": "warn",
-   "as_of": "20260618",
-   "note": "大戶持股%=48.55；WoW-0.25；股東人數-68"
-  }
- ]
+ "generated_for": "detail"
 }

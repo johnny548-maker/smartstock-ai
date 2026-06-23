@@ -1,17 +1,9 @@
 {
  "stock": "2454.TW",
  "name": "聯發科",
- "price": 4465.0,
- "change_pct": 1.71,
+ "price": 4525.0,
+ "change_pct": 1.34,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 1665.0,
-   "h": 1665.0,
-   "l": 1620.0,
-   "c": 1620.0,
-   "v": 5839950
-  },
   {
    "time": "2026-03-26",
    "o": 1610.0,
@@ -483,10 +475,18 @@
    "l": 4380.0,
    "c": 4465.0,
    "v": 10836913
+  },
+  {
+   "time": "2026-06-23",
+   "o": 4720.0,
+   "h": 4785.0,
+   "l": 4525.0,
+   "c": 4525.0,
+   "v": 7057865
   }
  ],
  "sr": {
-  "price": 4465.0,
+  "price": 4525.0,
   "resistance": [
    4970.0
   ],
@@ -494,10 +494,9 @@
    3880.0,
    3100.0
   ],
-  "strong_support": 924.42
+  "strong_support": 1108.51
  },
  "spark": [
-  1620.0,
   1590.0,
   1585.0,
   1510.0,
@@ -556,11 +555,55 @@
   4560.0,
   4460.0,
   4390.0,
-  4465.0
+  4465.0,
+  4525.0
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
- "fundamental": null,
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
+ "fundamental": {
+  "rev_yoy": 5.0,
+  "rev_accel": false,
+  "stale": false,
+  "source": "twse_revenue"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 1,941,225 股",
+   "value": {
+    "foreign": 3651046,
+    "trust": -1912579,
+    "dealer": 202758,
+    "total": 1941225
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 71.2 / 殖利率 1.20% / PB 18.26",
+   "value": {
+    "pe": 71.16,
+    "yield": 1.2,
+    "pb": 18.26
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 75.53,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=75.53；WoW+0.12；股東人數-19742"
+  }
+ ]
 }

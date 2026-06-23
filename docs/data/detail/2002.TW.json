@@ -1,17 +1,9 @@
 {
  "stock": "2002.TW",
  "name": "中鋼",
- "price": 19.5,
- "change_pct": 2.09,
+ "price": 19.15,
+ "change_pct": -1.79,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 19.5,
-   "h": 19.55,
-   "l": 19.25,
-   "c": 19.3,
-   "v": 33632166
-  },
   {
    "time": "2026-03-26",
    "o": 19.45,
@@ -483,22 +475,29 @@
    "l": 19.15,
    "c": 19.5,
    "v": 129066657
+  },
+  {
+   "time": "2026-06-23",
+   "o": 19.75,
+   "h": 19.95,
+   "l": 19.15,
+   "c": 19.15,
+   "v": 54006885
   }
  ],
  "sr": {
-  "price": 19.5,
+  "price": 19.15,
   "resistance": [
-   19.6,
-   19.9
+   19.28,
+   19.3
   ],
   "support": [
-   19.15,
-   19.05
+   19.05,
+   18.85
   ],
-  "strong_support": 17.9
+  "strong_support": 17.56
  },
  "spark": [
-  19.3,
   19.75,
   19.6,
   19.15,
@@ -557,65 +556,12 @@
   18.65,
   18.75,
   19.1,
-  19.5
+  19.5,
+  19.15
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
- "fundamental": {
-  "rev_yoy": 2.2,
-  "rev_accel": false,
-  "stale": false,
-  "source": "twse_revenue"
- },
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 45,254,334 股",
-   "value": {
-    "foreign": 44581757,
-    "trust": -338922,
-    "dealer": 1011499,
-    "total": 45254334
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -6
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "殖利率 0.77% / PB 1.00",
-   "value": {
-    "pe": null,
-    "yield": 0.77,
-    "pb": 1.0
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 52.07,
-   "severity": "warn",
-   "as_of": "20260618",
-   "note": "大戶持股%=52.07；WoW-0.03；股東人數-2377"
-  }
- ]
+ "generated_for": "detail"
 }

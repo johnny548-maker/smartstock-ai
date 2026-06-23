@@ -1,17 +1,9 @@
 {
  "stock": "4764.TW",
  "name": "雙鍵",
- "price": 332.0,
- "change_pct": -1.92,
+ "price": 352.5,
+ "change_pct": 6.17,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 131.41,
-   "h": 134.39,
-   "l": 129.41,
-   "c": 129.91,
-   "v": 1840343
-  },
   {
    "time": "2026-03-26",
    "o": 130.41,
@@ -483,12 +475,19 @@
    "l": 322.5,
    "c": 332.0,
    "v": 2775211
+  },
+  {
+   "time": "2026-06-23",
+   "o": 333.0,
+   "h": 365.0,
+   "l": 329.0,
+   "c": 352.5,
+   "v": 3689585
   }
  ],
  "sr": {
-  "price": 332.0,
+  "price": 352.5,
   "resistance": [
-   340.0,
    366.5
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 33.15
  },
  "spark": [
-  129.91,
   128.42,
   132.4,
   126.43,
@@ -557,11 +555,61 @@
   305.5,
   316.0,
   338.5,
-  332.0
+  332.0,
+  352.5
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 314,611 股",
+   "value": {
+    "foreign": -405710,
+    "trust": 100000,
+    "dealer": -8901,
+    "total": -314611
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -11
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 176.6 / 殖利率 0.30% / PB 11.73",
+   "value": {
+    "pe": 176.6,
+    "yield": 0.3,
+    "pb": 11.73
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 74.91,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=74.91；WoW+0.56；股東人數-186"
+  }
+ ]
 }

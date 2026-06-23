@@ -1,17 +1,9 @@
 {
  "stock": "2481.TW",
  "name": "強茂",
- "price": 176.0,
- "change_pct": 10.0,
+ "price": 193.5,
+ "change_pct": 9.94,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 98.2,
-   "h": 100.16,
-   "l": 95.94,
-   "c": 98.2,
-   "v": 35043919
-  },
   {
    "time": "2026-03-26",
    "o": 98.69,
@@ -483,19 +475,26 @@
    "l": 176.0,
    "c": 176.0,
    "v": 3869772
+  },
+  {
+   "time": "2026-06-23",
+   "o": 193.5,
+   "h": 193.5,
+   "l": 187.0,
+   "c": 193.5,
+   "v": 61204742
   }
  ],
  "sr": {
-  "price": 176.0,
+  "price": 193.5,
   "resistance": [],
   "support": [
-   132.0,
-   111.5
+   137.5,
+   132.0
   ],
   "strong_support": 36.44
  },
  "spark": [
-  98.2,
   97.91,
   96.14,
   87.1,
@@ -554,11 +553,50 @@
   140.0,
   145.5,
   160.0,
-  176.0
+  176.0,
+  193.5
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 221,978 股",
+   "value": {
+    "foreign": -93546,
+    "trust": 0,
+    "dealer": 315524,
+    "total": 221978
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 55.9 / 殖利率 1.02% / PB 4.64",
+   "value": {
+    "pe": 55.87,
+    "yield": 1.02,
+    "pb": 4.64
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 64.38,
+   "severity": "warn",
+   "as_of": "20260618",
+   "note": "大戶持股%=64.38；WoW-1.10；股東人數+1392"
+  }
+ ]
 }

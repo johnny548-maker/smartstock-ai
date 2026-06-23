@@ -1,17 +1,9 @@
 {
  "stock": "3189.TW",
  "name": "景碩",
- "price": 796.0,
- "change_pct": 9.94,
+ "price": 751.0,
+ "change_pct": -5.65,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 333.5,
-   "h": 351.5,
-   "l": 333.5,
-   "c": 351.5,
-   "v": 4551240
-  },
   {
    "time": "2026-03-26",
    "o": 352.0,
@@ -483,11 +475,21 @@
    "l": 733.0,
    "c": 796.0,
    "v": 19552198
+  },
+  {
+   "time": "2026-06-23",
+   "o": 780.0,
+   "h": 788.0,
+   "l": 744.0,
+   "c": 751.0,
+   "v": 14479172
   }
  ],
  "sr": {
-  "price": 796.0,
-  "resistance": [],
+  "price": 751.0,
+  "resistance": [
+   778.0
+  ],
   "support": [
    623.0,
    594.0
@@ -495,7 +497,6 @@
   "strong_support": 60.1
  },
  "spark": [
-  351.5,
   351.5,
   352.0,
   346.5,
@@ -554,49 +555,12 @@
   642.0,
   706.0,
   724.0,
-  796.0
+  796.0,
+  751.0
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,577,182 股",
-   "value": {
-    "foreign": -108563,
-    "trust": 1238232,
-    "dealer": 447513,
-    "total": 1577182
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 224.2 / 殖利率 0.22% / PB 9.72",
-   "value": {
-    "pe": 224.23,
-    "yield": 0.22,
-    "pb": 9.72
-   },
-   "severity": "info",
-   "as_of": "2026-06-22",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 73.08,
-   "severity": "info",
-   "as_of": "20260618",
-   "note": "大戶持股%=73.08；WoW+0.76；股東人數-3723"
-  }
- ]
+ "generated_for": "detail"
 }

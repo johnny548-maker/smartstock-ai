@@ -1,17 +1,9 @@
 {
  "stock": "2388.TW",
  "name": "威盛",
- "price": 84.4,
- "change_pct": 3.75,
+ "price": 87.3,
+ "change_pct": 3.44,
  "ohlc": [
-  {
-   "time": "2026-03-25",
-   "o": 53.57,
-   "h": 54.47,
-   "l": 51.47,
-   "c": 51.87,
-   "v": 7039876
-  },
   {
    "time": "2026-03-26",
    "o": 52.67,
@@ -483,22 +475,29 @@
    "l": 81.4,
    "c": 84.4,
    "v": 22820899
+  },
+  {
+   "time": "2026-06-23",
+   "o": 85.3,
+   "h": 89.8,
+   "l": 84.9,
+   "c": 87.3,
+   "v": 11945147
   }
  ],
  "sr": {
-  "price": 84.4,
+  "price": 87.3,
   "resistance": [
-   85.35,
-   90.75
+   90.75,
+   91.24
   ],
   "support": [
-   80.09,
-   73.16
+   85.08,
+   84.88
   ],
   "strong_support": 42.77
  },
  "spark": [
-  51.87,
   52.37,
   54.47,
   51.97,
@@ -557,11 +556,50 @@
   68.36,
   75.15,
   81.35,
-  84.4
+  84.4,
+  87.3
  ],
- "spark_start": "2026-03-25",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-26",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 3,522,602 股",
+   "value": {
+    "foreign": 3192832,
+    "trust": 17000,
+    "dealer": 312770,
+    "total": 3522602
+   },
+   "severity": "info",
+   "as_of": "2026-06-23",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 468.9 / 殖利率 0.06% / PB 2.15",
+   "value": {
+    "pe": 468.89,
+    "yield": 0.06,
+    "pb": 2.15
+   },
+   "severity": "info",
+   "as_of": "2026-06-22",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 67.25,
+   "severity": "info",
+   "as_of": "20260618",
+   "note": "大戶持股%=67.25；WoW+0.92；股東人數-1117"
+  }
+ ]
 }
