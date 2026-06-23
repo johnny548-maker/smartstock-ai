@@ -554,8 +554,10 @@ def main(web=False):
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
         signals=sig, themes=themes, opportunity=opp, regime=regime,
         concentration=concentration, macro=macro_ctx,
-        momentum_portfolio=momentum_lens, validated_portfolio=validated_lens,
-        factor_validation=factor_validation)
+        momentum_portfolio=momentum_lens)
+    # NOTE: validated_portfolio / factor_validation are build_PAYLOAD-only kwargs — build_REPORT
+    # (the markdown/email path) does not accept them. Passing them here crashed every daily run
+    # (latent: unit tests never invoke main()); caught by the local live run 2026-06-23.
 
     # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
     #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
