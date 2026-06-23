@@ -85,9 +85,19 @@ def electronics_cycle_momentum(industry_env, up=0.05, down=-0.05):
     INFORMATIONAL context for CYCLICAL electronics/semi positions — NOT a per-stock prediction and
     NEVER a score input. state=None when no macro data is available."""
     e = industry_env or {}
+    bc = e.get("business_cycle") or {}
     yoys = [v for v in (e.get("electronics_export_yoy"), e.get("semi_hs_export_yoy"))
             if isinstance(v, (int, float))]
     if not yoys:
+        # Export-orders / HS YoY are the BEST signal but their source is flaky (often None). Fall
+        # back to the reliably-present NDC business-cycle 對策信號 score (紅/黃紅≥32 過熱→up · 綠
+        # 23-31→flat · 黃藍/藍≤22→down) so the gauge still fires instead of going silently empty.
+        sc = bc.get("score")
+        if isinstance(sc, (int, float)):
+            state = "up" if sc >= 32 else ("down" if sc <= 22 else "flat")
+            return {"state": state, "yoy": None,
+                    "drivers": [f"景氣對策信號 {bc.get('light') or ''} {int(sc)}".strip()],
+                    "note": "電子/半導體景氣動能＝總經級訊號（景氣對策信號；外銷YoY 暫無）；非個股預測。"}
         return {"state": None, "yoy": None, "drivers": [], "note": "總經景氣資料不足"}
     avg = sum(yoys) / len(yoys)
     state = "up" if avg >= up else ("down" if avg <= down else "flat")
