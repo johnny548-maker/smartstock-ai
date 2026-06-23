@@ -283,6 +283,26 @@ class TestPayloadGolden(unittest.TestCase):
         self.assertEqual(base["concentration_summary"], {})
         self.assertEqual(base["factor_meta"], [])
 
+    def test_descoped_keys_additive(self):
+        # de-scoped补: earn_watch (rides the **card spread) + environment.electronics_cycle must
+        # also be pure sidecars — the picks fingerprint stays byte-identical.
+        first = self.ranked[0]["stock"]
+        cards = {r["stock"]: dict(self.pick_cards[r["stock"]]) for r in self.ranked}
+        cards[first]["earn_watch"] = {"date": "2026-07-10", "days_until": 17,
+                                      "in_blackout": False, "watch_vol": True}
+        common = dict(date_str="2026-06-06", news={}, indices={}, institutional={}, analyses={},
+                      allocation={}, rebalance_diff={}, risk="LOW", markdown="", skips=[])
+        base = web_export.build_payload(ranked=self.ranked, pick_cards=dict(self.pick_cards), **common)
+        withd = web_export.build_payload(
+            ranked=self.ranked, pick_cards=cards,
+            environment={"electronics_cycle": {"state": "up", "drivers": ["景氣對策信號 紅 38"]}},
+            **common)
+        self.assertEqual(_picks_fingerprint(base), _picks_fingerprint(withd),
+                         "earn_watch/electronics_cycle perturbed score/rank — INVARIANT VIOLATED")
+        p0 = next(p for p in withd["picks"] if p["stock"] == first)
+        self.assertTrue(p0["earn_watch"]["watch_vol"])                     # rides the card
+        self.assertEqual(withd["environment"]["electronics_cycle"]["state"], "up")  # rides environment
+
     def test_pick_order_identical(self):
         base = [p["stock"] for p in self._payload(False)["picks"]]
         withov = [p["stock"] for p in self._payload(True)["picks"]]
