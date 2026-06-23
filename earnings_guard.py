@@ -35,6 +35,25 @@ def blackout_from_date(earn_date, today=None, within_days=WITHIN_DAYS):
     return None
 
 
+WATCH_DAYS = 30          # 30d forewarning window (7<d≤30 → volatility watch, not a hard skip)
+
+
+def classify_earnings(earn_date, today=None, near_days=WITHIN_DAYS, watch_days=WATCH_DAYS):
+    """Pure: classify a next-earnings date into a 30d forewarning band, or None when outside it.
+
+    None when no date, in the past, or beyond watch_days. Otherwise a dict with in_blackout
+    (≤near_days, the existing hard 7d skip) and watch_vol (near_days<d≤watch_days, soft warning).
+    Extends blackout_from_date without changing it (backward-compatible)."""
+    if earn_date is None:
+        return None
+    today = today or _date.today()
+    days = (earn_date - today).days
+    if days < 0 or days > watch_days:
+        return None
+    return {"date": earn_date.isoformat(), "days_until": days,
+            "in_blackout": days <= near_days, "watch_vol": days > near_days}
+
+
 def _load_cache(path):
     try:
         with open(path, encoding="utf-8") as f:
@@ -107,5 +126,33 @@ def annotate(syms, today=None, within_days=WITHIN_DAYS, fetch=True, cache_path=N
         except Exception as e:
             log.warning("earnings annotate %s skip: %s", sym, e)
     if cache_path:
+        _save_cache(cache_path, cache)
+    return out
+
+
+def annotate_calendar(syms, today=None, watch_days=WATCH_DAYS, fetch=True,
+                      cache_path=None, cache=None, now=None):
+    """Map sym -> classify_earnings dict for names with earnings within watch_days (30d).
+
+    A 30d superset of annotate() — the per-pick blackout AND the soft volatility-watch band, for
+    a '近期財報' forewarning. Reuses the same cached next_earnings_date (inject `cache` to bypass
+    the network in tests). {} when fetch disabled/empty. Per-symbol failures skipped (never fatal).
+    """
+    today = today or _date.today()
+    out = {}
+    if not fetch or not syms:
+        return out
+    now = now or datetime.now()
+    own_cache = cache is None
+    cache = (_load_cache(cache_path) if cache_path else {}) if own_cache else cache
+    for sym in syms:
+        try:
+            d = next_earnings_date(sym, today, cache, now)
+            c = classify_earnings(d, today, watch_days=watch_days)
+            if c:
+                out[sym] = c
+        except Exception as e:
+            log.warning("earnings calendar %s skip: %s", sym, e)
+    if cache_path and own_cache:
         _save_cache(cache_path, cache)
     return out

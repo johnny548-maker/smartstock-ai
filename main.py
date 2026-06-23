@@ -396,6 +396,14 @@ def main(web=False):
         if earnings_bo:
             log.info("earnings blackout: %d pick(s) within %dd", len(earnings_bo),
                      earnings_mod.WITHIN_DAYS)
+        # 30d forewarning (de-scoped补): attach earn_watch (7<d≤30 volatility band) to picks not
+        # already in the hard 7d blackout. Reuses the cache annotate() just refreshed. Rides the
+        # card via web_export's **card spread. INFORMATIONAL — never a score change.
+        earn_cal = earnings_mod.annotate_calendar(
+            [it["stock"] for it in ranked[:config.DISPLAY_N]], cache_path=ecache)
+        for sym, c in earn_cal.items():
+            if sym in pick_cards and c.get("watch_vol") and "earnings" not in pick_cards[sym]:
+                pick_cards[sym]["earn_watch"] = c
     except Exception as e:
         log.warning("SKIP earnings guard: %s", e)
 
@@ -546,8 +554,10 @@ def main(web=False):
         delta=delta_changes, events=events, breadth=breadth, revenue=revenue_data,
         signals=sig, themes=themes, opportunity=opp, regime=regime,
         concentration=concentration, macro=macro_ctx,
-        momentum_portfolio=momentum_lens, validated_portfolio=validated_lens,
-        factor_validation=factor_validation)
+        momentum_portfolio=momentum_lens)
+    # NOTE: validated_portfolio / factor_validation are build_PAYLOAD-only kwargs — build_REPORT
+    # (the markdown/email path) does not accept them. Passing them here crashed every daily run
+    # (latent: unit tests never invoke main()); caught by the local live run 2026-06-23.
 
     # 7b. Continuous watchlist tracker (REQ3b) — enroll today's picks, re-evaluate every
     #     tracked name against today's OHLCV, persist. INFORMATIONAL board only — never an
@@ -1024,6 +1034,14 @@ def main(web=False):
             config.ENV_TW_CACHE, "macro_tw_env", 24 * 3600, _now_ts, _fetch_tw_env)
         if _industry_env:
             environment["industry"] = _industry_env
+            # de-scoped补 D-B: honest MACRO-level electronics/semi cycle-momentum gauge (NOT per-
+            # stock). Pure derivation from the industry env; OVERLAY-NOT-SCORER. fail-open.
+            try:
+                _cyc = risk_lens.electronics_cycle_momentum(_industry_env)
+                if _cyc.get("state"):
+                    environment["electronics_cycle"] = _cyc
+            except Exception as _ce:
+                log.warning("SKIP electronics_cycle: %s", _ce)
             _ig = [k for k, v in _industry_env.items()
                    if k != "meta" and v not in (None, {"light": None, "score": None})]
             source_coverage["macro_tw"] = {"ok": bool(_ig), "keys": len(_ig)}
