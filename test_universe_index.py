@@ -30,18 +30,19 @@ class TestWriteUniverseIndex(unittest.TestCase):
 
 class TestFullMarketIndex(unittest.TestCase):
     def setUp(self):
-        # mock every source incl. the itemC full-US directory (else it hits the network/cache)
-        self._orig = (universe.twse_universe, universe.tpex_universe,
-                      universe.load_us_universe, universe.us_full_market)
+        # mock every source. TW now flows through the snapshot-backed tw_listing() seam
+        # (its own fallback logic is covered in test_tw_listing.py); mock it directly here
+        # so full_market_index tests never touch the real committed snapshot.
+        self._orig = (universe.tw_listing, universe.load_us_universe,
+                      universe.us_full_market)
         universe.us_full_market = lambda: ([], {})        # directory empty by default
 
     def tearDown(self):
-        (universe.twse_universe, universe.tpex_universe,
-         universe.load_us_universe, universe.us_full_market) = self._orig
+        (universe.tw_listing, universe.load_us_universe,
+         universe.us_full_market) = self._orig
 
     def test_merges_all_sources(self):
-        universe.twse_universe = lambda: {"2330.TW": ("台積電", 999)}
-        universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
+        universe.tw_listing = lambda: {"2330.TW": ("台積電", 999), "6488.TWO": ("環球晶", 5)}
         universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
         rows = universe.full_market_index()
         self.assertEqual({r[0] for r in rows}, {"2330.TW", "6488.TWO", "AAPL"})
@@ -50,19 +51,16 @@ class TestFullMarketIndex(unittest.TestCase):
         self.assertEqual(markets["6488.TWO"], "TWO")
         self.assertEqual(markets["AAPL"], "US")
 
-    def test_partial_source_failure_degrades(self):
-        def _boom():
-            raise RuntimeError("429")
-        universe.twse_universe = _boom            # TWSE down
-        universe.tpex_universe = lambda: {"6488.TWO": ("環球晶", 5)}
+    def test_tw_down_no_snapshot_degrades(self):
+        # tw_listing returns {} (TW sources down AND no snapshot) → index degrades, never aborts
+        universe.tw_listing = lambda: {}
         universe.load_us_universe = lambda path=None: [{"ticker": "AAPL", "name": "Apple"}]
         rows = universe.full_market_index()
-        self.assertEqual({r[0] for r in rows}, {"6488.TWO", "AAPL"})   # never aborts
+        self.assertEqual({r[0] for r in rows}, {"AAPL"})
 
     def test_includes_full_us_directory(self):
         # itemC: the ~5653-name keyless US directory makes every listed US ticker searchable.
-        universe.twse_universe = lambda: {}
-        universe.tpex_universe = lambda: {}
+        universe.tw_listing = lambda: {}
         universe.load_us_universe = lambda path=None: []
         universe.us_full_market = lambda: (["NVDA", "BRK-B"],
                                            {"NVDA": "NVIDIA", "BRK-B": "Berkshire B"})

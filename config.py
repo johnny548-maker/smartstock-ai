@@ -386,6 +386,7 @@ VALIDATION_STATE = os.path.join(WEB_DIR, "data", "_validation_state.json")  # A2
 SHORTVOL_CACHE = os.path.join(WEB_DIR, "data", "_shortvol_cache.json")  # B5 FINRA RegSHO buffer
 MACRO_CACHE = os.path.join(WEB_DIR, "data", "_macro_cache.json")  # B6 FRED macro 24h cache
 US_VERDICTS_STATE = os.path.join(WEB_DIR, "data", "_us_verdicts.json")  # itemC full-US verdict store (rotating coverage)
+TW_LISTING_CACHE = os.path.join(WEB_DIR, "data", "_tw_listing.json")  # committed {code: name} snapshot — last-good TWSE+TPEx names so a transient listing-fetch failure never wipes TW names from the payload + _universe.json
 US_SYMBOL_DIR_CACHE = os.path.join(_HERE, ".cache", "us_symbol_dir.json")  # Nasdaq Trader directory cache
 US_COVERAGE_BATCH = 500  # itemC: US symbols re-scored per daily run (full ~5653 cycles in ~12 days)
 # P2 keyless environment/overlay 24h TTL caches (sources/_cache.cached_fetch). Slow-moving

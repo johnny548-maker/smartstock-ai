@@ -68,6 +68,19 @@ async function loadUniverseIdx() {
   catch (e) { UNIVERSE_IDX = []; }
   return UNIVERSE_IDX;
 }
+// Idempotently load _universe.json INTO NAME_IDX so nameOf() resolves every listed TW/US
+// name (e.g. 3035.TW → 智原), not just the names inlined in the daily payload. Awaited
+// before a stock-detail name lookup so a cold deep-link (#date/code) to a TW radar stock
+// whose stale payload/detail carries name:null still shows the name, not a bare code.
+let _nameIdxLoaded = false;
+async function ensureNameIdx() {
+  if (_nameIdxLoaded) return;
+  try {
+    const idx = await loadUniverseIdx();
+    (idx || []).forEach((r) => { if (r && r[0]) NAME_IDX[r[0]] = r[1]; });
+    _nameIdxLoaded = true;
+  } catch (e) { /* degrade silently: nameOf falls back to the bare code */ }
+}
 // #3: lazily-loaded verdict map {code:{s:score,l:light}} for every scored name → search
 // shows a current 買入/觀望/不持有 recommendation. Degrades silently if not generated yet.
 let VERDICTS = null;
@@ -1284,6 +1297,7 @@ function safeDetailCode(code) {
 async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
+  await ensureNameIdx();   // full-market name index ready before any name lookup (idempotent; instant after first load)
   // History model: make every open a single back-poppable entry so the iOS/browser Back gesture
   // POPS the sheet (route() closes it on the code-less hash) instead of exiting the app or leaving
   // a stranded modal. Guard so a route()-driven open (hash already #date/code) doesn't double-push.
@@ -2322,9 +2336,7 @@ window.addEventListener('load', async () => {
   try { INDEX = await getJSON('data/index.json'); } catch (e) { INDEX = []; }
   // Bug3: background-load the full-market name index + verdict store so radar/detail resolve
   // ANY listed name (e.g. 6257.TW → 矽格) + its current verdict, not just the ~58 payload names.
-  loadUniverseIdx().then((idx) => {
-    (idx || []).forEach((r) => { if (r && r[0]) NAME_IDX[r[0]] = r[1]; });
-  }).catch(() => {});
+  ensureNameIdx();   // fire-and-forget; openStockSheet awaits it before a name lookup
   loadVerdicts().catch(() => {});
   await route();
   if ('serviceWorker' in navigator) {
