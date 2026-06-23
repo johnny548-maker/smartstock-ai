@@ -92,10 +92,22 @@ class TestCycleMomentum(unittest.TestCase):
         out = rl.electronics_cycle_momentum({"electronics_export_yoy": 0.02})
         self.assertEqual(out["state"], "flat")
 
+    def test_business_cycle_fallback_when_no_yoy(self):
+        # export YoYs absent (common — flaky source) but NDC 對策信號 present → use the score bands
+        # (紅/黃紅≥32 up · 綠 23-31 flat · 黃藍/藍≤22 down) so the gauge still fires.
+        self.assertEqual(rl.electronics_cycle_momentum(
+            {"business_cycle": {"light": "紅", "score": 38}})["state"], "up")
+        self.assertEqual(rl.electronics_cycle_momentum(
+            {"business_cycle": {"light": "綠", "score": 27}})["state"], "flat")
+        self.assertEqual(rl.electronics_cycle_momentum(
+            {"business_cycle": {"light": "藍", "score": 16}})["state"], "down")
+
     def test_no_data_is_none_state(self):
         out = rl.electronics_cycle_momentum({})
         self.assertIsNone(out["state"])
         self.assertIsNone(rl.electronics_cycle_momentum(None)["state"])
+        # business_cycle present but no score → still None (no usable signal)
+        self.assertIsNone(rl.electronics_cycle_momentum({"business_cycle": {"light": None}})["state"])
 
 
 if __name__ == "__main__":
