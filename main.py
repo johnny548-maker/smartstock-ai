@@ -44,6 +44,7 @@ import short_volume as shortvol_mod
 import macro
 import fx_context as fx_mod
 import fundamentals
+import trends as trends_mod
 import watchlist_tracker
 import stock_detail
 import overlay_snapshot
@@ -1308,6 +1309,15 @@ def main(web=False):
                 ovs = _overlays_for(code)
                 if ovs:
                     details[code] = _overlay.attach(details[code], ovs)
+                # 籌碼/基本面 history series — same INFORMATIONAL sidecar as overlays; attach to
+                # every detail (US/thin → empty → key omitted) so the sheet draws a trend, not
+                # just a single same-day number. build_trends is fully guarded (never raises).
+                try:
+                    _tr = trends_mod.build_trends(code, rev_state=rev_state)
+                    if any(_tr.get(k) for k in ("inst_cum", "holder_pct", "rev_yoy")):
+                        details[code]["trends"] = _tr
+                except Exception:
+                    pass
             # re-export the detail files so the attached overlays land in the per-stock JSON.
             if details:
                 stock_detail.export_details(details, config.WEB_DIR)

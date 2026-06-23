@@ -12,8 +12,8 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v59';
-const APP_BUILD = '2026-06-22';
+const APP_VERSION = 'v60';
+const APP_BUILD = '2026-06-23';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
    Old payloads have no field (read as 0) → always supported (back-compat). */
@@ -1264,6 +1264,69 @@ function newsHtmlForStock(p) {
   return '';
 }
 
+// Compact inline SVG sparkline for a small {t,v} series. Pure static SVG (NO lightweight-charts
+// instance) → zero ResizeObserver/teardown burden in the sheet. Colour comes in as a CSS-var
+// string so it tracks the theme; an optional zero baseline shows net buy↔sell crossings.
+function _trendSpark(series, opts) {
+  opts = opts || {};
+  const vals = series.map((p) => p.v);
+  const n = vals.length;
+  if (n < 2) return '';
+  const W = 240, H = 44, pad = 4;
+  let lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  if (opts.zeroBase) { lo = Math.min(lo, 0); hi = Math.max(hi, 0); }
+  if (hi === lo) hi = lo + 1;
+  const xAt = (i) => pad + (i / (n - 1)) * (W - 2 * pad);
+  const yAt = (v) => pad + (1 - (v - lo) / (hi - lo)) * (H - 2 * pad);
+  const pts = vals.map((v, i) => xAt(i).toFixed(1) + ',' + yAt(v).toFixed(1)).join(' ');
+  const stroke = opts.color || 'var(--accent)';
+  let zero = '';
+  if (opts.zeroBase && lo < 0 && hi > 0) {
+    const zy = yAt(0).toFixed(1);
+    zero = `<line x1="${pad}" y1="${zy}" x2="${W - pad}" y2="${zy}" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3" opacity=".55"/>`;
+  }
+  const lx = xAt(n - 1).toFixed(1), ly = yAt(vals[n - 1]).toFixed(1);
+  return `<svg class="trend-spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">`
+    + `${zero}<polyline points="${pts}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`
+    + `<circle cx="${lx}" cy="${ly}" r="2.6" fill="${stroke}"/></svg>`;
+}
+
+// 籌碼 / 基本面 history trends (trends.build_trends): 三大法人累計買超 / 大戶持股% / 月營收YoY.
+// Each non-empty (>=2 pt) series renders a labelled sparkline. INFORMATIONAL — never a signal.
+function trendsHtml(p) {
+  const t = p && p.trends;
+  if (!t) return '';
+  const sgn = (v) => (v > 0 ? '+' : '') + v;
+  const rows = [];
+  const inst = t.inst_cum || [];
+  if (inst.length >= 2) {
+    const last = inst[inst.length - 1].v, cls = last >= 0 ? 'up' : 'down';
+    rows.push(`<div class="trend-row"><div class="trend-head"><span class="trend-lbl">三大法人累計買超</span>`
+      + `<span class="trend-val num ${cls}">${sgn(last)} 張</span></div>`
+      + _trendSpark(inst, { zeroBase: true, color: last >= 0 ? 'var(--up)' : 'var(--down)' })
+      + `<div class="trend-sub">近 ${inst.length} 個交易日累計（張，起點=存檔首日）</div></div>`);
+  }
+  const hp = t.holder_pct || [];
+  if (hp.length >= 2) {
+    const last = hp[hp.length - 1].v, d = Math.round((last - hp[0].v) * 100) / 100, cls = d >= 0 ? 'up' : 'down';
+    rows.push(`<div class="trend-row"><div class="trend-head"><span class="trend-lbl">大戶持股%</span>`
+      + `<span class="trend-val num">${last}% <small class="${cls}">${d >= 0 ? '+' : ''}${d}</small></span></div>`
+      + _trendSpark(hp, { color: 'var(--accent)' })
+      + `<div class="trend-sub">近 ${hp.length} 週（≥400 張大戶集中度）</div></div>`);
+  }
+  const rev = t.rev_yoy || [];
+  if (rev.length >= 2) {
+    const last = rev[rev.length - 1].v, cls = last >= 0 ? 'up' : 'down';
+    rows.push(`<div class="trend-row"><div class="trend-head"><span class="trend-lbl">月營收 YoY</span>`
+      + `<span class="trend-val num ${cls}">${sgn(last)}%</span></div>`
+      + _trendSpark(rev, { zeroBase: true, color: last >= 0 ? 'var(--up)' : 'var(--down)' })
+      + `<div class="trend-sub">近 ${rev.length} 個月（單月營收年增率）</div></div>`);
+  }
+  if (!rows.length) return '';
+  return `<div class="sh-sec"><div class="sh-h">籌碼 / 基本面趨勢</div>${rows.join('')}`
+    + `<p class="tiny">公開資料歷史序列，資訊性、不計入評分與排名。</p></div>`;
+}
+
 /* P2-S2 ② Pre-trade checklist (pick.pretrade = pretrade.build_checklist shape).
    五項既有 gate（市場體制/財報黑窗/集群/流動性/R:R）的彙整卡 — OVERLAY-NOT-SCORER,
    零新訊號、不改評分。✓=pass true / ✗=false / —=null(資料不足)。Graceful: missing → ''. */
@@ -1378,7 +1441,7 @@ async function openStockSheet(code) {
     </div>
   </div>`;
 
-  const body = hero + thinVerdictHtml(p, CUR) + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p)
+  const body = hero + thinVerdictHtml(p, CUR) + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p) + trendsHtml(p)
     + `<div class="sh-sec"><p class="disclaimer">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p></div>`;
 
   openSheet(title, body, {
