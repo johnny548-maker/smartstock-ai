@@ -194,6 +194,23 @@ def sanitize_ohlcv(df, market, max_fix=MAX_FIXED_BARS):
     close = out["Close"].astype(float)
     open_ = out["Open"].astype(float) if "Open" in out.columns else None
 
+    # All-NaN Close → nothing to repair; force DROP upstream so the caller skips this ticker.
+    # (NaN <= 0 is False, so the non-positive guard below would silently miss an all-NaN series.)
+    if not close.notna().any():
+        return out, [{"date": "n/a", "kind": "all_nan"}] * (max_fix + 1)
+
+    # Zero-volume rows (delisted / halted shells) — zero-vol bars produce inf/NaN returns
+    # (price unchanged, volume = 0) that confuse the spike detector and inflate fix counts.
+    # Drop individual zero-vol rows by substituting the adjacent price, not the ticker.
+    if "Volume" in out.columns:
+        vol = out["Volume"].fillna(0)
+        zero_vol = vol == 0
+        if bool(zero_vol.any()):
+            close = close.where(~zero_vol, close.ffill().bfill())
+            if open_ is not None:
+                open_ = open_.where(~zero_vol, open_.ffill().bfill())
+            out["Volume"] = vol.where(~zero_vol, vol.replace(0, np.nan).ffill().bfill())
+
     # Non-positive prices (bad adjusted data) crash the repair math: math.log in _is_level_shift,
     # a negative rescale ratio in the level-shift branch, and math.sqrt in the spike interp all hit
     # "ValueError: math domain error" on a <=0 value — which killed a whole full-market optimise
