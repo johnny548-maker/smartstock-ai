@@ -1,17 +1,9 @@
 {
  "stock": "LSCC",
  "name": "Lattice Semiconductor",
- "price": 155.27,
- "change_pct": 1.01,
+ "price": 144.61,
+ "change_pct": -6.87,
  "ohlc": [
-  {
-   "time": "2026-03-26",
-   "o": 98.87,
-   "h": 99.3,
-   "l": 94.63,
-   "c": 94.92,
-   "v": 1249800
-  },
   {
    "time": "2026-03-27",
    "o": 93.89,
@@ -479,15 +471,24 @@
   {
    "time": "2026-06-22",
    "o": 156.0,
-   "h": 156.64,
+   "h": 157.01,
    "l": 151.46,
    "c": 155.27,
-   "v": 2180317
+   "v": 2193600
+  },
+  {
+   "time": "2026-06-23",
+   "o": 145.1,
+   "h": 148.87,
+   "l": 141.71,
+   "c": 144.61,
+   "v": 1414800
   }
  ],
  "sr": {
-  "price": 155.27,
+  "price": 144.61,
   "resistance": [
+   152.07,
    155.82
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 34.69
  },
  "spark": [
-  94.92,
   90.39,
   85.32,
   92.76,
@@ -556,28 +556,12 @@
   143.48,
   139.86,
   153.72,
-  155.27
+  155.27,
+  144.61
  ],
- "spark_start": "2026-03-26",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-27",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 11883,
-    "days": 3,
-    "max_shares": 8410,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

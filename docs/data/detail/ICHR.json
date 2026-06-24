@@ -1,17 +1,9 @@
 {
  "stock": "ICHR",
  "name": "Ichor Holdings",
- "price": 99.61,
- "change_pct": 1.01,
+ "price": 92.2,
+ "change_pct": -7.44,
  "ohlc": [
-  {
-   "time": "2026-03-26",
-   "o": 49.24,
-   "h": 49.24,
-   "l": 45.29,
-   "c": 45.45,
-   "v": 719700
-  },
   {
    "time": "2026-03-27",
    "o": 44.7,
@@ -478,15 +470,23 @@
   },
   {
    "time": "2026-06-22",
-   "o": 101.16,
+   "o": 101.0,
    "h": 101.65,
    "l": 94.5,
    "c": 99.61,
-   "v": 1209195
+   "v": 1220600
+  },
+  {
+   "time": "2026-06-23",
+   "o": 89.98,
+   "h": 93.84,
+   "l": 88.22,
+   "c": 92.2,
+   "v": 809200
   }
  ],
  "sr": {
-  "price": 99.61,
+  "price": 92.2,
   "resistance": [],
   "support": [
    63.33,
@@ -495,7 +495,6 @@
   "strong_support": 13.12
  },
  "spark": [
-  45.45,
   45.23,
   42.12,
   46.61,
@@ -554,28 +553,12 @@
   85.77,
   89.45,
   98.61,
-  99.61
+  99.61,
+  92.2
  ],
- "spark_start": "2026-03-26",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-27",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 11428,
-    "days": 2,
-    "max_shares": 11420,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

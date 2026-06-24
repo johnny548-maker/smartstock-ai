@@ -1,17 +1,9 @@
 {
  "stock": "AAOI",
  "name": "Applied Optoelectronics",
- "price": 171.23,
- "change_pct": 5.8,
+ "price": 147.44,
+ "change_pct": -13.89,
  "ohlc": [
-  {
-   "time": "2026-03-26",
-   "o": 111.0,
-   "h": 111.66,
-   "l": 96.71,
-   "c": 97.42,
-   "v": 9617300
-  },
   {
    "time": "2026-03-27",
    "o": 101.2,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-06-22",
-   "o": 162.53,
+   "o": 162.91,
    "h": 177.16,
    "l": 155.74,
    "c": 171.23,
-   "v": 14192307
+   "v": 14536900
+  },
+  {
+   "time": "2026-06-23",
+   "o": 158.0,
+   "h": 160.99,
+   "l": 145.26,
+   "c": 147.44,
+   "v": 13517900
   }
  ],
  "sr": {
-  "price": 171.23,
+  "price": 147.44,
   "resistance": [
    173.41,
    191.87
   ],
   "support": [
-   160.87,
-   160.1
+   143.58,
+   132.63
   ],
   "strong_support": 6.7
  },
  "spark": [
-  97.42,
   98.21,
   85.19,
   84.59,
@@ -557,28 +556,12 @@
   170.81,
   167.34,
   161.85,
-  171.23
+  171.23,
+  147.44
  ],
- "spark_start": "2026-03-26",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-27",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 34278,
-    "days": 6,
-    "max_shares": 30994,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

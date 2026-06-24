@@ -1,17 +1,9 @@
 {
  "stock": "DIOD",
  "name": "Diodes Inc",
- "price": 122.76,
- "change_pct": 2.76,
+ "price": 112.08,
+ "change_pct": -8.7,
  "ohlc": [
-  {
-   "time": "2026-03-26",
-   "o": 72.17,
-   "h": 74.35,
-   "l": 70.72,
-   "c": 71.0,
-   "v": 521300
-  },
   {
    "time": "2026-03-27",
    "o": 70.0,
@@ -478,16 +470,27 @@
   },
   {
    "time": "2026-06-22",
-   "o": 125.0,
+   "o": 125.82,
    "h": 125.99,
    "l": 121.41,
    "c": 122.76,
-   "v": 827365
+   "v": 848200
+  },
+  {
+   "time": "2026-06-23",
+   "o": 113.4,
+   "h": 116.73,
+   "l": 111.11,
+   "c": 112.08,
+   "v": 501700
   }
  ],
  "sr": {
-  "price": 122.76,
-  "resistance": [],
+  "price": 112.08,
+  "resistance": [
+   117.8,
+   121.96
+  ],
   "support": [
    100.75,
    97.12
@@ -495,7 +498,6 @@
   "strong_support": 32.93
  },
  "spark": [
-  71.0,
   68.2,
   64.33,
   68.26,
@@ -554,28 +556,12 @@
   109.53,
   108.8,
   119.46,
-  122.76
+  122.76,
+  112.08
  ],
- "spark_start": "2026-03-26",
- "spark_end": "2026-06-22",
+ "spark_start": "2026-03-27",
+ "spark_end": "2026-06-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 4925,
-    "days": 2,
-    "max_shares": 4863,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
