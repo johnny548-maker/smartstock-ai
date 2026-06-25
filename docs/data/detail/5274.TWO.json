@@ -1,17 +1,9 @@
 {
  "stock": "5274.TWO",
  "name": "信驊",
- "price": 18325.0,
- "change_pct": -0.97,
+ "price": 17690.0,
+ "change_pct": -3.47,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 10975.0,
-   "h": 11670.0,
-   "l": 10975.0,
-   "c": 11555.0,
-   "v": 249183
-  },
   {
    "time": "2026-03-30",
    "o": 11490.0,
@@ -482,11 +474,19 @@
    "h": 18505.0,
    "l": 17620.0,
    "c": 18325.0,
-   "v": 207656
+   "v": 176622
+  },
+  {
+   "time": "2026-06-25",
+   "o": 18355.0,
+   "h": 18740.0,
+   "l": 17330.0,
+   "c": 17690.0,
+   "v": 205418
   }
  ],
  "sr": {
-  "price": 18325.0,
+  "price": 17690.0,
   "resistance": [
    18535.0,
    19195.0
@@ -498,7 +498,6 @@
   "strong_support": 2248.97
  },
  "spark": [
-  11555.0,
   11220.0,
   10700.0,
   11315.0,
@@ -557,28 +556,15 @@
   18960.0,
   19275.0,
   18505.0,
-  18325.0
+  18325.0,
+  17690.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -23588,
-    "trust": 18700,
-    "dealer": -406,
-    "total": -5294
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

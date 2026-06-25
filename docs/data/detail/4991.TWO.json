@@ -1,17 +1,9 @@
 {
  "stock": "4991.TWO",
  "name": "環宇-KY",
- "price": 563.0,
- "change_pct": 5.04,
+ "price": 558.0,
+ "change_pct": -0.89,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 398.0,
-   "h": 446.0,
-   "l": 398.0,
-   "c": 446.0,
-   "v": 1228079
-  },
   {
    "time": "2026-03-30",
    "o": 412.0,
@@ -482,11 +474,19 @@
    "h": 566.0,
    "l": 533.0,
    "c": 563.0,
-   "v": 741496
+   "v": 669257
+  },
+  {
+   "time": "2026-06-25",
+   "o": 575.0,
+   "h": 575.0,
+   "l": 557.0,
+   "c": 558.0,
+   "v": 334743
   }
  ],
  "sr": {
-  "price": 563.0,
+  "price": 558.0,
   "resistance": [
    598.0,
    725.0
@@ -498,7 +498,6 @@
   "strong_support": 33.05
  },
  "spark": [
-  446.0,
   430.0,
   390.0,
   420.0,
@@ -557,28 +556,15 @@
   566.0,
   564.0,
   536.0,
-  563.0
+  563.0,
+  558.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 188846,
-    "trust": 36000,
-    "dealer": 13000,
-    "total": 237846
-   },
-   "severity": "warn",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

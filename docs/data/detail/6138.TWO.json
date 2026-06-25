@@ -1,17 +1,9 @@
 {
  "stock": "6138.TWO",
  "name": "茂達",
- "price": 362.0,
- "change_pct": 0.28,
+ "price": 352.0,
+ "change_pct": -2.76,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 218.0,
-   "h": 219.5,
-   "l": 216.0,
-   "c": 219.5,
-   "v": 246005
-  },
   {
    "time": "2026-03-30",
    "o": 216.0,
@@ -482,11 +474,19 @@
    "h": 368.5,
    "l": 350.0,
    "c": 362.0,
-   "v": 1730705
+   "v": 1674140
+  },
+  {
+   "time": "2026-06-25",
+   "o": 366.0,
+   "h": 366.0,
+   "l": 346.0,
+   "c": 352.0,
+   "v": 989820
   }
  ],
  "sr": {
-  "price": 362.0,
+  "price": 352.0,
   "resistance": [
    383.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 119.95
  },
  "spark": [
-  219.5,
   215.0,
   210.5,
   214.0,
@@ -556,28 +555,15 @@
   358.5,
   394.0,
   361.0,
-  362.0
+  362.0,
+  352.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -424819,
-    "trust": 30000,
-    "dealer": 7459,
-    "total": -387360
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -588,7 +574,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

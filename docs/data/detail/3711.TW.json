@@ -1,17 +1,9 @@
 {
  "stock": "3711.TW",
  "name": "日月光投控",
- "price": 653.0,
- "change_pct": -1.36,
+ "price": 635.0,
+ "change_pct": -2.76,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 347.5,
-   "h": 354.0,
-   "l": 342.5,
-   "c": 353.5,
-   "v": 16784878
-  },
   {
    "time": "2026-03-30",
    "o": 343.0,
@@ -482,11 +474,19 @@
    "h": 659.0,
    "l": 618.0,
    "c": 653.0,
-   "v": 35834274
+   "v": 34625995
+  },
+  {
+   "time": "2026-06-25",
+   "o": 679.0,
+   "h": 679.0,
+   "l": 625.0,
+   "c": 635.0,
+   "v": 18459656
   }
  ],
  "sr": {
-  "price": 653.0,
+  "price": 635.0,
   "resistance": [
    669.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 138.0
  },
  "spark": [
-  353.5,
   353.5,
   328.5,
   361.0,
@@ -556,10 +555,11 @@
   613.0,
   674.0,
   662.0,
-  653.0
+  653.0,
+  635.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 28.6,
   "rev_accel": false,
@@ -567,55 +567,24 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 653.0,
-  "stop": 607.29,
-  "target": 767.27,
-  "atr_bracket": 767.27,
-  "measured_move": 725.0,
+  "entry": 635.0,
+  "stop": 590.55,
+  "target": 746.12,
+  "atr_bracket": 746.12,
+  "measured_move": 827.0,
   "target_band": [
-   725.0,
-   738.04,
-   767.27
+   746.12,
+   827.0
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 5.6,
-  "swing_stop": 562.05,
-  "chandelier": 583.95,
-  "fib_targets": [
-   702.74,
-   738.04,
-   777.0
-  ]
+  "atr_pct": 6.0,
+  "swing_stop": 561.51,
+  "chandelier": 584.23,
+  "fib_targets": []
  },
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -20
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 61.5 / 殖利率 1.00% / PB 8.29",
-   "value": {
-    "pe": 61.47,
-    "yield": 1.0,
-    "pb": 8.29
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

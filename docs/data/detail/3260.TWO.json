@@ -1,17 +1,9 @@
 {
  "stock": "3260.TWO",
  "name": "威剛",
- "price": 408.5,
- "change_pct": -0.85,
+ "price": 410.0,
+ "change_pct": 0.37,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 339.0,
-   "h": 391.0,
-   "l": 334.0,
-   "c": 390.5,
-   "v": 10819196
-  },
   {
    "time": "2026-03-30",
    "o": 378.0,
@@ -482,11 +474,19 @@
    "h": 410.0,
    "l": 399.0,
    "c": 408.5,
-   "v": 8576160
+   "v": 8275329
+  },
+  {
+   "time": "2026-06-25",
+   "o": 421.0,
+   "h": 423.0,
+   "l": 407.5,
+   "c": 410.0,
+   "v": 6501760
   }
  ],
  "sr": {
-  "price": 408.5,
+  "price": 410.0,
   "resistance": [
    435.0,
    437.5
@@ -498,7 +498,6 @@
   "strong_support": 61.14
  },
  "spark": [
-  390.5,
   370.0,
   335.0,
   368.5,
@@ -557,28 +556,15 @@
   423.0,
   434.0,
   412.0,
-  408.5
+  408.5,
+  410.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -880640,
-    "trust": -578000,
-    "dealer": -60417,
-    "total": -1519057
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

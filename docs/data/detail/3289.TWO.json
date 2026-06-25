@@ -1,17 +1,9 @@
 {
  "stock": "3289.TWO",
  "name": "宜特",
- "price": 169.5,
- "change_pct": 0.0,
+ "price": 164.5,
+ "change_pct": -2.95,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 131.94,
-   "h": 138.39,
-   "l": 131.94,
-   "c": 136.9,
-   "v": 2619425
-  },
   {
    "time": "2026-03-30",
    "o": 132.94,
@@ -482,11 +474,19 @@
    "h": 173.0,
    "l": 165.5,
    "c": 169.5,
-   "v": 2842368
+   "v": 2800831
+  },
+  {
+   "time": "2026-06-25",
+   "o": 169.5,
+   "h": 170.5,
+   "l": 162.5,
+   "c": 164.5,
+   "v": 1207256
   }
  ],
  "sr": {
-  "price": 169.5,
+  "price": 164.5,
   "resistance": [
    170.51,
    184.0
@@ -498,7 +498,6 @@
   "strong_support": 79.51
  },
  "spark": [
-  136.9,
   131.45,
   126.98,
   130.95,
@@ -557,28 +556,15 @@
   174.5,
   179.0,
   169.5,
-  169.5
+  169.5,
+  164.5
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 93332,
-    "trust": 0,
-    "dealer": 43735,
-    "total": 137067
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

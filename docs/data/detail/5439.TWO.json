@@ -1,17 +1,9 @@
 {
  "stock": "5439.TWO",
  "name": "高技",
- "price": 320.5,
- "change_pct": -0.31,
+ "price": 328.0,
+ "change_pct": 2.34,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 295.5,
-   "h": 305.5,
-   "l": 287.0,
-   "c": 304.0,
-   "v": 5659767
-  },
   {
    "time": "2026-03-30",
    "o": 297.0,
@@ -482,23 +474,30 @@
    "h": 324.0,
    "l": 313.0,
    "c": 320.5,
-   "v": 1287981
+   "v": 1223761
+  },
+  {
+   "time": "2026-06-25",
+   "o": 322.5,
+   "h": 331.0,
+   "l": 319.5,
+   "c": 328.0,
+   "v": 1001899
   }
  ],
  "sr": {
-  "price": 320.5,
+  "price": 328.0,
   "resistance": [
-   323.0,
-   326.0
+   329.5,
+   334.0
   ],
   "support": [
-   315.5,
-   306.5
+   327.0,
+   315.5
   ],
   "strong_support": 67.99
  },
  "spark": [
-  304.0,
   292.5,
   268.0,
   282.5,
@@ -557,28 +556,15 @@
   332.5,
   336.0,
   321.5,
-  320.5
+  320.5,
+  328.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -88888,
-    "trust": 0,
-    "dealer": 20489,
-    "total": -68399
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

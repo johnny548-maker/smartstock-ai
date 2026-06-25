@@ -1,17 +1,9 @@
 {
  "stock": "5386.TWO",
  "name": "青雲",
- "price": 502.0,
- "change_pct": 0.0,
+ "price": 538.0,
+ "change_pct": 7.17,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 260.5,
-   "h": 260.5,
-   "l": 260.5,
-   "c": 260.5,
-   "v": 417129
-  },
   {
    "time": "2026-03-30",
    "o": 265.5,
@@ -482,13 +474,20 @@
    "h": 506.0,
    "l": 486.0,
    "c": 502.0,
-   "v": 740635
+   "v": 714054
+  },
+  {
+   "time": "2026-06-25",
+   "o": 519.0,
+   "h": 548.0,
+   "l": 511.0,
+   "c": 538.0,
+   "v": 1592835
   }
  ],
  "sr": {
-  "price": 502.0,
+  "price": 538.0,
   "resistance": [
-   522.0,
    628.0
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 44.26
  },
  "spark": [
-  260.5,
   286.5,
   262.5,
   287.0,
@@ -557,28 +555,15 @@
   521.0,
   529.0,
   502.0,
-  502.0
+  502.0,
+  538.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 25257,
-    "trust": 0,
-    "dealer": -831,
-    "total": 24426
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +574,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6712.TWO",
  "name": "長聖",
- "price": 152.5,
- "change_pct": 7.77,
+ "price": 151.5,
+ "change_pct": -0.66,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 129.62,
-   "h": 131.48,
-   "l": 129.62,
-   "c": 130.55,
-   "v": 111201
-  },
   {
    "time": "2026-03-30",
    "o": 131.94,
@@ -482,14 +474,22 @@
    "h": 155.5,
    "l": 143.0,
    "c": 152.5,
-   "v": 2581351
+   "v": 2507289
+  },
+  {
+   "time": "2026-06-25",
+   "o": 152.5,
+   "h": 154.5,
+   "l": 149.5,
+   "c": 151.5,
+   "v": 878119
   }
  ],
  "sr": {
-  "price": 152.5,
+  "price": 151.5,
   "resistance": [
-   152.85,
-   153.28
+   152.46,
+   152.85
   ],
   "support": [
    151.45,
@@ -498,7 +498,6 @@
   "strong_support": 117.62
  },
  "spark": [
-  130.55,
   130.55,
   129.15,
   131.94,
@@ -557,28 +556,15 @@
   139.0,
   142.5,
   141.5,
-  152.5
+  152.5,
+  151.5
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 353013,
-    "trust": 0,
-    "dealer": 8288,
-    "total": 361301
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

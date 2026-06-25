@@ -1,17 +1,9 @@
 {
  "stock": "8086.TWO",
  "name": "宏捷科",
- "price": 154.5,
- "change_pct": -3.13,
+ "price": 152.0,
+ "change_pct": -1.62,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 122.0,
-   "h": 131.5,
-   "l": 121.5,
-   "c": 129.5,
-   "v": 4035015
-  },
   {
    "time": "2026-03-30",
    "o": 125.5,
@@ -482,11 +474,19 @@
    "h": 156.5,
    "l": 152.5,
    "c": 154.5,
-   "v": 3748364
+   "v": 3677601
+  },
+  {
+   "time": "2026-06-25",
+   "o": 156.5,
+   "h": 157.0,
+   "l": 150.5,
+   "c": 152.0,
+   "v": 2015750
   }
  ],
  "sr": {
-  "price": 154.5,
+  "price": 152.0,
   "resistance": [
    159.0,
    170.5
@@ -498,7 +498,6 @@
   "strong_support": 61.56
  },
  "spark": [
-  129.5,
   125.5,
   118.0,
   123.0,
@@ -557,28 +556,15 @@
   166.0,
   165.5,
   159.5,
-  154.5
+  154.5,
+  152.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -602262,
-    "trust": 0,
-    "dealer": -60771,
-    "total": -663033
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

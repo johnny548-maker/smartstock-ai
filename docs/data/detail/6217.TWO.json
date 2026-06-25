@@ -2,16 +2,8 @@
  "stock": "6217.TWO",
  "name": "中探針",
  "price": 257.0,
- "change_pct": -5.86,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 171.0,
-   "h": 184.5,
-   "l": 171.0,
-   "c": 184.0,
-   "v": 1721570
-  },
   {
    "time": "2026-03-30",
    "o": 180.0,
@@ -482,7 +474,15 @@
    "h": 278.0,
    "l": 252.5,
    "c": 257.0,
-   "v": 8547234
+   "v": 8317846
+  },
+  {
+   "time": "2026-06-25",
+   "o": 268.0,
+   "h": 268.0,
+   "l": 251.5,
+   "c": 257.0,
+   "v": 3908878
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 21.3
  },
  "spark": [
-  184.0,
   181.5,
   163.5,
   179.5,
@@ -557,28 +556,15 @@
   247.0,
   271.5,
   273.0,
+  257.0,
   257.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -395665,
-    "trust": 0,
-    "dealer": -36305,
-    "total": -431970
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

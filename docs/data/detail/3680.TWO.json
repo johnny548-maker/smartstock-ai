@@ -1,17 +1,9 @@
 {
  "stock": "3680.TWO",
  "name": "家登",
- "price": 511.0,
- "change_pct": -4.84,
+ "price": 513.0,
+ "change_pct": 0.39,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 396.61,
-   "h": 407.51,
-   "l": 388.67,
-   "c": 406.52,
-   "v": 907644
-  },
   {
    "time": "2026-03-30",
    "o": 397.1,
@@ -482,14 +474,22 @@
    "h": 529.0,
    "l": 505.0,
    "c": 511.0,
-   "v": 1624473
+   "v": 1523490
+  },
+  {
+   "time": "2026-06-25",
+   "o": 521.0,
+   "h": 530.0,
+   "l": 513.0,
+   "c": 513.0,
+   "v": 803002
   }
  ],
  "sr": {
-  "price": 511.0,
+  "price": 513.0,
   "resistance": [
-   511.31,
-   514.6
+   514.6,
+   517.1
   ],
   "support": [
    504.56,
@@ -498,7 +498,6 @@
   "strong_support": 273.12
  },
  "spark": [
-  406.52,
   392.64,
   373.31,
   373.8,
@@ -557,28 +556,15 @@
   542.0,
   547.0,
   537.0,
-  511.0
+  511.0,
+  513.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -371561,
-    "trust": 0,
-    "dealer": -65394,
-    "total": -436955
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

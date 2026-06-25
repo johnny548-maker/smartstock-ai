@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 178.0,
- "change_pct": 4.71,
+ "price": 179.5,
+ "change_pct": 0.84,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 57.1,
-   "h": 58.5,
-   "l": 57.1,
-   "c": 57.8,
-   "v": 41464196
-  },
   {
    "time": "2026-03-30",
    "o": 56.3,
@@ -482,11 +474,19 @@
    "h": 185.5,
    "l": 165.5,
    "c": 178.0,
-   "v": 565060877
+   "v": 562107679
+  },
+  {
+   "time": "2026-06-25",
+   "o": 183.5,
+   "h": 185.5,
+   "l": 173.0,
+   "c": 179.5,
+   "v": 276159103
   }
  ],
  "sr": {
-  "price": 178.0,
+  "price": 179.5,
   "resistance": [],
   "support": [
    116.5,
@@ -495,7 +495,6 @@
   "strong_support": 40.1
  },
  "spark": [
-  57.8,
   57.0,
   56.5,
   57.4,
@@ -554,10 +553,11 @@
   145.5,
   160.0,
   170.0,
-  178.0
+  178.0,
+  179.5
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 17.8,
   "rev_accel": false,
@@ -565,22 +565,22 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 178.0,
-  "stop": 165.54,
-  "target": 209.15,
-  "atr_bracket": 209.15,
+  "entry": 179.5,
+  "stop": 166.94,
+  "target": 210.91,
+  "atr_bracket": 210.91,
   "measured_move": 240.3,
   "target_band": [
-   209.15,
+   210.91,
    240.3,
    273.21
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.3,
-  "swing_stop": 132.62,
-  "chandelier": 150.18,
+  "atr_pct": 6.4,
+  "swing_stop": 132.55,
+  "chandelier": 150.11,
   "fib_targets": [
    243.87,
    273.21,
@@ -588,21 +588,6 @@
   ]
  },
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 42.7 / 殖利率 1.53% / PB 5.26",
-   "value": {
-    "pe": 42.71,
-    "yield": 1.53,
-    "pb": 5.26
-   },
-   "severity": "info",
-   "as_of": "2026-06-23",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

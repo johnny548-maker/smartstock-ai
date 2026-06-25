@@ -1,17 +1,9 @@
 {
  "stock": "6683.TWO",
  "name": "雍智科技",
- "price": 1940.0,
- "change_pct": 9.92,
+ "price": 1905.0,
+ "change_pct": -1.8,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 1215.0,
-   "h": 1385.0,
-   "l": 1215.0,
-   "c": 1385.0,
-   "v": 322196
-  },
   {
    "time": "2026-03-30",
    "o": 1460.0,
@@ -482,14 +474,22 @@
    "h": 1940.0,
    "l": 1720.0,
    "c": 1940.0,
-   "v": 4379156
+   "v": 4140248
+  },
+  {
+   "time": "2026-06-25",
+   "o": 2000.0,
+   "h": 2010.0,
+   "l": 1840.0,
+   "c": 1905.0,
+   "v": 2194896
   }
  ],
  "sr": {
-  "price": 1940.0,
+  "price": 1905.0,
   "resistance": [
-   2005.0,
-   2410.0
+   1940.0,
+   2005.0
   ],
   "support": [
    1620.0,
@@ -498,7 +498,6 @@
   "strong_support": 241.64
  },
  "spark": [
-  1385.0,
   1520.0,
   1370.0,
   1505.0,
@@ -557,28 +556,15 @@
   1650.0,
   1605.0,
   1765.0,
-  1940.0
+  1940.0,
+  1905.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -560607,
-    "trust": 41000,
-    "dealer": -40419,
-    "total": -560026
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

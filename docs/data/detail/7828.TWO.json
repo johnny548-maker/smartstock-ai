@@ -1,17 +1,9 @@
 {
  "stock": "7828.TWO",
  "name": "創新服務",
- "price": 2325.0,
- "change_pct": 3.79,
+ "price": 2345.0,
+ "change_pct": 0.86,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 1336.26,
-   "h": 1401.08,
-   "l": 1331.28,
-   "c": 1356.21,
-   "v": 272279
-  },
   {
    "time": "2026-03-30",
    "o": 1386.13,
@@ -482,11 +474,19 @@
    "h": 2365.0,
    "l": 2240.0,
    "c": 2325.0,
-   "v": 190702
+   "v": 164519
+  },
+  {
+   "time": "2026-06-25",
+   "o": 2350.0,
+   "h": 2350.0,
+   "l": 2285.0,
+   "c": 2345.0,
+   "v": 64746
   }
  ],
  "sr": {
-  "price": 2325.0,
+  "price": 2345.0,
   "resistance": [],
   "support": [
    1415.0,
@@ -495,7 +495,6 @@
   "strong_support": 197.63
  },
  "spark": [
-  1356.21,
   1401.08,
   1256.49,
   1296.38,
@@ -554,28 +553,15 @@
   2000.0,
   2040.0,
   2240.0,
-  2325.0
+  2325.0,
+  2345.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 8000,
-    "trust": 0,
-    "dealer": 2000,
-    "total": 10000
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -586,7 +572,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

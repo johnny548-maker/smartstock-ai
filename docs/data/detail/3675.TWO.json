@@ -1,17 +1,9 @@
 {
  "stock": "3675.TWO",
  "name": "德微",
- "price": 413.0,
- "change_pct": -7.3,
+ "price": 395.0,
+ "change_pct": -4.36,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 196.0,
-   "h": 201.5,
-   "l": 195.0,
-   "c": 200.5,
-   "v": 388379
-  },
   {
    "time": "2026-03-30",
    "o": 200.0,
@@ -482,11 +474,19 @@
    "h": 440.0,
    "l": 403.5,
    "c": 413.0,
-   "v": 6139126
+   "v": 5913496
+  },
+  {
+   "time": "2026-06-25",
+   "o": 421.0,
+   "h": 421.0,
+   "l": 395.0,
+   "c": 395.0,
+   "v": 493723
   }
  ],
  "sr": {
-  "price": 413.0,
+  "price": 395.0,
   "resistance": [],
   "support": [
    338.0,
@@ -495,7 +495,6 @@
   "strong_support": 117.41
  },
  "spark": [
-  200.5,
   192.0,
   181.5,
   184.0,
@@ -554,28 +553,15 @@
   368.5,
   405.0,
   445.5,
-  413.0
+  413.0,
+  395.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 132027,
-    "trust": 0,
-    "dealer": -45750,
-    "total": 86277
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -586,7 +572,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6907.TWO",
  "name": "雅特力-KY",
- "price": 155.5,
- "change_pct": -2.81,
+ "price": 151.0,
+ "change_pct": -2.89,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 121.0,
-   "h": 122.0,
-   "l": 112.0,
-   "c": 116.0,
-   "v": 787034
-  },
   {
    "time": "2026-03-30",
    "o": 114.0,
@@ -482,14 +474,22 @@
    "h": 175.0,
    "l": 152.5,
    "c": 155.5,
-   "v": 6281141
+   "v": 6288879
+  },
+  {
+   "time": "2026-06-25",
+   "o": 158.0,
+   "h": 159.0,
+   "l": 146.5,
+   "c": 151.0,
+   "v": 1259582
   }
  ],
  "sr": {
-  "price": 155.5,
+  "price": 151.0,
   "resistance": [
-   175.0,
-   176.0
+   153.5,
+   175.0
   ],
   "support": [
    131.0,
@@ -498,7 +498,6 @@
   "strong_support": 83.9
  },
  "spark": [
-  116.0,
   118.0,
   106.5,
   109.0,
@@ -557,28 +556,15 @@
   135.5,
   145.5,
   160.0,
-  155.5
+  155.5,
+  151.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -162468,
-    "trust": 0,
-    "dealer": 16057,
-    "total": -146411
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

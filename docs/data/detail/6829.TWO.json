@@ -1,17 +1,9 @@
 {
  "stock": "6829.TWO",
  "name": "千附精密",
- "price": 226.5,
- "change_pct": 9.95,
+ "price": 222.5,
+ "change_pct": -1.77,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 115.5,
-   "h": 115.5,
-   "l": 111.0,
-   "c": 112.5,
-   "v": 290621
-  },
   {
    "time": "2026-03-30",
    "o": 122.5,
@@ -482,11 +474,19 @@
    "h": 226.5,
    "l": 211.5,
    "c": 226.5,
-   "v": 3825577
+   "v": 3736365
+  },
+  {
+   "time": "2026-06-25",
+   "o": 239.0,
+   "h": 241.0,
+   "l": 220.0,
+   "c": 222.5,
+   "v": 2563884
   }
  ],
  "sr": {
-  "price": 226.5,
+  "price": 222.5,
   "resistance": [
    229.0,
    250.0
@@ -498,7 +498,6 @@
   "strong_support": 80.22
  },
  "spark": [
-  112.5,
   123.5,
   117.5,
   119.0,
@@ -557,28 +556,15 @@
   203.5,
   207.5,
   206.0,
-  226.5
+  226.5,
+  222.5
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 295973,
-    "trust": 0,
-    "dealer": 28582,
-    "total": 324555
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

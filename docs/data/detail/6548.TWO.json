@@ -1,17 +1,9 @@
 {
  "stock": "6548.TWO",
  "name": "長科*",
- "price": 91.6,
- "change_pct": -1.19,
+ "price": 87.6,
+ "change_pct": -4.37,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 47.02,
-   "h": 48.61,
-   "l": 44.88,
-   "c": 48.61,
-   "v": 7111104
-  },
   {
    "time": "2026-03-30",
    "o": 46.97,
@@ -482,11 +474,19 @@
    "h": 96.4,
    "l": 89.0,
    "c": 91.6,
-   "v": 23640380
+   "v": 23438381
+  },
+  {
+   "time": "2026-06-25",
+   "o": 93.7,
+   "h": 95.4,
+   "l": 87.0,
+   "c": 87.6,
+   "v": 15965219
   }
  ],
  "sr": {
-  "price": 91.6,
+  "price": 87.6,
   "resistance": [
    97.62
   ],
@@ -497,7 +497,6 @@
   "strong_support": 27.29
  },
  "spark": [
-  48.61,
   47.52,
   46.47,
   47.37,
@@ -556,28 +555,15 @@
   86.1,
   94.7,
   92.7,
-  91.6
+  91.6,
+  87.6
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -7763678,
-    "trust": 77000,
-    "dealer": -55075,
-    "total": -7741753
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -588,7 +574,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3093.TWO",
  "name": "港建*",
- "price": 72.3,
- "change_pct": 6.79,
+ "price": 72.9,
+ "change_pct": 0.83,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 40.0,
-   "h": 44.1,
-   "l": 40.0,
-   "c": 44.1,
-   "v": 491396
-  },
   {
    "time": "2026-03-30",
    "o": 45.0,
@@ -482,11 +474,19 @@
    "h": 74.4,
    "l": 68.2,
    "c": 72.3,
-   "v": 10640205
+   "v": 10562802
+  },
+  {
+   "time": "2026-06-25",
+   "o": 72.4,
+   "h": 74.6,
+   "l": 70.0,
+   "c": 72.9,
+   "v": 3007887
   }
  ],
  "sr": {
-  "price": 72.3,
+  "price": 72.9,
   "resistance": [
    77.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 17.54
  },
  "spark": [
-  44.1,
   47.55,
   45.3,
   48.35,
@@ -556,28 +555,15 @@
   65.0,
   65.3,
   67.7,
-  72.3
+  72.3,
+  72.9
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -766057,
-    "trust": 0,
-    "dealer": 38432,
-    "total": -727625
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -588,7 +574,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],

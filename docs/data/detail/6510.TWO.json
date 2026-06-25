@@ -1,17 +1,9 @@
 {
  "stock": "6510.TWO",
  "name": "精測",
- "price": 3465.0,
- "change_pct": -5.46,
+ "price": 3390.0,
+ "change_pct": -2.16,
  "ohlc": [
-  {
-   "time": "2026-03-27",
-   "o": 3000.0,
-   "h": 3260.0,
-   "l": 3000.0,
-   "c": 3240.0,
-   "v": 624267
-  },
   {
    "time": "2026-03-30",
    "o": 3180.0,
@@ -482,23 +474,30 @@
    "h": 3595.0,
    "l": 3385.0,
    "c": 3465.0,
-   "v": 697269
+   "v": 643094
+  },
+  {
+   "time": "2026-06-25",
+   "o": 3545.0,
+   "h": 3545.0,
+   "l": 3365.0,
+   "c": 3390.0,
+   "v": 253925
   }
  ],
  "sr": {
-  "price": 3465.0,
+  "price": 3390.0,
   "resistance": [
    3575.0,
    3650.0
   ],
   "support": [
-   3415.0,
-   3330.0
+   3330.0,
+   3305.0
   ],
   "strong_support": 371.5
  },
  "spark": [
-  3240.0,
   3320.0,
   3080.0,
   3355.0,
@@ -557,28 +556,15 @@
   3610.0,
   3525.0,
   3665.0,
-  3465.0
+  3465.0,
+  3390.0
  ],
- "spark_start": "2026-03-27",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -4482,
-    "trust": -193000,
-    "dealer": 5183,
-    "total": -192299
-   },
-   "severity": "info",
-   "as_of": "2026-06-24",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-24",
+   "as_of": "2026-06-25",
    "note": "OTC valuation context"
   }
  ],
