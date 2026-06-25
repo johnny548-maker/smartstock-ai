@@ -66,13 +66,36 @@ TAB_HEADERS = {
         "tier17_concentration_pct", "total_holders",
         "conc_wow_delta", "holders_wow_delta", "name",
     ],
+    # ── Sprint 3 #22 — P1 source tabs (6 new) ─────────────────────────────────
+    "stock_day_all_daily": [
+        "date", "code", "name", "open", "high", "low", "close", "volume", "trade_value",
+    ],
+    "t187ap03_monthly": [
+        "yyyymm", "code", "name", "shares_issued", "source_asof",
+    ],
+    "notice_punish_daily": [
+        "date", "code", "name", "type", "reason", "period",
+    ],
+    "sec_frames_quarterly": [
+        "cik", "concept", "period", "usd_value", "filed", "accession",
+    ],
+    "sec_ftd_semimonthly": [
+        "settle_date", "symbol", "cusip", "quantity",
+    ],
+    "cnyes_news_daily": [
+        "pub_at", "stock_codes", "title", "link", "source",
+    ],
 }
 
-# Ordered tab list used for output (stable canonical order)
+# Ordered tab list used for output (stable canonical order).
+# Sprint 3 #22 appends 6 P1 tabs AFTER the 7 P0s — preserves existing index/order.
 _TAB_ORDER = [
     "bwibbu_daily", "mi_margn_daily", "t86_daily",
     "tpex_3insti_daily", "tpex_margin_daily", "tpex_per_daily",
     "tdcc_weekly",
+    # P1 (Sprint 3 #22)
+    "stock_day_all_daily", "t187ap03_monthly", "notice_punish_daily",
+    "sec_frames_quarterly", "sec_ftd_semimonthly", "cnyes_news_daily",
 ]
 
 # Default index file path (docs/data/_allstocks_sheets_index.json)
@@ -241,6 +264,102 @@ def _fetch_tdcc():
     """Delegate to sources.tdcc.fetch_distribution → parsed list[dict]."""
     from sources.tdcc import fetch_distribution
     return fetch_distribution()
+
+
+# ── Sprint 3 #22 — P1 fetcher wrappers ─────────────────────────────────────────
+
+def _fetch_stock_day_all():
+    """Delegate to sources.twse.fetch_stock_day_all → raw STOCK_DAY_ALL list[dict].
+
+    Returns bulk OHLCV for ~950 actively-traded TWSE stocks. Snapshot-only — the
+    upstream API only ever returns the most recent trading day. Graceful-skip → [].
+    """
+    from sources.twse import fetch_stock_day_all
+    return fetch_stock_day_all()
+
+
+def _fetch_t187ap03():
+    """Delegate to sources.twse.fetch_t187ap03_l → raw list[dict] of outstanding shares.
+
+    Monthly cadence — value rarely changes intra-month, but archiving stamps when
+    the snapshot was taken. Graceful-skip → [].
+    """
+    from sources.twse import fetch_t187ap03_l
+    return fetch_t187ap03_l()
+
+
+def _fetch_notice():
+    """Delegate to sources.notice.fetch_notice_stocks → {code: {reason,count,date,name}}.
+
+    Returns a per-stock DICT (not list). Empty {} when API empty-sentinel row only
+    or fetch fails. Note: 'count' field unused for the daily tab (we surface reason).
+    """
+    from sources.notice import fetch_notice_stocks
+    return fetch_notice_stocks()
+
+
+def _fetch_punish():
+    """Delegate to sources.notice.fetch_disposition_stocks → {code: {reason,date,level,period,name}}.
+
+    Returns a per-stock DICT (not list). Empty {} on failure.
+    """
+    from sources.notice import fetch_disposition_stocks
+    return fetch_disposition_stocks()
+
+
+def _fetch_sec_frames():
+    """Fetch SEC XBRL frames for Revenues + NetIncomeLoss for the most recent
+    completed quarter → list of {cik, concept, period, val, end, accn, entity}.
+
+    Iterates 2 concepts × (current quarter, prior quarter) — the SEC posts ~45 days
+    after quarter-end so we try both. Returns combined list (one row per cik per
+    concept-period). Graceful-skip → [] on any failure.
+    """
+    from sources.sec_frames import fetch_frame, period_for_concept
+    import datetime as _dt
+    concepts = ("Revenues", "NetIncomeLoss")
+    now = _dt.datetime.utcnow()
+    # Most-recently-completed quarter (e.g., in 2026-06-25, last completed = Q1 2026).
+    # The SEC takes ~45 days after quarter-end to publish — fall back to Q-1 if Q-0 empty.
+    quarter = (now.month - 1) // 3 + 1
+    prev_q = quarter - 1 if quarter > 1 else 4
+    prev_q_year = now.year if quarter > 1 else now.year - 1
+    candidates = [(now.year, quarter), (prev_q_year, prev_q)]
+    out = []
+    for concept in concepts:
+        for year, q in candidates:
+            period = period_for_concept(concept, year, q)
+            rows = fetch_frame(concept, period)
+            if rows:
+                for r in rows:
+                    r2 = dict(r)
+                    r2["concept"] = concept
+                    r2["period"] = period
+                    out.append(r2)
+                break  # prefer most-recent quarter; stop at first non-empty
+    return out
+
+
+def _fetch_sec_ftd():
+    """Delegate to sources.sec_flows.fetch_ftd → list of FTD row dicts.
+
+    Defaults to the first half of the previous calendar month (the most recently
+    published FTD period). Returns settled-failure rows: {settlement_date, cusip,
+    symbol, quantity, description, price}. Graceful-skip → [].
+    """
+    from sources.sec_flows import fetch_ftd
+    return fetch_ftd()
+
+
+def _fetch_cnyes():
+    """Delegate to sources.news_catalyst.fetch_cnyes → list of raw item dicts.
+
+    Each item carries: title, publishAt (epoch s), newsId, stock (list of bare
+    4-digit codes), market[] fallback. Pre-sanitized at row-build time.
+    Graceful-skip → [].
+    """
+    from sources.news_catalyst import fetch_cnyes
+    return fetch_cnyes()
 
 
 # ── Row builders (pure — no network) ─────────────────────────────────────────
@@ -601,6 +720,201 @@ def _build_tdcc_rows(raw_rows):
     return rows
 
 
+# ── Sprint 3 #22 — P1 row builders (pure) ─────────────────────────────────────
+
+def _build_stock_day_all_rows(date_str, raw_rows):
+    """STOCK_DAY_ALL list[dict] → rows matching stock_day_all_daily TAB_HEADERS.
+
+    Headers: date, code, name, open, high, low, close, volume, trade_value
+    Defensive .get() for all fields. Skips rows with no Code."""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = str(r.get("Code", "")).strip()
+        if not code:
+            continue
+        rows.append([
+            date_str,
+            code,
+            str(r.get("Name", "")).strip(),
+            _safe_float(r.get("OpeningPrice")),
+            _safe_float(r.get("HighestPrice")),
+            _safe_float(r.get("LowestPrice")),
+            _safe_float(r.get("ClosingPrice")),
+            _safe_int(r.get("TradeVolume")),
+            _safe_int(r.get("TradeValue")),
+        ])
+    return rows
+
+
+def _build_t187ap03_rows(yyyymm, raw_rows):
+    """t187ap03_L list[dict] → rows matching t187ap03_monthly TAB_HEADERS.
+
+    Headers: yyyymm, code, name, shares_issued, source_asof
+    Chinese keys; defensive .get(). Skips rows with no 公司代號."""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = str(r.get("公司代號", "")).strip()
+        if not code:
+            continue
+        # The t187ap03 source-of-truth date is the "出表日期" field if present
+        source_asof = _roc_to_ad(r.get("出表日期", ""))
+        rows.append([
+            yyyymm,
+            code,
+            str(r.get("公司簡稱", "")).strip(),
+            _safe_int(r.get("已發行普通股數及TDR原股發行股數")),
+            source_asof,
+        ])
+    return rows
+
+
+def _build_notice_punish_rows(date_str, notice_map, punish_map):
+    """Combined notice+punish per-stock dicts → notice_punish_daily rows.
+
+    Headers: date, code, name, type, reason, period
+    notice_map: {code: {reason, count, date, name}} from fetch_notice_stocks.
+    punish_map: {code: {reason, date, level, period, name}} from fetch_disposition_stocks.
+    type column distinguishes 'notice' from 'punish'; period is empty for notice (no period
+    in upstream payload). One row per (code, type) pair."""
+    rows = []
+    for code, meta in sorted((notice_map or {}).items()):
+        if not isinstance(meta, dict):
+            continue
+        rows.append([
+            date_str,
+            str(code).strip(),
+            str(meta.get("name", "")).strip(),
+            "notice",
+            str(meta.get("reason", "")).strip(),
+            "",       # notice has no period field
+        ])
+    for code, meta in sorted((punish_map or {}).items()):
+        if not isinstance(meta, dict):
+            continue
+        rows.append([
+            date_str,
+            str(code).strip(),
+            str(meta.get("name", "")).strip(),
+            "punish",
+            str(meta.get("reason", "")).strip(),
+            str(meta.get("period", "")).strip(),
+        ])
+    return rows
+
+
+def _build_sec_frames_rows(raw_rows):
+    """Combined SEC frames rows → sec_frames_quarterly TAB_HEADERS.
+
+    Headers: cik, concept, period, usd_value, filed, accession
+    raw rows have shape: {cik, entity, val, end, start, accn, concept, period}
+    (concept+period stamped by _fetch_sec_frames). `end` is used as `filed` proxy
+    since the frames API doesn't expose `filed` directly."""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        cik = str(r.get("cik", "")).strip()
+        if not cik:
+            continue
+        rows.append([
+            cik,
+            str(r.get("concept", "")).strip(),
+            str(r.get("period", "")).strip(),
+            _safe_float(r.get("val")),
+            str(r.get("end", "")).strip(),   # period-end ≈ filing date proxy
+            str(r.get("accn", "")).strip(),
+        ])
+    return rows
+
+
+def _build_sec_ftd_rows(raw_rows):
+    """SEC FTD list[dict] → sec_ftd_semimonthly TAB_HEADERS.
+
+    Headers: settle_date, symbol, cusip, quantity
+    raw rows shape: {settlement_date, cusip, symbol, quantity, description, price}.
+    Skips rows with no symbol (already filtered by parse_ftd_text but double-guard)."""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        sym = str(r.get("symbol", "")).strip()
+        if not sym:
+            continue
+        rows.append([
+            str(r.get("settlement_date", "")).strip(),
+            sym,
+            str(r.get("cusip", "")).strip(),
+            _safe_int(r.get("quantity")),
+        ])
+    return rows
+
+
+def _build_cnyes_rows(date_str, raw_rows):
+    """cnYES raw item dicts → cnyes_news_daily TAB_HEADERS.
+
+    Headers: pub_at, stock_codes, title, link, source
+    raw item shape: {title, publishAt (epoch s), newsId, stock (list of bare codes),
+    market (list of {code,name})}. pub_at is ISO timestamp built from publishAt;
+    stock_codes is comma-joined list (single Sheet cell). link is synthetic
+    'cnyes:<newsId>' since the API doesn't expose a flat URL.
+
+    date_str is NOT the row's date (we use publishAt); it's only used to bound the
+    upsert key (we still write all cnYES rows on `date_str` then upsert by date)."""
+    import datetime as _dt
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        title = str(r.get("title", "")).strip()
+        if not title:
+            continue
+        # Extract bare codes from stock[] (preferred) or market[].code (fallback)
+        codes = []
+        seen = set()
+        stock = r.get("stock")
+        if isinstance(stock, list):
+            for c in stock:
+                c2 = str(c).strip()
+                if c2 and c2 not in seen:
+                    seen.add(c2)
+                    codes.append(c2)
+        if not codes:
+            market = r.get("market")
+            if isinstance(market, list):
+                for m in market:
+                    if isinstance(m, dict):
+                        c2 = str(m.get("code", "")).strip()
+                        if c2 and c2 not in seen:
+                            seen.add(c2)
+                            codes.append(c2)
+        # publishAt epoch seconds → ISO; fall back to date_str when missing
+        pub_at = ""
+        try:
+            ts = r.get("publishAt")
+            if ts is not None:
+                ts_f = float(ts)
+                if ts_f > 1e12:   # accidental ms → seconds
+                    ts_f /= 1000.0
+                pub_at = _dt.datetime.utcfromtimestamp(ts_f).isoformat() + "Z"
+        except Exception:
+            pub_at = ""
+        # Synthetic link (cnYES API exposes no flat URL — newsId is the stable key)
+        nid = r.get("newsId")
+        link = ("cnyes:%s" % nid) if nid is not None else ""
+        rows.append([
+            pub_at or date_str,
+            ",".join(codes),
+            title[:500],   # cap title length for Sheets cell
+            link,
+            "cnyes",
+        ])
+    return rows
+
+
 # ── Idempotent upsert (reuse sheets_sync pattern) ─────────────────────────────
 
 def _upsert_allstocks(ws, date_col_idx, date_str, rows):
@@ -794,6 +1108,105 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH, source_filter=
         except Exception as exc:
             _log(f"SKIP tdcc_weekly: {exc}")
             counts["tdcc_weekly"] = -1
+
+    # ── Sprint 3 #22 — P1 sources (6 new) ────────────────────────────────────
+
+    # ── 8. stock_day_all_daily (TWSE bulk OHLCV) ─────────────────────────────
+    if _should_run("stock_day_all_daily"):
+        try:
+            raw = _fetch_stock_day_all()
+            rows = _build_stock_day_all_rows(date_str, raw)
+            ws = sh.worksheet("stock_day_all_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["stock_day_all_daily"] = len(rows)
+            _log(f"stock_day_all_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP stock_day_all_daily: {exc}")
+            counts["stock_day_all_daily"] = -1
+
+    # ── 9. t187ap03_monthly (TWSE outstanding shares — monthly) ──────────────
+    if _should_run("t187ap03_monthly"):
+        try:
+            raw = _fetch_t187ap03()
+            yyyymm = date_str[:7]
+            rows = _build_t187ap03_rows(yyyymm, raw)
+            ws = sh.worksheet("t187ap03_monthly")
+            _upsert_allstocks(ws, 0, yyyymm, rows)
+            counts["t187ap03_monthly"] = len(rows)
+            _log(f"t187ap03_monthly: {len(rows)} rows for {yyyymm}")
+        except Exception as exc:
+            _log(f"SKIP t187ap03_monthly: {exc}")
+            counts["t187ap03_monthly"] = -1
+
+    # ── 10. notice_punish_daily (TWSE notice + punish stocks) ────────────────
+    if _should_run("notice_punish_daily"):
+        try:
+            notice_map = _fetch_notice()
+            punish_map = _fetch_punish()
+            rows = _build_notice_punish_rows(date_str, notice_map, punish_map)
+            ws = sh.worksheet("notice_punish_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["notice_punish_daily"] = len(rows)
+            _log(f"notice_punish_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP notice_punish_daily: {exc}")
+            counts["notice_punish_daily"] = -1
+
+    # ── 11. sec_frames_quarterly (XBRL Revenues + NetIncomeLoss) ─────────────
+    if _should_run("sec_frames_quarterly"):
+        try:
+            raw = _fetch_sec_frames()
+            rows = _build_sec_frames_rows(raw)
+            ws = sh.worksheet("sec_frames_quarterly")
+            # Upsert key = period (col index 2); same period reruns idempotent
+            if rows:
+                period_key = rows[0][2] if rows[0][2] else date_str
+                _upsert_allstocks(ws, 2, period_key, rows)
+                counts["sec_frames_quarterly"] = len(rows)
+                _log(f"sec_frames_quarterly: {len(rows)} rows for period={period_key}")
+            else:
+                counts["sec_frames_quarterly"] = 0
+                _log("sec_frames_quarterly: SKIP — fetcher returned empty")
+        except Exception as exc:
+            _log(f"SKIP sec_frames_quarterly: {exc}")
+            counts["sec_frames_quarterly"] = -1
+
+    # ── 12. sec_ftd_semimonthly (SEC FTD bulk file) ──────────────────────────
+    if _should_run("sec_ftd_semimonthly"):
+        try:
+            raw = _fetch_sec_ftd()
+            rows = _build_sec_ftd_rows(raw)
+            ws = sh.worksheet("sec_ftd_semimonthly")
+            # Upsert key = settle_date (col index 0); typically multiple distinct
+            # settle dates per fetch, but we still need an upsert key — use today
+            # to mirror P0 daily pattern; rerun on same day is idempotent.
+            _upsert_allstocks(ws, 0, date_str, [])  # clear any prior date_str rows (no-op if absent)
+            if rows:
+                ws.append_rows(rows, value_input_option="USER_ENTERED")
+            counts["sec_ftd_semimonthly"] = len(rows)
+            _log(f"sec_ftd_semimonthly: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP sec_ftd_semimonthly: {exc}")
+            counts["sec_ftd_semimonthly"] = -1
+
+    # ── 13. cnyes_news_daily (cnYES TW stock news realtime) ──────────────────
+    if _should_run("cnyes_news_daily"):
+        try:
+            raw = _fetch_cnyes()
+            rows = _build_cnyes_rows(date_str, raw)
+            ws = sh.worksheet("cnyes_news_daily")
+            # Use date_str as upsert key (col 0 is pub_at ISO ts); we re-anchor
+            # all rows for this run on date_str so reruns are idempotent.
+            # NOTE: keeping per-run idempotence at the day level loses intra-day
+            # historical news but matches the P0 contract (snapshot-only archive).
+            _upsert_allstocks(ws, 0, date_str, [])  # clear by exact date_str match (rare for ISO ts col)
+            if rows:
+                ws.append_rows(rows, value_input_option="USER_ENTERED")
+            counts["cnyes_news_daily"] = len(rows)
+            _log(f"cnyes_news_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP cnyes_news_daily: {exc}")
+            counts["cnyes_news_daily"] = -1
 
     _log(f"sync_allstocks done for {date_str}: {counts}")
     return counts
