@@ -22,6 +22,8 @@ Auth: same Google SA pattern as sheets_sync.py (GOOGLE_SA_JSON env var).
 CLI:
   python sheets_sync_allstocks.py --bootstrap [--month 2026-06] [--user-email addr]
     → creates/finds month-shard sheet, ensures 7 tabs, shares to user, prints export block
+  python sheets_sync_allstocks.py --sync [--date YYYY-MM-DD]
+    → sync 7 P0 sources for date (default: today UTC) into the current month's sheet
 """
 import argparse
 import json
@@ -193,6 +195,584 @@ def _write_index(month, sheet_id, path=_DEFAULT_INDEX_PATH):
                 pass
 
 
+# ── Sprint 2 P2: sync_allstocks() — 7 P0 fetchers → Sheet idempotent upsert ──
+
+# ── Internal fetcher wrappers (thin delegation; injectable in tests) ────────────
+
+def _fetch_bwibbu():
+    """Delegate to sources.twse.fetch_pe → raw BWIBBU_ALL list[dict]."""
+    from sources.twse import fetch_pe
+    return fetch_pe()
+
+
+def _fetch_mi_margn():
+    """Delegate to sources.twse.fetch_margin → raw MI_MARGN list[dict]."""
+    from sources.twse import fetch_margin
+    return fetch_margin()
+
+
+def _fetch_t86(date_str):
+    """Delegate to sources.twse.fetch_t86(date=YYYYMMDD) → raw T86 list[list]."""
+    from sources.twse import fetch_t86
+    # T86 expects YYYYMMDD format (no dashes)
+    date_nodash = date_str.replace("-", "") if date_str else None
+    return fetch_t86(date=date_nodash)
+
+
+def _fetch_tpex_3insti():
+    """Delegate to sources.tpex.fetch_tpex_3insti → raw list[dict]."""
+    from sources.tpex import fetch_tpex_3insti
+    return fetch_tpex_3insti()
+
+
+def _fetch_tpex_margin():
+    """Delegate to sources.tpex.fetch_tpex_margin → raw list[dict]."""
+    from sources.tpex import fetch_tpex_margin
+    return fetch_tpex_margin()
+
+
+def _fetch_tpex_pe():
+    """Delegate to sources.tpex.fetch_tpex_pe → raw list[dict]."""
+    from sources.tpex import fetch_tpex_pe
+    return fetch_tpex_pe()
+
+
+def _fetch_tdcc():
+    """Delegate to sources.tdcc.fetch_distribution → parsed list[dict]."""
+    from sources.tdcc import fetch_distribution
+    return fetch_distribution()
+
+
+# ── Row builders (pure — no network) ─────────────────────────────────────────
+
+def _safe_float(val):
+    """Convert val to float or return None on blank/invalid (never crashes)."""
+    if val is None:
+        return None
+    try:
+        s = str(val).replace(",", "").strip()
+        if not s or s in ("--", "-", ""):
+            return None
+        f = float(s)
+        return f if f == f else None  # NaN guard
+    except Exception:
+        return None
+
+
+def _safe_int(val):
+    """Convert val to int or return 0 on blank/invalid (never crashes)."""
+    try:
+        return int(str(val).replace(",", "").strip() or 0)
+    except Exception:
+        return 0
+
+
+def _roc_to_ad(roc_date):
+    """ROC 'YYYMMDD' → AD 'YYYY-MM-DD'. Returns None on any malformed input."""
+    try:
+        s = str(roc_date).strip()
+        if len(s) < 7:
+            return None
+        mmdd = s[-4:]
+        roc_year = int(s[:-4])
+        mm, dd = mmdd[:2], mmdd[2:]
+        return "%04d-%s-%s" % (roc_year + 1911, mm, dd)
+    except Exception:
+        return None
+
+
+def _build_bwibbu_rows(date_str, raw_rows):
+    """BWIBBU_ALL list[dict] → rows matching bwibbu_daily TAB_HEADERS.
+
+    Headers: date, code, name, per, yield_pct, pbr, source_asof
+    Defensive .get() for all fields — missing → None, never crash."""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = str(r.get("Code", "")).strip()
+        if not code:
+            continue
+        rows.append([
+            date_str,
+            code,
+            str(r.get("Name", "")).strip(),
+            _safe_float(r.get("PEratio")),
+            _safe_float(r.get("DividendYield")),
+            _safe_float(r.get("PBratio")),
+            _roc_to_ad(r.get("Date")),
+        ])
+    return rows
+
+
+# MI_MARGN Chinese key constants (mirrors sources/twse.py)
+_MK_CODE = "股票代號"
+_MK_NAME = "股票名稱"
+_MK_FIN_BUY = "融資買進"
+_MK_FIN_SELL = "融資賣出"
+_MK_FIN_CASH = "融資現金償還"
+_MK_FIN_BAL = "融資今日餘額"
+_MK_FIN_LIMIT = "融資限額"
+_MK_SHORT_SELL = "融券賣出"
+_MK_SHORT_BUY = "融券買進"
+_MK_SHORT_RETURN = "融券現券償還"
+_MK_SHORT_BAL = "融券今日餘額"
+
+
+def _build_mi_margn_rows(date_str, raw_rows):
+    """MI_MARGN list[dict] → rows matching mi_margn_daily TAB_HEADERS.
+
+    Headers: date, code, name, fin_buy, fin_sell, fin_cash, fin_balance, fin_limit,
+             short_sell, short_cover, short_return, short_balance"""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = str(r.get(_MK_CODE, "")).strip()
+        if not code:
+            continue
+        rows.append([
+            date_str,
+            code,
+            str(r.get(_MK_NAME, "")).strip(),
+            _safe_int(r.get(_MK_FIN_BUY)),
+            _safe_int(r.get(_MK_FIN_SELL)),
+            _safe_int(r.get(_MK_FIN_CASH)),
+            _safe_int(r.get(_MK_FIN_BAL)),
+            _safe_int(r.get(_MK_FIN_LIMIT)),
+            _safe_int(r.get(_MK_SHORT_SELL)),
+            _safe_int(r.get(_MK_SHORT_BUY)),
+            _safe_int(r.get(_MK_SHORT_RETURN)),
+            _safe_int(r.get(_MK_SHORT_BAL)),
+        ])
+    return rows
+
+
+# T86 column indexes (mirrors sources/twse.py constants)
+_T86_I_CODE = 0
+_T86_I_NAME = 1
+_T86_I_FOREIGN = 4
+_T86_I_TRUST = 10
+_T86_I_DEALER = 11
+_T86_I_TOTAL = 18
+
+
+def _build_t86_rows(date_str, raw_rows):
+    """T86 list[list] (positional) → rows matching t86_daily TAB_HEADERS.
+
+    Headers: date, code, name, foreign_buy, foreign_sell, foreign_net,
+             trust_net, dealer_net, total_net, foreign_holding_pct
+    T86 raw data has only net columns (not buy/sell separately) — foreign_buy/sell
+    are not directly available from T86; we store foreign_net in foreign_net and
+    leave foreign_buy, foreign_sell as None per the tab schema."""
+    rows = []
+    for raw in (raw_rows or []):
+        try:
+            code = str(raw[_T86_I_CODE]).strip()
+        except Exception:
+            continue
+        if not code:
+            continue
+        try:
+            name = str(raw[_T86_I_NAME]).strip()
+        except Exception:
+            name = ""
+
+        def _at(i):
+            try:
+                return _safe_int(raw[i])
+            except Exception:
+                return 0
+
+        foreign_net = _at(_T86_I_FOREIGN)
+        trust_net = _at(_T86_I_TRUST)
+        dealer_net = _at(_T86_I_DEALER)
+        total_net = _at(_T86_I_TOTAL)
+
+        rows.append([
+            date_str,
+            code,
+            name,
+            None,          # foreign_buy — not in T86 positional data
+            None,          # foreign_sell — not in T86 positional data
+            foreign_net,   # foreign_net
+            trust_net,     # trust_net
+            dealer_net,    # dealer_net
+            total_net,     # total_net
+            None,          # foreign_holding_pct — not in T86 (separate source needed)
+        ])
+    return rows
+
+
+def _tpex_row_get(row, *candidates):
+    """Whitespace-tolerant dict key lookup (mirrors tpex._row_get)."""
+    def norm(k):
+        return " ".join(str(k).split())
+
+    norm_row = {norm(k): v for k, v in row.items()}
+    for c in candidates:
+        nc = norm(c)
+        if nc in norm_row:
+            return norm_row[nc]
+    # substring fallback
+    for c in candidates:
+        nc = norm(c).replace(" ", "").lower()
+        for k, v in norm_row.items():
+            if k.replace(" ", "").lower() == nc:
+                return v
+    return None
+
+
+_TPEX_3INSTI_CODE_KEYS = ("SecuritiesCompanyCode", "Code", "證券代號")
+_TPEX_3INSTI_NAME_KEYS = ("SecuritiesCompanyName", "Name", "證券名稱")
+_TPEX_3INSTI_FOREIGN_KEYS = (
+    "ForeignInvestorsIncludeMainlandAreaInvestors-Difference",
+    "Foreign Investors include Mainland Area Investors (Foreign Dealers excluded)-Difference",
+)
+_TPEX_3INSTI_TRUST_KEYS = ("SecuritiesInvestmentTrustCompanies-Difference",)
+_TPEX_3INSTI_DEALER_KEYS = ("Dealers-Difference",)
+_TPEX_3INSTI_TOTAL_KEYS = ("TotalDifference",)
+
+
+def _build_tpex_3insti_rows(date_str, raw_rows):
+    """TPEx 3insti list[dict] → rows matching tpex_3insti_daily TAB_HEADERS.
+
+    Headers: date, code, name, foreign_buy, foreign_sell, foreign_net,
+             trust_net, dealer_net, total_net, foreign_holding_pct"""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = _tpex_row_get(r, *_TPEX_3INSTI_CODE_KEYS)
+        if code is None or not str(code).strip():
+            continue
+        foreign_net = _safe_int(_tpex_row_get(r, *_TPEX_3INSTI_FOREIGN_KEYS))
+        trust_net = _safe_int(_tpex_row_get(r, *_TPEX_3INSTI_TRUST_KEYS))
+        dealer_net = _safe_int(_tpex_row_get(r, *_TPEX_3INSTI_DEALER_KEYS))
+        total_net = _safe_int(_tpex_row_get(r, *_TPEX_3INSTI_TOTAL_KEYS))
+        name = _tpex_row_get(r, *_TPEX_3INSTI_NAME_KEYS) or ""
+        rows.append([
+            date_str,
+            str(code).strip(),
+            str(name).strip(),
+            None,          # foreign_buy — TPEx 3insti gives net only
+            None,          # foreign_sell
+            foreign_net,
+            trust_net,
+            dealer_net,
+            total_net,
+            None,          # foreign_holding_pct — not in this source
+        ])
+    return rows
+
+
+_TPEX_MARGIN_CODE_KEYS = ("Code", "SecuritiesCompanyCode", "股票代號", "證券代號")
+_TPEX_MARGIN_NAME_KEYS = ("Name", "SecuritiesCompanyName", "股票名稱", "證券名稱")
+_TPEX_MARGIN_TODAY_KEYS = (
+    "MarginPurchaseTodayBalance", "TodayBalance", "MarginBalance",
+    "融資今日餘額", "融資餘額",
+)
+_TPEX_MARGIN_PREV_KEYS = (
+    "MarginPurchasePreviousDayBalance", "PreviousDayBalance",
+    "融資前日餘額",
+)
+_TPEX_MARGIN_SELL_KEYS = (
+    "ShortSaleTodayBalance", "ShortBalance",
+    "融券今日餘額",
+)
+_TPEX_MARGIN_SHORT_PREV_KEYS = (
+    "ShortSalePreviousDayBalance", "ShortPreviousDayBalance",
+    "融券前日餘額",
+)
+
+
+def _build_tpex_margin_rows(date_str, raw_rows):
+    """TPEx margin list[dict] → rows matching tpex_margin_daily TAB_HEADERS.
+
+    Headers: date, code, name, fin_buy, fin_sell, fin_cash, fin_balance, fin_limit,
+             short_sell, short_cover, short_return, short_balance"""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = _tpex_row_get(r, *_TPEX_MARGIN_CODE_KEYS)
+        if code is None or not str(code).strip():
+            continue
+        name = _tpex_row_get(r, *_TPEX_MARGIN_NAME_KEYS) or ""
+        fin_today = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_TODAY_KEYS))
+        fin_prev = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_PREV_KEYS))
+        short_today = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_SELL_KEYS))
+        short_prev = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_SHORT_PREV_KEYS))
+        rows.append([
+            date_str,
+            str(code).strip(),
+            str(name).strip(),
+            None,          # fin_buy — not separately available in TPEx margin
+            None,          # fin_sell
+            None,          # fin_cash
+            fin_today,     # fin_balance (today)
+            None,          # fin_limit
+            None,          # short_sell
+            None,          # short_cover
+            None,          # short_return
+            short_today,   # short_balance (today)
+        ])
+    return rows
+
+
+_TPEX_PE_CODE_KEYS = ("Code", "SecuritiesCompanyCode", "股票代號", "證券代號")
+_TPEX_PE_NAME_KEYS = ("Name", "SecuritiesCompanyName", "股票名稱", "證券名稱")
+_TPEX_PE_PER_KEYS = ("PEratio", "PERatio", "本益比")
+_TPEX_PE_YIELD_KEYS = ("DividendYield", "YieldRatio", "殖利率")
+_TPEX_PE_PBR_KEYS = ("PBratio", "PBRatio", "股價淨值比")
+_TPEX_PE_DATE_KEYS = ("Date", "資料日期")
+
+
+def _build_tpex_per_rows(date_str, raw_rows):
+    """TPEx PER list[dict] → rows matching tpex_per_daily TAB_HEADERS.
+
+    Headers: date, code, name, per, yield_pct, pbr, source_asof"""
+    rows = []
+    for r in (raw_rows or []):
+        if not isinstance(r, dict):
+            continue
+        code = _tpex_row_get(r, *_TPEX_PE_CODE_KEYS)
+        if code is None or not str(code).strip():
+            continue
+        name = _tpex_row_get(r, *_TPEX_PE_NAME_KEYS) or ""
+        raw_date = _tpex_row_get(r, *_TPEX_PE_DATE_KEYS)
+        source_asof = _roc_to_ad(raw_date) if raw_date else None
+        rows.append([
+            date_str,
+            str(code).strip(),
+            str(name).strip(),
+            _safe_float(_tpex_row_get(r, *_TPEX_PE_PER_KEYS)),
+            _safe_float(_tpex_row_get(r, *_TPEX_PE_YIELD_KEYS)),
+            _safe_float(_tpex_row_get(r, *_TPEX_PE_PBR_KEYS)),
+            source_asof,
+        ])
+    return rows
+
+
+def _build_tdcc_rows(raw_rows):
+    """TDCC parsed list[dict] → rows matching tdcc_weekly TAB_HEADERS.
+
+    Headers: asof_date, code, tier17_concentration_pct, total_holders,
+             conc_wow_delta, holders_wow_delta, name
+
+    Aggregates per code: concentration = sum pct for tiers >= 12 (excl. tier 17);
+    total_holders from the tier-17 合計 row. WoW deltas are None (no archive here).
+    One output row per code."""
+    from sources.tdcc import concentration_ratio as tdcc_conc, total_holders as tdcc_holders
+    _BIG_TIER = 12
+    _TOTAL_TIER = 17
+
+    if not raw_rows:
+        return []
+
+    # Group by code
+    by_code = {}
+    for r in raw_rows:
+        code = str(r.get("code", "")).strip()
+        if not code:
+            continue
+        by_code.setdefault(code, []).append(r)
+
+    rows = []
+    for code, code_rows in sorted(by_code.items()):
+        # Extract asof_date from the date field (AD YYYYMMDD format in tdcc rows)
+        asof_raw = code_rows[0].get("date", "")
+        asof_date = asof_raw  # already AD YYYYMMDD; keep as-is for now
+        # Format YYYYMMDD → YYYY-MM-DD if needed
+        if asof_date and len(asof_date) == 8 and asof_date.isdigit():
+            asof_date = "%s-%s-%s" % (asof_date[:4], asof_date[4:6], asof_date[6:])
+
+        conc = tdcc_conc([r for r in code_rows if r.get("tier") != _TOTAL_TIER])
+        holders = tdcc_holders(code_rows, code)
+        rows.append([
+            asof_date,
+            code,
+            conc,
+            holders,
+            None,   # conc_wow_delta — no archive in this run
+            None,   # holders_wow_delta — no archive in this run
+            None,   # name — not in TDCC rows
+        ])
+    return rows
+
+
+# ── Idempotent upsert (reuse sheets_sync pattern) ─────────────────────────────
+
+def _upsert_allstocks(ws, date_col_idx, date_str, rows):
+    """Idempotent: delete existing rows for date_str in date column, then append.
+
+    date_col_idx: 0-based column index of the date field (0 for daily, 0 for weekly).
+    Mirrors sheets_sync._upsert but works on 1-based col (col_values uses 1-based)."""
+    date_col_1based = date_col_idx + 1
+    date_col = ws.col_values(date_col_1based)  # includes header at index 0
+    # Find 1-based row numbers where date matches (skip header = index 0)
+    dups = [i + 1 for i, v in enumerate(date_col) if i >= 1 and v == date_str]
+    # Delete bottom-up so earlier indices stay valid
+    for rn in sorted(dups, reverse=True):
+        ws.delete_rows(rn)
+    if rows:
+        ws.append_rows(rows, value_input_option="USER_ENTERED")
+
+
+# ── Index helpers ─────────────────────────────────────────────────────────────
+
+def _load_index(path):
+    """Load {YYYY-MM: sheet_id} from path. Returns {} on missing/corrupt."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def _resolve_sheet_id(index, month):
+    """Return sheet_id for month, or None if not in index."""
+    if not index:
+        return None
+    return index.get(month)
+
+
+# ── sync_allstocks() — main orchestrator ──────────────────────────────────────
+
+def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH):
+    """Sync 7 P0 sources for date_str into the current month's all-stocks Sheet.
+
+    CONTRACT: OVERLAY-NOT-SCORER — pure archive write, never feeds scoring.
+
+    Args:
+        date_str:   'YYYY-MM-DD' (default: today UTC).
+        index_path: path to _allstocks_sheets_index.json.
+
+    Returns:
+        dict {tab_name: row_count} where negative = SKIP (source failed).
+        Returns None when GOOGLE_SA_JSON is missing, index is missing, or
+        current month is not in the index (all graceful exit 0).
+    """
+    if date_str is None:
+        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # Graceful: SA missing
+    client = get_client()
+    if client is None:
+        _log("SKIP sync_allstocks: GOOGLE_SA_JSON not set — allstocks Sheet sync disabled.")
+        return None
+
+    # Graceful: index file missing
+    index = _load_index(index_path)
+    if index is None:
+        _log(f"SKIP sync_allstocks: index file not found: {index_path}")
+        return None
+
+    # Graceful: month not in index
+    month = date_str[:7]  # 'YYYY-MM'
+    sheet_id = _resolve_sheet_id(index, month)
+    if not sheet_id:
+        _log(f"SKIP sync_allstocks: month {month!r} not in index {index_path}")
+        return None
+
+    sh = client.open_by_key(sheet_id)
+
+    counts = {}
+
+    # ── 1. bwibbu_daily (TWSE P/E, yield, P/B) ────────────────────────────────
+    try:
+        raw = _fetch_bwibbu()
+        rows = _build_bwibbu_rows(date_str, raw)
+        ws = sh.worksheet("bwibbu_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["bwibbu_daily"] = len(rows)
+        _log(f"bwibbu_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP bwibbu_daily: {exc}")
+        counts["bwibbu_daily"] = -1
+
+    # ── 2. mi_margn_daily (TWSE margin & short) ───────────────────────────────
+    try:
+        raw = _fetch_mi_margn()
+        rows = _build_mi_margn_rows(date_str, raw)
+        ws = sh.worksheet("mi_margn_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["mi_margn_daily"] = len(rows)
+        _log(f"mi_margn_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP mi_margn_daily: {exc}")
+        counts["mi_margn_daily"] = -1
+
+    # ── 3. t86_daily (TWSE 3-institution net) ─────────────────────────────────
+    try:
+        raw = _fetch_t86(date_str)
+        rows = _build_t86_rows(date_str, raw)
+        ws = sh.worksheet("t86_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["t86_daily"] = len(rows)
+        _log(f"t86_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP t86_daily: {exc}")
+        counts["t86_daily"] = -1
+
+    # ── 4. tpex_3insti_daily (TPEx 3-institution net) ─────────────────────────
+    try:
+        raw = _fetch_tpex_3insti()
+        rows = _build_tpex_3insti_rows(date_str, raw)
+        ws = sh.worksheet("tpex_3insti_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["tpex_3insti_daily"] = len(rows)
+        _log(f"tpex_3insti_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP tpex_3insti_daily: {exc}")
+        counts["tpex_3insti_daily"] = -1
+
+    # ── 5. tpex_margin_daily (TPEx margin & short) ────────────────────────────
+    try:
+        raw = _fetch_tpex_margin()
+        rows = _build_tpex_margin_rows(date_str, raw)
+        ws = sh.worksheet("tpex_margin_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["tpex_margin_daily"] = len(rows)
+        _log(f"tpex_margin_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP tpex_margin_daily: {exc}")
+        counts["tpex_margin_daily"] = -1
+
+    # ── 6. tpex_per_daily (TPEx P/E, yield, P/B) ──────────────────────────────
+    try:
+        raw = _fetch_tpex_pe()
+        rows = _build_tpex_per_rows(date_str, raw)
+        ws = sh.worksheet("tpex_per_daily")
+        _upsert_allstocks(ws, 0, date_str, rows)
+        counts["tpex_per_daily"] = len(rows)
+        _log(f"tpex_per_daily: {len(rows)} rows for {date_str}")
+    except Exception as exc:
+        _log(f"SKIP tpex_per_daily: {exc}")
+        counts["tpex_per_daily"] = -1
+
+    # ── 7. tdcc_weekly (TDCC shareholding concentration) ──────────────────────
+    try:
+        raw = _fetch_tdcc()
+        rows = _build_tdcc_rows(raw)
+        if rows:
+            # Use asof_date (col 0) as the upsert key for weekly data
+            asof_date = rows[0][0] if rows else date_str
+            ws = sh.worksheet("tdcc_weekly")
+            _upsert_allstocks(ws, 0, asof_date, rows)
+            counts["tdcc_weekly"] = len(rows)
+            _log(f"tdcc_weekly: {len(rows)} rows for asof={asof_date}")
+        else:
+            counts["tdcc_weekly"] = 0
+            _log("tdcc_weekly: SKIP — fetcher returned empty (no new release this run)")
+    except Exception as exc:
+        _log(f"SKIP tdcc_weekly: {exc}")
+        counts["tdcc_weekly"] = -1
+
+    _log(f"sync_allstocks done for {date_str}: {counts}")
+    return counts
+
+
 # ── Bootstrap orchestrator ─────────────────────────────────────────────────────
 
 def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
@@ -256,12 +836,16 @@ def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
 
 def main(argv=None):
     ap = argparse.ArgumentParser(
-        description="Bootstrap / verify the all-stocks month-shard Google Sheet."
+        description="Bootstrap / verify the all-stocks month-shard Google Sheet, or sync 7 P0 sources."
     )
     ap.add_argument("--bootstrap", action="store_true",
                     help="Create/verify the month-shard spreadsheet and 7 P0 tabs.")
+    ap.add_argument("--sync", action="store_true",
+                    help="Sync 7 P0 fetchers → Sheet for the given date (default: today UTC).")
+    ap.add_argument("--date",
+                    help="Date to sync YYYY-MM-DD (used with --sync; default: today UTC).")
     ap.add_argument("--month",
-                    help="Target month YYYY-MM (default: current UTC month).")
+                    help="Target month YYYY-MM (used with --bootstrap; default: current UTC month).")
     ap.add_argument("--user-email", default=_DEFAULT_USER_EMAIL,
                     help="Gmail address to share the spreadsheet with (writer).")
     ap.add_argument("--index-path", default=_DEFAULT_INDEX_PATH,
@@ -279,12 +863,19 @@ def main(argv=None):
     raw = (os.environ.get("GOOGLE_SA_JSON") or "").strip()
     if not raw:
         print(
-            "SKIP: GOOGLE_SA_JSON not set — bootstrap requires SA credentials. "
+            "SKIP: GOOGLE_SA_JSON not set — sheet operations require SA credentials. "
             "Run via GH Actions or set env var locally first.",
             flush=True,
         )
         return 0
 
+    # ── --sync mode ───────────────────────────────────────────────────────────
+    if args.sync:
+        date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        sync_allstocks(date_str=date_str, index_path=args.index_path)
+        return 0
+
+    # ── --bootstrap mode ──────────────────────────────────────────────────────
     if not args.bootstrap:
         ap.print_help()
         return 0
