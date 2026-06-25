@@ -78,55 +78,11 @@ jobs:
           echo "::warning::Report $REPORT MISSING — self-healing (re-dispatch daily) + alerting."
 
           # 1) self-heal: regenerate via workflow_dispatch (bypasses daily's skip-if-exists guard).
-          DISPATCH_OK=true
+          #    Capture the dispatched run ID so we can poll its conclusion (audit #8).
+          DISPATCH_OK=false
           gh workflow run daily.yml --repo "$REPO" --ref main \
-            && echo "Re-dispatched daily.yml." \
-            || { echo "WARN: daily.yml re-dispatch failed — continuing to alert."; DISPATCH_OK=false; }
-
-          # 1b) Poll the newly-dispatched run for up to 15 min to detect self-heal failure.
-          #     Audit #8: if the re-dispatched run itself also fails, escalate to a NEW issue
-          #     distinct from the "report missing" issue so a human knows manual action is needed.
-          if [ "$DISPATCH_OK" = "true" ]; then
-            echo "Polling re-dispatched daily.yml for up to 15 min…"
-            HEAL_RUN_ID=""
-            # Wait up to 60s for the new run to appear in the list.
-            for i in $(seq 1 12); do
-              sleep 5
-              HEAL_RUN_ID=$(gh run list --repo "$REPO" --workflow daily.yml \
-                            --event workflow_dispatch --limit 1 \
-                            --json databaseId,status \
-                            --jq '.[0] | select(.status != "completed") | .databaseId // empty' \
-                            2>/dev/null || true)
-              [ -n "$HEAL_RUN_ID" ] && break
-            done
-
-            if [ -n "$HEAL_RUN_ID" ]; then
-              # Poll conclusion for up to 15 min (180 × 5s = 900s).
-              HEAL_CONCLUSION=""
-              for i in $(seq 1 180); do
-                sleep 5
-                HEAL_CONCLUSION=$(gh run view "$HEAL_RUN_ID" --repo "$REPO" \
-                                  --json status,conclusion \
-                                  --jq 'select(.status == "completed") | .conclusion // empty' \
-                                  2>/dev/null || true)
-                [ -n "$HEAL_CONCLUSION" ] && break
-              done
-
-              if [ "$HEAL_CONCLUSION" = "failure" ]; then
-                # Compute fingerprint from the failed re-dispatch log.
-                HEAL_FP=$(gh run view "$HEAL_RUN_ID" --repo "$REPO" --log-failed 2>/dev/null \
-                          | tail -10 | sha256sum | head -c 8 || echo "00000000")
-                ESCALATE_TITLE="🔴 SmartStock self-heal FAILED — manual intervention needed (${HEAL_FP})"
-                ESCALATE_BODY="The watchdog re-dispatched \`daily.yml\` (run ${HEAL_RUN_ID}) but that run also **failed** (conclusion=failure, fingerprint=\`${HEAL_FP}\`). The self-heal loop is broken — please check the Actions log and intervene manually. Watchdog run: ${RUN_URL}"
-                gh issue create --repo "$REPO" --title "$ESCALATE_TITLE" --body "$ESCALATE_BODY"
-                echo "::error::Self-heal FAILED — escalation issue opened."
-              else
-                echo "Self-heal run ${HEAL_RUN_ID} conclusion=${HEAL_CONCLUSION:-in-progress/timeout}."
-              fi
-            else
-              echo "Could not find newly-dispatched run to poll — skipping conclusion check."
-            fi
-          fi
+            && DISPATCH_OK=true \
+            || echo "WARN: daily.yml re-dispatch failed — will escalate."
 
           # 2) notify: open or dedup ONE open issue (bot-authored => you actually get notified).
           TITLE="🔴 SmartStock daily report MISSING"
@@ -135,7 +91,58 @@ jobs:
           if [ -n "$NUM" ]; then
             gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
             echo "Commented on existing issue #$NUM."
+            ALERT_ISSUE="$NUM"
           else
             gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
-            echo "Opened new alert issue."
+            ALERT_ISSUE=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" \
+              --json number --jq '.[0].number // empty')
+            echo "Opened new alert issue #${ALERT_ISSUE}."
+          fi
+
+          # 3) Audit #8: poll the re-dispatched run for up to 15 min.
+          #    If it also fails, escalate with a NEW fingerprinted issue so the misleading
+          #    "check in ~10 min" comment is explicitly corrected.
+          if [ "$DISPATCH_OK" = "true" ]; then
+            echo "Polling re-dispatched run (up to 15 min)..."
+            # Give GH Actions a moment to register the new run before we query it.
+            sleep 30
+            HEAL_RUN_ID=$(gh run list --repo "$REPO" --workflow daily.yml --limit 1 \
+              --json databaseId --jq '.[0].databaseId // empty')
+            HEAL_CONCLUSION=""
+            for i in $(seq 1 18); do   # 18 × 50s ≈ 15 min
+              sleep 50
+              STATUS=$(gh run view "$HEAL_RUN_ID" --repo "$REPO" \
+                --json status,conclusion --jq '.status' 2>/dev/null || true)
+              if [ "$STATUS" = "completed" ]; then
+                HEAL_CONCLUSION=$(gh run view "$HEAL_RUN_ID" --repo "$REPO" \
+                  --json conclusion --jq '.conclusion' 2>/dev/null || echo "unknown")
+                break
+              fi
+              echo "  poll $i/18: status=${STATUS}"
+            done
+
+            if [ "$HEAL_CONCLUSION" = "failure" ] || [ "$HEAL_CONCLUSION" = "cancelled" ]; then
+              # Compute a fingerprint from the failed re-dispatch log.
+              HEAL_LOG=$(gh run view "$HEAL_RUN_ID" --log-failed --repo "$REPO" 2>/dev/null \
+                | tail -10 || true)
+              HEAL_FP=$(printf '%s' "$HEAL_LOG" | sha256sum | head -c 8)
+              ESCALATION_TITLE="🔴 SmartStock self-heal FAILED — manual intervention needed (${HEAL_FP})"
+              ESCALATION_BODY="The watchdog re-dispatched \`daily.yml\` to recover missing report for **${DATE}**, but the re-dispatch ALSO failed (conclusion: \`${HEAL_CONCLUSION}\`, run ID: \`${HEAL_RUN_ID}\`, fingerprint: \`${HEAL_FP}\`).\n\nThis requires **manual intervention** — the automatic self-heal loop is broken.\n\nOriginal missing-report alert: #${ALERT_ISSUE:-unknown}\nWatchdog run: ${RUN_URL}"
+              gh issue create --repo "$REPO" --title "$ESCALATION_TITLE" \
+                --body "$ESCALATION_BODY"
+              ESCALATION_NUM=$(gh issue list --repo "$REPO" --state open \
+                --search "${ESCALATION_TITLE} in:title" --json number \
+                --jq '.[0].number // empty')
+              # Correct the misleading "check in ~10 min" comment on the original issue.
+              if [ -n "$ALERT_ISSUE" ]; then
+                gh issue comment "$ALERT_ISSUE" --repo "$REPO" \
+                  --body "⚠️ **Self-heal update**: the re-dispatched \`daily.yml\` also failed (conclusion: \`${HEAL_CONCLUSION}\`). Manual intervention is needed. See escalation issue #${ESCALATION_NUM:-unknown} for details."
+              fi
+              echo "::error::Self-heal re-dispatch failed — escalation issue opened."
+              exit 1
+            elif [ -n "$HEAL_CONCLUSION" ]; then
+              echo "Self-heal run concluded: ${HEAL_CONCLUSION} — no escalation needed."
+            else
+              echo "WARN: could not determine self-heal run conclusion (timed out polling)."
+            fi
           fi
