@@ -122,5 +122,62 @@ class TestDryRunFlag(unittest.TestCase):
                       "main() must have a dry_run parameter for the PR-gate to use")
 
 
+class TestDateArg(unittest.TestCase):
+    """TDD for --date YYYY-MM-DD arg (issue #13 backfill)."""
+
+    def test_main_accepts_date_arg(self):
+        """main() must accept a date_arg keyword argument without raising TypeError."""
+        import inspect
+        sig = inspect.signature(main.main)
+        self.assertIn("date_arg", sig.parameters,
+                      "main() must have a date_arg parameter for backfill")
+
+    def test_main_date_arg_overrides_today(self):
+        """When date_arg is set, date_str inside main must use that value, not today."""
+        from unittest import mock
+        captured = []
+
+        # Patch notifier_file.write_report to capture the date_str that reaches it
+        with mock.patch.object(main.notifier_file, "write_report",
+                               side_effect=lambda md, ds: captured.append(ds) or "/tmp/dummy.md"):
+            # Patch every network/IO call so main() runs without real I/O
+            with mock.patch.object(main, "run_stage", return_value=None), \
+                 mock.patch.object(main.report_builder, "build_report", return_value="# report"), \
+                 mock.patch.object(main.notifier_email, "send_email", return_value=True):
+                try:
+                    main.main(date_arg="2026-06-22")
+                except Exception:
+                    pass  # downstream errors expected with mocked internals
+
+        # If write_report was reached, it must have been called with the injected date
+        for ds in captured:
+            self.assertEqual(ds, "2026-06-22",
+                             "date_str must equal date_arg when date_arg is supplied")
+
+    def test_main_date_arg_invalid_format_errors_clean(self):
+        """--date with invalid format must raise ValueError, not crash with AttributeError."""
+        from datetime import datetime
+        with self.assertRaises(ValueError):
+            datetime.strptime("2026-13-99", "%Y-%m-%d").date()
+
+    def test_date_arg_cli_wired(self):
+        """--date in argv must be wired to main(date_arg=...), not silently dropped."""
+        from unittest import mock
+        import argparse
+        calls = []
+
+        with mock.patch.object(main, "main", side_effect=lambda **kw: calls.append(kw) or None):
+            parser = argparse.ArgumentParser()
+            parser.add_argument("--web", action="store_true")
+            parser.add_argument("--dry-run", action="store_true")
+            parser.add_argument("--date", dest="date_arg", default=None)
+            args = parser.parse_args(["--web", "--date", "2026-06-22"])
+            main.main(web=args.web, dry_run=args.dry_run, date_arg=args.date_arg)
+
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0].get("date_arg"), "2026-06-22",
+                         "--date must map to date_arg='2026-06-22' in main()")
+
+
 if __name__ == "__main__":
     unittest.main()

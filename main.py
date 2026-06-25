@@ -130,10 +130,16 @@ def run_stage(log, skips, name, fn, default=None, msg=None):
         return default
 
 
-def main(web=False, dry_run=False):
+def main(web=False, dry_run=False, date_arg=None):
     setup_logging()
     log = logging.getLogger("main")
-    date_str = datetime.now().strftime("%Y-%m-%d")
+    if date_arg is not None:
+        # Validate format eagerly so a bad --date fails fast with a clear error.
+        from datetime import datetime as _dt
+        _dt.strptime(date_arg, "%Y-%m-%d")   # raises ValueError on bad format
+        date_str = date_arg
+    else:
+        date_str = datetime.now().strftime("%Y-%m-%d")
     skips = []
     log.info("=== SmartStock daily run %s ===", date_str)
 
@@ -1567,5 +1573,8 @@ if __name__ == "__main__":
                         help="run full pipeline (including build_report) but skip all "
                              "disk writes, email, and Sheet sync — used by the PR-gate "
                              "CI job to catch kwarg/schema drift before merge")
+    parser.add_argument("--date", dest="date_arg", default=None, metavar="YYYY-MM-DD",
+                        help="override run date (default: today UTC); used for backfill. "
+                             "Example: --date 2026-06-22")
     args = parser.parse_args()
-    main(web=args.web, dry_run=args.dry_run)
+    main(web=args.web, dry_run=args.dry_run, date_arg=args.date_arg)
