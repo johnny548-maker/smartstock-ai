@@ -80,6 +80,7 @@ class _FakeClient:
         # existing: list of _FakeSpreadsheet already 'in the drive'
         self._drive = list(existing or [])
         self.create_calls = []
+        self.open_by_key_calls = []
 
     def openall(self):
         return list(self._drive)
@@ -89,6 +90,13 @@ class _FakeClient:
         self._drive.append(sh)
         self.create_calls.append(title)
         return sh
+
+    def open_by_key(self, key):
+        self.open_by_key_calls.append(key)
+        for sh in self._drive:
+            if sh.id == key:
+                return sh
+        raise Exception(f"Spreadsheet not found for key: {key}")
 
 
 # ── Helper ────────────────────────────────────────────────────────────────────
@@ -395,6 +403,151 @@ class TestFindExisting(unittest.TestCase):
         result = sa._find_existing(client, "smartstock-allstocks-2026-06")
         self.assertIsNotNone(result)
         self.assertEqual(result.id, "XYZ123")
+
+
+# ── Helper for --existing-id path ─────────────────────────────────────────────
+
+def _run_bootstrap_existing_id(existing_id, month="2026-06",
+                                user_email="test@example.com",
+                                pre_existing_sheets=None,
+                                index_path=None):
+    """Run bootstrap() passing existing_id; pre_existing_sheets must include the
+    sheet with that ID so open_by_key() resolves it in the fake client."""
+    client = _FakeClient(existing=pre_existing_sheets or [])
+    with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+        result = sa.bootstrap(month=month, user_email=user_email,
+                              existing_id=existing_id,
+                              index_path=index_path or os.devnull)
+    return result, client
+
+
+# ── Tests: --existing-id path ─────────────────────────────────────────────────
+
+class TestBootstrapWithExistingIdSkipsCreate(unittest.TestCase):
+    """bootstrap(existing_id=...) must NOT call create() and must open by key."""
+
+    def test_bootstrap_with_existing_id_skips_create_and_uses_given_sheet(self):
+        """Pass existing_id → no create call; sheet opened by key; 7 tabs ensured."""
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        result, client = _run_bootstrap_existing_id(
+            existing_id="abc123", pre_existing_sheets=[sh])
+        self.assertEqual(len(client.create_calls), 0,
+                         "create() must NOT be called when existing_id is supplied")
+        self.assertIn("abc123", client.open_by_key_calls,
+                      "open_by_key('abc123') must be called")
+        self.assertEqual(result["id"], "abc123")
+        # 7 tabs must be ensured
+        self.assertEqual(len(sh._worksheets), 7)
+
+
+class TestBootstrapWithExistingIdWritesIndex(unittest.TestCase):
+    """bootstrap(existing_id=...) must write the exact given ID to the index file."""
+
+    def test_bootstrap_with_existing_id_writes_index_with_given_id(self):
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            f.write("{}")
+            tmp = f.name
+        try:
+            _run_bootstrap_existing_id(
+                existing_id="abc123", month="2026-06",
+                pre_existing_sheets=[sh], index_path=tmp)
+            with open(tmp, encoding="utf-8") as f:
+                data = json.load(f)
+            self.assertEqual(data.get("2026-06"), "abc123",
+                             "_allstocks_sheets_index.json must contain the given ID")
+        finally:
+            os.unlink(tmp)
+
+
+class TestBootstrapWithExistingIdStillShares(unittest.TestCase):
+    """bootstrap(existing_id=...) must still share with user_email (idempotent)."""
+
+    def test_bootstrap_with_existing_id_still_shares_to_user(self):
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        result, client = _run_bootstrap_existing_id(
+            existing_id="abc123", user_email="alice@example.com",
+            pre_existing_sheets=[sh])
+        emails = [s["email"] for s in sh._shared]
+        self.assertIn("alice@example.com", emails,
+                      "share() must still be called when existing_id is supplied")
+
+
+class TestCliExistingIdArgRoundTrips(unittest.TestCase):
+    """main(['--bootstrap', '--existing-id', 'abc123', '--month', '2026-06'])
+    must dispatch bootstrap with existing_id='abc123'."""
+
+    def test_cli_existing_id_arg_round_trips(self):
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        client = _FakeClient(existing=[sh])
+        captured = io.StringIO()
+        fake_env = {"GOOGLE_SA_JSON": '{"type":"service_account"}'}
+        with mock.patch.dict(os.environ, fake_env):
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                with mock.patch("sys.stdout", captured):
+                    rc = sa.main([
+                        "--bootstrap",
+                        "--existing-id", "abc123",
+                        "--month", "2026-06",
+                        "--user-email", "test@example.com",
+                        "--index-path", os.devnull,
+                    ])
+        self.assertEqual(rc, 0)
+        out = captured.getvalue()
+        self.assertIn("SHEETS_ID_ALLSTOCKS_TW=abc123", out)
+        self.assertEqual(len(client.create_calls), 0,
+                         "CLI --existing-id must not trigger create()")
+        self.assertIn("abc123", client.open_by_key_calls)
+
+
+class TestBootstrapExistingIdAndUserEmailCoexist(unittest.TestCase):
+    """Both --existing-id and --user-email flags work together correctly."""
+
+    def test_bootstrap_existing_id_and_user_email_can_coexist(self):
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        client = _FakeClient(existing=[sh])
+        captured = io.StringIO()
+        fake_env = {"GOOGLE_SA_JSON": '{"type":"service_account"}'}
+        with mock.patch.dict(os.environ, fake_env):
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                with mock.patch("sys.stdout", captured):
+                    rc = sa.main([
+                        "--bootstrap",
+                        "--existing-id", "abc123",
+                        "--month", "2026-06",
+                        "--user-email", "bob@example.com",
+                        "--index-path", os.devnull,
+                    ])
+        self.assertEqual(rc, 0)
+        out = captured.getvalue()
+        self.assertIn("USER_SHARED=bob@example.com", out)
+        self.assertIn("SHEETS_ID_ALLSTOCKS_TW=abc123", out)
+
+
+class TestBootstrapExistingIdIdempotent(unittest.TestCase):
+    """Second call with same existing_id must not create extra tabs."""
+
+    def test_bootstrap_existing_id_idempotent_when_tabs_already_present(self):
+        sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
+                              sheet_id="abc123")
+        client = _FakeClient(existing=[sh])
+        # First call — creates 7 tabs
+        with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+            sa.bootstrap(month="2026-06", user_email="x@x.com",
+                         existing_id="abc123", index_path=os.devnull)
+        # Second call — must not duplicate tabs
+        with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+            sa.bootstrap(month="2026-06", user_email="x@x.com",
+                         existing_id="abc123", index_path=os.devnull)
+        self.assertEqual(len(sh._worksheets), 7,
+                         "tabs must NOT be duplicated on second bootstrap call with existing_id")
+        self.assertEqual(len(client.create_calls), 0,
+                         "create() must never be called when existing_id is supplied")
 
 
 if __name__ == "__main__":
