@@ -129,6 +129,55 @@ class TestGracefulSkip(unittest.TestCase):
             else:
                 os.environ["GOOGLE_SA_JSON"] = old
 
+    def test_get_client_returns_none_on_malformed_json(self):
+        """Audit #11: malformed GOOGLE_SA_JSON must return None, not raise."""
+        old = os.environ.get("GOOGLE_SA_JSON")
+        os.environ["GOOGLE_SA_JSON"] = "not json {"
+        try:
+            result = ss.get_client()
+            self.assertIsNone(result)
+        finally:
+            if old is None:
+                os.environ.pop("GOOGLE_SA_JSON", None)
+            else:
+                os.environ["GOOGLE_SA_JSON"] = old
+
+    def test_get_client_does_not_log_credentials(self):
+        """Audit #11: error log must NOT echo the SA JSON contents (no email/private_key)."""
+        import io
+        import logging as _logging
+
+        sa_payload = json.dumps({
+            "type": "service_account",
+            "client_email": "sa@project.iam.gserviceaccount.com",
+            "private_key": "-----BEGIN RSA PRIVATE KEY-----\nSECRET\n-----END RSA PRIVATE KEY-----\n",
+            "private_key_id": "keyid123",
+        })
+        old = os.environ.get("GOOGLE_SA_JSON")
+        os.environ["GOOGLE_SA_JSON"] = sa_payload
+
+        log_capture = io.StringIO()
+        handler = _logging.StreamHandler(log_capture)
+        logger = _logging.getLogger("sheets_sync")
+        logger.addHandler(handler)
+        try:
+            # Will fail because gspread/google-auth are not installed in test env,
+            # but that triggers the except branch — which is exactly what we test.
+            ss.get_client()
+            captured = log_capture.getvalue()
+            self.assertNotIn("sa@project.iam.gserviceaccount.com", captured,
+                             "client_email must NOT appear in log output")
+            self.assertNotIn("SECRET", captured,
+                             "private_key contents must NOT appear in log output")
+            self.assertNotIn("keyid123", captured,
+                             "private_key_id must NOT appear in log output")
+        finally:
+            logger.removeHandler(handler)
+            if old is None:
+                os.environ.pop("GOOGLE_SA_JSON", None)
+            else:
+                os.environ["GOOGLE_SA_JSON"] = old
+
 
 SAMPLE_OPPORTUNITY = {
     "universe": 600,

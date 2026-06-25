@@ -26,6 +26,7 @@ CLI:
   python sheets_sync.py --day 2026-06-08
   python sheets_sync.py --backfill      # every docs/data/*.json
 """
+import logging
 import os
 import sys
 import glob
@@ -587,16 +588,25 @@ def dup_row_numbers(date_column_values, date_str):
 # ── Network layer (lazy gspread import so pure logic stays testable offline) ────────────
 
 def get_client():
-    """Return an authorized gspread client, or None if GOOGLE_SA_JSON is unset/blank.
-    None => caller treats the whole sync as a graceful no-op."""
+    """Return an authorized gspread client, or None if GOOGLE_SA_JSON is unset/blank/malformed.
+    None => caller treats the whole sync as a graceful no-op.
+    Errors are logged WITHOUT echoing the SA JSON contents (prevent credential leakage)."""
     raw = (os.environ.get("GOOGLE_SA_JSON") or "").strip()
     if not raw:
         return None
-    import gspread
-    from google.oauth2.service_account import Credentials
-    info = json.loads(raw)
-    creds = Credentials.from_service_account_info(info, scopes=SCOPES)
-    return gspread.authorize(creds)
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+        info = json.loads(raw)
+        creds = Credentials.from_service_account_info(info, scopes=SCOPES)
+        return gspread.authorize(creds)
+    except Exception as exc:
+        # Log only the error type + message — NEVER the SA JSON contents.
+        logging.getLogger(__name__).error(
+            "get_client failed (%s: %s) — sheets sync disabled for this run",
+            type(exc).__name__, exc,
+        )
+        return None
 
 
 def _ensure_ws(sh, title, headers):
