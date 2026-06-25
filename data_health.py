@@ -59,6 +59,12 @@ NAN_RATE_MAX = 0.2
 # Most caches are 24h TTL; >3 days = suspect, >7 days = certainly frozen (generous TTL×N).
 CACHE_DEGRADED_AGE_H = 72.0
 CACHE_STALE_AGE_H = 168.0
+# why (Sprint 3 #19): _kelly_state.json (sizing) + _validation_state.json (DSR/PBO/SPA/WF
+# offline robustness gate) are refreshed by an offline weekly job. A silently frozen state
+# file means the daily report ships sizing+robustness numbers older than the regime they
+# allegedly describe. 40 days = ~6 weekly refreshes missed = certainly stale (degraded
+# banner; not fatal because the offline gate is overlay-not-scorer, like the rest of health).
+STATE_STALE_AGE_DAYS = 40
 
 _DATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 _ROW_COUNT_KEYS = ("picks", "news", "movers")
@@ -282,6 +288,51 @@ def _default_cache_paths():
     return paths
 
 
+def _default_state_paths():
+    """Offline state files watched by the Sprint 3 #19 stale gate (kelly/validation)."""
+    import config
+    paths = {}
+    for label, attr in (("kelly", "KELLY_STATE"), ("validation", "VALIDATION_STATE")):
+        p = getattr(config, attr, None)
+        if p:
+            paths[label] = p
+    return paths
+
+
+def _check_state_age(now, state_paths):
+    """Sprint 3 #19: flag _kelly_state / _validation_state files older than 40 days.
+
+    Reads filesystem mtime (the offline refresh job rewrites the file) and emits
+    an explicit `<N> days stale, last refresh YYYY-MM-DD` note when the gate trips.
+    Missing file → SKIP (fail-open; the daily report still ships). Never raises.
+    """
+    entries = []
+    for name, path in (state_paths or {}).items():
+        if not path or not os.path.isfile(path):
+            entries.append(_entry(f"state:{name}", "skip",
+                                  note="state file absent (SKIP)"))
+            continue
+        try:
+            mtime = dt.datetime.fromtimestamp(os.path.getmtime(path))
+        except (OSError, OverflowError, ValueError) as e:
+            entries.append(_entry(f"state:{name}", "skip",
+                                  note=f"state mtime unreadable: {e} (SKIP)"))
+            continue
+        age_days = (now - mtime).total_seconds() / 86400.0
+        age_h = age_days * 24.0
+        last_refresh = mtime.date().isoformat()
+        if age_days >= STATE_STALE_AGE_DAYS:
+            entries.append(_entry(
+                f"state:{name}", "degraded", age_h=age_h,
+                note=f"{name} {int(age_days)} days stale, "
+                     f"last refresh {last_refresh}"))
+        else:
+            entries.append(_entry(
+                f"state:{name}", "ok", age_h=age_h,
+                note=f"{name} {int(age_days)}d old, last refresh {last_refresh}"))
+    return entries
+
+
 def _check_cache_age(now, cache_paths):
     """C3: flag sources/ caches frozen past their TTL (a dead source serving last-good).
     Missing file or undatable cache → SKIP (graceful, never fabricated)."""
@@ -308,17 +359,23 @@ def _check_cache_age(now, cache_paths):
 
 # ── orchestration (fail-open) ─────────────────────────────────────────────────
 
-def summarize(payload, data_dir=None, now=None):
+def summarize(payload, data_dir=None, now=None, state_paths=None):
     """Run every health check over *payload* → the payload `health` block.
 
     FAIL-OPEN: each check is fenced — a crashed check appends a degraded entry
     (with the error in `note`) instead of raising; garbage/None payload yields
     a degraded/stale report, never an exception. The daily report must always
     ship with a `health` key, whatever happens here.
+
+    *state_paths* (Sprint 3 #19) lets tests inject {label: path} for the
+    kelly/validation state-age check; production omits it and the defaults
+    from config.KELLY_STATE / config.VALIDATION_STATE are used.
     """
     if not isinstance(payload, dict):
         payload = {}
     now = now or dt.datetime.now()
+    resolved_state_paths = state_paths if state_paths is not None \
+        else _default_state_paths()
 
     checks = (
         ("generated_at", lambda: _check_generated_at(payload, now)),
@@ -327,6 +384,7 @@ def summarize(payload, data_dir=None, now=None):
         ("row_counts", lambda: _check_row_counts(payload, data_dir)),
         ("picks_nan", lambda: _check_picks_nan(payload)),
         ("cache_age", lambda: _check_cache_age(now, _default_cache_paths())),
+        ("state_age", lambda: _check_state_age(now, resolved_state_paths)),
     )
     sources = []
     for name, run in checks:
