@@ -590,22 +590,24 @@ def dup_row_numbers(date_column_values, date_str):
 def get_client():
     """Return an authorized gspread client, or None if GOOGLE_SA_JSON is unset/blank/malformed.
     None => caller treats the whole sync as a graceful no-op.
-    Errors are logged WITHOUT echoing the SA JSON contents (prevent credential leakage)."""
+    Errors are logged without echoing credential contents."""
     raw = (os.environ.get("GOOGLE_SA_JSON") or "").strip()
     if not raw:
         return None
+    import gspread
+    from google.oauth2.service_account import Credentials
     try:
-        import gspread
-        from google.oauth2.service_account import Credentials
         info = json.loads(raw)
         creds = Credentials.from_service_account_info(info, scopes=SCOPES)
         return gspread.authorize(creds)
-    except Exception as exc:
-        # Log only the error type + message — NEVER the SA JSON contents.
+    except json.JSONDecodeError as exc:
         logging.getLogger(__name__).error(
-            "get_client failed (%s: %s) — sheets sync disabled for this run",
-            type(exc).__name__, exc,
-        )
+            "get_client: GOOGLE_SA_JSON is not valid JSON (%s) — skipping sheet sync", exc)
+        return None
+    except Exception as exc:
+        logging.getLogger(__name__).error(
+            "get_client: failed to build credentials (%s: %s) — skipping sheet sync",
+            type(exc).__name__, exc)
         return None
 
 

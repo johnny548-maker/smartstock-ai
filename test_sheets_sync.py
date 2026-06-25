@@ -2,6 +2,7 @@
 Network/gspread are NOT exercised here (lazy-imported inside the client path), so these run
 offline with no credentials."""
 import json
+import logging
 import os
 import tempfile
 import unittest
@@ -1051,6 +1052,63 @@ class TestPullPositionsCLI(unittest.TestCase):
         self.assertEqual(rc, 0)
         mp.assert_called_once_with(fake_sh)
         msync.assert_not_called()  # pull mode must NOT run the mirror sync
+
+
+class TestGetClientGuard(unittest.TestCase):
+    """Audit #11 — get_client() must handle malformed GOOGLE_SA_JSON gracefully."""
+
+    def test_get_client_returns_none_on_malformed_json(self):
+        """If GOOGLE_SA_JSON is not valid JSON, get_client returns None (no uncaught exception)."""
+        old = os.environ.get("GOOGLE_SA_JSON")
+        os.environ["GOOGLE_SA_JSON"] = "not json {"
+        try:
+            result = ss.get_client()
+            self.assertIsNone(result)
+        finally:
+            if old is None:
+                os.environ.pop("GOOGLE_SA_JSON", None)
+            else:
+                os.environ["GOOGLE_SA_JSON"] = old
+
+    def test_get_client_does_not_log_credentials(self):
+        """On a bad SA JSON containing a private_key, no log output includes SA email or key."""
+        fake_sa = json.dumps({
+            "type": "service_account",
+            "project_id": "proj",
+            "private_key_id": "kid123",
+            "private_key": "-----BEGIN RSA PRIVATE KEY-----\nFAKEKEY\n-----END RSA PRIVATE KEY-----\n",
+            "client_email": "sa@proj.iam.gserviceaccount.com",
+            "client_id": "999",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+        })
+        old = os.environ.get("GOOGLE_SA_JSON")
+        os.environ["GOOGLE_SA_JSON"] = fake_sa
+        logged_messages = []
+
+        class CapturingHandler(logging.Handler):
+            def emit(self, record):
+                logged_messages.append(self.format(record))
+
+        handler = CapturingHandler()
+        logger = logging.getLogger("sheets_sync")
+        logger.addHandler(handler)
+        try:
+            # The Credentials.from_service_account_info call will fail (invalid key material),
+            # triggering our except block — we verify no secret data leaks into any log message.
+            ss.get_client()
+        finally:
+            logger.removeHandler(handler)
+            if old is None:
+                os.environ.pop("GOOGLE_SA_JSON", None)
+            else:
+                os.environ["GOOGLE_SA_JSON"] = old
+
+        combined = "\n".join(logged_messages)
+        self.assertNotIn("FAKEKEY", combined,
+                         "private_key contents must not appear in log output")
+        self.assertNotIn("sa@proj.iam.gserviceaccount.com", combined,
+                         "service account email must not appear in log output")
 
 
 if __name__ == "__main__":
