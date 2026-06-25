@@ -32,6 +32,57 @@ from sources import _cache
 log = logging.getLogger(__name__)
 CODE_RE = re.compile(r"[1-9][0-9]{3}")          # 4-digit common stock (excludes ETF/warrant)
 
+# Sprint 3 #21 — TPEx health surface. Set to {degraded: True, snapshot_date: "YYYY-MM-DD"}
+# when a TPEx fetch fails 3× and we fall back to the last-good snapshot in TW_LISTING_CACHE.
+# data_health.summarize() reads this and emits a `universe_health:tpex` entry so the daily
+# payload surfaces the silent-degradation that previously only logged a WARN.
+_TPEX_STATUS = {"degraded": False, "snapshot_date": None}
+
+
+def _tpex_get_with_retry(url, max_attempts=3):
+    """TPEx-specific GET with exp-backoff (1s, 2s before attempts 2,3) on transient 5xx.
+
+    Mirrors `_get`'s retry policy but is dedicated to TPEx so the caller (`tpex_universe`)
+    can distinguish a *retried-and-still-failed* TPEx fetch (→ degraded flag) from a
+    successful one. Sleeps BEFORE attempts 2 and 3 (not after attempt 3) so the test
+    can assert exactly [1, 2] sleep durations across 3 attempts. Non-transient errors
+    (4xx, ValueError) raise on first occurrence — no retry, no degraded flag (it'd be a
+    code/contract bug, not a transient outage).
+    """
+    for attempt in range(max_attempts):
+        try:
+            r = requests.get(url, headers=config.HTTP_UA, timeout=30)
+            r.raise_for_status()
+            data = r.json()
+            if not isinstance(data, list):
+                log.warning("SKIP %s: non-list payload (%s)", url, type(data).__name__)
+                return []
+            return data
+        except Exception as e:
+            status = getattr(getattr(e, "response", None), "status_code", None)
+            transient = (status in (429, 500, 502, 503, 504)
+                         or isinstance(e, (requests.ConnectionError, requests.Timeout)))
+            if transient and attempt < max_attempts - 1:
+                time.sleep(1 << attempt)   # 1, 2, (4 — never reached at max_attempts=3)
+                continue
+            raise
+
+
+def _mark_tpex_degraded(snapshot_date=None):
+    """Flag the module-level TPEx status as degraded; called by tpex_universe on fallback.
+
+    `snapshot_date` is the YYYY-MM-DD string of the last-good snapshot we're falling back
+    to (TW_LISTING_CACHE mtime → date). Surfaced via data_health.summarize().
+    """
+    _TPEX_STATUS["degraded"] = True
+    _TPEX_STATUS["snapshot_date"] = snapshot_date
+
+
+def _clear_tpex_degraded():
+    """Called by tpex_universe on a successful fetch — clears any prior degraded flag."""
+    _TPEX_STATUS["degraded"] = False
+    _TPEX_STATUS["snapshot_date"] = None
+
 
 def _get(url, retries=3, backoff=2):
     """GET + JSON with a bounded transient retry (429 / 5xx / connection / timeout). These are
@@ -86,19 +137,47 @@ def twse_universe():
 
 
 def tpex_universe():
-    """{code.TWO: (name, dollar_volume)} for TPEx common stocks (keyless)."""
-    base = {r["SecuritiesCompanyCode"]: r.get("CompanyAbbreviation", "")
-            for r in _get(config.TPEX_LIST_URL)
-            if CODE_RE.fullmatch(r.get("SecuritiesCompanyCode", ""))}
-    dv = {}
-    for r in _get(config.TPEX_DAYALL_URL):
-        c = r.get("SecuritiesCompanyCode")
-        if c in base and r.get("TransactionAmount"):
-            try:
-                dv[c] = int(str(r["TransactionAmount"]).replace(",", ""))
-            except ValueError:
-                pass
-    return {c + ".TWO": (base[c], dv.get(c, 0)) for c in base}
+    """{code.TWO: (name, dollar_volume)} for TPEx common stocks (keyless).
+
+    Sprint 3 #21: TPEx 5xx is now visible. On success → clear the module-level
+    degraded flag. On 3-retry failure → tw_listing's outer try/except still catches
+    (snapshot fallback path), then marks _TPEX_STATUS degraded with the snapshot
+    date so data_health surfaces "tpex degraded — using YYYY-MM-DD snapshot".
+    """
+    try:
+        base = {r["SecuritiesCompanyCode"]: r.get("CompanyAbbreviation", "")
+                for r in _tpex_get_with_retry(config.TPEX_LIST_URL)
+                if CODE_RE.fullmatch(r.get("SecuritiesCompanyCode", ""))}
+        dv = {}
+        for r in _tpex_get_with_retry(config.TPEX_DAYALL_URL):
+            c = r.get("SecuritiesCompanyCode")
+            if c in base and r.get("TransactionAmount"):
+                try:
+                    dv[c] = int(str(r["TransactionAmount"]).replace(",", ""))
+                except ValueError:
+                    pass
+        _clear_tpex_degraded()
+        return {c + ".TWO": (base[c], dv.get(c, 0)) for c in base}
+    except Exception:
+        # Surface the failure so tw_listing's outer handler can mark degraded with
+        # the right snapshot date (mtime of TW_LISTING_CACHE → YYYY-MM-DD).
+        _mark_tpex_degraded(snapshot_date=_tw_listing_snapshot_date())
+        raise
+
+
+def _tw_listing_snapshot_date():
+    """Return the TW_LISTING_CACHE mtime as YYYY-MM-DD, or None when absent.
+
+    Used by _mark_tpex_degraded to attach the snapshot date to the degraded entry
+    so the user can see how stale the fallback names are without grep-ing logs.
+    """
+    import datetime as _dt
+    import os as _os
+    try:
+        mtime = _os.path.getmtime(config.TW_LISTING_CACHE)
+        return _dt.date.fromtimestamp(mtime).isoformat()
+    except OSError:
+        return None
 
 
 def tw_listing():

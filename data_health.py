@@ -333,6 +333,28 @@ def _check_state_age(now, state_paths):
     return entries
 
 
+def _check_universe_health():
+    """Sprint 3 #21 — surface universe.py's TPEx degraded flag into the payload `health`.
+
+    When tpex_universe() falls back to the snapshot (TPEx returned 5xx 3×), it sets
+    `universe._TPEX_STATUS["degraded"]=True`. Without this check, that degradation only
+    logged a WARN — the daily payload looked healthy while running on stale TPEx names.
+    Now data_health emits `universe_health:tpex` (degraded) so the PWA health banner
+    + alert workflow see it immediately. Fail-open: import errors → empty list (the
+    surrounding orchestration is already fenced).
+    """
+    try:
+        import universe
+        status = getattr(universe, "_TPEX_STATUS", {})
+        if status.get("degraded"):
+            snap = status.get("snapshot_date") or "unknown"
+            return [_entry("universe_health:tpex", "degraded",
+                           note=f"TPEx 5xx 3× — using {snap} snapshot")]
+    except Exception:    # pragma: no cover — fail-open per module contract
+        pass
+    return []
+
+
 def _check_cache_age(now, cache_paths):
     """C3: flag sources/ caches frozen past their TTL (a dead source serving last-good).
     Missing file or undatable cache → SKIP (graceful, never fabricated)."""
@@ -385,6 +407,7 @@ def summarize(payload, data_dir=None, now=None, state_paths=None):
         ("picks_nan", lambda: _check_picks_nan(payload)),
         ("cache_age", lambda: _check_cache_age(now, _default_cache_paths())),
         ("state_age", lambda: _check_state_age(now, resolved_state_paths)),
+        ("universe_health", lambda: _check_universe_health()),
     )
     sources = []
     for name, run in checks:
