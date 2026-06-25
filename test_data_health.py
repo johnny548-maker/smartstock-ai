@@ -272,6 +272,85 @@ class TestCacheAge(unittest.TestCase):
         self.assertEqual(out[0]["status"], "stale")
 
 
+class TestKellyValidationStaleGate(unittest.TestCase):
+    """Sprint 3 #19: kelly_state / validation_state files older than 40 days
+    must surface a 'degraded' banner with explicit 'N days stale, last refresh
+    YYYY-MM-DD' note — these state files drive sizing and the offline robustness
+    gate, so a silently stale on-disk state is just as dangerous as a dead feed.
+    """
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.d = self._tmp.name
+        self.kelly = os.path.join(self.d, "_kelly_state.json")
+        self.validation = os.path.join(self.d, "_validation_state.json")
+        self._write(self.kelly, {"asof": "2026-01-01"})
+        self._write(self.validation, {"asof": "2026-01-01"})
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def _write(self, path, doc):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(doc, f)
+
+    def _set_mtime(self, path, when):
+        ts = when.timestamp()
+        os.utime(path, (ts, ts))
+
+    def test_kelly_state_stale_gate_degrades_when_older_than_40d(self):
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        # 45 days old → past 40d gate
+        self._set_mtime(self.kelly, now - dt.timedelta(days=45))
+        self._set_mtime(self.validation, now)  # validation fresh
+        out = {e["name"]: e for e in dh._check_state_age(
+            now, {"kelly": self.kelly, "validation": self.validation})}
+        self.assertEqual(out["state:kelly"]["status"], "degraded")
+        self.assertIn("45 days stale", out["state:kelly"]["note"])
+        self.assertIn("last refresh 2026-05-11", out["state:kelly"]["note"])
+
+    def test_validation_state_stale_gate_degrades_when_older_than_40d(self):
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        self._set_mtime(self.kelly, now)        # kelly fresh
+        self._set_mtime(self.validation, now - dt.timedelta(days=41))
+        out = {e["name"]: e for e in dh._check_state_age(
+            now, {"kelly": self.kelly, "validation": self.validation})}
+        self.assertEqual(out["state:validation"]["status"], "degraded")
+        self.assertIn("41 days stale", out["state:validation"]["note"])
+        self.assertIn("last refresh 2026-05-15", out["state:validation"]["note"])
+
+    def test_stale_gate_not_triggered_when_fresh(self):
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        # both 10 days old → well under the 40d gate
+        self._set_mtime(self.kelly, now - dt.timedelta(days=10))
+        self._set_mtime(self.validation, now - dt.timedelta(days=10))
+        out = {e["name"]: e for e in dh._check_state_age(
+            now, {"kelly": self.kelly, "validation": self.validation})}
+        self.assertEqual(out["state:kelly"]["status"], "ok")
+        self.assertEqual(out["state:validation"]["status"], "ok")
+
+    def test_missing_state_skips(self):
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        out = dh._check_state_age(now, {"kelly": "/no/such/_kelly_state.json"})
+        self.assertEqual(out[0]["status"], "skip")
+
+    def test_stale_state_degrades_overall_report(self):
+        # end-to-end: when summarize() picks up a 45d-old kelly_state via the
+        # default path, the overall report banner must reflect 'degraded'.
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        self._set_mtime(self.kelly, now - dt.timedelta(days=45))
+        self._set_mtime(self.validation, now)
+        payload = make_payload(date="2026-06-25", generated_at="2026-06-25T05:41:48",
+                               picks=[{"stock": "A.TW", "price": 1.0, "score": 1,
+                                       "ohlc": [{"time": "2026-06-25"}]}])
+        report = dh.summarize(payload, None, now=now,
+                              state_paths={"kelly": self.kelly,
+                                           "validation": self.validation})
+        e = entry(report, "state:kelly")
+        self.assertEqual(e["status"], "degraded")
+        self.assertEqual(report["overall"], "degraded")
+
+
 class TestBdayLag(unittest.TestCase):
     """Audit fix: a weekend report date must not over-count the freshness lag (false degraded)."""
 
