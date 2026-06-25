@@ -213,19 +213,34 @@ jobs:
       - name: Commit report to docs/data
         if: steps.report_check.outputs.skip != 'true'
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data
+          # || true is intentional: empty-commit case is not a failure for THIS step
+          # (the push loop below is a no-op when there is nothing new to push).
           git commit -m "report: $(date -u +%F)" || echo "no changes to commit"
           # rebase-retry: a concurrent push (the index-rebuild job, a manual dispatch, or a
           # human commit) can move main between commit and push; without this the whole run
           # fails and the freshly-generated report is LOST. Rebase onto remote and retry.
+          # Audit follow-up #6 (PR #21): all-5-fail path used to fall through silently and
+          # the subsequent "Rebuild date index" step (if: always()) would push an index
+          # referencing a report that doesn't exist on origin. Track success with PUSHED
+          # flag and exit 1 explicitly so the rebuild step is gated off by `if: success()`.
+          PUSHED=false
           for i in 1 2 3 4 5; do
-            git push && break
+            if git push; then
+              PUSHED=true
+              break
+            fi
             echo "push rejected (race), rebase + retry $i/5"
             git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
             sleep 5
           done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit report: push failed after 5 attempts. Today's report was NOT published to origin — refusing to silently proceed (would leave index/main divergence after rebuild step)."
+            exit 1
+          fi
 
       # Sprint 2 P2: sync 7 P0 raw-data sources (~1800 stocks) into the month-shard all-stocks
       # Sheet for archival / backtest / ad-hoc analysis. OVERLAY-NOT-SCORER — pure archive write,
@@ -242,19 +257,47 @@ jobs:
 
       # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
       # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the
-      # index from the actual report files EVERY run (unconditional) so the picker always lists
-      # exactly the reports that exist. Self-heals a clobbered index without waiting for new data.
-      - name: Rebuild date index (always — self-heal stale picker)
-        if: always()
+      # index from the actual report files EVERY run so the picker always lists exactly the
+      # reports that exist. Self-heals a clobbered index without waiting for new data.
+      #
+      # Audit follow-up #6+#7 (PR #21): gate is now `if: success()` (was `if: always()`).
+      # Rationale: if "Commit report" fails to push, rebuilding the date index now would
+      # publish an index referencing a <date>.json that exists ONLY locally — causing the
+      # picker to show a date the PWA can't load. The self-heal job runs on the NEXT
+      # successful daily run anyway (index is always rebuilt from disk), so deferring is safe.
+      - name: Rebuild date index (self-heal stale picker)
+        if: success() && steps.report_check.outputs.skip != 'true'
         run: |
+          set -euo pipefail
           python -c "import web_export, os; n=len(web_export._rebuild_index(os.path.join('docs','data'))); print('::notice::date index rebuilt with %d dates' % n)"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/index.json
+          # || true is intentional: empty-commit case is not a failure for THIS step
+          # (the push loop below is a no-op when there is nothing new to push).
           git commit -m "chore: rebuild date index" || echo "index already current"
+          # Audit follow-up #7 (PR #21): the previous `|| echo "nothing to push"` after the
+          # loop swallowed a genuine all-retries-failed push error as a no-op. Track success
+          # with a flag and exit-1 explicitly so the failure surfaces (notify-failure job
+          # opens a fingerprinted issue rather than the run going green with a stale index).
+          PUSHED=false
           for i in 1 2 3 4 5; do
-            git push && break
+            if git push; then
+              PUSHED=true
+              break
+            fi
             echo "index push rejected (race), rebase + retry $i/5"
             git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
             sleep 5
-          done || echo "nothing to push"
+          done
+          if [ "${PUSHED}" = "false" ]; then
+            # Distinguish nothing-to-push (HEAD matches origin) from real push failure.
+            # `git status -uno` reports "Your branch is up to date" when the local commit
+            # was either a no-op or already pushed by a concurrent job — both are benign.
+            if git status -uno | grep -q "Your branch is up to date"; then
+              echo "::notice::index already on origin (concurrent push or no-op commit) — treating as success"
+            else
+              echo "::error::Rebuild date index: push failed after 5 attempts. Index NOT published — picker may show stale dates until next successful run."
+              exit 1
+            fi
+          fi
