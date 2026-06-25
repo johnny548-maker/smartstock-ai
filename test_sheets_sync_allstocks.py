@@ -153,19 +153,23 @@ class TestBootstrapSkipsCreateWhenExists(unittest.TestCase):
 
 class TestBootstrapEnsuresAllSevenTabs(unittest.TestCase):
     def test_exactly_7_worksheets_after_bootstrap(self):
+        """Sprint 3 #22: tab count grew from 7 (P0) to 13 (P0+6 P1)."""
         result, client = _run_bootstrap()
         sh = client._drive[0]
-        self.assertEqual(len(sh._worksheets), 7,
-                         f"expected 7 tabs, got {len(sh._worksheets)}: "
+        self.assertEqual(len(sh._worksheets), 13,
+                         f"expected 13 tabs (7 P0 + 6 P1), got {len(sh._worksheets)}: "
                          f"{list(sh._worksheets.keys())}")
 
     def test_tab_names_match_spec(self):
+        """Sprint 3 #22: tab set includes 7 P0 + 6 P1 sources."""
         result, client = _run_bootstrap()
         sh = client._drive[0]
         expected = {
             "bwibbu_daily", "mi_margn_daily", "t86_daily",
             "tpex_3insti_daily", "tpex_margin_daily", "tpex_per_daily",
             "tdcc_weekly",
+            "stock_day_all_daily", "t187ap03_monthly", "notice_punish_daily",
+            "sec_frames_quarterly", "sec_ftd_semimonthly", "cnyes_news_daily",
         }
         self.assertEqual(set(sh._worksheets.keys()), expected)
 
@@ -342,7 +346,7 @@ class TestBootstrapPrintsSecretExportLine(unittest.TestCase):
         self.assertIn("TABS=", out)
         tabs_line = next(l for l in out.splitlines() if l.startswith("TABS="))
         tabs = tabs_line.replace("TABS=", "").split(",")
-        self.assertEqual(len(tabs), 7)
+        self.assertEqual(len(tabs), 13)   # Sprint 3 #22: 7 P0 + 6 P1
 
     def test_prints_user_shared_line(self):
         _, out, _ = self._capture_main_bootstrap(user_email="alice@example.com")
@@ -365,8 +369,9 @@ class TestBootstrapIdempotent(unittest.TestCase):
             with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
                 sa.bootstrap(month="2026-06", user_email="x@x.com", index_path=tmp)
             sh = client._drive[0]
-            self.assertEqual(len(sh._worksheets), 7,
-                             "tabs must NOT be duplicated on second bootstrap call")
+            self.assertEqual(len(sh._worksheets), 13,
+                             "tabs must NOT be duplicated on second bootstrap call "
+                             "(Sprint 3 #22: 13 = 7 P0 + 6 P1)")
         finally:
             os.unlink(tmp)
 
@@ -438,8 +443,8 @@ class TestBootstrapWithExistingIdSkipsCreate(unittest.TestCase):
         self.assertIn("abc123", client.open_by_key_calls,
                       "open_by_key('abc123') must be called")
         self.assertEqual(result["id"], "abc123")
-        # 7 tabs must be ensured
-        self.assertEqual(len(sh._worksheets), 7)
+        # 13 tabs must be ensured (Sprint 3 #22: 7 P0 + 6 P1)
+        self.assertEqual(len(sh._worksheets), 13)
 
 
 class TestBootstrapWithExistingIdWritesIndex(unittest.TestCase):
@@ -537,7 +542,7 @@ class TestBootstrapExistingIdIdempotent(unittest.TestCase):
         sh = _FakeSpreadsheet(title="smartstock-allstocks-2026-06",
                               sheet_id="abc123")
         client = _FakeClient(existing=[sh])
-        # First call — creates 7 tabs
+        # First call — creates 13 tabs (Sprint 3 #22: 7 P0 + 6 P1)
         with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
             sa.bootstrap(month="2026-06", user_email="x@x.com",
                          existing_id="abc123", index_path=os.devnull)
@@ -545,7 +550,7 @@ class TestBootstrapExistingIdIdempotent(unittest.TestCase):
         with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
             sa.bootstrap(month="2026-06", user_email="x@x.com",
                          existing_id="abc123", index_path=os.devnull)
-        self.assertEqual(len(sh._worksheets), 7,
+        self.assertEqual(len(sh._worksheets), 13,
                          "tabs must NOT be duplicated on second bootstrap call with existing_id")
         self.assertEqual(len(client.create_calls), 0,
                          "create() must never be called when existing_id is supplied")
@@ -666,8 +671,14 @@ def _make_index_file(tmp_dir, month="2026-06", sheet_id="1VqRmlyD2LcXye1flAE9kFe
 def _run_sync(sheet, index_path, date_str="2026-06-24",
               bwibbu_fn=None, mi_margn_fn=None, t86_fn=None,
               tpex_3insti_fn=None, tpex_margin_fn=None, tpex_pe_fn=None,
-              tdcc_fn=None):
-    """Run sync_allstocks with fake client + injected fetchers; return counts dict."""
+              tdcc_fn=None,
+              stock_day_all_fn=None, t187ap03_fn=None, notice_fn=None,
+              punish_fn=None, sec_frames_fn=None, sec_ftd_fn=None, cnyes_fn=None):
+    """Run sync_allstocks with fake client + injected fetchers; return counts dict.
+
+    Sprint 3 #22: extended with 6 P1 fetcher overrides. Each defaults to an empty
+    return (no network) so legacy callers stay valid — existing P0 tests still
+    pass without modification; the 6 new sources just sync zero rows."""
     client = _FakeClientFull(sheet=sheet)
     patches = [
         mock.patch("sheets_sync_allstocks.get_client", return_value=client),
@@ -678,6 +689,14 @@ def _run_sync(sheet, index_path, date_str="2026-06-24",
         mock.patch("sheets_sync_allstocks._fetch_tpex_margin", side_effect=tpex_margin_fn or (lambda: _TPEX_MARGIN_RAW)),
         mock.patch("sheets_sync_allstocks._fetch_tpex_pe", side_effect=tpex_pe_fn or (lambda: _TPEX_PE_RAW)),
         mock.patch("sheets_sync_allstocks._fetch_tdcc", side_effect=tdcc_fn or (lambda: _TDCC_ROWS)),
+        # Sprint 3 #22 — P1 fetchers default to empty list/dict (no network)
+        mock.patch("sheets_sync_allstocks._fetch_stock_day_all", side_effect=stock_day_all_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_t187ap03", side_effect=t187ap03_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_notice", side_effect=notice_fn or (lambda: {})),
+        mock.patch("sheets_sync_allstocks._fetch_punish", side_effect=punish_fn or (lambda: {})),
+        mock.patch("sheets_sync_allstocks._fetch_sec_frames", side_effect=sec_frames_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_sec_ftd", side_effect=sec_ftd_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_cnyes", side_effect=cnyes_fn or (lambda: [])),
     ]
     with contextlib.ExitStack() as stack:
         for p in patches:
@@ -700,7 +719,14 @@ class TestSyncAllstocksReadsIndexAndOpensSheet(unittest.TestCase):
                  mock.patch("sheets_sync_allstocks._fetch_tpex_3insti", return_value=_TPEX_3INSTI_RAW), \
                  mock.patch("sheets_sync_allstocks._fetch_tpex_margin", return_value=_TPEX_MARGIN_RAW), \
                  mock.patch("sheets_sync_allstocks._fetch_tpex_pe", return_value=_TPEX_PE_RAW), \
-                 mock.patch("sheets_sync_allstocks._fetch_tdcc", return_value=_TDCC_ROWS):
+                 mock.patch("sheets_sync_allstocks._fetch_tdcc", return_value=_TDCC_ROWS), \
+                 mock.patch("sheets_sync_allstocks._fetch_stock_day_all", return_value=[]), \
+                 mock.patch("sheets_sync_allstocks._fetch_t187ap03", return_value=[]), \
+                 mock.patch("sheets_sync_allstocks._fetch_notice", return_value={}), \
+                 mock.patch("sheets_sync_allstocks._fetch_punish", return_value={}), \
+                 mock.patch("sheets_sync_allstocks._fetch_sec_frames", return_value=[]), \
+                 mock.patch("sheets_sync_allstocks._fetch_sec_ftd", return_value=[]), \
+                 mock.patch("sheets_sync_allstocks._fetch_cnyes", return_value=[]):
                 sa.sync_allstocks(date_str="2026-06-24", index_path=idx)
             self.assertIn("1VqRmlyD2LcXye1flAE9kFeLs7oyrW9KyReAjTvB-iK8",
                           client.open_by_key_calls,
@@ -1020,6 +1046,14 @@ def _run_sync_with_source(sheet, index_path, date_str="2026-06-24", source_filte
                    side_effect=tpex_pe_fn or (lambda: _TPEX_PE_RAW)),
         mock.patch("sheets_sync_allstocks._fetch_tdcc",
                    side_effect=tdcc_fn or (lambda: _TDCC_ROWS)),
+        # Sprint 3 #22 — P1 fetchers default empty (no network)
+        mock.patch("sheets_sync_allstocks._fetch_stock_day_all", side_effect=lambda: []),
+        mock.patch("sheets_sync_allstocks._fetch_t187ap03", side_effect=lambda: []),
+        mock.patch("sheets_sync_allstocks._fetch_notice", side_effect=lambda: {}),
+        mock.patch("sheets_sync_allstocks._fetch_punish", side_effect=lambda: {}),
+        mock.patch("sheets_sync_allstocks._fetch_sec_frames", side_effect=lambda: []),
+        mock.patch("sheets_sync_allstocks._fetch_sec_ftd", side_effect=lambda: []),
+        mock.patch("sheets_sync_allstocks._fetch_cnyes", side_effect=lambda: []),
     ]
     with contextlib.ExitStack() as stack:
         for p in patches:
@@ -1073,7 +1107,10 @@ class TestSyncAllstocksSourceFilterOnlyRunsNamedSource(unittest.TestCase):
         self.assertGreater(len(ws_tdcc._rows), 1,
                            "tdcc_weekly must have data rows when it is the only source")
         for tab in ("bwibbu_daily", "mi_margn_daily", "t86_daily",
-                    "tpex_3insti_daily", "tpex_margin_daily", "tpex_per_daily"):
+                    "tpex_3insti_daily", "tpex_margin_daily", "tpex_per_daily",
+                    # Sprint 3 #22 — P1 tabs also expected header-only when filtered out
+                    "stock_day_all_daily", "t187ap03_monthly", "notice_punish_daily",
+                    "sec_frames_quarterly", "sec_ftd_semimonthly", "cnyes_news_daily"):
             ws = sh._worksheets[tab]
             self.assertEqual(len(ws._rows), 1,
                              f"tab {tab!r} must stay header-only when filtered out")
@@ -1164,6 +1201,14 @@ class TestCliSourceArg(unittest.TestCase):
                            side_effect=track("tpex_pe", _TPEX_PE_RAW)),
                 mock.patch("sheets_sync_allstocks._fetch_tdcc",
                            side_effect=track("tdcc", _TDCC_ROWS)),
+                # Sprint 3 #22 — P1 fetchers default empty (no network)
+                mock.patch("sheets_sync_allstocks._fetch_stock_day_all", side_effect=lambda: []),
+                mock.patch("sheets_sync_allstocks._fetch_t187ap03", side_effect=lambda: []),
+                mock.patch("sheets_sync_allstocks._fetch_notice", side_effect=lambda: {}),
+                mock.patch("sheets_sync_allstocks._fetch_punish", side_effect=lambda: {}),
+                mock.patch("sheets_sync_allstocks._fetch_sec_frames", side_effect=lambda: []),
+                mock.patch("sheets_sync_allstocks._fetch_sec_ftd", side_effect=lambda: []),
+                mock.patch("sheets_sync_allstocks._fetch_cnyes", side_effect=lambda: []),
                 mock.patch.dict(os.environ, {"GOOGLE_SA_JSON": '{"type":"service_account"}'}),
             ]
             with contextlib.ExitStack() as stack:
@@ -1177,6 +1222,256 @@ class TestCliSourceArg(unittest.TestCase):
         for name in ("bwibbu", "mi_margn", "t86", "tpex_3insti", "tpex_margin", "tpex_pe"):
             self.assertNotIn(name, calls,
                              f"fetcher {name!r} must NOT be called with --source tdcc_weekly")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Sprint 3 #22 — P1 source wiring tests (6 new sources)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Minimal fixtures matching each P1 fetcher's real return shape
+
+_STOCK_DAY_ALL_RAW = [
+    {"Code": "2330", "Name": "台積電",
+     "OpeningPrice": "1080", "HighestPrice": "1090", "LowestPrice": "1075",
+     "ClosingPrice": "1085", "TradeVolume": "25000000", "TradeValue": "27125000000"},
+    {"Code": "2317", "Name": "鴻海",
+     "OpeningPrice": "210", "HighestPrice": "212", "LowestPrice": "209",
+     "ClosingPrice": "211", "TradeVolume": "18000000", "TradeValue": "3798000000"},
+]
+
+_T187AP03_RAW = [
+    {"公司代號": "2330", "公司簡稱": "台積電",
+     "已發行普通股數及TDR原股發行股數": "25930380458", "出表日期": "1150624"},
+    {"公司代號": "2317", "公司簡稱": "鴻海",
+     "已發行普通股數及TDR原股發行股數": "13860000000", "出表日期": "1150624"},
+]
+
+_NOTICE_MAP = {
+    "2454": {"reason": "週/月成交量異常", "count": 3, "date": "2026-06-24", "name": "聯發科"},
+}
+
+_PUNISH_MAP = {
+    "6488": {"reason": "處置條件達成", "date": "2026-06-24",
+             "level": 1, "period": "10 個營業日", "name": "環球晶"},
+}
+
+_SEC_FRAMES_RAW = [
+    {"cik": "0000320193", "concept": "Revenues", "period": "CY2026Q1",
+     "val": 123456789000.0, "end": "2026-03-31", "accn": "0000320193-26-000001",
+     "entity": "APPLE INC"},
+    {"cik": "0000320193", "concept": "NetIncomeLoss", "period": "CY2026Q1",
+     "val": 35000000000.0, "end": "2026-03-31", "accn": "0000320193-26-000001",
+     "entity": "APPLE INC"},
+]
+
+_SEC_FTD_RAW = [
+    {"settlement_date": "20260615", "cusip": "037833100", "symbol": "AAPL",
+     "quantity": 12345, "description": "APPLE INC", "price": "215.50"},
+    {"settlement_date": "20260615", "cusip": "594918104", "symbol": "MSFT",
+     "quantity": 5678, "description": "MICROSOFT CORP", "price": "455.10"},
+]
+
+_CNYES_RAW = [
+    {"newsId": 5123456, "title": "台積電 6 月營收續創新高",
+     "publishAt": 1782739200,   # arbitrary epoch s in 2026
+     "stock": ["2330"]},
+    {"newsId": 5123457, "title": "聯發科手機晶片市佔超前競爭",
+     "publishAt": 1782739800,
+     "stock": ["2454"], "market": [{"code": "2454", "name": "聯發科", "symbol": "TWSE:2454"}]},
+]
+
+
+# ── P1 row-builder tests ──────────────────────────────────────────────────────
+
+class TestBuildStockDayAllRows(unittest.TestCase):
+    def test_row_matches_headers(self):
+        rows = sa._build_stock_day_all_rows("2026-06-24", _STOCK_DAY_ALL_RAW)
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["stock_day_all_daily"]))
+
+    def test_first_col_is_date(self):
+        rows = sa._build_stock_day_all_rows("2026-06-24", _STOCK_DAY_ALL_RAW)
+        self.assertEqual(rows[0][0], "2026-06-24")
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_stock_day_all_rows("2026-06-24", []), [])
+
+    def test_skips_rows_without_code(self):
+        rows = sa._build_stock_day_all_rows("2026-06-24",
+                                             [{"Code": "", "Name": "blank"}])
+        self.assertEqual(rows, [])
+
+
+class TestBuildT187ap03Rows(unittest.TestCase):
+    def test_row_matches_headers(self):
+        rows = sa._build_t187ap03_rows("2026-06", _T187AP03_RAW)
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["t187ap03_monthly"]))
+
+    def test_first_col_is_yyyymm(self):
+        rows = sa._build_t187ap03_rows("2026-06", _T187AP03_RAW)
+        self.assertEqual(rows[0][0], "2026-06")
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_t187ap03_rows("2026-06", []), [])
+
+
+class TestBuildNoticePunishRows(unittest.TestCase):
+    def test_combined_notice_and_punish_yields_both(self):
+        rows = sa._build_notice_punish_rows("2026-06-24", _NOTICE_MAP, _PUNISH_MAP)
+        types = [r[3] for r in rows]
+        self.assertIn("notice", types)
+        self.assertIn("punish", types)
+
+    def test_row_matches_headers(self):
+        rows = sa._build_notice_punish_rows("2026-06-24", _NOTICE_MAP, _PUNISH_MAP)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["notice_punish_daily"]))
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_notice_punish_rows("2026-06-24", {}, {}), [])
+
+    def test_punish_carries_period(self):
+        rows = sa._build_notice_punish_rows("2026-06-24", {}, _PUNISH_MAP)
+        # period is column index 5 per header
+        self.assertEqual(rows[0][5], "10 個營業日")
+
+
+class TestBuildSecFramesRows(unittest.TestCase):
+    def test_row_matches_headers(self):
+        rows = sa._build_sec_frames_rows(_SEC_FRAMES_RAW)
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["sec_frames_quarterly"]))
+
+    def test_concept_preserved(self):
+        rows = sa._build_sec_frames_rows(_SEC_FRAMES_RAW)
+        concepts = [r[1] for r in rows]   # concept column
+        self.assertIn("Revenues", concepts)
+        self.assertIn("NetIncomeLoss", concepts)
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_sec_frames_rows([]), [])
+
+    def test_skips_rows_without_cik(self):
+        rows = sa._build_sec_frames_rows([{"cik": "", "concept": "Revenues", "val": 1.0}])
+        self.assertEqual(rows, [])
+
+
+class TestBuildSecFtdRows(unittest.TestCase):
+    def test_row_matches_headers(self):
+        rows = sa._build_sec_ftd_rows(_SEC_FTD_RAW)
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["sec_ftd_semimonthly"]))
+
+    def test_symbol_uppercased_in_real_data(self):
+        rows = sa._build_sec_ftd_rows(_SEC_FTD_RAW)
+        symbols = [r[1] for r in rows]
+        self.assertIn("AAPL", symbols)
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_sec_ftd_rows([]), [])
+
+
+class TestBuildCnyesRows(unittest.TestCase):
+    def test_row_matches_headers(self):
+        rows = sa._build_cnyes_rows("2026-06-24", _CNYES_RAW)
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(len(row), len(sa.TAB_HEADERS["cnyes_news_daily"]))
+
+    def test_stock_codes_joined_comma(self):
+        rows = sa._build_cnyes_rows("2026-06-24", _CNYES_RAW)
+        # First item has stock=["2330"] → "2330"
+        self.assertEqual(rows[0][1], "2330")
+
+    def test_market_fallback_when_no_stock(self):
+        no_stock_raw = [{"newsId": 999, "title": "market fallback test",
+                         "publishAt": 1782739200,
+                         "market": [{"code": "1234", "name": "test"}]}]
+        rows = sa._build_cnyes_rows("2026-06-24", no_stock_raw)
+        self.assertEqual(rows[0][1], "1234")
+
+    def test_empty_input_returns_empty(self):
+        self.assertEqual(sa._build_cnyes_rows("2026-06-24", []), [])
+
+    def test_skips_items_without_title(self):
+        rows = sa._build_cnyes_rows("2026-06-24",
+                                     [{"newsId": 1, "title": "", "stock": ["2330"]}])
+        self.assertEqual(rows, [])
+
+
+# ── P1 integration tests (failure isolation) ──────────────────────────────────
+
+class TestSyncAllstocksP1FailureIsolation(unittest.TestCase):
+    """One P1 fetcher raising must NOT block the other 5 P1 sources or the 7 P0s."""
+
+    def test_stock_day_all_raises_others_still_sync(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            counts = _run_sync(sh, idx,
+                               stock_day_all_fn=lambda: (_ for _ in ()).throw(RuntimeError("boom")))
+        # stock_day_all → SKIP (-1); other P1 sources → 0; P0 sources → real counts
+        self.assertEqual(counts["stock_day_all_daily"], -1,
+                         "failed source must report -1")
+        self.assertGreaterEqual(counts["bwibbu_daily"], 1,
+                                "P0 sources must still sync when one P1 source fails")
+        self.assertEqual(counts["cnyes_news_daily"], 0,
+                         "other P1 sources unaffected")
+
+
+class TestSyncAllstocksP1AllSourcesSynced(unittest.TestCase):
+    """End-to-end: all 13 sources (7 P0 + 6 P1) must appear in counts dict."""
+
+    def test_all_13_keys_present_in_counts(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            counts = _run_sync(sh, idx,
+                               stock_day_all_fn=lambda: _STOCK_DAY_ALL_RAW,
+                               t187ap03_fn=lambda: _T187AP03_RAW,
+                               notice_fn=lambda: _NOTICE_MAP,
+                               punish_fn=lambda: _PUNISH_MAP,
+                               sec_frames_fn=lambda: _SEC_FRAMES_RAW,
+                               sec_ftd_fn=lambda: _SEC_FTD_RAW,
+                               cnyes_fn=lambda: _CNYES_RAW)
+        for tab in sa._TAB_ORDER:
+            self.assertIn(tab, counts, f"counts must include {tab!r}")
+        # P1 counts should be > 0 when fixtures are supplied
+        self.assertEqual(counts["stock_day_all_daily"], 2)
+        self.assertEqual(counts["t187ap03_monthly"], 2)
+        self.assertEqual(counts["notice_punish_daily"], 2)   # 1 notice + 1 punish
+        self.assertEqual(counts["sec_frames_quarterly"], 2)
+        self.assertEqual(counts["sec_ftd_semimonthly"], 2)
+        self.assertEqual(counts["cnyes_news_daily"], 2)
+
+
+class TestSyncAllstocksP1WritesToCorrectTab(unittest.TestCase):
+    """Each P1 source must write its rows to its named tab (not another tab)."""
+
+    def test_p1_sources_write_to_their_own_tabs(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync(sh, idx,
+                      stock_day_all_fn=lambda: _STOCK_DAY_ALL_RAW,
+                      t187ap03_fn=lambda: _T187AP03_RAW,
+                      notice_fn=lambda: _NOTICE_MAP,
+                      punish_fn=lambda: _PUNISH_MAP,
+                      sec_frames_fn=lambda: _SEC_FRAMES_RAW,
+                      sec_ftd_fn=lambda: _SEC_FTD_RAW,
+                      cnyes_fn=lambda: _CNYES_RAW)
+        # row[0] is the header, row[1:] are data rows
+        self.assertEqual(len(sh._worksheets["stock_day_all_daily"]._rows), 1 + 2)
+        self.assertEqual(len(sh._worksheets["t187ap03_monthly"]._rows), 1 + 2)
+        self.assertEqual(len(sh._worksheets["notice_punish_daily"]._rows), 1 + 2)
+        self.assertEqual(len(sh._worksheets["sec_frames_quarterly"]._rows), 1 + 2)
+        self.assertEqual(len(sh._worksheets["sec_ftd_semimonthly"]._rows), 1 + 2)
+        self.assertEqual(len(sh._worksheets["cnyes_news_daily"]._rows), 1 + 2)
 
 
 if __name__ == "__main__":
