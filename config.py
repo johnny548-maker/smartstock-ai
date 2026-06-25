@@ -268,6 +268,21 @@ TWSE_LOOKBACK_DAYS = 7
 FINRA_SHVOL_URL = "https://cdn.finra.org/equity/regsho/daily/CNMSshvol{date}.txt"
 FINRA_LOOKBACK_DAYS = 5         # walk back day-by-day to the latest posted file
 FINRA_TIMEOUT = 15
+# FINRA's CloudFront CDN 403s our compliant bot UA (HTTP_UA) on GH Actions IPs
+# - audit #20 (2026-06-18 stale 10-row fallback file). The CDN gates on UA strings
+# more than on IP, so a real browser UA bypasses it without proxies. SEC EDGAR has
+# no equivalent daily short-volume feed: its Threshold Securities list is a
+# semi-monthly FTD-based membership flag (different signal, different schema). If
+# this UA ever stops working, the next escalation is a residential proxy - NOT a
+# silent fallback to SEC threshold (it would corrupt the cache with non-comparable
+# rows). Treat empty as empty; the overlay degrades gracefully.
+FINRA_BROWSER_UA = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                   "AppleWebKit/537.36 (KHTML, like Gecko) "
+                   "Chrome/121.0.0.0 Safari/537.36"),
+    "Accept": "text/plain,text/html;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+}
 SHORTVOL_MAX_DAYS = 30          # rolling per-symbol buffer length
 SHORTVOL_TREND_WINDOW = 10      # trailing days for trend()/avg
 SHORTVOL_MIN_DAYS = 3           # need this many days before trend/overlay

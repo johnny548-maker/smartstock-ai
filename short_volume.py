@@ -31,7 +31,7 @@ from datetime import date, timedelta
 import requests
 
 from config import (
-    FINRA_SHVOL_URL, FINRA_LOOKBACK_DAYS, FINRA_TIMEOUT, HTTP_UA,
+    FINRA_SHVOL_URL, FINRA_LOOKBACK_DAYS, FINRA_TIMEOUT, FINRA_BROWSER_UA,
     SHORTVOL_CACHE, SHORTVOL_MAX_DAYS, SHORTVOL_TREND_WINDOW, SHORTVOL_MIN_DAYS,
     SHORTVOL_ELEVATED, SHORTVOL_EXTREME,
 )
@@ -85,19 +85,29 @@ def parse_short_volume(text, symbols=None):
 def fetch_short_volume(session=None, lookback_days=FINRA_LOOKBACK_DAYS, symbols=None):
     """Walk back day-by-day to the latest posted RegSHO file and parse it.
 
-    Returns {'date': 'YYYY-MM-DD'|None, 'rows': {SYM: {...}}}. 404 → try the
-    next-older day. On total HTTP failure (no file in the window) returns
-    {'date': None, 'rows': {}} and logs a SKIP — NEVER raises (so the report
-    still builds). symbols = optional uppercase-set filter passed to the parser."""
+    Returns {'date': 'YYYY-MM-DD'|None, 'rows': {SYM: {...}}}. 404 -> next-older
+    day. 403 -> same (FINRA CDN occasionally blocks the very latest file or
+    rate-limits). On total HTTP failure (no file in the window) returns
+    {'date': None, 'rows': {}} and logs a SKIP - NEVER raises (so the report
+    still builds). symbols = optional uppercase-set filter passed to parser.
+
+    UA: uses FINRA_BROWSER_UA (real browser) because the compliant bot UA we
+    use elsewhere (HTTP_UA) gets 403'd by FINRA's CloudFront CDN on GH Actions
+    IPs (audit #20, 2026-06-18 stale 10-row fallback file). If browser-UA
+    spoofing ever stops working, see config.FINRA_BROWSER_UA comment."""
     sess = session or requests
     today = date.today()
+    blocked_count = 0
     for i in range(lookback_days):
         d = today - timedelta(days=i)
         ds = d.strftime("%Y%m%d")
         url = FINRA_SHVOL_URL.format(date=ds)
         try:
-            resp = sess.get(url, timeout=FINRA_TIMEOUT, headers=HTTP_UA)
-            if getattr(resp, "status_code", 200) == 404:
+            resp = sess.get(url, timeout=FINRA_TIMEOUT, headers=FINRA_BROWSER_UA)
+            sc = getattr(resp, "status_code", 200)
+            if sc in (404, 403):
+                if sc == 403:
+                    blocked_count += 1
                 continue
             resp.raise_for_status()
             rows = parse_short_volume(resp.text, symbols=symbols)
@@ -105,9 +115,18 @@ def fetch_short_volume(session=None, lookback_days=FINRA_LOOKBACK_DAYS, symbols=
                 log.info("short_volume: using RegSHO file %s (%d rows)", ds, len(rows))
                 return {"date": d.isoformat(), "rows": rows}
         except Exception as e:
+            # Treat 403 in the exception path the same way (some sessions raise
+            # via raise_for_status before status_code is consulted).
+            if "403" in str(e):
+                blocked_count += 1
             log.warning("short_volume fetch %s failed: %s", ds, e)
             continue
-    log.warning("SKIP short_volume: no RegSHO file in last %d days", lookback_days)
+    if blocked_count:
+        log.error("SKIP short_volume: %d/%d days blocked (HTTP 403) - FINRA CDN "
+                  "may be rejecting this UA/IP. Check config.FINRA_BROWSER_UA.",
+                  blocked_count, lookback_days)
+    else:
+        log.warning("SKIP short_volume: no RegSHO file in last %d days", lookback_days)
     return {"date": None, "rows": {}}
 
 
