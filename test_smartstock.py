@@ -4,6 +4,7 @@ No network — synthetic OHLCV DataFrames only."""
 import math
 import os
 import unittest
+import unittest.mock
 import numpy as np
 import pandas as pd
 
@@ -2311,6 +2312,119 @@ class TestBenchmarkRouting(unittest.TestCase):
         self.assertEqual(strategy._bare("8069.TWO"), "8069")   # not the '8069O' .replace bug
         self.assertEqual(strategy._bare("2330.TW"), "2330")
         self.assertEqual(strategy._bare("AAPL"), "AAPL")
+
+
+class TestTPExFallbackHealth(unittest.TestCase):
+    """Audit #21 — TPEx 5xx exp-backoff + degraded surface to data_health."""
+
+    def _make_5xx_response(self, status_code=503):
+        import requests
+        resp = requests.models.Response()
+        resp.status_code = status_code
+        return resp
+
+    def test_tpex_5xx_triggers_3_retries_before_fallback(self):
+        """_tpex_get_with_retry must attempt 3 times on 5xx before raising."""
+        import requests
+        import universe as univ
+        call_count = [0]
+
+        def fake_get(url, headers=None, timeout=30):
+            call_count[0] += 1
+            resp = self._make_5xx_response(503)
+            raise requests.HTTPError(response=resp)
+
+        with unittest.mock.patch("universe.requests.get", side_effect=fake_get), \
+             unittest.mock.patch("universe.time.sleep"):
+            try:
+                univ._tpex_get_with_retry("http://example.com/tpex")
+            except Exception:
+                pass
+        self.assertEqual(call_count[0], 3,
+                         "Expected exactly 3 attempts (1 initial + 2 retries) before giving up")
+
+    def test_tpex_5xx_uses_exp_backoff_sleeps(self):
+        """_tpex_get_with_retry must sleep 1s, 2s (before attempts 2 and 3) on 5xx."""
+        import requests
+        import universe as univ
+        sleep_calls = []
+
+        def fake_get(url, headers=None, timeout=30):
+            resp = self._make_5xx_response(503)
+            raise requests.HTTPError(response=resp)
+
+        def fake_sleep(s):
+            sleep_calls.append(s)
+
+        with unittest.mock.patch("universe.requests.get", side_effect=fake_get), \
+             unittest.mock.patch("universe.time.sleep", side_effect=fake_sleep):
+            try:
+                univ._tpex_get_with_retry("http://example.com/tpex")
+            except Exception:
+                pass
+        self.assertEqual(sleep_calls, [1, 2],
+                         "Expected backoff sleeps of [1, 2] seconds before attempts 2 and 3")
+
+    def test_tpex_fallback_surfaces_to_data_health(self):
+        """When TPEx is degraded, data_health.summarize should include universe_health entry."""
+        import data_health
+        import universe as univ
+
+        # Simulate degraded state
+        univ._TPEX_STATUS["degraded"] = True
+        univ._TPEX_STATUS["snapshot_date"] = "2026-06-20"
+        try:
+            payload = {"generated_at": None, "picks": [], "source_coverage": {}}
+            now = __import__("datetime").datetime(2026, 6, 25, 12, 0, 0)
+            result = data_health.summarize(payload, now=now)
+            names = [s["name"] for s in result["sources"]]
+            self.assertIn("universe_health:tpex", names,
+                          "Expected 'universe_health:tpex' entry in data_health sources")
+            tpex_entry = next(s for s in result["sources"] if s["name"] == "universe_health:tpex")
+            self.assertEqual(tpex_entry["status"], "degraded")
+            self.assertIn("2026-06-20", tpex_entry["note"])
+        finally:
+            univ._TPEX_STATUS["degraded"] = False
+            univ._TPEX_STATUS["snapshot_date"] = None
+
+    def test_tpex_success_no_degraded_flag(self):
+        """On successful TPEx fetch, _TPEX_STATUS degraded must be False."""
+        import requests
+        import universe as univ
+
+        fake_data = [
+            {"SecuritiesCompanyCode": "6509",
+             "CompanyAbbreviation": "聚和",
+             "TransactionAmount": "1000000"}
+        ]
+
+        def fake_get(url, headers=None, timeout=30):
+            resp = requests.models.Response()
+            resp.status_code = 200
+            resp._content = __import__("json").dumps(fake_data).encode()
+            resp.encoding = "utf-8"
+            return resp
+
+        with unittest.mock.patch("universe.requests.get", side_effect=fake_get):
+            univ.tpex_universe()
+
+        self.assertFalse(univ._TPEX_STATUS.get("degraded"),
+                         "After a successful TPEx fetch, _TPEX_STATUS['degraded'] must be False")
+
+    def test_data_health_no_degraded_flag_when_tpex_ok(self):
+        """When TPEx succeeded, no universe_health:tpex degraded entry in data_health."""
+        import data_health
+        import universe as univ
+
+        univ._TPEX_STATUS["degraded"] = False
+        univ._TPEX_STATUS["snapshot_date"] = None
+        payload = {"generated_at": None, "picks": [], "source_coverage": {}}
+        now = __import__("datetime").datetime(2026, 6, 25, 12, 0, 0)
+        result = data_health.summarize(payload, now=now)
+        degraded_tpex = [s for s in result["sources"]
+                         if s["name"] == "universe_health:tpex" and s["status"] == "degraded"]
+        self.assertEqual(degraded_tpex, [],
+                         "No degraded universe_health:tpex entry when TPEx is healthy")
 
 
 if __name__ == "__main__":
