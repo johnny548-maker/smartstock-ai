@@ -527,6 +527,74 @@ def test_sanitize_all_nonpositive_drops_ticker():
     assert len(fixed) > bp.MAX_FIXED_BARS          # flagged for upstream DROP
 
 
+# ── issue #9 guard tests: 4 required by Sprint 0 audit ───────────────────────
+
+def test_sanitize_all_nan_close_drops_ticker():
+    """All-NaN Close (delisted shell with no price history) must NOT crash and
+    must be flagged for upstream DROP (len(fixed) > MAX_FIXED_BARS)."""
+    # Arrange
+    dates = pd.bdate_range("2022-01-03", periods=50)
+    df = _mk_df(dates, [float("nan")] * 50)
+
+    # Act — must NOT raise; all-NaN is a new guard added for Sprint 0
+    clean, fixed = bp.sanitize_ohlcv(df, "TW")
+
+    # Assert — flagged for DROP so load_sleeve_prices excludes this ticker
+    assert len(fixed) > bp.MAX_FIXED_BARS
+
+
+def test_sanitize_zero_volume_rows_do_not_crash():
+    """Zero-volume rows (halted/delisted shells) must be absorbed without crash.
+    The function should forward-fill the price and not raise on the zero-vol bar."""
+    # Arrange — 100 bars of valid prices, bar 40 and 41 have zero volume
+    dates = pd.bdate_range("2023-01-02", periods=100)
+    close = [80.0] * 100
+    df = _mk_df(dates, close)
+    # Inject zero-volume bars (yfinance sometimes returns these for halted stocks)
+    df = df.copy()
+    df.loc[df.index[40], "Volume"] = 0.0
+    df.loc[df.index[41], "Volume"] = 0.0
+
+    # Act — must NOT raise
+    clean, fixed = bp.sanitize_ohlcv(df, "TW")
+
+    # Assert — prices intact; no crash; zero-vol bars still have valid Close
+    assert clean["Close"].iloc[40] == pytest.approx(80.0)
+    assert clean["Close"].iloc[41] == pytest.approx(80.0)
+
+
+def test_sanitize_single_row_returns_unchanged():
+    """Single-row frame (delisted ticker with one bar) must return without crash.
+    The len(df) < 3 guard returns early — no repair attempted, no exception."""
+    # Arrange
+    dates = pd.bdate_range("2024-06-01", periods=1)
+    df = _mk_df(dates, [120.0])
+
+    # Act — must NOT raise
+    clean, fixed = bp.sanitize_ohlcv(df, "US")
+
+    # Assert — returned as-is (empty fix log, price unchanged)
+    assert fixed == []
+    assert float(clean["Close"].iloc[0]) == pytest.approx(120.0)
+
+
+def test_sanitize_negative_close_guard():
+    """Negative close price (issue #9 root cause) must be neutralised without
+    raising ValueError: math domain error from math.log or math.sqrt."""
+    # Arrange — 200 normal bars, one deeply negative (bad adjusted-data glitch)
+    dates = pd.bdate_range("2023-03-01", periods=200)
+    close = [50.0] * 200
+    close[100] = -99.9                             # pathological adjusted close
+    df = _mk_df(dates, close)
+
+    # Act — must NOT raise math domain error
+    clean, fixed = bp.sanitize_ohlcv(df, "US")
+
+    # Assert — no non-positive prices survive; neighbour-fill applied
+    assert (clean["Close"] > 0).all()
+    assert clean["Close"].iloc[100] == pytest.approx(50.0, rel=1e-9)
+
+
 def test_sanitize_tw_keeps_real_limit_down():
     # Arrange — a genuine -10% limit-down (legal after 2015-06) that holds
     # at the new level (e.g. 2025-04-07) must NOT be touched

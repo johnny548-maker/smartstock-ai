@@ -35,3 +35,12 @@ _event_15y_partial.json
 # NOTE: universe_15y_draft.csv is NOW committed (pinned universe) — the offline
 # monthly-revalidation + robustness CI jobs check it out by name; gitignoring it
 # made those jobs fail-fast (FileNotFoundError) in a clean CI checkout.
+
+# Service account / credential files — never commit these
+*.pem
+credentials.json
+service-account*.json
+google-sa*.json
+*_sa.json
+.env.*
+!.env.example
