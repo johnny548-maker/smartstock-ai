@@ -40,36 +40,64 @@ jobs:
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
         run: |
+          set -euo pipefail
           MONTH_ARG=""
           if [ -n "${{ github.event.inputs.month }}" ]; then
             MONTH_ARG="--month ${{ github.event.inputs.month }}"
           fi
+          # pipefail: Python's non-zero exit now propagates through the pipe;
+          # tee is kept for the log (useful for the Job summary step below).
           python sheets_sync_allstocks.py --bootstrap $MONTH_ARG --user-email johnny548@gmail.com 2>&1 | tee bootstrap.log
           # Extract SHEETS_ID_ALLSTOCKS_TW into workflow output for summary
           SHEET_ID=$(grep '^SHEETS_ID_ALLSTOCKS_TW=' bootstrap.log | head -1 | cut -d= -f2)
+          # Guard: if the Python script ran but never emitted the ID line (partial failure),
+          # treat that as a hard error rather than silently writing an empty sheet_id.
+          if [ -z "${SHEET_ID}" ]; then
+            echo "::error::Bootstrap appeared to succeed but SHEETS_ID_ALLSTOCKS_TW was not emitted. Check bootstrap.log above for the real error."
+            exit 1
+          fi
           echo "sheet_id=${SHEET_ID}" >> "$GITHUB_OUTPUT"
       - name: Commit index file
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # || true is intentional: file may not exist on first-ever run before bootstrap writes it
           git add docs/data/_allstocks_sheets_index.json || true
           if git diff --cached --quiet; then
             echo "::notice::No index change — month already bootstrapped (idempotent skip)"
           else
             git commit -m "chore(allstocks): bootstrap month sheet (idempotent rollover)"
-            # rebase-retry on push race (mirrors daily.yml pattern)
+            # rebase-retry on push race (mirrors daily.yml pattern).
+            # Explicit failure after all retries: do not silently succeed with an unpushed commit.
+            PUSHED=false
             for i in 1 2 3; do
-              git pull --rebase -X theirs origin main && git push origin main && break
+              if git pull --rebase -X theirs origin main && git push origin main; then
+                PUSHED=true
+                break
+              fi
               sleep $((i*5))
             done
+            if [ "${PUSHED}" = "false" ]; then
+              echo "::error::Push failed after 3 attempts. Index update not published."
+              exit 1
+            fi
           fi
       - name: Job summary
         run: |
+          set -euo pipefail
+          SHEET_ID="${{ steps.bootstrap.outputs.sheet_id }}"
+          # Regression guard: if sheet_id is empty here the bootstrap step should have already
+          # failed, but assert again so a future refactor can't silently produce a false-green.
+          if [ -z "${SHEET_ID}" ]; then
+            echo "::error::sheet_id is empty — bootstrap did not produce a valid Sheet ID. Marking summary step failed."
+            exit 1
+          fi
           {
             echo "## Bootstrap result"
             echo ""
-            echo "- Sheet ID: \`${{ steps.bootstrap.outputs.sheet_id }}\`"
-            echo "- URL: https://docs.google.com/spreadsheets/d/${{ steps.bootstrap.outputs.sheet_id }}"
+            echo "- Sheet ID: \`${SHEET_ID}\`"
+            echo "- URL: https://docs.google.com/spreadsheets/d/${SHEET_ID}"
             echo "- Shared with: johnny548@gmail.com"
             echo ""
             echo "### Bootstrap log"
