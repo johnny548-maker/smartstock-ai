@@ -1518,6 +1518,80 @@ class TestShortVolume(unittest.TestCase):
         out = short_volume.fetch_short_volume(session=_Sess())
         self.assertEqual(out, {"date": None, "rows": {}})
 
+    # --- audit #20: FINRA 403 cliff (GH Actions IPs blocked) ----------------
+    def test_fetch_sends_browser_user_agent(self):
+        """FINRA CDN 403s the bot UA - fetch MUST send a real browser UA header.
+        Regression guard for audit #20: stale 2026-06-18 10-row fallback file."""
+        captured = {}
+
+        class _Resp:
+            status_code = 200
+            text = ("Date|Symbol|ShortVolume|ShortExemptVolume|TotalVolume|Market\n"
+                    "20260603|NVDA|600|0|1000|B,Q,N")
+
+            def raise_for_status(self):
+                pass
+
+        class _Sess:
+            def get(self, *a, **k):
+                captured["headers"] = k.get("headers") or {}
+                return _Resp()
+
+        short_volume.fetch_short_volume(session=_Sess(), lookback_days=1)
+        ua = (captured["headers"].get("User-Agent")
+              or captured["headers"].get("user-agent") or "")
+        self.assertTrue(ua.startswith("Mozilla/5.0"),
+                        "FINRA fetch must spoof browser UA, got: %r" % ua)
+        self.assertNotIn("smartstock-ai", ua)
+
+    def test_fetch_walks_back_on_403(self):
+        """403 from FINRA must behave like 404 - try the previous day, not crash."""
+        calls = {"n": 0}
+
+        class _Resp403:
+            status_code = 403
+            text = ""
+
+            def raise_for_status(self):
+                from requests import HTTPError
+                raise HTTPError("403 Forbidden")
+
+        class _Resp200:
+            status_code = 200
+            text = ("Date|Symbol|ShortVolume|ShortExemptVolume|TotalVolume|Market\n"
+                    "20260603|NVDA|600|0|1000|B,Q,N")
+
+            def raise_for_status(self):
+                pass
+
+        class _Sess:
+            def get(self, *a, **k):
+                calls["n"] += 1
+                return _Resp403() if calls["n"] == 1 else _Resp200()
+
+        out = short_volume.fetch_short_volume(session=_Sess(), lookback_days=3)
+        self.assertEqual(calls["n"], 2)
+        self.assertIn("NVDA", out["rows"])
+        self.assertIsNotNone(out["date"])
+
+    def test_fetch_graceful_on_all_403(self):
+        """ALL-403 (every day blocked) must NOT raise - return empty dict so the
+        report still builds. Signal is informational; report survival > freshness."""
+        class _Resp:
+            status_code = 403
+            text = ""
+
+            def raise_for_status(self):
+                from requests import HTTPError
+                raise HTTPError("403 Forbidden")
+
+        class _Sess:
+            def get(self, *a, **k):
+                return _Resp()
+
+        out = short_volume.fetch_short_volume(session=_Sess(), lookback_days=3)
+        self.assertEqual(out, {"date": None, "rows": {}})
+
 
 class TestLiquidity(unittest.TestCase):
     def test_dollar_adv(self):
