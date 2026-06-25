@@ -13,6 +13,10 @@ on:
         description: 'Target month (YYYY-MM); empty = current UTC month'
         required: false
         default: ''
+      existing_id:
+        description: 'Spreadsheet ID of pre-existing user-created sheet (bypasses SA Drive quota=0)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -45,9 +49,13 @@ jobs:
           if [ -n "${{ github.event.inputs.month }}" ]; then
             MONTH_ARG="--month ${{ github.event.inputs.month }}"
           fi
+          EXISTING_ID_ARG=""
+          if [ -n "${{ github.event.inputs.existing_id }}" ]; then
+            EXISTING_ID_ARG="--existing-id ${{ github.event.inputs.existing_id }}"
+          fi
           # pipefail: Python's non-zero exit now propagates through the pipe;
           # tee is kept for the log (useful for the Job summary step below).
-          python sheets_sync_allstocks.py --bootstrap $MONTH_ARG --user-email johnny548@gmail.com 2>&1 | tee bootstrap.log
+          python sheets_sync_allstocks.py --bootstrap $MONTH_ARG $EXISTING_ID_ARG --user-email johnny548@gmail.com 2>&1 | tee bootstrap.log
           # Extract SHEETS_ID_ALLSTOCKS_TW into workflow output for summary
           SHEET_ID=$(grep '^SHEETS_ID_ALLSTOCKS_TW=' bootstrap.log | head -1 | cut -d= -f2)
           # Guard: if the Python script ran but never emitted the ID line (partial failure),

@@ -196,16 +196,17 @@ def _write_index(month, sheet_id, path=_DEFAULT_INDEX_PATH):
 # ── Bootstrap orchestrator ─────────────────────────────────────────────────────
 
 def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
-              index_path=_DEFAULT_INDEX_PATH):
+              index_path=_DEFAULT_INDEX_PATH, existing_id=None):
     """Bootstrap (or verify) the month-shard all-stocks archive spreadsheet.
 
     Steps:
     1. Compute title smartstock-allstocks-{YYYY-MM}.
-    2. Find existing sheet by title (idempotent — never creates a duplicate).
-    3. If absent: create new spreadsheet.
-    4. Ensure all 7 P0 tabs with correct header rows.
-    5. Share to user_email as writer.
-    6. Update docs/data/_allstocks_sheets_index.json atomically.
+    2a. If existing_id is given: open the sheet directly via open_by_key() —
+        bypasses SA Drive quota=0 limitation (user pre-created the sheet).
+    2b. Otherwise: find existing sheet by title or create a new one.
+    3. Ensure all 7 P0 tabs with correct header rows.
+    4. Share to user_email as writer.
+    5. Update docs/data/_allstocks_sheets_index.json atomically.
 
     Returns dict: {id, title, url, tabs, shared}.
     Raises RuntimeError if client is None (caller should check get_client() first).
@@ -219,13 +220,19 @@ def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
 
     title = _compute_title(month)
 
-    # Step 2: find or create.
-    sh = _find_existing(client, title)
-    if sh is None:
-        _log(f"Creating new spreadsheet: {title!r}")
-        sh = client.create(title)
+    if existing_id:
+        # User pre-created the sheet and shared it with the SA.
+        # Open directly by ID — skips Drive search / create (bypasses quota=0).
+        _log(f"Opening existing spreadsheet by key: {existing_id!r}")
+        sh = client.open_by_key(existing_id)
     else:
-        _log(f"Found existing spreadsheet: {title!r} (id={sh.id})")
+        # Step 2b: find or create.
+        sh = _find_existing(client, title)
+        if sh is None:
+            _log(f"Creating new spreadsheet: {title!r}")
+            sh = client.create(title)
+        else:
+            _log(f"Found existing spreadsheet: {title!r} (id={sh.id})")
 
     # Step 3: ensure all 7 tabs with correct headers.
     _ensure_all_tabs(sh)
@@ -259,6 +266,13 @@ def main(argv=None):
                     help="Gmail address to share the spreadsheet with (writer).")
     ap.add_argument("--index-path", default=_DEFAULT_INDEX_PATH,
                     help="Path for _allstocks_sheets_index.json (default: docs/data/).")
+    ap.add_argument("--existing-id", default=None,
+                    help=(
+                        "Google Spreadsheet ID of a pre-existing sheet shared with the SA. "
+                        "Bypasses SA Drive quota=0 limitation: user creates the sheet manually, "
+                        "shares as Editor with the SA, then passes the ID here. "
+                        "bootstrap() will open_by_key() instead of creating a new spreadsheet."
+                    ))
     args = ap.parse_args(argv)
 
     # Graceful no-op when SA is missing.
@@ -282,6 +296,7 @@ def main(argv=None):
             month=month,
             user_email=args.user_email,
             index_path=args.index_path,
+            existing_id=args.existing_id or None,
         )
     except Exception as exc:
         _log(f"ERROR: {exc}")
