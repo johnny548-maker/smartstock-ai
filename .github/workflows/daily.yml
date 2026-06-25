@@ -21,8 +21,14 @@ concurrency:
 
 jobs:
   # Keyless failure alert: on a HARD job failure (not a graceful per-source skip), open OR
-  # comment ONE open GitHub issue per workflow (deduped by title) using the built-in
+  # comment ONE open GitHub issue per distinct error fingerprint using the built-in
   # GITHUB_TOKEN — no external service, no secret. GitHub then notifies via email + mobile app.
+  #
+  # Audit #9 fix: title includes SHA-256(last 10 log lines)[:8] so each distinct root cause
+  # gets its own issue. Previously "${WF} failed" was too broad — 6 unrelated errors glued
+  # to one issue, and the alert became noise. Now each unique failure signature is tracked
+  # separately. If an issue already has >=3 comments (busy thread), a NEW issue is created
+  # with a variant suffix to avoid burying fresh context.
   notify-failure:
     needs: [build]
     if: failure()
@@ -30,7 +36,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Open or update a failure issue (fingerprint-dedup)
+      - name: Open or update a fingerprinted failure issue
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
@@ -38,28 +44,27 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
-          # Compute 8-char SHA-256 fingerprint from the last 10 lines of the failed-step log.
-          # This makes each distinct failure class open its own issue (dedup by root cause),
-          # while repeat occurrences of the same error comment on the existing issue instead
-          # of piling up duplicate issues (audit #9 — alert blindness fix).
-          FP=$(gh run view "${{ github.run_id }}" --repo "$REPO" --log-failed 2>/dev/null \
-               | tail -10 \
-               | sha256sum \
-               | head -c 8 || echo "00000000")
+
+          # Compute error fingerprint from the last 10 lines of the failed step log.
+          # sha256sum outputs "<hash>  -"; we take the first 8 hex chars.
+          LOG_TAIL=$(gh run view "${{ github.run_id }}" --log-failed --repo "$REPO" 2>/dev/null | tail -10 || true)
+          FP=$(printf '%s' "$LOG_TAIL" | sha256sum | head -c 8)
+
           NEW_TITLE="🔴 ${WF} failed (${FP})"
-          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Fingerprint: \`${FP}\`. Run: ${RUN_URL}"
-          # Search for an existing open issue with this exact fingerprinted title.
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ).\nFingerprint: \`${FP}\` (SHA-256 of last 10 log lines).\nRun: ${RUN_URL}"
+
           NUM=$(gh issue list --repo "$REPO" --state open \
-                --search "${NEW_TITLE} in:title" --json number,title \
-                --jq --arg t "$NEW_TITLE" '.[] | select(.title == $t) | .number' \
-                | head -1)
+            --search "${NEW_TITLE} in:title" --json number --jq '.[0].number // empty')
+
           if [ -n "$NUM" ]; then
-            # Count existing comments; if >= 3, open a new variant to prevent notification blindness.
-            COUNT=$(gh issue view "$NUM" --repo "$REPO" --json comments \
-                    --jq '.comments | length')
-            if [ "${COUNT:-0}" -ge 3 ]; then
-              VARIANT_TITLE="🔴 ${WF} failed (${FP}-$(date -u +%H%M))"
-              gh issue create --repo "$REPO" --title "$VARIANT_TITLE" --body "$BODY"
+            # If the existing issue thread is crowded (>=3 comments), open a fresh one
+            # to avoid burying new context in a long thread.
+            COMMENT_COUNT=$(gh issue view "$NUM" --repo "$REPO" --json comments \
+              --jq '.comments | length')
+            if [ "${COMMENT_COUNT:-0}" -ge 3 ]; then
+              # Append run-id suffix to make title unique for this new occurrence.
+              OVERFLOW_TITLE="${NEW_TITLE} [run ${{ github.run_id }}]"
+              gh issue create --repo "$REPO" --title "$OVERFLOW_TITLE" --body "$BODY"
             else
               gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
             fi
