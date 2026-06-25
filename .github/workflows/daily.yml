@@ -30,7 +30,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Open or update a failure issue
+      - name: Open or update a failure issue (fingerprint-dedup)
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
@@ -38,12 +38,33 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
-          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}"
-          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          # Compute 8-char SHA-256 fingerprint from the last 10 lines of the failed-step log.
+          # This makes each distinct failure class open its own issue (dedup by root cause),
+          # while repeat occurrences of the same error comment on the existing issue instead
+          # of piling up duplicate issues (audit #9 — alert blindness fix).
+          FP=$(gh run view "${{ github.run_id }}" --repo "$REPO" --log-failed 2>/dev/null \
+               | tail -10 \
+               | sha256sum \
+               | head -c 8 || echo "00000000")
+          NEW_TITLE="🔴 ${WF} failed (${FP})"
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Fingerprint: \`${FP}\`. Run: ${RUN_URL}"
+          # Search for an existing open issue with this exact fingerprinted title.
+          NUM=$(gh issue list --repo "$REPO" --state open \
+                --search "${NEW_TITLE} in:title" --json number,title \
+                --jq --arg t "$NEW_TITLE" '.[] | select(.title == $t) | .number' \
+                | head -1)
           if [ -n "$NUM" ]; then
-            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+            # Count existing comments; if >= 3, open a new variant to prevent notification blindness.
+            COUNT=$(gh issue view "$NUM" --repo "$REPO" --json comments \
+                    --jq '.comments | length')
+            if [ "${COUNT:-0}" -ge 3 ]; then
+              VARIANT_TITLE="🔴 ${WF} failed (${FP}-$(date -u +%H%M))"
+              gh issue create --repo "$REPO" --title "$VARIANT_TITLE" --body "$BODY"
+            else
+              gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+            fi
           else
-            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+            gh issue create --repo "$REPO" --title "$NEW_TITLE" --body "$BODY"
           fi
 
   # P1 item4: data-staleness HARD alert. The build job exits 0 even when data is STALE
