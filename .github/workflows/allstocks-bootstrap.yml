@@ -1,0 +1,79 @@
+name: AllStocks Bootstrap (Monthly Rollover)
+
+# Creates the per-month all-stocks Spreadsheet + 7 P0 tabs, idempotent (skips if exists),
+# and commits docs/data/_allstocks_sheets_index.json so the runtime fetchers can resolve
+# the right Sheet ID for the current month. Runs the 1st of each month + on demand.
+
+on:
+  schedule:
+    - cron: '5 22 1 * *'   # 1st of month at 22:05 UTC (~ 06:05 TW the 2nd)
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Target month (YYYY-MM); empty = current UTC month'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: allstocks-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Bootstrap month sheet
+        id: bootstrap
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        run: |
+          MONTH_ARG=""
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            MONTH_ARG="--month ${{ github.event.inputs.month }}"
+          fi
+          python sheets_sync_allstocks.py --bootstrap $MONTH_ARG --user-email johnny548@gmail.com 2>&1 | tee bootstrap.log
+          # Extract SHEETS_ID_ALLSTOCKS_TW into workflow output for summary
+          SHEET_ID=$(grep '^SHEETS_ID_ALLSTOCKS_TW=' bootstrap.log | head -1 | cut -d= -f2)
+          echo "sheet_id=${SHEET_ID}" >> "$GITHUB_OUTPUT"
+      - name: Commit index file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/_allstocks_sheets_index.json || true
+          if git diff --cached --quiet; then
+            echo "::notice::No index change — month already bootstrapped (idempotent skip)"
+          else
+            git commit -m "chore(allstocks): bootstrap month sheet (idempotent rollover)"
+            # rebase-retry on push race (mirrors daily.yml pattern)
+            for i in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push origin main && break
+              sleep $((i*5))
+            done
+          fi
+      - name: Job summary
+        run: |
+          {
+            echo "## Bootstrap result"
+            echo ""
+            echo "- Sheet ID: \`${{ steps.bootstrap.outputs.sheet_id }}\`"
+            echo "- URL: https://docs.google.com/spreadsheets/d/${{ steps.bootstrap.outputs.sheet_id }}"
+            echo "- Shared with: johnny548@gmail.com"
+            echo ""
+            echo "### Bootstrap log"
+            echo '```'
+            cat bootstrap.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
