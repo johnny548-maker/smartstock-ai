@@ -639,14 +639,17 @@ def _resolve_sheet_id(index, month):
 
 # ── sync_allstocks() — main orchestrator ──────────────────────────────────────
 
-def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH):
+def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH, source_filter=None):
     """Sync 7 P0 sources for date_str into the current month's all-stocks Sheet.
 
     CONTRACT: OVERLAY-NOT-SCORER — pure archive write, never feeds scoring.
 
     Args:
-        date_str:   'YYYY-MM-DD' (default: today UTC).
-        index_path: path to _allstocks_sheets_index.json.
+        date_str:      'YYYY-MM-DD' (default: today UTC).
+        index_path:    path to _allstocks_sheets_index.json.
+        source_filter: optional tab name (e.g. 'tdcc_weekly') — when set, only
+                       that source is fetched and written; all others are skipped.
+                       Unknown name → logs SKIP for all sources and returns {}.
 
     Returns:
         dict {tab_name: row_count} where negative = SKIP (source failed).
@@ -655,6 +658,12 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH):
     """
     if date_str is None:
         date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # Validate source_filter early: unknown name → log SKIP + return {}
+    if source_filter is not None and source_filter not in _TAB_ORDER:
+        _log(f"SKIP sync_allstocks: unknown source_filter={source_filter!r}. "
+             f"Valid names: {_TAB_ORDER}")
+        return {}
 
     # Graceful: SA missing
     client = get_client()
@@ -679,95 +688,112 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH):
 
     counts = {}
 
+    def _should_run(tab_name):
+        """Return True if this tab should be synced (respects source_filter)."""
+        if source_filter is None:
+            return True
+        if tab_name == source_filter:
+            return True
+        _log(f"SKIP {tab_name}: filtered out (source_filter={source_filter!r})")
+        counts[tab_name] = 0
+        return False
+
     # ── 1. bwibbu_daily (TWSE P/E, yield, P/B) ────────────────────────────────
-    try:
-        raw = _fetch_bwibbu()
-        rows = _build_bwibbu_rows(date_str, raw)
-        ws = sh.worksheet("bwibbu_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["bwibbu_daily"] = len(rows)
-        _log(f"bwibbu_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP bwibbu_daily: {exc}")
-        counts["bwibbu_daily"] = -1
+    if _should_run("bwibbu_daily"):
+        try:
+            raw = _fetch_bwibbu()
+            rows = _build_bwibbu_rows(date_str, raw)
+            ws = sh.worksheet("bwibbu_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["bwibbu_daily"] = len(rows)
+            _log(f"bwibbu_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP bwibbu_daily: {exc}")
+            counts["bwibbu_daily"] = -1
 
     # ── 2. mi_margn_daily (TWSE margin & short) ───────────────────────────────
-    try:
-        raw = _fetch_mi_margn()
-        rows = _build_mi_margn_rows(date_str, raw)
-        ws = sh.worksheet("mi_margn_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["mi_margn_daily"] = len(rows)
-        _log(f"mi_margn_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP mi_margn_daily: {exc}")
-        counts["mi_margn_daily"] = -1
+    if _should_run("mi_margn_daily"):
+        try:
+            raw = _fetch_mi_margn()
+            rows = _build_mi_margn_rows(date_str, raw)
+            ws = sh.worksheet("mi_margn_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["mi_margn_daily"] = len(rows)
+            _log(f"mi_margn_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP mi_margn_daily: {exc}")
+            counts["mi_margn_daily"] = -1
 
     # ── 3. t86_daily (TWSE 3-institution net) ─────────────────────────────────
-    try:
-        raw = _fetch_t86(date_str)
-        rows = _build_t86_rows(date_str, raw)
-        ws = sh.worksheet("t86_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["t86_daily"] = len(rows)
-        _log(f"t86_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP t86_daily: {exc}")
-        counts["t86_daily"] = -1
+    if _should_run("t86_daily"):
+        try:
+            raw = _fetch_t86(date_str)
+            rows = _build_t86_rows(date_str, raw)
+            ws = sh.worksheet("t86_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["t86_daily"] = len(rows)
+            _log(f"t86_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP t86_daily: {exc}")
+            counts["t86_daily"] = -1
 
     # ── 4. tpex_3insti_daily (TPEx 3-institution net) ─────────────────────────
-    try:
-        raw = _fetch_tpex_3insti()
-        rows = _build_tpex_3insti_rows(date_str, raw)
-        ws = sh.worksheet("tpex_3insti_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["tpex_3insti_daily"] = len(rows)
-        _log(f"tpex_3insti_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP tpex_3insti_daily: {exc}")
-        counts["tpex_3insti_daily"] = -1
+    if _should_run("tpex_3insti_daily"):
+        try:
+            raw = _fetch_tpex_3insti()
+            rows = _build_tpex_3insti_rows(date_str, raw)
+            ws = sh.worksheet("tpex_3insti_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["tpex_3insti_daily"] = len(rows)
+            _log(f"tpex_3insti_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP tpex_3insti_daily: {exc}")
+            counts["tpex_3insti_daily"] = -1
 
     # ── 5. tpex_margin_daily (TPEx margin & short) ────────────────────────────
-    try:
-        raw = _fetch_tpex_margin()
-        rows = _build_tpex_margin_rows(date_str, raw)
-        ws = sh.worksheet("tpex_margin_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["tpex_margin_daily"] = len(rows)
-        _log(f"tpex_margin_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP tpex_margin_daily: {exc}")
-        counts["tpex_margin_daily"] = -1
+    if _should_run("tpex_margin_daily"):
+        try:
+            raw = _fetch_tpex_margin()
+            rows = _build_tpex_margin_rows(date_str, raw)
+            ws = sh.worksheet("tpex_margin_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["tpex_margin_daily"] = len(rows)
+            _log(f"tpex_margin_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP tpex_margin_daily: {exc}")
+            counts["tpex_margin_daily"] = -1
 
     # ── 6. tpex_per_daily (TPEx P/E, yield, P/B) ──────────────────────────────
-    try:
-        raw = _fetch_tpex_pe()
-        rows = _build_tpex_per_rows(date_str, raw)
-        ws = sh.worksheet("tpex_per_daily")
-        _upsert_allstocks(ws, 0, date_str, rows)
-        counts["tpex_per_daily"] = len(rows)
-        _log(f"tpex_per_daily: {len(rows)} rows for {date_str}")
-    except Exception as exc:
-        _log(f"SKIP tpex_per_daily: {exc}")
-        counts["tpex_per_daily"] = -1
+    if _should_run("tpex_per_daily"):
+        try:
+            raw = _fetch_tpex_pe()
+            rows = _build_tpex_per_rows(date_str, raw)
+            ws = sh.worksheet("tpex_per_daily")
+            _upsert_allstocks(ws, 0, date_str, rows)
+            counts["tpex_per_daily"] = len(rows)
+            _log(f"tpex_per_daily: {len(rows)} rows for {date_str}")
+        except Exception as exc:
+            _log(f"SKIP tpex_per_daily: {exc}")
+            counts["tpex_per_daily"] = -1
 
     # ── 7. tdcc_weekly (TDCC shareholding concentration) ──────────────────────
-    try:
-        raw = _fetch_tdcc()
-        rows = _build_tdcc_rows(raw)
-        if rows:
-            # Use asof_date (col 0) as the upsert key for weekly data
-            asof_date = rows[0][0] if rows else date_str
-            ws = sh.worksheet("tdcc_weekly")
-            _upsert_allstocks(ws, 0, asof_date, rows)
-            counts["tdcc_weekly"] = len(rows)
-            _log(f"tdcc_weekly: {len(rows)} rows for asof={asof_date}")
-        else:
-            counts["tdcc_weekly"] = 0
-            _log("tdcc_weekly: SKIP — fetcher returned empty (no new release this run)")
-    except Exception as exc:
-        _log(f"SKIP tdcc_weekly: {exc}")
-        counts["tdcc_weekly"] = -1
+    if _should_run("tdcc_weekly"):
+        try:
+            raw = _fetch_tdcc()
+            rows = _build_tdcc_rows(raw)
+            if rows:
+                # Use asof_date (col 0) as the upsert key for weekly data
+                asof_date = rows[0][0] if rows else date_str
+                ws = sh.worksheet("tdcc_weekly")
+                _upsert_allstocks(ws, 0, asof_date, rows)
+                counts["tdcc_weekly"] = len(rows)
+                _log(f"tdcc_weekly: {len(rows)} rows for asof={asof_date}")
+            else:
+                counts["tdcc_weekly"] = 0
+                _log("tdcc_weekly: SKIP — fetcher returned empty (no new release this run)")
+        except Exception as exc:
+            _log(f"SKIP tdcc_weekly: {exc}")
+            counts["tdcc_weekly"] = -1
 
     _log(f"sync_allstocks done for {date_str}: {counts}")
     return counts
@@ -857,6 +883,13 @@ def main(argv=None):
                         "shares as Editor with the SA, then passes the ID here. "
                         "bootstrap() will open_by_key() instead of creating a new spreadsheet."
                     ))
+    ap.add_argument("--source", default=None,
+                    help=(
+                        "Optional tab name filter for --sync (e.g. 'tdcc_weekly'). "
+                        "When set, only that source is fetched and written to the Sheet; "
+                        "all other 6 sources are skipped. Useful for local-cron TDCC runs "
+                        "that are blocked from GH Actions due to TDCC IP restrictions."
+                    ))
     args = ap.parse_args(argv)
 
     # Graceful no-op when SA is missing.
@@ -872,7 +905,8 @@ def main(argv=None):
     # ── --sync mode ───────────────────────────────────────────────────────────
     if args.sync:
         date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        sync_allstocks(date_str=date_str, index_path=args.index_path)
+        sync_allstocks(date_str=date_str, index_path=args.index_path,
+                       source_filter=args.source)
         return 0
 
     # ── --bootstrap mode ──────────────────────────────────────────────────────

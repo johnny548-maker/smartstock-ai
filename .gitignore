@@ -44,3 +44,6 @@ google-sa*.json
 *_sa.json
 .env.*
 !.env.example
+
+# Local cron runtime logs — do not commit
+tools/local_cron/logs/*.log

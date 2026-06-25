@@ -994,5 +994,190 @@ class TestSyncAllstocksReturnsCounts(unittest.TestCase):
                          "bwibbu_daily count must equal number of raw stocks fetched")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# Sprint 1 TDCC local-cron: --source filter tests
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def _run_sync_with_source(sheet, index_path, date_str="2026-06-24", source_filter=None,
+                           bwibbu_fn=None, mi_margn_fn=None, t86_fn=None,
+                           tpex_3insti_fn=None, tpex_margin_fn=None, tpex_pe_fn=None,
+                           tdcc_fn=None):
+    """Like _run_sync but passes source_filter= to sync_allstocks."""
+    client = _FakeClientFull(sheet=sheet)
+    patches = [
+        mock.patch("sheets_sync_allstocks.get_client", return_value=client),
+        mock.patch("sheets_sync_allstocks._fetch_bwibbu",
+                   side_effect=bwibbu_fn or (lambda: _BWIBBU_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_mi_margn",
+                   side_effect=mi_margn_fn or (lambda: _MI_MARGN_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_t86",
+                   side_effect=t86_fn or (lambda d: _T86_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_3insti",
+                   side_effect=tpex_3insti_fn or (lambda: _TPEX_3INSTI_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_margin",
+                   side_effect=tpex_margin_fn or (lambda: _TPEX_MARGIN_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_pe",
+                   side_effect=tpex_pe_fn or (lambda: _TPEX_PE_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tdcc",
+                   side_effect=tdcc_fn or (lambda: _TDCC_ROWS)),
+    ]
+    with contextlib.ExitStack() as stack:
+        for p in patches:
+            stack.enter_context(p)
+        return sa.sync_allstocks(date_str=date_str, index_path=index_path,
+                                  source_filter=source_filter)
+
+
+class TestSyncAllstocksSourceFilterOnlyRunsNamedSource(unittest.TestCase):
+    """sync_allstocks(source_filter='tdcc_weekly') must call only the TDCC
+    fetcher; the other 6 fetchers must NOT be called at all."""
+
+    def test_sync_allstocks_with_source_filter_only_runs_named_source(self):
+        sh = _make_sync_sheet()
+        calls = {}
+
+        def track(name, data):
+            def fetcher(*args, **kwargs):
+                calls[name] = calls.get(name, 0) + 1
+                return data
+            return fetcher
+
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync_with_source(
+                sh, idx,
+                source_filter="tdcc_weekly",
+                bwibbu_fn=track("bwibbu", _BWIBBU_RAW),
+                mi_margn_fn=track("mi_margn", _MI_MARGN_RAW),
+                t86_fn=track("t86", _T86_RAW),
+                tpex_3insti_fn=track("tpex_3insti", _TPEX_3INSTI_RAW),
+                tpex_margin_fn=track("tpex_margin", _TPEX_MARGIN_RAW),
+                tpex_pe_fn=track("tpex_pe", _TPEX_PE_RAW),
+                tdcc_fn=track("tdcc", _TDCC_ROWS),
+            )
+
+        self.assertIn("tdcc", calls, "TDCC fetcher must be called when source_filter='tdcc_weekly'")
+        for name in ("bwibbu", "mi_margn", "t86", "tpex_3insti", "tpex_margin", "tpex_pe"):
+            self.assertNotIn(name, calls,
+                             f"fetcher {name!r} must NOT be called when source_filter='tdcc_weekly'")
+
+    def test_source_filter_only_writes_to_named_tab(self):
+        """When source_filter='tdcc_weekly', only tdcc_weekly tab should have data rows;
+        all other tabs must remain header-only."""
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync_with_source(sh, idx, source_filter="tdcc_weekly")
+
+        ws_tdcc = sh._worksheets["tdcc_weekly"]
+        self.assertGreater(len(ws_tdcc._rows), 1,
+                           "tdcc_weekly must have data rows when it is the only source")
+        for tab in ("bwibbu_daily", "mi_margn_daily", "t86_daily",
+                    "tpex_3insti_daily", "tpex_margin_daily", "tpex_per_daily"):
+            ws = sh._worksheets[tab]
+            self.assertEqual(len(ws._rows), 1,
+                             f"tab {tab!r} must stay header-only when filtered out")
+
+
+class TestSyncAllstocksSourceFilterInvalidRaisesOrSkips(unittest.TestCase):
+    """Unknown source name → graceful SKIP, not a crash (exit 0 compliant)."""
+
+    def test_sync_allstocks_source_filter_invalid_raises_or_skips(self):
+        """Unknown source_filter must not raise an unhandled exception.
+
+        Acceptable outcomes: returns None / empty dict / dict of all-zero counts;
+        must NOT raise an exception to the caller."""
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            try:
+                result = _run_sync_with_source(sh, idx, source_filter="no_such_source_xyz")
+                # If it returns, it must be None or a dict (not crash)
+                self.assertTrue(
+                    result is None or isinstance(result, dict),
+                    f"unexpected return type: {type(result)}"
+                )
+            except (ValueError, KeyError) as exc:
+                # Raising ValueError/KeyError is also acceptable
+                pass
+
+    def test_invalid_source_filter_logs_skip(self):
+        """An invalid source_filter must emit a SKIP log line, not silently proceed."""
+        import io as _io
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            captured = _io.StringIO()
+            with mock.patch("sys.stdout", captured):
+                try:
+                    _run_sync_with_source(sh, idx, source_filter="no_such_source_xyz")
+                except (ValueError, KeyError):
+                    pass
+        out = captured.getvalue()
+        self.assertIn("SKIP", out,
+                      "invalid source_filter must produce SKIP log (got: %r)" % out[:200])
+
+
+class TestCliSourceArg(unittest.TestCase):
+    """main(['--sync', '--source', 'tdcc_weekly']) must pass source_filter='tdcc_weekly'
+    through to sync_allstocks, so only TDCC is synced."""
+
+    def test_cli_source_arg_passes_filter_to_sync_allstocks(self):
+        """--source tdcc_weekly must forward source_filter kwarg to sync_allstocks."""
+        with mock.patch("sheets_sync_allstocks.sync_allstocks", return_value={}) as mock_sync, \
+             mock.patch.dict(os.environ, {"GOOGLE_SA_JSON": '{"type":"service_account"}'}):
+            rc = sa.main(["--sync", "--date", "2026-06-24", "--source", "tdcc_weekly"])
+        self.assertEqual(rc, 0)
+        mock_sync.assert_called_once()
+        call_kwargs = mock_sync.call_args
+        source_passed = call_kwargs.kwargs.get("source_filter")
+        self.assertEqual(source_passed, "tdcc_weekly",
+                         "main() must pass source_filter='tdcc_weekly' to sync_allstocks")
+
+    def test_cli_source_arg_tdcc_only_integration(self):
+        """End-to-end: main --sync --source tdcc_weekly should call TDCC fetcher only."""
+        sh = _make_sync_sheet()
+        calls = {}
+
+        def track(name, data):
+            def fetcher(*args, **kwargs):
+                calls[name] = calls.get(name, 0) + 1
+                return data
+            return fetcher
+
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            client = _FakeClientFull(sheet=sh)
+            patches = [
+                mock.patch("sheets_sync_allstocks.get_client", return_value=client),
+                mock.patch("sheets_sync_allstocks._fetch_bwibbu",
+                           side_effect=track("bwibbu", _BWIBBU_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_mi_margn",
+                           side_effect=track("mi_margn", _MI_MARGN_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_t86",
+                           side_effect=track("t86", _T86_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_tpex_3insti",
+                           side_effect=track("tpex_3insti", _TPEX_3INSTI_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_tpex_margin",
+                           side_effect=track("tpex_margin", _TPEX_MARGIN_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_tpex_pe",
+                           side_effect=track("tpex_pe", _TPEX_PE_RAW)),
+                mock.patch("sheets_sync_allstocks._fetch_tdcc",
+                           side_effect=track("tdcc", _TDCC_ROWS)),
+                mock.patch.dict(os.environ, {"GOOGLE_SA_JSON": '{"type":"service_account"}'}),
+            ]
+            with contextlib.ExitStack() as stack:
+                for p in patches:
+                    stack.enter_context(p)
+                rc = sa.main(["--sync", "--date", "2026-06-24",
+                              "--source", "tdcc_weekly",
+                              "--index-path", idx])
+        self.assertEqual(rc, 0)
+        self.assertIn("tdcc", calls, "TDCC fetcher must be called")
+        for name in ("bwibbu", "mi_margn", "t86", "tpex_3insti", "tpex_margin", "tpex_pe"):
+            self.assertNotIn(name, calls,
+                             f"fetcher {name!r} must NOT be called with --source tdcc_weekly")
+
+
 if __name__ == "__main__":
     unittest.main()
