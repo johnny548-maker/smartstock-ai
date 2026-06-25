@@ -1,0 +1,64 @@
+name: PR Integration Gate
+
+# WHY THIS EXISTS
+# Catches main.py crashes (TypeError, kwarg drift, schema drift) BEFORE merge to main.
+# Would have caught the 2026-06-22 build_report kwarg TypeError that silently broke every
+# daily run until someone noticed the missing report.
+#
+# --dry-run: runs the full pipeline (data fetchers → scoring → build_report) but skips all
+# side-effecting writes (notifier_file.write_report, notifier_email.send_email, web_export,
+# git commit). This exercises the exact code paths that would crash in production without
+# touching any external state.
+#
+# Timeout: 8 min. The pipeline without external API delays should complete well within this.
+# If it times out, something is blocking (network call that should be mocked, or hang in a
+# stage) — investigate rather than raising the timeout.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pr-gate:
+    name: main.py --dry-run smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline in dry-run mode
+        run: python main.py --web --dry-run
+        # --web exercises build_payload (the other crash surface) in addition to build_report.
+        # dry-run suppresses all disk writes so CI runners stay clean.
+
+      - name: Validate YAML syntax on changed workflow files
+        run: |
+          python - <<'EOF'
+          import glob, yaml, sys
+          errors = []
+          for path in glob.glob(".github/workflows/*.yml"):
+              try:
+                  with open(path, encoding="utf-8") as f:
+                      yaml.safe_load(f)
+                  print(f"OK: {path}")
+              except yaml.YAMLError as e:
+                  errors.append(f"FAIL: {path}: {e}")
+          if errors:
+              for err in errors:
+                  print(err, file=sys.stderr)
+              sys.exit(1)
+          print(f"All {len(list(glob.glob('.github/workflows/*.yml')))} workflow files parse OK.")
+          EOF

@@ -130,7 +130,7 @@ def run_stage(log, skips, name, fn, default=None, msg=None):
         return default
 
 
-def main(web=False):
+def main(web=False, dry_run=False):
     setup_logging()
     log = logging.getLogger("main")
     date_str = datetime.now().strftime("%Y-%m-%d")
@@ -1344,11 +1344,18 @@ def main(web=False):
         log.warning("SKIP overlay_snapshot: %s", e); skips.append("overlay_snapshot")
 
     # 8. Deliver: local file (base) then email (additive) -------------------
-    path = notifier_file.write_report(markdown, date_str)
-    sent = notifier_email.send_email(f"📈 SmartStock 每日投資日報 {date_str}", markdown)
+    # dry_run=True: skip all side-effecting writes so the PR-gate can exercise the full
+    # pipeline (including build_report) without touching disk, email, or the git tree.
+    if dry_run:
+        log.info("DRY-RUN: skipping notifier_file.write_report + notifier_email.send_email")
+        path = None
+        sent = False
+    else:
+        path = notifier_file.write_report(markdown, date_str)
+        sent = notifier_email.send_email(f"📈 SmartStock 每日投資日報 {date_str}", markdown)
 
     # 8b. Web export for the PWA (history JSON + index) ----------------------
-    if web:
+    if web and not dry_run:
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
@@ -1556,5 +1563,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SmartStock daily run")
     parser.add_argument("--web", action="store_true",
                         help="also export PWA JSON to web/data/")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="run full pipeline (including build_report) but skip all "
+                             "disk writes, email, and Sheet sync — used by the PR-gate "
+                             "CI job to catch kwarg/schema drift before merge")
     args = parser.parse_args()
-    main(web=args.web)
+    main(web=args.web, dry_run=args.dry_run)
