@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 532.57,
- "change_pct": 2.47,
+ "price": 520.02,
+ "change_pct": -2.36,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 198.05,
-   "h": 204.0,
-   "l": 196.41,
-   "c": 203.43,
-   "v": 42318700
-  },
   {
    "time": "2026-04-01",
    "o": 207.59,
@@ -483,13 +475,21 @@
    "l": 507.0,
    "c": 532.57,
    "v": 27031300
+  },
+  {
+   "time": "2026-06-26",
+   "o": 519.79,
+   "h": 525.11,
+   "l": 502.61,
+   "c": 520.02,
+   "v": 15665302
   }
  ],
  "sr": {
-  "price": 532.57,
+  "price": 520.02,
   "resistance": [
-   546.44,
-   558.37
+   527.2,
+   546.44
   ],
   "support": [
    437.23,
@@ -498,7 +498,6 @@
   "strong_support": 133.5
  },
  "spark": [
-  203.43,
   210.21,
   217.5,
   220.18,
@@ -557,19 +556,37 @@
   551.63,
   519.85,
   519.74,
-  532.57
+  532.57,
+  520.02
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "pe_trailing": 178.71477,
   "pe_forward": 40.443798,
   "eps_trailing": 2.98,
   "eps_forward": 13.16815,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 520.02,
+  "stop": 483.62,
+  "target": 611.02,
+  "atr_bracket": 611.02,
+  "measured_move": 688.75,
+  "target_band": [
+   611.02,
+   688.75
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 6.9,
+  "swing_stop": 426.41,
+  "chandelier": 459.4,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {

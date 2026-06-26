@@ -1,9 +1,17 @@
 {
  "stock": "6147.TWO",
  "name": "頎邦",
- "price": 216.5,
- "change_pct": -9.98,
+ "price": 240.5,
+ "change_pct": -3.41,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 73.68,
+   "h": 77.24,
+   "l": 73.39,
+   "c": 75.76,
+   "v": 40288808
+  },
   {
    "time": "2026-03-31",
    "o": 74.27,
@@ -475,20 +483,11 @@
    "l": 234.0,
    "c": 240.5,
    "v": 29911885
-  },
-  {
-   "time": "2026-06-26",
-   "o": 234.0,
-   "h": 236.5,
-   "l": 216.5,
-   "c": 216.5,
-   "v": 37559763
   }
  ],
  "sr": {
-  "price": 216.5,
+  "price": 240.5,
   "resistance": [
-   278.0,
    309.64
   ],
   "support": [
@@ -498,6 +497,7 @@
   "strong_support": 49.31
  },
  "spark": [
+  75.76,
   68.64,
   75.46,
   82.97,
@@ -556,29 +556,14 @@
   277.0,
   258.0,
   249.0,
-  240.5,
-  216.5
+  240.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 2525166,
-    "trust": -1789065,
-    "dealer": -1574859,
-    "total": -838758
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

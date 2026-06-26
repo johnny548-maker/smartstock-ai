@@ -1,9 +1,17 @@
 {
  "stock": "6584.TWO",
  "name": "南俊國際",
- "price": 708.0,
- "change_pct": -2.75,
+ "price": 728.0,
+ "change_pct": 9.97,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 590.0,
+   "h": 608.0,
+   "l": 580.0,
+   "c": 602.0,
+   "v": 165032
+  },
   {
    "time": "2026-03-31",
    "o": 602.0,
@@ -475,21 +483,13 @@
    "l": 671.0,
    "c": 728.0,
    "v": 2073910
-  },
-  {
-   "time": "2026-06-26",
-   "o": 730.0,
-   "h": 748.0,
-   "l": 702.0,
-   "c": 708.0,
-   "v": 2280127
   }
  ],
  "sr": {
-  "price": 708.0,
+  "price": 728.0,
   "resistance": [
-   728.0,
-   818.0
+   818.0,
+   855.0
   ],
   "support": [
    645.0,
@@ -498,6 +498,7 @@
   "strong_support": 108.84
  },
  "spark": [
+  602.0,
   556.0,
   610.0,
   570.0,
@@ -556,29 +557,14 @@
   660.0,
   649.0,
   662.0,
-  728.0,
-  708.0
+  728.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 230733,
-    "trust": 50000,
-    "dealer": -12024,
-    "total": 268709
-   },
-   "severity": "warn",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

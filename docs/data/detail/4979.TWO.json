@@ -1,9 +1,17 @@
 {
  "stock": "4979.TWO",
  "name": "華星光",
- "price": 459.0,
- "change_pct": -3.47,
+ "price": 475.5,
+ "change_pct": -4.9,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 381.0,
+   "h": 381.5,
+   "l": 370.0,
+   "c": 379.0,
+   "v": 1921925
+  },
   {
    "time": "2026-03-31",
    "o": 374.0,
@@ -475,18 +483,10 @@
    "l": 475.0,
    "c": 475.5,
    "v": 8011101
-  },
-  {
-   "time": "2026-06-26",
-   "o": 473.0,
-   "h": 489.5,
-   "l": 450.5,
-   "c": 459.0,
-   "v": 8960439
   }
  ],
  "sr": {
-  "price": 459.0,
+  "price": 475.5,
   "resistance": [
    504.0,
    586.0
@@ -498,6 +498,7 @@
   "strong_support": 78.75
  },
  "spark": [
+  379.0,
   341.5,
   375.5,
   384.0,
@@ -556,29 +557,14 @@
   552.0,
   525.0,
   500.0,
-  475.5,
-  459.0
+  475.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 622487,
-    "trust": -475000,
-    "dealer": 7,
-    "total": 147494
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

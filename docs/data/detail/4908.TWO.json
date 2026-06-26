@@ -1,9 +1,17 @@
 {
  "stock": "4908.TWO",
  "name": "前鼎",
- "price": 185.0,
- "change_pct": -5.37,
+ "price": 195.5,
+ "change_pct": -3.69,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 108.0,
+   "h": 110.0,
+   "l": 102.0,
+   "c": 105.0,
+   "v": 3696612
+  },
   {
    "time": "2026-03-31",
    "o": 102.5,
@@ -475,29 +483,22 @@
    "l": 193.0,
    "c": 195.5,
    "v": 2133143
-  },
-  {
-   "time": "2026-06-26",
-   "o": 193.0,
-   "h": 198.5,
-   "l": 185.0,
-   "c": 185.0,
-   "v": 1605046
   }
  ],
  "sr": {
-  "price": 185.0,
+  "price": 195.5,
   "resistance": [
    210.0,
-   221.0
+   249.0
   ],
   "support": [
-   184.5,
-   158.0
+   191.5,
+   184.5
   ],
   "strong_support": 58.32
  },
  "spark": [
+  105.0,
   100.5,
   101.5,
   101.0,
@@ -556,29 +557,14 @@
   201.0,
   211.5,
   203.0,
-  195.5,
-  185.0
+  195.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 306072,
-    "trust": 0,
-    "dealer": -2892,
-    "total": 303180
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

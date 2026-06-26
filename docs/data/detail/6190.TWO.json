@@ -1,9 +1,17 @@
 {
  "stock": "6190.TWO",
  "name": "萬泰科",
- "price": 81.6,
- "change_pct": -2.16,
+ "price": 83.4,
+ "change_pct": 0.36,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 53.6,
+   "h": 54.6,
+   "l": 52.6,
+   "c": 53.3,
+   "v": 6670419
+  },
   {
    "time": "2026-03-31",
    "o": 53.0,
@@ -475,21 +483,13 @@
    "l": 82.5,
    "c": 83.4,
    "v": 3400203
-  },
-  {
-   "time": "2026-06-26",
-   "o": 83.0,
-   "h": 84.1,
-   "l": 81.2,
-   "c": 81.6,
-   "v": 4302342
   }
  ],
  "sr": {
-  "price": 81.6,
+  "price": 83.4,
   "resistance": [
-   81.8,
-   82.5
+   85.5,
+   85.8
   ],
   "support": [
    77.0,
@@ -498,6 +498,7 @@
   "strong_support": 26.71
  },
  "spark": [
+  53.3,
   54.2,
   55.3,
   53.2,
@@ -556,29 +557,14 @@
   83.7,
   81.7,
   83.1,
-  83.4,
-  81.6
+  83.4
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -412500,
-    "trust": 0,
-    "dealer": 21155,
-    "total": -391345
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

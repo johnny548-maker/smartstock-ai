@@ -1,9 +1,17 @@
 {
  "stock": "8064.TWO",
  "name": "東捷",
- "price": 134.0,
- "change_pct": -7.27,
+ "price": 144.5,
+ "change_pct": -4.93,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 69.0,
+   "h": 70.8,
+   "l": 64.0,
+   "c": 66.7,
+   "v": 9116654
+  },
   {
    "time": "2026-03-31",
    "o": 66.7,
@@ -475,21 +483,13 @@
    "l": 144.5,
    "c": 144.5,
    "v": 5320264
-  },
-  {
-   "time": "2026-06-26",
-   "o": 146.0,
-   "h": 147.5,
-   "l": 133.0,
-   "c": 134.0,
-   "v": 5154278
   }
  ],
  "sr": {
-  "price": 134.0,
+  "price": 144.5,
   "resistance": [
-   143.5,
-   171.5
+   171.5,
+   189.5
   ],
   "support": [
    130.0,
@@ -498,6 +498,7 @@
   "strong_support": 28.7
  },
  "spark": [
+  66.7,
   63.3,
   64.5,
   66.0,
@@ -556,29 +557,14 @@
   165.5,
   156.0,
   152.0,
-  144.5,
-  134.0
+  144.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 156810,
-    "trust": 1000,
-    "dealer": 28121,
-    "total": 185931
-   },
-   "severity": "warn",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "8016.TW",
  "name": "矽創",
- "price": 311.0,
- "change_pct": -5.9,
+ "price": 330.5,
+ "change_pct": 4.92,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 188.21,
+   "h": 194.94,
+   "l": 185.81,
+   "c": 190.61,
+   "v": 865040
+  },
   {
    "time": "2026-03-31",
    "o": 188.69,
@@ -475,18 +483,10 @@
    "l": 318.0,
    "c": 330.5,
    "v": 4416894
-  },
-  {
-   "time": "2026-06-26",
-   "o": 326.0,
-   "h": 335.0,
-   "l": 310.5,
-   "c": 311.0,
-   "v": 3258057
   }
  ],
  "sr": {
-  "price": 311.0,
+  "price": 330.5,
   "resistance": [],
   "support": [
    284.72,
@@ -495,6 +495,7 @@
   "strong_support": 145.38
  },
  "spark": [
+  190.61,
   183.41,
   186.77,
   183.41,
@@ -553,11 +554,10 @@
   315.0,
   320.5,
   315.0,
-  330.5,
-  311.0
+  330.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 39.8,
   "rev_accel": false,
@@ -566,6 +566,35 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 200,478 股",
+   "value": {
+    "foreign": 531854,
+    "trust": -296000,
+    "dealer": -35376,
+    "total": 200478
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 20.8 / 殖利率 3.48% / PB 3.40",
+   "value": {
+    "pe": 20.76,
+    "yield": 3.48,
+    "pb": 3.4
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

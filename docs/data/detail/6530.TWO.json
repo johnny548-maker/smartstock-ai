@@ -1,9 +1,17 @@
 {
  "stock": "6530.TWO",
  "name": "創威",
- "price": 84.6,
- "change_pct": -5.37,
+ "price": 89.4,
+ "change_pct": -2.4,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 89.66,
+   "h": 91.13,
+   "l": 84.37,
+   "c": 87.41,
+   "v": 2407730
+  },
   {
    "time": "2026-03-31",
    "o": 85.84,
@@ -475,21 +483,13 @@
    "l": 88.0,
    "c": 89.4,
    "v": 961200
-  },
-  {
-   "time": "2026-06-26",
-   "o": 88.5,
-   "h": 90.4,
-   "l": 84.6,
-   "c": 84.6,
-   "v": 728484
   }
  ],
  "sr": {
-  "price": 84.6,
+  "price": 89.4,
   "resistance": [
-   84.64,
-   100.0
+   101.42,
+   116.61
   ],
   "support": [
    82.02,
@@ -498,6 +498,7 @@
   "strong_support": 33.81
  },
  "spark": [
+  87.41,
   82.8,
   85.25,
   87.41,
@@ -556,29 +557,14 @@
   97.7,
   94.4,
   91.6,
-  89.4,
-  84.6
+  89.4
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 41000,
-    "trust": 0,
-    "dealer": -87,
-    "total": 40913
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

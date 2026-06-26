@@ -1,9 +1,17 @@
 {
  "stock": "3624.TWO",
  "name": "光頡",
- "price": 139.0,
- "change_pct": -9.74,
+ "price": 154.0,
+ "change_pct": 4.41,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 46.7,
+   "h": 47.55,
+   "l": 46.4,
+   "c": 47.4,
+   "v": 576074
+  },
   {
    "time": "2026-03-31",
    "o": 46.85,
@@ -475,21 +483,11 @@
    "l": 143.5,
    "c": 154.0,
    "v": 1943794
-  },
-  {
-   "time": "2026-06-26",
-   "o": 150.0,
-   "h": 154.0,
-   "l": 139.0,
-   "c": 139.0,
-   "v": 2076992
   }
  ],
  "sr": {
-  "price": 139.0,
-  "resistance": [
-   178.0
-  ],
+  "price": 154.0,
+  "resistance": [],
   "support": [
    93.2,
    84.6
@@ -497,6 +495,7 @@
   "strong_support": 24.24
  },
  "spark": [
+  47.4,
   45.3,
   47.2,
   45.55,
@@ -555,29 +554,14 @@
   176.5,
   159.0,
   147.5,
-  154.0,
-  139.0
+  154.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 202500,
-    "trust": -450000,
-    "dealer": 24798,
-    "total": -222702
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "4707.TWO",
  "name": "磐亞",
- "price": 27.55,
- "change_pct": 8.04,
+ "price": 25.5,
+ "change_pct": 9.91,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 10.6,
+   "h": 11.65,
+   "l": 10.6,
+   "c": 11.65,
+   "v": 4197195
+  },
   {
    "time": "2026-03-31",
    "o": 12.4,
@@ -475,18 +483,10 @@
    "l": 23.6,
    "c": 25.5,
    "v": 10305199
-  },
-  {
-   "time": "2026-06-26",
-   "o": 26.0,
-   "h": 28.0,
-   "l": 25.65,
-   "c": 27.55,
-   "v": 17511277
   }
  ],
  "sr": {
-  "price": 27.55,
+  "price": 25.5,
   "resistance": [],
   "support": [
    18.0,
@@ -495,6 +495,7 @@
   "strong_support": 8.63
  },
  "spark": [
+  11.65,
   11.35,
   11.4,
   11.2,
@@ -553,29 +554,14 @@
   23.2,
   21.1,
   23.2,
-  25.5,
-  27.55
+  25.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -659476,
-    "trust": 0,
-    "dealer": 1907,
-    "total": -657569
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

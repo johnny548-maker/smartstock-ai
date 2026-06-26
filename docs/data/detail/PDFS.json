@@ -1,17 +1,9 @@
 {
  "stock": "PDFS",
  "name": "PDF Solutions",
- "price": 68.67,
- "change_pct": 8.04,
+ "price": 63.23,
+ "change_pct": -7.92,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 31.5,
-   "h": 32.82,
-   "l": 31.33,
-   "c": 32.71,
-   "v": 281900
-  },
   {
    "time": "2026-04-01",
    "o": 33.45,
@@ -483,19 +475,28 @@
    "l": 64.83,
    "c": 68.67,
    "v": 894500
+  },
+  {
+   "time": "2026-06-26",
+   "o": 65.72,
+   "h": 66.36,
+   "l": 61.93,
+   "c": 63.23,
+   "v": 286191
   }
  ],
  "sr": {
-  "price": 68.67,
-  "resistance": [],
+  "price": 63.23,
+  "resistance": [
+   66.98
+  ],
   "support": [
-   50.97,
-   42.72
+   59.76,
+   50.97
   ],
   "strong_support": 15.91
  },
  "spark": [
-  32.71,
   33.4,
   34.71,
   34.07,
@@ -554,28 +555,12 @@
   64.95,
   60.54,
   63.56,
-  68.67
+  68.67,
+  63.23
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 6624,
-    "days": 2,
-    "max_shares": 4628,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-26",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

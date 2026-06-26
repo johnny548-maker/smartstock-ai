@@ -1,9 +1,17 @@
 {
  "stock": "2363.TW",
  "name": "矽統",
- "price": 68.6,
- "change_pct": -9.86,
+ "price": 76.1,
+ "change_pct": 9.97,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 47.9,
+   "h": 48.85,
+   "l": 47.75,
+   "c": 48.6,
+   "v": 2381148
+  },
   {
    "time": "2026-03-31",
    "o": 48.15,
@@ -475,29 +483,22 @@
    "l": 70.9,
    "c": 76.1,
    "v": 73597642
-  },
-  {
-   "time": "2026-06-26",
-   "o": 74.0,
-   "h": 74.2,
-   "l": 68.5,
-   "c": 68.6,
-   "v": 64512965
   }
  ],
  "sr": {
-  "price": 68.6,
+  "price": 76.1,
   "resistance": [
-   69.17,
-   69.8
+   78.79,
+   80.47
   ],
   "support": [
-   68.58,
-   67.49
+   75.71,
+   75.02
   ],
   "strong_support": 38.85
  },
  "spark": [
+  48.6,
   46.3,
   47.65,
   46.3,
@@ -556,11 +557,10 @@
   69.1,
   65.9,
   69.2,
-  76.1,
-  68.6
+  76.1
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 88.8,
   "rev_accel": false,
@@ -569,6 +569,47 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 7,062,393 股",
+   "value": {
+    "foreign": -6118860,
+    "trust": 30000,
+    "dealer": -973533,
+    "total": -7062393
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +20.2%",
+   "value": {
+    "fin_net": 4231,
+    "fin_pct": 0.20214036596435908
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 44.8 / 殖利率 0.79% / PB 1.92",
+   "value": {
+    "pe": 44.76,
+    "yield": 0.79,
+    "pb": 1.92
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

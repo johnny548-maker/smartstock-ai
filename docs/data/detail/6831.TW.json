@@ -1,9 +1,17 @@
 {
  "stock": "6831.TW",
  "name": "邁科",
- "price": 797.0,
- "change_pct": -9.53,
+ "price": 881.0,
+ "change_pct": 3.4,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 387.13,
+   "h": 387.13,
+   "l": 363.8,
+   "c": 376.21,
+   "v": 1198683
+  },
   {
    "time": "2026-03-31",
    "o": 367.27,
@@ -475,18 +483,10 @@
    "l": 857.0,
    "c": 881.0,
    "v": 2113629
-  },
-  {
-   "time": "2026-06-26",
-   "o": 892.0,
-   "h": 898.0,
-   "l": 793.0,
-   "c": 797.0,
-   "v": 1449441
   }
  ],
  "sr": {
-  "price": 797.0,
+  "price": 881.0,
   "resistance": [],
   "support": [
    704.0,
@@ -495,6 +495,7 @@
   "strong_support": 57.71
  },
  "spark": [
+  376.21,
   383.15,
   404.0,
   386.5,
@@ -553,11 +554,10 @@
   817.0,
   830.0,
   852.0,
-  881.0,
-  797.0
+  881.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": -10.8,
   "rev_accel": false,
@@ -566,6 +566,35 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 249,323 股",
+   "value": {
+    "foreign": -246428,
+    "trust": 14000,
+    "dealer": -16895,
+    "total": -249323
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 179.1 / 殖利率 0.34% / PB 22.23",
+   "value": {
+    "pe": 179.07,
+    "yield": 0.34,
+    "pb": 22.23
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

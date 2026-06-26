@@ -1,9 +1,17 @@
 {
  "stock": "3265.TWO",
  "name": "台星科",
- "price": 176.0,
- "change_pct": -6.38,
+ "price": 188.0,
+ "change_pct": -2.59,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 141.0,
+   "h": 144.0,
+   "l": 136.0,
+   "c": 143.0,
+   "v": 2487068
+  },
   {
    "time": "2026-03-31",
    "o": 141.0,
@@ -475,21 +483,13 @@
    "l": 184.5,
    "c": 188.0,
    "v": 1852430
-  },
-  {
-   "time": "2026-06-26",
-   "o": 189.0,
-   "h": 193.0,
-   "l": 175.5,
-   "c": 176.0,
-   "v": 1669067
   }
  ],
  "sr": {
-  "price": 176.0,
+  "price": 188.0,
   "resistance": [
-   182.0,
-   184.0
+   201.0,
+   204.5
   ],
   "support": [
    173.0,
@@ -498,6 +498,7 @@
   "strong_support": 67.08
  },
  "spark": [
+  143.0,
   142.5,
   146.5,
   143.5,
@@ -556,29 +557,14 @@
   193.5,
   181.5,
   193.0,
-  188.0,
-  176.0
+  188.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -496630,
-    "trust": 0,
-    "dealer": -43147,
-    "total": -539777
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

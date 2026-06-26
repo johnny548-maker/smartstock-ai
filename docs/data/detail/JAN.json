@@ -1,17 +1,9 @@
 {
  "stock": "JAN",
  "name": "Janus Living, Inc. Class A-1 Common Stock",
- "price": 28.92,
- "change_pct": 1.19,
+ "price": 28.0,
+ "change_pct": -3.18,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 22.85,
-   "h": 23.73,
-   "l": 22.79,
-   "c": 23.42,
-   "v": 1344300
-  },
   {
    "time": "2026-04-01",
    "o": 23.4,
@@ -483,11 +475,21 @@
    "l": 28.16,
    "c": 28.92,
    "v": 2554200
+  },
+  {
+   "time": "2026-06-26",
+   "o": 28.91,
+   "h": 29.09,
+   "l": 27.94,
+   "c": 28.0,
+   "v": 550909
   }
  ],
  "sr": {
-  "price": 28.92,
-  "resistance": [],
+  "price": 28.0,
+  "resistance": [
+   28.34
+  ],
   "support": [
    25.84,
    24.09
@@ -495,7 +497,6 @@
   "strong_support": 23.71
  },
  "spark": [
-  23.42,
   23.2,
   23.74,
   23.2,
@@ -554,10 +555,11 @@
   26.31,
   27.04,
   28.58,
-  28.92
+  28.92,
+  28.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

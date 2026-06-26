@@ -1,17 +1,9 @@
 {
  "stock": "WDC",
  "name": "Western Digital",
- "price": 675.39,
- "change_pct": 4.9,
+ "price": 594.48,
+ "change_pct": -11.98,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 258.93,
-   "h": 271.02,
-   "l": 254.43,
-   "c": 270.42,
-   "v": 8781900
-  },
   {
    "time": "2026-04-01",
    "o": 280.43,
@@ -483,11 +475,20 @@
    "l": 658.5,
    "c": 675.39,
    "v": 11717600
+  },
+  {
+   "time": "2026-06-26",
+   "o": 646.76,
+   "h": 647.41,
+   "l": 593.2,
+   "c": 594.48,
+   "v": 8114478
   }
  ],
  "sr": {
-  "price": 675.39,
+  "price": 594.48,
   "resistance": [
+   602.38,
    799.87
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 28.7
  },
  "spark": [
-  270.42,
   297.65,
   294.89,
   304.07,
@@ -556,28 +556,12 @@
   732.62,
   670.75,
   643.83,
-  675.39
+  675.39,
+  594.48
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 317,834 股交割失敗）",
-   "value": {
-    "total_shares": 317834,
-    "days": 6,
-    "max_shares": 316089,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-26",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 434.99,
- "change_pct": -1.32,
+ "price": 433.48,
+ "change_pct": -0.35,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 321.56,
-   "h": 337.62,
-   "l": 320.39,
-   "c": 337.16,
-   "v": 18488000
-  },
   {
    "time": "2026-04-01",
    "o": 343.1,
@@ -483,10 +475,18 @@
    "l": 432.44,
    "c": 434.99,
    "v": 14769500
+  },
+  {
+   "time": "2026-06-26",
+   "o": 425.0,
+   "h": 435.08,
+   "l": 419.19,
+   "c": 433.48,
+   "v": 9549714
   }
  ],
  "sr": {
-  "price": 434.99,
+  "price": 433.48,
   "resistance": [
    449.11,
    476.79
@@ -498,7 +498,6 @@
   "strong_support": 218.76
  },
  "spark": [
-  337.16,
   340.69,
   338.25,
   340.96,
@@ -557,19 +556,37 @@
   467.67,
   436.39,
   440.83,
-  434.99
+  434.99,
+  433.48
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "pe_trailing": 37.46684,
   "pe_forward": 21.790892,
   "eps_trailing": 11.61,
   "eps_forward": 19.96201,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 433.48,
+  "stop": 403.14,
+  "target": 509.34,
+  "atr_bracket": 509.34,
+  "measured_move": 549.02,
+  "target_band": [
+   509.34,
+   549.02
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.5,
+  "swing_stop": 398.65,
+  "chandelier": 417.88,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {

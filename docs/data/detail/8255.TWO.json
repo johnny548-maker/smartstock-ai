@@ -1,9 +1,17 @@
 {
  "stock": "8255.TWO",
  "name": "朋程",
- "price": 175.0,
- "change_pct": -6.67,
+ "price": 187.5,
+ "change_pct": -4.34,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 125.5,
+   "h": 125.5,
+   "l": 122.5,
+   "c": 123.0,
+   "v": 400265
+  },
   {
    "time": "2026-03-31",
    "o": 122.0,
@@ -475,21 +483,13 @@
    "l": 186.0,
    "c": 187.5,
    "v": 2109635
-  },
-  {
-   "time": "2026-06-26",
-   "o": 185.0,
-   "h": 190.5,
-   "l": 175.0,
-   "c": 175.0,
-   "v": 2209229
   }
  ],
  "sr": {
-  "price": 175.0,
+  "price": 187.5,
   "resistance": [
-   175.63,
-   201.2
+   201.2,
+   205.0
   ],
   "support": [
    166.46,
@@ -498,6 +498,7 @@
   "strong_support": 100.36
  },
  "spark": [
+  123.0,
   119.0,
   118.0,
   117.5,
@@ -556,29 +557,14 @@
   214.5,
   199.5,
   196.0,
-  187.5,
-  175.0
+  187.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 35158,
-    "trust": 0,
-    "dealer": -96124,
-    "total": -60966
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

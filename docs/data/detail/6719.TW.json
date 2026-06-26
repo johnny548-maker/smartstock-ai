@@ -1,9 +1,17 @@
 {
  "stock": "6719.TW",
  "name": "力智",
- "price": 266.0,
- "change_pct": -9.98,
+ "price": 295.5,
+ "change_pct": -0.67,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 166.0,
+   "h": 171.0,
+   "l": 164.5,
+   "c": 168.0,
+   "v": 292111
+  },
   {
    "time": "2026-03-31",
    "o": 167.5,
@@ -475,29 +483,21 @@
    "l": 282.5,
    "c": 295.5,
    "v": 6684950
-  },
-  {
-   "time": "2026-06-26",
-   "o": 289.5,
-   "h": 291.5,
-   "l": 266.0,
-   "c": 266.0,
-   "v": 5740786
   }
  ],
  "sr": {
-  "price": 266.0,
+  "price": 295.5,
   "resistance": [
-   267.78,
-   286.0
+   297.51
   ],
   "support": [
-   249.43,
-   247.95
+   273.86,
+   249.43
   ],
   "strong_support": 140.83
  },
  "spark": [
+  168.0,
   161.5,
   163.0,
   159.5,
@@ -556,11 +556,10 @@
   286.0,
   277.5,
   297.5,
-  295.5,
-  266.0
+  295.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": -9.6,
   "rev_accel": false,
@@ -569,6 +568,46 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 148,030 股",
+   "value": {
+    "foreign": 261730,
+    "trust": 0,
+    "dealer": -113700,
+    "total": 148030
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -4
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 41.2 / 殖利率 1.56% / PB 2.18",
+   "value": {
+    "pe": 41.16,
+    "yield": 1.56,
+    "pb": 2.18
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

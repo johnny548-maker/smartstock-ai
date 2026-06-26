@@ -1,9 +1,17 @@
 {
  "stock": "8096.TWO",
  "name": "擎亞",
- "price": 145.0,
- "change_pct": -6.75,
+ "price": 155.5,
+ "change_pct": -0.32,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 90.0,
+   "h": 95.0,
+   "l": 88.5,
+   "c": 92.7,
+   "v": 34374738
+  },
   {
    "time": "2026-03-31",
    "o": 92.0,
@@ -475,18 +483,10 @@
    "l": 155.0,
    "c": 155.5,
    "v": 2503922
-  },
-  {
-   "time": "2026-06-26",
-   "o": 153.5,
-   "h": 155.0,
-   "l": 142.0,
-   "c": 145.0,
-   "v": 2641609
   }
  ],
  "sr": {
-  "price": 145.0,
+  "price": 155.5,
   "resistance": [
    162.0
   ],
@@ -497,6 +497,7 @@
   "strong_support": 33.79
  },
  "spark": [
+  92.7,
   86.2,
   91.8,
   89.2,
@@ -555,29 +556,14 @@
   157.5,
   150.5,
   156.0,
-  155.5,
-  145.0
+  155.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 100007,
-    "trust": 0,
-    "dealer": -49744,
-    "total": 50263
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "6727.TWO",
  "name": "亞泰金屬",
- "price": 397.5,
- "change_pct": -7.02,
+ "price": 427.5,
+ "change_pct": -1.38,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 287.5,
+   "h": 329.5,
+   "l": 287.5,
+   "c": 328.0,
+   "v": 779138
+  },
   {
    "time": "2026-03-31",
    "o": 319.5,
@@ -475,21 +483,13 @@
    "l": 415.5,
    "c": 427.5,
    "v": 1138500
-  },
-  {
-   "time": "2026-06-26",
-   "o": 420.0,
-   "h": 425.5,
-   "l": 393.5,
-   "c": 397.5,
-   "v": 1039316
   }
  ],
  "sr": {
-  "price": 397.5,
+  "price": 427.5,
   "resistance": [
-   420.0,
-   493.0
+   493.0,
+   498.0
   ],
   "support": [
    389.0,
@@ -498,6 +498,7 @@
   "strong_support": 46.05
  },
  "spark": [
+  328.0,
   296.0,
   325.5,
   358.0,
@@ -556,29 +557,14 @@
   485.5,
   450.0,
   433.5,
-  427.5,
-  397.5
+  427.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 129629,
-    "trust": 0,
-    "dealer": -5845,
-    "total": 123784
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "3324.TWO",
  "name": "雙鴻",
- "price": 970.0,
- "change_pct": -3.96,
+ "price": 1010.0,
+ "change_pct": -4.27,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 949.12,
+   "h": 962.96,
+   "l": 932.31,
+   "c": 945.16,
+   "v": 3460064
+  },
   {
    "time": "2026-03-31",
    "o": 922.42,
@@ -475,29 +483,22 @@
    "l": 1010.0,
    "c": 1010.0,
    "v": 2028838
-  },
-  {
-   "time": "2026-06-26",
-   "o": 1005.0,
-   "h": 1005.0,
-   "l": 968.0,
-   "c": 970.0,
-   "v": 2803843
   }
  ],
  "sr": {
-  "price": 970.0,
+  "price": 1010.0,
   "resistance": [
-   998.55,
-   1008.44
+   1013.38,
+   1043.04
   ],
   "support": [
-   952.08,
-   950.11
+   988.66,
+   978.78
   ],
   "strong_support": 384.98
  },
  "spark": [
+  945.16,
   869.04,
   909.57,
   899.68,
@@ -556,29 +557,14 @@
   1075.0,
   1025.0,
   1055.0,
-  1010.0,
-  970.0
+  1010.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -450784,
-    "trust": 194,
-    "dealer": -313271,
-    "total": -763861
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

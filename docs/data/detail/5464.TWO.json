@@ -1,9 +1,17 @@
 {
  "stock": "5464.TWO",
  "name": "霖宏",
- "price": 100.0,
- "change_pct": -6.98,
+ "price": 107.5,
+ "change_pct": 9.69,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 27.45,
+   "h": 27.9,
+   "l": 27.2,
+   "c": 27.9,
+   "v": 176000
+  },
   {
    "time": "2026-03-31",
    "o": 27.85,
@@ -475,18 +483,10 @@
    "l": 105.5,
    "c": 107.5,
    "v": 1467033
-  },
-  {
-   "time": "2026-06-26",
-   "o": 107.5,
-   "h": 109.0,
-   "l": 98.0,
-   "c": 100.0,
-   "v": 5870725
   }
  ],
  "sr": {
-  "price": 100.0,
+  "price": 107.5,
   "resistance": [],
   "support": [
    69.0,
@@ -495,6 +495,7 @@
   "strong_support": 17.54
  },
  "spark": [
+  27.9,
   28.15,
   28.25,
   28.1,
@@ -553,29 +554,14 @@
   81.0,
   89.1,
   98.0,
-  107.5,
-  100.0
+  107.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 1318699,
-    "trust": 0,
-    "dealer": -35625,
-    "total": 1283074
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

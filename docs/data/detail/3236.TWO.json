@@ -1,9 +1,17 @@
 {
  "stock": "3236.TWO",
  "name": "千如",
- "price": 67.5,
- "change_pct": -3.71,
+ "price": 70.1,
+ "change_pct": 9.87,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 28.95,
+   "h": 29.45,
+   "l": 28.25,
+   "c": 29.4,
+   "v": 1020738
+  },
   {
    "time": "2026-03-31",
    "o": 29.4,
@@ -475,18 +483,10 @@
    "l": 63.5,
    "c": 70.1,
    "v": 21527358
-  },
-  {
-   "time": "2026-06-26",
-   "o": 68.2,
-   "h": 72.8,
-   "l": 66.7,
-   "c": 67.5,
-   "v": 47152972
   }
  ],
  "sr": {
-  "price": 67.5,
+  "price": 70.1,
   "resistance": [
    73.0
   ],
@@ -497,6 +497,7 @@
   "strong_support": 12.89
  },
  "spark": [
+  29.4,
   30.5,
   31.2,
   30.5,
@@ -555,29 +556,14 @@
   66.4,
   61.0,
   63.8,
-  70.1,
-  67.5
+  70.1
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 1212435,
-    "trust": 0,
-    "dealer": -42806,
-    "total": 1169629
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

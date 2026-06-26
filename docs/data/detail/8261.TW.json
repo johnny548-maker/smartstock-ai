@@ -1,9 +1,17 @@
 {
  "stock": "8261.TW",
  "name": "富鼎",
- "price": 244.0,
- "change_pct": -4.5,
+ "price": 255.5,
+ "change_pct": 3.65,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 100.5,
+   "h": 100.5,
+   "l": 97.9,
+   "c": 99.3,
+   "v": 1901326
+  },
   {
    "time": "2026-03-31",
    "o": 99.3,
@@ -475,18 +483,10 @@
    "l": 244.5,
    "c": 255.5,
    "v": 14356008
-  },
-  {
-   "time": "2026-06-26",
-   "o": 251.5,
-   "h": 281.0,
-   "l": 241.5,
-   "c": 244.0,
-   "v": 23893214
   }
  ],
  "sr": {
-  "price": 244.0,
+  "price": 255.5,
   "resistance": [],
   "support": [
    161.5,
@@ -495,6 +495,7 @@
   "strong_support": 57.86
  },
  "spark": [
+  99.3,
   96.6,
   99.3,
   100.5,
@@ -553,11 +554,10 @@
   236.5,
   260.0,
   246.5,
-  255.5,
-  244.0
+  255.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 1.2,
   "rev_accel": false,
@@ -566,6 +566,58 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 1,791,434 股",
+   "value": {
+    "foreign": 1803673,
+    "trust": 1000,
+    "dealer": -13239,
+    "total": 1791434
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +11.5%",
+   "value": {
+    "fin_net": 1036,
+    "fin_pct": 0.11460176991150442
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -215
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 43.8 / 殖利率 1.96% / PB 4.96",
+   "value": {
+    "pe": 43.75,
+    "yield": 1.96,
+    "pb": 4.96
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

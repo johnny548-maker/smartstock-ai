@@ -1,9 +1,17 @@
 {
  "stock": "3217.TWO",
  "name": "優群",
- "price": 182.0,
- "change_pct": -2.93,
+ "price": 187.5,
+ "change_pct": 5.93,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 154.5,
+   "h": 154.5,
+   "l": 152.0,
+   "c": 153.0,
+   "v": 393033
+  },
   {
    "time": "2026-03-31",
    "o": 152.0,
@@ -475,29 +483,22 @@
    "l": 177.0,
    "c": 187.5,
    "v": 2593881
-  },
-  {
-   "time": "2026-06-26",
-   "o": 186.5,
-   "h": 188.5,
-   "l": 182.0,
-   "c": 182.0,
-   "v": 1743464
   }
  ],
  "sr": {
-  "price": 182.0,
+  "price": 187.5,
   "resistance": [
-   183.0,
-   184.5
+   188.0,
+   190.5
   ],
   "support": [
-   175.5,
-   172.0
+   186.5,
+   175.5
   ],
   "strong_support": 106.81
  },
  "spark": [
+  153.0,
   151.5,
   153.5,
   150.5,
@@ -556,29 +557,14 @@
   176.5,
   175.0,
   177.0,
-  187.5,
-  182.0
+  187.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -34123,
-    "trust": 0,
-    "dealer": 73246,
-    "total": 39123
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "8289.TWO",
  "name": "泰藝",
- "price": 58.5,
- "change_pct": 0.86,
+ "price": 58.0,
+ "change_pct": -4.45,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 39.86,
+   "h": 43.31,
+   "l": 37.47,
+   "c": 38.67,
+   "v": 12126020
+  },
   {
    "time": "2026-03-31",
    "o": 38.52,
@@ -475,18 +483,10 @@
    "l": 57.8,
    "c": 58.0,
    "v": 1907404
-  },
-  {
-   "time": "2026-06-26",
-   "o": 58.1,
-   "h": 62.1,
-   "l": 57.9,
-   "c": 58.5,
-   "v": 6423982
   }
  ],
  "sr": {
-  "price": 58.5,
+  "price": 58.0,
   "resistance": [
    59.27,
    59.87
@@ -498,6 +498,7 @@
   "strong_support": 16.32
  },
  "spark": [
+  38.67,
   37.32,
   36.97,
   35.67,
@@ -556,29 +557,14 @@
   67.2,
   61.2,
   60.7,
-  58.0,
-  58.5
+  58.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -185780,
-    "trust": 0,
-    "dealer": -590,
-    "total": -186370
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "KEN",
  "name": "Kenon Holdings Ltd. Ordinary Shares",
- "price": 66.6,
- "change_pct": 0.0,
+ "price": 66.67,
+ "change_pct": 0.11,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 76.06,
-   "h": 78.85,
-   "l": 76.03,
-   "c": 78.76,
-   "v": 20200
-  },
   {
    "time": "2026-04-01",
    "o": 79.29,
@@ -483,19 +475,28 @@
    "l": 66.22,
    "c": 66.6,
    "v": 39200
+  },
+  {
+   "time": "2026-06-26",
+   "o": 67.23,
+   "h": 67.29,
+   "l": 65.91,
+   "c": 66.67,
+   "v": 8745
   }
  ],
  "sr": {
-  "price": 66.6,
+  "price": 66.67,
   "resistance": [
    83.99,
    85.96
   ],
-  "support": [],
-  "strong_support": 78.42
+  "support": [
+   65.06
+  ],
+  "strong_support": 65.06
  },
  "spark": [
-  78.76,
   81.68,
   81.75,
   80.17,
@@ -554,10 +555,11 @@
   66.22,
   66.58,
   66.6,
-  66.6
+  66.6,
+  66.67
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

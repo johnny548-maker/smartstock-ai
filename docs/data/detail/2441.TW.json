@@ -1,9 +1,17 @@
 {
  "stock": "2441.TW",
  "name": "超豐",
- "price": 134.5,
- "change_pct": -4.95,
+ "price": 141.5,
+ "change_pct": -0.7,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 92.4,
+   "h": 94.5,
+   "l": 90.2,
+   "c": 93.8,
+   "v": 5013439
+  },
   {
    "time": "2026-03-31",
    "o": 91.3,
@@ -475,18 +483,10 @@
    "l": 139.5,
    "c": 141.5,
    "v": 12528050
-  },
-  {
-   "time": "2026-06-26",
-   "o": 140.5,
-   "h": 146.5,
-   "l": 134.5,
-   "c": 134.5,
-   "v": 15118230
   }
  ],
  "sr": {
-  "price": 134.5,
+  "price": 141.5,
   "resistance": [
    148.0
   ],
@@ -497,6 +497,7 @@
   "strong_support": 42.58
  },
  "spark": [
+  93.8,
   84.5,
   88.4,
   85.0,
@@ -555,11 +556,10 @@
   140.0,
   136.0,
   142.5,
-  141.5,
-  134.5
+  141.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 20.9,
   "rev_accel": false,
@@ -568,6 +568,46 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 3,656,102 股",
+   "value": {
+    "foreign": -876918,
+    "trust": -2551000,
+    "dealer": -228184,
+    "total": -3656102
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -24
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 30.3 / 殖利率 2.12% / PB 3.19",
+   "value": {
+    "pe": 30.3,
+    "yield": 2.12,
+    "pb": 3.19
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

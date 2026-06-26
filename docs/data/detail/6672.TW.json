@@ -1,9 +1,17 @@
 {
  "stock": "6672.TW",
  "name": "騰輝電子-KY",
- "price": 292.0,
- "change_pct": 0.86,
+ "price": 289.5,
+ "change_pct": 9.87,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 125.24,
+   "h": 126.22,
+   "l": 120.84,
+   "c": 125.73,
+   "v": 4690808
+  },
   {
    "time": "2026-03-31",
    "o": 123.29,
@@ -475,18 +483,10 @@
    "l": 258.5,
    "c": 289.5,
    "v": 9252963
-  },
-  {
-   "time": "2026-06-26",
-   "o": 289.0,
-   "h": 311.5,
-   "l": 284.0,
-   "c": 292.0,
-   "v": 16685182
   }
  ],
  "sr": {
-  "price": 292.0,
+  "price": 289.5,
   "resistance": [],
   "support": [
    197.5,
@@ -495,6 +495,7 @@
   "strong_support": 51.78
  },
  "spark": [
+  125.73,
   122.8,
   127.2,
   126.71,
@@ -553,11 +554,10 @@
   255.5,
   249.0,
   263.5,
-  289.5,
-  292.0
+  289.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 35.0,
   "rev_accel": false,
@@ -566,6 +566,46 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 401,645 股",
+   "value": {
+    "foreign": 491083,
+    "trust": 0,
+    "dealer": -89438,
+    "total": 401645
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -5
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 52.4 / 殖利率 1.16% / PB 5.57",
+   "value": {
+    "pe": 52.35,
+    "yield": 1.16,
+    "pb": 5.57
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

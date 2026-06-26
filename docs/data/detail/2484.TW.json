@@ -1,9 +1,17 @@
 {
  "stock": "2484.TW",
  "name": "希華",
- "price": 76.8,
- "change_pct": 9.87,
+ "price": 69.9,
+ "change_pct": 0.87,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 30.8,
+   "h": 31.65,
+   "l": 27.85,
+   "c": 28.15,
+   "v": 12982344
+  },
   {
    "time": "2026-03-31",
    "o": 28.8,
@@ -475,19 +483,13 @@
    "l": 66.5,
    "c": 69.9,
    "v": 27713754
-  },
-  {
-   "time": "2026-06-26",
-   "o": 69.2,
-   "h": 76.8,
-   "l": 69.1,
-   "c": 76.8,
-   "v": 60291617
   }
  ],
  "sr": {
-  "price": 76.8,
-  "resistance": [],
+  "price": 69.9,
+  "resistance": [
+   76.1
+  ],
   "support": [
    47.0,
    36.35
@@ -495,6 +497,7 @@
   "strong_support": 16.61
  },
  "spark": [
+  28.15,
   28.7,
   31.25,
   30.35,
@@ -553,11 +556,10 @@
   66.9,
   63.0,
   69.3,
-  69.9,
-  76.8
+  69.9
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 4.7,
   "rev_accel": false,
@@ -566,35 +568,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 3,631,382 股",
-   "value": {
-    "foreign": 3342154,
-    "trust": 0,
-    "dealer": 289228,
-    "total": 3631382
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 94.5 / 殖利率 1.00% / PB 2.72",
-   "value": {
-    "pe": 94.46,
-    "yield": 1.0,
-    "pb": 2.72
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

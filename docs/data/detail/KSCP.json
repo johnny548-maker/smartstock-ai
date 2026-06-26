@@ -1,17 +1,9 @@
 {
  "stock": "KSCP",
  "name": "Knightscope, Inc. - Class A Common Stock",
- "price": 1.93,
- "change_pct": -0.52,
+ "price": 1.96,
+ "change_pct": 1.55,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 3.4,
-   "h": 4.29,
-   "l": 3.32,
-   "c": 4.17,
-   "v": 1202100
-  },
   {
    "time": "2026-04-01",
    "o": 4.2,
@@ -483,19 +475,29 @@
    "l": 1.91,
    "c": 1.93,
    "v": 291300
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1.93,
+   "h": 2.04,
+   "l": 1.85,
+   "c": 1.96,
+   "v": 328336
   }
  ],
  "sr": {
-  "price": 1.93,
+  "price": 1.96,
   "resistance": [
    2.18,
    3.16
   ],
-  "support": [],
-  "strong_support": 1.95
+  "support": [
+   1.95,
+   1.78
+  ],
+  "strong_support": 1.78
  },
  "spark": [
-  4.17,
   3.88,
   3.9,
   3.91,
@@ -554,10 +556,11 @@
   1.9,
   1.98,
   1.94,
-  1.93
+  1.93,
+  1.96
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

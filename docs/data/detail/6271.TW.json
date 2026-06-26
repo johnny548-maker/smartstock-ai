@@ -1,9 +1,17 @@
 {
  "stock": "6271.TW",
  "name": "同欣電",
- "price": 255.0,
- "change_pct": -6.08,
+ "price": 271.5,
+ "change_pct": 7.95,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 145.66,
+   "h": 146.64,
+   "l": 141.21,
+   "c": 145.66,
+   "v": 3625558
+  },
   {
    "time": "2026-03-31",
    "o": 143.19,
@@ -475,21 +483,11 @@
    "l": 247.0,
    "c": 271.5,
    "v": 24932890
-  },
-  {
-   "time": "2026-06-26",
-   "o": 266.0,
-   "h": 280.0,
-   "l": 254.5,
-   "c": 255.0,
-   "v": 29402728
   }
  ],
  "sr": {
-  "price": 255.0,
-  "resistance": [
-   265.14
-  ],
+  "price": 271.5,
+  "resistance": [],
   "support": [
    221.5,
    206.5
@@ -497,6 +495,7 @@
   "strong_support": 80.56
  },
  "spark": [
+  145.66,
   138.74,
   147.14,
   149.61,
@@ -555,11 +554,10 @@
   266.5,
   244.5,
   251.5,
-  271.5,
-  255.0
+  271.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": {
   "rev_yoy": 7.6,
   "rev_accel": false,
@@ -568,6 +566,35 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 2,165,811 股",
+   "value": {
+    "foreign": -2118960,
+    "trust": 70000,
+    "dealer": -116851,
+    "total": -2165811
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 40.3 / 殖利率 1.10% / PB 2.15",
+   "value": {
+    "pe": 40.28,
+    "yield": 1.1,
+    "pb": 2.15
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {

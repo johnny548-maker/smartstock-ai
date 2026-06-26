@@ -1,9 +1,17 @@
 {
  "stock": "6739.TWO",
  "name": "竹陞科技",
- "price": 1030.0,
- "change_pct": -7.21,
+ "price": 1110.0,
+ "change_pct": -1.33,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 1166.05,
+   "h": 1220.4,
+   "l": 1136.41,
+   "c": 1171.0,
+   "v": 585259
+  },
   {
    "time": "2026-03-31",
    "o": 1171.0,
@@ -475,29 +483,22 @@
    "l": 1110.0,
    "c": 1110.0,
    "v": 97346
-  },
-  {
-   "time": "2026-06-26",
-   "o": 1115.0,
-   "h": 1115.0,
-   "l": 1015.0,
-   "c": 1030.0,
-   "v": 288727
   }
  ],
  "sr": {
-  "price": 1030.0,
+  "price": 1110.0,
   "resistance": [
-   1062.3,
-   1082.06
+   1254.99,
+   1289.58
   ],
   "support": [
-   923.95,
-   866.64
+   1077.12,
+   1072.18
   ],
   "strong_support": 110.11
  },
  "spark": [
+  1171.0,
   1091.94,
   1200.64,
   1274.75,
@@ -556,29 +557,14 @@
   1190.0,
   1120.0,
   1125.0,
-  1110.0,
-  1030.0
+  1110.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 29205,
-    "trust": 0,
-    "dealer": -4050,
-    "total": 25155
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "IAUX",
  "name": "i-80 Gold Corp. Common Shares",
- "price": 1.39,
- "change_pct": 0.0,
+ "price": 1.47,
+ "change_pct": 5.76,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 1.45,
-   "h": 1.53,
-   "l": 1.43,
-   "c": 1.52,
-   "v": 25764600
-  },
   {
    "time": "2026-04-01",
    "o": 1.56,
@@ -483,19 +475,29 @@
    "l": 1.38,
    "c": 1.39,
    "v": 6670100
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1.41,
+   "h": 1.48,
+   "l": 1.39,
+   "c": 1.47,
+   "v": 6866229
   }
  ],
  "sr": {
-  "price": 1.39,
+  "price": 1.47,
   "resistance": [
    1.64,
    1.65
   ],
-  "support": [],
+  "support": [
+   1.46,
+   1.42
+  ],
   "strong_support": 1.42
  },
  "spark": [
-  1.52,
   1.61,
   1.66,
   1.64,
@@ -554,10 +556,11 @@
   1.5,
   1.42,
   1.39,
-  1.39
+  1.39,
+  1.47
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

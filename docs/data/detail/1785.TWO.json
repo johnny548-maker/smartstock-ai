@@ -1,9 +1,17 @@
 {
  "stock": "1785.TWO",
  "name": "光洋科",
- "price": 137.0,
- "change_pct": -3.86,
+ "price": 142.5,
+ "change_pct": -1.04,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 96.8,
+   "h": 98.5,
+   "l": 90.0,
+   "c": 91.3,
+   "v": 77659982
+  },
   {
    "time": "2026-03-31",
    "o": 90.5,
@@ -475,29 +483,22 @@
    "l": 139.5,
    "c": 142.5,
    "v": 13007307
-  },
-  {
-   "time": "2026-06-26",
-   "o": 143.0,
-   "h": 146.0,
-   "l": 137.0,
-   "c": 137.0,
-   "v": 17908798
   }
  ],
  "sr": {
-  "price": 137.0,
+  "price": 142.5,
   "resistance": [
    151.0,
    160.5
   ],
   "support": [
-   136.0,
-   131.5
+   142.0,
+   140.5
   ],
   "strong_support": 44.6
  },
  "spark": [
+  91.3,
   89.5,
   91.9,
   88.1,
@@ -556,29 +557,14 @@
   150.0,
   149.5,
   144.0,
-  142.5,
-  137.0
+  142.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 382791,
-    "trust": 22889,
-    "dealer": 2096,
-    "total": 407776
-   },
-   "severity": "warn",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "3221.TWO",
  "name": "台嘉碩",
- "price": 57.9,
- "change_pct": 4.51,
+ "price": 55.4,
+ "change_pct": -2.12,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 35.85,
+   "h": 38.3,
+   "l": 35.5,
+   "c": 36.85,
+   "v": 25342731
+  },
   {
    "time": "2026-03-31",
    "o": 35.9,
@@ -475,18 +483,10 @@
    "l": 55.2,
    "c": 55.4,
    "v": 3017921
-  },
-  {
-   "time": "2026-06-26",
-   "o": 55.4,
-   "h": 60.6,
-   "l": 55.4,
-   "c": 57.9,
-   "v": 19113979
   }
  ],
  "sr": {
-  "price": 57.9,
+  "price": 55.4,
   "resistance": [
    63.6,
    67.9
@@ -498,6 +498,7 @@
   "strong_support": 15.66
  },
  "spark": [
+  36.85,
   35.3,
   38.8,
   35.6,
@@ -556,29 +557,14 @@
   59.1,
   55.6,
   56.6,
-  55.4,
-  57.9
+  55.4
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 2150000,
-    "trust": 0,
-    "dealer": 127781,
-    "total": 2277781
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

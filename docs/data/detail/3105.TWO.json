@@ -1,9 +1,17 @@
 {
  "stock": "3105.TWO",
  "name": "穩懋",
- "price": 424.0,
- "change_pct": -8.42,
+ "price": 463.0,
+ "change_pct": -3.14,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 371.44,
+   "h": 395.84,
+   "l": 357.0,
+   "c": 388.87,
+   "v": 52186810
+  },
   {
    "time": "2026-03-31",
    "o": 370.94,
@@ -475,29 +483,22 @@
    "l": 458.0,
    "c": 463.0,
    "v": 20414276
-  },
-  {
-   "time": "2026-06-26",
-   "o": 458.0,
-   "h": 463.5,
-   "l": 421.0,
-   "c": 424.0,
-   "v": 33797108
   }
  ],
  "sr": {
-  "price": 424.0,
+  "price": 463.0,
   "resistance": [
    556.66,
    561.64
   ],
   "support": [
-   304.72,
-   289.28
+   434.18,
+   433.68
   ],
   "strong_support": 72.85
  },
  "spark": [
+  388.87,
   350.03,
   374.92,
   374.43,
@@ -556,29 +557,14 @@
   541.0,
   522.0,
   478.0,
-  463.0,
-  424.0
+  463.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -982953,
-    "trust": -2894263,
-    "dealer": -497774,
-    "total": -4374990
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

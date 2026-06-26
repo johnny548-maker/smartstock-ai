@@ -1,9 +1,17 @@
 {
  "stock": "3479.TWO",
  "name": "安勤",
- "price": 142.5,
- "change_pct": -1.04,
+ "price": 144.0,
+ "change_pct": 6.27,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 85.3,
+   "h": 85.3,
+   "l": 84.5,
+   "c": 84.8,
+   "v": 159129
+  },
   {
    "time": "2026-03-31",
    "o": 84.8,
@@ -475,18 +483,10 @@
    "l": 136.0,
    "c": 144.0,
    "v": 5736962
-  },
-  {
-   "time": "2026-06-26",
-   "o": 142.5,
-   "h": 150.5,
-   "l": 142.5,
-   "c": 142.5,
-   "v": 5935269
   }
  ],
  "sr": {
-  "price": 142.5,
+  "price": 144.0,
   "resistance": [
    145.0
   ],
@@ -497,6 +497,7 @@
   "strong_support": 78.39
  },
  "spark": [
+  84.8,
   83.7,
   85.3,
   85.5,
@@ -555,29 +556,14 @@
   135.0,
   133.0,
   135.5,
-  144.0,
-  142.5
+  144.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -645000,
-    "trust": 0,
-    "dealer": 3380,
-    "total": -641620
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,9 +1,17 @@
 {
  "stock": "8027.TWO",
  "name": "鈦昇",
- "price": 210.0,
- "change_pct": -9.87,
+ "price": 233.0,
+ "change_pct": 0.65,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 131.5,
+   "h": 144.0,
+   "l": 130.5,
+   "c": 144.0,
+   "v": 13854120
+  },
   {
    "time": "2026-03-31",
    "o": 144.0,
@@ -475,29 +483,22 @@
    "l": 230.0,
    "c": 233.0,
    "v": 542767
-  },
-  {
-   "time": "2026-06-26",
-   "o": 225.5,
-   "h": 226.0,
-   "l": 210.0,
-   "c": 210.0,
-   "v": 1810311
   }
  ],
  "sr": {
-  "price": 210.0,
+  "price": 233.0,
   "resistance": [
-   215.0,
-   257.5
+   257.5,
+   290.0
   ],
   "support": [
-   135.5,
-   128.0
+   231.5,
+   220.0
   ],
   "strong_support": 54.8
  },
  "spark": [
+  144.0,
   138.5,
   152.0,
   154.5,
@@ -556,29 +557,14 @@
   245.0,
   237.0,
   231.5,
-  233.0,
-  210.0
+  233.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 15805,
-    "trust": 0,
-    "dealer": -10497,
-    "total": 5308
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",

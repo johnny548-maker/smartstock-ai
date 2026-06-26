@@ -1,9 +1,17 @@
 {
  "stock": "3455.TWO",
  "name": "由田",
- "price": 221.5,
- "change_pct": -9.03,
+ "price": 243.5,
+ "change_pct": -5.25,
  "ohlc": [
+  {
+   "time": "2026-03-30",
+   "o": 128.0,
+   "h": 131.0,
+   "l": 125.5,
+   "c": 128.5,
+   "v": 2648497
+  },
   {
    "time": "2026-03-31",
    "o": 128.5,
@@ -475,21 +483,13 @@
    "l": 241.5,
    "c": 243.5,
    "v": 2217521
-  },
-  {
-   "time": "2026-06-26",
-   "o": 239.0,
-   "h": 244.5,
-   "l": 221.5,
-   "c": 221.5,
-   "v": 1752356
   }
  ],
  "sr": {
-  "price": 221.5,
+  "price": 243.5,
   "resistance": [
-   229.5,
-   279.0
+   310.0,
+   322.5
   ],
   "support": [
    198.0,
@@ -498,6 +498,7 @@
   "strong_support": 67.26
  },
  "spark": [
+  128.5,
   123.5,
   126.5,
   139.0,
@@ -556,29 +557,14 @@
   266.0,
   266.5,
   257.0,
-  243.5,
-  221.5
+  243.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-03-30",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 372955,
-    "trust": 0,
-    "dealer": 834,
-    "total": 373789
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
