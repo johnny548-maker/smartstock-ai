@@ -242,18 +242,31 @@ jobs:
             exit 1
           fi
 
-      # Sprint 2 P2: sync 7 P0 raw-data sources (~1800 stocks) into the month-shard all-stocks
-      # Sheet for archival / backtest / ad-hoc analysis. OVERLAY-NOT-SCORER — pure archive write,
-      # never feeds scoring. continue-on-error means a Sheet API hiccup can never block the daily
-      # report. Graceful no-op when GOOGLE_SA_JSON is unset.
-      - name: Mirror all-stocks snapshots to Sheets
+      # All-stocks raw archive (~1800 stocks × 13 sources) → per-period gzip-CSV files committed
+      # to git under docs/data/_allstocks/. OVERLAY-NOT-SCORER — pure archive, never feeds scoring.
+      # Keyless: NO Google Sheets / NO Service Account / NO quota. This replaces the retired
+      # month-shard Sheet (SA Drive quota=0 blocked headless monthly rollover — 2026-06-26).
+      # continue-on-error: the archive is secondary and must never block the daily report.
+      - name: Archive all-stocks snapshots to git files
         if: steps.report_check.outputs.skip != 'true'
-        continue-on-error: true   # OVERLAY-NOT-SCORER — secondary backup, never blocks daily report
-        env:
-          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        continue-on-error: true
         run: |
           set -euo pipefail
-          python sheets_sync_allstocks.py --sync --date $(date -u +%F)
+          python sheets_sync_allstocks.py --archive-files --date $(date -u +%F)
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/_allstocks
+          if git diff --cached --quiet; then
+            echo "::notice::no all-stocks archive changes"
+          else
+            git commit -m "archive(allstocks): $(date -u +%F)"
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "push race, rebase + retry $i/5"
+              git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+              sleep 5
+            done
+          fi
 
       # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
       # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the

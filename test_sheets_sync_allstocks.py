@@ -7,6 +7,7 @@ test modules share the same idiom.
 CONTRACT: these cover BOOTSTRAP ONLY.  Fetcher tests live in Sprint 2 P2.
 """
 import contextlib
+import csv
 import io
 import json
 import os
@@ -1472,6 +1473,175 @@ class TestSyncAllstocksP1WritesToCorrectTab(unittest.TestCase):
         self.assertEqual(len(sh._worksheets["sec_frames_quarterly"]._rows), 1 + 2)
         self.assertEqual(len(sh._worksheets["sec_ftd_semimonthly"]._rows), 1 + 2)
         self.assertEqual(len(sh._worksheets["cnyes_news_daily"]._rows), 1 + 2)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Git-file archive — keyless CSV replacement for the Sheets month-shard
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_T187_RAW = [
+    {"公司代號": "2330", "公司簡稱": "台積電",
+     "已發行普通股數及TDR原股發行股數": "25930380458", "出表日期": "1150601"},
+]
+
+
+def _read_csv(path):
+    """Read a gzip-compressed CSV back as (header, rows) for assertions."""
+    import gzip
+    with gzip.open(path, "rt", encoding="utf-8", newline="") as f:
+        r = list(csv.reader(f))
+    return (r[0], r[1:]) if r else ([], [])
+
+
+def _run_archive(out_dir, date_str="2026-06-24", source_filter=None,
+                 bwibbu_fn=None, mi_margn_fn=None, t86_fn=None,
+                 tpex_3insti_fn=None, tpex_margin_fn=None, tpex_pe_fn=None, tdcc_fn=None,
+                 stock_day_all_fn=None, t187ap03_fn=None, notice_fn=None,
+                 punish_fn=None, sec_frames_fn=None, sec_ftd_fn=None, cnyes_fn=None):
+    """Run archive_allstocks_to_files with injected fetchers (no client/network)."""
+    patches = [
+        mock.patch("sheets_sync_allstocks._fetch_bwibbu", side_effect=bwibbu_fn or (lambda: _BWIBBU_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_mi_margn", side_effect=mi_margn_fn or (lambda: _MI_MARGN_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_t86", side_effect=t86_fn or (lambda d: _T86_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_3insti", side_effect=tpex_3insti_fn or (lambda: _TPEX_3INSTI_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_margin", side_effect=tpex_margin_fn or (lambda: _TPEX_MARGIN_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tpex_pe", side_effect=tpex_pe_fn or (lambda: _TPEX_PE_RAW)),
+        mock.patch("sheets_sync_allstocks._fetch_tdcc", side_effect=tdcc_fn or (lambda: _TDCC_ROWS)),
+        mock.patch("sheets_sync_allstocks._fetch_stock_day_all", side_effect=stock_day_all_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_t187ap03", side_effect=t187ap03_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_notice", side_effect=notice_fn or (lambda: {})),
+        mock.patch("sheets_sync_allstocks._fetch_punish", side_effect=punish_fn or (lambda: {})),
+        mock.patch("sheets_sync_allstocks._fetch_sec_frames", side_effect=sec_frames_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_sec_ftd", side_effect=sec_ftd_fn or (lambda: [])),
+        mock.patch("sheets_sync_allstocks._fetch_cnyes", side_effect=cnyes_fn or (lambda: [])),
+    ]
+    with contextlib.ExitStack() as stack:
+        for p in patches:
+            stack.enter_context(p)
+        return sa.archive_allstocks_to_files(date_str=date_str, out_dir=out_dir,
+                                             source_filter=source_filter)
+
+
+class TestWriteCsv(unittest.TestCase):
+    def test_writes_header_and_rows_none_to_empty(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = os.path.join(td, "sub", "x.csv.gz")
+            sa._write_csv(path, ["a", "b", "c"], [[1, None, "z"], [2, 3, None]])
+            header, rows = _read_csv(path)
+            self.assertEqual(header, ["a", "b", "c"])
+            self.assertEqual(rows, [["1", "", "z"], ["2", "3", ""]])
+
+    def test_atomic_overwrite_no_tmp_left(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = os.path.join(td, "x.csv.gz")
+            sa._write_csv(path, ["a"], [["1"]])
+            sa._write_csv(path, ["a"], [["2"]])  # overwrite
+            _, rows = _read_csv(path)
+            self.assertEqual(rows, [["2"]])
+            self.assertFalse(os.path.exists(path + ".tmp"), "no .tmp left behind")
+
+    def test_gzip_output_is_deterministic(self):
+        """Same input → byte-identical gzip (mtime=0), so unchanged periodic files don't
+        churn git history."""
+        with tempfile.TemporaryDirectory() as td:
+            p1 = os.path.join(td, "a.csv.gz")
+            p2 = os.path.join(td, "b.csv.gz")
+            sa._write_csv(p1, ["x"], [["1"], ["2"]])
+            sa._write_csv(p2, ["x"], [["1"], ["2"]])
+            with open(p1, "rb") as f1, open(p2, "rb") as f2:
+                self.assertEqual(f1.read(), f2.read(), "identical content → identical bytes")
+
+
+class TestArchiveAllstocksToFiles(unittest.TestCase):
+    def test_writes_per_source_csv_with_counts(self):
+        with tempfile.TemporaryDirectory() as td:
+            counts = _run_archive(td, date_str="2026-06-24")
+        # daily sources keyed by date
+        self.assertEqual(counts["bwibbu_daily"], 2)
+        self.assertEqual(counts["mi_margn_daily"], 2)
+        self.assertEqual(counts["t86_daily"], 2)
+        self.assertEqual(counts["tpex_3insti_daily"], 1)
+        self.assertEqual(counts["tpex_per_daily"], 1)
+        # tdcc keyed by weekly asof (from _TDCC_ROWS date 20260620)
+        self.assertEqual(counts["tdcc_weekly"], 2)
+
+    def test_files_land_at_expected_paths(self):
+        with tempfile.TemporaryDirectory() as td:
+            _run_archive(td, date_str="2026-06-24")
+            self.assertTrue(os.path.exists(os.path.join(td, "bwibbu_daily", "2026-06-24.csv.gz")))
+            self.assertTrue(os.path.exists(os.path.join(td, "t86_daily", "2026-06-24.csv.gz")))
+            # tdcc filename = weekly asof, NOT the run date
+            self.assertTrue(os.path.exists(os.path.join(td, "tdcc_weekly", "2026-06-20.csv.gz")))
+
+    def test_csv_header_matches_schema_and_values(self):
+        with tempfile.TemporaryDirectory() as td:
+            _run_archive(td, date_str="2026-06-24")
+            header, rows = _read_csv(os.path.join(td, "bwibbu_daily", "2026-06-24.csv.gz"))
+            self.assertEqual(header, sa.TAB_HEADERS["bwibbu_daily"])
+            d = dict(zip(header, rows[0]))
+            self.assertEqual(d["date"], "2026-06-24")
+            self.assertEqual(d["code"], "2330")
+            self.assertEqual(d["name"], "台積電")
+            self.assertEqual(d["per"], "22.5")
+
+    def test_monthly_key_for_t187ap03(self):
+        with tempfile.TemporaryDirectory() as td:
+            counts = _run_archive(td, date_str="2026-06-24", t187ap03_fn=lambda: _T187_RAW)
+            self.assertEqual(counts["t187ap03_monthly"], 1)
+            # filename = yyyymm, not the daily date
+            self.assertTrue(os.path.exists(os.path.join(td, "t187ap03_monthly", "2026-06.csv.gz")))
+
+    def test_empty_source_writes_no_file_count_zero(self):
+        with tempfile.TemporaryDirectory() as td:
+            counts = _run_archive(td, date_str="2026-06-24", bwibbu_fn=lambda: [])
+            self.assertEqual(counts["bwibbu_daily"], 0)
+            self.assertFalse(os.path.exists(os.path.join(td, "bwibbu_daily", "2026-06-24.csv.gz")))
+
+    def test_source_filter_writes_only_that_source(self):
+        with tempfile.TemporaryDirectory() as td:
+            counts = _run_archive(td, date_str="2026-06-24", source_filter="bwibbu_daily")
+            self.assertEqual(counts.get("bwibbu_daily"), 2)
+            self.assertNotIn("t86_daily", counts)
+            self.assertTrue(os.path.exists(os.path.join(td, "bwibbu_daily", "2026-06-24.csv.gz")))
+            self.assertFalse(os.path.exists(os.path.join(td, "t86_daily", "2026-06-24.csv.gz")))
+
+    def test_unknown_source_filter_returns_empty(self):
+        with tempfile.TemporaryDirectory() as td:
+            self.assertEqual(_run_archive(td, source_filter="nope"), {})
+
+    def test_fetch_failure_is_isolated_skip(self):
+        def boom():
+            raise RuntimeError("network down")
+        with tempfile.TemporaryDirectory() as td:
+            counts = _run_archive(td, date_str="2026-06-24", bwibbu_fn=boom)
+            self.assertEqual(counts["bwibbu_daily"], -1)          # failed source SKIP
+            self.assertEqual(counts["mi_margn_daily"], 2)          # others unaffected
+            self.assertTrue(os.path.exists(os.path.join(td, "mi_margn_daily", "2026-06-24.csv.gz")))
+
+    def test_archive_needs_no_google_credentials(self):
+        """Archive mode must not call get_client (keyless). Patch get_client to raise."""
+        with tempfile.TemporaryDirectory() as td:
+            with mock.patch("sheets_sync_allstocks.get_client",
+                            side_effect=AssertionError("get_client must NOT be called in archive mode")):
+                counts = _run_archive(td, date_str="2026-06-24")
+        self.assertEqual(counts["bwibbu_daily"], 2)
+
+
+class TestArchiveCLI(unittest.TestCase):
+    def test_archive_files_cli_no_sa_still_runs(self):
+        """--archive-files runs even when GOOGLE_SA_JSON is unset (routed before the SA guard)."""
+        old = os.environ.pop("GOOGLE_SA_JSON", None)
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                with mock.patch("sheets_sync_allstocks.archive_allstocks_to_files",
+                                return_value={"bwibbu_daily": 2}) as m:
+                    rc = sa.main(["--archive-files", "--date", "2026-06-24", "--out-dir", td])
+            self.assertEqual(rc, 0)
+            m.assert_called_once()
+            self.assertEqual(m.call_args.kwargs.get("date_str"), "2026-06-24")
+        finally:
+            if old is not None:
+                os.environ["GOOGLE_SA_JSON"] = old
 
 
 if __name__ == "__main__":

@@ -26,6 +26,9 @@ CLI:
     → sync 7 P0 sources for date (default: today UTC) into the current month's sheet
 """
 import argparse
+import csv
+import gzip
+import io
 import json
 import os
 import sys
@@ -102,6 +105,15 @@ _TAB_ORDER = [
 _DEFAULT_INDEX_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     "docs", "data", "_allstocks_sheets_index.json",
+)
+
+# Default git-file archive root (docs/data/_allstocks/<source>/<period>.csv).
+# Keyless replacement for the Google-Sheets month-shard (SA Drive quota=0 blocked
+# headless rollover; the all-stocks data is OVERLAY-NOT-SCORER raw archive, so a
+# git-committed CSV archive is fully automatic, quota-free, and needs no SA).
+_DEFAULT_ALLSTOCKS_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "docs", "data", "_allstocks",
 )
 
 _DEFAULT_USER_EMAIL = "johnny548@gmail.com"
@@ -1212,6 +1224,129 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH, source_filter=
     return counts
 
 
+# ── Git-file archive (keyless replacement for the Sheets month-shard) ──────────
+
+def _write_csv(path, header, rows):
+    """Write header + rows to a gzip-compressed CSV atomically (tmp → os.replace).
+    None → empty cell. Gzip keeps the daily ~1800-stock × 13-source archive compact in git
+    (raw archive isn't diff-reviewed; pandas reads it via compression='gzip'). mtime=0 makes
+    the gzip output byte-deterministic for identical input, so a periodic (monthly/quarterly/
+    weekly) file rewritten with unchanged data produces NO git diff → no history churn."""
+    parent = os.path.dirname(path)
+    if parent and not os.path.isdir(parent):
+        os.makedirs(parent, exist_ok=True)
+    # Build the CSV text once, then gzip it deterministically (mtime=0, no filename header).
+    buf = io.StringIO()
+    w = csv.writer(buf)
+    w.writerow(header)
+    for r in rows:
+        w.writerow(["" if v is None else v for v in r])
+    data = buf.getvalue().encode("utf-8")
+    tmp = path + ".tmp"
+    try:
+        with open(tmp, "wb") as fh:
+            with gzip.GzipFile(filename="", fileobj=fh, mode="wb", mtime=0) as gz:
+                gz.write(data)
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            try:
+                os.unlink(tmp)
+            except Exception:
+                pass
+
+
+def _tdcc_producer(date_str):
+    """Producer for tdcc_weekly: key = the weekly asof_date (col 0), fallback date_str."""
+    def _p():
+        rows = _build_tdcc_rows(_fetch_tdcc())
+        key = rows[0][0] if (rows and rows[0][0]) else date_str
+        return key, rows
+    return _p
+
+
+def _sec_frames_producer(date_str):
+    """Producer for sec_frames_quarterly: key = the period (col 2), fallback date_str."""
+    def _p():
+        rows = _build_sec_frames_rows(_fetch_sec_frames())
+        key = rows[0][2] if (rows and rows[0][2]) else date_str
+        return key, rows
+    return _p
+
+
+def archive_allstocks_to_files(date_str=None, out_dir=None, source_filter=None):
+    """Fetch all 13 sources and archive each to a per-period CSV under out_dir/<source>/.
+
+    Keyless: NO Google Sheets, NO Service Account, NO quota — fully local + git-committable.
+    Reuses the same pure fetch+build logic as sync_allstocks(); only the SINK changes
+    (Sheet upsert → CSV file). Per-period file (date for daily, asof for weekly, yyyymm for
+    monthly, period for quarterly) is overwritten idempotently, so a re-run is a clean rewrite
+    and immutable files don't churn git history across days.
+
+    CONTRACT: OVERLAY-NOT-SCORER — pure archive, never feeds scoring.
+
+    Args:
+        date_str:      'YYYY-MM-DD' (default: today UTC).
+        out_dir:       archive root (default docs/data/_allstocks).
+        source_filter: optional single tab name; when set only that source is written.
+
+    Returns:
+        dict {tab_name: row_count}; -1 = SKIP (source failed), 0 = empty (no file written).
+    """
+    if date_str is None:
+        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if out_dir is None:
+        out_dir = _DEFAULT_ALLSTOCKS_DIR
+    if source_filter is not None and source_filter not in _TAB_ORDER:
+        _log(f"SKIP archive: unknown source_filter={source_filter!r}. Valid: {_TAB_ORDER}")
+        return {}
+
+    yyyymm = date_str[:7]
+    counts = {}
+
+    def emit(tab, producer):
+        """producer() → (key, rows). Write CSV (skip write when empty). Per-source isolated:
+        a fetch/build failure logs SKIP and counts -1 but never aborts the other sources."""
+        if source_filter is not None and tab != source_filter:
+            return
+        try:
+            key, rows = producer()
+            if rows:
+                path = os.path.join(out_dir, tab, f"{key}.csv.gz")
+                _write_csv(path, TAB_HEADERS[tab], rows)
+                counts[tab] = len(rows)
+                _log(f"{tab}: {len(rows)} rows -> {tab}/{key}.csv.gz")
+            else:
+                counts[tab] = 0
+                _log(f"{tab}: 0 rows (no file written)")
+        except Exception as exc:
+            _log(f"SKIP {tab}: {exc}")
+            counts[tab] = -1
+
+    emit("bwibbu_daily", lambda: (date_str, _build_bwibbu_rows(date_str, _fetch_bwibbu())))
+    emit("mi_margn_daily", lambda: (date_str, _build_mi_margn_rows(date_str, _fetch_mi_margn())))
+    emit("t86_daily", lambda: (date_str, _build_t86_rows(date_str, _fetch_t86(date_str))))
+    emit("tpex_3insti_daily",
+         lambda: (date_str, _build_tpex_3insti_rows(date_str, _fetch_tpex_3insti())))
+    emit("tpex_margin_daily",
+         lambda: (date_str, _build_tpex_margin_rows(date_str, _fetch_tpex_margin())))
+    emit("tpex_per_daily", lambda: (date_str, _build_tpex_per_rows(date_str, _fetch_tpex_pe())))
+    emit("tdcc_weekly", _tdcc_producer(date_str))
+    emit("stock_day_all_daily",
+         lambda: (date_str, _build_stock_day_all_rows(date_str, _fetch_stock_day_all())))
+    emit("t187ap03_monthly", lambda: (yyyymm, _build_t187ap03_rows(yyyymm, _fetch_t187ap03())))
+    emit("notice_punish_daily",
+         lambda: (date_str, _build_notice_punish_rows(date_str, _fetch_notice(), _fetch_punish())))
+    emit("sec_frames_quarterly", _sec_frames_producer(date_str))
+    # SEC FTD is semimonthly (the same ~50k-row file repeats every day until the next
+    # publication) — key by month so it overwrites one file/month, not 20 duplicate daily files.
+    emit("sec_ftd_semimonthly", lambda: (yyyymm, _build_sec_ftd_rows(_fetch_sec_ftd())))
+    emit("cnyes_news_daily", lambda: (date_str, _build_cnyes_rows(date_str, _fetch_cnyes())))
+
+    _log(f"archive_allstocks_to_files done for {date_str}: {counts}")
+    return counts
+
+
 # ── Bootstrap orchestrator ─────────────────────────────────────────────────────
 
 def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
@@ -1298,12 +1433,27 @@ def main(argv=None):
                     ))
     ap.add_argument("--source", default=None,
                     help=(
-                        "Optional tab name filter for --sync (e.g. 'tdcc_weekly'). "
-                        "When set, only that source is fetched and written to the Sheet; "
-                        "all other 6 sources are skipped. Useful for local-cron TDCC runs "
-                        "that are blocked from GH Actions due to TDCC IP restrictions."
+                        "Optional tab name filter for --sync / --archive-files (e.g. 'tdcc_weekly'). "
+                        "When set, only that source is fetched and written; all others are skipped. "
+                        "Useful for local-cron TDCC runs blocked from GH Actions by TDCC IP rules."
                     ))
+    ap.add_argument("--archive-files", action="store_true",
+                    help=(
+                        "Archive all 13 sources to per-period CSV files under docs/data/_allstocks/ "
+                        "(keyless — NO Google Sheets, NO Service Account, NO quota). This is the "
+                        "current archive path; the Sheets --sync/--bootstrap modes are retired."
+                    ))
+    ap.add_argument("--out-dir", default=None,
+                    help="Output root for --archive-files (default docs/data/_allstocks).")
     args = ap.parse_args(argv)
+
+    # ── --archive-files: keyless local CSV archive — routed BEFORE the SA-required guard,
+    # since it needs no Google credentials at all.
+    if args.archive_files:
+        date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        archive_allstocks_to_files(date_str=date_str, out_dir=args.out_dir,
+                                   source_filter=args.source)
+        return 0
 
     # Graceful no-op when SA is missing.
     raw = (os.environ.get("GOOGLE_SA_JSON") or "").strip()

@@ -1,12 +1,13 @@
-name: AllStocks Bootstrap (Monthly Rollover)
+name: AllStocks Bootstrap (Monthly Rollover) [DEPRECATED]
 
-# Creates the per-month all-stocks Spreadsheet + 7 P0 tabs, idempotent (skips if exists),
-# and commits docs/data/_allstocks_sheets_index.json so the runtime fetchers can resolve
-# the right Sheet ID for the current month. Runs the 1st of each month + on demand.
-
+# DEPRECATED 2026-06-26: the all-stocks archive moved OFF Google Sheets to keyless git
+# gzip-CSV files (daily.yml "Archive all-stocks snapshots to git files" → sheets_sync_allstocks
+# --archive-files → docs/data/_allstocks/). Reason: a Service Account has Drive quota=0 and
+# CANNOT create a new monthly spreadsheet headlessly (empirically confirmed: APIError 403
+# "The user's Drive storage quota has been exceeded"), so the scheduled auto-bootstrap below
+# would fail every month. The monthly SCHEDULE is removed so it stops failing on the 1st.
+# Kept as workflow_dispatch only, for the legacy Sheets path if ever revived manually.
 on:
-  schedule:
-    - cron: '5 22 1 * *'   # 1st of month at 22:05 UTC (~ 06:05 TW the 2nd)
   workflow_dispatch:
     inputs:
       month:
