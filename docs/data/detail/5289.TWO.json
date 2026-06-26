@@ -1,17 +1,9 @@
 {
  "stock": "5289.TWO",
  "name": "宜鼎",
- "price": 1740.0,
- "change_pct": -3.06,
+ "price": 1605.0,
+ "change_pct": -7.76,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 934.0,
-   "h": 980.0,
-   "l": 934.0,
-   "c": 941.0,
-   "v": 603774
-  },
   {
    "time": "2026-03-31",
    "o": 937.0,
@@ -483,22 +475,29 @@
    "l": 1735.0,
    "c": 1740.0,
    "v": 2635416
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1715.0,
+   "h": 1755.0,
+   "l": 1595.0,
+   "c": 1605.0,
+   "v": 3161098
   }
  ],
  "sr": {
-  "price": 1740.0,
+  "price": 1605.0,
   "resistance": [
    1935.0,
    1980.0
   ],
   "support": [
-   1615.0,
-   1585.0
+   1585.0,
+   980.0
   ],
   "strong_support": 180.77
  },
  "spark": [
-  941.0,
   847.0,
   931.0,
   957.0,
@@ -557,14 +556,29 @@
   1970.0,
   1885.0,
   1795.0,
-  1740.0
+  1740.0,
+  1605.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -512165,
+    "trust": -265508,
+    "dealer": -23519,
+    "total": -801192
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

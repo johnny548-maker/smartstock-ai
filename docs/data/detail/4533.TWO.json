@@ -1,17 +1,9 @@
 {
  "stock": "4533.TWO",
  "name": "協易機",
- "price": 28.7,
- "change_pct": -1.2,
+ "price": 27.3,
+ "change_pct": -4.38,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 31.8,
-   "h": 31.8,
-   "l": 31.1,
-   "c": 31.15,
-   "v": 1969228
-  },
   {
    "time": "2026-03-31",
    "o": 31.1,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 29.15,
    "h": 29.3,
-   "l": 28.65,
-   "c": 28.7,
-   "v": 613649
+   "l": 28.5,
+   "c": 28.55,
+   "v": 1156500
+  },
+  {
+   "time": "2026-06-26",
+   "o": 28.55,
+   "h": 28.6,
+   "l": 27.15,
+   "c": 27.3,
+   "v": 1647304
   }
  ],
  "sr": {
-  "price": 28.7,
+  "price": 27.3,
   "resistance": [
-   31.9,
-   32.75
+   27.47,
+   27.76
   ],
   "support": [
-   28.1,
-   28.0
+   25.14,
+   24.9
   ],
   "strong_support": 19.25
  },
  "spark": [
-  31.15,
   30.7,
   31.15,
   30.05,
@@ -557,25 +556,40 @@
   30.3,
   29.35,
   29.05,
-  28.7
+  28.55,
+  27.3
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -264811,
+    "trust": 0,
+    "dealer": -23374,
+    "total": -288185
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.69,
+    "yield": 0.73,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

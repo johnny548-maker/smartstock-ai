@@ -1,17 +1,9 @@
 {
  "stock": "6640.TWO",
  "name": "均華",
- "price": 1060.0,
- "change_pct": 0.0,
+ "price": 980.0,
+ "change_pct": -5.77,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1376.23,
-   "h": 1420.63,
-   "l": 1321.97,
-   "c": 1361.44,
-   "v": 1066143
-  },
   {
    "time": "2026-03-31",
    "o": 1361.44,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 1090.0,
    "h": 1090.0,
-   "l": 1045.0,
-   "c": 1060.0,
-   "v": 50965
+   "l": 1040.0,
+   "c": 1040.0,
+   "v": 77052
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1040.0,
+   "h": 1040.0,
+   "l": 980.0,
+   "c": 980.0,
+   "v": 177063
   }
  ],
  "sr": {
-  "price": 1060.0,
+  "price": 980.0,
   "resistance": [
-   1170.0,
-   1445.29
+   1038.57,
+   1170.0
   ],
   "support": [
-   1026.01,
-   940.18
+   940.18,
+   855.85
   ],
   "strong_support": 298.59
  },
  "spark": [
-  1361.44,
   1321.97,
   1371.3,
   1356.5,
@@ -557,25 +556,40 @@
   1100.0,
   1050.0,
   1060.0,
-  1060.0
+  1040.0,
+  980.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -9399,
+    "trust": 0,
+    "dealer": -2765,
+    "total": -12164
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.42,
+    "yield": 1.53,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

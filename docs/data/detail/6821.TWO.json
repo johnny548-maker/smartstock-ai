@@ -1,17 +1,9 @@
 {
  "stock": "6821.TWO",
  "name": "聯寶",
- "price": 61.5,
- "change_pct": -2.69,
+ "price": 59.4,
+ "change_pct": -2.62,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 55.55,
-   "h": 60.36,
-   "l": 55.25,
-   "c": 59.97,
-   "v": 7087003
-  },
   {
    "time": "2026-03-31",
    "o": 56.63,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 64.2,
    "h": 66.6,
-   "l": 61.2,
-   "c": 61.5,
-   "v": 963482
+   "l": 60.8,
+   "c": 61.0,
+   "v": 1343000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 61.0,
+   "h": 64.4,
+   "l": 59.3,
+   "c": 59.4,
+   "v": 1500370
   }
  ],
  "sr": {
-  "price": 61.5,
+  "price": 59.4,
   "resistance": [
-   69.8,
-   71.7
+   60.32,
+   60.56
   ],
   "support": [
-   60.9,
-   59.8
+   52.1,
+   51.12
   ],
   "strong_support": 28.31
  },
  "spark": [
-  59.97,
   53.97,
   58.01,
   55.55,
@@ -557,25 +556,40 @@
   68.5,
   64.9,
   63.2,
-  61.5
+  61.0,
+  59.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 511000,
+    "trust": 0,
+    "dealer": -1000,
+    "total": 510000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.72,
+    "yield": 1.83,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

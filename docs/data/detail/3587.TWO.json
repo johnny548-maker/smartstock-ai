@@ -1,17 +1,9 @@
 {
  "stock": "3587.TWO",
  "name": "閎康",
- "price": 297.0,
- "change_pct": -2.62,
+ "price": 277.5,
+ "change_pct": -6.57,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 223.0,
-   "h": 236.0,
-   "l": 223.0,
-   "c": 236.0,
-   "v": 681987
-  },
   {
    "time": "2026-03-31",
    "o": 232.5,
@@ -483,22 +475,29 @@
    "l": 295.0,
    "c": 297.0,
    "v": 798064
+  },
+  {
+   "time": "2026-06-26",
+   "o": 295.0,
+   "h": 295.5,
+   "l": 277.0,
+   "c": 277.5,
+   "v": 997736
   }
  ],
  "sr": {
-  "price": 297.0,
+  "price": 277.5,
   "resistance": [
-   328.0,
-   342.0
+   279.15,
+   284.95
   ],
   "support": [
-   283.0,
-   273.5
+   273.5,
+   268.53
   ],
   "strong_support": 127.02
  },
  "spark": [
-  236.0,
   215.0,
   227.0,
   227.0,
@@ -557,14 +556,29 @@
   323.0,
   305.5,
   305.0,
-  297.0
+  297.0,
+  277.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 22505,
+    "trust": 0,
+    "dealer": -19779,
+    "total": 2726
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

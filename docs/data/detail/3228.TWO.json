@@ -1,17 +1,9 @@
 {
  "stock": "3228.TWO",
  "name": "金麗科",
- "price": 178.5,
- "change_pct": -1.11,
+ "price": 185.5,
+ "change_pct": 5.1,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 123.0,
-   "h": 138.5,
-   "l": 123.0,
-   "c": 138.5,
-   "v": 916097
-  },
   {
    "time": "2026-03-31",
    "o": 137.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 182.5,
    "h": 185.5,
-   "l": 177.0,
-   "c": 178.5,
-   "v": 275625
+   "l": 176.0,
+   "c": 176.5,
+   "v": 390335
+  },
+  {
+   "time": "2026-06-26",
+   "o": 176.5,
+   "h": 194.0,
+   "l": 173.5,
+   "c": 185.5,
+   "v": 1386245
   }
  ],
  "sr": {
-  "price": 178.5,
+  "price": 185.5,
   "resistance": [
    190.0,
    203.0
   ],
   "support": [
-   178.0,
-   174.0
+   178.5,
+   178.0
   ],
   "strong_support": 119.0
  },
  "spark": [
-  138.5,
   132.5,
   135.0,
   132.0,
@@ -557,14 +556,29 @@
   195.5,
   187.0,
   180.5,
-  178.5
+  176.5,
+  185.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 234000,
+    "trust": 0,
+    "dealer": 10239,
+    "total": 244239
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

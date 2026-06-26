@@ -1,17 +1,9 @@
 {
  "stock": "6716.TWO",
  "name": "應廣",
- "price": 96.0,
- "change_pct": -3.81,
+ "price": 95.0,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 66.27,
-   "h": 66.96,
-   "l": 64.89,
-   "c": 66.76,
-   "v": 130422
-  },
   {
    "time": "2026-03-31",
    "o": 66.76,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 101.0,
    "h": 101.0,
-   "l": 95.8,
-   "c": 96.0,
-   "v": 217474
+   "l": 94.5,
+   "c": 95.0,
+   "v": 382168
+  },
+  {
+   "time": "2026-06-26",
+   "o": 95.0,
+   "h": 98.4,
+   "l": 90.5,
+   "c": 95.0,
+   "v": 434345
   }
  ],
  "sr": {
-  "price": 96.0,
+  "price": 95.0,
   "resistance": [
    96.44,
    101.54
   ],
   "support": [
-   95.04,
-   90.87
+   90.87,
+   90.5
   ],
   "strong_support": 40.27
  },
  "spark": [
-  66.76,
   63.71,
   65.68,
   63.02,
@@ -557,25 +556,40 @@
   103.5,
   101.5,
   99.8,
-  96.0
+  95.0,
+  95.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 43000,
+    "trust": 0,
+    "dealer": 70,
+    "total": 43070
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.6,
+    "yield": 1.69,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

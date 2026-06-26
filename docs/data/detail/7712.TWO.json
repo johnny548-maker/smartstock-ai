@@ -1,17 +1,9 @@
 {
  "stock": "7712.TWO",
  "name": "博盛半導體",
- "price": 196.5,
- "change_pct": -3.68,
+ "price": 194.5,
+ "change_pct": -5.58,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 116.0,
-   "h": 116.0,
-   "l": 107.0,
-   "c": 109.5,
-   "v": 541100
-  },
   {
    "time": "2026-03-31",
    "o": 107.0,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 201.5,
-   "h": 201.5,
+   "h": 206.5,
    "l": 192.0,
-   "c": 196.5,
-   "v": 432094
+   "c": 206.0,
+   "v": 795660
+  },
+  {
+   "time": "2026-06-26",
+   "o": 208.5,
+   "h": 215.0,
+   "l": 192.0,
+   "c": 194.5,
+   "v": 820384
   }
  ],
  "sr": {
-  "price": 196.5,
+  "price": 194.5,
   "resistance": [
    198.5,
    215.46
   ],
   "support": [
-   195.96,
-   191.08
+   191.08,
+   160.86
   ],
   "strong_support": 80.5
  },
  "spark": [
-  109.5,
   104.0,
   107.0,
   105.0,
@@ -557,25 +556,40 @@
   202.5,
   200.0,
   204.0,
-  196.5
+  206.0,
+  194.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 135000,
+    "trust": 0,
+    "dealer": -23000,
+    "total": 112000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.96,
+    "yield": 2.06,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

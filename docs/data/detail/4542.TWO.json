@@ -1,17 +1,9 @@
 {
  "stock": "4542.TWO",
  "name": "科嶠",
- "price": 390.0,
- "change_pct": 0.0,
+ "price": 372.0,
+ "change_pct": -9.05,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 172.06,
-   "h": 179.02,
-   "l": 168.58,
-   "c": 179.02,
-   "v": 1108249
-  },
   {
    "time": "2026-03-31",
    "o": 176.54,
@@ -481,13 +473,22 @@
    "o": 410.0,
    "h": 410.0,
    "l": 386.0,
-   "c": 390.0,
-   "v": 140740
+   "c": 409.0,
+   "v": 345385
+  },
+  {
+   "time": "2026-06-26",
+   "o": 405.0,
+   "h": 409.0,
+   "l": 368.5,
+   "c": 372.0,
+   "v": 650610
   }
  ],
  "sr": {
-  "price": 390.0,
+  "price": 372.0,
   "resistance": [
+   380.0,
    412.0
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 46.79
  },
  "spark": [
-  179.02,
   162.61,
   163.61,
   153.16,
@@ -556,25 +556,40 @@
   400.0,
   385.0,
   390.0,
-  390.0
+  409.0,
+  372.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 16650,
+    "trust": 0,
+    "dealer": -16150,
+    "total": 500
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.24,
+    "yield": 0.25,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

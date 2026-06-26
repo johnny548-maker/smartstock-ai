@@ -1,8 +1,8 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": null,
- "change_pct": null,
+ "price": 106.0,
+ "change_pct": -4.93,
  "ohlc": [
   {
    "time": "2026-03-31",
@@ -478,17 +478,20 @@
   },
   {
    "time": "2026-06-26",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 37564615
+   "o": 110.5,
+   "h": 111.5,
+   "l": 105.0,
+   "c": 106.0,
+   "v": 37144464
   }
  ],
  "sr": {
-  "price": null,
+  "price": 106.0,
   "resistance": [],
-  "support": [],
+  "support": [
+   76.9,
+   76.1
+  ],
   "strong_support": 60.6
  },
  "spark": [
@@ -551,42 +554,13 @@
   113.5,
   110.0,
   111.5,
-  null
+  106.0
  ],
  "spark_start": "2026-03-31",
  "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 6,899,587 股",
-   "value": {
-    "foreign": -9845916,
-    "trust": 2843380,
-    "dealer": 102949,
-    "total": -6899587
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 16.9 / 殖利率 3.14% / PB 2.23",
-   "value": {
-    "pe": 16.92,
-    "yield": 3.14,
-    "pb": 2.23
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

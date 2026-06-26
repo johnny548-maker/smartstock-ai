@@ -1,17 +1,9 @@
 {
  "stock": "6803.TWO",
  "name": "崑鼎",
- "price": 288.5,
- "change_pct": 0.87,
+ "price": 288.0,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 291.0,
-   "h": 292.0,
-   "l": 290.0,
-   "c": 290.5,
-   "v": 68025
-  },
   {
    "time": "2026-03-31",
    "o": 290.0,
@@ -479,17 +471,25 @@
   {
    "time": "2026-06-25",
    "o": 287.5,
-   "h": 288.5,
+   "h": 289.0,
    "l": 287.0,
-   "c": 288.5,
-   "v": 39210
+   "c": 288.0,
+   "v": 98061
+  },
+  {
+   "time": "2026-06-26",
+   "o": 288.0,
+   "h": 288.0,
+   "l": 285.0,
+   "c": 288.0,
+   "v": 133140
   }
  ],
  "sr": {
-  "price": 288.5,
+  "price": 288.0,
   "resistance": [
-   289.0,
-   290.5
+   288.1,
+   289.0
   ],
   "support": [
    287.5,
@@ -498,7 +498,6 @@
   "strong_support": 251.08
  },
  "spark": [
-  290.5,
   288.5,
   289.0,
   288.5,
@@ -557,25 +556,40 @@
   288.0,
   286.5,
   286.0,
-  288.5
+  288.0,
+  288.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -40000,
+    "trust": -33000,
+    "dealer": 0,
+    "total": -73000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.52,
+    "yield": 5.48,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

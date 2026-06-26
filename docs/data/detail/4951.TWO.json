@@ -1,17 +1,9 @@
 {
  "stock": "4951.TWO",
  "name": "精拓科",
- "price": 102.5,
- "change_pct": 3.12,
+ "price": 94.5,
+ "change_pct": -5.22,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 64.57,
-   "h": 65.05,
-   "l": 63.8,
-   "c": 64.38,
-   "v": 36020
-  },
   {
    "time": "2026-03-31",
    "o": 64.38,
@@ -481,24 +473,31 @@
    "o": 101.0,
    "h": 105.0,
    "l": 99.0,
-   "c": 102.5,
-   "v": 1047491
+   "c": 99.7,
+   "v": 1396000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 99.7,
+   "h": 100.5,
+   "l": 93.3,
+   "c": 94.5,
+   "v": 665037
   }
  ],
  "sr": {
-  "price": 102.5,
+  "price": 94.5,
   "resistance": [
    127.99,
    137.62
   ],
   "support": [
-   95.9,
-   95.8
+   74.97,
+   72.49
   ],
   "strong_support": 45.1
  },
  "spark": [
-  64.38,
   63.51,
   65.54,
   64.48,
@@ -557,25 +556,40 @@
   102.0,
   100.0,
   99.4,
-  102.5
+  99.7,
+  94.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -153498,
+    "trust": 0,
+    "dealer": 389,
+    "total": -153109
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.53,
+    "yield": 4.76,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

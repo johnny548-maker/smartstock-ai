@@ -1,17 +1,9 @@
 {
  "stock": "3339.TWO",
  "name": "泰谷",
- "price": 45.15,
- "change_pct": -3.42,
+ "price": 43.15,
+ "change_pct": -3.68,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 38.4,
-   "h": 42.3,
-   "l": 38.0,
-   "c": 39.25,
-   "v": 10801219
-  },
   {
    "time": "2026-03-31",
    "o": 38.5,
@@ -481,24 +473,31 @@
    "o": 47.2,
    "h": 47.6,
    "l": 44.6,
-   "c": 45.15,
-   "v": 1481613
+   "c": 44.8,
+   "v": 2187010
+  },
+  {
+   "time": "2026-06-26",
+   "o": 44.6,
+   "h": 44.6,
+   "l": 42.8,
+   "c": 43.15,
+   "v": 1381002
   }
  ],
  "sr": {
-  "price": 45.15,
+  "price": 43.15,
   "resistance": [
-   45.3,
-   45.9
+   43.4,
+   45.0
   ],
   "support": [
-   43.35,
-   43.2
+   41.4,
+   40.7
   ],
   "strong_support": 23.25
  },
  "spark": [
-  39.25,
   36.6,
   39.05,
   39.15,
@@ -557,14 +556,29 @@
   48.2,
   46.4,
   46.75,
-  45.15
+  44.8,
+  43.15
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 25432,
+    "trust": 0,
+    "dealer": 112,
+    "total": 25544
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

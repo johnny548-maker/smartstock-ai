@@ -1,17 +1,9 @@
 {
  "stock": "6188.TWO",
  "name": "廣明",
- "price": 77.1,
- "change_pct": -1.78,
+ "price": 73.4,
+ "change_pct": -4.8,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 89.5,
-   "h": 89.7,
-   "l": 87.1,
-   "c": 87.5,
-   "v": 1784620
-  },
   {
    "time": "2026-03-31",
    "o": 87.0,
@@ -483,22 +475,29 @@
    "l": 77.1,
    "c": 77.1,
    "v": 1669489
+  },
+  {
+   "time": "2026-06-26",
+   "o": 77.1,
+   "h": 77.1,
+   "l": 72.2,
+   "c": 73.4,
+   "v": 4658040
   }
  ],
  "sr": {
-  "price": 77.1,
+  "price": 73.4,
   "resistance": [
-   83.02,
-   85.92
+   76.24,
+   83.02
   ],
   "support": [
-   76.6,
-   76.51
+   69.28,
+   61.44
   ],
   "strong_support": 61.44
  },
  "spark": [
-  87.5,
   86.6,
   88.4,
   85.5,
@@ -557,14 +556,29 @@
   79.3,
   77.7,
   78.5,
-  77.1
+  77.1,
+  73.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 428126,
+    "trust": -1697000,
+    "dealer": -76656,
+    "total": -1345530
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

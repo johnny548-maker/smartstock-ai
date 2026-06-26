@@ -1,17 +1,9 @@
 {
  "stock": "7556.TWO",
  "name": "意德士科技",
- "price": 278.0,
- "change_pct": -0.36,
+ "price": 272.0,
+ "change_pct": -3.03,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 170.0,
-   "h": 175.5,
-   "l": 168.0,
-   "c": 171.0,
-   "v": 115000
-  },
   {
    "time": "2026-03-31",
    "o": 170.5,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 279.0,
-   "h": 279.5,
-   "l": 276.0,
-   "c": 278.0,
-   "v": 30454
+   "h": 280.5,
+   "l": 274.5,
+   "c": 280.5,
+   "v": 56000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 274.0,
+   "h": 279.0,
+   "l": 271.0,
+   "c": 272.0,
+   "v": 69005
   }
  ],
  "sr": {
-  "price": 278.0,
+  "price": 272.0,
   "resistance": [
    297.5,
    300.0
@@ -498,7 +498,6 @@
   "strong_support": 100.41
  },
  "spark": [
-  171.0,
   167.5,
   171.0,
   172.0,
@@ -557,25 +556,40 @@
   293.0,
   282.0,
   279.0,
-  278.0
+  280.5,
+  272.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -8500,
+    "trust": 0,
+    "dealer": -607,
+    "total": -9107
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.65,
+    "yield": 1.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

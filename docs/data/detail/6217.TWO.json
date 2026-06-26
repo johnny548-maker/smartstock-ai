@@ -1,17 +1,9 @@
 {
  "stock": "6217.TWO",
  "name": "中探針",
- "price": 275.0,
- "change_pct": 7.0,
+ "price": 251.0,
+ "change_pct": -8.73,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 180.0,
-   "h": 181.5,
-   "l": 166.5,
-   "c": 181.5,
-   "v": 1977362
-  },
   {
    "time": "2026-03-31",
    "o": 180.0,
@@ -483,22 +475,29 @@
    "l": 251.5,
    "c": 275.0,
    "v": 7452627
+  },
+  {
+   "time": "2026-06-26",
+   "o": 274.0,
+   "h": 286.0,
+   "l": 250.0,
+   "c": 251.0,
+   "v": 15294789
   }
  ],
  "sr": {
-  "price": 275.0,
+  "price": 251.0,
   "resistance": [
-   298.5,
-   306.5
+   259.5,
+   289.5
   ],
   "support": [
-   261.0,
-   260.0
+   228.0,
+   216.0
   ],
   "strong_support": 21.3
  },
  "spark": [
-  181.5,
   163.5,
   179.5,
   192.5,
@@ -557,14 +556,29 @@
   271.5,
   273.0,
   257.0,
-  275.0
+  275.0,
+  251.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 451250,
+    "trust": 0,
+    "dealer": 1233,
+    "total": 452483
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

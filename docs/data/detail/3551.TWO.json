@@ -1,17 +1,9 @@
 {
  "stock": "3551.TWO",
  "name": "世禾",
- "price": 199.5,
- "change_pct": -1.24,
+ "price": 190.0,
+ "change_pct": -4.04,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 174.0,
-   "h": 174.0,
-   "l": 170.5,
-   "c": 171.5,
-   "v": 396067
-  },
   {
    "time": "2026-03-31",
    "o": 170.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 203.0,
    "h": 203.0,
-   "l": 199.5,
-   "c": 199.5,
-   "v": 190121
+   "l": 197.5,
+   "c": 198.0,
+   "v": 336120
+  },
+  {
+   "time": "2026-06-26",
+   "o": 197.0,
+   "h": 198.0,
+   "l": 190.0,
+   "c": 190.0,
+   "v": 535500
   }
  ],
  "sr": {
-  "price": 199.5,
+  "price": 190.0,
   "resistance": [
-   203.5,
-   217.0
+   199.0,
+   203.5
   ],
   "support": [
-   193.0,
-   192.0
+   189.0,
+   179.0
   ],
   "strong_support": 72.29
  },
  "spark": [
-  171.5,
   165.0,
   169.5,
   165.5,
@@ -557,25 +556,40 @@
   212.5,
   204.5,
   202.0,
-  199.5
+  198.0,
+  190.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1050,
+    "trust": 0,
+    "dealer": -95369,
+    "total": -96419
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.38,
+    "yield": 2.53,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

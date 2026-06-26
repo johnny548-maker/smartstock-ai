@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 520.02,
- "change_pct": -2.36,
+ "price": 521.09,
+ "change_pct": -2.16,
  "ohlc": [
   {
    "time": "2026-04-01",
@@ -481,12 +481,12 @@
    "o": 519.79,
    "h": 525.11,
    "l": 502.61,
-   "c": 520.02,
-   "v": 15665302
+   "c": 521.09,
+   "v": 20314349
   }
  ],
  "sr": {
-  "price": 520.02,
+  "price": 521.09,
   "resistance": [
    527.2,
    546.44
@@ -557,7 +557,7 @@
   519.85,
   519.74,
   532.57,
-  520.02
+  521.09
  ],
  "spark_start": "2026-04-01",
  "spark_end": "2026-06-26",
@@ -569,41 +569,9 @@
   "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 520.02,
-  "stop": 483.62,
-  "target": 611.02,
-  "atr_bracket": 611.02,
-  "measured_move": 688.75,
-  "target_band": [
-   611.02,
-   688.75
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.9,
-  "swing_stop": 426.41,
-  "chandelier": 459.4,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 54 分 / 11 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 54,
-    "comments": 11,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",

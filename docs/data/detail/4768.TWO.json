@@ -1,17 +1,9 @@
 {
  "stock": "4768.TWO",
  "name": "晶呈科技",
- "price": 374.0,
- "change_pct": -2.09,
+ "price": 354.5,
+ "change_pct": -5.21,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 481.5,
-   "h": 510.0,
-   "l": 460.0,
-   "c": 470.0,
-   "v": 2276330
-  },
   {
    "time": "2026-03-31",
    "o": 469.5,
@@ -483,22 +475,29 @@
    "l": 373.5,
    "c": 374.0,
    "v": 992435
+  },
+  {
+   "time": "2026-06-26",
+   "o": 374.0,
+   "h": 374.0,
+   "l": 352.5,
+   "c": 354.5,
+   "v": 593245
   }
  ],
  "sr": {
-  "price": 374.0,
+  "price": 354.5,
   "resistance": [
    418.0,
    432.5
   ],
   "support": [
-   357.5,
-   268.0
+   268.0,
+   214.29
   ],
   "strong_support": 90.86
  },
  "spark": [
-  470.0,
   435.5,
   440.0,
   431.0,
@@ -557,14 +556,29 @@
   380.5,
   374.0,
   382.0,
-  374.0
+  374.0,
+  354.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -57050,
+    "trust": 0,
+    "dealer": -1169,
+    "total": -58219
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

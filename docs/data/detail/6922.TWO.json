@@ -1,17 +1,9 @@
 {
  "stock": "6922.TWO",
  "name": "宸曜",
- "price": 180.0,
- "change_pct": -0.83,
+ "price": 169.0,
+ "change_pct": -5.32,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 159.5,
-   "h": 159.5,
-   "l": 156.5,
-   "c": 157.5,
-   "v": 12027
-  },
   {
    "time": "2026-03-31",
    "o": 162.0,
@@ -481,24 +473,31 @@
    "o": 183.5,
    "h": 184.5,
    "l": 178.0,
-   "c": 180.0,
-   "v": 50825
+   "c": 178.5,
+   "v": 89252
+  },
+  {
+   "time": "2026-06-26",
+   "o": 176.5,
+   "h": 176.5,
+   "l": 168.0,
+   "c": 169.0,
+   "v": 265200
   }
  ],
  "sr": {
-  "price": 180.0,
+  "price": 169.0,
   "resistance": [
-   181.83,
-   183.69
+   169.31,
+   175.0
   ],
   "support": [
-   178.58,
-   178.5
+   168.84,
+   167.91
   ],
   "strong_support": 122.92
  },
  "spark": [
-  157.5,
   150.5,
   155.0,
   152.5,
@@ -557,25 +556,40 @@
   185.5,
   180.0,
   181.5,
-  180.0
+  178.5,
+  169.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -69767,
+    "trust": 0,
+    "dealer": -5248,
+    "total": -75015
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.66,
+    "yield": 2.86,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6499.TWO",
  "name": "益安",
- "price": 73.2,
- "change_pct": 1.1,
+ "price": 68.0,
+ "change_pct": -6.08,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 92.0,
-   "h": 93.2,
-   "l": 90.5,
-   "c": 91.3,
-   "v": 537399
-  },
   {
    "time": "2026-03-31",
    "o": 92.3,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 72.9,
    "h": 74.4,
-   "l": 72.2,
-   "c": 73.2,
-   "v": 153588
+   "l": 72.1,
+   "c": 72.4,
+   "v": 306419
+  },
+  {
+   "time": "2026-06-26",
+   "o": 72.8,
+   "h": 73.2,
+   "l": 67.8,
+   "c": 68.0,
+   "v": 636000
   }
  ],
  "sr": {
-  "price": 73.2,
+  "price": 68.0,
   "resistance": [
    77.5,
    82.6
   ],
   "support": [
-   72.0,
-   49.85
+   49.85,
+   47.7
   ],
   "strong_support": 34.75
  },
  "spark": [
-  91.3,
   89.7,
   91.3,
   90.5,
@@ -557,14 +556,29 @@
   72.6,
   73.0,
   72.4,
-  73.2
+  72.4,
+  68.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -79035,
+    "trust": 0,
+    "dealer": -366,
+    "total": -79401
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

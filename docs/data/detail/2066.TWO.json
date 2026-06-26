@@ -1,17 +1,9 @@
 {
  "stock": "2066.TWO",
  "name": "世德",
- "price": 69.5,
- "change_pct": 1.46,
+ "price": 73.0,
+ "change_pct": 5.64,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 49.9,
-   "h": 50.0,
-   "l": 49.1,
-   "c": 49.1,
-   "v": 16011
-  },
   {
    "time": "2026-03-31",
    "o": 49.1,
@@ -481,24 +473,31 @@
    "o": 68.6,
    "h": 70.1,
    "l": 68.5,
-   "c": 69.5,
-   "v": 84556
+   "c": 69.1,
+   "v": 158000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 68.9,
+   "h": 74.3,
+   "l": 68.8,
+   "c": 73.0,
+   "v": 337119
   }
  ],
  "sr": {
-  "price": 69.5,
+  "price": 73.0,
   "resistance": [
-   71.01,
-   72.06
+   75.79,
+   76.36
   ],
   "support": [
-   68.06,
-   65.86
+   72.54,
+   70.44
   ],
   "strong_support": 43.0
  },
  "spark": [
-  49.1,
   49.1,
   49.1,
   49.4,
@@ -557,25 +556,40 @@
   69.2,
   71.0,
   68.5,
-  69.5
+  69.1,
+  73.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 57118,
+    "trust": 0,
+    "dealer": 0,
+    "total": 57118
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.14,
+    "yield": 2.95,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "7828.TWO",
  "name": "創新服務",
- "price": 2345.0,
- "change_pct": 0.86,
+ "price": 2070.0,
+ "change_pct": -10.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1386.13,
-   "h": 1426.01,
-   "l": 1331.28,
-   "c": 1401.08,
-   "v": 341766
-  },
   {
    "time": "2026-03-31",
    "o": 1411.06,
@@ -481,13 +473,23 @@
    "o": 2350.0,
    "h": 2350.0,
    "l": 2285.0,
-   "c": 2345.0,
-   "v": 64746
+   "c": 2300.0,
+   "v": 72216
+  },
+  {
+   "time": "2026-06-26",
+   "o": 2300.0,
+   "h": 2320.0,
+   "l": 2070.0,
+   "c": 2070.0,
+   "v": 98615
   }
  ],
  "sr": {
-  "price": 2345.0,
-  "resistance": [],
+  "price": 2070.0,
+  "resistance": [
+   2155.0
+  ],
   "support": [
    1415.0,
    1286.4
@@ -495,7 +497,6 @@
   "strong_support": 197.63
  },
  "spark": [
-  1401.08,
   1256.49,
   1296.38,
   1266.46,
@@ -554,25 +555,40 @@
   2040.0,
   2240.0,
   2325.0,
-  2345.0
+  2300.0,
+  2070.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 2020,
+    "trust": 0,
+    "dealer": -2000,
+    "total": 20
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.19,
+    "yield": 0.22,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

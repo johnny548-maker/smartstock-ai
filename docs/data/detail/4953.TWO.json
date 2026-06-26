@@ -1,17 +1,9 @@
 {
  "stock": "4953.TWO",
  "name": "緯致",
- "price": 127.5,
- "change_pct": 0.79,
+ "price": 122.5,
+ "change_pct": -3.16,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 111.0,
-   "h": 111.0,
-   "l": 109.5,
-   "c": 109.5,
-   "v": 298140
-  },
   {
    "time": "2026-03-31",
    "o": 109.5,
@@ -481,24 +473,31 @@
    "o": 128.0,
    "h": 129.5,
    "l": 126.5,
-   "c": 127.5,
-   "v": 210455
+   "c": 126.5,
+   "v": 356424
+  },
+  {
+   "time": "2026-06-26",
+   "o": 125.5,
+   "h": 125.5,
+   "l": 122.5,
+   "c": 122.5,
+   "v": 669555
   }
  ],
  "sr": {
-  "price": 127.5,
+  "price": 122.5,
   "resistance": [
-   128.0,
-   128.63
+   124.5,
+   126.0
   ],
   "support": [
-   124.93,
-   122.49
+   122.49,
+   121.0
   ],
   "strong_support": 74.07
  },
  "spark": [
-  109.5,
   108.0,
   110.0,
   110.0,
@@ -557,25 +556,40 @@
   132.5,
   128.5,
   126.5,
-  127.5
+  126.5,
+  122.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -231000,
+    "trust": 0,
+    "dealer": -5072,
+    "total": -236072
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.06,
+    "yield": 4.2,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

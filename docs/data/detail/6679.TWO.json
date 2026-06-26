@@ -1,17 +1,9 @@
 {
  "stock": "6679.TWO",
  "name": "鈺太",
- "price": 287.0,
- "change_pct": 1.23,
+ "price": 266.0,
+ "change_pct": -6.99,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 236.43,
-   "h": 241.83,
-   "l": 233.49,
-   "c": 238.4,
-   "v": 434050
-  },
   {
    "time": "2026-03-31",
    "o": 233.49,
@@ -481,24 +473,31 @@
    "o": 285.0,
    "h": 290.0,
    "l": 282.5,
-   "c": 287.0,
-   "v": 117757
+   "c": 286.0,
+   "v": 216004
+  },
+  {
+   "time": "2026-06-26",
+   "o": 285.5,
+   "h": 285.5,
+   "l": 266.0,
+   "c": 266.0,
+   "v": 334001
   }
  ],
  "sr": {
-  "price": 287.0,
+  "price": 266.0,
   "resistance": [
-   287.45,
-   297.0
+   277.44,
+   280.25
   ],
   "support": [
-   286.81,
-   286.34
+   265.25,
+   264.31
   ],
   "strong_support": 165.8
  },
  "spark": [
-  238.4,
   225.64,
   244.28,
   239.87,
@@ -557,25 +556,40 @@
   291.0,
   284.5,
   283.5,
-  287.0
+  286.0,
+  266.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -17252,
+    "trust": 5000,
+    "dealer": -54154,
+    "total": -66406
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.29,
+    "yield": 2.44,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

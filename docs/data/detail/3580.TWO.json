@@ -1,17 +1,9 @@
 {
  "stock": "3580.TWO",
  "name": "友威科",
- "price": 95.5,
- "change_pct": -2.85,
+ "price": 91.8,
+ "change_pct": -3.47,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 71.2,
-   "h": 72.2,
-   "l": 69.5,
-   "c": 71.4,
-   "v": 596006
-  },
   {
    "time": "2026-03-31",
    "o": 71.2,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 100.5,
    "h": 100.5,
-   "l": 95.2,
-   "c": 95.5,
-   "v": 623788
+   "l": 95.0,
+   "c": 95.1,
+   "v": 970000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 95.1,
+   "h": 98.0,
+   "l": 90.0,
+   "c": 91.8,
+   "v": 957174
   }
  ],
  "sr": {
-  "price": 95.5,
+  "price": 91.8,
   "resistance": [
-   96.25,
-   97.21
+   93.86,
+   96.25
   ],
   "support": [
-   95.2,
-   93.19
+   90.5,
+   89.84
   ],
   "strong_support": 47.84
  },
  "spark": [
-  71.4,
   69.1,
   69.7,
   69.9,
@@ -557,25 +556,40 @@
   102.5,
   96.4,
   98.3,
-  95.5
+  95.1,
+  91.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 76863,
+    "trust": 0,
+    "dealer": 118,
+    "total": 76981
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.22,
+    "yield": 1.31,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

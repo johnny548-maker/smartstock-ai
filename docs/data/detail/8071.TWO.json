@@ -1,17 +1,9 @@
 {
  "stock": "8071.TWO",
  "name": "能率網通",
- "price": 30.8,
- "change_pct": 10.0,
+ "price": 29.85,
+ "change_pct": -3.08,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 16.45,
-   "h": 16.45,
-   "l": 16.2,
-   "c": 16.35,
-   "v": 138007
-  },
   {
    "time": "2026-03-31",
    "o": 16.15,
@@ -483,21 +475,28 @@
    "l": 28.5,
    "c": 30.8,
    "v": 12476587
+  },
+  {
+   "time": "2026-06-26",
+   "o": 32.45,
+   "h": 33.2,
+   "l": 29.7,
+   "c": 29.85,
+   "v": 15828687
   }
  ],
  "sr": {
-  "price": 30.8,
+  "price": 29.85,
   "resistance": [
    31.0
   ],
   "support": [
-   22.6,
-   22.3
+   26.1,
+   22.6
   ],
   "strong_support": 14.75
  },
  "spark": [
-  16.35,
   15.85,
   16.0,
   15.95,
@@ -556,14 +555,29 @@
   27.85,
   27.0,
   28.0,
-  30.8
+  30.8,
+  29.85
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1014731,
+    "trust": 0,
+    "dealer": -134142,
+    "total": -1148873
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

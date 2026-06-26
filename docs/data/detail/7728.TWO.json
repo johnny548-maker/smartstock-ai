@@ -1,17 +1,9 @@
 {
  "stock": "7728.TWO",
  "name": "光焱科技",
- "price": 689.0,
- "change_pct": -0.86,
+ "price": 657.0,
+ "change_pct": -4.23,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 750.6,
-   "h": 762.51,
-   "l": 709.89,
-   "c": 729.75,
-   "v": 247201
-  },
   {
    "time": "2026-03-31",
    "o": 729.75,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 700.0,
    "h": 700.0,
-   "l": 688.0,
-   "c": 689.0,
-   "v": 19607
+   "l": 686.0,
+   "c": 686.0,
+   "v": 27050
+  },
+  {
+   "time": "2026-06-26",
+   "o": 687.0,
+   "h": 687.0,
+   "l": 657.0,
+   "c": 657.0,
+   "v": 55099
   }
  ],
  "sr": {
-  "price": 689.0,
+  "price": 657.0,
   "resistance": [
-   760.53,
-   762.51
+   660.25,
+   760.53
   ],
   "support": [
-   675.14,
-   670.18
+   652.31,
+   645.36
   ],
   "strong_support": 205.17
  },
  "spark": [
-  729.75,
   670.18,
   699.96,
   731.74,
@@ -557,25 +556,40 @@
   726.77,
   709.89,
   695.0,
-  689.0
+  686.0,
+  657.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -10000,
+    "trust": 0,
+    "dealer": -571,
+    "total": -10571
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.73,
+    "yield": 0.78,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6712.TWO",
  "name": "長聖",
- "price": 151.5,
- "change_pct": -0.66,
+ "price": 147.5,
+ "change_pct": -3.59,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 131.94,
-   "h": 131.94,
-   "l": 130.08,
-   "c": 130.55,
-   "v": 129283
-  },
   {
    "time": "2026-03-31",
    "o": 130.55,
@@ -481,24 +473,31 @@
    "o": 152.5,
    "h": 154.5,
    "l": 149.5,
-   "c": 151.5,
-   "v": 878119
+   "c": 153.0,
+   "v": 1160447
+  },
+  {
+   "time": "2026-06-26",
+   "o": 152.5,
+   "h": 152.5,
+   "l": 147.5,
+   "c": 147.5,
+   "v": 479522
   }
  ],
  "sr": {
-  "price": 151.5,
+  "price": 147.5,
   "resistance": [
-   152.46,
-   152.85
+   147.54,
+   148.36
   ],
   "support": [
-   151.45,
-   150.99
+   146.34,
+   144.02
   ],
   "strong_support": 117.62
  },
  "spark": [
-  130.55,
   129.15,
   131.94,
   130.55,
@@ -557,25 +556,40 @@
   142.5,
   141.5,
   152.5,
-  151.5
+  153.0,
+  147.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -120565,
+    "trust": 0,
+    "dealer": 2161,
+    "total": -118404
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.62,
+    "yield": 2.71,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

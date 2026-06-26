@@ -1,17 +1,9 @@
 {
  "stock": "3388.TWO",
  "name": "崇越電",
- "price": 89.0,
- "change_pct": -0.11,
+ "price": 84.0,
+ "change_pct": -4.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 61.97,
-   "h": 62.26,
-   "l": 61.68,
-   "c": 61.88,
-   "v": 71474
-  },
   {
    "time": "2026-03-31",
    "o": 62.07,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 89.7,
    "h": 92.4,
-   "l": 88.5,
-   "c": 89.0,
-   "v": 367975
+   "l": 85.7,
+   "c": 87.5,
+   "v": 713250
+  },
+  {
+   "time": "2026-06-26",
+   "o": 89.6,
+   "h": 90.7,
+   "l": 84.0,
+   "c": 84.0,
+   "v": 1071120
   }
  ],
  "sr": {
-  "price": 89.0,
+  "price": 84.0,
   "resistance": [
    92.33,
    111.8
   ],
   "support": [
-   85.87,
-   83.56
+   83.56,
+   64.8
   ],
   "strong_support": 54.59
  },
  "spark": [
-  61.88,
   61.97,
   63.61,
   63.51,
@@ -557,25 +556,40 @@
   88.86,
   88.2,
   89.1,
-  89.0
+  87.5,
+  84.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -133000,
+    "trust": 0,
+    "dealer": 10379,
+    "total": -122621
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.75,
+    "yield": 3.97,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6290.TWO",
  "name": "良維",
- "price": 311.5,
- "change_pct": 1.8,
+ "price": 300.5,
+ "change_pct": -3.53,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 205.0,
-   "h": 208.0,
-   "l": 200.5,
-   "c": 206.0,
-   "v": 5162425
-  },
   {
    "time": "2026-03-31",
    "o": 205.0,
@@ -483,10 +475,18 @@
    "l": 306.0,
    "c": 311.5,
    "v": 3331518
+  },
+  {
+   "time": "2026-06-26",
+   "o": 310.5,
+   "h": 313.5,
+   "l": 300.0,
+   "c": 300.5,
+   "v": 4055886
   }
  ],
  "sr": {
-  "price": 311.5,
+  "price": 300.5,
   "resistance": [
    321.0,
    329.5
@@ -498,7 +498,6 @@
   "strong_support": 58.38
  },
  "spark": [
-  206.0,
   191.5,
   199.0,
   192.0,
@@ -557,14 +556,29 @@
   318.0,
   306.0,
   306.0,
-  311.5
+  311.5,
+  300.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -666650,
+    "trust": 0,
+    "dealer": -134128,
+    "total": -800778
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

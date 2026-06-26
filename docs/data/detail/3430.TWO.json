@@ -1,17 +1,9 @@
 {
  "stock": "3430.TWO",
  "name": "奇鈦科",
- "price": 157.0,
- "change_pct": 0.0,
+ "price": 141.0,
+ "change_pct": -9.62,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 74.0,
-   "h": 74.0,
-   "l": 70.6,
-   "c": 72.0,
-   "v": 615034
-  },
   {
    "time": "2026-03-31",
    "o": 71.6,
@@ -481,23 +473,30 @@
    "o": 159.0,
    "h": 163.0,
    "l": 154.5,
-   "c": 157.0,
-   "v": 2132813
+   "c": 156.0,
+   "v": 2837350
+  },
+  {
+   "time": "2026-06-26",
+   "o": 157.0,
+   "h": 162.0,
+   "l": 141.0,
+   "c": 141.0,
+   "v": 1800939
   }
  ],
  "sr": {
-  "price": 157.0,
+  "price": 141.0,
   "resistance": [
    189.0
   ],
   "support": [
-   153.0,
-   119.5
+   119.5,
+   101.0
   ],
   "strong_support": 39.4
  },
  "spark": [
-  72.0,
   68.7,
   71.0,
   69.0,
@@ -556,25 +555,40 @@
   149.5,
   149.0,
   157.0,
-  157.0
+  156.0,
+  141.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -107201,
+    "trust": 0,
+    "dealer": -751,
+    "total": -107952
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.02,
+    "yield": 1.13,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

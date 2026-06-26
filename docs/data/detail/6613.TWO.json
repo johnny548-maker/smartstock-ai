@@ -1,17 +1,9 @@
 {
  "stock": "6613.TWO",
  "name": "朋億*",
- "price": 365.0,
- "change_pct": 1.67,
+ "price": 344.0,
+ "change_pct": -5.49,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 202.0,
-   "h": 208.5,
-   "l": 200.5,
-   "c": 202.0,
-   "v": 188606
-  },
   {
    "time": "2026-03-31",
    "o": 201.0,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 362.0,
-   "h": 366.0,
+   "h": 368.0,
    "l": 360.0,
-   "c": 365.0,
-   "v": 139393
+   "c": 364.0,
+   "v": 196216
+  },
+  {
+   "time": "2026-06-26",
+   "o": 358.0,
+   "h": 361.5,
+   "l": 344.0,
+   "c": 344.0,
+   "v": 244486
   }
  ],
  "sr": {
-  "price": 365.0,
+  "price": 344.0,
   "resistance": [
    397.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 127.6
  },
  "spark": [
-  202.0,
   200.0,
   208.0,
   208.5,
@@ -556,25 +555,40 @@
   390.0,
   368.0,
   359.0,
-  365.0
+  364.0,
+  344.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 11466,
+    "trust": -1980,
+    "dealer": -5743,
+    "total": 3743
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.79,
+    "yield": 2.91,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "5443.TWO",
  "name": "均豪",
- "price": 105.5,
- "change_pct": 0.0,
+ "price": 99.2,
+ "change_pct": -4.62,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 98.37,
-   "h": 100.33,
-   "l": 97.49,
-   "c": 98.86,
-   "v": 2329286
-  },
   {
    "time": "2026-03-31",
    "o": 97.88,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 109.0,
    "h": 109.5,
-   "l": 105.0,
-   "c": 105.5,
-   "v": 772377
+   "l": 104.0,
+   "c": 104.0,
+   "v": 1225597
+  },
+  {
+   "time": "2026-06-26",
+   "o": 104.0,
+   "h": 105.0,
+   "l": 99.2,
+   "c": 99.2,
+   "v": 1574455
   }
  ],
  "sr": {
-  "price": 105.5,
+  "price": 99.2,
   "resistance": [
-   108.16,
-   108.98
+   99.84,
+   100.82
   ],
   "support": [
-   104.74,
-   103.27
+   96.71,
+   96.02
   ],
   "strong_support": 52.68
  },
  "spark": [
-  98.86,
   97.49,
   98.86,
   97.69,
@@ -557,25 +556,40 @@
   111.0,
   107.0,
   105.5,
-  105.5
+  104.0,
+  99.2
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -200328,
+    "trust": 0,
+    "dealer": -44148,
+    "total": -244476
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.09,
+    "yield": 2.22,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

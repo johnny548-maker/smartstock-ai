@@ -1,17 +1,9 @@
 {
  "stock": "6761.TWO",
  "name": "穩得",
- "price": 193.0,
- "change_pct": -3.98,
+ "price": 182.0,
+ "change_pct": -6.19,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 167.0,
-   "h": 168.5,
-   "l": 161.0,
-   "c": 163.0,
-   "v": 962185
-  },
   {
    "time": "2026-03-31",
    "o": 163.0,
@@ -481,24 +473,31 @@
    "o": 204.0,
    "h": 204.0,
    "l": 192.5,
-   "c": 193.0,
-   "v": 631887
+   "c": 194.0,
+   "v": 763040
+  },
+  {
+   "time": "2026-06-26",
+   "o": 193.0,
+   "h": 193.5,
+   "l": 182.0,
+   "c": 182.0,
+   "v": 579030
   }
  ],
  "sr": {
-  "price": 193.0,
+  "price": 182.0,
   "resistance": [
-   211.5,
-   221.0
+   188.0,
+   211.5
   ],
   "support": [
-   191.0,
-   189.5
+   178.0,
+   153.5
   ],
   "strong_support": 67.4
  },
  "spark": [
-  163.0,
   156.0,
   159.0,
   159.0,
@@ -557,25 +556,40 @@
   222.0,
   208.0,
   201.0,
-  193.0
+  194.0,
+  182.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -205573,
+    "trust": 0,
+    "dealer": -26805,
+    "total": -232378
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.99,
+    "yield": 3.3,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

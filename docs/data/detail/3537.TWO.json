@@ -1,17 +1,9 @@
 {
  "stock": "3537.TWO",
  "name": "堡達",
- "price": 79.7,
- "change_pct": -0.87,
+ "price": 74.8,
+ "change_pct": -6.5,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 43.3,
-   "h": 43.7,
-   "l": 42.4,
-   "c": 43.2,
-   "v": 92082
-  },
   {
    "time": "2026-03-31",
    "o": 43.2,
@@ -480,16 +472,24 @@
    "time": "2026-06-25",
    "o": 81.9,
    "h": 83.4,
-   "l": 79.7,
-   "c": 79.7,
-   "v": 2096157
+   "l": 78.4,
+   "c": 80.0,
+   "v": 3164164
+  },
+  {
+   "time": "2026-06-26",
+   "o": 79.5,
+   "h": 82.0,
+   "l": 74.5,
+   "c": 74.8,
+   "v": 2456342
   }
  ],
  "sr": {
-  "price": 79.7,
+  "price": 74.8,
   "resistance": [
-   85.9,
-   89.1
+   76.7,
+   85.9
   ],
   "support": [
    71.0,
@@ -498,7 +498,6 @@
   "strong_support": 33.47
  },
  "spark": [
-  43.2,
   41.85,
   42.55,
   41.8,
@@ -557,25 +556,40 @@
   86.0,
   81.2,
   80.4,
-  79.7
+  80.0,
+  74.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 390000,
+    "trust": 0,
+    "dealer": 279,
+    "total": 390279
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.49,
+    "yield": 2.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

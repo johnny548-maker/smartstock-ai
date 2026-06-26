@@ -1,17 +1,9 @@
 {
  "stock": "6667.TWO",
  "name": "信紘科",
- "price": 268.5,
- "change_pct": -1.83,
+ "price": 260.0,
+ "change_pct": -2.8,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 230.38,
-   "h": 230.86,
-   "l": 226.54,
-   "c": 230.86,
-   "v": 320169
-  },
   {
    "time": "2026-03-31",
    "o": 230.86,
@@ -481,24 +473,31 @@
    "o": 274.5,
    "h": 275.5,
    "l": 266.5,
-   "c": 268.5,
-   "v": 355227
+   "c": 267.5,
+   "v": 516213
+  },
+  {
+   "time": "2026-06-26",
+   "o": 267.0,
+   "h": 270.0,
+   "l": 260.0,
+   "c": 260.0,
+   "v": 416258
   }
  ],
  "sr": {
-  "price": 268.5,
+  "price": 260.0,
   "resistance": [
-   271.66,
-   272.62
+   263.02,
+   263.98
   ],
   "support": [
-   261.1,
-   249.58
+   249.58,
+   248.14
   ],
   "strong_support": 130.66
  },
  "spark": [
-  230.86,
   224.62,
   229.9,
   226.54,
@@ -557,25 +556,40 @@
   280.29,
   276.0,
   273.5,
-  268.5
+  267.5,
+  260.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -44000,
+    "trust": 0,
+    "dealer": -17337,
+    "total": -61337
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.28,
+    "yield": 4.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

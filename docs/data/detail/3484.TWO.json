@@ -1,17 +1,9 @@
 {
  "stock": "3484.TWO",
  "name": "崧騰",
- "price": 51.7,
- "change_pct": -0.19,
+ "price": 51.0,
+ "change_pct": -1.73,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 44.95,
-   "h": 45.15,
-   "l": 44.35,
-   "c": 44.7,
-   "v": 129006
-  },
   {
    "time": "2026-03-31",
    "o": 44.7,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 52.2,
-   "h": 52.2,
+   "h": 52.5,
    "l": 51.2,
-   "c": 51.7,
-   "v": 307495
+   "c": 51.9,
+   "v": 663109
+  },
+  {
+   "time": "2026-06-26",
+   "o": 52.0,
+   "h": 52.1,
+   "l": 50.3,
+   "c": 51.0,
+   "v": 686501
   }
  ],
  "sr": {
-  "price": 51.7,
+  "price": 51.0,
   "resistance": [
-   51.9,
-   52.1
+   51.38,
+   51.5
   ],
   "support": [
-   51.66,
-   51.56
+   50.9,
+   50.71
   ],
   "strong_support": 38.46
  },
  "spark": [
-  44.7,
   43.75,
   44.8,
   44.4,
@@ -557,25 +556,40 @@
   52.9,
   52.0,
   51.8,
-  51.7
+  51.9,
+  51.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 58000,
+    "trust": 0,
+    "dealer": 1397,
+    "total": 59397
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.83,
+    "yield": 4.9,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

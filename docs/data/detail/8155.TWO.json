@@ -1,17 +1,9 @@
 {
  "stock": "8155.TWO",
  "name": "博智",
- "price": 391.5,
- "change_pct": 1.29,
+ "price": 367.0,
+ "change_pct": -6.26,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 262.5,
-   "h": 268.0,
-   "l": 261.5,
-   "c": 264.0,
-   "v": 466415
-  },
   {
    "time": "2026-03-31",
    "o": 258.5,
@@ -483,22 +475,29 @@
    "l": 383.0,
    "c": 391.5,
    "v": 579190
+  },
+  {
+   "time": "2026-06-26",
+   "o": 390.5,
+   "h": 399.5,
+   "l": 367.0,
+   "c": 367.0,
+   "v": 937811
   }
  ],
  "sr": {
-  "price": 391.5,
+  "price": 367.0,
   "resistance": [
    414.0,
    419.0
   ],
   "support": [
-   380.0,
-   350.5
+   350.5,
+   334.0
   ],
   "strong_support": 94.71
  },
  "spark": [
-  264.0,
   238.5,
   244.5,
   253.0,
@@ -557,14 +556,29 @@
   407.5,
   388.5,
   386.5,
-  391.5
+  391.5,
+  367.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -128000,
+    "trust": 0,
+    "dealer": -99,
+    "total": -128099
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "1595.TWO",
  "name": "川寶",
- "price": 80.4,
- "change_pct": -0.86,
+ "price": 78.0,
+ "change_pct": -3.94,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 42.2,
-   "h": 43.25,
-   "l": 40.8,
-   "c": 42.8,
-   "v": 269050
-  },
   {
    "time": "2026-03-31",
    "o": 42.5,
@@ -481,15 +473,23 @@
    "o": 82.0,
    "h": 82.5,
    "l": 78.9,
-   "c": 80.4,
-   "v": 486379
+   "c": 81.2,
+   "v": 716003
+  },
+  {
+   "time": "2026-06-26",
+   "o": 79.3,
+   "h": 82.1,
+   "l": 76.6,
+   "c": 78.0,
+   "v": 1066140
   }
  ],
  "sr": {
-  "price": 80.4,
+  "price": 78.0,
   "resistance": [
-   85.28,
-   101.0
+   79.7,
+   85.28
   ],
   "support": [
    73.3,
@@ -498,7 +498,6 @@
   "strong_support": 28.97
  },
  "spark": [
-  42.8,
   40.1,
   41.4,
   41.1,
@@ -557,25 +556,40 @@
   84.7,
   82.0,
   81.1,
-  80.4
+  81.2,
+  78.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 92500,
+    "trust": 0,
+    "dealer": 25,
+    "total": 92525
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.62,
+    "yield": 0.64,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

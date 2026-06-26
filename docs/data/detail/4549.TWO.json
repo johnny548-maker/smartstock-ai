@@ -1,17 +1,9 @@
 {
  "stock": "4549.TWO",
  "name": "桓達",
- "price": 102.0,
- "change_pct": 0.0,
+ "price": 99.3,
+ "change_pct": -3.12,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 88.9,
-   "h": 89.9,
-   "l": 85.7,
-   "c": 88.2,
-   "v": 101000
-  },
   {
    "time": "2026-03-31",
    "o": 88.3,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 103.5,
    "h": 103.5,
-   "l": 102.0,
-   "c": 102.0,
-   "v": 68405
+   "l": 101.0,
+   "c": 102.5,
+   "v": 145100
+  },
+  {
+   "time": "2026-06-26",
+   "o": 102.0,
+   "h": 102.0,
+   "l": 98.5,
+   "c": 99.3,
+   "v": 275000
   }
  ],
  "sr": {
-  "price": 102.0,
+  "price": 99.3,
   "resistance": [
    105.0,
    106.0
@@ -498,7 +498,6 @@
   "strong_support": 85.7
  },
  "spark": [
-  88.2,
   86.0,
   88.2,
   97.0,
@@ -557,25 +556,40 @@
   108.0,
   104.0,
   102.0,
-  102.0
+  102.5,
+  99.3
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -39000,
+    "trust": 0,
+    "dealer": -657,
+    "total": -39657
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.14,
+    "yield": 3.22,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

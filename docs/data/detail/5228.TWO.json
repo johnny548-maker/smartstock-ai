@@ -1,17 +1,9 @@
 {
  "stock": "5228.TWO",
  "name": "鈺鎧",
- "price": 65.8,
- "change_pct": -2.37,
+ "price": 62.6,
+ "change_pct": -5.15,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 23.75,
-   "h": 24.3,
-   "l": 23.35,
-   "c": 23.45,
-   "v": 160000
-  },
   {
    "time": "2026-03-31",
    "o": 24.0,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 68.0,
    "h": 70.5,
-   "l": 65.5,
-   "c": 65.8,
-   "v": 634419
+   "l": 64.8,
+   "c": 66.0,
+   "v": 962050
+  },
+  {
+   "time": "2026-06-26",
+   "o": 65.0,
+   "h": 66.8,
+   "l": 62.0,
+   "c": 62.6,
+   "v": 650056
   }
  ],
  "sr": {
-  "price": 65.8,
+  "price": 62.6,
   "resistance": [
    70.4,
    80.7
@@ -498,7 +498,6 @@
   "strong_support": 14.2
  },
  "spark": [
-  23.45,
   23.05,
   24.2,
   23.4,
@@ -557,14 +556,29 @@
   70.2,
   64.3,
   67.4,
-  65.8
+  66.0,
+  62.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 46000,
+    "trust": 0,
+    "dealer": 32,
+    "total": 46032
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

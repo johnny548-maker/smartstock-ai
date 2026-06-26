@@ -1,17 +1,9 @@
 {
  "stock": "3114.TWO",
  "name": "好德",
- "price": 56.3,
- "change_pct": 7.24,
+ "price": 52.0,
+ "change_pct": -9.88,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 25.7,
-   "h": 26.05,
-   "l": 25.6,
-   "c": 26.0,
-   "v": 37962
-  },
   {
    "time": "2026-03-31",
    "o": 25.8,
@@ -481,12 +473,20 @@
    "o": 52.8,
    "h": 57.7,
    "l": 52.8,
-   "c": 56.3,
-   "v": 4195093
+   "c": 57.7,
+   "v": 5391759
+  },
+  {
+   "time": "2026-06-26",
+   "o": 58.2,
+   "h": 58.5,
+   "l": 52.0,
+   "c": 52.0,
+   "v": 4479337
   }
  ],
  "sr": {
-  "price": 56.3,
+  "price": 52.0,
   "resistance": [
    2142.72
   ],
@@ -497,7 +497,6 @@
   "strong_support": 18.05
  },
  "spark": [
-  26.0,
   25.6,
   25.85,
   25.75,
@@ -556,25 +555,40 @@
   52.5,
   47.8,
   52.5,
-  56.3
+  57.7,
+  52.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -275020,
+    "trust": 0,
+    "dealer": -410,
+    "total": -275430
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.68,
+    "yield": 2.71,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

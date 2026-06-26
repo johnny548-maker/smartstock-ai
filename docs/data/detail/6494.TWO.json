@@ -1,17 +1,9 @@
 {
  "stock": "6494.TWO",
  "name": "九齊",
- "price": 67.7,
- "change_pct": -1.88,
+ "price": 62.9,
+ "change_pct": -4.98,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 44.54,
-   "h": 44.54,
-   "l": 42.77,
-   "c": 43.06,
-   "v": 97006
-  },
   {
    "time": "2026-03-31",
    "o": 42.77,
@@ -480,14 +472,25 @@
    "time": "2026-06-25",
    "o": 69.0,
    "h": 69.2,
-   "l": 67.3,
-   "c": 67.7,
-   "v": 234982
+   "l": 66.2,
+   "c": 66.2,
+   "v": 452003
+  },
+  {
+   "time": "2026-06-26",
+   "o": 66.2,
+   "h": 66.4,
+   "l": 62.7,
+   "c": 62.9,
+   "v": 455003
   }
  ],
  "sr": {
-  "price": 67.7,
-  "resistance": [],
+  "price": 62.9,
+  "resistance": [
+   64.78,
+   72.3
+  ],
   "support": [
    60.24,
    56.53
@@ -495,7 +498,6 @@
   "strong_support": 30.35
  },
  "spark": [
-  43.06,
   41.98,
   43.85,
   42.47,
@@ -554,25 +556,40 @@
   69.2,
   68.6,
   69.0,
-  67.7
+  66.2,
+  62.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 54075,
+    "trust": 0,
+    "dealer": 0,
+    "total": 54075
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.45,
+    "yield": 1.59,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

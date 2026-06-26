@@ -1,17 +1,9 @@
 {
  "stock": "8111.TWO",
  "name": "立碁",
- "price": 55.0,
- "change_pct": 1.29,
+ "price": 51.8,
+ "change_pct": -5.65,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 60.05,
-   "h": 60.35,
-   "l": 58.87,
-   "c": 59.96,
-   "v": 1253389
-  },
   {
    "time": "2026-03-31",
    "o": 59.56,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 55.2,
    "h": 57.5,
-   "l": 54.7,
-   "c": 55.0,
-   "v": 908516
+   "l": 54.4,
+   "c": 54.9,
+   "v": 1238157
+  },
+  {
+   "time": "2026-06-26",
+   "o": 54.9,
+   "h": 54.9,
+   "l": 51.0,
+   "c": 51.8,
+   "v": 1466076
   }
  ],
  "sr": {
-  "price": 55.0,
+  "price": 51.8,
   "resistance": [
-   55.21,
-   55.23
+   52.54,
+   52.83
   ],
   "support": [
-   54.5,
-   53.5
+   50.85,
+   50.16
   ],
   "strong_support": 18.04
  },
  "spark": [
-  59.96,
   57.38,
   59.86,
   57.98,
@@ -557,25 +556,40 @@
   56.9,
   55.3,
   54.3,
-  55.0
+  54.9,
+  51.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -178850,
+    "trust": 0,
+    "dealer": -56198,
+    "total": -235048
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.1,
+    "yield": 1.16,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

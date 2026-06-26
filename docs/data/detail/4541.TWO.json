@@ -1,17 +1,9 @@
 {
  "stock": "4541.TWO",
  "name": "晟田",
- "price": 48.15,
- "change_pct": -1.43,
+ "price": 47.5,
+ "change_pct": -1.14,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 42.05,
-   "h": 42.7,
-   "l": 41.35,
-   "c": 42.0,
-   "v": 643021
-  },
   {
    "time": "2026-03-31",
    "o": 42.5,
@@ -481,24 +473,31 @@
    "o": 49.45,
    "h": 49.45,
    "l": 48.05,
-   "c": 48.15,
-   "v": 454574
+   "c": 48.05,
+   "v": 635007
+  },
+  {
+   "time": "2026-06-26",
+   "o": 48.0,
+   "h": 48.6,
+   "l": 46.75,
+   "c": 47.5,
+   "v": 864002
   }
  ],
  "sr": {
-  "price": 48.15,
+  "price": 47.5,
   "resistance": [
-   48.8,
-   48.85
+   48.0,
+   48.8
   ],
   "support": [
-   48.05,
-   45.35
+   45.35,
+   44.96
   ],
   "strong_support": 21.62
  },
  "spark": [
-  42.0,
   40.55,
   41.75,
   40.75,
@@ -557,25 +556,40 @@
   51.0,
   48.5,
   48.85,
-  48.15
+  48.05,
+  47.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -3793,
+    "trust": 0,
+    "dealer": -10581,
+    "total": -14374
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.87,
+    "yield": 2.95,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

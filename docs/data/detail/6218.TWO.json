@@ -1,17 +1,9 @@
 {
  "stock": "6218.TWO",
  "name": "豪勉",
- "price": 38.85,
- "change_pct": -2.87,
+ "price": 37.6,
+ "change_pct": -6.35,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 25.5,
-   "h": 26.35,
-   "l": 25.2,
-   "c": 25.55,
-   "v": 305050
-  },
   {
    "time": "2026-03-31",
    "o": 25.7,
@@ -481,24 +473,31 @@
    "o": 40.05,
    "h": 40.9,
    "l": 38.6,
-   "c": 38.85,
-   "v": 713099
+   "c": 40.15,
+   "v": 1635415
+  },
+  {
+   "time": "2026-06-26",
+   "o": 40.35,
+   "h": 41.75,
+   "l": 37.25,
+   "c": 37.6,
+   "v": 3613292
   }
  ],
  "sr": {
-  "price": 38.85,
+  "price": 37.6,
   "resistance": [
-   39.0,
-   39.4
+   38.0,
+   39.0
   ],
   "support": [
-   38.1,
-   34.6
+   34.6,
+   31.81
   ],
   "strong_support": 15.85
  },
  "spark": [
-  25.55,
   24.35,
   24.8,
   26.75,
@@ -557,14 +556,29 @@
   37.1,
   40.1,
   40.0,
-  38.85
+  40.15,
+  37.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -267016,
+    "trust": 0,
+    "dealer": -3000,
+    "total": -270016
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "5302.TWO",
  "name": "太欣",
- "price": 13.15,
- "change_pct": -9.0,
+ "price": 12.65,
+ "change_pct": -3.07,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 11.3,
-   "h": 11.35,
-   "l": 11.0,
-   "c": 11.0,
-   "v": 464000
-  },
   {
    "time": "2026-03-31",
    "o": 10.95,
@@ -480,16 +472,24 @@
    "time": "2026-06-25",
    "o": 13.6,
    "h": 13.9,
-   "l": 13.1,
-   "c": 13.15,
-   "v": 2716881
+   "l": 13.05,
+   "c": 13.05,
+   "v": 3999101
+  },
+  {
+   "time": "2026-06-26",
+   "o": 12.95,
+   "h": 13.25,
+   "l": 12.6,
+   "c": 12.65,
+   "v": 1844147
   }
  ],
  "sr": {
-  "price": 13.15,
+  "price": 12.65,
   "resistance": [
-   13.3,
-   13.35
+   13.05,
+   13.3
   ],
   "support": [
    11.8,
@@ -498,7 +498,6 @@
   "strong_support": 6.5
  },
  "spark": [
-  11.0,
   10.7,
   10.8,
   10.9,
@@ -557,14 +556,29 @@
   12.6,
   13.85,
   14.45,
-  13.15
+  13.05,
+  12.65
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 228382,
+    "trust": 0,
+    "dealer": 18997,
+    "total": 247379
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

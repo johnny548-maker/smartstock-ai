@@ -1,17 +1,9 @@
 {
  "stock": "5309.TWO",
  "name": "系統電",
- "price": 66.0,
- "change_pct": -1.64,
+ "price": 61.7,
+ "change_pct": -6.52,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 59.62,
-   "h": 60.02,
-   "l": 58.23,
-   "c": 58.92,
-   "v": 2596774
-  },
   {
    "time": "2026-03-31",
    "o": 59.02,
@@ -483,22 +475,29 @@
    "l": 65.5,
    "c": 66.0,
    "v": 3522760
+  },
+  {
+   "time": "2026-06-26",
+   "o": 65.6,
+   "h": 65.9,
+   "l": 61.7,
+   "c": 61.7,
+   "v": 5512738
   }
  ],
  "sr": {
-  "price": 66.0,
+  "price": 61.7,
   "resistance": [
-   66.97,
-   69.06
+   61.9,
+   62.0
   ],
   "support": [
-   65.68,
-   64.89
+   61.41,
+   61.11
   ],
   "strong_support": 28.22
  },
  "spark": [
-  58.92,
   56.04,
   57.43,
   55.64,
@@ -557,14 +556,29 @@
   70.2,
   67.7,
   67.1,
-  66.0
+  66.0,
+  61.7
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1438623,
+    "trust": 0,
+    "dealer": -249110,
+    "total": -1687733
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

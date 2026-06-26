@@ -1,17 +1,9 @@
 {
  "stock": "2061.TWO",
  "name": "風青",
- "price": 68.0,
- "change_pct": 6.58,
+ "price": 62.6,
+ "change_pct": -9.93,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 16.25,
-   "h": 16.35,
-   "l": 15.5,
-   "c": 15.95,
-   "v": 160001
-  },
   {
    "time": "2026-03-31",
    "o": 15.95,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 68.1,
    "h": 69.8,
-   "l": 68.0,
-   "c": 68.0,
-   "v": 761416
+   "l": 67.8,
+   "c": 69.5,
+   "v": 1051083
+  },
+  {
+   "time": "2026-06-26",
+   "o": 67.6,
+   "h": 67.6,
+   "l": 62.6,
+   "c": 62.6,
+   "v": 957056
   }
  ],
  "sr": {
-  "price": 68.0,
+  "price": 62.6,
   "resistance": [],
   "support": [
    32.15,
@@ -495,7 +495,6 @@
   "strong_support": 14.8
  },
  "spark": [
-  15.95,
   16.45,
   16.95,
   16.85,
@@ -554,14 +553,29 @@
   58.0,
   58.0,
   63.8,
-  68.0
+  69.5,
+  62.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 45000,
+    "trust": 0,
+    "dealer": -200,
+    "total": 44800
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -572,7 +586,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

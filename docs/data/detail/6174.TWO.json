@@ -1,17 +1,9 @@
 {
  "stock": "6174.TWO",
  "name": "安碁",
- "price": 48.8,
- "change_pct": -2.79,
+ "price": 54.2,
+ "change_pct": 9.94,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 22.7,
-   "h": 23.0,
-   "l": 22.25,
-   "c": 22.65,
-   "v": 182040
-  },
   {
    "time": "2026-03-31",
    "o": 22.65,
@@ -480,16 +472,23 @@
    "time": "2026-06-25",
    "o": 51.0,
    "h": 51.0,
-   "l": 48.75,
-   "c": 48.8,
-   "v": 641907
+   "l": 48.65,
+   "c": 49.3,
+   "v": 1150000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 49.05,
+   "h": 54.2,
+   "l": 49.05,
+   "c": 54.2,
+   "v": 3583728
   }
  ],
  "sr": {
-  "price": 48.8,
+  "price": 54.2,
   "resistance": [
-   50.4,
-   51.4
+   59.0
   ],
   "support": [
    39.35,
@@ -498,7 +497,6 @@
   "strong_support": 15.92
  },
  "spark": [
-  22.65,
   22.0,
   22.4,
   22.2,
@@ -557,25 +555,40 @@
   51.0,
   48.95,
   50.2,
-  48.8
+  49.3,
+  54.2
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 66000,
+    "trust": 0,
+    "dealer": 61370,
+    "total": 127370
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.68,
+    "yield": 0.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

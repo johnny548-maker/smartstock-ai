@@ -1,17 +1,9 @@
 {
  "stock": "6175.TWO",
  "name": "立敦",
- "price": 116.5,
- "change_pct": 0.87,
+ "price": 111.0,
+ "change_pct": -4.72,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 48.0,
-   "h": 49.85,
-   "l": 47.3,
-   "c": 49.85,
-   "v": 5304603
-  },
   {
    "time": "2026-03-31",
    "o": 51.0,
@@ -483,12 +475,21 @@
    "l": 113.0,
    "c": 116.5,
    "v": 17969137
+  },
+  {
+   "time": "2026-06-26",
+   "o": 115.0,
+   "h": 121.0,
+   "l": 111.0,
+   "c": 111.0,
+   "v": 11524174
   }
  ],
  "sr": {
-  "price": 116.5,
+  "price": 111.0,
   "resistance": [
-   117.0
+   111.5,
+   115.5
   ],
   "support": [
    96.6,
@@ -497,7 +498,6 @@
   "strong_support": 26.87
  },
  "spark": [
-  49.85,
   47.75,
   48.05,
   46.35,
@@ -556,14 +556,29 @@
   109.0,
   110.5,
   115.5,
-  116.5
+  116.5,
+  111.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 868344,
+    "trust": 0,
+    "dealer": -118070,
+    "total": 750274
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

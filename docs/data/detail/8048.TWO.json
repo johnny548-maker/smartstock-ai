@@ -1,17 +1,9 @@
 {
  "stock": "8048.TWO",
  "name": "德勝",
- "price": 63.7,
- "change_pct": -2.0,
+ "price": 61.1,
+ "change_pct": -3.63,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 53.5,
-   "h": 54.2,
-   "l": 52.6,
-   "c": 53.9,
-   "v": 367028
-  },
   {
    "time": "2026-03-31",
    "o": 53.1,
@@ -481,12 +473,20 @@
    "o": 66.1,
    "h": 66.2,
    "l": 63.2,
-   "c": 63.7,
-   "v": 214820
+   "c": 63.4,
+   "v": 340017
+  },
+  {
+   "time": "2026-06-26",
+   "o": 62.8,
+   "h": 64.7,
+   "l": 61.1,
+   "c": 61.1,
+   "v": 357001
   }
  ],
  "sr": {
-  "price": 63.7,
+  "price": 61.1,
   "resistance": [
    64.0,
    64.1
@@ -498,7 +498,6 @@
   "strong_support": 37.41
  },
  "spark": [
-  53.9,
   52.6,
   52.6,
   52.0,
@@ -557,25 +556,40 @@
   66.8,
   65.6,
   65.0,
-  63.7
+  63.4,
+  61.1
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -40000,
+    "trust": 0,
+    "dealer": -26787,
+    "total": -66787
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.54,
+    "yield": 3.76,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3066.TWO",
  "name": "李洲",
- "price": 24.55,
- "change_pct": 3.81,
+ "price": 22.0,
+ "change_pct": -8.33,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 19.25,
-   "h": 19.75,
-   "l": 18.8,
-   "c": 19.15,
-   "v": 148000
-  },
   {
    "time": "2026-03-31",
    "o": 19.0,
@@ -481,24 +473,31 @@
    "o": 23.65,
    "h": 25.4,
    "l": 23.65,
-   "c": 24.55,
-   "v": 1192992
+   "c": 24.0,
+   "v": 1798206
+  },
+  {
+   "time": "2026-06-26",
+   "o": 24.0,
+   "h": 24.25,
+   "l": 22.0,
+   "c": 22.0,
+   "v": 1073055
   }
  ],
  "sr": {
-  "price": 24.55,
+  "price": 22.0,
   "resistance": [
-   24.9,
-   25.0
+   22.95,
+   23.0
   ],
   "support": [
-   23.1,
-   22.4
+   21.6,
+   21.3
   ],
   "strong_support": 12.55
  },
  "spark": [
-  19.15,
   18.45,
   19.2,
   18.0,
@@ -557,14 +556,29 @@
   22.05,
   24.25,
   23.65,
-  24.55
+  24.0,
+  22.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 50000,
+    "trust": 0,
+    "dealer": 35776,
+    "total": 85776
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

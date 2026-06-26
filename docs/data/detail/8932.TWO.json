@@ -1,17 +1,9 @@
 {
  "stock": "8932.TWO",
  "name": "智通*",
- "price": 114.5,
- "change_pct": 9.57,
+ "price": 111.0,
+ "change_pct": -3.06,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 81.6,
-   "h": 82.9,
-   "l": 80.2,
-   "c": 82.7,
-   "v": 1267002
-  },
   {
    "time": "2026-03-31",
    "o": 82.6,
@@ -483,10 +475,18 @@
    "l": 102.5,
    "c": 114.5,
    "v": 11171419
+  },
+  {
+   "time": "2026-06-26",
+   "o": 120.0,
+   "h": 122.5,
+   "l": 109.5,
+   "c": 111.0,
+   "v": 20314260
   }
  ],
  "sr": {
-  "price": 114.5,
+  "price": 111.0,
   "resistance": [
    124.25
   ],
@@ -497,7 +497,6 @@
   "strong_support": 32.44
  },
  "spark": [
-  82.7,
   80.5,
   82.0,
   80.1,
@@ -556,14 +555,29 @@
   100.0,
   100.5,
   104.5,
-  114.5
+  114.5,
+  111.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1144720,
+    "trust": 0,
+    "dealer": -99707,
+    "total": -1244427
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

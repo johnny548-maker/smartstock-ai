@@ -1,17 +1,9 @@
 {
  "stock": "6134.TWO",
  "name": "萬旭",
- "price": 35.2,
- "change_pct": 3.68,
+ "price": 32.85,
+ "change_pct": -6.68,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 29.0,
-   "h": 29.35,
-   "l": 28.4,
-   "c": 29.1,
-   "v": 407046
-  },
   {
    "time": "2026-03-31",
    "o": 28.5,
@@ -482,14 +474,22 @@
    "h": 35.35,
    "l": 34.05,
    "c": 35.2,
-   "v": 594978
+   "v": 932053
+  },
+  {
+   "time": "2026-06-26",
+   "o": 35.0,
+   "h": 35.0,
+   "l": 32.75,
+   "c": 32.85,
+   "v": 916080
   }
  ],
  "sr": {
-  "price": 35.2,
+  "price": 32.85,
   "resistance": [
-   35.5,
-   36.92
+   32.86,
+   33.4
   ],
   "support": [
    31.85,
@@ -498,7 +498,6 @@
   "strong_support": 16.88
  },
  "spark": [
-  29.1,
   28.3,
   28.85,
   27.85,
@@ -557,25 +556,40 @@
   36.45,
   34.35,
   33.95,
-  35.2
+  35.2,
+  32.85
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -352327,
+    "trust": 0,
+    "dealer": 7465,
+    "total": -344862
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.59,
+    "yield": 0.61,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

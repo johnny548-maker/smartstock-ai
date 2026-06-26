@@ -1,17 +1,9 @@
 {
  "stock": "3169.TWO",
  "name": "亞信",
- "price": 113.0,
- "change_pct": -0.44,
+ "price": 105.5,
+ "change_pct": -4.95,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 95.16,
-   "h": 95.16,
-   "l": 90.4,
-   "c": 90.69,
-   "v": 225269
-  },
   {
    "time": "2026-03-31",
    "o": 90.3,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 117.0,
    "h": 117.0,
-   "l": 111.5,
-   "c": 113.0,
-   "v": 208200
+   "l": 111.0,
+   "c": 111.0,
+   "v": 310124
+  },
+  {
+   "time": "2026-06-26",
+   "o": 110.0,
+   "h": 110.0,
+   "l": 104.5,
+   "c": 105.5,
+   "v": 503021
   }
  ],
  "sr": {
-  "price": 113.0,
+  "price": 105.5,
   "resistance": [
-   113.81,
-   114.28
+   105.85,
+   106.79
   ],
   "support": [
-   110.07,
-   102.11
+   102.11,
+   101.64
   ],
   "strong_support": 67.91
  },
  "spark": [
-  90.69,
   87.1,
   88.26,
   86.8,
@@ -557,25 +556,40 @@
   109.84,
   111.3,
   113.5,
-  113.0
+  111.0,
+  105.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -181609,
+    "trust": 0,
+    "dealer": -1578,
+    "total": -183187
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.82,
+    "yield": 3.03,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

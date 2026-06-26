@@ -1,17 +1,9 @@
 {
  "stock": "3207.TWO",
  "name": "耀勝",
- "price": 68.9,
- "change_pct": -1.71,
+ "price": 64.0,
+ "change_pct": -4.9,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 66.0,
-   "h": 67.5,
-   "l": 65.5,
-   "c": 65.9,
-   "v": 228020
-  },
   {
    "time": "2026-03-31",
    "o": 65.8,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 70.5,
    "h": 72.2,
-   "l": 68.4,
-   "c": 68.9,
-   "v": 2251191
+   "l": 67.1,
+   "c": 67.3,
+   "v": 2684061
+  },
+  {
+   "time": "2026-06-26",
+   "o": 68.0,
+   "h": 68.0,
+   "l": 64.0,
+   "c": 64.0,
+   "v": 1401101
   }
  ],
  "sr": {
-  "price": 68.9,
+  "price": 64.0,
   "resistance": [
-   69.3,
-   69.5
+   67.7,
+   68.9
   ],
   "support": [
-   68.5,
-   68.4
+   63.5,
+   63.3
   ],
   "strong_support": 54.6
  },
  "spark": [
-  65.9,
   65.3,
   67.0,
   65.8,
@@ -557,14 +556,29 @@
   67.3,
   67.7,
   70.1,
-  68.9
+  67.3,
+  64.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -145000,
+    "trust": 0,
+    "dealer": -998,
+    "total": -145998
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

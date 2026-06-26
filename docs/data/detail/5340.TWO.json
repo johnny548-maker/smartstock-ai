@@ -1,17 +1,9 @@
 {
  "stock": "5340.TWO",
  "name": "建榮",
- "price": 95.8,
- "change_pct": -2.44,
+ "price": 86.9,
+ "change_pct": -9.01,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 103.32,
-   "h": 106.8,
-   "l": 101.33,
-   "c": 106.8,
-   "v": 962315
-  },
   {
    "time": "2026-03-31",
    "o": 101.33,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 99.2,
    "h": 100.5,
-   "l": 95.4,
-   "c": 95.8,
-   "v": 1042636
+   "l": 95.0,
+   "c": 95.5,
+   "v": 1510339
+  },
+  {
+   "time": "2026-06-26",
+   "o": 95.5,
+   "h": 95.5,
+   "l": 86.9,
+   "c": 86.9,
+   "v": 1781694
   }
  ],
  "sr": {
-  "price": 95.8,
+  "price": 86.9,
   "resistance": [
-   106.8,
-   113.26
+   102.0,
+   106.8
   ],
   "support": [
-   95.57,
-   92.39
+   80.6,
+   62.79
   ],
   "strong_support": 25.86
  },
  "spark": [
-  106.8,
   96.27,
   99.84,
   100.34,
@@ -557,25 +556,40 @@
   99.0,
   96.0,
   98.2,
-  95.8
+  95.5,
+  86.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 130135,
+    "trust": 0,
+    "dealer": -20435,
+    "total": 109700
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.61,
+    "yield": 0.69,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

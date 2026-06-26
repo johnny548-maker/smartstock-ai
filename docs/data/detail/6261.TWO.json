@@ -1,17 +1,9 @@
 {
  "stock": "6261.TWO",
  "name": "久元",
- "price": 96.8,
- "change_pct": -2.71,
+ "price": 90.8,
+ "change_pct": -5.42,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 73.3,
-   "h": 74.4,
-   "l": 72.6,
-   "c": 73.9,
-   "v": 560010
-  },
   {
    "time": "2026-03-31",
    "o": 73.5,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 101.0,
    "h": 101.0,
-   "l": 96.6,
-   "c": 96.8,
-   "v": 839046
+   "l": 96.0,
+   "c": 96.0,
+   "v": 1252421
+  },
+  {
+   "time": "2026-06-26",
+   "o": 98.0,
+   "h": 98.0,
+   "l": 90.8,
+   "c": 90.8,
+   "v": 2091000
   }
  ],
  "sr": {
-  "price": 96.8,
+  "price": 90.8,
   "resistance": [
    99.0,
    104.5
   ],
   "support": [
-   92.8,
-   89.4
+   89.4,
+   88.1
   ],
   "strong_support": 52.14
  },
  "spark": [
-  73.9,
   72.0,
   74.7,
   72.0,
@@ -557,25 +556,40 @@
   101.0,
   97.2,
   99.5,
-  96.8
+  96.0,
+  90.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 358871,
+    "trust": 0,
+    "dealer": 124696,
+    "total": 483567
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.51,
+    "yield": 2.75,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

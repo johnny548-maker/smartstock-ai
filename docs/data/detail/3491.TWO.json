@@ -1,17 +1,9 @@
 {
  "stock": "3491.TWO",
  "name": "昇達科",
- "price": 1340.0,
- "change_pct": -6.29,
+ "price": 1230.0,
+ "change_pct": -8.21,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1695.0,
-   "h": 1735.0,
-   "l": 1550.0,
-   "c": 1580.0,
-   "v": 2700794
-  },
   {
    "time": "2026-03-31",
    "o": 1500.0,
@@ -483,22 +475,29 @@
    "l": 1340.0,
    "c": 1340.0,
    "v": 1624956
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1310.0,
+   "h": 1320.0,
+   "l": 1230.0,
+   "c": 1230.0,
+   "v": 2051854
   }
  ],
  "sr": {
-  "price": 1340.0,
+  "price": 1230.0,
   "resistance": [
    1405.0,
    1490.0
   ],
   "support": [
-   1250.0,
-   1155.0
+   1155.0,
+   1125.0
   ],
   "strong_support": 238.62
  },
  "spark": [
-  1580.0,
   1425.0,
   1495.0,
   1495.0,
@@ -557,14 +556,29 @@
   1470.0,
   1355.0,
   1430.0,
-  1340.0
+  1340.0,
+  1230.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 354865,
+    "trust": -58736,
+    "dealer": -25427,
+    "total": 270702
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

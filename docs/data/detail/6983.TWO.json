@@ -1,17 +1,9 @@
 {
  "stock": "6983.TWO",
  "name": "華洋精機",
- "price": 369.5,
- "change_pct": 0.96,
+ "price": 350.0,
+ "change_pct": -4.63,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 408.4,
-   "h": 425.73,
-   "l": 336.62,
-   "c": 359.39,
-   "v": 258460
-  },
   {
    "time": "2026-03-31",
    "o": 358.4,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 365.5,
-   "h": 370.0,
+   "h": 371.5,
    "l": 362.0,
-   "c": 369.5,
-   "v": 26552
+   "c": 367.0,
+   "v": 35051
+  },
+  {
+   "time": "2026-06-26",
+   "o": 370.5,
+   "h": 370.5,
+   "l": 350.0,
+   "c": 350.0,
+   "v": 102008
   }
  ],
  "sr": {
-  "price": 369.5,
+  "price": 350.0,
   "resistance": [
    408.0,
    519.0
@@ -498,7 +498,6 @@
   "strong_support": 94.52
  },
  "spark": [
-  359.39,
   299.0,
   365.0,
   367.5,
@@ -557,25 +556,40 @@
   371.5,
   381.0,
   366.0,
-  369.5
+  367.0,
+  350.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -6000,
+    "trust": 0,
+    "dealer": 0,
+    "total": -6000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.82,
+    "yield": 0.86,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

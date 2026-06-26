@@ -1,17 +1,9 @@
 {
  "stock": "5536.TWO",
  "name": "聖暉*",
- "price": 1350.0,
- "change_pct": 3.85,
+ "price": 1305.0,
+ "change_pct": -3.33,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 742.0,
-   "h": 765.0,
-   "l": 733.0,
-   "c": 743.0,
-   "v": 1244941
-  },
   {
    "time": "2026-03-31",
    "o": 738.0,
@@ -483,10 +475,18 @@
    "l": 1295.0,
    "c": 1350.0,
    "v": 972665
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1360.0,
+   "h": 1390.0,
+   "l": 1275.0,
+   "c": 1305.0,
+   "v": 1333447
   }
  ],
  "sr": {
-  "price": 1350.0,
+  "price": 1305.0,
   "resistance": [],
   "support": [
    971.0,
@@ -495,7 +495,6 @@
   "strong_support": 203.18
  },
  "spark": [
-  743.0,
   688.0,
   718.0,
   699.0,
@@ -554,14 +553,29 @@
   1280.0,
   1260.0,
   1300.0,
-  1350.0
+  1350.0,
+  1305.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 370662,
+    "trust": -301620,
+    "dealer": -10562,
+    "total": 58480
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "6213.TW",
  "name": "聯茂",
- "price": 339.5,
- "change_pct": 9.87,
+ "price": 346.5,
+ "change_pct": 2.06,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 156.0,
-   "h": 157.5,
-   "l": 146.5,
-   "c": 151.0,
-   "v": 23350568
-  },
   {
    "time": "2026-03-31",
    "o": 152.5,
@@ -483,10 +475,18 @@
    "l": 329.0,
    "c": 339.5,
    "v": 26208049
+  },
+  {
+   "time": "2026-06-26",
+   "o": 353.0,
+   "h": 373.0,
+   "l": 345.0,
+   "c": 346.5,
+   "v": 35249928
   }
  ],
  "sr": {
-  "price": 339.5,
+  "price": 346.5,
   "resistance": [],
   "support": [
    258.0,
@@ -495,7 +495,6 @@
   "strong_support": 47.16
  },
  "spark": [
-  151.0,
   148.5,
   163.0,
   170.0,
@@ -554,10 +553,11 @@
   308.0,
   281.0,
   309.0,
-  339.5
+  339.5,
+  346.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "rev_yoy": 29.3,
   "rev_accel": false,
@@ -566,35 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 4,901,702 股",
-   "value": {
-    "foreign": 3832732,
-    "trust": 978000,
-    "dealer": 90970,
-    "total": 4901702
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 83.0 / 殖利率 0.88% / PB 5.85",
-   "value": {
-    "pe": 83.01,
-    "yield": 0.88,
-    "pb": 5.85
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

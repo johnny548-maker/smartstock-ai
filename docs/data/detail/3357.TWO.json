@@ -1,17 +1,9 @@
 {
  "stock": "3357.TWO",
  "name": "臺慶科",
- "price": 316.0,
- "change_pct": -1.1,
+ "price": 300.5,
+ "change_pct": -4.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 148.5,
-   "h": 149.0,
-   "l": 144.0,
-   "c": 147.5,
-   "v": 1710170
-  },
   {
    "time": "2026-03-31",
    "o": 147.0,
@@ -483,13 +475,21 @@
    "l": 310.5,
    "c": 316.0,
    "v": 5058305
+  },
+  {
+   "time": "2026-06-26",
+   "o": 312.5,
+   "h": 319.5,
+   "l": 300.5,
+   "c": 300.5,
+   "v": 3180637
   }
  ],
  "sr": {
-  "price": 316.0,
+  "price": 300.5,
   "resistance": [
-   327.5,
-   371.5
+   314.5,
+   327.5
   ],
   "support": [
    254.0,
@@ -498,7 +498,6 @@
   "strong_support": 81.0
  },
  "spark": [
-  147.5,
   142.0,
   145.5,
   141.0,
@@ -557,14 +556,29 @@
   346.5,
   315.0,
   319.5,
-  316.0
+  316.0,
+  300.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 293960,
+    "trust": 0,
+    "dealer": -66368,
+    "total": 227592
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "6233.TWO",
  "name": "旺玖",
- "price": 26.6,
- "change_pct": -1.48,
+ "price": 25.4,
+ "change_pct": -2.12,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 26.3,
-   "h": 26.4,
-   "l": 25.7,
-   "c": 25.75,
-   "v": 268007
-  },
   {
    "time": "2026-03-31",
    "o": 26.2,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 27.3,
    "h": 27.3,
-   "l": 26.5,
-   "c": 26.6,
-   "v": 540013
+   "l": 25.95,
+   "c": 25.95,
+   "v": 872000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 25.85,
+   "h": 26.95,
+   "l": 25.35,
+   "c": 25.4,
+   "v": 765000
   }
  ],
  "sr": {
-  "price": 26.6,
+  "price": 25.4,
   "resistance": [
-   27.1,
-   27.15
+   25.8,
+   25.94
   ],
   "support": [
-   26.25,
-   26.04
+   25.35,
+   24.65
   ],
   "strong_support": 16.61
  },
  "spark": [
-  25.75,
   24.9,
   25.3,
   24.95,
@@ -557,25 +556,40 @@
   26.1,
   25.45,
   27.0,
-  26.6
+  25.95,
+  25.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 187002,
+    "trust": 0,
+    "dealer": 0,
+    "total": 187002
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.78,
+    "yield": 2.95,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

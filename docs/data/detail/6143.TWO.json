@@ -1,17 +1,9 @@
 {
  "stock": "6143.TWO",
  "name": "振曜",
- "price": 89.6,
- "change_pct": 0.45,
+ "price": 90.5,
+ "change_pct": 2.49,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 91.17,
-   "h": 92.68,
-   "l": 90.7,
-   "c": 91.08,
-   "v": 499030
-  },
   {
    "time": "2026-03-31",
    "o": 91.17,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 89.4,
    "h": 90.0,
-   "l": 89.2,
-   "c": 89.6,
-   "v": 234884
+   "l": 88.3,
+   "c": 88.3,
+   "v": 422102
+  },
+  {
+   "time": "2026-06-26",
+   "o": 89.0,
+   "h": 93.0,
+   "l": 88.4,
+   "c": 90.5,
+   "v": 1128143
   }
  ],
  "sr": {
-  "price": 89.6,
+  "price": 90.5,
   "resistance": [
    95.4,
    95.87
   ],
   "support": [
-   89.29,
-   88.82
+   90.3,
+   89.29
   ],
   "strong_support": 82.3
  },
  "spark": [
-  91.08,
   89.39,
   90.23,
   89.39,
@@ -557,25 +556,40 @@
   90.1,
   89.1,
   89.2,
-  89.6
+  88.3,
+  90.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 297090,
+    "trust": 0,
+    "dealer": -345,
+    "total": 296745
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 6.73,
+    "yield": 6.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

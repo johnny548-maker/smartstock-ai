@@ -1,8 +1,8 @@
 {
  "stock": "6505.TW",
  "name": "台塑化",
- "price": null,
- "change_pct": null,
+ "price": 53.5,
+ "change_pct": -4.29,
  "ohlc": [
   {
    "time": "2026-03-31",
@@ -478,17 +478,23 @@
   },
   {
    "time": "2026-06-26",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 12052707
+   "o": 55.2,
+   "h": 55.5,
+   "l": 53.0,
+   "c": 53.5,
+   "v": 11990331
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 53.5,
+  "resistance": [
+   55.24,
+   55.44
+  ],
+  "support": [
+   52.21,
+   50.75
+  ],
   "strong_support": 34.12
  },
  "spark": [
@@ -551,7 +557,7 @@
   52.1,
   55.2,
   55.9,
-  null
+  53.5
  ],
  "spark_start": "2026-03-31",
  "spark_end": "2026-06-26",
@@ -563,46 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,352,527 股",
-   "value": {
-    "foreign": 1171839,
-    "trust": 49223,
-    "dealer": 131465,
-    "total": 1352527
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -16
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 20.0 / 殖利率 2.15% / PB 1.42",
-   "value": {
-    "pe": 20.04,
-    "yield": 2.15,
-    "pb": 1.42
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

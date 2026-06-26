@@ -1,17 +1,9 @@
 {
  "stock": "6291.TWO",
  "name": "沛亨",
- "price": 594.0,
- "change_pct": 5.51,
+ "price": 653.0,
+ "change_pct": 9.93,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 329.16,
-   "h": 361.58,
-   "l": 320.31,
-   "c": 360.6,
-   "v": 2227440
-  },
   {
    "time": "2026-03-31",
    "o": 353.72,
@@ -483,10 +475,18 @@
    "l": 570.0,
    "c": 594.0,
    "v": 1603392
+  },
+  {
+   "time": "2026-06-26",
+   "o": 604.0,
+   "h": 653.0,
+   "l": 602.0,
+   "c": 653.0,
+   "v": 2024257
   }
  ],
  "sr": {
-  "price": 594.0,
+  "price": 653.0,
   "resistance": [
    718.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 70.27
  },
  "spark": [
-  360.6,
   338.0,
   370.5,
   353.0,
@@ -556,14 +555,29 @@
   591.0,
   543.0,
   563.0,
-  594.0
+  594.0,
+  653.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -60009,
+    "trust": 0,
+    "dealer": 79428,
+    "total": 19419
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

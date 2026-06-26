@@ -1,17 +1,9 @@
 {
  "stock": "5210.TWO",
  "name": "寶碩",
- "price": 31.7,
- "change_pct": 4.79,
+ "price": 30.0,
+ "change_pct": -9.77,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 22.4,
-   "h": 22.4,
-   "l": 22.05,
-   "c": 22.1,
-   "v": 61138
-  },
   {
    "time": "2026-03-31",
    "o": 21.8,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 30.7,
-   "h": 32.15,
+   "h": 33.25,
    "l": 30.7,
-   "c": 31.7,
-   "v": 1437486
+   "c": 33.25,
+   "v": 2665716
+  },
+  {
+   "time": "2026-06-26",
+   "o": 33.15,
+   "h": 33.2,
+   "l": 30.0,
+   "c": 30.0,
+   "v": 2196385
   }
  ],
  "sr": {
-  "price": 31.7,
+  "price": 30.0,
   "resistance": [
-   32.0,
-   32.45
+   30.8,
+   31.55
   ],
   "support": [
-   30.95,
-   30.7
+   29.7,
+   29.4
   ],
   "strong_support": 19.45
  },
  "spark": [
-  22.1,
   22.1,
   22.3,
   21.95,
@@ -557,14 +556,29 @@
   29.8,
   29.8,
   30.25,
-  31.7
+  33.25,
+  30.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -811034,
+    "trust": 0,
+    "dealer": 0,
+    "total": -811034
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

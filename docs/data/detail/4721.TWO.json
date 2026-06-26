@@ -1,17 +1,9 @@
 {
  "stock": "4721.TWO",
  "name": "美琪瑪",
- "price": 93.3,
- "change_pct": -4.31,
+ "price": 87.9,
+ "change_pct": -5.48,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 74.5,
-   "h": 75.4,
-   "l": 72.3,
-   "c": 72.4,
-   "v": 526142
-  },
   {
    "time": "2026-03-31",
    "o": 71.0,
@@ -481,15 +473,23 @@
    "o": 97.5,
    "h": 97.9,
    "l": 92.6,
-   "c": 93.3,
-   "v": 1219509
+   "c": 93.0,
+   "v": 1768317
+  },
+  {
+   "time": "2026-06-26",
+   "o": 93.0,
+   "h": 93.5,
+   "l": 87.9,
+   "c": 87.9,
+   "v": 1315446
   }
  ],
  "sr": {
-  "price": 93.3,
+  "price": 87.9,
   "resistance": [
-   96.2,
-   96.4
+   88.4,
+   90.0
   ],
   "support": [
    87.0,
@@ -498,7 +498,6 @@
   "strong_support": 42.77
  },
  "spark": [
-  72.4,
   70.5,
   72.0,
   72.1,
@@ -557,25 +556,40 @@
   100.5,
   96.5,
   97.5,
-  93.3
+  93.0,
+  87.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 34000,
+    "trust": 0,
+    "dealer": -49840,
+    "total": -15840
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.36,
+    "yield": 2.62,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

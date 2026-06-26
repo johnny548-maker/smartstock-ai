@@ -1,17 +1,9 @@
 {
  "stock": "6841.TWO",
  "name": "長佳智能",
- "price": 61.4,
- "change_pct": -0.65,
+ "price": 58.2,
+ "change_pct": -4.43,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 60.09,
-   "h": 61.66,
-   "l": 60.09,
-   "c": 60.97,
-   "v": 265000
-  },
   {
    "time": "2026-03-31",
    "o": 60.97,
@@ -481,24 +473,31 @@
    "o": 62.4,
    "h": 62.4,
    "l": 60.7,
-   "c": 61.4,
-   "v": 250561
+   "c": 60.9,
+   "v": 332245
+  },
+  {
+   "time": "2026-06-26",
+   "o": 61.6,
+   "h": 61.6,
+   "l": 58.2,
+   "c": 58.2,
+   "v": 542000
   }
  ],
  "sr": {
-  "price": 61.4,
+  "price": 58.2,
   "resistance": [
-   62.15,
-   64.61
+   58.81,
+   58.91
   ],
   "support": [
-   60.48,
-   59.99
+   57.33,
+   56.55
   ],
   "strong_support": 54.8
  },
  "spark": [
-  60.97,
   60.88,
   60.58,
   59.1,
@@ -557,25 +556,40 @@
   60.0,
   60.0,
   61.8,
-  61.4
+  60.9,
+  58.2
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -39000,
+    "trust": 0,
+    "dealer": -3444,
+    "total": -42444
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.62,
+    "yield": 1.72,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

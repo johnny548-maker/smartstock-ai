@@ -1,17 +1,9 @@
 {
  "stock": "6220.TWO",
  "name": "岳豐",
- "price": 39.1,
- "change_pct": 1.03,
+ "price": 36.9,
+ "change_pct": -6.11,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 31.45,
-   "h": 33.4,
-   "l": 31.1,
-   "c": 33.1,
-   "v": 561458
-  },
   {
    "time": "2026-03-31",
    "o": 32.9,
@@ -481,15 +473,23 @@
    "o": 39.35,
    "h": 39.75,
    "l": 38.9,
-   "c": 39.1,
-   "v": 377759
+   "c": 39.3,
+   "v": 748666
+  },
+  {
+   "time": "2026-06-26",
+   "o": 39.3,
+   "h": 39.3,
+   "l": 36.9,
+   "c": 36.9,
+   "v": 1365043
   }
  ],
  "sr": {
-  "price": 39.1,
+  "price": 36.9,
   "resistance": [
-   41.2,
-   46.5
+   37.15,
+   41.2
   ],
   "support": [
    31.4,
@@ -498,7 +498,6 @@
   "strong_support": 16.9
  },
  "spark": [
-  33.1,
   31.65,
   32.6,
   32.6,
@@ -557,25 +556,40 @@
   39.85,
   39.35,
   38.7,
-  39.1
+  39.3,
+  36.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -379950,
+    "trust": 0,
+    "dealer": -41040,
+    "total": -420990
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.81,
+    "yield": 1.9,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6180.TWO",
  "name": "橘子",
- "price": 47.65,
- "change_pct": -2.46,
+ "price": 49.0,
+ "change_pct": 2.94,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 43.2,
-   "h": 43.3,
-   "l": 42.45,
-   "c": 42.55,
-   "v": 407001
-  },
   {
    "time": "2026-03-31",
    "o": 42.25,
@@ -481,12 +473,20 @@
    "o": 49.5,
    "h": 49.55,
    "l": 47.25,
-   "c": 47.65,
-   "v": 1060295
+   "c": 47.6,
+   "v": 1544002
+  },
+  {
+   "time": "2026-06-26",
+   "o": 47.5,
+   "h": 51.0,
+   "l": 47.5,
+   "c": 49.0,
+   "v": 3798145
   }
  ],
  "sr": {
-  "price": 47.65,
+  "price": 49.0,
   "resistance": [
    51.0,
    52.0
@@ -498,7 +498,6 @@
   "strong_support": 37.55
  },
  "spark": [
-  42.55,
   42.45,
   43.55,
   43.3,
@@ -557,25 +556,40 @@
   51.4,
   50.3,
   48.85,
-  47.65
+  47.6,
+  49.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 281270,
+    "trust": -7639,
+    "dealer": 1506,
+    "total": 275137
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.05,
+    "yield": 2.04,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

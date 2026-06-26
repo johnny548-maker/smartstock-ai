@@ -1,17 +1,9 @@
 {
  "stock": "3081.TWO",
  "name": "聯亞",
- "price": 2120.0,
- "change_pct": -1.62,
+ "price": 2035.0,
+ "change_pct": -4.01,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1700.0,
-   "h": 1760.0,
-   "l": 1590.0,
-   "c": 1710.0,
-   "v": 4091393
-  },
   {
    "time": "2026-03-31",
    "o": 1655.0,
@@ -483,10 +475,18 @@
    "l": 2100.0,
    "c": 2120.0,
    "v": 1713025
+  },
+  {
+   "time": "2026-06-26",
+   "o": 2080.0,
+   "h": 2175.0,
+   "l": 1985.0,
+   "c": 2035.0,
+   "v": 2370686
   }
  ],
  "sr": {
-  "price": 2120.0,
+  "price": 2035.0,
   "resistance": [
    2405.0,
    2480.0
@@ -498,7 +498,6 @@
   "strong_support": 93.56
  },
  "spark": [
-  1710.0,
   1575.0,
   1730.0,
   1825.0,
@@ -557,14 +556,29 @@
   2375.0,
   2285.0,
   2155.0,
-  2120.0
+  2120.0,
+  2035.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 152118,
+    "trust": 25571,
+    "dealer": -8592,
+    "total": 169097
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

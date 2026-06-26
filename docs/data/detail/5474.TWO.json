@@ -1,17 +1,9 @@
 {
  "stock": "5474.TWO",
  "name": "聰泰",
- "price": 173.5,
- "change_pct": 0.58,
+ "price": 162.5,
+ "change_pct": -4.97,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 131.0,
-   "h": 131.5,
-   "l": 128.5,
-   "c": 130.5,
-   "v": 115000
-  },
   {
    "time": "2026-03-31",
    "o": 132.0,
@@ -481,24 +473,31 @@
    "o": 175.0,
    "h": 178.0,
    "l": 170.0,
-   "c": 173.5,
-   "v": 292072
+   "c": 171.0,
+   "v": 364010
+  },
+  {
+   "time": "2026-06-26",
+   "o": 173.5,
+   "h": 173.5,
+   "l": 162.0,
+   "c": 162.5,
+   "v": 278154
   }
  ],
  "sr": {
-  "price": 173.5,
+  "price": 162.5,
   "resistance": [
-   174.67,
-   175.0
+   162.96,
+   165.4
   ],
   "support": [
-   170.28,
-   168.33
+   161.5,
+   160.0
   ],
   "strong_support": 117.1
  },
  "spark": [
-  130.5,
   127.0,
   130.0,
   126.5,
@@ -557,25 +556,40 @@
   179.5,
   171.0,
   172.5,
-  173.5
+  171.0,
+  162.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 1000,
+    "trust": 0,
+    "dealer": -8956,
+    "total": -7956
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.32,
+    "yield": 2.46,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

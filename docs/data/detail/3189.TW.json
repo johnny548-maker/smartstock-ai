@@ -1,17 +1,9 @@
 {
  "stock": "3189.TW",
  "name": "景碩",
- "price": 812.0,
- "change_pct": 9.88,
+ "price": 797.0,
+ "change_pct": -1.85,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 334.5,
-   "h": 348.5,
-   "l": 324.5,
-   "c": 346.5,
-   "v": 6168534
-  },
   {
    "time": "2026-03-31",
    "o": 335.0,
@@ -483,10 +475,18 @@
    "l": 750.0,
    "c": 812.0,
    "v": 42967994
+  },
+  {
+   "time": "2026-06-26",
+   "o": 828.0,
+   "h": 893.0,
+   "l": 790.0,
+   "c": 797.0,
+   "v": 61129451
   }
  ],
  "sr": {
-  "price": 812.0,
+  "price": 797.0,
   "resistance": [],
   "support": [
    623.0,
@@ -495,7 +495,6 @@
   "strong_support": 60.1
  },
  "spark": [
-  346.5,
   313.0,
   332.0,
   336.0,
@@ -554,10 +553,11 @@
   796.0,
   727.0,
   739.0,
-  812.0
+  812.0,
+  797.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "rev_yoy": 33.0,
   "rev_accel": false,
@@ -566,35 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 5,400,434 股",
-   "value": {
-    "foreign": 2573040,
-    "trust": 3418572,
-    "dealer": -591178,
-    "total": 5400434
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 228.7 / 殖利率 0.22% / PB 9.91",
-   "value": {
-    "pe": 228.73,
-    "yield": 0.22,
-    "pb": 9.91
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

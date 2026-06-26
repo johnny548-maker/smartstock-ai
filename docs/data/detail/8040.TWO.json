@@ -1,17 +1,9 @@
 {
  "stock": "8040.TWO",
  "name": "九暘",
- "price": 116.5,
- "change_pct": -6.8,
+ "price": 107.0,
+ "change_pct": -8.15,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 49.2,
-   "h": 49.35,
-   "l": 48.6,
-   "c": 48.9,
-   "v": 141102
-  },
   {
    "time": "2026-03-31",
    "o": 48.9,
@@ -483,10 +475,18 @@
    "l": 116.0,
    "c": 116.5,
    "v": 8938054
+  },
+  {
+   "time": "2026-06-26",
+   "o": 115.5,
+   "h": 122.5,
+   "l": 106.0,
+   "c": 107.0,
+   "v": 6887907
   }
  ],
  "sr": {
-  "price": 116.5,
+  "price": 107.0,
   "resistance": [
    130.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 44.65
  },
  "spark": [
-  48.9,
   47.7,
   48.8,
   47.45,
@@ -556,14 +555,29 @@
   104.0,
   114.0,
   125.0,
-  116.5
+  116.5,
+  107.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -111059,
+    "trust": 0,
+    "dealer": -25531,
+    "total": -136590
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

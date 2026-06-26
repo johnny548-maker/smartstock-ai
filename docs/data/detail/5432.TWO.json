@@ -1,17 +1,9 @@
 {
  "stock": "5432.TWO",
  "name": "新門",
- "price": 162.0,
- "change_pct": 0.0,
+ "price": 162.5,
+ "change_pct": 0.31,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 127.5,
-   "h": 137.0,
-   "l": 124.5,
-   "c": 137.0,
-   "v": 161130
-  },
   {
    "time": "2026-03-31",
    "o": 137.0,
@@ -482,23 +474,30 @@
    "h": 165.0,
    "l": 158.5,
    "c": 162.0,
-   "v": 280921
+   "v": 380394
+  },
+  {
+   "time": "2026-06-26",
+   "o": 160.5,
+   "h": 164.0,
+   "l": 158.5,
+   "c": 162.5,
+   "v": 381010
   }
  ],
  "sr": {
-  "price": 162.0,
+  "price": 162.5,
   "resistance": [
    168.44,
    187.0
   ],
   "support": [
-   160.51,
-   145.5
+   162.0,
+   160.51
   ],
   "strong_support": 103.54
  },
  "spark": [
-  137.0,
   137.5,
   135.0,
   133.0,
@@ -557,25 +556,40 @@
   156.5,
   153.0,
   162.0,
-  162.0
+  162.0,
+  162.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 64232,
+    "trust": 0,
+    "dealer": 544,
+    "total": 64776
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.93,
+    "yield": 0.92,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

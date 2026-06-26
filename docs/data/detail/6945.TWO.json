@@ -1,17 +1,9 @@
 {
  "stock": "6945.TWO",
  "name": "圓祥生技",
- "price": 98.1,
- "change_pct": -1.41,
+ "price": 94.8,
+ "change_pct": -2.97,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 206.5,
-   "h": 209.5,
-   "l": 191.5,
-   "c": 196.0,
-   "v": 1031191
-  },
   {
    "time": "2026-03-31",
    "o": 198.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 100.0,
    "h": 100.0,
-   "l": 98.1,
-   "c": 98.1,
-   "v": 94292
+   "l": 97.5,
+   "c": 97.7,
+   "v": 198600
+  },
+  {
+   "time": "2026-06-26",
+   "o": 97.7,
+   "h": 98.6,
+   "l": 92.5,
+   "c": 94.8,
+   "v": 418200
   }
  ],
  "sr": {
-  "price": 98.1,
+  "price": 94.8,
   "resistance": [
    106.0,
    123.5
   ],
   "support": [
-   98.0,
-   97.8
+   92.8,
+   58.0
   ],
   "strong_support": 36.45
  },
  "spark": [
-  196.0,
   198.0,
   201.5,
   202.5,
@@ -557,14 +556,29 @@
   102.0,
   100.0,
   99.5,
-  98.1
+  97.7,
+  94.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 10000,
+    "trust": 0,
+    "dealer": 0,
+    "total": 10000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

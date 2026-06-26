@@ -1,17 +1,9 @@
 {
  "stock": "5452.TWO",
  "name": "佶優",
- "price": 34.05,
- "change_pct": 0.29,
+ "price": 31.65,
+ "change_pct": -5.24,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 33.5,
-   "h": 34.0,
-   "l": 33.1,
-   "c": 33.5,
-   "v": 1989337
-  },
   {
    "time": "2026-03-31",
    "o": 33.6,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 34.25,
    "h": 35.15,
-   "l": 33.95,
-   "c": 34.05,
-   "v": 1361564
+   "l": 33.4,
+   "c": 33.4,
+   "v": 2078373
+  },
+  {
+   "time": "2026-06-26",
+   "o": 33.45,
+   "h": 33.55,
+   "l": 31.65,
+   "c": 31.65,
+   "v": 1990025
   }
  ],
  "sr": {
-  "price": 34.05,
+  "price": 31.65,
   "resistance": [
-   34.24,
-   34.65
+   31.87,
+   32.16
   ],
   "support": [
-   33.6,
-   33.5
+   31.2,
+   31.15
   ],
   "strong_support": 19.6
  },
  "spark": [
-  33.5,
   32.85,
   33.4,
   31.4,
@@ -557,25 +556,40 @@
   35.55,
   34.2,
   33.95,
-  34.05
+  33.4,
+  31.65
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -565940,
+    "trust": 0,
+    "dealer": -65740,
+    "total": -631680
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.74,
+    "yield": 0.79,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

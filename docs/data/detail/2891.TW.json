@@ -1,8 +1,8 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": null,
- "change_pct": null,
+ "price": 70.3,
+ "change_pct": -0.42,
  "ohlc": [
   {
    "time": "2026-03-31",
@@ -478,17 +478,23 @@
   },
   {
    "time": "2026-06-26",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 42366253
+   "o": 70.5,
+   "h": 71.0,
+   "l": 69.9,
+   "c": 70.3,
+   "v": 42223824
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 70.3,
+  "resistance": [
+   70.5,
+   73.6
+  ],
+  "support": [
+   52.6,
+   52.3
+  ],
   "strong_support": 40.9
  },
  "spark": [
@@ -551,53 +557,13 @@
   72.4,
   69.9,
   70.6,
-  null
+  70.3
  ],
  "spark_start": "2026-03-31",
  "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,989,119 股",
-   "value": {
-    "foreign": -918072,
-    "trust": 349793,
-    "dealer": 2557398,
-    "total": 1989119
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -13
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 17.0 / 殖利率 3.54% / PB 2.52",
-   "value": {
-    "pe": 17.01,
-    "yield": 3.54,
-    "pb": 2.52
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

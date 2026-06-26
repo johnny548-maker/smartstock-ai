@@ -1,17 +1,9 @@
 {
  "stock": "8076.TWO",
  "name": "伍豐",
- "price": 25.55,
- "change_pct": 0.99,
+ "price": 24.2,
+ "change_pct": -3.97,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 24.45,
-   "h": 24.5,
-   "l": 23.95,
-   "c": 24.05,
-   "v": 558741
-  },
   {
    "time": "2026-03-31",
    "o": 24.05,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 25.6,
    "h": 25.7,
-   "l": 25.35,
-   "c": 25.55,
-   "v": 530287
+   "l": 25.2,
+   "c": 25.2,
+   "v": 881633
+  },
+  {
+   "time": "2026-06-26",
+   "o": 25.1,
+   "h": 25.15,
+   "l": 24.1,
+   "c": 24.2,
+   "v": 1822168
   }
  ],
  "sr": {
-  "price": 25.55,
+  "price": 24.2,
   "resistance": [
-   25.6,
-   25.64
+   24.4,
+   24.45
   ],
   "support": [
-   25.2,
-   25.06
+   24.2,
+   24.1
   ],
   "strong_support": 21.08
  },
  "spark": [
-  24.05,
   23.5,
   24.0,
   23.45,
@@ -557,25 +556,40 @@
   25.9,
   25.2,
   25.3,
-  25.55
+  25.2,
+  24.2
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -500784,
+    "trust": 0,
+    "dealer": -26123,
+    "total": -526907
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.77,
+    "yield": 2.89,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

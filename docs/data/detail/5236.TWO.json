@@ -1,17 +1,9 @@
 {
  "stock": "5236.TWO",
  "name": "凌陽創新",
- "price": 174.5,
- "change_pct": -2.79,
+ "price": 169.0,
+ "change_pct": -3.43,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 121.16,
-   "h": 122.59,
-   "l": 120.69,
-   "c": 121.16,
-   "v": 52000
-  },
   {
    "time": "2026-03-31",
    "o": 121.16,
@@ -481,15 +473,23 @@
    "o": 180.5,
    "h": 180.5,
    "l": 173.5,
-   "c": 174.5,
-   "v": 175574
+   "c": 175.0,
+   "v": 265133
+  },
+  {
+   "time": "2026-06-26",
+   "o": 175.0,
+   "h": 176.0,
+   "l": 168.0,
+   "c": 169.0,
+   "v": 344140
   }
  ],
  "sr": {
-  "price": 174.5,
+  "price": 169.0,
   "resistance": [
-   179.18,
-   184.35
+   169.15,
+   169.62
   ],
   "support": [
    160.87,
@@ -498,7 +498,6 @@
   "strong_support": 92.42
  },
  "spark": [
-  121.16,
   118.31,
   120.21,
   119.73,
@@ -557,25 +556,40 @@
   176.0,
   176.5,
   179.5,
-  174.5
+  175.0,
+  169.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 72040,
+    "trust": 0,
+    "dealer": -1614,
+    "total": 70426
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.01,
+    "yield": 5.33,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

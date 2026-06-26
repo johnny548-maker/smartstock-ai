@@ -1,17 +1,9 @@
 {
  "stock": "4303.TWO",
  "name": "信立",
- "price": 46.8,
- "change_pct": -0.64,
+ "price": 44.75,
+ "change_pct": -3.76,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 55.0,
-   "h": 58.1,
-   "l": 55.0,
-   "c": 56.5,
-   "v": 1682084
-  },
   {
    "time": "2026-03-31",
    "o": 56.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 47.15,
    "h": 47.45,
-   "l": 46.7,
-   "c": 46.8,
-   "v": 242044
+   "l": 46.5,
+   "c": 46.5,
+   "v": 374241
+  },
+  {
+   "time": "2026-06-26",
+   "o": 46.75,
+   "h": 46.75,
+   "l": 44.65,
+   "c": 44.75,
+   "v": 827130
   }
  ],
  "sr": {
-  "price": 46.8,
+  "price": 44.75,
   "resistance": [
-   47.8,
-   49.45
+   45.17,
+   45.58
   ],
   "support": [
-   46.55,
-   46.16
+   43.5,
+   40.0
   ],
   "strong_support": 33.14
  },
  "spark": [
-  56.5,
   54.8,
   55.3,
   54.1,
@@ -557,25 +556,40 @@
   47.9,
   47.2,
   47.1,
-  46.8
+  46.5,
+  44.75
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -284000,
+    "trust": 0,
+    "dealer": 465,
+    "total": -283535
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 10.62,
+    "yield": 11.17,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

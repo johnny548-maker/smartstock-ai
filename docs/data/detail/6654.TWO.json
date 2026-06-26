@@ -1,17 +1,9 @@
 {
  "stock": "6654.TWO",
  "name": "天正國際",
- "price": 194.5,
- "change_pct": 1.04,
+ "price": 185.0,
+ "change_pct": -2.63,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 90.1,
-   "h": 91.1,
-   "l": 90.1,
-   "c": 90.1,
-   "v": 13000
-  },
   {
    "time": "2026-03-31",
    "o": 90.9,
@@ -480,14 +472,23 @@
    "time": "2026-06-25",
    "o": 203.0,
    "h": 204.5,
-   "l": 192.0,
-   "c": 194.5,
-   "v": 127542
+   "l": 190.0,
+   "c": 190.0,
+   "v": 173101
+  },
+  {
+   "time": "2026-06-26",
+   "o": 192.0,
+   "h": 192.0,
+   "l": 180.5,
+   "c": 185.0,
+   "v": 157000
   }
  ],
  "sr": {
-  "price": 194.5,
+  "price": 185.0,
   "resistance": [
+   185.5,
    242.0
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 42.0
  },
  "spark": [
-  90.1,
   91.4,
   91.2,
   90.6,
@@ -556,14 +556,29 @@
   211.0,
   199.0,
   192.5,
-  194.5
+  190.0,
+  185.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 52125,
+    "trust": 0,
+    "dealer": 0,
+    "total": 52125
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -574,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

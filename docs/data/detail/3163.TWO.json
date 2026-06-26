@@ -1,17 +1,9 @@
 {
  "stock": "3163.TWO",
  "name": "波若威",
- "price": 800.0,
- "change_pct": -4.76,
+ "price": 720.0,
+ "change_pct": -10.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 830.0,
-   "h": 875.0,
-   "l": 808.0,
-   "c": 875.0,
-   "v": 634205
-  },
   {
    "time": "2026-03-31",
    "o": 851.0,
@@ -483,22 +475,29 @@
    "l": 789.0,
    "c": 800.0,
    "v": 1000966
+  },
+  {
+   "time": "2026-06-26",
+   "o": 795.0,
+   "h": 795.0,
+   "l": 720.0,
+   "c": 720.0,
+   "v": 1684684
   }
  ],
  "sr": {
-  "price": 800.0,
+  "price": 720.0,
   "resistance": [
    859.0,
    917.0
   ],
   "support": [
-   796.0,
-   750.0
+   650.0,
+   445.5
   ],
   "strong_support": 116.99
  },
  "spark": [
-  875.0,
   788.0,
   866.0,
   952.0,
@@ -557,14 +556,29 @@
   870.0,
   868.0,
   840.0,
-  800.0
+  800.0,
+  720.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -141042,
+    "trust": 0,
+    "dealer": 2741,
+    "total": -138301
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

@@ -1,17 +1,9 @@
 {
  "stock": "8240.TWO",
  "name": "華宏",
- "price": 54.5,
- "change_pct": -2.5,
+ "price": 51.3,
+ "change_pct": -5.7,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 52.8,
-   "h": 54.6,
-   "l": 52.5,
-   "c": 53.0,
-   "v": 640152
-  },
   {
    "time": "2026-03-31",
    "o": 54.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 56.3,
    "h": 56.4,
-   "l": 54.4,
-   "c": 54.5,
-   "v": 315653
+   "l": 54.2,
+   "c": 54.4,
+   "v": 475082
+  },
+  {
+   "time": "2026-06-26",
+   "o": 55.0,
+   "h": 55.0,
+   "l": 51.1,
+   "c": 51.3,
+   "v": 566051
   }
  ],
  "sr": {
-  "price": 54.5,
+  "price": 51.3,
   "resistance": [
-   61.8,
-   63.2
+   51.64,
+   61.8
   ],
   "support": [
-   52.8,
-   50.2
+   50.2,
+   50.0
   ],
   "strong_support": 26.53
  },
  "spark": [
-  53.0,
   51.7,
   56.0,
   54.6,
@@ -557,25 +556,40 @@
   60.7,
   57.0,
   55.9,
-  54.5
+  54.4,
+  51.3
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 46000,
+    "trust": 0,
+    "dealer": -14827,
+    "total": 31173
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.33,
+    "yield": 2.53,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

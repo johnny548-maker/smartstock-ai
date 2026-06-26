@@ -1,17 +1,9 @@
 {
  "stock": "7792.TWO",
  "name": "安葆",
- "price": 267.0,
- "change_pct": -1.84,
+ "price": 252.5,
+ "change_pct": -4.72,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 304.32,
-   "h": 309.17,
-   "l": 290.75,
-   "c": 305.29,
-   "v": 230388
-  },
   {
    "time": "2026-03-31",
    "o": 304.32,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 273.0,
    "h": 273.0,
-   "l": 267.0,
-   "c": 267.0,
-   "v": 33659
+   "l": 265.0,
+   "c": 265.0,
+   "v": 61000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 274.0,
+   "h": 274.0,
+   "l": 251.5,
+   "c": 252.5,
+   "v": 147001
   }
  ],
  "sr": {
-  "price": 267.0,
+  "price": 252.5,
   "resistance": [
    272.82,
    299.96
   ],
   "support": [
-   254.41,
-   247.62
+   247.62,
+   242.29
   ],
   "strong_support": 131.6
  },
  "spark": [
-  305.29,
   290.75,
   302.38,
   299.47,
@@ -557,25 +556,40 @@
   285.5,
   283.0,
   272.0,
-  267.0
+  265.0,
+  252.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -730,
+    "trust": 0,
+    "dealer": -24634,
+    "total": -25364
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.94,
+    "yield": 3.17,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

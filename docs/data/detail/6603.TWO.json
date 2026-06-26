@@ -1,17 +1,9 @@
 {
  "stock": "6603.TWO",
  "name": "富強鑫",
- "price": 23.65,
- "change_pct": -2.27,
+ "price": 22.9,
+ "change_pct": -2.14,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 21.15,
-   "h": 22.35,
-   "l": 21.1,
-   "c": 21.6,
-   "v": 1051001
-  },
   {
    "time": "2026-03-31",
    "o": 21.5,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 24.5,
    "h": 24.5,
-   "l": 23.5,
-   "c": 23.65,
-   "v": 698888
+   "l": 23.4,
+   "c": 23.4,
+   "v": 1141215
+  },
+  {
+   "time": "2026-06-26",
+   "o": 23.45,
+   "h": 23.85,
+   "l": 22.7,
+   "c": 22.9,
+   "v": 1096080
   }
  ],
  "sr": {
-  "price": 23.65,
+  "price": 22.9,
   "resistance": [
-   23.75,
-   23.95
+   23.28,
+   23.75
   ],
   "support": [
-   23.45,
-   22.0
+   22.0,
+   21.85
   ],
   "strong_support": 12.88
  },
  "spark": [
-  21.6,
   20.9,
   21.2,
   21.15,
@@ -557,25 +556,40 @@
   25.35,
   24.3,
   24.2,
-  23.65
+  23.4,
+  22.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -119650,
+    "trust": 0,
+    "dealer": -54861,
+    "total": -174511
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.65,
+    "yield": 1.75,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

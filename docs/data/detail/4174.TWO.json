@@ -1,17 +1,9 @@
 {
  "stock": "4174.TWO",
  "name": "浩鼎",
- "price": 28.7,
- "change_pct": -1.88,
+ "price": 26.55,
+ "change_pct": -6.02,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 38.45,
-   "h": 38.45,
-   "l": 37.6,
-   "c": 37.85,
-   "v": 255185
-  },
   {
    "time": "2026-03-31",
    "o": 38.3,
@@ -480,25 +472,29 @@
    "time": "2026-06-25",
    "o": 29.5,
    "h": 29.5,
-   "l": 28.65,
-   "c": 28.7,
-   "v": 286113
+   "l": 28.25,
+   "c": 28.25,
+   "v": 570487
+  },
+  {
+   "time": "2026-06-26",
+   "o": 28.25,
+   "h": 28.25,
+   "l": 26.55,
+   "c": 26.55,
+   "v": 1131216
   }
  ],
  "sr": {
-  "price": 28.7,
+  "price": 26.55,
   "resistance": [
-   37.3,
-   38.75
+   30.55,
+   37.3
   ],
-  "support": [
-   27.75,
-   27.65
-  ],
+  "support": [],
   "strong_support": 27.6
  },
  "spark": [
-  37.85,
   37.55,
   38.0,
   37.95,
@@ -557,14 +553,29 @@
   27.8,
   29.4,
   29.25,
-  28.7
+  28.25,
+  26.55
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -464000,
+    "trust": 0,
+    "dealer": -591,
+    "total": -464591
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +586,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

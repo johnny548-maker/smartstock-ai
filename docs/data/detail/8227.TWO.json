@@ -1,17 +1,9 @@
 {
  "stock": "8227.TWO",
  "name": "巨有科技",
- "price": 180.0,
- "change_pct": -3.9,
+ "price": 187.0,
+ "change_pct": 3.89,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 118.43,
-   "h": 119.42,
-   "l": 117.43,
-   "c": 117.93,
-   "v": 258200
-  },
   {
    "time": "2026-03-31",
    "o": 117.43,
@@ -483,13 +475,21 @@
    "l": 176.5,
    "c": 180.0,
    "v": 1075261
+  },
+  {
+   "time": "2026-06-26",
+   "o": 180.0,
+   "h": 198.0,
+   "l": 174.5,
+   "c": 187.0,
+   "v": 3467376
   }
  ],
  "sr": {
-  "price": 180.0,
+  "price": 187.0,
   "resistance": [
-   183.34,
-   185.81
+   187.26,
+   188.29
   ],
   "support": [
    175.5,
@@ -498,7 +498,6 @@
   "strong_support": 100.98
  },
  "spark": [
-  117.93,
   112.97,
   115.95,
   116.44,
@@ -557,14 +556,29 @@
   191.26,
   184.82,
   187.3,
-  180.0
+  180.0,
+  187.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 364000,
+    "trust": 0,
+    "dealer": 57949,
+    "total": 421949
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

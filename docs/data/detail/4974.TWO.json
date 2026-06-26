@@ -1,17 +1,9 @@
 {
  "stock": "4974.TWO",
  "name": "亞泰",
- "price": 70.5,
- "change_pct": 0.57,
+ "price": 68.6,
+ "change_pct": -2.7,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 66.71,
-   "h": 67.57,
-   "l": 66.71,
-   "c": 66.81,
-   "v": 179016
-  },
   {
    "time": "2026-03-31",
    "o": 66.81,
@@ -482,23 +474,30 @@
    "h": 70.9,
    "l": 70.1,
    "c": 70.5,
-   "v": 60582
+   "v": 104350
+  },
+  {
+   "time": "2026-06-26",
+   "o": 70.6,
+   "h": 70.6,
+   "l": 68.6,
+   "c": 68.6,
+   "v": 445001
   }
  ],
  "sr": {
-  "price": 70.5,
+  "price": 68.6,
   "resistance": [
-   70.7,
-   71.36
+   68.8,
+   68.89
   ],
   "support": [
-   69.65,
-   69.08
+   68.32,
+   68.04
   ],
   "strong_support": 60.97
  },
  "spark": [
-  66.81,
   65.95,
   67.0,
   66.71,
@@ -557,25 +556,40 @@
   72.5,
   70.7,
   70.1,
-  70.5
+  70.5,
+  68.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -140000,
+    "trust": 0,
+    "dealer": 66,
+    "total": -139934
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.56,
+    "yield": 5.69,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

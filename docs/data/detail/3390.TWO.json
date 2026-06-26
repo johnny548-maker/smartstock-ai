@@ -1,17 +1,9 @@
 {
  "stock": "3390.TWO",
  "name": "旭軟",
- "price": 28.0,
- "change_pct": -2.61,
+ "price": 27.35,
+ "change_pct": -0.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 21.5,
-   "h": 21.6,
-   "l": 21.15,
-   "c": 21.2,
-   "v": 263301
-  },
   {
    "time": "2026-03-31",
    "o": 21.1,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 28.7,
    "h": 28.8,
-   "l": 27.95,
-   "c": 28.0,
-   "v": 753512
+   "l": 27.6,
+   "c": 27.6,
+   "v": 1315133
+  },
+  {
+   "time": "2026-06-26",
+   "o": 27.35,
+   "h": 28.65,
+   "l": 27.15,
+   "c": 27.35,
+   "v": 953001
   }
  ],
  "sr": {
-  "price": 28.0,
+  "price": 27.35,
   "resistance": [
-   28.12,
-   28.69
+   27.54,
+   27.64
   ],
   "support": [
-   27.78,
-   27.16
+   27.16,
+   25.88
   ],
   "strong_support": 18.25
  },
  "spark": [
-  21.2,
   20.65,
   21.25,
   21.0,
@@ -557,25 +556,40 @@
   29.4,
   29.95,
   28.75,
-  28.0
+  27.6,
+  27.35
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 166398,
+    "trust": 0,
+    "dealer": 0,
+    "total": 166398
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.7,
+    "yield": 0.73,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

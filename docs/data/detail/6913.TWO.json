@@ -1,17 +1,9 @@
 {
  "stock": "6913.TWO",
  "name": "鴻呈",
- "price": 122.0,
- "change_pct": 0.0,
+ "price": 117.5,
+ "change_pct": -2.89,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 107.98,
-   "h": 108.96,
-   "l": 106.51,
-   "c": 106.51,
-   "v": 77412
-  },
   {
    "time": "2026-03-31",
    "o": 106.01,
@@ -481,24 +473,31 @@
    "o": 123.5,
    "h": 124.0,
    "l": 120.5,
-   "c": 122.0,
-   "v": 140922
+   "c": 121.0,
+   "v": 183260
+  },
+  {
+   "time": "2026-06-26",
+   "o": 120.0,
+   "h": 123.0,
+   "l": 117.0,
+   "c": 117.5,
+   "v": 341681
   }
  ],
  "sr": {
-  "price": 122.0,
+  "price": 117.5,
   "resistance": [
-   123.74,
-   124.17
+   118.68,
+   118.78
   ],
   "support": [
-   121.23,
-   120.74
+   116.81,
+   115.92
   ],
   "strong_support": 85.29
  },
  "spark": [
-  106.51,
   103.07,
   104.54,
   105.03,
@@ -557,25 +556,40 @@
   125.5,
   123.0,
   122.0,
-  122.0
+  121.0,
+  117.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 39100,
+    "trust": 0,
+    "dealer": -7263,
+    "total": 31837
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.05,
+    "yield": 2.13,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

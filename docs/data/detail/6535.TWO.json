@@ -1,17 +1,9 @@
 {
  "stock": "6535.TWO",
  "name": "順藥",
- "price": 101.0,
- "change_pct": -1.46,
+ "price": 97.0,
+ "change_pct": -2.81,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 143.5,
-   "h": 143.5,
-   "l": 140.0,
-   "c": 141.0,
-   "v": 245565
-  },
   {
    "time": "2026-03-31",
    "o": 141.5,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 103.0,
    "h": 103.0,
-   "l": 100.0,
-   "c": 101.0,
-   "v": 70068
+   "l": 99.8,
+   "c": 99.8,
+   "v": 129019
+  },
+  {
+   "time": "2026-06-26",
+   "o": 99.4,
+   "h": 100.0,
+   "l": 97.0,
+   "c": 97.0,
+   "v": 254001
   }
  ],
  "sr": {
-  "price": 101.0,
+  "price": 97.0,
   "resistance": [
    133.0,
    135.0
@@ -495,7 +495,6 @@
   "strong_support": 121.0
  },
  "spark": [
-  141.0,
   143.0,
   148.5,
   142.5,
@@ -554,14 +553,29 @@
   100.5,
   100.0,
   102.5,
-  101.0
+  99.8,
+  97.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -18000,
+    "trust": -30000,
+    "dealer": 667,
+    "total": -47333
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -572,7 +586,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

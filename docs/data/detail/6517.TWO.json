@@ -1,17 +1,9 @@
 {
  "stock": "6517.TWO",
  "name": "保勝光學",
- "price": 74.0,
- "change_pct": 2.07,
+ "price": 67.1,
+ "change_pct": -8.08,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 56.2,
-   "h": 57.4,
-   "l": 55.9,
-   "c": 57.1,
-   "v": 104074
-  },
   {
    "time": "2026-03-31",
    "o": 57.1,
@@ -481,24 +473,31 @@
    "o": 73.0,
    "h": 77.8,
    "l": 72.2,
-   "c": 74.0,
-   "v": 1090546
+   "c": 73.0,
+   "v": 1824116
+  },
+  {
+   "time": "2026-06-26",
+   "o": 73.1,
+   "h": 73.1,
+   "l": 66.9,
+   "c": 67.1,
+   "v": 1230429
   }
  ],
  "sr": {
-  "price": 74.0,
+  "price": 67.1,
   "resistance": [
-   74.7,
-   74.88
+   67.44,
+   67.73
   ],
   "support": [
-   73.9,
-   71.45
+   65.77,
+   65.5
   ],
   "strong_support": 51.68
  },
  "spark": [
-  57.1,
   55.4,
   56.5,
   56.4,
@@ -557,25 +556,40 @@
   77.1,
   75.1,
   72.5,
-  74.0
+  73.0,
+  67.1
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 2947,
+    "trust": 0,
+    "dealer": -93,
+    "total": 2854
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.07,
+    "yield": 2.24,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

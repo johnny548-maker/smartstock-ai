@@ -1,17 +1,9 @@
 {
  "stock": "6227.TWO",
  "name": "茂綸",
- "price": 119.5,
- "change_pct": 0.0,
+ "price": 116.5,
+ "change_pct": -4.12,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 83.7,
-   "h": 86.5,
-   "l": 83.7,
-   "c": 86.1,
-   "v": 156100
-  },
   {
    "time": "2026-03-31",
    "o": 85.9,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 122.0,
-   "h": 122.0,
+   "h": 122.5,
    "l": 118.5,
-   "c": 119.5,
-   "v": 123116
+   "c": 121.5,
+   "v": 334040
+  },
+  {
+   "time": "2026-06-26",
+   "o": 121.0,
+   "h": 121.0,
+   "l": 116.0,
+   "c": 116.5,
+   "v": 373055
   }
  ],
  "sr": {
-  "price": 119.5,
+  "price": 116.5,
   "resistance": [
    124.5,
    131.46
@@ -498,7 +498,6 @@
   "strong_support": 54.77
  },
  "spark": [
-  86.1,
   85.3,
   93.3,
   91.8,
@@ -557,25 +556,40 @@
   125.0,
   119.5,
   119.5,
-  119.5
+  121.5,
+  116.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -76815,
+    "trust": 0,
+    "dealer": -5176,
+    "total": -81991
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.77,
+    "yield": 3.86,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

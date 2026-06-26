@@ -1,17 +1,9 @@
 {
  "stock": "5328.TWO",
  "name": "華容",
- "price": 63.9,
- "change_pct": 9.98,
+ "price": 70.2,
+ "change_pct": 9.86,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 24.0,
-   "h": 24.25,
-   "l": 23.5,
-   "c": 24.1,
-   "v": 2050373
-  },
   {
    "time": "2026-03-31",
    "o": 24.15,
@@ -483,10 +475,18 @@
    "l": 59.7,
    "c": 63.9,
    "v": 30211722
+  },
+  {
+   "time": "2026-06-26",
+   "o": 64.5,
+   "h": 70.2,
+   "l": 64.2,
+   "c": 70.2,
+   "v": 45601499
   }
  ],
  "sr": {
-  "price": 63.9,
+  "price": 70.2,
   "resistance": [],
   "support": [
    35.0,
@@ -495,7 +495,6 @@
   "strong_support": 10.34
  },
  "spark": [
-  24.1,
   23.7,
   23.85,
   22.8,
@@ -554,14 +553,29 @@
   58.0,
   52.9,
   58.1,
-  63.9
+  63.9,
+  70.2
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 3738348,
+    "trust": 0,
+    "dealer": 249261,
+    "total": 3987609
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

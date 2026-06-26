@@ -2,16 +2,8 @@
  "stock": "4105.TWO",
  "name": "東洋",
  "price": 74.6,
- "change_pct": 0.0,
+ "change_pct": -0.13,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 73.9,
-   "h": 73.9,
-   "l": 72.9,
-   "c": 73.2,
-   "v": 1388854
-  },
   {
    "time": "2026-03-31",
    "o": 72.9,
@@ -481,8 +473,16 @@
    "o": 74.5,
    "h": 75.0,
    "l": 74.2,
+   "c": 74.7,
+   "v": 669787
+  },
+  {
+   "time": "2026-06-26",
+   "o": 74.7,
+   "h": 74.8,
+   "l": 74.2,
    "c": 74.6,
-   "v": 308963
+   "v": 606047
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 62.08
  },
  "spark": [
-  73.2,
   72.8,
   74.0,
   73.6,
@@ -557,14 +556,29 @@
   73.7,
   73.9,
   74.6,
+  74.7,
   74.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 174849,
+    "trust": -10000,
+    "dealer": -2000,
+    "total": 162849
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

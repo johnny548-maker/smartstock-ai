@@ -1,17 +1,9 @@
 {
  "stock": "6263.TWO",
  "name": "普萊德",
- "price": 173.5,
- "change_pct": 0.0,
+ "price": 161.0,
+ "change_pct": -6.4,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 119.63,
-   "h": 119.63,
-   "l": 117.71,
-   "c": 118.19,
-   "v": 53000
-  },
   {
    "time": "2026-03-31",
    "o": 117.71,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 187.0,
    "h": 187.0,
-   "l": 173.5,
-   "c": 173.5,
-   "v": 1176201
+   "l": 170.0,
+   "c": 172.0,
+   "v": 1486236
+  },
+  {
+   "time": "2026-06-26",
+   "o": 170.0,
+   "h": 170.0,
+   "l": 160.5,
+   "c": 161.0,
+   "v": 520536
   }
  ],
  "sr": {
-  "price": 173.5,
+  "price": 161.0,
   "resistance": [
-   177.5,
-   177.53
+   161.16,
+   172.05
   ],
   "support": [
-   165.57,
-   155.52
+   155.52,
+   155.5
   ],
   "strong_support": 110.54
  },
  "spark": [
-  118.19,
   116.28,
   119.15,
   118.19,
@@ -557,25 +556,40 @@
   163.0,
   158.0,
   173.5,
-  173.5
+  172.0,
+  161.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -110000,
+    "trust": 0,
+    "dealer": 0,
+    "total": -110000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.5,
+    "yield": 4.84,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

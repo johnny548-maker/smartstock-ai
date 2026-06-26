@@ -1,8 +1,8 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": null,
- "change_pct": null,
+ "price": 164.0,
+ "change_pct": -8.12,
  "ohlc": [
   {
    "time": "2026-03-31",
@@ -478,17 +478,20 @@
   },
   {
    "time": "2026-06-26",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 379386560
+   "o": 175.0,
+   "h": 176.0,
+   "l": 162.0,
+   "c": 164.0,
+   "v": 373687844
   }
  ],
  "sr": {
-  "price": null,
+  "price": 164.0,
   "resistance": [],
-  "support": [],
+  "support": [
+   116.5,
+   70.7
+  ],
   "strong_support": 40.1
  },
  "spark": [
@@ -551,7 +554,7 @@
   170.0,
   178.0,
   178.5,
-  null
+  164.0
  ],
  "spark_start": "2026-03-31",
  "spark_end": "2026-06-26",
@@ -561,48 +564,30 @@
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": null,
+ "levels": {
+  "entry": 164.0,
+  "stop": 152.52,
+  "target": 192.7,
+  "atr_bracket": 192.7,
+  "measured_move": 240.3,
+  "target_band": [
+   192.7,
+   240.3,
+   273.21
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 7.4,
+  "swing_stop": 132.37,
+  "chandelier": 149.02,
+  "fib_targets": [
+   243.87,
+   273.21,
+   305.6
+  ]
+ },
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 43,394,464 股",
-   "value": {
-    "foreign": -16701027,
-    "trust": -24161920,
-    "dealer": -2531517,
-    "total": -43394464
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -295
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 44.9 / 殖利率 1.46% / PB 5.52",
-   "value": {
-    "pe": 44.85,
-    "yield": 1.46,
-    "pb": 5.52
-   },
-   "severity": "info",
-   "as_of": "2026-06-25",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  }
- ],
  "trends": {
   "inst_cum": [
    {

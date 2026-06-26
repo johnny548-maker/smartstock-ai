@@ -1,17 +1,9 @@
 {
  "stock": "6121.TWO",
  "name": "新普",
- "price": 422.5,
- "change_pct": 1.44,
+ "price": 415.5,
+ "change_pct": -1.66,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 339.0,
-   "h": 344.0,
-   "l": 339.0,
-   "c": 340.0,
-   "v": 205075
-  },
   {
    "time": "2026-03-31",
    "o": 341.0,
@@ -483,10 +475,18 @@
    "l": 415.5,
    "c": 422.5,
    "v": 917603
+  },
+  {
+   "time": "2026-06-26",
+   "o": 419.0,
+   "h": 423.5,
+   "l": 414.0,
+   "c": 415.5,
+   "v": 1170792
   }
  ],
  "sr": {
-  "price": 422.5,
+  "price": 415.5,
   "resistance": [
    426.0,
    436.0
@@ -498,7 +498,6 @@
   "strong_support": 271.9
  },
  "spark": [
-  340.0,
   333.0,
   347.5,
   340.5,
@@ -557,14 +556,29 @@
   424.0,
   417.0,
   416.5,
-  422.5
+  422.5,
+  415.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -234335,
+    "trust": 272727,
+    "dealer": 8415,
+    "total": 46807
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

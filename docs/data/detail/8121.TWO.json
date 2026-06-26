@@ -1,17 +1,9 @@
 {
  "stock": "8121.TWO",
  "name": "越峰",
- "price": 48.25,
- "change_pct": -1.53,
+ "price": 47.25,
+ "change_pct": -4.06,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 24.2,
-   "h": 24.65,
-   "l": 23.6,
-   "c": 24.15,
-   "v": 249001
-  },
   {
    "time": "2026-03-31",
    "o": 23.4,
@@ -481,23 +473,30 @@
    "o": 50.0,
    "h": 50.0,
    "l": 48.1,
-   "c": 48.25,
-   "v": 906947
+   "c": 49.25,
+   "v": 1553581
+  },
+  {
+   "time": "2026-06-26",
+   "o": 49.0,
+   "h": 49.85,
+   "l": 47.2,
+   "c": 47.25,
+   "v": 2376226
   }
  ],
  "sr": {
-  "price": 48.25,
+  "price": 47.25,
   "resistance": [
    57.2
   ],
   "support": [
-   41.2,
-   40.35
+   40.35,
+   39.9
   ],
   "strong_support": 16.4
  },
  "spark": [
-  24.15,
   22.9,
   23.7,
   23.35,
@@ -556,14 +555,29 @@
   54.4,
   49.0,
   49.0,
-  48.25
+  49.25,
+  47.25
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 403000,
+    "trust": 0,
+    "dealer": -256,
+    "total": 402744
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -574,7 +588,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

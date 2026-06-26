@@ -1,17 +1,9 @@
 {
  "stock": "8044.TWO",
  "name": "網家",
- "price": 30.15,
- "change_pct": 1.86,
+ "price": 28.55,
+ "change_pct": -6.39,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 22.9,
-   "h": 23.2,
-   "l": 22.55,
-   "c": 23.15,
-   "v": 160400
-  },
   {
    "time": "2026-03-31",
    "o": 23.15,
@@ -481,24 +473,31 @@
    "o": 29.65,
    "h": 31.45,
    "l": 29.4,
-   "c": 30.15,
-   "v": 1136716
+   "c": 30.5,
+   "v": 2004951
+  },
+  {
+   "time": "2026-06-26",
+   "o": 30.0,
+   "h": 30.0,
+   "l": 28.5,
+   "c": 28.55,
+   "v": 1616510
   }
  ],
  "sr": {
-  "price": 30.15,
+  "price": 28.55,
   "resistance": [
-   30.4,
-   30.45
+   29.0,
+   29.3
   ],
   "support": [
-   29.9,
-   29.5
+   28.35,
+   28.25
   ],
   "strong_support": 22.15
  },
  "spark": [
-  23.15,
   22.4,
   22.7,
   22.45,
@@ -557,14 +556,29 @@
   31.3,
   29.65,
   29.6,
-  30.15
+  30.5,
+  28.55
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -682490,
+    "trust": 0,
+    "dealer": 158,
+    "total": -682332
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

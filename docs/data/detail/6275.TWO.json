@@ -1,17 +1,9 @@
 {
  "stock": "6275.TWO",
  "name": "元山",
- "price": 50.7,
- "change_pct": -3.06,
+ "price": 47.55,
+ "change_pct": -4.9,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 48.0,
-   "h": 48.0,
-   "l": 47.2,
-   "c": 47.5,
-   "v": 239303
-  },
   {
    "time": "2026-03-31",
    "o": 47.4,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 52.4,
    "h": 52.6,
-   "l": 50.2,
-   "c": 50.7,
-   "v": 634593
+   "l": 50.0,
+   "c": 50.0,
+   "v": 952201
+  },
+  {
+   "time": "2026-06-26",
+   "o": 50.6,
+   "h": 50.6,
+   "l": 47.5,
+   "c": 47.55,
+   "v": 1072030
   }
  ],
  "sr": {
-  "price": 50.7,
+  "price": 47.55,
   "resistance": [
-   52.48,
-   52.86
+   48.02,
+   48.45
   ],
   "support": [
-   49.1,
-   48.55
+   47.35,
+   47.31
   ],
   "strong_support": 30.37
  },
  "spark": [
-  47.5,
   45.95,
   46.75,
   46.25,
@@ -557,25 +556,40 @@
   51.4,
   53.0,
   52.3,
-  50.7
+  50.0,
+  47.55
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -73000,
+    "trust": 0,
+    "dealer": -12250,
+    "total": -85250
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.82,
+    "yield": 4.21,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

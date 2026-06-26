@@ -1,17 +1,9 @@
 {
  "stock": "6207.TWO",
  "name": "雷科",
- "price": 154.5,
- "change_pct": -3.13,
+ "price": 145.0,
+ "change_pct": -6.15,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 50.1,
-   "h": 53.0,
-   "l": 50.1,
-   "c": 50.9,
-   "v": 579307
-  },
   {
    "time": "2026-03-31",
    "o": 50.1,
@@ -483,10 +475,18 @@
    "l": 152.5,
    "c": 154.5,
    "v": 7047898
+  },
+  {
+   "time": "2026-06-26",
+   "o": 152.5,
+   "h": 157.0,
+   "l": 144.0,
+   "c": 145.0,
+   "v": 7809572
   }
  ],
  "sr": {
-  "price": 154.5,
+  "price": 145.0,
   "resistance": [
    164.0,
    181.5
@@ -498,7 +498,6 @@
   "strong_support": 33.47
  },
  "spark": [
-  50.9,
   49.3,
   50.7,
   50.0,
@@ -557,14 +556,29 @@
   165.5,
   155.5,
   159.5,
-  154.5
+  154.5,
+  145.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 960195,
+    "trust": 0,
+    "dealer": -36579,
+    "total": 923616
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

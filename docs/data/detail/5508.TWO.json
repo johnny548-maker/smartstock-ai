@@ -1,17 +1,9 @@
 {
  "stock": "5508.TWO",
  "name": "永信建",
- "price": 55.0,
- "change_pct": -0.36,
+ "price": 53.6,
+ "change_pct": -1.65,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 50.8,
-   "h": 51.3,
-   "l": 50.6,
-   "c": 50.7,
-   "v": 399001
-  },
   {
    "time": "2026-03-31",
    "o": 50.5,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 55.2,
    "h": 55.3,
-   "l": 54.7,
-   "c": 55.0,
-   "v": 240984
+   "l": 54.4,
+   "c": 54.5,
+   "v": 425092
+  },
+  {
+   "time": "2026-06-26",
+   "o": 55.2,
+   "h": 55.2,
+   "l": 53.6,
+   "c": 53.6,
+   "v": 562190
   }
  ],
  "sr": {
-  "price": 55.0,
+  "price": 53.6,
   "resistance": [
    58.9,
    59.2
@@ -498,7 +498,6 @@
   "strong_support": 45.5
  },
  "spark": [
-  50.7,
   50.6,
   51.6,
   50.7,
@@ -557,25 +556,40 @@
   56.3,
   55.1,
   55.2,
-  55.0
+  54.5,
+  53.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 91000,
+    "trust": 0,
+    "dealer": -1475,
+    "total": 89525
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.03,
+    "yield": 5.18,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

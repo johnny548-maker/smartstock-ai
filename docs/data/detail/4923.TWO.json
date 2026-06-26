@@ -1,17 +1,9 @@
 {
  "stock": "4923.TWO",
  "name": "力士",
- "price": 59.7,
- "change_pct": -1.49,
+ "price": 55.0,
+ "change_pct": -7.56,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 34.7,
-   "h": 34.95,
-   "l": 33.7,
-   "c": 34.35,
-   "v": 30005
-  },
   {
    "time": "2026-03-31",
    "o": 34.35,
@@ -480,14 +472,24 @@
    "time": "2026-06-25",
    "o": 61.1,
    "h": 61.2,
-   "l": 59.5,
-   "c": 59.7,
-   "v": 340117
+   "l": 59.2,
+   "c": 59.5,
+   "v": 487054
+  },
+  {
+   "time": "2026-06-26",
+   "o": 58.5,
+   "h": 59.3,
+   "l": 54.2,
+   "c": 55.0,
+   "v": 786124
   }
  ],
  "sr": {
-  "price": 59.7,
-  "resistance": [],
+  "price": 55.0,
+  "resistance": [
+   67.0
+  ],
   "support": [
    45.4,
    45.0
@@ -495,7 +497,6 @@
   "strong_support": 26.4
  },
  "spark": [
-  34.35,
   34.6,
   34.5,
   36.3,
@@ -554,14 +555,29 @@
   63.4,
   63.3,
   60.6,
-  59.7
+  59.5,
+  55.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 38000,
+    "trust": 0,
+    "dealer": 120000,
+    "total": 158000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -572,7 +588,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

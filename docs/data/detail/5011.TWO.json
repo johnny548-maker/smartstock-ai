@@ -1,17 +1,9 @@
 {
  "stock": "5011.TWO",
  "name": "久陽",
- "price": 26.1,
- "change_pct": 5.03,
+ "price": 25.7,
+ "change_pct": -0.96,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 13.7,
-   "h": 14.25,
-   "l": 13.55,
-   "c": 13.6,
-   "v": 285005
-  },
   {
    "time": "2026-03-31",
    "o": 13.8,
@@ -481,13 +473,22 @@
    "o": 25.9,
    "h": 26.3,
    "l": 25.4,
-   "c": 26.1,
-   "v": 3140815
+   "c": 25.95,
+   "v": 4047072
+  },
+  {
+   "time": "2026-06-26",
+   "o": 25.95,
+   "h": 27.3,
+   "l": 25.05,
+   "c": 25.7,
+   "v": 2355600
   }
  ],
  "sr": {
-  "price": 26.1,
+  "price": 25.7,
   "resistance": [
+   25.87,
    26.56
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 9.78
  },
  "spark": [
-  13.6,
   13.3,
   13.2,
   13.15,
@@ -556,14 +556,29 @@
   23.05,
   22.6,
   24.85,
-  26.1
+  25.95,
+  25.7
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -263000,
+    "trust": 0,
+    "dealer": 0,
+    "total": -263000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -574,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

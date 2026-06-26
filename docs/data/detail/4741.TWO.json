@@ -1,17 +1,9 @@
 {
  "stock": "4741.TWO",
  "name": "泓瀚",
- "price": 60.0,
- "change_pct": -2.76,
+ "price": 56.4,
+ "change_pct": -5.69,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 31.5,
-   "h": 35.19,
-   "l": 31.3,
-   "c": 35.19,
-   "v": 3795563
-  },
   {
    "time": "2026-03-31",
    "o": 36.23,
@@ -481,15 +473,23 @@
    "o": 62.0,
    "h": 63.1,
    "l": 59.4,
-   "c": 60.0,
-   "v": 431301
+   "c": 59.8,
+   "v": 665200
+  },
+  {
+   "time": "2026-06-26",
+   "o": 59.2,
+   "h": 60.1,
+   "l": 56.4,
+   "c": 56.4,
+   "v": 494582
   }
  ],
  "sr": {
-  "price": 60.0,
+  "price": 56.4,
   "resistance": [
-   66.29,
-   67.19
+   58.03,
+   66.29
   ],
   "support": [
    55.44,
@@ -498,7 +498,6 @@
   "strong_support": 20.31
  },
  "spark": [
-  35.19,
   37.23,
   36.83,
   40.51,
@@ -557,25 +556,40 @@
   63.1,
   61.4,
   61.7,
-  60.0
+  59.8,
+  56.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -78000,
+    "trust": 0,
+    "dealer": 4934,
+    "total": -73066
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.49,
+    "yield": 0.53,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

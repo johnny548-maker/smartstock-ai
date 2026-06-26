@@ -1,17 +1,9 @@
 {
  "stock": "6903.TWO",
  "name": "巨漢",
- "price": 384.0,
- "change_pct": -0.13,
+ "price": 369.5,
+ "change_pct": -4.52,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 282.22,
-   "h": 282.22,
-   "l": 273.91,
-   "c": 279.77,
-   "v": 832267
-  },
   {
    "time": "2026-03-31",
    "o": 276.35,
@@ -481,24 +473,31 @@
    "o": 387.5,
    "h": 391.0,
    "l": 382.0,
-   "c": 384.0,
-   "v": 230106
+   "c": 387.0,
+   "v": 416180
+  },
+  {
+   "time": "2026-06-26",
+   "o": 389.0,
+   "h": 394.5,
+   "l": 369.0,
+   "c": 369.5,
+   "v": 679750
   }
  ],
  "sr": {
-  "price": 384.0,
+  "price": 369.5,
   "resistance": [
    399.12,
    404.99
   ],
   "support": [
-   378.09,
-   362.44
+   362.44,
+   361.95
   ],
   "strong_support": 79.83
  },
  "spark": [
-  279.77,
   272.93,
   280.75,
   272.93,
@@ -557,25 +556,40 @@
   382.0,
   381.0,
   384.5,
-  384.0
+  387.0,
+  369.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -228900,
+    "trust": 0,
+    "dealer": -4675,
+    "total": -233575
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.21,
+    "yield": 2.3,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

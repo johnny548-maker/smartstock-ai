@@ -1,17 +1,9 @@
 {
  "stock": "4162.TWO",
  "name": "智擎",
- "price": 59.0,
- "change_pct": -0.51,
+ "price": 57.9,
+ "change_pct": -1.86,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 58.4,
-   "h": 58.4,
-   "l": 57.6,
-   "c": 57.8,
-   "v": 189106
-  },
   {
    "time": "2026-03-31",
    "o": 58.0,
@@ -482,14 +474,22 @@
    "h": 59.7,
    "l": 58.5,
    "c": 59.0,
-   "v": 366512
+   "v": 492196
+  },
+  {
+   "time": "2026-06-26",
+   "o": 58.6,
+   "h": 59.1,
+   "l": 57.3,
+   "c": 57.9,
+   "v": 522100
   }
  ],
  "sr": {
-  "price": 59.0,
+  "price": 57.9,
   "resistance": [
-   59.1,
-   59.2
+   58.6,
+   59.1
   ],
   "support": [
    57.4,
@@ -498,7 +498,6 @@
   "strong_support": 53.0
  },
  "spark": [
-  57.8,
   57.5,
   58.8,
   59.0,
@@ -557,25 +556,40 @@
   56.3,
   57.6,
   59.3,
-  59.0
+  59.0,
+  57.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 43445,
+    "trust": 0,
+    "dealer": 1189,
+    "total": 44634
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.37,
+    "yield": 3.45,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

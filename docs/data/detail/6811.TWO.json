@@ -1,17 +1,9 @@
 {
  "stock": "6811.TWO",
  "name": "宏碁資訊",
- "price": 206.0,
- "change_pct": -3.96,
+ "price": 204.0,
+ "change_pct": -1.45,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 176.84,
-   "h": 180.66,
-   "l": 176.37,
-   "c": 176.37,
-   "v": 78002
-  },
   {
    "time": "2026-03-31",
    "o": 174.94,
@@ -481,15 +473,23 @@
    "o": 210.5,
    "h": 210.5,
    "l": 204.5,
-   "c": 206.0,
-   "v": 564900
+   "c": 207.0,
+   "v": 681000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 207.5,
+   "h": 207.5,
+   "l": 203.0,
+   "c": 204.0,
+   "v": 129050
   }
  ],
  "sr": {
-  "price": 206.0,
+  "price": 204.0,
   "resistance": [
-   207.35,
-   207.83
+   204.01,
+   204.49
   ],
   "support": [
    197.34,
@@ -498,7 +498,6 @@
   "strong_support": 160.39
  },
  "spark": [
-  176.37,
   173.98,
   177.32,
   174.46,
@@ -557,25 +556,40 @@
   218.31,
   215.93,
   214.5,
-  206.0
+  207.0,
+  204.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -44560,
+    "trust": 0,
+    "dealer": -587,
+    "total": -45147
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.67,
+    "yield": 5.15,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

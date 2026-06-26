@@ -1,17 +1,9 @@
 {
  "stock": "6187.TWO",
  "name": "萬潤",
- "price": 1105.0,
- "change_pct": 4.25,
+ "price": 1075.0,
+ "change_pct": -2.71,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 936.0,
-   "h": 947.0,
-   "l": 900.0,
-   "c": 900.0,
-   "v": 991594
-  },
   {
    "time": "2026-03-31",
    "o": 877.0,
@@ -483,10 +475,18 @@
    "l": 1040.0,
    "c": 1105.0,
    "v": 660728
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1100.0,
+   "h": 1120.0,
+   "l": 998.0,
+   "c": 1075.0,
+   "v": 1198934
   }
  ],
  "sr": {
-  "price": 1105.0,
+  "price": 1075.0,
   "resistance": [
    1175.0,
    1285.0
@@ -498,7 +498,6 @@
   "strong_support": 196.04
  },
  "spark": [
-  900.0,
   810.0,
   891.0,
   895.0,
@@ -557,14 +556,29 @@
   1260.0,
   1170.0,
   1060.0,
-  1105.0
+  1105.0,
+  1075.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 159704,
+    "trust": 1448,
+    "dealer": 883,
+    "total": 162035
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

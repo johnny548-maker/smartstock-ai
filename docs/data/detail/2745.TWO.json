@@ -1,17 +1,9 @@
 {
  "stock": "2745.TWO",
  "name": "五福",
- "price": 107.5,
- "change_pct": 0.94,
+ "price": 107.0,
+ "change_pct": -1.38,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 101.0,
-   "h": 103.0,
-   "l": 99.8,
-   "c": 101.5,
-   "v": 123000
-  },
   {
    "time": "2026-03-31",
    "o": 102.5,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 106.5,
+   "h": 109.0,
+   "l": 106.5,
+   "c": 108.5,
+   "v": 328050
+  },
+  {
+   "time": "2026-06-26",
+   "o": 108.0,
    "h": 108.5,
    "l": 106.5,
-   "c": 107.5,
-   "v": 108130
+   "c": 107.0,
+   "v": 217020
   }
  ],
  "sr": {
-  "price": 107.5,
+  "price": 107.0,
   "resistance": [
-   107.88,
-   108.82
+   107.4,
+   107.5
   ],
   "support": [
    106.46,
-   105.27
+   105.0
   ],
   "strong_support": 68.98
  },
  "spark": [
-  101.5,
   102.0,
   106.0,
   106.5,
@@ -557,25 +556,40 @@
   107.5,
   106.0,
   106.5,
-  107.5
+  108.5,
+  107.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 55630,
+    "trust": 0,
+    "dealer": 37550,
+    "total": 93180
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 7.04,
+    "yield": 7.01,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

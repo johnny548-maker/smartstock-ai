@@ -1,17 +1,9 @@
 {
  "stock": "3546.TWO",
  "name": "宇峻",
- "price": 83.5,
- "change_pct": -0.95,
+ "price": 81.6,
+ "change_pct": -2.39,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 71.0,
-   "h": 71.8,
-   "l": 69.9,
-   "c": 70.1,
-   "v": 132198
-  },
   {
    "time": "2026-03-31",
    "o": 70.0,
@@ -481,24 +473,31 @@
    "o": 84.3,
    "h": 85.0,
    "l": 82.7,
-   "c": 83.5,
-   "v": 245587
+   "c": 83.6,
+   "v": 319000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 83.6,
+   "h": 84.2,
+   "l": 81.6,
+   "c": 81.6,
+   "v": 299319
   }
  ],
  "sr": {
-  "price": 83.5,
+  "price": 81.6,
   "resistance": [
-   84.5,
-   84.6
+   83.3,
+   84.5
   ],
   "support": [
-   83.0,
-   81.5
+   81.5,
+   81.4
   ],
   "strong_support": 64.4
  },
  "spark": [
-  70.1,
   69.4,
   70.1,
   70.0,
@@ -557,25 +556,40 @@
   84.0,
   83.9,
   84.3,
-  83.5
+  83.6,
+  81.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 49973,
+    "trust": 0,
+    "dealer": 6377,
+    "total": 56350
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.97,
+    "yield": 3.06,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

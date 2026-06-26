@@ -1,17 +1,9 @@
 {
  "stock": "6179.TWO",
  "name": "亞通",
- "price": 26.55,
- "change_pct": -3.63,
+ "price": 25.9,
+ "change_pct": -0.77,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 25.05,
-   "h": 25.35,
-   "l": 24.5,
-   "c": 24.55,
-   "v": 2007178
-  },
   {
    "time": "2026-03-31",
    "o": 24.25,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 27.6,
    "h": 27.7,
-   "l": 26.45,
-   "c": 26.55,
-   "v": 1275211
+   "l": 26.0,
+   "c": 26.1,
+   "v": 2336796
+  },
+  {
+   "time": "2026-06-26",
+   "o": 26.15,
+   "h": 26.55,
+   "l": 25.85,
+   "c": 25.9,
+   "v": 1453846
   }
  ],
  "sr": {
-  "price": 26.55,
+  "price": 25.9,
   "resistance": [
-   26.88,
-   27.22
+   26.05,
+   26.88
   ],
   "support": [
-   26.53,
-   26.5
+   25.8,
+   25.65
   ],
   "strong_support": 18.82
  },
  "spark": [
-  24.55,
   23.6,
   24.0,
   23.9,
@@ -557,25 +556,40 @@
   26.7,
   27.2,
   27.55,
-  26.55
+  26.1,
+  25.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 188979,
+    "trust": 0,
+    "dealer": 134792,
+    "total": 323771
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.81,
+    "yield": 1.93,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6125.TWO",
  "name": "廣運",
- "price": 59.9,
- "change_pct": -0.66,
+ "price": 57.0,
+ "change_pct": -4.68,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 55.5,
-   "h": 56.1,
-   "l": 54.4,
-   "c": 55.4,
-   "v": 934800
-  },
   {
    "time": "2026-03-31",
    "o": 54.6,
@@ -481,24 +473,31 @@
    "o": 60.9,
    "h": 60.9,
    "l": 59.6,
-   "c": 59.9,
-   "v": 676555
+   "c": 59.8,
+   "v": 1140893
+  },
+  {
+   "time": "2026-06-26",
+   "o": 59.9,
+   "h": 59.9,
+   "l": 57.0,
+   "c": 57.0,
+   "v": 1893680
   }
  ],
  "sr": {
-  "price": 59.9,
+  "price": 57.0,
   "resistance": [
-   60.96,
-   62.7
+   59.4,
+   60.96
   ],
   "support": [
-   59.78,
-   59.2
+   54.7,
+   53.44
   ],
   "strong_support": 49.44
  },
  "spark": [
-  55.4,
   53.4,
   54.4,
   53.3,
@@ -557,25 +556,40 @@
   62.6,
   60.8,
   60.3,
-  59.9
+  59.8,
+  57.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -499640,
+    "trust": 0,
+    "dealer": -48617,
+    "total": -548257
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.83,
+    "yield": 0.88,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

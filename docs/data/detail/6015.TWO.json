@@ -1,17 +1,9 @@
 {
  "stock": "6015.TWO",
  "name": "宏遠證",
- "price": 18.1,
- "change_pct": -1.09,
+ "price": 17.4,
+ "change_pct": -3.6,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 12.71,
-   "h": 12.86,
-   "l": 12.62,
-   "c": 12.71,
-   "v": 1558198
-  },
   {
    "time": "2026-03-31",
    "o": 12.71,
@@ -480,16 +472,24 @@
    "time": "2026-06-25",
    "o": 18.55,
    "h": 18.7,
-   "l": 18.1,
-   "c": 18.1,
-   "v": 1920154
+   "l": 18.0,
+   "c": 18.05,
+   "v": 3813741
+  },
+  {
+   "time": "2026-06-26",
+   "o": 18.05,
+   "h": 18.15,
+   "l": 17.4,
+   "c": 17.4,
+   "v": 4659420
   }
  ],
  "sr": {
-  "price": 18.1,
+  "price": 17.4,
   "resistance": [
    19.5,
-   24.0
+   19.65
   ],
   "support": [
    17.3,
@@ -498,7 +498,6 @@
   "strong_support": 8.2
  },
  "spark": [
-  12.71,
   12.57,
   12.86,
   12.71,
@@ -557,25 +556,40 @@
   19.0,
   18.6,
   18.3,
-  18.1
+  18.05,
+  17.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 481999,
+    "trust": 0,
+    "dealer": 0,
+    "total": 481999
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.0,
+    "yield": 3.16,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

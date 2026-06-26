@@ -1,17 +1,9 @@
 {
  "stock": "6186.TWO",
  "name": "新潤",
- "price": 41.65,
- "change_pct": 1.59,
+ "price": 41.3,
+ "change_pct": -1.55,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 40.5,
-   "h": 40.6,
-   "l": 39.4,
-   "c": 39.4,
-   "v": 578307
-  },
   {
    "time": "2026-03-31",
    "o": 38.8,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 41.1,
-   "h": 41.85,
+   "h": 42.15,
    "l": 41.0,
-   "c": 41.65,
-   "v": 661120
+   "c": 41.95,
+   "v": 1138700
+  },
+  {
+   "time": "2026-06-26",
+   "o": 42.0,
+   "h": 42.3,
+   "l": 41.3,
+   "c": 41.3,
+   "v": 769340
   }
  ],
  "sr": {
-  "price": 41.65,
+  "price": 41.3,
   "resistance": [
-   41.9,
-   43.0
+   41.35,
+   41.9
   ],
   "support": [
    40.8,
-   40.25
+   40.5
   ],
   "strong_support": 38.0
  },
  "spark": [
-  39.4,
   38.25,
   38.7,
   38.85,
@@ -557,25 +556,40 @@
   40.8,
   40.6,
   41.0,
-  41.65
+  41.95,
+  41.3
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -26100,
+    "trust": 0,
+    "dealer": -589,
+    "total": -26689
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 12.21,
+    "yield": 12.13,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

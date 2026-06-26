@@ -1,17 +1,9 @@
 {
  "stock": "5498.TWO",
  "name": "凱崴",
- "price": 63.0,
- "change_pct": -1.25,
+ "price": 58.0,
+ "change_pct": -6.6,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 54.5,
-   "h": 56.5,
-   "l": 54.0,
-   "c": 56.0,
-   "v": 3278100
-  },
   {
    "time": "2026-03-31",
    "o": 55.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 65.0,
    "h": 65.1,
-   "l": 62.2,
-   "c": 63.0,
-   "v": 1816842
+   "l": 62.1,
+   "c": 62.1,
+   "v": 3099302
+  },
+  {
+   "time": "2026-06-26",
+   "o": 61.6,
+   "h": 63.2,
+   "l": 57.7,
+   "c": 58.0,
+   "v": 4740559
   }
  ],
  "sr": {
-  "price": 63.0,
+  "price": 58.0,
   "resistance": [
-   65.0,
-   66.0
+   60.0,
+   65.0
   ],
   "support": [
-   61.6,
-   61.0
+   55.7,
+   55.5
   ],
   "strong_support": 7.23
  },
  "spark": [
-  56.0,
   52.1,
   55.3,
   53.5,
@@ -557,25 +556,40 @@
   68.9,
   65.0,
   63.8,
-  63.0
+  62.1,
+  58.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -301000,
+    "trust": 0,
+    "dealer": -35761,
+    "total": -336761
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.39,
+    "yield": 0.43,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

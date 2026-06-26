@@ -1,17 +1,9 @@
 {
  "stock": "3289.TWO",
  "name": "宜特",
- "price": 164.5,
- "change_pct": -2.95,
+ "price": 155.0,
+ "change_pct": -6.06,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 132.94,
-   "h": 133.93,
-   "l": 127.97,
-   "c": 131.45,
-   "v": 2679720
-  },
   {
    "time": "2026-03-31",
    "o": 129.46,
@@ -481,24 +473,31 @@
    "o": 169.5,
    "h": 170.5,
    "l": 162.5,
-   "c": 164.5,
-   "v": 1207256
+   "c": 165.0,
+   "v": 1740129
+  },
+  {
+   "time": "2026-06-26",
+   "o": 163.5,
+   "h": 165.0,
+   "l": 155.0,
+   "c": 155.0,
+   "v": 1582996
   }
  ],
  "sr": {
-  "price": 164.5,
+  "price": 155.0,
   "resistance": [
-   170.51,
-   184.0
+   155.43,
+   156.74
   ],
   "support": [
-   160.5,
-   152.61
+   152.61,
+   149.0
   ],
   "strong_support": 79.51
  },
  "spark": [
-  131.45,
   126.98,
   130.95,
   127.97,
@@ -557,25 +556,40 @@
   179.0,
   169.5,
   169.5,
-  164.5
+  165.0,
+  155.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -154970,
+    "trust": 0,
+    "dealer": -58830,
+    "total": -213800
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.63,
+    "yield": 2.88,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "8074.TWO",
  "name": "鉅橡",
- "price": 70.1,
- "change_pct": -1.27,
+ "price": 65.8,
+ "change_pct": -4.5,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 54.64,
-   "h": 55.43,
-   "l": 53.75,
-   "c": 54.94,
-   "v": 919025
-  },
   {
    "time": "2026-03-31",
    "o": 54.05,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 70.6,
    "h": 72.0,
-   "l": 69.9,
-   "c": 70.1,
-   "v": 731294
+   "l": 68.9,
+   "c": 68.9,
+   "v": 1392158
+  },
+  {
+   "time": "2026-06-26",
+   "o": 69.0,
+   "h": 71.0,
+   "l": 65.8,
+   "c": 65.8,
+   "v": 1911750
   }
  ],
  "sr": {
-  "price": 70.1,
+  "price": 65.8,
   "resistance": [
-   71.84,
-   73.12
+   66.4,
+   67.88
   ],
   "support": [
-   67.79,
-   66.01
+   65.4,
+   61.46
   ],
   "strong_support": 16.58
  },
  "spark": [
-  54.94,
   52.27,
   54.94,
   52.47,
@@ -557,25 +556,40 @@
   77.7,
   73.0,
   71.0,
-  70.1
+  68.9,
+  65.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -4282,
+    "trust": 0,
+    "dealer": -37794,
+    "total": -42076
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.55,
+    "yield": 1.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,8 +1,8 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 433.48,
- "change_pct": -0.35,
+ "price": 431.96,
+ "change_pct": -0.7,
  "ohlc": [
   {
    "time": "2026-04-01",
@@ -479,14 +479,14 @@
   {
    "time": "2026-06-26",
    "o": 425.0,
-   "h": 435.08,
+   "h": 436.12,
    "l": 419.19,
-   "c": 433.48,
-   "v": 9549714
+   "c": 431.96,
+   "v": 12234059
   }
  ],
  "sr": {
-  "price": 433.48,
+  "price": 431.96,
   "resistance": [
    449.11,
    476.79
@@ -557,7 +557,7 @@
   436.39,
   440.83,
   434.99,
-  433.48
+  431.96
  ],
  "spark_start": "2026-04-01",
  "spark_end": "2026-06-26",
@@ -569,34 +569,17 @@
   "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 433.48,
-  "stop": 403.14,
-  "target": 509.34,
-  "atr_bracket": 509.34,
-  "measured_move": 549.02,
-  "target_band": [
-   509.34,
-   549.02
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.5,
-  "swing_stop": 398.65,
-  "chandelier": 417.88,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 57 分 / 11 留言",
+   "label": "HN 討論熱度 20 篇 / 143 分 / 59 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 57,
-    "comments": 11,
+    "points": 143,
+    "comments": 59,
     "n": 20,
     "window_hours": 72
    },

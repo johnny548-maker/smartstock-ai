@@ -1,17 +1,9 @@
 {
  "stock": "3213.TWO",
  "name": "茂訊",
- "price": 125.5,
- "change_pct": -1.95,
+ "price": 121.5,
+ "change_pct": -2.8,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 100.0,
-   "h": 100.5,
-   "l": 99.6,
-   "c": 99.7,
-   "v": 172485
-  },
   {
    "time": "2026-03-31",
    "o": 100.0,
@@ -481,15 +473,23 @@
    "o": 128.0,
    "h": 128.0,
    "l": 124.0,
-   "c": 125.5,
-   "v": 713533
+   "c": 125.0,
+   "v": 936499
+  },
+  {
+   "time": "2026-06-26",
+   "o": 125.0,
+   "h": 125.0,
+   "l": 121.0,
+   "c": 121.5,
+   "v": 1082627
   }
  ],
  "sr": {
-  "price": 125.5,
+  "price": 121.5,
   "resistance": [
-   131.49,
-   136.0
+   124.5,
+   131.49
   ],
   "support": [
    118.0,
@@ -498,7 +498,6 @@
   "strong_support": 75.88
  },
  "spark": [
-  99.7,
   98.5,
   99.8,
   100.0,
@@ -557,25 +556,40 @@
   132.5,
   129.0,
   128.0,
-  125.5
+  125.0,
+  121.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -302601,
+    "trust": 0,
+    "dealer": -3783,
+    "total": -306384
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.47,
+    "yield": 5.76,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

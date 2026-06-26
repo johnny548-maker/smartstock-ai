@@ -1,17 +1,9 @@
 {
  "stock": "4749.TWO",
  "name": "新應材",
- "price": 927.0,
- "change_pct": -0.75,
+ "price": 877.0,
+ "change_pct": -5.39,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 847.61,
-   "h": 848.6,
-   "l": 808.94,
-   "c": 812.91,
-   "v": 2055348
-  },
   {
    "time": "2026-03-31",
    "o": 809.93,
@@ -483,22 +475,29 @@
    "l": 925.0,
    "c": 927.0,
    "v": 442862
+  },
+  {
+   "time": "2026-06-26",
+   "o": 927.0,
+   "h": 933.0,
+   "l": 874.0,
+   "c": 877.0,
+   "v": 1548357
   }
  ],
  "sr": {
-  "price": 927.0,
+  "price": 877.0,
   "resistance": [
-   930.88,
-   940.79
+   897.17,
+   909.07
   ],
   "support": [
-   898.16,
-   897.17
+   869.42,
+   868.42
   ],
   "strong_support": 359.79
  },
  "spark": [
-  812.91,
   791.1,
   820.84,
   794.07,
@@ -557,14 +556,29 @@
   966.0,
   917.0,
   934.0,
-  927.0
+  927.0,
+  877.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -195880,
+    "trust": -317418,
+    "dealer": -71759,
+    "total": -585057
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

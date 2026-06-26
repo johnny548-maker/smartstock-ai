@@ -1,17 +1,9 @@
 {
  "stock": "3141.TWO",
  "name": "晶宏",
- "price": 75.1,
- "change_pct": -0.92,
+ "price": 71.5,
+ "change_pct": -4.79,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 42.0,
-   "h": 43.7,
-   "l": 41.55,
-   "c": 41.9,
-   "v": 279149
-  },
   {
    "time": "2026-03-31",
    "o": 41.9,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 76.8,
    "h": 76.9,
-   "l": 74.7,
+   "l": 74.5,
    "c": 75.1,
-   "v": 290964
+   "v": 472047
+  },
+  {
+   "time": "2026-06-26",
+   "o": 74.5,
+   "h": 75.0,
+   "l": 70.2,
+   "c": 71.5,
+   "v": 671284
   }
  ],
  "sr": {
-  "price": 75.1,
+  "price": 71.5,
   "resistance": [
-   75.42,
-   78.0
+   71.66,
+   75.42
   ],
   "support": [
-   74.43,
-   73.63
+   69.6,
+   68.39
   ],
   "strong_support": 39.45
  },
  "spark": [
-  41.9,
   41.05,
   41.85,
   41.2,
@@ -557,25 +556,40 @@
   78.4,
   75.1,
   75.8,
-  75.1
+  75.1,
+  71.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -102727,
+    "trust": 0,
+    "dealer": -6368,
+    "total": -109095
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.47,
+    "yield": 0.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

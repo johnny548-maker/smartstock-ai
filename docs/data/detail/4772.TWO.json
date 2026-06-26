@@ -1,17 +1,9 @@
 {
  "stock": "4772.TWO",
  "name": "台特化",
- "price": 270.5,
- "change_pct": -0.37,
+ "price": 260.5,
+ "change_pct": -3.7,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 291.5,
-   "h": 291.5,
-   "l": 277.5,
-   "c": 281.5,
-   "v": 1913076
-  },
   {
    "time": "2026-03-31",
    "o": 281.5,
@@ -483,22 +475,29 @@
    "l": 270.5,
    "c": 270.5,
    "v": 532618
+  },
+  {
+   "time": "2026-06-26",
+   "o": 270.5,
+   "h": 271.0,
+   "l": 260.0,
+   "c": 260.5,
+   "v": 1292303
   }
  ],
  "sr": {
-  "price": 270.5,
+  "price": 260.5,
   "resistance": [
-   271.06,
-   285.0
+   261.65,
+   271.06
   ],
   "support": [
-   261.0,
-   234.5
+   234.5,
+   219.03
   ],
   "strong_support": 139.74
  },
  "spark": [
-  281.5,
   275.0,
   289.0,
   277.0,
@@ -557,14 +556,29 @@
   283.0,
   275.0,
   271.5,
-  270.5
+  270.5,
+  260.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -100000,
+    "trust": 0,
+    "dealer": -76491,
+    "total": -176491
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

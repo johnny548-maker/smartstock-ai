@@ -1,17 +1,9 @@
 {
  "stock": "5530.TWO",
  "name": "龍巖",
- "price": 48.55,
- "change_pct": 0.41,
+ "price": 47.15,
+ "change_pct": -2.28,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 46.85,
-   "h": 48.0,
-   "l": 46.55,
-   "c": 48.0,
-   "v": 238262
-  },
   {
    "time": "2026-03-31",
    "o": 48.1,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 48.55,
    "h": 49.15,
-   "l": 48.35,
-   "c": 48.55,
-   "v": 223953
+   "l": 48.2,
+   "c": 48.25,
+   "v": 387205
+  },
+  {
+   "time": "2026-06-26",
+   "o": 48.25,
+   "h": 48.25,
+   "l": 47.0,
+   "c": 47.15,
+   "v": 760207
   }
  ],
  "sr": {
-  "price": 48.55,
+  "price": 47.15,
   "resistance": [
-   48.6,
-   48.75
+   47.2,
+   47.85
   ],
   "support": [
-   48.25,
-   48.0
+   46.9,
+   46.65
   ],
   "strong_support": 43.4
  },
  "spark": [
-  48.0,
   46.85,
   47.0,
   46.45,
@@ -557,14 +556,29 @@
   49.2,
   48.35,
   48.35,
-  48.55
+  48.25,
+  47.15
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -273874,
+    "trust": 0,
+    "dealer": -1000,
+    "total": -274874
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

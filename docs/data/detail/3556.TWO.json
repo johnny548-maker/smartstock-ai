@@ -1,17 +1,9 @@
 {
  "stock": "3556.TWO",
  "name": "禾瑞亞",
- "price": 73.0,
- "change_pct": 0.69,
+ "price": 67.4,
+ "change_pct": -6.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 42.96,
-   "h": 43.35,
-   "l": 42.09,
-   "c": 42.18,
-   "v": 107148
-  },
   {
    "time": "2026-03-31",
    "o": 41.99,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 72.9,
    "h": 74.5,
-   "l": 72.5,
-   "c": 73.0,
-   "v": 542670
+   "l": 72.2,
+   "c": 72.4,
+   "v": 773108
+  },
+  {
+   "time": "2026-06-26",
+   "o": 73.1,
+   "h": 73.3,
+   "l": 67.2,
+   "c": 67.4,
+   "v": 1076534
   }
  ],
  "sr": {
-  "price": 73.0,
+  "price": 67.4,
   "resistance": [
    77.5,
    78.73
@@ -498,7 +498,6 @@
   "strong_support": 31.14
  },
  "spark": [
-  42.18,
   41.11,
   41.5,
   42.62,
@@ -557,25 +556,40 @@
   75.8,
   74.4,
   72.5,
-  73.0
+  72.4,
+  67.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -2605,
+    "trust": 0,
+    "dealer": -694,
+    "total": -3299
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.69,
+    "yield": 2.89,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3577.TWO",
  "name": "泓格",
- "price": 121.5,
- "change_pct": -2.41,
+ "price": 118.0,
+ "change_pct": -2.88,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 75.0,
-   "h": 78.0,
-   "l": 71.9,
-   "c": 72.8,
-   "v": 889305
-  },
   {
    "time": "2026-03-31",
    "o": 72.7,
@@ -482,11 +474,19 @@
    "h": 126.0,
    "l": 120.5,
    "c": 121.5,
-   "v": 207273
+   "v": 299510
+  },
+  {
+   "time": "2026-06-26",
+   "o": 121.5,
+   "h": 122.5,
+   "l": 117.5,
+   "c": 118.0,
+   "v": 251150
   }
  ],
  "sr": {
-  "price": 121.5,
+  "price": 118.0,
   "resistance": [
    173.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 44.57
  },
  "spark": [
-  72.8,
   70.3,
   71.7,
   72.3,
@@ -556,25 +555,40 @@
   123.0,
   121.0,
   124.5,
-  121.5
+  121.5,
+  118.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 37000,
+    "trust": 0,
+    "dealer": -209,
+    "total": 36791
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.61,
+    "yield": 1.69,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

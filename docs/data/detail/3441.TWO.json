@@ -1,17 +1,9 @@
 {
  "stock": "3441.TWO",
  "name": "聯一光電",
- "price": 92.0,
- "change_pct": 1.88,
+ "price": 83.6,
+ "change_pct": -9.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 29.53,
-   "h": 30.12,
-   "l": 29.53,
-   "c": 29.63,
-   "v": 62002
-  },
   {
    "time": "2026-03-31",
    "o": 29.63,
@@ -480,24 +472,31 @@
    "time": "2026-06-25",
    "o": 93.4,
    "h": 95.8,
-   "l": 91.8,
-   "c": 92.0,
-   "v": 1481291
+   "l": 91.7,
+   "c": 92.8,
+   "v": 1943228
+  },
+  {
+   "time": "2026-06-26",
+   "o": 90.1,
+   "h": 90.1,
+   "l": 83.6,
+   "c": 83.6,
+   "v": 1783710
   }
  ],
  "sr": {
-  "price": 92.0,
+  "price": 83.6,
   "resistance": [
    94.0
   ],
   "support": [
-   49.22,
-   48.38
+   81.8,
+   49.22
   ],
   "strong_support": 25.88
  },
  "spark": [
-  29.63,
   29.24,
   29.58,
   29.24,
@@ -556,25 +555,40 @@
   86.6,
   82.1,
   90.3,
-  92.0
+  92.8,
+  83.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1734,
+    "trust": 0,
+    "dealer": -125074,
+    "total": -126808
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.94,
+    "yield": 1.02,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

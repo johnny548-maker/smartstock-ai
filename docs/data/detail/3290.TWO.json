@@ -1,17 +1,9 @@
 {
  "stock": "3290.TWO",
  "name": "東浦",
- "price": 71.4,
- "change_pct": 4.23,
+ "price": 66.6,
+ "change_pct": -6.59,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 43.4,
-   "h": 43.4,
-   "l": 42.3,
-   "c": 42.5,
-   "v": 343262
-  },
   {
    "time": "2026-03-31",
    "o": 43.0,
@@ -481,12 +473,20 @@
    "o": 69.2,
    "h": 73.9,
    "l": 68.5,
-   "c": 71.4,
-   "v": 2231825
+   "c": 71.3,
+   "v": 3062058
+  },
+  {
+   "time": "2026-06-26",
+   "o": 71.5,
+   "h": 72.6,
+   "l": 66.6,
+   "c": 66.6,
+   "v": 2728918
   }
  ],
  "sr": {
-  "price": 71.4,
+  "price": 66.6,
   "resistance": [
    74.8
   ],
@@ -497,7 +497,6 @@
   "strong_support": 30.44
  },
  "spark": [
-  42.5,
   40.8,
   43.4,
   42.6,
@@ -556,25 +555,40 @@
   68.8,
   68.9,
   68.5,
-  71.4
+  71.3,
+  66.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -168348,
+    "trust": 0,
+    "dealer": -42049,
+    "total": -210397
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.19,
+    "yield": 2.25,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

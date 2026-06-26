@@ -1,17 +1,9 @@
 {
  "stock": "3230.TWO",
  "name": "錦明",
- "price": 36.2,
- "change_pct": -2.95,
+ "price": 39.85,
+ "change_pct": 9.93,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 41.6,
-   "h": 42.9,
-   "l": 40.9,
-   "c": 40.95,
-   "v": 549005
-  },
   {
    "time": "2026-03-31",
    "o": 41.4,
@@ -481,24 +473,31 @@
    "o": 37.5,
    "h": 38.5,
    "l": 35.45,
-   "c": 36.2,
-   "v": 1931758
+   "c": 36.25,
+   "v": 2495090
+  },
+  {
+   "time": "2026-06-26",
+   "o": 36.6,
+   "h": 39.85,
+   "l": 36.5,
+   "c": 39.85,
+   "v": 4481026
   }
  ],
  "sr": {
-  "price": 36.2,
+  "price": 39.85,
   "resistance": [
-   36.35,
-   38.0
+   41.1,
+   41.2
   ],
   "support": [
-   35.95,
-   34.3
+   39.6,
+   38.55
   ],
   "strong_support": 16.09
  },
  "spark": [
-  40.95,
   39.5,
   40.0,
   39.0,
@@ -557,14 +556,29 @@
   31.35,
   34.45,
   37.3,
-  36.2
+  36.25,
+  39.85
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 1259000,
+    "trust": 0,
+    "dealer": 403,
+    "total": 1259403
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

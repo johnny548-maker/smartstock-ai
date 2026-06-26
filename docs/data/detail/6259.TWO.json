@@ -1,17 +1,9 @@
 {
  "stock": "6259.TWO",
  "name": "百徽",
- "price": 38.15,
- "change_pct": 9.94,
+ "price": 41.95,
+ "change_pct": 9.96,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 17.5,
-   "h": 17.75,
-   "l": 17.5,
-   "c": 17.65,
-   "v": 30416
-  },
   {
    "time": "2026-03-31",
    "o": 17.55,
@@ -482,11 +474,19 @@
    "h": 38.15,
    "l": 38.1,
    "c": 38.15,
-   "v": 767012
+   "v": 849202
+  },
+  {
+   "time": "2026-06-26",
+   "o": 41.95,
+   "h": 41.95,
+   "l": 41.95,
+   "c": 41.95,
+   "v": 1190881
   }
  ],
  "sr": {
-  "price": 38.15,
+  "price": 41.95,
   "resistance": [],
   "support": [
    25.65,
@@ -495,7 +495,6 @@
   "strong_support": 14.6
  },
  "spark": [
-  17.65,
   17.25,
   17.3,
   17.0,
@@ -554,25 +553,40 @@
   39.35,
   36.15,
   34.7,
-  38.15
+  38.15,
+  41.95
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -15000,
+    "trust": 0,
+    "dealer": 110226,
+    "total": 95226
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.01,
+    "yield": 0.83,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

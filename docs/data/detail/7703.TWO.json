@@ -1,17 +1,9 @@
 {
  "stock": "7703.TWO",
  "name": "銳澤",
- "price": 212.0,
- "change_pct": 0.0,
+ "price": 200.5,
+ "change_pct": -6.09,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 223.05,
-   "h": 223.54,
-   "l": 211.47,
-   "c": 217.26,
-   "v": 226030
-  },
   {
    "time": "2026-03-31",
    "o": 214.85,
@@ -481,24 +473,31 @@
    "o": 216.0,
    "h": 216.0,
    "l": 208.0,
-   "c": 212.0,
-   "v": 124307
+   "c": 213.5,
+   "v": 381252
+  },
+  {
+   "time": "2026-06-26",
+   "o": 213.0,
+   "h": 213.0,
+   "l": 200.0,
+   "c": 200.5,
+   "v": 195106
   }
  ],
  "sr": {
-  "price": 212.0,
+  "price": 200.5,
   "resistance": [
-   212.43,
-   213.4
+   206.64,
+   211.0
   ],
   "support": [
-   207.6,
-   203.26
+   200.36,
+   198.91
   ],
   "strong_support": 97.87
  },
  "spark": [
-  217.26,
   204.71,
   207.6,
   216.29,
@@ -557,25 +556,40 @@
   213.0,
   203.0,
   212.0,
-  212.0
+  213.5,
+  200.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -99000,
+    "trust": 0,
+    "dealer": -206,
+    "total": -99206
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.3,
+    "yield": 3.49,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

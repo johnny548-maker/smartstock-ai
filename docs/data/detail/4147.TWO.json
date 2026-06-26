@@ -1,17 +1,9 @@
 {
  "stock": "4147.TWO",
  "name": "中裕",
- "price": 65.0,
- "change_pct": 0.78,
+ "price": 60.1,
+ "change_pct": -4.6,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 52.8,
-   "h": 54.2,
-   "l": 52.5,
-   "c": 53.8,
-   "v": 798262
-  },
   {
    "time": "2026-03-31",
    "o": 53.9,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 64.9,
    "h": 65.7,
-   "l": 63.8,
-   "c": 65.0,
-   "v": 1119646
+   "l": 62.6,
+   "c": 63.0,
+   "v": 2055059
+  },
+  {
+   "time": "2026-06-26",
+   "o": 62.9,
+   "h": 63.2,
+   "l": 59.6,
+   "c": 60.1,
+   "v": 1728601
   }
  ],
  "sr": {
-  "price": 65.0,
+  "price": 60.1,
   "resistance": [
-   66.9,
-   69.9
+   60.5,
+   62.6
   ],
   "support": [
-   63.8,
-   60.3
+   58.8,
+   55.7
   ],
   "strong_support": 47.0
  },
  "spark": [
-  53.8,
   51.3,
   56.0,
   57.1,
@@ -557,14 +556,29 @@
   57.7,
   63.4,
   64.5,
-  65.0
+  63.0,
+  60.1
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -118980,
+    "trust": 0,
+    "dealer": -73110,
+    "total": -192090
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

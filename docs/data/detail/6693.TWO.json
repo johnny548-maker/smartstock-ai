@@ -1,17 +1,9 @@
 {
  "stock": "6693.TWO",
  "name": "廣閎科",
- "price": 245.0,
- "change_pct": -2.39,
+ "price": 221.0,
+ "change_pct": -9.43,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 104.0,
-   "h": 105.5,
-   "l": 101.5,
-   "c": 104.0,
-   "v": 1022100
-  },
   {
    "time": "2026-03-31",
    "o": 105.5,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 262.0,
    "h": 262.0,
-   "l": 245.0,
-   "c": 245.0,
-   "v": 559749
+   "l": 238.0,
+   "c": 244.0,
+   "v": 835057
+  },
+  {
+   "time": "2026-06-26",
+   "o": 243.0,
+   "h": 244.0,
+   "l": 220.5,
+   "c": 221.0,
+   "v": 1038499
   }
  ],
  "sr": {
-  "price": 245.0,
+  "price": 221.0,
   "resistance": [],
   "support": [
    143.5,
@@ -495,7 +495,6 @@
   "strong_support": 51.87
  },
  "spark": [
-  104.0,
   105.0,
   106.0,
   108.0,
@@ -554,25 +553,40 @@
   236.5,
   236.5,
   251.0,
-  245.0
+  244.0,
+  221.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 118917,
+    "trust": 0,
+    "dealer": -69773,
+    "total": 49144
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.24,
+    "yield": 0.27,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

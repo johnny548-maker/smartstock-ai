@@ -1,17 +1,9 @@
 {
  "stock": "6788.TWO",
  "name": "華景電",
- "price": 443.0,
- "change_pct": -2.85,
+ "price": 422.0,
+ "change_pct": -4.74,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 357.92,
-   "h": 358.89,
-   "l": 343.93,
-   "c": 352.13,
-   "v": 1727323
-  },
   {
    "time": "2026-03-31",
    "o": 352.13,
@@ -483,13 +475,21 @@
    "l": 443.0,
    "c": 443.0,
    "v": 1384241
+  },
+  {
+   "time": "2026-06-26",
+   "o": 437.0,
+   "h": 453.0,
+   "l": 422.0,
+   "c": 422.0,
+   "v": 908539
   }
  ],
  "sr": {
-  "price": 443.0,
+  "price": 422.0,
   "resistance": [
-   469.83,
-   475.0
+   422.56,
+   469.83
   ],
   "support": [
    405.19,
@@ -498,7 +498,6 @@
   "strong_support": 129.52
  },
  "spark": [
-  352.13,
   339.59,
   350.2,
   360.33,
@@ -557,14 +556,29 @@
   443.5,
   429.0,
   456.0,
-  443.0
+  443.0,
+  422.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -40522,
+    "trust": -1000,
+    "dealer": -27586,
+    "total": -69108
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

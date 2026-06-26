@@ -1,17 +1,9 @@
 {
  "stock": "6509.TWO",
  "name": "聚和",
- "price": 48.1,
- "change_pct": -1.13,
+ "price": 47.3,
+ "change_pct": -1.56,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 45.1,
-   "h": 46.15,
-   "l": 44.15,
-   "c": 45.6,
-   "v": 4381324
-  },
   {
    "time": "2026-03-31",
    "o": 45.45,
@@ -481,15 +473,23 @@
    "o": 48.9,
    "h": 48.95,
    "l": 47.7,
-   "c": 48.1,
-   "v": 979848
+   "c": 48.05,
+   "v": 1497572
+  },
+  {
+   "time": "2026-06-26",
+   "o": 48.05,
+   "h": 48.5,
+   "l": 47.3,
+   "c": 47.3,
+   "v": 1543248
   }
  ],
  "sr": {
-  "price": 48.1,
+  "price": 47.3,
   "resistance": [
-   48.25,
-   48.9
+   47.8,
+   48.25
   ],
   "support": [
    44.55,
@@ -498,7 +498,6 @@
   "strong_support": 24.28
  },
  "spark": [
-  45.6,
   44.4,
   46.05,
   44.65,
@@ -557,25 +556,40 @@
   48.35,
   48.45,
   48.65,
-  48.1
+  48.05,
+  47.3
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 189000,
+    "trust": 0,
+    "dealer": -27338,
+    "total": 161662
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.88,
+    "yield": 2.96,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

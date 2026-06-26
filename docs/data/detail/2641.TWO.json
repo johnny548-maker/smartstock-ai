@@ -1,17 +1,9 @@
 {
  "stock": "2641.TWO",
  "name": "正德",
- "price": 18.1,
- "change_pct": 0.28,
+ "price": 17.6,
+ "change_pct": -2.22,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 17.42,
-   "h": 17.66,
-   "l": 17.42,
-   "c": 17.52,
-   "v": 1147462
-  },
   {
    "time": "2026-03-31",
    "o": 17.52,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 18.15,
    "h": 18.2,
-   "l": 18.05,
-   "c": 18.1,
-   "v": 525597
+   "l": 18.0,
+   "c": 18.0,
+   "v": 1190365
+  },
+  {
+   "time": "2026-06-26",
+   "o": 18.0,
+   "h": 18.0,
+   "l": 17.6,
+   "c": 17.6,
+   "v": 2164300
   }
  ],
  "sr": {
-  "price": 18.1,
+  "price": 17.6,
   "resistance": [
-   18.1,
-   18.18
+   17.76,
+   18.01
   ],
   "support": [
-   18.05,
-   17.94
+   17.42,
+   17.37
   ],
   "strong_support": 15.43
  },
  "spark": [
-  17.52,
   17.18,
   17.62,
   17.42,
@@ -557,25 +556,40 @@
   18.2,
   18.15,
   18.05,
-  18.1
+  18.0,
+  17.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -549800,
+    "trust": 0,
+    "dealer": -28064,
+    "total": -577864
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.77,
+    "yield": 2.84,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

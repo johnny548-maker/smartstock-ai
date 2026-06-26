@@ -1,17 +1,9 @@
 {
  "stock": "6547.TWO",
  "name": "高端疫苗",
- "price": 45.75,
- "change_pct": -0.76,
+ "price": 45.45,
+ "change_pct": -0.44,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 56.0,
-   "h": 58.9,
-   "l": 56.0,
-   "c": 58.5,
-   "v": 3642890
-  },
   {
    "time": "2026-03-31",
    "o": 60.3,
@@ -481,15 +473,23 @@
    "o": 46.6,
    "h": 46.65,
    "l": 45.5,
-   "c": 45.75,
-   "v": 748176
+   "c": 45.65,
+   "v": 1173081
+  },
+  {
+   "time": "2026-06-26",
+   "o": 45.75,
+   "h": 46.4,
+   "l": 45.0,
+   "c": 45.45,
+   "v": 1700736
   }
  ],
  "sr": {
-  "price": 45.75,
+  "price": 45.45,
   "resistance": [
    45.9,
-   48.0
+   47.3
   ],
   "support": [
    45.25,
@@ -498,7 +498,6 @@
   "strong_support": 33.5
  },
  "spark": [
-  58.5,
   57.3,
   58.7,
   58.8,
@@ -557,14 +556,29 @@
   45.1,
   45.4,
   46.1,
-  45.75
+  45.65,
+  45.45
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 142120,
+    "trust": 0,
+    "dealer": 9239,
+    "total": 151359
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

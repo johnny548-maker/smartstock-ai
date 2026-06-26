@@ -1,17 +1,9 @@
 {
  "stock": "3372.TWO",
  "name": "典範",
- "price": 22.15,
- "change_pct": -3.7,
+ "price": 20.25,
+ "change_pct": -7.53,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 19.5,
-   "h": 19.85,
-   "l": 19.1,
-   "c": 19.35,
-   "v": 791081
-  },
   {
    "time": "2026-03-31",
    "o": 19.35,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 23.0,
    "h": 23.0,
-   "l": 22.05,
-   "c": 22.15,
-   "v": 1482110
+   "l": 21.9,
+   "c": 21.9,
+   "v": 2214651
+  },
+  {
+   "time": "2026-06-26",
+   "o": 21.65,
+   "h": 21.9,
+   "l": 20.2,
+   "c": 20.25,
+   "v": 2061844
   }
  ],
  "sr": {
-  "price": 22.15,
+  "price": 20.25,
   "resistance": [
-   22.95,
-   23.7
+   20.4,
+   20.45
   ],
   "support": [
-   21.95,
-   21.7
+   20.0,
+   19.75
   ],
   "strong_support": 10.1
  },
  "spark": [
-  19.35,
   18.5,
   19.0,
   18.7,
@@ -557,14 +556,29 @@
   21.5,
   23.5,
   23.0,
-  22.15
+  21.9,
+  20.25
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 190754,
+    "trust": 0,
+    "dealer": -1513,
+    "total": 189241
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

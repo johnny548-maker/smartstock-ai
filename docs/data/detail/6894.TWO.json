@@ -1,17 +1,9 @@
 {
  "stock": "6894.TWO",
  "name": "衛司特",
- "price": 376.0,
- "change_pct": -0.27,
+ "price": 352.5,
+ "change_pct": -6.25,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 340.0,
-   "h": 340.0,
-   "l": 329.0,
-   "c": 333.0,
-   "v": 246102
-  },
   {
    "time": "2026-03-31",
    "o": 328.5,
@@ -482,23 +474,30 @@
    "h": 382.0,
    "l": 371.0,
    "c": 376.0,
-   "v": 26647
+   "v": 32005
+  },
+  {
+   "time": "2026-06-26",
+   "o": 372.0,
+   "h": 372.0,
+   "l": 350.5,
+   "c": 352.5,
+   "v": 97000
   }
  ],
  "sr": {
-  "price": 376.0,
+  "price": 352.5,
   "resistance": [
-   379.0,
-   387.01
+   367.0,
+   379.0
   ],
   "support": [
-   360.0,
-   335.7
+   335.7,
+   327.0
   ],
   "strong_support": 129.55
  },
  "spark": [
-  333.0,
   300.0,
   320.5,
   312.5,
@@ -557,25 +556,40 @@
   396.5,
   377.5,
   377.0,
-  376.0
+  376.0,
+  352.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -40000,
+    "trust": 0,
+    "dealer": -195,
+    "total": -40195
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.25,
+    "yield": 2.41,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

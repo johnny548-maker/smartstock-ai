@@ -1,17 +1,9 @@
 {
  "stock": "6651.TWO",
  "name": "全宇昕",
- "price": 153.5,
- "change_pct": -5.25,
+ "price": 147.5,
+ "change_pct": -3.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 87.5,
-   "h": 87.5,
-   "l": 86.0,
-   "c": 86.0,
-   "v": 59050
-  },
   {
    "time": "2026-03-31",
    "o": 86.0,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 161.0,
    "h": 161.0,
-   "l": 152.5,
+   "l": 151.0,
    "c": 153.5,
-   "v": 325396
+   "v": 463120
+  },
+  {
+   "time": "2026-06-26",
+   "o": 152.0,
+   "h": 158.0,
+   "l": 145.0,
+   "c": 147.5,
+   "v": 483123
   }
  ],
  "sr": {
-  "price": 153.5,
+  "price": 147.5,
   "resistance": [
    162.0,
    170.5
@@ -498,7 +498,6 @@
   "strong_support": 55.88
  },
  "spark": [
-  86.0,
   80.6,
   85.0,
   87.8,
@@ -557,25 +556,40 @@
   163.0,
   153.0,
   162.0,
-  153.5
+  153.5,
+  147.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 129000,
+    "trust": 0,
+    "dealer": 0,
+    "total": 129000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.47,
+    "yield": 2.71,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

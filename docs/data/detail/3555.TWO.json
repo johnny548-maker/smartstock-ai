@@ -1,17 +1,9 @@
 {
  "stock": "3555.TWO",
  "name": "博士旺",
- "price": 189.0,
- "change_pct": -1.82,
+ "price": 175.5,
+ "change_pct": -5.9,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 150.5,
-   "h": 154.0,
-   "l": 148.5,
-   "c": 152.5,
-   "v": 65941
-  },
   {
    "time": "2026-03-31",
    "o": 148.0,
@@ -481,24 +473,31 @@
    "o": 194.5,
    "h": 194.5,
    "l": 186.0,
-   "c": 189.0,
-   "v": 67403
+   "c": 186.5,
+   "v": 92026
+  },
+  {
+   "time": "2026-06-26",
+   "o": 187.0,
+   "h": 187.0,
+   "l": 175.5,
+   "c": 175.5,
+   "v": 97040
   }
  ],
  "sr": {
-  "price": 189.0,
+  "price": 175.5,
   "resistance": [
    211.5,
-   239.5
+   214.0
   ],
   "support": [
-   177.0,
-   145.5
+   145.5,
+   109.0
   ],
   "strong_support": 22.5
  },
  "spark": [
-  152.5,
   149.0,
   157.0,
   150.0,
@@ -557,14 +556,29 @@
   202.0,
   202.0,
   192.5,
-  189.0
+  186.5,
+  175.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 2100,
+    "trust": 0,
+    "dealer": -1094,
+    "total": 1006
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

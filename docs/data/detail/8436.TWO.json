@@ -1,17 +1,9 @@
 {
  "stock": "8436.TWO",
  "name": "大江",
- "price": 117.5,
- "change_pct": 0.86,
+ "price": 114.5,
+ "change_pct": -2.55,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 123.0,
-   "h": 128.5,
-   "l": 123.0,
-   "c": 127.0,
-   "v": 564141
-  },
   {
    "time": "2026-03-31",
    "o": 127.0,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 117.5,
-   "h": 117.5,
+   "h": 118.0,
    "l": 116.5,
    "c": 117.5,
-   "v": 121398
+   "v": 190604
+  },
+  {
+   "time": "2026-06-26",
+   "o": 117.0,
+   "h": 117.0,
+   "l": 114.0,
+   "c": 114.5,
+   "v": 590300
   }
  ],
  "sr": {
-  "price": 117.5,
+  "price": 114.5,
   "resistance": [
-   118.06,
-   118.52
+   115.74,
+   116.2
   ],
   "support": [
-   116.2,
-   116.0
+   113.89,
+   113.0
   ],
   "strong_support": 104.17
  },
  "spark": [
-  127.0,
   125.5,
   127.0,
   127.0,
@@ -557,25 +556,40 @@
   117.5,
   117.0,
   116.5,
-  117.5
+  117.5,
+  114.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -207000,
+    "trust": -89133,
+    "dealer": -2971,
+    "total": -299104
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.15,
+    "yield": 5.24,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3402.TWO",
  "name": "漢科",
- "price": 147.0,
- "change_pct": 3.89,
+ "price": 140.5,
+ "change_pct": -6.02,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 118.5,
-   "h": 118.5,
-   "l": 115.0,
-   "c": 117.0,
-   "v": 643035
-  },
   {
    "time": "2026-03-31",
    "o": 116.5,
@@ -479,17 +471,25 @@
   {
    "time": "2026-06-25",
    "o": 142.5,
-   "h": 148.5,
+   "h": 150.0,
    "l": 141.0,
-   "c": 147.0,
-   "v": 1160456
+   "c": 149.5,
+   "v": 2195163
+  },
+  {
+   "time": "2026-06-26",
+   "o": 148.5,
+   "h": 149.5,
+   "l": 140.5,
+   "c": 140.5,
+   "v": 1221320
   }
  ],
  "sr": {
-  "price": 147.0,
+  "price": 140.5,
   "resistance": [
-   148.5,
-   151.5
+   142.5,
+   143.5
   ],
   "support": [
    136.5,
@@ -498,7 +498,6 @@
   "strong_support": 67.23
  },
  "spark": [
-  117.0,
   113.5,
   115.5,
   115.0,
@@ -557,25 +556,40 @@
   142.0,
   139.5,
   141.5,
-  147.0
+  149.5,
+  140.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -188672,
+    "trust": 0,
+    "dealer": -5424,
+    "total": -194096
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.24,
+    "yield": 4.27,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

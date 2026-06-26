@@ -1,17 +1,9 @@
 {
  "stock": "4931.TWO",
  "name": "新盛力",
- "price": 257.0,
- "change_pct": 0.0,
+ "price": 231.5,
+ "change_pct": -9.92,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 143.0,
-   "h": 147.0,
-   "l": 139.0,
-   "c": 139.5,
-   "v": 3817510
-  },
   {
    "time": "2026-03-31",
    "o": 138.5,
@@ -483,12 +475,21 @@
    "l": 253.5,
    "c": 257.0,
    "v": 3218106
+  },
+  {
+   "time": "2026-06-26",
+   "o": 255.0,
+   "h": 256.5,
+   "l": 231.5,
+   "c": 231.5,
+   "v": 5515403
   }
  ],
  "sr": {
-  "price": 257.0,
+  "price": 231.5,
   "resistance": [
-   287.0
+   238.0,
+   283.0
   ],
   "support": [
    223.0,
@@ -497,7 +498,6 @@
   "strong_support": 23.17
  },
  "spark": [
-  139.5,
   130.5,
   136.5,
   130.5,
@@ -556,14 +556,29 @@
   267.0,
   261.5,
   257.0,
-  257.0
+  257.0,
+  231.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 195982,
+    "trust": 0,
+    "dealer": -81966,
+    "total": 114016
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

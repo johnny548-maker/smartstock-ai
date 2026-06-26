@@ -1,17 +1,9 @@
 {
  "stock": "5291.TWO",
  "name": "邑昇",
- "price": 60.2,
- "change_pct": -0.82,
+ "price": 55.9,
+ "change_pct": -5.57,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 75.0,
-   "h": 79.7,
-   "l": 70.0,
-   "c": 77.7,
-   "v": 5774458
-  },
   {
    "time": "2026-03-31",
    "o": 79.1,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 61.0,
    "h": 61.6,
-   "l": 60.2,
-   "c": 60.2,
-   "v": 120585
+   "l": 59.0,
+   "c": 59.2,
+   "v": 290005
+  },
+  {
+   "time": "2026-06-26",
+   "o": 58.6,
+   "h": 59.0,
+   "l": 55.4,
+   "c": 55.9,
+   "v": 455006
   }
  ],
  "sr": {
-  "price": 60.2,
+  "price": 55.9,
   "resistance": [
    62.3,
    70.6
@@ -498,7 +498,6 @@
   "strong_support": 18.7
  },
  "spark": [
-  77.7,
   75.7,
   78.0,
   71.9,
@@ -557,14 +556,29 @@
   64.21,
   62.33,
   60.7,
-  60.2
+  59.2,
+  55.9
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 45000,
+    "trust": 0,
+    "dealer": -4824,
+    "total": 40176
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

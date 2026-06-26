@@ -1,17 +1,9 @@
 {
  "stock": "4966.TWO",
  "name": "譜瑞-KY",
- "price": 658.0,
- "change_pct": -0.9,
+ "price": 608.0,
+ "change_pct": -7.6,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 480.94,
-   "h": 487.81,
-   "l": 476.04,
-   "c": 476.04,
-   "v": 583106
-  },
   {
    "time": "2026-03-31",
    "o": 474.07,
@@ -483,22 +475,29 @@
    "l": 655.0,
    "c": 658.0,
    "v": 1377633
+  },
+  {
+   "time": "2026-06-26",
+   "o": 653.0,
+   "h": 654.0,
+   "l": 602.0,
+   "c": 608.0,
+   "v": 2574174
   }
  ],
  "sr": {
-  "price": 658.0,
+  "price": 608.0,
   "resistance": [
-   660.0,
-   663.5
+   641.91,
+   657.62
   ],
   "support": [
-   650.36,
-   650.0
+   578.26,
+   565.37
   ],
   "strong_support": 435.91
  },
  "spark": [
-  476.04,
   467.2,
   473.09,
   463.5,
@@ -557,14 +556,29 @@
   695.0,
   661.0,
   664.0,
-  658.0
+  658.0,
+  608.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 502898,
+    "trust": -544000,
+    "dealer": -72553,
+    "total": -113655
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

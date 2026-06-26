@@ -1,17 +1,9 @@
 {
  "stock": "5439.TWO",
  "name": "高技",
- "price": 323.0,
- "change_pct": 0.78,
+ "price": 302.5,
+ "change_pct": -6.35,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 297.0,
-   "h": 310.0,
-   "l": 291.0,
-   "c": 292.5,
-   "v": 4289280
-  },
   {
    "time": "2026-03-31",
    "o": 290.0,
@@ -483,22 +475,29 @@
    "l": 319.5,
    "c": 323.0,
    "v": 1400167
+  },
+  {
+   "time": "2026-06-26",
+   "o": 323.0,
+   "h": 323.0,
+   "l": 302.5,
+   "c": 302.5,
+   "v": 1971268
   }
  ],
  "sr": {
-  "price": 323.0,
+  "price": 302.5,
   "resistance": [
-   326.0,
-   329.5
+   311.0,
+   311.5
   ],
   "support": [
-   315.5,
-   306.5
+   300.5,
+   299.0
   ],
   "strong_support": 67.99
  },
  "spark": [
-  292.5,
   268.0,
   282.5,
   276.5,
@@ -557,14 +556,29 @@
   336.0,
   321.5,
   320.5,
-  323.0
+  323.0,
+  302.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -128678,
+    "trust": 0,
+    "dealer": -33240,
+    "total": -161918
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

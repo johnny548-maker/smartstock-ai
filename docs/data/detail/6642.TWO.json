@@ -1,17 +1,9 @@
 {
  "stock": "6642.TWO",
  "name": "富致",
- "price": 83.7,
- "change_pct": -3.35,
+ "price": 79.8,
+ "change_pct": -4.55,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 53.2,
-   "h": 53.9,
-   "l": 53.0,
-   "c": 53.9,
-   "v": 57000
-  },
   {
    "time": "2026-03-31",
    "o": 53.9,
@@ -481,12 +473,20 @@
    "o": 86.6,
    "h": 86.8,
    "l": 83.1,
-   "c": 83.7,
-   "v": 275474
+   "c": 83.6,
+   "v": 390530
+  },
+  {
+   "time": "2026-06-26",
+   "o": 83.9,
+   "h": 84.1,
+   "l": 79.8,
+   "c": 79.8,
+   "v": 413800
   }
  ],
  "sr": {
-  "price": 83.7,
+  "price": 79.8,
   "resistance": [
    92.9,
    94.0
@@ -498,7 +498,6 @@
   "strong_support": 47.74
  },
  "spark": [
-  53.9,
   53.2,
   53.8,
   53.1,
@@ -557,25 +556,40 @@
   90.6,
   87.6,
   86.6,
-  83.7
+  83.6,
+  79.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 28000,
+    "trust": 0,
+    "dealer": 0,
+    "total": 28000
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.08,
+    "yield": 2.26,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

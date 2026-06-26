@@ -1,17 +1,9 @@
 {
  "stock": "6735.TWO",
  "name": "美達科技",
- "price": 94.7,
- "change_pct": 0.53,
+ "price": 87.6,
+ "change_pct": -5.81,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 58.1,
-   "h": 58.1,
-   "l": 56.0,
-   "c": 56.9,
-   "v": 21000
-  },
   {
    "time": "2026-03-31",
    "o": 55.6,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 96.2,
    "h": 97.3,
-   "l": 94.1,
-   "c": 94.7,
-   "v": 250095
+   "l": 93.0,
+   "c": 93.0,
+   "v": 353000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 91.4,
+   "h": 93.7,
+   "l": 87.6,
+   "c": 87.6,
+   "v": 536018
   }
  ],
  "sr": {
-  "price": 94.7,
+  "price": 87.6,
   "resistance": [
    96.2,
-   114.5
+   102.0
   ],
   "support": [
-   88.0,
-   87.4
+   87.4,
+   74.96
   ],
   "strong_support": 37.52
  },
  "spark": [
-  56.9,
   55.3,
   56.8,
   62.4,
@@ -557,25 +556,40 @@
   93.0,
   96.3,
   94.2,
-  94.7
+  93.0,
+  87.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -82978,
+    "trust": 0,
+    "dealer": -292,
+    "total": -83270
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.74,
+    "yield": 0.8,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

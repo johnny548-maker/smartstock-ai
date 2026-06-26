@@ -1,17 +1,9 @@
 {
  "stock": "3581.TWO",
  "name": "博磊",
- "price": 152.0,
- "change_pct": -0.65,
+ "price": 141.0,
+ "change_pct": -9.9,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 70.6,
-   "h": 71.2,
-   "l": 67.8,
-   "c": 69.9,
-   "v": 1011000
-  },
   {
    "time": "2026-03-31",
    "o": 68.6,
@@ -480,13 +472,21 @@
    "time": "2026-06-25",
    "o": 159.0,
    "h": 159.0,
-   "l": 149.0,
-   "c": 152.0,
-   "v": 154076
+   "l": 148.0,
+   "c": 156.5,
+   "v": 296010
+  },
+  {
+   "time": "2026-06-26",
+   "o": 145.0,
+   "h": 149.0,
+   "l": 141.0,
+   "c": 141.0,
+   "v": 1700052
   }
  ],
  "sr": {
-  "price": 152.0,
+  "price": 141.0,
   "resistance": [
    187.5,
    242.0
@@ -498,7 +498,6 @@
   "strong_support": 24.56
  },
  "spark": [
-  69.9,
   66.8,
   67.8,
   65.8,
@@ -557,25 +556,40 @@
   178.0,
   162.0,
   153.0,
-  152.0
+  156.5,
+  141.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 17000,
+    "trust": 0,
+    "dealer": -28391,
+    "total": -11391
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.39,
+    "yield": 0.43,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

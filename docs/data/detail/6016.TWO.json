@@ -1,17 +1,9 @@
 {
  "stock": "6016.TWO",
  "name": "康和證",
- "price": 28.5,
- "change_pct": 0.18,
+ "price": 27.4,
+ "change_pct": -3.35,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 16.9,
-   "h": 17.0,
-   "l": 16.55,
-   "c": 16.6,
-   "v": 5175673
-  },
   {
    "time": "2026-03-31",
    "o": 16.5,
@@ -481,13 +473,22 @@
    "o": 28.75,
    "h": 28.9,
    "l": 28.25,
-   "c": 28.5,
-   "v": 5575392
+   "c": 28.35,
+   "v": 7581417
+  },
+  {
+   "time": "2026-06-26",
+   "o": 28.25,
+   "h": 28.3,
+   "l": 27.3,
+   "c": 27.4,
+   "v": 8619970
   }
  ],
  "sr": {
-  "price": 28.5,
+  "price": 27.4,
   "resistance": [
+   30.7,
    36.5
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 9.73
  },
  "spark": [
-  16.6,
   16.35,
   16.85,
   16.45,
@@ -556,25 +556,40 @@
   29.75,
   29.15,
   28.45,
-  28.5
+  28.35,
+  27.4
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -2157967,
+    "trust": 0,
+    "dealer": 0,
+    "total": -2157967
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.94,
+    "yield": 5.13,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

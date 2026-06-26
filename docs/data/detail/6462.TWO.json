@@ -1,17 +1,9 @@
 {
  "stock": "6462.TWO",
  "name": "神盾",
- "price": 124.5,
- "change_pct": -7.09,
+ "price": 116.5,
+ "change_pct": -6.43,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 103.5,
-   "h": 104.0,
-   "l": 101.5,
-   "c": 101.5,
-   "v": 365029
-  },
   {
    "time": "2026-03-31",
    "o": 101.5,
@@ -483,22 +475,29 @@
    "l": 123.5,
    "c": 124.5,
    "v": 5701113
+  },
+  {
+   "time": "2026-06-26",
+   "o": 122.5,
+   "h": 127.0,
+   "l": 116.0,
+   "c": 116.5,
+   "v": 2457812
   }
  ],
  "sr": {
-  "price": 124.5,
+  "price": 116.5,
   "resistance": [
-   129.5,
-   130.5
+   119.5,
+   120.0
   ],
   "support": [
-   122.5,
-   122.0
+   116.0,
+   115.5
   ],
   "strong_support": 81.2
  },
  "spark": [
-  101.5,
   97.8,
   107.5,
   109.0,
@@ -557,14 +556,29 @@
   122.0,
   122.0,
   134.0,
-  124.5
+  124.5,
+  116.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -193681,
+    "trust": 2000,
+    "dealer": -40592,
+    "total": -232273
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",

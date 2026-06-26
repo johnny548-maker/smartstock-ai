@@ -1,17 +1,9 @@
 {
  "stock": "6469.TWO",
  "name": "大樹",
- "price": 74.1,
- "change_pct": 0.41,
+ "price": 72.8,
+ "change_pct": -1.62,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 81.8,
-   "h": 83.4,
-   "l": 81.3,
-   "c": 82.4,
-   "v": 334236
-  },
   {
    "time": "2026-03-31",
    "o": 82.8,
@@ -481,24 +473,31 @@
    "o": 74.5,
    "h": 74.6,
    "l": 73.1,
-   "c": 74.1,
-   "v": 176682
+   "c": 74.0,
+   "v": 228300
+  },
+  {
+   "time": "2026-06-26",
+   "o": 73.6,
+   "h": 73.9,
+   "l": 72.6,
+   "c": 72.8,
+   "v": 358548
   }
  ],
  "sr": {
-  "price": 74.1,
+  "price": 72.8,
   "resistance": [
    77.2,
    79.7
   ],
   "support": [
-   74.0,
-   69.2
+   69.2,
+   68.8
   ],
   "strong_support": 68.8
  },
  "spark": [
-  82.4,
   81.2,
   82.1,
   82.0,
@@ -557,25 +556,40 @@
   74.3,
   74.1,
   73.8,
-  74.1
+  74.0,
+  72.8
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -37312,
+    "trust": 0,
+    "dealer": -6441,
+    "total": -43753
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.09,
+    "yield": 5.16,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "8390.TWO",
  "name": "金益鼎",
- "price": 107.5,
- "change_pct": -0.92,
+ "price": 104.0,
+ "change_pct": -3.7,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 90.9,
-   "h": 92.3,
-   "l": 88.8,
-   "c": 89.6,
-   "v": 656126
-  },
   {
    "time": "2026-03-31",
    "o": 90.0,
@@ -481,24 +473,31 @@
    "o": 108.0,
    "h": 109.0,
    "l": 106.5,
-   "c": 107.5,
-   "v": 338991
+   "c": 108.0,
+   "v": 573708
+  },
+  {
+   "time": "2026-06-26",
+   "o": 108.0,
+   "h": 108.0,
+   "l": 103.0,
+   "c": 104.0,
+   "v": 546802
   }
  ],
  "sr": {
-  "price": 107.5,
+  "price": 104.0,
   "resistance": [
-   108.0,
-   109.0
+   105.0,
+   107.0
   ],
   "support": [
-   107.0,
-   92.5
+   92.5,
+   91.8
   ],
   "strong_support": 47.78
  },
  "spark": [
-  89.6,
   88.5,
   90.6,
   88.8,
@@ -557,25 +556,40 @@
   116.0,
   113.5,
   108.5,
-  107.5
+  108.0,
+  104.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -111511,
+    "trust": 0,
+    "dealer": -28828,
+    "total": -140339
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.5,
+    "yield": 3.65,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

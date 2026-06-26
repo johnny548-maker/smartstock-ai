@@ -1,17 +1,9 @@
 {
  "stock": "7744.TWO",
  "name": "崴寶",
- "price": 449.0,
- "change_pct": -0.88,
+ "price": 441.0,
+ "change_pct": -2.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 450.65,
-   "h": 450.65,
-   "l": 428.47,
-   "c": 430.93,
-   "v": 39100
-  },
   {
    "time": "2026-03-31",
    "o": 428.96,
@@ -481,12 +473,20 @@
    "o": 453.5,
    "h": 454.0,
    "l": 441.0,
-   "c": 449.0,
-   "v": 22991
+   "c": 450.0,
+   "v": 29000
+  },
+  {
+   "time": "2026-06-26",
+   "o": 448.5,
+   "h": 456.0,
+   "l": 435.0,
+   "c": 441.0,
+   "v": 89067
   }
  ],
  "sr": {
-  "price": 449.0,
+  "price": 441.0,
   "resistance": [
    482.7,
    486.15
@@ -498,7 +498,6 @@
   "strong_support": 124.55
  },
  "spark": [
-  430.93,
   416.14,
   428.96,
   432.41,
@@ -557,25 +556,40 @@
   476.0,
   454.0,
   453.0,
-  449.0
+  450.0,
+  441.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -453,
+    "trust": 0,
+    "dealer": -3817,
+    "total": -4270
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.55,
+    "yield": 1.59,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

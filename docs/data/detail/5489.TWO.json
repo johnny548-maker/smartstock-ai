@@ -1,17 +1,9 @@
 {
  "stock": "5489.TWO",
  "name": "彩富",
- "price": 67.8,
- "change_pct": 9.53,
+ "price": 62.5,
+ "change_pct": -7.82,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 40.0,
-   "h": 40.0,
-   "l": 39.1,
-   "c": 39.8,
-   "v": 12000
-  },
   {
    "time": "2026-03-31",
    "o": 39.6,
@@ -482,11 +474,19 @@
    "h": 68.0,
    "l": 64.1,
    "c": 67.8,
-   "v": 2950501
+   "v": 3505300
+  },
+  {
+   "time": "2026-06-26",
+   "o": 66.0,
+   "h": 66.0,
+   "l": 62.5,
+   "c": 62.5,
+   "v": 636500
   }
  ],
  "sr": {
-  "price": 67.8,
+  "price": 62.5,
   "resistance": [],
   "support": [
    52.04,
@@ -495,7 +495,6 @@
   "strong_support": 35.75
  },
  "spark": [
-  39.8,
   39.5,
   39.5,
   39.35,
@@ -554,25 +553,40 @@
   51.2,
   56.3,
   61.9,
-  67.8
+  67.8,
+  62.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -7000,
+    "trust": 0,
+    "dealer": 4252,
+    "total": -2748
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.42,
+    "yield": 2.4,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

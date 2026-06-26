@@ -1,17 +1,9 @@
 {
  "stock": "3689.TWO",
  "name": "湧德",
- "price": 117.5,
- "change_pct": -0.42,
+ "price": 112.5,
+ "change_pct": -4.66,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 114.0,
-   "h": 115.5,
-   "l": 110.0,
-   "c": 110.5,
-   "v": 3392441
-  },
   {
    "time": "2026-03-31",
    "o": 110.0,
@@ -481,24 +473,31 @@
    "o": 118.5,
    "h": 119.0,
    "l": 116.5,
-   "c": 117.5,
-   "v": 621138
+   "c": 118.0,
+   "v": 1004700
+  },
+  {
+   "time": "2026-06-26",
+   "o": 118.0,
+   "h": 118.0,
+   "l": 112.0,
+   "c": 112.5,
+   "v": 1772912
   }
  ],
  "sr": {
-  "price": 117.5,
+  "price": 112.5,
   "resistance": [
-   118.5,
-   121.5
+   114.0,
+   117.0
   ],
   "support": [
-   115.5,
-   114.5
+   110.0,
+   107.5
   ],
   "strong_support": 58.7
  },
  "spark": [
-  110.5,
   106.0,
   112.5,
   113.0,
@@ -557,25 +556,40 @@
   120.5,
   118.0,
   118.0,
-  117.5
+  118.0,
+  112.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -677000,
+    "trust": 0,
+    "dealer": -47839,
+    "total": -724839
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.1,
+    "yield": 3.25,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

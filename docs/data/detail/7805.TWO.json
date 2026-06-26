@@ -1,17 +1,9 @@
 {
  "stock": "7805.TWO",
  "name": "威聯通",
- "price": 679.0,
- "change_pct": 0.15,
+ "price": 657.0,
+ "change_pct": -2.67,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 687.0,
-   "h": 687.0,
-   "l": 672.0,
-   "c": 674.0,
-   "v": 67100
-  },
   {
    "time": "2026-03-31",
    "o": 670.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 681.0,
    "h": 686.0,
-   "l": 676.0,
-   "c": 679.0,
-   "v": 41270
+   "l": 674.0,
+   "c": 675.0,
+   "v": 59342
+  },
+  {
+   "time": "2026-06-26",
+   "o": 671.0,
+   "h": 674.0,
+   "l": 656.0,
+   "c": 657.0,
+   "v": 115126
   }
  ],
  "sr": {
-  "price": 679.0,
+  "price": 657.0,
   "resistance": [
-   680.06,
-   688.0
+   668.72,
+   669.67
   ],
   "support": [
-   678.0,
-   675.0
+   653.0,
+   651.0
   ],
   "strong_support": 500.6
  },
  "spark": [
-  674.0,
   664.0,
   690.0,
   674.0,
@@ -557,25 +556,40 @@
   687.0,
   678.0,
   678.0,
-  679.0
+  675.0,
+  657.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -31700,
+    "trust": 0,
+    "dealer": -1271,
+    "total": -32971
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 5.9,
+    "yield": 6.09,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

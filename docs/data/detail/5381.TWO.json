@@ -1,17 +1,9 @@
 {
  "stock": "5381.TWO",
  "name": "光譜",
- "price": 29.8,
- "change_pct": -1.97,
+ "price": 28.1,
+ "change_pct": -4.75,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 26.53,
-   "h": 27.12,
-   "l": 26.41,
-   "c": 26.47,
-   "v": 1087852
-  },
   {
    "time": "2026-03-31",
    "o": 26.47,
@@ -481,24 +473,31 @@
    "o": 30.4,
    "h": 30.5,
    "l": 29.5,
-   "c": 29.8,
-   "v": 1389009
+   "c": 29.5,
+   "v": 1923550
+  },
+  {
+   "time": "2026-06-26",
+   "o": 29.3,
+   "h": 29.3,
+   "l": 28.1,
+   "c": 28.1,
+   "v": 1559409
   }
  ],
  "sr": {
-  "price": 29.8,
+  "price": 28.1,
   "resistance": [
-   30.0,
-   30.29
+   28.18,
+   28.53
   ],
   "support": [
-   29.59,
-   29.41
+   27.65,
+   26.88
   ],
   "strong_support": 19.06
  },
  "spark": [
-  26.47,
   26.47,
   26.47,
   26.47,
@@ -557,14 +556,29 @@
   29.2,
   28.2,
   30.4,
-  29.8
+  29.5,
+  28.1
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -221621,
+    "trust": 0,
+    "dealer": 0,
+    "total": -221621
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6026.TWO",
  "name": "福邦證",
- "price": 16.8,
- "change_pct": 0.0,
+ "price": 16.55,
+ "change_pct": -1.19,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 14.55,
-   "h": 14.6,
-   "l": 14.4,
-   "c": 14.5,
-   "v": 1504052
-  },
   {
    "time": "2026-03-31",
    "o": 14.55,
@@ -481,15 +473,23 @@
    "o": 16.95,
    "h": 16.95,
    "l": 16.7,
-   "c": 16.8,
-   "v": 1610797
+   "c": 16.75,
+   "v": 3246428
+  },
+  {
+   "time": "2026-06-26",
+   "o": 16.75,
+   "h": 16.8,
+   "l": 16.4,
+   "c": 16.55,
+   "v": 6303495
   }
  ],
  "sr": {
-  "price": 16.8,
+  "price": 16.55,
   "resistance": [
    17.0,
-   18.0
+   17.35
   ],
   "support": [
    16.25,
@@ -498,7 +498,6 @@
   "strong_support": 10.05
  },
  "spark": [
-  14.5,
   14.45,
   14.8,
   14.65,
@@ -557,25 +556,40 @@
   17.15,
   16.95,
   16.8,
-  16.8
+  16.75,
+  16.55
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -2791982,
+    "trust": 0,
+    "dealer": 0,
+    "total": -2791982
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 8.12,
+    "yield": 8.24,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

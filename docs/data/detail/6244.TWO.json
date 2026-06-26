@@ -1,17 +1,9 @@
 {
  "stock": "6244.TWO",
  "name": "茂迪",
- "price": 28.1,
- "change_pct": 0.72,
+ "price": 26.0,
+ "change_pct": -5.63,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 27.1,
-   "h": 27.7,
-   "l": 26.8,
-   "c": 27.65,
-   "v": 6279538
-  },
   {
    "time": "2026-03-31",
    "o": 27.35,
@@ -481,24 +473,31 @@
    "o": 28.2,
    "h": 28.25,
    "l": 27.45,
-   "c": 28.1,
-   "v": 2930612
+   "c": 27.55,
+   "v": 4450126
+  },
+  {
+   "time": "2026-06-26",
+   "o": 27.4,
+   "h": 27.45,
+   "l": 25.95,
+   "c": 26.0,
+   "v": 6700025
   }
  ],
  "sr": {
-  "price": 28.1,
+  "price": 26.0,
   "resistance": [
-   29.6,
-   30.25
+   26.03,
+   26.22
   ],
   "support": [
-   27.64,
-   27.0
+   25.85,
+   25.1
   ],
   "strong_support": 15.0
  },
  "spark": [
-  27.65,
   26.4,
   26.45,
   25.2,
@@ -557,25 +556,40 @@
   28.6,
   27.6,
   27.9,
-  28.1
+  27.55,
+  26.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1369078,
+    "trust": 0,
+    "dealer": -273629,
+    "total": -1642707
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.5,
+    "yield": 0.54,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],
