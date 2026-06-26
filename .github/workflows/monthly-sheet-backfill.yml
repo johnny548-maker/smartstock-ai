@@ -1,0 +1,73 @@
+name: SmartStock Monthly Sheet Backfill
+
+# 日更只鏡像「當天」報告且 best-effort(continue-on-error)：被丟的排程 / SA quota 429 /
+# gspread 暫掛 → 那天靜默漏進 Sheet。本 job 每月把「過去 40 天」重掃一次(idempotent
+# upsert-by-date，永不重複)補洞。git JSON 仍是唯一真相源，Sheet 是鏡像。
+# 用「尾端 40 天」而非 full --backfill：避開 Drive API 每分鐘寫入 quota(SA gotcha)。
+# 3 號 13:33 UTC(~21:33 TW)：1/5/6/7/14 號已被佔，3 號空；奇數分(GitHub 免費版會丟 :00/:30)。
+on:
+  schedule:
+    - cron: '33 13 3 * *'
+  workflow_dispatch: {}      # Actions 頁手動觸發
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smartstock-monthly-sheet-backfill
+  cancel-in-progress: false
+
+jobs:
+  # Keyless 失敗告警(同 daily.yml)：硬失敗 → 用內建 GITHUB_TOKEN 開/更新一個去重 issue。
+  notify-failure:
+    needs: [backfill]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}"
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Re-sync trailing 40 days into the Google Sheet
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
+        run: |
+          set -euo pipefail
+          if [ -z "${GOOGLE_SA_JSON:-}" ]; then
+            echo "::error::GOOGLE_SA_JSON secret not set — cannot sync the Sheet."; exit 1
+          fi
+          for i in $(seq 0 39); do
+            D=$(date -u -d "-$i day" +%F)
+            echo "::group::sync $D"
+            python sheets_sync.py --day "$D" || echo "::warning::sync $D failed (continuing)"
+            echo "::endgroup::"
+            sleep 2   # 留 quota 餘裕(SA gotcha：緊迴圈會打爆每分鐘寫入額度)
+          done
+          echo "::notice::monthly trailing-40-day Sheet re-sync complete"
