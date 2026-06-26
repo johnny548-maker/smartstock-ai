@@ -30,9 +30,10 @@ import logging
 import os
 import sys
 import glob
+import time
 import json
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "data")
 DEFAULT_SHEET_ID = "1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM"
@@ -585,6 +586,37 @@ def dup_row_numbers(date_column_values, date_str):
     return [i + 1 for i, v in enumerate(date_column_values) if i >= 1 and v == date_str]
 
 
+# ── --heal-missing helpers (quota-light monthly drift-heal) ─────────────────────────────
+# The daily run mirrors only TODAY's report and that step is best-effort: a dropped
+# scheduled run / SA quota 429 / transient gspread error silently leaves a day MISSING from
+# the Sheet. heal_missing() re-syncs ONLY the trailing-window days that are absent (sentinel:
+# the picks tab's date column) — so a healthy month is ~1 read + 0 writes (no quota burn),
+# while a gappy month writes just the few missing days. Blindly re-upserting every day (the
+# naive approach) would delete+re-append healthy data every run and reliably exhaust the
+# Sheets per-minute write quota.
+
+DEFAULT_HEAL_DAYS = 40       # trailing window: ~5-day overlap past a monthly cadence -> no gaps
+DEFAULT_HEAL_PACE_S = 8      # proactive inter-day sleep to stay under the 60 writes/min quota
+
+
+def last_n_dates(end_date, n):
+    """Pure: return n ISO date strings ending at end_date (a datetime.date), descending.
+    last_n_dates(date(2026,6,26), 3) -> ['2026-06-26','2026-06-25','2026-06-24']."""
+    return [(end_date - timedelta(days=i)).isoformat() for i in range(n)]
+
+
+def missing_dates(present, candidates):
+    """Pure: candidate dates not in the `present` set, preserving candidate order."""
+    present = present or set()
+    return [d for d in candidates if d not in present]
+
+
+def available_local_days(candidates, data_dir):
+    """Pure-ish: subset of `candidates` that have a docs/data/<date>.json file (preserves order).
+    A trailing day with no report file (weekend/holiday/未生成) is therefore never 'missing'."""
+    return [d for d in candidates if os.path.exists(os.path.join(data_dir, f"{d}.json"))]
+
+
 # ── Network layer (lazy gspread import so pure logic stays testable offline) ────────────
 
 def get_client():
@@ -611,6 +643,37 @@ def get_client():
         return None
 
 
+# ── Rate-limit resilience ───────────────────────────────────────────────────────────────
+# gspread does NOT auto-retry the Sheets API per-minute quota (60 read + 60 write requests
+# per minute per user). A backfill that touches many days bursts past it -> APIError [429].
+# Treat 429 as transient: exponential backoff + retry, NEVER a permanent SKIP (which would
+# silently drop the day and defeat the whole heal). Non-429 errors fall through to SKIP.
+
+RATE_LIMIT_RETRIES = 3
+RATE_LIMIT_BASE_SLEEP_S = 15
+
+
+def _is_rate_limit(exc):
+    """True if `exc` looks like a Sheets/Drive API per-minute quota error (HTTP 429)."""
+    s = str(exc)
+    return ("429" in s) or ("RESOURCE_EXHAUSTED" in s) or ("Quota exceeded" in s)
+
+
+def _read_with_retry(fn, *args, what="read"):
+    """Call fn(*args), retrying with exponential backoff on a 429; re-raise anything else
+    (and 429 after the final attempt). Used for the sentinel present-dates read."""
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            return fn(*args)
+        except Exception as exc:
+            if _is_rate_limit(exc) and attempt < RATE_LIMIT_RETRIES:
+                wait = RATE_LIMIT_BASE_SLEEP_S * (2 ** attempt)
+                _log(f"RATE-LIMIT {what}: backoff {wait}s (retry {attempt + 1}/{RATE_LIMIT_RETRIES})")
+                time.sleep(wait)
+                continue
+            raise
+
+
 def _ensure_ws(sh, title, headers):
     """Get or create a worksheet and guarantee its header row matches `headers`."""
     try:
@@ -635,16 +698,24 @@ def _upsert(ws, date_str, rows):
 
 
 def _sync_tab(sh, title, headers, date_str, rows):
-    """Ensure-then-upsert one tab in isolation. A failure logs SKIP for that tab and
-    returns -1 (sentinel) but NEVER crashes the overall sync — one bad tab must not
-    take the others down with it. The tab is always created (header-only on empty)."""
-    try:
-        ws = _ensure_ws(sh, title, headers)
-        _upsert(ws, date_str, rows)
-        return len(rows)
-    except Exception as exc:
-        _log(f"SKIP {title} tab for {date_str}: {exc}")
-        return -1
+    """Ensure-then-upsert one tab in isolation. A 429 is retried with exponential backoff
+    (transient quota); any other failure logs SKIP and returns -1 (sentinel) but NEVER
+    crashes the overall sync — one bad tab must not take the others down with it. The tab
+    is always created (header-only on empty)."""
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            ws = _ensure_ws(sh, title, headers)
+            _upsert(ws, date_str, rows)
+            return len(rows)
+        except Exception as exc:
+            if _is_rate_limit(exc) and attempt < RATE_LIMIT_RETRIES:
+                wait = RATE_LIMIT_BASE_SLEEP_S * (2 ** attempt)
+                _log(f"RATE-LIMIT {title} {date_str}: backoff {wait}s "
+                     f"(retry {attempt + 1}/{RATE_LIMIT_RETRIES})")
+                time.sleep(wait)
+                continue
+            _log(f"SKIP {title} tab for {date_str}: {exc}")
+            return -1
 
 
 def _replace_all(ws, rows):
@@ -660,14 +731,21 @@ def _replace_all(ws, rows):
 
 
 def _sync_replace_tab(sh, title, headers, rows):
-    """Ensure-then-full-replace one tab in isolation (see _sync_tab for the contract)."""
-    try:
-        ws = _ensure_ws(sh, title, headers)
-        _replace_all(ws, rows)
-        return len(rows)
-    except Exception as exc:
-        _log(f"SKIP {title} tab: {exc}")
-        return -1
+    """Ensure-then-full-replace one tab in isolation (see _sync_tab for the contract);
+    429 is retried with backoff, other failures SKIP with -1."""
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            ws = _ensure_ws(sh, title, headers)
+            _replace_all(ws, rows)
+            return len(rows)
+        except Exception as exc:
+            if _is_rate_limit(exc) and attempt < RATE_LIMIT_RETRIES:
+                wait = RATE_LIMIT_BASE_SLEEP_S * (2 ** attempt)
+                _log(f"RATE-LIMIT {title}: backoff {wait}s (retry {attempt + 1}/{RATE_LIMIT_RETRIES})")
+                time.sleep(wait)
+                continue
+            _log(f"SKIP {title} tab: {exc}")
+            return -1
 
 
 def sync_payload(sh, payload):
@@ -714,8 +792,9 @@ def sync_payload(sh, payload):
     )
 
 
-def _load_day(day):
-    path = os.path.join(DATA_DIR, f"{day}.json")
+def _load_day(day, data_dir=None):
+    data_dir = data_dir or DATA_DIR
+    path = os.path.join(data_dir, f"{day}.json")
     if not os.path.exists(path):
         _log(f"SKIP: no report file for {day} ({path})")
         return None
@@ -723,10 +802,60 @@ def _load_day(day):
         return json.load(f)
 
 
+def _present_dates(sh, sentinel="picks"):
+    """Return the set of dates already in the Sheet, read once from the sentinel tab's date
+    column (the picks tab is written for every trading day with picks, so it's the canonical
+    'this day was synced' marker). Sentinel tab absent/unreadable -> empty set (treat all as
+    missing, i.e. a fresh Sheet). The single read is 429-retried."""
+    try:
+        ws = sh.worksheet(sentinel)
+    except Exception:
+        return set()
+    col = _read_with_retry(ws.col_values, 1, what=f"{sentinel} dates")
+    return {v for v in col[1:] if v}  # col[0] is the header
+
+
+def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
+                 pace_s=DEFAULT_HEAL_PACE_S, sentinel="picks"):
+    """Re-sync ONLY the trailing-`days`-window days that are absent from the Sheet.
+
+    1 sentinel read computes which of the recent days with a local report file are not yet in
+    the Sheet; only those get a full sync_payload (idempotent upsert). Healthy month -> nothing
+    written (no quota burn). Missing days are paced (pace_s) + each tab is 429-retried, so a
+    backlog lands reliably instead of silently dropping under the per-minute quota.
+
+    Returns a summary dict {window, candidates, present_count, missing, synced}."""
+    data_dir = data_dir or DATA_DIR
+    if today is None:
+        today = datetime.now(timezone.utc).date()
+    candidates = available_local_days(last_n_dates(today, days), data_dir)
+    present = _present_dates(sh, sentinel)
+    missing = sorted(missing_dates(present, candidates))  # chronological for tidy appends
+    _log(f"heal-missing: window={days}d candidates_with_file={len(candidates)} "
+         f"present_in_{sentinel}={len(present)} missing={len(missing)}")
+    synced = []
+    for i, day in enumerate(missing):
+        payload = _load_day(day, data_dir)
+        if payload is None:
+            continue
+        sync_payload(sh, payload)
+        synced.append(day)
+        if pace_s and i < len(missing) - 1:
+            time.sleep(pace_s)
+    _log(f"heal-missing done: synced {len(synced)}/{len(missing)} missing day(s): {synced}")
+    return {"window": days, "candidates": candidates, "present_count": len(present),
+            "missing": missing, "synced": synced}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--day", help="YYYY-MM-DD (default: today UTC)")
     ap.add_argument("--backfill", action="store_true", help="sync every docs/data/*.json")
+    ap.add_argument("--heal-missing", action="store_true",
+                    help="re-sync ONLY the trailing-window days that are MISSING from the Sheet "
+                         "(sentinel: picks tab) — quota-light monthly drift-heal")
+    ap.add_argument("--days", type=int, default=DEFAULT_HEAL_DAYS,
+                    help=f"trailing window size for --heal-missing (default {DEFAULT_HEAL_DAYS})")
     ap.add_argument("--pull-positions", action="store_true",
                     help="read the my_positions Sheet tab → docs/data/_positions_state.json "
                          "(run BEFORE main.py; graceful no-op when GOOGLE_SA_JSON is unset)")
@@ -750,6 +879,10 @@ def main(argv=None):
     # always primary, so this is continue-on-error / graceful.
     if args.pull_positions:
         pull_positions(sh)
+        return 0
+
+    if args.heal_missing:
+        heal_missing(sh, days=args.days)
         return 0
 
     if args.backfill:

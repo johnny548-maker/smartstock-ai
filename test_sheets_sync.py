@@ -1111,5 +1111,167 @@ class TestGetClientGuard(unittest.TestCase):
                          "service account email must not appear in log output")
 
 
+# ───────────────────────── --heal-missing (quota-light monthly drift-heal) ────────────────
+
+class TestHealMissingPureHelpers(unittest.TestCase):
+    def test_last_n_dates_descending(self):
+        import datetime as _dt
+        out = ss.last_n_dates(_dt.date(2026, 6, 26), 3)
+        self.assertEqual(out, ["2026-06-26", "2026-06-25", "2026-06-24"])
+
+    def test_last_n_dates_n1(self):
+        import datetime as _dt
+        self.assertEqual(ss.last_n_dates(_dt.date(2026, 1, 1), 1), ["2026-01-01"])
+
+    def test_missing_dates_preserves_candidate_order(self):
+        present = {"2026-06-25"}
+        cands = ["2026-06-26", "2026-06-25", "2026-06-24"]
+        self.assertEqual(ss.missing_dates(present, cands), ["2026-06-26", "2026-06-24"])
+
+    def test_missing_dates_all_present(self):
+        present = {"a", "b"}
+        self.assertEqual(ss.missing_dates(present, ["a", "b"]), [])
+
+    def test_available_local_days_filters_to_files_present(self):
+        with tempfile.TemporaryDirectory() as td:
+            for d in ("2026-06-24", "2026-06-26"):
+                with open(os.path.join(td, f"{d}.json"), "w", encoding="utf-8") as f:
+                    f.write("{}")
+            out = ss.available_local_days(["2026-06-26", "2026-06-25", "2026-06-24"], td)
+            self.assertEqual(out, ["2026-06-26", "2026-06-24"])  # 25 has no file -> dropped
+
+
+class TestHealMissingIntegration(unittest.TestCase):
+    """heal_missing(sh, ...) — mocked Sheet, only the missing days get synced."""
+
+    def _write_day(self, td, d):
+        payload = {"date": d, "generated_at": "x", "picks": [{"stock": "X", "name": "Y"}]}
+        with open(os.path.join(td, f"{d}.json"), "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False)
+
+    def _picks_tab_with_dates(self, sh, dates):
+        ws = sh.add_worksheet("picks", rows=100, cols=max(26, len(ss.PICKS_HEADERS)))
+        ws.update(values=[ss.PICKS_HEADERS], range_name="A1")
+        for d in dates:
+            ws.append_rows([[d] + [""] * (len(ss.PICKS_HEADERS) - 1)])
+        return ws
+
+    def test_only_missing_days_synced_present_not_duplicated(self):
+        import datetime as _dt
+        sh = _FakeSheet()
+        self._picks_tab_with_dates(sh, ["2026-06-24"])  # 24 already present
+        with tempfile.TemporaryDirectory() as td:
+            for d in ("2026-06-24", "2026-06-25", "2026-06-26"):
+                self._write_day(td, d)
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=3, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["missing"], ["2026-06-25", "2026-06-26"])
+        self.assertEqual(set(summary["synced"]), {"2026-06-25", "2026-06-26"})
+        picks = sh.worksheets_by_title["picks"]
+        date_col = sorted(r[0] for r in picks._rows[1:])
+        self.assertEqual(date_col, ["2026-06-24", "2026-06-25", "2026-06-26"],
+                         "24 must NOT be duplicated; 25+26 added")
+
+    def test_noop_when_all_present(self):
+        import datetime as _dt
+        sh = _FakeSheet()
+        self._picks_tab_with_dates(sh, ["2026-06-26"])
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["synced"], [])
+        self.assertEqual(summary["missing"], [])
+
+    def test_no_sentinel_tab_treats_all_with_files_as_missing(self):
+        import datetime as _dt
+        sh = _FakeSheet()  # no picks tab at all
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["synced"], ["2026-06-26"])
+
+    def test_days_with_no_file_are_not_counted_missing(self):
+        """A trailing day with no local report file (weekend/holiday) is never 'missing'."""
+        import datetime as _dt
+        sh = _FakeSheet()
+        self._picks_tab_with_dates(sh, [])  # empty sheet
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")  # only 26 has a file; 25/24 don't
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=3, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["synced"], ["2026-06-26"])
+        self.assertEqual(summary["missing"], ["2026-06-26"])
+
+
+class TestRateLimitRetry(unittest.TestCase):
+    def test_is_rate_limit_detects_429(self):
+        self.assertTrue(ss._is_rate_limit(Exception("APIError: [429]: Quota exceeded")))
+        self.assertTrue(ss._is_rate_limit(Exception("RESOURCE_EXHAUSTED")))
+        self.assertFalse(ss._is_rate_limit(Exception("not found")))
+        self.assertFalse(ss._is_rate_limit(RuntimeError("boom")))
+
+    def test_sync_tab_retries_then_succeeds_on_rate_limit(self):
+        """A transient 429 on the first attempt is retried (with sleep mocked) and succeeds."""
+        sh = _FakeSheet()
+        calls = {"n": 0}
+        real_ensure = ss._ensure_ws
+
+        def flaky_ensure(sheet, title, headers):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise Exception("APIError: [429]: Quota exceeded for quota metric 'Write requests'")
+            return real_ensure(sheet, title, headers)
+
+        with mock.patch.object(ss, "_ensure_ws", side_effect=flaky_ensure), \
+             mock.patch.object(ss.time, "sleep", return_value=None) as msleep:
+            n = ss._sync_tab(sh, "picks", ss.PICKS_HEADERS, "2026-06-26",
+                             [["2026-06-26"] + [""] * (len(ss.PICKS_HEADERS) - 1)])
+        self.assertEqual(n, 1, "tab must succeed after one retry")
+        self.assertGreaterEqual(msleep.call_count, 1, "backoff sleep must fire on 429")
+
+    def test_sync_tab_non_rate_limit_skips_immediately(self):
+        """A non-429 error is NOT retried — returns -1 (SKIP) without sleeping."""
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "_ensure_ws", side_effect=RuntimeError("boom")), \
+             mock.patch.object(ss.time, "sleep", return_value=None) as msleep:
+            n = ss._sync_tab(sh, "picks", ss.PICKS_HEADERS, "2026-06-26", [])
+        self.assertEqual(n, -1)
+        self.assertEqual(msleep.call_count, 0, "non-rate-limit must not back off")
+
+
+class TestHealMissingCLI(unittest.TestCase):
+    def test_heal_missing_no_creds_is_noop_exit0(self):
+        old = os.environ.pop("GOOGLE_SA_JSON", None)
+        try:
+            self.assertEqual(ss.main(["--heal-missing"]), 0)
+        finally:
+            if old is not None:
+                os.environ["GOOGLE_SA_JSON"] = old
+
+    def test_heal_missing_flag_routes_to_heal(self):
+        fake_sh = object()
+        fake_client = mock.Mock()
+        fake_client.open_by_key.return_value = fake_sh
+        with mock.patch.object(ss, "get_client", return_value=fake_client), \
+             mock.patch.object(ss, "heal_missing", return_value={"synced": []}) as mh, \
+             mock.patch.object(ss, "sync_payload") as msync:
+            rc = ss.main(["--heal-missing", "--days", "12"])
+        self.assertEqual(rc, 0)
+        mh.assert_called_once()
+        # days arg threaded through
+        self.assertEqual(mh.call_args.kwargs.get("days"), 12)
+        msync.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

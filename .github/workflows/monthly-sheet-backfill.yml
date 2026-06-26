@@ -54,7 +54,13 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
-      - name: Re-sync trailing 40 days into the Google Sheet
+      # Single process: sheets_sync --heal-missing reads the picks tab ONCE, computes which of
+      # the trailing 40 days are absent from the Sheet, and re-syncs ONLY those (idempotent
+      # upsert). Present days are skipped (no delete-storm), missing-day writes are paced + each
+      # tab is 429-retried with backoff — so a backlog lands reliably and a healthy month is a
+      # ~1-read no-op. This replaces the naive per-day loop that re-wrote all 40 days and
+      # exhausted the Sheets 60-writes/min quota (observed run 28247281154: 11 days dropped).
+      - name: Heal missing days in the Google Sheet (trailing 40d)
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
           SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
@@ -63,11 +69,5 @@ jobs:
           if [ -z "${GOOGLE_SA_JSON:-}" ]; then
             echo "::error::GOOGLE_SA_JSON secret not set — cannot sync the Sheet."; exit 1
           fi
-          for i in $(seq 0 39); do
-            D=$(date -u -d "-$i day" +%F)
-            echo "::group::sync $D"
-            python sheets_sync.py --day "$D" || echo "::warning::sync $D failed (continuing)"
-            echo "::endgroup::"
-            sleep 2   # 留 quota 餘裕(SA gotcha：緊迴圈會打爆每分鐘寫入額度)
-          done
-          echo "::notice::monthly trailing-40-day Sheet re-sync complete"
+          python sheets_sync.py --heal-missing --days 40
+          echo "::notice::monthly heal-missing Sheet sync complete"
