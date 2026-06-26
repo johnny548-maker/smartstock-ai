@@ -30,6 +30,7 @@ import logging
 import os
 import sys
 import glob
+import math
 import time
 import json
 import argparse
@@ -674,6 +675,18 @@ def _read_with_retry(fn, *args, what="read"):
             raise
 
 
+def _json_safe(rows):
+    """Coerce non-finite floats (NaN, ±Inf) to None so gspread's JSON serialization never
+    raises 'Out of range float values are not JSON compliant' — a single NaN otherwise drops
+    the whole tab silently. Pure; returns a new list of lists. Applied at every write boundary
+    (_upsert / _replace_all) so it guards ALL tabs, not just the outcomes ledger that surfaced it."""
+    def fix(v):
+        if isinstance(v, float) and not math.isfinite(v):
+            return None
+        return v
+    return [[fix(v) for v in row] for row in rows]
+
+
 def _ensure_ws(sh, title, headers):
     """Get or create a worksheet and guarantee its header row matches `headers`."""
     try:
@@ -694,7 +707,7 @@ def _upsert(ws, date_str, rows):
     for rn in sorted(dups, reverse=True):
         ws.delete_rows(rn)
     if rows:
-        ws.append_rows(rows, value_input_option="USER_ENTERED")
+        ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
 
 
 def _sync_tab(sh, title, headers, date_str, rows):
@@ -727,7 +740,7 @@ def _replace_all(ws, rows):
     for rn in range(n, 1, -1):  # delete bottom-up, keep row 1 (header)
         ws.delete_rows(rn)
     if rows:
-        ws.append_rows(rows, value_input_option="USER_ENTERED")
+        ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
 
 
 def _sync_replace_tab(sh, title, headers, rows):

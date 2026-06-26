@@ -1249,6 +1249,33 @@ class TestRateLimitRetry(unittest.TestCase):
         self.assertEqual(msleep.call_count, 0, "non-rate-limit must not back off")
 
 
+class TestJsonSafe(unittest.TestCase):
+    """Non-finite floats (NaN/±Inf) must be coerced to None before gspread serializes rows,
+    else gspread raises 'Out of range float values are not JSON compliant' and the WHOLE tab
+    is silently dropped (observed: outcomes ledger carrying a NaN max_drawdown_pct)."""
+
+    def test_json_safe_replaces_nan_and_inf_with_none(self):
+        rows = [[1.0, float("nan"), "x"], [float("inf"), float("-inf"), None]]
+        out = ss._json_safe(rows)
+        self.assertEqual(out, [[1.0, None, "x"], [None, None, None]])
+
+    def test_json_safe_leaves_finite_and_non_floats_intact(self):
+        rows = [[0, -3.14, "str", True, None]]
+        self.assertEqual(ss._json_safe(rows), [[0, -3.14, "str", True, None]])
+
+    def test_upsert_sanitizes_nan_before_append(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["date", "v"]], range_name="A1")
+        ss._upsert(ws, "2026-06-26", [["2026-06-26", float("nan")]])
+        self.assertIsNone(ws._rows[1][1], "NaN must be stored as None, not NaN")
+
+    def test_replace_all_sanitizes_inf_before_append(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["a", "b"]], range_name="A1")
+        ss._replace_all(ws, [["x", float("inf")]])
+        self.assertIsNone(ws._rows[1][1], "Inf must be stored as None, not Inf")
+
+
 class TestHealMissingCLI(unittest.TestCase):
     def test_heal_missing_no_creds_is_noop_exit0(self):
         old = os.environ.pop("GOOGLE_SA_JSON", None)
