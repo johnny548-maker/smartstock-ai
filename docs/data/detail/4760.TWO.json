@@ -1,17 +1,9 @@
 {
  "stock": "4760.TWO",
  "name": "勤凱科技",
- "price": 336.0,
- "change_pct": -3.03,
+ "price": 315.0,
+ "change_pct": -7.49,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 193.47,
-   "h": 202.75,
-   "l": 188.58,
-   "c": 199.33,
-   "v": 1365879
-  },
   {
    "time": "2026-03-31",
    "o": 198.35,
@@ -481,12 +473,20 @@
    "o": 350.0,
    "h": 352.0,
    "l": 332.5,
-   "c": 336.0,
-   "v": 808466
+   "c": 340.5,
+   "v": 1058100
+  },
+  {
+   "time": "2026-06-26",
+   "o": 340.5,
+   "h": 340.5,
+   "l": 312.5,
+   "c": 315.0,
+   "v": 976382
   }
  ],
  "sr": {
-  "price": 336.0,
+  "price": 315.0,
   "resistance": [
    339.0,
    414.0
@@ -498,7 +498,6 @@
   "strong_support": 69.22
  },
  "spark": [
-  199.33,
   192.0,
   205.0,
   188.5,
@@ -557,25 +556,40 @@
   382.0,
   349.5,
   346.5,
-  336.0
+  340.5,
+  315.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 170674,
+    "trust": 0,
+    "dealer": -65661,
+    "total": 105013
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.36,
+    "yield": 1.49,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

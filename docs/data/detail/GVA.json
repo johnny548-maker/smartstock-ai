@@ -1,17 +1,9 @@
 {
  "stock": "GVA",
  "name": "Granite Construction",
- "price": 151.88,
- "change_pct": 1.2,
+ "price": 156.65,
+ "change_pct": 3.14,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 118.6,
-   "h": 118.93,
-   "l": 114.74,
-   "c": 116.36,
-   "v": 501100
-  },
   {
    "time": "2026-03-31",
    "o": 117.87,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-24",
    "o": 150.82,
-   "h": 155.21,
+   "h": 155.22,
    "l": 150.26,
    "c": 151.88,
-   "v": 929657
+   "v": 1107600
+  },
+  {
+   "time": "2026-06-25",
+   "o": 153.86,
+   "h": 157.54,
+   "l": 153.17,
+   "c": 156.65,
+   "v": 575600
   }
  ],
  "sr": {
-  "price": 151.88,
+  "price": 156.65,
   "resistance": [],
   "support": [
    134.41,
@@ -495,7 +495,6 @@
   "strong_support": 57.67
  },
  "spark": [
-  116.36,
   119.88,
   122.32,
   121.57,
@@ -554,28 +553,12 @@
   146.67,
   151.5,
   150.08,
-  151.88
+  151.88,
+  156.65
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 4916,
-    "days": 3,
-    "max_shares": 2424,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-06-25",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

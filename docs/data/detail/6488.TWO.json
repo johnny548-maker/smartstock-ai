@@ -1,17 +1,9 @@
 {
  "stock": "6488.TWO",
  "name": "環球晶",
- "price": 998.0,
- "change_pct": 3.42,
+ "price": 936.0,
+ "change_pct": -10.0,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 436.5,
-   "h": 440.5,
-   "l": 430.0,
-   "c": 437.0,
-   "v": 1625705
-  },
   {
    "time": "2026-03-31",
    "o": 432.0,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 990.0,
-   "h": 1010.0,
+   "h": 1040.0,
    "l": 981.0,
-   "c": 998.0,
-   "v": 682832
+   "c": 1040.0,
+   "v": 1257559
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1010.0,
+   "h": 1010.0,
+   "l": 936.0,
+   "c": 936.0,
+   "v": 2410764
   }
  ],
  "sr": {
-  "price": 998.0,
+  "price": 936.0,
   "resistance": [
    1040.0,
    1170.0
@@ -498,7 +498,6 @@
   "strong_support": 249.34
  },
  "spark": [
-  437.0,
   420.5,
   413.5,
   409.5,
@@ -557,25 +556,40 @@
   1115.0,
   1010.0,
   965.0,
-  998.0
+  1040.0,
+  936.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -29333,
+    "trust": -746739,
+    "dealer": -179176,
+    "total": -955248
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.8,
+    "yield": 0.82,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

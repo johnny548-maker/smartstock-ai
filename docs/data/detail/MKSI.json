@@ -1,17 +1,9 @@
 {
  "stock": "MKSI",
  "name": "MKS Instruments",
- "price": 381.62,
- "change_pct": -1.94,
+ "price": 410.31,
+ "change_pct": 7.52,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 227.8,
-   "h": 227.8,
-   "l": 208.31,
-   "c": 210.31,
-   "v": 1250300
-  },
   {
    "time": "2026-03-31",
    "o": 217.3,
@@ -482,12 +474,22 @@
    "h": 395.75,
    "l": 376.83,
    "c": 381.62,
-   "v": 1794035
+   "v": 1804700
+  },
+  {
+   "time": "2026-06-25",
+   "o": 408.0,
+   "h": 414.64,
+   "l": 383.38,
+   "c": 410.31,
+   "v": 2436500
   }
  ],
  "sr": {
-  "price": 381.62,
-  "resistance": [],
+  "price": 410.31,
+  "resistance": [
+   421.58
+  ],
   "support": [
    309.23,
    298.0
@@ -495,7 +497,6 @@
   "strong_support": 54.4
  },
  "spark": [
-  210.31,
   229.64,
   235.78,
   234.48,
@@ -554,11 +555,29 @@
   406.37,
   420.56,
   389.17,
-  381.62
+  381.62,
+  410.31
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 36423,
+    "days": 5,
+    "max_shares": 21700,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "7751.TWO",
  "name": "竑騰",
- "price": 1410.0,
- "change_pct": -5.05,
+ "price": 1350.0,
+ "change_pct": -3.57,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1575.86,
-   "h": 1575.86,
-   "l": 1482.0,
-   "c": 1482.0,
-   "v": 62288
-  },
   {
    "time": "2026-03-31",
    "o": 1390.0,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 1520.0,
    "h": 1525.0,
-   "l": 1400.0,
-   "c": 1410.0,
-   "v": 120877
+   "l": 1365.0,
+   "c": 1400.0,
+   "v": 234159
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1400.0,
+   "h": 1400.0,
+   "l": 1300.0,
+   "c": 1350.0,
+   "v": 251522
   }
  ],
  "sr": {
-  "price": 1410.0,
+  "price": 1350.0,
   "resistance": [
    1575.0,
    1610.44
   ],
   "support": [
-   1395.0,
-   1380.0
+   1255.0,
+   1067.04
   ],
   "strong_support": 175.37
  },
  "spark": [
-  1482.0,
   1380.0,
   1515.0,
   1665.0,
@@ -557,25 +556,40 @@
   1490.0,
   1475.0,
   1485.0,
-  1410.0
+  1400.0,
+  1350.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 59000,
+    "trust": -4000,
+    "dealer": -22388,
+    "total": 32612
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.21,
+    "yield": 1.33,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

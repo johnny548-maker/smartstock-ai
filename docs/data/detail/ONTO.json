@@ -1,17 +1,9 @@
 {
  "stock": "ONTO",
  "name": "Onto Innovation",
- "price": 322.24,
- "change_pct": 2.01,
+ "price": 344.24,
+ "change_pct": 6.83,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 207.43,
-   "h": 207.48,
-   "l": 188.28,
-   "c": 189.27,
-   "v": 901200
-  },
   {
    "time": "2026-03-31",
    "o": 193.66,
@@ -482,11 +474,19 @@
    "h": 322.3,
    "l": 308.23,
    "c": 322.24,
-   "v": 1323767
+   "v": 1326800
+  },
+  {
+   "time": "2026-06-25",
+   "o": 342.34,
+   "h": 353.18,
+   "l": 326.58,
+   "c": 344.24,
+   "v": 1799400
   }
  ],
  "sr": {
-  "price": 322.24,
+  "price": 344.24,
   "resistance": [
    348.76
   ],
@@ -497,7 +497,6 @@
   "strong_support": 85.88
  },
  "spark": [
-  189.27,
   205.07,
   211.72,
   215.53,
@@ -556,11 +555,29 @@
   333.76,
   347.87,
   315.88,
-  322.24
+  322.24,
+  344.24
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 1636,
+    "days": 3,
+    "max_shares": 1502,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

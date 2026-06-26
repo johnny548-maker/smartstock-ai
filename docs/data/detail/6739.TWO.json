@@ -1,17 +1,9 @@
 {
  "stock": "6739.TWO",
  "name": "竹陞科技",
- "price": 1120.0,
- "change_pct": -0.44,
+ "price": 1030.0,
+ "change_pct": -7.21,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1166.05,
-   "h": 1220.4,
-   "l": 1136.41,
-   "c": 1171.0,
-   "v": 585259
-  },
   {
    "time": "2026-03-31",
    "o": 1171.0,
@@ -481,24 +473,31 @@
    "o": 1160.0,
    "h": 1165.0,
    "l": 1110.0,
-   "c": 1120.0,
-   "v": 74197
+   "c": 1110.0,
+   "v": 97346
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1115.0,
+   "h": 1115.0,
+   "l": 1015.0,
+   "c": 1030.0,
+   "v": 288727
   }
  ],
  "sr": {
-  "price": 1120.0,
+  "price": 1030.0,
   "resistance": [
-   1254.99,
-   1289.58
+   1062.3,
+   1082.06
   ],
   "support": [
-   1077.12,
-   1072.18
+   923.95,
+   866.64
   ],
   "strong_support": 110.11
  },
  "spark": [
-  1171.0,
   1091.94,
   1200.64,
   1274.75,
@@ -557,25 +556,40 @@
   1190.0,
   1120.0,
   1125.0,
-  1120.0
+  1110.0,
+  1030.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 29205,
+    "trust": 0,
+    "dealer": -4050,
+    "total": 25155
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.16,
+    "yield": 1.26,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

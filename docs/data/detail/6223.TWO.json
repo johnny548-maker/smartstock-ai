@@ -1,17 +1,9 @@
 {
  "stock": "6223.TWO",
  "name": "旺矽",
- "price": 7055.0,
- "change_pct": -1.67,
+ "price": 6500.0,
+ "change_pct": -5.87,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 3620.0,
-   "h": 3735.0,
-   "l": 3580.0,
-   "c": 3735.0,
-   "v": 785297
-  },
   {
    "time": "2026-03-31",
    "o": 3740.0,
@@ -480,14 +472,25 @@
    "time": "2026-06-25",
    "o": 7245.0,
    "h": 7250.0,
-   "l": 6925.0,
-   "c": 7055.0,
-   "v": 549755
+   "l": 6900.0,
+   "c": 6905.0,
+   "v": 835654
+  },
+  {
+   "time": "2026-06-26",
+   "o": 6800.0,
+   "h": 6905.0,
+   "l": 6355.0,
+   "c": 6500.0,
+   "v": 752175
   }
  ],
  "sr": {
-  "price": 7055.0,
-  "resistance": [],
+  "price": 6500.0,
+  "resistance": [
+   6645.0,
+   6665.0
+  ],
   "support": [
    6275.0,
    5530.0
@@ -495,7 +498,6 @@
   "strong_support": 431.91
  },
  "spark": [
-  3735.0,
   3595.0,
   3950.0,
   3765.0,
@@ -554,25 +556,40 @@
   6425.0,
   6680.0,
   7175.0,
-  7055.0
+  6905.0,
+  6500.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -13705,
+    "trust": 65759,
+    "dealer": -12605,
+    "total": 39449
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.31,
+    "yield": 0.34,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

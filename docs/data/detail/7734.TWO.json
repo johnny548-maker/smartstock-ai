@@ -1,17 +1,9 @@
 {
  "stock": "7734.TWO",
  "name": "印能科技",
- "price": 3350.0,
- "change_pct": 2.92,
+ "price": 3045.0,
+ "change_pct": -9.91,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 1860.0,
-   "h": 2025.0,
-   "l": 1850.0,
-   "c": 2025.0,
-   "v": 1144118
-  },
   {
    "time": "2026-03-31",
    "o": 2080.0,
@@ -481,24 +473,31 @@
    "o": 3525.0,
    "h": 3525.0,
    "l": 3295.0,
-   "c": 3350.0,
-   "v": 115007
+   "c": 3380.0,
+   "v": 154470
+  },
+  {
+   "time": "2026-06-26",
+   "o": 3380.0,
+   "h": 3380.0,
+   "l": 3045.0,
+   "c": 3045.0,
+   "v": 218278
   }
  ],
  "sr": {
-  "price": 3350.0,
+  "price": 3045.0,
   "resistance": [
    3500.0,
    3790.0
   ],
   "support": [
-   3075.0,
-   2760.0
+   2760.0,
+   2740.0
   ],
   "strong_support": 619.23
  },
  "spark": [
-  2025.0,
   2150.0,
   2330.0,
   2350.0,
@@ -557,25 +556,40 @@
   3560.0,
   3390.0,
   3255.0,
-  3350.0
+  3380.0,
+  3045.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 12108,
+    "trust": -39000,
+    "dealer": -3665,
+    "total": -30557
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.61,
+    "yield": 0.65,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

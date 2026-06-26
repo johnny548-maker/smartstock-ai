@@ -1,17 +1,9 @@
 {
  "stock": "7777.TWO",
  "name": "能率亞洲",
- "price": 44.4,
- "change_pct": 9.99,
+ "price": 42.0,
+ "change_pct": -5.41,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 25.31,
-   "h": 25.41,
-   "l": 24.68,
-   "c": 24.87,
-   "v": 646260
-  },
   {
    "time": "2026-03-31",
    "o": 24.87,
@@ -482,22 +474,30 @@
    "h": 44.4,
    "l": 43.1,
    "c": 44.4,
-   "v": 6986983
+   "v": 7174238
+  },
+  {
+   "time": "2026-06-26",
+   "o": 48.5,
+   "h": 48.5,
+   "l": 42.0,
+   "c": 42.0,
+   "v": 16325975
   }
  ],
  "sr": {
-  "price": 44.4,
+  "price": 42.0,
   "resistance": [
+   44.03,
    44.76
   ],
   "support": [
-   34.99,
-   32.4
+   39.19,
+   34.99
   ],
   "strong_support": 11.73
  },
  "spark": [
-  24.87,
   23.8,
   25.02,
   24.14,
@@ -556,25 +556,40 @@
   40.07,
   40.56,
   40.37,
-  44.4
+  44.4,
+  42.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 224525,
+    "trust": 0,
+    "dealer": 548362,
+    "total": 772887
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.61,
+    "yield": 0.6,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

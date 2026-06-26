@@ -1,17 +1,9 @@
 {
  "stock": "6138.TWO",
  "name": "茂達",
- "price": 352.0,
- "change_pct": -2.76,
+ "price": 332.5,
+ "change_pct": -8.65,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 216.0,
-   "h": 216.0,
-   "l": 213.0,
-   "c": 215.0,
-   "v": 358025
-  },
   {
    "time": "2026-03-31",
    "o": 214.0,
@@ -479,16 +471,25 @@
   {
    "time": "2026-06-25",
    "o": 366.0,
-   "h": 366.0,
+   "h": 367.0,
    "l": 346.0,
-   "c": 352.0,
-   "v": 989820
+   "c": 364.0,
+   "v": 1671663
+  },
+  {
+   "time": "2026-06-26",
+   "o": 360.0,
+   "h": 373.0,
+   "l": 332.5,
+   "c": 332.5,
+   "v": 1625135
   }
  ],
  "sr": {
-  "price": 352.0,
+  "price": 332.5,
   "resistance": [
-   383.5
+   383.5,
+   422.0
   ],
   "support": [
    283.5,
@@ -497,7 +498,6 @@
   "strong_support": 119.95
  },
  "spark": [
-  215.0,
   210.5,
   214.0,
   209.5,
@@ -556,25 +556,40 @@
   394.0,
   361.0,
   362.0,
-  352.0
+  364.0,
+  332.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -215520,
+    "trust": 0,
+    "dealer": -13851,
+    "total": -229371
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.04,
+    "yield": 3.31,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

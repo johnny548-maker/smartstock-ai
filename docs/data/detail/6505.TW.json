@@ -1,17 +1,9 @@
 {
  "stock": "6505.TW",
  "name": "台塑化",
- "price": 56.6,
- "change_pct": 2.54,
+ "price": 53.5,
+ "change_pct": -4.29,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 56.22,
-   "h": 57.1,
-   "l": 54.95,
-   "c": 55.15,
-   "v": 30902045
-  },
   {
    "time": "2026-03-31",
    "o": 55.54,
@@ -481,24 +473,31 @@
    "o": 55.0,
    "h": 56.7,
    "l": 54.6,
-   "c": 56.6,
-   "v": 13036682
+   "c": 55.9,
+   "v": 19538050
+  },
+  {
+   "time": "2026-06-26",
+   "o": 55.2,
+   "h": 55.5,
+   "l": 53.0,
+   "c": 53.5,
+   "v": 12052707
   }
  ],
  "sr": {
-  "price": 56.6,
+  "price": 53.5,
   "resistance": [
-   56.81,
-   57.1
+   55.24,
+   55.44
   ],
   "support": [
-   54.56,
-   54.17
+   52.21,
+   50.75
   ],
   "strong_support": 34.12
  },
  "spark": [
-  55.15,
   53.88,
   54.46,
   53.48,
@@ -557,18 +556,81 @@
   52.8,
   52.1,
   55.2,
-  56.6
+  55.9,
+  53.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "rev_yoy": 26.9,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": null,
+ "levels": {
+  "entry": 53.5,
+  "stop": 49.76,
+  "target": 62.86,
+  "atr_bracket": 62.86,
+  "measured_move": 57.69,
+  "target_band": [
+   56.85,
+   57.69,
+   62.86
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.8,
+  "swing_stop": 50.4,
+  "chandelier": 50.76,
+  "fib_targets": [
+   55.6,
+   56.85,
+   58.24
+  ]
+ },
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 1,352,527 股",
+   "value": {
+    "foreign": 1171839,
+    "trust": 49223,
+    "dealer": 131465,
+    "total": 1352527
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -16
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 20.0 / 殖利率 2.15% / PB 1.42",
+   "value": {
+    "pe": 20.04,
+    "yield": 2.15,
+    "pb": 1.42
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -626,6 +688,10 @@
    {
     "t": "2026-06-23",
     "v": 11121
+   },
+   {
+    "t": "2026-06-26",
+    "v": 12474
    }
   ],
   "holder_pct": [

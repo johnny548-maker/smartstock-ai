@@ -1,17 +1,9 @@
 {
  "stock": "3324.TWO",
  "name": "雙鴻",
- "price": 1020.0,
- "change_pct": -3.32,
+ "price": 970.0,
+ "change_pct": -3.96,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 949.12,
-   "h": 962.96,
-   "l": 932.31,
-   "c": 945.16,
-   "v": 3460064
-  },
   {
    "time": "2026-03-31",
    "o": 922.42,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 1070.0,
    "h": 1075.0,
-   "l": 1015.0,
-   "c": 1020.0,
-   "v": 1435882
+   "l": 1010.0,
+   "c": 1010.0,
+   "v": 2028838
+  },
+  {
+   "time": "2026-06-26",
+   "o": 1005.0,
+   "h": 1005.0,
+   "l": 968.0,
+   "c": 970.0,
+   "v": 2803843
   }
  ],
  "sr": {
-  "price": 1020.0,
+  "price": 970.0,
   "resistance": [
-   1043.04,
-   1067.76
+   998.55,
+   1008.44
   ],
   "support": [
-   988.66,
-   978.78
+   952.08,
+   950.11
   ],
   "strong_support": 384.98
  },
  "spark": [
-  945.16,
   869.04,
   909.57,
   899.68,
@@ -557,25 +556,40 @@
   1075.0,
   1025.0,
   1055.0,
-  1020.0
+  1010.0,
+  970.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -450784,
+    "trust": 194,
+    "dealer": -313271,
+    "total": -763861
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.13,
+    "yield": 1.23,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3105.TWO",
  "name": "穩懋",
- "price": 468.0,
- "change_pct": -2.09,
+ "price": 424.0,
+ "change_pct": -8.42,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 371.44,
-   "h": 395.84,
-   "l": 357.0,
-   "c": 388.87,
-   "v": 52186810
-  },
   {
    "time": "2026-03-31",
    "o": 370.94,
@@ -480,25 +472,32 @@
    "time": "2026-06-25",
    "o": 486.5,
    "h": 486.5,
-   "l": 468.0,
-   "c": 468.0,
-   "v": 12795532
+   "l": 458.0,
+   "c": 463.0,
+   "v": 20414276
+  },
+  {
+   "time": "2026-06-26",
+   "o": 458.0,
+   "h": 463.5,
+   "l": 421.0,
+   "c": 424.0,
+   "v": 33797108
   }
  ],
  "sr": {
-  "price": 468.0,
+  "price": 424.0,
   "resistance": [
    556.66,
    561.64
   ],
   "support": [
-   434.18,
-   433.68
+   304.72,
+   289.28
   ],
   "strong_support": 72.85
  },
  "spark": [
-  388.87,
   350.03,
   374.92,
   374.43,
@@ -557,25 +556,40 @@
   541.0,
   522.0,
   478.0,
-  468.0
+  463.0,
+  424.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -982953,
+    "trust": -2894263,
+    "dealer": -497774,
+    "total": -4374990
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.42,
+    "yield": 0.47,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6432.TWO",
  "name": "今展科",
- "price": 74.8,
- "change_pct": -0.13,
+ "price": 75.0,
+ "change_pct": -8.87,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 34.0,
-   "h": 34.35,
-   "l": 33.45,
-   "c": 33.6,
-   "v": 126013
-  },
   {
    "time": "2026-03-31",
    "o": 33.6,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 75.1,
-   "h": 78.5,
+   "h": 82.3,
    "l": 73.8,
-   "c": 74.8,
-   "v": 2074273
+   "c": 82.3,
+   "v": 4969078
+  },
+  {
+   "time": "2026-06-26",
+   "o": 80.3,
+   "h": 83.1,
+   "l": 74.7,
+   "c": 75.0,
+   "v": 4863763
   }
  ],
  "sr": {
-  "price": 74.8,
+  "price": 75.0,
   "resistance": [
    78.8,
    86.9
@@ -498,7 +498,6 @@
   "strong_support": 21.38
  },
  "spark": [
-  33.6,
   32.9,
   33.1,
   32.1,
@@ -557,14 +556,29 @@
   81.3,
   74.0,
   74.9,
-  74.8
+  82.3,
+  75.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 59692,
+    "trust": 0,
+    "dealer": -16391,
+    "total": 43301
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -575,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

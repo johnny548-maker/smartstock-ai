@@ -1,17 +1,9 @@
 {
  "stock": "6530.TWO",
  "name": "創威",
- "price": 90.0,
- "change_pct": -1.75,
+ "price": 84.6,
+ "change_pct": -5.37,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 89.66,
-   "h": 91.13,
-   "l": 84.37,
-   "c": 87.41,
-   "v": 2407730
-  },
   {
    "time": "2026-03-31",
    "o": 85.84,
@@ -480,16 +472,24 @@
    "time": "2026-06-25",
    "o": 92.1,
    "h": 92.8,
-   "l": 89.6,
-   "c": 90.0,
-   "v": 453763
+   "l": 88.0,
+   "c": 89.4,
+   "v": 961200
+  },
+  {
+   "time": "2026-06-26",
+   "o": 88.5,
+   "h": 90.4,
+   "l": 84.6,
+   "c": 84.6,
+   "v": 728484
   }
  ],
  "sr": {
-  "price": 90.0,
+  "price": 84.6,
   "resistance": [
-   101.42,
-   116.61
+   84.64,
+   100.0
   ],
   "support": [
    82.02,
@@ -498,7 +498,6 @@
   "strong_support": 33.81
  },
  "spark": [
-  87.41,
   82.8,
   85.25,
   87.41,
@@ -557,25 +556,40 @@
   97.7,
   94.4,
   91.6,
-  90.0
+  89.4,
+  84.6
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 41000,
+    "trust": 0,
+    "dealer": -87,
+    "total": 40913
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.18,
+    "yield": 2.36,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

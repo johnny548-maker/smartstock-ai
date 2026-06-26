@@ -1,17 +1,9 @@
 {
  "stock": "3008.TW",
  "name": "大立光",
- "price": 5095.0,
- "change_pct": 3.98,
+ "price": 4720.0,
+ "change_pct": -8.62,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 2160.0,
-   "h": 2205.0,
-   "l": 2155.0,
-   "c": 2180.0,
-   "v": 470604
-  },
   {
    "time": "2026-03-31",
    "o": 2180.0,
@@ -479,14 +471,22 @@
   {
    "time": "2026-06-25",
    "o": 5040.0,
-   "h": 5230.0,
+   "h": 5235.0,
    "l": 4875.0,
-   "c": 5095.0,
-   "v": 2216572
+   "c": 5165.0,
+   "v": 3162918
+  },
+  {
+   "time": "2026-06-26",
+   "o": 5020.0,
+   "h": 5050.0,
+   "l": 4710.0,
+   "c": 4720.0,
+   "v": 3356996
   }
  ],
  "sr": {
-  "price": 5095.0,
+  "price": 4720.0,
   "resistance": [
    5360.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 1976.95
  },
  "spark": [
-  2180.0,
   2155.0,
   2190.0,
   2140.0,
@@ -556,35 +555,48 @@
   5185.0,
   5000.0,
   4900.0,
-  5095.0
+  5165.0,
+  4720.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": {
   "rev_yoy": 42.7,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 5095.0,
-  "stop": 4738.35,
-  "target": 5986.62,
-  "atr_bracket": 5986.62,
-  "measured_move": 7395.0,
-  "target_band": [
-   5986.62,
-   7395.0
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.3,
-  "swing_stop": 3229.21,
-  "chandelier": 4492.05,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 347,858 股",
+   "value": {
+    "foreign": -173304,
+    "trust": -137982,
+    "dealer": -36572,
+    "total": -347858
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 32.2 / 殖利率 1.55% / PB 3.66",
+   "value": {
+    "pe": 32.24,
+    "yield": 1.55,
+    "pb": 3.66
+   },
+   "severity": "info",
+   "as_of": "2026-06-25",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -642,6 +654,10 @@
    {
     "t": "2026-06-23",
     "v": 3090
+   },
+   {
+    "t": "2026-06-26",
+    "v": 2742
    }
   ],
   "holder_pct": [

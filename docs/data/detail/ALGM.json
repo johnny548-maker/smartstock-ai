@@ -1,17 +1,9 @@
 {
  "stock": "ALGM",
  "name": "Allegro MicroSystems",
- "price": 55.42,
- "change_pct": -0.18,
+ "price": 60.16,
+ "change_pct": 8.55,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 30.5,
-   "h": 30.61,
-   "l": 27.65,
-   "c": 28.04,
-   "v": 2291000
-  },
   {
    "time": "2026-03-31",
    "o": 29.42,
@@ -478,16 +470,26 @@
   },
   {
    "time": "2026-06-24",
-   "o": 55.66,
+   "o": 55.73,
    "h": 56.79,
    "l": 54.18,
    "c": 55.42,
-   "v": 2606871
+   "v": 2614900
+  },
+  {
+   "time": "2026-06-25",
+   "o": 58.41,
+   "h": 60.8,
+   "l": 55.65,
+   "c": 60.16,
+   "v": 3602900
   }
  ],
  "sr": {
-  "price": 55.42,
-  "resistance": [],
+  "price": 60.16,
+  "resistance": [
+   61.67
+  ],
   "support": [
    46.01,
    43.27
@@ -495,7 +497,6 @@
   "strong_support": 16.38
  },
  "spark": [
-  28.04,
   31.53,
   33.3,
   32.6,
@@ -554,11 +555,29 @@
   59.0,
   61.58,
   55.52,
-  55.42
+  55.42,
+  60.16
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 83436,
+    "days": 5,
+    "max_shares": 42803,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

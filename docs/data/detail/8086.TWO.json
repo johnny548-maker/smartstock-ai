@@ -1,17 +1,9 @@
 {
  "stock": "8086.TWO",
  "name": "宏捷科",
- "price": 152.0,
- "change_pct": -1.62,
+ "price": 141.0,
+ "change_pct": -6.31,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 125.5,
-   "h": 126.0,
-   "l": 119.0,
-   "c": 125.5,
-   "v": 6156669
-  },
   {
    "time": "2026-03-31",
    "o": 123.5,
@@ -480,16 +472,24 @@
    "time": "2026-06-25",
    "o": 156.5,
    "h": 157.0,
-   "l": 150.5,
-   "c": 152.0,
-   "v": 2015750
+   "l": 150.0,
+   "c": 150.5,
+   "v": 3153574
+  },
+  {
+   "time": "2026-06-26",
+   "o": 151.0,
+   "h": 152.0,
+   "l": 141.0,
+   "c": 141.0,
+   "v": 4699687
   }
  ],
  "sr": {
-  "price": 152.0,
+  "price": 141.0,
   "resistance": [
-   159.0,
-   170.5
+   142.5,
+   143.09
   ],
   "support": [
    133.5,
@@ -498,7 +498,6 @@
   "strong_support": 61.56
  },
  "spark": [
-  125.5,
   118.0,
   123.0,
   125.5,
@@ -557,25 +556,40 @@
   165.5,
   159.5,
   154.5,
-  152.0
+  150.5,
+  141.0
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -1740210,
+    "trust": 0,
+    "dealer": -152881,
+    "total": -1893091
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.09,
+    "yield": 1.19,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

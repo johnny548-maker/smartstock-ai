@@ -1,17 +1,9 @@
 {
  "stock": "3709.TWO",
  "name": "鑫聯大投控",
- "price": 73.8,
- "change_pct": -0.27,
+ "price": 77.1,
+ "change_pct": 1.45,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 67.0,
-   "h": 67.8,
-   "l": 65.5,
-   "c": 66.0,
-   "v": 1272401
-  },
   {
    "time": "2026-03-31",
    "o": 65.4,
@@ -479,17 +471,25 @@
   {
    "time": "2026-06-25",
    "o": 74.5,
-   "h": 76.6,
-   "l": 73.7,
-   "c": 73.8,
-   "v": 320506
+   "h": 76.8,
+   "l": 73.5,
+   "c": 76.0,
+   "v": 910135
+  },
+  {
+   "time": "2026-06-26",
+   "o": 80.8,
+   "h": 81.9,
+   "l": 76.4,
+   "c": 77.1,
+   "v": 4882080
   }
  ],
  "sr": {
-  "price": 73.8,
+  "price": 77.1,
   "resistance": [
-   75.6,
-   76.9
+   78.8,
+   85.2
   ],
   "support": [
    71.6,
@@ -498,7 +498,6 @@
   "strong_support": 20.87
  },
  "spark": [
-  66.0,
   62.9,
   65.2,
   63.4,
@@ -557,25 +556,40 @@
   74.6,
   72.5,
   74.0,
-  73.8
+  76.0,
+  77.1
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -696260,
+    "trust": 0,
+    "dealer": 22411,
+    "total": -673849
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.38,
+    "yield": 3.24,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

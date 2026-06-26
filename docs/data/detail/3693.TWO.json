@@ -1,17 +1,9 @@
 {
  "stock": "3693.TWO",
  "name": "營邦",
- "price": 497.0,
- "change_pct": -1.39,
+ "price": 482.5,
+ "change_pct": -4.27,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 480.0,
-   "h": 504.0,
-   "l": 480.0,
-   "c": 504.0,
-   "v": 565199
-  },
   {
    "time": "2026-03-31",
    "o": 497.5,
@@ -479,26 +471,33 @@
   {
    "time": "2026-06-25",
    "o": 511.0,
-   "h": 512.0,
+   "h": 513.0,
    "l": 493.0,
-   "c": 497.0,
-   "v": 236688
+   "c": 504.0,
+   "v": 496103
+  },
+  {
+   "time": "2026-06-26",
+   "o": 513.0,
+   "h": 522.0,
+   "l": 479.0,
+   "c": 482.5,
+   "v": 1472454
   }
  ],
  "sr": {
-  "price": 497.0,
+  "price": 482.5,
   "resistance": [
    510.0,
    529.0
   ],
   "support": [
-   491.5,
-   475.5
+   475.5,
+   434.0
   ],
   "strong_support": 218.1
  },
  "spark": [
-  504.0,
   473.0,
   507.0,
   475.5,
@@ -557,25 +556,40 @@
   513.0,
   496.0,
   504.0,
-  497.0
+  504.0,
+  482.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -351815,
+    "trust": 0,
+    "dealer": -26991,
+    "total": -378806
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.59,
+    "yield": 1.66,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

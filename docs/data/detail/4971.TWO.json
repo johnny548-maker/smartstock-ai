@@ -1,17 +1,9 @@
 {
  "stock": "4971.TWO",
  "name": "IET-KY",
- "price": 522.0,
- "change_pct": -0.76,
+ "price": 476.5,
+ "change_pct": -8.01,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 588.0,
-   "h": 635.0,
-   "l": 580.0,
-   "c": 635.0,
-   "v": 13770389
-  },
   {
    "time": "2026-03-31",
    "o": 609.0,
@@ -481,24 +473,31 @@
    "o": 542.0,
    "h": 545.0,
    "l": 512.0,
-   "c": 522.0,
-   "v": 500436
+   "c": 518.0,
+   "v": 677174
+  },
+  {
+   "time": "2026-06-26",
+   "o": 514.0,
+   "h": 524.0,
+   "l": 476.5,
+   "c": 476.5,
+   "v": 1328601
   }
  ],
  "sr": {
-  "price": 522.0,
+  "price": 476.5,
   "resistance": [
-   564.0,
-   610.0
+   484.5,
+   487.5
   ],
   "support": [
-   494.0,
-   416.5
+   416.5,
+   386.0
   ],
   "strong_support": 44.2
  },
  "spark": [
-  635.0,
   572.0,
   580.0,
   564.0,
@@ -557,25 +556,40 @@
   571.0,
   540.0,
   526.0,
-  522.0
+  518.0,
+  476.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 319966,
+    "trust": 0,
+    "dealer": -7749,
+    "total": 312217
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.19,
+    "yield": 0.21,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "TER",
  "name": "Teradyne",
- "price": 427.2,
- "change_pct": 1.69,
+ "price": 471.96,
+ "change_pct": 10.48,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 300.89,
-   "h": 300.89,
-   "l": 272.97,
-   "c": 276.25,
-   "v": 3130100
-  },
   {
    "time": "2026-03-31",
    "o": 278.19,
@@ -482,11 +474,19 @@
    "h": 433.0,
    "l": 413.77,
    "c": 427.2,
-   "v": 3241692
+   "v": 3256600
+  },
+  {
+   "time": "2026-06-25",
+   "o": 454.0,
+   "h": 472.37,
+   "l": 427.09,
+   "c": 471.96,
+   "v": 7025300
   }
  ],
  "sr": {
-  "price": 427.2,
+  "price": 471.96,
   "resistance": [],
   "support": [
    360.14,
@@ -495,7 +495,6 @@
   "strong_support": 65.5
  },
  "spark": [
-  276.25,
   296.35,
   312.08,
   309.49,
@@ -554,11 +553,29 @@
   437.92,
   457.0,
   420.12,
-  427.2
+  427.2,
+  471.96
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-24",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 30048,
+    "days": 3,
+    "max_shares": 29947,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-06-26",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

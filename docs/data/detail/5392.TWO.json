@@ -1,17 +1,9 @@
 {
  "stock": "5392.TWO",
  "name": "能率",
- "price": 45.2,
- "change_pct": 6.6,
+ "price": 47.5,
+ "change_pct": 3.83,
  "ohlc": [
-  {
-   "time": "2026-03-30",
-   "o": 36.85,
-   "h": 37.15,
-   "l": 36.25,
-   "c": 36.65,
-   "v": 697037
-  },
   {
    "time": "2026-03-31",
    "o": 36.8,
@@ -481,24 +473,31 @@
    "o": 44.8,
    "h": 46.6,
    "l": 44.65,
-   "c": 45.2,
-   "v": 11265506
+   "c": 45.75,
+   "v": 14747416
+  },
+  {
+   "time": "2026-06-26",
+   "o": 47.6,
+   "h": 49.9,
+   "l": 46.9,
+   "c": 47.5,
+   "v": 26431692
   }
  ],
  "sr": {
-  "price": 45.2,
+  "price": 47.5,
   "resistance": [
-   45.3,
-   46.6
+   49.8,
+   50.1
   ],
   "support": [
-   44.15,
-   44.05
+   46.3,
+   46.15
   ],
   "strong_support": 22.86
  },
  "spark": [
-  36.65,
   35.6,
   36.55,
   35.5,
@@ -557,25 +556,40 @@
   43.0,
   43.35,
   42.4,
-  45.2
+  45.75,
+  47.5
  ],
- "spark_start": "2026-03-30",
- "spark_end": "2026-06-25",
+ "spark_start": "2026-03-31",
+ "spark_end": "2026-06-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 952102,
+    "trust": 0,
+    "dealer": 105251,
+    "total": 1057353
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.94,
+    "yield": 0.84,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-25",
+   "as_of": "2026-06-26",
    "note": "OTC valuation context"
   }
  ],
