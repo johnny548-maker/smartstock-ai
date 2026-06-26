@@ -587,6 +587,7 @@ class _FakeWorksheet:
     def __init__(self, title):
         self.title = title
         self._rows = [[]]  # row 1 = header (empty until set)
+        self.delete_calls = []  # records (start, end) of every delete_rows call
 
     def row_values(self, n):
         return list(self._rows[n - 1]) if 0 < n <= len(self._rows) else []
@@ -603,9 +604,12 @@ class _FakeWorksheet:
     def append_rows(self, rows, value_input_option=None):
         self._rows.extend([list(r) for r in rows])
 
-    def delete_rows(self, n):
-        if 0 < n <= len(self._rows):
-            del self._rows[n - 1]
+    def delete_rows(self, start, end=None):
+        # gspread Worksheet.delete_rows(start, end=None): 1-based inclusive range.
+        end = start if end is None else end
+        self.delete_calls.append((start, end))
+        if 0 < start <= len(self._rows):
+            del self._rows[start - 1:end]
 
 
 class _FakeSheet:
@@ -1142,24 +1146,33 @@ class TestHealMissingPureHelpers(unittest.TestCase):
 
 
 class TestHealMissingIntegration(unittest.TestCase):
-    """heal_missing(sh, ...) — mocked Sheet, only the missing days get synced."""
+    """heal_missing(sh, ...) — mocked Sheet, per-tab gap detection: only days with a real
+    gap (payload should fill a tab but the Sheet lacks the day) get re-synced."""
 
-    def _write_day(self, td, d):
+    def _write_day(self, td, d, early_board=None):
         payload = {"date": d, "generated_at": "x", "picks": [{"stock": "X", "name": "Y"}]}
+        if early_board is not None:
+            payload["early_board"] = early_board
         with open(os.path.join(td, f"{d}.json"), "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False)
 
-    def _picks_tab_with_dates(self, sh, dates):
-        ws = sh.add_worksheet("picks", rows=100, cols=max(26, len(ss.PICKS_HEADERS)))
-        ws.update(values=[ss.PICKS_HEADERS], range_name="A1")
+    def _seed(self, sh, tab, headers, dates):
+        ws = sh.add_worksheet(tab, rows=200, cols=max(26, len(headers)))
+        ws.update(values=[headers], range_name="A1")
         for d in dates:
-            ws.append_rows([[d] + [""] * (len(ss.PICKS_HEADERS) - 1)])
+            ws.append_rows([[d] + [""] * (len(headers) - 1)])
         return ws
+
+    def _seed_present(self, sh, dates):
+        # A minimal picks-only payload expects {picks, market}; a day is non-gap only when it
+        # is present in BOTH (market is always expected — build_market_row yields one row/day).
+        self._seed(sh, "picks", ss.PICKS_HEADERS, dates)
+        self._seed(sh, "market", ss.MARKET_HEADERS, dates)
 
     def test_only_missing_days_synced_present_not_duplicated(self):
         import datetime as _dt
         sh = _FakeSheet()
-        self._picks_tab_with_dates(sh, ["2026-06-24"])  # 24 already present
+        self._seed_present(sh, ["2026-06-24"])  # 24 fully present (picks+market)
         with tempfile.TemporaryDirectory() as td:
             for d in ("2026-06-24", "2026-06-25", "2026-06-26"):
                 self._write_day(td, d)
@@ -1177,7 +1190,7 @@ class TestHealMissingIntegration(unittest.TestCase):
     def test_noop_when_all_present(self):
         import datetime as _dt
         sh = _FakeSheet()
-        self._picks_tab_with_dates(sh, ["2026-06-26"])
+        self._seed_present(sh, ["2026-06-26"])
         with tempfile.TemporaryDirectory() as td:
             self._write_day(td, "2026-06-26")
             with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
@@ -1187,9 +1200,9 @@ class TestHealMissingIntegration(unittest.TestCase):
         self.assertEqual(summary["synced"], [])
         self.assertEqual(summary["missing"], [])
 
-    def test_no_sentinel_tab_treats_all_with_files_as_missing(self):
+    def test_no_tabs_treats_all_with_files_as_missing(self):
         import datetime as _dt
-        sh = _FakeSheet()  # no picks tab at all
+        sh = _FakeSheet()  # no tabs at all
         with tempfile.TemporaryDirectory() as td:
             self._write_day(td, "2026-06-26")
             with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
@@ -1201,8 +1214,7 @@ class TestHealMissingIntegration(unittest.TestCase):
     def test_days_with_no_file_are_not_counted_missing(self):
         """A trailing day with no local report file (weekend/holiday) is never 'missing'."""
         import datetime as _dt
-        sh = _FakeSheet()
-        self._picks_tab_with_dates(sh, [])  # empty sheet
+        sh = _FakeSheet()  # empty sheet
         with tempfile.TemporaryDirectory() as td:
             self._write_day(td, "2026-06-26")  # only 26 has a file; 25/24 don't
             with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
@@ -1211,6 +1223,49 @@ class TestHealMissingIntegration(unittest.TestCase):
                                           today=_dt.date(2026, 6, 26), pace_s=0)
         self.assertEqual(summary["synced"], ["2026-06-26"])
         self.assertEqual(summary["missing"], ["2026-06-26"])
+
+    def test_partial_tab_gap_resynced(self):
+        """C: a day present in picks+market but MISSING from early_board (while the payload
+        HAS early_board data) is a gap and gets re-synced — the failure mode that the old
+        single-sentinel (picks-only) check could not catch."""
+        import datetime as _dt
+        sh = _FakeSheet()
+        self._seed_present(sh, ["2026-06-26"])  # picks+market present; early_board tab absent
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26",
+                            early_board=[{"stock": "FN", "name": "Fab", "ready": False,
+                                          "score": 1, "signals": ["x"]}])
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["missing"], ["2026-06-26"], "early_board gap must be detected")
+        self.assertIn("early_board", sh.worksheets_by_title)
+        eb_dates = [r[0] for r in sh.worksheets_by_title["early_board"]._rows[1:]]
+        self.assertIn("2026-06-26", eb_dates, "early_board re-synced for the gap day")
+
+    def test_legitimately_empty_optional_tab_not_gap(self):
+        """A day whose payload has NO early_board rows is NOT a gap on early_board — otherwise
+        heal would re-sync forever. Only picks+market are expected for a picks-only payload."""
+        import datetime as _dt
+        sh = _FakeSheet()
+        self._seed_present(sh, ["2026-06-26"])  # picks+market present, no early_board data
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")  # payload has no early_board / opportunity / news
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["missing"], [])
+        self.assertEqual(summary["synced"], [])
+
+    def test_day_expected_tabs_pure(self):
+        # picks-only payload -> {picks, market}; add early_board data -> + early_board
+        self.assertEqual(ss._day_expected_tabs({"date": "d", "picks": [{"stock": "X"}]}),
+                         {"picks", "market"})
+        exp = ss._day_expected_tabs({"date": "d", "picks": [{"stock": "X"}],
+                                     "early_board": [{"stock": "F", "name": "n"}]})
+        self.assertEqual(exp, {"picks", "market", "early_board"})
 
 
 class TestRateLimitRetry(unittest.TestCase):
@@ -1298,6 +1353,49 @@ class TestHealMissingCLI(unittest.TestCase):
         # days arg threaded through
         self.assertEqual(mh.call_args.kwargs.get("days"), 12)
         msync.assert_not_called()
+
+
+class TestBatchedDelete(unittest.TestCase):
+    """D: deletes use ranged delete_rows(start, end) — 1 call per contiguous block, not 1/row.
+    This is the Sheets 60-writes/min quota saver on re-syncs (outcomes full-replace went from
+    263 delete calls to 1)."""
+
+    def test_contiguous_runs(self):
+        self.assertEqual(ss._contiguous_runs([4, 5, 6, 9, 10]), [[4, 6], [9, 10]])
+        self.assertEqual(ss._contiguous_runs([]), [])
+        self.assertEqual(ss._contiguous_runs([7]), [[7, 7]])
+
+    def test_upsert_single_ranged_delete_for_contiguous_block(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["date", "v"]], range_name="A1")
+        ws.append_rows([["D", "1"], ["D", "2"], ["D", "3"]])  # rows 2,3,4 all date D
+        ss._upsert(ws, "D", [["D", "new"]])
+        self.assertEqual(ws.delete_calls, [(2, 4)], "3 contiguous rows -> ONE ranged delete")
+        self.assertEqual([r[0] for r in ws._rows[1:]], ["D"], "old block gone, new row appended")
+
+    def test_upsert_noncontiguous_blocks_delete_bottom_up(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["date", "v"]], range_name="A1")
+        ws.append_rows([["D", "1"], ["E", "2"], ["D", "3"]])  # D at rows 2 and 4 (E between)
+        ss._upsert(ws, "D", [["D", "new"]])
+        self.assertEqual(ws.delete_calls, [(4, 4), (2, 2)], "two blocks, deleted bottom-up")
+        dates = [r[0] for r in ws._rows[1:]]
+        self.assertIn("E", dates)
+        self.assertEqual(dates.count("D"), 1, "exactly one D row remains (the re-appended one)")
+
+    def test_replace_all_single_ranged_delete(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["a", "b"]], range_name="A1")
+        ws.append_rows([["x", str(i)] for i in range(5)])  # 5 data rows -> rows 2..6
+        ss._replace_all(ws, [["y", "0"]])
+        self.assertEqual(ws.delete_calls, [(2, 6)], "all data rows cleared in ONE call")
+        self.assertEqual(len(ws._rows) - 1, 1)
+
+    def test_replace_all_header_only_no_delete(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["a", "b"]], range_name="A1")  # header only, no data rows
+        ss._replace_all(ws, [["y", "0"]])
+        self.assertEqual(ws.delete_calls, [], "nothing to delete when only header present")
 
 
 if __name__ == "__main__":

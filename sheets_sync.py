@@ -699,13 +699,28 @@ def _ensure_ws(sh, title, headers):
     return ws
 
 
+def _contiguous_runs(sorted_rows):
+    """Group an ascending list of row numbers into [start, end] inclusive runs.
+    [4,5,6,9,10] -> [[4,6],[9,10]]. Lets a same-date block delete in ONE ranged
+    delete_rows call instead of N — the per-minute write-quota saver."""
+    runs = []
+    for r in sorted_rows:
+        if runs and r == runs[-1][1] + 1:
+            runs[-1][1] = r
+        else:
+            runs.append([r, r])
+    return runs
+
+
 def _upsert(ws, date_str, rows):
-    """Idempotent: delete any existing rows for date_str, then append `rows`."""
+    """Idempotent: delete any existing rows for date_str, then append `rows`.
+    Deletes contiguous row blocks with a single ranged delete (1 call/block, not 1/row)
+    and processes blocks bottom-up so lower indices stay valid — slashes write calls on
+    re-syncs (the main Sheets 60-writes/min quota pressure)."""
     date_col = ws.col_values(1)  # includes header at index 0
     dups = dup_row_numbers(date_col, date_str)
-    # delete bottom-up so earlier indices stay valid
-    for rn in sorted(dups, reverse=True):
-        ws.delete_rows(rn)
+    for start, end in sorted(_contiguous_runs(dups), reverse=True):
+        ws.delete_rows(start, end)
     if rows:
         ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
 
@@ -737,8 +752,8 @@ def _replace_all(ws, rows):
     (not the sync date) — a per-date upsert can't dedup it, so we rewrite it whole.
     Idempotent: re-running yields the same row set."""
     n = len(ws.col_values(1))  # includes header
-    for rn in range(n, 1, -1):  # delete bottom-up, keep row 1 (header)
-        ws.delete_rows(rn)
+    if n > 1:
+        ws.delete_rows(2, n)  # single ranged delete of ALL data rows (keep header)
     if rows:
         ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
 
@@ -815,37 +830,81 @@ def _load_day(day, data_dir=None):
         return json.load(f)
 
 
-def _present_dates(sh, sentinel="picks"):
-    """Return the set of dates already in the Sheet, read once from the sentinel tab's date
-    column (the picks tab is written for every trading day with picks, so it's the canonical
-    'this day was synced' marker). Sentinel tab absent/unreadable -> empty set (treat all as
-    missing, i.e. a fresh Sheet). The single read is 429-retried."""
-    try:
-        ws = sh.worksheet(sentinel)
-    except Exception:
-        return set()
-    col = _read_with_retry(ws.col_values, 1, what=f"{sentinel} dates")
-    return {v for v in col[1:] if v}  # col[0] is the header
+# Tabs whose presence-for-a-day is a PURE function of that day's payload, so "the payload
+# has rows for this tab but the Sheet lacks this day" is an unambiguous GAP (distinguishable
+# from a tab that is legitimately empty that day). Excluded: watchlist (mirrors CURRENT state
+# stamped with the day, not historical), outcomes (full-replace keyed by picked_date, not sync
+# date), my_positions_status (depends on user input) — none are pure per-day functions, so
+# their date-absence can't be read as a gap.
+GAP_CHECK_TABS = ("picks", "market", "opportunity", "news", "early_board")
+
+
+def _day_expected_tabs(payload):
+    """Tabs that SHOULD contain a row for this day, derived purely from the payload.
+    `market` is always expected (build_market_row yields exactly one row/day); the others
+    only when their row-builder returns a non-empty list."""
+    exp = {"market"}
+    if build_picks_rows(payload):
+        exp.add("picks")
+    if build_opportunity_rows(payload):
+        exp.add("opportunity")
+    if build_news_rows(payload):
+        exp.add("news")
+    if build_early_board_rows(payload):
+        exp.add("early_board")
+    return exp
+
+
+def _present_by_tab(sh, tabs):
+    """Read each tab's date column ONCE -> {tab: set(dates)}. Absent/unreadable tab -> empty
+    set (treat its days as missing). Each read is 429-retried."""
+    out = {}
+    for t in tabs:
+        try:
+            ws = sh.worksheet(t)
+        except Exception:
+            out[t] = set()
+            continue
+        col = _read_with_retry(ws.col_values, 1, what=f"{t} dates")
+        out[t] = {v for v in col[1:] if v}  # col[0] is the header
+    return out
+
+
+def gap_days(sh, candidate_days, data_dir, tabs=GAP_CHECK_TABS):
+    """Days (from candidate_days) where the payload SHOULD have a row in some checked tab but
+    the Sheet's tab lacks that day. Catches partial-tab gaps (e.g. a 429 dropped early_board
+    while picks landed) that a single-sentinel check misses. One date-column read per tab."""
+    present = _present_by_tab(sh, tabs)
+    gaps = []
+    for day in candidate_days:
+        payload = _load_day(day, data_dir)
+        if payload is None:
+            continue
+        for t in _day_expected_tabs(payload):
+            if t in tabs and day not in present.get(t, set()):
+                gaps.append(day)
+                break
+    return sorted(set(gaps))
 
 
 def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
-                 pace_s=DEFAULT_HEAL_PACE_S, sentinel="picks"):
-    """Re-sync ONLY the trailing-`days`-window days that are absent from the Sheet.
+                 pace_s=DEFAULT_HEAL_PACE_S):
+    """Re-sync ONLY the trailing-`days`-window days that have a PER-TAB gap in the Sheet.
 
-    1 sentinel read computes which of the recent days with a local report file are not yet in
-    the Sheet; only those get a full sync_payload (idempotent upsert). Healthy month -> nothing
-    written (no quota burn). Missing days are paced (pace_s) + each tab is 429-retried, so a
-    backlog lands reliably instead of silently dropping under the per-minute quota.
+    For each recent day with a local report file, compares the tabs the payload should fill
+    (GAP_CHECK_TABS) against what the Sheet actually has; a day missing from any expected tab
+    is re-synced (full idempotent sync_payload, now ranged-delete + 429-retried, so the rewrite
+    is quota-light). A fully-present day writes nothing. Distinguishes a legitimately-empty
+    optional tab (payload has no rows -> not expected -> not a gap) from a dropped write.
 
-    Returns a summary dict {window, candidates, present_count, missing, synced}."""
+    Returns a summary dict {window, candidates, checked_tabs, missing, synced}."""
     data_dir = data_dir or DATA_DIR
     if today is None:
         today = datetime.now(timezone.utc).date()
     candidates = available_local_days(last_n_dates(today, days), data_dir)
-    present = _present_dates(sh, sentinel)
-    missing = sorted(missing_dates(present, candidates))  # chronological for tidy appends
+    missing = gap_days(sh, candidates, data_dir)
     _log(f"heal-missing: window={days}d candidates_with_file={len(candidates)} "
-         f"present_in_{sentinel}={len(present)} missing={len(missing)}")
+         f"gap_days={len(missing)} (per-tab check: {','.join(GAP_CHECK_TABS)})")
     synced = []
     for i, day in enumerate(missing):
         payload = _load_day(day, data_dir)
@@ -855,8 +914,8 @@ def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
         synced.append(day)
         if pace_s and i < len(missing) - 1:
             time.sleep(pace_s)
-    _log(f"heal-missing done: synced {len(synced)}/{len(missing)} missing day(s): {synced}")
-    return {"window": days, "candidates": candidates, "present_count": len(present),
+    _log(f"heal-missing done: synced {len(synced)}/{len(missing)} gap day(s): {synced}")
+    return {"window": days, "candidates": candidates, "checked_tabs": list(GAP_CHECK_TABS),
             "missing": missing, "synced": synced}
 
 
@@ -865,8 +924,8 @@ def main(argv=None):
     ap.add_argument("--day", help="YYYY-MM-DD (default: today UTC)")
     ap.add_argument("--backfill", action="store_true", help="sync every docs/data/*.json")
     ap.add_argument("--heal-missing", action="store_true",
-                    help="re-sync ONLY the trailing-window days that are MISSING from the Sheet "
-                         "(sentinel: picks tab) — quota-light monthly drift-heal")
+                    help="re-sync ONLY the trailing-window days with a PER-TAB gap in the Sheet "
+                         "(picks/market/opportunity/news/early_board) — quota-light drift-heal")
     ap.add_argument("--days", type=int, default=DEFAULT_HEAL_DAYS,
                     help=f"trailing window size for --heal-missing (default {DEFAULT_HEAL_DAYS})")
     ap.add_argument("--pull-positions", action="store_true",
