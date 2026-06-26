@@ -1267,6 +1267,39 @@ class TestHealMissingIntegration(unittest.TestCase):
                                      "early_board": [{"stock": "F", "name": "n"}]})
         self.assertEqual(exp, {"picks", "market", "early_board"})
 
+    def test_sync_payload_skip_outcomes_leaves_tab_untouched(self):
+        sh = _FakeSheet()
+        payload = {"date": "2026-06-26", "generated_at": "x", "picks": [{"stock": "X", "name": "Y"}]}
+        with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES):
+            ss.sync_payload(sh, payload, sync_outcomes=False)
+        self.assertNotIn("outcomes", sh.worksheets_by_title,
+                         "outcomes (global aggregate) is skipped when sync_outcomes=False")
+        self.assertIn("picks", sh.worksheets_by_title, "per-date tabs still sync")
+
+    def test_heal_writes_outcomes_once_for_multiday(self):
+        """The outcomes full-replace (the big global write) runs ONCE for a multi-day heal,
+        not once per gap day — the remaining per-minute-quota driver, now bounded."""
+        import datetime as _dt
+        sh = _FakeSheet()  # no tabs -> all 3 days are gaps
+        calls = {"n": 0}
+        real = ss._sync_replace_tab
+
+        def counting(*a, **k):
+            calls["n"] += 1
+            return real(*a, **k)
+
+        with tempfile.TemporaryDirectory() as td:
+            for d in ("2026-06-24", "2026-06-25", "2026-06-26"):
+                self._write_day(td, d)
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]), \
+                 mock.patch.object(ss, "_sync_replace_tab", side_effect=counting):
+                summary = ss.heal_missing(sh, days=3, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(len(summary["synced"]), 3)
+        self.assertEqual(calls["n"], 1, "outcomes full-replace called exactly once for 3 gap days")
+
 
 class TestRateLimitRetry(unittest.TestCase):
     def test_is_rate_limit_detects_429(self):

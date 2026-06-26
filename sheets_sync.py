@@ -597,7 +597,7 @@ def dup_row_numbers(date_column_values, date_str):
 # Sheets per-minute write quota.
 
 DEFAULT_HEAL_DAYS = 40       # trailing window: ~5-day overlap past a monthly cadence -> no gaps
-DEFAULT_HEAL_PACE_S = 8      # proactive inter-day sleep to stay under the 60 writes/min quota
+DEFAULT_HEAL_PACE_S = 15     # proactive inter-day sleep to stay under the 60 writes/min quota
 
 
 def last_n_dates(end_date, n):
@@ -776,12 +776,17 @@ def _sync_replace_tab(sh, title, headers, rows):
             return -1
 
 
-def sync_payload(sh, payload):
+def sync_payload(sh, payload, sync_outcomes=True):
     """Upsert one day's payload into all tabs:
     picks · market · opportunity · early_board · watchlist · outcomes (· news).
     Each tab write is isolated: a failure logs SKIP for that tab but never crashes the sync.
     watchlist + outcomes pull from sidecar files (load_watchlist_state / load_outcomes),
-    so both degrade to header-only tabs when their source is absent."""
+    so both degrade to header-only tabs when their source is absent.
+
+    sync_outcomes=False skips the outcomes full-replace — outcomes is a GLOBAL aggregate
+    (keyed by picked_date, identical every call), so a multi-day heal writes it ONCE instead
+    of re-appending its (large) row set per gap day, which otherwise dominates the per-minute
+    write quota. The daily run leaves it True."""
     date_str = payload.get("date")
 
     n_picks = _sync_tab(sh, "picks", PICKS_HEADERS, date_str, build_picks_rows(payload))
@@ -799,9 +804,13 @@ def sync_payload(sh, payload):
 
     # outcomes — W1 ledger aggregate keyed by picked_date (full-replace, not per-date
     # upsert: it spans many dates so it's rewritten whole). Header-only when dir missing.
-    outcomes = load_outcomes()
-    n_oc = _sync_replace_tab(sh, "outcomes", OUTCOMES_HEADERS,
-                             build_outcomes_rows(outcomes))
+    # Global aggregate → skipped when sync_outcomes=False (multi-day heal writes it once).
+    if sync_outcomes:
+        outcomes = load_outcomes()
+        n_oc = _sync_replace_tab(sh, "outcomes", OUTCOMES_HEADERS,
+                                 build_outcomes_rows(outcomes))
+    else:
+        n_oc = "skip"
 
     # my_positions_status — P2-S1 daily position-eval ECHO from the payload's my_positions block
     # (positions.summarize output). Idempotent upsert by date via write_positions_echo. Isolated:
@@ -906,13 +915,16 @@ def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
     _log(f"heal-missing: window={days}d candidates_with_file={len(candidates)} "
          f"gap_days={len(missing)} (per-tab check: {','.join(GAP_CHECK_TABS)})")
     synced = []
+    last_idx = len(missing) - 1
     for i, day in enumerate(missing):
         payload = _load_day(day, data_dir)
         if payload is None:
             continue
-        sync_payload(sh, payload)
+        # outcomes is a global aggregate — write it only once (on the last gap day) so a
+        # multi-day heal doesn't re-append its large row set per day (the main quota driver).
+        sync_payload(sh, payload, sync_outcomes=(i == last_idx))
         synced.append(day)
-        if pace_s and i < len(missing) - 1:
+        if pace_s and i < last_idx:
             time.sleep(pace_s)
     _log(f"heal-missing done: synced {len(synced)}/{len(missing)} gap day(s): {synced}")
     return {"window": days, "candidates": candidates, "checked_tabs": list(GAP_CHECK_TABS),
