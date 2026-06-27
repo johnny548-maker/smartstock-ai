@@ -1,0 +1,46 @@
+name: AllStocks Sheet Sync (manual mirror from git-files)
+
+# Mirrors the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/) into the
+# month's Google Sheet via --sync-from-files. The daily.yml pipeline already does
+# this on schedule; this workflow is a manual/ad-hoc re-mirror (e.g. to backfill a
+# Sheet after the local TW-IP task lands TWSE/TDCC data, or to verify the path).
+# Reads what is currently committed in the repo — run it AFTER the day's archive
+# (CI git-file step + the local 14:45 TW task) has pushed.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date to mirror (YYYY-MM-DD); empty = today UTC'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: allstocks-sheet-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Mirror git-file archive into the month Sheet
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        run: |
+          set -euo pipefail
+          DATE_ARG=""
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            DATE_ARG="--date ${{ github.event.inputs.date }}"
+          fi
+          python sheets_sync_allstocks.py --sync-from-files $DATE_ARG
