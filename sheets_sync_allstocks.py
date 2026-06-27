@@ -34,6 +34,7 @@ import os
 import re
 import sys
 import tempfile
+import time
 from datetime import datetime, timezone
 
 # ── Tab header schemas (7 P0 sources) ─────────────────────────────────────────
@@ -928,22 +929,77 @@ def _build_cnyes_rows(date_str, raw_rows):
     return rows
 
 
+# ── Rate-limit resilience (reuse sheets_sync pattern; reimplemented locally) ───
+# gspread does NOT auto-retry the Sheets API per-minute quota (60 read + 60 write
+# requests/min/user). Re-mirroring a populated tab bursts past it -> APIError [429]:
+# e.g. tdcc_weekly re-writes the same ~3999-row asof every day, or --sync-from-files
+# re-runs a populated date. Treat 429 as transient: exponential backoff + retry.
+# Reimplemented here (NOT cross-imported from sheets_sync) to keep test isolation.
+
+RATE_LIMIT_RETRIES = 3
+RATE_LIMIT_BASE_SLEEP_S = 15
+
+
+def _is_rate_limit(exc):
+    """True if `exc` looks like a Sheets/Drive per-minute quota error (HTTP 429)."""
+    s = str(exc)
+    return ("429" in s) or ("RESOURCE_EXHAUSTED" in s) or ("Quota exceeded" in s)
+
+
+def _contiguous_runs(sorted_rows):
+    """Group an ascending list of 1-based row numbers into [(start, end), ...] inclusive
+    runs. [4, 5, 6, 9, 10] -> [(4, 6), (9, 10)]. Lets a same-date block delete in ONE
+    ranged delete_rows call instead of N — the per-minute write-quota saver."""
+    runs = []
+    for r in sorted_rows:
+        if runs and r == runs[-1][1] + 1:
+            runs[-1] = (runs[-1][0], r)
+        else:
+            runs.append((r, r))
+    return runs
+
+
+def _write_with_retry(fn, *args, what="write", **kwargs):
+    """Call fn(*args, **kwargs), retrying with exponential backoff on a 429; re-raise any
+    non-429 immediately, and re-raise the 429 after the final attempt. Wraps EVERY Sheets
+    call (reads can 429 too) so a burst of deletes/appends self-throttles instead of 429ing."""
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as exc:
+            if _is_rate_limit(exc) and attempt < RATE_LIMIT_RETRIES:
+                wait = RATE_LIMIT_BASE_SLEEP_S * (2 ** attempt)
+                _log(f"RATE-LIMIT {what}: backoff {wait}s "
+                     f"(retry {attempt + 1}/{RATE_LIMIT_RETRIES})")
+                time.sleep(wait)
+                continue
+            raise
+
+
 # ── Idempotent upsert (reuse sheets_sync pattern) ─────────────────────────────
 
 def _upsert_allstocks(ws, date_col_idx, date_str, rows):
     """Idempotent: delete existing rows for date_str in date column, then append.
 
     date_col_idx: 0-based column index of the date field (0 for daily, 0 for weekly).
-    Mirrors sheets_sync._upsert but works on 1-based col (col_values uses 1-based)."""
+    Mirrors sheets_sync._upsert. Deletes contiguous same-date row blocks with a single
+    ranged delete_rows(start, end) call (1 call/block, not 1/row), bottom-up so lower
+    indices stay valid — slashes write calls on re-syncs (the Sheets 60-writes/min quota
+    pressure). Every Sheets call is wrapped in _write_with_retry so a 429 backs off and
+    retries instead of dropping the tab. Public contract unchanged (upsert-by-date)."""
     date_col_1based = date_col_idx + 1
-    date_col = ws.col_values(date_col_1based)  # includes header at index 0
+    # reads can 429 too — wrap the present-dates read in the same backoff
+    date_col = _write_with_retry(ws.col_values, date_col_1based,
+                                 what=f"read {ws.title}")  # header at index 0
     # Find 1-based row numbers where date matches (skip header = index 0)
     dups = [i + 1 for i, v in enumerate(date_col) if i >= 1 and v == date_str]
-    # Delete bottom-up so earlier indices stay valid
-    for rn in sorted(dups, reverse=True):
-        ws.delete_rows(rn)
+    runs = _contiguous_runs(sorted(dups))
+    # Delete bottom-up so earlier indices stay valid as rows are removed
+    for start, end in sorted(runs, key=lambda r: r[0], reverse=True):
+        _write_with_retry(ws.delete_rows, start, end, what=f"delete {ws.title}")
     if rows:
-        ws.append_rows(rows, value_input_option="USER_ENTERED")
+        _write_with_retry(ws.append_rows, rows, value_input_option="USER_ENTERED",
+                          what=f"append {ws.title}")
 
 
 # ── Index helpers ─────────────────────────────────────────────────────────────

@@ -563,12 +563,30 @@ class TestBootstrapExistingIdIdempotent(unittest.TestCase):
 
 # Extended _FakeWorksheet that supports delete_rows for upsert testing
 class _FakeWorksheetFull(_FakeWorksheet):
-    """_FakeWorksheet extended with delete_rows for idempotent-upsert testing."""
+    """_FakeWorksheet extended with ranged delete_rows for idempotent-upsert testing.
 
-    def delete_rows(self, rn):
-        """Delete 1-based row number rn (row 1 = header)."""
-        if 1 <= rn <= len(self._rows):
-            self._rows.pop(rn - 1)
+    delete_rows accepts BOTH delete_rows(rn) (single 1-based row) AND
+    delete_rows(start, end) (inclusive 1-based range), mirroring gspread. Tracks
+    delete_calls / append_calls (incremented per successful call) so tests can assert
+    the ranged-batch contract (N contiguous dups -> 1 call, not N)."""
+
+    def __init__(self, title, headers=None):
+        super().__init__(title, headers=headers)
+        self.delete_calls = 0
+        self.append_calls = 0
+
+    def delete_rows(self, start, end=None):
+        """Delete inclusive 1-based row range [start, end] (row 1 = header).
+        end omitted -> single row. Pops high->low so 1-based indices stay valid."""
+        self.delete_calls += 1
+        end = start if end is None else end
+        for rn in range(end, start - 1, -1):
+            if 1 <= rn <= len(self._rows):
+                self._rows.pop(rn - 1)
+
+    def append_rows(self, rows, value_input_option=None):
+        self.append_calls += 1
+        super().append_rows(rows, value_input_option=value_input_option)
 
 
 class _FakeSpreadsheetFull(_FakeSpreadsheet):
@@ -1861,6 +1879,115 @@ class TestCliSyncFromFiles(unittest.TestCase):
         m.assert_called_once()
         self.assertEqual(m.call_args.kwargs.get("date_str"), "2026-06-24")
         self.assertEqual(m.call_args.kwargs.get("source_filter"), "tdcc_weekly")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# _upsert_allstocks — ranged contiguous-run delete + 429 backoff
+# (was per-row delete -> bursts past Sheets 60-writes/min on big re-mirrors)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class _FakeWorksheet429(_FakeWorksheetFull):
+    """Raises a 429-like APIError on the first `fail_k` calls to each named op, then
+    succeeds — proves _write_with_retry backs off and retries (sleep is patched no-op).
+    The 429 is raised BEFORE the success counter increments, so delete_calls/append_calls
+    count only the eventually-successful call."""
+
+    def __init__(self, title, headers=None, fail_k=0, fail_on=("delete_rows",)):
+        super().__init__(title, headers=headers)
+        self._fail_on = set(fail_on)
+        self._fails_left = {name: fail_k for name in self._fail_on}
+
+    def _maybe_429(self, name):
+        if self._fails_left.get(name, 0) > 0:
+            self._fails_left[name] -= 1
+            raise Exception(
+                "APIError: [429]: Quota exceeded for quota metric 'Write requests'")
+
+    def col_values(self, col):
+        self._maybe_429("col_values")
+        return super().col_values(col)
+
+    def delete_rows(self, start, end=None):
+        self._maybe_429("delete_rows")
+        return super().delete_rows(start, end=end)
+
+    def append_rows(self, rows, value_input_option=None):
+        self._maybe_429("append_rows")
+        return super().append_rows(rows, value_input_option=value_input_option)
+
+
+def _ws_with_dates(date_strs):
+    """Build a _FakeWorksheetFull with header + one data row per entry in date_strs
+    (col 0 = date, col 1 = a unique code)."""
+    ws = _FakeWorksheetFull("t", headers=["date", "code"])
+    for i, d in enumerate(date_strs):
+        ws._rows.append([d, f"c{i}"])
+    return ws
+
+
+class TestUpsertAllstocksRangedDelete(unittest.TestCase):
+    DATE = "2026-06-24"
+
+    def test_contiguous_helper_groups_runs(self):
+        self.assertEqual(sa._contiguous_runs([4, 5, 6, 9, 10]), [(4, 6), (9, 10)])
+        self.assertEqual(sa._contiguous_runs([]), [])
+        self.assertEqual(sa._contiguous_runs([3]), [(3, 3)])
+
+    def test_six_contiguous_dups_one_ranged_delete(self):
+        """6 same-date rows must collapse to ONE delete_rows(start,end), not 6 calls."""
+        ws = _ws_with_dates([self.DATE] * 6)  # rows 2..7, all the same date
+        self.assertEqual(ws.delete_calls, 0)
+        sa._upsert_allstocks(ws, 0, self.DATE, [[self.DATE, "new"]])
+        self.assertEqual(ws.delete_calls, 1,
+                         "6 contiguous dups => exactly 1 ranged delete, not 6")
+        self.assertEqual(len(ws._rows), 2, "header + 1 appended row")
+        self.assertEqual(ws._rows[1], [self.DATE, "new"])
+
+    def test_two_separate_runs_two_ranged_deletes(self):
+        """Two non-adjacent dup runs => two ranged delete calls."""
+        ws = _ws_with_dates([self.DATE, "2026-06-23", self.DATE])  # dups at rows 2 and 4
+        sa._upsert_allstocks(ws, 0, self.DATE, [])  # no append
+        self.assertEqual(ws.delete_calls, 2,
+                         "two separated dup runs => two ranged deletes")
+        self.assertEqual(len(ws._rows), 2, "header + the surviving non-dup row")
+        self.assertEqual(ws._rows[1][0], "2026-06-23")
+
+    def test_transient_429_on_delete_is_retried(self):
+        """A transient 429 on delete is retried (sleep patched) then succeeds."""
+        ws = _FakeWorksheet429("t", headers=["date", "code"],
+                               fail_k=1, fail_on=("delete_rows",))
+        ws._rows.append([self.DATE, "old"])
+        with mock.patch.object(sa.time, "sleep", return_value=None) as msleep:
+            sa._upsert_allstocks(ws, 0, self.DATE, [[self.DATE, "new"]])
+        self.assertGreaterEqual(msleep.call_count, 1, "429 must trigger a backoff sleep")
+        self.assertEqual(ws.delete_calls, 1, "delete must succeed after the retry")
+        self.assertEqual(len(ws._rows), 2)
+        self.assertEqual(ws._rows[1], [self.DATE, "new"])
+
+    def test_non_429_error_propagates_immediately(self):
+        """A non-429 error is re-raised immediately with no retry/backoff."""
+        ws = _FakeWorksheetFull("t", headers=["date", "code"])
+        ws._rows.append([self.DATE, "old"])
+
+        def boom(*a, **k):
+            raise RuntimeError("boom")
+
+        with mock.patch.object(ws, "delete_rows", side_effect=boom), \
+             mock.patch.object(sa.time, "sleep", return_value=None) as msleep:
+            with self.assertRaises(RuntimeError):
+                sa._upsert_allstocks(ws, 0, self.DATE, [[self.DATE, "new"]])
+        self.assertEqual(msleep.call_count, 0, "non-429 must not back off")
+
+    def test_reupsert_same_date_idempotent(self):
+        """Re-upserting the same date yields an identical final row set."""
+        ws = _FakeWorksheetFull("t", headers=["date", "code"])
+        rows = [[self.DATE, "2330"], [self.DATE, "2317"]]
+        sa._upsert_allstocks(ws, 0, self.DATE, rows)
+        first = [r[:] for r in ws._rows]
+        sa._upsert_allstocks(ws, 0, self.DATE, rows)  # re-run
+        self.assertEqual(ws._rows, first,
+                         "re-upsert same date must yield identical rows")
+        self.assertEqual(len(ws._rows), 3, "header + 2 data rows")
 
 
 if __name__ == "__main__":
