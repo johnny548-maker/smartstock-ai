@@ -36,11 +36,13 @@ git add docs/data/_allstocks 2>&1 | Out-File $log -Append -Encoding utf8
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) { Log 'No changes (holiday / nothing new). Done.'; Log '=== done ==='; exit 0 }
 
-# 4. Commit + push with rebase-retry (-X ours keeps the full TW-IP archive on conflict).
+# 4. Commit + push with rebase-retry. NOTE: during a REBASE, "theirs" = the commits being
+#    replayed (our local archive), "ours" = the upstream base — REVERSED from a merge. So
+#    -X theirs is what keeps the local TW-IP archive on conflict (matches bootstrap.yml).
 git commit -m 'chore(allstocks): local TW-IP archive (TWSE/TDCC sources blocked from CI)' 2>&1 | Out-File $log -Append -Encoding utf8
 $pushed = $false
 for ($i = 1; $i -le 3; $i++) {
-    git pull --rebase -X ours origin main 2>&1 | Out-File $log -Append -Encoding utf8
+    git pull --rebase -X theirs origin main 2>&1 | Out-File $log -Append -Encoding utf8
     git push origin main 2>&1 | Out-File $log -Append -Encoding utf8
     if ($LASTEXITCODE -eq 0) { $pushed = $true; break }
     Start-Sleep -Seconds ($i * 5)
