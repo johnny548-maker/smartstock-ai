@@ -283,7 +283,11 @@ jobs:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
         run: |
           set -euo pipefail
-          python sheets_sync_allstocks.py --sync --date $(date -u +%F)
+          # --sync-from-files mirrors the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/)
+          # into the Sheet instead of a CI-IP live fetch. By run-time that archive already includes
+          # the TWSE/TDCC sources captured by the local TW-IP archiver task (CI IPs are blocked from
+          # TWSE/TDCC), so the browseable Sheet gets the complete dataset, not just the CI-reachable subset.
+          python sheets_sync_allstocks.py --sync-from-files --date $(date -u +%F)
 
       # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
       # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the

@@ -1257,6 +1257,31 @@ def _write_csv(path, header, rows):
                 pass
 
 
+def _read_csv(path):
+    """Read a gz-CSV written by _write_csv → list[list[str]] WITHOUT the header row.
+
+    Round-trips _write_csv: gunzip + csv.reader, drop row 0 (header). Missing/None
+    path → [] (graceful, so a not-yet-archived source is a clean 0-row no-op)."""
+    if not path or not os.path.isfile(path):
+        return []
+    with gzip.open(path, "rt", encoding="utf-8", newline="") as fh:
+        all_rows = list(csv.reader(fh))
+    return all_rows[1:] if all_rows else []
+
+
+def _latest_key_file(tab_dir):
+    """Return the path of the lexicographically-greatest *.csv.gz in tab_dir (newest
+    period), or None when the dir is absent/empty. Used for tabs whose archive file key
+    isn't derivable from date_str (tdcc_weekly asof, sec_frames_quarterly period)."""
+    try:
+        names = [n for n in os.listdir(tab_dir) if n.endswith(".csv.gz")]
+    except (FileNotFoundError, NotADirectoryError):
+        return None
+    if not names:
+        return None
+    return os.path.join(tab_dir, max(names))
+
+
 def _tdcc_producer(date_str):
     """Producer for tdcc_weekly: key = the weekly asof_date (col 0), fallback date_str."""
     def _p():
@@ -1345,6 +1370,129 @@ def archive_allstocks_to_files(date_str=None, out_dir=None, source_filter=None):
     emit("cnyes_news_daily", lambda: (date_str, _build_cnyes_rows(date_str, _fetch_cnyes())))
 
     _log(f"archive_allstocks_to_files done for {date_str}: {counts}")
+    return counts
+
+
+# ── Mirror the git-file archive → Sheet (complete, incl TWSE/TDCC) ─────────────
+
+# Per-tab keying for sync_allstocks_from_files(), MIRRORING archive_allstocks_to_files()
+# (source-file key) + sync_allstocks() (upsert col + key). One row per tab in canonical
+# _TAB_ORDER:  (tab, file_kind, upsert_col_idx, upsert_key_kind)
+#   file_kind:       'date'   → file <date_str>.csv.gz
+#                    'yyyymm' → file <yyyymm>.csv.gz
+#                    'latest' → newest *.csv.gz (key isn't derivable from date_str)
+#   upsert_key_kind: 'date'   → delete/append by date_str
+#                    'yyyymm' → delete/append by yyyymm
+#                    'rows'   → key = rows[0][upsert_col_idx]  (asof / period in the data)
+_FROM_FILES_SPEC = [
+    ("bwibbu_daily",         "date",   0, "date"),
+    ("mi_margn_daily",       "date",   0, "date"),
+    ("t86_daily",            "date",   0, "date"),
+    ("tpex_3insti_daily",    "date",   0, "date"),
+    ("tpex_margin_daily",    "date",   0, "date"),
+    ("tpex_per_daily",       "date",   0, "date"),
+    ("tdcc_weekly",          "latest", 0, "rows"),
+    ("stock_day_all_daily",  "date",   0, "date"),
+    ("t187ap03_monthly",     "yyyymm", 0, "yyyymm"),
+    ("notice_punish_daily",  "date",   0, "date"),
+    ("sec_frames_quarterly", "latest", 2, "rows"),
+    # SEC FTD file is keyed by yyyymm (archive), but sync upserts col0 by date_str
+    # (col0=settle_date ≠ date_str, so the delete is a no-op clear → plain append).
+    ("sec_ftd_semimonthly",  "yyyymm", 0, "date"),
+    # cnyes col0=pub_at ISO ts ≠ date_str → delete-by-date_str is a no-op clear + append.
+    ("cnyes_news_daily",     "date",   0, "date"),
+]
+
+
+def sync_allstocks_from_files(date_str=None, index_path=_DEFAULT_INDEX_PATH,
+                              allstocks_dir=None, source_filter=None):
+    """Mirror the COMPLETE git-file gz-CSV archive into the month's all-stocks Sheet.
+
+    Unlike sync_allstocks() (which LIVE-fetches each source from a CI IP — blocked from
+    TWSE/TDCC), this reads the already-archived gz-CSVs under docs/data/_allstocks/, which
+    by run-time include the TWSE/TDCC sources captured by the local TW-IP archiver task.
+    So the browseable Sheet ends up with the complete dataset the CI live-sync can't reach.
+
+    CONTRACT: OVERLAY-NOT-SCORER — pure archive write, never feeds scoring.
+
+    Args:
+        date_str:      'YYYY-MM-DD' (default: today UTC). Selects the daily file + month.
+        index_path:    path to _allstocks_sheets_index.json.
+        allstocks_dir: archive root (default docs/data/_allstocks).
+        source_filter: optional single tab name; when set only that source is mirrored.
+
+    Returns:
+        dict {tab_name: row_count}; 0 = no file / empty, -1 = error (per-tab isolated).
+        None when GOOGLE_SA_JSON is missing, index is missing, or the month isn't in the
+        index (all graceful exit 0). {} when source_filter is an unknown tab name.
+    """
+    if date_str is None:
+        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if allstocks_dir is None:
+        allstocks_dir = _DEFAULT_ALLSTOCKS_DIR
+
+    if source_filter is not None and source_filter not in _TAB_ORDER:
+        _log(f"SKIP sync_from_files: unknown source_filter={source_filter!r}. "
+             f"Valid names: {_TAB_ORDER}")
+        return {}
+
+    client = get_client()
+    if client is None:
+        _log("SKIP sync_from_files: GOOGLE_SA_JSON not set — allstocks Sheet sync disabled.")
+        return None
+
+    index = _load_index(index_path)
+    if index is None:
+        _log(f"SKIP sync_from_files: index file not found: {index_path}")
+        return None
+
+    month = date_str[:7]
+    sheet_id = _resolve_sheet_id(index, month)
+    if not sheet_id:
+        _log(f"SKIP sync_from_files: month {month!r} not in index {index_path}")
+        return None
+
+    sh = client.open_by_key(sheet_id)
+    yyyymm = date_str[:7]
+    counts = {}
+
+    for tab, file_kind, col_idx, key_kind in _FROM_FILES_SPEC:
+        if source_filter is not None and tab != source_filter:
+            _log(f"SKIP {tab}: filtered out (source_filter={source_filter!r})")
+            counts[tab] = 0
+            continue
+        try:
+            tab_dir = os.path.join(allstocks_dir, tab)
+            if file_kind == "date":
+                path = os.path.join(tab_dir, f"{date_str}.csv.gz")
+            elif file_kind == "yyyymm":
+                path = os.path.join(tab_dir, f"{yyyymm}.csv.gz")
+            else:  # 'latest'
+                path = _latest_key_file(tab_dir)
+
+            rows = _read_csv(path)
+            if not rows:
+                counts[tab] = 0
+                _log(f"{tab}: 0 rows (no archive file at {path})")
+                continue
+
+            if key_kind == "date":
+                key = date_str
+            elif key_kind == "yyyymm":
+                key = yyyymm
+            else:  # 'rows' — asof/period lives in the data
+                key = rows[0][col_idx]
+
+            ws = sh.worksheet(tab)
+            _upsert_allstocks(ws, col_idx, key, rows)
+            counts[tab] = len(rows)
+            _log(f"{tab}: {len(rows)} rows from {os.path.basename(path)} "
+                 f"(upsert col={col_idx} key={key})")
+        except Exception as exc:
+            _log(f"SKIP {tab}: {exc}")
+            counts[tab] = -1
+
+    _log(f"sync_allstocks_from_files done for {date_str}: {counts}")
     return counts
 
 
@@ -1469,6 +1617,13 @@ def main(argv=None):
                     help="Create/verify the month-shard spreadsheet and 7 P0 tabs.")
     ap.add_argument("--sync", action="store_true",
                     help="Sync 7 P0 fetchers → Sheet for the given date (default: today UTC).")
+    ap.add_argument("--sync-from-files", action="store_true",
+                    help=(
+                        "Mirror the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/) "
+                        "into the month's Sheet instead of live-fetching. The archive includes "
+                        "the TWSE/TDCC sources a CI-IP live --sync can't reach (captured by the "
+                        "local TW-IP archiver task), so the Sheet gets the complete dataset."
+                    ))
     ap.add_argument("--auto-register", action="store_true",
                     help=(
                         "Discover user-created month-shard sheets the SA can access "
@@ -1535,6 +1690,13 @@ def main(argv=None):
         date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
         sync_allstocks(date_str=date_str, index_path=args.index_path,
                        source_filter=args.source)
+        return 0
+
+    # ── --sync-from-files mode (mirror the complete git-file archive, incl TWSE) ─
+    if args.sync_from_files:
+        date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        sync_allstocks_from_files(date_str=date_str, index_path=args.index_path,
+                                  source_filter=args.source)
         return 0
 
     # ── --bootstrap mode ──────────────────────────────────────────────────────

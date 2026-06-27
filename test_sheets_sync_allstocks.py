@@ -1743,5 +1743,125 @@ class TestCliAutoRegister(unittest.TestCase):
             os.unlink(tmp)
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# sync_allstocks_from_files() — mirror the complete git-file gz-CSV archive → Sheet
+# (gets the TWSE/TDCC sources a CI-IP live --sync cannot fetch; they arrive in the
+#  archive via the local TW-IP archiver task)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+class TestReadCsv(unittest.TestCase):
+    def test_read_csv_roundtrips_write_csv_dropping_header(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = os.path.join(td, "x.csv.gz")
+            sa._write_csv(p, ["a", "b"], [["1", "2"], ["3", "4"]])
+            self.assertEqual(sa._read_csv(p), [["1", "2"], ["3", "4"]])
+
+    def test_read_csv_missing_file_returns_empty(self):
+        self.assertEqual(sa._read_csv(os.path.join("no", "such", "f.csv.gz")), [])
+
+
+class TestLatestKeyFile(unittest.TestCase):
+    def test_returns_lexicographically_greatest_gz(self):
+        with tempfile.TemporaryDirectory() as td:
+            for k in ("20260606", "20260620", "20260613"):
+                sa._write_csv(os.path.join(td, f"{k}.csv.gz"), ["a"], [["1"]])
+            self.assertTrue(sa._latest_key_file(td).endswith("20260620.csv.gz"))
+
+    def test_returns_none_when_dir_absent(self):
+        self.assertIsNone(sa._latest_key_file(os.path.join("no", "such", "dir")))
+
+
+def _seed_archive(adir, tab, key, rows):
+    """Write a real fixture gz-CSV via the production writer (round-trips _read_csv)."""
+    sa._write_csv(os.path.join(adir, tab, f"{key}.csv.gz"), sa.TAB_HEADERS[tab], rows)
+
+
+class TestSyncAllstocksFromFiles(unittest.TestCase):
+    def test_daily_tab_file_upserted_by_date(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            adir = os.path.join(tmp, "_allstocks")
+            rows = [["2026-06-24", "2330", "台積電", "22.5", "1.8", "6.0", "1150624"],
+                    ["2026-06-24", "2317", "鴻海", "", "3.2", "1.5", "1150624"]]
+            _seed_archive(adir, "bwibbu_daily", "2026-06-24", rows)
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                counts = sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+        self.assertEqual(counts["bwibbu_daily"], 2)
+        ws = sh._worksheets["bwibbu_daily"]
+        self.assertEqual(len(ws._rows), 3, "header + 2 data rows")
+        self.assertEqual(ws._rows[1][0], "2026-06-24")
+        self.assertEqual(ws._rows[2][1], "2317")
+
+    def test_tdcc_newest_file_upserted_by_asof(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            adir = os.path.join(tmp, "_allstocks")
+            old = [["20260613", "2330", "40.0", "400", "", "", "台積電"]]
+            new = [["20260620", "2330", "45.5", "500", "", "", "台積電"],
+                   ["20260620", "2317", "38.2", "300", "", "", "鴻海"]]
+            _seed_archive(adir, "tdcc_weekly", "20260613", old)
+            _seed_archive(adir, "tdcc_weekly", "20260620", new)
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                counts = sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+        self.assertEqual(counts["tdcc_weekly"], 2,
+                         "newest weekly file (20260620) must be the one mirrored")
+        ws = sh._worksheets["tdcc_weekly"]
+        self.assertEqual(len(ws._rows), 3, "header + 2 newest-file rows")
+        self.assertEqual(ws._rows[1][0], "20260620",
+                         "upsert key must be the asof_date from the rows")
+
+    def test_missing_file_counts_zero_no_crash(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            adir = os.path.join(tmp, "_allstocks")  # empty: no source files
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                counts = sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+        for tab in sa._TAB_ORDER:
+            self.assertEqual(counts.get(tab), 0, f"{tab} must be 0 with no source file")
+            self.assertEqual(len(sh._worksheets[tab]._rows), 1,
+                             f"{tab} must stay header-only with no source file")
+
+    def test_returns_none_when_sa_missing(self):
+        with mock.patch("sheets_sync_allstocks.get_client", return_value=None):
+            result = sa.sync_allstocks_from_files(
+                date_str="2026-06-24", index_path=os.devnull)
+        self.assertIsNone(result)
+
+    def test_returns_none_when_month_absent(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx_path = os.path.join(tmp, "idx.json")
+            with open(idx_path, "w", encoding="utf-8") as f:
+                json.dump({"2025-01": "OLD_SHEET"}, f)
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                result = sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx_path)
+        self.assertIsNone(result)
+
+
+class TestCliSyncFromFiles(unittest.TestCase):
+    def test_cli_sync_from_files_returns_0_and_forwards_args(self):
+        with mock.patch("sheets_sync_allstocks.sync_allstocks_from_files",
+                        return_value={}) as m, \
+             mock.patch.dict(os.environ, {"GOOGLE_SA_JSON": '{"type":"service_account"}'}):
+            rc = sa.main(["--sync-from-files", "--date", "2026-06-24",
+                          "--source", "tdcc_weekly"])
+        self.assertEqual(rc, 0)
+        m.assert_called_once()
+        self.assertEqual(m.call_args.kwargs.get("date_str"), "2026-06-24")
+        self.assertEqual(m.call_args.kwargs.get("source_filter"), "tdcc_weekly")
+
+
 if __name__ == "__main__":
     unittest.main()
