@@ -1,12 +1,15 @@
-name: AllStocks Bootstrap (Monthly Rollover) [DEPRECATED]
+name: AllStocks Bootstrap (Monthly Rollover)
 
-# DEPRECATED 2026-06-26: the all-stocks archive moved OFF Google Sheets to keyless git
-# gzip-CSV files (daily.yml "Archive all-stocks snapshots to git files" → sheets_sync_allstocks
-# --archive-files → docs/data/_allstocks/). Reason: a Service Account has Drive quota=0 and
-# CANNOT create a new monthly spreadsheet headlessly (empirically confirmed: APIError 403
-# "The user's Drive storage quota has been exceeded"), so the scheduled auto-bootstrap below
-# would fail every month. The monthly SCHEDULE is removed so it stops failing on the 1st.
-# Kept as workflow_dispatch only, for the legacy Sheets path if ever revived manually.
+# ACTIVE — triggered by the Apps Script monthly rollover (tools/apps_script/monthly_rollover.gs).
+# Each month the Apps Script creates the new month's Sheet in the USER's 15GB Drive (the SA has
+# Drive quota=0 and CANNOT create files headlessly — confirmed APIError 403), shares it to the SA,
+# then workflow_dispatch's THIS workflow with `existing_id` + `month`. This step opens the sheet by
+# id (bypassing SA create), seeds the 13 tabs, and commits docs/data/_allstocks_sheets_index.json
+# so daily.yml's Sheet-mirror step resolves the right id.
+#
+# NOTE: the SA-side auto-create SCHEDULE (cron) is intentionally REMOVED — a scheduled bootstrap
+# WITHOUT existing_id would 403 every month (SA can't create). Creation is the Apps Script's job;
+# this workflow only ever runs with --existing-id (via dispatch from the Apps Script, or manual).
 on:
   workflow_dispatch:
     inputs:
