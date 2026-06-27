@@ -1644,5 +1644,104 @@ class TestArchiveCLI(unittest.TestCase):
                 os.environ["GOOGLE_SA_JSON"] = old
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# auto_register() — keyless SA-side discovery (drops the Apps Script GitHub PAT)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+class TestAutoRegisterRegistersOnlyNewMonths(unittest.TestCase):
+    """openall() exposes 2 matching sheets; only the one missing from the index is
+    registered (idempotent). The index file must gain the new month's id."""
+
+    def test_registers_only_unindexed_matching_sheet(self):
+        jan = _FakeSpreadsheet(title="smartstock-allstocks-2027-01", sheet_id="ID_JAN")
+        feb = _FakeSpreadsheet(title="smartstock-allstocks-2027-02", sheet_id="ID_FEB")
+        client = _FakeClient(existing=[jan, feb])
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            json.dump({"2027-01": "ID_JAN"}, f)
+            tmp = f.name
+        try:
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                registered = sa.auto_register(index_path=tmp,
+                                              user_email="test@example.com")
+            self.assertEqual(registered, ["2027-02"],
+                             "only the un-indexed month must be registered")
+            # bootstrap must reuse the existing sheet (existing_id path), never create
+            self.assertEqual(len(client.create_calls), 0,
+                             "auto_register must never create() a sheet")
+            self.assertIn("ID_FEB", client.open_by_key_calls,
+                          "the new month's sheet must be opened by key")
+            with open(tmp, encoding="utf-8") as fh:
+                data = json.load(fh)
+            self.assertEqual(data.get("2027-01"), "ID_JAN",
+                             "pre-existing index entry must be preserved")
+            self.assertEqual(data.get("2027-02"), "ID_FEB",
+                             "index file must gain the newly-registered month's id")
+        finally:
+            os.unlink(tmp)
+
+
+class TestAutoRegisterIgnoresNonMatchingTitles(unittest.TestCase):
+    """Sheets whose titles don't match smartstock-allstocks-YYYY-MM (incl. an
+    invalid month like 2026-13) must all be ignored → returns []."""
+
+    def test_non_matching_titles_yield_empty(self):
+        sheets = [
+            _FakeSpreadsheet(title="Untitled spreadsheet", sheet_id="U1"),
+            _FakeSpreadsheet(title="smartstock-picks", sheet_id="P1"),
+            _FakeSpreadsheet(title="smartstock-allstocks-2026-13", sheet_id="BAD"),
+        ]
+        client = _FakeClient(existing=sheets)
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            json.dump({}, f)
+            tmp = f.name
+        try:
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                registered = sa.auto_register(index_path=tmp)
+            self.assertEqual(registered, [],
+                             "no non-matching / invalid-month sheet may be registered")
+            self.assertEqual(len(client.create_calls), 0)
+            self.assertEqual(client.open_by_key_calls, [],
+                             "no sheet should be opened when nothing matches")
+        finally:
+            os.unlink(tmp)
+
+
+class TestAutoRegisterGracefulWhenSAMissing(unittest.TestCase):
+    """get_client() → None (GOOGLE_SA_JSON unset) must return None, never raise."""
+
+    def test_returns_none_when_sa_missing(self):
+        with mock.patch("sheets_sync_allstocks.get_client", return_value=None):
+            result = sa.auto_register(index_path=os.devnull)
+        self.assertIsNone(result, "auto_register must return None when SA is missing")
+
+
+class TestCliAutoRegister(unittest.TestCase):
+    """main(['--auto-register']) with SA set + get_client mocked → 0 + REGISTERED= line."""
+
+    def test_cli_auto_register_returns_0_and_prints_registered(self):
+        feb = _FakeSpreadsheet(title="smartstock-allstocks-2027-02", sheet_id="ID_FEB")
+        client = _FakeClient(existing=[feb])
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            json.dump({}, f)
+            tmp = f.name
+        captured = io.StringIO()
+        fake_env = {"GOOGLE_SA_JSON": '{"type":"service_account"}'}
+        try:
+            with mock.patch.dict(os.environ, fake_env):
+                with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                    with mock.patch("sys.stdout", captured):
+                        rc = sa.main(["--auto-register",
+                                       "--index-path", tmp,
+                                       "--user-email", "test@example.com"])
+            self.assertEqual(rc, 0)
+            out = captured.getvalue()
+            self.assertIn("REGISTERED=", out)
+            self.assertIn("2027-02", out,
+                          "the discovered month must appear on the REGISTERED line")
+        finally:
+            os.unlink(tmp)
+
+
 if __name__ == "__main__":
     unittest.main()

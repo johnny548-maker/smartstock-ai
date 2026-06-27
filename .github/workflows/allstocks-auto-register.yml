@@ -1,0 +1,73 @@
+name: AllStocks Auto-Register (discover user-created sheets)
+
+# Keyless replacement for the Apps Script's GitHub-PAT workflow_dispatch.
+# Each month the Apps Script (tools/apps_script/monthly_rollover.gs) creates the new month's
+# Sheet in the USER's 15GB Drive and shares it to the SA — but it NO LONGER needs a token to
+# trigger CI. This scheduled workflow runs on the 2nd of each month (after the Apps Script's
+# 1st-of-month create), lists every spreadsheet the SA can access (openall), and registers any
+# smartstock-allstocks-YYYY-MM not yet in the index: it seeds the 13 tabs, shares back to the
+# user, and commits docs/data/_allstocks_sheets_index.json so daily.yml resolves the right id.
+#
+# Why no SA-side create here: the SA has Drive quota=0 and CANNOT create files headlessly
+# (APIError 403). Creation stays the Apps Script's job; this workflow only ever opens
+# pre-existing user-created sheets by id (existing_id path) — exactly like the bootstrap one.
+on:
+  schedule:
+    - cron: '0 2 2 * *'   # 2nd of month, 02:00 UTC — after the Apps Script 1st-of-month create
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  # SHARE the bootstrap group so a manual bootstrap and this scheduled register can't both
+  # push an index update at the same time (avoids _allstocks_sheets_index.json push races).
+  group: allstocks-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Auto-register discovered month sheets
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        run: |
+          set -euo pipefail
+          python sheets_sync_allstocks.py --auto-register --user-email johnny548@gmail.com
+      - name: Commit index file
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # || true is intentional: file may not exist yet if no sheet has ever been registered
+          git add docs/data/_allstocks_sheets_index.json || true
+          if git diff --cached --quiet; then
+            echo "::notice::No index change — no new month sheet discovered (idempotent skip)"
+          else
+            git commit -m "chore(allstocks): auto-register discovered month sheet(s)"
+            # rebase-retry on push race (mirrors bootstrap.yml / daily.yml pattern).
+            # Explicit failure after all retries: do not silently succeed with an unpushed commit.
+            PUSHED=false
+            for i in 1 2 3; do
+              if git pull --rebase -X theirs origin main && git push origin main; then
+                PUSHED=true
+                break
+              fi
+              sleep $((i*5))
+            done
+            if [ "${PUSHED}" = "false" ]; then
+              echo "::error::Push failed after 3 attempts. Index update not published."
+              exit 1
+            fi
+          fi

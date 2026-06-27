@@ -1,25 +1,24 @@
 /**
- * SmartStock All-Stocks — Monthly Sheet Auto-Rollover
+ * SmartStock All-Stocks — Monthly Sheet Auto-Rollover (keyless / no GitHub token)
  *
  * Runs 1st of each month at 06:00 user TZ.
  * 1. Creates `smartstock-allstocks-YYYY-MM` (next month) in user's Drive (user's 15GB quota).
  * 2. Shares to SA email as Editor.
- * 3. Triggers GH Actions `allstocks-bootstrap.yml` with new sheet_id → seeds tabs + commits index.
- * 4. Emails user on success or failure.
+ * 3. Emails user on success or failure.
+ *
+ * Registration (seeding the 13 tabs + committing the index) is handled entirely by the
+ * scheduled GitHub Actions workflow `allstocks-auto-register.yml`, which runs on the 2nd of
+ * each month, discovers any user-created sheet shared with the SA, and registers it. No GitHub
+ * token is needed here — the previous UrlFetchApp workflow_dispatch (and its PAT) is removed.
  *
  * One-time setup: see tools/apps_script/SETUP.md
  *
  * Script Properties required (Project Settings → Script properties):
- *   SA_EMAIL     = <service account email from existing sheet share dialog>
- *   GITHUB_PAT   = <classic PAT with repo + workflow scopes>
- *   GITHUB_REPO  = johnny548-maker/smartstock-ai
- *   USER_EMAIL   = johnny548@gmail.com  (for notification)
+ *   SA_EMAIL    = <service account email from existing sheet share dialog>
+ *   USER_EMAIL  = johnny548@gmail.com  (optional — falls back to the active user's email)
  */
 
-const REPO_DEFAULT   = 'johnny548-maker/smartstock-ai';
-const WORKFLOW_FILE  = 'allstocks-bootstrap.yml';
-const TITLE_PREFIX   = 'smartstock-allstocks-';
-const GH_API_VERSION = '2022-11-28';
+const TITLE_PREFIX = 'smartstock-allstocks-';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -62,13 +61,11 @@ function notify_(email, subject, body) {
 }
 
 // ---------------------------------------------------------------------------
-// Core: create next month's Sheet + dispatch bootstrap workflow
+// Core: create next month's Sheet + share to SA (registration is CI's job)
 // ---------------------------------------------------------------------------
 
 function createNextMonthSheet() {
   const saEmail   = getProp_('SA_EMAIL');
-  const pat       = getProp_('GITHUB_PAT');
-  const repo      = getProp_('GITHUB_REPO', REPO_DEFAULT);
   const userEmail = getProp_('USER_EMAIL', Session.getActiveUser().getEmail());
 
   const month = nextMonthYYYYMM_(new Date());
@@ -87,88 +84,58 @@ function createNextMonthSheet() {
     sheet = SpreadsheetApp.create(title);
     Logger.log(`Created new sheet: ${title} (${sheet.getId()})`);
   }
-  const sheetId = sheet.getId();
+  const sheetId  = sheet.getId();
+  const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}`;
 
-  // ------------------------------------------------------------------
-  // 2. Share to SA as Editor (addEditor is idempotent — safe if already shared)
-  // ------------------------------------------------------------------
   try {
+    // ----------------------------------------------------------------
+    // 2. Share to SA as Editor (addEditor is idempotent — safe if already shared).
+    //    This is what lets the scheduled allstocks-auto-register workflow open the
+    //    sheet headlessly and seed its tabs.
+    // ----------------------------------------------------------------
     sheet.addEditor(saEmail);
     Logger.log(`Shared to SA: ${saEmail}`);
-  } catch (e) {
-    // Non-fatal: log and continue; SA may already be an editor
-    Logger.log(`SA share warning (may already exist): ${e}`);
-  }
 
-  // ------------------------------------------------------------------
-  // 3. Trigger GH Actions bootstrap workflow
-  // ------------------------------------------------------------------
-  const ghUrl = `https://api.github.com/repos/${repo}/actions/workflows/${WORKFLOW_FILE}/dispatches`;
-  const dispatchPayload = {
-    ref: 'main',
-    inputs: {
-      existing_id: sheetId,
-      month:       month,
-    },
-  };
-
-  const response = UrlFetchApp.fetch(ghUrl, {
-    method:            'post',
-    contentType:       'application/json',
-    headers: {
-      'Authorization':        `Bearer ${pat}`,
-      'Accept':               'application/vnd.github+json',
-      'X-GitHub-Api-Version': GH_API_VERSION,
-    },
-    payload:            JSON.stringify(dispatchPayload),
-    muteHttpExceptions: true,
-  });
-
-  const httpCode = response.getResponseCode();
-  const httpBody = response.getContentText();
-  Logger.log(`GH dispatch → HTTP ${httpCode}: ${httpBody || '(empty — expected for 204 success)'}`);
-
-  // ------------------------------------------------------------------
-  // 4. Notify user
-  // ------------------------------------------------------------------
-  const sheetUrl  = `https://docs.google.com/spreadsheets/d/${sheetId}`;
-  const actionsUrl = `https://github.com/${repo}/actions`;
-
-  if (httpCode >= 200 && httpCode < 300) {
+    // ----------------------------------------------------------------
+    // 3. Notify user — success.
+    // ----------------------------------------------------------------
     notify_(
       userEmail,
       `✅ SmartStock monthly Sheet auto-created — ${month}`,
       [
-        `Month:   ${month}`,
-        `Sheet:   ${title}`,
-        `URL:     ${sheetUrl}`,
-        `Actions: ${actionsUrl}`,
+        `Month:  ${month}`,
+        `Sheet:  ${title}`,
+        `URL:    ${sheetUrl}`,
+        `Shared: ${saEmail} (Editor)`,
         '',
-        'The bootstrap workflow was dispatched.',
-        'It will add 13 tabs + commit the index file in ~30 s.',
+        'A scheduled GitHub Actions workflow (allstocks-auto-register, runs',
+        'monthly on the 2nd) will detect this sheet and seed its 13 tabs +',
+        'register it automatically — no token needed.',
       ].join('\n')
     );
-    Logger.log('SUCCESS — sheet created, SA shared, bootstrap dispatched, email sent.');
-  } else {
+    Logger.log('SUCCESS — sheet created, SA shared, user notified.');
+  } catch (e) {
+    // Any failure (e.g. the SA share) → notify the user with a manual fallback and rethrow
+    // so the run is marked failed in the Apps Script Executions log.
     const manualCmd =
-      `gh workflow run ${WORKFLOW_FILE} --repo ${repo}` +
+      'gh workflow run allstocks-bootstrap.yml' +
+      ' --repo johnny548-maker/smartstock-ai' +
       ` -f existing_id=${sheetId} -f month=${month}`;
     notify_(
       userEmail,
       `🔴 SmartStock monthly rollover FAILED — ${month}`,
       [
-        `Month:    ${month}`,
-        `Sheet:    ${title} (created OK, ID: ${sheetId})`,
-        `URL:      ${sheetUrl}`,
+        `Month:  ${month}`,
+        `Sheet:  ${title} (created OK, ID: ${sheetId})`,
+        `URL:    ${sheetUrl}`,
         '',
-        `GH dispatch failed: HTTP ${httpCode}`,
-        `Body: ${httpBody}`,
+        `Error: ${e}`,
         '',
-        'MANUAL FIX:',
+        'MANUAL FIX (seed tabs now instead of waiting for the 2nd):',
         manualCmd,
       ].join('\n')
     );
-    throw new Error(`GH dispatch failed: HTTP ${httpCode} — ${httpBody}`);
+    throw e;
   }
 }
 

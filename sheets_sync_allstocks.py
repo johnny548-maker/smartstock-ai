@@ -31,6 +31,7 @@ import gzip
 import io
 import json
 import os
+import re
 import sys
 import tempfile
 from datetime import datetime, timezone
@@ -1406,6 +1407,58 @@ def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
     }
 
 
+# ── Auto-register orchestrator (keyless SA-side discovery) ─────────────────────
+
+# Canonical month-shard title: smartstock-allstocks-YYYY-MM with a valid month (01-12).
+_AUTO_REGISTER_TITLE_RE = re.compile(r"^smartstock-allstocks-(\d{4})-(0[1-9]|1[0-2])$")
+
+
+def auto_register(index_path=_DEFAULT_INDEX_PATH, user_email=_DEFAULT_USER_EMAIL):
+    """Discover user-created month-shard sheets the SA can access and register any
+    that are not yet in the index.
+
+    Keyless replacement for the Apps Script's GitHub-PAT workflow_dispatch: instead of
+    the Apps Script telling CI which sheet to bootstrap, this scheduled run lists every
+    spreadsheet visible to the SA (openall) and, for each title matching
+    smartstock-allstocks-YYYY-MM with a valid month that is NOT already in the index,
+    calls bootstrap(existing_id=sh.id) to seed its 13 tabs, share it, and write the
+    index entry. Already-indexed months are skipped (idempotent).
+
+    Args:
+        index_path:  path to _allstocks_sheets_index.json.
+        user_email:  Gmail address to (re-)share each registered sheet with.
+
+    Returns:
+        sorted list of months registered this run (possibly empty []), or
+        None when GOOGLE_SA_JSON is missing (graceful no-op).
+    """
+    client = get_client()
+    if client is None:
+        _log("SKIP auto_register: GOOGLE_SA_JSON not set.")
+        return None
+
+    index = _load_index(index_path) or {}
+    registered = []
+    for sh in client.openall():
+        m = _AUTO_REGISTER_TITLE_RE.match(sh.title or "")
+        if not m:
+            continue
+        month = f"{m.group(1)}-{m.group(2)}"
+        if month in index:
+            _log(f"auto_register: {month} already in index — skip.")
+            continue
+        _log(f"auto_register: registering {month} (id={sh.id})")
+        # bootstrap() re-loads + atomically updates the index file for each new month.
+        # The in-memory `index` dict won't see prior-iteration writes, but every title
+        # is a distinct month so each is registered exactly once.
+        bootstrap(month=month, user_email=user_email,
+                  index_path=index_path, existing_id=sh.id)
+        registered.append(month)
+
+    _log(f"auto_register done: {sorted(registered)}")
+    return sorted(registered)
+
+
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 def main(argv=None):
@@ -1416,6 +1469,12 @@ def main(argv=None):
                     help="Create/verify the month-shard spreadsheet and 7 P0 tabs.")
     ap.add_argument("--sync", action="store_true",
                     help="Sync 7 P0 fetchers → Sheet for the given date (default: today UTC).")
+    ap.add_argument("--auto-register", action="store_true",
+                    help=(
+                        "Discover user-created month-shard sheets the SA can access "
+                        "(openall) and register any not yet in the index — keyless "
+                        "replacement for the Apps Script GitHub-PAT workflow_dispatch."
+                    ))
     ap.add_argument("--date",
                     help="Date to sync YYYY-MM-DD (used with --sync; default: today UTC).")
     ap.add_argument("--month",
@@ -1463,6 +1522,12 @@ def main(argv=None):
             "Run via GH Actions or set env var locally first.",
             flush=True,
         )
+        return 0
+
+    # ── --auto-register mode ──────────────────────────────────────────────────
+    if args.auto_register:
+        result = auto_register(index_path=args.index_path, user_email=args.user_email)
+        print(f"REGISTERED={','.join(result) if result else '(none)'}", flush=True)
         return 0
 
     # ── --sync mode ───────────────────────────────────────────────────────────
