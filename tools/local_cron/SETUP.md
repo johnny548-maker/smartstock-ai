@@ -1,4 +1,38 @@
-# TDCC Weekly Local Cron — Setup
+# Local Cron — TW-IP Data Capture (CI IP-block workarounds)
+
+Two independent local tasks fill data that GitHub Actions IPs cannot fetch:
+
+| Task | What | Sink | Schedule | SA JSON? |
+| ---- | ---- | ---- | -------- | -------- |
+| **`SmartStock-AllStocks-TWArchive`** (primary) | ALL 13 all-stocks sources incl TWSE bwibbu/mi_margn/t86/stock_day + TDCC | git-file (`docs/data/_allstocks/*.csv.gz`) | daily 14:45 TW | **no** (keyless) |
+| `SmartStock_TDCC_Weekly` (legacy, optional) | TDCC only | Google Sheet | Mon 21:00 TW | yes |
+
+The **AllStocks-TWArchive** task supersedes the TDCC-weekly one for the canonical
+git-file archive (keyless, captures everything). The legacy TDCC→Sheet task is only
+useful if you also want TDCC mirrored into the browseable Sheet (needs `GOOGLE_SA_JSON`).
+
+## A. All-Stocks Daily Archive (primary, keyless) — `SmartStock-AllStocks-TWArchive`
+
+Runs `python sheets_sync_allstocks.py --archive-files` from your TW IP, then commits +
+pushes the gz-CSV files CI cannot produce (TWSE/TDCC block GH Actions IPs). `emit()`
+writes no file for an empty source, so CI never clobbers these.
+
+- **Runner:** `tools/local_cron/twse_archive.ps1` (defensive: aborts on pull conflict,
+  stages only `docs/data/_allstocks`, rebase-retry push, logs to `logs/`).
+- **Install:** `powershell -ExecutionPolicy Bypass -File tools\local_cron\install_allstocks_archive_task.ps1`
+- **Run now:** `Start-ScheduledTask -TaskName 'SmartStock-AllStocks-TWArchive'`
+- **Next run:** `(Get-ScheduledTaskInfo -TaskName 'SmartStock-AllStocks-TWArchive').NextRunTime`
+- **Uninstall:** `Unregister-ScheduledTask -TaskName 'SmartStock-AllStocks-TWArchive' -Confirm:$false`
+- **Verify a run:** `type tools\local_cron\logs\twse_archive_YYYYMMDD.log` — expect
+  `bwibbu_daily: N rows`, `mi_margn_daily: N rows`, `tdcc_weekly: N rows`, `committed + pushed OK`.
+  (`t86_daily: 0 rows` on non-trading days is normal.)
+- **Note:** runs in the interactive logon session so Git Credential Manager pushes
+  transparently — keep the PC on / logged in around 14:45 TW (StartWhenAvailable catches
+  a missed run at next logon).
+
+---
+
+## B. TDCC Weekly → Sheet (legacy, optional)
 
 TDCC's `smart.tdcc.com.tw` blocks GitHub Actions IPs. We sync TDCC from your local Windows PC every Monday 21:00 instead.
 
