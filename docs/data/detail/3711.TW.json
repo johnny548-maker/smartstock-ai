@@ -1,17 +1,9 @@
 {
  "stock": "3711.TW",
  "name": "日月光投控",
- "price": 632.0,
- "change_pct": -1.4,
+ "price": 627.0,
+ "change_pct": -0.79,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 342.0,
-   "h": 345.0,
-   "l": 328.5,
-   "c": 328.5,
-   "v": 22922496
-  },
   {
    "time": "2026-04-01",
    "o": 345.0,
@@ -483,10 +475,18 @@
    "l": 630.0,
    "c": 632.0,
    "v": 43302683
+  },
+  {
+   "time": "2026-06-29",
+   "o": 628.0,
+   "h": 632.0,
+   "l": 611.0,
+   "c": 627.0,
+   "v": 17917778
   }
  ],
  "sr": {
-  "price": 632.0,
+  "price": 627.0,
   "resistance": [
    669.0,
    700.0
@@ -495,10 +495,9 @@
    573.0,
    520.0
   ],
-  "strong_support": 138.0
+  "strong_support": 141.5
  },
  "spark": [
-  328.5,
   361.0,
   361.0,
   352.0,
@@ -557,40 +556,68 @@
   662.0,
   653.0,
   641.0,
-  632.0
+  632.0,
+  627.0
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-29",
  "fundamental": {
   "rev_yoy": 28.6,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 632.0,
-  "stop": 587.76,
-  "target": 742.6,
-  "atr_bracket": 742.6,
-  "measured_move": 827.0,
-  "target_band": [
-   742.6,
-   823.49,
-   827.0
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.4,
-  "swing_stop": 605.79,
-  "chandelier": 581.64,
-  "fib_targets": [
-   779.54,
-   823.49,
-   872.0
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 1,764,575 股",
+   "value": {
+    "foreign": -442086,
+    "trust": -1393129,
+    "dealer": 70640,
+    "total": -1764575
+   },
+   "severity": "info",
+   "as_of": "2026-06-29",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -6
+   },
+   "severity": "info",
+   "as_of": "2026-06-29",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 58.7 / 殖利率 1.04% / PB 7.91",
+   "value": {
+    "pe": 58.68,
+    "yield": 1.04,
+    "pb": 7.91
+   },
+   "severity": "info",
+   "as_of": "2026-06-26",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 87.19,
+   "severity": "info",
+   "as_of": "20260626",
+   "note": "大戶持股%=87.19；WoW+0.12；股東人數-9471"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -652,6 +679,10 @@
    {
     "t": "2026-06-26",
     "v": 18596
+   },
+   {
+    "t": "2026-06-29",
+    "v": 16831
    }
   ],
   "holder_pct": [
@@ -666,6 +697,10 @@
    {
     "t": "2026-06-18",
     "v": 87.07
+   },
+   {
+    "t": "2026-06-26",
+    "v": 87.19
    }
   ],
   "rev_yoy": [

@@ -1,17 +1,9 @@
 {
  "stock": "5347.TWO",
  "name": "世界",
- "price": 202.0,
- "change_pct": -8.18,
+ "price": 208.5,
+ "change_pct": 3.22,
  "ohlc": [
-  {
-   "time": "2026-03-31",
-   "o": 115.0,
-   "h": 119.0,
-   "l": 113.0,
-   "c": 116.0,
-   "v": 15874681
-  },
   {
    "time": "2026-04-01",
    "o": 122.0,
@@ -483,10 +475,18 @@
    "l": 200.0,
    "c": 202.0,
    "v": 60661343
+  },
+  {
+   "time": "2026-06-29",
+   "o": 206.5,
+   "h": 215.5,
+   "l": 203.5,
+   "c": 208.5,
+   "v": 37514010
   }
  ],
  "sr": {
-  "price": 202.0,
+  "price": 208.5,
   "resistance": [],
   "support": [
    164.5,
@@ -495,7 +495,6 @@
   "strong_support": 71.45
  },
  "spark": [
-  116.0,
   118.0,
   110.0,
   121.0,
@@ -554,10 +553,11 @@
   186.5,
   200.0,
   220.0,
-  202.0
+  202.0,
+  208.5
  ],
- "spark_start": "2026-03-31",
- "spark_end": "2026-06-26",
+ "spark_start": "2026-04-01",
+ "spark_end": "2026-06-29",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -6068672,
-    "trust": 10171449,
-    "dealer": -885063,
-    "total": 3217714
+    "foreign": -6563045,
+    "trust": 4277789,
+    "dealer": -215636,
+    "total": -2500892
    },
    "severity": "info",
-   "as_of": "2026-06-26",
+   "as_of": "2026-06-29",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,12 +582,21 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.21,
+    "yield": 2.15,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-26",
+   "as_of": "2026-06-29",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 87.35,
+   "severity": "info",
+   "as_of": "20260626",
+   "note": "大戶持股%=87.35；WoW+1.53；股東人數-12381"
   }
  ],
  "trends": {
@@ -604,6 +613,10 @@
    {
     "t": "2026-06-18",
     "v": 85.82
+   },
+   {
+    "t": "2026-06-26",
+    "v": 87.35
    }
   ],
   "rev_yoy": []
