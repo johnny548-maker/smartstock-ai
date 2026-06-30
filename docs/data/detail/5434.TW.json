@@ -1,17 +1,9 @@
 {
  "stock": "5434.TW",
  "name": "崇越",
- "price": 539.0,
- "change_pct": 10.0,
+ "price": 549.0,
+ "change_pct": 1.86,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 314.0,
-   "h": 326.5,
-   "l": 314.0,
-   "c": 322.5,
-   "v": 516111
-  },
   {
    "time": "2026-04-02",
    "o": 329.0,
@@ -482,11 +474,19 @@
    "h": 539.0,
    "l": 504.0,
    "c": 539.0,
-   "v": 3510077
+   "v": 3458760
+  },
+  {
+   "time": "2026-06-30",
+   "o": 531.0,
+   "h": 587.0,
+   "l": 519.0,
+   "c": 549.0,
+   "v": 5183985
   }
  ],
  "sr": {
-  "price": 539.0,
+  "price": 549.0,
   "resistance": [],
   "support": [
    446.5,
@@ -495,7 +495,6 @@
   "strong_support": 196.53
  },
  "spark": [
-  322.5,
   331.5,
   360.5,
   360.0,
@@ -554,10 +553,11 @@
   489.0,
   505.0,
   490.0,
-  539.0
+  539.0,
+  549.0
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": {
   "rev_yoy": 18.6,
   "rev_accel": false,
@@ -566,56 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 897,710 股",
-   "value": {
-    "foreign": 524520,
-    "trust": 335000,
-    "dealer": 38190,
-    "total": 897710
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +25.4%",
-   "value": {
-    "fin_net": 131,
-    "fin_pct": 0.25387596899224807
-   },
-   "severity": "warn",
-   "as_of": "2026-06-29",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 20.8 / 殖利率 2.76% / PB 4.94",
-   "value": {
-    "pe": 20.79,
-    "yield": 2.76,
-    "pb": 4.94
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 53.94,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=53.94；WoW+0.09；股東人數-132"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -681,6 +631,10 @@
    {
     "t": "2026-06-29",
     "v": 3463
+   },
+   {
+    "t": "2026-06-30",
+    "v": 3730
    }
   ],
   "holder_pct": [

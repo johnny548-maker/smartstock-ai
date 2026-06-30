@@ -1,17 +1,9 @@
 {
  "stock": "5347.TWO",
  "name": "世界",
- "price": 208.5,
- "change_pct": 3.22,
+ "price": 216.0,
+ "change_pct": 3.6,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 122.0,
-   "h": 122.5,
-   "l": 117.0,
-   "c": 118.0,
-   "v": 14818899
-  },
   {
    "time": "2026-04-02",
    "o": 118.5,
@@ -482,11 +474,19 @@
    "h": 215.5,
    "l": 203.5,
    "c": 208.5,
-   "v": 37514010
+   "v": 37282413
+  },
+  {
+   "time": "2026-06-30",
+   "o": 216.5,
+   "h": 223.0,
+   "l": 213.0,
+   "c": 216.0,
+   "v": 37255759
   }
  ],
  "sr": {
-  "price": 208.5,
+  "price": 216.0,
   "resistance": [],
   "support": [
    164.5,
@@ -495,7 +495,6 @@
   "strong_support": 71.45
  },
  "spark": [
-  118.0,
   110.0,
   121.0,
   131.0,
@@ -554,39 +553,26 @@
   200.0,
   220.0,
   202.0,
-  208.5
+  208.5,
+  216.0
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -6563045,
-    "trust": 4277789,
-    "dealer": -215636,
-    "total": -2500892
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "OTC 3-institution daily net"
-  },
-  {
-   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.15,
+    "yield": 2.07,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-29",
+   "as_of": "2026-06-30",
    "note": "OTC valuation context"
   },
   {

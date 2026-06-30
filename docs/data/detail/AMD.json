@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 508.93,
- "change_pct": -2.43,
+ "price": 539.49,
+ "change_pct": 3.43,
  "ohlc": [
   {
    "time": "2026-04-02",
@@ -474,22 +474,22 @@
    "h": 525.11,
    "l": 502.61,
    "c": 521.58,
-   "v": 52661800
+   "v": 52705100
   },
   {
    "time": "2026-06-29",
-   "o": 522.83,
-   "h": 535.16,
+   "o": 522.84,
+   "h": 542.19,
    "l": 495.35,
-   "c": 508.93,
-   "v": 8257728
+   "c": 539.49,
+   "v": 26628900
   }
  ],
  "sr": {
-  "price": 508.93,
+  "price": 539.49,
   "resistance": [
-   527.2,
-   546.44
+   546.44,
+   558.37
   ],
   "support": [
    437.23,
@@ -557,7 +557,7 @@
   519.74,
   532.57,
   521.58,
-  508.93
+  539.49
  ],
  "spark_start": "2026-04-02",
  "spark_end": "2026-06-29",
@@ -566,26 +566,26 @@
   "pe_forward": 38.69716,
   "eps_trailing": 3.03,
   "eps_forward": 13.16815,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 1,310,608 股交割失敗）",
-   "value": {
-    "total_shares": 1310608,
-    "days": 10,
-    "max_shares": 848354,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-06-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "levels": {
+  "entry": 539.49,
+  "stop": 501.73,
+  "target": 633.9,
+  "atr_bracket": 633.9,
+  "measured_move": 664.53,
+  "target_band": [
+   633.9,
+   664.53
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 6.9,
+  "swing_stop": 426.01,
+  "chandelier": 456.22,
+  "fib_targets": []
+ },
+ "generated_for": "detail"
 }

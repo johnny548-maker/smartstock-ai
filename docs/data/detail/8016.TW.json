@@ -1,17 +1,9 @@
 {
  "stock": "8016.TW",
  "name": "矽創",
- "price": 317.0,
- "change_pct": 1.93,
+ "price": 332.0,
+ "change_pct": 4.73,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 186.77,
-   "h": 187.73,
-   "l": 185.81,
-   "c": 186.77,
-   "v": 306204
-  },
   {
    "time": "2026-04-02",
    "o": 186.77,
@@ -482,12 +474,22 @@
    "h": 328.5,
    "l": 306.5,
    "c": 317.0,
-   "v": 3824228
+   "v": 3734951
+  },
+  {
+   "time": "2026-06-30",
+   "o": 321.0,
+   "h": 341.0,
+   "l": 313.0,
+   "c": 332.0,
+   "v": 4527905
   }
  ],
  "sr": {
-  "price": 317.0,
-  "resistance": [],
+  "price": 332.0,
+  "resistance": [
+   344.0
+  ],
   "support": [
    284.72,
    275.12
@@ -495,7 +497,6 @@
   "strong_support": 145.38
  },
  "spark": [
-  186.77,
   183.41,
   186.29,
   193.98,
@@ -554,10 +555,11 @@
   315.0,
   330.5,
   311.0,
-  317.0
+  317.0,
+  332.0
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": {
   "rev_yoy": 39.8,
   "rev_accel": false,
@@ -566,6 +568,56 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 608,314 股",
+   "value": {
+    "foreign": 693567,
+    "trust": -181816,
+    "dealer": 96563,
+    "total": 608314
+   },
+   "severity": "info",
+   "as_of": "2026-06-30",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +13.8%",
+   "value": {
+    "fin_net": 249,
+    "fin_pct": 0.13848720800889877
+   },
+   "severity": "warn",
+   "as_of": "2026-06-30",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 19.9 / 殖利率 3.63% / PB 3.26",
+   "value": {
+    "pe": 19.91,
+    "yield": 3.63,
+    "pb": 3.26
+   },
+   "severity": "info",
+   "as_of": "2026-06-29",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 44.34,
+   "severity": "info",
+   "as_of": "20260626",
+   "note": "大戶持股%=44.34；WoW+1.19；股東人數-236"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -631,6 +683,10 @@
    {
     "t": "2026-06-29",
     "v": 3199
+   },
+   {
+    "t": "2026-06-30",
+    "v": 3808
    }
   ],
   "holder_pct": [

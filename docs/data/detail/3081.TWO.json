@@ -1,17 +1,9 @@
 {
  "stock": "3081.TWO",
  "name": "聯亞",
- "price": 2035.0,
- "change_pct": 0.0,
+ "price": 2020.0,
+ "change_pct": -0.74,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 1695.0,
-   "h": 1730.0,
-   "l": 1665.0,
-   "c": 1730.0,
-   "v": 2031723
-  },
   {
    "time": "2026-04-02",
    "o": 1795.0,
@@ -482,23 +474,30 @@
    "h": 2040.0,
    "l": 1950.0,
    "c": 2035.0,
-   "v": 2246037
+   "v": 2151493
+  },
+  {
+   "time": "2026-06-30",
+   "o": 2090.0,
+   "h": 2120.0,
+   "l": 2020.0,
+   "c": 2020.0,
+   "v": 1660958
   }
  ],
  "sr": {
-  "price": 2035.0,
+  "price": 2020.0,
   "resistance": [
    2405.0,
    2480.0
   ],
   "support": [
-   2025.0,
-   1370.0
+   1370.0,
+   1350.0
   ],
   "strong_support": 93.56
  },
  "spark": [
-  1730.0,
   1825.0,
   2005.0,
   2040.0,
@@ -557,28 +556,15 @@
   2155.0,
   2120.0,
   2035.0,
-  2035.0
+  2035.0,
+  2020.0
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 391285,
-    "trust": -98000,
-    "dealer": 75771,
-    "total": 369056
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "OTC 3-institution daily net"
-  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -589,7 +575,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-29",
+   "as_of": "2026-06-30",
    "note": "OTC valuation context"
   }
  ],

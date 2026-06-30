@@ -1,17 +1,9 @@
 {
  "stock": "2472.TW",
  "name": "立隆電",
- "price": 412.5,
- "change_pct": 9.71,
+ "price": 453.5,
+ "change_pct": 9.94,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 131.0,
-   "h": 138.0,
-   "l": 129.5,
-   "c": 133.0,
-   "v": 6822307
-  },
   {
    "time": "2026-04-02",
    "o": 135.5,
@@ -482,14 +474,20 @@
    "h": 413.5,
    "l": 369.0,
    "c": 412.5,
-   "v": 17271356
+   "v": 16942208
+  },
+  {
+   "time": "2026-06-30",
+   "o": 431.0,
+   "h": 453.5,
+   "l": 414.0,
+   "c": 453.5,
+   "v": 28324100
   }
  ],
  "sr": {
-  "price": 412.5,
-  "resistance": [
-   432.5
-  ],
+  "price": 453.5,
+  "resistance": [],
   "support": [
    350.0,
    334.5
@@ -497,7 +495,6 @@
   "strong_support": 58.96
  },
  "spark": [
-  133.0,
   131.5,
   128.0,
   140.5,
@@ -556,10 +553,11 @@
   361.0,
   397.0,
   376.0,
-  412.5
+  412.5,
+  453.5
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": {
   "rev_yoy": 30.0,
   "rev_accel": false,
@@ -568,55 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,554,438 股",
-   "value": {
-    "foreign": 80613,
-    "trust": 1408000,
-    "dealer": 65825,
-    "total": 1554438
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -17
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 43.5 / 殖利率 0.93% / PB 6.44",
-   "value": {
-    "pe": 43.47,
-    "yield": 0.93,
-    "pb": 6.44
-   },
-   "severity": "info",
-   "as_of": "2026-06-26",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 58.96,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=58.96；WoW+2.79；股東人數-1885"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -682,6 +631,10 @@
    {
     "t": "2026-06-29",
     "v": 5155
+   },
+   {
+    "t": "2026-06-30",
+    "v": 2406
    }
   ],
   "holder_pct": [

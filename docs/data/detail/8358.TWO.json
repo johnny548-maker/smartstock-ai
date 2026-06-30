@@ -1,17 +1,9 @@
 {
  "stock": "8358.TWO",
  "name": "金居",
- "price": 546.0,
- "change_pct": -4.21,
+ "price": 600.0,
+ "change_pct": 9.89,
  "ohlc": [
-  {
-   "time": "2026-04-01",
-   "o": 251.0,
-   "h": 253.0,
-   "l": 242.0,
-   "c": 243.0,
-   "v": 19413237
-  },
   {
    "time": "2026-04-02",
    "o": 247.0,
@@ -482,11 +474,19 @@
    "h": 578.0,
    "l": 538.0,
    "c": 546.0,
-   "v": 9821244
+   "v": 9318494
+  },
+  {
+   "time": "2026-06-30",
+   "o": 570.0,
+   "h": 600.0,
+   "l": 568.0,
+   "c": 600.0,
+   "v": 9894403
   }
  ],
  "sr": {
-  "price": 546.0,
+  "price": 600.0,
   "resistance": [
    687.0,
    758.0
@@ -498,7 +498,6 @@
   "strong_support": 37.86
  },
  "spark": [
-  243.0,
   230.0,
   243.5,
   267.5,
@@ -557,39 +556,26 @@
   638.0,
   630.0,
   570.0,
-  546.0
+  546.0,
+  600.0
  ],
- "spark_start": "2026-04-01",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-02",
+ "spark_end": "2026-06-30",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -360085,
-    "trust": -323000,
-    "dealer": 219994,
-    "total": -463091
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "OTC 3-institution daily net"
-  },
-  {
-   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.37,
+    "yield": 0.33,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-29",
+   "as_of": "2026-06-30",
    "note": "OTC valuation context"
   }
  ],
