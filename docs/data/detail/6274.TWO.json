@@ -1,17 +1,9 @@
 {
  "stock": "6274.TWO",
  "name": "台燿",
- "price": 1680.0,
- "change_pct": 8.04,
+ "price": 1690.0,
+ "change_pct": 0.6,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 633.93,
-   "h": 647.82,
-   "l": 610.12,
-   "c": 616.07,
-   "v": 16918733
-  },
   {
    "time": "2026-04-07",
    "o": 639.88,
@@ -482,11 +474,19 @@
    "h": 1710.0,
    "l": 1620.0,
    "c": 1680.0,
-   "v": 5424798
+   "v": 5198122
+  },
+  {
+   "time": "2026-07-01",
+   "o": 1710.0,
+   "h": 1715.0,
+   "l": 1595.0,
+   "c": 1690.0,
+   "v": 5494235
   }
  ],
  "sr": {
-  "price": 1680.0,
+  "price": 1690.0,
   "resistance": [
    1815.0,
    1920.0
@@ -498,7 +498,6 @@
   "strong_support": 109.71
  },
  "spark": [
-  616.07,
   677.58,
   719.25,
   790.68,
@@ -557,25 +556,40 @@
   1700.0,
   1580.0,
   1555.0,
-  1680.0
+  1680.0,
+  1690.0
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -147231,
+    "trust": 229000,
+    "dealer": 44193,
+    "total": 125962
+   },
+   "severity": "info",
+   "as_of": "2026-07-01",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.45,
+    "yield": 0.44,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "OTC valuation context"
   }
  ],

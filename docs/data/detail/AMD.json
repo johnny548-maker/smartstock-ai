@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 539.49,
- "change_pct": 3.43,
+ "price": 580.91,
+ "change_pct": 7.68,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 204.05,
-   "h": 217.78,
-   "l": 200.62,
-   "c": 217.5,
-   "v": 38463500
-  },
   {
    "time": "2026-04-06",
    "o": 219.28,
@@ -482,15 +474,20 @@
    "h": 542.19,
    "l": 495.35,
    "c": 539.49,
-   "v": 26628900
+   "v": 26671000
+  },
+  {
+   "time": "2026-06-30",
+   "o": 545.57,
+   "h": 584.73,
+   "l": 545.57,
+   "c": 580.91,
+   "v": 34415900
   }
  ],
  "sr": {
-  "price": 539.49,
-  "resistance": [
-   546.44,
-   558.37
-  ],
+  "price": 580.91,
+  "resistance": [],
   "support": [
    437.23,
    393.36
@@ -498,7 +495,6 @@
   "strong_support": 133.5
  },
  "spark": [
-  217.5,
   220.18,
   221.53,
   231.82,
@@ -557,35 +553,53 @@
   519.74,
   532.57,
   521.58,
-  539.49
+  539.49,
+  580.91
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-06",
+ "spark_end": "2026-06-30",
  "fundamental": {
-  "pe_trailing": 168.17493,
-  "pe_forward": 38.69716,
-  "eps_trailing": 3.03,
-  "eps_forward": 13.16815,
-  "stale": true,
+  "pe_trailing": 192.3543,
+  "pe_forward": 44.08501,
+  "eps_trailing": 3.02,
+  "eps_forward": 13.17704,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 539.49,
-  "stop": 501.73,
-  "target": 633.9,
-  "atr_bracket": 633.9,
+  "entry": 580.91,
+  "stop": 540.25,
+  "target": 682.57,
+  "atr_bracket": 682.57,
   "measured_move": 664.53,
   "target_band": [
-   633.9,
-   664.53
+   664.53,
+   682.57
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.9,
-  "swing_stop": 426.01,
-  "chandelier": 456.22,
+  "atr_pct": 6.2,
+  "swing_stop": 426.5,
+  "chandelier": 476.38,
   "fib_targets": []
  },
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 527,264 股交割失敗）",
+   "value": {
+    "total_shares": 527264,
+    "days": 6,
+    "max_shares": 240335,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

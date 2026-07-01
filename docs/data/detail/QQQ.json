@@ -1,17 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 724.08,
- "change_pct": 2.49,
+ "price": 736.4,
+ "change_pct": 1.7,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 573.34,
-   "h": 585.41,
-   "l": 571.29,
-   "c": 584.34,
-   "v": 50941700
-  },
   {
    "time": "2026-04-06",
    "o": 585.59,
@@ -482,11 +474,19 @@
    "h": 724.58,
    "l": 705.17,
    "c": 724.08,
-   "v": 44565100
+   "v": 44939100
+  },
+  {
+   "time": "2026-06-30",
+   "o": 724.18,
+   "h": 737.62,
+   "l": 723.91,
+   "c": 736.4,
+   "v": 41926000
   }
  ],
  "sr": {
-  "price": 724.08,
+  "price": 736.4,
   "resistance": [
    743.94,
    745.45
@@ -498,7 +498,6 @@
   "strong_support": 548.92
  },
  "spark": [
-  584.34,
   587.85,
   587.94,
   605.42,
@@ -557,12 +556,13 @@
   710.62,
   716.38,
   706.52,
-  724.08
+  724.08,
+  736.4
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-06",
+ "spark_end": "2026-06-30",
  "fundamental": {
-  "pe_trailing": 33.244957,
+  "pe_trailing": 33.81061,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
@@ -570,5 +570,22 @@
   "source": "yfinance"
  },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 477,117 股交割失敗）",
+   "value": {
+    "total_shares": 477117,
+    "days": 10,
+    "max_shares": 245404,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

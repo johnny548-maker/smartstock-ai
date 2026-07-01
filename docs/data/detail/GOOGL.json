@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 353.65,
- "change_pct": 4.82,
+ "price": 357.37,
+ "change_pct": 1.05,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 290.52,
-   "h": 297.9,
-   "l": 289.28,
-   "c": 295.59,
-   "v": 21666500
-  },
   {
    "time": "2026-04-06",
    "o": 295.69,
@@ -482,11 +474,19 @@
    "h": 354.35,
    "l": 340.67,
    "c": 353.65,
-   "v": 34165800
+   "v": 34213900
+  },
+  {
+   "time": "2026-06-30",
+   "o": 353.87,
+   "h": 358.62,
+   "l": 350.4,
+   "c": 357.37,
+   "v": 35191100
   }
  ],
  "sr": {
-  "price": 353.65,
+  "price": 357.37,
   "resistance": [
    376.0,
    393.64
@@ -498,7 +498,6 @@
   "strong_support": 172.28
  },
  "spark": [
-  295.59,
   299.81,
   305.28,
   317.13,
@@ -557,16 +556,17 @@
   345.29,
   343.71,
   337.39,
-  353.65
+  353.65,
+  357.37
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-06",
+ "spark_end": "2026-06-30",
  "fundamental": {
-  "pe_trailing": 26.61357,
-  "pe_forward": 23.992218,
+  "pe_trailing": 27.238567,
+  "pe_forward": 24.52534,
   "eps_trailing": 13.12,
-  "eps_forward": 14.55347,
-  "stale": true,
+  "eps_forward": 14.57146,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,17 +575,32 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 328 分 / 132 留言",
+   "label": "HN 討論熱度 20 篇 / 340 分 / 83 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 328,
-    "comments": 132,
+    "points": 340,
+    "comments": 83,
     "n": 20,
     "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 217,273 股交割失敗）",
+   "value": {
+    "total_shares": 217273,
+    "days": 9,
+    "max_shares": 127495,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

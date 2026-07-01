@@ -1,17 +1,9 @@
 {
  "stock": "VICR",
  "name": "Vicor Corp",
- "price": 366.79,
- "change_pct": 12.19,
+ "price": 379.78,
+ "change_pct": 3.54,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 148.23,
-   "h": 160.0,
-   "l": 147.05,
-   "c": 155.64,
-   "v": 676000
-  },
   {
    "time": "2026-04-06",
    "o": 156.4,
@@ -482,14 +474,20 @@
    "h": 370.0,
    "l": 319.87,
    "c": 366.79,
-   "v": 1023600
+   "v": 1024300
+  },
+  {
+   "time": "2026-06-30",
+   "o": 366.79,
+   "h": 382.65,
+   "l": 353.8,
+   "c": 379.78,
+   "v": 777700
   }
  ],
  "sr": {
-  "price": 366.79,
-  "resistance": [
-   369.4
-  ],
+  "price": 379.78,
+  "resistance": [],
   "support": [
    258.91,
    249.66
@@ -497,7 +495,6 @@
   "strong_support": 34.27
  },
  "spark": [
-  155.64,
   155.71,
   159.83,
   179.99,
@@ -556,11 +553,29 @@
   322.28,
   331.59,
   326.93,
-  366.79
+  366.79,
+  379.78
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-29",
+ "spark_start": "2026-04-06",
+ "spark_end": "2026-06-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 22071,
+    "days": 4,
+    "max_shares": 19361,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-07-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

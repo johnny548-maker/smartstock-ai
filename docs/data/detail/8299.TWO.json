@@ -1,17 +1,9 @@
 {
  "stock": "8299.TWO",
  "name": "群聯",
- "price": 2385.0,
- "change_pct": 2.67,
+ "price": 2270.0,
+ "change_pct": -4.82,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 1667.82,
-   "h": 1667.82,
-   "l": 1533.8,
-   "c": 1543.73,
-   "v": 8495931
-  },
   {
    "time": "2026-04-07",
    "o": 1613.22,
@@ -482,11 +474,19 @@
    "h": 2405.0,
    "l": 2320.0,
    "c": 2385.0,
-   "v": 2999393
+   "v": 2810940
+  },
+  {
+   "time": "2026-07-01",
+   "o": 2420.0,
+   "h": 2420.0,
+   "l": 2255.0,
+   "c": 2270.0,
+   "v": 5074845
   }
  ],
  "sr": {
-  "price": 2385.0,
+  "price": 2270.0,
   "resistance": [
    2447.13,
    2650.64
@@ -498,7 +498,6 @@
   "strong_support": 378.41
  },
  "spark": [
-  1543.73,
   1558.62,
   1712.49,
   1603.29,
@@ -557,25 +556,40 @@
   2457.06,
   2293.25,
   2323.04,
-  2385.0
+  2385.0,
+  2270.0
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -380710,
+    "trust": -183033,
+    "dealer": -81266,
+    "total": -645009
+   },
+   "severity": "info",
+   "as_of": "2026-07-01",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.97,
+    "yield": 1.02,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "OTC valuation context"
   }
  ],

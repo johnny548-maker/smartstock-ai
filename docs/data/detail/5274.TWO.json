@@ -1,17 +1,9 @@
 {
  "stock": "5274.TWO",
  "name": "信驊",
- "price": 16495.0,
- "change_pct": 8.45,
+ "price": 17145.0,
+ "change_pct": 3.94,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 11715.96,
-   "h": 11875.23,
-   "l": 11447.2,
-   "c": 11636.33,
-   "v": 335254
-  },
   {
    "time": "2026-04-07",
    "o": 11770.71,
@@ -482,11 +474,19 @@
    "h": 16705.0,
    "l": 15675.0,
    "c": 16495.0,
-   "v": 296352
+   "v": 267551
+  },
+  {
+   "time": "2026-07-01",
+   "o": 17105.0,
+   "h": 17780.0,
+   "l": 16750.0,
+   "c": 17145.0,
+   "v": 278233
   }
  ],
  "sr": {
-  "price": 16495.0,
+  "price": 17145.0,
   "resistance": [
    17215.6,
    18449.9
@@ -498,7 +498,6 @@
   "strong_support": 2238.65
  },
  "spark": [
-  11636.33,
   11417.34,
   12557.08,
   12507.31,
@@ -557,25 +556,40 @@
   17345.0,
   15615.0,
   15210.0,
-  16495.0
+  16495.0,
+  17145.0
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 25944,
+    "trust": -2905,
+    "dealer": -1285,
+    "total": 21754
+   },
+   "severity": "info",
+   "as_of": "2026-07-01",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.49,
+    "yield": 0.47,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "OTC valuation context"
   }
  ],

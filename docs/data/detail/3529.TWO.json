@@ -1,17 +1,9 @@
 {
  "stock": "3529.TWO",
  "name": "力旺",
- "price": 2925.0,
- "change_pct": 0.86,
+ "price": 2950.0,
+ "change_pct": 0.85,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 2796.8,
-   "h": 2796.8,
-   "l": 2583.19,
-   "c": 2612.99,
-   "v": 623302
-  },
   {
    "time": "2026-04-07",
    "o": 2682.54,
@@ -482,23 +474,30 @@
    "h": 3050.0,
    "l": 2925.0,
    "c": 2925.0,
-   "v": 443003
+   "v": 425213
+  },
+  {
+   "time": "2026-07-01",
+   "o": 3000.0,
+   "h": 3035.0,
+   "l": 2905.0,
+   "c": 2950.0,
+   "v": 342151
   }
  ],
  "sr": {
-  "price": 2925.0,
+  "price": 2950.0,
   "resistance": [
    2960.73,
    2978.23
   ],
   "support": [
-   2924.08,
-   2851.44
+   2943.77,
+   2924.08
   ],
   "strong_support": 1480.36
  },
  "spark": [
-  2612.99,
   2776.93,
   2906.08,
   2851.44,
@@ -557,25 +556,40 @@
   3245.0,
   2925.0,
   2900.0,
-  2925.0
+  2925.0,
+  2950.0
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -10715,
+    "trust": -14873,
+    "dealer": -5556,
+    "total": -31144
+   },
+   "severity": "info",
+   "as_of": "2026-07-01",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.7,
+    "yield": 0.69,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "OTC valuation context"
   }
  ],

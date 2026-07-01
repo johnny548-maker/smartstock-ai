@@ -1,17 +1,9 @@
 {
  "stock": "6213.TW",
  "name": "聯茂",
- "price": 370.5,
- "change_pct": 7.7,
+ "price": 360.0,
+ "change_pct": -2.83,
  "ohlc": [
-  {
-   "time": "2026-04-02",
-   "o": 167.5,
-   "h": 176.0,
-   "l": 167.0,
-   "c": 170.0,
-   "v": 58688744
-  },
   {
    "time": "2026-04-07",
    "o": 180.5,
@@ -482,11 +474,19 @@
    "h": 376.0,
    "l": 353.0,
    "c": 370.5,
-   "v": 19076166
+   "v": 18756863
+  },
+  {
+   "time": "2026-07-01",
+   "o": 379.0,
+   "h": 384.0,
+   "l": 348.5,
+   "c": 360.0,
+   "v": 19870535
   }
  ],
  "sr": {
-  "price": 370.5,
+  "price": 360.0,
   "resistance": [],
   "support": [
    258.0,
@@ -495,7 +495,6 @@
   "strong_support": 47.16
  },
  "spark": [
-  170.0,
   187.0,
   197.0,
   216.5,
@@ -554,10 +553,11 @@
   339.5,
   346.5,
   344.0,
-  370.5
+  370.5,
+  360.0
  ],
- "spark_start": "2026-04-02",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": {
   "rev_yoy": 29.3,
   "rev_accel": false,
@@ -566,55 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 740,933 股",
-   "value": {
-    "foreign": -2009834,
-    "trust": 294000,
-    "dealer": 974901,
-    "total": -740933
-   },
-   "severity": "info",
-   "as_of": "2026-06-30",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -6
-   },
-   "severity": "info",
-   "as_of": "2026-06-30",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 84.1 / 殖利率 0.87% / PB 5.93",
-   "value": {
-    "pe": 84.11,
-    "yield": 0.87,
-    "pb": 5.93
-   },
-   "severity": "info",
-   "as_of": "2026-06-29",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 65.32,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=65.32；WoW+7.69；股東人數-16396"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -684,6 +635,10 @@
    {
     "t": "2026-06-30",
     "v": 48830
+   },
+   {
+    "t": "2026-07-01",
+    "v": 47752
    }
   ],
   "holder_pct": [
