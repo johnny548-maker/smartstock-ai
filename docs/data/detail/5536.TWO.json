@@ -1,17 +1,9 @@
 {
  "stock": "5536.TWO",
  "name": "聖暉*",
- "price": 1340.0,
- "change_pct": 3.88,
+ "price": 1430.0,
+ "change_pct": 6.72,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 714.0,
-   "h": 720.0,
-   "l": 688.0,
-   "c": 688.0,
-   "v": 1013339
-  },
   {
    "time": "2026-04-08",
    "o": 705.0,
@@ -482,11 +474,19 @@
    "h": 1395.0,
    "l": 1320.0,
    "c": 1340.0,
-   "v": 1073905
+   "v": 1023720
+  },
+  {
+   "time": "2026-07-02",
+   "o": 1320.0,
+   "h": 1435.0,
+   "l": 1310.0,
+   "c": 1430.0,
+   "v": 1025187
   }
  ],
  "sr": {
-  "price": 1340.0,
+  "price": 1430.0,
   "resistance": [],
   "support": [
    971.0,
@@ -495,7 +495,6 @@
   "strong_support": 203.18
  },
  "spark": [
-  688.0,
   693.0,
   695.0,
   723.0,
@@ -554,10 +553,11 @@
   1305.0,
   1245.0,
   1290.0,
-  1340.0
+  1340.0,
+  1430.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 370922,
-    "trust": -147437,
-    "dealer": -6915,
-    "total": 216570
+    "foreign": 363046,
+    "trust": -12213,
+    "dealer": 24841,
+    "total": 375674
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.49,
+    "yield": 1.4,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3163.TWO",
  "name": "波若威",
- "price": 750.0,
- "change_pct": -5.3,
+ "price": 775.0,
+ "change_pct": 3.33,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 983.0,
-   "h": 1045.0,
-   "l": 955.0,
-   "c": 1045.0,
-   "v": 11114314
-  },
   {
    "time": "2026-04-08",
    "o": 1110.0,
@@ -482,23 +474,30 @@
    "h": 821.0,
    "l": 750.0,
    "c": 750.0,
-   "v": 1082472
+   "v": 957014
+  },
+  {
+   "time": "2026-07-02",
+   "o": 750.0,
+   "h": 775.0,
+   "l": 737.0,
+   "c": 775.0,
+   "v": 538219
   }
  ],
  "sr": {
-  "price": 750.0,
+  "price": 775.0,
   "resistance": [
    859.0,
    917.0
   ],
   "support": [
-   650.0,
-   445.5
+   750.0,
+   690.0
   ],
   "strong_support": 116.99
  },
  "spark": [
-  1045.0,
   1145.0,
   1220.0,
   1260.0,
@@ -557,10 +556,11 @@
   720.0,
   720.0,
   792.0,
-  750.0
+  750.0,
+  775.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -266097,
-    "trust": -100000,
-    "dealer": -11480,
-    "total": -377577
+    "foreign": 40689,
+    "trust": -50000,
+    "dealer": -1000,
+    "total": -10311
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.47,
+    "yield": 0.45,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6291.TWO",
  "name": "沛亨",
- "price": 535.0,
- "change_pct": -6.96,
+ "price": 526.0,
+ "change_pct": -1.68,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 362.0,
-   "h": 378.0,
-   "l": 359.5,
-   "c": 376.0,
-   "v": 2326598
-  },
   {
    "time": "2026-04-08",
    "o": 394.5,
@@ -482,11 +474,19 @@
    "h": 585.0,
    "l": 535.0,
    "c": 535.0,
-   "v": 1393420
+   "v": 1323151
+  },
+  {
+   "time": "2026-07-02",
+   "o": 528.0,
+   "h": 547.0,
+   "l": 526.0,
+   "c": 526.0,
+   "v": 795635
   }
  ],
  "sr": {
-  "price": 535.0,
+  "price": 526.0,
   "resistance": [
    536.0,
    587.0
@@ -498,7 +498,6 @@
   "strong_support": 70.27
  },
  "spark": [
-  376.0,
   377.0,
   361.5,
   397.5,
@@ -557,10 +556,11 @@
   653.0,
   588.0,
   575.0,
-  535.0
+  535.0,
+  526.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -168970,
-    "trust": -89000,
-    "dealer": -2120,
-    "total": -260090
+    "foreign": -22797,
+    "trust": 0,
+    "dealer": 223,
+    "total": -22574
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.12,
+    "yield": 1.14,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

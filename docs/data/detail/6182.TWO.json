@@ -1,17 +1,9 @@
 {
  "stock": "6182.TWO",
  "name": "合晶",
- "price": 135.0,
- "change_pct": 9.76,
+ "price": 148.5,
+ "change_pct": 10.0,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 31.59,
-   "h": 31.74,
-   "l": 30.6,
-   "c": 30.7,
-   "v": 3183290
-  },
   {
    "time": "2026-04-08",
    "o": 31.49,
@@ -482,11 +474,19 @@
    "h": 135.0,
    "l": 135.0,
    "c": 135.0,
-   "v": 30670108
+   "v": 30228559
+  },
+  {
+   "time": "2026-07-02",
+   "o": 135.5,
+   "h": 148.5,
+   "l": 135.0,
+   "c": 148.5,
+   "v": 80098686
   }
  ],
  "sr": {
-  "price": 135.0,
+  "price": 148.5,
   "resistance": [],
   "support": [
    106.5,
@@ -495,7 +495,6 @@
   "strong_support": 15.85
  },
  "spark": [
-  30.7,
   33.33,
   33.08,
   35.71,
@@ -554,10 +553,11 @@
   119.5,
   112.0,
   123.0,
-  135.0
+  135.0,
+  148.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -377956,
-    "trust": 0,
-    "dealer": 556487,
-    "total": 178531
+    "foreign": 19334200,
+    "trust": -189000,
+    "dealer": -978909,
+    "total": 18166291
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -586,8 +586,17 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 42.01,
+   "severity": "warn",
+   "as_of": "20260626",
+   "note": "大戶持股%=42.01；WoW-1.53；股東人數+14543"
   }
  ],
  "trends": {

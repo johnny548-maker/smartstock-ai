@@ -1,17 +1,9 @@
 {
  "stock": "8289.TWO",
  "name": "泰藝",
- "price": 61.7,
- "change_pct": 5.29,
+ "price": 62.2,
+ "change_pct": 0.81,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 35.72,
-   "h": 36.52,
-   "l": 35.17,
-   "c": 35.32,
-   "v": 1008002
-  },
   {
    "time": "2026-04-08",
    "o": 35.92,
@@ -482,23 +474,30 @@
    "h": 64.4,
    "l": 60.7,
    "c": 61.7,
-   "v": 6214120
+   "v": 6178239
+  },
+  {
+   "time": "2026-07-02",
+   "o": 60.9,
+   "h": 65.0,
+   "l": 60.0,
+   "c": 62.2,
+   "v": 4675097
   }
  ],
  "sr": {
-  "price": 61.7,
+  "price": 62.2,
   "resistance": [
    75.14,
    77.83
   ],
   "support": [
    60.57,
-   44.95
+   57.6
   ],
   "strong_support": 16.32
  },
  "spark": [
-  35.32,
   36.77,
   36.27,
   37.67,
@@ -557,10 +556,11 @@
   58.5,
   58.4,
   58.6,
-  61.7
+  61.7,
+  62.2
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 717000,
+    "foreign": -509679,
     "trust": 0,
-    "dealer": 568,
-    "total": 717568
+    "dealer": -1007,
+    "total": -510686
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3711.TW",
  "name": "日月光投控",
- "price": 703.0,
- "change_pct": 3.38,
+ "price": 727.0,
+ "change_pct": 3.41,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 361.5,
-   "h": 366.0,
-   "l": 348.5,
-   "c": 352.0,
-   "v": 13602152
-  },
   {
    "time": "2026-04-08",
    "o": 364.0,
@@ -482,20 +474,27 @@
    "h": 718.0,
    "l": 695.0,
    "c": 703.0,
-   "v": 21749279
+   "v": 20757598
+  },
+  {
+   "time": "2026-07-02",
+   "o": 690.0,
+   "h": 729.0,
+   "l": 684.0,
+   "c": 727.0,
+   "v": 24640062
   }
  ],
  "sr": {
-  "price": 703.0,
+  "price": 727.0,
   "resistance": [],
   "support": [
-   573.0,
-   520.0
+   611.0,
+   573.0
   ],
   "strong_support": 141.5
  },
  "spark": [
-  352.0,
   383.0,
   392.0,
   393.0,
@@ -554,10 +553,11 @@
   632.0,
   627.0,
   680.0,
-  703.0
+  703.0,
+  727.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": {
   "rev_yoy": 28.6,
   "rev_accel": false,
@@ -565,21 +565,21 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 703.0,
-  "stop": 653.79,
-  "target": 826.02,
-  "atr_bracket": 826.02,
+  "entry": 727.0,
+  "stop": 676.11,
+  "target": 854.22,
+  "atr_bracket": 854.22,
   "measured_move": 772.0,
   "target_band": [
    772.0,
-   826.02
+   854.22
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 5.8,
-  "swing_stop": 598.87,
-  "chandelier": 603.18,
+  "atr_pct": 5.7,
+  "swing_stop": 598.57,
+  "chandelier": 610.23,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -587,39 +587,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 2,941,004 股",
+   "label": "三大法人買超 2,764,721 股",
    "value": {
-    "foreign": 1936969,
-    "trust": 1012519,
-    "dealer": -8484,
-    "total": 2941004
+    "foreign": 284124,
+    "trust": 2159121,
+    "dealer": 321476,
+    "total": 2764721
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -10
-   },
-   "severity": "info",
-   "as_of": "2026-07-01",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 63.1 / 殖利率 0.97% / PB 8.51",
+   "label": "PE 65.3 / 殖利率 0.94% / PB 8.80",
    "value": {
-    "pe": 63.14,
-    "yield": 0.97,
-    "pb": 8.51
+    "pe": 65.27,
+    "yield": 0.94,
+    "pb": 8.8
    },
    "severity": "info",
-   "as_of": "2026-06-30",
+   "as_of": "2026-07-01",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -705,6 +694,10 @@
    {
     "t": "2026-07-01",
     "v": 25537
+   },
+   {
+    "t": "2026-07-02",
+    "v": 28302
    }
   ],
   "holder_pct": [

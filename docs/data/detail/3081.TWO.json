@@ -1,17 +1,9 @@
 {
  "stock": "3081.TWO",
  "name": "聯亞",
- "price": 1980.0,
- "change_pct": -1.98,
+ "price": 1940.0,
+ "change_pct": -2.02,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 1935.0,
-   "h": 2005.0,
-   "l": 1905.0,
-   "c": 2005.0,
-   "v": 2999688
-  },
   {
    "time": "2026-04-08",
    "o": 2080.0,
@@ -482,11 +474,19 @@
    "h": 2080.0,
    "l": 1970.0,
    "c": 1980.0,
-   "v": 1469017
+   "v": 1370311
+  },
+  {
+   "time": "2026-07-02",
+   "o": 1880.0,
+   "h": 1940.0,
+   "l": 1835.0,
+   "c": 1940.0,
+   "v": 2322111
   }
  ],
  "sr": {
-  "price": 1980.0,
+  "price": 1940.0,
   "resistance": [
    2405.0,
    2480.0
@@ -498,7 +498,6 @@
   "strong_support": 93.56
  },
  "spark": [
-  2005.0,
   2040.0,
   2105.0,
   2315.0,
@@ -557,10 +556,11 @@
   2035.0,
   2035.0,
   2020.0,
-  1980.0
+  1980.0,
+  1940.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 166239,
-    "trust": -368900,
-    "dealer": 26583,
-    "total": -176078
+    "foreign": 572438,
+    "trust": -427600,
+    "dealer": -4556,
+    "total": 140282
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.2,
+    "yield": 0.21,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

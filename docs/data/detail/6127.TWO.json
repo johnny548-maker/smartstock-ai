@@ -1,17 +1,9 @@
 {
  "stock": "6127.TWO",
  "name": "九豪",
- "price": 96.9,
- "change_pct": 4.31,
+ "price": 90.6,
+ "change_pct": -6.5,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 40.45,
-   "h": 41.7,
-   "l": 39.0,
-   "c": 39.0,
-   "v": 6296380
-  },
   {
    "time": "2026-04-08",
    "o": 39.65,
@@ -482,12 +474,22 @@
    "h": 102.0,
    "l": 94.0,
    "c": 96.9,
-   "v": 49602070
+   "v": 48977996
+  },
+  {
+   "time": "2026-07-02",
+   "o": 95.0,
+   "h": 97.2,
+   "l": 90.2,
+   "c": 90.6,
+   "v": 18417822
   }
  ],
  "sr": {
-  "price": 96.9,
-  "resistance": [],
+  "price": 90.6,
+  "resistance": [
+   91.2
+  ],
   "support": [
    80.4,
    75.8
@@ -495,7 +497,6 @@
   "strong_support": 14.6
  },
  "spark": [
-  39.0,
   39.8,
   38.9,
   42.75,
@@ -554,10 +555,11 @@
   91.4,
   84.5,
   92.9,
-  96.9
+  96.9,
+  90.6
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 4901809,
+    "foreign": -4723409,
     "trust": 0,
-    "dealer": -26335,
-    "total": 4875474
+    "dealer": -38431,
+    "total": -4761840
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -586,17 +588,8 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 30.12,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=30.12；WoW+4.78；股東人數-2955"
   }
  ],
  "trends": {

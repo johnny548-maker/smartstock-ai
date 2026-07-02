@@ -1,17 +1,9 @@
 {
  "stock": "8016.TW",
  "name": "矽創",
- "price": 339.0,
- "change_pct": 2.11,
+ "price": 327.5,
+ "change_pct": -3.39,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 184.85,
-   "h": 186.29,
-   "l": 184.37,
-   "c": 186.29,
-   "v": 382140
-  },
   {
    "time": "2026-04-08",
    "o": 187.25,
@@ -482,22 +474,29 @@
    "h": 347.5,
    "l": 334.5,
    "c": 339.0,
-   "v": 4450829
+   "v": 4371877
+  },
+  {
+   "time": "2026-07-02",
+   "o": 330.5,
+   "h": 335.5,
+   "l": 320.5,
+   "c": 327.5,
+   "v": 3045883
   }
  ],
  "sr": {
-  "price": 339.0,
+  "price": 327.5,
   "resistance": [
    344.0
   ],
   "support": [
-   284.72,
-   275.12
+   306.5,
+   284.72
   ],
   "strong_support": 145.38
  },
  "spark": [
-  186.29,
   193.98,
   194.94,
   194.46,
@@ -556,10 +555,11 @@
   311.0,
   317.0,
   332.0,
-  339.0
+  339.0,
+  327.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": {
   "rev_yoy": 39.8,
   "rev_accel": false,
@@ -568,55 +568,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 681,218 股",
-   "value": {
-    "foreign": 793003,
-    "trust": -135048,
-    "dealer": 23263,
-    "total": 681218
-   },
-   "severity": "info",
-   "as_of": "2026-07-01",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -2
-   },
-   "severity": "info",
-   "as_of": "2026-07-01",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 20.9 / 殖利率 3.46% / PB 3.41",
-   "value": {
-    "pe": 20.85,
-    "yield": 3.46,
-    "pb": 3.41
-   },
-   "severity": "info",
-   "as_of": "2026-06-30",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 44.34,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=44.34；WoW+1.19；股東人數-236"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -690,6 +641,10 @@
    {
     "t": "2026-07-01",
     "v": 4489
+   },
+   {
+    "t": "2026-07-02",
+    "v": 3812
    }
   ],
   "holder_pct": [

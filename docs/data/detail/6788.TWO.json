@@ -1,17 +1,9 @@
 {
  "stock": "6788.TWO",
  "name": "華景電",
- "price": 443.5,
- "change_pct": 3.02,
+ "price": 440.0,
+ "change_pct": -0.79,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 368.53,
-   "h": 372.39,
-   "l": 357.92,
-   "c": 363.23,
-   "v": 1249398
-  },
   {
    "time": "2026-04-08",
    "o": 374.32,
@@ -482,11 +474,19 @@
    "h": 448.5,
    "l": 432.0,
    "c": 443.5,
-   "v": 881169
+   "v": 834129
+  },
+  {
+   "time": "2026-07-02",
+   "o": 438.0,
+   "h": 462.0,
+   "l": 434.0,
+   "c": 440.0,
+   "v": 1029549
   }
  ],
  "sr": {
-  "price": 443.5,
+  "price": 440.0,
   "resistance": [
    466.0,
    469.83
@@ -498,7 +498,6 @@
   "strong_support": 129.52
  },
  "spark": [
-  363.23,
   378.66,
   385.9,
   352.13,
@@ -557,10 +556,11 @@
   422.0,
   422.5,
   430.5,
-  443.5
+  443.5,
+  440.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 121227,
-    "trust": 1000,
-    "dealer": 32072,
-    "total": 154299
+    "foreign": -59811,
+    "trust": 0,
+    "dealer": -29126,
+    "total": -88937
    },
-   "severity": "warn",
-   "as_of": "2026-07-01",
+   "severity": "info",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.38,
+    "yield": 3.41,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

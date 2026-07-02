@@ -1,17 +1,9 @@
 {
  "stock": "6664.TWO",
  "name": "群翊",
- "price": 397.5,
- "change_pct": 1.66,
+ "price": 408.0,
+ "change_pct": 2.64,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 377.5,
-   "h": 383.0,
-   "l": 350.5,
-   "c": 359.5,
-   "v": 4930614
-  },
   {
    "time": "2026-04-08",
    "o": 370.0,
@@ -482,11 +474,19 @@
    "h": 419.0,
    "l": 395.5,
    "c": 397.5,
-   "v": 1017798
+   "v": 959600
+  },
+  {
+   "time": "2026-07-02",
+   "o": 399.0,
+   "h": 415.0,
+   "l": 394.5,
+   "c": 408.0,
+   "v": 706659
   }
  ],
  "sr": {
-  "price": 397.5,
+  "price": 408.0,
   "resistance": [
    457.5,
    475.0
@@ -498,7 +498,6 @@
   "strong_support": 139.78
  },
  "spark": [
-  359.5,
   351.0,
   386.0,
   385.5,
@@ -557,10 +556,11 @@
   368.0,
   382.0,
   391.0,
-  397.5
+  397.5,
+  408.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 31065,
+    "foreign": 91450,
     "trust": 0,
-    "dealer": 14461,
-    "total": 45526
+    "dealer": 19749,
+    "total": 111199
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.57,
+    "yield": 2.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

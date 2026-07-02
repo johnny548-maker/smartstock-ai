@@ -1,17 +1,9 @@
 {
  "stock": "4707.TWO",
  "name": "磐亞",
- "price": 28.1,
- "change_pct": -4.1,
+ "price": 30.9,
+ "change_pct": 9.96,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 11.35,
-   "h": 11.7,
-   "l": 11.3,
-   "c": 11.35,
-   "v": 1089066
-  },
   {
    "time": "2026-04-08",
    "o": 11.45,
@@ -482,11 +474,19 @@
    "h": 30.9,
    "l": 28.0,
    "c": 28.1,
-   "v": 10235861
+   "v": 10211552
+  },
+  {
+   "time": "2026-07-02",
+   "o": 27.9,
+   "h": 30.9,
+   "l": 27.85,
+   "c": 30.9,
+   "v": 10839596
   }
  ],
  "sr": {
-  "price": 28.1,
+  "price": 30.9,
   "resistance": [],
   "support": [
    20.6,
@@ -495,7 +495,6 @@
   "strong_support": 8.63
  },
  "spark": [
-  11.35,
   11.55,
   12.15,
   12.6,
@@ -554,10 +553,11 @@
   27.55,
   30.3,
   29.3,
-  28.1
+  28.1,
+  30.9
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -216561,
+    "foreign": 292605,
     "trust": 0,
-    "dealer": -23164,
-    "total": -239725
+    "dealer": 183506,
+    "total": 476111
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.78,
+    "yield": 1.62,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

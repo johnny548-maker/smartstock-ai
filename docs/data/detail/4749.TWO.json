@@ -1,17 +1,9 @@
 {
  "stock": "4749.TWO",
  "name": "新應材",
- "price": 906.0,
- "change_pct": 3.54,
+ "price": 925.0,
+ "change_pct": 2.1,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 812.91,
-   "h": 814.89,
-   "l": 799.03,
-   "c": 803.99,
-   "v": 725356
-  },
   {
    "time": "2026-04-08",
    "o": 835.71,
@@ -482,14 +474,22 @@
    "h": 914.0,
    "l": 880.0,
    "c": 906.0,
-   "v": 850669
+   "v": 784415
+  },
+  {
+   "time": "2026-07-02",
+   "o": 900.0,
+   "h": 927.0,
+   "l": 888.0,
+   "c": 925.0,
+   "v": 768472
   }
  ],
  "sr": {
-  "price": 906.0,
+  "price": 925.0,
   "resistance": [
-   909.07,
-   913.03
+   930.88,
+   940.79
   ],
   "support": [
    898.16,
@@ -498,7 +498,6 @@
   "strong_support": 359.79
  },
  "spark": [
-  803.99,
   860.49,
   869.42,
   885.28,
@@ -557,10 +556,11 @@
   877.0,
   866.0,
   875.0,
-  906.0
+  906.0,
+  925.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 48672,
-    "trust": 1250,
-    "dealer": 30545,
-    "total": 80467
+    "foreign": -74750,
+    "trust": 15000,
+    "dealer": -5801,
+    "total": -65551
    },
-   "severity": "warn",
-   "as_of": "2026-07-01",
+   "severity": "info",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.88,
+    "yield": 0.86,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

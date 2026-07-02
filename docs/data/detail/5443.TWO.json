@@ -1,17 +1,9 @@
 {
  "stock": "5443.TWO",
  "name": "均豪",
- "price": 124.0,
- "change_pct": 7.36,
+ "price": 121.5,
+ "change_pct": -2.02,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 98.86,
-   "h": 101.8,
-   "l": 97.88,
-   "c": 98.86,
-   "v": 2312925
-  },
   {
    "time": "2026-04-08",
    "o": 101.8,
@@ -482,14 +474,22 @@
    "h": 127.0,
    "l": 116.0,
    "c": 124.0,
-   "v": 14781239
+   "v": 14589194
+  },
+  {
+   "time": "2026-07-02",
+   "o": 120.0,
+   "h": 122.5,
+   "l": 116.5,
+   "c": 121.5,
+   "v": 4864503
   }
  ],
  "sr": {
-  "price": 124.0,
+  "price": 121.5,
   "resistance": [
-   127.63,
-   128.72
+   121.87,
+   123.33
   ],
   "support": [
    120.93,
@@ -498,7 +498,6 @@
   "strong_support": 52.68
  },
  "spark": [
-  98.86,
   105.72,
   113.55,
   113.55,
@@ -557,10 +556,11 @@
   99.2,
   109.0,
   115.5,
-  124.0
+  124.0,
+  121.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 2592091,
+    "foreign": 363453,
     "trust": 0,
-    "dealer": 263640,
-    "total": 2855731
+    "dealer": -119620,
+    "total": 243833
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.77,
+    "yield": 1.81,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3362.TWO",
  "name": "先進光",
- "price": 188.5,
- "change_pct": -0.26,
+ "price": 187.5,
+ "change_pct": -0.53,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 94.7,
-   "h": 94.8,
-   "l": 93.3,
-   "c": 94.2,
-   "v": 175003
-  },
   {
    "time": "2026-04-08",
    "o": 95.8,
@@ -482,11 +474,19 @@
    "h": 197.5,
    "l": 184.0,
    "c": 188.5,
-   "v": 4688864
+   "v": 4639063
+  },
+  {
+   "time": "2026-07-02",
+   "o": 185.0,
+   "h": 191.0,
+   "l": 183.5,
+   "c": 187.5,
+   "v": 2174902
   }
  ],
  "sr": {
-  "price": 188.5,
+  "price": 187.5,
   "resistance": [
    204.31,
    209.77
@@ -498,7 +498,6 @@
   "strong_support": 86.7
  },
  "spark": [
-  94.2,
   97.0,
   95.4,
   96.0,
@@ -557,10 +556,11 @@
   190.0,
   182.5,
   189.0,
-  188.5
+  188.5,
+  187.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -414114,
+    "foreign": 50020,
     "trust": 0,
-    "dealer": -2267,
-    "total": -416381
+    "dealer": -439,
+    "total": 49581
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

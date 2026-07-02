@@ -1,17 +1,9 @@
 {
  "stock": "6271.TW",
  "name": "同欣電",
- "price": 287.5,
- "change_pct": 7.68,
+ "price": 264.0,
+ "change_pct": -8.17,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 152.07,
-   "h": 155.04,
-   "l": 151.09,
-   "c": 152.07,
-   "v": 3966575
-  },
   {
    "time": "2026-04-08",
    "o": 158.0,
@@ -482,12 +474,22 @@
    "h": 293.5,
    "l": 276.5,
    "c": 287.5,
-   "v": 42631131
+   "v": 42036195
+  },
+  {
+   "time": "2026-07-02",
+   "o": 277.0,
+   "h": 280.0,
+   "l": 260.0,
+   "c": 264.0,
+   "v": 23095083
   }
  ],
  "sr": {
-  "price": 287.5,
-  "resistance": [],
+  "price": 264.0,
+  "resistance": [
+   265.14
+  ],
   "support": [
    221.5,
    206.5
@@ -495,7 +497,6 @@
   "strong_support": 80.56
  },
  "spark": [
-  152.07,
   166.39,
   170.84,
   169.36,
@@ -554,10 +555,11 @@
   255.0,
   243.0,
   267.0,
-  287.5
+  287.5,
+  264.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": {
   "rev_yoy": 7.6,
   "rev_accel": false,
@@ -566,56 +568,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 2,413,316 股",
-   "value": {
-    "foreign": 798201,
-    "trust": 649000,
-    "dealer": 966115,
-    "total": 2413316
-   },
-   "severity": "info",
-   "as_of": "2026-07-01",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +12.2%",
-   "value": {
-    "fin_net": 1269,
-    "fin_pct": 0.1215633681387106
-   },
-   "severity": "warn",
-   "as_of": "2026-07-01",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 39.6 / 殖利率 1.12% / PB 2.11",
-   "value": {
-    "pe": 39.61,
-    "yield": 1.12,
-    "pb": 2.11
-   },
-   "severity": "info",
-   "as_of": "2026-06-30",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 54.73,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=54.73；WoW+4.42；股東人數-4477"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -689,6 +641,10 @@
    {
     "t": "2026-07-01",
     "v": 13518
+   },
+   {
+    "t": "2026-07-02",
+    "v": 7640
    }
   ],
   "holder_pct": [

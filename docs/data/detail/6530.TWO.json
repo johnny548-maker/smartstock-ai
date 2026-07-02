@@ -1,17 +1,9 @@
 {
  "stock": "6530.TWO",
  "name": "創威",
- "price": 84.0,
- "change_pct": -4.0,
+ "price": 84.5,
+ "change_pct": 0.6,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 89.76,
-   "h": 93.78,
-   "l": 86.04,
-   "c": 93.58,
-   "v": 4763287
-  },
   {
    "time": "2026-04-08",
    "o": 96.43,
@@ -482,11 +474,19 @@
    "h": 88.9,
    "l": 83.7,
    "c": 84.0,
-   "v": 505201
+   "v": 496249
+  },
+  {
+   "time": "2026-07-02",
+   "o": 83.7,
+   "h": 84.9,
+   "l": 82.3,
+   "c": 84.5,
+   "v": 374597
   }
  ],
  "sr": {
-  "price": 84.0,
+  "price": 84.5,
   "resistance": [
    84.64,
    100.0
@@ -498,7 +498,6 @@
   "strong_support": 33.81
  },
  "spark": [
-  93.58,
   96.52,
   95.94,
   99.46,
@@ -557,10 +556,11 @@
   84.6,
   85.2,
   87.5,
-  84.0
+  84.0,
+  84.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -48001,
+    "foreign": 114913,
     "trust": 0,
-    "dealer": 497,
-    "total": -47504
+    "dealer": -499,
+    "total": 114414
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.38,
+    "yield": 2.37,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

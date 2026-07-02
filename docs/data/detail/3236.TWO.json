@@ -1,17 +1,9 @@
 {
  "stock": "3236.TWO",
  "name": "千如",
- "price": 73.0,
- "change_pct": 5.95,
+ "price": 70.1,
+ "change_pct": -3.97,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 31.2,
-   "h": 31.2,
-   "l": 29.6,
-   "c": 29.6,
-   "v": 1073650
-  },
   {
    "time": "2026-04-08",
    "o": 30.3,
@@ -482,12 +474,22 @@
    "h": 75.7,
    "l": 70.0,
    "c": 73.0,
-   "v": 33236733
+   "v": 32949892
+  },
+  {
+   "time": "2026-07-02",
+   "o": 72.9,
+   "h": 75.0,
+   "l": 70.0,
+   "c": 70.1,
+   "v": 20380843
   }
  ],
  "sr": {
-  "price": 73.0,
-  "resistance": [],
+  "price": 70.1,
+  "resistance": [
+   73.0
+  ],
   "support": [
    60.5,
    47.8
@@ -495,7 +497,6 @@
   "strong_support": 12.89
  },
  "spark": [
-  29.6,
   31.05,
   30.8,
   32.6,
@@ -554,10 +555,11 @@
   67.5,
   62.7,
   68.9,
-  73.0
+  73.0,
+  70.1
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 6249677,
+    "foreign": -2604052,
     "trust": 0,
-    "dealer": -50531,
-    "total": 6199146
+    "dealer": -27729,
+    "total": -2631781
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.68,
+    "yield": 0.71,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

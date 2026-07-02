@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 580.91,
- "change_pct": 7.68,
+ "price": 540.88,
+ "change_pct": -6.89,
  "ohlc": [
-  {
-   "time": "2026-04-06",
-   "o": 219.28,
-   "h": 226.31,
-   "l": 217.73,
-   "c": 220.18,
-   "v": 30786400
-  },
   {
    "time": "2026-04-07",
    "o": 218.26,
@@ -482,20 +474,30 @@
    "h": 584.73,
    "l": 545.57,
    "c": 580.91,
-   "v": 34415900
+   "v": 34488500
+  },
+  {
+   "time": "2026-07-01",
+   "o": 557.53,
+   "h": 564.09,
+   "l": 538.74,
+   "c": 540.88,
+   "v": 28186200
   }
  ],
  "sr": {
-  "price": 580.91,
-  "resistance": [],
+  "price": 540.88,
+  "resistance": [
+   546.44,
+   558.37
+  ],
   "support": [
    437.23,
    393.36
   ],
-  "strong_support": 133.5
+  "strong_support": 149.22
  },
  "spark": [
-  220.18,
   221.53,
   231.82,
   236.64,
@@ -554,36 +556,20 @@
   532.57,
   521.58,
   539.49,
-  580.91
+  580.91,
+  540.88
  ],
- "spark_start": "2026-04-06",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": {
   "pe_trailing": 192.3543,
   "pe_forward": 44.08501,
   "eps_trailing": 3.02,
   "eps_forward": 13.17704,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 580.91,
-  "stop": 540.25,
-  "target": 682.57,
-  "atr_bracket": 682.57,
-  "measured_move": 664.53,
-  "target_band": [
-   664.53,
-   682.57
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.2,
-  "swing_stop": 426.5,
-  "chandelier": 476.38,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
@@ -598,7 +584,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "BHE",
  "name": "Benchmark Electronics",
- "price": 98.67,
- "change_pct": 3.87,
+ "price": 95.01,
+ "change_pct": -3.71,
  "ohlc": [
-  {
-   "time": "2026-04-06",
-   "o": 56.48,
-   "h": 56.96,
-   "l": 55.01,
-   "c": 55.75,
-   "v": 186100
-  },
   {
    "time": "2026-04-07",
    "o": 55.54,
@@ -483,10 +475,18 @@
    "l": 95.38,
    "c": 98.67,
    "v": 702300
+  },
+  {
+   "time": "2026-07-01",
+   "o": 96.05,
+   "h": 96.72,
+   "l": 93.8,
+   "c": 95.01,
+   "v": 415900
   }
  ],
  "sr": {
-  "price": 98.67,
+  "price": 95.01,
   "resistance": [],
   "support": [
    87.84,
@@ -495,7 +495,6 @@
   "strong_support": 30.19
  },
  "spark": [
-  55.75,
   56.93,
   60.4,
   62.08,
@@ -554,28 +553,12 @@
   97.02,
   91.89,
   94.99,
-  98.67
+  98.67,
+  95.01
  ],
- "spark_start": "2026-04-06",
- "spark_end": "2026-06-30",
+ "spark_start": "2026-04-07",
+ "spark_end": "2026-07-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 11454,
-    "days": 2,
-    "max_shares": 11048,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-01",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

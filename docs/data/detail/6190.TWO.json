@@ -1,17 +1,9 @@
 {
  "stock": "6190.TWO",
  "name": "萬泰科",
- "price": 84.1,
- "change_pct": 0.12,
+ "price": 85.9,
+ "change_pct": 2.14,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 54.3,
-   "h": 56.8,
-   "l": 53.5,
-   "c": 55.5,
-   "v": 9941718
-  },
   {
    "time": "2026-04-08",
    "o": 57.3,
@@ -482,23 +474,29 @@
    "h": 85.8,
    "l": 83.3,
    "c": 84.1,
-   "v": 6055837
+   "v": 5986494
+  },
+  {
+   "time": "2026-07-02",
+   "o": 84.2,
+   "h": 86.0,
+   "l": 84.0,
+   "c": 85.9,
+   "v": 4368360
   }
  ],
  "sr": {
-  "price": 84.1,
+  "price": 85.9,
   "resistance": [
-   85.5,
-   85.8
+   99.6
   ],
   "support": [
-   77.0,
-   75.7
+   79.1,
+   77.0
   ],
   "strong_support": 26.71
  },
  "spark": [
-  55.5,
   61.0,
   66.0,
   63.3,
@@ -557,10 +555,11 @@
   81.6,
   79.1,
   84.0,
-  84.1
+  84.1,
+  85.9
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 457595,
+    "foreign": 321500,
     "trust": 0,
-    "dealer": 126178,
-    "total": 583773
+    "dealer": 9522,
+    "total": 331022
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.3,
+    "yield": 2.25,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

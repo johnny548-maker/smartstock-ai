@@ -1,17 +1,9 @@
 {
  "stock": "6175.TWO",
  "name": "立敦",
- "price": 108.5,
- "change_pct": -3.56,
+ "price": 109.5,
+ "change_pct": 0.92,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 47.0,
-   "h": 47.0,
-   "l": 45.8,
-   "c": 45.8,
-   "v": 641200
-  },
   {
    "time": "2026-04-08",
    "o": 47.8,
@@ -482,23 +474,30 @@
    "h": 120.0,
    "l": 108.0,
    "c": 108.5,
-   "v": 12021292
+   "v": 11938194
+  },
+  {
+   "time": "2026-07-02",
+   "o": 107.5,
+   "h": 111.5,
+   "l": 106.5,
+   "c": 109.5,
+   "v": 3906247
   }
  ],
  "sr": {
-  "price": 108.5,
+  "price": 109.5,
   "resistance": [
    111.5,
    115.5
   ],
   "support": [
-   96.6,
-   83.7
+   104.5,
+   96.6
   ],
   "strong_support": 26.87
  },
  "spark": [
-  45.8,
   50.3,
   52.2,
   52.8,
@@ -557,10 +556,11 @@
   111.0,
   106.0,
   112.5,
-  108.5
+  108.5,
+  109.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 665409,
+    "foreign": -805935,
     "trust": 0,
-    "dealer": -75905,
-    "total": 589504
+    "dealer": 44107,
+    "total": -761828
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.38,
+    "yield": 1.37,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

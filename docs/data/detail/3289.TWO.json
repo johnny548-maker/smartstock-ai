@@ -1,17 +1,9 @@
 {
  "stock": "3289.TWO",
  "name": "宜特",
- "price": 173.5,
- "change_pct": -0.57,
+ "price": 190.5,
+ "change_pct": 9.8,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 130.46,
-   "h": 130.95,
-   "l": 126.98,
-   "c": 126.98,
-   "v": 1280700
-  },
   {
    "time": "2026-04-08",
    "o": 130.95,
@@ -482,14 +474,22 @@
    "h": 182.0,
    "l": 167.0,
    "c": 173.5,
-   "v": 4651293
+   "v": 4620158
+  },
+  {
+   "time": "2026-07-02",
+   "o": 170.5,
+   "h": 190.5,
+   "l": 168.0,
+   "c": 190.5,
+   "v": 9939547
   }
  ],
  "sr": {
-  "price": 173.5,
+  "price": 190.5,
   "resistance": [
-   183.0,
-   184.0
+   209.0,
+   219.0
   ],
   "support": [
    171.0,
@@ -498,7 +498,6 @@
   "strong_support": 79.51
  },
  "spark": [
-  126.98,
   135.91,
   149.3,
   155.5,
@@ -557,10 +556,11 @@
   155.0,
   159.0,
   174.5,
-  173.5
+  173.5,
+  190.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 60751,
+    "foreign": 179852,
     "trust": 0,
-    "dealer": -34141,
-    "total": 26610
+    "dealer": 309190,
+    "total": 489042
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.57,
+    "yield": 2.34,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

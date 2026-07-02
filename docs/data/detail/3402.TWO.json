@@ -1,17 +1,9 @@
 {
  "stock": "3402.TWO",
  "name": "漢科",
- "price": 148.5,
- "change_pct": 0.34,
+ "price": 153.5,
+ "change_pct": 3.37,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 115.0,
-   "h": 119.5,
-   "l": 114.0,
-   "c": 119.0,
-   "v": 488015
-  },
   {
    "time": "2026-04-08",
    "o": 121.5,
@@ -482,14 +474,22 @@
    "h": 156.5,
    "l": 148.0,
    "c": 148.5,
-   "v": 2229176
+   "v": 2199545
+  },
+  {
+   "time": "2026-07-02",
+   "o": 148.5,
+   "h": 154.0,
+   "l": 148.5,
+   "c": 153.5,
+   "v": 1862282
   }
  ],
  "sr": {
-  "price": 148.5,
+  "price": 153.5,
   "resistance": [
-   151.5,
-   153.0
+   157.5,
+   160.5
   ],
   "support": [
    137.5,
@@ -498,7 +498,6 @@
   "strong_support": 67.23
  },
  "spark": [
-  119.0,
   122.5,
   124.5,
   125.0,
@@ -557,10 +556,11 @@
   140.5,
   143.0,
   148.0,
-  148.5
+  148.5,
+  153.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 326863,
-    "trust": 45907,
-    "dealer": 13528,
-    "total": 386298
+    "foreign": 502348,
+    "trust": 4519,
+    "dealer": 5699,
+    "total": 512566
    },
    "severity": "warn",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.04,
+    "yield": 3.91,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

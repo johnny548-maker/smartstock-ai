@@ -1,17 +1,9 @@
 {
  "stock": "8064.TWO",
  "name": "東捷",
- "price": 148.0,
- "change_pct": 1.37,
+ "price": 146.5,
+ "change_pct": -1.01,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 65.52,
-   "h": 66.71,
-   "l": 63.33,
-   "c": 64.33,
-   "v": 6330435
-  },
   {
    "time": "2026-04-08",
    "o": 66.01,
@@ -482,23 +474,30 @@
    "h": 160.0,
    "l": 148.0,
    "c": 148.0,
-   "v": 13603277
+   "v": 13350591
+  },
+  {
+   "time": "2026-07-02",
+   "o": 144.0,
+   "h": 152.5,
+   "l": 143.5,
+   "c": 146.5,
+   "v": 6196213
   }
  ],
  "sr": {
-  "price": 148.0,
+  "price": 146.5,
   "resistance": [
    170.24,
    188.11
   ],
   "support": [
-   129.05,
-   116.14
+   131.5,
+   129.05
   ],
   "strong_support": 28.49
  },
  "spark": [
-  64.33,
   70.68,
   77.73,
   77.23,
@@ -557,10 +556,11 @@
   133.02,
   133.0,
   146.0,
-  148.0
+  148.0,
+  146.5
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -689970,
-    "trust": 13000,
-    "dealer": 5985,
-    "total": -670985
+    "foreign": -776000,
+    "trust": 12000,
+    "dealer": 13406,
+    "total": -750594
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.66,
+    "yield": 0.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],

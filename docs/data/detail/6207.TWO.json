@@ -1,17 +1,9 @@
 {
  "stock": "6207.TWO",
  "name": "雷科",
- "price": 161.0,
- "change_pct": 9.9,
+ "price": 152.0,
+ "change_pct": -5.59,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 50.4,
-   "h": 50.9,
-   "l": 49.5,
-   "c": 49.55,
-   "v": 546206
-  },
   {
    "time": "2026-04-08",
    "o": 50.8,
@@ -482,23 +474,30 @@
    "h": 161.0,
    "l": 152.0,
    "c": 161.0,
-   "v": 8505169
+   "v": 8341073
+  },
+  {
+   "time": "2026-07-02",
+   "o": 156.0,
+   "h": 172.0,
+   "l": 151.0,
+   "c": 152.0,
+   "v": 27131458
   }
  ],
  "sr": {
-  "price": 161.0,
+  "price": 152.0,
   "resistance": [
    164.0,
    181.5
   ],
   "support": [
-   121.5,
-   71.04
+   132.5,
+   121.5
   ],
   "strong_support": 33.47
  },
  "spark": [
-  49.55,
   52.5,
   51.9,
   54.0,
@@ -557,10 +556,11 @@
   145.0,
   133.5,
   146.5,
-  161.0
+  161.0,
+  152.0
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -1665000,
+    "foreign": 305037,
     "trust": 0,
-    "dealer": 173202,
-    "total": -1491798
+    "dealer": -234716,
+    "total": 70321
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.43,
+    "yield": 0.46,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-01",
+   "as_of": "2026-07-02",
    "note": "OTC valuation context"
   }
  ],
