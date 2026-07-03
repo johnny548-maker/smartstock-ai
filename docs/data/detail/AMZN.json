@@ -1,25 +1,9 @@
 {
  "stock": "AMZN",
- "name": "亞馬遜",
- "price": 238.34,
- "change_pct": -0.75,
+ "name": "Amazon.com, Inc. - Common Stock",
+ "price": 242.67,
+ "change_pct": 0.4,
  "ohlc": [
-  {
-   "time": "2026-04-06",
-   "o": 209.8,
-   "h": 212.95,
-   "l": 209.59,
-   "c": 212.79,
-   "v": 25385500
-  },
-  {
-   "time": "2026-04-07",
-   "o": 211.24,
-   "h": 213.97,
-   "l": 209.08,
-   "c": 213.77,
-   "v": 28154600
-  },
   {
    "time": "2026-04-08",
    "o": 223.79,
@@ -482,24 +466,38 @@
    "h": 241.54,
    "l": 237.17,
    "c": 238.34,
-   "v": 66087900
+   "v": 66228300
+  },
+  {
+   "time": "2026-07-01",
+   "o": 239.75,
+   "h": 244.9,
+   "l": 234.9,
+   "c": 241.7,
+   "v": 53829900
+  },
+  {
+   "time": "2026-07-02",
+   "o": 241.61,
+   "h": 246.72,
+   "l": 241.08,
+   "c": 242.67,
+   "v": 48246400
   }
  ],
  "sr": {
-  "price": 238.34,
+  "price": 242.67,
   "resistance": [
-   238.85,
-   238.97
+   249.51,
+   249.71
   ],
   "support": [
    233.59,
-   226.88
+   225.55
   ],
-  "strong_support": 196.0
+  "strong_support": 225.55
  },
  "spark": [
-  212.79,
-  213.77,
   221.25,
   233.65,
   238.38,
@@ -557,35 +555,13 @@
   227.01,
   232.69,
   240.14,
-  238.34
+  238.34,
+  241.7,
+  242.67
  ],
- "spark_start": "2026-04-06",
- "spark_end": "2026-06-30",
- "fundamental": {
-  "pe_trailing": 31.652058,
-  "pe_forward": 24.122164,
-  "eps_trailing": 7.53,
-  "eps_forward": 9.88054,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 322,917 股交割失敗）",
-   "value": {
-    "total_shares": 322917,
-    "days": 8,
-    "max_shares": 152730,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-07-01",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

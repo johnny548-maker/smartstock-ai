@@ -1,17 +1,9 @@
 {
  "stock": "6223.TWO",
  "name": "旺矽",
- "price": 7255.0,
- "change_pct": 8.36,
+ "price": 7380.0,
+ "change_pct": 1.72,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 4155.0,
-   "h": 4310.0,
-   "l": 4135.0,
-   "c": 4310.0,
-   "v": 905157
-  },
   {
    "time": "2026-04-09",
    "o": 4500.0,
@@ -482,20 +474,27 @@
    "h": 7360.0,
    "l": 6620.0,
    "c": 7255.0,
-   "v": 1577090
+   "v": 1481568
+  },
+  {
+   "time": "2026-07-03",
+   "o": 7165.0,
+   "h": 7400.0,
+   "l": 6960.0,
+   "c": 7380.0,
+   "v": 630545
   }
  ],
  "sr": {
-  "price": 7255.0,
+  "price": 7380.0,
   "resistance": [],
   "support": [
    6275.0,
-   5530.0
+   5950.0
   ],
   "strong_support": 431.91
  },
  "spark": [
-  4310.0,
   4470.0,
   4620.0,
   4545.0,
@@ -554,10 +553,11 @@
   6060.0,
   6090.0,
   6695.0,
-  7255.0
+  7255.0,
+  7380.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 90420,
-    "trust": 202765,
-    "dealer": -10065,
-    "total": 283120
+    "foreign": 39915,
+    "trust": 54134,
+    "dealer": -1807,
+    "total": 92242
    },
    "severity": "warn",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -586,17 +586,8 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 49.95,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=49.95；WoW+1.01；股東人數-1885"
   }
  ],
  "trends": {

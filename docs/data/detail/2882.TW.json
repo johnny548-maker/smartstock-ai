@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 93.5,
- "change_pct": -1.58,
+ "price": 93.6,
+ "change_pct": 0.11,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 71.06,
-   "h": 71.35,
-   "l": 70.1,
-   "c": 71.26,
-   "v": 27939903
-  },
   {
    "time": "2026-04-09",
    "o": 71.74,
@@ -482,11 +474,19 @@
    "h": 95.9,
    "l": 92.6,
    "c": 93.5,
-   "v": 65055086
+   "v": 64451716
+  },
+  {
+   "time": "2026-07-03",
+   "o": 92.8,
+   "h": 94.8,
+   "l": 92.8,
+   "c": 93.6,
+   "v": 37708056
   }
  ],
  "sr": {
-  "price": 93.5,
+  "price": 93.6,
   "resistance": [
    113.45
   ],
@@ -494,10 +494,9 @@
    74.25,
    73.48
   ],
-  "strong_support": 58.51
+  "strong_support": 45.33
  },
  "spark": [
-  71.26,
   71.06,
   70.39,
   69.52,
@@ -556,62 +555,14 @@
   98.0,
   98.3,
   95.0,
-  93.5
+  93.5,
+  93.6
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 3,565,790 股",
-   "value": {
-    "foreign": 25492148,
-    "trust": -22601950,
-    "dealer": 675592,
-    "total": 3565790
-   },
-   "severity": "info",
-   "as_of": "2026-07-02",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -71
-   },
-   "severity": "info",
-   "as_of": "2026-07-02",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 14.4 / 殖利率 3.68% / PB 1.90",
-   "value": {
-    "pe": 14.42,
-    "yield": 3.68,
-    "pb": 1.9
-   },
-   "severity": "info",
-   "as_of": "2026-07-01",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶集中度",
-   "value": 85.87,
-   "severity": "info",
-   "as_of": "20260626",
-   "note": "大戶持股%=85.87；WoW+0.01；股東人數+1672"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -689,6 +640,10 @@
    {
     "t": "2026-07-02",
     "v": 7162
+   },
+   {
+    "t": "2026-07-03",
+    "v": 15884
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "4542.TWO",
  "name": "科嶠",
- "price": 470.5,
- "change_pct": -4.76,
+ "price": 482.5,
+ "change_pct": 2.55,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 171.07,
-   "h": 171.07,
-   "l": 171.07,
-   "c": 171.07,
-   "v": 197000
-  },
   {
    "time": "2026-04-09",
    "o": 174.0,
@@ -482,11 +474,19 @@
    "h": 543.0,
    "l": 462.0,
    "c": 470.5,
-   "v": 5394886
+   "v": 5275070
+  },
+  {
+   "time": "2026-07-03",
+   "o": 480.5,
+   "h": 497.0,
+   "l": 458.5,
+   "c": 482.5,
+   "v": 1469157
   }
  ],
  "sr": {
-  "price": 470.5,
+  "price": 482.5,
   "resistance": [],
   "support": [
    366.0,
@@ -495,7 +495,6 @@
   "strong_support": 46.79
  },
  "spark": [
-  171.07,
   171.0,
   171.0,
   173.0,
@@ -554,10 +553,11 @@
   409.0,
   449.5,
   494.0,
-  470.5
+  470.5,
+  482.5
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 198103,
+    "foreign": -244925,
     "trust": 0,
-    "dealer": -45963,
-    "total": 152140
+    "dealer": 34,
+    "total": -244891
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,21 +582,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.2,
+    "yield": 0.19,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 56.03,
-   "severity": "warn",
-   "as_of": "20260626",
-   "note": "大戶持股%=56.03；WoW-0.32；股東人數+69"
   }
  ],
  "trends": {

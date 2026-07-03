@@ -1,17 +1,9 @@
 {
  "stock": "6156.TWO",
  "name": "松上",
- "price": 32.0,
- "change_pct": 1.11,
+ "price": 29.9,
+ "change_pct": -6.56,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 19.45,
-   "h": 19.75,
-   "l": 19.45,
-   "c": 19.75,
-   "v": 380317
-  },
   {
    "time": "2026-04-09",
    "o": 19.75,
@@ -482,14 +474,22 @@
    "h": 34.5,
    "l": 31.15,
    "c": 32.0,
-   "v": 26271419
+   "v": 26227270
+  },
+  {
+   "time": "2026-07-03",
+   "o": 32.0,
+   "h": 32.5,
+   "l": 29.25,
+   "c": 29.9,
+   "v": 9854890
   }
  ],
  "sr": {
-  "price": 32.0,
+  "price": 29.9,
   "resistance": [
-   34.66,
-   37.26
+   30.01,
+   30.54
   ],
   "support": [
    28.42,
@@ -498,7 +498,6 @@
   "strong_support": 17.85
  },
  "spark": [
-  19.75,
   19.7,
   19.5,
   19.65,
@@ -557,10 +556,11 @@
   26.25,
   28.8,
   31.65,
-  32.0
+  32.0,
+  29.9
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -1064019,
+    "foreign": 458000,
     "trust": 0,
-    "dealer": -73021,
-    "total": -1137040
+    "dealer": -15034,
+    "total": 442966
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.63,
+    "yield": 0.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

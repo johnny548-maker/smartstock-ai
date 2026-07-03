@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 1032.28,
- "change_pct": -10.57,
+ "price": 975.56,
+ "change_pct": -5.49,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 374.13,
-   "h": 379.25,
-   "l": 364.1,
-   "c": 377.58,
-   "v": 40224100
-  },
   {
    "time": "2026-04-08",
    "o": 415.13,
@@ -482,23 +474,30 @@
    "h": 1097.0,
    "l": 1032.2,
    "c": 1032.28,
-   "v": 50779300
+   "v": 51328100
+  },
+  {
+   "time": "2026-07-02",
+   "o": 1041.5,
+   "h": 1064.64,
+   "l": 950.28,
+   "c": 975.56,
+   "v": 61316900
   }
  ],
  "sr": {
-  "price": 1032.28,
+  "price": 975.56,
   "resistance": [
    1089.29,
    1255.0
   ],
   "support": [
-   991.1,
-   854.35
+   854.35,
+   652.21
   ],
   "strong_support": 61.39
  },
  "spark": [
-  377.58,
   406.73,
   421.51,
   420.59,
@@ -557,28 +556,12 @@
   1132.33,
   1145.28,
   1154.29,
-  1032.28
+  1032.28,
+  975.56
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 85963,
-    "days": 6,
-    "max_shares": 63921,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

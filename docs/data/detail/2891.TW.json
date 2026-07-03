@@ -1,17 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 69.9,
- "change_pct": -0.99,
+ "price": 70.6,
+ "change_pct": 1.0,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 56.3,
-   "h": 56.9,
-   "l": 54.5,
-   "c": 56.5,
-   "v": 71846455
-  },
   {
    "time": "2026-04-09",
    "o": 55.8,
@@ -482,23 +474,29 @@
    "h": 71.8,
    "l": 69.7,
    "c": 69.9,
-   "v": 50310023
+   "v": 50257844
+  },
+  {
+   "time": "2026-07-03",
+   "o": 69.8,
+   "h": 71.4,
+   "l": 69.7,
+   "c": 70.6,
+   "v": 35385587
   }
  ],
  "sr": {
-  "price": 69.9,
+  "price": 70.6,
   "resistance": [
-   70.5,
    73.6
   ],
   "support": [
    52.6,
    52.3
   ],
-  "strong_support": 29.85
+  "strong_support": 40.9
  },
  "spark": [
-  56.5,
   54.8,
   54.0,
   53.3,
@@ -557,13 +555,54 @@
   70.3,
   71.0,
   70.6,
-  69.9
+  69.9,
+  70.6
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 333,336 股",
+   "value": {
+    "foreign": -4143222,
+    "trust": 3145815,
+    "dealer": 1330743,
+    "total": 333336
+   },
+   "severity": "info",
+   "as_of": "2026-07-03",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -5
+   },
+   "severity": "info",
+   "as_of": "2026-07-03",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 16.8 / 殖利率 3.58% / PB 2.50",
+   "value": {
+    "pe": 16.84,
+    "yield": 3.58,
+    "pb": 2.5
+   },
+   "severity": "info",
+   "as_of": "2026-07-02",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -641,6 +680,10 @@
    {
     "t": "2026-07-02",
     "v": -2695
+   },
+   {
+    "t": "2026-07-03",
+    "v": -2362
    }
   ],
   "holder_pct": [

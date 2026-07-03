@@ -1,17 +1,9 @@
 {
  "stock": "4768.TWO",
  "name": "晶呈科技",
- "price": 364.0,
- "change_pct": -1.22,
+ "price": 358.5,
+ "change_pct": -1.51,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 447.5,
-   "h": 478.5,
-   "l": 442.5,
-   "c": 478.0,
-   "v": 1750448
-  },
   {
    "time": "2026-04-09",
    "o": 478.5,
@@ -482,11 +474,19 @@
    "h": 369.0,
    "l": 361.5,
    "c": 364.0,
-   "v": 301518
+   "v": 284220
+  },
+  {
+   "time": "2026-07-03",
+   "o": 360.5,
+   "h": 368.5,
+   "l": 356.0,
+   "c": 358.5,
+   "v": 312129
   }
  ],
  "sr": {
-  "price": 364.0,
+  "price": 358.5,
   "resistance": [
    398.5,
    418.0
@@ -498,7 +498,6 @@
   "strong_support": 90.86
  },
  "spark": [
-  478.0,
   469.0,
   482.0,
   492.5,
@@ -557,10 +556,11 @@
   358.0,
   376.5,
   368.5,
-  364.0
+  364.0,
+  358.5
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -27000,
+    "foreign": -31000,
     "trust": 0,
-    "dealer": -2347,
-    "total": -29347
+    "dealer": 914,
+    "total": -30086
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.27,
+    "yield": 0.28,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

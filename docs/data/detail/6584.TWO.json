@@ -1,17 +1,9 @@
 {
  "stock": "6584.TWO",
  "name": "南俊國際",
- "price": 743.0,
- "change_pct": 6.45,
+ "price": 707.0,
+ "change_pct": -4.85,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 633.0,
-   "h": 654.0,
-   "l": 633.0,
-   "c": 654.0,
-   "v": 177378
-  },
   {
    "time": "2026-04-09",
    "o": 678.0,
@@ -482,14 +474,22 @@
    "h": 745.0,
    "l": 679.0,
    "c": 743.0,
-   "v": 1351653
+   "v": 1289397
+  },
+  {
+   "time": "2026-07-03",
+   "o": 739.0,
+   "h": 741.0,
+   "l": 700.0,
+   "c": 707.0,
+   "v": 763730
   }
  ],
  "sr": {
-  "price": 743.0,
+  "price": 707.0,
   "resistance": [
-   818.0,
-   855.0
+   728.0,
+   818.0
   ],
   "support": [
    645.0,
@@ -498,7 +498,6 @@
   "strong_support": 108.84
  },
  "spark": [
-  654.0,
   589.0,
   629.0,
   650.0,
@@ -557,10 +556,11 @@
   685.0,
   734.0,
   698.0,
-  743.0
+  743.0,
+  707.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 145660,
-    "trust": 6000,
-    "dealer": 4561,
-    "total": 156221
+    "foreign": -148751,
+    "trust": 0,
+    "dealer": -1483,
+    "total": -150234
    },
-   "severity": "warn",
-   "as_of": "2026-07-02",
+   "severity": "info",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.34,
+    "yield": 0.35,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

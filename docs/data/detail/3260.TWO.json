@@ -1,17 +1,9 @@
 {
  "stock": "3260.TWO",
  "name": "威剛",
- "price": 408.0,
- "change_pct": 2.38,
+ "price": 411.5,
+ "change_pct": 0.86,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 391.0,
-   "h": 397.5,
-   "l": 374.0,
-   "c": 389.0,
-   "v": 25524298
-  },
   {
    "time": "2026-04-09",
    "o": 387.0,
@@ -482,11 +474,19 @@
    "h": 408.0,
    "l": 382.5,
    "c": 408.0,
-   "v": 7958480
+   "v": 7772616
+  },
+  {
+   "time": "2026-07-03",
+   "o": 404.0,
+   "h": 411.5,
+   "l": 403.0,
+   "c": 411.5,
+   "v": 5981716
   }
  ],
  "sr": {
-  "price": 408.0,
+  "price": 411.5,
   "resistance": [
    435.0,
    437.5
@@ -498,7 +498,6 @@
   "strong_support": 61.14
  },
  "spark": [
-  389.0,
   366.0,
   372.0,
   365.5,
@@ -557,10 +556,11 @@
   404.0,
   409.0,
   398.5,
-  408.0
+  408.0,
+  411.5
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 683717,
-    "trust": 262741,
-    "dealer": 40419,
-    "total": 986877
+    "foreign": -172510,
+    "trust": 337700,
+    "dealer": 1134,
+    "total": 166324
    },
-   "severity": "warn",
-   "as_of": "2026-07-02",
+   "severity": "info",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.17,
+    "yield": 4.13,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

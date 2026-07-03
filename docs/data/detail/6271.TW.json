@@ -1,17 +1,9 @@
 {
  "stock": "6271.TW",
  "name": "同欣電",
- "price": 264.0,
- "change_pct": -8.17,
+ "price": 279.0,
+ "change_pct": 5.68,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 158.0,
-   "h": 166.89,
-   "l": 156.52,
-   "c": 166.39,
-   "v": 10986862
-  },
   {
    "time": "2026-04-09",
    "o": 167.38,
@@ -482,14 +474,20 @@
    "h": 280.0,
    "l": 260.0,
    "c": 264.0,
-   "v": 23095083
+   "v": 22619092
+  },
+  {
+   "time": "2026-07-03",
+   "o": 269.0,
+   "h": 283.0,
+   "l": 260.0,
+   "c": 279.0,
+   "v": 27833463
   }
  ],
  "sr": {
-  "price": 264.0,
-  "resistance": [
-   265.14
-  ],
+  "price": 279.0,
+  "resistance": [],
   "support": [
    221.5,
    206.5
@@ -497,7 +495,6 @@
   "strong_support": 80.56
  },
  "spark": [
-  166.39,
   170.84,
   169.36,
   169.85,
@@ -556,10 +553,11 @@
   243.0,
   267.0,
   287.5,
-  264.0
+  264.0,
+  279.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": {
   "rev_yoy": 7.6,
   "rev_accel": false,
@@ -568,6 +566,58 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 4,743,899 股",
+   "value": {
+    "foreign": -4357772,
+    "trust": 1000,
+    "dealer": -387127,
+    "total": -4743899
+   },
+   "severity": "info",
+   "as_of": "2026-07-03",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +14.0%",
+   "value": {
+    "fin_net": 1653,
+    "fin_pct": 0.14007287518006947
+   },
+   "severity": "warn",
+   "as_of": "2026-07-03",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -52
+   },
+   "severity": "info",
+   "as_of": "2026-07-03",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 39.2 / 殖利率 1.14% / PB 2.09",
+   "value": {
+    "pe": 39.17,
+    "yield": 1.14,
+    "pb": 2.09
+   },
+   "severity": "info",
+   "as_of": "2026-07-02",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -645,6 +695,10 @@
    {
     "t": "2026-07-02",
     "v": 7640
+   },
+   {
+    "t": "2026-07-03",
+    "v": 2896
    }
   ],
   "holder_pct": [

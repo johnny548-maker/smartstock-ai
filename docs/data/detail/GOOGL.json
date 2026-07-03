@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 361.21,
- "change_pct": 1.07,
+ "price": 359.91,
+ "change_pct": -0.36,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 302.55,
-   "h": 305.45,
-   "l": 297.54,
-   "c": 305.28,
-   "v": 23205400
-  },
   {
    "time": "2026-04-08",
    "o": 320.26,
@@ -482,11 +474,19 @@
    "h": 362.97,
    "l": 356.43,
    "c": 361.21,
-   "v": 26687500
+   "v": 26736400
+  },
+  {
+   "time": "2026-07-02",
+   "o": 359.48,
+   "h": 364.21,
+   "l": 353.42,
+   "c": 359.91,
+   "v": 25974800
   }
  ],
  "sr": {
-  "price": 361.21,
+  "price": 359.91,
   "resistance": [
    376.0,
    393.64
@@ -498,7 +498,6 @@
   "strong_support": 172.28
  },
  "spark": [
-  305.28,
   317.13,
   318.3,
   317.05,
@@ -557,16 +556,17 @@
   337.39,
   353.65,
   357.37,
-  361.21
+  361.21,
+  359.91
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": {
-  "pe_trailing": 27.238567,
-  "pe_forward": 24.52534,
-  "eps_trailing": 13.12,
-  "eps_forward": 14.57146,
-  "stale": true,
+  "pe_trailing": 27.474045,
+  "pe_forward": 24.722982,
+  "eps_trailing": 13.1,
+  "eps_forward": 14.55771,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,16 +575,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 420 分 / 340 留言",
+   "label": "HN 討論熱度 20 篇 / 58 分 / 21 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 420,
-    "comments": 340,
+    "points": 58,
+    "comments": 21,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-07-02",
+   "severity": "info",
+   "as_of": "2026-07-03",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

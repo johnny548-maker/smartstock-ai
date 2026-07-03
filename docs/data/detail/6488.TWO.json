@@ -1,17 +1,9 @@
 {
  "stock": "6488.TWO",
  "name": "環球晶",
- "price": 1205.0,
- "change_pct": 9.05,
+ "price": 1255.0,
+ "change_pct": 4.15,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 426.0,
-   "h": 439.5,
-   "l": 420.0,
-   "c": 436.0,
-   "v": 2495104
-  },
   {
    "time": "2026-04-09",
    "o": 443.0,
@@ -482,11 +474,19 @@
    "h": 1205.0,
    "l": 1085.0,
    "c": 1205.0,
-   "v": 4221645
+   "v": 4100982
+  },
+  {
+   "time": "2026-07-03",
+   "o": 1175.0,
+   "h": 1255.0,
+   "l": 1170.0,
+   "c": 1255.0,
+   "v": 3841004
   }
  ],
  "sr": {
-  "price": 1205.0,
+  "price": 1255.0,
   "resistance": [],
   "support": [
    866.0,
@@ -495,7 +495,6 @@
   "strong_support": 249.34
  },
  "spark": [
-  436.0,
   447.5,
   490.5,
   499.5,
@@ -554,10 +553,11 @@
   915.0,
   1005.0,
   1105.0,
-  1205.0
+  1205.0,
+  1255.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 898181,
-    "trust": -632000,
-    "dealer": 436363,
-    "total": 702544
+    "foreign": 257293,
+    "trust": -257154,
+    "dealer": 208692,
+    "total": 208831
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,21 +582,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.64,
+    "yield": 0.61,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 81.36,
-   "severity": "warn",
-   "as_of": "20260626",
-   "note": "大戶持股%=81.36；WoW-0.16；股東人數+1656"
   }
  ],
  "trends": {

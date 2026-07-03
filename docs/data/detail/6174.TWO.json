@@ -1,17 +1,9 @@
 {
  "stock": "6174.TWO",
  "name": "安碁",
- "price": 56.2,
- "change_pct": 3.31,
+ "price": 61.8,
+ "change_pct": 9.96,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 22.45,
-   "h": 22.45,
-   "l": 22.05,
-   "c": 22.25,
-   "v": 90000
-  },
   {
    "time": "2026-04-09",
    "o": 22.35,
@@ -482,14 +474,20 @@
    "h": 59.0,
    "l": 52.2,
    "c": 56.2,
-   "v": 10029662
+   "v": 9990301
+  },
+  {
+   "time": "2026-07-03",
+   "o": 56.8,
+   "h": 61.8,
+   "l": 56.8,
+   "c": 61.8,
+   "v": 8909393
   }
  ],
  "sr": {
-  "price": 56.2,
-  "resistance": [
-   58.6
-  ],
+  "price": 61.8,
+  "resistance": [],
   "support": [
    47.82,
    39.08
@@ -497,7 +495,6 @@
   "strong_support": 15.81
  },
  "spark": [
-  22.25,
   22.84,
   23.04,
   24.73,
@@ -556,10 +553,11 @@
   48.47,
   49.46,
   54.4,
-  56.2
+  56.2,
+  61.8
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -979984,
+    "foreign": 467230,
     "trust": 0,
-    "dealer": -5487,
-    "total": -985471
+    "dealer": 22407,
+    "total": 489637
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.6,
+    "yield": 0.55,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

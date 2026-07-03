@@ -1,17 +1,9 @@
 {
  "stock": "CGNX",
  "name": "Cognex Corp",
- "price": 71.31,
- "change_pct": -1.53,
+ "price": 67.8,
+ "change_pct": -4.92,
  "ohlc": [
-  {
-   "time": "2026-04-07",
-   "o": 49.74,
-   "h": 51.87,
-   "l": 49.27,
-   "c": 51.62,
-   "v": 2362800
-  },
   {
    "time": "2026-04-08",
    "o": 53.92,
@@ -482,13 +474,22 @@
    "h": 72.87,
    "l": 68.0,
    "c": 71.31,
-   "v": 3412100
+   "v": 3413400
+  },
+  {
+   "time": "2026-07-02",
+   "o": 71.31,
+   "h": 71.8,
+   "l": 66.33,
+   "c": 67.8,
+   "v": 3318300
   }
  ],
  "sr": {
-  "price": 71.31,
+  "price": 67.8,
   "resistance": [
-   71.8
+   68.32,
+   68.33
   ],
   "support": [
    63.73,
@@ -497,7 +498,6 @@
   "strong_support": 22.46
  },
  "spark": [
-  51.62,
   53.71,
   53.84,
   53.34,
@@ -556,28 +556,12 @@
   66.56,
   68.36,
   72.42,
-  71.31
+  71.31,
+  67.8
  ],
- "spark_start": "2026-04-07",
- "spark_end": "2026-07-01",
+ "spark_start": "2026-04-08",
+ "spark_end": "2026-07-02",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 2587,
-    "days": 3,
-    "max_shares": 1560,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

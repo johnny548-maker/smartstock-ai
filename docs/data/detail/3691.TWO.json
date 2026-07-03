@@ -1,17 +1,9 @@
 {
  "stock": "3691.TWO",
  "name": "碩禾",
- "price": 154.0,
- "change_pct": 5.48,
+ "price": 154.5,
+ "change_pct": 0.32,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 107.5,
-   "h": 112.5,
-   "l": 106.5,
-   "c": 110.0,
-   "v": 490100
-  },
   {
    "time": "2026-04-09",
    "o": 110.0,
@@ -482,11 +474,19 @@
    "h": 156.0,
    "l": 144.0,
    "c": 154.0,
-   "v": 2018960
+   "v": 2006080
+  },
+  {
+   "time": "2026-07-03",
+   "o": 152.0,
+   "h": 159.5,
+   "l": 151.0,
+   "c": 154.5,
+   "v": 1911171
   }
  ],
  "sr": {
-  "price": 154.0,
+  "price": 154.5,
   "resistance": [
    164.0,
    167.0
@@ -498,7 +498,6 @@
   "strong_support": 51.1
  },
  "spark": [
-  110.0,
   107.5,
   118.0,
   113.5,
@@ -557,10 +556,11 @@
   149.0,
   152.0,
   146.0,
-  154.0
+  154.0,
+  154.5
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 606743,
+    "foreign": 90605,
     "trust": 0,
-    "dealer": -55774,
-    "total": 550969
+    "dealer": -38169,
+    "total": 52436
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

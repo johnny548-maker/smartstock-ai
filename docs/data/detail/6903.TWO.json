@@ -1,17 +1,9 @@
 {
  "stock": "6903.TWO",
  "name": "巨漢",
- "price": 415.5,
- "change_pct": 9.49,
+ "price": 404.0,
+ "change_pct": -2.77,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 307.17,
-   "h": 318.41,
-   "l": 299.34,
-   "c": 316.46,
-   "v": 2437433
-  },
   {
    "time": "2026-04-09",
    "o": 317.44,
@@ -482,14 +474,22 @@
    "h": 417.0,
    "l": 374.0,
    "c": 415.5,
-   "v": 1371677
+   "v": 1324951
+  },
+  {
+   "time": "2026-07-03",
+   "o": 407.0,
+   "h": 417.5,
+   "l": 400.5,
+   "c": 404.0,
+   "v": 1161691
   }
  ],
  "sr": {
-  "price": 415.5,
+  "price": 404.0,
   "resistance": [
-   435.8,
-   439.23
+   404.99,
+   407.92
   ],
   "support": [
    378.09,
@@ -498,7 +498,6 @@
   "strong_support": 79.83
  },
  "spark": [
-  316.46,
   347.76,
   382.49,
   394.72,
@@ -557,10 +556,11 @@
   380.0,
   388.0,
   379.5,
-  415.5
+  415.5,
+  404.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 593000,
+    "foreign": 178000,
     "trust": 0,
-    "dealer": 49891,
-    "total": 642891
+    "dealer": 2756,
+    "total": 180756
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.05,
+    "yield": 2.1,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],

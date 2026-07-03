@@ -1,17 +1,9 @@
 {
  "stock": "3357.TWO",
  "name": "臺慶科",
- "price": 299.0,
- "change_pct": -2.13,
+ "price": 292.0,
+ "change_pct": -2.34,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 147.46,
-   "h": 150.41,
-   "l": 146.48,
-   "c": 148.44,
-   "v": 1273360
-  },
   {
    "time": "2026-04-09",
    "o": 149.92,
@@ -482,11 +474,19 @@
    "h": 308.0,
    "l": 297.0,
    "c": 299.0,
-   "v": 3348613
+   "v": 3250498
+  },
+  {
+   "time": "2026-07-03",
+   "o": 295.0,
+   "h": 304.0,
+   "l": 283.5,
+   "c": 292.0,
+   "v": 5296812
   }
  ],
  "sr": {
-  "price": 299.0,
+  "price": 292.0,
   "resistance": [
    309.18,
    321.96
@@ -498,7 +498,6 @@
   "strong_support": 79.63
  },
  "spark": [
-  148.44,
   150.9,
   151.39,
   157.78,
@@ -557,10 +556,11 @@
   290.0,
   319.0,
   305.5,
-  299.0
+  299.0,
+  292.0
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -275839,
-    "trust": 5000,
-    "dealer": -14814,
-    "total": -285653
+    "foreign": -105944,
+    "trust": 0,
+    "dealer": -8515,
+    "total": -114459
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.7,
+    "yield": 1.74,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-02",
+   "as_of": "2026-07-03",
    "note": "OTC valuation context"
   }
  ],
