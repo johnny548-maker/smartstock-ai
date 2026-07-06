@@ -1,17 +1,9 @@
 {
  "stock": "5299.TWO",
  "name": "杰力",
- "price": 129.0,
- "change_pct": -5.15,
+ "price": 141.5,
+ "change_pct": 9.69,
  "ohlc": [
-  {
-   "time": "2026-04-09",
-   "o": 79.5,
-   "h": 80.3,
-   "l": 78.9,
-   "c": 80.2,
-   "v": 141441
-  },
   {
    "time": "2026-04-10",
    "o": 80.5,
@@ -482,22 +474,27 @@
    "h": 140.0,
    "l": 128.0,
    "c": 129.0,
-   "v": 3070887
+   "v": 3041480
+  },
+  {
+   "time": "2026-07-06",
+   "o": 137.5,
+   "h": 141.5,
+   "l": 137.0,
+   "c": 141.5,
+   "v": 3131524
   }
  ],
  "sr": {
-  "price": 129.0,
-  "resistance": [
-   140.0
-  ],
+  "price": 141.5,
+  "resistance": [],
   "support": [
    115.0,
-   105.43
+   102.0
   ],
   "strong_support": 61.59
  },
  "spark": [
-  80.2,
   79.8,
   80.6,
   79.7,
@@ -556,10 +553,11 @@
   123.0,
   124.0,
   136.0,
-  129.0
+  129.0,
+  141.5
  ],
- "spark_start": "2026-04-09",
- "spark_end": "2026-07-03",
+ "spark_start": "2026-04-10",
+ "spark_end": "2026-07-06",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -421772,
+    "foreign": 437625,
     "trust": 0,
-    "dealer": 1480,
-    "total": -420292
+    "dealer": 12105,
+    "total": 449730
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,12 +582,21 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.84,
+    "yield": 2.59,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 52.13,
+   "severity": "info",
+   "as_of": "20260703",
+   "note": "大戶持股%=52.13；WoW+0.83；股東人數-452"
   }
  ],
  "trends": {
@@ -610,6 +617,10 @@
    {
     "t": "2026-06-26",
     "v": 51.3
+   },
+   {
+    "t": "2026-07-03",
+    "v": 52.13
    }
   ],
   "rev_yoy": []

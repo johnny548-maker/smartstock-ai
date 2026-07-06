@@ -1,17 +1,9 @@
 {
  "stock": "6509.TWO",
  "name": "聚和",
- "price": 55.6,
- "change_pct": 6.31,
+ "price": 57.5,
+ "change_pct": 3.42,
  "ohlc": [
-  {
-   "time": "2026-04-09",
-   "o": 44.85,
-   "h": 45.3,
-   "l": 44.1,
-   "c": 44.4,
-   "v": 2478301
-  },
   {
    "time": "2026-04-10",
    "o": 44.25,
@@ -482,11 +474,19 @@
    "h": 55.9,
    "l": 52.5,
    "c": 55.6,
-   "v": 7753501
+   "v": 7706705
+  },
+  {
+   "time": "2026-07-06",
+   "o": 58.0,
+   "h": 59.2,
+   "l": 56.0,
+   "c": 57.5,
+   "v": 8428159
   }
  ],
  "sr": {
-  "price": 55.6,
+  "price": 57.5,
   "resistance": [],
   "support": [
    48.6,
@@ -495,7 +495,6 @@
   "strong_support": 24.28
  },
  "spark": [
-  44.4,
   47.25,
   46.5,
   45.55,
@@ -554,10 +553,11 @@
   49.4,
   51.7,
   52.3,
-  55.6
+  55.6,
+  57.5
  ],
- "spark_start": "2026-04-09",
- "spark_end": "2026-07-03",
+ "spark_start": "2026-04-10",
+ "spark_end": "2026-07-06",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 2085982,
-    "trust": 0,
-    "dealer": 165494,
-    "total": 2251476
+    "foreign": -964501,
+    "trust": -6000,
+    "dealer": 177113,
+    "total": -793388
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.52,
+    "yield": 2.43,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "OTC valuation context"
   }
  ],
@@ -608,6 +608,10 @@
    {
     "t": "2026-06-26",
     "v": 36.89
+   },
+   {
+    "t": "2026-07-03",
+    "v": 38.06
    }
   ],
   "rev_yoy": []

@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 434.16,
- "change_pct": -2.27,
+ "price": 454.43,
+ "change_pct": 4.67,
  "ohlc": [
-  {
-   "time": "2026-04-08",
-   "o": 369.42,
-   "h": 373.43,
-   "l": 358.4,
-   "c": 365.05,
-   "v": 16356900
-  },
   {
    "time": "2026-04-09",
    "o": 362.45,
@@ -483,13 +475,21 @@
    "l": 429.5,
    "c": 434.16,
    "v": 18375000
+  },
+  {
+   "time": "2026-07-06",
+   "o": 447.77,
+   "h": 456.87,
+   "l": 445.6,
+   "c": 454.43,
+   "v": 3171838
   }
  ],
  "sr": {
-  "price": 434.16,
+  "price": 454.43,
   "resistance": [
-   449.11,
-   476.79
+   476.79,
+   479.0
   ],
   "support": [
    419.19,
@@ -498,7 +498,6 @@
   "strong_support": 221.25
  },
  "spark": [
-  365.05,
   364.64,
   369.73,
   368.71,
@@ -557,51 +556,35 @@
   455.1,
   477.57,
   444.23,
-  434.16
+  434.16,
+  454.43
  ],
- "spark_start": "2026-04-08",
- "spark_end": "2026-07-02",
+ "spark_start": "2026-04-09",
+ "spark_end": "2026-07-06",
  "fundamental": {
-  "pe_trailing": 37.72024,
-  "pe_forward": 21.398586,
+  "pe_trailing": 39.49218,
+  "pe_forward": 22.403801,
   "eps_trailing": 11.51,
   "eps_forward": 20.28919,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 434.16,
-  "stop": 403.77,
-  "target": 510.14,
-  "atr_bracket": 510.14,
-  "measured_move": 538.81,
-  "target_band": [
-   510.14,
-   538.81
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 5.1,
-  "swing_stop": 412.59,
-  "chandelier": 414.22,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 67 分 / 30 留言",
+   "label": "HN 討論熱度 20 篇 / 65 分 / 11 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 67,
-    "comments": 30,
+    "points": 65,
+    "comments": 11,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -616,7 +599,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
