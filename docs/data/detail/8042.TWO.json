@@ -1,17 +1,9 @@
 {
  "stock": "8042.TWO",
  "name": "金山電",
- "price": 189.5,
- "change_pct": -9.98,
+ "price": 171.0,
+ "change_pct": -9.76,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 56.19,
-   "h": 57.08,
-   "l": 55.2,
-   "c": 55.49,
-   "v": 1107370
-  },
   {
    "time": "2026-04-13",
    "o": 57.67,
@@ -482,11 +474,19 @@
    "h": 225.5,
    "l": 189.5,
    "c": 189.5,
-   "v": 16304046
+   "v": 15981398
+  },
+  {
+   "time": "2026-07-07",
+   "o": 185.0,
+   "h": 193.5,
+   "l": 171.0,
+   "c": 171.0,
+   "v": 8659987
   }
  ],
  "sr": {
-  "price": 189.5,
+  "price": 171.0,
   "resistance": [
    200.5,
    206.0
@@ -498,7 +498,6 @@
   "strong_support": 26.11
  },
  "spark": [
-  55.49,
   61.04,
   64.41,
   64.01,
@@ -557,10 +556,11 @@
   202.0,
   206.5,
   210.5,
-  189.5
+  189.5,
+  171.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -2345107,
+    "foreign": 118569,
     "trust": 0,
-    "dealer": -148514,
-    "total": -2493621
+    "dealer": -24967,
+    "total": 93602
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.63,
+    "yield": 0.7,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

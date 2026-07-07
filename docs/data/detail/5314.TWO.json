@@ -1,17 +1,9 @@
 {
  "stock": "5314.TWO",
  "name": "世紀*",
- "price": 67.6,
- "change_pct": -5.45,
+ "price": 67.8,
+ "change_pct": 0.3,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 80.0,
-   "h": 81.5,
-   "l": 78.2,
-   "c": 78.4,
-   "v": 3438127
-  },
   {
    "time": "2026-04-13",
    "o": 78.3,
@@ -482,11 +474,19 @@
    "h": 75.0,
    "l": 67.5,
    "c": 67.6,
-   "v": 34753623
+   "v": 34596369
+  },
+  {
+   "time": "2026-07-07",
+   "o": 68.8,
+   "h": 71.5,
+   "l": 64.4,
+   "c": 67.8,
+   "v": 12540906
   }
  ],
  "sr": {
-  "price": 67.6,
+  "price": 67.8,
   "resistance": [
    68.55,
    69.85
@@ -498,7 +498,6 @@
   "strong_support": 7.11
  },
  "spark": [
-  78.4,
   77.7,
   77.5,
   77.9,
@@ -557,10 +556,11 @@
   67.0,
   65.0,
   71.5,
-  67.6
+  67.6,
+  67.8
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -4180553,
-    "trust": 21000,
-    "dealer": -1179,
-    "total": -4160732
+    "foreign": -917920,
+    "trust": 2000,
+    "dealer": 31230,
+    "total": -884690
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.61,
+    "yield": 2.6,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

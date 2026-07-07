@@ -1,17 +1,9 @@
 {
  "stock": "4541.TWO",
  "name": "晟田",
- "price": 66.7,
- "change_pct": 9.88,
+ "price": 61.1,
+ "change_pct": -8.4,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 43.71,
-   "h": 44.14,
-   "l": 43.12,
-   "c": 43.46,
-   "v": 1007060
-  },
   {
    "time": "2026-04-13",
    "o": 43.51,
@@ -482,11 +474,19 @@
    "h": 66.7,
    "l": 61.4,
    "c": 66.7,
-   "v": 13476209
+   "v": 13398274
+  },
+  {
+   "time": "2026-07-07",
+   "o": 66.7,
+   "h": 67.4,
+   "l": 60.6,
+   "c": 61.1,
+   "v": 10598512
   }
  ],
  "sr": {
-  "price": 66.7,
+  "price": 61.1,
   "resistance": [
    67.5
   ],
@@ -497,7 +497,6 @@
   "strong_support": 21.0
  },
  "spark": [
-  43.46,
   45.02,
   45.16,
   44.97,
@@ -556,10 +555,11 @@
   56.7,
   55.2,
   60.7,
-  66.7
+  66.7,
+  61.1
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 229350,
+    "foreign": 1359900,
     "trust": 0,
-    "dealer": 49066,
-    "total": 278416
+    "dealer": -69248,
+    "total": 1290652
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.1,
+    "yield": 2.29,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

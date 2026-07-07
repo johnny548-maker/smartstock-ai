@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 166.0,
- "change_pct": -2.64,
+ "price": 155.0,
+ "change_pct": -6.63,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 59.7,
-   "h": 63.5,
-   "l": 59.3,
-   "c": 62.0,
-   "v": 150810786
-  },
   {
    "time": "2026-04-13",
    "o": 61.5,
@@ -482,12 +474,22 @@
    "h": 171.5,
    "l": 164.0,
    "c": 166.0,
-   "v": 54823231
+   "v": 53725623
+  },
+  {
+   "time": "2026-07-07",
+   "o": 167.0,
+   "h": 167.5,
+   "l": 152.0,
+   "c": 155.0,
+   "v": 91027208
   }
  ],
  "sr": {
-  "price": 166.0,
-  "resistance": [],
+  "price": 155.0,
+  "resistance": [
+   155.5
+  ],
   "support": [
    116.5,
    70.7
@@ -495,7 +497,6 @@
   "strong_support": 40.1
  },
  "spark": [
-  62.0,
   60.1,
   59.7,
   62.1,
@@ -554,72 +555,45 @@
   169.0,
   165.5,
   170.5,
-  166.0
+  166.0,
+  155.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": {
   "rev_yoy": 17.8,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 166.0,
-  "stop": 154.38,
-  "target": 195.05,
-  "atr_bracket": 195.05,
-  "measured_move": 240.3,
-  "target_band": [
-   195.05,
-   240.3
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.6,
-  "swing_stop": 154.69,
-  "chandelier": 152.5,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人賣超 8,683,652 股",
+   "label": "三大法人賣超 19,809,840 股",
    "value": {
-    "foreign": 5764314,
-    "trust": -16822326,
-    "dealer": 2374360,
-    "total": -8683652
+    "foreign": 2888688,
+    "trust": -13841956,
+    "dealer": -8856572,
+    "total": -19809840
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -16
-   },
-   "severity": "info",
-   "as_of": "2026-07-06",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 42.8 / 殖利率 1.53% / PB 5.27",
+   "label": "PE 41.7 / 殖利率 1.57% / PB 5.13",
    "value": {
-    "pe": 42.84,
-    "yield": 1.53,
-    "pb": 5.27
+    "pe": 41.71,
+    "yield": 1.57,
+    "pb": 5.13
    },
    "severity": "info",
-   "as_of": "2026-07-03",
+   "as_of": "2026-07-06",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -632,7 +606,7 @@
     "period": "115/07/02～115/07/15"
    },
    "severity": "warn",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
   },
   {
@@ -730,6 +704,10 @@
    {
     "t": "2026-07-06",
     "v": -59441
+   },
+   {
+    "t": "2026-07-07",
+    "v": -79251
    }
   ],
   "holder_pct": [

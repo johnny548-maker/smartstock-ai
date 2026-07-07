@@ -1,17 +1,9 @@
 {
  "stock": "8027.TWO",
  "name": "鈦昇",
- "price": 239.0,
- "change_pct": -4.02,
+ "price": 216.0,
+ "change_pct": -9.62,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 152.0,
-   "h": 157.0,
-   "l": 148.0,
-   "c": 152.5,
-   "v": 14254048
-  },
   {
    "time": "2026-04-13",
    "o": 152.0,
@@ -482,23 +474,30 @@
    "h": 254.0,
    "l": 235.0,
    "c": 239.0,
-   "v": 6039820
+   "v": 5860296
+  },
+  {
+   "time": "2026-07-07",
+   "o": 239.0,
+   "h": 243.0,
+   "l": 215.5,
+   "c": 216.0,
+   "v": 5671468
   }
  ],
  "sr": {
-  "price": 239.0,
+  "price": 216.0,
   "resistance": [
    257.5,
    290.0
   ],
   "support": [
-   237.0,
-   231.5
+   189.0,
+   135.5
   ],
   "strong_support": 54.8
  },
  "spark": [
-  152.5,
   145.0,
   142.0,
   156.0,
@@ -557,10 +556,11 @@
   236.5,
   240.5,
   249.0,
-  239.0
+  239.0,
+  216.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -641078,
+    "foreign": -433494,
     "trust": 0,
-    "dealer": -120033,
-    "total": -761111
+    "dealer": -67082,
+    "total": -500576
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

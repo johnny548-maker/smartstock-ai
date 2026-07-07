@@ -1,17 +1,9 @@
 {
  "stock": "2369.TW",
  "name": "菱生",
- "price": 43.2,
- "change_pct": 9.92,
+ "price": 41.55,
+ "change_pct": -3.82,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 31.35,
-   "h": 32.5,
-   "l": 30.3,
-   "c": 30.9,
-   "v": 21108202
-  },
   {
    "time": "2026-04-13",
    "o": 30.8,
@@ -482,22 +474,30 @@
    "h": 43.2,
    "l": 41.5,
    "c": 43.2,
-   "v": 30478040
+   "v": 30273786
+  },
+  {
+   "time": "2026-07-07",
+   "o": 44.0,
+   "h": 44.3,
+   "l": 41.2,
+   "c": 41.55,
+   "v": 58706267
   }
  ],
  "sr": {
-  "price": 43.2,
+  "price": 41.55,
   "resistance": [
+   42.0,
    45.7
   ],
   "support": [
-   30.75,
-   28.1
+   37.4,
+   30.75
   ],
   "strong_support": 11.35
  },
  "spark": [
-  30.9,
   31.85,
   32.05,
   31.4,
@@ -556,10 +556,11 @@
   38.35,
   39.95,
   39.3,
-  43.2
+  43.2,
+  41.55
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": {
   "rev_yoy": 38.7,
   "rev_accel": false,
@@ -568,6 +569,44 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 11,608,800 股",
+   "value": {
+    "foreign": -11482750,
+    "trust": 0,
+    "dealer": -126050,
+    "total": -11608800
+   },
+   "severity": "info",
+   "as_of": "2026-07-07",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PB 3.34",
+   "value": {
+    "pe": null,
+    "yield": null,
+    "pb": 3.34
+   },
+   "severity": "info",
+   "as_of": "2026-07-06",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 38.99,
+   "severity": "warn",
+   "as_of": "20260703",
+   "note": "大戶持股%=38.99；WoW-1.95；股東人數+2055"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -653,6 +692,10 @@
    {
     "t": "2026-07-06",
     "v": 23225
+   },
+   {
+    "t": "2026-07-07",
+    "v": 11616
    }
   ],
   "holder_pct": [

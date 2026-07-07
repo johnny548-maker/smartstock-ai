@@ -1,17 +1,9 @@
 {
  "stock": "8043.TWO",
  "name": "蜜望實",
- "price": 196.0,
- "change_pct": -3.21,
+ "price": 179.5,
+ "change_pct": -8.42,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 74.4,
-   "h": 74.4,
-   "l": 74.4,
-   "c": 74.4,
-   "v": 1021622
-  },
   {
    "time": "2026-04-13",
    "o": 81.4,
@@ -482,22 +474,30 @@
    "h": 209.5,
    "l": 190.5,
    "c": 196.0,
-   "v": 12461181
+   "v": 12311713
+  },
+  {
+   "time": "2026-07-07",
+   "o": 196.0,
+   "h": 202.0,
+   "l": 176.5,
+   "c": 179.5,
+   "v": 10505552
   }
  ],
  "sr": {
-  "price": 196.0,
+  "price": 179.5,
   "resistance": [
+   221.5,
    239.5
   ],
   "support": [
-   183.0,
-   171.0
+   171.0,
+   138.0
   ],
   "strong_support": 19.86
  },
  "spark": [
-  74.4,
   81.8,
   85.0,
   85.6,
@@ -556,10 +556,11 @@
   213.0,
   197.0,
   202.5,
-  196.0
+  196.0,
+  179.5
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -229369,
+    "foreign": 247250,
     "trust": 0,
-    "dealer": -25151,
-    "total": -254520
+    "dealer": -39202,
+    "total": 208048
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,21 +585,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.46,
+    "yield": 0.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 47.73,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=47.73；WoW-1.81；股東人數+1651"
   }
  ],
  "trends": {

@@ -1,17 +1,9 @@
 {
  "stock": "1815.TWO",
  "name": "富喬",
- "price": 99.5,
- "change_pct": -1.97,
+ "price": 96.5,
+ "change_pct": -3.02,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 122.0,
-   "h": 122.0,
-   "l": 109.5,
-   "c": 110.0,
-   "v": 116251098
-  },
   {
    "time": "2026-04-13",
    "o": 111.0,
@@ -482,23 +474,30 @@
    "h": 103.0,
    "l": 98.1,
    "c": 99.5,
-   "v": 16479583
+   "v": 16293075
+  },
+  {
+   "time": "2026-07-07",
+   "o": 101.5,
+   "h": 103.0,
+   "l": 96.1,
+   "c": 96.5,
+   "v": 22909361
   }
  ],
  "sr": {
-  "price": 99.5,
+  "price": 96.5,
   "resistance": [
    101.0,
    101.5
   ],
   "support": [
-   97.4,
-   95.4
+   95.4,
+   95.0
   ],
   "strong_support": 18.75
  },
  "spark": [
-  110.0,
   113.0,
   114.5,
   112.0,
@@ -557,10 +556,11 @@
   104.0,
   101.5,
   101.5,
-  99.5
+  99.5,
+  96.5
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -2148827,
-    "trust": 15000,
-    "dealer": -381482,
-    "total": -2515309
+    "foreign": -4395334,
+    "trust": 11000,
+    "dealer": -339958,
+    "total": -4724292
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.01,
+    "yield": 1.04,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

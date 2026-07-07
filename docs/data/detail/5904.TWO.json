@@ -1,17 +1,9 @@
 {
  "stock": "5904.TWO",
  "name": "寶雅",
- "price": 737.0,
- "change_pct": 2.22,
+ "price": 725.0,
+ "change_pct": -1.63,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 509.0,
-   "h": 509.0,
-   "l": 500.0,
-   "c": 503.0,
-   "v": 144562
-  },
   {
    "time": "2026-04-13",
    "o": 505.0,
@@ -482,11 +474,19 @@
    "h": 767.0,
    "l": 730.0,
    "c": 737.0,
-   "v": 947422
+   "v": 834291
+  },
+  {
+   "time": "2026-07-07",
+   "o": 740.0,
+   "h": 748.0,
+   "l": 723.0,
+   "c": 725.0,
+   "v": 670677
   }
  ],
  "sr": {
-  "price": 737.0,
+  "price": 725.0,
   "resistance": [],
   "support": [
    629.0,
@@ -495,7 +495,6 @@
   "strong_support": 406.78
  },
  "spark": [
-  503.0,
   505.0,
   503.0,
   502.0,
@@ -554,10 +553,11 @@
   682.0,
   699.0,
   721.0,
-  737.0
+  737.0,
+  725.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -197733,
-    "trust": -28500,
-    "dealer": 4682,
-    "total": -221551
+    "foreign": -43992,
+    "trust": -23000,
+    "dealer": -13496,
+    "total": -80488
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.46,
+    "yield": 3.52,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

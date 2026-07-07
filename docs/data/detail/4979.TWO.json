@@ -1,17 +1,9 @@
 {
  "stock": "4979.TWO",
  "name": "華星光",
- "price": 457.0,
- "change_pct": -2.45,
+ "price": 428.0,
+ "change_pct": -6.35,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 442.0,
-   "h": 449.5,
-   "l": 434.0,
-   "c": 449.5,
-   "v": 3703139
-  },
   {
    "time": "2026-04-13",
    "o": 446.5,
@@ -482,23 +474,30 @@
    "h": 483.0,
    "l": 451.5,
    "c": 457.0,
-   "v": 5646221
+   "v": 5531698
+  },
+  {
+   "time": "2026-07-07",
+   "o": 461.5,
+   "h": 488.0,
+   "l": 424.0,
+   "c": 428.0,
+   "v": 9019265
   }
  ],
  "sr": {
-  "price": 457.0,
+  "price": 428.0,
   "resistance": [
-   504.0,
-   586.0
+   445.5,
+   448.0
   ],
   "support": [
-   454.0,
-   377.0
+   377.0,
+   368.5
   ],
   "strong_support": 78.75
  },
  "spark": [
-  449.5,
   465.0,
   485.0,
   533.0,
@@ -557,10 +556,11 @@
   450.5,
   445.0,
   468.5,
-  457.0
+  457.0,
+  428.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -399128,
-    "trust": -127000,
-    "dealer": -13252,
-    "total": -539380
+    "foreign": -412878,
+    "trust": -117000,
+    "dealer": -16114,
+    "total": -545992
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.47,
+    "yield": 0.5,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

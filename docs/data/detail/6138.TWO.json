@@ -1,17 +1,9 @@
 {
  "stock": "6138.TWO",
  "name": "茂達",
- "price": 440.0,
- "change_pct": 10.0,
+ "price": 396.0,
+ "change_pct": -10.0,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 222.0,
-   "h": 222.5,
-   "l": 220.0,
-   "c": 220.0,
-   "v": 251570
-  },
   {
    "time": "2026-04-13",
    "o": 217.5,
@@ -482,12 +474,22 @@
    "h": 440.0,
    "l": 413.5,
    "c": 440.0,
-   "v": 3219416
+   "v": 3152052
+  },
+  {
+   "time": "2026-07-07",
+   "o": 434.5,
+   "h": 436.0,
+   "l": 396.0,
+   "c": 396.0,
+   "v": 4248948
   }
  ],
  "sr": {
-  "price": 440.0,
-  "resistance": [],
+  "price": 396.0,
+  "resistance": [
+   422.0
+  ],
   "support": [
    332.5,
    283.5
@@ -495,7 +497,6 @@
   "strong_support": 119.95
  },
  "spark": [
-  220.0,
   221.0,
   222.0,
   223.5,
@@ -554,10 +555,11 @@
   380.5,
   418.5,
   400.0,
-  440.0
+  440.0,
+  396.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -169000,
-    "trust": -1000,
-    "dealer": 88708,
-    "total": -81292
+    "foreign": -323400,
+    "trust": 5000,
+    "dealer": -98440,
+    "total": -416840
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,21 +584,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.5,
+    "yield": 2.78,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 49.32,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=49.32；WoW-1.15；股東人數+687"
   }
  ],
  "trends": {

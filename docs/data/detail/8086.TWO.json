@@ -1,17 +1,9 @@
 {
  "stock": "8086.TWO",
  "name": "宏捷科",
- "price": 144.5,
- "change_pct": 0.35,
+ "price": 136.0,
+ "change_pct": -5.88,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 145.0,
-   "h": 147.5,
-   "l": 140.0,
-   "c": 144.5,
-   "v": 8347515
-  },
   {
    "time": "2026-04-13",
    "o": 144.0,
@@ -482,23 +474,30 @@
    "h": 147.5,
    "l": 144.0,
    "c": 144.5,
-   "v": 3806181
+   "v": 3776610
+  },
+  {
+   "time": "2026-07-07",
+   "o": 145.0,
+   "h": 147.0,
+   "l": 136.0,
+   "c": 136.0,
+   "v": 4054223
   }
  ],
  "sr": {
-  "price": 144.5,
+  "price": 136.0,
   "resistance": [
-   148.5,
-   154.0
+   138.5,
+   140.5
   ],
   "support": [
-   137.5,
-   133.5
+   133.5,
+   130.5
   ],
   "strong_support": 61.56
  },
  "spark": [
-  144.5,
   138.5,
   136.0,
   134.0,
@@ -557,10 +556,11 @@
   143.5,
   145.0,
   144.0,
-  144.5
+  144.5,
+  136.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 34240,
+    "foreign": -1241284,
     "trust": 0,
-    "dealer": -21192,
-    "total": 13048
+    "dealer": -113446,
+    "total": -1354730
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.16,
+    "yield": 1.24,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

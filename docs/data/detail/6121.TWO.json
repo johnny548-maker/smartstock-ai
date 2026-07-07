@@ -1,17 +1,9 @@
 {
  "stock": "6121.TWO",
  "name": "新普",
- "price": 467.5,
- "change_pct": 10.0,
+ "price": 447.0,
+ "change_pct": -4.39,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 347.0,
-   "h": 352.5,
-   "l": 347.0,
-   "c": 352.5,
-   "v": 347776
-  },
   {
    "time": "2026-04-13",
    "o": 353.0,
@@ -482,11 +474,19 @@
    "h": 467.5,
    "l": 427.0,
    "c": 467.5,
-   "v": 1704499
+   "v": 1614100
+  },
+  {
+   "time": "2026-07-07",
+   "o": 487.0,
+   "h": 487.5,
+   "l": 445.5,
+   "c": 447.0,
+   "v": 4024204
   }
  ],
  "sr": {
-  "price": 467.5,
+  "price": 447.0,
   "resistance": [],
   "support": [
    405.0,
@@ -495,7 +495,6 @@
   "strong_support": 271.9
  },
  "spark": [
-  352.5,
   351.0,
   351.0,
   350.0,
@@ -554,10 +553,11 @@
   407.5,
   417.5,
   425.0,
-  467.5
+  467.5,
+  447.0
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -306975,
-    "trust": 275090,
-    "dealer": 83201,
-    "total": 51316
+    "foreign": -746394,
+    "trust": 858445,
+    "dealer": -20853,
+    "total": 91198
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +582,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.66,
+    "yield": 4.88,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

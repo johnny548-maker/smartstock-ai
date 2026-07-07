@@ -1,17 +1,9 @@
 {
  "stock": "2885.TW",
  "name": "元大金",
- "price": 68.4,
- "change_pct": 1.79,
+ "price": 69.8,
+ "change_pct": 2.05,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 48.3,
-   "h": 48.35,
-   "l": 47.6,
-   "c": 47.7,
-   "v": 19449191
-  },
   {
    "time": "2026-04-13",
    "o": 47.7,
@@ -482,14 +474,20 @@
    "h": 68.7,
    "l": 67.6,
    "c": 68.4,
-   "v": 14789276
+   "v": 14651651
+  },
+  {
+   "time": "2026-07-07",
+   "o": 68.2,
+   "h": 71.9,
+   "l": 68.1,
+   "c": 69.8,
+   "v": 36293935
   }
  ],
  "sr": {
-  "price": 68.4,
-  "resistance": [
-   69.7
-  ],
+  "price": 69.8,
+  "resistance": [],
   "support": [
    64.6,
    60.7
@@ -497,7 +495,6 @@
   "strong_support": 25.3
  },
  "spark": [
-  47.7,
   47.45,
   49.55,
   50.4,
@@ -556,10 +553,11 @@
   66.0,
   65.8,
   67.2,
-  68.4
+  68.4,
+  69.8
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": {
   "rev_yoy": 928.4,
   "rev_accel": false,
@@ -568,6 +566,44 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 9,421,737 股",
+   "value": {
+    "foreign": 6337881,
+    "trust": 1630090,
+    "dealer": 1453766,
+    "total": 9421737
+   },
+   "severity": "info",
+   "as_of": "2026-07-07",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 21.1 / 殖利率 3.22% / PB 2.54",
+   "value": {
+    "pe": 21.05,
+    "yield": 3.22,
+    "pb": 2.54
+   },
+   "severity": "info",
+   "as_of": "2026-07-06",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 82.97,
+   "severity": "warn",
+   "as_of": "20260703",
+   "note": "大戶持股%=82.97；WoW-0.06；股東人數+402"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -653,6 +689,10 @@
    {
     "t": "2026-07-06",
     "v": -10234
+   },
+   {
+    "t": "2026-07-07",
+    "v": -813
    }
   ],
   "holder_pct": [

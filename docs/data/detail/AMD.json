@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 561.54,
- "change_pct": 8.44,
+ "price": 552.05,
+ "change_pct": 6.61,
  "ohlc": [
   {
    "time": "2026-04-09",
@@ -478,18 +478,18 @@
   },
   {
    "time": "2026-07-06",
-   "o": 535.2,
-   "h": 563.9,
-   "l": 527.04,
-   "c": 561.54,
-   "v": 7235106
+   "o": 535.35,
+   "h": 572.5,
+   "l": 527.0,
+   "c": 552.05,
+   "v": 30573000
   }
  ],
  "sr": {
-  "price": 561.54,
+  "price": 552.05,
   "resistance": [
-   562.99,
-   584.73
+   558.37,
+   562.99
   ],
   "support": [
    495.35,
@@ -557,7 +557,7 @@
   580.91,
   540.88,
   517.82,
-  561.54
+  552.05
  ],
  "spark_start": "2026-04-09",
  "spark_end": "2026-07-06",
@@ -566,25 +566,25 @@
   "pe_forward": 42.615032,
   "eps_trailing": 3.0,
   "eps_forward": 13.17704,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 561.54,
-  "stop": 522.23,
-  "target": 659.81,
-  "atr_bracket": 659.81,
+  "entry": 552.05,
+  "stop": 513.41,
+  "target": 648.66,
+  "atr_bracket": 648.66,
   "measured_move": 674.11,
   "target_band": [
-   659.81,
+   648.66,
    674.11
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 6.7,
-  "swing_stop": 483.99,
-  "chandelier": 468.29,
+  "atr_pct": 7.0,
+  "swing_stop": 483.8,
+  "chandelier": 467.12,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -592,16 +592,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 86 分 / 40 留言",
+   "label": "HN 討論熱度 20 篇 / 53 分 / 8 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 86,
-    "comments": 40,
+    "points": 53,
+    "comments": 8,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -616,7 +616,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

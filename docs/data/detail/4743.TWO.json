@@ -1,17 +1,9 @@
 {
  "stock": "4743.TWO",
  "name": "合一",
- "price": 59.7,
- "change_pct": 4.19,
+ "price": 56.7,
+ "change_pct": -5.03,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 53.5,
-   "h": 53.9,
-   "l": 52.6,
-   "c": 52.9,
-   "v": 1245894
-  },
   {
    "time": "2026-04-13",
    "o": 53.4,
@@ -482,23 +474,30 @@
    "h": 63.0,
    "l": 58.8,
    "c": 59.7,
-   "v": 16694308
+   "v": 16582358
+  },
+  {
+   "time": "2026-07-07",
+   "o": 58.8,
+   "h": 59.4,
+   "l": 56.4,
+   "c": 56.7,
+   "v": 5710502
   }
  ],
  "sr": {
-  "price": 59.7,
+  "price": 56.7,
   "resistance": [
-   60.3,
-   61.2
+   57.5,
+   59.0
   ],
   "support": [
-   58.8,
-   58.1
+   56.4,
+   54.6
   ],
   "strong_support": 47.3
  },
  "spark": [
-  52.9,
   53.2,
   53.1,
   54.6,
@@ -557,10 +556,11 @@
   51.8,
   52.1,
   57.3,
-  59.7
+  59.7,
+  56.7
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 967945,
+    "foreign": -159355,
     "trust": 0,
-    "dealer": -4678,
-    "total": 963267
+    "dealer": -14342,
+    "total": -173697
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

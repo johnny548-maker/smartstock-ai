@@ -1,17 +1,9 @@
 {
  "stock": "4939.TWO",
  "name": "亞電",
- "price": 63.0,
- "change_pct": -1.1,
+ "price": 59.1,
+ "change_pct": -6.19,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 29.36,
-   "h": 31.35,
-   "l": 28.86,
-   "c": 30.85,
-   "v": 3330280
-  },
   {
    "time": "2026-04-13",
    "o": 30.76,
@@ -482,11 +474,19 @@
    "h": 66.4,
    "l": 63.0,
    "c": 63.0,
-   "v": 6286392
+   "v": 6255423
+  },
+  {
+   "time": "2026-07-07",
+   "o": 62.9,
+   "h": 62.9,
+   "l": 56.7,
+   "c": 59.1,
+   "v": 5200998
   }
  ],
  "sr": {
-  "price": 63.0,
+  "price": 59.1,
   "resistance": [
    66.8,
    71.4
@@ -498,7 +498,6 @@
   "strong_support": 14.84
  },
  "spark": [
-  30.85,
   31.6,
   32.6,
   33.89,
@@ -557,10 +556,11 @@
   60.1,
   61.3,
   63.7,
-  63.0
+  63.0,
+  59.1
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -462054,
+    "foreign": -442065,
     "trust": 0,
-    "dealer": -14909,
-    "total": -476963
+    "dealer": -100385,
+    "total": -542450
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.4,
+    "yield": 0.42,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],

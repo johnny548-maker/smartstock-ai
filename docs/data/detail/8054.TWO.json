@@ -1,17 +1,9 @@
 {
  "stock": "8054.TWO",
  "name": "安國",
- "price": 109.5,
- "change_pct": -3.52,
+ "price": 102.5,
+ "change_pct": -6.39,
  "ohlc": [
-  {
-   "time": "2026-04-10",
-   "o": 96.5,
-   "h": 102.0,
-   "l": 95.6,
-   "c": 98.1,
-   "v": 2327366
-  },
   {
    "time": "2026-04-13",
    "o": 98.9,
@@ -482,23 +474,30 @@
    "h": 116.0,
    "l": 109.5,
    "c": 109.5,
-   "v": 2680700
+   "v": 2659250
+  },
+  {
+   "time": "2026-07-07",
+   "o": 108.5,
+   "h": 110.5,
+   "l": 100.5,
+   "c": 102.5,
+   "v": 3538960
   }
  ],
  "sr": {
-  "price": 109.5,
+  "price": 102.5,
   "resistance": [
-   112.5,
-   113.0
+   104.0,
+   105.0
   ],
   "support": [
-   107.5,
-   105.5
+   101.0,
+   99.4
   ],
   "strong_support": 60.8
  },
  "spark": [
-  98.1,
   98.9,
   99.0,
   98.0,
@@ -557,10 +556,11 @@
   118.5,
   112.5,
   113.5,
-  109.5
+  109.5,
+  102.5
  ],
- "spark_start": "2026-04-10",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-13",
+ "spark_end": "2026-07-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -227231,
+    "foreign": -92433,
     "trust": 0,
-    "dealer": -19013,
-    "total": -246244
+    "dealer": -28326,
+    "total": -120759
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "OTC valuation context"
   }
  ],
