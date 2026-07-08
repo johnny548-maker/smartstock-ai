@@ -1,17 +1,9 @@
 {
  "stock": "1563.TW",
  "name": "巧新",
- "price": 70.5,
- "change_pct": -0.7,
+ "price": 69.0,
+ "change_pct": -2.13,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 42.2,
-   "h": 42.8,
-   "l": 42.1,
-   "c": 42.25,
-   "v": 612033
-  },
   {
    "time": "2026-04-14",
    "o": 42.7,
@@ -482,11 +474,19 @@
    "h": 72.9,
    "l": 69.8,
    "c": 70.5,
-   "v": 3320049
+   "v": 3311075
+  },
+  {
+   "time": "2026-07-08",
+   "o": 70.5,
+   "h": 70.9,
+   "l": 68.8,
+   "c": 69.0,
+   "v": 3367527
   }
  ],
  "sr": {
-  "price": 70.5,
+  "price": 69.0,
   "resistance": [
    71.4,
    72.5
@@ -498,7 +498,6 @@
   "strong_support": 39.35
  },
  "spark": [
-  42.25,
   43.2,
   42.45,
   42.8,
@@ -557,10 +556,11 @@
   64.1,
   70.5,
   71.0,
-  70.5
+  70.5,
+  69.0
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": {
   "rev_yoy": 18.7,
   "rev_accel": false,
@@ -569,55 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 518,444 股",
-   "value": {
-    "foreign": 520444,
-    "trust": 0,
-    "dealer": -2000,
-    "total": 518444
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -3
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 161.4 / 殖利率 2.82% / PB 1.88",
-   "value": {
-    "pe": 161.36,
-    "yield": 2.82,
-    "pb": 1.88
-   },
-   "severity": "info",
-   "as_of": "2026-07-06",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 47.21,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=47.21；WoW-0.28；股東人數-115"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -707,6 +658,10 @@
    {
     "t": "2026-07-07",
     "v": -2812
+   },
+   {
+    "t": "2026-07-08",
+    "v": -3474
    }
   ],
   "holder_pct": [

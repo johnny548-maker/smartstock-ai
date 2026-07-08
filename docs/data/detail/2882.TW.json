@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 97.0,
- "change_pct": 3.85,
+ "price": 98.0,
+ "change_pct": 1.03,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 70.1,
-   "h": 70.29,
-   "l": 69.13,
-   "c": 69.52,
-   "v": 20620128
-  },
   {
    "time": "2026-04-14",
    "o": 69.03,
@@ -482,11 +474,19 @@
    "h": 97.5,
    "l": 94.0,
    "c": 97.0,
-   "v": 45077775
+   "v": 44879914
+  },
+  {
+   "time": "2026-07-08",
+   "o": 97.0,
+   "h": 98.2,
+   "l": 95.0,
+   "c": 98.0,
+   "v": 31296202
   }
  ],
  "sr": {
-  "price": 97.0,
+  "price": 98.0,
   "resistance": [
    113.45
   ],
@@ -497,7 +497,6 @@
   "strong_support": 58.51
  },
  "spark": [
-  69.52,
   70.19,
   70.39,
   71.64,
@@ -556,72 +555,40 @@
   93.5,
   93.6,
   93.4,
-  97.0
+  97.0,
+  98.0
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": null,
- "levels": {
-  "entry": 97.0,
-  "stop": 90.21,
-  "target": 113.97,
-  "atr_bracket": 113.97,
-  "measured_move": 153.03,
-  "target_band": [
-   113.97,
-   153.03,
-   156.65
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.6,
-  "swing_stop": 91.25,
-  "chandelier": 98.79,
-  "fib_targets": [
-   142.95,
-   156.65,
-   171.77
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 13,892,612 股",
+   "label": "三大法人賣超 5,981,318 股",
    "value": {
-    "foreign": 17042015,
-    "trust": -3276307,
-    "dealer": 126904,
-    "total": 13892612
+    "foreign": -5962105,
+    "trust": 292192,
+    "dealer": -311405,
+    "total": -5981318
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -1
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 14.2 / 殖利率 3.75% / PB 1.87",
+   "label": "PE 14.7 / 殖利率 3.61% / PB 1.94",
    "value": {
-    "pe": 14.17,
-    "yield": 3.75,
-    "pb": 1.87
+    "pe": 14.72,
+    "yield": 3.61,
+    "pb": 1.94
    },
    "severity": "info",
-   "as_of": "2026-07-06",
+   "as_of": "2026-07-07",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -723,6 +690,10 @@
    {
     "t": "2026-07-07",
     "v": 47651
+   },
+   {
+    "t": "2026-07-08",
+    "v": 41669
    }
   ],
   "holder_pct": [

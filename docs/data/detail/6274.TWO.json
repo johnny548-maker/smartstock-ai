@@ -1,17 +1,9 @@
 {
  "stock": "6274.TWO",
  "name": "台燿",
- "price": 1575.0,
- "change_pct": -3.37,
+ "price": 1645.0,
+ "change_pct": 4.44,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 803.57,
-   "h": 824.41,
-   "l": 788.69,
-   "c": 794.64,
-   "v": 9246125
-  },
   {
    "time": "2026-04-14",
    "o": 832.34,
@@ -482,14 +474,22 @@
    "h": 1715.0,
    "l": 1560.0,
    "c": 1575.0,
-   "v": 6692725
+   "v": 6397117
+  },
+  {
+   "time": "2026-07-08",
+   "o": 1630.0,
+   "h": 1665.0,
+   "l": 1550.0,
+   "c": 1645.0,
+   "v": 5982247
   }
  ],
  "sr": {
-  "price": 1575.0,
+  "price": 1645.0,
   "resistance": [
    1815.0,
-   1920.0
+   1840.0
   ],
   "support": [
    1525.0,
@@ -498,7 +498,6 @@
   "strong_support": 109.71
  },
  "spark": [
-  794.64,
   853.18,
   938.49,
   960.0,
@@ -557,10 +556,11 @@
   1690.0,
   1790.0,
   1630.0,
-  1575.0
+  1575.0,
+  1645.0
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 1519775,
-    "trust": 27000,
-    "dealer": -331013,
-    "total": 1215762
+    "foreign": -43573,
+    "trust": 94000,
+    "dealer": 20336,
+    "total": 70763
    },
-   "severity": "warn",
-   "as_of": "2026-07-07",
+   "severity": "info",
+   "as_of": "2026-07-08",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,12 +585,21 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.48,
+    "yield": 0.46,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 66.65,
+   "severity": "warn",
+   "as_of": "20260703",
+   "note": "大戶持股%=66.65；WoW-0.38；股東人數+2744"
   }
  ],
  "trends": {

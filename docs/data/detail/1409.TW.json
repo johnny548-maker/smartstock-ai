@@ -1,17 +1,9 @@
 {
  "stock": "1409.TW",
  "name": "新纖",
- "price": 31.7,
- "change_pct": 4.79,
+ "price": 29.25,
+ "change_pct": -7.73,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 16.55,
-   "h": 17.6,
-   "l": 16.55,
-   "c": 17.2,
-   "v": 31972164
-  },
   {
    "time": "2026-04-14",
    "o": 17.1,
@@ -482,12 +474,23 @@
    "h": 33.25,
    "l": 30.8,
    "c": 31.7,
-   "v": 205485431
+   "v": 204935004
+  },
+  {
+   "time": "2026-07-08",
+   "o": 32.85,
+   "h": 32.9,
+   "l": 28.9,
+   "c": 29.25,
+   "v": 105971098
   }
  ],
  "sr": {
-  "price": 31.7,
-  "resistance": [],
+  "price": 29.25,
+  "resistance": [
+   29.3,
+   30.3
+  ],
   "support": [
    25.25,
    25.0
@@ -495,7 +498,6 @@
   "strong_support": 10.39
  },
  "spark": [
-  17.2,
   17.2,
   16.65,
   17.05,
@@ -554,10 +556,11 @@
   28.2,
   31.0,
   30.25,
-  31.7
+  31.7,
+  29.25
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": {
   "rev_yoy": 35.1,
   "rev_accel": false,
@@ -566,55 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 5,950,557 股",
-   "value": {
-    "foreign": 5897910,
-    "trust": 52000,
-    "dealer": 647,
-    "total": 5950557
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -344
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 22.4 / 殖利率 2.98% / PB 1.16",
-   "value": {
-    "pe": 22.41,
-    "yield": 2.98,
-    "pb": 1.16
-   },
-   "severity": "info",
-   "as_of": "2026-07-06",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 66.06,
-   "severity": "info",
-   "as_of": "20260703",
-   "note": "大戶持股%=66.06；WoW+0.58；股東人數-2257"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -704,6 +658,10 @@
    {
     "t": "2026-07-07",
     "v": -30792
+   },
+   {
+    "t": "2026-07-08",
+    "v": -44212
    }
   ],
   "holder_pct": [

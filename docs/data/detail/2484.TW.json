@@ -1,17 +1,9 @@
 {
  "stock": "2484.TW",
  "name": "希華",
- "price": 87.1,
- "change_pct": -9.08,
+ "price": 92.3,
+ "change_pct": 5.97,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 32.1,
-   "h": 34.9,
-   "l": 31.8,
-   "c": 34.9,
-   "v": 19120782
-  },
   {
    "time": "2026-04-14",
    "o": 37.3,
@@ -482,11 +474,19 @@
    "h": 102.0,
    "l": 87.0,
    "c": 87.1,
-   "v": 85102784
+   "v": 84921442
+  },
+  {
+   "time": "2026-07-08",
+   "o": 90.0,
+   "h": 95.8,
+   "l": 88.5,
+   "c": 92.3,
+   "v": 66946317
   }
  ],
  "sr": {
-  "price": 87.1,
+  "price": 92.3,
   "resistance": [],
   "support": [
    47.0,
@@ -495,7 +495,6 @@
   "strong_support": 16.61
  },
  "spark": [
-  34.9,
   34.45,
   36.65,
   40.3,
@@ -554,10 +553,11 @@
   87.7,
   96.4,
   95.8,
-  87.1
+  87.1,
+  92.3
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": {
   "rev_yoy": 4.7,
   "rev_accel": false,
@@ -566,6 +566,55 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 78,250 股",
+   "value": {
+    "foreign": -128231,
+    "trust": 0,
+    "dealer": 49981,
+    "total": -78250
+   },
+   "severity": "info",
+   "as_of": "2026-07-08",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -525
+   },
+   "severity": "info",
+   "as_of": "2026-07-08",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 117.7 / 殖利率 0.80% / PB 3.39",
+   "value": {
+    "pe": 117.7,
+    "yield": 0.8,
+    "pb": 3.39
+   },
+   "severity": "info",
+   "as_of": "2026-07-07",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 41.12,
+   "severity": "info",
+   "as_of": "20260703",
+   "note": "大戶持股%=41.12；WoW+11.33；股東人數-6552"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -655,6 +704,10 @@
    {
     "t": "2026-07-07",
     "v": 12767
+   },
+   {
+    "t": "2026-07-08",
+    "v": 12688
    }
   ],
   "holder_pct": [

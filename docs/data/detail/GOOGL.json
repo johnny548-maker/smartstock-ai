@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 366.46,
- "change_pct": 1.82,
+ "price": 367.03,
+ "change_pct": 0.16,
  "ohlc": [
-  {
-   "time": "2026-04-09",
-   "o": 315.72,
-   "h": 319.35,
-   "l": 310.87,
-   "c": 318.3,
-   "v": 23739200
-  },
   {
    "time": "2026-04-10",
    "o": 319.83,
@@ -482,11 +474,19 @@
    "h": 367.93,
    "l": 357.38,
    "c": 366.46,
-   "v": 26632000
+   "v": 26915800
+  },
+  {
+   "time": "2026-07-07",
+   "o": 369.07,
+   "h": 373.16,
+   "l": 365.5,
+   "c": 367.03,
+   "v": 24008000
   }
  ],
  "sr": {
-  "price": 366.46,
+  "price": 367.03,
   "resistance": [
    376.0,
    393.64
@@ -498,7 +498,6 @@
   "strong_support": 187.29
  },
  "spark": [
-  318.3,
   317.05,
   321.12,
   332.71,
@@ -557,21 +556,37 @@
   357.37,
   361.21,
   359.91,
-  366.46
+  366.46,
+  367.03
  ],
- "spark_start": "2026-04-09",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-10",
+ "spark_end": "2026-07-07",
  "fundamental": {
-  "pe_trailing": 27.330915,
-  "pe_forward": 24.594185,
-  "eps_trailing": 13.1,
+  "pe_trailing": 27.932266,
+  "pe_forward": 25.21207,
+  "eps_trailing": 13.14,
   "eps_forward": 14.55771,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 103 分 / 33 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 103,
+    "comments": 33,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-07-08",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -584,7 +599,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

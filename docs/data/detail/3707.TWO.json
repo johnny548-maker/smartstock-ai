@@ -2,16 +2,8 @@
  "stock": "3707.TWO",
  "name": "漢磊",
  "price": 81.5,
- "change_pct": -5.56,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 50.9,
-   "h": 52.7,
-   "l": 50.6,
-   "c": 51.1,
-   "v": 2913501
-  },
   {
    "time": "2026-04-14",
    "o": 52.1,
@@ -482,7 +474,15 @@
    "h": 87.2,
    "l": 79.8,
    "c": 81.5,
-   "v": 14937526
+   "v": 14722439
+  },
+  {
+   "time": "2026-07-08",
+   "o": 82.0,
+   "h": 82.0,
+   "l": 78.4,
+   "c": 81.5,
+   "v": 10034119
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 30.25
  },
  "spark": [
-  51.1,
   56.2,
   54.6,
   54.7,
@@ -557,10 +556,11 @@
   87.7,
   91.0,
   86.3,
+  81.5,
   81.5
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -1661183,
+    "foreign": -1941882,
     "trust": 0,
-    "dealer": -13467,
-    "total": -1674650
+    "dealer": -14649,
+    "total": -1956531
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "OTC valuation context"
   }
  ],

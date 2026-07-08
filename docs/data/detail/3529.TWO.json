@@ -1,17 +1,9 @@
 {
  "stock": "3529.TWO",
  "name": "力旺",
- "price": 2740.0,
- "change_pct": -2.32,
+ "price": 2680.0,
+ "change_pct": -2.19,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 2975.63,
-   "h": 3174.34,
-   "l": 2925.96,
-   "c": 3139.56,
-   "v": 1030628
-  },
   {
    "time": "2026-04-14",
    "o": 3233.95,
@@ -482,23 +474,30 @@
    "h": 2930.0,
    "l": 2725.0,
    "c": 2740.0,
-   "v": 772195
+   "v": 736475
+  },
+  {
+   "time": "2026-07-08",
+   "o": 2740.0,
+   "h": 2760.0,
+   "l": 2595.0,
+   "c": 2680.0,
+   "v": 591755
   }
  ],
  "sr": {
-  "price": 2740.0,
+  "price": 2680.0,
   "resistance": [
    2826.6,
    2884.7
   ],
   "support": [
-   2697.64,
-   2677.95
+   2677.95,
+   2490.88
   ],
   "strong_support": 1480.36
  },
  "spark": [
-  3139.56,
   3313.43,
   3348.21,
   3681.04,
@@ -557,10 +556,11 @@
   2975.0,
   2770.0,
   2805.0,
-  2740.0
+  2740.0,
+  2680.0
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-14",
+ "spark_end": "2026-07-08",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 45605,
-    "trust": 1500,
-    "dealer": -20757,
-    "total": 26348
+    "foreign": 166823,
+    "trust": -143946,
+    "dealer": 10443,
+    "total": 33320
    },
-   "severity": "warn",
-   "as_of": "2026-07-07",
+   "severity": "info",
+   "as_of": "2026-07-08",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.75,
+    "yield": 0.76,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "OTC valuation context"
   }
  ],

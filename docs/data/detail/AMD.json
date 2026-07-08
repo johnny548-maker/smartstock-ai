@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 552.05,
- "change_pct": 6.61,
+ "price": 516.11,
+ "change_pct": -6.51,
  "ohlc": [
-  {
-   "time": "2026-04-09",
-   "o": 233.01,
-   "h": 237.1,
-   "l": 230.91,
-   "c": 236.64,
-   "v": 27126200
-  },
   {
    "time": "2026-04-10",
    "o": 239.0,
@@ -482,14 +474,22 @@
    "h": 572.5,
    "l": 527.0,
    "c": 552.05,
-   "v": 30573000
+   "v": 30684200
+  },
+  {
+   "time": "2026-07-07",
+   "o": 515.91,
+   "h": 524.97,
+   "l": 503.11,
+   "c": 516.11,
+   "v": 29062100
   }
  ],
  "sr": {
-  "price": 552.05,
+  "price": 516.11,
   "resistance": [
-   558.37,
-   562.99
+   527.2,
+   546.44
   ],
   "support": [
    495.35,
@@ -498,7 +498,6 @@
   "strong_support": 149.22
  },
  "spark": [
-  236.64,
   245.04,
   246.83,
   255.07,
@@ -557,53 +556,22 @@
   580.91,
   540.88,
   517.82,
-  552.05
+  552.05,
+  516.11
  ],
- "spark_start": "2026-04-09",
- "spark_end": "2026-07-06",
+ "spark_start": "2026-04-10",
+ "spark_end": "2026-07-07",
  "fundamental": {
-  "pe_trailing": 187.18,
-  "pe_forward": 42.615032,
-  "eps_trailing": 3.0,
-  "eps_forward": 13.17704,
-  "stale": true,
+  "pe_trailing": 172.61203,
+  "pe_forward": 39.101433,
+  "eps_trailing": 2.99,
+  "eps_forward": 13.19926,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 552.05,
-  "stop": 513.41,
-  "target": 648.66,
-  "atr_bracket": 648.66,
-  "measured_move": 674.11,
-  "target_band": [
-   648.66,
-   674.11
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 7.0,
-  "swing_stop": 483.8,
-  "chandelier": 467.12,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 53 分 / 8 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 53,
-    "comments": 8,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -616,7 +584,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
