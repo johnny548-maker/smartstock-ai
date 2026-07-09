@@ -1,17 +1,9 @@
 {
  "stock": "8150.TW",
  "name": "南茂",
- "price": 106.5,
- "change_pct": -2.29,
+ "price": 117.0,
+ "change_pct": 9.86,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 63.88,
-   "h": 63.98,
-   "l": 61.71,
-   "c": 62.21,
-   "v": 11001055
-  },
   {
    "time": "2026-04-15",
    "o": 63.19,
@@ -482,14 +474,20 @@
    "h": 110.0,
    "l": 103.0,
    "c": 106.5,
-   "v": 41568151
+   "v": 41396257
+  },
+  {
+   "time": "2026-07-09",
+   "o": 108.5,
+   "h": 117.0,
+   "l": 108.5,
+   "c": 117.0,
+   "v": 65726298
   }
  ],
  "sr": {
-  "price": 106.5,
-  "resistance": [
-   112.56
-  ],
+  "price": 117.0,
+  "resistance": [],
   "support": [
    91.63,
    90.4
@@ -497,7 +495,6 @@
   "strong_support": 20.1
  },
  "spark": [
-  62.21,
   66.15,
   72.77,
   66.45,
@@ -556,10 +553,11 @@
   105.0,
   115.5,
   109.0,
-  106.5
+  106.5,
+  117.0
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 17.7,
   "rev_accel": false,
@@ -568,6 +566,67 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 9,869,061 股",
+   "value": {
+    "foreign": 9364709,
+    "trust": -1000,
+    "dealer": 505352,
+    "total": 9869061
+   },
+   "severity": "info",
+   "as_of": "2026-07-09",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +17.0%",
+   "value": {
+    "fin_net": 4191,
+    "fin_pct": 0.17034507986830874
+   },
+   "severity": "warn",
+   "as_of": "2026-07-09",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -14
+   },
+   "severity": "info",
+   "as_of": "2026-07-09",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 90.2 / 殖利率 1.15% / PB 3.03",
+   "value": {
+    "pe": 90.25,
+    "yield": 1.15,
+    "pb": 3.03
+   },
+   "severity": "info",
+   "as_of": "2026-07-08",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 71.99,
+   "severity": "info",
+   "as_of": "20260703",
+   "note": "大戶持股%=71.99；WoW+3.00；股東人數-7179"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -661,6 +720,10 @@
    {
     "t": "2026-07-08",
     "v": 96854
+   },
+   {
+    "t": "2026-07-09",
+    "v": 106723
    }
   ],
   "holder_pct": [

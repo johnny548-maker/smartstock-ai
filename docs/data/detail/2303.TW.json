@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 163.0,
- "change_pct": 6.96,
+ "price": 156.0,
+ "change_pct": -4.29,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 59.09,
-   "h": 59.38,
-   "l": 58.11,
-   "c": 58.7,
-   "v": 72941136
-  },
   {
    "time": "2026-04-15",
    "o": 59.09,
@@ -482,11 +474,19 @@
    "h": 163.0,
    "l": 149.0,
    "c": 163.0,
-   "v": 82793019
+   "v": 81852504
+  },
+  {
+   "time": "2026-07-09",
+   "o": 161.0,
+   "h": 161.0,
+   "l": 154.0,
+   "c": 156.0,
+   "v": 59737546
   }
  ],
  "sr": {
-  "price": 163.0,
+  "price": 156.0,
   "resistance": [
    182.38
   ],
@@ -497,7 +497,6 @@
   "strong_support": 39.43
  },
  "spark": [
-  58.7,
   61.06,
   67.15,
   71.77,
@@ -556,61 +555,45 @@
   167.63,
   163.21,
   152.39,
-  163.0
+  163.0,
+  156.0
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 17.8,
   "rev_accel": false,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": {
-  "entry": 163.0,
-  "stop": 151.59,
-  "target": 191.52,
-  "atr_bracket": 191.52,
-  "measured_move": 181.89,
-  "target_band": [
-   181.89,
-   191.52
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 7.4,
-  "swing_stop": 151.71,
-  "chandelier": 148.23,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 15,461,272 股",
+   "label": "三大法人賣超 16,350,622 股",
    "value": {
-    "foreign": 23076134,
-    "trust": 1928589,
-    "dealer": -9543451,
-    "total": 15461272
+    "foreign": -15378910,
+    "trust": 1525267,
+    "dealer": -2496979,
+    "total": -16350622
    },
    "severity": "info",
-   "as_of": "2026-07-08",
+   "as_of": "2026-07-09",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 38.9 / 殖利率 1.68% / PB 4.79",
+   "label": "PE 41.0 / 殖利率 1.60% / PB 5.04",
    "value": {
-    "pe": 38.94,
-    "yield": 1.68,
-    "pb": 4.79
+    "pe": 40.95,
+    "yield": 1.6,
+    "pb": 5.04
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -623,7 +606,7 @@
     "period": "115/07/02～115/07/15"
    },
    "severity": "warn",
-   "as_of": "2026-07-08",
+   "as_of": "2026-07-09",
    "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
   },
   {
@@ -729,6 +712,10 @@
    {
     "t": "2026-07-08",
     "v": -63789
+   },
+   {
+    "t": "2026-07-09",
+    "v": -80140
    }
   ],
   "holder_pct": [

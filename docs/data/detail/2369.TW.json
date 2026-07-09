@@ -1,17 +1,9 @@
 {
  "stock": "2369.TW",
  "name": "菱生",
- "price": 42.7,
- "change_pct": 2.77,
+ "price": 42.5,
+ "change_pct": -0.47,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 32.65,
-   "h": 32.9,
-   "l": 31.45,
-   "c": 32.05,
-   "v": 18669751
-  },
   {
    "time": "2026-04-15",
    "o": 32.3,
@@ -482,11 +474,19 @@
    "h": 44.75,
    "l": 41.1,
    "c": 42.7,
-   "v": 50086545
+   "v": 49984420
+  },
+  {
+   "time": "2026-07-09",
+   "o": 42.05,
+   "h": 45.35,
+   "l": 41.6,
+   "c": 42.5,
+   "v": 44622461
   }
  ],
  "sr": {
-  "price": 42.7,
+  "price": 42.5,
   "resistance": [
    45.7
   ],
@@ -497,7 +497,6 @@
   "strong_support": 11.35
  },
  "spark": [
-  32.05,
   31.4,
   31.1,
   30.6,
@@ -556,10 +555,11 @@
   39.3,
   43.2,
   41.55,
-  42.7
+  42.7,
+  42.5
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 38.7,
   "rev_accel": false,
@@ -568,55 +568,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 3,593,615 股",
-   "value": {
-    "foreign": -3871665,
-    "trust": 0,
-    "dealer": 278050,
-    "total": -3593615
-   },
-   "severity": "info",
-   "as_of": "2026-07-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -41
-   },
-   "severity": "info",
-   "as_of": "2026-07-08",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PB 3.21",
-   "value": {
-    "pe": null,
-    "yield": null,
-    "pb": 3.21
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 38.99,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=38.99；WoW-1.95；股東人數+2055"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -710,6 +661,10 @@
    {
     "t": "2026-07-08",
     "v": 8022
+   },
+   {
+    "t": "2026-07-09",
+    "v": 9913
    }
   ],
   "holder_pct": [

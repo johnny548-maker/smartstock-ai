@@ -1,17 +1,9 @@
 {
  "stock": "6949.TW",
  "name": "沛爾生醫-創",
- "price": 960.0,
- "change_pct": 4.35,
+ "price": 925.0,
+ "change_pct": -3.65,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 735.0,
-   "h": 782.0,
-   "l": 709.0,
-   "c": 782.0,
-   "v": 599104
-  },
   {
    "time": "2026-04-15",
    "o": 810.0,
@@ -482,12 +474,21 @@
    "h": 978.0,
    "l": 927.0,
    "c": 960.0,
-   "v": 287964
+   "v": 469404
+  },
+  {
+   "time": "2026-07-09",
+   "o": 969.0,
+   "h": 972.0,
+   "l": 920.0,
+   "c": 925.0,
+   "v": 204657
   }
  ],
  "sr": {
-  "price": 960.0,
+  "price": 925.0,
   "resistance": [
+   929.0,
    968.0
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 78.0
  },
  "spark": [
-  782.0,
   775.0,
   780.0,
   770.0,
@@ -556,10 +556,11 @@
   916.0,
   891.0,
   920.0,
-  960.0
+  960.0,
+  925.0
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 18.8,
   "rev_accel": false,
@@ -568,44 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 122,692 股",
-   "value": {
-    "foreign": 122950,
-    "trust": 0,
-    "dealer": -258,
-    "total": 122692
-   },
-   "severity": "info",
-   "as_of": "2026-07-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PB 22.67",
-   "value": {
-    "pe": null,
-    "yield": null,
-    "pb": 22.67
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 74.17,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=74.17；WoW-0.52；股東人數-29"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -699,6 +662,10 @@
    {
     "t": "2026-07-08",
     "v": 1106
+   },
+   {
+    "t": "2026-07-09",
+    "v": 1046
    }
   ],
   "holder_pct": [

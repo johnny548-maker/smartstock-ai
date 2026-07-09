@@ -1,17 +1,9 @@
 {
  "stock": "6414.TW",
  "name": "樺漢",
- "price": 404.0,
- "change_pct": 1.0,
+ "price": 394.0,
+ "change_pct": -2.48,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 279.52,
-   "h": 286.75,
-   "l": 278.56,
-   "c": 283.38,
-   "v": 2233795
-  },
   {
    "time": "2026-04-15",
    "o": 284.34,
@@ -482,12 +474,22 @@
    "h": 410.0,
    "l": 393.0,
    "c": 404.0,
-   "v": 2225946
+   "v": 2181413
+  },
+  {
+   "time": "2026-07-09",
+   "o": 405.0,
+   "h": 412.5,
+   "l": 393.0,
+   "c": 394.0,
+   "v": 2075697
   }
  ],
  "sr": {
-  "price": 404.0,
-  "resistance": [],
+  "price": 394.0,
+  "resistance": [
+   397.11
+  ],
   "support": [
    360.0,
    358.0
@@ -495,7 +497,6 @@
   "strong_support": 200.32
  },
  "spark": [
-  283.38,
   283.86,
   289.16,
   293.02,
@@ -554,10 +555,11 @@
   375.5,
   384.0,
   400.0,
-  404.0
+  404.0,
+  394.0
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 35.3,
   "rev_accel": false,
@@ -566,56 +568,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 280,239 股",
-   "value": {
-    "foreign": 317174,
-    "trust": 0,
-    "dealer": -36935,
-    "total": 280239
-   },
-   "severity": "info",
-   "as_of": "2026-07-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +11.7%",
-   "value": {
-    "fin_net": 136,
-    "fin_pct": 0.11693895098882201
-   },
-   "severity": "warn",
-   "as_of": "2026-07-08",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 18.6 / 殖利率 3.45% / PB 2.22",
-   "value": {
-    "pe": 18.59,
-    "yield": 3.45,
-    "pb": 2.22
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 65.87,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=65.87；WoW-0.08；股東人數-187"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -709,6 +661,10 @@
    {
     "t": "2026-07-08",
     "v": 5520
+   },
+   {
+    "t": "2026-07-09",
+    "v": 5570
    }
   ],
   "holder_pct": [

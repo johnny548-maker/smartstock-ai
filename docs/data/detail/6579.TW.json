@@ -1,17 +1,9 @@
 {
  "stock": "6579.TW",
  "name": "研揚",
- "price": 172.5,
- "change_pct": -3.63,
+ "price": 168.0,
+ "change_pct": -2.61,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 115.81,
-   "h": 116.78,
-   "l": 114.83,
-   "c": 114.83,
-   "v": 277285
-  },
   {
    "time": "2026-04-15",
    "o": 115.32,
@@ -482,12 +474,21 @@
    "h": 181.5,
    "l": 169.0,
    "c": 172.5,
-   "v": 1639007
+   "v": 1616690
+  },
+  {
+   "time": "2026-07-09",
+   "o": 172.5,
+   "h": 172.5,
+   "l": 165.5,
+   "c": 168.0,
+   "v": 713152
   }
  ],
  "sr": {
-  "price": 172.5,
+  "price": 168.0,
   "resistance": [
+   171.0,
    185.19
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 98.92
  },
  "spark": [
-  114.83,
   113.36,
   115.32,
   115.32,
@@ -556,10 +556,11 @@
   165.5,
   164.5,
   179.0,
-  172.5
+  172.5,
+  168.0
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": {
   "rev_yoy": 48.8,
   "rev_accel": false,
@@ -568,56 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 216,193 股",
-   "value": {
-    "foreign": -202000,
-    "trust": 0,
-    "dealer": -14193,
-    "total": -216193
-   },
-   "severity": "info",
-   "as_of": "2026-07-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +100.2%",
-   "value": {
-    "fin_net": 1040,
-    "fin_pct": 1.001926782273603
-   },
-   "severity": "warn",
-   "as_of": "2026-07-08",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 32.8 / 殖利率 2.09% / PB 2.90",
-   "value": {
-    "pe": 32.84,
-    "yield": 2.09,
-    "pb": 2.9
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 85.02,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=85.02；WoW-0.08；股東人數-91"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -711,6 +662,10 @@
    {
     "t": "2026-07-08",
     "v": 1078
+   },
+   {
+    "t": "2026-07-09",
+    "v": 1038
    }
   ],
   "holder_pct": [

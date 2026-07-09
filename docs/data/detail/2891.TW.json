@@ -1,17 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 71.3,
- "change_pct": 1.57,
+ "price": 69.9,
+ "change_pct": -1.96,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 53.3,
-   "h": 54.3,
-   "l": 53.1,
-   "c": 53.1,
-   "v": 45517593
-  },
   {
    "time": "2026-04-15",
    "o": 53.3,
@@ -482,14 +474,22 @@
    "h": 71.3,
    "l": 69.8,
    "c": 71.3,
-   "v": 51060060
+   "v": 51272857
+  },
+  {
+   "time": "2026-07-09",
+   "o": 71.7,
+   "h": 71.7,
+   "l": 69.9,
+   "c": 69.9,
+   "v": 59362410
   }
  ],
  "sr": {
-  "price": 71.3,
+  "price": 69.9,
   "resistance": [
-   72.2,
-   73.6
+   70.5,
+   72.2
   ],
   "support": [
    52.6,
@@ -498,7 +498,6 @@
   "strong_support": 40.9
  },
  "spark": [
-  53.1,
   52.8,
   53.4,
   53.1,
@@ -557,68 +556,40 @@
   70.6,
   71.4,
   70.2,
-  71.3
+  71.3,
+  69.9
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-08",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": null,
- "levels": {
-  "entry": 71.3,
-  "stop": 67.51,
-  "target": 80.76,
-  "atr_bracket": 80.76,
-  "measured_move": 74.7,
-  "target_band": [
-   74.7,
-   80.76
-  ],
-  "stop_pct": -5.3,
-  "target_pct": 13.3,
-  "rr": 2.5,
-  "atr_pct": 2.7,
-  "swing_stop": 69.13,
-  "chandelier": 66.8,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人賣超 2,404,669 股",
+   "label": "三大法人賣超 1,910,114 股",
    "value": {
-    "foreign": -10483336,
-    "trust": 7415937,
-    "dealer": 662730,
-    "total": -2404669
+    "foreign": -8467526,
+    "trust": 5761844,
+    "dealer": 795568,
+    "total": -1910114
    },
    "severity": "info",
-   "as_of": "2026-07-08",
+   "as_of": "2026-07-09",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融資餘額單日大增 +18.9%",
-   "value": {
-    "fin_net": 498,
-    "fin_pct": 0.18949771689497716
-   },
-   "severity": "warn",
-   "as_of": "2026-07-08",
-   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 16.9 / 殖利率 3.56% / PB 2.51",
+   "label": "PE 17.2 / 殖利率 3.51% / PB 2.55",
    "value": {
-    "pe": 16.92,
-    "yield": 3.56,
-    "pb": 2.51
+    "pe": 17.18,
+    "yield": 3.51,
+    "pb": 2.55
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-08",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -724,6 +695,10 @@
    {
     "t": "2026-07-08",
     "v": -16241
+   },
+   {
+    "t": "2026-07-09",
+    "v": -18151
    }
   ],
   "holder_pct": [
