@@ -1,8 +1,8 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 314.62,
- "change_pct": 0.39,
+ "price": 316.22,
+ "change_pct": 0.9,
  "ohlc": [
   {
    "time": "2026-04-14",
@@ -474,19 +474,19 @@
    "h": 314.82,
    "l": 307.05,
    "c": 313.39,
-   "v": 41299400
+   "v": 41323500
   },
   {
    "time": "2026-07-09",
-   "o": 310.45,
-   "h": 314.85,
+   "o": 310.51,
+   "h": 316.53,
    "l": 308.16,
-   "c": 314.62,
-   "v": 11880479
+   "c": 316.22,
+   "v": 48084300
   }
  ],
  "sr": {
-  "price": 314.62,
+  "price": 316.22,
   "resistance": [
    317.4
   ],
@@ -556,7 +556,7 @@
   312.66,
   310.66,
   313.39,
-  314.62
+  316.22
  ],
  "spark_start": "2026-04-14",
  "spark_end": "2026-07-09",
@@ -565,25 +565,25 @@
   "pe_forward": 32.74187,
   "eps_trailing": 8.27,
   "eps_forward": 9.60895,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 314.62,
-  "stop": 296.94,
-  "target": 358.83,
-  "atr_bracket": 358.83,
-  "measured_move": 357.21,
+  "entry": 316.22,
+  "stop": 298.3,
+  "target": 361.03,
+  "atr_bracket": 361.03,
+  "measured_move": 317.46,
   "target_band": [
-   357.21,
-   358.83
+   317.46,
+   361.03
   ],
-  "stop_pct": -5.6,
-  "target_pct": 14.1,
+  "stop_pct": -5.7,
+  "target_pct": 14.2,
   "rr": 2.5,
   "atr_pct": 2.8,
-  "swing_stop": 271.1,
-  "chandelier": 290.54,
+  "swing_stop": 271.06,
+  "chandelier": 290.32,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -591,16 +591,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 54 分 / 13 留言",
+   "label": "HN 討論熱度 20 篇 / 118 分 / 20 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 54,
-    "comments": 13,
+    "points": 118,
+    "comments": 20,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -615,7 +615,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

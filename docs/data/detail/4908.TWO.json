@@ -1,25 +1,9 @@
 {
  "stock": "4908.TWO",
  "name": "前鼎",
- "price": 162.0,
- "change_pct": -7.43,
+ "price": 164.0,
+ "change_pct": -3.53,
  "ohlc": [
-  {
-   "time": "2026-04-13",
-   "o": 132.0,
-   "h": 141.5,
-   "l": 132.0,
-   "c": 141.5,
-   "v": 8234328
-  },
-  {
-   "time": "2026-04-14",
-   "o": 148.0,
-   "h": 151.0,
-   "l": 136.5,
-   "c": 142.5,
-   "v": 15408988
-  },
   {
    "time": "2026-04-15",
    "o": 141.0,
@@ -482,11 +466,27 @@
    "h": 183.5,
    "l": 160.0,
    "c": 162.0,
-   "v": 2388190
+   "v": 2357000
+  },
+  {
+   "time": "2026-07-08",
+   "o": 164.5,
+   "h": 171.5,
+   "l": 162.5,
+   "c": 170.0,
+   "v": 1671906
+  },
+  {
+   "time": "2026-07-09",
+   "o": 169.5,
+   "h": 169.5,
+   "l": 164.0,
+   "c": 164.0,
+   "v": 1186589
   }
  ],
  "sr": {
-  "price": 162.0,
+  "price": 164.0,
   "resistance": [
    210.0,
    221.0
@@ -498,8 +498,6 @@
   "strong_support": 58.32
  },
  "spark": [
-  141.5,
-  142.5,
   141.0,
   155.0,
   170.5,
@@ -557,39 +555,27 @@
   172.5,
   181.0,
   175.0,
-  162.0
+  162.0,
+  170.0,
+  164.0
  ],
- "spark_start": "2026-04-13",
- "spark_end": "2026-07-07",
+ "spark_start": "2026-04-15",
+ "spark_end": "2026-07-09",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": 9186,
-    "trust": -112000,
-    "dealer": -3000,
-    "total": -105814
-   },
-   "severity": "info",
-   "as_of": "2026-07-07",
-   "note": "OTC 3-institution daily net"
-  },
-  {
-   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.62,
+    "yield": 0.61,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-07",
+   "as_of": "2026-07-10",
    "note": "OTC valuation context"
   }
  ],

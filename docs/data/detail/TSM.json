@@ -1,8 +1,8 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 443.72,
- "change_pct": 1.54,
+ "price": 436.96,
+ "change_pct": -0.0,
  "ohlc": [
   {
    "time": "2026-04-14",
@@ -474,19 +474,19 @@
    "h": 440.49,
    "l": 428.75,
    "c": 436.98,
-   "v": 11377800
+   "v": 11411200
   },
   {
    "time": "2026-07-09",
    "o": 446.73,
    "h": 447.69,
-   "l": 437.47,
-   "c": 443.72,
-   "v": 4411710
+   "l": 436.39,
+   "c": 436.96,
+   "v": 11423800
   }
  ],
  "sr": {
-  "price": 443.72,
+  "price": 436.96,
   "resistance": [
    449.11,
    476.79
@@ -557,7 +557,7 @@
   451.79,
   432.57,
   436.98,
-  443.72
+  436.96
  ],
  "spark_start": "2026-04-14",
  "spark_end": "2026-07-09",
@@ -566,7 +566,7 @@
   "pe_forward": 21.871498,
   "eps_trailing": 11.49,
   "eps_forward": 20.28919,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,16 +575,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 73 分 / 13 留言",
+   "label": "HN 討論熱度 20 篇 / 163 分 / 118 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 73,
-    "comments": 13,
+    "points": 163,
+    "comments": 118,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +599,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

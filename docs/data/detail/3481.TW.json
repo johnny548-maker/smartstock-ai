@@ -482,7 +482,7 @@
    "h": 67.5,
    "l": 64.8,
    "c": 65.3,
-   "v": 380336313
+   "v": 379401297
   }
  ],
  "sr": {
@@ -569,6 +569,44 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 4,191,203 股",
+   "value": {
+    "foreign": 1691876,
+    "trust": 21777,
+    "dealer": 2477550,
+    "total": 4191203
+   },
+   "severity": "info",
+   "as_of": "2026-07-10",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 593.6 / 殖利率 1.53% / PB 2.30",
+   "value": {
+    "pe": 593.64,
+    "yield": 1.53,
+    "pb": 2.3
+   },
+   "severity": "info",
+   "as_of": "2026-07-09",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 42.18,
+   "severity": "warn",
+   "as_of": "20260703",
+   "note": "大戶持股%=42.18；WoW-2.37；股東人數+50335"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -666,6 +704,10 @@
    {
     "t": "2026-07-09",
     "v": -352358
+   },
+   {
+    "t": "2026-07-10",
+    "v": -348166
    }
   ],
   "holder_pct": [

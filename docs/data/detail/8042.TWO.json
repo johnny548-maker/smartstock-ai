@@ -482,7 +482,7 @@
    "h": 178.0,
    "l": 163.0,
    "c": 178.0,
-   "v": 7375645
+   "v": 7296050
   }
  ],
  "sr": {
@@ -567,20 +567,6 @@
  "overlays": [
   {
    "source": "tpex",
-   "kind": "inst",
-   "label": "上櫃三大法人淨額",
-   "value": {
-    "foreign": -1490076,
-    "trust": 0,
-    "dealer": -31258,
-    "total": -1521334
-   },
-   "severity": "info",
-   "as_of": "2026-07-09",
-   "note": "OTC 3-institution daily net"
-  },
-  {
-   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
@@ -589,17 +575,8 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 72.5,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=72.50；WoW-0.50；股東人數-200"
   }
  ],
  "trends": {

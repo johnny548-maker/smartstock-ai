@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 554.2,
- "change_pct": 7.11,
+ "price": 546.72,
+ "change_pct": 5.66,
  "ohlc": [
   {
    "time": "2026-04-14",
@@ -474,19 +474,19 @@
    "h": 522.98,
    "l": 498.15,
    "c": 517.41,
-   "v": 23719700
+   "v": 23768500
   },
   {
    "time": "2026-07-09",
-   "o": 537.33,
-   "h": 559.49,
+   "o": 537.27,
+   "h": 559.5,
    "l": 535.2,
-   "c": 554.2,
-   "v": 12763953
+   "c": 546.72,
+   "v": 26857200
   }
  ],
  "sr": {
-  "price": 554.2,
+  "price": 546.72,
   "resistance": [
    558.37,
    562.99
@@ -557,7 +557,7 @@
   552.05,
   516.11,
   517.41,
-  554.2
+  546.72
  ],
  "spark_start": "2026-04-14",
  "spark_end": "2026-07-09",
@@ -566,23 +566,23 @@
   "pe_forward": 41.97205,
   "eps_trailing": 3.0,
   "eps_forward": 13.19926,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 554.2,
-  "stop": 515.41,
-  "target": 651.19,
-  "atr_bracket": 651.19,
+  "entry": 546.72,
+  "stop": 508.45,
+  "target": 642.4,
+  "atr_bracket": 642.4,
   "measured_move": 649.65,
   "target_band": [
-   649.65,
-   651.19
+   642.4,
+   649.65
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 7.0,
+  "atr_pct": 7.1,
   "swing_stop": 483.76,
   "chandelier": 468.61,
   "fib_targets": []
@@ -601,7 +601,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
