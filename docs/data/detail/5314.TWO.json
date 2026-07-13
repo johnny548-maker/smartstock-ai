@@ -1,25 +1,9 @@
 {
  "stock": "5314.TWO",
  "name": "世紀*",
- "price": 66.0,
- "change_pct": -2.08,
+ "price": 64.5,
+ "change_pct": -2.27,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 78.0,
-   "h": 78.8,
-   "l": 77.5,
-   "c": 77.9,
-   "v": 3092819
-  },
-  {
-   "time": "2026-04-16",
-   "o": 78.5,
-   "h": 82.9,
-   "l": 78.5,
-   "c": 81.0,
-   "v": 9416923
-  },
   {
    "time": "2026-04-17",
    "o": 81.5,
@@ -483,23 +467,37 @@
    "l": 66.0,
    "c": 66.0,
    "v": 6092380
+  },
+  {
+   "time": "2026-07-10",
+   "o": 66.0,
+   "h": 66.0,
+   "l": 66.0,
+   "c": 66.0,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 67.0,
+   "h": 69.1,
+   "l": 64.1,
+   "c": 64.5,
+   "v": 8420637
   }
  ],
  "sr": {
-  "price": 66.0,
+  "price": 64.5,
   "resistance": [
-   66.55,
-   68.55
+   65.5,
+   66.55
   ],
   "support": [
-   61.4,
-   61.2
+   64.4,
+   61.4
   ],
   "strong_support": 7.11
  },
  "spark": [
-  77.9,
-  81.0,
   80.2,
   78.1,
   77.0,
@@ -557,25 +555,41 @@
   67.6,
   67.8,
   67.4,
-  66.0
+  66.0,
+  66.0,
+  64.5
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 35142,
+    "trust": 14000,
+    "dealer": 24064,
+    "total": 73206
+   },
+   "severity": "warn",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.67,
+    "yield": 2.74,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -601,6 +615,10 @@
    {
     "t": "2026-07-03",
     "v": 44.55
+   },
+   {
+    "t": "2026-07-09",
+    "v": 41.27
    }
   ],
   "rev_yoy": []

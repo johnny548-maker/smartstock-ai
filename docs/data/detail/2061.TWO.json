@@ -1,25 +1,9 @@
 {
  "stock": "2061.TWO",
  "name": "風青",
- "price": 74.7,
- "change_pct": -10.0,
+ "price": 67.3,
+ "change_pct": -9.91,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 16.95,
-   "h": 17.0,
-   "l": 16.05,
-   "c": 16.25,
-   "v": 259109
-  },
-  {
-   "time": "2026-04-16",
-   "o": 16.4,
-   "h": 16.4,
-   "l": 16.2,
-   "c": 16.2,
-   "v": 65074
-  },
   {
    "time": "2026-04-17",
    "o": 16.4,
@@ -483,11 +467,30 @@
    "l": 74.7,
    "c": 74.7,
    "v": 4272305
+  },
+  {
+   "time": "2026-07-10",
+   "o": 74.7,
+   "h": 74.7,
+   "l": 74.7,
+   "c": 74.7,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 73.5,
+   "h": 75.8,
+   "l": 67.3,
+   "c": 67.3,
+   "v": 4672108
   }
  ],
  "sr": {
-  "price": 74.7,
-  "resistance": [],
+  "price": 67.3,
+  "resistance": [
+   69.8,
+   85.8
+  ],
   "support": [
    32.15,
    24.5
@@ -495,8 +498,6 @@
   "strong_support": 14.8
  },
  "spark": [
-  16.25,
-  16.2,
   16.1,
   15.95,
   15.9,
@@ -554,14 +555,30 @@
   80.1,
   80.0,
   83.0,
-  74.7
+  74.7,
+  74.7,
+  67.3
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 497999,
+    "trust": 0,
+    "dealer": -2212,
+    "total": 495787
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -572,17 +589,8 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 56.12,
-   "severity": "info",
-   "as_of": "20260703",
-   "note": "大戶持股%=56.12；WoW+0.66；股東人數-115"
   }
  ],
  "trends": {
@@ -607,6 +615,10 @@
    {
     "t": "2026-07-03",
     "v": 56.12
+   },
+   {
+    "t": "2026-07-09",
+    "v": 54.07
    }
   ],
   "rev_yoy": []

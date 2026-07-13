@@ -1,25 +1,9 @@
 {
  "stock": "6207.TWO",
  "name": "雷科",
- "price": 144.0,
- "change_pct": 9.92,
+ "price": 140.5,
+ "change_pct": -2.43,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 55.8,
-   "h": 58.0,
-   "l": 54.7,
-   "c": 57.7,
-   "v": 2359278
-  },
-  {
-   "time": "2026-04-16",
-   "o": 56.7,
-   "h": 58.9,
-   "l": 56.5,
-   "c": 57.2,
-   "v": 4154600
-  },
   {
    "time": "2026-04-17",
    "o": 56.9,
@@ -483,23 +467,37 @@
    "l": 130.5,
    "c": 144.0,
    "v": 8565649
+  },
+  {
+   "time": "2026-07-10",
+   "o": 144.0,
+   "h": 144.0,
+   "l": 144.0,
+   "c": 144.0,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 149.5,
+   "h": 158.0,
+   "l": 138.0,
+   "c": 140.5,
+   "v": 28255409
   }
  ],
  "sr": {
-  "price": 144.0,
+  "price": 140.5,
   "resistance": [
    164.0,
    172.0
   ],
   "support": [
    132.5,
-   121.5
+   126.5
   ],
   "strong_support": 33.47
  },
  "spark": [
-  57.7,
-  57.2,
   57.1,
   57.2,
   56.0,
@@ -557,25 +555,41 @@
   145.5,
   135.0,
   131.0,
-  144.0
+  144.0,
+  144.0,
+  140.5
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -256701,
+    "trust": 0,
+    "dealer": -39385,
+    "total": -296086
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.42,
+    "yield": 0.43,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -601,6 +615,10 @@
    {
     "t": "2026-07-03",
     "v": 21.02
+   },
+   {
+    "t": "2026-07-09",
+    "v": 19.8
    }
   ],
   "rev_yoy": []

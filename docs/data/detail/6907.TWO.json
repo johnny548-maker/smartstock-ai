@@ -1,17 +1,9 @@
 {
  "stock": "6907.TWO",
  "name": "雅特力-KY",
- "price": 195.0,
- "change_pct": 3.17,
+ "price": 192.5,
+ "change_pct": -1.28,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 129.09,
-   "h": 134.05,
-   "l": 129.09,
-   "c": 134.05,
-   "v": 513443
-  },
   {
    "time": "2026-04-16",
    "o": 138.52,
@@ -483,10 +475,18 @@
    "l": 177.0,
    "c": 195.0,
    "v": 4058593
+  },
+  {
+   "time": "2026-07-13",
+   "o": 187.0,
+   "h": 201.5,
+   "l": 185.0,
+   "c": 192.5,
+   "v": 2704847
   }
  ],
  "sr": {
-  "price": 195.0,
+  "price": 192.5,
   "resistance": [],
   "support": [
    138.03,
@@ -495,7 +495,6 @@
   "strong_support": 43.2
  },
  "spark": [
-  134.05,
   141.01,
   128.1,
   115.68,
@@ -554,25 +553,40 @@
   187.5,
   172.0,
   189.0,
-  195.0
+  195.0,
+  192.5
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-16",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -308196,
+    "trust": 0,
+    "dealer": -7488,
+    "total": -315684
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.51,
+    "yield": 0.52,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -598,6 +612,10 @@
    {
     "t": "2026-07-03",
     "v": 66.68
+   },
+   {
+    "t": "2026-07-09",
+    "v": 70.36
    }
   ],
   "rev_yoy": []

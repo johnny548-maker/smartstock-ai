@@ -1,25 +1,9 @@
 {
  "stock": "4973.TWO",
  "name": "廣穎電通",
- "price": 166.5,
- "change_pct": 5.71,
+ "price": 163.0,
+ "change_pct": -2.1,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 80.56,
-   "h": 81.15,
-   "l": 76.61,
-   "c": 77.1,
-   "v": 4105383
-  },
-  {
-   "time": "2026-04-16",
-   "o": 76.9,
-   "h": 79.7,
-   "l": 75.6,
-   "c": 76.8,
-   "v": 2925535
-  },
   {
    "time": "2026-04-17",
    "o": 77.9,
@@ -483,10 +467,26 @@
    "l": 160.0,
    "c": 166.5,
    "v": 2430262
+  },
+  {
+   "time": "2026-07-10",
+   "o": 166.5,
+   "h": 166.5,
+   "l": 166.5,
+   "c": 166.5,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 170.5,
+   "h": 171.0,
+   "l": 160.5,
+   "c": 163.0,
+   "v": 1819513
   }
  ],
  "sr": {
-  "price": 166.5,
+  "price": 163.0,
   "resistance": [
    178.5,
    219.0
@@ -498,8 +498,6 @@
   "strong_support": 19.7
  },
  "spark": [
-  77.1,
-  76.8,
   77.6,
   79.4,
   87.3,
@@ -557,35 +555,51 @@
   168.5,
   162.5,
   157.5,
-  166.5
+  166.5,
+  166.5,
+  163.0
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -51848,
+    "trust": 0,
+    "dealer": -19891,
+    "total": -71739
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.6,
+    "yield": 0.61,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 23.54,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=23.54；WoW-1.47；股東人數+100"
+   "label": "大戶吸籌",
+   "value": 23.59,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=23.59；WoW+0.05；股東人數-32"
   }
  ],
  "trends": {
@@ -610,6 +624,10 @@
    {
     "t": "2026-07-03",
     "v": 23.54
+   },
+   {
+    "t": "2026-07-09",
+    "v": 23.59
    }
   ],
   "rev_yoy": []

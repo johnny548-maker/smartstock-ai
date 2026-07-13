@@ -1,25 +1,9 @@
 {
  "stock": "3317.TWO",
  "name": "尼克森",
- "price": 96.6,
- "change_pct": -2.42,
+ "price": 92.0,
+ "change_pct": -4.76,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 51.1,
-   "h": 51.6,
-   "l": 50.5,
-   "c": 50.8,
-   "v": 707443
-  },
-  {
-   "time": "2026-04-16",
-   "o": 51.4,
-   "h": 51.8,
-   "l": 50.6,
-   "c": 51.1,
-   "v": 1053945
-  },
   {
    "time": "2026-04-17",
    "o": 51.3,
@@ -483,12 +467,29 @@
    "l": 96.6,
    "c": 96.6,
    "v": 4863206
+  },
+  {
+   "time": "2026-07-10",
+   "o": 96.6,
+   "h": 96.6,
+   "l": 96.6,
+   "c": 96.6,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 97.0,
+   "h": 98.0,
+   "l": 91.3,
+   "c": 92.0,
+   "v": 3828315
   }
  ],
  "sr": {
-  "price": 96.6,
+  "price": 92.0,
   "resistance": [
-   103.5
+   103.5,
+   108.0
   ],
   "support": [
    85.7,
@@ -497,8 +498,6 @@
   "strong_support": 29.29
  },
  "spark": [
-  50.8,
-  51.1,
   54.6,
   54.1,
   53.6,
@@ -556,25 +555,41 @@
   105.5,
   96.9,
   99.0,
-  96.6
+  96.6,
+  96.6,
+  92.0
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 362932,
+    "trust": 0,
+    "dealer": -28719,
+    "total": 334213
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.52,
+    "yield": 0.54,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -600,6 +615,10 @@
    {
     "t": "2026-07-03",
     "v": 32.18
+   },
+   {
+    "t": "2026-07-09",
+    "v": 30.17
    }
   ],
   "rev_yoy": []

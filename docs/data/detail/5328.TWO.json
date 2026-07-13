@@ -1,25 +1,9 @@
 {
  "stock": "5328.TWO",
  "name": "華容",
- "price": 70.5,
- "change_pct": -1.81,
+ "price": 65.4,
+ "change_pct": -7.23,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 26.65,
-   "h": 28.0,
-   "l": 26.6,
-   "c": 26.6,
-   "v": 11003368
-  },
-  {
-   "time": "2026-04-16",
-   "o": 26.75,
-   "h": 28.45,
-   "l": 26.1,
-   "c": 27.2,
-   "v": 10993315
-  },
   {
    "time": "2026-04-17",
    "o": 27.4,
@@ -483,10 +467,26 @@
    "l": 70.5,
    "c": 70.5,
    "v": 21455392
+  },
+  {
+   "time": "2026-07-10",
+   "o": 70.5,
+   "h": 70.5,
+   "l": 70.5,
+   "c": 70.5,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 70.9,
+   "h": 72.6,
+   "l": 64.8,
+   "c": 65.4,
+   "v": 20462300
   }
  ],
  "sr": {
-  "price": 70.5,
+  "price": 65.4,
   "resistance": [
    88.8
   ],
@@ -497,8 +497,6 @@
   "strong_support": 10.34
  },
  "spark": [
-  26.6,
-  27.2,
   26.9,
   25.85,
   26.25,
@@ -556,25 +554,41 @@
   80.6,
   75.9,
   71.8,
-  70.5
+  70.5,
+  70.5,
+  65.4
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 3163541,
+    "trust": 0,
+    "dealer": -57186,
+    "total": 3106355
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.5,
+    "yield": 0.54,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -600,6 +614,10 @@
    {
     "t": "2026-07-03",
     "v": 45.6
+   },
+   {
+    "t": "2026-07-09",
+    "v": 41.79
    }
   ],
   "rev_yoy": []

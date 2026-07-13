@@ -1,25 +1,9 @@
 {
  "stock": "5309.TWO",
  "name": "系統電",
- "price": 63.1,
- "change_pct": -1.41,
+ "price": 62.1,
+ "change_pct": -1.58,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 57.33,
-   "h": 59.52,
-   "l": 57.23,
-   "c": 57.93,
-   "v": 5676411
-  },
-  {
-   "time": "2026-04-16",
-   "o": 58.92,
-   "h": 60.51,
-   "l": 58.43,
-   "c": 58.82,
-   "v": 6382747
-  },
   {
    "time": "2026-04-17",
    "o": 59.62,
@@ -483,23 +467,37 @@
    "l": 62.1,
    "c": 63.1,
    "v": 3230821
+  },
+  {
+   "time": "2026-07-10",
+   "o": 63.1,
+   "h": 63.1,
+   "l": 63.1,
+   "c": 63.1,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 64.2,
+   "h": 64.7,
+   "l": 61.2,
+   "c": 62.1,
+   "v": 3382777
   }
  ],
  "sr": {
-  "price": 63.1,
+  "price": 62.1,
   "resistance": [
    63.89,
    64.49
   ],
   "support": [
-   62.9,
-   61.41
+   61.41,
+   61.2
   ],
   "strong_support": 28.22
  },
  "spark": [
-  57.93,
-  58.82,
   58.43,
   59.82,
   61.21,
@@ -557,25 +555,41 @@
   68.9,
   63.5,
   64.0,
-  63.1
+  63.1,
+  63.1,
+  62.1
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": -736337,
+    "trust": 0,
+    "dealer": -37450,
+    "total": -773787
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
    "kind": "fundamental",
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.79,
+    "yield": 0.8,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   }
  ],
@@ -601,6 +615,10 @@
    {
     "t": "2026-07-03",
     "v": 38.57
+   },
+   {
+    "t": "2026-07-09",
+    "v": 37.38
    }
   ],
   "rev_yoy": []

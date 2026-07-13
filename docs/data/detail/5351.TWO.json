@@ -1,25 +1,9 @@
 {
  "stock": "5351.TWO",
  "name": "鈺創",
- "price": 98.2,
- "change_pct": 9.97,
+ "price": 100.0,
+ "change_pct": 1.83,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 69.5,
-   "h": 69.7,
-   "l": 66.2,
-   "c": 67.9,
-   "v": 11660838
-  },
-  {
-   "time": "2026-04-16",
-   "o": 68.5,
-   "h": 68.9,
-   "l": 66.4,
-   "c": 66.5,
-   "v": 9244355
-  },
   {
    "time": "2026-04-17",
    "o": 66.6,
@@ -483,10 +467,26 @@
    "l": 89.3,
    "c": 98.2,
    "v": 32534194
+  },
+  {
+   "time": "2026-07-10",
+   "o": 98.2,
+   "h": 98.2,
+   "l": 98.2,
+   "c": 98.2,
+   "v": 0
+  },
+  {
+   "time": "2026-07-13",
+   "o": 103.0,
+   "h": 105.0,
+   "l": 98.2,
+   "c": 100.0,
+   "v": 80037376
   }
  ],
  "sr": {
-  "price": 98.2,
+  "price": 100.0,
   "resistance": [
    103.0
   ],
@@ -497,8 +497,6 @@
   "strong_support": 20.65
  },
  "spark": [
-  67.9,
-  66.5,
   67.5,
   66.0,
   68.6,
@@ -556,14 +554,30 @@
   89.9,
   93.1,
   89.3,
-  98.2
+  98.2,
+  98.2,
+  100.0
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-09",
+ "spark_start": "2026-04-17",
+ "spark_end": "2026-07-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "tpex",
+   "kind": "inst",
+   "label": "上櫃三大法人淨額",
+   "value": {
+    "foreign": 14404224,
+    "trust": 3000,
+    "dealer": 3625,
+    "total": 14410849
+   },
+   "severity": "warn",
+   "as_of": "2026-07-13",
+   "note": "OTC 3-institution daily net"
+  },
   {
    "source": "tpex",
    "kind": "fundamental",
@@ -574,17 +588,17 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-10",
+   "as_of": "2026-07-13",
    "note": "OTC valuation context"
   },
   {
    "source": "tdcc",
    "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 31.26,
-   "severity": "warn",
-   "as_of": "20260703",
-   "note": "大戶持股%=31.26；WoW-4.15；股東人數+2453"
+   "label": "大戶吸籌",
+   "value": 34.8,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=34.80；WoW+3.54；股東人數-1689"
   }
  ],
  "trends": {
@@ -609,6 +623,10 @@
    {
     "t": "2026-07-03",
     "v": 31.26
+   },
+   {
+    "t": "2026-07-09",
+    "v": 34.8
    }
   ],
   "rev_yoy": []
