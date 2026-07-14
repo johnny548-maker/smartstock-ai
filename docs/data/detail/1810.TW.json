@@ -1,17 +1,9 @@
 {
  "stock": "1810.TW",
  "name": "和成",
- "price": 26.2,
- "change_pct": 9.85,
+ "price": 28.8,
+ "change_pct": 9.92,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 18.07,
-   "h": 19.01,
-   "l": 18.07,
-   "c": 18.32,
-   "v": 4129528
-  },
   {
    "time": "2026-04-20",
    "o": 18.32,
@@ -482,14 +474,20 @@
    "h": 26.2,
    "l": 23.95,
    "c": 26.2,
-   "v": 25715336
+   "v": 25646627
+  },
+  {
+   "time": "2026-07-14",
+   "o": 27.5,
+   "h": 28.8,
+   "l": 26.65,
+   "c": 28.8,
+   "v": 48833921
   }
  ],
  "sr": {
-  "price": 26.2,
-  "resistance": [
-   26.5
-  ],
+  "price": 28.8,
+  "resistance": [],
   "support": [
    19.75,
    19.4
@@ -497,7 +495,6 @@
   "strong_support": 13.59
  },
  "spark": [
-  18.32,
   18.47,
   18.47,
   18.52,
@@ -556,10 +553,11 @@
   24.45,
   23.85,
   23.85,
-  26.2
+  26.2,
+  28.8
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": {
   "rev_yoy": -11.9,
   "rev_accel": false,
@@ -568,44 +566,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 882,938 股",
-   "value": {
-    "foreign": 719480,
-    "trust": 0,
-    "dealer": 163458,
-    "total": 882938
-   },
-   "severity": "info",
-   "as_of": "2026-07-13",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 6.3 / 殖利率 0.84% / PB 0.89",
-   "value": {
-    "pe": 6.31,
-    "yield": 0.84,
-    "pb": 0.89
-   },
-   "severity": "info",
-   "as_of": "2026-07-09",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶集中度",
-   "value": 67.31,
-   "severity": "info",
-   "as_of": "20260709",
-   "note": "大戶持股%=67.31；WoW+0.35；股東人數+785"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -711,6 +671,10 @@
    {
     "t": "2026-07-13",
     "v": 6214
+   },
+   {
+    "t": "2026-07-14",
+    "v": 5796
    }
   ],
   "holder_pct": [

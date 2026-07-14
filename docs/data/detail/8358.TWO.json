@@ -1,17 +1,9 @@
 {
  "stock": "8358.TWO",
  "name": "金居",
- "price": 498.0,
- "change_pct": -6.57,
+ "price": 460.0,
+ "change_pct": -7.63,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 341.5,
-   "h": 367.5,
-   "l": 341.5,
-   "c": 367.5,
-   "v": 39710874
-  },
   {
    "time": "2026-04-20",
    "o": 373.0,
@@ -482,11 +474,19 @@
    "h": 543.0,
    "l": 496.0,
    "c": 498.0,
-   "v": 10022910
+   "v": 9574937
+  },
+  {
+   "time": "2026-07-14",
+   "o": 495.5,
+   "h": 504.0,
+   "l": 448.5,
+   "c": 460.0,
+   "v": 11649912
   }
  ],
  "sr": {
-  "price": 498.0,
+  "price": 460.0,
   "resistance": [
    687.0,
    758.0
@@ -498,7 +498,6 @@
   "strong_support": 37.86
  },
  "spark": [
-  367.5,
   404.0,
   393.5,
   393.5,
@@ -557,10 +556,11 @@
   523.0,
   533.0,
   533.0,
-  498.0
+  498.0,
+  460.0
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -811519,
-    "trust": -347900,
-    "dealer": -189202,
-    "total": -1348621
+    "foreign": 961003,
+    "trust": 13300,
+    "dealer": 45987,
+    "total": 1020290
    },
-   "severity": "info",
-   "as_of": "2026-07-13",
+   "severity": "warn",
+   "as_of": "2026-07-14",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.4,
+    "yield": 0.43,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "OTC valuation context"
   }
  ],

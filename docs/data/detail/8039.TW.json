@@ -1,17 +1,9 @@
 {
  "stock": "8039.TW",
  "name": "台虹",
- "price": 169.0,
- "change_pct": 9.74,
+ "price": 185.5,
+ "change_pct": 9.76,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 139.94,
-   "h": 149.3,
-   "l": 136.0,
-   "c": 141.42,
-   "v": 34430812
-  },
   {
    "time": "2026-04-20",
    "o": 143.39,
@@ -482,11 +474,19 @@
    "h": 169.0,
    "l": 169.0,
    "c": 169.0,
-   "v": 8925581
+   "v": 8686313
+  },
+  {
+   "time": "2026-07-14",
+   "o": 173.0,
+   "h": 185.5,
+   "l": 169.0,
+   "c": 185.5,
+   "v": 48864175
   }
  ],
  "sr": {
-  "price": 169.0,
+  "price": 185.5,
   "resistance": [],
   "support": [
    137.5,
@@ -495,7 +495,6 @@
   "strong_support": 30.78
  },
  "spark": [
-  141.42,
   140.93,
   144.38,
   158.67,
@@ -554,10 +553,11 @@
   140.0,
   154.0,
   154.0,
-  169.0
+  169.0,
+  185.5
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": {
   "rev_yoy": -6.6,
   "rev_accel": false,
@@ -566,6 +566,56 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 10,614,642 股",
+   "value": {
+    "foreign": 10613132,
+    "trust": 0,
+    "dealer": 1510,
+    "total": 10614642
+   },
+   "severity": "info",
+   "as_of": "2026-07-14",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +14.0%",
+   "value": {
+    "fin_net": 1933,
+    "fin_pct": 0.13965753919514487
+   },
+   "severity": "warn",
+   "as_of": "2026-07-14",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 71.3 / 殖利率 1.18% / PB 4.21",
+   "value": {
+    "pe": 71.31,
+    "yield": 1.18,
+    "pb": 4.21
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 58.29,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=58.29；WoW+0.01；股東人數-586"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -671,6 +721,10 @@
    {
     "t": "2026-07-13",
     "v": 8072
+   },
+   {
+    "t": "2026-07-14",
+    "v": 18686
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "2332.TW",
  "name": "友訊",
- "price": 25.95,
- "change_pct": 7.9,
+ "price": 24.05,
+ "change_pct": -7.32,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 15.45,
-   "h": 15.5,
-   "l": 15.25,
-   "c": 15.35,
-   "v": 2275997
-  },
   {
    "time": "2026-04-20",
    "o": 15.35,
@@ -482,12 +474,21 @@
    "h": 26.45,
    "l": 23.9,
    "c": 25.95,
-   "v": 131253501
+   "v": 131190686
+  },
+  {
+   "time": "2026-07-14",
+   "o": 25.9,
+   "h": 25.9,
+   "l": 23.4,
+   "c": 24.05,
+   "v": 60741580
   }
  ],
  "sr": {
-  "price": 25.95,
+  "price": 24.05,
   "resistance": [
+   25.15,
    28.43
   ],
   "support": [
@@ -497,7 +498,6 @@
   "strong_support": 13.5
  },
  "spark": [
-  15.35,
   15.2,
   15.15,
   15.25,
@@ -556,10 +556,11 @@
   21.9,
   24.05,
   24.05,
-  25.95
+  25.95,
+  24.05
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": {
   "rev_yoy": 19.4,
   "rev_accel": false,
@@ -568,6 +569,44 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 9,863,994 股",
+   "value": {
+    "foreign": -9964532,
+    "trust": 0,
+    "dealer": 100538,
+    "total": -9863994
+   },
+   "severity": "info",
+   "as_of": "2026-07-14",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PB 1.88",
+   "value": {
+    "pe": null,
+    "yield": null,
+    "pb": 1.88
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 44.68,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=44.68；WoW+1.84；股東人數-1236"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -673,6 +712,10 @@
    {
     "t": "2026-07-13",
     "v": 17765
+   },
+   {
+    "t": "2026-07-14",
+    "v": 7901
    }
   ],
   "holder_pct": [

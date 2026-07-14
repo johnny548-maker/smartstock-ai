@@ -1,17 +1,9 @@
 {
  "stock": "6505.TW",
  "name": "台塑化",
- "price": 63.1,
- "change_pct": 7.31,
+ "price": 66.2,
+ "change_pct": 4.91,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 54.56,
-   "h": 55.24,
-   "l": 52.9,
-   "c": 53.68,
-   "v": 9690084
-  },
   {
    "time": "2026-04-20",
    "o": 54.56,
@@ -482,22 +474,29 @@
    "h": 64.4,
    "l": 60.5,
    "c": 63.1,
-   "v": 33374995
+   "v": 33178853
+  },
+  {
+   "time": "2026-07-14",
+   "o": 64.8,
+   "h": 67.2,
+   "l": 63.3,
+   "c": 66.2,
+   "v": 49702833
   }
  ],
  "sr": {
-  "price": 63.1,
+  "price": 66.2,
   "resistance": [
    66.68
   ],
   "support": [
-   54.56,
-   54.17
+   57.1,
+   54.56
   ],
   "strong_support": 37.45
  },
  "spark": [
-  53.68,
   52.8,
   51.82,
   51.53,
@@ -556,10 +555,11 @@
   59.4,
   58.8,
   58.8,
-  63.1
+  63.1,
+  66.2
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": {
   "rev_yoy": 18.5,
   "rev_accel": false,
@@ -567,22 +567,22 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 63.1,
-  "stop": 58.68,
-  "target": 74.14,
-  "atr_bracket": 74.14,
+  "entry": 66.2,
+  "stop": 61.57,
+  "target": 77.78,
+  "atr_bracket": 77.78,
   "measured_move": 69.5,
   "target_band": [
    69.5,
    70.21,
-   74.14
+   77.78
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 4.5,
+  "atr_pct": 4.3,
   "swing_stop": 56.25,
-  "chandelier": 57.24,
+  "chandelier": 59.69,
   "fib_targets": [
    67.4,
    70.21,
@@ -594,28 +594,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 10,701,443 股",
+   "label": "三大法人買超 12,080,844 股",
    "value": {
-    "foreign": 8886683,
-    "trust": 889148,
-    "dealer": 925612,
-    "total": 10701443
+    "foreign": 11284340,
+    "trust": -6627,
+    "dealer": 803131,
+    "total": 12080844
    },
    "severity": "info",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 21.1 / 殖利率 2.04% / PB 1.49",
+   "label": "PE 22.6 / 殖利率 1.90% / PB 1.60",
    "value": {
-    "pe": 21.08,
-    "yield": 2.04,
-    "pb": 1.49
+    "pe": 22.62,
+    "yield": 1.9,
+    "pb": 1.6
    },
    "severity": "info",
-   "as_of": "2026-07-09",
+   "as_of": "2026-07-13",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -733,6 +733,10 @@
    {
     "t": "2026-07-13",
     "v": 36099
+   },
+   {
+    "t": "2026-07-14",
+    "v": 48180
    }
   ],
   "holder_pct": [

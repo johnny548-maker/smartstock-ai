@@ -1,17 +1,9 @@
 {
  "stock": "2645.TW",
  "name": "長榮航太",
- "price": 251.5,
- "change_pct": 7.02,
+ "price": 241.0,
+ "change_pct": -4.17,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 154.22,
-   "h": 158.62,
-   "l": 153.24,
-   "c": 157.16,
-   "v": 1750555
-  },
   {
    "time": "2026-04-20",
    "o": 158.63,
@@ -482,11 +474,19 @@
    "h": 258.0,
    "l": 245.5,
    "c": 251.5,
-   "v": 9436128
+   "v": 9277692
+  },
+  {
+   "time": "2026-07-14",
+   "o": 247.0,
+   "h": 253.5,
+   "l": 236.5,
+   "c": 241.0,
+   "v": 10414509
   }
  ],
  "sr": {
-  "price": 251.5,
+  "price": 241.0,
   "resistance": [],
   "support": [
    183.1,
@@ -495,7 +495,6 @@
   "strong_support": 79.18
  },
  "spark": [
-  157.16,
   162.54,
   163.03,
   162.05,
@@ -554,10 +553,11 @@
   230.59,
   235.0,
   235.0,
-  251.5
+  251.5,
+  241.0
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": {
   "rev_yoy": 10.6,
   "rev_accel": false,
@@ -566,6 +566,56 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 67,268 股",
+   "value": {
+    "foreign": 103052,
+    "trust": -112000,
+    "dealer": -58320,
+    "total": -67268
+   },
+   "severity": "info",
+   "as_of": "2026-07-14",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +23.5%",
+   "value": {
+    "fin_net": 889,
+    "fin_pct": 0.23481246698362387
+   },
+   "severity": "warn",
+   "as_of": "2026-07-14",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 38.4 / 殖利率 1.99% / PB 7.44",
+   "value": {
+    "pe": 38.4,
+    "yield": 1.99,
+    "pb": 7.44
+   },
+   "severity": "info",
+   "as_of": "2026-07-13",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 86.57,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=86.57；WoW+0.31；股東人數-714"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -671,6 +721,10 @@
    {
     "t": "2026-07-13",
     "v": 7479
+   },
+   {
+    "t": "2026-07-14",
+    "v": 7412
    }
   ],
   "holder_pct": [

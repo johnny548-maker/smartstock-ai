@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 669.21,
- "change_pct": 5.97,
+ "price": 656.73,
+ "change_pct": -1.86,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 666.38,
-   "h": 677.87,
-   "l": 663.6,
-   "c": 670.96,
-   "v": 14952600
-  },
   {
    "time": "2026-04-16",
    "o": 675.36,
@@ -482,14 +474,22 @@
    "h": 677.86,
    "l": 658.01,
    "c": 669.21,
-   "v": 40563100
+   "v": 40608900
+  },
+  {
+   "time": "2026-07-13",
+   "o": 661.38,
+   "h": 676.62,
+   "l": 654.2,
+   "c": 656.73,
+   "v": 19809100
   }
  ],
  "sr": {
-  "price": 669.21,
+  "price": 656.73,
   "resistance": [
-   671.02,
-   671.57
+   659.82,
+   662.17
   ],
   "support": [
    652.45,
@@ -498,7 +498,6 @@
   "strong_support": 519.78
  },
  "spark": [
-  670.96,
   676.24,
   687.91,
   670.29,
@@ -557,16 +556,17 @@
   615.58,
   603.12,
   631.48,
-  669.21
+  669.21,
+  656.73
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-10",
+ "spark_start": "2026-04-16",
+ "spark_end": "2026-07-13",
  "fundamental": {
   "pe_trailing": 24.33491,
   "pe_forward": 18.420841,
   "eps_trailing": 27.5,
   "eps_forward": 36.32896,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,16 +575,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 73 分 / 22 留言",
+   "label": "HN 討論熱度 20 篇 / 885 分 / 401 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 73,
-    "comments": 22,
+    "points": 885,
+    "comments": 401,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-07-13",
+   "severity": "warn",
+   "as_of": "2026-07-14",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +599,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

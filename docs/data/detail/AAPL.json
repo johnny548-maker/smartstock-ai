@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 315.32,
- "change_pct": -0.28,
+ "price": 317.31,
+ "change_pct": 0.63,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 257.92,
-   "h": 266.31,
-   "l": 257.57,
-   "c": 266.18,
-   "v": 49913500
-  },
   {
    "time": "2026-04-16",
    "o": 266.55,
@@ -482,11 +474,19 @@
    "h": 316.91,
    "l": 312.17,
    "c": 315.32,
-   "v": 34109200
+   "v": 34132300
+  },
+  {
+   "time": "2026-07-13",
+   "o": 317.02,
+   "h": 323.45,
+   "l": 315.78,
+   "c": 317.31,
+   "v": 43214700
   }
  ],
  "sr": {
-  "price": 315.32,
+  "price": 317.31,
   "resistance": [
    317.4
   ],
@@ -497,7 +497,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  266.18,
   263.16,
   269.98,
   272.8,
@@ -556,34 +555,35 @@
   310.66,
   313.39,
   316.22,
-  315.32
+  315.32,
+  317.31
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-10",
+ "spark_start": "2026-04-16",
+ "spark_end": "2026-07-13",
  "fundamental": {
   "pe_trailing": 38.174335,
   "pe_forward": 32.802303,
   "eps_trailing": 8.26,
   "eps_forward": 9.61274,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 315.32,
-  "stop": 297.43,
-  "target": 360.05,
-  "atr_bracket": 360.05,
+  "entry": 317.31,
+  "stop": 299.06,
+  "target": 362.92,
+  "atr_bracket": 362.92,
   "measured_move": 317.46,
   "target_band": [
    317.46,
-   360.05
+   362.92
   ],
-  "stop_pct": -5.7,
-  "target_pct": 14.2,
+  "stop_pct": -5.8,
+  "target_pct": 14.4,
   "rr": 2.5,
-  "atr_pct": 2.8,
-  "swing_stop": 271.07,
-  "chandelier": 291.39,
+  "atr_pct": 2.9,
+  "swing_stop": 271.01,
+  "chandelier": 298.7,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -591,16 +591,16 @@
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 167 分 / 95 留言",
+   "label": "HN 討論熱度 20 篇 / 702 分 / 325 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 167,
-    "comments": 95,
+    "points": 702,
+    "comments": 325,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-07-13",
+   "severity": "warn",
+   "as_of": "2026-07-14",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -615,7 +615,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

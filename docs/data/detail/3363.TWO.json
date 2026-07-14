@@ -1,17 +1,9 @@
 {
  "stock": "3363.TWO",
  "name": "上詮",
- "price": 601.0,
- "change_pct": -1.15,
+ "price": 579.0,
+ "change_pct": -3.66,
  "ohlc": [
-  {
-   "time": "2026-04-17",
-   "o": 852.0,
-   "h": 912.0,
-   "l": 850.0,
-   "c": 899.0,
-   "v": 6214347
-  },
   {
    "time": "2026-04-20",
    "o": 909.0,
@@ -482,11 +474,19 @@
    "h": 621.0,
    "l": 582.0,
    "c": 601.0,
-   "v": 2720521
+   "v": 2620366
+  },
+  {
+   "time": "2026-07-14",
+   "o": 596.0,
+   "h": 608.0,
+   "l": 541.0,
+   "c": 579.0,
+   "v": 2903870
   }
  ],
  "sr": {
-  "price": 601.0,
+  "price": 579.0,
   "resistance": [
    645.0,
    677.0
@@ -498,7 +498,6 @@
   "strong_support": 126.0
  },
  "spark": [
-  899.0,
   988.0,
   990.0,
   956.0,
@@ -557,10 +556,11 @@
   640.0,
   608.0,
   608.0,
-  601.0
+  601.0,
+  579.0
  ],
- "spark_start": "2026-04-17",
- "spark_end": "2026-07-13",
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-14",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 8076,
-    "trust": 0,
-    "dealer": -771,
-    "total": 7305
+    "foreign": 96285,
+    "trust": -4000,
+    "dealer": 2812,
+    "total": 95097
    },
    "severity": "info",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-13",
+   "as_of": "2026-07-14",
    "note": "OTC valuation context"
   }
  ],
