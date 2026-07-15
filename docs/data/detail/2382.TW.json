@@ -1,17 +1,9 @@
 {
  "stock": "2382.TW",
  "name": "廣達",
- "price": 380.0,
- "change_pct": 0.53,
+ "price": 381.0,
+ "change_pct": 0.26,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 320.0,
-   "h": 330.5,
-   "l": 320.0,
-   "c": 329.0,
-   "v": 18863979
-  },
   {
    "time": "2026-04-21",
    "o": 333.0,
@@ -482,11 +474,19 @@
    "h": 380.0,
    "l": 368.0,
    "c": 380.0,
-   "v": 22415089
+   "v": 22083411
+  },
+  {
+   "time": "2026-07-15",
+   "o": 383.5,
+   "h": 384.0,
+   "l": 376.0,
+   "c": 381.0,
+   "v": 21730578
   }
  ],
  "sr": {
-  "price": 380.0,
+  "price": 381.0,
   "resistance": [
    385.0,
    386.5
@@ -498,7 +498,6 @@
   "strong_support": 252.5
  },
  "spark": [
-  329.0,
   340.0,
   335.0,
   322.0,
@@ -557,10 +556,11 @@
   373.5,
   373.5,
   378.0,
-  380.0
+  380.0,
+  381.0
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-14",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-15",
  "fundamental": {
   "rev_yoy": 102.9,
   "rev_accel": false,
@@ -570,44 +570,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 1,941,408 股",
-   "value": {
-    "foreign": -6230793,
-    "trust": 3549395,
-    "dealer": 739990,
-    "total": -1941408
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -350
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 19.0 / 殖利率 4.13% / PB 7.02",
-   "value": {
-    "pe": 19.0,
-    "yield": 4.13,
-    "pb": 7.02
-   },
-   "severity": "info",
-   "as_of": "2026-07-13",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

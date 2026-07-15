@@ -1,6 +1,6 @@
 {
  "stock": "AMD",
- "name": "AMD",
+ "name": "Advanced Micro Devices, Inc. - Common Stock",
  "price": 534.39,
  "change_pct": -4.21,
  "ohlc": [
@@ -482,7 +482,7 @@
    "h": 551.87,
    "l": 526.92,
    "c": 534.39,
-   "v": 22890700
+   "v": 22957400
   }
  ],
  "sr": {
@@ -495,7 +495,7 @@
    498.15,
    495.35
   ],
-  "strong_support": 149.22
+  "strong_support": 393.36
  },
  "spark": [
   278.26,
@@ -561,46 +561,7 @@
  ],
  "spark_start": "2026-04-16",
  "spark_end": "2026-07-13",
- "fundamental": {
-  "pe_trailing": 185.34552,
-  "pe_forward": 42.005203,
-  "eps_trailing": 3.01,
-  "eps_forward": 13.28145,
-  "stale": true,
-  "source": "yfinance"
- },
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 76 分 / 9 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 76,
-    "comments": 9,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 527,264 股交割失敗）",
-   "value": {
-    "total_shares": 527264,
-    "days": 6,
-    "max_shares": 240335,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-07-14",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 151.0,
- "change_pct": -1.63,
+ "price": 166.0,
+ "change_pct": 9.93,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 76.69,
-   "h": 78.85,
-   "l": 75.02,
-   "c": 75.61,
-   "v": 348790257
-  },
   {
    "time": "2026-04-21",
    "o": 76.69,
@@ -482,23 +474,29 @@
    "h": 151.0,
    "l": 140.0,
    "c": 151.0,
-   "v": 87674821
+   "v": 85375932
+  },
+  {
+   "time": "2026-07-15",
+   "o": 158.5,
+   "h": 166.0,
+   "l": 156.0,
+   "c": 166.0,
+   "v": 110333726
   }
  ],
  "sr": {
-  "price": 151.0,
+  "price": 166.0,
   "resistance": [
-   152.88,
    182.38
   ],
   "support": [
    149.0,
    114.54
   ],
-  "strong_support": 36.48
+  "strong_support": 39.43
  },
  "spark": [
-  75.61,
   74.92,
   77.28,
   72.36,
@@ -557,31 +555,45 @@
   156.0,
   156.0,
   153.5,
-  151.0
+  151.0,
+  166.0
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-14",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-15",
  "fundamental": {
   "rev_yoy": 22.9,
   "rev_accel": true,
   "stale": false,
   "source": "twse_revenue"
  },
- "levels": null,
+ "levels": {
+  "entry": 166.0,
+  "stop": 154.38,
+  "target": 195.05,
+  "atr_bracket": 195.05,
+  "measured_move": 181.89,
+  "target_band": [
+   181.89,
+   195.05
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 6.2,
+  "swing_stop": 145.91,
+  "chandelier": 150.34,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第1次） 處置期間：115/07/02～115/07/15",
-   "value": {
-    "level": 1,
-    "reason": "最近十個營業日已有六次",
-    "period": "115/07/02～115/07/15"
-   },
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 76.78,
    "severity": "warn",
-   "as_of": "2026-07-14",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+   "as_of": "20260709",
+   "note": "大戶持股%=76.78；WoW-0.04；股東人數+5075"
   }
  ],
  "trends": {

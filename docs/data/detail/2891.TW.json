@@ -1,17 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 65.0,
- "change_pct": -2.26,
+ "price": 63.5,
+ "change_pct": -2.31,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 51.2,
-   "h": 51.78,
-   "l": 50.81,
-   "c": 51.2,
-   "v": 47080788
-  },
   {
    "time": "2026-04-21",
    "o": 51.68,
@@ -482,11 +474,19 @@
    "h": 67.5,
    "l": 63.5,
    "c": 65.0,
-   "v": 80082400
+   "v": 79238013
+  },
+  {
+   "time": "2026-07-15",
+   "o": 64.6,
+   "h": 65.3,
+   "l": 62.9,
+   "c": 63.5,
+   "v": 78825351
   }
  ],
  "sr": {
-  "price": 65.0,
+  "price": 63.5,
   "resistance": [
    67.01,
    67.98
@@ -498,7 +498,6 @@
   "strong_support": 39.68
  },
  "spark": [
-  51.2,
   51.1,
   51.59,
   50.81,
@@ -557,63 +556,15 @@
   67.4,
   67.4,
   66.5,
-  65.0
+  65.0,
+  63.5
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-14",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-15",
  "fundamental": null,
- "levels": {
-  "entry": 65.0,
-  "stop": 61.24,
-  "target": 74.4,
-  "atr_bracket": 74.4,
-  "measured_move": 72.03,
-  "target_band": [
-   71.2,
-   72.03,
-   74.4
-  ],
-  "stop_pct": -5.8,
-  "target_pct": 14.5,
-  "rr": 2.5,
-  "atr_pct": 2.9,
-  "swing_stop": 66.74,
-  "chandelier": 64.54,
-  "fib_targets": [
-   70.37,
-   71.2,
-   72.12
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 25,450,848 股",
-   "value": {
-    "foreign": 18799077,
-    "trust": 3201567,
-    "dealer": 3450204,
-    "total": 25450848
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 16.0 / 殖利率 3.76% / PB 2.38",
-   "value": {
-    "pe": 16.02,
-    "yield": 3.76,
-    "pb": 2.38
-   },
-   "severity": "info",
-   "as_of": "2026-07-13",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

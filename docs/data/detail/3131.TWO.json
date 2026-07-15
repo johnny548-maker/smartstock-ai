@@ -1,17 +1,9 @@
 {
  "stock": "3131.TWO",
  "name": "弘塑",
- "price": 3045.0,
- "change_pct": -5.14,
+ "price": 3205.0,
+ "change_pct": 5.25,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 3300.0,
-   "h": 3380.0,
-   "l": 3210.0,
-   "c": 3210.0,
-   "v": 877379
-  },
   {
    "time": "2026-04-21",
    "o": 3370.0,
@@ -482,23 +474,30 @@
    "h": 3210.0,
    "l": 2900.0,
    "c": 3045.0,
-   "v": 583456
+   "v": 555105
+  },
+  {
+   "time": "2026-07-15",
+   "o": 3160.0,
+   "h": 3230.0,
+   "l": 3065.0,
+   "c": 3205.0,
+   "v": 276096
   }
  ],
  "sr": {
-  "price": 3045.0,
+  "price": 3205.0,
   "resistance": [
    3235.0,
    3520.0
   ],
   "support": [
-   2895.0,
-   2835.0
+   3085.0,
+   3045.0
   ],
   "strong_support": 744.0
  },
  "spark": [
-  3210.0,
   3280.0,
   3400.0,
   3150.0,
@@ -557,10 +556,11 @@
   3305.0,
   3305.0,
   3210.0,
-  3045.0
+  3045.0,
+  3205.0
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-14",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-15",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 121928,
-    "trust": -108920,
-    "dealer": -11359,
-    "total": 1649
+    "foreign": 18809,
+    "trust": -33741,
+    "dealer": 9132,
+    "total": -5800
    },
    "severity": "info",
-   "as_of": "2026-07-14",
+   "as_of": "2026-07-15",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.52,
+    "yield": 1.44,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-14",
+   "as_of": "2026-07-15",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "3189.TW",
  "name": "景碩",
- "price": 805.0,
- "change_pct": -1.71,
+ "price": 845.0,
+ "change_pct": 4.97,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 396.32,
-   "h": 429.76,
-   "l": 395.32,
-   "c": 429.76,
-   "v": 33039234
-  },
   {
    "time": "2026-04-21",
    "o": 452.23,
@@ -482,11 +474,19 @@
    "h": 805.0,
    "l": 738.0,
    "c": 805.0,
-   "v": 3705447
+   "v": 3558021
+  },
+  {
+   "time": "2026-07-15",
+   "o": 831.0,
+   "h": 859.0,
+   "l": 823.0,
+   "c": 845.0,
+   "v": 4081060
   }
  ],
  "sr": {
-  "price": 805.0,
+  "price": 845.0,
   "resistance": [
    937.4
   ],
@@ -497,7 +497,6 @@
   "strong_support": 60.0
  },
  "spark": [
-  429.76,
   472.69,
   490.66,
   478.18,
@@ -556,10 +555,11 @@
   795.0,
   795.0,
   819.0,
-  805.0
+  805.0,
+  845.0
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-14",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-15",
  "fundamental": {
   "rev_yoy": 32.3,
   "rev_accel": false,
@@ -569,57 +569,6 @@
  "levels": null,
  "generated_for": "detail",
  "overlays": [
-  {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 224,755 股",
-   "value": {
-    "foreign": 286964,
-    "trust": 2000,
-    "dealer": -64209,
-    "total": 224755
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -25
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 230.7 / 殖利率 0.19% / PB 10.00",
-   "value": {
-    "pe": 230.7,
-    "yield": 0.19,
-    "pb": 10.0
-   },
-   "severity": "info",
-   "as_of": "2026-07-13",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第2次） 處置期間：115/07/03～115/07/16",
-   "value": {
-    "level": 2,
-    "reason": "最近十個營業日已有六次",
-    "period": "115/07/03～115/07/16"
-   },
-   "severity": "risk",
-   "as_of": "2026-07-14",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  },
   {
    "source": "tdcc",
    "kind": "chip",

@@ -1,6 +1,6 @@
 {
  "stock": "AMZN",
- "name": "亞馬遜",
+ "name": "Amazon.com, Inc. - Common Stock",
  "price": 247.31,
  "change_pct": 0.8,
  "ohlc": [
@@ -482,20 +482,20 @@
    "h": 249.65,
    "l": 244.18,
    "c": 247.31,
-   "v": 34596500
+   "v": 34636100
   }
  ],
  "sr": {
   "price": 247.31,
   "resistance": [
-   247.78,
-   248.94
+   249.51,
+   249.71
   ],
   "support": [
-   238.49,
-   233.59
+   233.59,
+   225.55
   ],
-  "strong_support": 196.0
+  "strong_support": 225.55
  },
  "spark": [
   249.7,
@@ -561,46 +561,7 @@
  ],
  "spark_start": "2026-04-16",
  "spark_end": "2026-07-13",
- "fundamental": {
-  "pe_trailing": 29.547192,
-  "pe_forward": 25.0154,
-  "eps_trailing": 8.37,
-  "eps_forward": 9.88631,
-  "stale": false,
-  "source": "yfinance"
- },
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 5 篇 / 209 分 / 165 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 209,
-    "comments": 165,
-    "n": 5,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 322,917 股交割失敗）",
-   "value": {
-    "total_shares": 322917,
-    "days": 8,
-    "max_shares": 152730,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-07-14",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
