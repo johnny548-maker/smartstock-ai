@@ -1,17 +1,9 @@
 {
  "stock": "5425.TWO",
  "name": "台半",
- "price": 107.5,
- "change_pct": 0.47,
+ "price": 102.0,
+ "change_pct": -5.12,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 62.4,
-   "h": 63.5,
-   "l": 61.1,
-   "c": 62.6,
-   "v": 6229710
-  },
   {
    "time": "2026-04-22",
    "o": 62.8,
@@ -482,11 +474,19 @@
    "h": 110.0,
    "l": 104.0,
    "c": 107.5,
-   "v": 13707907
+   "v": 13518596
+  },
+  {
+   "time": "2026-07-16",
+   "o": 105.5,
+   "h": 107.0,
+   "l": 101.0,
+   "c": 102.0,
+   "v": 11748239
   }
  ],
  "sr": {
-  "price": 107.5,
+  "price": 102.0,
   "resistance": [
    125.5,
    143.0
@@ -498,7 +498,6 @@
   "strong_support": 34.0
  },
  "spark": [
-  62.6,
   62.0,
   59.1,
   58.2,
@@ -557,10 +556,11 @@
   130.5,
   117.5,
   107.0,
-  107.5
+  107.5,
+  102.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -2570725,
+    "foreign": 1695625,
     "trust": 0,
-    "dealer": -123295,
-    "total": -2694020
+    "dealer": -51818,
+    "total": 1643807
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.88,
+    "yield": 1.98,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

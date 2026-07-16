@@ -1,17 +1,9 @@
 {
  "stock": "8096.TWO",
  "name": "擎亞",
- "price": 146.0,
- "change_pct": -7.3,
+ "price": 142.0,
+ "change_pct": -2.74,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 95.1,
-   "h": 95.6,
-   "l": 93.0,
-   "c": 93.5,
-   "v": 9125661
-  },
   {
    "time": "2026-04-22",
    "o": 94.3,
@@ -482,23 +474,30 @@
    "h": 158.5,
    "l": 146.0,
    "c": 146.0,
-   "v": 20156131
+   "v": 19974485
+  },
+  {
+   "time": "2026-07-16",
+   "o": 140.0,
+   "h": 150.0,
+   "l": 140.0,
+   "c": 142.0,
+   "v": 2030172
   }
  ],
  "sr": {
-  "price": 146.0,
+  "price": 142.0,
   "resistance": [
-   162.0,
-   177.0
+   145.0,
+   162.0
   ],
   "support": [
-   142.0,
-   116.0
+   116.0,
+   92.2
   ],
   "strong_support": 33.79
  },
  "spark": [
-  93.5,
   96.0,
   90.3,
   88.6,
@@ -557,10 +556,11 @@
   166.5,
   158.5,
   157.5,
-  146.0
+  146.0,
+  142.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -7131527,
-    "trust": 2000,
-    "dealer": -67255,
-    "total": -7196782
+    "foreign": -41000,
+    "trust": 0,
+    "dealer": 89182,
+    "total": 48182
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.34,
+    "yield": 0.35,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
- "name": "Apple Inc. - Common Stock",
- "price": 317.31,
- "change_pct": 0.63,
+ "name": "蘋果",
+ "price": 327.5,
+ "change_pct": 4.01,
  "ohlc": [
-  {
-   "time": "2026-04-16",
-   "o": 266.55,
-   "h": 266.91,
-   "l": 261.03,
-   "c": 263.16,
-   "v": 43323100
-  },
-  {
-   "time": "2026-04-17",
-   "o": 266.71,
-   "h": 272.05,
-   "l": 266.47,
-   "c": 269.98,
-   "v": 61436200
-  },
   {
    "time": "2026-04-20",
    "o": 270.08,
@@ -483,22 +467,34 @@
    "l": 315.78,
    "c": 317.31,
    "v": 43257800
+  },
+  {
+   "time": "2026-07-14",
+   "o": 313.76,
+   "h": 316.19,
+   "l": 311.91,
+   "c": 314.86,
+   "v": 36336800
+  },
+  {
+   "time": "2026-07-15",
+   "o": 317.62,
+   "h": 328.73,
+   "l": 317.32,
+   "c": 327.5,
+   "v": 60884500
   }
  ],
  "sr": {
-  "price": 317.31,
-  "resistance": [
-   317.4
-  ],
+  "price": 327.5,
+  "resistance": [],
   "support": [
    305.02,
    287.38
   ],
-  "strong_support": 264.83
+  "strong_support": 200.7
  },
  "spark": [
-  263.16,
-  269.98,
   272.8,
   265.93,
   272.92,
@@ -556,11 +552,68 @@
   313.39,
   316.22,
   315.32,
-  317.31
+  317.31,
+  314.86,
+  327.5
  ],
- "spark_start": "2026-04-16",
- "spark_end": "2026-07-13",
- "fundamental": null,
- "levels": null,
- "generated_for": "detail"
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-15",
+ "fundamental": {
+  "pe_trailing": 39.696968,
+  "pe_forward": 34.04044,
+  "eps_trailing": 8.25,
+  "eps_forward": 9.62091,
+  "stale": false,
+  "source": "yfinance"
+ },
+ "levels": {
+  "entry": 327.5,
+  "stop": 308.53,
+  "target": 374.92,
+  "atr_bracket": 374.92,
+  "measured_move": null,
+  "target_band": [
+   374.92
+  ],
+  "stop_pct": -5.8,
+  "target_pct": 14.5,
+  "rr": 2.5,
+  "atr_pct": 2.9,
+  "swing_stop": 270.9,
+  "chandelier": 303.37,
+  "fib_targets": []
+ },
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 60 分 / 11 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 60,
+    "comments": 11,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 875,954 股交割失敗）",
+   "value": {
+    "total_shares": 875954,
+    "days": 8,
+    "max_shares": 614456,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-16",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

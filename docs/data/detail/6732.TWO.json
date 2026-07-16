@@ -1,17 +1,9 @@
 {
  "stock": "6732.TWO",
  "name": "昇佳電子",
- "price": 201.0,
- "change_pct": -2.43,
+ "price": 214.0,
+ "change_pct": 6.47,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 150.83,
-   "h": 153.25,
-   "l": 150.34,
-   "c": 152.28,
-   "v": 165100
-  },
   {
    "time": "2026-04-22",
    "o": 153.25,
@@ -482,23 +474,30 @@
    "h": 205.0,
    "l": 195.5,
    "c": 201.0,
-   "v": 836600
+   "v": 819161
+  },
+  {
+   "time": "2026-07-16",
+   "o": 200.0,
+   "h": 217.0,
+   "l": 193.0,
+   "c": 214.0,
+   "v": 1203229
   }
  ],
  "sr": {
-  "price": 201.0,
+  "price": 214.0,
   "resistance": [
-   205.63,
-   209.48
+   220.04,
+   221.42
   ],
   "support": [
-   198.91,
-   197.53
+   209.94,
+   203.96
   ],
   "strong_support": 140.16
  },
  "spark": [
-  152.28,
   160.04,
   151.8,
   155.68,
@@ -557,10 +556,11 @@
   196.0,
   197.5,
   206.0,
-  201.0
+  201.0,
+  214.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -186990,
+    "foreign": 49320,
     "trust": 0,
-    "dealer": 3618,
-    "total": -183372
+    "dealer": 18535,
+    "total": 67855
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.74,
+    "yield": 2.57,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "4991.TWO",
  "name": "環宇-KY",
- "price": 426.0,
- "change_pct": 2.16,
+ "price": 400.0,
+ "change_pct": -6.1,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 724.0,
-   "h": 724.0,
-   "l": 670.0,
-   "c": 721.0,
-   "v": 776105
-  },
   {
    "time": "2026-04-22",
    "o": 701.0,
@@ -482,11 +474,19 @@
    "h": 436.0,
    "l": 413.5,
    "c": 426.0,
-   "v": 2915449
+   "v": 2833800
+  },
+  {
+   "time": "2026-07-16",
+   "o": 414.5,
+   "h": 415.0,
+   "l": 394.5,
+   "c": 400.0,
+   "v": 3060855
   }
  ],
  "sr": {
-  "price": 426.0,
+  "price": 400.0,
   "resistance": [
    477.0,
    575.0
@@ -498,7 +498,6 @@
   "strong_support": 33.05
  },
  "spark": [
-  721.0,
   693.0,
   635.0,
   596.0,
@@ -557,10 +556,11 @@
   461.5,
   450.5,
   417.0,
-  426.0
+  426.0,
+  400.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -284680,
-    "trust": -15105,
-    "dealer": 9464,
-    "total": -290321
+    "foreign": 842706,
+    "trust": -8727,
+    "dealer": -24091,
+    "total": 809888
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

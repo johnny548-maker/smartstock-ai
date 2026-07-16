@@ -1,17 +1,9 @@
 {
  "stock": "5328.TWO",
  "name": "華容",
- "price": 66.2,
- "change_pct": 3.44,
+ "price": 67.0,
+ "change_pct": 1.21,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 26.0,
-   "h": 26.35,
-   "l": 25.7,
-   "c": 26.25,
-   "v": 2959045
-  },
   {
    "time": "2026-04-22",
    "o": 26.25,
@@ -482,11 +474,19 @@
    "h": 66.2,
    "l": 60.0,
    "c": 66.2,
-   "v": 18900030
+   "v": 18821619
+  },
+  {
+   "time": "2026-07-16",
+   "o": 65.5,
+   "h": 72.5,
+   "l": 65.2,
+   "c": 67.0,
+   "v": 39145324
   }
  ],
  "sr": {
-  "price": 66.2,
+  "price": 67.0,
   "resistance": [
    88.8
   ],
@@ -497,7 +497,6 @@
   "strong_support": 10.34
  },
  "spark": [
-  26.25,
   25.6,
   24.2,
   23.75,
@@ -556,10 +555,11 @@
   70.5,
   65.4,
   64.0,
-  66.2
+  66.2,
+  67.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -966275,
+    "foreign": -1865225,
     "trust": 0,
-    "dealer": 1457,
-    "total": -964818
+    "dealer": -10081,
+    "total": -1875306
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.53,
+    "yield": 0.52,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

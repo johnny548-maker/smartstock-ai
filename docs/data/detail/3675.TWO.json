@@ -1,17 +1,9 @@
 {
  "stock": "3675.TWO",
  "name": "德微",
- "price": 324.0,
- "change_pct": -2.41,
+ "price": 317.0,
+ "change_pct": -2.16,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 205.0,
-   "h": 221.0,
-   "l": 201.0,
-   "c": 213.0,
-   "v": 1652250
-  },
   {
    "time": "2026-04-22",
    "o": 217.0,
@@ -482,14 +474,22 @@
    "h": 338.0,
    "l": 316.0,
    "c": 324.0,
-   "v": 1406243
+   "v": 1336263
+  },
+  {
+   "time": "2026-07-16",
+   "o": 318.5,
+   "h": 326.5,
+   "l": 307.0,
+   "c": 317.0,
+   "v": 1113155
   }
  ],
  "sr": {
-  "price": 324.0,
+  "price": 317.0,
   "resistance": [
-   445.5,
-   459.0
+   323.72,
+   445.5
   ],
   "support": [
    287.0,
@@ -498,7 +498,6 @@
   "strong_support": 117.41
  },
  "spark": [
-  213.0,
   234.0,
   238.0,
   224.0,
@@ -557,10 +556,11 @@
   396.0,
   356.5,
   332.0,
-  324.0
+  324.0,
+  317.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -177096,
-    "trust": -84000,
-    "dealer": 4385,
-    "total": -256711
+    "foreign": -8162,
+    "trust": 0,
+    "dealer": -3187,
+    "total": -11349
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.23,
+    "yield": 1.26,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

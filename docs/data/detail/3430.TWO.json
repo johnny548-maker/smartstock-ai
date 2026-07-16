@@ -1,17 +1,9 @@
 {
  "stock": "3430.TWO",
  "name": "奇鈦科",
- "price": 143.0,
- "change_pct": 10.0,
+ "price": 139.0,
+ "change_pct": -2.8,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 97.68,
-   "h": 102.22,
-   "l": 97.58,
-   "c": 102.22,
-   "v": 3976060
-  },
   {
    "time": "2026-04-22",
    "o": 107.16,
@@ -482,11 +474,19 @@
    "h": 143.0,
    "l": 126.0,
    "c": 143.0,
-   "v": 1335958
+   "v": 1311434
+  },
+  {
+   "time": "2026-07-16",
+   "o": 143.5,
+   "h": 148.0,
+   "l": 137.0,
+   "c": 139.0,
+   "v": 1835036
   }
  ],
  "sr": {
-  "price": 143.0,
+  "price": 139.0,
   "resistance": [
    160.99,
    182.22
@@ -498,7 +498,6 @@
   "strong_support": 38.92
  },
  "spark": [
-  102.22,
   110.12,
   114.57,
   110.62,
@@ -557,10 +556,11 @@
   128.0,
   120.5,
   130.0,
-  143.0
+  143.0,
+  139.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 111843,
+    "foreign": -142067,
     "trust": 0,
-    "dealer": 8227,
-    "total": 120070
+    "dealer": 10136,
+    "total": -131931
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.12,
+    "yield": 1.15,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

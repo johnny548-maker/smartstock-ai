@@ -1,17 +1,9 @@
 {
  "stock": "8155.TWO",
  "name": "博智",
- "price": 337.5,
- "change_pct": 4.01,
+ "price": 327.5,
+ "change_pct": -2.96,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 390.16,
-   "h": 398.05,
-   "l": 374.89,
-   "c": 390.16,
-   "v": 3267835
-  },
   {
    "time": "2026-04-22",
    "o": 393.12,
@@ -482,23 +474,30 @@
    "h": 344.5,
    "l": 324.0,
    "c": 337.5,
-   "v": 662802
+   "v": 643086
+  },
+  {
+   "time": "2026-07-16",
+   "o": 331.0,
+   "h": 345.0,
+   "l": 327.0,
+   "c": 327.5,
+   "v": 1219265
   }
  ],
  "sr": {
-  "price": 337.5,
+  "price": 327.5,
   "resistance": [
    407.9,
    412.83
   ],
   "support": [
-   329.08,
-   238.93
+   238.93,
+   234.49
   ],
   "strong_support": 93.31
  },
  "spark": [
-  390.16,
   383.27,
   354.2,
   373.41,
@@ -557,10 +556,11 @@
   351.0,
   342.5,
   324.5,
-  337.5
+  337.5,
+  327.5
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 62051,
-    "trust": 0,
-    "dealer": 48109,
-    "total": 110160
+    "foreign": 365036,
+    "trust": -686000,
+    "dealer": -30432,
+    "total": -351396
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.53,
+    "yield": 1.57,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

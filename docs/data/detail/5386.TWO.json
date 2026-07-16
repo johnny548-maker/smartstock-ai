@@ -1,17 +1,9 @@
 {
  "stock": "5386.TWO",
  "name": "青雲",
- "price": 373.5,
- "change_pct": 7.64,
+ "price": 383.0,
+ "change_pct": 2.54,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 332.5,
-   "h": 365.5,
-   "l": 331.5,
-   "c": 365.5,
-   "v": 3127665
-  },
   {
    "time": "2026-04-22",
    "o": 371.5,
@@ -482,23 +474,30 @@
    "h": 379.5,
    "l": 343.0,
    "c": 373.5,
-   "v": 1217992
+   "v": 1168496
+  },
+  {
+   "time": "2026-07-16",
+   "o": 371.0,
+   "h": 391.5,
+   "l": 365.0,
+   "c": 383.0,
+   "v": 1366827
   }
  ],
  "sr": {
-  "price": 373.5,
+  "price": 383.0,
   "resistance": [
    399.0,
    412.5
   ],
   "support": [
-   328.0,
-   270.0
+   382.5,
+   328.0
   ],
   "strong_support": 44.26
  },
  "spark": [
-  365.5,
   380.0,
   345.0,
   340.0,
@@ -557,10 +556,11 @@
   371.5,
   351.0,
   347.0,
-  373.5
+  373.5,
+  383.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -37316,
+    "foreign": 117707,
     "trust": 0,
-    "dealer": 20639,
-    "total": -16677
+    "dealer": 19720,
+    "total": 137427
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.74,
+    "yield": 1.7,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

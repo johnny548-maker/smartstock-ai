@@ -1,17 +1,9 @@
 {
  "stock": "3374.TWO",
  "name": "精材",
- "price": 402.0,
- "change_pct": 9.99,
+ "price": 395.0,
+ "change_pct": -1.74,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 201.82,
-   "h": 201.82,
-   "l": 187.44,
-   "c": 191.41,
-   "v": 18710961
-  },
   {
    "time": "2026-04-22",
    "o": 191.41,
@@ -482,11 +474,19 @@
    "h": 402.0,
    "l": 392.0,
    "c": 402.0,
-   "v": 6128129
+   "v": 5945956
+  },
+  {
+   "time": "2026-07-16",
+   "o": 413.0,
+   "h": 418.0,
+   "l": 383.0,
+   "c": 395.0,
+   "v": 31825803
   }
  ],
  "sr": {
-  "price": 402.0,
+  "price": 395.0,
   "resistance": [],
   "support": [
    273.0,
@@ -495,7 +495,6 @@
   "strong_support": 108.11
  },
  "spark": [
-  191.41,
   192.9,
   181.99,
   196.86,
@@ -554,10 +553,11 @@
   356.5,
   358.0,
   365.5,
-  402.0
+  402.0,
+  395.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -652107,
-    "trust": 0,
-    "dealer": -653372,
-    "total": -1305479
+    "foreign": -796953,
+    "trust": 82236,
+    "dealer": 116947,
+    "total": -597770
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,12 +582,21 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.62,
+    "yield": 0.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 63.57,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=63.57；WoW+2.83；股東人數-3197"
   }
  ],
  "trends": {

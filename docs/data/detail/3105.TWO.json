@@ -1,17 +1,9 @@
 {
  "stock": "3105.TWO",
  "name": "穩懋",
- "price": 386.0,
- "change_pct": 1.98,
+ "price": 369.0,
+ "change_pct": -4.4,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 622.38,
-   "h": 634.33,
-   "l": 582.55,
-   "c": 614.42,
-   "v": 53646825
-  },
   {
    "time": "2026-04-22",
    "o": 612.43,
@@ -482,14 +474,22 @@
    "h": 394.0,
    "l": 379.0,
    "c": 386.0,
-   "v": 14850412
+   "v": 14627921
+  },
+  {
+   "time": "2026-07-16",
+   "o": 380.5,
+   "h": 381.0,
+   "l": 364.5,
+   "c": 369.0,
+   "v": 11057356
   }
  ],
  "sr": {
-  "price": 386.0,
+  "price": 369.0,
   "resistance": [
-   447.5,
-   556.66
+   379.41,
+   447.5
   ],
   "support": [
    304.72,
@@ -498,7 +498,6 @@
   "strong_support": 72.85
  },
  "spark": [
-  614.42,
   597.49,
   557.66,
   544.71,
@@ -557,10 +556,11 @@
   406.0,
   403.0,
   378.5,
-  386.0
+  386.0,
+  369.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 1356987,
-    "trust": -216,
-    "dealer": -713777,
-    "total": 642994
+    "foreign": 962196,
+    "trust": -173761,
+    "dealer": -15216,
+    "total": 773219
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.52,
+    "yield": 0.54,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

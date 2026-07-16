@@ -1,25 +1,9 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
- "price": 534.39,
- "change_pct": -4.21,
+ "name": "AMD",
+ "price": 529.14,
+ "change_pct": -3.46,
  "ohlc": [
-  {
-   "time": "2026-04-16",
-   "o": 264.99,
-   "h": 279.34,
-   "l": 261.51,
-   "c": 278.26,
-   "v": 64850800
-  },
-  {
-   "time": "2026-04-17",
-   "o": 281.0,
-   "h": 281.05,
-   "l": 274.14,
-   "c": 278.39,
-   "v": 35519900
-  },
   {
    "time": "2026-04-20",
    "o": 280.6,
@@ -483,10 +467,26 @@
    "l": 526.92,
    "c": 534.39,
    "v": 22957400
+  },
+  {
+   "time": "2026-07-14",
+   "o": 567.22,
+   "h": 574.2,
+   "l": 546.77,
+   "c": 548.13,
+   "v": 21201400
+  },
+  {
+   "time": "2026-07-15",
+   "o": 556.02,
+   "h": 558.89,
+   "l": 509.57,
+   "c": 529.14,
+   "v": 27767900
   }
  ],
  "sr": {
-  "price": 534.39,
+  "price": 529.14,
   "resistance": [
    546.44,
    558.37
@@ -495,11 +495,9 @@
    498.15,
    495.35
   ],
-  "strong_support": 393.36
+  "strong_support": 149.22
  },
  "spark": [
-  278.26,
-  278.39,
   274.95,
   284.49,
   303.46,
@@ -557,11 +555,37 @@
   517.41,
   546.72,
   557.89,
-  534.39
+  534.39,
+  548.13,
+  529.14
  ],
- "spark_start": "2026-04-16",
- "spark_end": "2026-07-13",
- "fundamental": null,
+ "spark_start": "2026-04-20",
+ "spark_end": "2026-07-15",
+ "fundamental": {
+  "pe_trailing": 175.21193,
+  "pe_forward": 39.69367,
+  "eps_trailing": 3.02,
+  "eps_forward": 13.33059,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 527,264 股交割失敗）",
+   "value": {
+    "total_shares": 527264,
+    "days": 6,
+    "max_shares": 240335,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-16",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

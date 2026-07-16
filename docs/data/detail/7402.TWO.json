@@ -1,17 +1,9 @@
 {
  "stock": "7402.TWO",
  "name": "邑錡",
- "price": 135.5,
- "change_pct": -4.24,
+ "price": 127.5,
+ "change_pct": -5.9,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 133.54,
-   "h": 135.03,
-   "l": 128.55,
-   "c": 129.55,
-   "v": 924430
-  },
   {
    "time": "2026-04-22",
    "o": 132.04,
@@ -482,23 +474,30 @@
    "h": 144.0,
    "l": 133.0,
    "c": 135.5,
-   "v": 2246739
+   "v": 2220578
+  },
+  {
+   "time": "2026-07-16",
+   "o": 133.0,
+   "h": 135.0,
+   "l": 127.5,
+   "c": 127.5,
+   "v": 1795278
   }
  ],
  "sr": {
-  "price": 135.5,
+  "price": 127.5,
   "resistance": [
-   137.02,
-   139.51
+   129.05,
+   130.55
   ],
   "support": [
-   130.55,
-   125.56
+   125.56,
+   124.57
   ],
   "strong_support": 65.61
  },
  "spark": [
-  129.55,
   129.05,
   127.06,
   122.57,
@@ -557,10 +556,11 @@
   130.55,
   143.5,
   141.5,
-  135.5
+  135.5,
+  127.5
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -40720,
+    "foreign": 117226,
     "trust": 0,
-    "dealer": -37589,
-    "total": -78309
+    "dealer": -31412,
+    "total": 85814
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.37,
+    "yield": 0.39,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

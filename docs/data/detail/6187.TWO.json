@@ -1,17 +1,9 @@
 {
  "stock": "6187.TWO",
  "name": "萬潤",
- "price": 1080.0,
- "change_pct": 9.64,
+ "price": 1075.0,
+ "change_pct": -0.46,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 1340.0,
-   "h": 1340.0,
-   "l": 1230.0,
-   "c": 1330.0,
-   "v": 3953838
-  },
   {
    "time": "2026-04-22",
    "o": 1380.0,
@@ -482,14 +474,22 @@
    "h": 1080.0,
    "l": 1005.0,
    "c": 1080.0,
-   "v": 1730515
+   "v": 1604089
+  },
+  {
+   "time": "2026-07-16",
+   "o": 1055.0,
+   "h": 1110.0,
+   "l": 1045.0,
+   "c": 1075.0,
+   "v": 3146681
   }
  ],
  "sr": {
-  "price": 1080.0,
+  "price": 1075.0,
   "resistance": [
    1110.0,
-   1175.0
+   1125.0
   ],
   "support": [
    1060.0,
@@ -498,7 +498,6 @@
   "strong_support": 196.04
  },
  "spark": [
-  1330.0,
   1390.0,
   1255.0,
   1170.0,
@@ -557,10 +556,11 @@
   1050.0,
   1035.0,
   985.0,
-  1080.0
+  1080.0,
+  1075.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 126485,
-    "trust": 84000,
-    "dealer": 67872,
-    "total": 278357
+    "foreign": -141950,
+    "trust": 19827,
+    "dealer": -60356,
+    "total": -182479
    },
-   "severity": "warn",
-   "as_of": "2026-07-15",
+   "severity": "info",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.08,
+    "yield": 1.09,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

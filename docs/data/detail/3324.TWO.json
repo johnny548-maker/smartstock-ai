@@ -1,17 +1,9 @@
 {
  "stock": "3324.TWO",
  "name": "雙鴻",
- "price": 896.0,
- "change_pct": 3.7,
+ "price": 902.0,
+ "change_pct": 0.67,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 1043.04,
-   "h": 1062.81,
-   "l": 1018.32,
-   "c": 1038.1,
-   "v": 4318891
-  },
   {
    "time": "2026-04-22",
    "o": 1043.04,
@@ -482,11 +474,19 @@
    "h": 905.0,
    "l": 872.0,
    "c": 896.0,
-   "v": 1082270
+   "v": 1015413
+  },
+  {
+   "time": "2026-07-16",
+   "o": 905.0,
+   "h": 922.0,
+   "l": 885.0,
+   "c": 902.0,
+   "v": 1556579
   }
  ],
  "sr": {
-  "price": 896.0,
+  "price": 902.0,
   "resistance": [
    911.55,
    935.28
@@ -498,7 +498,6 @@
   "strong_support": 384.98
  },
  "spark": [
-  1038.1,
   1141.91,
   1092.47,
   1201.23,
@@ -557,10 +556,11 @@
   920.0,
   905.0,
   864.0,
-  896.0
+  896.0,
+  902.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -287223,
-    "trust": 3291,
-    "dealer": 165534,
-    "total": -118398
+    "foreign": 73521,
+    "trust": -394,
+    "dealer": -63745,
+    "total": 9382
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.33,
+    "yield": 1.32,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

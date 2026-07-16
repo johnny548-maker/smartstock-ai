@@ -1,17 +1,9 @@
 {
  "stock": "6147.TWO",
  "name": "頎邦",
- "price": 204.5,
- "change_pct": 9.95,
+ "price": 198.0,
+ "change_pct": -3.18,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 131.36,
-   "h": 137.29,
-   "l": 128.4,
-   "c": 133.83,
-   "v": 18852818
-  },
   {
    "time": "2026-04-22",
    "o": 141.73,
@@ -482,11 +474,19 @@
    "h": 204.5,
    "l": 192.0,
    "c": 204.5,
-   "v": 25307334
+   "v": 25047257
+  },
+  {
+   "time": "2026-07-16",
+   "o": 203.0,
+   "h": 204.5,
+   "l": 197.0,
+   "c": 198.0,
+   "v": 20563075
   }
  ],
  "sr": {
-  "price": 204.5,
+  "price": 198.0,
   "resistance": [
    208.9,
    236.5
@@ -498,7 +498,6 @@
   "strong_support": 49.31
  },
  "spark": [
-  133.83,
   139.76,
   132.35,
   143.22,
@@ -557,10 +556,11 @@
   217.0,
   198.0,
   186.0,
-  204.5
+  204.5,
+  198.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 3783640,
-    "trust": -36596,
-    "dealer": -2349368,
-    "total": 1397676
+    "foreign": -165031,
+    "trust": -233611,
+    "dealer": -319465,
+    "total": -718107
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.37,
+    "yield": 1.41,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],

@@ -1,17 +1,9 @@
 {
  "stock": "6173.TWO",
  "name": "信昌電",
- "price": 231.5,
- "change_pct": -3.14,
+ "price": 215.5,
+ "change_pct": -6.91,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 88.71,
-   "h": 89.41,
-   "l": 86.43,
-   "c": 88.81,
-   "v": 4162938
-  },
   {
    "time": "2026-04-22",
    "o": 89.31,
@@ -482,11 +474,19 @@
    "h": 246.5,
    "l": 228.5,
    "c": 231.5,
-   "v": 8132801
+   "v": 7958115
+  },
+  {
+   "time": "2026-07-16",
+   "o": 228.0,
+   "h": 233.5,
+   "l": 213.0,
+   "c": 215.5,
+   "v": 8435140
   }
  ],
  "sr": {
-  "price": 231.5,
+  "price": 215.5,
   "resistance": [
    254.81,
    310.94
@@ -498,7 +498,6 @@
   "strong_support": 28.34
  },
  "spark": [
-  88.81,
   87.92,
   82.25,
   75.7,
@@ -557,10 +556,11 @@
   275.0,
   247.5,
   239.0,
-  231.5
+  231.5,
+  215.5
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -931876,
-    "trust": 23000,
-    "dealer": -575450,
-    "total": -1484326
+    "foreign": 2656627,
+    "trust": 0,
+    "dealer": 240930,
+    "total": 2897557
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,21 +585,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.78,
+    "yield": 0.84,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 66.19,
-   "severity": "warn",
-   "as_of": "20260709",
-   "note": "大戶持股%=66.19；WoW-1.94；股東人數+5404"
   }
  ],
  "trends": {

@@ -1,17 +1,9 @@
 {
  "stock": "3479.TWO",
  "name": "安勤",
- "price": 147.5,
- "change_pct": 3.87,
+ "price": 146.0,
+ "change_pct": -1.02,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 90.36,
-   "h": 90.65,
-   "l": 89.68,
-   "c": 90.07,
-   "v": 275322
-  },
   {
    "time": "2026-04-22",
    "o": 90.07,
@@ -482,11 +474,19 @@
    "h": 148.5,
    "l": 143.0,
    "c": 147.5,
-   "v": 3048270
+   "v": 3005911
+  },
+  {
+   "time": "2026-07-16",
+   "o": 147.5,
+   "h": 151.0,
+   "l": 146.0,
+   "c": 146.0,
+   "v": 2726139
   }
  ],
  "sr": {
-  "price": 147.5,
+  "price": 146.0,
   "resistance": [],
   "support": [
    133.0,
@@ -495,7 +495,6 @@
   "strong_support": 75.91
  },
  "spark": [
-  90.07,
   91.13,
   89.58,
   88.71,
@@ -554,10 +553,11 @@
   146.0,
   142.5,
   142.0,
-  147.5
+  147.5,
+  146.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +567,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -139574,
+    "foreign": -326000,
     "trust": 0,
-    "dealer": 12620,
-    "total": -126954
+    "dealer": -864,
+    "total": -326864
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,21 +582,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.13,
+    "yield": 3.17,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 42.64,
-   "severity": "warn",
-   "as_of": "20260709",
-   "note": "大戶持股%=42.64；WoW-1.16；股東人數+272"
   }
  ],
  "trends": {

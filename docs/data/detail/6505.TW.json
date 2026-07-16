@@ -1,17 +1,9 @@
 {
  "stock": "6505.TW",
  "name": "台塑化",
- "price": 72.8,
- "change_pct": 9.97,
+ "price": 80.0,
+ "change_pct": 9.89,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 53.58,
-   "h": 53.58,
-   "l": 51.82,
-   "c": 51.82,
-   "v": 9957743
-  },
   {
    "time": "2026-04-22",
    "o": 51.92,
@@ -482,11 +474,19 @@
    "h": 72.8,
    "l": 66.1,
    "c": 72.8,
-   "v": 58590163
+   "v": 58132414
+  },
+  {
+   "time": "2026-07-16",
+   "o": 74.5,
+   "h": 80.0,
+   "l": 73.2,
+   "c": 80.0,
+   "v": 101574220
   }
  ],
  "sr": {
-  "price": 72.8,
+  "price": 80.0,
   "resistance": [],
   "support": [
    57.1,
@@ -495,7 +495,6 @@
   "strong_support": 37.45
  },
  "spark": [
-  51.82,
   51.53,
   50.55,
   50.45,
@@ -554,10 +553,11 @@
   58.8,
   63.1,
   66.2,
-  72.8
+  72.8,
+  80.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": {
   "rev_yoy": 18.5,
   "rev_accel": false,
@@ -565,20 +565,20 @@
   "source": "twse_revenue"
  },
  "levels": {
-  "entry": 72.8,
-  "stop": 67.7,
-  "target": 85.54,
-  "atr_bracket": 85.54,
+  "entry": 80.0,
+  "stop": 74.4,
+  "target": 94.0,
+  "atr_bracket": 94.0,
   "measured_move": null,
   "target_band": [
-   85.54
+   94.0
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
   "atr_pct": 4.3,
-  "swing_stop": 56.15,
-  "chandelier": 64.59,
+  "swing_stop": 56.06,
+  "chandelier": 70.95,
   "fib_targets": [
    67.4,
    70.21,
@@ -587,6 +587,45 @@
  },
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 9,555,977 股",
+   "value": {
+    "foreign": 3891520,
+    "trust": 2519000,
+    "dealer": 3145457,
+    "total": 9555977
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融資餘額單日大增 +28.8%",
+   "value": {
+    "fin_net": 2611,
+    "fin_pct": 0.2883489784649365
+   },
+   "severity": "warn",
+   "as_of": "2026-07-16",
+   "note": "融資追價過熱跡象，資訊性 overlay；非賣出訊號，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 26.1 / 殖利率 1.65% / PB 1.85",
+   "value": {
+    "pe": 26.09,
+    "yield": 1.65,
+    "pb": 1.85
+   },
+   "severity": "info",
+   "as_of": "2026-07-15",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
   {
    "source": "tdcc",
    "kind": "chip",
@@ -706,6 +745,10 @@
    {
     "t": "2026-07-14",
     "v": 48180
+   },
+   {
+    "t": "2026-07-16",
+    "v": 57736
    }
   ],
   "holder_pct": [

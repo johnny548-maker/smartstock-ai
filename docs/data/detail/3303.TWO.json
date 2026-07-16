@@ -1,17 +1,9 @@
 {
  "stock": "3303.TWO",
  "name": "岱稜",
- "price": 62.7,
- "change_pct": 9.23,
+ "price": 57.4,
+ "change_pct": -8.45,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 43.95,
-   "h": 44.9,
-   "l": 43.72,
-   "c": 44.9,
-   "v": 278350
-  },
   {
    "time": "2026-04-22",
    "o": 44.9,
@@ -482,14 +474,22 @@
    "h": 62.7,
    "l": 54.5,
    "c": 62.7,
-   "v": 3722191
+   "v": 3714515
+  },
+  {
+   "time": "2026-07-16",
+   "o": 62.4,
+   "h": 62.5,
+   "l": 57.2,
+   "c": 57.4,
+   "v": 4376781
   }
  ],
  "sr": {
-  "price": 62.7,
+  "price": 57.4,
   "resistance": [
-   63.74,
-   64.1
+   61.42,
+   61.5
   ],
   "support": [
    53.35,
@@ -498,7 +498,6 @@
   "strong_support": 32.99
  },
  "spark": [
-  44.9,
   45.38,
   44.48,
   45.47,
@@ -557,10 +556,11 @@
   56.2,
   56.0,
   57.4,
-  62.7
+  62.7,
+  57.4
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 7870,
+    "foreign": -1079269,
     "trust": 0,
-    "dealer": 34027,
-    "total": 41897
+    "dealer": -12971,
+    "total": -1092240
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,21 +585,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 4.78,
+    "yield": 5.23,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 48.09,
-   "severity": "info",
-   "as_of": "20260709",
-   "note": "大戶持股%=48.09；WoW+0.56；股東人數-65"
   }
  ],
  "trends": {

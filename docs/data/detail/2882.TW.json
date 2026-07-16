@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 96.6,
- "change_pct": 0.52,
+ "price": 97.3,
+ "change_pct": 0.72,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 72.8,
-   "h": 72.99,
-   "l": 71.45,
-   "c": 72.9,
-   "v": 28876337
-  },
   {
    "time": "2026-04-22",
    "o": 72.9,
@@ -482,11 +474,19 @@
    "h": 98.7,
    "l": 95.9,
    "c": 96.6,
-   "v": 20301339
+   "v": 20389988
+  },
+  {
+   "time": "2026-07-16",
+   "o": 96.6,
+   "h": 97.3,
+   "l": 95.3,
+   "c": 97.3,
+   "v": 15675496
   }
  ],
  "sr": {
-  "price": 96.6,
+  "price": 97.3,
   "resistance": [
    98.3,
    113.45
@@ -498,7 +498,6 @@
   "strong_support": 58.51
  },
  "spark": [
-  72.9,
   73.28,
   72.22,
   72.32,
@@ -557,14 +556,58 @@
   96.3,
   96.7,
   96.1,
-  96.6
+  96.6,
+  97.3
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
- "fundamental": null,
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
+ "fundamental": {
+  "rev_yoy": -42.0,
+  "rev_accel": false,
+  "stale": false,
+  "source": "twse_revenue"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 187,784 股",
+   "value": {
+    "foreign": 4941,
+    "trust": -194367,
+    "dealer": 377210,
+    "total": 187784
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -2
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 14.7 / 殖利率 3.62% / PB 1.93",
+   "value": {
+    "pe": 14.66,
+    "yield": 3.62,
+    "pb": 1.93
+   },
+   "severity": "info",
+   "as_of": "2026-07-15",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
   {
    "source": "tdcc",
    "kind": "chip",
@@ -684,6 +727,10 @@
    {
     "t": "2026-07-14",
     "v": 35277
+   },
+   {
+    "t": "2026-07-16",
+    "v": 35464
    }
   ],
   "holder_pct": [
@@ -712,6 +759,11 @@
     "v": 85.54
    }
   ],
-  "rev_yoy": []
+  "rev_yoy": [
+   {
+    "t": "2026-06",
+    "v": -42.0
+   }
+  ]
  }
 }

@@ -1,17 +1,9 @@
 {
  "stock": "7717.TWO",
  "name": "萊德光電-KY",
- "price": 532.0,
- "change_pct": 7.54,
+ "price": 485.0,
+ "change_pct": -8.83,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 882.13,
-   "h": 882.13,
-   "l": 794.71,
-   "c": 862.26,
-   "v": 1014652
-  },
   {
    "time": "2026-04-22",
    "o": 862.26,
@@ -482,23 +474,30 @@
    "h": 544.0,
    "l": 502.0,
    "c": 532.0,
-   "v": 398757
+   "v": 372458
+  },
+  {
+   "time": "2026-07-16",
+   "o": 536.0,
+   "h": 544.0,
+   "l": 481.0,
+   "c": 485.0,
+   "v": 406268
   }
  ],
  "sr": {
-  "price": 532.0,
+  "price": 485.0,
   "resistance": [
-   612.92,
-   658.62
+   491.73,
+   612.92
   ],
   "support": [
-   530.47,
-   434.11
+   434.11,
+   410.77
   ],
   "strong_support": 187.25
  },
  "spark": [
-  862.26,
   878.15,
   790.74,
   716.23,
@@ -557,10 +556,11 @@
   419.71,
   461.43,
   494.71,
-  532.0
+  532.0,
+  485.0
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-16",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -62900,
+    "foreign": 10103,
     "trust": 0,
-    "dealer": 5560,
-    "total": -57340
+    "dealer": -5989,
+    "total": 4114
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.62,
+    "yield": 0.68,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "OTC valuation context"
   }
  ],
