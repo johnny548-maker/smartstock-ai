@@ -25,7 +25,8 @@ Look-ahead protections
 
 Metrics: CAGR, annualised Sharpe, MaxDD, Wilson-CI lower bound of the monthly
 win rate vs the buy-and-hold benchmark, regime splits
-(2011-15 / 2016-19 / 2020-21 / 2022 / 2023-26), and an OOS segment covering
+(2011-15 / 2016-19 / 2020-21 / 2022 / 2023+, final regime open-ended), and an
+OOS segment covering
 the LAST 2 YEARS reported separately.
 
 CLI
@@ -86,7 +87,10 @@ REGIMES = [
     ("2016-19", "2016-01-01", "2019-12-31"),
     ("2020-21", "2020-01-01", "2021-12-31"),
     ("2022",    "2022-01-01", "2022-12-31"),
-    ("2023-26", "2023-01-01", "2026-12-31"),
+    # Final regime is OPEN-ENDED: end=None → resolved at runtime to nav.index.max().
+    # A hard-coded end here (was "2026-12-31") silently drops every bar past the
+    # year boundary from the per-regime table once the calendar rolls over.
+    ("2023+",   "2023-01-01", None),
 ]
 
 STRATEGIES = ("momentum", "momentum_voltgt", "momentum_sma200", "equal_weight", "buy_hold")
@@ -449,14 +453,34 @@ def win_rate_vs_benchmark(nav, bench_nav):
 
 
 def regime_metrics(nav, regimes=REGIMES):
-    """Per-regime CAGR / Sharpe / MaxDD (segments with <2 bars are dropped)."""
+    """Per-regime CAGR / Sharpe / MaxDD (segments with <2 bars are dropped).
+
+    A regime with end=None is OPEN-ENDED: its window runs to the NAV's last bar
+    (nav.index.max()), so bars past a fixed year boundary are never silently
+    excluded. Regression sentinel: if any NAV bar falls past EVERY regime's end
+    (which the open-ended tail prevents under normal operation), an
+    "_uncovered_note" entry reports the count of uncovered bars.
+    """
     out = {}
+    nav_end = nav.index.max() if len(nav) else None
+    coverage_end = None
     for label, a, b in regimes:
-        seg = nav.loc[a:b]
+        if b is None:                      # open-ended tail → resolve to NAV's last bar
+            end_ts = nav_end
+            seg = nav.loc[a:] if nav_end is None else nav.loc[a:nav_end]
+        else:
+            end_ts = pd.Timestamp(b)
+            seg = nav.loc[a:b]             # keep original partial-string slicing
+        if end_ts is not None and (coverage_end is None or end_ts > coverage_end):
+            coverage_end = end_ts
         if len(seg) < 2:
             continue
         out[label] = {"cagr": cagr(seg), "sharpe": sharpe(seg),
                       "max_dd": max_drawdown(seg), "n_days": int(len(seg))}
+    if nav_end is not None and coverage_end is not None and nav_end > coverage_end:
+        uncovered = int((nav.index > coverage_end).sum())
+        if uncovered:
+            out["_uncovered_note"] = f"{uncovered} bars 未落入任何 regime"
     return out
 
 
@@ -719,8 +743,15 @@ def render_text(results):
             segs.append(f"{label}: " + (f"{r['cagr']:+.1%}/{r['sharpe']:.2f}/"
                                         f"{r['max_dd']:.0%}" if r else "—"))
         L.append(f"  {name:<18}" + "  ".join(segs))
+    # regression sentinel: NAV bars past every regime's end (open-ended tail → silent)
+    for name in STRATEGIES:
+        m = results["strategies"].get(name)
+        note = m and m["regimes"].get("_uncovered_note")
+        if note:
+            L.append("  WARNING regime coverage: " + note)
+            break
     L.append("")
-    L.append("近 2 年尾段（同一組已選定參數的 IN-SAMPLE 尾巴，非真正樣本外 holdout — 與 2023-26 "
+    L.append("近 2 年尾段（同一組已選定參數的 IN-SAMPLE 尾巴，非真正樣本外 holdout — 與 2023+ "
              "regime 列重疊；數字偏高因近 2 年為動能友善 regime）:")
     for name in STRATEGIES:
         m = results["strategies"].get(name)

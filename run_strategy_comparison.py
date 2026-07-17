@@ -167,7 +167,7 @@ def main(years=15):
     full0050 = (bench.get("0050") or {}).get("full")
     if full0050:
         print(f"\n  context: 0050 全 {years}y CAGR {full0050['cagr']:+.1%} Sharpe {full0050['sharpe']:.2f} "
-              f"MaxDD {full0050['max_dd']:.1%} (lockbox 2023-26 是異常大多頭 → 各策略 CAGR 偏高)")
+              f"MaxDD {full0050['max_dd']:.1%} (lockbox 2023+ 是異常大多頭 → 各策略 CAGR 偏高)")
 
 
 if __name__ == "__main__":

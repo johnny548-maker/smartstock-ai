@@ -41,13 +41,18 @@ def _trend_df(dates, start=100.0, daily=0.001):
 
 # ── build_ohlcv_cache: serializer choice ─────────────────────────────────────
 
-def test_serializer_matches_pyarrow_availability():
-    # Arrange
+def test_serializer_matches_explicit_format():
+    # Arrange — explicit-format semantics: env SMARTSTOCK_CACHE_FMT (default pickle); parquet is
+    # honoured only when pyarrow is importable, else it DOWNGRADES to pickle (never a silent
+    # implicit "parquet iff pyarrow" choice).
+    import os
+    want = os.environ.get("SMARTSTOCK_CACHE_FMT", "pickle").strip().lower()
     try:
         import pyarrow  # noqa: F401
-        expected = "parquet"
+        has_pa = True
     except ImportError:
-        expected = "pickle"
+        has_pa = False
+    expected = "parquet" if (want == "parquet" and has_pa) else "pickle"
 
     # Act / Assert
     assert boc.SERIALIZER == expected
@@ -349,11 +354,46 @@ def test_regime_split_segments():
     # Act
     reg = bp.regime_metrics(nav)
 
-    # Assert — all 5 named regimes present with data
-    assert set(reg.keys()) == {"2011-15", "2016-19", "2020-21", "2022", "2023-26"}
+    # Assert — all 5 named regimes present with data (final regime open-ended → "2023+")
+    assert set(reg.keys()) == {"2011-15", "2016-19", "2020-21", "2022", "2023+"}
     for seg in reg.values():
         assert seg["n_days"] > 0
         assert isinstance(seg["cagr"], float)
+
+
+def test_regime_open_ended_includes_post_2026():
+    # Arrange — NAV extends into 2027, PAST the old hard-coded 2026-12-31 boundary
+    dates = pd.bdate_range("2023-01-02", "2027-06-01")
+    nav = pd.Series(np.cumprod(np.full(len(dates), 1.0001)), index=dates)
+    assert nav.index.max().year == 2027                      # sanity: data crosses the boundary
+
+    # Act
+    reg = bp.regime_metrics(nav)
+
+    # Assert — the open-ended final regime is labelled "2023+" and swallows the
+    # WHOLE NAV (every bar, incl. 2027), never silently dropping post-2026 bars.
+    assert "2023+" in reg and "2023-26" not in reg
+    assert reg["2023+"]["n_days"] == len(nav)
+    # open-ended tail ⇒ no bars fall outside every regime ⇒ no coverage sentinel
+    assert "_uncovered_note" not in reg
+
+
+def test_regime_coverage_sentinel_flags_uncovered_tail():
+    # Arrange — a REGRESSED (hard-coded end) regime list that would silently
+    # exclude the 2027 tail; the sentinel must flag those uncovered bars.
+    dates = pd.bdate_range("2023-01-02", "2027-06-01")
+    nav = pd.Series(np.cumprod(np.full(len(dates), 1.0001)), index=dates)
+    regressed = [("2023-26", "2023-01-01", "2026-12-31")]   # hard end, no open tail
+
+    # Act
+    reg = bp.regime_metrics(nav, regimes=regressed)
+
+    # Assert — note present, counts exactly the bars past the last regime end
+    n_uncovered = int((nav.index > pd.Timestamp("2026-12-31")).sum())
+    assert n_uncovered > 0
+    assert "_uncovered_note" in reg
+    assert str(n_uncovered) in reg["_uncovered_note"]
+    assert "未落入任何 regime" in reg["_uncovered_note"]
 
 
 def test_oos_segment_is_last_two_years():

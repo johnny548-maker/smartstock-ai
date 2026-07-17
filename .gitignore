@@ -1,5 +1,10 @@
 .env
-reports/
+# Ignore reports/ CONTENTS (not the dir itself) so the monthly-overlay-readiness
+# CI can commit its readiness markdowns. A dir-level `reports/` ignore stops git
+# descending in, and a later `!` cannot re-include children of an ignored dir —
+# so it MUST be `reports/*` for the un-ignore below to take effect.
+reports/*
+!reports/overlay_readiness_*.md
 *.log
 __pycache__/
 *.pyc
