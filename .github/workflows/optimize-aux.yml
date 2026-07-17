@@ -13,8 +13,8 @@ on:
         description: 'aux backfill start (YYYY-MM-DD). Incremental: cached dates are skipped.'
         default: '2012-01-02'
       backfill_end:
-        description: 'aux backfill end (YYYY-MM-DD)'
-        default: '2026-06-20'
+        description: 'aux backfill end (YYYY-MM-DD); blank = yesterday (UTC), the safe default'
+        default: ''
       years:
         description: 'price history years to slice for the panel'
         default: '15'
@@ -26,7 +26,10 @@ permissions:
   issues: write
 
 concurrency:
-  group: smartstock-optimize-aux
+  # Joined to the OHLCV-cache writer group: the freshen step below WRITES the shared ohlcv15y cache,
+  # so it must be mutually exclusive with warm-us-cache / optimize-sleeve (a concurrent warmer would
+  # persist its pre-freshen snapshot under a newer key and resurrect files this run just deleted).
+  group: smartstock-ohlcv-cache
   cancel-in-progress: false
 
 jobs:
@@ -63,7 +66,8 @@ jobs:
           cache: pip
 
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
 
       # 15y OHLCV cache (shared with optimize-sleeve / warm-us — same rolling key family)
       - name: Restore 15y OHLCV cache
@@ -83,13 +87,30 @@ jobs:
           restore-keys: |
             smartstock-aux15y-
 
+      # Freshen a bounded slice of stale ohlcv15y files before the price panel is read (same rule as
+      # optimize-sleeve): DELETE stale files → miss path re-fetches WHOLE history (never an append).
+      # This run holds the smartstock-ohlcv-cache mutex, so no warmer can revive what it deletes.
+      - name: Freshen stale OHLCV bars (delete + whole-history re-fetch)
+        run: |
+          set -euo pipefail
+          CSV=universe_15y_draft.csv
+          [ -f universe_full_market.csv ] && CSV=universe_full_market.csv
+          python -X utf8 build_ohlcv_cache.py --stale-refresh 5 --limit 500 --csv "$CSV"
+
       - name: Backfill aux + IC screen + gate
         env:
           START: ${{ github.event.inputs.backfill_start || '2012-01-02' }}
-          END: ${{ github.event.inputs.backfill_end || '2026-06-20' }}
+          # blank on schedule (inputs context empty) → step computes YESTERDAY (UTC). Was hard-anchored
+          # to 2026-06-20 → the monthly cron replayed a frozen END forever (asof=today but END frozen).
+          # Yesterday, not today: cron 05:17 UTC = 13:17 Taipei, EARLIER than TWSE's ~14:00 publish, and
+          # backfill's have-set is the UNION of panel dates — a partial-day fetch is cached as "done"
+          # and never re-filled, so anchoring on today risks freezing an incomplete final day.
+          END: ${{ github.event.inputs.backfill_end || '' }}
           YEARS: ${{ github.event.inputs.years || '15' }}
         run: |
           set -euo pipefail
+          END="${END:-$(date -u -d '1 day ago' +%F)}"
+          echo "aux backfill END=${END}"
           python -X utf8 run_aux_combo.py --csv universe_full_market.csv --years "$YEARS" \
                  --backfill "$START" "$END"
 

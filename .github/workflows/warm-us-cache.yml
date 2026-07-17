@@ -20,10 +20,14 @@ on:
         description: 'TW liquidity cap passed to build_universe (kept consistent with the optimiser)'
         default: '800'
   schedule:
-    - cron: '23 */6 * * *'   # every 6h — ~4 runs/day fills the US universe in ~2 days, then no-ops
+    # every 5 days at 03:23 UTC. The US universe is already ~99% warm, so this is NO LONGER a
+    # filler — it is a low-frequency KEEP-ALIVE that refreshes the ohlcv15y cache's last_accessed
+    # inside GitHub's 7-day eviction window (a 5-day cadence always touches it before day-7 expiry).
+    - cron: '23 3 */5 * *'
 
 permissions:
   contents: read
+  actions: write        # the cache-prune step DELETEs superseded ohlcv15y caches via the REST API
 
 concurrency:
   group: smartstock-ohlcv-cache    # never two cache writers at once
@@ -42,15 +46,23 @@ jobs:
           cache: pip
 
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
+
+      # WEEK-STAMPED key (was ${{ github.run_id }} = a NEW 351MB cache EVERY run → 9.67GB bloat).
+      # A weekly key (ISO year-week) makes same-week re-runs an EXACT hit that saves NOTHING, so the
+      # cache grows by at most one 351MB entry per week; the prune step below then keeps only the
+      # newest. restore-keys prefix-match still restores the latest cache regardless of week.
+      - name: Compute weekly cache key
+        run: echo "WEEK=$(date -u +%G-W%V)" >> "$GITHUB_ENV"
 
       # Share the SAME rolling cache as optimize-sleeve.yml so warmed names are visible to the
-      # optimiser. restore-keys prefix-match restores the latest; we save a fresh run_id key.
+      # optimiser. restore-keys prefix-match restores the latest even across week boundaries.
       - name: Restore 15y OHLCV cache
         uses: actions/cache@v4
         with:
           path: .cache/ohlcv_15y
-          key: smartstock-ohlcv15y-${{ github.run_id }}
+          key: smartstock-ohlcv15y-${{ env.WEEK }}
           restore-keys: |
             smartstock-ohlcv15y-
 
@@ -72,5 +84,32 @@ jobs:
           SLICE: ${{ github.event.inputs.slice || '1000' }}
         run: |
           set -euo pipefail
+          # --skip-file excludes the ~40 permanently-dead US names (delisted shells / -W warrants
+          # Yahoo has no 15y history for) so the warmer stops re-attempting them every run.
           python -X utf8 build_ohlcv_cache.py \
-            --csv universe_full_market.csv --market US --uncached-only --limit "${SLICE}"
+            --csv universe_full_market.csv --market US --uncached-only --limit "${SLICE}" \
+            --skip-file data/us_fetch_skiplist.txt
+
+      # Keep the shared cache lean: the DELETE endpoint is EXACT-KEY, so enumerate every
+      # smartstock-ohlcv15y-* cache, keep only the most-recent, and delete the rest one by one.
+      # ONLY the ohlcv15y prefix is touched — panel/aux/setup-python caches are never listed here.
+      - name: Prune superseded ohlcv15y caches (keep newest 1)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          mapfile -t KEYS < <(gh api "repos/${REPO}/actions/caches?per_page=100" \
+            --jq '.actions_caches | sort_by(.created_at) | reverse
+                  | map(select(.key | startswith("smartstock-ohlcv15y-"))) | .[].key')
+          echo "found ${#KEYS[@]} ohlcv15y cache key(s)"
+          if [ "${#KEYS[@]}" -gt 1 ]; then
+            for k in "${KEYS[@]:1}"; do
+              echo "deleting superseded cache: $k"
+              gh api -X DELETE "repos/${REPO}/actions/caches?key=$k" \
+                || echo "delete failed (non-fatal): $k"
+            done
+          else
+            echo "nothing to prune"
+          fi

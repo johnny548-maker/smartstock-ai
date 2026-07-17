@@ -114,6 +114,11 @@ def run(years=15, universe_csv=None, backfill_range=None):
         bap.backfill(dates)
     raw = bap.load_raw_panels()
     print(f"[aux] raw panels loaded: {sorted(raw)}")
+    # ACTUAL backfilled span per raw panel (min..max cached date). asof below is TODAY; this line
+    # is the antidote to "fresh asof stamp + frozen data" — if the coverage max lags asof, the
+    # backfill did not extend and the screen is running on stale inputs.
+    bf_coverage = bap.panel_coverage(raw)
+    print(f"[aux] backfill coverage (per raw panel [min..max] cached date): {bf_coverage}")
 
     # margincontra needs 流通股 (shares outstanding) — no keyless multi-year history (quarterly), so
     # it is NOT built (shares_panel=None), excluded honestly like revmom/quality/size. NEVER scored
@@ -137,7 +142,8 @@ def run(years=15, universe_csv=None, backfill_range=None):
     print(f"[IC screen] survivors: {survivors or '(none — honest negative; no aux factor clears IC floor)'}"
           f"  | n_trials={n_trials}")
 
-    result = {"asof": datetime.date.today().isoformat(), "ic": ics, "survivors": survivors,
+    result = {"asof": datetime.date.today().isoformat(), "backfill_coverage": bf_coverage,
+              "ic": ics, "survivors": survivors,
               "ic_min": IC_MIN, "n_trials": n_trials, "excluded": ["margincontra", "revmom", "quality", "size"],
               "gate": None}
 
@@ -169,7 +175,8 @@ def run(years=15, universe_csv=None, backfill_range=None):
     with open(OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2, default=str)
     with open(OUT_TXT, "w", encoding="utf-8") as f:
-        f.write(f"SmartStock iteration-2 aux combo — {result['asof']}\n")
+        f.write(f"SmartStock iteration-2 aux combo — asof {result['asof']}\n")
+        f.write(f"backfill coverage (per raw panel [min..max] cached date): {bf_coverage}\n")
         f.write(f"excluded (no keyless multi-year history): margincontra, revmom, quality, size\n")
         f.write(f"IC screen (search-span, floor {IC_MIN}, next-bar fill): " + json.dumps(ics, default=str) + "\n")
         f.write(f"survivors: {survivors}  | n_trials={result.get('n_trials')}\n")

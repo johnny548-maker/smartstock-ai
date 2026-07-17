@@ -15,9 +15,10 @@ NOT built here (no clean date-param keyless multi-year history — see ADR §資
   revmom   月營收 = MOPS current-month only; historical needs per-month MOPS (follow-on)
   quality/size = 季財報/股數 quarterly; historical needs per-quarter MOPS (follow-on)
 
-The date-by-date fetch is the heavy part → runs in CI (optimize-sleeve.yml), parquet-cached
+The date-by-date fetch is the heavy part → runs in CI (optimize-aux.yml), parquet/pickle-cached
 under .cache/aux_15y/, skip-if-exists. Pure parsers + assembly are unit-tested offline.
 """
+import logging
 import os
 import time
 
@@ -28,22 +29,40 @@ try:
 except Exception:                                          # offline/test import safety
     requests = None
 
+import build_ohlcv_cache as boc
 import factor_panels_aux as fpa
+
+log = logging.getLogger(__name__)
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE_DIR = os.path.join(_HERE, ".cache", "aux_15y")
 
-# serializer: parquet when pyarrow is importable, else pandas pickle (mirrors build_ohlcv_cache —
-# the local box has no pyarrow, so parquet-only would silently lose a completed backfill).
-try:
-    import pyarrow  # noqa: F401
-    _EXT = ".parquet"
-except ImportError:
-    _EXT = ".pkl"
+# serializer: EXPLICIT format shared with build_ohlcv_cache (env SMARTSTOCK_CACHE_FMT, default
+# pickle; parquet only when pyarrow is importable — the local box + CI have neither, so parquet-
+# only would silently lose a completed backfill). Reads are DUAL-EXTENSION: a .pkl panel is still
+# found when EXT later flips to .parquet (and vice-versa), so a format change never orphans a
+# backfilled panel.
+_SERIALIZER, _EXT = boc._resolve_format()
+_ALL_EXTS = (".pkl", ".parquet")
 
 
 def _panel_path(key, cache_dir):
+    """Primary (WRITE) path for a raw panel — the in-force serializer extension."""
     return os.path.join(cache_dir, f"aux_{key}{_EXT}")
+
+
+def _existing_panel_path(key, cache_dir):
+    """On-disk raw-panel file in EITHER serialization (primary EXT first), or None — so an EXT
+    flip finds the existing panel instead of re-fetching the whole family."""
+    primary = _panel_path(key, cache_dir)
+    if os.path.exists(primary):
+        return primary
+    stem = os.path.join(cache_dir, f"aux_{key}")
+    for ext in _ALL_EXTS:
+        alt = stem + ext
+        if alt != primary and os.path.exists(alt):
+            return alt
+    return None
 
 
 def _save_panel(df, key, cache_dir):
@@ -55,10 +74,35 @@ def _save_panel(df, key, cache_dir):
 
 
 def _read_panel(key, cache_dir):
-    fp = _panel_path(key, cache_dir)
-    if not os.path.exists(fp):
+    """Load a cached raw panel (either serialization), or None. A CORRUPT/unreadable file is
+    logged, best-effort DELETED (so the next backfill re-fetches that family from scratch) and
+    None returned — a read error must never crash the whole run.
+    TODO: per-key incremental rebuild (re-fetch only the dropped family's dates) is a larger change;
+    for now a corrupt panel forces a full re-fetch of that family on the next run covering its dates."""
+    fp = _existing_panel_path(key, cache_dir)
+    if fp is None:
         return None
-    return pd.read_parquet(fp) if _EXT == ".parquet" else pd.read_pickle(fp)
+    try:
+        return pd.read_parquet(fp) if fp.endswith(".parquet") else pd.read_pickle(fp)
+    except Exception as exc:
+        log.warning("aux raw panel %r unreadable (%s): %s — removing corrupt file", key, fp, exc)
+        try:
+            os.remove(fp)
+        except OSError:
+            pass
+        return None
+
+
+def panel_coverage(panels):
+    """{key: [min_date, max_date]} (ISO) over each non-empty raw panel's index — the ACTUAL
+    backfilled span. Lets callers emit 'asof=today but data covers [start..end]' so a fresh asof
+    stamp is never confused with frozen/partial data (see the optimize-aux END-anchor fix)."""
+    cov = {}
+    for k, p in (panels or {}).items():
+        if p is not None and not getattr(p, "empty", True) and len(p.index):
+            cov[k] = [str(pd.to_datetime(p.index.min()).date()),
+                      str(pd.to_datetime(p.index.max()).date())]
+    return cov
 UA = {"User-Agent": "Mozilla/5.0"}
 TIMEOUT = 25
 THROTTLE_S = 0.4                                           # be gentle to the TWSE RWD host
@@ -216,12 +260,20 @@ def backfill(dates, cache_dir=CACHE_DIR, _get_fn=None, throttle=THROTTLE_S, prog
 
 
 def load_raw_panels(cache_dir=CACHE_DIR):
-    """Load the backfilled raw panels (CI restores them via actions/cache). parquet or pickle."""
+    """Load the backfilled raw panels (CI restores them via actions/cache). parquet or pickle.
+    A missing/empty/corrupt panel is reported LOUDLY: build_aux_factor_panels only builds families
+    present here, and the incremental backfill skip-set is the UNION of all panel dates (see
+    backfill), so a dropped family is NOT auto-refetched — surface the gap so a human sees the
+    factor family left the current screen."""
     out = {}
     for k in ("instflow", "pb", "yield", "margin"):
         p = _read_panel(k, cache_dir)
-        if p is not None:
+        if p is not None and not getattr(p, "empty", True):
             out[k] = p
+        else:
+            print(f"[aux-load] WARN raw panel '{k}' missing/empty/corrupt — factor family '{k}' is "
+                  f"ABSENT from this run's screen (not auto-rebuilt; backfill skips by the UNION of "
+                  f"cached dates across panels)", flush=True)
     return out
 
 

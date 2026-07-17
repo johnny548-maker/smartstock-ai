@@ -1,0 +1,46 @@
+# US 15y-OHLCV permanent fetch-failure skip-list.
+# Source: warm-us-cache.yml run logs (6 runs, 2026-07-15..2026-07-17), extracted from the
+#   Yahoo 'possibly delisted / no price data' + '_skip_list.json' SKIP lines. These are
+#   delisted shells and -W warrants Yahoo has no 15y history for; they can NEVER cache, so
+#   excluding them stops the warmer wasting ~40 dead fetches every run.
+# NOTE: the run-log SKIP print truncates at 30 names/run, so this log-derived set (~37) may miss
+#   a few tail names past 'SBXE-W'; refresh from the cache's _skip_list.json when convenient.
+# One ticker per line; blank lines and #-comments ignored (build_ohlcv_cache --skip-file).
+# Generated 2026-07-17.
+AADX
+AIBZ
+BCSS-W
+BEBE-W
+BIII-W
+BREZ
+CAES
+COPL-W
+CXII
+EGHAR
+ELOX
+EROC
+ETSS
+FCBM
+FCRS-W
+FISN
+FLYX-W
+FRBT
+FRTT
+HONAV
+HONIV
+IACQ
+INIO
+IONQ-W
+KARD
+KCAC-W
+KRSP-W
+LFTO
+MZYX-W
+NHIV
+NPWR-W
+OHAC
+OPI
+RAC-W
+SAGU-W
+SBXD-W
+SBXE-W

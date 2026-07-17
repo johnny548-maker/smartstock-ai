@@ -58,7 +58,10 @@ permissions:
   issues: write
 
 concurrency:
-  group: smartstock-optimize
+  # Joined to the OHLCV-cache writer group: the freshen step below WRITES the shared cache, so it
+  # must be mutually exclusive with warm-us-cache (else a concurrent warmer would persist its
+  # pre-freshen snapshot under a newer key and RESURRECT the stale files this run just deleted).
+  group: smartstock-ohlcv-cache
   cancel-in-progress: false
 
 jobs:
@@ -95,7 +98,8 @@ jobs:
           cache: pip
 
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
 
       # Persist the 15y OHLCV cache across runs: first run downloads (~350min), later runs reuse.
       - name: Restore 15y OHLCV cache
@@ -105,6 +109,18 @@ jobs:
           key: smartstock-ohlcv15y-${{ github.run_id }}
           restore-keys: |
             smartstock-ohlcv15y-
+
+      # Freshen a bounded slice of stale cache files BEFORE the backtest so a long-lived cache never
+      # silently backtests frozen prices. --stale-refresh DELETEs files whose last bar is >~5 trading
+      # days old → the miss path re-fetches the WHOLE history (NEVER a yfinance start=last+1 append,
+      # which auto_adjust would level-shift). --limit bounds it to fit the 350min budget. This run
+      # holds the smartstock-ohlcv-cache mutex, so no warmer can revive what it deletes.
+      - name: Freshen stale OHLCV bars (delete + whole-history re-fetch)
+        run: |
+          set -euo pipefail
+          CSV=universe_15y_draft.csv
+          [ -f universe_full_market.csv ] && CSV=universe_full_market.csv
+          python -X utf8 build_ohlcv_cache.py --stale-refresh 5 --limit 500 --csv "$CSV"
 
       # Phase 2: when universe=full, assemble the whole keyless market (TWSE+TPEx liquidity-capped
       # + the full US directory) into universe_full_market.csv. The 15y OHLC fetch for it is the

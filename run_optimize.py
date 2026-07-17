@@ -17,6 +17,7 @@ Usage:
         [--objective calmar|sharpe|maxdd_capped] [--maxdd-cap 0.35] [--quick]
 """
 import argparse
+import datetime
 import json
 import math
 import os
@@ -752,6 +753,22 @@ def main(argv=None):
     print("sanitize: %d/%d loaded, %d repaired, %d dropped"
           % (san["n_loaded"], len(need), len(san["fixed"]), len(san["dropped"])))
 
+    # Price-panel FRESHNESS guard — the whole backtest is only as current as the OHLCV cache. A
+    # frozen cache silently backtests stale data; print the newest bar + its age next to the
+    # LOCKBOX outputs so a stale run is visible rather than invisibly wrong (pairs with the CI
+    # --stale-refresh step that deletes+refetches stale files).
+    price_panel_max_date = None
+    for _df in prices.values():
+        if _df is not None and "Close" in getattr(_df, "columns", []) and len(_df.index):
+            _m = pd.to_datetime(_df.index.max()).date()
+            if price_panel_max_date is None or _m > price_panel_max_date:
+                price_panel_max_date = _m
+    if price_panel_max_date is not None:
+        _age = (datetime.date.today() - price_panel_max_date).days
+        _flag = "  ⚠ STALE (>10 calendar days old — is the cache being freshened?)" if _age > 10 else ""
+        print("price panel max date: %s (%d calendar days old)%s"
+              % (price_panel_max_date, _age, _flag))
+
     univ_in = [t for t in tickers if t in prices]
     results, _ = run_grid(prices, args.sleeve, universe_tickers=univ_in)
     ranked = sorted(results, key=objective_key(args.objective, args.maxdd_cap), reverse=True)
@@ -801,7 +818,9 @@ def main(argv=None):
 
     out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
            "period": period, "gate": g, "walk_forward": wf, "rigorous": rigorous,
-           "combo": combo, "ranked": _clean(ranked)}
+           "combo": combo, "ranked": _clean(ranked),
+           "price_panel_max_date": (price_panel_max_date.isoformat()
+                                    if price_panel_max_date else None)}
     # Non-default objectives get an objective suffix so two objective runs (e.g. calmar +
     # maxdd_capped) write DISTINCT files — same-name files made the second CI commit conflict on
     # rebase and the result was lost. Default 'calmar' keeps the canonical optimize_<sleeve>.txt.

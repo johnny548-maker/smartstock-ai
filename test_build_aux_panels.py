@@ -6,6 +6,7 @@ Field indices are pinned from a LIVE probe of the date-parameterized TWSE RWD en
 tables[1] [6]融資今日餘額. These tests lock those indices so a TWSE layout change fails loudly
 rather than silently feeding the backtest wrong data.
 """
+import os
 import unittest
 
 import pandas as pd
@@ -69,12 +70,17 @@ class TestPanelAssembly(unittest.TestCase):
 
 
 class TestSerializer(unittest.TestCase):
-    def test_ext_matches_pyarrow_availability(self):
+    def test_ext_matches_explicit_format(self):
+        # explicit-format semantics (mirrors build_ohlcv_cache): default pickle → .pkl unless the
+        # env asks for parquet AND pyarrow is importable. NEVER an implicit pyarrow-only probe.
+        import os
+        want_parquet = os.environ.get("SMARTSTOCK_CACHE_FMT", "pickle").strip().lower() == "parquet"
         try:
             import pyarrow  # noqa: F401
-            self.assertEqual(bap._EXT, ".parquet")
+            has_pa = True
         except ImportError:
-            self.assertEqual(bap._EXT, ".pkl")
+            has_pa = False
+        self.assertEqual(bap._EXT, ".parquet" if (want_parquet and has_pa) else ".pkl")
 
     def test_save_load_roundtrip(self):
         import tempfile
@@ -85,6 +91,48 @@ class TestSerializer(unittest.TestCase):
             self.assertIsNotNone(back)
             self.assertEqual(back.loc["2024-01-03", "2330"], 2.0)
         self.assertIsNone(bap._read_panel("missing", tempfile.gettempdir() + "/nope_xyz"))
+
+
+class TestReadPanelGuard(unittest.TestCase):
+    """A corrupt/unreadable raw panel must NOT crash the run: _read_panel logs, best-effort DELETES
+    the bad file (so the next backfill re-fetches), and returns None. load_raw_panels then WARNs
+    loudly that the family drops out of the current screen."""
+
+    def test_corrupt_panel_returns_none_and_removes_file(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            fp = bap._panel_path("instflow", d)
+            with open(fp, "wb") as fh:
+                fh.write(b"\x00\x01 not a valid pickle/parquet \xff\xfe")
+            self.assertIsNone(bap._read_panel("instflow", d))     # no exception
+            self.assertFalse(os.path.exists(fp))                  # corrupt file removed
+
+    def test_load_raw_panels_warns_on_missing_key(self):
+        import io
+        import tempfile
+        from contextlib import redirect_stdout
+        with tempfile.TemporaryDirectory() as d:
+            # only instflow present → the other three families must produce a loud WARN
+            bap._save_panel(bap.rows_to_panel({"2024-01-02": {"2330": 1.0}}), "instflow", d)
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                out = bap.load_raw_panels(d)
+            self.assertIn("instflow", out)
+            text = buf.getvalue()
+            for k in ("pb", "yield", "margin"):
+                self.assertIn(k, text)
+            self.assertIn("WARN", text)
+
+
+class TestPanelCoverage(unittest.TestCase):
+    def test_reports_min_max_per_panel(self):
+        panels = {"instflow": bap.rows_to_panel(
+            {"2024-01-02": {"2330": 1.0}, "2024-03-05": {"2330": 2.0}})}
+        cov = bap.panel_coverage(panels)
+        self.assertEqual(cov["instflow"], ["2024-01-02", "2024-03-05"])
+
+    def test_empty_panels_excluded(self):
+        self.assertEqual(bap.panel_coverage({"pb": pd.DataFrame()}), {})
 
 
 class TestBuildFactorPanels(unittest.TestCase):
