@@ -451,5 +451,190 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(rows, [])
 
 
+# ── backfill tool (tools/maintenance/backfill_watchlist_entry.py) ─────────────
+# 2026-07-16 audit: 17/28 tracked names carry entry_price=0.0 (historical enrolls
+# before resolve_entry_price existed; enroll() keeps entry fields sticky so they
+# never self-heal) → P&L is meaningless. The maintenance tool backfills the
+# entry-date close (cache-first, yfinance fallback), dry-run by default.
+
+import importlib.util
+
+_TOOL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "tools", "maintenance", "backfill_watchlist_entry.py")
+
+
+def _load_tool():
+    spec = importlib.util.spec_from_file_location("backfill_watchlist_entry", _TOOL_PATH)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def _make_cache_df(dates, closes):
+    idx = pd.DatetimeIndex([pd.Timestamp(d) for d in dates])
+    closes = [float(c) for c in closes]
+    return pd.DataFrame({"Open": closes, "High": closes, "Low": closes,
+                         "Close": closes, "Volume": [1000.0] * len(closes)}, index=idx)
+
+
+def _sample_state():
+    return {
+        "updated": "2026-07-16",
+        "tracked": {
+            "ZERO.TW": {"entry_date": "2026-06-06", "entry_price": 0.0,
+                        "entry_score": 80, "entry_signal": [], "peak_price": 0.0,
+                        "status": "active", "pinned": False, "last": {}},
+            "GOOD.TW": {"entry_date": "2026-06-06", "entry_price": 55.5,
+                        "entry_score": 70, "entry_signal": [], "peak_price": 60.0,
+                        "status": "active", "pinned": False, "last": {}},
+        },
+    }
+
+
+class TestBackfillCloseLookup(unittest.TestCase):
+    def setUp(self):
+        self.tool = _load_tool()
+        self.df = _make_cache_df(["2026-06-05", "2026-06-06", "2026-06-09"],
+                                 [10.0, 11.0, 12.0])
+
+    def test_exact_date_close(self):
+        self.assertEqual(self.tool.close_on_or_before(self.df, "2026-06-06"), 11.0)
+
+    def test_weekend_gap_uses_prior_trading_day(self):
+        # 06-08 is a Monday-gap-style miss → last close ≤ date = 06-06's 11.0
+        self.assertEqual(self.tool.close_on_or_before(self.df, "2026-06-08"), 11.0)
+
+    def test_date_before_history_returns_none(self):
+        self.assertIsNone(self.tool.close_on_or_before(self.df, "2026-06-04"))
+
+    def test_none_or_empty_df_returns_none(self):
+        self.assertIsNone(self.tool.close_on_or_before(None, "2026-06-06"))
+        self.assertIsNone(self.tool.close_on_or_before(self.df.iloc[0:0], "2026-06-06"))
+
+
+class TestBackfillResolveAndPlan(unittest.TestCase):
+    def setUp(self):
+        self.tool = _load_tool()
+
+    def test_resolve_prefers_cache(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            _make_cache_df(["2026-06-05", "2026-06-06"], [10.0, 11.0]) \
+                .to_pickle(os.path.join(tmp, "ZERO.TW.pkl"))
+            px, src = self.tool.resolve_backfill_price("ZERO.TW", "2026-06-06", tmp)
+            self.assertEqual(px, 11.0)
+            self.assertEqual(src, "cache")
+
+    def test_resolve_falls_back_to_fetch_fn(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            fetched = _make_cache_df(["2026-06-06"], [99.0])
+            px, src = self.tool.resolve_backfill_price(
+                "ZERO.TW", "2026-06-06", tmp, fetch_fn=lambda sym, d: fetched)
+            self.assertEqual(px, 99.0)
+            self.assertEqual(src, "fetch")
+
+    def test_resolve_fetch_error_is_graceful(self):
+        def boom(sym, d):
+            raise RuntimeError("network down")
+        with tempfile.TemporaryDirectory() as tmp:
+            px, src = self.tool.resolve_backfill_price("Z", "2026-06-06", tmp, fetch_fn=boom)
+            self.assertIsNone(px)
+            self.assertIsNone(src)
+
+    def test_plan_targets_only_zero_entries(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            _make_cache_df(["2026-06-05", "2026-06-06"], [10.0, 11.0]) \
+                .to_pickle(os.path.join(tmp, "ZERO.TW.pkl"))
+            plan = self.tool.plan_backfill(_sample_state(), tmp)
+            self.assertEqual([r["symbol"] for r in plan], ["ZERO.TW"])
+            self.assertEqual(plan[0]["new"], 11.0)
+            self.assertEqual(plan[0]["source"], "cache")
+
+    def test_plan_marks_unresolvable_as_miss(self):
+        with tempfile.TemporaryDirectory() as tmp:      # empty cache, no fetch_fn
+            plan = self.tool.plan_backfill(_sample_state(), tmp)
+            self.assertEqual(plan[0]["source"], "MISS")
+            self.assertIsNone(plan[0]["new"])
+
+
+class TestBackfillApply(unittest.TestCase):
+    def setUp(self):
+        self.tool = _load_tool()
+
+    def test_apply_updates_entry_and_peak_returns_new_state(self):
+        state = _sample_state()
+        plan = [{"symbol": "ZERO.TW", "entry_date": "2026-06-06",
+                 "old": 0.0, "new": 11.0, "source": "cache"}]
+        new_state, n = self.tool.apply_backfill(state, plan)
+        self.assertEqual(n, 1)
+        self.assertEqual(new_state["tracked"]["ZERO.TW"]["entry_price"], 11.0)
+        # peak must never sit below the (real) entry price
+        self.assertGreaterEqual(new_state["tracked"]["ZERO.TW"]["peak_price"], 11.0)
+        # immutability: the input state is untouched
+        self.assertEqual(state["tracked"]["ZERO.TW"]["entry_price"], 0.0)
+        # untouched neighbour
+        self.assertEqual(new_state["tracked"]["GOOD.TW"]["entry_price"], 55.5)
+
+    def test_apply_skips_miss_rows(self):
+        plan = [{"symbol": "ZERO.TW", "entry_date": "2026-06-06",
+                 "old": 0.0, "new": None, "source": "MISS"}]
+        new_state, n = self.tool.apply_backfill(_sample_state(), plan)
+        self.assertEqual(n, 0)
+        self.assertEqual(new_state["tracked"]["ZERO.TW"]["entry_price"], 0.0)
+
+    def test_apply_keeps_existing_higher_peak(self):
+        state = _sample_state()
+        state["tracked"]["ZERO.TW"]["peak_price"] = 20.0
+        plan = [{"symbol": "ZERO.TW", "entry_date": "2026-06-06",
+                 "old": 0.0, "new": 11.0, "source": "cache"}]
+        new_state, _ = self.tool.apply_backfill(state, plan)
+        self.assertEqual(new_state["tracked"]["ZERO.TW"]["peak_price"], 20.0)
+
+
+class TestBackfillMainCli(unittest.TestCase):
+    def setUp(self):
+        self.tool = _load_tool()
+
+    def _setup_files(self, tmp):
+        state_path = os.path.join(tmp, "_watchlist_state.json")
+        with open(state_path, "w", encoding="utf-8") as f:
+            json.dump(_sample_state(), f, ensure_ascii=False, indent=2)
+        cache_dir = os.path.join(tmp, "cache")
+        os.makedirs(cache_dir)
+        _make_cache_df(["2026-06-05", "2026-06-06"], [10.0, 11.0]) \
+            .to_pickle(os.path.join(cache_dir, "ZERO.TW.pkl"))
+        return state_path, cache_dir
+
+    def test_dry_run_default_writes_nothing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            state_path, cache_dir = self._setup_files(tmp)
+            before = open(state_path, encoding="utf-8").read()
+            rc = self.tool.main(["--state", state_path, "--cache", cache_dir,
+                                 "--no-network"])
+            self.assertEqual(rc, 0)
+            self.assertEqual(open(state_path, encoding="utf-8").read(), before)
+            self.assertEqual([p for p in os.listdir(tmp) if ".bak." in p], [])
+
+    def test_apply_writes_backup_then_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            state_path, cache_dir = self._setup_files(tmp)
+            original = open(state_path, encoding="utf-8").read()
+            rc = self.tool.main(["--state", state_path, "--cache", cache_dir,
+                                 "--no-network", "--apply"])
+            self.assertEqual(rc, 0)
+            baks = [p for p in os.listdir(tmp) if ".bak." in p]
+            self.assertEqual(len(baks), 1)
+            with open(os.path.join(tmp, baks[0]), encoding="utf-8") as f:
+                self.assertEqual(f.read(), original)   # backup = pre-write bytes
+            after = json.load(open(state_path, encoding="utf-8"))
+            self.assertEqual(after["tracked"]["ZERO.TW"]["entry_price"], 11.0)
+            self.assertEqual(after["tracked"]["GOOD.TW"]["entry_price"], 55.5)
+
+    def test_missing_state_file_exits_nonzero(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            rc = self.tool.main(["--state", os.path.join(tmp, "nope.json"),
+                                 "--cache", tmp, "--no-network"])
+            self.assertNotEqual(rc, 0)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

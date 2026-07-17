@@ -8,32 +8,92 @@ The session lesson it encodes: a shortlist of 'credible' names is often concentr
 it never changes the picks (warn+suggest, user-approved).
 """
 import numpy as np
+import pandas as pd
 
 import correlation
 
+# ── beta hardening constants (2026-07-16 audit fix) ───────────────────────────
+MIN_BETA_OBS = 40      # < this many aligned daily returns → None (UI shows「—」)
+LOW_CORR_BAND = 0.25   # |corr| below this → OLS β is statistically meaningless noise
 
-def beta_to_bench(df, bench, window=60):
-    """OLS beta + correlation of a stock's daily returns vs a benchmark over the last `window` bars
-    (date-aligned). Returns {"beta": float, "corr": float} or None on short/missing/flat data.
-    Same beta math as rs_rating.residual_momentum (np.cov / var)."""
+# Per-market benchmark: which frames key backs each listing + honest display label.
+# (main.py fetches INDICES → frames{"twii": ^TWII df, "sp500": ^GSPC df}.)
+_BENCH_KEY_TW, _BENCH_KEY_US = "twii", "sp500"
+BENCH_LABELS = {_BENCH_KEY_TW: "加權指數(^TWII)", _BENCH_KEY_US: "S&P 500(^GSPC)"}
+
+
+def bench_for(symbol, frames):
+    """Per-market benchmark selection: TW listings (.TW/.TWO) → frames['twii'],
+    everything else → frames['sp500']. Returns (bench_df_or_None, display_label).
+    The label ALWAYS comes back (even when the frame is missing) so callers can
+    annotate what the β *would have been* measured against. Pure."""
+    key = _BENCH_KEY_TW if str(symbol).endswith((".TW", ".TWO")) else _BENCH_KEY_US
+    return (frames or {}).get(key), BENCH_LABELS[key]
+
+
+def _daily_returns(df):
+    """Close→daily-return Series keyed by NORMALIZED dates (tz stripped, midnight,
+    deduped). yfinance stamps bars in each exchange's local tz — a tz-aware vs
+    tz-naive (or differently-stamped) benchmark makes a raw index intersection
+    silently EMPTY, killing the β badge. Non-datetime indexes pass through as-is."""
+    s = df["Close"].pct_change().dropna()
+    try:
+        idx = pd.DatetimeIndex(s.index)
+        if idx.tz is not None:
+            idx = idx.tz_localize(None)
+        s = pd.Series(s.to_numpy(dtype=float), index=idx.normalize())
+        s = s[~s.index.duplicated(keep="last")]
+    except (TypeError, ValueError):
+        pass                                   # synthetic/range index → use as-is
+    return s
+
+
+def beta_to_bench(df, bench, window=60, bench_name=None, min_obs=MIN_BETA_OBS):
+    """OLS beta + correlation of a stock's daily returns vs a benchmark over the last
+    `window` bars (date-normalized inner join). Returns
+        {"beta", "corr", "n", "window", "benchmark", "low_corr"}
+    or None on short/missing/flat data ("—" in the UI, never a junk number).
+
+    2026-07-16 audit hardening (live β 失真: AMD 5.05 / 中華電 0.01,相關 0.01):
+      * ddof-consistent OLS: cov(ddof=1)/var(ddof=1) — the old cov(ddof=1)/var(ddof=0)
+        silently inflated every β by n/(n-1).
+      * sample floor raised 30→40 aligned returns; below → None.
+      * `low_corr`: |corr| < 0.25 ⇒ β carries almost no signal (R²<6%) — surfaced as a
+        flag so the frontend can grey the badge / caption it, instead of the cockpit
+        presenting noise (中華電 β 0.01 @ corr 0.01) as a measured exposure.
+      * `benchmark`: pass bench_name (see bench_for) so the UI can say "vs 加權指數".
+      * date-normalized alignment (see _daily_returns) — mixed tz-aware/naive frames
+        still inner-join instead of intersecting to empty.
+    Backward-compatible: "beta"/"corr" keys unchanged; additions are pure sidecars.
+    NOTE: a 60-bar β on high-idio-vol names is inherently unstable (AMD real σ≈5%/day
+    vs ^GSPC 1% → β≈3-5 is a TRUE short-window OLS value); widening the bench history
+    beyond 3mo is a main.py/data_fetcher change (frames period), not a math fix here."""
     try:
         if df is None or bench is None:
             return None
-        s = df["Close"].pct_change()
-        b = bench["Close"].pct_change()
-        j = s.dropna().index.intersection(b.dropna().index)
-        if len(j) < 30:
+        s = _daily_returns(df)
+        b = _daily_returns(bench)
+        j = s.index.intersection(b.index)
+        if len(j) < min_obs:
             return None
         sr = s.reindex(j).to_numpy(dtype=float)[-window:]
         br = b.reindex(j).to_numpy(dtype=float)[-window:]
-        if len(sr) < 30:
+        if len(sr) < min_obs:
             return None
-        var_b = br.var()
-        if var_b < 1e-12:
+        var_b = br.var(ddof=1)
+        if not np.isfinite(var_b) or var_b < 1e-12:
             return None
-        beta = float(np.cov(sr, br)[0, 1] / var_b)
+        beta = float(np.cov(sr, br, ddof=1)[0, 1] / var_b)
         corr = float(np.corrcoef(sr, br)[0, 1])
-        return {"beta": round(beta, 2), "corr": round(corr, 2)}
+        corr_ok = bool(np.isfinite(corr))
+        return {
+            "beta": round(beta, 2),
+            "corr": round(corr, 2) if corr_ok else None,
+            "n": int(len(sr)),
+            "window": int(window),
+            "benchmark": bench_name,
+            "low_corr": bool((not corr_ok) or abs(corr) < LOW_CORR_BAND),
+        }
     except Exception:
         return None
 

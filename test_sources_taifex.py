@@ -16,28 +16,49 @@ from sources import taifex
 
 
 # ── probe-shaped fixtures (strings, bracketed keys, alias, ordering) ───────────
+# 2026-07-17 probe: the per-contract endpoint (DetailsOfFuturesContractsBytheDate)
+# carries ContractCode (22 values: 臺股期貨/小型臺指期貨/微型臺指期貨/股票期貨/…).
+# The old General endpoint has NO product field (whole-market aggregate) — that was
+# the -489k "外資台指期" display bug. Fixtures below mirror the per-contract shape.
 
 INST_ROWS = [
     {   # 自營商 — should be ignored by foreign_tx_net
-        "Date": "20260605", "Item": "自營商",
+        "Date": "20260605", "ContractCode": "臺股期貨", "Item": "自營商",
         "TradingVolume(Net)": "-10801", "OpenInterest(Net)": "-389251",
     },
     {   # 投信 — ignored
-        "Date": "20260605", "Item": "投信",
+        "Date": "20260605", "ContractCode": "臺股期貨", "Item": "投信",
         "TradingVolume(Net)": "1234", "OpenInterest(Net)": "5678",
     },
-    {   # 外資 — the one foreign_tx_net must read
-        "Date": "20260605", "Item": "外資",
+    {   # 外資 + 臺股期貨 — the one foreign_tx_net must read
+        "Date": "20260605", "ContractCode": "臺股期貨", "Item": "外資",
         "TradingVolume(Net)": "3050", "OpenInterest(Net)": "12500",
     },
 ]
 
-# Two foreign rows on different dates → latest Date must win.
+# Two foreign TX rows on different dates → latest Date must win.
 INST_ROWS_MULTIDATE = [
-    {"Date": "20260603", "Item": "外資", "OpenInterest(Net)": "-9000",
-     "TradingVolume(Net)": "-100"},
-    {"Date": "20260605", "Item": "外資及陸資", "OpenInterest(Net)": "8000",
-     "TradingVolume(Net)": "200"},
+    {"Date": "20260603", "ContractCode": "臺股期貨", "Item": "外資",
+     "OpenInterest(Net)": "-9000", "TradingVolume(Net)": "-100"},
+    {"Date": "20260605", "ContractCode": "臺股期貨", "Item": "外資及陸資",
+     "OpenInterest(Net)": "8000", "TradingVolume(Net)": "200"},
+]
+
+# SAME day, MULTIPLE products, all foreign — the display bug's exact shape (probe
+# 2026-07-16 live: TX foreign OI(Net) −84,453 while 股票期貨 aggregate is −40萬級).
+# foreign_tx_net must lock onto ContractCode == 臺股期貨, never a lookalike
+# (小型臺指期貨 / 微型臺指期貨) and never the stock-futures aggregate.
+INST_ROWS_MULTIPRODUCT = [
+    {"Date": "20260716", "ContractCode": "臺股期貨", "Item": "外資及陸資",
+     "TradingVolume(Net)": "-28039", "OpenInterest(Net)": "-84453"},
+    {"Date": "20260716", "ContractCode": "股票期貨", "Item": "外資及陸資",
+     "TradingVolume(Net)": "-1200", "OpenInterest(Net)": "-405032"},
+    {"Date": "20260716", "ContractCode": "小型臺指期貨", "Item": "外資及陸資",
+     "TradingVolume(Net)": "-900", "OpenInterest(Net)": "-51974"},
+    {"Date": "20260716", "ContractCode": "微型臺指期貨", "Item": "外資及陸資",
+     "TradingVolume(Net)": "-100", "OpenInterest(Net)": "-9000"},
+    {"Date": "20260716", "ContractCode": "臺股期貨", "Item": "投信",
+     "TradingVolume(Net)": "55", "OpenInterest(Net)": "76264"},
 ]
 
 # PCR rows, newest-first as probed; '%' in key names, percentage-point values.
@@ -120,6 +141,34 @@ class TestForeignTxNet(unittest.TestCase):
         self.assertEqual(taifex.foreign_tx_net([None, "x", 42]), 0)
 
 
+class TestForeignTxNetProductLock(unittest.TestCase):
+    """Display bug (2026-07-16 audit): the feed is MULTI-PRODUCT — without a product
+    lock the UI's 「外資台指期淨口數」 showed the whole-market / stock-futures
+    aggregate (−489k/−569k 口, impossible for TX). foreign_tx_net must read ONLY
+    ContractCode == 臺股期貨 rows."""
+
+    def test_multiproduct_same_day_picks_tx_only(self):
+        # NOT the stock-futures −405032, NOT any sum — exactly the TX row.
+        self.assertEqual(taifex.foreign_tx_net(INST_ROWS_MULTIPRODUCT), -84453)
+
+    def test_mini_and_micro_lookalikes_excluded(self):
+        rows = [r for r in INST_ROWS_MULTIPRODUCT
+                if r["ContractCode"] != "臺股期貨"]
+        self.assertEqual(taifex.foreign_tx_net(rows), 0)
+
+    def test_rows_without_contract_field_not_counted(self):
+        # Legacy General-endpoint shape (whole-market aggregate, NO ContractCode)
+        # must be rejected — an unverifiable product is exactly the original bug.
+        rows = [{"Date": "20260716", "Item": "外資及陸資",
+                 "OpenInterest(Net)": "-514017", "TradingVolume(Net)": "-28039"}]
+        self.assertEqual(taifex.foreign_tx_net(rows), 0)
+
+    def test_url_points_at_per_contract_endpoint(self):
+        # General endpoint has no product field (probe 2026-07-17: 3 rows/day,
+        # keys have no ContractCode) → the fetch must use the per-contract one.
+        self.assertIn("DetailsOfFuturesContracts", taifex.INST_FUTURES_URL)
+
+
 class TestPcrValue(unittest.TestCase):
     def test_reads_oi_ratio_for_latest_date(self):
         self.assertEqual(taifex.pcr_value(PCR_ROWS), 189.66)
@@ -175,6 +224,8 @@ class TestToEnvironment(unittest.TestCase):
         # NOT keyed by ticker — it's a flat gauge dict
         self.assertNotIn("2330", env)
         self.assertNotIn("symbol", env)
+        # product lock surfaced so the frontend can label the gauge honestly
+        self.assertIn("臺股期貨", env["contract"])
 
     def test_graceful_when_both_sources_skipped(self):
         env = taifex.to_environment([], [])

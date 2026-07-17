@@ -41,6 +41,87 @@ class TestBetaToBench(unittest.TestCase):
         self.assertIsNone(rl.beta_to_bench(None, _df_from_returns([0.01] * 90)))
 
 
+class TestBetaHardening(unittest.TestCase):
+    """2026-07-16 audit: live β 失真（AMD 5.05 / 台塑化 0.08 / 中華電 0.01,相關 0.01）。
+    根因（.cache/ohlcv_15y 實測重現）：低相關時 60-bar OLS β 無參考性、cov(ddof=1)/var(ddof=0)
+    不一致放大 n/(n-1)、無 benchmark 標示、樣本下限過鬆(30)。修法：ddof 一致、下限 40、
+    低相關旗標、benchmark 名稱欄位、索引日期正規化（tz/時間戳錯配也能 inner-join）。"""
+
+    def test_identical_series_beta_exactly_one(self):
+        # ddof mismatch inflates β by n/(n-1): 60/59 → 1.02 pre-fix. Must be exactly 1.0.
+        base = ([0.012, -0.006, 0.009, -0.002] * 25)          # 100 bars
+        out = rl.beta_to_bench(_df_from_returns(base), _df_from_returns(base), window=60)
+        self.assertEqual(out["beta"], 1.0)
+
+    def test_sample_floor_below_40_returns_none(self):
+        # 40 closes → 39 aligned returns < 40 → None (UI shows「—」, not a junk β).
+        base = [0.01, -0.005] * 20
+        self.assertIsNone(rl.beta_to_bench(_df_from_returns(base), _df_from_returns(base)))
+
+    def test_sample_at_floor_passes(self):
+        base = [0.01, -0.005] * 21                            # 42 closes → 41 returns ≥ 40
+        self.assertIsNotNone(rl.beta_to_bench(_df_from_returns(base), _df_from_returns(base)))
+
+    def test_benchmark_name_and_n_surfaced(self):
+        base = ([0.01, -0.005, 0.008, -0.003] * 25)
+        out = rl.beta_to_bench(_df_from_returns(base), _df_from_returns(base),
+                               bench_name="加權指數(^TWII)")
+        self.assertEqual(out["benchmark"], "加權指數(^TWII)")
+        self.assertGreaterEqual(out["n"], 40)
+
+    def test_low_corr_flagged_as_unreliable(self):
+        # Orthogonal return patterns → corr≈0 → OLS β is noise → low_corr flag for the UI.
+        a = 0.01
+        bench_rets = [a, 0.0, -a, 0.0] * 30
+        stock_rets = [0.0, a, 0.0, -a] * 30
+        out = rl.beta_to_bench(_df_from_returns(stock_rets), _df_from_returns(bench_rets),
+                               window=60)
+        self.assertTrue(out["low_corr"])
+        self.assertLess(abs(out["corr"]), 0.25)
+
+    def test_high_corr_not_flagged(self):
+        base = ([0.01, -0.005, 0.008, -0.003, 0.012, -0.007] * 15)
+        out = rl.beta_to_bench(_df_from_returns([1.5 * r for r in base]),
+                               _df_from_returns(base))
+        self.assertFalse(out["low_corr"])
+
+    def test_tz_mismatched_benchmark_still_aligns(self):
+        # 錯配基準案例: bench index tz-aware (Asia/Taipei), stock tz-naive — pre-fix the
+        # index intersection is empty → None; post-fix dates are normalized → β 合理 (1.5).
+        base = ([0.01, -0.005, 0.008, -0.003, 0.012, -0.007] * 15)
+        bench = _df_from_returns(base)
+        bench.index = bench.index.tz_localize("Asia/Taipei")
+        stock = _df_from_returns([1.5 * r for r in base])
+        out = rl.beta_to_bench(stock, bench, window=60)
+        self.assertIsNotNone(out)
+        self.assertAlmostEqual(out["beta"], 1.5, places=1)
+
+
+class TestBenchFor(unittest.TestCase):
+    """Per-market benchmark selection helper (TW→twii, US→sp500) + display label."""
+
+    _FRAMES = {"twii": "TWII_DF", "sp500": "SPX_DF"}
+
+    def test_tw_symbol_maps_to_twii(self):
+        df, name = rl.bench_for("2330.TW", self._FRAMES)
+        self.assertEqual(df, "TWII_DF")
+        self.assertIn("TWII", name)
+
+    def test_two_symbol_maps_to_twii(self):
+        df, name = rl.bench_for("5483.TWO", self._FRAMES)
+        self.assertEqual(df, "TWII_DF")
+
+    def test_us_symbol_maps_to_sp500(self):
+        df, name = rl.bench_for("AMD", self._FRAMES)
+        self.assertEqual(df, "SPX_DF")
+        self.assertIn("S&P", name)
+
+    def test_missing_frames_graceful(self):
+        df, name = rl.bench_for("2330.TW", None)
+        self.assertIsNone(df)
+        self.assertTrue(name)
+
+
 class TestSectorConcentration(unittest.TestCase):
     def _ranked(self, sectors):
         return [{"stock": f"S{i}.TW", "sector": s} for i, s in enumerate(sectors)]

@@ -598,5 +598,57 @@ class TestAgeFilter(unittest.TestCase):
         self.assertEqual(nc.NEWS_MAX_AGE_HOURS, 24)
 
 
+class TestRealFetchGunzip(unittest.TestCase):
+    """2026-07-17 audit: _real_fetch sent Accept-Encoding: gzip but never
+    decompressed → cnyes (gzip reply) parsed as garbage → silent 0-item source."""
+
+    class _FakeResp:
+        def __init__(self, raw, headers):
+            self._raw, self._headers = raw, headers
+
+        def read(self):
+            return self._raw
+
+        @property
+        def headers(self):
+            import email.message
+            m = email.message.Message()
+            for k, v in self._headers.items():
+                m[k] = v
+            return m
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def _with_fake(self, raw, headers):
+        orig = nc.urlopen
+        nc.urlopen = lambda req, timeout=None: self._FakeResp(raw, headers)
+        try:
+            return nc._real_fetch("https://example.invalid/x")
+        finally:
+            nc.urlopen = orig
+
+    def test_gunzips_content_encoding_gzip(self):
+        import gzip as _gz
+        body = _gz.compress('{"ok": "資料"}'.encode("utf-8"))
+        out = self._with_fake(body, {"Content-Encoding": "gzip",
+                                     "Content-Type": "application/json; charset=utf-8"})
+        self.assertEqual(json.loads(out), {"ok": "資料"})
+
+    def test_gunzips_magic_bytes_without_header(self):
+        import gzip as _gz
+        body = _gz.compress(b'{"ok": 1}')
+        out = self._with_fake(body, {"Content-Type": "application/json"})
+        self.assertEqual(json.loads(out), {"ok": 1})
+
+    def test_identity_body_unchanged(self):
+        out = self._with_fake('{"plain": true}'.encode("utf-8"),
+                              {"Content-Type": "application/json; charset=utf-8"})
+        self.assertEqual(json.loads(out), {"plain": True})
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

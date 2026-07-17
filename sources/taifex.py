@@ -17,13 +17,19 @@ Conforms to the sources/ framework contract:
   <pure derives>(rows)   -> scalar metrics        (offline-testable, no network)
   to_environment(...)    -> dict of named gauges  (market-level, not ticker-keyed)
 
-Endpoint facts (from live probe — TRUSTED over assumptions):
+Endpoint facts (from live probe — TRUSTED over assumptions; re-probed 2026-07-17):
   * 三大法人期貨 — openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTraders
-    GeneralBytheDate. Live JSON ARRAY, keyless, no UA needed. Each element is one
-    trader category for one product. Foreign net is NOT a top-level field — it is
-    the row where Item == 外資 (sometimes labelled 外資及陸資). All numerics are
+    DetailsOfFuturesContractsBytheDate (區分各期貨契約). Live JSON ARRAY, keyless,
+    no UA needed. Each element is one trader category × ONE ContractCode (probe:
+    22 codes — 臺股期貨/小型臺指期貨/微型臺指期貨/股票期貨/ETF期貨/…). Foreign net
+    is the row where Item == 外資 (sometimes labelled 外資及陸資) AND
+    ContractCode == 臺股期貨 — the product lock is MANDATORY. All numerics are
     JSON STRINGS (cast to int/float). Field names contain literal parentheses,
     e.g. 'TradingVolume(Net)' / 'OpenInterest(Net)' — exact bracketed key access.
+    ⚠️ BUG HISTORY (2026-07-16 audit): the module previously fetched
+    ...GeneralBytheDate, which is the WHOLE-MARKET aggregate (3 rows/day, NO
+    product field — probe-verified). Its foreign OI(Net) (−514,017 on 07-16) was
+    displayed as「外資台指期淨口數」— impossible for TX (same-day TX row: −84,453).
   * Put/Call Ratio — openapi.taifex.com.tw/v1/PutCallRatio. Live JSON, keyless.
     Headline PCR = PutCallOIRatio% (open-interest based, the standard Taiwan
     market-sentiment PCR). The '%' is part of the key name. Values are STRINGS and
@@ -38,7 +44,7 @@ log = logging.getLogger(__name__)
 # ── endpoints (define here; do NOT add to config.py per fetcher convention) ────
 INST_FUTURES_URL = (
     "https://openapi.taifex.com.tw/v1/"
-    "MarketDataOfMajorInstitutionalTradersGeneralBytheDate"
+    "MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate"
 )
 PUT_CALL_RATIO_URL = "https://openapi.taifex.com.tw/v1/PutCallRatio"
 
@@ -47,11 +53,16 @@ TAIFEX_TIMEOUT = 15
 # ── exact probe-verified keys (byte-for-byte, parentheses included) ────────────
 INST_K_DATE = "Date"
 INST_K_ITEM = "Item"                                   # trader category
+INST_K_CONTRACT = "ContractCode"                       # product (per-contract endpoint)
 INST_K_OI_NET = "OpenInterest(Net)"                    # net open-interest (contracts)
 INST_K_VOL_NET = "TradingVolume(Net)"                  # net trading volume (contracts)
 
 # 外資 may appear as 外資 or 外資及陸資 — match either (probe-noted alias).
 FOREIGN_ITEM_TOKENS = ("外資", "外資及陸資")
+
+# TX product lock — EXACT match. Substring matching would admit the lookalikes
+# 小型臺指期貨 / 微型臺指期貨 (probe 2026-07-17: distinct ContractCode values).
+TX_CONTRACT = "臺股期貨"
 
 PCR_K_DATE = "Date"
 PCR_K_OI_RATIO = "PutCallOIRatio%"                     # headline PCR (open-interest)
@@ -102,6 +113,19 @@ def _is_foreign_item(item):
     return any(tok in text for tok in FOREIGN_ITEM_TOKENS)
 
 
+def _is_tx_contract(contract):
+    """True ONLY for the TX big contract (ContractCode == 臺股期貨, exact after strip).
+
+    Exact equality on purpose: substring tests would admit 小型臺指期貨/微型臺指期貨,
+    and a MISSING ContractCode (the old aggregate-endpoint shape) must be REJECTED —
+    an unverifiable product is exactly the 2026-07-16 display bug (−489k 口 shown as
+    「外資台指期」)."""
+    try:
+        return str(contract).strip() == TX_CONTRACT
+    except Exception:
+        return False
+
+
 # ── fetchers (injectable fetch_fn, graceful-skip) ──────────────────────────────
 
 def _default_get_json(url, params=None):
@@ -112,8 +136,10 @@ def _default_get_json(url, params=None):
 
 
 def fetch_inst_futures(fetch_fn=None):
-    """三大法人期貨 (MajorInstitutionalTradersGeneralBytheDate). Returns the raw
-    array-of-dicts (one element per trader category × product) as probed.
+    """三大法人期貨區分各期貨契約 (MajorInstitutionalTradersDetailsOfFuturesContracts
+    BytheDate). Returns the raw array-of-dicts (one element per trader category ×
+    ContractCode) as probed — the per-contract endpoint, because the General one
+    is a whole-market aggregate with NO product field (2026-07-16 display bug).
 
     Args:
         fetch_fn: callable(url, params) -> parsed-JSON list. Defaults to the real
@@ -147,19 +173,24 @@ def fetch_put_call_ratio(fetch_fn=None):
 def foreign_tx_net(rows):
     """Foreign net TX open-interest (台指期 net contracts) from inst-futures rows.
 
-    Reads the element where Item ∈ {外資, 外資及陸資} and returns its
-    OpenInterest(Net) cast to int. When several foreign rows exist (multiple
-    products), the LATEST Date's foreign row is used; ties keep the first seen.
+    Reads the element where Item ∈ {外資, 外資及陸資} AND ContractCode == 臺股期貨
+    and returns its OpenInterest(Net) cast to int. The feed is MULTI-PRODUCT
+    (probe 2026-07-17: 22 ContractCodes/day) — without the product lock the gauge
+    silently showed the whole-market/股票期貨 aggregate (−489k/−569k 口, impossible
+    for TX whose same-day row was −84,453). Rows lacking ContractCode (the legacy
+    aggregate-endpoint shape) are rejected. Across dates the LATEST Date's TX
+    foreign row wins; ties keep the first seen.
 
-    Returns 0 when no foreign row exists / rows is empty (graceful). Pure, no
-    network. NOTE: the openapi feed is index/product-level — this is a TX-futures
-    positioning gauge, NOT a per-stock figure."""
+    Returns 0 when no TX foreign row exists / rows is empty (graceful). Pure, no
+    network. NOTE: this is a TX-futures positioning gauge, NOT a per-stock figure."""
     best = None                                        # (date_int, oi_net)
     for row in (rows or []):
         if not isinstance(row, dict):
             continue
         if not _is_foreign_item(row.get(INST_K_ITEM)):
             continue
+        if not _is_tx_contract(row.get(INST_K_CONTRACT)):
+            continue                                   # product lock (2026-07-16 fix)
         date_int = _to_int(row.get(INST_K_DATE))
         oi_net = _to_int(row.get(INST_K_OI_NET))
         if best is None or date_int > best[0]:
@@ -233,12 +264,13 @@ def to_environment(inst_rows=None, pcr_rows=None, as_of=None):
     return {
         "source": "taifex",
         "foreign_tx_net": foreign_net,
+        "contract": TX_CONTRACT + "(TX)",   # product lock surfaced for honest labelling
         "put_call_ratio": pcr,
         "regime_hint": hint,
         "as_of": as_of,
         "needs_backtest": True,
         "note": (
-            "TAIFEX 期貨外資淨未平倉 + Put/Call Ratio 為指數級資訊性環境指標；"
+            "TAIFEX 臺股期貨(TX)外資淨未平倉 + Put/Call Ratio 為指數級資訊性環境指標；"
             "regime_hint 僅為經驗法則(rule of thumb)，需回測驗證後才加權，不進個股評分/排序"
         ),
     }

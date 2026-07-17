@@ -214,6 +214,22 @@ class TestMargin(unittest.TestCase):
         m = tpex.to_margin_metrics(rows)
         self.assertEqual(m["5483"]["margin_chg"], 1000)
 
+    def test_margin_url_is_whole_market_endpoint(self):
+        # 2026-07-17 audit: margin_trading_margin_used is a top-20 usage-ratio
+        # leaderboard (20 rows/day); the overlay needs the whole market (~913).
+        self.assertIn("tpex_mainboard_margin_balance", tpex.TPEX_MARGIN_URL)
+
+    def test_to_margin_metrics_mainboard_balance_shape(self):
+        # /tpex_mainboard_margin_balance shape: no previous-day balance field —
+        # prev must be derived from today - (buy - sell - cash_redemption).
+        rows = [{"SecuritiesCompanyCode": "6488",
+                 "MarginPurchase": "500", "MarginSales": "300",
+                 "CashRedemption": "50", "MarginPurchaseBalance": "12,000"}]
+        m = tpex.to_margin_metrics(rows)
+        self.assertEqual(m["6488"]["margin_today"], 12000)
+        self.assertEqual(m["6488"]["margin_chg"], 150)      # 500-300-50
+        self.assertEqual(m["6488"]["margin_prev"], 11850)   # today - chg
+
 
 # ── PE derive ─────────────────────────────────────────────────────────────────
 class TestPE(unittest.TestCase):

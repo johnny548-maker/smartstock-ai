@@ -298,10 +298,13 @@ def main(web=False, dry_run=False, date_arg=None):
     #     集中高 beta ≈ 槓桿版指數」這個 session 教訓直接顯示在卡上。fail-open。
     try:
         for _it in ranked[:config.DISPLAY_N]:
-            _bench = frames.get("twii") if _it["stock"].endswith((".TW", ".TWO")) else frames.get("sp500")
-            _b = risk_lens.beta_to_bench(data.get(_it["stock"]), _bench)
+            _bench, _bname = risk_lens.bench_for(_it["stock"], frames)
+            _b = risk_lens.beta_to_bench(data.get(_it["stock"]), _bench, bench_name=_bname)
             if _b:
                 _it["beta_60"], _it["corr_idx"] = _b["beta"], _b["corr"]
+                _it["beta_bench"] = _b["benchmark"]
+                _it["beta_low_corr"] = _b["low_corr"]
+                _it["beta_n"] = _b["n"]
     except Exception as e:
         log.warning("SKIP beta lens: %s", e)
 
@@ -707,9 +710,15 @@ def main(web=False, dry_run=False, date_arg=None):
         if _opp_data:
             _core_syms = {it["stock"] for it in ranked}
             _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst, frames=frames)
+            # Audit finding 4: this call passes NO chips_map (and opp names have no
+            # sector), so these rows are scored on a REDUCED input set vs the core
+            # board → 板塊外 verdicts are capped at 觀察 (never 🟢 買入) via the
+            # row-level inputs_complete flag rank_stocks now carries.
             for _sr in _opp_ranked:
-                verdict_map.setdefault(_sr["stock"],
-                                       {"s": _sr["score"], "l": verdict_mod.light(_sr["score"])})
+                verdict_map.setdefault(
+                    _sr["stock"],
+                    verdict_mod.capped_entry(_sr["score"],
+                                             _sr.get("inputs_complete", False)))
             # #1 fix: back-fill the Chinese NAME (rank_stocks rows carry none) from the
             # opportunity-universe names map (universe.get_opportunities now exports it),
             # falling back to the 28-name STOCK_NAMES. Also enrich price + 1-day %chg from the
@@ -720,6 +729,13 @@ def main(web=False, dry_run=False, date_arg=None):
                     _r["name"] = _opp_names.get(_r["stock"]) or config.STOCK_NAMES.get(_r["stock"])
                 if not _r.get("light") and _r.get("score") is not None:
                     _r["light"] = verdict_mod.light(_r["score"])   # self-name the verdict light
+                # Audit finding 4: 板塊外 board rows (no chips/sector inputs) never show
+                # 🟢 — cap at 觀察 + carry the partial reason for the PWA chips row.
+                if not _r.get("inputs_complete", True):
+                    if _r.get("light") == "green":
+                        _r["light"] = "amber"
+                    _r["partial_inputs"] = True
+                    _r["partial_reason"] = verdict_mod.PARTIAL_REASON
                 _rdf = _opp_data.get(_r["stock"])
                 if _rdf is not None and not getattr(_rdf, "empty", True) and len(_rdf) >= 1:
                     try:
@@ -789,7 +805,14 @@ def main(web=False, dry_run=False, date_arg=None):
                     us_market.load_store(config.US_VERDICTS_STATE), _fresh, date_str)
                 us_market.save_store(config.US_VERDICTS_STATE, _store)
                 for _sym, _v in _store.items():
-                    verdict_map.setdefault(_sym, {"s": _v.get("s"), "l": _v.get("l")})
+                    # Audit finding 4: itemC US coverage scores on frames only (no
+                    # sector/inst/chips) → same partial-inputs cap as the opp scan.
+                    _s = _v.get("s")
+                    if _s is None:
+                        verdict_map.setdefault(_sym, {"s": _s, "l": _v.get("l")})
+                    else:
+                        verdict_map.setdefault(
+                            _sym, verdict_mod.capped_entry(_s, inputs_complete=False))
                 log.info("US coverage: batch=%d fresh=%d store=%d",
                          len(_batch), len(_fresh), len(_store))
     except Exception as e:
@@ -1374,6 +1397,19 @@ def main(web=False, dry_run=False, date_arg=None):
             momentum_portfolio=momentum_lens, scored_universe=scored_universe,
             validated_portfolio=validated_lens, factor_validation=factor_validation,
             concentration_summary=conc_summary)
+        # Audit finding 4: surface which scored names carry the partial-inputs cap
+        # (板塊外資料不全 → 燈號封頂觀察). Compact summary: count + the ≤12 capped
+        # board rows (scored_universe already carries partial_inputs/partial_reason
+        # per row). The full per-name flag lives in _verdicts.json entries — panel/US
+        # names merged after this export are covered there, not re-inlined here.
+        _partial_syms = sorted(s for s, v in verdict_map.items()
+                               if isinstance(v, dict) and v.get("partial"))
+        payload["partial_inputs"] = {
+            "reason": verdict_mod.PARTIAL_REASON,
+            "count": len(_partial_syms),
+            "board_symbols": [r.get("stock") for r in (scored_universe or [])
+                              if r.get("partial_inputs")],
+        }
         data_dir = web_export.export(payload, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
@@ -1403,9 +1439,15 @@ def main(web=False, dry_run=False, date_arg=None):
                 _pf = market_panel.panel_frames(_panel, min_bars=config.MIN_BARS)
                 if _pf:
                     _panel_ranked = strategy.rank_stocks(_pf, frames=frames)
+                    # Audit finding 4: panel scoring has neither inst NOR chips (frames
+                    # only) → partial-inputs cap; the entry itself carries partial+reason
+                    # into _verdicts.json (this block runs AFTER the payload export, so
+                    # the per-entry flag is the durable marker for these names).
                     for _pr in _panel_ranked:
                         verdict_map.setdefault(
-                            _pr["stock"], {"s": _pr["score"], "l": verdict_mod.light(_pr["score"])})
+                            _pr["stock"],
+                            verdict_mod.capped_entry(_pr["score"],
+                                                     _pr.get("inputs_complete", False)))
                     # Chart coverage: panel-scored TW names are clickable in all-market search
                     #   (verdict badge) but had NO detail file → no 技術線圖. Write one per panel
                     #   frame (reconstructed OHLC already in hand). Own export (main details flushed

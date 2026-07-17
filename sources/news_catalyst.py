@@ -51,6 +51,7 @@ Conforms to the sources/ framework contract:
   to_overlays(deduped, ..)    -> {ticker: [overlay]}  (via make_overlay)
 """
 import calendar
+import gzip
 import html
 import json
 import logging
@@ -203,7 +204,15 @@ def _real_fetch(url):
     with urlopen(req, timeout=_TIMEOUT) as resp:
         raw = resp.read()
         enc = resp.headers.get_content_charset() or "utf-8"
-    # gzip is auto-handled by urllib only if server sets it; most return identity.
+        cenc = (resp.headers.get("Content-Encoding") or "").lower()
+    # urllib does NOT auto-decompress: we ask for gzip, so we must gunzip
+    # ourselves (2026-07-17 audit — cnyes replies gzip; raw decode = silent
+    # garbage → 0-item source). Header OR magic-byte sniff (some servers omit it).
+    if cenc == "gzip" or raw[:2] == b"\x1f\x8b":
+        try:
+            raw = gzip.decompress(raw)
+        except OSError:
+            pass  # header lied / truncated body — fall through to raw decode
     try:
         return raw.decode(enc, errors="replace")
     except Exception:

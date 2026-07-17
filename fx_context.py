@@ -7,6 +7,14 @@ gate is needed (the Wilson-CI gate is only for signals that would be weighted).
 
 Honest framing: we describe the PAIR (USD/TWD), not "台幣升值/貶值"; the PWA caption
 is '美股換算參考'. The neutral ▲/▼ direction is on the USD/TWD number itself.
+
+PROVENANCE (2026-07-16 audit fix): the market-environment panel can show TWO USD/TWD
+numbers at once — this module's Yahoo spot (e.g. 32.208) and macro_us's Treasury
+book rate (官方匯率參考, e.g. 31.834) — which reads as a contradiction without
+attribution. compute_fx therefore tags its payload with `source`='yahoo' and
+`as_of`=<date of the last non-null close> so the frontend can label each number.
+BACKWARD-COMPATIBLE: every legacy key (pair/level/prev/chg_pct/dir/trend_20d_pct/n)
+is unchanged; the additions are pure sidecars.
 """
 import logging
 
@@ -16,13 +24,25 @@ log = logging.getLogger(__name__)
 
 TREND_WINDOW = 20  # trailing window (bars) for the longer-horizon trend %
 
+FX_SOURCE = "yahoo"  # provenance tag: yfinance 'TWD=X' spot (vs macro_us 官方書面匯率)
+
+
+def _as_of_str(index_value):
+    """Index label → 'YYYY-MM-DD', or None when the index isn't date-like (graceful:
+    synthetic RangeIndex frames in tests must not crash the banner)."""
+    try:
+        return index_value.strftime("%Y-%m-%d")
+    except Exception:
+        return None
+
 
 def compute_fx(df):
     """Compute the USD/TWD context dict from an OHLCV frame (uses the 'Close' col).
 
     df = OHLCV from data_fetcher._hist('TWD=X', '1mo'). Returns None if df is None or
     has 0 non-null closes. FX daily series can carry a TRAILING null/NaN close → we
-    always df['Close'].dropna() before iloc, else level=NaN and the banner vanishes.
+    always df['Close'].dropna() before iloc, else level=NaN and the banner vanishes
+    (and `as_of` correctly reflects the last REAL close's date, not the NaN bar).
     """
     if df is None:
         return None
@@ -31,6 +51,7 @@ def compute_fx(df):
     if n == 0:
         return None
     last = float(closes.iloc[-1])
+    as_of = _as_of_str(closes.index[-1])
     if n < 2:
         return {
             "pair": "USD/TWD",
@@ -40,6 +61,8 @@ def compute_fx(df):
             "dir": "flat",
             "trend_20d_pct": None,
             "n": n,
+            "source": FX_SOURCE,
+            "as_of": as_of,
         }
     prev = float(closes.iloc[-2])
     chg_pct = (last / prev - 1) * 100 if prev else None
@@ -55,6 +78,8 @@ def compute_fx(df):
         "dir": direction,
         "trend_20d_pct": round(trend, 2) if trend is not None else None,
         "n": n,
+        "source": FX_SOURCE,
+        "as_of": as_of,
     }
 
 

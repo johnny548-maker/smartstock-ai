@@ -47,7 +47,10 @@ log = logging.getLogger(__name__)
 # ── TPEx OpenAPI endpoints (www.tpex.org.tw/openapi/v1/...) ───────────────────
 # Trust the PATH not the spec '上市/上櫃' label (probe gotcha).
 TPEX_3INSTI_URL = "https://www.tpex.org.tw/openapi/v1/tpex_3insti_daily_trading"
-TPEX_MARGIN_URL = "https://www.tpex.org.tw/openapi/v1/tpex_margin_trading_margin_used"
+# 2026-07-17 audit fix: margin_trading_margin_used is a top-20 usage-ratio
+# leaderboard (20 rows/day) — the whole-market balances live at
+# /tpex_mainboard_margin_balance (~913 rows/day, probe-verified).
+TPEX_MARGIN_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance"
 TPEX_PE_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_peratio_analysis"
 
 # W4: 上櫃現股當沖市場統計 — MARKET-WIDE aggregate (NOT per-stock).
@@ -304,13 +307,18 @@ def streak_qualifies(streak):
 
 _MARGIN_CODE_KEYS = ("Code", "SecuritiesCompanyCode", "股票代號", "證券代號")
 _MARGIN_TODAY_KEYS = (
-    "MarginPurchaseTodayBalance", "TodayBalance", "MarginBalance",
-    "融資今日餘額", "融資餘額",
+    "MarginPurchaseBalance", "MarginPurchaseTodayBalance", "TodayBalance",
+    "MarginBalance", "融資今日餘額", "融資餘額",
 )
 _MARGIN_PREV_KEYS = (
     "MarginPurchasePreviousDayBalance", "PreviousDayBalance", "YesterdayBalance",
     "融資前日餘額",
 )
+# /tpex_mainboard_margin_balance carries no previous-day balance — prev is
+# derived from the day's flows: chg = 買進 - 賣出 - 現金償還, prev = today - chg.
+_MARGIN_FLOW_BUY_KEYS = ("MarginPurchase", "融資買進")
+_MARGIN_FLOW_SELL_KEYS = ("MarginSales", "融資賣出")
+_MARGIN_FLOW_CASH_KEYS = ("CashRedemption", "融資現金償還")
 
 
 def to_margin_metrics(rows):
@@ -328,15 +336,23 @@ def to_margin_metrics(rows):
         if code is None or str(code).strip() == "":
             continue
         today = _to_int(_row_get(row, *_MARGIN_TODAY_KEYS))
-        prev = _to_int(_row_get(row, *_MARGIN_PREV_KEYS))
         # If neither balance resolved (schema mismatch), skip this row gracefully.
         if _row_get(row, *_MARGIN_TODAY_KEYS) is None and \
            _row_get(row, *_MARGIN_PREV_KEYS) is None:
             continue
+        if _row_get(row, *_MARGIN_PREV_KEYS) is not None:
+            prev = _to_int(_row_get(row, *_MARGIN_PREV_KEYS))
+            chg = today - prev
+        else:
+            # mainboard_margin_balance shape: derive from the day's flows.
+            chg = (_to_int(_row_get(row, *_MARGIN_FLOW_BUY_KEYS))
+                   - _to_int(_row_get(row, *_MARGIN_FLOW_SELL_KEYS))
+                   - _to_int(_row_get(row, *_MARGIN_FLOW_CASH_KEYS)))
+            prev = today - chg
         out[str(code).strip()] = {
             "margin_today": today,
             "margin_prev": prev,
-            "margin_chg": today - prev,
+            "margin_chg": chg,
         }
     return out
 
