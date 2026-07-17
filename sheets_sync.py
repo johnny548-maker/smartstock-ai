@@ -383,11 +383,37 @@ def _validate_position_row(row, headers):
     return {"symbol": symbol, "entry": entry, "shares": shares, "stop": stop, "note": note}, None
 
 
+def _is_transient_sheet_error(exc):
+    """True when `exc` is a transient/credential Sheets error (429/5xx/403/connection reset)
+    that must NOT be mistaken for 'worksheet absent'. Only a genuine gspread WorksheetNotFound
+    means the tab is really missing; every other error is transient and callers must preserve
+    the previous ledger instead of overwriting it with an empty list (the SA-key-rotation wipe).
+    """
+    # 'worksheet absent' signals (in priority order) → NOT transient:
+    #  1. a literal 'not found' message (the test fakes, and defensive), and
+    #  2. the WorksheetNotFound type (by name, then isinstance) — authoritative in production
+    #     and message-independent.
+    if "not found" in str(exc).lower():
+        return False
+    if type(exc).__name__ == "WorksheetNotFound":
+        return False
+    try:
+        from gspread.exceptions import WorksheetNotFound
+        if isinstance(exc, WorksheetNotFound):
+            return False
+    except Exception:
+        pass
+    # Everything else (APIError 429/5xx/403, requests ConnectionError, ...) = transient/preserve.
+    return True
+
+
 def read_my_positions(client):
     """Read the 'my_positions' Sheet tab and return a validated list[dict].
 
     Tab schema (row 1 = header): symbol / entry / shares / stop / note
-    - Tab absent: create it with header row and return [].
+    - Tab absent (WorksheetNotFound): create it with header row and return [].
+    - Transient/credential read error (429/5xx/403/connection): return None so the caller
+      PRESERVES the previously-committed ledger instead of overwriting it with an empty list.
     - client=None: graceful no-op, returns None.
     - Bad rows: log.warning + skip, never raise.
     - OVERLAY-NOT-SCORER: result is informational/decision-support only.
@@ -398,14 +424,21 @@ def read_my_positions(client):
 
     try:
         ws = client.worksheet("my_positions")
-    except Exception:
-        # Tab does not exist — create header-only and return empty.
+    except Exception as exc:
+        if _is_transient_sheet_error(exc):
+            # NOT 'tab absent' — a 429/5xx/403/connection blip. Returning [] here would let
+            # pull_positions overwrite _positions_state.json with an empty ledger and silently
+            # wipe the user's tracked holdings. Signal 'preserve previous state' with None.
+            _log(f"transient my_positions read error — preserving ledger (not treating as "
+                 f"absent): {exc}")
+            return None
+        # Genuine WorksheetNotFound — create header-only and return empty.
         try:
             ws = client.add_worksheet("my_positions", rows=1000,
                                       cols=max(26, len(MY_POSITIONS_HEADERS)))
             ws.update(values=[MY_POSITIONS_HEADERS], range_name="A1")
-        except Exception as exc:
-            _log(f"SKIP my_positions tab create: {exc}")
+        except Exception as exc2:
+            _log(f"SKIP my_positions tab create: {exc2}")
         return []
 
     # Ensure header matches (idempotent).
@@ -490,8 +523,15 @@ def pull_positions(client, state_path=POSITIONS_STATE_PATH):
 
     import positions as positions_mod
 
-    rows = read_my_positions(client)              # list[dict] | None (None only when client None)
-    rows = rows or []
+    rows = read_my_positions(client)   # list[dict] on success/empty; None on transient read error
+    if rows is None:
+        # A transient/credential Sheet read error (429/5xx/403/connection) — NOT an empty
+        # ledger. Overwriting _positions_state.json with [] here would silently wipe the
+        # tracked positions (the SA-key-rotation failure mode). Leave the previous
+        # (git-committed) state untouched and return None.
+        _log("SKIP --pull-positions: transient Sheet read error — positions ledger UNCHANGED "
+             "(previous state preserved).")
+        return None
     raw_state = {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "positions": rows,

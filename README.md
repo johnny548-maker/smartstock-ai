@@ -168,6 +168,24 @@ repo → **Actions** 分頁 → 若提示啟用就按 Enable → 進 **SmartStoc
 repo → **Settings → Secrets and variables → Actions → New repository secret**，新增：
 `EMAIL_FROM`、`EMAIL_APP_PASSWORD`、`EMAIL_TO`（值同本機 `.env`）。沒設就只更新 PWA、不寄信。
 
+## SA key 事故 runbook（`GOOGLE_SA_JSON` 失效／輪替）
+
+Google service-account 金鑰過期或被撤銷時，持倉讀回（`sheets_sync.py --pull-positions`）會失敗。
+
+> **症狀**：持倉帳不會消失、而是**凍結在上次成功 pull 的 git 版本**（`docs/data/_positions_state.json`）——
+> `read_my_positions` 現在把 transient／權限錯誤與「分頁不存在」分開處理，**絕不**把追蹤中的持倉覆寫成空。
+> daily 的 Sheet-mirror 兩步為 best-effort（`continue-on-error`），選股報告照常產出。
+
+復原步驟：
+
+1. **撤舊金鑰 → 發新金鑰**：GCP Console → IAM & Admin → Service Accounts → 該 SA → Keys → 刪除舊 key、`ADD KEY → Create new key (JSON)`。
+2. **更新 GitHub Secret**：repo → Settings → Secrets and variables → Actions → 編輯 `GOOGLE_SA_JSON`，貼上新 JSON 全文。
+3. **更新本地 User env**：本機 TW-IP 排程任務也讀同一把金鑰——照 `tools/local_cron/SETUP.md` 的 `GOOGLE_SA_JSON` 設定步驟更新（此處不重複內容）。
+4. **驗證**：repo → Actions → **SmartStock Daily** → Run workflow 手動觸發，確認
+   **Sheet-sync sentinel 綠** 且執行 log 出現 `pulled N position(s)`（N = 你 my_positions 分頁的有效列數）。
+
+（金鑰是**憑證**、非本專案的 LLM 金鑰；本系統零 LLM 金鑰。切勿把 SA JSON commit 進 repo——只放 GitHub Secret ／本機 User env。）
+
 ### F. 加到 iPhone 主畫面
 iPhone **Safari** 開 `https://<YOU>.github.io/smartstock-ai/` → 底部**分享**鈕 → **加入主畫面** → 完成。
 之後點 icon 像 app 一樣全螢幕開，可離線看已下載過的報告，點任一天看歷史。

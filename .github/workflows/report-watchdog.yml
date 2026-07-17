@@ -33,8 +33,8 @@ on:
         default: false
 
 permissions:
-  contents: read
-  actions: write     # to dispatch daily.yml for self-heal
+  contents: write    # to push the 60-day keepalive empty commit (see keepalive step)
+  actions: write     # to dispatch daily.yml for self-heal (subsumes actions:read for cache API)
   issues: write      # to open / comment the alert issue
 
 concurrency:
@@ -126,13 +126,27 @@ jobs:
               HEAL_LOG=$(gh run view "$HEAL_RUN_ID" --log-failed --repo "$REPO" 2>/dev/null \
                 | tail -10 || true)
               HEAL_FP=$(printf '%s' "$HEAL_LOG" | sha256sum | head -c 8)
-              ESCALATION_TITLE="🔴 SmartStock self-heal FAILED — manual intervention needed (${HEAL_FP})"
-              ESCALATION_BODY="The watchdog re-dispatched \`daily.yml\` to recover missing report for **${DATE}**, but the re-dispatch ALSO failed (conclusion: \`${HEAL_CONCLUSION}\`, run ID: \`${HEAL_RUN_ID}\`, fingerprint: \`${HEAL_FP}\`).\n\nThis requires **manual intervention** — the automatic self-heal loop is broken.\n\nOriginal missing-report alert: #${ALERT_ISSUE:-unknown}\nWatchdog run: ${RUN_URL}"
-              gh issue create --repo "$REPO" --title "$ESCALATION_TITLE" \
-                --body "$ESCALATION_BODY"
+              # Dedup on a STABLE title PREFIX (mirrors the missing-report alert above). The FP
+              # is per-run-unique (the failed log carries timestamps + GUIDs) so putting it in
+              # the title would never match an existing issue → a new duplicate every run. The
+              # FP lives in the body/comment instead. printf renders real newlines (bash double
+              # quotes leave "\n\n" as a literal backslash-n).
+              ESCALATION_TITLE_PREFIX="🔴 SmartStock self-heal FAILED"
+              ESCALATION_BODY=$(printf 'The watchdog re-dispatched `daily.yml` to recover the missing report for **%s**, but the re-dispatch ALSO failed (conclusion: `%s`, run ID: `%s`, fingerprint: `%s`).\n\nThis requires **manual intervention** — the automatic self-heal loop is broken.\n\nOriginal missing-report alert: #%s\nWatchdog run: %s\n' \
+                "$DATE" "$HEAL_CONCLUSION" "$HEAL_RUN_ID" "$HEAL_FP" "${ALERT_ISSUE:-unknown}" "$RUN_URL")
               ESCALATION_NUM=$(gh issue list --repo "$REPO" --state open \
-                --search "${ESCALATION_TITLE} in:title" --json number \
+                --search "${ESCALATION_TITLE_PREFIX} in:title" --json number \
                 --jq '.[0].number // empty')
+              if [ -n "$ESCALATION_NUM" ]; then
+                gh issue comment "$ESCALATION_NUM" --repo "$REPO" --body "$ESCALATION_BODY"
+              else
+                gh issue create --repo "$REPO" \
+                  --title "${ESCALATION_TITLE_PREFIX} — manual intervention needed" \
+                  --body "$ESCALATION_BODY"
+                ESCALATION_NUM=$(gh issue list --repo "$REPO" --state open \
+                  --search "${ESCALATION_TITLE_PREFIX} in:title" --json number \
+                  --jq '.[0].number // empty')
+              fi
               # Correct the misleading "check in ~10 min" comment on the original issue.
               if [ -n "$ALERT_ISSUE" ]; then
                 gh issue comment "$ALERT_ISSUE" --repo "$REPO" \
@@ -144,5 +158,74 @@ jobs:
               echo "Self-heal run concluded: ${HEAL_CONCLUSION} — no escalation needed."
             else
               echo "WARN: could not determine self-heal run conclusion (timed out polling)."
+            fi
+          fi
+
+      # 60-day keepalive — defends the COMPOUND failure mode: GitHub disables ALL scheduled
+      # workflows in a PUBLIC repo after 60 days of NO repository activity. If the daily is
+      # dropping AND this watchdog's self-heal isn't committing, the repo could cross that line
+      # and every cron silently stops. If the last commit is >45 days old, push a tiny empty
+      # commit to reset the clock. Runs even after an escalation exit (if: always()) — a stale
+      # repo there is exactly when the clock matters most. No-op on a healthy daily-committing repo.
+      - name: 60-day keepalive (prevent scheduled-workflow auto-disable)
+        if: always()
+        env:
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          LAST=$(git log -1 --format=%ct 2>/dev/null || echo 0)
+          NOW=$(date -u +%s)
+          AGE_DAYS=$(( (NOW - LAST) / 86400 ))
+          echo "::notice::last commit age = ${AGE_DAYS} day(s)"
+          if [ "$AGE_DAYS" -lt 45 ]; then
+            echo "repo active (<45d) — keepalive not needed."
+            exit 0
+          fi
+          echo "::warning::no repo activity for ${AGE_DAYS} day(s) — pushing keepalive to avoid the 60-day schedule auto-disable."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: watchdog keepalive ($(date -u +%F)) — reset 60-day schedule clock"
+          PUSHED=false
+          for i in 1 2 3; do
+            if git push; then
+              PUSHED=true
+              break
+            fi
+            echo "keepalive push race, rebase + retry $i/3"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done
+          if [ "$PUSHED" = "false" ]; then
+            echo "::error::keepalive push failed after 3 attempts."
+            exit 1
+          fi
+
+      # Actions cache usage monitor — the daily's market-panel cache uses a rolling per-run key,
+      # so entries accumulate toward GitHub's 10 GB per-repo cap. Once full, evictions thrash the
+      # panel restore and quietly shrink the verdict history. Warn + open ONE deduped issue
+      # (stable title prefix) at >9 GB so it never surprises. Read-only gh api (actions:read is
+      # subsumed by the workflow's actions:write).
+      - name: Actions cache usage monitor
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          TOTAL_BYTES=$(gh api "repos/${REPO}/actions/caches" --paginate \
+            --jq '.actions_caches[].size_in_bytes' 2>/dev/null | awk '{s+=$1} END{print s+0}')
+          TOTAL_GB=$(awk -v b="${TOTAL_BYTES:-0}" 'BEGIN{printf "%.2f", b/1073741824}')
+          echo "::notice::Actions cache usage = ${TOTAL_GB} GB (${TOTAL_BYTES:-0} bytes)"
+          OVER=$(awk -v b="${TOTAL_BYTES:-0}" 'BEGIN{print (b > 9*1073741824) ? 1 : 0}')
+          if [ "$OVER" = "1" ]; then
+            echo "::warning::Actions cache usage ${TOTAL_GB} GB exceeds 9 GB — approaching the 10 GB cap."
+            CACHE_TITLE="🟠 SmartStock Actions cache >9GB"
+            CACHE_BODY="Actions cache usage is **${TOTAL_GB} GB** (cap 10 GB). Panel-restore may start thrashing (verdict history shrinks). Consider pruning old caches (Actions → Caches). Watchdog run: ${RUN_URL}"
+            CNUM=$(gh issue list --repo "$REPO" --state open --search "$CACHE_TITLE in:title" --json number --jq '.[0].number // empty')
+            if [ -n "$CNUM" ]; then
+              gh issue comment "$CNUM" --repo "$REPO" --body "$CACHE_BODY"
+            else
+              gh issue create --repo "$REPO" --title "$CACHE_TITLE" --body "$CACHE_BODY"
             fi
           fi

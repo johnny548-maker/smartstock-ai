@@ -823,6 +823,62 @@ class TestReadMyPositions(unittest.TestCase):
         self.assertEqual(len(result), 0)
 
 
+# ── transient-error preservation (audit 2026-07-17: SA-key rotation wiped ledger) ──
+
+class _TransientReadSheet:
+    """A Sheet whose worksheet() read fails with a NON-'not found' (transient / credential)
+    error — e.g. a 429 / 5xx APIError or an SA-credential (403) failure. read_my_positions
+    must NOT treat this as 'tab absent': it must not create/overwrite anything and must signal
+    the caller to preserve the previous ledger."""
+    def __init__(self):
+        self.add_worksheet_called = False
+
+    def worksheet(self, title):
+        raise Exception("APIError: [503]: The service is currently unavailable.")
+
+    def add_worksheet(self, *a, **k):
+        self.add_worksheet_called = True
+        raise AssertionError("add_worksheet must NOT be called on a transient read error")
+
+
+class TestReadMyPositionsTransient(unittest.TestCase):
+    def test_transient_error_returns_none_not_empty(self):
+        """A transient / permission Sheet error → None (preserve), never [] (which wipes)."""
+        sh = _TransientReadSheet()
+        result = ss.read_my_positions(sh)
+        self.assertIsNone(result, "transient read error must return None, not []")
+        self.assertFalse(sh.add_worksheet_called,
+                         "must not try to (re)create the tab on a transient error")
+
+    def test_worksheet_not_found_still_returns_empty(self):
+        """A genuine 'not found' still yields [] + header-only tab (unchanged behavior)."""
+        sh = _FakeSheet()  # worksheet() raises Exception('not found')
+        result = ss.read_my_positions(sh)
+        self.assertEqual(result, [])
+
+
+class TestPullPositionsPreservesOnTransient(unittest.TestCase):
+    def test_transient_error_does_not_overwrite_existing_ledger(self):
+        """pull_positions must leave the previously committed _positions_state.json intact when
+        the Sheet read fails transiently — never overwrite it with an empty ledger."""
+        with tempfile.TemporaryDirectory() as td:
+            path = os.path.join(td, "_positions_state.json")
+            prior = {"updated": "2026-07-10",
+                     "positions": [{"symbol": "2330.TW", "entry": 1000.0,
+                                    "shares": 10, "stop": 950.0, "note": "held"}]}
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(prior, f, ensure_ascii=False)
+
+            result = ss.pull_positions(_TransientReadSheet(), state_path=path)
+
+            self.assertIsNone(result, "transient pull returns None (no state written)")
+            with open(path, encoding="utf-8") as f:
+                on_disk = json.load(f)
+            self.assertEqual(len(on_disk["positions"]), 1,
+                             "existing ledger must be preserved, not wiped to empty")
+            self.assertEqual(on_disk["positions"][0]["symbol"], "2330.TW")
+
+
 class TestWritePositionsEcho(unittest.TestCase):
     """write_positions_echo(client, evals) — mocked Sheet."""
 

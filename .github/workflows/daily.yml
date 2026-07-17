@@ -35,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      actions: read   # REQUIRED for `gh run view --log-failed`; a job-level `issues: write`
+                      # alone zeroes the actions scope → 403 → empty log → constant FP.
     steps:
       - name: Open or update a fingerprinted failure issue
         env:
@@ -45,13 +47,28 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Compute error fingerprint from the last 10 lines of the failed step log.
-          # sha256sum outputs "<hash>  -"; we take the first 8 hex chars.
+          # Compute an error fingerprint from the failed step log so DISTINCT root causes get
+          # distinct issues while the SAME root cause dedups across runs.
           LOG_TAIL=$(gh run view "${{ github.run_id }}" --log-failed --repo "$REPO" 2>/dev/null | tail -10 || true)
-          FP=$(printf '%s' "$LOG_TAIL" | sha256sum | head -c 8)
+          # If the log fetch failed (e.g. missing actions:read scope), the FP would degrade to a
+          # constant — warn so it is visible rather than silent.
+          [ -n "$LOG_TAIL" ] || echo "::warning::failed-log fetch returned empty — fingerprint degraded (dedup weakened)."
+          if [ -n "$LOG_TAIL" ]; then
+            # Strip per-line VOLATILE tokens BEFORE hashing: ISO-8601 timestamps (every
+            # `gh run view --log-failed` line is timestamp-prefixed) and GUIDs. Without this
+            # the FP is unique every run and the title-based dedup below is dead code.
+            NORM=$(printf '%s' "$LOG_TAIL" \
+              | sed -E 's/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?Z?//g' \
+              | sed -E 's/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}//g')
+            FP=$(printf '%s' "$NORM" | sha256sum | head -c 8)
+          else
+            # Never let an empty log hash to the constant e3b0c442 (sha256 of "") and masquerade
+            # as a real fingerprint — fall back to a workflow-scoped (stable, non-empty) hash.
+            FP=$(printf '%s' "${WF}::log-unavailable" | sha256sum | head -c 8)
+          fi
 
           NEW_TITLE="🔴 ${WF} failed (${FP})"
-          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ).\nFingerprint: \`${FP}\` (SHA-256 of last 10 log lines).\nRun: ${RUN_URL}"
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ).\nFingerprint: \`${FP}\` (SHA-256 of last 10 log lines, timestamps/GUIDs stripped).\nRun: ${RUN_URL}"
 
           NUM=$(gh issue list --repo "$REPO" --state open \
             --search "${NEW_TITLE} in:title" --json number --jq '.[0].number // empty')
@@ -141,7 +158,12 @@ jobs:
 
       - name: Install deps
         if: steps.report_check.outputs.skip != 'true'
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then
+            pip install -r requirements.lock
+          else
+            pip install -r requirements.txt
+          fi
 
       # P2-S1: read-back the user's holdings ledger from the Google Sheet 'my_positions' tab
       # into docs/data/_positions_state.json BEFORE the analysis run, so main.py can evaluate
@@ -149,6 +171,7 @@ jobs:
       # no-op when GOOGLE_SA_JSON is unset, so the REPORT is always primary (never blocked by
       # the optional positions read-back).
       - name: Pull positions ledger from Google Sheet
+        id: positions_pull
         if: steps.report_check.outputs.skip != 'true'
         continue-on-error: true
         env:
@@ -256,12 +279,19 @@ jobs:
       # Both steps are continue-on-error — the archive is secondary and must never block the report.
 
       # Sink 1 — keyless git gzip-CSV archive.
+      # Audit finding (2026-07-17): this sink was previously UNMONITORED — a Traceback in the
+      # archiver, or an all-5-retries-failed push, exited 0 and no alert fired. Now: id +
+      # tee'd log (parsed by the end-of-job sentinel) and a PUSHED flag + exit 1 on push
+      # failure. continue-on-error stays true so an archive problem NEVER blocks the report,
+      # but the step OUTCOME flips to failure so the sentinel surfaces it.
       - name: Archive all-stocks snapshots to git files
+        id: allstocks_files
         if: steps.report_check.outputs.skip != 'true'
         continue-on-error: true
         run: |
           set -euo pipefail
-          python sheets_sync_allstocks.py --archive-files --date $(date -u +%F)
+          python sheets_sync_allstocks.py --archive-files --date $(date -u +%F) 2>&1 \
+            | tee "${RUNNER_TEMP}/allstocks_files.log"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/_allstocks
@@ -269,12 +299,20 @@ jobs:
             echo "::notice::no all-stocks archive changes"
           else
             git commit -m "archive(allstocks): $(date -u +%F)"
+            PUSHED=false
             for i in 1 2 3 4 5; do
-              git push && break
+              if git push; then
+                PUSHED=true
+                break
+              fi
               echo "push race, rebase + retry $i/5"
               git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
               sleep 5
             done
+            if [ "${PUSHED}" = "false" ]; then
+              echo "::error::Archive all-stocks: push failed after 5 attempts — snapshots NOT published to origin."
+              exit 1
+            fi
           fi
 
       # Sink 2 — month-shard Google Sheet (the browseable Excel). Resolves the current month's
@@ -364,8 +402,20 @@ jobs:
             echo "::error::all-stocks Sheet mirror crashed (see 'Mirror all-stocks snapshots to Sheet' log)"
             FAIL=1
           fi
+          # Sink-1 git-file archive (2026-07-17): a crashed archiver or a push that failed all
+          # 5 retries flips this step's outcome to failure — surface it (report already landed).
+          if [ "${{ steps.allstocks_files.outcome }}" = "failure" ]; then
+            echo "::error::all-stocks git-file archive failed (see 'Archive all-stocks snapshots to git files' log)"
+            FAIL=1
+          fi
+          # positions ledger pull is best-effort (the report is primary; main.py falls back to
+          # the last committed _positions_state.json). WARN only — never FAIL the run on it.
+          if [ "${{ steps.positions_pull.outcome }}" = "failure" ]; then
+            echo "::warning::positions ledger pull failed (best-effort — report uses last committed _positions_state.json; NOT blocking)"
+          fi
           PICKS_LOG="${RUNNER_TEMP}/sheets_sync_picks.log"
           ALL_LOG="${RUNNER_TEMP}/sheets_sync_allstocks.log"
+          FILES_LOG="${RUNNER_TEMP}/allstocks_files.log"
           # picks mirror: per-tab failures log "SKIP <title> tab..." lines
           if [ -f "$PICKS_LOG" ] && grep -E "SKIP .+ tab" "$PICKS_LOG"; then
             echo "::error::picks mirror skipped >=1 tab (matched lines above)"
@@ -376,6 +426,13 @@ jobs:
           # dates like 2026-07-16.
           if [ -f "$ALL_LOG" ] && grep -E "': -1[,}]" "$ALL_LOG"; then
             echo "::error::all-stocks mirror reported tab=-1 (matched counts line above)"
+            FAIL=1
+          fi
+          # sink-1 archiver crash: a Python Traceback / '<Module.>SomethingError:' / 'Exception:'
+          # in the tee'd log. Deliberately NOT matching '0 rows' / '0 source' — a mid-week TW
+          # holiday where every source returns 0 rows is NORMAL and must stay green.
+          if [ -f "$FILES_LOG" ] && grep -Eq 'Traceback \(most recent call last\)|^[A-Za-z_.]+Error:|Exception:' "$FILES_LOG"; then
+            echo "::error::all-stocks git-file archive log shows a Traceback/Error"
             FAIL=1
           fi
           if [ "$FAIL" -eq 0 ]; then
