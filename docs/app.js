@@ -12,8 +12,8 @@
 /* ---------- version stamp (R7) ----------
    Tied to the service-worker CACHE version so the user can SELF-VERIFY they are
    on the new build (顯示於封面底部). Bump BOTH together on shell changes. */
-const APP_VERSION = 'v60';
-const APP_BUILD = '2026-06-23';
+const APP_VERSION = 'v61';
+const APP_BUILD = '2026-07-17';
 /* C1: the max payload schema_version this build understands. A payload newer than this
    means the service worker is serving a stale app.js → soft-banner the user to refresh.
    Old payloads have no field (read as 0) → always supported (back-compat). */
@@ -46,13 +46,21 @@ function _verdictOf(code) {
   const bare = String(code).replace(/\.(TW|TWO)$/, '');
   return VERDICTS[code] || VERDICTS[bare] || VERDICTS[bare + '.TW'] || VERDICTS[bare + '.TWO'] || null;
 }
-// verdict light: prefer the loaded verdict store; else compute from a raw score
-// (matches verdict.light — green≥90 / amber 40-89 / red<40).
+// #F3: 分級唯一真相源（與三層分級圖例一致）：🟢 green≥90 / 🟡 amber 40–89 / 🔴 red<40。
+function scoreLight(score) {
+  if (score == null || !isFinite(+score)) return null;
+  const s = +score;
+  return s >= 90 ? 'green' : (s >= 40 ? 'amber' : 'red');
+}
+// verdict light: score 在場時一律由分數推導（#F3 live 實證：store 可帶 s=-45 卻 l='amber'
+// → 搜尋 chip 顯「觀望」違反圖例 <40=避開）；無分數才信 store/傳入的 light。
 function lightOf(code, score) {
   const v = _verdictOf(code);
-  if (v && v.l) return v.l;
-  if (score == null) return null;
-  return score >= 90 ? 'green' : (score >= 40 ? 'amber' : 'red');
+  const fromStore = v ? scoreLight(v.s) : null;
+  if (fromStore) return fromStore;
+  const fromScore = scoreLight(score);
+  if (fromScore) return fromScore;
+  return (v && v.l) || null;
 }
 async function getJSON(url) {
   const res = await fetch(url, { cache: 'reload' });   // bypass HTTP cache, get fresh
@@ -82,7 +90,7 @@ async function ensureNameIdx() {
   } catch (e) { /* degrade silently: nameOf falls back to the bare code */ }
 }
 // #3: lazily-loaded verdict map {code:{s:score,l:light}} for every scored name → search
-// shows a current 買入/觀望/不持有 recommendation. Degrades silently if not generated yet.
+// shows a current 建議買入/觀望/避開 recommendation. Degrades silently if not generated yet.
 let VERDICTS = null;
 async function loadVerdicts() {
   if (VERDICTS) return VERDICTS;
@@ -90,12 +98,15 @@ async function loadVerdicts() {
   catch (e) { VERDICTS = {}; }
   return VERDICTS;
 }
-const VLABEL = { green: '建議買入', amber: '觀望', red: '不持有' };
+// #F3: red 統一為「避開」（與三層分級圖例 🔴<40=避開 全站一致；原「不持有」為舊詞）。
+const VLABEL = { green: '建議買入', amber: '觀望', red: '避開' };
 function verdictBadge(code) {
   const v = _verdictOf(code);
-  if (!v || !VLABEL[v.l]) return '';
-  const cls = v.l === 'green' ? 'up' : (v.l === 'red' ? 'down' : '');
-  return ` <span class="vbadge ${cls}">${VLABEL[v.l]}${v.s != null ? ' ·' + esc(v.s) : ''}</span>`;
+  if (!v) return '';
+  const l = scoreLight(v.s) || v.l;   // #F3: 分數在場時由分數推導，store light 只作無分數 fallback
+  if (!VLABEL[l]) return '';
+  const cls = l === 'green' ? 'up' : (l === 'red' ? 'down' : '');
+  return ` <span class="vbadge ${cls}">${VLABEL[l]}${v.s != null ? ' ·' + esc(v.s) : ''}</span>`;
 }
 function toast(msg, ms) {
   const t = $('status'); if (!t) return;
@@ -214,8 +225,15 @@ function betaBadge(p) {
   const b = +p.beta_60;
   const hot = b >= 1.2;
   const corr = (p.corr_idx != null && isFinite(+p.corr_idx)) ? ` ·相關${(+p.corr_idx).toFixed(2)}` : '';
+  // 2026-07-17 audit: name the actual benchmark (vs 加權指數 / vs S&P 500) and grey
+  // out low-correlation βs — a 60-bar OLS β with |corr|<0.25 is noise, not exposure.
+  const bench = p.beta_bench ? `vs ${p.beta_bench}` : 'vs 大盤';
+  if (p.beta_low_corr) {
+    return `<div class="pk-beta reveal is-lowcorr">β ${b.toFixed(2)}${corr}`
+      + `<span class="beta-note">${bench}·低相關，β 不具參考性</span></div>`;
+  }
   return `<div class="pk-beta reveal${hot ? ' is-hot' : ''}">β ${b.toFixed(2)}${corr}`
-    + `<span class="beta-note">${hot ? '高beta·近槓桿指數' : 'vs 大盤'}</span></div>`;
+    + `<span class="beta-note">${hot ? `高beta·近槓桿指數（${bench}）` : bench}</span></div>`;
 }
 // 15y rank-IC tag for a fired factor (Feature C transparency): match the factor label to its
 // family in CUR.factor_meta and show its backtested IC + KEEP/弱. Informational; never scored.
@@ -514,11 +532,29 @@ function concentrationBanner(d) {
   return `<div class="cv-warn conc reveal">⚠️ 集中度：${esc(c.suggestion)}</div>`;
 }
 
+/* #F7: 過期橫幅分級 — 台北時間判斷（原本用 UTC toISOString 判「今天」且一律紅色警示）。
+   顯示的是「最近一份報告」且今日報告本來就還沒到 18:30 發布時窗（或今日為週末）→ 中性提示；
+   其餘（看舊日期、發布時間已過仍無新報告）維持紅色警示。 */
+function _taipeiParts() {
+  const t = new Date(Date.now() + 8 * 3600e3);   // 台北 = UTC+8、無 DST → 偏移後取 UTC 欄位
+  return { date: t.toISOString().slice(0, 10), mins: t.getUTCHours() * 60 + t.getUTCMinutes(), dow: t.getUTCDay() };
+}
+function staleBanner(d) {
+  const tp = _taipeiParts();
+  if (!(d.date < tp.date)) return '';
+  const isLatest = !INDEX.length || (INDEX[0] && INDEX[0].date === d.date);   // index 未載到 → 不誤判為舊報告
+  const weekend = tp.dow === 0 || tp.dow === 6;
+  const beforePublish = tp.mins < 18 * 60 + 30;
+  if (isLatest && (beforePublish || weekend)) {
+    const when = weekend ? '週末不產新報告，下一份於交易日 18:30 後產生' : '今日報告 18:30 後產生';
+    return `<div class="stale stale-info reveal">ℹ️ 顯示最近交易日（${esc(d.date)}）報告；${when}。</div>`;
+  }
+  return `<div class="stale reveal">⚠️ 此為 ${esc(d.date)} 報告，非今日（${tp.date}）。若雲端排程未更新，訊號可能過時，請勿據以即時操作。</div>`;
+}
+
 // cover page = date + market lights + top pick + search entry
 function coverPage(d) {
-  const today = new Date().toISOString().slice(0, 10);
-  const stale = (d.date < today)
-    ? `<div class="stale reveal">⚠️ 此為 ${esc(d.date)} 報告，非今日（${today}）。若雲端排程未更新，訊號可能過時，請勿據以即時操作。</div>` : '';
+  const stale = staleBanner(d);
 
   // three market lights: 技術趨勢 regime / 期貨籌碼 env / 市場風險
   const lights = [];
@@ -838,6 +874,7 @@ function buildDeck(d) {
   }
   const deck = $('deck');
   deck.innerHTML = html;
+  if (window.ssSearch) window.ssSearch._scrolled = false;   // #F2: deck 重建 = 新搜尋框，重置捲動旗標
   // reset to the cover — a rebuilt deck must not inherit the prior date's scroll offset
   deck.scrollTo({ left: 0, behavior: 'auto' });
   initCountUps(deck);   // arm count-up tweens for the freshly-rendered pick pages
@@ -886,9 +923,11 @@ function bindDeck() {
       const more = e.target.closest('[data-detail]');
       if (more) { openStockSheet(more.dataset.detail); return; }
       if (e.target.closest('button,a,input,details,summary')) return;
-      const w = window.innerWidth;
-      if (e.clientX > w * 0.86) goToPage(currentPageIndex() + 1);
-      else if (e.clientX < w * 0.14) goToPage(currentPageIndex() - 1);
+      // #F6: 用 deck 自身座標算邊緣（desktop 置中 760px 欄後，再用 window 寬會算不到邊緣區）
+      const r = deck.getBoundingClientRect();
+      const x = (e.clientX - r.left) / (r.width || 1);
+      if (x > 0.86) goToPage(currentPageIndex() + 1);
+      else if (x < 0.14) goToPage(currentPageIndex() - 1);
     });
     // phase 3: tier-sort segmented control → in-place Flip reorder (no deck rebuild)
     deck.addEventListener('click', (e) => {
@@ -931,6 +970,16 @@ function _restoreDayHash() {
     if (m) history.replaceState(null, '', '#' + m[1]);
   }
 }
+/* #F1:「首開視口全空、要捲動才出現」修法 — transform 動畫中的 fixed sheet 首次灌入大量
+   內容時，部分引擎（iOS Safari 合成層）不重繪直到使用者捲動。內容就緒後強制一次
+   layout read + scroll nudge 觸發重繪；nudge ±1px 後還原，使用者無感。 */
+function _forcePaint(el) {
+  if (!el) return;
+  void el.offsetHeight;              // force layout
+  const st = el.scrollTop;
+  el.scrollTop = st + 1;             // force a scroll pass → repaint
+  el.scrollTop = st;
+}
 /* GSAP content-settle: stagger the sheet's top-level blocks in after it opens. The sheet
    open/close TRANSFORM stays pure CSS (.42s --spring); this only animates the CONTENT.
    Gated on reduced-motion + GSAP presence; killed on close (clearProps leaves no residue). */
@@ -970,8 +1019,11 @@ function openSheet(title, bodyHtml, opts) {
     if (opts.full) { sheet.classList.remove('open'); sheet.classList.add('full'); }
     try { sheet.tabIndex = -1; sheet.focus({ preventScroll: true }); } catch (e) {}
   });
-  requestAnimationFrame(() => requestAnimationFrame(revealSheet));   // settle content after open
+  // #F1: 內容 settle 後強制重繪一次；open transition (.42s) 結束後再補一次（雙保險，
+  // 解「機會/雷達首開視口全空、要捲動才出內容」）。
+  requestAnimationFrame(() => requestAnimationFrame(() => { revealSheet(); _forcePaint($('sheetBody')); }));
   if (opts.after) requestAnimationFrame(() => requestAnimationFrame(opts.after));
+  setTimeout(() => { if (SHEET_STATE !== 'closed') _forcePaint($('sheetBody')); }, 460);
 }
 function closeSheet() {
   if (_sheetTween) { try { _sheetTween.kill(); } catch (e) {} _sheetTween = null; }
@@ -1092,13 +1144,13 @@ function _moverCard(d, code) {
 }
 
 // Bug3: a 全市場精選/雷達 stock has a score but no full pattern/risk card. Give it real
-// content — its verdict (建議買入/觀望/不持有 + score) and WHY it surfaced (radar sources/signals).
+// content — its verdict (建議買入/觀望/避開 + score) and WHY it surfaced (radar sources/signals).
 function thinVerdictHtml(p, d) {
   const code = p.stock || p.ticker;
   const score = p.score;
   const hasFull = p.factors && Object.keys(p.factors).length;
   if (hasFull || score == null) return '';      // a full pick already shows the score panel
-  const light = p.light || lightOf(code, score);
+  const light = scoreLight(score) || p.light || lightOf(code, score);   // #F3: 分數在場時以分數為準
   const lab = VLABEL[light] || '—';
   const cls = light === 'green' ? 'up' : (light === 'red' ? 'down' : '');
   const row = (radarMerge(d) || []).find((r) => r.ticker === code) || {};
@@ -1357,16 +1409,23 @@ function safeDetailCode(code) {
   return WIN_RESERVED.has(stem.toUpperCase()) ? stem + '_' + s.slice(stem.length) : s;
 }
 
+let _stockSeq = 0;   // #F1: 競態守衛 — 只有最新一次開啟能寫入 sheet 內容
 async function openStockSheet(code) {
   // ensure the day payload is loaded for CUR_DATE
   if (!CUR) { toast('資料尚未載入'); return; }
-  await ensureNameIdx();   // full-market name index ready before any name lookup (idempotent; instant after first load)
+  const seq = ++_stockSeq;
   // History model: make every open a single back-poppable entry so the iOS/browser Back gesture
   // POPS the sheet (route() closes it on the code-less hash) instead of exiting the app or leaving
   // a stranded modal. Guard so a route()-driven open (hash already #date/code) doesn't double-push.
   const _wantHash = '#' + CUR_DATE + '/' + code;
   _sheetPushed = location.hash !== _wantHash;        // remember so close can POP (not duplicate) it
   if (_sheetPushed) history.pushState(null, '', _wantHash);
+  // #F1: 立刻開 sheet 顯示「載入中…」— 慢網路下 _universe.json / detail JSON 可 >8s，
+  // 原本 await 完才 openSheet = 點了沒回饋的白等。內容就緒後原地替換。
+  openSheet(`<span class="num">${esc(code)}</span>`,
+    `<div class="sheet-loading" role="status"><span class="spin" aria-hidden="true"></span>載入中…</div>`,
+    { full: true, id: 'stock' });
+  const idxReady = ensureNameIdx();   // #F1: 與 detail fetch 並行（原本序列 await 拖慢首開）
   let p = findCard(CUR, code);
   // A thin card (scored_universe / radar / leader without ohlc) makes findCard succeed but has
   // NO chart. So whenever the card lacks a K-line, fetch the per-stock detail file and MERGE its
@@ -1390,14 +1449,17 @@ async function openStockSheet(code) {
         merged.spark_end = lazy.spark_end;
         merged.sr = merged.sr || lazy.sr;
         merged.levels = merged.levels || lazy.levels;
-        merged.name = merged.name || lazy.name || nameOf(code);
+        merged.name = merged.name || lazy.name || null;   // #F1: nameOf 延後到 idxReady 之後（dispName 再解析，避免把裸代號烤進 name）
         merged.stock = merged.stock || code;
         p = merged; CUR._lazy = merged;
       }
     } catch (e) { /* fall through — render whatever the card already has */ }
   }
+  await idxReady;   // 名稱索引就緒後才建標題（nameOf 才解析得到全市場名）
+  // #F1: 使用者已關閉 sheet 或改開別檔 → 放棄本次結果，不覆蓋新內容
+  if (seq !== _stockSeq || CUR_SHEET_ID !== 'stock') return;
   if (!p) {
-    openSheet(`<span class="num">${esc(code)}</span>`, `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`, { id: 'stock' });
+    $('sheetBody').innerHTML = `<div class="empty">「${esc(code)}」不在 ${esc(CUR_DATE)} 的掃描名單中。<br><span class="tiny">靜態頁僅含當日選股＋機會掃描的約 100 檔；其他代號需該日 cron 掃到才有。</span></div>`;
     return;
   }
   const stock = p.stock || p.ticker;
@@ -1444,13 +1506,17 @@ async function openStockSheet(code) {
   const body = hero + thinVerdictHtml(p, CUR) + pretradeHtml(p) + scorePanel(p) + overlaysHtml(p) + fundamentalHtml(p) + trendsHtml(p)
     + `<div class="sh-sec"><p class="disclaimer">本報告由程式自動產生，僅供投資決策輔助，不構成買賣建議。資料來自公開來源，可能延遲或誤差。投資有風險，請自行判斷。</p></div>`;
 
-  openSheet(title, body, {
-    full: true,
-    id: 'stock',
-    after: () => {
-      if (hasKline && window.LightweightCharts) renderCandles('kline', p.ohlc, p.sr, p.levels);
-    },
-  });
+  // #F1: sheet 已開（載入中 placeholder）→ 原地替換內容，不再重開/重推 history
+  $('sheetTitle').innerHTML = title;
+  const bodyEl = $('sheetBody');
+  bodyEl.innerHTML = body;
+  bodyEl.scrollTop = 0;
+  renderNotionals();
+  revealSheet();
+  _forcePaint(bodyEl);   // #F1: 灌入大量內容後強制重繪（解「要捲動才出現」）
+  if (hasKline && window.LightweightCharts) {
+    requestAnimationFrame(() => { if (seq === _stockSeq && CUR_SHEET_ID === 'stock') renderCandles('kline', p.ohlc, p.sr, p.levels); });
+  }
   // topbar/document title
   try { document.title = `${dispName} ${stock} · SmartStock`; } catch (e) {}
 }
@@ -1461,6 +1527,14 @@ async function openStockSheet(code) {
    既有誠實揭露 tiny 文字 VERBATIM 保留（每節下方一行）。
    ============================================================================ */
 function pct1(v) { return v == null ? null : (v >= 0 ? '+' : '') + (v * 100).toFixed(1) + '%'; }
+// #F5: FX 雙值來源標示 — fix:display-data 組在 payload 加 source/as_of 欄位
+// （yahoo=市場價、official=央行參考價）。欄位不存在（舊報告 JSON）→ 回傳 fallback 文案，向後相容。
+const FX_SRC_LABEL = { yahoo: '市場價（Yahoo）', official: '央行參考價' };
+function fxSourceSub(source, asOf, fallback) {
+  const lab = FX_SRC_LABEL[String(source || '').toLowerCase()];
+  if (!lab) return fallback;
+  return esc(lab) + (asOf ? ' · ' + esc(asOf) : '');
+}
 // 指標卡：名稱／值／紅綠箭頭／一句話。dir>0 綠▲、dir<0 紅▼、null 無箭頭。
 function mcard(label, value, opts) {
   opts = opts || {};
@@ -1516,7 +1590,7 @@ function marketSheetBody(d) {
     ec.push(mcard('電子景氣動能', cv.t, { dir: cv.d, txt: true, sub: '總經級·非個股 ' + esc((cyc.drivers || []).slice(0, 2).join('／')) }));
   }
   if (mac.cpi_yoy != null) ec.push(mcard('美 CPI YoY', esc(mac.cpi_yoy) + '%', { sub: '通膨壓力' }));
-  if (mac.usd_twd != null) ec.push(mcard('USD/TWD', esc(mac.usd_twd), { sub: '官方匯率參考' }));
+  if (mac.usd_twd != null) ec.push(mcard('USD/TWD', esc(mac.usd_twd), { sub: fxSourceSub(mac.usd_twd_source, mac.usd_twd_as_of, '官方匯率參考') }));   // #F5
   const dt = env.tpex_daytrade;
   if (dt && dt.value && dt.value.vol_pct != null) {
     const vp = +dt.value.vol_pct; const hot = dt.severity === 'warn' || vp > 40;
@@ -1550,7 +1624,10 @@ function marketSheetBody(d) {
   // FX → 指標卡
   const fx = d.fx;
   if (fx) {
-    const fc = [mcard(esc(fx.pair), esc(fx.level), { dir: fx.chg_pct == null ? null : (fx.chg_pct > 0 ? 1 : (fx.chg_pct < 0 ? -1 : 0)), sub: fx.chg_pct != null ? '今日 ' + fmtPctVal(fx.chg_pct, 2) : '即期匯率' })];
+    // #F5: 有 source/as_of → sub 前綴「市場價（Yahoo）· as_of」，與上方央行參考價卡區隔雙值來源
+    const fxChgSub = fx.chg_pct != null ? '今日 ' + fmtPctVal(fx.chg_pct, 2) : '即期匯率';
+    const fxSrc = fxSourceSub(fx.source, fx.as_of, null);
+    const fc = [mcard(esc(fx.pair), esc(fx.level), { dir: fx.chg_pct == null ? null : (fx.chg_pct > 0 ? 1 : (fx.chg_pct < 0 ? -1 : 0)), sub: fxSrc ? fxSrc + ' · ' + fxChgSub : fxChgSub })];
     if (fx.trend_20d_pct != null) fc.push(mcard('20日趨勢', fmtPctVal(fx.trend_20d_pct, 2), { dir: fx.trend_20d_pct >= 0 ? 1 : -1, sub: '貶值=美股換算加成' }));
     html += `<div class="sh-sec"><div class="sh-h">匯率（美股換算參考）</div>${mgrid(fc)}
       <p class="tiny">USD/TWD 為顯示用途的美股換算參考，不是評分因子。</p></div>`;
@@ -1668,11 +1745,16 @@ function perfHtml(d) {
       <p class="cs-body" style="font-family:var(--font-ui)">回看歷史選股 D+5 表現的自我檢核（informational，非績效承諾）。</p>
       <div class="note"><b>樣本累積中（n=${esc(N)}）</b> — 滿 10 筆才顯示勝率/避損率，避免小樣本誤導。</div></div>`;
   }
+  // #F4: avg_ret_5=null 原本顯示紅色「—」（三元判斷把 null 落到 'down'）→ 改「樣本不足」中性顯示；
+  // 有值才上色、retF 已帶正負號。
+  const avgNull = pp.avg_ret_5 == null;
+  const avgCls = avgNull ? '' : (pp.avg_ret_5 >= 0 ? 'up' : 'down');
+  const avgTxt = avgNull ? '樣本不足 <span class="tiny">（D+5 報酬樣本尚未累積）</span>' : retF(pp.avg_ret_5);
   return `<div class="sh-sec"><div class="sh-h">策略自評（近 ${esc(N)} 筆 · ${esc(pp.n_dates || 0)} 日）</div>
     <div class="kvgrid">
       <div class="kv"><span class="k">D+5 勝率</span><span class="v">${pctF(pp.d5_win_rate)}</span></div>
       <div class="kv"><span class="k">避開停損率</span><span class="v">${pctF(pp.avoid_stop_rate)}</span></div>
-      <div class="kv wide"><span class="k">平均報酬 (D+5)</span><span class="v ${(pp.avg_ret_5 != null && pp.avg_ret_5 >= 0) ? 'up' : 'down'}">${retF(pp.avg_ret_5)}</span></div>
+      <div class="kv wide"><span class="k">平均報酬 (D+5)</span><span class="v ${avgCls}">${avgTxt}</span></div>
     </div>
     <p class="tiny"><b>informational</b>，過去表現不代表未來，非績效承諾、非買賣訊號。</p></div>`;
 }
@@ -2214,17 +2296,33 @@ function searchBox(d) {
 // then the ALL-MARKET index (every listed TWSE/TPEx/US code+name) so search resolves ANY
 // stock, not just the ~30 scanned ones. Async: the all-market group fills after the index
 // loads; a stale-query guard prevents a late result clobbering newer keystrokes.
+// #F2: desktop 上結果清單常渲染在視口外（cover 的搜尋框被 margin-top:auto 推近頁底）
+// → 首次出結果時若結果起點貼近/超出視口底，把搜尋框捲到可視區頂，結果佔滿其下空間。
+// 每次查詢 session 只捲一次（清空查詢即重置），避免每個按鍵都搶捲動。
+function _searchIntoView(box) {
+  if (window.ssSearch._scrolled) return;
+  window.ssSearch._scrolled = true;
+  const r = box.getBoundingClientRect();
+  if (r.top > window.innerHeight - 160) {
+    const anchor = box.closest('.search') || box;
+    try { anchor.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+    catch (e) { anchor.scrollIntoView(); }
+  }
+}
 window.ssSearch = async (q) => {
   q = (q || '').trim().toLowerCase();
   const box = $('ssResults'); if (!box) return;
-  if (!q) { box.innerHTML = ''; return; }
-  await loadVerdicts();   // #3: so every result can show 建議買入/觀望/不持有 (cached after 1st call)
+  if (!q) { box.innerHTML = ''; window.ssSearch._scrolled = false; return; }
+  // #F2: 首鍵即回饋 — 等 _verdicts.json 首載期間不再全空（原本看起來像沒反應）
+  if (!box.innerHTML) box.innerHTML = '<div class="empty tiny">搜尋中…</div>';
+  await loadVerdicts();   // #3: so every result can show 建議買入/觀望/避開 (cached after 1st call)
   const rich = (CUR && CUR.search || []).filter((s) =>
     s.code.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)).slice(0, 12);
   const richCodes = new Set(rich.map((s) => s.code));
   const richHtml = rich.length ? `<div class="note">當日掃描名單</div><ul class="list">` + rich.map((s) =>
     `<li><a href="#${esc(CUR_DATE)}/${esc(s.code)}" data-close-sheet><div class="li-main"><div class="li-name">${lightDot(s.light)} ${esc(s.name)} <span class="tk">${esc(s.code)}</span>${verdictBadge(s.code)}</div><div class="li-sub">${esc(s.kind)}${s.price != null ? ' · ' + pxNum(s.price) : ''}</div></div></a></li>`).join('') + '</ul>' : '';
   box.innerHTML = richHtml + '<div class="empty tiny" id="ssMore">全市場搜尋中…</div>';
+  _searchIntoView(box);   // #F2: 結果在 fold 下方時捲入視口（desktop「像沒結果」修正）
   const idx = await loadUniverseIdx();
   const live = $('ssInput'); if (!live || live.value.trim().toLowerCase() !== q) return;  // user moved on
   const more = idx.filter((r) => r && r[0] && !richCodes.has(r[0]) &&

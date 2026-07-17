@@ -543,6 +543,12 @@ details.fold>summary:active{background:var(--bg-soft)}
   border:.5px solid color-mix(in srgb,var(--down) 35%,transparent);
   background:color-mix(in srgb,var(--down) 7%,transparent);
 }
+/* #F7 中性版（報告本來就還沒到 18:30 發布時窗，非資料故障 → 不該染紅嚇人） */
+.stale.stale-info{
+  color:var(--ink-2);font-weight:500;
+  border-color:var(--hair-strong);
+  background:var(--bg-soft);
+}
 
 /* K-line host (detail sheet) */
 .sh-kline{height:240px;width:100%;background:var(--chart-bg);border-radius:var(--r1);
@@ -628,6 +634,18 @@ details.fold>summary:active{background:var(--bg-soft)}
 
 /* empty / loading states */
 .empty{padding:40px 20px;text-align:center;color:var(--ink-3);font-size:.92rem;line-height:1.6}
+
+/* #F1 詳情 sheet 載入中 placeholder（spinner + 文字；慢網路下開啟即回饋） */
+.sheet-loading{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:48px 20px;color:var(--ink-3);font-size:.92rem;
+}
+.sheet-loading .spin{
+  width:18px;height:18px;border-radius:50%;flex:none;
+  border:2px solid var(--hair-strong);border-top-color:var(--accent);
+  animation:ss-rot .8s linear infinite;
+}
+@keyframes ss-rot{to{transform:rotate(360deg)}}
 
 /* toast */
 .toast{
@@ -847,6 +865,8 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
 .pk-beta.is-hot{color:var(--down)}
 .pk-beta .beta-note{font-weight:500;font-size:.68rem;color:var(--ink-3)}
 .pk-beta.is-hot .beta-note{color:color-mix(in srgb,var(--down) 70%,var(--ink-3))}
+.pk-beta.is-lowcorr{color:var(--ink-3);opacity:.75}
+.pk-beta.is-lowcorr .beta-note{color:var(--ink-3)}
 
 .fic{
   margin-left:5px;font-size:.64rem;font-weight:600;padding:1px 5px;border-radius:6px;
@@ -854,3 +874,16 @@ table.attr td.num{font-family:var(--font-num);font-feature-settings:"tnum" 1;fon
 }
 .fic-keep{color:var(--up);border-color:color-mix(in srgb,var(--up) 35%,transparent)}
 .fic-weak{color:var(--ink-3)}
+
+/* ============================================================================
+   #F6 DESKTOP — 寬螢幕把單欄 app 收束成置中 760px 欄（≥900px 才生效，行動版不受影響）。
+   deck/hud/dock/pager/sheet 皆為 fixed 元素 → 用 left/right inset 收欄，頁寬改跟容器。
+   ============================================================================ */
+@media (min-width:900px){
+  .deck,.hud,.dock,.pager,.sheet{
+    left:calc(50% - 380px);right:calc(50% - 380px);
+  }
+  .page{width:100%}   /* 覆蓋 100vw：頁寬跟著 760px 欄，scroll-snap 分頁計算不變 */
+  .health-banner{left:calc(50% - 370px);right:calc(50% - 370px)}
+  .dock,.sheet{border-left:.5px solid var(--hair-c);border-right:.5px solid var(--hair-c)}
+}
