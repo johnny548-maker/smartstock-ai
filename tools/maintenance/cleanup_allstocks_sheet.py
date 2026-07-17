@@ -7,10 +7,10 @@ the run date → no-op delete), and gspread's 26-col default grid bloated the
 4-col tab 6.5× — the 2026-07 sheet breached Google's 10M-cell cap on 07-07 and
 daily tabs started SKIPping on 07-16.
 
-For --month YYYY-MM (sheet id from docs/data/_allstocks_sheets_index.json):
+For --month YYYY-MM (sheet id from archive/allstocks_sheets_index.json):
   1. REBUILD sec_ftd_semimonthly: delete the flooded tab, re-create it at schema
      width (4 cols), write header + the git archive's unique rows
-     (docs/data/_allstocks/sec_ftd_semimonthly/<month>.csv.gz).
+     (archive/allstocks/sec_ftd_semimonthly/<month>.csv.gz).
   2. RESIZE every schema tab's grid to its schema column count.
   3. Report BEFORE/AFTER cell estimates (grid rows × cols per tab).
 
@@ -30,6 +30,7 @@ _REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 if _REPO not in sys.path:
     sys.path.insert(0, _REPO)
 
+import config  # noqa: E402  (repo-root import after path fix)
 import sheets_sync_allstocks as sa  # noqa: E402  (repo-root import after path fix)
 
 _SEC_FTD_TAB = "sec_ftd_semimonthly"
@@ -139,7 +140,7 @@ def resize_tabs_to_schema(sh, apply=False, skip=()):
 
 def load_month_rows(month, allstocks_dir=None):
     """Data rows of the month's sec_ftd git archive file ([] when absent)."""
-    root = allstocks_dir or os.path.join(_REPO, "docs", "data", "_allstocks")
+    root = allstocks_dir or os.path.join(config.ARCHIVE_DIR, "allstocks")
     path = os.path.join(root, _SEC_FTD_TAB, f"{month}.csv.gz")
     return sa._read_csv(path), path
 
@@ -201,7 +202,7 @@ def main(argv=None):
     ap.add_argument("--index-path", default=None,
                     help="path to _allstocks_sheets_index.json (default: docs/data/)")
     ap.add_argument("--allstocks-dir", default=None,
-                    help="git archive root (default: docs/data/_allstocks)")
+                    help="git archive root (default: archive/allstocks)")
     ap.add_argument("--apply", action="store_true",
                     help="actually modify the Sheet (default: dry-run report)")
     ap.add_argument("--warn-threshold", type=int, default=DEFAULT_WARN_THRESHOLD,

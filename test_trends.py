@@ -103,5 +103,65 @@ class TestBuildDetailTrends(unittest.TestCase):
         self.assertNotIn("trends", d)
 
 
+class TestPreloadedEquivalence(unittest.TestCase):
+    """The hoisted preload_indices() path must produce byte-identical series to the
+    per-code direct-load path (the perf fix must not change any output)."""
+
+    def _seed(self, t86, tdcc):
+        _write(t86, "20260620", [{"code": "3035", "total": 6_000_000}])
+        _write(t86, "20260621", [{"code": "3035", "total": -2_000_000}])
+        _write(tdcc, "20260605", [{"code": "3035", "tier": 13, "pct": 28.0},
+                                  {"code": "3035", "tier": 17, "pct": 100.0}])
+        _write(tdcc, "20260612", [{"code": "3035", "tier": 13, "pct": 30.0},
+                                  {"code": "3035", "tier": 17, "pct": 100.0}])
+
+    def test_hoisted_build_trends_matches_direct(self):
+        with tempfile.TemporaryDirectory() as t86, tempfile.TemporaryDirectory() as tdcc:
+            self._seed(t86, tdcc)
+            direct = trends.build_trends("3035.TW", t86_dir=t86, tdcc_dir=tdcc)
+            pre = trends.preload_indices(t86_dir=t86, tdcc_dir=tdcc)
+            hoisted = trends.build_trends("3035.TW", preloaded=pre)
+            self.assertEqual(direct, hoisted)
+            self.assertTrue(direct["inst_cum"])      # non-empty → real equivalence, not []==[]
+            self.assertTrue(direct["holder_pct"])
+
+    def test_inst_series_index_equals_direct(self):
+        with tempfile.TemporaryDirectory() as t86, tempfile.TemporaryDirectory() as tdcc:
+            self._seed(t86, tdcc)
+            direct = trends.inst_net_series("3035", archive_dir=t86)
+            idx = trends.preload_indices(t86_dir=t86, tdcc_dir=tdcc)["t86_index"]
+            self.assertEqual(trends.inst_net_series("3035", index=idx), direct)
+
+    def test_holder_series_index_equals_direct(self):
+        with tempfile.TemporaryDirectory() as t86, tempfile.TemporaryDirectory() as tdcc:
+            self._seed(t86, tdcc)
+            direct = trends.holder_pct_series("3035", archive_dir=tdcc)
+            idx = trends.preload_indices(t86_dir=t86, tdcc_dir=tdcc)["tdcc_index"]
+            self.assertEqual(trends.holder_pct_series("3035", index=idx), direct)
+
+
+class TestNonTwShortCircuit(unittest.TestCase):
+    def test_is_tw_classification(self):
+        self.assertTrue(trends._is_tw("2330.TW"))
+        self.assertTrue(trends._is_tw("6488.TWO"))
+        self.assertTrue(trends._is_tw("3035"))       # bare TWSE code
+        self.assertFalse(trends._is_tw("NVDA"))
+        self.assertFalse(trends._is_tw("BRK.B"))
+
+    def test_non_tw_skips_tw_archives_even_when_index_has_the_key(self):
+        # A preloaded index that (hypothetically) contains a US-looking key must STILL be
+        # short-circuited to [] for the two TW series — proving build_trends never queries the
+        # TW archives for a US name. rev_yoy is NOT a TW-archive query, so it is unaffected.
+        preloaded = {
+            "t86_index": {"20260620": {"NVDA": {"code": "NVDA", "total": 9_000_000}}},
+            "tdcc_index": {"20260605": {"NVDA": [{"code": "NVDA", "tier": 13, "pct": 50.0}]}},
+        }
+        out = trends.build_trends("NVDA", preloaded=preloaded,
+                                  rev_state={"stocks": {"NVDA": {"yoy": {"11505": 12.0}}}})
+        self.assertEqual(out["inst_cum"], [])        # short-circuited (NOT the 9000-張 series)
+        self.assertEqual(out["holder_pct"], [])      # short-circuited
+        self.assertEqual(out["rev_yoy"], [{"t": "2026-05", "v": 12.0}])   # rev_yoy still runs
+
+
 if __name__ == "__main__":
     unittest.main()

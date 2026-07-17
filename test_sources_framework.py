@@ -7,6 +7,7 @@ NO network. Pure unit tests on the cache/overlay primitives. cached_fetch is
 exercised with injected fake fetch_fn closures (hit / miss / expiry / exception).
 All file I/O goes to a per-test temp dir that is torn down afterward.
 """
+import gzip
 import json
 import os
 import shutil
@@ -70,14 +71,20 @@ class TestLoadSaveState(TmpDirCase):
 
 # ────────────────────────────── _cache: archive ──────────────────────────────
 class TestArchive(TmpDirCase):
-    def test_archive_snapshot_writes_named_file_and_returns_path(self):
+    def test_archive_snapshot_writes_gzip_named_file_and_returns_path(self):
         adir = self.path("arch")
         rows = [{"sym": "NVDA", "v": 1}, {"sym": "AMD", "v": 2}]
         out = _cache.archive_snapshot(adir, "2026-06-06", rows)
-        self.assertEqual(out, os.path.join(adir, "2026-06-06.json"))
+        self.assertEqual(out, os.path.join(adir, "2026-06-06.json.gz"))
         self.assertTrue(os.path.exists(out))
-        with open(out, encoding="utf-8") as f:
+        with gzip.open(out, "rt", encoding="utf-8") as f:
             self.assertEqual(json.load(f), rows)
+
+    def test_archive_roundtrip_snapshot_then_load(self):
+        adir = self.path("arch")
+        rows = [{"code": "3035", "total": 6_000_000}, {"code": "2330", "total": -1}]
+        _cache.archive_snapshot(adir, "20260620", rows)
+        self.assertEqual(_cache.load_archive(adir), {"20260620": rows})
 
     def test_archive_snapshot_makedirs_first(self):
         adir = self.path("missing", "arch")
@@ -107,6 +114,45 @@ class TestArchive(TmpDirCase):
         merged = _cache.load_archive(adir)
         self.assertEqual(merged.get("2026-06-06"), [{"ok": 1}])
         self.assertNotIn("broken", merged)
+
+    def test_load_archive_reads_legacy_plain_json(self):
+        # a pre-migration plain .json snapshot must still load (backward compat)
+        adir = self.path("arch")
+        os.makedirs(adir, exist_ok=True)
+        with open(os.path.join(adir, "20260601.json"), "w", encoding="utf-8") as f:
+            json.dump([{"legacy": 1}], f)
+        self.assertEqual(_cache.load_archive(adir), {"20260601": [{"legacy": 1}]})
+
+    def test_load_archive_prefers_gz_when_both_forms_present(self):
+        # same date_key as .json (stale) and .json.gz (converted) → .gz wins, no dup key
+        adir = self.path("arch")
+        os.makedirs(adir, exist_ok=True)
+        with open(os.path.join(adir, "20260601.json"), "w", encoding="utf-8") as f:
+            json.dump([{"stale": True}], f)
+        _cache.archive_snapshot(adir, "20260601", [{"fresh": True}])   # writes .json.gz
+        merged = _cache.load_archive(adir)
+        self.assertEqual(set(merged.keys()), {"20260601"})
+        self.assertEqual(merged["20260601"], [{"fresh": True}])
+
+    def test_read_snapshot_single_file_gzip_and_legacy(self):
+        adir = self.path("arch")
+        _cache.archive_snapshot(adir, "20260610", [{"gz": 1}])
+        self.assertEqual(_cache.read_snapshot(adir, "20260610"), [{"gz": 1}])
+        # legacy plain form
+        os.makedirs(adir, exist_ok=True)
+        with open(os.path.join(adir, "20260611.json"), "w", encoding="utf-8") as f:
+            json.dump([{"plain": 1}], f)
+        self.assertEqual(_cache.read_snapshot(adir, "20260611"), [{"plain": 1}])
+        # absent → default []
+        self.assertEqual(_cache.read_snapshot(adir, "20261231"), [])
+
+    def test_archive_keys_lists_both_forms_sorted(self):
+        adir = self.path("arch")
+        _cache.archive_snapshot(adir, "20260605", [{"a": 1}])     # .json.gz
+        with open(os.path.join(adir, "20260604.json"), "w", encoding="utf-8") as f:
+            json.dump([{"a": 0}], f)                              # legacy .json
+        self.assertEqual(_cache.archive_keys(adir), ["20260604", "20260605"])
+        self.assertEqual(_cache.archive_keys(self.path("nope")), [])
 
 
 # ─────────────────────────── _cache: cached_fetch ────────────────────────────

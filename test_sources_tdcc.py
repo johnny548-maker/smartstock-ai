@@ -272,7 +272,7 @@ class TestSaveWeeklyArchive(unittest.TestCase):
     def test_save_weekly_writes_named_file(self):
         r = rows(WEEK1_DATE, _W1_PCT, _W1_HOLD)
         out = tdcc.save_weekly(r, WEEK1_DATE, archive_dir=self.adir)
-        self.assertEqual(out, os.path.join(self.adir, WEEK1_DATE + ".json"))
+        self.assertEqual(out, os.path.join(self.adir, WEEK1_DATE + ".json.gz"))
         self.assertTrue(os.path.exists(out))
 
     def test_history_round_trip_two_weeks(self):

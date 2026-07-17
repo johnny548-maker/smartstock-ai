@@ -244,7 +244,9 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data
+          # archive/ (t86/tdcc raw snapshots) moved OUT of docs/ 2026-07-18 — main.py writes the
+          # day's T86 snapshot there, so it MUST be staged alongside docs/data or it is lost.
+          git add docs/data archive
           # || true is intentional: empty-commit case is not a failure for THIS step
           # (the push loop below is a no-op when there is nothing new to push).
           git commit -m "report: $(date -u +%F)" || echo "no changes to commit"
@@ -272,7 +274,7 @@ jobs:
 
       # All-stocks raw archive (~1800 stocks × 13 sources). OVERLAY-NOT-SCORER — pure archive,
       # never feeds scoring. Two sinks run in parallel ("both", user-chosen 2026-06-27):
-      #   (1) keyless gzip-CSV files in git (docs/data/_allstocks/) — no SA, no quota, permanent;
+      #   (1) keyless gzip-CSV files in git (archive/allstocks/) — no SA, no quota, permanent;
       #   (2) the month-shard Google Sheet (browseable Excel), whose monthly rollover is automated
       #       by the Apps Script in tools/apps_script/ (creates the Sheet in the USER's 15GB Drive,
       #       shares it to the SA, dispatches allstocks-bootstrap.yml to seed tabs + write the index).
@@ -294,7 +296,7 @@ jobs:
             | tee "${RUNNER_TEMP}/allstocks_files.log"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/_allstocks
+          git add archive/allstocks
           if git diff --cached --quiet; then
             echo "::notice::no all-stocks archive changes"
           else
@@ -316,7 +318,7 @@ jobs:
           fi
 
       # Sink 2 — month-shard Google Sheet (the browseable Excel). Resolves the current month's
-      # Sheet id from docs/data/_allstocks_sheets_index.json (populated by the Apps Script →
+      # Sheet id from archive/allstocks_sheets_index.json (populated by the Apps Script →
       # bootstrap rollover); graceful no-op when GOOGLE_SA_JSON is unset OR the month isn't yet
       # in the index (e.g. before the Apps Script one-time setup is done).
       - name: Mirror all-stocks snapshots to Sheet
@@ -327,7 +329,7 @@ jobs:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
         run: |
           set -euo pipefail
-          # --sync-from-files mirrors the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/)
+          # --sync-from-files mirrors the COMPLETE git-file gz-CSV archive (archive/allstocks/)
           # into the Sheet instead of a CI-IP live fetch. By run-time that archive already includes
           # the TWSE/TDCC sources captured by the local TW-IP archiver task (CI IPs are blocked from
           # TWSE/TDCC), so the browseable Sheet gets the complete dataset, not just the CI-reachable subset.

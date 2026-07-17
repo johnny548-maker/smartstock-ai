@@ -4,7 +4,7 @@ name: AllStocks Bootstrap (Monthly Rollover)
 # Each month the Apps Script creates the new month's Sheet in the USER's 15GB Drive (the SA has
 # Drive quota=0 and CANNOT create files headlessly — confirmed APIError 403), shares it to the SA,
 # then workflow_dispatch's THIS workflow with `existing_id` + `month`. This step opens the sheet by
-# id (bypassing SA create), seeds the 13 tabs, and commits docs/data/_allstocks_sheets_index.json
+# id (bypassing SA create), seeds the 13 tabs, and commits archive/allstocks_sheets_index.json
 # so daily.yml's Sheet-mirror step resolves the right id.
 #
 # NOTE: the SA-side auto-create SCHEDULE (cron) is intentionally REMOVED — a scheduled bootstrap
@@ -75,7 +75,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # || true is intentional: file may not exist on first-ever run before bootstrap writes it
-          git add docs/data/_allstocks_sheets_index.json || true
+          git add archive/allstocks_sheets_index.json || true
           if git diff --cached --quiet; then
             echo "::notice::No index change — month already bootstrapped (idempotent skip)"
           else

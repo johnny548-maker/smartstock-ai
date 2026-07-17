@@ -24,7 +24,7 @@ endpoint. To build a week-over-week history you MUST snapshot each week's parsed
 rows to disk yourself. save_weekly(rows, date_key) does this via
 _cache.archive_snapshot into:
 
-    docs/data/_tdcc_archive/<YYYYMMDD>.json
+    archive/tdcc/<YYYYMMDD>.json.gz   (config.ARCHIVE_DIR; gzip'd since 2026-07-18)
 
 Call save_weekly once per cron run (the date_key is the CSV's 資料日期, AD
 YYYYMMDD — NOT ROC). holder_count_trend() then compares this week's rows against
@@ -42,7 +42,9 @@ source never crashes the pipeline. Pure derives are offline-unit-tested.
 import csv
 import io
 import logging
+import os
 
+import config
 from sources import _cache
 from sources.overlay import make_overlay
 
@@ -51,7 +53,11 @@ log = logging.getLogger(__name__)
 # ── source constants (defined here; do NOT add to config.py) ──────────────────
 TDCC_URL = "https://smart.tdcc.com.tw/opendata/getOD.ashx?id=1-5"
 TDCC_TIMEOUT = 30
-TDCC_ARCHIVE_DIR = "docs/data/_tdcc_archive"
+# Archive lives under the repo-top-level archive/ (config.ARCHIVE_DIR), NOT docs/ — moved
+# 2026-07-18 to keep the ~6.4MB/week snapshots off the GitHub Pages budget. Deriving the
+# absolute path from config also fixes the old relative "docs/data/_tdcc_archive" default,
+# which broke whenever the CWD was not the repo root.
+TDCC_ARCHIVE_DIR = os.path.join(config.ARCHIVE_DIR, "tdcc")
 _HEADERS = {"User-Agent": "smartstock-ai/1.0 (github actions; contact johnny548@gmail.com)"}
 
 # Exact CSV header keys (byte-for-byte from the live probe)
@@ -156,6 +162,22 @@ def save_weekly(rows, date_key, archive_dir=TDCC_ARCHIVE_DIR):
 def load_history(archive_dir=TDCC_ARCHIVE_DIR):
     """Load the full accrued weekly archive → {date_key: rows}. {} if none yet."""
     return _cache.load_archive(archive_dir)
+
+
+def prior_week_key(exclude_key, archive_dir=TDCC_ARCHIVE_DIR):
+    """Most-recent archived week that is NOT `exclude_key`, or None if none exists.
+
+    Reads only the directory listing (never every week's 6.4MB payload), so the daily
+    run can pick the single prior snapshot for the WoW verdict without merging the whole
+    archive. Equivalent to sorted(load_history keys minus exclude)[-1], but O(files).
+    """
+    keys = [k for k in _cache.archive_keys(archive_dir) if k != exclude_key]
+    return keys[-1] if keys else None
+
+
+def load_week(date_key, archive_dir=TDCC_ARCHIVE_DIR):
+    """Parsed rows for a SINGLE archived week (gzip-aware), or [] if absent."""
+    return _cache.read_snapshot(archive_dir, date_key)
 
 
 # ── pure derives (offline-tested) ─────────────────────────────────────────────

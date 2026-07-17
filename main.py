@@ -918,7 +918,7 @@ def main(web=False, dry_run=False, date_arg=None):
         if t86_rows:
             try:
                 parsed = [r for r in (_twse.parse_t86_row(x) for x in t86_rows) if r]
-                _twse_archive = os.path.join(config.WEB_DIR, "data", "_t86_archive")
+                _twse_archive = os.path.join(config.ARCHIVE_DIR, "t86")
                 _cache_date = date_str.replace("-", "")
                 from sources import _cache as _src_cache
                 _src_cache.archive_snapshot(_twse_archive, _cache_date, parsed)
@@ -977,16 +977,17 @@ def main(web=False, dry_run=False, date_arg=None):
         if tdcc_rows:
             # 資料日期 (AD YYYYMMDD) is the archive key; a same-week re-pull overwrites.
             _tdcc_date = (tdcc_rows[0].get("date") or date_str.replace("-", "")).strip()
+            _tdcc_arch_dir = os.path.join(config.ARCHIVE_DIR, "tdcc")
             try:
-                _tdcc.save_weekly(tdcc_rows, _tdcc_date,
-                                  archive_dir=os.path.join(config.WEB_DIR, "data", "_tdcc_archive"))
+                _tdcc.save_weekly(tdcc_rows, _tdcc_date, archive_dir=_tdcc_arch_dir)
             except Exception as e:
                 log.warning("SKIP tdcc weekly archive: %s", e)
             # last week's rows (if accrued) → WoW 大戶吸籌/散戶化 verdict, else snapshot-only.
-            _tdcc_hist = _tdcc.load_history(
-                archive_dir=os.path.join(config.WEB_DIR, "data", "_tdcc_archive"))
-            _prior = sorted(k for k in _tdcc_hist if k != _tdcc_date)
-            last_week_rows = _tdcc_hist.get(_prior[-1]) if _prior else None
+            # Only the single most-recent PRIOR week is needed — read that one file (gzip-aware)
+            # instead of merging every ~6.4MB weekly snapshot in the archive.
+            _prior_key = _tdcc.prior_week_key(_tdcc_date, archive_dir=_tdcc_arch_dir)
+            last_week_rows = _tdcc.load_week(_prior_key, archive_dir=_tdcc_arch_dir) \
+                if _prior_key else None
             _merge_overlays(
                 _tdcc.to_overlays(tdcc_rows, last_week_rows=last_week_rows,
                                   codes=_tw_codes or None, as_of=_tdcc_date),
@@ -1334,6 +1335,10 @@ def main(web=False, dry_run=False, date_arg=None):
                 n_attached += 1
         # details may be keyed by bare codes (revenue candidates) or full symbols (picks).
         try:
+            # Load + index the T86 daily and TDCC weekly archives ONCE for the whole detail
+            # loop (hoist): build_trends previously re-loaded + re-scanned both archives per
+            # code (O(codes × rows)); preload_indices makes it O(rows + codes).
+            _trends_preloaded = trends_mod.preload_indices() if details else None
             for code in list(details.keys()):
                 ovs = _overlays_for(code)
                 if ovs:
@@ -1342,7 +1347,8 @@ def main(web=False, dry_run=False, date_arg=None):
                 # every detail (US/thin → empty → key omitted) so the sheet draws a trend, not
                 # just a single same-day number. build_trends is fully guarded (never raises).
                 try:
-                    _tr = trends_mod.build_trends(code, rev_state=rev_state)
+                    _tr = trends_mod.build_trends(code, rev_state=rev_state,
+                                                  preloaded=_trends_preloaded)
                     if any(_tr.get(k) for k in ("inst_cum", "holder_pct", "rev_yoy")):
                         details[code]["trends"] = _tr
                 except Exception:

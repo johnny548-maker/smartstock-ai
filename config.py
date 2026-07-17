@@ -398,6 +398,12 @@ CURVE_INVERT = 0.0                # term_spread < this → yield curve inverted
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 # PWA lives in /docs so GitHub Pages can serve it directly (Settings → Pages → main /docs)
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
+# Raw OVERLAY-NOT-SCORER snapshot archive — deliberately OUTSIDE docs/ (2026-07-18) so its
+# ~900MB/yr growth never counts against the GitHub Pages 1GB budget (docs/ is Pages-served;
+# archive/ is not). SINGLE SOURCE OF TRUTH: every archive path derives from this constant —
+# t86/ (daily 三大法人 snapshots), tdcc/ (weekly 大戶分布), allstocks/ (the ~1800-stock gz-CSV
+# tree) and allstocks_sheets_index.json. NEVER hard-code "docs/data/_t86_archive" etc. again.
+ARCHIVE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "archive")
 REVENUE_STATE = os.path.join(WEB_DIR, "data", "_revenue_state.json")
 # B11 Kelly position-size GUIDANCE overlay — offline backtest writes per-signal edge
 # stats here; verdict.enrich reads it to map a pick's CI-validated signal → a position

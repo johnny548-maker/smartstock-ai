@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """backfill_t86.py — backfill missing t86_daily gz-CSV archive files.
 
-Audit finding 6 (2026-07-17): the git archive docs/data/_allstocks/t86_daily/
+Audit finding 6 (2026-07-17): the git archive archive/allstocks/t86_daily/
 is missing 2026-07-06 / 2026-07-07 / 2026-07-10 (raw parsed snapshots DO exist
-in docs/data/_t86_archive/*.json, written by main.py via
+in archive/t86/*.json.gz, written by main.py via
 sources._cache.archive_snapshot) and 2026-07-15 is missing from BOTH stores
 (needs a TWSE re-fetch, date=20260715 — requires a TW IP; CI IPs are blocked).
 
@@ -24,6 +24,7 @@ gzip mtime=0) and schema-identical to the daily archiver, so a later
 CONTRACT: OVERLAY-NOT-SCORER — pure archive backfill, never feeds scoring.
 """
 import argparse
+import gzip
 import json
 import os
 import sys
@@ -33,10 +34,11 @@ _REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 if _REPO not in sys.path:
     sys.path.insert(0, _REPO)
 
+import config  # noqa: E402  (repo-root import after path fix)
 import sheets_sync_allstocks as sa  # noqa: E402  (repo-root import after path fix)
 
-_T86_ARCHIVE_DIR = os.path.join(_REPO, "docs", "data", "_t86_archive")
-_ALLSTOCKS_T86_DIR = os.path.join(_REPO, "docs", "data", "_allstocks", "t86_daily")
+_T86_ARCHIVE_DIR = os.path.join(config.ARCHIVE_DIR, "t86")
+_ALLSTOCKS_T86_DIR = os.path.join(config.ARCHIVE_DIR, "allstocks", "t86_daily")
 
 
 def _log(msg):
@@ -94,11 +96,18 @@ def convert_one(date_iso, archive_dir=_T86_ARCHIVE_DIR,
     Returns (n_rows, out_path). Raises FileNotFoundError when the snapshot JSON
     is absent and RuntimeError when it parses to zero usable rows."""
     key = date_iso.replace("-", "")
-    src = os.path.join(archive_dir, f"{key}.json")
-    if not os.path.isfile(src):
-        raise FileNotFoundError(f"no raw snapshot: {src}")
-    with open(src, encoding="utf-8") as f:
-        parsed = json.load(f)
+    gz = os.path.join(archive_dir, f"{key}.json.gz")
+    plain = os.path.join(archive_dir, f"{key}.json")
+    if os.path.isfile(gz):                       # current gzip'd archive form
+        src = gz
+        with gzip.open(gz, "rt", encoding="utf-8") as f:
+            parsed = json.load(f)
+    elif os.path.isfile(plain):                  # legacy plain .json / test fixture
+        src = plain
+        with open(plain, encoding="utf-8") as f:
+            parsed = json.load(f)
+    else:
+        raise FileNotFoundError(f"no raw snapshot: {gz} (or {plain})")
     rows = rows_from_parsed(date_iso, parsed)
     if not rows:
         raise RuntimeError(f"snapshot {src} produced 0 usable rows — refusing to "
@@ -130,7 +139,7 @@ def fetch_one(date_iso, archive_dir=_T86_ARCHIVE_DIR,
         raise RuntimeError(
             f"TWSE T86 fetch for {date_iso} returned 0 rows (non-trading day, "
             f"blocked IP, or endpoint change) — nothing written")
-    json_path = os.path.join(archive_dir, f"{key}.json")
+    json_path = os.path.join(archive_dir, f"{key}.json.gz")   # _cache.archive_snapshot gzip's it
     csv_path = _csv_path(out_dir, date_iso)
     rows = rows_from_parsed(date_iso, parsed)
     if not apply:
@@ -151,7 +160,7 @@ def main(argv=None):
         description="Backfill missing t86_daily gz-CSV archive files "
                     "(from _t86_archive JSON snapshots, or re-fetch from TWSE).")
     ap.add_argument("--from-archive", nargs="+", metavar="YYYY-MM-DD",
-                    help="dates to convert from docs/data/_t86_archive/*.json")
+                    help="dates to convert from archive/t86/*.json.gz")
     ap.add_argument("--fetch-missing", nargs="+", metavar="YYYY-MM-DD",
                     help="dates to re-fetch from TWSE (TW IP required) — writes "
                          "BOTH _t86_archive JSON and _allstocks csv.gz")

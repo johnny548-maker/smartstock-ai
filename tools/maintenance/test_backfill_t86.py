@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Offline tests for tools/maintenance/backfill_t86.py (no network — fetch injected)."""
+import gzip
 import json
 import os
 import tempfile
@@ -106,8 +107,9 @@ class TestFetchOne(unittest.TestCase):
                              "must fetch with the no-dash YYYYMMDD key")
             self.assertEqual(n, 1)
             self.assertTrue(os.path.exists(jp), "snapshot JSON must be written")
+            self.assertTrue(jp.endswith(".json.gz"), "snapshot is gzip'd")
             self.assertTrue(os.path.exists(cp), "gz-CSV must be written")
-            with open(jp, encoding="utf-8") as f:
+            with gzip.open(jp, "rt", encoding="utf-8") as f:
                 snap = json.load(f)
             self.assertEqual(snap[0]["code"], "2330")
             self.assertEqual(snap[0]["foreign"], 5000000)
@@ -132,6 +134,7 @@ class TestFetchOne(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 bt.fetch_one("2026-07-15", archive_dir=adir, out_dir=odir,
                              apply=True, fetch_fn=lambda d: [])
+            self.assertFalse(os.path.exists(os.path.join(adir, "20260715.json.gz")))
             self.assertFalse(os.path.exists(os.path.join(adir, "20260715.json")))
 
 

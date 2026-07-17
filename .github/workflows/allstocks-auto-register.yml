@@ -6,7 +6,7 @@ name: AllStocks Auto-Register (discover user-created sheets)
 # trigger CI. This scheduled workflow runs on the 2nd of each month (after the Apps Script's
 # 1st-of-month create), lists every spreadsheet the SA can access (openall), and registers any
 # smartstock-allstocks-YYYY-MM not yet in the index: it seeds the 13 tabs, shares back to the
-# user, and commits docs/data/_allstocks_sheets_index.json so daily.yml resolves the right id.
+# user, and commits archive/allstocks_sheets_index.json so daily.yml resolves the right id.
 #
 # Why no SA-side create here: the SA has Drive quota=0 and CANNOT create files headlessly
 # (APIError 403). Creation stays the Apps Script's job; this workflow only ever opens
@@ -83,7 +83,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # || true is intentional: file may not exist yet if no sheet has ever been registered
-          git add docs/data/_allstocks_sheets_index.json || true
+          git add archive/allstocks_sheets_index.json || true
           if git diff --cached --quiet; then
             echo "::notice::No index change — no new month sheet discovered (idempotent skip)"
           else
@@ -106,7 +106,7 @@ jobs:
       - name: Assert current+next month registered (Apps Script liveness sentinel)
         run: |
           set -euo pipefail
-          IDX=docs/data/_allstocks_sheets_index.json
+          IDX=archive/allstocks_sheets_index.json
           CUR=$(date -u +%Y-%m)
           NEXT=$(date -u -d "$(date -u +%Y-%m-01) +1 month" +%Y-%m)
           # On the 2nd, the Apps Script's 1st-of-month rollover must have created BOTH the

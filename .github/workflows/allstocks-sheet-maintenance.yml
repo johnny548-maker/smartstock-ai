@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       month:
-        description: 'Month sheet to clean (YYYY-MM, in _allstocks_sheets_index.json); empty = current UTC month'
+        description: 'Month sheet to clean (YYYY-MM, in archive/allstocks_sheets_index.json); empty = current UTC month'
         required: false
         default: ''
       dry_run:

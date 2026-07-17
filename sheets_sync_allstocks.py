@@ -49,6 +49,8 @@ import time
 from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 
+import config
+
 # ── Tab header schemas (7 P0 sources) ─────────────────────────────────────────
 
 TAB_HEADERS = {
@@ -115,20 +117,15 @@ _TAB_ORDER = [
     "sec_frames_quarterly", "sec_ftd_semimonthly", "cnyes_news_daily",
 ]
 
-# Default index file path (docs/data/_allstocks_sheets_index.json)
-_DEFAULT_INDEX_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "docs", "data", "_allstocks_sheets_index.json",
-)
+# Default index file path (archive/allstocks_sheets_index.json). Moved out of docs/ 2026-07-18
+# (config.ARCHIVE_DIR) so the Pages budget only carries the served PWA, not the raw archive.
+_DEFAULT_INDEX_PATH = os.path.join(config.ARCHIVE_DIR, "allstocks_sheets_index.json")
 
-# Default git-file archive root (docs/data/_allstocks/<source>/<period>.csv).
+# Default git-file archive root (archive/allstocks/<source>/<period>.csv.gz).
 # Keyless replacement for the Google-Sheets month-shard (SA Drive quota=0 blocked
 # headless rollover; the all-stocks data is OVERLAY-NOT-SCORER raw archive, so a
 # git-committed CSV archive is fully automatic, quota-free, and needs no SA).
-_DEFAULT_ALLSTOCKS_DIR = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "docs", "data", "_allstocks",
-)
+_DEFAULT_ALLSTOCKS_DIR = os.path.join(config.ARCHIVE_DIR, "allstocks")
 
 _DEFAULT_USER_EMAIL = "johnny548@gmail.com"
 
@@ -1482,7 +1479,7 @@ def archive_allstocks_to_files(date_str=None, out_dir=None, source_filter=None):
 
     Args:
         date_str:      'YYYY-MM-DD' (default: today UTC).
-        out_dir:       archive root (default docs/data/_allstocks).
+        out_dir:       archive root (default archive/allstocks).
         source_filter: optional single tab name; when set only that source is written.
 
     Returns:
@@ -1584,7 +1581,7 @@ def sync_allstocks_from_files(date_str=None, index_path=_DEFAULT_INDEX_PATH,
     """Mirror the COMPLETE git-file gz-CSV archive into the month's all-stocks Sheet.
 
     Unlike sync_allstocks() (which LIVE-fetches each source from a CI IP — blocked from
-    TWSE/TDCC), this reads the already-archived gz-CSVs under docs/data/_allstocks/, which
+    TWSE/TDCC), this reads the already-archived gz-CSVs under archive/allstocks/, which
     by run-time include the TWSE/TDCC sources captured by the local TW-IP archiver task.
     So the browseable Sheet ends up with the complete dataset the CI live-sync can't reach.
 
@@ -1593,7 +1590,7 @@ def sync_allstocks_from_files(date_str=None, index_path=_DEFAULT_INDEX_PATH,
     Args:
         date_str:      'YYYY-MM-DD' (default: today UTC). Selects the daily file + month.
         index_path:    path to _allstocks_sheets_index.json.
-        allstocks_dir: archive root (default docs/data/_allstocks).
+        allstocks_dir: archive root (default archive/allstocks).
         source_filter: optional single tab name; when set only that source is mirrored.
 
     Returns:
@@ -1699,7 +1696,7 @@ def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
     2b. Otherwise: find existing sheet by title or create a new one.
     3. Ensure all 7 P0 tabs with correct header rows.
     4. Share to user_email as writer.
-    5. Update docs/data/_allstocks_sheets_index.json atomically.
+    5. Update archive/allstocks_sheets_index.json atomically.
 
     Returns dict: {id, title, url, tabs, shared}.
     Raises RuntimeError if client is None (caller should check get_client() first).
@@ -1864,7 +1861,7 @@ def main(argv=None):
                     help="Sync 7 P0 fetchers → Sheet for the given date (default: today UTC).")
     ap.add_argument("--sync-from-files", action="store_true",
                     help=(
-                        "Mirror the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/) "
+                        "Mirror the COMPLETE git-file gz-CSV archive (archive/allstocks/) "
                         "into the month's Sheet instead of live-fetching. The archive includes "
                         "the TWSE/TDCC sources a CI-IP live --sync can't reach (captured by the "
                         "local TW-IP archiver task), so the Sheet gets the complete dataset."
@@ -1882,7 +1879,7 @@ def main(argv=None):
     ap.add_argument("--user-email", default=_DEFAULT_USER_EMAIL,
                     help="Gmail address to share the spreadsheet with (writer).")
     ap.add_argument("--index-path", default=_DEFAULT_INDEX_PATH,
-                    help="Path for _allstocks_sheets_index.json (default: docs/data/).")
+                    help="Path for allstocks_sheets_index.json (default: archive/).")
     ap.add_argument("--existing-id", default=None,
                     help=(
                         "Google Spreadsheet ID of a pre-existing sheet shared with the SA. "
@@ -1898,12 +1895,12 @@ def main(argv=None):
                     ))
     ap.add_argument("--archive-files", action="store_true",
                     help=(
-                        "Archive all 13 sources to per-period CSV files under docs/data/_allstocks/ "
+                        "Archive all 13 sources to per-period CSV files under archive/allstocks/ "
                         "(keyless — NO Google Sheets, NO Service Account, NO quota). This is the "
                         "current archive path; the Sheets --sync/--bootstrap modes are retired."
                     ))
     ap.add_argument("--out-dir", default=None,
-                    help="Output root for --archive-files (default docs/data/_allstocks).")
+                    help="Output root for --archive-files (default archive/allstocks).")
     args = ap.parse_args(argv)
 
     # ── --archive-files: keyless local CSV archive — routed BEFORE the SA-required guard,

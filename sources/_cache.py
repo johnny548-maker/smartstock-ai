@@ -12,6 +12,7 @@ save → makedirs(dirname) first. GOTCHA carried over: os.path.dirname() of a
 bare filename ("x.json") is "" and os.makedirs("") raises FileNotFoundError —
 so we ALWAYS abspath() before taking dirname (see save_state).
 """
+import gzip
 import json
 import os
 
@@ -42,33 +43,87 @@ def save_state(path, data):
 
 
 def archive_snapshot(archive_dir, date_key, rows):
-    """Write `rows` as <archive_dir>/<date_key>.json (makedirs first). Returns path."""
+    """Write `rows` as gzip-compressed <archive_dir>/<date_key>.json.gz (makedirs first).
+
+    Gzip'd (2026-07-18) because the raw daily/weekly snapshots dominate the archive's
+    year-on-year growth (~9× shrink on the JSON). Returns the written path. A same-key
+    re-write overwrites (the tdcc same-week-repull contract is preserved).
+    """
     os.makedirs(os.path.abspath(archive_dir), exist_ok=True)
-    out = os.path.join(archive_dir, "%s.json" % date_key)
-    with open(out, "w", encoding="utf-8") as f:
+    out = os.path.join(archive_dir, "%s.json.gz" % date_key)
+    with gzip.open(out, "wt", encoding="utf-8") as f:
         json.dump(rows, f, ensure_ascii=False)
     return out
 
 
 def load_archive(archive_dir):
-    """Merge every <archive_dir>/*.json into {date_key: rows}. {} if dir missing.
+    """Merge every <archive_dir>/*.json[.gz] into {date_key: rows}. {} if dir missing.
 
-    date_key = filename without the .json suffix. Corrupt / unreadable files are
-    skipped (graceful) so one bad snapshot never breaks the merge.
+    Accepts BOTH the gzip-compressed .json.gz form (current) and the legacy plain
+    .json form (pre-2026-07-18 / test fixtures). date_key = filename minus the
+    .json.gz or .json suffix. When both forms exist for one date_key the .gz wins
+    (a converted snapshot supersedes any leftover plain original). Corrupt /
+    unreadable files are skipped (graceful) so one bad snapshot never breaks the merge.
     """
     result = {}
     if not os.path.isdir(archive_dir):
         return result
-    for name in os.listdir(archive_dir):
-        if not name.endswith(".json"):
+    names = os.listdir(archive_dir)
+    gz_keys = {n[: -len(".json.gz")] for n in names if n.endswith(".json.gz")}
+    for name in names:
+        if name.endswith(".json.gz"):
+            date_key = name[: -len(".json.gz")]
+        elif name.endswith(".json"):
+            date_key = name[: -len(".json")]
+            if date_key in gz_keys:
+                continue                       # .gz form supersedes the plain original
+        else:
             continue
-        date_key = name[: -len(".json")]
+        path = os.path.join(archive_dir, name)
         try:
-            with open(os.path.join(archive_dir, name), encoding="utf-8") as f:
-                result[date_key] = json.load(f)
+            if name.endswith(".gz"):
+                with gzip.open(path, "rt", encoding="utf-8") as f:
+                    result[date_key] = json.load(f)
+            else:
+                with open(path, encoding="utf-8") as f:
+                    result[date_key] = json.load(f)
         except Exception:
             continue
     return result
+
+
+def read_snapshot(archive_dir, date_key, default=None):
+    """Load a SINGLE <archive_dir>/<date_key>.json[.gz] (gzip-aware). `default` (→ [])
+    on absent/corrupt. Lets a caller read just one day/week without merging the whole
+    archive (the O(codes×rows) hot path when only the latest prior snapshot is needed).
+    """
+    if default is None:
+        default = []
+    gz = os.path.join(archive_dir, "%s.json.gz" % date_key)
+    plain = os.path.join(archive_dir, "%s.json" % date_key)
+    try:
+        if os.path.isfile(gz):
+            with gzip.open(gz, "rt", encoding="utf-8") as f:
+                return json.load(f)
+        if os.path.isfile(plain):
+            with open(plain, encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        return default
+    return default
+
+
+def archive_keys(archive_dir):
+    """Sorted date_keys present in `archive_dir` (accepts .json and .json.gz). [] if missing."""
+    if not os.path.isdir(archive_dir):
+        return []
+    keys = set()
+    for n in os.listdir(archive_dir):
+        if n.endswith(".json.gz"):
+            keys.add(n[: -len(".json.gz")])
+        elif n.endswith(".json"):
+            keys.add(n[: -len(".json")])
+    return sorted(keys)
 
 
 def cached_fetch(cache_path, key, ttl_sec, now_ts, fetch_fn):

@@ -8,7 +8,7 @@
 #
 # Scheduled daily ~14:45 TW (after TWSE openapi publishes ~14:00). No-op on
 # holidays (empty -> no diff -> no commit). Defensive: aborts on pull conflict,
-# only stages docs/data/_allstocks (never the user's other working changes).
+# only stages archive/allstocks (never the user's other working changes).
 # ---------------------------------------------------------------------------
 $ErrorActionPreference = 'Continue'
 
@@ -32,7 +32,7 @@ if ($LASTEXITCODE -ne 0) { Log 'ABORT: git pull --rebase failed (uncommitted tra
 if ($LASTEXITCODE -ne 0) { Log 'ABORT: python --archive-files failed.'; exit 1 }
 
 # 3. Stage ONLY the archive dir (never the user's other working changes).
-git add docs/data/_allstocks 2>&1 | Out-File $log -Append -Encoding utf8
+git add archive/allstocks 2>&1 | Out-File $log -Append -Encoding utf8
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) { Log 'No changes (holiday / nothing new). Done.'; Log '=== done ==='; exit 0 }
 

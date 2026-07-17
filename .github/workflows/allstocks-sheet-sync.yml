@@ -1,6 +1,6 @@
 name: AllStocks Sheet Sync (manual mirror from git-files)
 
-# Mirrors the COMPLETE git-file gz-CSV archive (docs/data/_allstocks/) into the
+# Mirrors the COMPLETE git-file gz-CSV archive (archive/allstocks/) into the
 # month's Google Sheet via --sync-from-files. The daily.yml pipeline already does
 # this on schedule; this workflow is a manual/ad-hoc re-mirror (e.g. to backfill a
 # Sheet after the local TW-IP task lands TWSE/TDCC data, or to verify the path).

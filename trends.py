@@ -18,11 +18,60 @@ from sources import tdcc as _tdcc
 
 
 def _t86_dir():
-    return os.path.join(config.WEB_DIR, "data", "_t86_archive")
+    return os.path.join(config.ARCHIVE_DIR, "t86")
 
 
 def _tdcc_dir():
-    return os.path.join(config.WEB_DIR, "data", "_tdcc_archive")
+    return os.path.join(config.ARCHIVE_DIR, "tdcc")
+
+
+def _is_tw(symbol):
+    """True for a TWSE/TPEx name (only these have TW chip archives). A US symbol
+    (non-numeric, no .TW/.TWO suffix) short-circuits both TW archive queries."""
+    s = str(symbol)
+    return s.endswith((".TW", ".TWO")) or _bare(s).isdigit()
+
+
+def _index_t86_by_code(archive):
+    """{date_key: rows} -> {date_key: {code: row}} (FIRST row per code wins, matching the
+    original next(...) scan). Built once so inst_net_series is O(dates) not O(dates×rows)."""
+    out = {}
+    for dk, rows in (archive or {}).items():
+        m = {}
+        for r in (rows or []):
+            c = str(r.get("code"))
+            if c and c not in m:
+                m[c] = r
+        out[dk] = m
+    return out
+
+
+def _index_tdcc_by_code(history):
+    """{date_key: rows} -> {date_key: {code: [non-total rows]}} so holder_pct_series looks up
+    one code's tiers in O(1) instead of re-scanning the whole ~68k-row week per code."""
+    out = {}
+    for dk, rows in (history or {}).items():
+        m = {}
+        for r in (rows or []):
+            if r.get("tier") == _tdcc.TOTAL_TIER:
+                continue
+            c = str(r.get("code") or "").strip()
+            if c:
+                m.setdefault(c, []).append(r)
+        out[dk] = m
+    return out
+
+
+def preload_indices(t86_dir=None, tdcc_dir=None):
+    """Load + index the T86 daily and TDCC weekly archives ONCE (hoist out of the per-code
+    detail loop). Returns {"t86_index":..., "tdcc_index":...} for build_trends(preloaded=...).
+    Without this, build_trends re-loads + re-scans both whole archives for every code."""
+    t86 = _cache.load_archive(t86_dir or _t86_dir())              # {date_key: rows}
+    tdcc_hist = _tdcc.load_history(archive_dir=tdcc_dir or _tdcc_dir())
+    return {
+        "t86_index": _index_t86_by_code(t86),
+        "tdcc_index": _index_tdcc_by_code(tdcc_hist),
+    }
 
 
 def _ymd(date_key):
@@ -43,18 +92,22 @@ def _bare(code):
     return str(code).replace(".TWO", "").replace(".TW", "")
 
 
-def inst_net_series(code, archive_dir=None, field="total"):
+def inst_net_series(code, archive_dir=None, field="total", index=None):
     """Cumulative 三大法人 net (張 = shares ÷ 1000) per archived trading day for `code`.
 
-    Reads the daily _t86_archive snapshots, sums net shares forward, and reports the
-    running total in 張 so the chart shows whether the institutions kept accumulating.
-    `field` selects total/foreign/trust/dealer. [] if the dir/code is absent.
+    Sums the daily t86 archive net shares forward, reporting the running total in 張 so the
+    chart shows whether the institutions kept accumulating. `field` selects
+    total/foreign/trust/dealer. `index` is a preloaded {date_key: {code: row}} map (from
+    preload_indices) — pass it in the hot loop so the whole archive is loaded+indexed ONCE
+    instead of per code. index=None falls back to loading from `archive_dir` (test/one-off).
+    [] if the dir/code is absent.
     """
     bare = _bare(code)
-    arch = _cache.load_archive(archive_dir or _t86_dir())   # {date_key: rows}
+    if index is None:
+        index = _index_t86_by_code(_cache.load_archive(archive_dir or _t86_dir()))
     out, cum = [], 0
-    for date_key in sorted(arch):
-        row = next((r for r in (arch[date_key] or []) if str(r.get("code")) == bare), None)
+    for date_key in sorted(index):
+        row = index[date_key].get(bare)
         if row is None:
             continue
         try:
@@ -65,17 +118,21 @@ def inst_net_series(code, archive_dir=None, field="total"):
     return out
 
 
-def holder_pct_series(code, archive_dir=None):
+def holder_pct_series(code, archive_dir=None, index=None):
     """大戶持股% (TDCC tiers >= 12) per archived week for `code`, chronological.
 
-    Reuses tdcc._rows_for_code + tdcc.concentration_ratio so the weekly value matches
-    the same-day 大戶 overlay exactly. [] if the dir/code is absent / no big-holder read.
+    Uses tdcc.concentration_ratio so the weekly value matches the same-day 大戶 overlay
+    exactly. `index` is a preloaded {date_key: {code: [rows]}} map (from preload_indices) —
+    pass it in the hot loop so the weekly archive is loaded+indexed ONCE instead of
+    re-scanning every week per code. index=None falls back to loading from `archive_dir`.
+    [] if the dir/code is absent / no big-holder read.
     """
     bare = _bare(code)
-    hist = _tdcc.load_history(archive_dir=archive_dir or _tdcc_dir())   # {date_key: rows}
+    if index is None:
+        index = _index_tdcc_by_code(_tdcc.load_history(archive_dir=archive_dir or _tdcc_dir()))
     out = []
-    for date_key in sorted(hist):
-        rfc = _tdcc._rows_for_code(hist[date_key], bare)
+    for date_key in sorted(index):
+        rfc = index[date_key].get(bare, [])
         cr = _tdcc.concentration_ratio(rfc)
         if cr is None:
             continue
@@ -91,19 +148,31 @@ def rev_yoy_series(code, rev_state=None):
     return [{"t": _roc_month(k), "v": round(float(yoy[k]), 1)} for k in sorted(yoy)]
 
 
-def build_trends(symbol, t86_dir=None, tdcc_dir=None, rev_state=None):
+def build_trends(symbol, t86_dir=None, tdcc_dir=None, rev_state=None, preloaded=None):
     """{inst_cum, holder_pct, rev_yoy} for `symbol`. Each series [] when absent (graceful).
 
-    A US symbol simply has no TW archives → all three empty. Never raises: each builder
-    is independently guarded so one dead source never sinks the others.
+    `preloaded` is the {"t86_index":..., "tdcc_index":...} dict from preload_indices() — pass
+    it once per detail loop so the two TW archives are loaded+indexed a single time for all
+    codes (the per-code re-load was the trends hot-loop bottleneck). t86_dir/tdcc_dir remain
+    for dir-injected tests / one-off calls (used only when preloaded is None).
+
+    A non-TW symbol (US) has no TW chip archives, so both TW series short-circuit to [] without
+    touching either archive. Never raises: each builder is independently guarded so one dead
+    source never sinks the others.
     """
+    t86_index = preloaded.get("t86_index") if preloaded else None
+    tdcc_index = preloaded.get("tdcc_index") if preloaded else None
+    is_tw = _is_tw(symbol)
+
     def _safe(fn):
         try:
             return fn()
         except Exception:
             return []
     return {
-        "inst_cum": _safe(lambda: inst_net_series(symbol, archive_dir=t86_dir)),
-        "holder_pct": _safe(lambda: holder_pct_series(symbol, archive_dir=tdcc_dir)),
+        "inst_cum": _safe(lambda: inst_net_series(symbol, archive_dir=t86_dir, index=t86_index))
+                    if is_tw else [],
+        "holder_pct": _safe(lambda: holder_pct_series(symbol, archive_dir=tdcc_dir, index=tdcc_index))
+                      if is_tw else [],
         "rev_yoy": _safe(lambda: rev_yoy_series(symbol, rev_state=rev_state)),
     }
