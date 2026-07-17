@@ -273,10 +273,11 @@ class TestCacheAge(unittest.TestCase):
 
 
 class TestKellyValidationStaleGate(unittest.TestCase):
-    """Sprint 3 #19: kelly_state / validation_state files older than 40 days
-    must surface a 'degraded' banner with explicit 'N days stale, last refresh
-    YYYY-MM-DD' note — these state files drive sizing and the offline robustness
-    gate, so a silently stale on-disk state is just as dangerous as a dead feed.
+    """Sprint 3 #19 + audit fix (假陰性 #2): kelly_state / validation_state age
+    must come from the EMBEDDED timestamp (asof/updated/…), NOT file mtime —
+    GitHub Actions checkout rewrites mtime every run, so an mtime-based gate
+    reports a frozen state file as '0d old' forever (false ok). A file with no
+    embedded ts is an explicit SKIP ('mtime unreliable in CI'), never ok/0d.
     """
 
     def setUp(self):
@@ -284,8 +285,6 @@ class TestKellyValidationStaleGate(unittest.TestCase):
         self.d = self._tmp.name
         self.kelly = os.path.join(self.d, "_kelly_state.json")
         self.validation = os.path.join(self.d, "_validation_state.json")
-        self._write(self.kelly, {"asof": "2026-01-01"})
-        self._write(self.validation, {"asof": "2026-01-01"})
 
     def tearDown(self):
         self._tmp.cleanup()
@@ -299,20 +298,22 @@ class TestKellyValidationStaleGate(unittest.TestCase):
         os.utime(path, (ts, ts))
 
     def test_kelly_state_stale_gate_degrades_when_older_than_40d(self):
+        # Arrange: embedded asof 45 days before now → past the 40d gate
         now = dt.datetime(2026, 6, 25, 12, 0, 0)
-        # 45 days old → past 40d gate
-        self._set_mtime(self.kelly, now - dt.timedelta(days=45))
-        self._set_mtime(self.validation, now)  # validation fresh
+        self._write(self.kelly, {"asof": "2026-05-11"})       # 45 days
+        self._write(self.validation, {"asof": "2026-06-25"})  # fresh
+        # Act
         out = {e["name"]: e for e in dh._check_state_age(
             now, {"kelly": self.kelly, "validation": self.validation})}
+        # Assert
         self.assertEqual(out["state:kelly"]["status"], "degraded")
         self.assertIn("45 days stale", out["state:kelly"]["note"])
         self.assertIn("last refresh 2026-05-11", out["state:kelly"]["note"])
 
     def test_validation_state_stale_gate_degrades_when_older_than_40d(self):
         now = dt.datetime(2026, 6, 25, 12, 0, 0)
-        self._set_mtime(self.kelly, now)        # kelly fresh
-        self._set_mtime(self.validation, now - dt.timedelta(days=41))
+        self._write(self.kelly, {"asof": "2026-06-25"})       # fresh
+        self._write(self.validation, {"asof": "2026-05-15"})  # 41 days
         out = {e["name"]: e for e in dh._check_state_age(
             now, {"kelly": self.kelly, "validation": self.validation})}
         self.assertEqual(out["state:validation"]["status"], "degraded")
@@ -321,13 +322,38 @@ class TestKellyValidationStaleGate(unittest.TestCase):
 
     def test_stale_gate_not_triggered_when_fresh(self):
         now = dt.datetime(2026, 6, 25, 12, 0, 0)
-        # both 10 days old → well under the 40d gate
-        self._set_mtime(self.kelly, now - dt.timedelta(days=10))
-        self._set_mtime(self.validation, now - dt.timedelta(days=10))
+        # both embedded-ts 10 days old → well under the 40d gate
+        self._write(self.kelly, {"asof": "2026-06-15"})
+        self._write(self.validation, {"asof": "2026-06-15"})
         out = {e["name"]: e for e in dh._check_state_age(
             now, {"kelly": self.kelly, "validation": self.validation})}
         self.assertEqual(out["state:kelly"]["status"], "ok")
         self.assertEqual(out["state:validation"]["status"], "ok")
+
+    def test_stale_embedded_ts_wins_over_fresh_mtime(self):
+        # Arrange: the CI-checkout regression — mtime says 'now', embedded asof
+        # says 45 days ago. mtime must NOT rescue the gate.
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        self._write(self.kelly, {"asof": "2026-05-11"})
+        self._set_mtime(self.kelly, now)                       # fresh mtime
+        # Act
+        out = dh._check_state_age(now, {"kelly": self.kelly})
+        # Assert
+        self.assertEqual(out[0]["status"], "degraded")
+        self.assertIn("45 days stale", out[0]["note"])
+
+    def test_no_embedded_ts_is_explicit_skip_not_ok(self):
+        # Arrange: state file with NO timestamp field, old mtime — the old
+        # getmtime gate would have judged it; the new gate must SKIP loudly.
+        now = dt.datetime(2026, 6, 25, 12, 0, 0)
+        self._write(self.kelly, {"signals": {"a": 1}})
+        self._set_mtime(self.kelly, now - dt.timedelta(days=100))
+        # Act
+        out = dh._check_state_age(now, {"kelly": self.kelly})
+        # Assert: not ok, not degraded — an honest SKIP naming the mtime trap
+        self.assertEqual(out[0]["status"], "skip")
+        self.assertIn("no embedded ts", out[0]["note"])
+        self.assertIn("mtime", out[0]["note"])
 
     def test_missing_state_skips(self):
         now = dt.datetime(2026, 6, 25, 12, 0, 0)
@@ -335,11 +361,11 @@ class TestKellyValidationStaleGate(unittest.TestCase):
         self.assertEqual(out[0]["status"], "skip")
 
     def test_stale_state_degrades_overall_report(self):
-        # end-to-end: when summarize() picks up a 45d-old kelly_state via the
-        # default path, the overall report banner must reflect 'degraded'.
+        # end-to-end: when summarize() picks up a 45d-old (embedded asof)
+        # kelly_state, the overall report banner must reflect 'degraded'.
         now = dt.datetime(2026, 6, 25, 12, 0, 0)
-        self._set_mtime(self.kelly, now - dt.timedelta(days=45))
-        self._set_mtime(self.validation, now)
+        self._write(self.kelly, {"asof": "2026-05-11"})
+        self._write(self.validation, {"asof": "2026-06-25"})
         payload = make_payload(date="2026-06-25", generated_at="2026-06-25T05:41:48",
                                picks=[{"stock": "A.TW", "price": 1.0, "score": 1,
                                        "ohlc": [{"time": "2026-06-25"}]}])
@@ -349,6 +375,240 @@ class TestKellyValidationStaleGate(unittest.TestCase):
         e = entry(report, "state:kelly")
         self.assertEqual(e["status"], "degraded")
         self.assertEqual(report["overall"], "degraded")
+
+
+class TestMacroFreeze(_TmpDirTest):
+    """Audit fix (假陰性 #1/#2 交叉): payload macro.asof frozen far behind the
+    report date must surface as degraded — the 29-day frozen macro block shipped
+    'ok' because nothing compared asof to today."""
+
+    def test_frozen_macro_asof_degrades(self):
+        # Arrange: newest asof 2026-06-18 vs now 2026-07-16 = 20 business days
+        now = dt.datetime(2026, 7, 16, 6, 0, 0)
+        p = make_payload(date="2026-07-16", generated_at="2026-07-16T05:41:48",
+                         picks=[{"stock": "A.TW", "price": 1.0, "score": 1,
+                                 "ohlc": [{"time": "2026-07-16"}]}],
+                         macro={"label": "benign",
+                                "asof": {"term_spread": "2026-06-18",
+                                         "vix": "2026-06-17"}})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=now)
+        # Assert
+        e = entry(report, "macro_asof")
+        self.assertEqual(e["status"], "degraded")
+        self.assertIn("2026-06-18", e["note"])
+        self.assertEqual(report["overall"], "degraded")
+
+    def test_recent_macro_asof_is_ok(self):
+        # Arrange: newest asof 2 business days behind (normal FRED lag)
+        now = dt.datetime(2026, 7, 16, 6, 0, 0)
+        p = make_payload(date="2026-07-16", generated_at="2026-07-16T05:41:48",
+                         picks=[{"stock": "A.TW", "price": 1.0, "score": 1,
+                                 "ohlc": [{"time": "2026-07-16"}]}],
+                         macro={"label": "benign",
+                                "asof": {"term_spread": "2026-07-14"}})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=now)
+        # Assert
+        self.assertEqual(entry(report, "macro_asof")["status"], "ok")
+
+    def test_no_macro_block_is_skip(self):
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "macro_asof")["status"], "skip")
+
+    def test_macro_without_asof_dates_is_skip(self):
+        p = make_payload(macro={"label": "benign", "asof": {}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "macro_asof")["status"], "skip")
+
+
+class TestValidatedBlock(_TmpDirTest):
+    """Audit fix (假陰性 #3): validated_portfolio ran empty for 10 days
+    (combo=null → holdings=[]) while health stayed 'ok' — there was no
+    block-non-empty check. optimize json exists but combo null / holdings
+    empty → degraded with an explicit message."""
+
+    def _opt(self, doc, name="optimize_tw.json"):
+        path = os.path.join(self.data_dir, name)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(doc, f)
+        return path
+
+    def _vp(self, holdings, track):
+        return {"tw": {"holdings": holdings, "track_record": track},
+                "passive_benchmark": {}, "method": {}, "disclaimers": []}
+
+    def test_combo_null_degrades(self):
+        # Arrange: optimize json EXISTS but its combo is null (the observed rot)
+        path = self._opt({"sleeve": "tw", "combo": None})
+        p = make_payload(validated_portfolio=self._vp([], None))
+        # Act
+        out = {e["name"]: e for e in dh._check_validated(p, {"tw": path})}
+        # Assert
+        self.assertEqual(out["validated:tw"]["status"], "degraded")
+        self.assertIn("combo", out["validated:tw"]["note"])
+
+    def test_combo_present_but_holdings_empty_degrades(self):
+        path = self._opt({"sleeve": "tw", "combo": {"pass": False,
+                                                    "combo_configs": {"mom": {}}}})
+        p = make_payload(validated_portfolio=self._vp([], None))
+        out = {e["name"]: e for e in dh._check_validated(p, {"tw": path})}
+        self.assertEqual(out["validated:tw"]["status"], "degraded")
+        self.assertIn("empty", out["validated:tw"]["note"])
+
+    def test_healthy_sleeve_is_ok(self):
+        path = self._opt({"sleeve": "tw", "combo": {"pass": False,
+                                                    "combo_configs": {"mom": {}}}})
+        p = make_payload(validated_portfolio=self._vp(
+            [{"ticker": "2330.TW", "weight": 0.1}], {"cagr": 0.107}))
+        out = {e["name"]: e for e in dh._check_validated(p, {"tw": path})}
+        self.assertEqual(out["validated:tw"]["status"], "ok")
+
+    def test_optimize_json_absent_skips(self):
+        p = make_payload(validated_portfolio=self._vp([], None))
+        out = {e["name"]: e for e in dh._check_validated(
+            p, {"tw": os.path.join(self.data_dir, "no_such_optimize.json")})}
+        self.assertEqual(out["validated:tw"]["status"], "skip")
+
+    def test_no_validated_block_skips(self):
+        out = dh._check_validated(make_payload(), {})
+        self.assertEqual(out[0]["status"], "skip")
+
+    def test_summarize_wires_validated_check(self):
+        # end-to-end: empty validated block + existing optimize json → degraded
+        path = self._opt({"sleeve": "tw", "combo": None})
+        p = make_payload(validated_portfolio=self._vp([], None))
+        report = dh.summarize(p, self.data_dir, now=NOW,
+                              optimize_paths={"tw": path})
+        self.assertEqual(entry(report, "validated:tw")["status"], "degraded")
+        self.assertEqual(report["overall"], "degraded")
+
+
+class TestNewsHealth(_TmpDirTest):
+    """Audit fix (假陰性 #4): news health must count ITEMS (global+tw), not the
+    2 region keys of the dict; with pubdate present, the newest item must be
+    recent — the 07-16 report surfaced a 6/5 article as fresh news."""
+
+    @staticmethod
+    def _items(n, pubdate=None):
+        out = []
+        for i in range(n):
+            it = {"title": f"headline {i}", "source": "T", "link": "http://x"}
+            if pubdate is not None:
+                it["pubdate"] = pubdate
+            out.append(it)
+        return out
+
+    def test_dict_news_counted_and_fresh_is_ok(self):
+        # Arrange: 10 global + 5 tw, newest pubdate yesterday
+        p = make_payload(news={"global": self._items(10, "2026-06-10T12:00:00Z"),
+                               "tw": self._items(5, "2026-06-10T09:00:00Z")})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        # Assert
+        e = entry(report, "news")
+        self.assertEqual(e["status"], "ok")
+        self.assertIn("15", e["note"])
+
+    def test_low_item_count_warns_but_does_not_flip_overall(self):
+        # Arrange: only 3 items total (< 5 floor)
+        p = make_payload(news={"global": self._items(2, "2026-06-10T12:00:00Z"),
+                               "tw": self._items(1, "2026-06-10T12:00:00Z")})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        # Assert: warn surfaces in sources, overall stays ok (OVERLAY spirit)
+        self.assertEqual(entry(report, "news")["status"], "warn")
+        self.assertEqual(report["overall"], "ok")
+
+    def test_stale_newest_pubdate_degrades(self):
+        # Arrange: 6 items but the NEWEST pubdate is 10 days old (dead feeds
+        # serving archive items — the observed 6/5-article-on-07-16 case)
+        p = make_payload(news={"global": self._items(4, "2026-06-01T12:00:00Z"),
+                               "tw": self._items(2, "2026-05-30T12:00:00Z")})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        # Assert
+        e = entry(report, "news")
+        self.assertEqual(e["status"], "degraded")
+        self.assertIn("2026-06-01", e["note"])
+        self.assertEqual(report["overall"], "degraded")
+
+    def test_items_without_pubdate_are_ok_with_unverifiable_note(self):
+        # Arrange: enough items, none carry pubdate (pre-fix feed shape)
+        p = make_payload(news={"global": self._items(6), "tw": self._items(2)})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        # Assert: count passes; freshness honestly marked unverifiable
+        e = entry(report, "news")
+        self.assertEqual(e["status"], "ok")
+        self.assertIn("pubdate", e["note"])
+
+    def test_empty_news_is_skip(self):
+        p = make_payload(news={"global": [], "tw": []})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "news")["status"], "skip")
+
+
+class TestRowCountsDictNews(_TmpDirTest):
+    """Audit fix (假陰性 #4): row_counts must count news ITEMS across regions —
+    len() of the {'global','tw'} dict is constant 2 and can never collapse."""
+
+    def _write_prev(self, news, date="2026-06-10"):
+        doc = {"date": date, "picks": [{"stock": "S.TW"}],
+               "news": news, "movers": [1, 2, 3]}
+        with open(os.path.join(self.data_dir, f"{date}.json"), "w",
+                  encoding="utf-8") as f:
+            json.dump(doc, f)
+
+    def test_news_dict_collapse_detected(self):
+        # Arrange: 20 items yesterday → 2 today (feed rot) — old code saw 2→2
+        self._write_prev(news={"global": [{"title": f"g{i}"} for i in range(15)],
+                               "tw": [{"title": f"t{i}"} for i in range(5)]})
+        p = make_payload(news={"global": [{"title": "g0"}, {"title": "g1"}],
+                               "tw": []})
+        # Act
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        # Assert
+        e = entry(report, "row_counts")
+        self.assertEqual(e["status"], "degraded")
+        self.assertIn("news 20→2", e["note"])
+
+    def test_stable_news_dict_is_ok(self):
+        self._write_prev(news={"global": [{"title": f"g{i}"} for i in range(15)],
+                               "tw": [{"title": f"t{i}"} for i in range(5)]})
+        p = make_payload(news={"global": [{"title": f"g{i}"} for i in range(14)],
+                               "tw": [{"title": f"t{i}"} for i in range(4)]})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "row_counts")["status"], "ok")
+
+
+class TestCacheEmbeddedTs(unittest.TestCase):
+    """C3 extension: caches carrying a top-level fetched_at/as_of ISO ts are
+    dated by it; a cache with NO embedded ts is an explicit 'mtime unreliable'
+    SKIP, never silently ok."""
+
+    def test_fetched_at_iso_shape_dated(self):
+        # Arrange: macro-cache shape — top-level fetched_at 10 days old
+        now = dt.datetime(2026, 6, 14, 12, 0, 0)
+        d = tempfile.mkdtemp()
+        p = os.path.join(d, "_macro_cache.json")
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump({"term_spread": 0.3, "fetched_at": "2026-06-04T12:00:00"}, f)
+        # Act
+        out = dh._check_cache_age(now, {"macro_cache": p})
+        # Assert
+        self.assertEqual(out[0]["status"], "stale")
+
+    def test_no_ts_skip_note_mentions_mtime(self):
+        now = dt.datetime(2026, 6, 14, 12, 0, 0)
+        d = tempfile.mkdtemp()
+        p = os.path.join(d, "naked.json")
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump({"k": 1}, f)
+        out = dh._check_cache_age(now, {"naked": p})
+        self.assertEqual(out[0]["status"], "skip")
+        self.assertIn("no embedded ts", out[0]["note"])
+        self.assertIn("mtime", out[0]["note"])
 
 
 class TestBdayLag(unittest.TestCase):

@@ -121,6 +121,58 @@ class TestFetchFeedAgeFilter(unittest.TestCase):
         self.assertEqual(nd.NEWS_MAX_AGE_HOURS, 24)
 
 
+class TestPubdateField(unittest.TestCase):
+    """Audit fix (假陰性 #4): items with a parseable pubDate must carry an ISO
+    'pubdate' field into the payload so data_health can verify news freshness
+    (additive — title/source/link unchanged; no pubDate → no pubdate key)."""
+
+    def _run(self, entries, now=_NOW):
+        parsed = _make_parsed_result(entries)
+        with patch("news_digest.feedparser.parse", return_value=parsed), \
+             patch("news_digest._now_epoch", return_value=now):
+            return nd.fetch_feed("http://example.com/rss")
+
+    def test_fresh_entry_carries_iso_pubdate(self):
+        # Arrange
+        ep = _NOW - 3600
+        entries = [_make_entry("recent headline", ep)]
+        # Act
+        result = self._run(entries)
+        # Assert: ISO-UTC string matching the entry's publish epoch
+        self.assertEqual(len(result), 1)
+        expected = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(ep))
+        self.assertEqual(result[0]["pubdate"], expected)
+
+    def test_entry_without_published_parsed_has_no_pubdate_key(self):
+        # Arrange
+        entries = [_make_entry("no-ts headline", epoch_ts=None)]
+        # Act
+        result = self._run(entries)
+        # Assert: additive contract — absent, not fabricated
+        self.assertEqual(len(result), 1)
+        self.assertNotIn("pubdate", result[0])
+
+    def test_fallback_items_carry_pubdate(self):
+        # Arrange: only-old entries trigger the fallback path
+        ep = _NOW - 26 * 3600
+        entries = [_make_entry("old headline", ep)]
+        # Act
+        result = self._run(entries)
+        # Assert: fallback items keep their real (old) pubdate for health checks
+        self.assertEqual(len(result), 1)
+        expected = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(ep))
+        self.assertEqual(result[0]["pubdate"], expected)
+
+    def test_existing_keys_preserved(self):
+        # Arrange
+        entries = [_make_entry("recent headline", _NOW - 3600)]
+        # Act
+        result = self._run(entries)
+        # Assert: the original contract keys are all still present
+        for key in ("title", "source", "link"):
+            self.assertIn(key, result[0])
+
+
 class TestGetNewsIntegration(unittest.TestCase):
     """get_news: per-feed skip + correct region routing."""
 

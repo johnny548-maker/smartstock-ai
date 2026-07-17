@@ -18,7 +18,9 @@ User-Agent (FRED 403s the WebFetch UA). ALWAYS pass cosd=today-45d or the endpoi
 returns multi-decade history. The CSV header is `observation_date,<SERIESID>`
 (renamed from 'DATE' in 2024); empty value cells (holidays) AND the legacy '.'
 missing marker are dropped. Network is throttled + 24h disk-cached + try/except
-SKIP (a FRED outage never breaks the daily run — last-good cache or {}).
+SKIP (a FRED outage never breaks the daily run — last-good cache or {}). The
+cache TTL is judged by the JSON's embedded 'fetched_at' (NEVER file mtime — CI
+checkout rewrites mtime, which froze the macro block for 29 days pre-fix).
 
 Pure parsers (_parse_csv / _latest / classify) are unit-tested; network is wrapped.
 """
@@ -26,7 +28,7 @@ import json
 import logging
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -92,13 +94,40 @@ def _fetch_series(series_id, cosd, timeout=config.MACRO_TIMEOUT):
     return _parse_csv(r.text)
 
 
-def _read_cache(cache_path, ttl_sec):
-    """Return cached dict if the file exists and is fresher than ttl_sec, else None."""
+def _parse_fetched_at(value):
+    """ISO timestamp string → tz-aware UTC datetime, or None (naive assumed UTC)."""
     try:
-        if cache_path and os.path.exists(cache_path) \
-                and (time.time() - os.path.getmtime(cache_path)) < ttl_sec:
-            with open(cache_path, encoding="utf-8") as f:
-                return json.load(f)
+        ts = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+    if ts.tzinfo is None:
+        ts = ts.replace(tzinfo=timezone.utc)
+    return ts.astimezone(timezone.utc)
+
+
+def _read_cache(cache_path, ttl_sec):
+    """Return the cached dict if its EMBEDDED 'fetched_at' is fresher than ttl_sec.
+
+    AUDIT FIX (2026-07-17, 假陰性 #1): freshness used to be judged by file mtime —
+    but GitHub Actions checkout rewrites mtime on every run, so the cache always
+    looked fresh and FRED was NEVER re-fetched (macro block froze 29 days: asof
+    stuck at 2026-06-1x while live indices moved on). The age now comes from the
+    embedded 'fetched_at' ISO-UTC timestamp that fetch_macro writes. A legacy
+    cache without it is treated as STALE → re-fetch (backward compatible: it
+    still serves via _last_good_cache if the re-fetch fails). The mtime fallback
+    was deliberately REMOVED — mtime is unreliable in CI.
+    """
+    try:
+        if not cache_path or not os.path.exists(cache_path):
+            return None
+        with open(cache_path, encoding="utf-8") as f:
+            data = json.load(f)
+        fetched = _parse_fetched_at((data or {}).get("fetched_at"))
+        if fetched is None:
+            return None            # no embedded ts (legacy shape) → stale
+        age_sec = (datetime.now(timezone.utc) - fetched).total_seconds()
+        if age_sec < ttl_sec:
+            return data
     except Exception:
         pass
     return None
@@ -156,6 +185,8 @@ def fetch_macro(cache_path=None, ttl_sec=86400, today=None):
     out = dict(values)
     out["asof"] = asof
     out["cached"] = False
+    # Embedded TTL anchor — ALWAYS written (mtime is unreliable in CI; see _read_cache).
+    out["fetched_at"] = datetime.now(timezone.utc).isoformat()
     try:
         if cache_path:
             os.makedirs(os.path.dirname(cache_path), exist_ok=True)

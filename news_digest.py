@@ -60,8 +60,25 @@ def _entry_epoch(entry):
         return None
 
 
+def _iso_utc(epoch):
+    """Epoch seconds → ISO-8601 UTC string ('2026-07-16T05:41:48Z')."""
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(epoch))
+
+
+def _item(candidate):
+    """Candidate → payload item dict. ADDITIVE audit fix (假陰性 #4): when the
+    feed entry carried a parseable pubDate, an ISO 'pubdate' field is included
+    so data_health can verify news freshness; title/source/link are unchanged
+    and no pubdate key is fabricated when the feed had none."""
+    item = {"title": candidate["title"], "source": candidate["source"],
+            "link": candidate["link"]}
+    if candidate.get("_ep") is not None:
+        item["pubdate"] = _iso_utc(candidate["_ep"])
+    return item
+
+
 def fetch_feed(url, limit=NEWS_PER_FEED):
-    """Return up to `limit` {title, source, link} dicts from one RSS feed.
+    """Return up to `limit` {title, source, link[, pubdate]} dicts from one RSS feed.
 
     AGE FILTER: entries with a parseable publish time older than
     NEWS_MAX_AGE_HOURS from now are skipped.  Entries without a publish time
@@ -100,9 +117,8 @@ def fetch_feed(url, limit=NEWS_PER_FEED):
         # else: too old — skip (will be used in fallback if needed)
 
     if fresh:
-        # Normal path: strip internal _ep key before returning.
-        return [{"title": c["title"], "source": c["source"], "link": c["link"]}
-                for c in fresh[:limit]]
+        # Normal path: strip internal _ep key (kept as ISO 'pubdate' when known).
+        return [_item(c) for c in fresh[:limit]]
 
     if not all_candidates:
         return []
@@ -120,11 +136,9 @@ def fetch_feed(url, limit=NEWS_PER_FEED):
             label = time.strftime("[%Y-%m-%d %H:%M UTC] ", time.gmtime(ep))
         else:
             label = "[舊] "
-        result.append({
-            "title": label + c["title"],
-            "source": c["source"],
-            "link": c["link"],
-        })
+        item = _item(c)
+        item["title"] = label + c["title"]
+        result.append(item)
     return result
 
 
