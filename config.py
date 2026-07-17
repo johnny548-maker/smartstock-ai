@@ -120,7 +120,14 @@ FACTOR_PTS = {
     "rs_strong": 20,         # 相對強弱(強於大盤)
     "rs_mild": 15,           # 相對強弱(優於大盤)
     "rs_weak": -10,          # 相對弱勢(弱於大盤)
-    "near_high": 20,         # 接近52週高
+    "near_high": 0,          # 接近52週高 — DEMOTED 2026-07-17 (was 20): full-universe 15y
+                             #   cross-sectional rank-IC -0.013 (NEGATIVE, anti-predictive) —
+                             #   the same demotion-only governance as vol_stable (above) and the
+                             #   2026-06-13 leadership kills: zero the weight, keep the factor
+                             #   registered (0-weight never enters the factors dict → the PWA
+                             #   chip disappears naturally, reversibly, without editing
+                             #   strategy.py). Re-promote ONLY after a passing re-gate run.
+                             #   See .decisions/2026-07-17-audit-remediation.md.
     "near_mid": 10,          # 逼近52週高
     "far_high": -10,         # 遠離52週高
     "rsi_overbought": -15,   # RSI過熱(>75)

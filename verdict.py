@@ -43,6 +43,26 @@ def light(score):
     return "red"
 
 
+PARTIAL_REASON = "板塊外資料不全"
+
+
+def capped_entry(score, inputs_complete=True):
+    """Build a verdict_map entry {s, l} — 2026-07-17 audit finding 4 (cross-board
+    comparability): the watchlist scores with the FULL input set (sector/inst/chips)
+    while the opportunity scan / keyless panel / US coverage score on price factors
+    only, yet all share the same absolute ≥GREEN_MIN 買入 cut. A score produced
+    WITHOUT the full input set is not on the watchlist scale, so an incomplete row
+    can NEVER claim 🟢 買入 — its light is capped at 🟡 觀察 and the entry carries
+    partial=True + a reason for the PWA chips row. Amber/red stand (the cap only
+    blocks the strongest claim; it never upgrades)."""
+    lgt = light(score)
+    if inputs_complete:
+        return {"s": score, "l": lgt}
+    if lgt == "green":
+        lgt = "amber"
+    return {"s": score, "l": lgt, "partial": True, "reason": PARTIAL_REASON}
+
+
 def _clean(label):
     return _PAREN.sub("", label).strip()
 

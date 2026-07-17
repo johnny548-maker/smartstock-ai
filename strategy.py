@@ -261,6 +261,14 @@ def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None,
                 "score": r["score"],
                 "factors": r["factors"],
                 "sector": sector,
+                # 2026-07-17 audit finding 4: cross-board comparability flag. True only
+                # when this row was scored with the FULL watchlist input set (sector +
+                # institutional + chips). Rows scored on price factors only (opportunity
+                # scan / keyless panel / US coverage) are NOT on the same scale as the
+                # core board → verdict assembly caps their light at 觀察 (verdict.
+                # capped_entry). Informational output field — never a scoring input.
+                "inputs_complete": (sector is not None and inst is not None
+                                    and chips is not None),
             })
         except Exception:
             continue

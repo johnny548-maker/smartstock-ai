@@ -5,6 +5,13 @@
 
 ---
 
+## ⚠️ 現況更新（2026-07-17 稽核）
+
+1. **07-07 排程覆寫事故**：排程的 optimize workflow 於 2026-07-07 覆寫了 `optimize_*.json`，使 07-08 之後的檔案內容與本文件引用的 **06-21 定版**（DSR 0.854 / top20 / lookback252）不一致。下方 06-21 現況段引用的數字**以定版為準**。處置：主迴圈將把 `optimize_*.json` 回滾到 06-21 定版（git `3aa43349`）；schedule 之後改寫 `optimize_*_scout.json`（探索性輸出，非正典——由 fix:ci-sheets 組接線）。決策紀錄：`.decisions/2026-07-17-audit-remediation.md`。
+2. **未驗證因子清單（誠實標註）**：主榜單 scorer 的 `sector`（產業權重）、`inst_foreign_buy/sell`（外資買賣超）、`inst_trust_buy`（投信買超）、`chip_conc_*`（籌碼集中度）、`streak`（連買）**不在 15y IC harness 覆蓋範圍**——keyless 歷史籌碼/法人資料不可得，無法回測。這些權重是啟發式設定，非回測驗證；價格類因子（trend/momentum/volume/rs/high52/rsi/obv）才有 15y IC 數字。
+3. **主榜單公式無組合級回測**：個別因子過 IC / event-study gate ≠ 多因子「加總分數」這個組合在歷史上有效。組合級回測需要歷史籌碼/法人時間序列（keyless 不可得）→ **做不了、也不假裝做過**。主榜單定位維持「觀察名單/輔助」，非可回測驗證的交易策略（與 §8 Phase 1 結論一致）。
+4. **2026-07-17 稽核修復（一致性）**：(a) `near_high`（接近52週高 +20）15y rank-IC **-0.013（負）** → 循 demotion-only 治理降 0（前例：vol_stable、5 個 leadership 訊號）；(b) `ai_analyzer` 敘事門檻改 import config 燈號常數（舊 `>=70` 使 75 分同時「觀望」+「可分批進場」）；(c) 風險敘事改由該股實際負向訊號組裝（舊版每天每檔照印同一句美債/AI 宏觀敘事）、無 levels 不再捏造 -7%/+15~25% 價位；(d) 板塊外（機會掃描/keyless panel/US coverage）verdict 因輸入不全（無 sector/chips 或連 inst 都無）**封頂「觀察」**，不再與 watchlist 共用絕對 ≥90 買入門檻虛標 🟢。
+
 ## ⚠️ 現況（2026-06-21 稽核，先讀這段）
 
 1. **這個 champion 沒過品質 gate → 不該上線。** DSR=0.854 < 0.95 門檻（`dsr_pass=false`），walk-forward `stable=false`，lockbox calmar 0.55 vs pooled-OOS 1.79 崩盤。`run_optimize` 自己標：「likely in-sample mirage — do NOT promote to live weights」。**所以下面的冠軍是「目前最不爛的候選」，不是「可部署的最佳策略」。**

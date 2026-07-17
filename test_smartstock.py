@@ -8,6 +8,7 @@ import unittest.mock
 import numpy as np
 import pandas as pd
 
+import config
 import strategy
 import risk_engine
 import asset_allocation
@@ -63,11 +64,14 @@ class TestStrategy(unittest.TestCase):
         self.assertTrue(r["insufficient"])
 
     def test_uptrend_scores_trend_and_momentum(self):
-        # full-year frame so the 52w-high band can fire (the +20 bonus is now gated to ≥0.8*252 bars)
+        # full-year frame; trend(25)+momentum(25) fire, RSI saturates on a monotonic ramp (-15).
+        # Floor updated 50→35 after the 2026-07-17 near_high demotion (+20 no longer fires;
+        # 15y rank-IC -0.013 → weight 0, see config.FACTOR_PTS) — old assertion was calibrated
+        # with the near_high bonus included.
         r = strategy.score_stock(make_df(np.linspace(100, 120, 252)))
         self.assertIn("趨勢(MA5>MA20)", r["factors"])
         self.assertIn("動能(5日上漲)", r["factors"])
-        self.assertGreaterEqual(r["score"], 50)
+        self.assertGreaterEqual(r["score"], 35)
 
     def test_52wk_high_gated_on_short_history(self):
         # a 30-bar uptrend must NOT earn 接近52週高 (it's only a 1-month high) — audit fix
@@ -108,10 +112,27 @@ class TestStrategy(unittest.TestCase):
         r = strategy.score_stock(stock, bench=bench)
         self.assertTrue(any(k.startswith("相對強弱") for k in r["factors"]))
 
-    def test_52wk_near_high(self):
-        # ≥0.8*252 bars so the 52w-high band is allowed to fire (audit gate)
+    def test_52wk_near_high_demoted_to_zero(self):
+        # 2026-07-17 稽核：near_high 15y cross-sectional rank-IC -0.013（負）→ 循 demotion-only
+        # 治理（vol_stable / leadership 前例）權重降 0。因子仍註冊於 FACTOR_PTS，但 0 權重
+        # NEVER 進 factors dict（chips 顯示自然消失）。舊斷言（assertIn）隨行為變更更新。
+        self.assertEqual(config.FACTOR_PTS["near_high"], 0)
         r = strategy.score_stock(make_df(np.linspace(100, 130, 252)))
-        self.assertIn("接近52週高", r["factors"])
+        self.assertNotIn("接近52週高", r["factors"])
+
+    def test_rank_stocks_inputs_complete_flag(self):
+        # Arrange: same frame scored under two input configs (audit finding 4 —
+        # cross-board comparability: watchlist has sector/inst/chips, 板塊外 scans don't)
+        df = make_df(np.linspace(100, 120, 30))
+        # Act: bare scan (no inst/chips) vs full watchlist config
+        bare = strategy.rank_stocks({"2330.TW": df})[0]
+        full = strategy.rank_stocks(
+            {"2330.TW": df},
+            institutional_map={"2330": {"foreign": 5000, "trust": 200}},
+            chips_map={"2330": {"conc": 0.06, "streak": 4}})[0]
+        # Assert: rows carry the completeness flag for verdict assembly to cap on
+        self.assertFalse(bare["inputs_complete"])
+        self.assertTrue(full["inputs_complete"])
 
     def test_rank_carries_name(self):
         ranked = strategy.rank_stocks({"2330.TW": make_df(np.linspace(100, 120, 30))})
@@ -261,6 +282,48 @@ class TestAnalyzer(unittest.TestCase):
             self.assertIn(tag, txt)
         self.assertIn("928", txt)   # actual stop price shown
         self.assertIn("1127", txt)  # actual target price shown
+
+    # ── 2026-07-17 稽核 finding 2：敘事門檻必須與 config 燈號一致 ──
+    def test_score_75_watch_narrative_no_entry_language(self):
+        # Arrange: 75 分 = 🟡 觀望帶（SCORE_AMBER_MIN 40 ≤ s < SCORE_GREEN_MIN 90）
+        # Act
+        txt = ai_analyzer.analyze_stock("2330.TW", 75, {"趨勢(MA5>MA20)": 25})
+        # Assert: 觀望帶 NEVER 出現進場語（舊 bug：≥70 就寫可分批進場，75 分同時觀望+進場）
+        self.assertNotIn("分批進場", txt)
+        self.assertIn("觀望", txt)
+
+    def test_green_score_gets_entry_narrative(self):
+        txt = ai_analyzer.analyze_stock(
+            "2330.TW", config.SCORE_GREEN_MIN, {"趨勢(MA5>MA20)": 25})
+        self.assertIn("分批進場", txt)
+
+    def test_sub_amber_score_no_entry(self):
+        txt = ai_analyzer.analyze_stock("2330.TW", config.SCORE_AMBER_MIN - 5, {})
+        self.assertNotIn("分批進場", txt)
+        self.assertIn("暫不建議進場", txt)
+
+    # ── 2026-07-17 稽核 finding 3：無 levels 不得捏造價位；風險段由實際訊號組裝 ──
+    def test_no_levels_gives_no_fabricated_prices(self):
+        txt = ai_analyzer.analyze_stock("2330.TW", 75, {"趨勢(MA5>MA20)": 25}, levels=None)
+        self.assertNotIn("-7%", txt)        # 舊捏造停損
+        self.assertNotIn("15~25", txt)      # 舊捏造目標
+        self.assertIn("未達買入級", txt)
+
+    def test_risk_section_from_actual_signals_not_canned_macro(self):
+        # Arrange: 該股實際 fired RSI 過熱 + 外資賣超
+        factors = {"趨勢(MA5>MA20)": 25, "RSI過熱(>75)": -15, "外資賣超": -20}
+        # Act
+        txt = ai_analyzer.analyze_stock("2330.TW", 60, factors)
+        # Assert: 風險段引該股訊號、canned 宏觀敘事移除
+        self.assertIn("RSI過熱", txt)
+        self.assertIn("外資賣超", txt)
+        self.assertNotIn("美債殖利率", txt)
+        self.assertNotIn("AI 族群短線易過熱", txt)
+
+    def test_risk_section_honest_when_no_negative_signals(self):
+        txt = ai_analyzer.analyze_stock("2330.TW", 60, {"趨勢(MA5>MA20)": 25})
+        self.assertNotIn("美債殖利率", txt)
+        self.assertIn("風險", txt)          # 段落仍在，但誠實說無個股警示
 
 
 class TestReportBuilder(unittest.TestCase):
@@ -1127,6 +1190,30 @@ class TestVerdict(unittest.TestCase):
         self.assertEqual(verdict.light(120), "green")
         self.assertEqual(verdict.light(60), "amber")
         self.assertEqual(verdict.light(10), "red")
+
+    # ── 2026-07-17 稽核 finding 4：inputs 不全的分數不可比 → 燈號封頂觀察 ──
+    def test_capped_entry_incomplete_green_capped_to_amber(self):
+        # Arrange/Act: 90 分但無 chips/inst 輸入（板塊外掃描配置）
+        e = verdict.capped_entry(95, inputs_complete=False)
+        # Assert: 封頂觀察 + partial 標記 + 理由欄
+        self.assertEqual(e["l"], "amber")
+        self.assertTrue(e["partial"])
+        self.assertIn("資料不全", e["reason"])
+        self.assertEqual(e["s"], 95)
+
+    def test_capped_entry_complete_keeps_green(self):
+        e = verdict.capped_entry(95, inputs_complete=True)
+        self.assertEqual(e["l"], "green")
+        self.assertNotIn("partial", e)
+
+    def test_capped_entry_incomplete_amber_keeps_amber_with_flag(self):
+        e = verdict.capped_entry(60, inputs_complete=False)
+        self.assertEqual(e["l"], "amber")
+        self.assertTrue(e["partial"])
+
+    def test_capped_entry_incomplete_red_stays_red(self):
+        e = verdict.capped_entry(10, inputs_complete=False)
+        self.assertEqual(e["l"], "red")
 
     def test_verdict_line_strips_parens(self):
         line = verdict.verdict_line({"Stage2上升趨勢(回測lift1.36)": 12, "量能(高於20日均量)": 20})
