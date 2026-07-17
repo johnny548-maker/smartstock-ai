@@ -180,13 +180,18 @@ jobs:
       # Mirror today's report into the Google Sheet backend (JSON in git stays source-of-truth).
       # best-effort: continue-on-error + the script is a graceful no-op when GOOGLE_SA_JSON is
       # unset, so the report pipeline never breaks because of the (secondary) Sheet mirror.
+      # Output is tee'd for the end-of-job Sheet-sync sentinel (audit finding 3: silent per-tab
+      # SKIPs went unnoticed for 10 days because this step always "succeeded").
       - name: Mirror to Google Sheet backend
+        id: picks_mirror
         if: steps.report_check.outputs.skip != 'true'
         continue-on-error: true
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
           SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
-        run: python sheets_sync.py
+        run: |
+          set -euo pipefail
+          python sheets_sync.py 2>&1 | tee "${RUNNER_TEMP}/sheets_sync_picks.log"
 
       # P1 item9: PWA payload smoke test — fail the run BEFORE committing a broken deploy.
       # Validates the freshly-written payload is non-empty + well-formed (picks present,
@@ -277,6 +282,7 @@ jobs:
       # bootstrap rollover); graceful no-op when GOOGLE_SA_JSON is unset OR the month isn't yet
       # in the index (e.g. before the Apps Script one-time setup is done).
       - name: Mirror all-stocks snapshots to Sheet
+        id: allstocks_mirror
         if: steps.report_check.outputs.skip != 'true'
         continue-on-error: true
         env:
@@ -287,7 +293,9 @@ jobs:
           # into the Sheet instead of a CI-IP live fetch. By run-time that archive already includes
           # the TWSE/TDCC sources captured by the local TW-IP archiver task (CI IPs are blocked from
           # TWSE/TDCC), so the browseable Sheet gets the complete dataset, not just the CI-reachable subset.
-          python sheets_sync_allstocks.py --sync-from-files --date $(date -u +%F)
+          # Output tee'd for the end-of-job Sheet-sync sentinel (audit finding 3).
+          python sheets_sync_allstocks.py --sync-from-files --date $(date -u +%F) 2>&1 \
+            | tee "${RUNNER_TEMP}/sheets_sync_allstocks.log"
 
       # Bug-fix: the date-picker index can go STALE if a branch MERGE clobbers index.json or a
       # scheduled run is skipped — leaving committed <date>.json reports invisible. Rebuild the
@@ -335,3 +343,42 @@ jobs:
               exit 1
             fi
           fi
+
+      # Audit finding 3 (2026-07-17): the two Sheet-mirror steps are continue-on-error, so a
+      # per-tab failure (counts tab=-1, e.g. the sec_ftd 10M-cell breach) or a hard crash kept
+      # the run GREEN — tab=-1 went unnoticed for 10 days. This sentinel runs LAST (report,
+      # commits and index rebuild all land first — a mirror problem must never block them),
+      # parses the tee'd mirror logs, and fails the job so the existing notify-failure job
+      # opens a fingerprinted issue. Graceful full-skips (GOOGLE_SA_JSON unset / month not in
+      # index) don't match either pattern and stay green by design.
+      - name: Sheet-sync sentinel (fail on tab=-1 or hard mirror failure)
+        if: steps.report_check.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          FAIL=0
+          if [ "${{ steps.picks_mirror.outcome }}" = "failure" ]; then
+            echo "::error::picks Sheet mirror crashed (see 'Mirror to Google Sheet backend' log)"
+            FAIL=1
+          fi
+          if [ "${{ steps.allstocks_mirror.outcome }}" = "failure" ]; then
+            echo "::error::all-stocks Sheet mirror crashed (see 'Mirror all-stocks snapshots to Sheet' log)"
+            FAIL=1
+          fi
+          PICKS_LOG="${RUNNER_TEMP}/sheets_sync_picks.log"
+          ALL_LOG="${RUNNER_TEMP}/sheets_sync_allstocks.log"
+          # picks mirror: per-tab failures log "SKIP <title> tab..." lines
+          if [ -f "$PICKS_LOG" ] && grep -E "SKIP .+ tab" "$PICKS_LOG"; then
+            echo "::error::picks mirror skipped >=1 tab (matched lines above)"
+            FAIL=1
+          fi
+          # all-stocks mirror: failed tabs surface as "'<tab>': -1" in the counts dict
+          # (and as "SKIP <tab>: <exc>" lines). Match the counts to avoid false hits on
+          # dates like 2026-07-16.
+          if [ -f "$ALL_LOG" ] && grep -E "': -1[,}]" "$ALL_LOG"; then
+            echo "::error::all-stocks mirror reported tab=-1 (matched counts line above)"
+            FAIL=1
+          fi
+          if [ "$FAIL" -eq 0 ]; then
+            echo "::notice::Sheet-sync sentinel: both mirrors healthy (no tab=-1, no crash)"
+          fi
+          exit $FAIL

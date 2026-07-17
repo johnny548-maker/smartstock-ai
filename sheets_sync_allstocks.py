@@ -12,8 +12,19 @@ Design (Sprint 2, 2026-06-25):
     tpex_margin_daily— TPEx margin & short-selling daily
     tpex_per_daily   — TPEx fundamental valuation (parallel to bwibbu)
     tdcc_weekly      — TDCC shareholding concentration (weekly)
-- Idempotent upsert by (date, code) for daily; (asof_date, code) for weekly
-- ~47,550 cells/day daily + ~10,800 cells/week TDCC ≈ 1.09M cells/month (safe <10M limit)
+- Idempotent upsert by (date, code) for daily; (asof_date, code) for weekly;
+  REPLACE-TAB for sec_ftd (monthly cumulative snapshot); stable-link keyset for cnyes
+- Cell budget (2026-07-17 audit re-estimate, ALL 13 tabs, ~22 trading days/month,
+  schema-width grids):
+    daily ≈ 200k cells/day: bwibbu 1,078×7 + mi_margn 1,283×12 + t86 13,821×10
+      + tpex_3insti 914×10 + tpex_margin ~913×12 + tpex_per 889×7
+      + stock_day_all 1,370×9 + notice_punish ~21×6 + cnyes ~30×5  → ×22 ≈ 4.4M
+    weekly tdcc 4,003×7×5wk ≈ 0.14M · monthly t187ap03 1,089×5 ≈ 5k
+    quarterly sec_frames ~150×6 ≈ 1k · sec_ftd REPLACE-TAB snapshot 58,328×4 ≈ 0.23M
+  total ≈ 4.8M cells/month — under the 10M Sheet cap ONLY because (a) tabs are
+  created at schema width (the old 26-col default grid bloated a 4-col tab 6.5×)
+  and (b) sec_ftd is replace-tab (the old broken date-key upsert appended the full
+  58,328-row file EVERY day → 10M-cell breach in 4 days, 2026-07-07 incident)
 
 CONTRACT: OVERLAY-NOT-SCORER — pure raw archive, NEVER feeds scoring or signal generation.
 
@@ -36,6 +47,7 @@ import sys
 import tempfile
 import time
 from datetime import datetime, timezone
+from urllib.request import Request, urlopen
 
 # ── Tab header schemas (7 P0 sources) ─────────────────────────────────────────
 
@@ -179,9 +191,12 @@ def _ensure_all_tabs(sh):
             if ws.row_values(1) != headers:
                 ws.update(values=[headers], range_name="A1")
         else:
-            # Create new tab with header row in A1.
+            # Create new tab with header row in A1. cols MUST equal the schema
+            # width: gspread's 26-col default grid multiplies the tab's cell
+            # count (58,328 rows × 26 instead of × 4 = 6.5× bloat) and was a
+            # root cause of the 2026-07 10M-cell cap breach (audit finding 2).
             ws = sh.add_worksheet(title=tab_name, rows=10000,
-                                  cols=max(26, len(headers)))
+                                  cols=len(headers))
             ws.update(values=[headers], range_name="A1")
     return _TAB_ORDER[:]
 
@@ -262,10 +277,30 @@ def _fetch_tpex_3insti():
     return fetch_tpex_3insti()
 
 
+# TPEx whole-market per-stock margin balances (audit finding 4, fixed 2026-07-17).
+# sources.tpex.TPEX_MARGIN_URL (tpex_margin_trading_margin_used) is a TOP-20
+# margin-USAGE-RATIO RANKING (20 rows/day, Rank/UsageRatio only, NO balances) —
+# that is why tpex_margin_daily was stuck at 20 rows/day while its sibling tabs
+# had ~900 (tpex_per=889, tpex_3insti≈914). Live probe 2026-07-17 confirmed
+# /tpex_mainboard_margin_balance returns the whole market (~913 rows) with FULL
+# margin+short fields (MarginPurchase/MarginSales/CashRedemption/Balance/Quota +
+# ShortSale/ShortConvering/StockRedemption/ShortSaleBalance).
+# Implemented HERE (not in sources/tpex.py) because sources/ belongs to the
+# overlay-pipeline workstream — the archive layer only needs the endpoint + rows.
+TPEX_MARGIN_BALANCE_URL = (
+    "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance"
+)
+
+
 def _fetch_tpex_margin():
-    """Delegate to sources.tpex.fetch_tpex_margin → raw list[dict]."""
-    from sources.tpex import fetch_tpex_margin
-    return fetch_tpex_margin()
+    """Fetch the TPEx whole-market per-stock margin balances (~913 rows/day).
+
+    Raises on network/HTTP failure so the per-source isolation in the callers
+    marks the tab -1 (visible to the daily.yml sentinel) instead of silently
+    archiving 0 rows. Non-list payload → [] (schema drift, logged upstream)."""
+    from sources.tpex import _http_get_json
+    data = _http_get_json(TPEX_MARGIN_BALANCE_URL)
+    return data if isinstance(data, list) else []
 
 
 def _fetch_tpex_pe():
@@ -365,15 +400,50 @@ def _fetch_sec_ftd():
     return fetch_ftd()
 
 
+# cnYES fetch (audit finding 5, fixed 2026-07-17). The endpoint is ALIVE (live
+# probe 2026-07-17: HTTP 200, 30 items, correct shape) but replies gzip-encoded:
+# sources.news_catalyst._real_fetch sends 'Accept-Encoding: gzip, deflate' and
+# NEVER decompresses (urllib does not auto-gunzip), so the body decoded to binary
+# garbage → JSON parse failed silently → fetch_cnyes returned [] → the tab had 0
+# rows since creation. The same bug makes the module's RSS feeds die with XML
+# "not well-formed". Fixed HERE with a gunzip-aware fetch (sources/ belongs to
+# the overlay-pipeline workstream — flagged to its owner separately).
+_CNYES_URL = "https://api.cnyes.com/media/api/v1/newslist/category/tw_stock?limit=30"
+_CNYES_UA = "SmartStockDaily johnny548@gmail.com"
+
+
+def _http_get_gunzip(url, timeout=20):
+    """GET url → body text, ACTUALLY gunzipping a Content-Encoding: gzip reply.
+
+    Raises on network/HTTP errors (callers' per-source isolation marks -1)."""
+    req = Request(url, headers={"User-Agent": _CNYES_UA,
+                                "Accept-Encoding": "gzip, deflate"})
+    with urlopen(req, timeout=timeout) as resp:
+        raw = resp.read()
+        enc = ""
+        try:
+            enc = (resp.headers.get("Content-Encoding") or "").lower()
+        except Exception:
+            enc = ""
+    if enc == "gzip" or raw[:2] == b"\x1f\x8b":   # header OR magic-byte sniff
+        raw = gzip.decompress(raw)
+    return raw.decode("utf-8", errors="replace")
+
+
 def _fetch_cnyes():
-    """Delegate to sources.news_catalyst.fetch_cnyes → list of raw item dicts.
+    """Fetch cnYES 台股新聞 newslist → list of raw item dicts.
 
     Each item carries: title, publishAt (epoch s), newsId, stock (list of bare
-    4-digit codes), market[] fallback. Pre-sanitized at row-build time.
-    Graceful-skip → [].
-    """
-    from sources.news_catalyst import fetch_cnyes
-    return fetch_cnyes()
+    codes), market[] fallback. Raises on network failure (→ tab -1, sentinel-
+    visible); malformed payload → [] (schema drift)."""
+    payload = json.loads(_http_get_gunzip(_CNYES_URL))
+    if not isinstance(payload, dict):
+        return []
+    items = payload.get("items")
+    if not isinstance(items, dict):
+        return []
+    data = items.get("data")
+    return data if isinstance(data, list) else []
 
 
 # ── Row builders (pure — no network) ─────────────────────────────────────────
@@ -600,30 +670,45 @@ def _build_tpex_3insti_rows(date_str, raw_rows):
 
 
 _TPEX_MARGIN_CODE_KEYS = ("Code", "SecuritiesCompanyCode", "股票代號", "證券代號")
-_TPEX_MARGIN_NAME_KEYS = ("Name", "SecuritiesCompanyName", "股票名稱", "證券名稱")
+_TPEX_MARGIN_NAME_KEYS = ("Name", "SecuritiesCompanyName", "CompanyName",
+                          "股票名稱", "證券名稱")
+# Key candidates cover BOTH shapes: the whole-market /tpex_mainboard_margin_balance
+# endpoint (2026-07-17 fix — MarginPurchase/MarginSales/... full fields) and the
+# legacy margin_used-era keys (MarginPurchaseTodayBalance/...) so old fixtures and
+# any archived raw rows keep mapping.
+_TPEX_MARGIN_FIN_BUY_KEYS = ("MarginPurchase", "融資買進")
+_TPEX_MARGIN_FIN_SELL_KEYS = ("MarginSales", "融資賣出")
+_TPEX_MARGIN_FIN_CASH_KEYS = ("CashRedemption", "融資現金償還")
 _TPEX_MARGIN_TODAY_KEYS = (
-    "MarginPurchaseTodayBalance", "TodayBalance", "MarginBalance",
-    "融資今日餘額", "融資餘額",
+    "MarginPurchaseBalance", "MarginPurchaseTodayBalance", "TodayBalance",
+    "MarginBalance", "融資今日餘額", "融資餘額",
 )
-_TPEX_MARGIN_PREV_KEYS = (
-    "MarginPurchasePreviousDayBalance", "PreviousDayBalance",
-    "融資前日餘額",
-)
+_TPEX_MARGIN_LIMIT_KEYS = ("MarginPurchaseQuota", "融資限額")
+_TPEX_MARGIN_SHORT_SELL_KEYS = ("ShortSale", "融券賣出")
+_TPEX_MARGIN_SHORT_COVER_KEYS = ("ShortConvering", "ShortCovering", "融券買進")
+_TPEX_MARGIN_SHORT_RETURN_KEYS = ("StockRedemption", "融券現券償還")
 _TPEX_MARGIN_SELL_KEYS = (
-    "ShortSaleTodayBalance", "ShortBalance",
+    "ShortSaleBalance", "ShortSaleTodayBalance", "ShortBalance",
     "融券今日餘額",
 )
-_TPEX_MARGIN_SHORT_PREV_KEYS = (
-    "ShortSalePreviousDayBalance", "ShortPreviousDayBalance",
-    "融券前日餘額",
-)
+
+
+def _tpex_margin_int_or_none(row, *keys):
+    """_safe_int of the first resolving key, or None when NO candidate resolves.
+
+    Distinguishes 'field absent from this payload shape' (None — legacy rows)
+    from a real 0 value (new endpoint rows carry '0' strings)."""
+    val = _tpex_row_get(row, *keys)
+    return None if val is None else _safe_int(val)
 
 
 def _build_tpex_margin_rows(date_str, raw_rows):
     """TPEx margin list[dict] → rows matching tpex_margin_daily TAB_HEADERS.
 
     Headers: date, code, name, fin_buy, fin_sell, fin_cash, fin_balance, fin_limit,
-             short_sell, short_cover, short_return, short_balance"""
+             short_sell, short_cover, short_return, short_balance
+    The whole-market endpoint carries every column; legacy-shape rows fill only
+    the balances and leave the rest None."""
     rows = []
     for r in (raw_rows or []):
         if not isinstance(r, dict):
@@ -632,23 +717,19 @@ def _build_tpex_margin_rows(date_str, raw_rows):
         if code is None or not str(code).strip():
             continue
         name = _tpex_row_get(r, *_TPEX_MARGIN_NAME_KEYS) or ""
-        fin_today = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_TODAY_KEYS))
-        fin_prev = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_PREV_KEYS))
-        short_today = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_SELL_KEYS))
-        short_prev = _safe_int(_tpex_row_get(r, *_TPEX_MARGIN_SHORT_PREV_KEYS))
         rows.append([
             date_str,
             str(code).strip(),
             str(name).strip(),
-            None,          # fin_buy — not separately available in TPEx margin
-            None,          # fin_sell
-            None,          # fin_cash
-            fin_today,     # fin_balance (today)
-            None,          # fin_limit
-            None,          # short_sell
-            None,          # short_cover
-            None,          # short_return
-            short_today,   # short_balance (today)
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_FIN_BUY_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_FIN_SELL_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_FIN_CASH_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_TODAY_KEYS),      # fin_balance
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_LIMIT_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_SHORT_SELL_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_SHORT_COVER_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_SHORT_RETURN_KEYS),
+            _tpex_margin_int_or_none(r, *_TPEX_MARGIN_SELL_KEYS),       # short_balance
         ])
     return rows
 
@@ -978,25 +1059,53 @@ def _write_with_retry(fn, *args, what="write", **kwargs):
 
 # ── Idempotent upsert (reuse sheets_sync pattern) ─────────────────────────────
 
+def _upsert_allstocks_keyset(ws, key_col_idx, keys, rows):
+    """Idempotent multi-key upsert: delete rows whose key-column value ∈ keys, append.
+
+    Generalises the single-date upsert (audit finding 2): tabs whose col-0 value can
+    never equal the run date (sec_ftd settle_date, cnyes pub_at) turned the delete
+    into a no-op → pure daily append → duplicate floods. Callers pass the STABLE key
+    set carried by the incoming rows themselves (e.g. cnyes link col).
+
+    Deletes contiguous matching row blocks with a single ranged delete_rows(start,
+    end) call (1 call/block, not 1/row), bottom-up so lower indices stay valid.
+    Every Sheets call is wrapped in _write_with_retry (429 backoff)."""
+    keys = {k for k in (keys or set()) if k}
+    if keys:
+        col_1based = key_col_idx + 1
+        # reads can 429 too — wrap the present-keys read in the same backoff
+        col = _write_with_retry(ws.col_values, col_1based,
+                                what=f"read {ws.title}")  # header at index 0
+        dups = [i + 1 for i, v in enumerate(col) if i >= 1 and v in keys]
+        runs = _contiguous_runs(sorted(dups))
+        # Delete bottom-up so earlier indices stay valid as rows are removed
+        for start, end in sorted(runs, key=lambda r: r[0], reverse=True):
+            _write_with_retry(ws.delete_rows, start, end, what=f"delete {ws.title}")
+    if rows:
+        _write_with_retry(ws.append_rows, rows, value_input_option="USER_ENTERED",
+                          what=f"append {ws.title}")
+
+
 def _upsert_allstocks(ws, date_col_idx, date_str, rows):
     """Idempotent: delete existing rows for date_str in date column, then append.
 
     date_col_idx: 0-based column index of the date field (0 for daily, 0 for weekly).
-    Mirrors sheets_sync._upsert. Deletes contiguous same-date row blocks with a single
-    ranged delete_rows(start, end) call (1 call/block, not 1/row), bottom-up so lower
-    indices stay valid — slashes write calls on re-syncs (the Sheets 60-writes/min quota
-    pressure). Every Sheets call is wrapped in _write_with_retry so a 429 backs off and
-    retries instead of dropping the tab. Public contract unchanged (upsert-by-date)."""
-    date_col_1based = date_col_idx + 1
-    # reads can 429 too — wrap the present-dates read in the same backoff
-    date_col = _write_with_retry(ws.col_values, date_col_1based,
-                                 what=f"read {ws.title}")  # header at index 0
-    # Find 1-based row numbers where date matches (skip header = index 0)
-    dups = [i + 1 for i, v in enumerate(date_col) if i >= 1 and v == date_str]
-    runs = _contiguous_runs(sorted(dups))
-    # Delete bottom-up so earlier indices stay valid as rows are removed
-    for start, end in sorted(runs, key=lambda r: r[0], reverse=True):
-        _write_with_retry(ws.delete_rows, start, end, what=f"delete {ws.title}")
+    Mirrors sheets_sync._upsert. Public contract unchanged (upsert-by-date);
+    implementation delegates to the keyset generalisation."""
+    _upsert_allstocks_keyset(ws, date_col_idx, {date_str}, rows)
+
+
+def _replace_tab_rows(ws, rows):
+    """REPLACE-TAB semantics: clear ALL data rows (keep the header), rewrite in full.
+
+    For cumulative-snapshot sources (sec_ftd: the semimonthly file re-lists the whole
+    period every day) where per-key upsert is meaningless and append-only floods the
+    10M-cell cap. One ranged delete (row 2..last non-empty) + one append. Callers MUST
+    guard rows non-empty — an empty fetch must never wipe an archive tab."""
+    col = _write_with_retry(ws.col_values, 1, what=f"read {ws.title}")
+    last = len(col)
+    if last > 1:
+        _write_with_retry(ws.delete_rows, 2, last, what=f"clear {ws.title}")
     if rows:
         _write_with_retry(ws.append_rows, rows, value_input_option="USER_ENTERED",
                           what=f"append {ws.title}")
@@ -1246,14 +1355,17 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH, source_filter=
             raw = _fetch_sec_ftd()
             rows = _build_sec_ftd_rows(raw)
             ws = sh.worksheet("sec_ftd_semimonthly")
-            # Upsert key = settle_date (col index 0); typically multiple distinct
-            # settle dates per fetch, but we still need an upsert key — use today
-            # to mirror P0 daily pattern; rerun on same day is idempotent.
-            _upsert_allstocks(ws, 0, date_str, [])  # clear any prior date_str rows (no-op if absent)
+            # REPLACE-TAB (audit finding 2, 2026-07-17): col0=settle_date never
+            # equals date_str, so the old upsert's delete was a no-op and the
+            # full 58,328-row file was APPENDED every day (10M-cell breach in
+            # 4 days). The FTD publication is a cumulative period snapshot →
+            # clear data rows + full rewrite. Empty fetch keeps existing rows.
             if rows:
-                ws.append_rows(rows, value_input_option="USER_ENTERED")
+                _replace_tab_rows(ws, rows)
+                _log(f"sec_ftd_semimonthly: {len(rows)} rows (replace-tab) for {date_str}")
+            else:
+                _log("sec_ftd_semimonthly: SKIP — fetcher returned empty (tab kept)")
             counts["sec_ftd_semimonthly"] = len(rows)
-            _log(f"sec_ftd_semimonthly: {len(rows)} rows for {date_str}")
         except Exception as exc:
             _log(f"SKIP sec_ftd_semimonthly: {exc}")
             counts["sec_ftd_semimonthly"] = -1
@@ -1264,13 +1376,13 @@ def sync_allstocks(date_str=None, index_path=_DEFAULT_INDEX_PATH, source_filter=
             raw = _fetch_cnyes()
             rows = _build_cnyes_rows(date_str, raw)
             ws = sh.worksheet("cnyes_news_daily")
-            # Use date_str as upsert key (col 0 is pub_at ISO ts); we re-anchor
-            # all rows for this run on date_str so reruns are idempotent.
-            # NOTE: keeping per-run idempotence at the day level loses intra-day
-            # historical news but matches the P0 contract (snapshot-only archive).
-            _upsert_allstocks(ws, 0, date_str, [])  # clear by exact date_str match (rare for ISO ts col)
-            if rows:
-                ws.append_rows(rows, value_input_option="USER_ENTERED")
+            # STABLE-KEY upsert (audit finding 2, 2026-07-17): col0=pub_at ISO ts
+            # never equals date_str → the old delete was a no-op → pure append →
+            # duplicates on every re-run. The stable per-item key is the link col
+            # (index 3, 'cnyes:<newsId>'): delete rows matching the INCOMING keys,
+            # then append — idempotent re-runs, older different-link rows survive.
+            keys = {r[3] for r in rows if len(r) > 3 and r[3]}
+            _upsert_allstocks_keyset(ws, 3, keys, rows)
             counts["cnyes_news_daily"] = len(rows)
             _log(f"cnyes_news_daily: {len(rows)} rows for {date_str}")
         except Exception as exc:
@@ -1437,9 +1549,13 @@ def archive_allstocks_to_files(date_str=None, out_dir=None, source_filter=None):
 #   file_kind:       'date'   → file <date_str>.csv.gz
 #                    'yyyymm' → file <yyyymm>.csv.gz
 #                    'latest' → newest *.csv.gz (key isn't derivable from date_str)
-#   upsert_key_kind: 'date'   → delete/append by date_str
-#                    'yyyymm' → delete/append by yyyymm
-#                    'rows'   → key = rows[0][upsert_col_idx]  (asof / period in the data)
+#   upsert_key_kind: 'date'    → delete/append by date_str
+#                    'yyyymm'  → delete/append by yyyymm
+#                    'rows'    → key = rows[0][upsert_col_idx]  (asof / period in the data)
+#                    'replace' → REPLACE-TAB (clear data rows + full rewrite;
+#                                cumulative-snapshot sources — audit finding 2)
+#                    'keyset'  → delete rows whose upsert_col value ∈ the incoming
+#                                rows' values at that col (stable per-item key)
 _FROM_FILES_SPEC = [
     ("bwibbu_daily",         "date",   0, "date"),
     ("mi_margn_daily",       "date",   0, "date"),
@@ -1452,11 +1568,13 @@ _FROM_FILES_SPEC = [
     ("t187ap03_monthly",     "yyyymm", 0, "yyyymm"),
     ("notice_punish_daily",  "date",   0, "date"),
     ("sec_frames_quarterly", "latest", 2, "rows"),
-    # SEC FTD file is keyed by yyyymm (archive), but sync upserts col0 by date_str
-    # (col0=settle_date ≠ date_str, so the delete is a no-op clear → plain append).
-    ("sec_ftd_semimonthly",  "yyyymm", 0, "date"),
-    # cnyes col0=pub_at ISO ts ≠ date_str → delete-by-date_str is a no-op clear + append.
-    ("cnyes_news_daily",     "date",   0, "date"),
+    # SEC FTD: monthly cumulative snapshot → REPLACE-TAB. The old 'date' key was a
+    # no-op delete (col0=settle_date ≠ date_str) → 58,328 rows appended per day →
+    # 10M-cell breach 2026-07-07 (audit finding 2).
+    ("sec_ftd_semimonthly",  "yyyymm", 0, "replace"),
+    # cnyes: stable per-item key = link col ('cnyes:<newsId>'). The old 'date' key
+    # was a no-op delete (col0=pub_at ISO ts ≠ date_str) → duplicate appends.
+    ("cnyes_news_daily",     "date",   3, "keyset"),
 ]
 
 
@@ -1532,6 +1650,22 @@ def sync_allstocks_from_files(date_str=None, index_path=_DEFAULT_INDEX_PATH,
                 _log(f"{tab}: 0 rows (no archive file at {path})")
                 continue
 
+            ws = sh.worksheet(tab)
+            if key_kind == "replace":
+                # cumulative-snapshot tab: clear data rows + full rewrite
+                _replace_tab_rows(ws, rows)
+                counts[tab] = len(rows)
+                _log(f"{tab}: {len(rows)} rows from {os.path.basename(path)} "
+                     f"(replace-tab)")
+                continue
+            if key_kind == "keyset":
+                keys = {r[col_idx] for r in rows if len(r) > col_idx and r[col_idx]}
+                _upsert_allstocks_keyset(ws, col_idx, keys, rows)
+                counts[tab] = len(rows)
+                _log(f"{tab}: {len(rows)} rows from {os.path.basename(path)} "
+                     f"(keyset col={col_idx} n_keys={len(keys)})")
+                continue
+
             if key_kind == "date":
                 key = date_str
             elif key_kind == "yyyymm":
@@ -1539,7 +1673,6 @@ def sync_allstocks_from_files(date_str=None, index_path=_DEFAULT_INDEX_PATH,
             else:  # 'rows' — asof/period lives in the data
                 key = rows[0][col_idx]
 
-            ws = sh.worksheet(tab)
             _upsert_allstocks(ws, col_idx, key, rows)
             counts[tab] = len(rows)
             _log(f"{tab}: {len(rows)} rows from {os.path.basename(path)} "

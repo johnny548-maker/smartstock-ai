@@ -4,6 +4,15 @@ name: SmartStock Optimize Sleeve
 # DSR/PBO gates). HEAVY 15y x ~650-name compute → runs in the cloud, NOT on a local machine.
 # Manual (workflow_dispatch) + a monthly refresh. The 15y OHLCV cache is persisted via a rolling
 # actions/cache so the first run pays the ~350min download once and later runs reuse it.
+#
+# CANONICAL vs SCOUT outputs (audit finding 1, 2026-07-17): on `schedule` the inputs context is
+# EMPTY, so every `inputs.X || 'default'` falls back — 2026-07-07 the monthly tick ran
+# universe=draft/combo=false and OVERWROTE the blessed full-universe optimize_tw/us.{json,txt}
+# (gate FAIL became PASS, combo wiped to null). Now:
+#   workflow_dispatch (human-blessed run)  → writes the canonical optimize_<sleeve>.{json,txt}
+#   schedule (monthly scout, default args) → outputs renamed to optimize_<sleeve>_scout.{json,txt}
+#     and the canonical files are restored from HEAD before commit — a scout NEVER overwrites
+#     the canonical result; promote a scout by re-running the same config via workflow_dispatch.
 on:
   workflow_dispatch:
     inputs:
@@ -137,12 +146,38 @@ jobs:
           run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP" $EXTRA; }
           if [ "$SLEEVE" = "both" ]; then run_one tw; run_one us; else run_one "$SLEEVE"; fi
 
+      # Audit finding 1: a scheduled (scout) run must NEVER clobber the canonical
+      # (workflow_dispatch-blessed) optimize_<sleeve>.{json,txt}. run_optimize.py always
+      # writes the canonical filenames in the workspace, so on schedule we (a) move the
+      # fresh outputs to *_scout.* and (b) restore the canonical files from HEAD so the
+      # commit step below only picks up the scout files.
+      - name: Reroute scheduled outputs to scout files (never overwrite canonical)
+        if: github.event_name == 'schedule'
+        run: |
+          set -euo pipefail
+          for f in optimize_*.txt optimize_*.json; do
+            [ -e "$f" ] || continue
+            case "$f" in *_scout.*) continue ;; esac
+            base="${f%.*}"; ext="${f##*.}"
+            mv -f "$f" "${base}_scout.${ext}"
+            echo "scout: $f -> ${base}_scout.${ext}"
+          done
+          # restore the canonical files the optimiser clobbered in the workspace
+          for f in optimize_tw.txt optimize_tw.json optimize_us.txt optimize_us.json; do
+            git checkout -- "$f" 2>/dev/null || true
+          done
+
       - name: Commit optimisation results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add optimize_*.txt optimize_*.json universe_full_market.csv 2>/dev/null || true
-          git commit -m "optimize: $(date -u +%F) (${{ github.event.inputs.objective || 'calmar' }})" || echo "no changes to commit"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            MSG="optimize(scout): $(date -u +%F) monthly scheduled run (calmar, non-canonical)"
+          else
+            MSG="optimize: $(date -u +%F) (${{ github.event.inputs.objective || 'calmar' }})"
+          fi
+          git commit -m "$MSG" || echo "no changes to commit"
           for i in 1 2 3 4 5; do
             git push && break
             echo "push rejected (race), rebase + retry $i/5"

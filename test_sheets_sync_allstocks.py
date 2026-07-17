@@ -50,13 +50,17 @@ class _FakeWorksheet:
 
 
 class _FakeSpreadsheet:
-    """Minimal spreadsheet double. Supports worksheet(title) / add_worksheet / share."""
+    """Minimal spreadsheet double. Supports worksheet(title) / add_worksheet / share.
+
+    Records every add_worksheet(title, rows, cols) call so tests can assert the
+    created grid width (audit 2026-07-17: 26-col default grid bloated 4-col tabs 6.5×)."""
 
     def __init__(self, title="", sheet_id="FAKE_ID_001"):
         self.title = title
         self.id = sheet_id
         self._worksheets = {}
         self._shared = []
+        self.add_worksheet_calls = []
 
     def worksheet(self, title):
         if title not in self._worksheets:
@@ -64,6 +68,7 @@ class _FakeSpreadsheet:
         return self._worksheets[title]
 
     def add_worksheet(self, title, rows=1000, cols=26):
+        self.add_worksheet_calls.append({"title": title, "rows": rows, "cols": cols})
         ws = _FakeWorksheet(title)
         self._worksheets[title] = ws
         return ws
@@ -593,6 +598,7 @@ class _FakeSpreadsheetFull(_FakeSpreadsheet):
     """_FakeSpreadsheet that creates _FakeWorksheetFull instances."""
 
     def add_worksheet(self, title, rows=1000, cols=26):
+        self.add_worksheet_calls.append({"title": title, "rows": rows, "cols": cols})
         ws = _FakeWorksheetFull(title)
         self._worksheets[title] = ws
         return ws
@@ -1988,6 +1994,314 @@ class TestUpsertAllstocksRangedDelete(unittest.TestCase):
         self.assertEqual(ws._rows, first,
                          "re-upsert same date must yield identical rows")
         self.assertEqual(len(ws._rows), 3, "header + 2 data rows")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 2026-07-17 audit fixes — schema-width grids / sec_ftd replace-tab / cnyes
+# stable-key upsert / tpex_margin whole-market endpoint / cnyes gzip fetch
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+class TestEnsureTabsCreatesSchemaWidthGrids(unittest.TestCase):
+    """Audit (2): gspread's default 26-col grid bloats a 4-col tab's cell count
+    6.5× (58,328 rows × 26 instead of × 4 → 10M-cell cap breach). New tabs MUST
+    be created with cols == len(schema headers)."""
+
+    def test_add_worksheet_cols_equal_schema_width(self):
+        result, client = _run_bootstrap()
+        sh = client._drive[0]
+        self.assertEqual(len(sh.add_worksheet_calls), 13)
+        for call in sh.add_worksheet_calls:
+            expected = len(sa.TAB_HEADERS[call["title"]])
+            self.assertEqual(
+                call["cols"], expected,
+                f"tab {call['title']!r} must be created with cols={expected} "
+                f"(schema width), got {call['cols']}")
+
+
+class TestUpsertKeyset(unittest.TestCase):
+    """_upsert_allstocks_keyset: delete rows whose key-col value ∈ key set, append."""
+
+    def test_deletes_only_matching_keys_then_appends(self):
+        ws = _FakeWorksheetFull("t", headers=["k", "v"])
+        ws._rows += [["a", "1"], ["b", "2"], ["c", "3"]]
+        sa._upsert_allstocks_keyset(ws, 0, {"a", "c"}, [["a", "9"], ["c", "9"]])
+        data = ws._rows[1:]
+        self.assertEqual(len(data), 3, "b survives; a/c replaced")
+        self.assertIn(["b", "2"], data)
+        self.assertIn(["a", "9"], data)
+        self.assertIn(["c", "9"], data)
+        self.assertNotIn(["a", "1"], data)
+
+    def test_contiguous_matches_one_ranged_delete(self):
+        ws = _FakeWorksheetFull("t", headers=["k", "v"])
+        ws._rows += [["a", "1"], ["a", "2"], ["a", "3"], ["b", "4"]]
+        sa._upsert_allstocks_keyset(ws, 0, {"a"}, [])
+        self.assertEqual(ws.delete_calls, 1,
+                         "3 contiguous key matches => 1 ranged delete")
+        self.assertEqual(ws._rows[1:], [["b", "4"]])
+
+    def test_empty_keys_is_pure_append(self):
+        ws = _FakeWorksheetFull("t", headers=["k", "v"])
+        ws._rows += [["a", "1"]]
+        sa._upsert_allstocks_keyset(ws, 0, set(), [["b", "2"]])
+        self.assertEqual(ws.delete_calls, 0)
+        self.assertEqual(len(ws._rows), 3)
+
+
+class TestReplaceTabRows(unittest.TestCase):
+    """_replace_tab_rows: clear ALL data rows (keep header), rewrite in full."""
+
+    def test_replaces_all_data_rows(self):
+        ws = _FakeWorksheetFull("t", headers=["a", "b"])
+        ws._rows += [["old1", "1"], ["old2", "2"], ["old3", "3"]]
+        sa._replace_tab_rows(ws, [["new", "9"]])
+        self.assertEqual(ws._rows, [["a", "b"], ["new", "9"]])
+        self.assertEqual(ws.delete_calls, 1, "one ranged clear, not per-row")
+
+    def test_header_only_tab_appends_without_delete(self):
+        ws = _FakeWorksheetFull("t", headers=["a", "b"])
+        sa._replace_tab_rows(ws, [["new", "9"]])
+        self.assertEqual(ws.delete_calls, 0)
+        self.assertEqual(len(ws._rows), 2)
+
+
+class TestSecFtdReplaceTabSemantics(unittest.TestCase):
+    """Audit (2): sec_ftd upsert key (col0=settle_date) never equals date_str →
+    delete was a no-op → 58,328 rows appended EVERY day (4 days ≈ 233k dup rows,
+    10M-cell cap breach 07-07). New semantic: replace-tab (monthly cumulative
+    snapshot = clear data rows + full rewrite)."""
+
+    def test_live_sync_replaces_stale_rows(self):
+        sh = _make_sync_sheet()
+        ws = sh._worksheets["sec_ftd_semimonthly"]
+        # stale duplicates from the old append-only behaviour
+        ws._rows += [["20260601", "OLD", "c1", 1], ["20260601", "OLD", "c1", 1]]
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            counts = _run_sync(sh, idx, sec_ftd_fn=lambda: _SEC_FTD_RAW)
+        self.assertEqual(counts["sec_ftd_semimonthly"], 2)
+        data = ws._rows[1:]
+        self.assertEqual(len(data), 2, "stale rows must be gone (replace-tab)")
+        self.assertEqual({r[1] for r in data}, {"AAPL", "MSFT"})
+
+    def test_live_sync_rerun_is_idempotent(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync(sh, idx, sec_ftd_fn=lambda: _SEC_FTD_RAW)
+            _run_sync(sh, idx, sec_ftd_fn=lambda: _SEC_FTD_RAW)
+        ws = sh._worksheets["sec_ftd_semimonthly"]
+        self.assertEqual(len(ws._rows) - 1, 2,
+                         "re-run same data must NOT append duplicates")
+
+    def test_live_sync_empty_fetch_keeps_existing_rows(self):
+        """Empty fetch must NOT wipe the tab (replace only on non-empty rows)."""
+        sh = _make_sync_sheet()
+        ws = sh._worksheets["sec_ftd_semimonthly"]
+        ws._rows += [["20260601", "KEEP", "c1", 1]]
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            counts = _run_sync(sh, idx, sec_ftd_fn=lambda: [])
+        self.assertEqual(counts["sec_ftd_semimonthly"], 0)
+        self.assertEqual(len(ws._rows) - 1, 1, "existing rows survive empty fetch")
+
+    def test_from_files_sec_ftd_replaces_tab(self):
+        sh = _make_sync_sheet()
+        ws = sh._worksheets["sec_ftd_semimonthly"]
+        ws._rows += [["20260601", "STALE", "c1", 1], ["20260601", "STALE", "c1", 1]]
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            adir = os.path.join(tmp, "_allstocks")
+            rows = [["20260615", "AAPL", "037833100", "12345"],
+                    ["20260615", "MSFT", "594918104", "5678"]]
+            _seed_archive(adir, "sec_ftd_semimonthly", "2026-06", rows)
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                counts = sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+        self.assertEqual(counts["sec_ftd_semimonthly"], 2)
+        self.assertEqual(len(ws._rows) - 1, 2, "from-files mirror = replace-tab")
+
+
+class TestCnyesStableKeyUpsert(unittest.TestCase):
+    """Audit (2): cnyes upsert key (col0=pub_at ISO ts) never equals date_str →
+    pure append → duplicates on every re-run. New semantic: delete-by-link
+    (col3 'cnyes:<newsId>' stable key set from the incoming rows) + append."""
+
+    def test_second_sync_same_items_no_duplicates(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync(sh, idx, cnyes_fn=lambda: _CNYES_RAW)
+            _run_sync(sh, idx, cnyes_fn=lambda: _CNYES_RAW)
+        ws = sh._worksheets["cnyes_news_daily"]
+        self.assertEqual(len(ws._rows) - 1, 2,
+                         "same 2 items twice must stay 2 rows (link-key upsert)")
+
+    def test_rows_with_other_links_survive(self):
+        sh = _make_sync_sheet()
+        ws = sh._worksheets["cnyes_news_daily"]
+        ws._rows += [["2026-06-20T01:00:00Z", "1101", "older news", "cnyes:111", "cnyes"]]
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            _run_sync(sh, idx, cnyes_fn=lambda: _CNYES_RAW)
+        data = ws._rows[1:]
+        self.assertEqual(len(data), 3, "prior different-link row must survive")
+        self.assertIn("cnyes:111", [r[3] for r in data])
+
+    def test_from_files_cnyes_rerun_no_duplicates(self):
+        sh = _make_sync_sheet()
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = _make_index_file(tmp)
+            adir = os.path.join(tmp, "_allstocks")
+            rows = [["2026-06-24T01:00:00Z", "2330", "t1", "cnyes:1", "cnyes"],
+                    ["2026-06-24T02:00:00Z", "2454", "t2", "cnyes:2", "cnyes"]]
+            _seed_archive(adir, "cnyes_news_daily", "2026-06-24", rows)
+            client = _FakeClientFull(sheet=sh)
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client):
+                sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+                sa.sync_allstocks_from_files(
+                    date_str="2026-06-24", index_path=idx, allstocks_dir=adir)
+        ws = sh._worksheets["cnyes_news_daily"]
+        self.assertEqual(len(ws._rows) - 1, 2,
+                         "mirroring the same date file twice must not duplicate")
+
+
+# Real-shape fixture from the 2026-07-17 live probe of
+# /tpex_mainboard_margin_balance (913 rows/day, full margin+short fields).
+_TPEX_MARGIN_BALANCE_RAW = [
+    {"Date": "1150716", "SecuritiesCompanyCode": "00679B", "CompanyName": "元大美債20年",
+     "MarginPurchaseBalancePreviousDay": "4623", "MarginPurchase": "0",
+     "MarginSales": "40", "CashRedemption": "0", "MarginPurchaseBalance": "4583",
+     "MarginPurchaseBalanceBelongSecuritiesFinanceEnterprise": "29",
+     "MarginPurchaseUtilizationRate": "0.28", "MarginPurchaseQuota": "1629923",
+     "ShortSaleBalancePreviousDay": "15", "ShortSale": "0", "ShortConvering": "5",
+     "StockRedemption": "0", "ShortSaleBalance": "10",
+     "ShortSaleBalanceBelongSecuritiesFinanceEnterprise": "0",
+     "ShortSaleUtilizationRate": "0.0", "ShortSaleQuota": "1629923",
+     "Offsetting": "0", "Note": ""},
+    {"Date": "1150716", "SecuritiesCompanyCode": "6488", "CompanyName": "環球晶",
+     "MarginPurchaseBalancePreviousDay": "4800", "MarginPurchase": "120",
+     "MarginSales": "80", "CashRedemption": "3", "MarginPurchaseBalance": "5000",
+     "MarginPurchaseQuota": "50000", "ShortSaleBalancePreviousDay": "220",
+     "ShortSale": "12", "ShortConvering": "30", "StockRedemption": "2",
+     "ShortSaleBalance": "200", "ShortSaleQuota": "50000",
+     "Offsetting": "0", "Note": ""},
+]
+
+
+class TestBuildTpexMarginRowsFullSchema(unittest.TestCase):
+    """Audit (4): the new whole-market endpoint carries EVERY schema column —
+    the builder must fill them all (old endpoint only had today/prev balances)."""
+
+    def test_new_endpoint_fields_fill_all_columns(self):
+        rows = sa._build_tpex_margin_rows("2026-07-16", _TPEX_MARGIN_BALANCE_RAW)
+        self.assertEqual(len(rows), 2)
+        d = dict(zip(sa.TAB_HEADERS["tpex_margin_daily"], rows[0]))
+        self.assertEqual(d["code"], "00679B")
+        self.assertEqual(d["name"], "元大美債20年")
+        self.assertEqual(d["fin_buy"], 0)
+        self.assertEqual(d["fin_sell"], 40)
+        self.assertEqual(d["fin_cash"], 0)
+        self.assertEqual(d["fin_balance"], 4583)
+        self.assertEqual(d["fin_limit"], 1629923)
+        self.assertEqual(d["short_sell"], 0)
+        self.assertEqual(d["short_cover"], 5)
+        self.assertEqual(d["short_return"], 0)
+        self.assertEqual(d["short_balance"], 10)
+
+    def test_legacy_key_shape_still_maps_balances(self):
+        """Old fixtures/archives (MarginPurchaseTodayBalance keys) keep working."""
+        rows = sa._build_tpex_margin_rows("2026-06-24", _TPEX_MARGIN_RAW)
+        d = dict(zip(sa.TAB_HEADERS["tpex_margin_daily"], rows[0]))
+        self.assertEqual(d["fin_balance"], 5000)
+        self.assertEqual(d["short_balance"], 200)
+
+
+class TestFetchTpexMarginUsesBalanceEndpoint(unittest.TestCase):
+    """Audit (4): tpex_margin_daily was stuck at 20 rows/day because the fetch hit
+    tpex_margin_trading_margin_used (a TOP-20 usage-ratio RANKING). The sheets-sync
+    fetch must hit /tpex_mainboard_margin_balance (whole market, ~913 rows)."""
+
+    def test_fetch_hits_mainboard_margin_balance(self):
+        with mock.patch("sources.tpex._http_get_json",
+                        return_value=_TPEX_MARGIN_BALANCE_RAW) as m:
+            out = sa._fetch_tpex_margin()
+        m.assert_called_once()
+        called_url = m.call_args.args[0]
+        self.assertIn("tpex_mainboard_margin_balance", called_url,
+                      f"must call the whole-market balance endpoint, got {called_url}")
+        self.assertNotIn("margin_used", called_url)
+        self.assertEqual(out, _TPEX_MARGIN_BALANCE_RAW)
+
+    def test_non_list_payload_returns_empty(self):
+        with mock.patch("sources.tpex._http_get_json", return_value={"err": 1}):
+            self.assertEqual(sa._fetch_tpex_margin(), [])
+
+
+class TestCnyesFetchGunzip(unittest.TestCase):
+    """Audit (5): cnyes_news_daily had 0 rows since creation. Root cause (live
+    probe 2026-07-17): endpoint is ALIVE but replies gzip (Accept-Encoding sent),
+    and the old fetch path never decompressed → JSON parse failed silently → [].
+    The sheets-sync fetch must gunzip and parse items.data."""
+
+    @staticmethod
+    def _payload():
+        return {"items": {"data": [
+            {"newsId": 1, "title": "台積電新聞", "publishAt": 1782739200,
+             "stock": ["2330"]},
+        ]}}
+
+    def test_http_get_gunzip_decompresses_gzip_body(self):
+        import gzip as _gz
+        body = json.dumps(self._payload()).encode("utf-8")
+        gz_body = _gz.compress(body)
+
+        class _FakeResp:
+            headers = {"Content-Encoding": "gzip"}
+
+            def read(self):
+                return gz_body
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        with mock.patch("sheets_sync_allstocks.urlopen", return_value=_FakeResp()):
+            text = sa._http_get_gunzip("http://x/api")
+        self.assertEqual(json.loads(text), self._payload())
+
+    def test_http_get_gunzip_passes_identity_body_through(self):
+        body = json.dumps(self._payload()).encode("utf-8")
+
+        class _FakeResp:
+            headers = {}
+
+            def read(self):
+                return body
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        with mock.patch("sheets_sync_allstocks.urlopen", return_value=_FakeResp()):
+            text = sa._http_get_gunzip("http://x/api")
+        self.assertEqual(json.loads(text), self._payload())
+
+    def test_fetch_cnyes_parses_items_data(self):
+        with mock.patch("sheets_sync_allstocks._http_get_gunzip",
+                        return_value=json.dumps(self._payload())) as m:
+            out = sa._fetch_cnyes()
+        m.assert_called_once()
+        self.assertIn("api.cnyes.com", m.call_args.args[0])
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0]["stock"], ["2330"])
 
 
 if __name__ == "__main__":

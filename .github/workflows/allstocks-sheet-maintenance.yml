@@ -1,0 +1,54 @@
+name: AllStocks Sheet Maintenance (rebuild sec_ftd + resize grids)
+
+# Audit finding 2 remediation (2026-07-17): the pre-fix sec_ftd upsert appended the
+# full ~58,328-row FTD file EVERY day and 26-col default grids bloated 4-col tabs
+# 6.5× — the 2026-07 month sheet breached Google's 10M-cell cap on 07-07 and daily
+# tabs started SKIPping on 07-16. This workflow_dispatch runs
+# tools/maintenance/cleanup_allstocks_sheet.py against one month sheet:
+#   1. rebuild sec_ftd_semimonthly (delete flooded tab → re-create at 4 cols →
+#      write the git archive's unique rows)
+#   2. resize every schema tab's grid to its schema column count
+#   3. report before/after cell estimates
+# Same SA secret mechanism as allstocks-sheet-sync.yml. Default dry_run=true —
+# flip to false to actually modify the Sheet.
+on:
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Month sheet to clean (YYYY-MM, must be in _allstocks_sheets_index.json)'
+        required: true
+      dry_run:
+        description: 'true = report/plan only (no Sheet writes); false = apply'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: allstocks-sheet-maintenance
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Clean the month sheet
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          MONTH: ${{ github.event.inputs.month }}
+          DRY: ${{ github.event.inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARGS="--month $MONTH"
+          if [ "$DRY" != "true" ]; then ARGS="$ARGS --apply"; fi
+          python tools/maintenance/cleanup_allstocks_sheet.py $ARGS

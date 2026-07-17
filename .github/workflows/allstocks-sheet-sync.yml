@@ -6,11 +6,20 @@ name: AllStocks Sheet Sync (manual mirror from git-files)
 # Sheet after the local TW-IP task lands TWSE/TDCC data, or to verify the path).
 # Reads what is currently committed in the repo — run it AFTER the day's archive
 # (CI git-file step + the local 14:45 TW task) has pushed.
+#
+# 2026-07-17 (audit follow-up): `dates` now accepts a comma/space-separated LIST for
+# historical backfill (one --sync-from-files pass per date), plus an optional single
+# `source` tab filter. A tab=-1 in any pass fails the run (sentinel grep) so a
+# backfill that silently skips a tab can't look green.
 on:
   workflow_dispatch:
     inputs:
-      date:
-        description: 'Date to mirror (YYYY-MM-DD); empty = today UTC'
+      dates:
+        description: 'Date(s) to mirror: YYYY-MM-DD, comma/space-separated list; empty = today UTC'
+        required: false
+        default: ''
+      source:
+        description: 'Optional single tab filter (e.g. sec_ftd_semimonthly); empty = all 13 tabs'
         required: false
         default: ''
 
@@ -34,13 +43,29 @@ jobs:
           cache: pip
       - name: Install deps
         run: pip install -r requirements.txt
-      - name: Mirror git-file archive into the month Sheet
+      - name: Mirror git-file archive into the month Sheet(s)
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          DATES: ${{ github.event.inputs.dates }}
+          SRC: ${{ github.event.inputs.source }}
         run: |
           set -euo pipefail
-          DATE_ARG=""
-          if [ -n "${{ github.event.inputs.date }}" ]; then
-            DATE_ARG="--date ${{ github.event.inputs.date }}"
+          LOG="${RUNNER_TEMP}/sync.log"
+          SRC_ARG=""
+          if [ -n "$SRC" ]; then SRC_ARG="--source $SRC"; fi
+          if [ -z "$DATES" ]; then
+            python sheets_sync_allstocks.py --sync-from-files $SRC_ARG 2>&1 | tee -a "$LOG"
+          else
+            for D in $(echo "$DATES" | tr ',' ' '); do
+              echo "== mirror $D =="
+              python sheets_sync_allstocks.py --sync-from-files --date "$D" $SRC_ARG 2>&1 | tee -a "$LOG"
+            done
           fi
-          python sheets_sync_allstocks.py --sync-from-files $DATE_ARG
+          # Sentinel: any tab counted -1 in any pass = a real per-tab failure → fail
+          # the run so the backfill operator sees red instead of a silent skip.
+          # (Pattern anchored to the counts dict "': -1" so dates like 07-16 don't match.)
+          if grep -E "': -1[,}]" "$LOG"; then
+            echo "::error::>=1 tab reported -1 during the mirror (matched lines above)"
+            exit 1
+          fi
+          echo "::notice::all mirror passes completed with no tab=-1"
