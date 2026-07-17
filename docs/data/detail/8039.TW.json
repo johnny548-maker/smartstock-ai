@@ -1,17 +1,9 @@
 {
  "stock": "8039.TW",
  "name": "台虹",
- "price": 199.5,
- "change_pct": 9.92,
+ "price": 192.5,
+ "change_pct": -3.51,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 147.83,
-   "h": 158.67,
-   "l": 146.35,
-   "c": 158.67,
-   "v": 9656529
-  },
   {
    "time": "2026-04-23",
    "o": 168.03,
@@ -482,11 +474,19 @@
    "h": 199.5,
    "l": 189.0,
    "c": 199.5,
-   "v": 14163317
+   "v": 13985018
+  },
+  {
+   "time": "2026-07-17",
+   "o": 194.0,
+   "h": 201.0,
+   "l": 188.0,
+   "c": 192.5,
+   "v": 57681039
   }
  ],
  "sr": {
-  "price": 199.5,
+  "price": 192.5,
   "resistance": [],
   "support": [
    137.5,
@@ -495,7 +495,6 @@
   "strong_support": 30.78
  },
  "spark": [
-  158.67,
   142.9,
   136.0,
   135.01,
@@ -554,10 +553,11 @@
   169.0,
   185.5,
   181.5,
-  199.5
+  199.5,
+  192.5
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": -6.6,
   "rev_accel": false,
@@ -568,51 +568,39 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 1,012,808 股",
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台虹優化銷售結構奏功 自結5月淨利6945萬元年增8倍 EPS 0.26元",
    "value": {
-    "foreign": 678004,
-    "trust": 0,
-    "dealer": 334804,
-    "total": 1012808
+    "headline": "台虹優化銷售結構奏功 自結5月淨利6945萬元年增8倍 EPS 0.26元",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784279011,
+    "url": "cnyes:6538723",
+    "urls": [
+     "cnyes:6538723"
+    ]
    },
    "severity": "info",
-   "as_of": "2026-07-16",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "short_net": -81
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
    },
    "severity": "info",
-   "as_of": "2026-07-16",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 76.6 / 殖利率 1.10% / PB 4.52",
-   "value": {
-    "pe": 76.58,
-    "yield": 1.1,
-    "pb": 4.52
-   },
-   "severity": "info",
-   "as_of": "2026-07-15",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 58.29,
-   "severity": "info",
-   "as_of": "20260709",
-   "note": "大戶持股%=58.29；WoW+0.01；股東人數-586"
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -726,8 +714,16 @@
     "v": 18686
    },
    {
+    "t": "2026-07-15",
+    "v": 20539
+   },
+   {
     "t": "2026-07-16",
-    "v": 19699
+    "v": 21551
+   },
+   {
+    "t": "2026-07-17",
+    "v": 23547
    }
   ],
   "holder_pct": [

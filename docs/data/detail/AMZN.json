@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 254.96,
- "change_pct": 3.02,
+ "price": 249.89,
+ "change_pct": -1.99,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 249.19,
-   "h": 250.18,
-   "l": 245.37,
-   "c": 248.28,
-   "v": 39463100
-  },
   {
    "time": "2026-04-21",
    "o": 255.09,
@@ -482,14 +474,22 @@
    "h": 256.48,
    "l": 249.75,
    "c": 254.96,
-   "v": 45166300
+   "v": 45240600
+  },
+  {
+   "time": "2026-07-16",
+   "o": 255.12,
+   "h": 258.08,
+   "l": 248.0,
+   "c": 249.89,
+   "v": 45233800
   }
  ],
  "sr": {
-  "price": 254.96,
+  "price": 249.89,
   "resistance": [
-   256.18,
-   258.6
+   251.75,
+   256.18
   ],
   "support": [
    238.49,
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  248.28,
   249.91,
   255.36,
   255.08,
@@ -557,34 +556,150 @@
   245.34,
   247.31,
   247.49,
-  254.96
+  254.96,
+  249.89
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-16",
  "fundamental": {
   "pe_trailing": 30.49761,
   "pe_forward": 25.763634,
   "eps_trailing": 8.36,
   "eps_forward": 9.89612,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Meta Building The Next AI Cloud Giant? Report Says It’s Poaching A Top AWS Executive",
+   "value": {
+    "headline": "Is Meta Building The Next AI Cloud Giant? Report Says It’s Poaching A Top AWS Executive",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784285188,
+    "url": "https://stocktwits.com/news-articles/markets/equity/is-meta-building-the-next-ai-cloud-giant-report-says-it-s-poaching-a-top-aws-executive/cZZ7WwsR7tn?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/is-meta-building-the-next-ai-cloud-giant-report-says-it-s-poaching-a-top-aws-executive/cZZ7WwsR7tn?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+   "value": {
+    "headline": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784283691,
+    "url": "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss",
+    "urls": [
+     "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Large-Cap Stocks with Exciting Potential and 1 We Brush Off",
+   "value": {
+    "headline": "2 Large-Cap Stocks with Exciting Potential and 1 We Brush Off",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784282986,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-exciting-100946021.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-exciting-100946021.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+   "value": {
+    "headline": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784282700,
+    "url": "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Wall Street Expects This IPO Stock to Jump 47% Over the Next 12 Months",
+   "value": {
+    "headline": "Wall Street Expects This IPO Stock to Jump 47% Over the Next 12 Months",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784280300,
+    "url": "https://www.fool.com/investing/2026/07/17/wall-street-expects-this-ipo-stock-to-jump-47-over/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/17/wall-street-expects-this-ipo-stock-to-jump-47-over/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 9 篇 / 256 分 / 164 留言",
+   "label": "HN 討論熱度 9 篇 / 61 分 / 8 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 256,
-    "comments": 164,
+    "points": 61,
+    "comments": 8,
     "n": 9,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -599,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

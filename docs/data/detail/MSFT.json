@@ -1,49 +1,9 @@
 {
  "stock": "MSFT",
- "name": "Microsoft Corporation - Common Stock",
- "price": 379.85,
- "change_pct": -0.91,
+ "name": "微軟",
+ "price": 401.1,
+ "change_pct": 1.38,
  "ohlc": [
-  {
-   "time": "2026-04-14",
-   "o": 387.08,
-   "h": 393.84,
-   "l": 385.68,
-   "c": 392.26,
-   "v": 37504500
-  },
-  {
-   "time": "2026-04-15",
-   "o": 397.14,
-   "h": 413.47,
-   "l": 395.87,
-   "c": 410.33,
-   "v": 45063400
-  },
-  {
-   "time": "2026-04-16",
-   "o": 418.95,
-   "h": 419.91,
-   "l": 411.25,
-   "c": 419.35,
-   "v": 41642400
-  },
-  {
-   "time": "2026-04-17",
-   "o": 423.9,
-   "h": 430.65,
-   "l": 419.78,
-   "c": 421.88,
-   "v": 48568200
-  },
-  {
-   "time": "2026-04-20",
-   "o": 420.24,
-   "h": 422.42,
-   "l": 415.4,
-   "c": 417.17,
-   "v": 27582200
-  },
   {
    "time": "2026-04-21",
    "o": 419.33,
@@ -474,34 +434,70 @@
    "h": 385.31,
    "l": 381.33,
    "c": 383.34,
-   "v": 25874400
+   "v": 25908300
   },
   {
    "time": "2026-07-09",
    "o": 374.45,
-   "h": 380.31,
+   "h": 384.65,
    "l": 373.35,
-   "c": 379.85,
-   "v": 11102349
+   "c": 384.36,
+   "v": 31083200
+  },
+  {
+   "time": "2026-07-10",
+   "o": 387.8,
+   "h": 391.91,
+   "l": 381.5,
+   "c": 385.1,
+   "v": 24644600
+  },
+  {
+   "time": "2026-07-13",
+   "o": 387.75,
+   "h": 393.65,
+   "l": 384.15,
+   "c": 390.99,
+   "v": 28914900
+  },
+  {
+   "time": "2026-07-14",
+   "o": 382.82,
+   "h": 388.19,
+   "l": 378.65,
+   "c": 384.93,
+   "v": 27863900
+  },
+  {
+   "time": "2026-07-15",
+   "o": 387.8,
+   "h": 398.96,
+   "l": 386.4,
+   "c": 395.63,
+   "v": 36253700
+  },
+  {
+   "time": "2026-07-16",
+   "o": 398.31,
+   "h": 405.99,
+   "l": 392.05,
+   "c": 401.1,
+   "v": 36944800
   }
  ],
  "sr": {
-  "price": 379.85,
+  "price": 401.1,
   "resistance": [
-   427.06,
-   428.99
+   406.61,
+   412.16
   ],
   "support": [
-   349.2
+   400.01,
+   397.15
   ],
   "strong_support": 349.2
  },
  "spark": [
-  392.26,
-  410.33,
-  419.35,
-  421.88,
-  417.17,
   423.24,
   431.98,
   414.85,
@@ -556,11 +552,155 @@
   386.74,
   388.84,
   383.34,
-  379.85
+  384.36,
+  385.1,
+  390.99,
+  384.93,
+  395.63,
+  401.1
  ],
- "spark_start": "2026-04-14",
- "spark_end": "2026-07-09",
- "fundamental": null,
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-16",
+ "fundamental": {
+  "pe_trailing": 23.860798,
+  "pe_forward": 20.700354,
+  "eps_trailing": 16.81,
+  "eps_forward": 19.37648,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Growing an Income Tree: From $27,000 to $66,000",
+   "value": {
+    "headline": "Growing an Income Tree: From $27,000 to $66,000",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784286034,
+    "url": "https://247wallst.com/personal-finance/2026/07/17/growing-an-income-tree-from-27000-to-66000/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/personal-finance/2026/07/17/growing-an-income-tree-from-27000-to-66000/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+   "value": {
+    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784284901,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+   "value": {
+    "headline": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784283691,
+    "url": "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss",
+    "urls": [
+     "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+   "value": {
+    "headline": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784282700,
+    "url": "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "13 Press Releases You Need to See This Week Including the returns of never-ending pasta at Olive Garden and popcorn chic",
+   "value": {
+    "headline": "13 Press Releases You Need to See This Week Including the returns of never-ending pasta at Olive Garden and popcorn chicken at KFC, new seat options from United Airlines, and a partnership between 3M and Microsoft.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784282520,
+    "url": "https://finance.yahoo.com/media-advertising/articles/13-press-releases-see-week-100200687.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/media-advertising/articles/13-press-releases-see-week-100200687.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 135,618 股交割失敗）",
+   "value": {
+    "total_shares": 135618,
+    "days": 8,
+    "max_shares": 47441,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-17",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

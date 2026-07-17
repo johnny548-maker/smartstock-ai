@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 529.14,
- "change_pct": -3.46,
+ "price": 500.94,
+ "change_pct": -5.33,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 280.6,
-   "h": 287.61,
-   "l": 272.0,
-   "c": 274.95,
-   "v": 34833900
-  },
   {
    "time": "2026-04-21",
    "o": 277.33,
@@ -482,14 +474,22 @@
    "h": 558.89,
    "l": 509.57,
    "c": 529.14,
-   "v": 27767900
+   "v": 27826200
+  },
+  {
+   "time": "2026-07-16",
+   "o": 509.33,
+   "h": 518.74,
+   "l": 491.8,
+   "c": 500.94,
+   "v": 26974600
   }
  ],
  "sr": {
-  "price": 529.14,
+  "price": 500.94,
   "resistance": [
-   546.44,
-   558.37
+   527.2,
+   546.44
   ],
   "support": [
    498.15,
@@ -498,7 +498,6 @@
   "strong_support": 149.22
  },
  "spark": [
-  274.95,
   284.49,
   303.46,
   305.33,
@@ -557,21 +556,137 @@
   557.89,
   534.39,
   548.13,
-  529.14
+  529.14,
+  500.94
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-16",
  "fundamental": {
   "pe_trailing": 175.21193,
   "pe_forward": 39.69367,
   "eps_trailing": 3.02,
   "eps_forward": 13.33059,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia and AMD Investors Must Be Prepared for Aug. 4",
+   "value": {
+    "headline": "Nvidia and AMD Investors Must Be Prepared for Aug. 4",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784288400,
+    "url": "https://www.fool.com/investing/2026/07/17/nvidia-and-amd-investors-must-be-prepared-for-augu/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/17/nvidia-and-amd-investors-must-be-prepared-for-augu/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Futures Drop as Tech Selloff Gathers Pace",
+   "value": {
+    "headline": "Stock Futures Drop as Tech Selloff Gathers Pace",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784282618,
+    "url": "https://finance.yahoo.com/m/6b6c1731-20d8-3e62-b50c-673daf7ec6ce/stock-futures-drop-as-tech.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/6b6c1731-20d8-3e62-b50c-673daf7ec6ce/stock-futures-drop-as-tech.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MU, SNDK, INTC, AMD, Other Chip Stocks Extend Slide – Retail Traders Still Buying The Memory Theme",
+   "value": {
+    "headline": "MU, SNDK, INTC, AMD, Other Chip Stocks Extend Slide – Retail Traders Still Buying The Memory Theme",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784278587,
+    "url": "https://stocktwits.com/news-articles/markets/equity/mu-sndk-intc-amd-other-chip-stocks-extend-slide-retail-traders-still-buying-the-memory-theme/cZZ7OyOR7tS?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/mu-sndk-intc-amd-other-chip-stocks-extend-slide-retail-traders-still-buying-the-memory-theme/cZZ7OyOR7tS?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 AI Stocks Poised for Outperformance Over the Next 5 Years",
+   "value": {
+    "headline": "2 AI Stocks Poised for Outperformance Over the Next 5 Years",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784276700,
+    "url": "https://www.fool.com/investing/2026/07/17/2-ai-stocks-outperformance-next-5-years/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/17/2-ai-stocks-outperformance-next-5-years/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Driving the Agentic AI Era: MiTAC Computing Showcases Comprehensive AI Infrastructure at WAIC",
+   "value": {
+    "headline": "Driving the Agentic AI Era: MiTAC Computing Showcases Comprehensive AI Infrastructure at WAIC",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784266200,
+    "url": "https://finance.yahoo.com/technology/ai/articles/driving-agentic-ai-era-mitac-053000650.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/driving-agentic-ai-era-mitac-053000650.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -584,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

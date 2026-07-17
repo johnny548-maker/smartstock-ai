@@ -1,17 +1,9 @@
 {
  "stock": "2891.TW",
  "name": "中信金",
- "price": 63.0,
- "change_pct": -0.79,
+ "price": 62.1,
+ "change_pct": -1.43,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 51.1,
-   "h": 51.97,
-   "l": 51.1,
-   "c": 51.59,
-   "v": 36184653
-  },
   {
    "time": "2026-04-23",
    "o": 51.59,
@@ -482,11 +474,19 @@
    "h": 64.0,
    "l": 62.5,
    "c": 63.0,
-   "v": 49579591
+   "v": 49271306
+  },
+  {
+   "time": "2026-07-17",
+   "o": 62.8,
+   "h": 62.9,
+   "l": 61.3,
+   "c": 62.1,
+   "v": 85951563
   }
  ],
  "sr": {
-  "price": 63.0,
+  "price": 62.1,
   "resistance": [
    67.01,
    67.98
@@ -495,10 +495,9 @@
    51.59,
    50.72
   ],
-  "strong_support": 28.78
+  "strong_support": 39.68
  },
  "spark": [
-  51.59,
   50.81,
   51.01,
   50.81,
@@ -557,13 +556,123 @@
   66.5,
   65.0,
   63.5,
-  63.0
+  63.0,
+  62.1
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
- "fundamental": null,
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
+ "fundamental": {
+  "rev_yoy": -17.9,
+  "rev_accel": false,
+  "stale": false,
+  "source": "twse_revenue"
+ },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 23,396,525 股",
+   "value": {
+    "foreign": 21940191,
+    "trust": -7090767,
+    "dealer": 8547101,
+    "total": 23396525
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -2
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 15.2 / 殖利率 3.97% / PB 2.25",
+   "value": {
+    "pe": 15.18,
+    "yield": 3.97,
+    "pb": 2.25
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 82.24,
+   "severity": "info",
+   "as_of": "20260709",
+   "note": "大戶持股%=82.24；WoW+0.05；股東人數-406"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台股崩近3千點 外資殺出史上第一大賣超1890億元 狂砍台積電千億元",
+   "value": {
+    "headline": "台股崩近3千點 外資殺出史上第一大賣超1890億元 狂砍台積電千億元",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784283093,
+    "url": "cnyes:6538789",
+    "urls": [
+     "cnyes:6538789"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+   "value": {
+    "headline": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784281011,
+    "url": "cnyes:6538814",
+    "urls": [
+     "cnyes:6538814"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 2 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 2,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -675,8 +784,16 @@
     "v": 31119
    },
    {
+    "t": "2026-07-15",
+    "v": 26649
+   },
+   {
     "t": "2026-07-16",
-    "v": 38545
+    "v": 34075
+   },
+   {
+    "t": "2026-07-17",
+    "v": 57472
    }
   ],
   "holder_pct": [
@@ -705,6 +822,11 @@
     "v": 82.24
    }
   ],
-  "rev_yoy": []
+  "rev_yoy": [
+   {
+    "t": "2026-06",
+    "v": -17.9
+   }
+  ]
  }
 }

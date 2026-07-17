@@ -1,17 +1,9 @@
 {
  "stock": "2454.TW",
  "name": "聯發科",
- "price": 3700.0,
- "change_pct": -1.07,
+ "price": 3370.0,
+ "change_pct": -8.92,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 2107.41,
-   "h": 2281.37,
-   "l": 2097.47,
-   "c": 2281.37,
-   "v": 23044579
-  },
   {
    "time": "2026-04-23",
    "o": 2311.19,
@@ -482,11 +474,19 @@
    "h": 3755.0,
    "l": 3620.0,
    "c": 3700.0,
-   "v": 5844238
+   "v": 5480451
+  },
+  {
+   "time": "2026-07-17",
+   "o": 3470.0,
+   "h": 3570.0,
+   "l": 3370.0,
+   "c": 3370.0,
+   "v": 10926176
   }
  ],
  "sr": {
-  "price": 3700.0,
+  "price": 3370.0,
   "resistance": [
    3961.33,
    4095.0
@@ -498,7 +498,6 @@
   "strong_support": 918.93
  },
  "spark": [
-  2281.37,
   2201.84,
   2420.54,
   2420.54,
@@ -557,10 +556,11 @@
   3825.0,
   3660.0,
   3740.0,
-  3700.0
+  3700.0,
+  3370.0
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": 2.8,
   "rev_accel": false,
@@ -569,6 +569,105 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "聯發科預計將於7月31日舉行法說會",
+   "value": {
+    "headline": "聯發科預計將於7月31日舉行法說會",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1784288247,
+    "url": "https://money.udn.com/money/story/5612/9634853",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9634853"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+   "value": {
+    "headline": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784281011,
+    "url": "cnyes:6538814",
+    "urls": [
+     "cnyes:6538814"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "改寫台股史上最大跌點!看懂無差別賣壓背後真相,這三大止穩訊號浮現才是真買點!",
+   "value": {
+    "headline": "改寫台股史上最大跌點!看懂無差別賣壓背後真相,這三大止穩訊號浮現才是真買點!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784279735,
+    "url": "cnyes:6538788",
+    "urls": [
+     "cnyes:6538788"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "聯發科 本公司於115/7/31召開第二季財報暨營運線上說明會",
+   "value": {
+    "headline": "聯發科 本公司於115/7/31召開第二季財報暨營運線上說明會",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784279040,
+    "url": "https://tw.stock.yahoo.com/news/%E8%81%AF%E7%99%BC%E7%A7%91-%E6%9C%AC%E5%85%AC%E5%8F%B8%E6%96%BC115-7-31%E5%8F%AC%E9%96%8B%E7%AC%AC%E4%BA%8C%E5%AD%A3%E8%B2%A1%E5%A0%B1%E6%9A%A8%E7%87%9F%E9%81%8B%E7%B7%9A%E4%B8%8A%E8%AA%AA%E6%98%8E%E6%9C%83-090400596.html",
+    "urls": [
+     "https://tw.stock.yahoo.com/news/%E8%81%AF%E7%99%BC%E7%A7%91-%E6%9C%AC%E5%85%AC%E5%8F%B8%E6%96%BC115-7-31%E5%8F%AC%E9%96%8B%E7%AC%AC%E4%BA%8C%E5%AD%A3%E8%B2%A1%E5%A0%B1%E6%9A%A8%E7%87%9F%E9%81%8B%E7%B7%9A%E4%B8%8A%E8%AA%AA%E6%98%8E%E6%9C%83-090400596.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 4 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 4,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "udn",
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -680,8 +779,16 @@
     "v": -16991
    },
    {
+    "t": "2026-07-15",
+    "v": -17463
+   },
+   {
     "t": "2026-07-16",
-    "v": -17613
+    "v": -18084
+   },
+   {
+    "t": "2026-07-17",
+    "v": -18851
    }
   ],
   "holder_pct": [

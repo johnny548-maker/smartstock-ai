@@ -1,17 +1,9 @@
 {
  "stock": "2484.TW",
  "name": "希華",
- "price": 89.6,
- "change_pct": 9.94,
+ "price": 80.7,
+ "change_pct": -9.93,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 48.85,
-   "h": 48.85,
-   "l": 45.75,
-   "c": 47.5,
-   "v": 6684330
-  },
   {
    "time": "2026-04-23",
    "o": 46.65,
@@ -482,22 +474,29 @@
    "h": 89.6,
    "l": 80.0,
    "c": 89.6,
-   "v": 44306853
+   "v": 44126843
+  },
+  {
+   "time": "2026-07-17",
+   "o": 86.5,
+   "h": 87.4,
+   "l": 80.7,
+   "c": 80.7,
+   "v": 22501591
   }
  ],
  "sr": {
-  "price": 89.6,
+  "price": 80.7,
   "resistance": [
    102.0
   ],
   "support": [
-   47.0,
-   36.35
+   76.3,
+   47.0
   ],
   "strong_support": 16.61
  },
  "spark": [
-  47.5,
   43.2,
   40.2,
   37.2,
@@ -556,10 +555,11 @@
   84.3,
   80.5,
   81.5,
-  89.6
+  89.6,
+  80.7
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": -1.4,
   "rev_accel": false,
@@ -568,6 +568,79 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 21,131 股",
+   "value": {
+    "foreign": 19144,
+    "trust": 67000,
+    "dealer": -65013,
+    "total": 21131
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 121.1 / 殖利率 0.78% / PB 3.48",
+   "value": {
+    "pe": 121.08,
+    "yield": 0.78,
+    "pb": 3.48
+   },
+   "severity": "info",
+   "as_of": "2026-07-16",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 29.52,
+   "severity": "warn",
+   "as_of": "20260709",
+   "note": "大戶持股%=29.52；WoW-11.60；股東人數+10535"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "韋僑敲定2.4元股息8/4除息交易 上半年業績熱估下半年業績續攀升",
+   "value": {
+    "headline": "韋僑敲定2.4元股息8/4除息交易 上半年業績熱估下半年業績續攀升",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784286002,
+    "url": "cnyes:6538869",
+    "urls": [
+     "cnyes:6538869"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -679,8 +752,16 @@
     "v": 10960
    },
    {
+    "t": "2026-07-15",
+    "v": 6756
+   },
+   {
     "t": "2026-07-16",
-    "v": 8878
+    "v": 4674
+   },
+   {
+    "t": "2026-07-17",
+    "v": 4695
    }
   ],
   "holder_pct": [

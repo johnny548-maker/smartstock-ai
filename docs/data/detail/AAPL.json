@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 327.5,
- "change_pct": 4.01,
+ "price": 333.26,
+ "change_pct": 1.76,
  "ohlc": [
-  {
-   "time": "2026-04-20",
-   "o": 270.08,
-   "h": 274.03,
-   "l": 270.04,
-   "c": 272.8,
-   "v": 36590200
-  },
   {
    "time": "2026-04-21",
    "o": 271.25,
@@ -482,11 +474,19 @@
    "h": 328.73,
    "l": 317.32,
    "c": 327.5,
-   "v": 60884500
+   "v": 60957600
+  },
+  {
+   "time": "2026-07-16",
+   "o": 328.01,
+   "h": 334.68,
+   "l": 326.79,
+   "c": 333.26,
+   "v": 62727600
   }
  ],
  "sr": {
-  "price": 327.5,
+  "price": 333.26,
   "resistance": [],
   "support": [
    305.02,
@@ -495,7 +495,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  272.8,
   265.93,
   272.92,
   273.18,
@@ -554,50 +553,166 @@
   315.32,
   317.31,
   314.86,
-  327.5
+  327.5,
+  333.26
  ],
- "spark_start": "2026-04-20",
- "spark_end": "2026-07-15",
+ "spark_start": "2026-04-21",
+ "spark_end": "2026-07-16",
  "fundamental": {
   "pe_trailing": 39.696968,
   "pe_forward": 34.04044,
   "eps_trailing": 8.25,
   "eps_forward": 9.62091,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 327.5,
-  "stop": 308.53,
-  "target": 374.92,
-  "atr_bracket": 374.92,
+  "entry": 333.26,
+  "stop": 315.93,
+  "target": 376.59,
+  "atr_bracket": 376.59,
   "measured_move": null,
   "target_band": [
-   374.92
+   376.59
   ],
-  "stop_pct": -5.8,
-  "target_pct": 14.5,
+  "stop_pct": -5.2,
+  "target_pct": 13.0,
   "rr": 2.5,
-  "atr_pct": 2.9,
-  "swing_stop": 270.9,
-  "chandelier": 303.37,
+  "atr_pct": 2.6,
+  "swing_stop": 309.31,
+  "chandelier": 309.27,
   "fib_targets": []
  },
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "HSBC upgrades Apple to Buy, sees \"strong cycle ahead\"",
+   "value": {
+    "headline": "HSBC upgrades Apple to Buy, sees \"strong cycle ahead\"",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784287268,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/hsbc-upgrades-apple-buy-sees-112108654.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/hsbc-upgrades-apple-buy-sees-112108654.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Circle Gets Street-Low Target as Stablecoin Competition Heats Up",
+   "value": {
+    "headline": "Circle Gets Street-Low Target as Stablecoin Competition Heats Up",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784285101,
+    "url": "https://finance.yahoo.com/markets/crypto/articles/circle-gets-street-low-target-104501234.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/crypto/articles/circle-gets-street-low-target-104501234.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+   "value": {
+    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784284901,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AAPL Stock Bucks Tech Rout: Retail Calls It 'Safe Haven' Ahead Of Q3 Report This Month",
+   "value": {
+    "headline": "AAPL Stock Bucks Tech Rout: Retail Calls It 'Safe Haven' Ahead Of Q3 Report This Month",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784284679,
+    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-bucks-tech-rout-retail-calls-it-safe-haven-ahead-of-q3-report-this-month/cZZ7WFrR7tV?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-bucks-tech-rout-retail-calls-it-safe-haven-ahead-of-q3-report-this-month/cZZ7WFrR7tV?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Network School founder says immigration probe at tech commune is a risk to Malaysia's tech ambitions",
+   "value": {
+    "headline": "Network School founder says immigration probe at tech commune is a risk to Malaysia's tech ambitions",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784267788,
+    "url": "https://finance.yahoo.com/technology/articles/network-school-founder-says-immigration-055628009.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/network-school-founder-says-immigration-055628009.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 60 分 / 11 留言",
+   "label": "HN 討論熱度 20 篇 / 87 分 / 30 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 60,
-    "comments": 11,
+    "points": 87,
+    "comments": 30,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -612,7 +727,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

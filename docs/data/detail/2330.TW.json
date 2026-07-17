@@ -1,17 +1,9 @@
 {
  "stock": "2330.TW",
  "name": "台積電",
- "price": 2470.0,
- "change_pct": 1.23,
+ "price": 2290.0,
+ "change_pct": -7.29,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 2039.56,
-   "h": 2064.49,
-   "l": 2034.57,
-   "c": 2044.55,
-   "v": 24762881
-  },
   {
    "time": "2026-04-23",
    "o": 2084.44,
@@ -482,23 +474,30 @@
    "h": 2470.0,
    "l": 2420.0,
    "c": 2470.0,
-   "v": 29218446
+   "v": 27848158
+  },
+  {
+   "time": "2026-07-17",
+   "o": 2375.0,
+   "h": 2395.0,
+   "l": 2290.0,
+   "c": 2290.0,
+   "v": 95088728
   }
  ],
  "sr": {
-  "price": 2470.0,
+  "price": 2290.0,
   "resistance": [
-   2480.0,
-   2505.0
+   2318.81,
+   2323.8
   ],
   "support": [
-   2325.0,
-   2263.96
+   2263.96,
+   2210.0
   ],
   "strong_support": 766.49
  },
  "spark": [
-  2044.55,
   2074.47,
   2179.19,
   2258.97,
@@ -557,10 +556,11 @@
   2440.0,
   2420.0,
   2440.0,
-  2470.0
+  2470.0,
+  2290.0
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": 67.9,
   "rev_accel": true,
@@ -569,6 +569,125 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "看台積電的法說會時除了先進製程,你還可以專注這個產業",
+   "value": {
+    "headline": "看台積電的法說會時除了先進製程,你還可以專注這個產業",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784287807,
+    "url": "cnyes:6538949",
+    "urls": [
+     "cnyes:6538949"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台積電被冤枉!專家曝台股血崩戰犯:美股再暴跌怎麼辦?",
+   "value": {
+    "headline": "台積電被冤枉!專家曝台股血崩戰犯:美股再暴跌怎麼辦?",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784287038,
+    "url": "https://tw.news.yahoo.com/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%A2%AB%E5%86%A4%E6%9E%89-%E5%B0%88%E5%AE%B6%E6%9B%9D%E5%8F%B0%E8%82%A1%E8%A1%80%E5%B4%A9%E6%88%B0%E7%8A%AF-%E7%BE%8E%E8%82%A1%E5%86%8D%E6%9A%B4%E8%B7%8C%E6%80%8E%E9%BA%BC%E8%BE%A6-111718277.html",
+    "urls": [
+     "https://tw.news.yahoo.com/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%A2%AB%E5%86%A4%E6%9E%89-%E5%B0%88%E5%AE%B6%E6%9B%9D%E5%8F%B0%E8%82%A1%E8%A1%80%E5%B4%A9%E6%88%B0%E7%8A%AF-%E7%BE%8E%E8%82%A1%E5%86%8D%E6%9A%B4%E8%B7%8C%E6%80%8E%E9%BA%BC%E8%BE%A6-111718277.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "專家:台股大跌台積電不是兇手!曝送分題來了「買點終於出現」",
+   "value": {
+    "headline": "專家:台股大跌台積電不是兇手!曝送分題來了「買點終於出現」",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784287020,
+    "url": "https://tw.news.yahoo.com/%E5%B0%88%E5%AE%B6-%E5%8F%B0%E8%82%A1%E5%A4%A7%E8%B7%8C%E5%8F%B0%E7%A9%8D%E9%9B%BB%E4%B8%8D%E6%98%AF%E5%85%87%E6%89%8B-%E6%9B%9D%E9%80%81%E5%88%86%E9%A1%8C%E4%BE%86%E4%BA%86-%E8%B2%B7%E9%BB%9E%E7%B5%82%E6%96%BC%E5%87%BA%E7%8F%BE-111700653.html",
+    "urls": [
+     "https://tw.news.yahoo.com/%E5%B0%88%E5%AE%B6-%E5%8F%B0%E8%82%A1%E5%A4%A7%E8%B7%8C%E5%8F%B0%E7%A9%8D%E9%9B%BB%E4%B8%8D%E6%98%AF%E5%85%87%E6%89%8B-%E6%9B%9D%E9%80%81%E5%88%86%E9%A1%8C%E4%BE%86%E4%BA%86-%E8%B2%B7%E9%BB%9E%E7%B5%82%E6%96%BC%E5%87%BA%E7%8F%BE-111700653.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台積電特化材供應商新應材三度投資 斥45億龍科蓋智慧新廠",
+   "value": {
+    "headline": "台積電特化材供應商新應材三度投資 斥45億龍科蓋智慧新廠",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784286476,
+    "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E7%89%B9%E5%8C%96%E6%9D%90%E4%BE%9B%E6%87%89%E5%95%86%E6%96%B0%E6%87%89%E6%9D%90%E4%B8%89%E5%BA%A6%E6%8A%95%E8%B3%87-%E6%96%A545%E5%84%84%E9%BE%8D%E7%A7%91%E8%93%8B%E6%99%BA%E6%85%A7%E6%96%B0%E5%BB%A0-110756110.html",
+    "urls": [
+     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E7%89%B9%E5%8C%96%E6%9D%90%E4%BE%9B%E6%87%89%E5%95%86%E6%96%B0%E6%87%89%E6%9D%90%E4%B8%89%E5%BA%A6%E6%8A%95%E8%B3%87-%E6%96%A545%E5%84%84%E9%BE%8D%E7%A7%91%E8%93%8B%E6%99%BA%E6%85%A7%E6%96%B0%E5%BB%A0-110756110.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台積電法說會變法會! 台股跌2953點創盤中.尾盤最大跌點",
+   "value": {
+    "headline": "台積電法說會變法會! 台股跌2953點創盤中.尾盤最大跌點",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784284623,
+    "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E6%B3%95%E8%AA%AA%E6%9C%83%E8%AE%8A%E6%B3%95%E6%9C%83-%E5%8F%B0%E8%82%A1%E8%B7%8C2953%E9%BB%9E%E5%89%B5%E7%9B%A4%E4%B8%AD-%E5%B0%BE%E7%9B%A4%E6%9C%80%E5%A4%A7%E8%B7%8C%E9%BB%9E-103703001.html",
+    "urls": [
+     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E6%B3%95%E8%AA%AA%E6%9C%83%E8%AE%8A%E6%B3%95%E6%9C%83-%E5%8F%B0%E8%82%A1%E8%B7%8C2953%E9%BB%9E%E5%89%B5%E7%9B%A4%E4%B8%AD-%E5%B0%BE%E7%9B%A4%E6%9C%80%E5%A4%A7%E8%B7%8C%E9%BB%9E-103703001.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 22 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 22,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cna",
+     "cnyes",
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -680,8 +799,16 @@
     "v": -114615
    },
    {
+    "t": "2026-07-15",
+    "v": -118183
+   },
+   {
     "t": "2026-07-16",
-    "v": -117240
+    "v": -120808
+   },
+   {
+    "t": "2026-07-17",
+    "v": -160744
    }
   ],
   "holder_pct": [

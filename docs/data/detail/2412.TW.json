@@ -1,17 +1,9 @@
 {
  "stock": "2412.TW",
  "name": "中華電",
- "price": 136.0,
- "change_pct": 2.26,
+ "price": 138.0,
+ "change_pct": 1.47,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 132.37,
-   "h": 132.37,
-   "l": 130.45,
-   "c": 131.41,
-   "v": 14195786
-  },
   {
    "time": "2026-04-23",
    "o": 130.93,
@@ -482,23 +474,30 @@
    "h": 136.5,
    "l": 133.5,
    "c": 136.0,
-   "v": 21320444
+   "v": 21223701
+  },
+  {
+   "time": "2026-07-17",
+   "o": 136.5,
+   "h": 140.0,
+   "l": 136.0,
+   "c": 138.0,
+   "v": 37664780
   }
  ],
  "sr": {
-  "price": 136.0,
+  "price": 138.0,
   "resistance": [
-   137.67,
-   138.63
+   138.63,
+   141.52
   ],
   "support": [
    132.86,
-   130.93
+   132.0
   ],
-  "strong_support": 123.71
+  "strong_support": 110.77
  },
  "spark": [
-  131.41,
   130.93,
   130.45,
   131.89,
@@ -557,10 +556,11 @@
   133.5,
   133.0,
   133.0,
-  136.0
+  136.0,
+  138.0
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": 11.4,
   "rev_accel": false,
@@ -571,40 +571,39 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 13,403,067 股",
+   "source": "news",
+   "kind": "catalyst",
+   "label": "中華電信以 AI 治理與海地星空布局 助力金融業迎向數位科技新時代",
    "value": {
-    "foreign": 13608833,
-    "trust": -308016,
-    "dealer": 102250,
-    "total": 13403067
+    "headline": "中華電信以 AI 治理與海地星空布局 助力金融業迎向數位科技新時代",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1784280719,
+    "url": "https://money.udn.com/money/story/11162/9634656",
+    "urls": [
+     "https://money.udn.com/money/story/11162/9634656"
+    ]
    },
    "severity": "info",
-   "as_of": "2026-07-16",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 26.4 / 殖利率 3.91% / PB 2.60",
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "pe": 26.44,
-    "yield": 3.91,
-    "pb": 2.6
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "udn"
+    ]
    },
    "severity": "info",
-   "as_of": "2026-07-15",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 79.66,
-   "severity": "warn",
-   "as_of": "20260709",
-   "note": "大戶持股%=79.66；WoW-0.19；股東人數+2999"
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -718,8 +717,16 @@
     "v": -77954
    },
    {
+    "t": "2026-07-15",
+    "v": -79251
+   },
+   {
     "t": "2026-07-16",
-    "v": -64551
+    "v": -65848
+   },
+   {
+    "t": "2026-07-17",
+    "v": -47061
    }
   ],
   "holder_pct": [

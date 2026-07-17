@@ -1,17 +1,9 @@
 {
  "stock": "2882.TW",
  "name": "國泰金",
- "price": 97.3,
- "change_pct": 0.72,
+ "price": 94.3,
+ "change_pct": -3.08,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 72.9,
-   "h": 73.38,
-   "l": 72.41,
-   "c": 73.28,
-   "v": 32027678
-  },
   {
    "time": "2026-04-23",
    "o": 72.51,
@@ -482,23 +474,30 @@
    "h": 97.3,
    "l": 95.3,
    "c": 97.3,
-   "v": 15675496
+   "v": 15607317
+  },
+  {
+   "time": "2026-07-17",
+   "o": 97.0,
+   "h": 97.4,
+   "l": 94.3,
+   "c": 94.3,
+   "v": 28392123
   }
  ],
  "sr": {
-  "price": 97.3,
+  "price": 94.3,
   "resistance": [
    98.3,
    113.45
   ],
   "support": [
-   92.6,
-   74.25
+   94.0,
+   92.6
   ],
   "strong_support": 58.51
  },
  "spark": [
-  73.28,
   72.22,
   72.32,
   71.93,
@@ -557,10 +556,11 @@
   96.7,
   96.1,
   96.6,
-  97.3
+  97.3,
+  94.3
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-17",
  "fundamental": {
   "rev_yoy": -42.0,
   "rev_accel": false,
@@ -573,39 +573,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 187,784 股",
+   "label": "三大法人買超 7,287,517 股",
    "value": {
-    "foreign": 4941,
-    "trust": -194367,
-    "dealer": 377210,
-    "total": 187784
+    "foreign": 8077522,
+    "trust": -2638351,
+    "dealer": 1848346,
+    "total": 7287517
    },
    "severity": "info",
-   "as_of": "2026-07-16",
+   "as_of": "2026-07-17",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -2
-   },
-   "severity": "info",
-   "as_of": "2026-07-16",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 14.7 / 殖利率 3.62% / PB 1.93",
+   "label": "PE 14.8 / 殖利率 3.60% / PB 1.94",
    "value": {
-    "pe": 14.66,
-    "yield": 3.62,
-    "pb": 1.93
+    "pe": 14.76,
+    "yield": 3.6,
+    "pb": 1.94
    },
    "severity": "info",
-   "as_of": "2026-07-15",
+   "as_of": "2026-07-16",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -616,6 +605,41 @@
    "severity": "warn",
    "as_of": "20260709",
    "note": "大戶持股%=85.54；WoW-0.03；股東人數+766"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+   "value": {
+    "headline": "【量大強漲股整理】【台股大崩盤】台積電「利多出盡」?別逃!我只做這件事!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784281011,
+    "url": "cnyes:6538814",
+    "urls": [
+     "cnyes:6538814"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -729,8 +753,16 @@
     "v": 35277
    },
    {
+    "t": "2026-07-15",
+    "v": 35595
+   },
+   {
     "t": "2026-07-16",
-    "v": 35464
+    "v": 35783
+   },
+   {
+    "t": "2026-07-17",
+    "v": 43070
    }
   ],
   "holder_pct": [
