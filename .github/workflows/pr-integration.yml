@@ -31,13 +31,17 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        # Prefer the CI-frozen lock (reproducible, matches production) when present;
+        # fall back to the floating requirements.txt so this gate still runs before the
+        # first freeze-lock.yml run has committed requirements.lock.
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
 
       - name: Run pipeline in dry-run mode
         run: python main.py --web --dry-run

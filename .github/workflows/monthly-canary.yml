@@ -1,0 +1,173 @@
+name: SmartStock Monthly Dependency Canary
+
+# WHY THIS EXISTS
+# The scheduled/production workflows install requirements.lock (a pinned tree) for
+# reproducibility. That protects production but also HIDES the day a floating upgrade of one
+# of our `>=` dependencies would break the pipeline — we'd only find out the next time the
+# lock is refreshed. This canary deliberately installs the FLOATING requirements.txt (latest
+# resolvable versions, NO lock) once a month and exercises the pipeline, so an upstream
+# breaking change surfaces as a tracked issue BEFORE we bump the lock onto it.
+#
+# This workflow is fully INDEPENDENT of daily.yml — it never commits, never touches the lock,
+# and shares no concurrency group with the report pipeline, so it can never block or delay a
+# daily run. A red canary is advisory: "the newest dep tree would break us; investigate before
+# the next freeze-lock."
+#
+# pytest is OBSERVE-ONLY for now. The 73 test files have never run in a Linux / keyless CI
+# environment, so some failures are expected to be environmental (missing fixtures, network,
+# platform assumptions) rather than real regressions. The pytest step is continue-on-error and
+# its result is surfaced in the job summary + failure issue for triage. Once the environmental
+# noise is burned down, flip pytest to a hard gate (remove continue-on-error) so a real test
+# regression under the latest deps fails the canary.
+
+on:
+  # 3rd of the month, 04:19 UTC. Odd minute avoids the contended :00/:30 free-tier slots
+  # (GitHub drops those under load); 04:19 does not collide with the 13:33 monthly-sheet-backfill
+  # that also runs on day 3.
+  schedule:
+    - cron: '19 4 3 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smartstock-monthly-canary
+  cancel-in-progress: false
+
+jobs:
+  # Failure alert (pattern copied from daily.yml notify-failure): on a HARD canary failure —
+  # requirements.txt no longer resolves/installs, or `main.py --dry-run` crashes under the
+  # latest deps — open OR comment ONE deduped GitHub issue per error fingerprint using the
+  # built-in GITHUB_TOKEN. The body embeds `pip list` (the exact resolved tree) so triage can
+  # tell "a data source (e.g. Yahoo) broke" apart from "a dependency bumped to a breaking
+  # version". pytest failures alone do NOT reach here (observe-only / continue-on-error).
+  notify-failure:
+    needs: [canary]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Download canary diagnostics (pip list, pytest log)
+        uses: actions/download-artifact@v4
+        continue-on-error: true   # a missing artifact (job died before upload) must not crash the alert
+        with:
+          name: canary-diag
+          path: canary-diag
+
+      - name: Open or update a fingerprinted canary issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          # Error fingerprint = SHA-256(last 10 lines of the failed step log)[:8], so each
+          # distinct root cause gets its own issue instead of gluing unrelated failures together.
+          LOG_TAIL=$(gh run view "${{ github.run_id }}" --log-failed --repo "$REPO" 2>/dev/null | tail -10 || true)
+          FP=$(printf '%s' "$LOG_TAIL" | sha256sum | head -c 8)
+
+          TITLE="🟡 ${WF} failed (${FP})"
+
+          # Embed the resolved dependency tree (helps distinguish data-source break vs dep bump).
+          PIP_BLOCK="(pip list unavailable — canary job died before diagnostics were captured)"
+          if [ -f canary-diag/pip_list.txt ]; then
+            PIP_BLOCK=$(head -80 canary-diag/pip_list.txt)
+          fi
+
+          BODY=$(printf '%s\n' \
+            "The monthly FLOATING-dependency canary failed at $(date -u +%Y-%m-%dT%H:%MZ)." \
+            "" \
+            "This canary installs the latest resolvable requirements.txt (NO lock) and runs \`main.py --web --dry-run\`. A hard failure here means the newest dependency tree would break the pipeline — investigate BEFORE refreshing requirements.lock onto it." \
+            "" \
+            "Fingerprint: \`${FP}\` (SHA-256 of last 10 failed-log lines)." \
+            "Run: ${RUN_URL}" \
+            "" \
+            "Resolved tree at failure (\`pip list\`):" \
+            '```' \
+            "${PIP_BLOCK}" \
+            '```')
+
+          NUM=$(gh issue list --repo "$REPO" --state open \
+            --search "${TITLE} in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+          fi
+
+  canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      # HARD canary signal #1: install the FLOATING requirements.txt (latest resolvable). If a
+      # `>=` dependency published a version that breaks install/resolution, this fails the job.
+      # Deliberately NOT requirements.lock — testing the lock would defeat the entire purpose.
+      - name: Install FLOATING requirements (latest, no lock)
+        run: pip install -r requirements.txt
+
+      # Capture the resolved product tree right after install (before pytest tooling is added)
+      # so the failure issue + job summary show exactly what versions were in play.
+      - name: Capture resolved dependency tree
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p canary-diag
+          pip list > canary-diag/pip_list.txt
+          {
+            echo "## Canary resolved dependency tree (\`pip list\`)"
+            echo '```'
+            cat canary-diag/pip_list.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # HARD canary signal #2: exercise the full pipeline without side effects. Same invocation
+      # as pr-integration.yml — --web hits build_payload + build_report, --dry-run suppresses all
+      # disk/network writes (no GOOGLE_SA_JSON needed; dry-run skips the Sheet mirror entirely,
+      # so this floating-install job carries no secrets — minimal supply-chain exposure).
+      - name: Pipeline dry-run smoke under floating deps
+        run: python main.py --web --dry-run
+
+      # OBSERVE-ONLY: the 73 test files have never run in this environment. continue-on-error so
+      # environmental red doesn't fire a false canary alert; result is written to the job summary
+      # for triage. pytest is a dev-only tool (not in requirements.txt) so install the latest here.
+      - name: Run test suite (observe-only)
+        id: pytest
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          pip install pytest
+          set +e
+          python -m pytest -q 2>&1 | tee canary-diag/pytest.log
+          RC=${PIPESTATUS[0]}
+          set -e
+          echo "pytest_exit_code=${RC}" >> "$GITHUB_OUTPUT"
+          {
+            echo "## pytest (OBSERVE-ONLY, exit ${RC})"
+            echo "Not yet a hard gate — see workflow header. Tail:"
+            echo '```'
+            tail -40 canary-diag/pytest.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "${RC}" -ne 0 ]; then
+            echo "::warning::pytest failed under floating deps (exit ${RC}) — observe-only, not blocking. See job summary."
+          fi
+
+      - name: Upload canary diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canary-diag
+          path: canary-diag/
+          if-no-files-found: warn
+          retention-days: 14

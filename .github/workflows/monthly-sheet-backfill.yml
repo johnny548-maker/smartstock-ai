@@ -52,7 +52,10 @@ jobs:
           python-version: '3.11'
           cache: pip
       - name: Install deps
-        run: pip install -r requirements.txt
+        # Prefer the CI-frozen lock (reproducible) when present; fall back to the floating
+        # requirements.txt until freeze-lock.yml has committed requirements.lock.
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
 
       # Single process: sheets_sync --heal-missing reads the picks tab ONCE, computes which of
       # the trailing 40 days are absent from the Sheet, and re-syncs ONLY those (idempotent

@@ -1,0 +1,92 @@
+name: Freeze Dependency Lock
+
+# WHY THIS EXISTS
+# requirements.txt is an INTENT document — every dependency is floating (`>=`), so two
+# installs on different days can resolve to different transitive trees (observed drift:
+# production CI on pandas 3.0.3 vs a local env on 2.3.3, a major-version mismatch). This
+# workflow produces requirements.lock: a fully-pinned snapshot of the EXACT resolved tree,
+# generated in the SAME Linux CI environment the scheduled workflows run in.
+#
+# SEMANTICS
+#   - Cloud workflows install requirements.lock when present (see the lock-fallback in
+#     daily/pr-integration/sheet-sync/backfill: `[ -f requirements.lock ] && ... || ...`).
+#   - Local Windows dev keeps using requirements.txt (the lock is Linux-resolved and would
+#     not necessarily install cleanly on Windows).
+#   - requirements.txt stays as the human-readable intent; requirements.lock is the machine
+#     reproducibility pin. Re-run this workflow whenever you intend to bump the pinned tree.
+#
+# Manual-only: a lock refresh is a deliberate act (you are choosing to move production onto
+# a new transitive tree), never automatic.
+#
+# The lock MUST be produced by `pip freeze` here in CI, NOT by scraping the "Successfully
+# installed ..." line from a pip run (that line omits already-satisfied packages that pip
+# did not re-download) and NOT by freezing on a local Windows machine (different platform
+# markers / wheels). pip freeze on this ubuntu-latest runner is the single source of truth.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # to commit requirements.lock back to the repo
+
+concurrency:
+  group: smartstock-freeze-lock
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install the floating requirements into a clean CI env
+        run: pip install -r requirements.txt
+
+      - name: Freeze the resolved tree into requirements.lock
+        run: |
+          set -euo pipefail
+          # pip freeze snapshots EVERY installed package + exact version (including transitive
+          # deps that were already satisfied and never re-downloaded). Exclude the local project
+          # itself if it ever appears as an editable/egg entry (defensive; harmless if absent).
+          pip freeze --exclude-editable > requirements.lock
+          echo "::notice::requirements.lock written with $(wc -l < requirements.lock) pinned packages"
+          echo "----- requirements.lock -----"
+          cat requirements.lock
+
+      - name: Commit requirements.lock
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add requirements.lock
+          # || echo: an unchanged lock (re-run with no dependency drift) is not a failure —
+          # the push loop below is then a no-op.
+          git commit -m "chore(deps): freeze requirements.lock (CI-resolved pin)" || echo "lock unchanged — nothing to commit"
+          # rebase-retry: a concurrent push (daily report commit, index rebuild, a human commit)
+          # can move main between commit and push. Mirror the daily.yml pattern: rebase onto
+          # remote and retry, and fail loudly if all attempts are exhausted so the run goes red
+          # instead of silently dropping the new lock.
+          PUSHED=false
+          for i in 1 2 3 4 5; do
+            if git push; then
+              PUSHED=true
+              break
+            fi
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
+            sleep 5
+          done
+          if [ "${PUSHED}" = "false" ]; then
+            if git status -uno | grep -q "Your branch is up to date"; then
+              echo "::notice::requirements.lock already on origin (concurrent push or no-op commit) — treating as success"
+            else
+              echo "::error::Freeze lock: push failed after 5 attempts. requirements.lock was NOT published to origin."
+              exit 1
+            fi
+          fi

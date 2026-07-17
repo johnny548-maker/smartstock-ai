@@ -42,7 +42,10 @@ jobs:
           python-version: '3.11'
           cache: pip
       - name: Install deps
-        run: pip install -r requirements.txt
+        # Prefer the CI-frozen lock (reproducible) when present; fall back to the floating
+        # requirements.txt until freeze-lock.yml has committed requirements.lock.
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
       - name: Mirror git-file archive into the month Sheet(s)
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
