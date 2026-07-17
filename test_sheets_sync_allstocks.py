@@ -2304,5 +2304,122 @@ class TestCnyesFetchGunzip(unittest.TestCase):
         self.assertEqual(out[0]["stock"], ["2330"])
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# Register-path transient retry (auto_register discovery: openall / _find_existing).
+# Regression for scheduled run 28568511658 (2026-07-02): openall() raised a gspread
+# APIError [503] mid-discovery, no retry / no alert → 15-day silent gap. Retry must
+# key off the APIError HTTP *status code* (∈ {429,500,502,503}) read structurally
+# from exc.response — NEVER a substring match on the message text.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+class _FakeResponse:
+    """Minimal requests.Response double carrying only status_code."""
+
+    def __init__(self, status_code):
+        self.status_code = status_code
+
+
+class _FakeAPIError(Exception):
+    """gspread.exceptions.APIError double: carries .response.status_code."""
+
+    def __init__(self, status_code, message="api error"):
+        super().__init__(f"APIError: [{status_code}]: {message}")
+        self.response = _FakeResponse(status_code)
+
+
+class TestRegisterTransientClassification(unittest.TestCase):
+    def test_transient_statuses_match(self):
+        for code in (429, 500, 502, 503):
+            self.assertTrue(sa._is_register_transient(_FakeAPIError(code)),
+                            f"status {code} must be classified transient")
+
+    def test_non_transient_statuses_do_not_match(self):
+        for code in (400, 401, 403, 404):
+            self.assertFalse(sa._is_register_transient(_FakeAPIError(code)),
+                             f"status {code} must NOT be classified transient")
+
+    def test_plain_exception_without_response_not_transient(self):
+        # No .response → not a status-bearing APIError → never retried (unlike the
+        # write-path _write_with_retry, which text-matches '429').
+        self.assertFalse(sa._is_register_transient(RuntimeError("boom 503 boom")))
+
+    def test_status_code_read_from_response_not_message_text(self):
+        # A '503' living in the MESSAGE (not the status) must not read as transient.
+        err = _FakeAPIError(200, message="stock 5030 exceeded its 503-share limit")
+        self.assertEqual(sa._api_status_code(err), 200)
+        self.assertFalse(sa._is_register_transient(err))
+
+
+class TestRegisterCallWithRetry(unittest.TestCase):
+    def test_retries_transient_then_succeeds(self):
+        calls = {"n": 0}
+
+        def flaky():
+            calls["n"] += 1
+            if calls["n"] < 3:
+                raise _FakeAPIError(503)
+            return ["ok"]
+
+        with mock.patch.object(sa.time, "sleep", return_value=None) as msleep:
+            out = sa._register_call_with_retry(flaky, what="openall")
+        self.assertEqual(out, ["ok"])
+        self.assertEqual(calls["n"], 3, "two 503s retried, third call succeeds")
+        self.assertGreaterEqual(msleep.call_count, 2, "each transient retry backs off")
+
+    def test_reraises_transient_after_exhausting_attempts(self):
+        calls = {"n": 0}
+
+        def always_503():
+            calls["n"] += 1
+            raise _FakeAPIError(503)
+
+        with mock.patch.object(sa.time, "sleep", return_value=None):
+            with self.assertRaises(_FakeAPIError):
+                sa._register_call_with_retry(always_503, what="openall")
+        self.assertEqual(calls["n"], sa.REGISTER_RETRY_ATTEMPTS + 1,
+                         "all attempts exhausted, then the transient error re-raises")
+
+    def test_non_transient_reraises_immediately_no_backoff(self):
+        def http_403():
+            raise _FakeAPIError(403)
+
+        with mock.patch.object(sa.time, "sleep", return_value=None) as msleep:
+            with self.assertRaises(_FakeAPIError):
+                sa._register_call_with_retry(http_403, what="openall")
+        self.assertEqual(msleep.call_count, 0, "a 403 must never back off / retry")
+
+
+class TestAutoRegisterRetriesOpenallOnTransient(unittest.TestCase):
+    """openall() raises a transient 503 once, then returns the drive — auto_register
+    must retry (not crash) and still register the discovered month."""
+
+    def test_openall_503_then_success_registers(self):
+        feb = _FakeSpreadsheet(title="smartstock-allstocks-2027-02", sheet_id="ID_FEB")
+        client = _FakeClient(existing=[feb])
+        real_openall = client.openall
+        state = {"n": 0}
+
+        def flaky_openall():
+            state["n"] += 1
+            if state["n"] == 1:
+                raise _FakeAPIError(503)
+            return real_openall()
+
+        client.openall = flaky_openall
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            json.dump({}, f)
+            tmp = f.name
+        try:
+            with mock.patch("sheets_sync_allstocks.get_client", return_value=client), \
+                 mock.patch.object(sa.time, "sleep", return_value=None):
+                registered = sa.auto_register(index_path=tmp)
+            self.assertEqual(registered, ["2027-02"],
+                             "auto_register must retry the transient openall and register")
+            self.assertGreaterEqual(state["n"], 2, "openall retried at least once")
+        finally:
+            os.unlink(tmp)
+
+
 if __name__ == "__main__":
     unittest.main()

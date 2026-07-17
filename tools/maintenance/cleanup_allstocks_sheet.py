@@ -23,6 +23,7 @@ CONTRACT: OVERLAY-NOT-SCORER — raw archive maintenance, never feeds scoring.
 import argparse
 import os
 import sys
+from datetime import datetime, timezone
 
 _REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                      "..", ".."))
@@ -33,6 +34,11 @@ import sheets_sync_allstocks as sa  # noqa: E402  (repo-root import after path f
 
 _SEC_FTD_TAB = "sec_ftd_semimonthly"
 _APPEND_CHUNK = 20000   # rows per append_rows call (keeps request payloads sane)
+
+# Capacity sentinel: the sheet's hard cap is 10,000,000 cells; warn well before it
+# so a scheduled dry-run can open an alert issue while there's still headroom to
+# clean (the 2026-07 sheet breached the cap on 07-07 with no advance warning).
+DEFAULT_WARN_THRESHOLD = 7_000_000
 
 
 def _log(msg):
@@ -167,23 +173,53 @@ def run(month, index_path=None, allstocks_dir=None, apply=False, client=None):
     return before_total, after_total
 
 
+def check_capacity(total, threshold=DEFAULT_WARN_THRESHOLD):
+    """Return (ok, message). ok is False when total STRICTLY exceeds threshold.
+
+    Pure — no I/O — so the capacity-sentinel logic is unit-testable without a Sheet."""
+    if total > threshold:
+        return False, (
+            f"CAPACITY WARNING: {total:,} cells exceeds warn-threshold "
+            f"{threshold:,} (10,000,000 hard cap). Rotate/clean this month sheet "
+            f"before the cap starts SKIPping daily syncs.")
+    return True, (f"capacity OK: {total:,} cells within warn-threshold "
+                  f"{threshold:,} (10,000,000 hard cap)")
+
+
+def _default_month():
+    """Current UTC month as YYYY-MM (schedule runs pass no --month)."""
+    return datetime.now(timezone.utc).strftime("%Y-%m")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description="Rebuild the flooded sec_ftd tab + resize all tabs to schema "
                     "width on a month-shard all-stocks Sheet.")
-    ap.add_argument("--month", required=True, help="target month YYYY-MM")
+    ap.add_argument("--month", default=None,
+                    help="target month YYYY-MM (default: current UTC month — "
+                         "schedule runs carry no inputs)")
     ap.add_argument("--index-path", default=None,
                     help="path to _allstocks_sheets_index.json (default: docs/data/)")
     ap.add_argument("--allstocks-dir", default=None,
                     help="git archive root (default: docs/data/_allstocks)")
     ap.add_argument("--apply", action="store_true",
                     help="actually modify the Sheet (default: dry-run report)")
+    ap.add_argument("--warn-threshold", type=int, default=DEFAULT_WARN_THRESHOLD,
+                    help="capacity sentinel: exit 1 when the sheet cell total "
+                         "exceeds this (default 7,000,000; 10M hard cap)")
     args = ap.parse_args(argv)
+    month = args.month or _default_month()
     try:
-        run(args.month, index_path=args.index_path,
-            allstocks_dir=args.allstocks_dir, apply=args.apply)
+        _before, after = run(month, index_path=args.index_path,
+                             allstocks_dir=args.allstocks_dir, apply=args.apply)
     except Exception as exc:
         _log(f"ERROR: {exc}")
+        return 1
+
+    ok, msg = check_capacity(after, args.warn_threshold)
+    _log(msg)
+    if not ok:
+        # Non-zero exit → the workflow's notify-failure job opens/updates an issue.
         return 1
     return 0
 

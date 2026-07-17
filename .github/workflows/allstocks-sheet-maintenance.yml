@@ -12,11 +12,18 @@ name: AllStocks Sheet Maintenance (rebuild sec_ftd + resize grids)
 # Same SA secret mechanism as allstocks-sheet-sync.yml. Default dry_run=true —
 # flip to false to actually modify the Sheet.
 on:
+  schedule:
+    # 25th 03:41 UTC — capacity sentinel for the CURRENT month sheet, before month end.
+    # Odd minute: GitHub's free tier silently drops scheduled ticks landing on :00/:30.
+    # Scheduled runs are ALWAYS dry-run (report + capacity check only, NO Sheet writes);
+    # flip dry_run=false via workflow_dispatch to actually rebuild/resize.
+    - cron: '41 3 25 * *'
   workflow_dispatch:
     inputs:
       month:
-        description: 'Month sheet to clean (YYYY-MM, must be in _allstocks_sheets_index.json)'
-        required: true
+        description: 'Month sheet to clean (YYYY-MM, in _allstocks_sheets_index.json); empty = current UTC month'
+        required: false
+        default: ''
       dry_run:
         description: 'true = report/plan only (no Sheet writes); false = apply'
         type: boolean
@@ -30,6 +37,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Keyless failure alert (same pattern as monthly-sheet-backfill.yml): a hard failure —
+  # including the capacity sentinel's exit 1 — opens/updates a single dedup issue.
+  notify-failure:
+    needs: [cleanup]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}
+
+          Likely the capacity sentinel tripped (sheet cell total exceeded the warn-threshold; 10,000,000 is the hard cap) or the cleanup itself errored. To act: run this workflow via Run workflow (workflow_dispatch) with dry_run=false to rebuild sec_ftd + resize grids for the month."
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
   cleanup:
     runs-on: ubuntu-latest
     steps:
@@ -41,14 +75,34 @@ jobs:
           python-version: '3.11'
           cache: pip
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
       - name: Clean the month sheet
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
           MONTH: ${{ github.event.inputs.month }}
           DRY: ${{ github.event.inputs.dry_run }}
         run: |
-          set -euo pipefail
-          ARGS="--month $MONTH"
+          set -uo pipefail
+          # Schedule events carry NO inputs → MONTH/DRY are empty. Default DRY to "true"
+          # so a scheduled tick can NEVER apply the destructive rebuild/resize (the old
+          # `[ "$DRY" != "true" ]` treated an empty string as non-true and passed --apply).
+          # --month is omitted when empty → the script defaults to the current UTC month.
+          DRY="${DRY:-true}"
+          ARGS=""
+          if [ -n "$MONTH" ]; then ARGS="--month $MONTH"; fi
           if [ "$DRY" != "true" ]; then ARGS="$ARGS --apply"; fi
-          python tools/maintenance/cleanup_allstocks_sheet.py $ARGS
+          {
+            echo "### AllStocks sheet capacity report"
+            echo ""
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # Capture the estimate report into the step summary AND preserve the script's
+          # exit code (the capacity sentinel exits 1 → job fails → notify-failure).
+          # -e is off around the pipe so we can read PIPESTATUS instead of aborting.
+          set +e
+          python tools/maintenance/cleanup_allstocks_sheet.py $ARGS 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          STATUS=${PIPESTATUS[0]}
+          set -e
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          exit "$STATUS"

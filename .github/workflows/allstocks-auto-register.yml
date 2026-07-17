@@ -13,7 +13,9 @@ name: AllStocks Auto-Register (discover user-created sheets)
 # pre-existing user-created sheets by id (existing_id path) — exactly like the bootstrap one.
 on:
   schedule:
-    - cron: '0 2 2 * *'   # 2nd of month, 02:00 UTC — after the Apps Script 1st-of-month create
+    # 2nd of month, 02:23 UTC — after the Apps Script 1st-of-month create. Odd
+    # minute: GitHub's free tier silently drops scheduled ticks landing on :00/:30.
+    - cron: '23 2 2 * *'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +28,35 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Keyless failure alert (same pattern as monthly-sheet-backfill.yml): a hard failure —
+  # a transient Google API error, a push failure, OR the completeness assertion below —
+  # opens/updates a single dedup issue. Without this, run 28568511658 (2026-07-02) died on
+  # an un-retried openall() 503 and stayed silent for 15 days.
+  notify-failure:
+    needs: [register]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open or update a failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WF: ${{ github.workflow }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="Workflow **${WF}** failed at $(date -u +%Y-%m-%dT%H:%MZ). Run: ${RUN_URL}
+
+          This can be a transient Google API error OR the Apps Script monthly-rollover trigger dying (no new month sheet created, so register can't find it). Manual DATA backfill: the daily mirror only writes the current day and does NOT auto-backfill gaps. Run the allstocks-sheet-sync.yml workflow (Actions tab, Run workflow) with a comma/space-separated 'dates' list (YYYY-MM-DD) covering the missing days to re-mirror them from the git-file archive."
+          NUM=$(gh issue list --repo "$REPO" --state open --search "${WF} failed in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "🔴 ${WF} failed" --body "$BODY"
+          fi
+
   register:
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +69,8 @@ jobs:
           python-version: '3.11'
           cache: pip
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.lock ]; then pip install -r requirements.lock; else pip install -r requirements.txt; fi
       - name: Auto-register discovered month sheets
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
@@ -71,3 +103,25 @@ jobs:
               exit 1
             fi
           fi
+      - name: Assert current+next month registered (Apps Script liveness sentinel)
+        run: |
+          set -euo pipefail
+          IDX=docs/data/_allstocks_sheets_index.json
+          CUR=$(date -u +%Y-%m)
+          NEXT=$(date -u -d "$(date -u +%Y-%m-01) +1 month" +%Y-%m)
+          # On the 2nd, the Apps Script's 1st-of-month rollover must have created BOTH the
+          # current and next month sheets, and this register run must have indexed them. A
+          # missing entry is the ONLY signal that the Apps Script trigger died (the
+          # 2026-07-02 silent 15-day gap had no other alarm). jq -e exits non-zero when the
+          # key is absent (or the file is unreadable) → sentinel trips → notify-failure.
+          MISSING=""
+          for M in "$CUR" "$NEXT"; do
+            if ! jq -e --arg m "$M" 'has($m)' "$IDX" >/dev/null 2>&1; then
+              MISSING="$MISSING $M"
+            fi
+          done
+          if [ -n "$MISSING" ]; then
+            echo "::error::month(s)$MISSING absent from $IDX — the Apps Script monthly-rollover trigger may be dead (no sheet created) or register failed to index them."
+            exit 1
+          fi
+          echo "::notice::index has both $CUR and $NEXT — Apps Script rollover is alive"

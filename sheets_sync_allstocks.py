@@ -169,9 +169,10 @@ def _find_existing(client, title):
     """Search the user's Drive for a spreadsheet with the given exact title.
 
     Returns the first matching Spreadsheet object or None if absent.
-    Uses openall() which lists all sheets the SA can access.
-    """
-    for sh in client.openall():
+    Uses openall() which lists all sheets the SA can access. The openall() read
+    is wrapped in the register-path transient retry (a discovery read can hit a
+    transient Google 5xx just like auto_register's does)."""
+    for sh in _register_call_with_retry(client.openall, what="openall"):
         if sh.title == title:
             return sh
     return None
@@ -1744,6 +1745,59 @@ def bootstrap(month=None, user_email=_DEFAULT_USER_EMAIL,
     }
 
 
+# ── Register-path transient retry (auto_register discovery ONLY) ───────────────
+# Scheduled run 28568511658 (2026-07-02) died when client.openall() raised a
+# gspread APIError [503] during month-shard discovery — no retry, no alert, 15
+# days silent. Distinct from the Sheet-WRITE path's _write_with_retry (which
+# treats a per-minute-quota 429 matched on message TEXT as transient): the
+# discovery reads also die on upstream 5xx, so retry on the APIError's HTTP
+# *status code* read structurally from exc.response. NEVER substring-match the
+# message — a bare '503' can appear in a stock code or a quota string. Scope: the
+# openall / _find_existing discovery reads only; the write path is untouched.
+REGISTER_RETRY_ATTEMPTS = 3
+REGISTER_RETRY_BASE_SLEEP_S = 2
+_REGISTER_RETRY_STATUS = frozenset({429, 500, 502, 503})
+
+
+def _api_status_code(exc):
+    """Best-effort HTTP status code from a gspread APIError, else None.
+
+    gspread.exceptions.APIError carries the requests.Response as exc.response;
+    resp.status_code is the structural transient signal. Returns None for any
+    exception that isn't a status-bearing APIError (→ treated as non-transient)."""
+    resp = getattr(exc, "response", None)
+    code = getattr(resp, "status_code", None)
+    try:
+        return int(code) if code is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _is_register_transient(exc):
+    """True only when exc is an APIError whose HTTP status ∈ {429,500,502,503}."""
+    return _api_status_code(exc) in _REGISTER_RETRY_STATUS
+
+
+def _register_call_with_retry(fn, *args, what="register-api", **kwargs):
+    """Call fn(*args, **kwargs) with exponential-backoff retry on a transient
+    APIError (status ∈ {429,500,502,503}); re-raise anything else immediately and
+    re-raise the transient error after the final attempt.
+
+    Scoped to the auto_register discovery reads (openall / _find_existing) — the
+    Sheet-write path keeps its own text-matched _write_with_retry unchanged."""
+    for attempt in range(REGISTER_RETRY_ATTEMPTS + 1):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as exc:
+            if _is_register_transient(exc) and attempt < REGISTER_RETRY_ATTEMPTS:
+                wait = REGISTER_RETRY_BASE_SLEEP_S * (2 ** attempt)
+                _log(f"TRANSIENT {what}: status {_api_status_code(exc)} — backoff "
+                     f"{wait}s (retry {attempt + 1}/{REGISTER_RETRY_ATTEMPTS})")
+                time.sleep(wait)
+                continue
+            raise
+
+
 # ── Auto-register orchestrator (keyless SA-side discovery) ─────────────────────
 
 # Canonical month-shard title: smartstock-allstocks-YYYY-MM with a valid month (01-12).
@@ -1776,7 +1830,9 @@ def auto_register(index_path=_DEFAULT_INDEX_PATH, user_email=_DEFAULT_USER_EMAIL
 
     index = _load_index(index_path) or {}
     registered = []
-    for sh in client.openall():
+    # The discovery read is the exact call that died un-retried on 2026-07-02 — wrap
+    # it in the register-path transient retry (5xx/429 backoff, structural status).
+    for sh in _register_call_with_retry(client.openall, what="openall"):
         m = _AUTO_REGISTER_TITLE_RE.match(sh.title or "")
         if not m:
             continue

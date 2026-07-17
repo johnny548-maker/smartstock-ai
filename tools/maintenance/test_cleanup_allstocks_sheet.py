@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 import unittest
+from unittest import mock
 
 import cleanup_allstocks_sheet as cl
 import sheets_sync_allstocks as sa
@@ -205,6 +206,80 @@ class TestRunEndToEnd(unittest.TestCase):
                 json.dump({}, f)
             with self.assertRaises(RuntimeError):
                 cl.run("2026-07", index_path=idx, client=_FakeClient(_FakeSh([])))
+
+
+class TestCheckCapacity(unittest.TestCase):
+    """Capacity sentinel: a scheduled dry-run opens an alert issue (exit 1) when the
+    month sheet's cell total exceeds the warn-threshold, well before the 10M hard cap."""
+
+    def test_under_threshold_is_ok(self):
+        ok, msg = cl.check_capacity(6_000_000, threshold=7_000_000)
+        self.assertTrue(ok)
+        self.assertIn("OK", msg)
+
+    def test_over_threshold_is_not_ok(self):
+        ok, msg = cl.check_capacity(8_000_000, threshold=7_000_000)
+        self.assertFalse(ok)
+        self.assertIn("WARNING", msg)
+
+    def test_exactly_at_threshold_is_ok(self):
+        # Boundary: only a STRICT exceed trips the sentinel.
+        ok, _ = cl.check_capacity(7_000_000, threshold=7_000_000)
+        self.assertTrue(ok)
+
+    def test_default_threshold_is_7m(self):
+        self.assertEqual(cl.DEFAULT_WARN_THRESHOLD, 7_000_000)
+        ok, _ = cl.check_capacity(7_000_001)   # uses the module default
+        self.assertFalse(ok)
+
+
+class TestMainMonthDefaultAndThreshold(unittest.TestCase):
+    """--month is optional (defaults to current UTC month for schedule runs); a
+    total over --warn-threshold makes main() exit 1 (→ workflow notify-failure)."""
+
+    def test_month_defaults_to_current_utc_when_omitted(self):
+        from datetime import datetime, timezone
+        cur = datetime.now(timezone.utc).strftime("%Y-%m")
+        captured = {}
+
+        def fake_run(month, **kw):
+            captured["month"] = month
+            return (100, 100)
+
+        with mock.patch.object(cl, "run", side_effect=fake_run):
+            rc = cl.main([])   # no --month
+        self.assertEqual(captured["month"], cur)
+        self.assertEqual(rc, 0)
+
+    def test_explicit_month_passed_through(self):
+        captured = {}
+
+        def fake_run(month, **kw):
+            captured["month"] = month
+            return (100, 100)
+
+        with mock.patch.object(cl, "run", side_effect=fake_run):
+            rc = cl.main(["--month", "2026-07"])
+        self.assertEqual(captured["month"], "2026-07")
+        self.assertEqual(rc, 0)
+
+    def test_threshold_breach_exits_1(self):
+        with mock.patch.object(cl, "run", return_value=(9_000_000, 9_000_000)):
+            rc = cl.main(["--month", "2026-07", "--warn-threshold", "7000000"])
+        self.assertEqual(rc, 1, "over-threshold total must exit 1 to open an issue")
+
+    def test_under_threshold_exits_0(self):
+        with mock.patch.object(cl, "run", return_value=(100, 100)):
+            rc = cl.main(["--month", "2026-07"])
+        self.assertEqual(rc, 0)
+
+    def test_run_error_still_exits_1(self):
+        def boom(*a, **k):
+            raise RuntimeError("month not in index")
+
+        with mock.patch.object(cl, "run", side_effect=boom):
+            rc = cl.main(["--month", "2099-01"])
+        self.assertEqual(rc, 1)
 
 
 if __name__ == "__main__":
