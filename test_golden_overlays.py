@@ -21,7 +21,11 @@ This suite proves that three ways, with ZERO network I/O (synthetic DataFrames):
 Run: python -m unittest test_golden_overlays
 """
 import json
+import os
+import shutil
+import tempfile
 import unittest
+from datetime import datetime, timedelta
 
 import numpy as np
 import pandas as pd
@@ -258,7 +262,9 @@ class TestPayloadGolden(unittest.TestCase):
     def test_risk_lens_keys_additive(self):
         # Decision-cockpit additions (beta_60 per pick + factor_meta + concentration_summary) must
         # be PURE sidecars: the picks fingerprint (stock/score/factors/order) stays byte-identical.
-        ranked2 = [dict(r, beta_60=1.3, corr_idx=0.85) for r in self.ranked]
+        ranked2 = [dict(r, beta_60=1.3, corr_idx=0.85, beta_bench="加權指數",
+                        beta_low_corr=(i == 0), beta_n=60)
+                   for i, r in enumerate(self.ranked)]
         common = dict(date_str="2026-06-06", news={}, indices={}, institutional={},
                       analyses={}, allocation={}, rebalance_diff={}, risk="LOW",
                       markdown="", skips=[], pick_cards=dict(self.pick_cards))
@@ -282,6 +288,18 @@ class TestPayloadGolden(unittest.TestCase):
         self.assertTrue(withlens["concentration_summary"]["warn"])
         self.assertEqual(base["concentration_summary"], {})
         self.assertEqual(base["factor_meta"], [])
+        # 5) β CONTEXT columns (beta_bench / beta_low_corr / beta_n) must reach the pick dict.
+        #    The pick whitelist previously dropped them, so app.js always fell back to 'vs 大盤'
+        #    and the 低相關 warning never fired. Assert on a beta_low_corr=True pick (the path
+        #    that actually broke) that all three surface additively.
+        p0 = withlens["picks"][0]
+        self.assertEqual(p0["beta_bench"], "加權指數")
+        self.assertTrue(p0["beta_low_corr"])
+        self.assertEqual(p0["beta_n"], 60)
+        # whitelist always emits the keys: absent on input → present-but-None on the payload.
+        self.assertIsNone(base["picks"][0]["beta_bench"])
+        self.assertIsNone(base["picks"][0]["beta_low_corr"])
+        self.assertIsNone(base["picks"][0]["beta_n"])
 
     def test_descoped_keys_additive(self):
         # de-scoped补: earn_watch (rides the **card spread) + environment.electronics_cycle must
@@ -450,6 +468,73 @@ class TestAttachPurity(unittest.TestCase):
         self.assertEqual(out["overlays"], first + second)
         # the intermediate card's list was not mutated by the second attach
         self.assertEqual(card["overlays"], first)
+
+
+class TestSnapshotRetention(unittest.TestCase):
+    """export() must bound data/<date>.json growth with a retention window, deleting only
+    strict YYYY-MM-DD.json snapshots older than the window and NEVER index/_state/detail files,
+    then rebuild index.json from what survives (GitHub Pages 1GB cap protection)."""
+
+    def setUp(self):
+        self.web_dir = tempfile.mkdtemp(prefix="ss_retention_")
+        self.data_dir = os.path.join(self.web_dir, "data")
+        os.makedirs(os.path.join(self.data_dir, "detail"), exist_ok=True)
+        self.ref = "2026-06-06"
+        ref_d = datetime.strptime(self.ref, "%Y-%m-%d").date()
+        keep = web_export.SNAPSHOT_RETENTION_DAYS
+        # boundary: exactly `keep` days old is KEPT (delete only strictly older than the window)
+        self.boundary = (ref_d - timedelta(days=keep)).strftime("%Y-%m-%d")
+        self.over = (ref_d - timedelta(days=keep + 1)).strftime("%Y-%m-%d")
+        self.way_over = (ref_d - timedelta(days=keep + 400)).strftime("%Y-%m-%d")
+        self.in_win = (ref_d - timedelta(days=30)).strftime("%Y-%m-%d")
+
+    def tearDown(self):
+        shutil.rmtree(self.web_dir, ignore_errors=True)
+
+    def _write_snap(self, date_str):
+        with open(os.path.join(self.data_dir, f"{date_str}.json"), "w", encoding="utf-8") as f:
+            json.dump({"date": date_str, "risk": "LOW",
+                       "picks": [{"stock": "2330.TW", "name": "台積電", "score": 88}]}, f)
+
+    def _payload_for(self, date_str):
+        return web_export.build_payload(
+            date_str=date_str, news={}, indices={}, institutional={}, ranked=[],
+            analyses={}, allocation={}, rebalance_diff={}, risk="LOW", markdown="", skips=[])
+
+    def test_export_prunes_only_over_window_snapshots(self):
+        for d in (self.way_over, self.over, self.boundary, self.in_win):
+            self._write_snap(d)
+        # non-snapshot files that must survive the prune untouched
+        with open(os.path.join(self.data_dir, "_verdicts.json"), "w", encoding="utf-8") as f:
+            json.dump({"2330.TW": {"s": 88, "l": "green"}}, f)
+        detail_path = os.path.join(self.data_dir, "detail", "2330.json")
+        with open(detail_path, "w", encoding="utf-8") as f:
+            json.dump({"ohlc": []}, f)
+
+        web_export.export(self._payload_for(self.ref), self.web_dir)
+
+        exists = lambda d: os.path.exists(os.path.join(self.data_dir, f"{d}.json"))
+        # over-window snapshots deleted
+        self.assertFalse(exists(self.way_over))
+        self.assertFalse(exists(self.over))
+        # boundary (exactly window) + in-window + the just-exported day kept
+        self.assertTrue(exists(self.boundary))
+        self.assertTrue(exists(self.in_win))
+        self.assertTrue(exists(self.ref))
+        # non-snapshot files untouched
+        self.assertTrue(os.path.exists(os.path.join(self.data_dir, "_verdicts.json")))
+        self.assertTrue(os.path.exists(detail_path))
+        # index rebuilt from survivors only — deleted dates must be gone from the index
+        with open(os.path.join(self.data_dir, "index.json"), encoding="utf-8") as f:
+            idx_dates = {e["date"] for e in json.load(f)}
+        self.assertEqual(idx_dates, {self.boundary, self.in_win, self.ref})
+
+    def test_prune_ignores_malformed_ref_date(self):
+        # a bad reference date must be a no-op (never nuke history on a parse failure)
+        self._write_snap(self.way_over)
+        removed = web_export._prune_old_snapshots(self.data_dir, "not-a-date")
+        self.assertEqual(removed, [])
+        self.assertTrue(os.path.exists(os.path.join(self.data_dir, f"{self.way_over}.json")))
 
 
 if __name__ == "__main__":

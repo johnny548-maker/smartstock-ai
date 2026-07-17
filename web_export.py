@@ -6,6 +6,7 @@ import json
 import logging
 import math
 import os
+import re
 from datetime import datetime
 
 from config import STOCK_NAMES, DISPLAY_N
@@ -17,6 +18,17 @@ log = logging.getLogger(__name__)
 # keep old keys readable / fall back on removal (see the 'breakout' strip) so _rebuild_index
 # and the client keep loading mixed-version files. Payloads with no field read as v0.
 SCHEMA_VERSION = 1
+
+# Publish-root retention window (days) for the per-day snapshot files. Each trading day adds
+# ~370KB and the history is never otherwise trimmed, so an unbounded data/ dir is one of the
+# paths toward the GitHub Pages 1GB cap. export() prunes snapshots older than this window
+# (measured against the date being exported) BEFORE rebuilding the index, so the UI stays
+# consistent. Only strict YYYY-MM-DD.json files are eligible — index.json / _state.json /
+# detail/ are never touched.
+SNAPSHOT_RETENTION_DAYS = 180
+
+# strict per-day snapshot filename (NOT index.json / _universe.json / _verdicts.json / detail/*).
+_SNAPSHOT_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})\.json$")
 
 
 def _clean(o):
@@ -177,6 +189,9 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
             "sector": it.get("sector"),
             "beta_60": it.get("beta_60"),       # risk lens: per-pick beta vs index (OVERLAY)
             "corr_idx": it.get("corr_idx"),      # correlation to index (concentration awareness)
+            "beta_bench": it.get("beta_bench"),  # named benchmark (加權指數 / S&P 500) app.js labels the β against
+            "beta_low_corr": it.get("beta_low_corr"),  # True → |corr|<0.25, β is noise: app.js greys it out
+            "beta_n": it.get("beta_n"),          # OLS window (bars) behind the β estimate
             "factors": it["factors"],
             "levels": level_map.get(it["stock"]),
             "commentary": (analyses or {}).get(it["stock"]),
@@ -323,12 +338,47 @@ def _rebuild_index(data_dir):
     return index
 
 
+def _prune_old_snapshots(data_dir, ref_date, retention_days=SNAPSHOT_RETENTION_DAYS):
+    """Delete data/<date>.json snapshots strictly older than `retention_days`, measured from
+    `ref_date` (the date being exported). Returns the list of deleted basenames.
+
+    Safety: matches ONLY strict YYYY-MM-DD.json names via _SNAPSHOT_RE, so index.json,
+    _universe.json / _verdicts.json (leading '_'), and the detail/ subdir are never eligible
+    (glob('*.json') does not recurse into detail/ either). A malformed ref_date is a no-op —
+    NEVER nuke history on a parse failure. A single unlink failure is logged and skipped, not
+    fatal (Rule: never silently drop, but one locked file must not abort the export)."""
+    try:
+        ref = datetime.strptime(ref_date, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        log.warning("SKIP snapshot prune: unparseable ref_date %r", ref_date)
+        return []
+    removed = []
+    for path in glob.glob(os.path.join(data_dir, "*.json")):
+        m = _SNAPSHOT_RE.match(os.path.basename(path))
+        if not m:
+            continue
+        try:
+            snap = datetime.strptime(m.group(1), "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        if (ref - snap).days > retention_days:
+            try:
+                os.remove(path)
+                removed.append(os.path.basename(path))
+            except OSError as e:
+                log.warning("SKIP prune %s: %s", os.path.basename(path), e)
+    return removed
+
+
 def export(payload, web_dir):
-    """Write data/<date>.json and rebuild data/index.json. Returns data dir."""
+    """Write data/<date>.json, prune snapshots past the retention window, rebuild index. Returns data dir."""
     data_dir = os.path.join(web_dir, "data")
     os.makedirs(data_dir, exist_ok=True)
     with open(os.path.join(data_dir, f"{payload['date']}.json"), "w", encoding="utf-8") as f:
         json.dump(_clean(payload), f, ensure_ascii=False, indent=1, allow_nan=False)
+    # Prune BEFORE rebuilding: _rebuild_index re-scans the directory, so dropping stale
+    # snapshots first keeps index.json (and thus the UI) consistent with what remains.
+    _prune_old_snapshots(data_dir, payload["date"])
     _rebuild_index(data_dir)
     return data_dir
 

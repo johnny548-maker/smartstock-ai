@@ -8,8 +8,13 @@
    loops forever into a blank screen. Updates ride the CACHE-version bump + cache-first serving. */
 'use strict';
 
-const CACHE = 'smartstock-v61';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
+const CACHE = 'smartstock-v62';   // C1 schema_version client guard（與 app.js APP_VERSION 同步 bump）
 const DATA_TIMEOUT_MS = 3500;     // stalled-network cutoff before falling back to cached data
+// Bound the network-first DATA cache so it can't grow without limit across trading days and
+// per-stock detail opens (the CACHE is never otherwise trimmed within a version).
+const DATED_KEEP = 30;            // keep the most-recent N daily payloads (offline history horizon)
+const DETAIL_KEEP = 200;          // FIFO cap on cached per-stock detail files
+const _DATED_RE = /\/data\/(\d{4}-\d{2}-\d{2})\.json$/;
 const SHELL = [
   './',
   'index.html',
@@ -55,6 +60,32 @@ function _cachePut(req, res) {
   }
 }
 
+// Fire-and-forget prune of the DATA cache — called after a successful _cachePut, NEVER awaited
+// into the respondWith path so it can't delay the open. Two independent caps:
+//   a) dated daily payloads: keep the newest DATED_KEEP, ranked by the DATE STRING IN THE URL
+//      (YYYY-MM-DD sorts lexicographically == chronologically) — do NOT rely on keys() order.
+//   b) per-stock detail files: FIFO-cap at DETAIL_KEEP. The Cache API exposes no access time, so
+//      a true LRU is impossible; cache.keys() returns entries in insertion order, so dropping the
+//      front is oldest-inserted-first (the best available proxy).
+// TRADE-OFF: offline history is limited to the most recent DATED_KEEP trading days.
+function _pruneDataCache() {
+  caches.open(CACHE).then((c) => c.keys().then((keys) => {
+    const dated = [];
+    for (const req of keys) {
+      const m = _DATED_RE.exec(req.url);
+      if (m) dated.push({ req, date: m[1] });
+    }
+    if (dated.length > DATED_KEEP) {
+      dated.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));   // newest first
+      dated.slice(DATED_KEEP).forEach((e) => c.delete(e.req));                   // drop the oldest
+    }
+    const detail = keys.filter((req) => req.url.includes('/data/detail/'));
+    if (detail.length > DETAIL_KEEP) {
+      detail.slice(0, detail.length - DETAIL_KEEP).forEach((req) => c.delete(req));  // FIFO
+    }
+  })).catch(() => undefined);
+}
+
 // A navigation request must NEVER resolve to Response.error() — that surfaces the browser's native
 // blank 'cannot open page'. Fall back to any cached shell document, else a tiny inline offline page.
 function _navFallback(req) {
@@ -81,6 +112,7 @@ function networkFirstData(req) {
     fetch(new Request(req.url, { cache: 'reload' })).then((res) => {
       clearTimeout(timer);
       _cachePut(req, res);
+      _pruneDataCache();   // fire-and-forget: bound the data cache; never awaited into respondWith
       if (!settled) { settled = true; resolve(res); }
     }).catch(() => {
       clearTimeout(timer);
