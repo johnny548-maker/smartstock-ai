@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 333.26,
- "change_pct": 1.76,
+ "price": 333.74,
+ "change_pct": 0.14,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 271.25,
-   "h": 272.55,
-   "l": 265.16,
-   "c": 265.93,
-   "v": 50209800
-  },
   {
    "time": "2026-04-22",
    "o": 267.57,
@@ -482,11 +474,19 @@
    "h": 334.68,
    "l": 326.79,
    "c": 333.26,
-   "v": 62727600
+   "v": 62970600
+  },
+  {
+   "time": "2026-07-17",
+   "o": 331.98,
+   "h": 334.99,
+   "l": 329.0,
+   "c": 333.74,
+   "v": 63365300
   }
  ],
  "sr": {
-  "price": 333.26,
+  "price": 333.74,
   "resistance": [],
   "support": [
    305.02,
@@ -495,7 +495,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  265.93,
   272.92,
   273.18,
   270.81,
@@ -554,33 +553,34 @@
   317.31,
   314.86,
   327.5,
-  333.26
+  333.26,
+  333.74
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-22",
+ "spark_end": "2026-07-17",
  "fundamental": {
-  "pe_trailing": 39.696968,
-  "pe_forward": 34.04044,
-  "eps_trailing": 8.25,
-  "eps_forward": 9.62091,
-  "stale": true,
+  "pe_trailing": 40.502426,
+  "pe_forward": 34.625034,
+  "eps_trailing": 8.24,
+  "eps_forward": 9.63869,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 333.26,
-  "stop": 315.93,
-  "target": 376.59,
-  "atr_bracket": 376.59,
+  "entry": 333.74,
+  "stop": 317.23,
+  "target": 375.02,
+  "atr_bracket": 375.02,
   "measured_move": null,
   "target_band": [
-   376.59
+   375.02
   ],
-  "stop_pct": -5.2,
-  "target_pct": 13.0,
+  "stop_pct": -4.9,
+  "target_pct": 12.4,
   "rr": 2.5,
-  "atr_pct": 2.6,
-  "swing_stop": 309.31,
-  "chandelier": 309.27,
+  "atr_pct": 2.5,
+  "swing_stop": 309.43,
+  "chandelier": 309.67,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -588,101 +588,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "HSBC upgrades Apple to Buy, sees \"strong cycle ahead\"",
+   "label": "Nvidia Stock Rises, Here’s What It Needs From Big Tech Earnings",
    "value": {
-    "headline": "HSBC upgrades Apple to Buy, sees \"strong cycle ahead\"",
+    "headline": "Nvidia Stock Rises, Here’s What It Needs From Big Tech Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784287268,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/hsbc-upgrades-apple-buy-sees-112108654.html?.tsrc=rss",
+    "ts": 1784549400,
+    "url": "https://finance.yahoo.com/m/d152fbf4-2c4b-323d-a4c3-e6f763767f45/nvidia-stock-rises%2C-here%E2%80%99s.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/hsbc-upgrades-apple-buy-sees-112108654.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/d152fbf4-2c4b-323d-a4c3-e6f763767f45/nvidia-stock-rises%2C-here%E2%80%99s.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Circle Gets Street-Low Target as Stablecoin Competition Heats Up",
+   "label": "Small-Cap Index Funds Have Delivered Surprisingly Strong 12-Month Returns. Here's What That Means for Investors.",
    "value": {
-    "headline": "Circle Gets Street-Low Target as Stablecoin Competition Heats Up",
+    "headline": "Small-Cap Index Funds Have Delivered Surprisingly Strong 12-Month Returns. Here's What That Means for Investors.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784285101,
-    "url": "https://finance.yahoo.com/markets/crypto/articles/circle-gets-street-low-target-104501234.html?.tsrc=rss",
+    "ts": 1784549220,
+    "url": "https://www.fool.com/investing/2026/07/20/small-cap-index-funds-deliver-surprisingly-strong/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/crypto/articles/circle-gets-street-low-target-104501234.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/20/small-cap-index-funds-deliver-surprisingly-strong/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+   "label": "Here's How Much Apple Stock Has to Gain to Overtake Nvidia as the Most Valuable Company in the World. Hint: It Could Hap",
    "value": {
-    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Lower Premarket Friday; Netflix, SpaceX to Decline",
+    "headline": "Here's How Much Apple Stock Has to Gain to Overtake Nvidia as the Most Valuable Company in the World. Hint: It Could Happen by the Time You Read This.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784284901,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss",
+    "ts": 1784544060,
+    "url": "https://www.fool.com/investing/2026/07/20/heres-how-much-apple-stock-has-to-gain-to-overtake/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-104141444.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/20/heres-how-much-apple-stock-has-to-gain-to-overtake/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AAPL Stock Bucks Tech Rout: Retail Calls It 'Safe Haven' Ahead Of Q3 Report This Month",
+   "label": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
    "value": {
-    "headline": "AAPL Stock Bucks Tech Rout: Retail Calls It 'Safe Haven' Ahead Of Q3 Report This Month",
+    "headline": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784284679,
-    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-bucks-tech-rout-retail-calls-it-safe-haven-ahead-of-q3-report-this-month/cZZ7WFrR7tV?.tsrc=rss",
+    "ts": 1784540405,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-bucks-tech-rout-retail-calls-it-safe-haven-ahead-of-q3-report-this-month/cZZ7WFrR7tV?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Network School founder says immigration probe at tech commune is a risk to Malaysia's tech ambitions",
+   "label": "Bezos Backs AI Startup to Discover New Materials for Chipmaking",
    "value": {
-    "headline": "Network School founder says immigration probe at tech commune is a risk to Malaysia's tech ambitions",
+    "headline": "Bezos Backs AI Startup to Discover New Materials for Chipmaking",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784267788,
-    "url": "https://finance.yahoo.com/technology/articles/network-school-founder-says-immigration-055628009.html?.tsrc=rss",
+    "ts": 1784523620,
+    "url": "https://finance.yahoo.com/technology/ai/articles/bezos-backs-ai-startup-discover-050020599.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/network-school-founder-says-immigration-055628009.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/bezos-backs-ai-startup-discover-050020599.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-07-17",
+   "severity": "info",
+   "as_of": "2026-07-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -697,22 +697,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 87 分 / 30 留言",
+   "label": "HN 討論熱度 20 篇 / 118 分 / 76 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 87,
-    "comments": 30,
+    "points": 118,
+    "comments": 76,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -727,7 +727,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "1795",
  "name": "美時",
- "price": 188.0,
- "change_pct": -5.05,
+ "price": 189.0,
+ "change_pct": 0.53,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 228.5,
-   "h": 229.5,
-   "l": 218.0,
-   "c": 223.5,
-   "v": 3665756
-  },
   {
    "time": "2026-04-24",
    "o": 223.5,
@@ -482,23 +474,30 @@
    "h": 197.5,
    "l": 188.0,
    "c": 188.0,
-   "v": 1988404
+   "v": 1904649
+  },
+  {
+   "time": "2026-07-20",
+   "o": 189.5,
+   "h": 192.5,
+   "l": 187.5,
+   "c": 189.0,
+   "v": 1383976
   }
  ],
  "sr": {
-  "price": 188.0,
+  "price": 189.0,
   "resistance": [
    197.5,
    204.0
   ],
   "support": [
-   187.0,
-   185.0
+   188.5,
+   188.0
   ],
   "strong_support": 168.0
  },
  "spark": [
-  223.5,
   224.0,
   220.0,
   224.0,
@@ -557,10 +556,11 @@
   199.5,
   202.5,
   198.0,
-  188.0
+  188.0,
+  189.0
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-17",
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-07-20",
  "fundamental": {
   "rev_yoy": 225.5,
   "rev_accel": true,
@@ -569,46 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "生技新藥布局再添成果 寶齡富錦、美時各有進展｜2 來源確認",
-   "value": {
-    "headline": "生技新藥布局再添成果 寶齡富錦、美時各有進展",
-    "sources": [
-     "cna",
-     "udn"
-    ],
-    "source_count": 2,
-    "ts": 1784281205,
-    "url": "https://www.cna.com.tw/news/afe/202607170236.aspx",
-    "urls": [
-     "https://money.udn.com/money/story/10871/9634694",
-     "https://www.cna.com.tw/news/afe/202607170236.aspx"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 2 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 2,
-    "distinct_sources": [
-     "cna",
-     "udn"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-17",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -730,6 +690,10 @@
    {
     "t": "2026-07-17",
     "v": -1781
+   },
+   {
+    "t": "2026-07-20",
+    "v": -1505
    }
   ],
   "holder_pct": [
@@ -756,6 +720,10 @@
    {
     "t": "2026-07-09",
     "v": 58.2
+   },
+   {
+    "t": "2026-07-17",
+    "v": 57.45
    }
   ],
   "rev_yoy": [
