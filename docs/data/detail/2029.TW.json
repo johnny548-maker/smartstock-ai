@@ -1,8 +1,8 @@
 {
  "stock": "2029.TW",
  "name": "盛餘",
- "price": 20.45,
- "change_pct": -0.97,
+ "price": 20.6,
+ "change_pct": 0.73,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,16 +163,27 @@
    "l": 20.3,
    "c": 20.45,
    "v": 296512
+  },
+  {
+   "time": "2026-07-21",
+   "o": 20.7,
+   "h": 20.7,
+   "l": 20.4,
+   "c": 20.6,
+   "v": 216551
   }
  ],
  "sr": {
-  "price": 20.45,
+  "price": 20.6,
   "resistance": [
    21.05,
    21.2
   ],
-  "support": [],
-  "strong_support": 20.45
+  "support": [
+   20.45,
+   20.25
+  ],
+  "strong_support": 20.25
  },
  "spark": [
   20.6,
@@ -194,10 +205,11 @@
   20.95,
   20.5,
   20.65,
-  20.45
+  20.45,
+  20.6
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-20",
+ "spark_end": "2026-07-21",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

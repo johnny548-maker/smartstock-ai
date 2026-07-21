@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 333.74,
- "change_pct": 0.14,
+ "price": 326.59,
+ "change_pct": -2.14,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 267.57,
-   "h": 273.49,
-   "l": 266.62,
-   "c": 272.92,
-   "v": 43249200
-  },
   {
    "time": "2026-04-23",
    "o": 274.8,
@@ -482,11 +474,19 @@
    "h": 334.99,
    "l": 329.0,
    "c": 333.74,
-   "v": 63365300
+   "v": 63407100
+  },
+  {
+   "time": "2026-07-20",
+   "o": 333.51,
+   "h": 333.71,
+   "l": 323.68,
+   "c": 326.59,
+   "v": 53396600
   }
  ],
  "sr": {
-  "price": 333.74,
+  "price": 326.59,
   "resistance": [],
   "support": [
    305.02,
@@ -495,7 +495,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  272.92,
   273.18,
   270.81,
   267.36,
@@ -554,33 +553,34 @@
   314.86,
   327.5,
   333.26,
-  333.74
+  333.74,
+  326.59
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-17",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-20",
  "fundamental": {
   "pe_trailing": 40.502426,
   "pe_forward": 34.625034,
   "eps_trailing": 8.24,
   "eps_forward": 9.63869,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 333.74,
-  "stop": 317.23,
-  "target": 375.02,
-  "atr_bracket": 375.02,
+  "entry": 326.59,
+  "stop": 309.86,
+  "target": 368.42,
+  "atr_bracket": 368.42,
   "measured_move": null,
   "target_band": [
-   375.02
+   368.42
   ],
-  "stop_pct": -4.9,
-  "target_pct": 12.4,
+  "stop_pct": -5.1,
+  "target_pct": 12.8,
   "rr": 2.5,
-  "atr_pct": 2.5,
-  "swing_stop": 309.43,
-  "chandelier": 309.67,
+  "atr_pct": 2.6,
+  "swing_stop": 309.4,
+  "chandelier": 309.18,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -588,101 +588,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Stock Rises, Here’s What It Needs From Big Tech Earnings",
+   "label": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
    "value": {
-    "headline": "Nvidia Stock Rises, Here’s What It Needs From Big Tech Earnings",
+    "headline": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784549400,
-    "url": "https://finance.yahoo.com/m/d152fbf4-2c4b-323d-a4c3-e6f763767f45/nvidia-stock-rises%2C-here%E2%80%99s.html?.tsrc=rss",
+    "ts": 1784633400,
+    "url": "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/d152fbf4-2c4b-323d-a4c3-e6f763767f45/nvidia-stock-rises%2C-here%E2%80%99s.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Small-Cap Index Funds Have Delivered Surprisingly Strong 12-Month Returns. Here's What That Means for Investors.",
+   "label": "AAPL Stock Hits Historic 11x Sales Valuation Ahead of Tim Cook's Final Earnings Call as Apple CEO",
    "value": {
-    "headline": "Small-Cap Index Funds Have Delivered Surprisingly Strong 12-Month Returns. Here's What That Means for Investors.",
+    "headline": "AAPL Stock Hits Historic 11x Sales Valuation Ahead of Tim Cook's Final Earnings Call as Apple CEO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784549220,
-    "url": "https://www.fool.com/investing/2026/07/20/small-cap-index-funds-deliver-surprisingly-strong/?.tsrc=rss",
+    "ts": 1784629589,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/aapl-stock-hits-historic-11x-102629358.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/20/small-cap-index-funds-deliver-surprisingly-strong/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/aapl-stock-hits-historic-11x-102629358.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here's How Much Apple Stock Has to Gain to Overtake Nvidia as the Most Valuable Company in the World. Hint: It Could Hap",
+   "label": "China’s New AI Breakthrough Shows Tim Cook’s Risky Final Bet Might Actually Be Genius",
    "value": {
-    "headline": "Here's How Much Apple Stock Has to Gain to Overtake Nvidia as the Most Valuable Company in the World. Hint: It Could Happen by the Time You Read This.",
+    "headline": "China’s New AI Breakthrough Shows Tim Cook’s Risky Final Bet Might Actually Be Genius",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784544060,
-    "url": "https://www.fool.com/investing/2026/07/20/heres-how-much-apple-stock-has-to-gain-to-overtake/?.tsrc=rss",
+    "ts": 1784628620,
+    "url": "https://247wallst.com/investing/2026/07/21/chinas-new-ai-breakthrough-shows-tim-cooks-risky-final-bet-might-actually-be-genius/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/20/heres-how-much-apple-stock-has-to-gain-to-overtake/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/07/21/chinas-new-ai-breakthrough-shows-tim-cooks-risky-final-bet-might-actually-be-genius/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
+   "label": "Prediction markets favour Nvidia to stay on top despite Apple's charge",
    "value": {
-    "headline": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
+    "headline": "Prediction markets favour Nvidia to stay on top despite Apple's charge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784540405,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss",
+    "ts": 1784628060,
+    "url": "https://www.proactiveinvestors.com/companies/news/1095762/prediction-markets-favour-nvidia-to-stay-on-top-despite-apple-s-charge-1095762.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss"
+     "https://www.proactiveinvestors.com/companies/news/1095762/prediction-markets-favour-nvidia-to-stay-on-top-despite-apple-s-charge-1095762.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bezos Backs AI Startup to Discover New Materials for Chipmaking",
+   "label": "Alibaba's Apple tie-up adds fuel to China's hottest ETF: Chart of the Day",
    "value": {
-    "headline": "Bezos Backs AI Startup to Discover New Materials for Chipmaking",
+    "headline": "Alibaba's Apple tie-up adds fuel to China's hottest ETF: Chart of the Day",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784523620,
-    "url": "https://finance.yahoo.com/technology/ai/articles/bezos-backs-ai-startup-discover-050020599.html?.tsrc=rss",
+    "ts": 1784628000,
+    "url": "https://finance.yahoo.com/markets/article/alibabas-apple-tie-up-adds-fuel-to-chinas-hottest-etf-chart-of-the-day-101500518.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/bezos-backs-ai-startup-discover-050020599.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/alibabas-apple-tie-up-adds-fuel-to-chinas-hottest-etf-chart-of-the-day-101500518.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -697,22 +697,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 118 分 / 76 留言",
+   "label": "HN 討論熱度 20 篇 / 193 分 / 122 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 118,
-    "comments": 76,
+    "points": 193,
+    "comments": 122,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -727,7 +727,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-20",
+   "as_of": "2026-07-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

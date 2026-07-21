@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 81.05,
- "change_pct": -3.74,
+ "price": 77.36,
+ "change_pct": -4.55,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 96.4,
-   "h": 101.99,
-   "l": 91.6,
-   "c": 97.36,
-   "v": 3710300
-  },
   {
    "time": "2026-04-23",
    "o": 95.0,
@@ -482,14 +474,22 @@
    "h": 88.3,
    "l": 76.75,
    "c": 81.05,
-   "v": 5079400
+   "v": 5083300
+  },
+  {
+   "time": "2026-07-20",
+   "o": 84.18,
+   "h": 88.89,
+   "l": 75.2,
+   "c": 77.36,
+   "v": 3349700
   }
  ],
  "sr": {
-  "price": 81.05,
+  "price": 77.36,
   "resistance": [
-   99.43,
-   102.48
+   79.49,
+   99.43
   ],
   "support": [
    76.76,
@@ -498,7 +498,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  97.36,
   95.51,
   95.91,
   88.48,
@@ -557,143 +556,12 @@
   72.01,
   87.79,
   84.2,
-  81.05
+  81.05,
+  77.36
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-17",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-20",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "New Strong Buy Stocks for July 20th",
-   "value": {
-    "headline": "New Strong Buy Stocks for July 20th",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784538180,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/strong-buy-stocks-july-20th-090300372.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/strong-buy-stocks-july-20th-090300372.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test (AEHR) Rockets as Traders Buy Into Triple Revenue Growth Outlook",
-   "value": {
-    "headline": "Aehr Test (AEHR) Rockets as Traders Buy Into Triple Revenue Growth Outlook",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784450840,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aehr-test-aehr-rockets-traders-084720168.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aehr-test-aehr-rockets-traders-084720168.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems Stock Soars on Earnings, Eyes Over 150% Revenue Growth",
-   "value": {
-    "headline": "Aehr Test Systems Stock Soars on Earnings, Eyes Over 150% Revenue Growth",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784304300,
-    "url": "https://www.marketbeat.com/articles/aehr-test-systems-stock-soars-on-earnings-eyes-over-150-revenue-growth/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/articles/aehr-test-systems-stock-soars-on-earnings-eyes-over-150-revenue-growth/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Here's Why Aehr Test Systems Surged Higher This Week",
-   "value": {
-    "headline": "Here's Why Aehr Test Systems Surged Higher This Week",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784287518,
-    "url": "https://www.fool.com/investing/2026/07/17/heres-why-aehr-test-systems-surged-higher-this-wee/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/07/17/heres-why-aehr-test-systems-surged-higher-this-wee/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "This Semiconductor Stock Is Up 4X This Year – And Analysts Think The Rally Has More Room",
-   "value": {
-    "headline": "This Semiconductor Stock Is Up 4X This Year – And Analysts Think The Rally Has More Room",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784267390,
-    "url": "https://stocktwits.com/news-articles/markets/equity/this-semiconductor-stock-is-up-fourfold-this-year-and-analysts-think-the-rally-has-more-room/cZZ74zjR7tO?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/this-semiconductor-stock-is-up-fourfold-this-year-and-analysts-think-the-rally-has-more-room/cZZ74zjR7tO?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 8097,
-    "days": 4,
-    "max_shares": 3653,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-20",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

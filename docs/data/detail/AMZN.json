@@ -1,25 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 249.89,
- "change_pct": -1.99,
+ "price": 249.99,
+ "change_pct": 1.12,
  "ohlc": [
-  {
-   "time": "2026-04-21",
-   "o": 255.09,
-   "h": 255.09,
-   "l": 249.1,
-   "c": 249.91,
-   "v": 42922400
-  },
-  {
-   "time": "2026-04-22",
-   "o": 252.44,
-   "h": 255.94,
-   "l": 250.33,
-   "c": 255.36,
-   "v": 36065100
-  },
   {
    "time": "2026-04-23",
    "o": 255.39,
@@ -482,11 +466,27 @@
    "h": 258.08,
    "l": 248.0,
    "c": 249.89,
-   "v": 45233800
+   "v": 45343700
+  },
+  {
+   "time": "2026-07-17",
+   "o": 244.46,
+   "h": 250.24,
+   "l": 243.59,
+   "c": 247.23,
+   "v": 43572400
+  },
+  {
+   "time": "2026-07-20",
+   "o": 248.76,
+   "h": 252.89,
+   "l": 248.0,
+   "c": 249.99,
+   "v": 32373200
   }
  ],
  "sr": {
-  "price": 249.89,
+  "price": 249.99,
   "resistance": [
    251.75,
    256.18
@@ -498,8 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  249.91,
-  255.36,
   255.08,
   263.99,
   261.12,
@@ -557,16 +555,18 @@
   247.31,
   247.49,
   254.96,
-  249.89
+  249.89,
+  247.23,
+  249.99
  ],
- "spark_start": "2026-04-21",
- "spark_end": "2026-07-16",
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-20",
  "fundamental": {
-  "pe_trailing": 30.49761,
-  "pe_forward": 25.763634,
-  "eps_trailing": 8.36,
-  "eps_forward": 9.89612,
-  "stale": true,
+  "pe_trailing": 29.938921,
+  "pe_forward": 25.161367,
+  "eps_trailing": 8.35,
+  "eps_forward": 9.93547,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Meta Building The Next AI Cloud Giant? Report Says It’s Poaching A Top AWS Executive",
+   "label": "Is Amazon.com (AMZN) Undervalued Following Its $200b AI Infrastructure Push?",
    "value": {
-    "headline": "Is Meta Building The Next AI Cloud Giant? Report Says It’s Poaching A Top AWS Executive",
+    "headline": "Is Amazon.com (AMZN) Undervalued Following Its $200b AI Infrastructure Push?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784285188,
-    "url": "https://stocktwits.com/news-articles/markets/equity/is-meta-building-the-next-ai-cloud-giant-report-says-it-s-poaching-a-top-aws-executive/cZZ7WwsR7tn?.tsrc=rss",
+    "ts": 1784617782,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-undervalued-following-070942895.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/is-meta-building-the-next-ai-cloud-giant-report-says-it-s-poaching-a-top-aws-executive/cZZ7WwsR7tn?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-undervalued-following-070942895.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-07-17",
+   "severity": "info",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+   "label": "Amazon may be losing its biggest competitive edge",
    "value": {
-    "headline": "Investors rotate within AI trade as slowing hyperscaler spending becomes a growing concern",
+    "headline": "Amazon may be losing its biggest competitive edge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784283691,
-    "url": "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss",
+    "ts": 1784592180,
+    "url": "https://www.thestreet.com/retail/amazon-losing-competitive-edge-price-more-important-then-speed?.tsrc=rss",
     "urls": [
-     "https://investorshub.advfn.com/market-news/article/32132/investors-rotate-within-ai-trade-as-slowing-hyperscaler-spending-becomes-a-growing-concern-nvda?.tsrc=rss"
+     "https://www.thestreet.com/retail/amazon-losing-competitive-edge-price-more-important-then-speed?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "2 Large-Cap Stocks with Exciting Potential and 1 We Brush Off",
+   "label": "Review & Preview: Rough Start",
    "value": {
-    "headline": "2 Large-Cap Stocks with Exciting Potential and 1 We Brush Off",
+    "headline": "Review & Preview: Rough Start",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784282986,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-exciting-100946021.html?.tsrc=rss",
+    "ts": 1784591700,
+    "url": "https://finance.yahoo.com/m/8bc95bd9-0e6a-3070-a835-6e5524283a63/review-%26-preview%3A-rough-start.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-exciting-100946021.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/8bc95bd9-0e6a-3070-a835-6e5524283a63/review-%26-preview%3A-rough-start.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+   "label": "Behind the Ticker: RISE Ditches the Usual EM Playbook",
    "value": {
-    "headline": "These 2 Industrial Stocks Will Benefit From the Trillion-Dollar AI Spending Boom",
+    "headline": "Behind the Ticker: RISE Ditches the Usual EM Playbook",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784282700,
-    "url": "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss",
+    "ts": 1784588583,
+    "url": "http://www.etf.com/sections/podcasts/behind-ticker-rise-ditches-usual-em-playbook?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/17/these-x-industrial-stocks-will-benefit-from-the-tr/?.tsrc=rss"
+     "http://www.etf.com/sections/podcasts/behind-ticker-rise-ditches-usual-em-playbook?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wall Street Expects This IPO Stock to Jump 47% Over the Next 12 Months",
+   "label": "Maria Sharapova Once Revealed Her 'Steely Mentality' Made People Uncomfortable— It Also Built a Tennis Dynasty and a Por",
    "value": {
-    "headline": "Wall Street Expects This IPO Stock to Jump 47% Over the Next 12 Months",
+    "headline": "Maria Sharapova Once Revealed Her 'Steely Mentality' Made People Uncomfortable— It Also Built a Tennis Dynasty and a Portfolio of Winning Bets",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784280300,
-    "url": "https://www.fool.com/investing/2026/07/17/wall-street-expects-this-ipo-stock-to-jump-47-over/?.tsrc=rss",
+    "ts": 1784586618,
+    "url": "https://finance.yahoo.com/small-business/articles/maria-sharapova-once-revealed-her-223018539.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/17/wall-street-expects-this-ipo-stock-to-jump-47-over/?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/maria-sharapova-once-revealed-her-223018539.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,23 +684,8 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 9 篇 / 61 分 / 8 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 61,
-    "comments": 8,
-    "n": 9,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-17",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-17",
+   "as_of": "2026-07-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

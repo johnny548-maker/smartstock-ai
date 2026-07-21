@@ -1,17 +1,9 @@
 {
  "stock": "META",
- "name": "Meta",
- "price": 646.01,
- "change_pct": -2.79,
+ "name": "Meta Platforms, Inc. - Class A Common Stock",
+ "price": 645.85,
+ "change_pct": -0.02,
  "ohlc": [
-  {
-   "time": "2026-04-22",
-   "o": 673.74,
-   "h": 677.75,
-   "l": 669.13,
-   "c": 674.1,
-   "v": 9215600
-  },
   {
    "time": "2026-04-23",
    "o": 663.09,
@@ -482,23 +474,30 @@
    "h": 652.2,
    "l": 626.0,
    "c": 646.01,
-   "v": 22219700
+   "v": 22267900
+  },
+  {
+   "time": "2026-07-20",
+   "o": 646.7,
+   "h": 653.3,
+   "l": 636.01,
+   "c": 645.85,
+   "v": 10200100
   }
  ],
  "sr": {
-  "price": 646.01,
+  "price": 645.85,
   "resistance": [
-   659.82,
-   662.17
+   681.87,
+   686.08
   ],
   "support": [
-   645.35,
-   642.35
+   599.44,
+   594.26
   ],
-  "strong_support": 519.78
+  "strong_support": 540.18
  },
  "spark": [
-  674.1,
   658.54,
   674.4,
   677.99,
@@ -557,165 +556,12 @@
   661.04,
   681.31,
   664.54,
-  646.01
+  646.01,
+  645.85
  ],
- "spark_start": "2026-04-22",
- "spark_end": "2026-07-17",
- "fundamental": {
-  "pe_trailing": 23.474201,
-  "pe_forward": 17.782232,
-  "eps_trailing": 27.52,
-  "eps_forward": 36.32896,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-04-23",
+ "spark_end": "2026-07-20",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "CuspAI raises $450 million Series B for AI materials discovery",
-   "value": {
-    "headline": "CuspAI raises $450 million Series B for AI materials discovery",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784549942,
-    "url": "https://qz.com/cuspai-raises-450-million-series-b-ai-materials-foundry-072026?.tsrc=rss",
-    "urls": [
-     "https://qz.com/cuspai-raises-450-million-series-b-ai-materials-foundry-072026?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Market Chatter: Meta Platforms Faces Trial in Tennessee Over Alleged Instagram Teen Safety Violations",
-   "value": {
-    "headline": "Market Chatter: Meta Platforms Faces Trial in Tennessee Over Alleged Instagram Teen Safety Violations",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784547959,
-    "url": "https://finance.yahoo.com/media-advertising/articles/market-chatter-meta-platforms-faces-114559978.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/market-chatter-meta-platforms-faces-114559978.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Leading investment bank lifts Arm target to $320 as AI drives surge in CPU demand",
-   "value": {
-    "headline": "Leading investment bank lifts Arm target to $320 as AI drives surge in CPU demand",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784546820,
-    "url": "https://www.proactiveinvestors.com/companies/news/1095693/leading-investment-bank-lifts-arm-target-to-320-as-ai-drives-surge-in-cpu-demand-1095693.html?.tsrc=rss",
-    "urls": [
-     "https://www.proactiveinvestors.com/companies/news/1095693/leading-investment-bank-lifts-arm-target-to-320-as-ai-drives-surge-in-cpu-demand-1095693.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
-   "value": {
-    "headline": "Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784540405,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/citi-says-magnificent-seven-tag-094005633.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Meta Platforms Looks Set to Abandon a $174 Billion Investment to Fuel Its AI Ambitions",
-   "value": {
-    "headline": "Meta Platforms Looks Set to Abandon a $174 Billion Investment to Fuel Its AI Ambitions",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784539560,
-    "url": "https://www.fool.com/investing/2026/07/20/meta-platforms-abandon-174-billion-investment-ai/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/07/20/meta-platforms-abandon-174-billion-investment-ai/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 73 分 / 16 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 73,
-    "comments": 16,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-20",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 14911,
-    "days": 3,
-    "max_shares": 10755,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-20",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

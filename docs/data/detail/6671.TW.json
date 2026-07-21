@@ -2,7 +2,7 @@
  "stock": "6671.TW",
  "name": "三能-KY",
  "price": 24.0,
- "change_pct": 0.21,
+ "change_pct": 0.0,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,13 +163,23 @@
    "l": 23.9,
    "c": 24.0,
    "v": 29000
+  },
+  {
+   "time": "2026-07-21",
+   "o": 24.0,
+   "h": 24.1,
+   "l": 23.95,
+   "c": 24.0,
+   "v": 75010
   }
  ],
  "sr": {
   "price": 24.0,
   "resistance": [],
-  "support": [],
-  "strong_support": 24.15
+  "support": [
+   23.85
+  ],
+  "strong_support": 23.85
  },
  "spark": [
   25.75,
@@ -191,10 +201,11 @@
   24.4,
   24.0,
   23.95,
+  24.0,
   24.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-20",
+ "spark_end": "2026-07-21",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 733.0,
- "change_pct": -4.31,
+ "price": 729.0,
+ "change_pct": -0.55,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 661.79,
-   "h": 698.61,
-   "l": 656.81,
-   "c": 698.61,
-   "v": 1080639
-  },
   {
    "time": "2026-04-27",
    "o": 730.45,
@@ -482,23 +474,30 @@
    "h": 770.0,
    "l": 690.0,
    "c": 733.0,
-   "v": 2620717
+   "v": 2555849
+  },
+  {
+   "time": "2026-07-21",
+   "o": 735.0,
+   "h": 791.0,
+   "l": 722.0,
+   "c": 729.0,
+   "v": 2917588
   }
  ],
  "sr": {
-  "price": 733.0,
+  "price": 729.0,
   "resistance": [
    889.68,
    909.58
   ],
   "support": [
-   731.0,
-   658.8
+   658.8,
+   620.98
   ],
   "strong_support": 56.75
  },
  "spark": [
-  698.61,
   671.74,
   738.41,
   810.07,
@@ -557,10 +556,11 @@
   892.0,
   851.0,
   766.0,
-  733.0
+  733.0,
+  729.0
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-20",
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-21",
  "fundamental": {
   "rev_yoy": 139.7,
   "rev_accel": true,
@@ -569,6 +569,43 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "股匯不同調!台股狂飆1783點 新台幣重貶近1角、爆出史上第6大量",
+   "value": {
+    "headline": "股匯不同調!台股狂飆1783點 新台幣重貶近1角、爆出史上第6大量",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1784626455,
+    "url": "https://tw.news.yahoo.com/%E8%82%A1%E5%8C%AF%E4%B8%8D%E5%90%8C%E8%AA%BF-%E5%8F%B0%E8%82%A1%E7%8B%82%E9%A3%861783%E9%BB%9E-%E6%96%B0%E5%8F%B0%E5%B9%A3%E9%87%8D%E8%B2%B6%E8%BF%911%E8%A7%92-%E7%88%86%E5%87%BA%E5%8F%B2%E4%B8%8A%E7%AC%AC6%E5%A4%A7%E9%87%8F-093415981.html",
+    "urls": [
+     "https://tw.news.yahoo.com/%E8%82%A1%E5%8C%AF%E4%B8%8D%E5%90%8C%E8%AA%BF-%E5%8F%B0%E8%82%A1%E7%8B%82%E9%A3%861783%E9%BB%9E-%E6%96%B0%E5%8F%B0%E5%B9%A3%E9%87%8D%E8%B2%B6%E8%BF%911%E8%A7%92-%E7%88%86%E5%87%BA%E5%8F%B2%E4%B8%8A%E7%AC%AC6%E5%A4%A7%E9%87%8F-093415981.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -694,6 +731,10 @@
    {
     "t": "2026-07-20",
     "v": -1554
+   },
+   {
+    "t": "2026-07-21",
+    "v": -1738
    }
   ],
   "holder_pct": [
