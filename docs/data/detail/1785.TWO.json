@@ -1,17 +1,9 @@
 {
  "stock": "1785.TWO",
  "name": "光洋科",
- "price": 107.5,
- "change_pct": 2.87,
+ "price": 111.5,
+ "change_pct": 3.72,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 149.49,
-   "h": 150.47,
-   "l": 138.67,
-   "c": 146.54,
-   "v": 7442819
-  },
   {
    "time": "2026-04-28",
    "o": 151.95,
@@ -482,11 +474,19 @@
    "h": 108.5,
    "l": 105.5,
    "c": 107.5,
-   "v": 5323588
+   "v": 5239509
+  },
+  {
+   "time": "2026-07-22",
+   "o": 109.5,
+   "h": 113.5,
+   "l": 109.0,
+   "c": 111.5,
+   "v": 5760273
   }
  ],
  "sr": {
-  "price": 107.5,
+  "price": 111.5,
   "resistance": [
    148.5,
    157.85
@@ -498,7 +498,6 @@
   "strong_support": 43.86
  },
  "spark": [
-  146.54,
   160.8,
   171.12,
   162.76,
@@ -557,10 +556,11 @@
   114.0,
   107.5,
   104.5,
-  107.5
+  107.5,
+  111.5
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -720873,
-    "trust": 1000,
-    "dealer": -193,
-    "total": -720066
+    "foreign": -855551,
+    "trust": 12317,
+    "dealer": 7930,
+    "total": -835304
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.86,
+    "yield": 1.79,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

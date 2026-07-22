@@ -2,16 +2,8 @@
  "stock": "3293.TWO",
  "name": "鈊象",
  "price": 718.0,
- "change_pct": 1.7,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 717.79,
-   "h": 721.61,
-   "l": 705.4,
-   "c": 713.03,
-   "v": 1692308
-  },
   {
    "time": "2026-04-28",
    "o": 720.65,
@@ -482,7 +474,15 @@
    "h": 721.0,
    "l": 705.0,
    "c": 718.0,
-   "v": 1162588
+   "v": 1110640
+  },
+  {
+   "time": "2026-07-22",
+   "o": 718.0,
+   "h": 724.0,
+   "l": 714.0,
+   "c": 718.0,
+   "v": 1035686
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 570.95
  },
  "spark": [
-  713.03,
   719.7,
   720.65,
   713.03,
@@ -557,10 +556,11 @@
   704.0,
   686.0,
   706.0,
+  718.0,
   718.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 385290,
-    "trust": 5500,
-    "dealer": 19822,
-    "total": 410612
+    "foreign": 73265,
+    "trust": 54000,
+    "dealer": -26968,
+    "total": 100297
    },
    "severity": "warn",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

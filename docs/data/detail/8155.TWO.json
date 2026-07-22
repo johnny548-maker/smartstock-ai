@@ -1,17 +1,9 @@
 {
  "stock": "8155.TWO",
  "name": "博智",
- "price": 300.0,
- "change_pct": 6.38,
+ "price": 309.0,
+ "change_pct": 3.0,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 396.08,
-   "h": 410.36,
-   "l": 379.33,
-   "c": 410.36,
-   "v": 7616864
-  },
   {
    "time": "2026-04-28",
    "o": 420.71,
@@ -482,11 +474,19 @@
    "h": 300.0,
    "l": 281.0,
    "c": 300.0,
-   "v": 1159658
+   "v": 1136272
+  },
+  {
+   "time": "2026-07-22",
+   "o": 310.5,
+   "h": 318.0,
+   "l": 298.5,
+   "c": 309.0,
+   "v": 2011896
   }
  ],
  "sr": {
-  "price": 300.0,
+  "price": 309.0,
   "resistance": [
    407.9,
    412.83
@@ -498,7 +498,6 @@
   "strong_support": 93.31
  },
  "spark": [
-  410.36,
   404.94,
   410.36,
   409.87,
@@ -557,10 +556,11 @@
   327.5,
   302.0,
   282.0,
-  300.0
+  300.0,
+  309.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 263781,
-    "trust": -230000,
-    "dealer": -1564,
-    "total": 32217
+    "foreign": 227613,
+    "trust": -791000,
+    "dealer": 140764,
+    "total": -422623
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,12 +585,47 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.72,
+    "yield": 1.67,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "華通完成現增案張募集達86.1億元 現增股7/27上市交易",
+   "value": {
+    "headline": "華通完成現增案張募集達86.1億元 現增股7/27上市交易",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1784704628,
+    "url": "cnyes:6542714",
+    "urls": [
+     "cnyes:6542714"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {

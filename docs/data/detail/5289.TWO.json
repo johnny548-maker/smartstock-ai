@@ -1,17 +1,9 @@
 {
  "stock": "5289.TWO",
  "name": "宜鼎",
- "price": 1300.0,
- "change_pct": 7.0,
+ "price": 1360.0,
+ "change_pct": 4.62,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 1115.0,
-   "h": 1190.0,
-   "l": 1115.0,
-   "c": 1190.0,
-   "v": 4378838
-  },
   {
    "time": "2026-04-28",
    "o": 1220.0,
@@ -482,11 +474,19 @@
    "h": 1300.0,
    "l": 1235.0,
    "c": 1300.0,
-   "v": 1508145
+   "v": 1452481
+  },
+  {
+   "time": "2026-07-22",
+   "o": 1360.0,
+   "h": 1390.0,
+   "l": 1335.0,
+   "c": 1360.0,
+   "v": 2020823
   }
  ],
  "sr": {
-  "price": 1300.0,
+  "price": 1360.0,
   "resistance": [
    1400.0,
    1720.0
@@ -498,7 +498,6 @@
   "strong_support": 180.77
  },
  "spark": [
-  1190.0,
   1305.0,
   1315.0,
   1245.0,
@@ -557,10 +556,11 @@
   1395.0,
   1275.0,
   1215.0,
-  1300.0
+  1300.0,
+  1360.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -159871,
-    "trust": -1850,
-    "dealer": 32486,
-    "total": -129235
+    "foreign": -419400,
+    "trust": -13000,
+    "dealer": 54510,
+    "total": -377890
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.32,
+    "yield": 1.26,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

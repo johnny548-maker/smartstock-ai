@@ -1,8 +1,8 @@
 {
  "stock": "9942.TW",
  "name": "茂順",
- "price": 123.5,
- "change_pct": 0.41,
+ "price": 123.0,
+ "change_pct": -0.4,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -171,13 +171,23 @@
    "l": 122.5,
    "c": 123.5,
    "v": 138163
+  },
+  {
+   "time": "2026-07-22",
+   "o": 124.0,
+   "h": 124.5,
+   "l": 123.0,
+   "c": 123.0,
+   "v": 107332
   }
  ],
  "sr": {
-  "price": 123.5,
-  "resistance": [],
+  "price": 123.0,
+  "resistance": [
+   126.0
+  ],
   "support": [],
-  "strong_support": 123.5
+  "strong_support": 123.0
  },
  "spark": [
   118.5,
@@ -200,10 +210,11 @@
   122.5,
   125.5,
   123.0,
-  123.5
+  123.5,
+  123.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-21",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

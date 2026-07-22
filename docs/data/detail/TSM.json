@@ -1,65 +1,9 @@
 {
  "stock": "TSM",
- "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
- "price": 434.11,
- "change_pct": -0.65,
+ "name": "台積電 ADR",
+ "price": 424.61,
+ "change_pct": 5.55,
  "ohlc": [
-  {
-   "time": "2026-04-15",
-   "o": 380.52,
-   "h": 381.09,
-   "l": 371.34,
-   "c": 374.22,
-   "v": 14955500
-  },
-  {
-   "time": "2026-04-16",
-   "o": 368.0,
-   "h": 369.34,
-   "l": 359.71,
-   "c": 362.5,
-   "v": 26405800
-  },
-  {
-   "time": "2026-04-17",
-   "o": 372.33,
-   "h": 374.7,
-   "l": 364.29,
-   "c": 369.63,
-   "v": 18419400
-  },
-  {
-   "time": "2026-04-20",
-   "o": 368.36,
-   "h": 369.21,
-   "l": 363.4,
-   "c": 365.38,
-   "v": 11638300
-  },
-  {
-   "time": "2026-04-21",
-   "o": 367.22,
-   "h": 369.88,
-   "l": 364.26,
-   "c": 367.22,
-   "v": 9808200
-  },
-  {
-   "time": "2026-04-22",
-   "o": 370.91,
-   "h": 387.0,
-   "l": 369.77,
-   "c": 386.53,
-   "v": 16317200
-  },
-  {
-   "time": "2026-04-23",
-   "o": 383.35,
-   "h": 387.85,
-   "l": 374.93,
-   "c": 381.77,
-   "v": 12224900
-  },
   {
    "time": "2026-04-24",
    "o": 395.21,
@@ -482,11 +426,67 @@
    "h": 439.66,
    "l": 428.1,
    "c": 434.11,
-   "v": 9573500
+   "v": 9595100
+  },
+  {
+   "time": "2026-07-13",
+   "o": 433.82,
+   "h": 437.99,
+   "l": 420.29,
+   "c": 421.58,
+   "v": 14329800
+  },
+  {
+   "time": "2026-07-14",
+   "o": 430.87,
+   "h": 431.06,
+   "l": 418.86,
+   "c": 420.39,
+   "v": 14279000
+  },
+  {
+   "time": "2026-07-15",
+   "o": 425.75,
+   "h": 428.89,
+   "l": 410.75,
+   "c": 419.48,
+   "v": 17012300
+  },
+  {
+   "time": "2026-07-16",
+   "o": 405.29,
+   "h": 415.95,
+   "l": 403.5,
+   "c": 409.74,
+   "v": 24891300
+  },
+  {
+   "time": "2026-07-17",
+   "o": 392.12,
+   "h": 404.7,
+   "l": 386.02,
+   "c": 398.37,
+   "v": 20986500
+  },
+  {
+   "time": "2026-07-20",
+   "o": 407.71,
+   "h": 409.89,
+   "l": 400.08,
+   "c": 402.3,
+   "v": 11653600
+  },
+  {
+   "time": "2026-07-21",
+   "o": 418.74,
+   "h": 425.4,
+   "l": 413.56,
+   "c": 424.61,
+   "v": 18173100
   }
  ],
  "sr": {
-  "price": 434.11,
+  "price": 424.61,
   "resistance": [
    449.11,
    476.79
@@ -495,16 +495,9 @@
    419.19,
    404.56
   ],
-  "strong_support": 359.71
+  "strong_support": 221.25
  },
  "spark": [
-  374.22,
-  362.5,
-  369.63,
-  365.38,
-  367.22,
-  386.53,
-  381.77,
   401.52,
   404.03,
   391.42,
@@ -557,11 +550,157 @@
   432.57,
   436.98,
   436.96,
-  434.11
+  434.11,
+  421.58,
+  420.39,
+  419.48,
+  409.74,
+  398.37,
+  402.3,
+  424.61
  ],
- "spark_start": "2026-04-15",
- "spark_end": "2026-07-10",
- "fundamental": null,
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-07-21",
+ "fundamental": {
+  "pe_trailing": 36.89053,
+  "pe_forward": 19.943384,
+  "eps_trailing": 11.51,
+  "eps_forward": 21.29077,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "TSMC plans chip price increases of up to 10% from 2027, report says (NYSE:TSM)",
+   "value": {
+    "headline": "TSMC plans chip price increases of up to 10% from 2027, report says (NYSE:TSM)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784717194,
+    "url": "https://investorshub.advfn.com/market-news/article/32382/tsmc-plans-chip-price-increases-of-up-to-10-from-2027-report-says-nysetsm?.tsrc=rss",
+    "urls": [
+     "https://investorshub.advfn.com/market-news/article/32382/tsmc-plans-chip-price-increases-of-up-to-10-from-2027-report-says-nysetsm?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Taiwan Semiconductor Manufacturing Just Gave 100 Billion Reasons Why the AI Build-Out Will Last for Several More Years",
+   "value": {
+    "headline": "Taiwan Semiconductor Manufacturing Just Gave 100 Billion Reasons Why the AI Build-Out Will Last for Several More Years",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784707800,
+    "url": "https://www.fool.com/investing/2026/07/22/taiwan-semiconductor-just-gave-100-billion-reasons/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/22/taiwan-semiconductor-just-gave-100-billion-reasons/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Taiwan Semiconductor (TSM) Stock Is Down Nearly 15% This Month Despite Record AI Demand. Here Is Why",
+   "value": {
+    "headline": "Taiwan Semiconductor (TSM) Stock Is Down Nearly 15% This Month Despite Record AI Demand. Here Is Why",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784700664,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-tsm-stock-down-061104350.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-tsm-stock-down-061104350.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
+   "value": {
+    "headline": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784667266,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Seagate, Western Digital, FormFactor, Amkor, and Teradyne Shares Are Soaring, What You Need To Know",
+   "value": {
+    "headline": "Seagate, Western Digital, FormFactor, Amkor, and Teradyne Shares Are Soaring, What You Need To Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784666786,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/seagate-western-digital-formfactor-amkor-204626885.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/seagate-western-digital-formfactor-amkor-204626885.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
+   "value": {
+    "total_shares": 28718,
+    "days": 7,
+    "max_shares": 22141,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-07-22",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

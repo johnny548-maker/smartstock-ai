@@ -1,17 +1,9 @@
 {
  "stock": "6284.TWO",
  "name": "佳邦",
- "price": 82.5,
- "change_pct": 5.77,
+ "price": 83.4,
+ "change_pct": 1.09,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 77.7,
-   "h": 77.9,
-   "l": 74.66,
-   "c": 75.35,
-   "v": 1212026
-  },
   {
    "time": "2026-04-28",
    "o": 75.64,
@@ -482,23 +474,30 @@
    "h": 83.9,
    "l": 78.3,
    "c": 82.5,
-   "v": 2653623
+   "v": 2617200
+  },
+  {
+   "time": "2026-07-22",
+   "o": 84.6,
+   "h": 86.5,
+   "l": 83.3,
+   "c": 83.4,
+   "v": 2174414
   }
  ],
  "sr": {
-  "price": 82.5,
+  "price": 83.4,
   "resistance": [
-   82.54,
-   82.83
+   83.79,
+   84.18
   ],
   "support": [
-   80.06,
-   79.08
+   82.81,
+   80.06
   ],
   "strong_support": 54.24
  },
  "spark": [
-  75.35,
   77.31,
   76.53,
   73.98,
@@ -557,10 +556,11 @@
   88.8,
   81.1,
   78.0,
-  82.5
+  82.5,
+  83.4
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -705854,
+    "foreign": -65795,
     "trust": 0,
-    "dealer": 5635,
-    "total": -700219
+    "dealer": 1089,
+    "total": -64706
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.29,
+    "yield": 2.27,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

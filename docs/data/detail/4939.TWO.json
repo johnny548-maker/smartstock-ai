@@ -1,17 +1,9 @@
 {
  "stock": "4939.TWO",
  "name": "亞電",
- "price": 72.8,
- "change_pct": 9.97,
+ "price": 70.9,
+ "change_pct": -2.61,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 41.55,
-   "h": 42.2,
-   "l": 38.32,
-   "c": 39.86,
-   "v": 1657560
-  },
   {
    "time": "2026-04-28",
    "o": 40.31,
@@ -482,12 +474,23 @@
    "h": 72.8,
    "l": 67.1,
    "c": 72.8,
-   "v": 36481889
+   "v": 36359120
+  },
+  {
+   "time": "2026-07-22",
+   "o": 76.9,
+   "h": 78.2,
+   "l": 70.3,
+   "c": 70.9,
+   "v": 73605616
   }
  ],
  "sr": {
-  "price": 72.8,
-  "resistance": [],
+  "price": 70.9,
+  "resistance": [
+   71.4,
+   72.1
+  ],
   "support": [
    58.7,
    53.2
@@ -495,7 +498,6 @@
   "strong_support": 14.84
  },
  "spark": [
-  39.86,
   43.3,
   43.84,
   43.69,
@@ -554,10 +556,11 @@
   66.8,
   60.2,
   66.2,
-  72.8
+  72.8,
+  70.9
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -567,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -903519,
+    "foreign": 714113,
     "trust": 0,
-    "dealer": 214127,
-    "total": -689392
+    "dealer": -85454,
+    "total": 628659
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -582,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.34,
+    "yield": 0.35,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   },
   {
@@ -597,41 +600,6 @@
    "severity": "info",
    "as_of": "20260717",
    "note": "大戶持股%=36.47；WoW+4.58；股東人數-799"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-   "value": {
-    "headline": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784626424,
-    "url": "cnyes:6541661",
-    "urls": [
-     "cnyes:6541661"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {

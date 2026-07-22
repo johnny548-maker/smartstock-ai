@@ -1,17 +1,9 @@
 {
  "stock": "3230.TWO",
  "name": "錦明",
- "price": 47.25,
- "change_pct": 9.88,
+ "price": 42.55,
+ "change_pct": -9.95,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 37.5,
-   "h": 37.5,
-   "l": 36.15,
-   "c": 36.3,
-   "v": 748002
-  },
   {
    "time": "2026-04-28",
    "o": 36.35,
@@ -482,23 +474,30 @@
    "h": 47.3,
    "l": 40.0,
    "c": 47.25,
-   "v": 3635000
+   "v": 3615738
+  },
+  {
+   "time": "2026-07-22",
+   "o": 46.75,
+   "h": 47.2,
+   "l": 42.55,
+   "c": 42.55,
+   "v": 4397087
   }
  ],
  "sr": {
-  "price": 47.25,
+  "price": 42.55,
   "resistance": [
-   52.24,
-   52.54
+   42.7,
+   43.35
   ],
   "support": [
-   46.83,
-   45.9
+   39.6,
+   38.55
   ],
   "strong_support": 18.42
  },
  "spark": [
-  36.3,
   36.2,
   35.2,
   35.5,
@@ -557,10 +556,11 @@
   50.5,
   45.45,
   43.0,
-  47.25
+  47.25,
+  42.55
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -464680,
+    "foreign": -1172837,
     "trust": 0,
-    "dealer": 710,
-    "total": -463970
+    "dealer": -674,
+    "total": -1173511
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,43 +589,8 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-   "value": {
-    "headline": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784626424,
-    "url": "cnyes:6541661",
-    "urls": [
-     "cnyes:6541661"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {

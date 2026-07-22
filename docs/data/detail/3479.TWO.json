@@ -1,17 +1,9 @@
 {
  "stock": "3479.TWO",
  "name": "安勤",
- "price": 148.5,
- "change_pct": 10.0,
+ "price": 150.0,
+ "change_pct": 1.01,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 88.61,
-   "h": 88.61,
-   "l": 87.16,
-   "c": 88.32,
-   "v": 246031
-  },
   {
    "time": "2026-04-28",
    "o": 88.32,
@@ -482,11 +474,19 @@
    "h": 148.5,
    "l": 135.0,
    "c": 148.5,
-   "v": 3092593
+   "v": 3047536
+  },
+  {
+   "time": "2026-07-22",
+   "o": 152.5,
+   "h": 162.0,
+   "l": 149.0,
+   "c": 150.0,
+   "v": 8114374
   }
  ],
  "sr": {
-  "price": 148.5,
+  "price": 150.0,
   "resistance": [
    151.0
   ],
@@ -497,7 +497,6 @@
   "strong_support": 75.91
  },
  "spark": [
-  88.32,
   89.0,
   87.84,
   87.84,
@@ -556,10 +555,11 @@
   146.0,
   137.5,
   135.0,
-  148.5
+  148.5,
+  150.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 842274,
-    "trust": 0,
-    "dealer": -11031,
-    "total": 831243
+    "foreign": 459069,
+    "trust": -1806,
+    "dealer": 18683,
+    "total": 475946
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.11,
+    "yield": 3.08,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   },
   {

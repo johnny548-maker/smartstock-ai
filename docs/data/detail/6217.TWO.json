@@ -1,17 +1,9 @@
 {
  "stock": "6217.TWO",
  "name": "中探針",
- "price": 169.0,
- "change_pct": -4.52,
+ "price": 172.5,
+ "change_pct": 2.07,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 300.0,
-   "h": 300.0,
-   "l": 272.0,
-   "c": 280.0,
-   "v": 1669774
-  },
   {
    "time": "2026-04-28",
    "o": 278.0,
@@ -482,11 +474,19 @@
    "h": 185.0,
    "l": 159.5,
    "c": 169.0,
-   "v": 16596369
+   "v": 16219994
+  },
+  {
+   "time": "2026-07-22",
+   "o": 175.5,
+   "h": 185.5,
+   "l": 171.0,
+   "c": 172.5,
+   "v": 9468909
   }
  ],
  "sr": {
-  "price": 169.0,
+  "price": 172.5,
   "resistance": [
    185.5,
    201.5
@@ -498,7 +498,6 @@
   "strong_support": 21.3
  },
  "spark": [
-  280.0,
   269.5,
   265.0,
   278.0,
@@ -557,10 +556,11 @@
   218.0,
   196.5,
   177.0,
-  169.0
+  169.0,
+  172.5
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 97829,
+    "foreign": 665846,
     "trust": 0,
-    "dealer": -6620,
-    "total": 91209
+    "dealer": 177,
+    "total": 666023
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

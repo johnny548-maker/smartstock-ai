@@ -1,17 +1,9 @@
 {
  "stock": "5328.TWO",
  "name": "華容",
- "price": 60.3,
- "change_pct": 9.84,
+ "price": 66.3,
+ "change_pct": 9.95,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 23.95,
-   "h": 24.05,
-   "l": 22.75,
-   "c": 23.6,
-   "v": 2270191
-  },
   {
    "time": "2026-04-28",
    "o": 24.45,
@@ -482,11 +474,19 @@
    "h": 60.3,
    "l": 56.6,
    "c": 60.3,
-   "v": 6468340
+   "v": 6446525
+  },
+  {
+   "time": "2026-07-22",
+   "o": 65.0,
+   "h": 66.3,
+   "l": 64.5,
+   "c": 66.3,
+   "v": 6569620
   }
  ],
  "sr": {
-  "price": 60.3,
+  "price": 66.3,
   "resistance": [
    88.8
   ],
@@ -497,7 +497,6 @@
   "strong_support": 10.34
  },
  "spark": [
-  23.6,
   25.95,
   25.0,
   24.55,
@@ -556,10 +555,11 @@
   67.0,
   60.3,
   54.9,
-  60.3
+  60.3,
+  66.3
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,13 +569,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -531000,
+    "foreign": 1055000,
     "trust": 0,
-    "dealer": -453,
-    "total": -531453
+    "dealer": 44791,
+    "total": 1099791
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -584,11 +584,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.58,
+    "yield": 0.53,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   },
   {
@@ -599,41 +599,6 @@
    "severity": "info",
    "as_of": "20260717",
    "note": "大戶持股%=41.81；WoW+0.02；股東人數-24"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-   "value": {
-    "headline": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784626424,
-    "url": "cnyes:6541661",
-    "urls": [
-     "cnyes:6541661"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {

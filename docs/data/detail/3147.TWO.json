@@ -1,17 +1,9 @@
 {
  "stock": "3147.TWO",
  "name": "大綜",
- "price": 228.5,
- "change_pct": 9.86,
+ "price": 230.0,
+ "change_pct": 0.66,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 184.0,
-   "h": 184.0,
-   "l": 172.5,
-   "c": 172.5,
-   "v": 393353
-  },
   {
    "time": "2026-04-28",
    "o": 172.5,
@@ -482,11 +474,19 @@
    "h": 228.5,
    "l": 210.5,
    "c": 228.5,
-   "v": 1010343
+   "v": 990000
+  },
+  {
+   "time": "2026-07-22",
+   "o": 231.0,
+   "h": 240.0,
+   "l": 225.5,
+   "c": 230.0,
+   "v": 1799513
   }
  ],
  "sr": {
-  "price": 228.5,
+  "price": 230.0,
   "resistance": [
    244.5,
    263.71
@@ -498,7 +498,6 @@
   "strong_support": 83.87
  },
  "spark": [
-  172.5,
   170.5,
   170.0,
   172.0,
@@ -557,10 +556,11 @@
   232.0,
   217.0,
   208.0,
-  228.5
+  228.5,
+  230.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 227000,
+    "foreign": -251950,
     "trust": 0,
-    "dealer": 5690,
-    "total": 232690
+    "dealer": -69774,
+    "total": -321724
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.84,
+    "yield": 2.83,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

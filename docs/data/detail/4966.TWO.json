@@ -1,17 +1,9 @@
 {
  "stock": "4966.TWO",
  "name": "譜瑞-KY",
- "price": 583.0,
- "change_pct": 2.82,
+ "price": 612.0,
+ "change_pct": 4.97,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 651.0,
-   "h": 652.0,
-   "l": 608.0,
-   "c": 615.0,
-   "v": 4618464
-  },
   {
    "time": "2026-04-28",
    "o": 608.0,
@@ -482,23 +474,30 @@
    "h": 583.0,
    "l": 569.0,
    "c": 583.0,
-   "v": 558385
+   "v": 542934
+  },
+  {
+   "time": "2026-07-22",
+   "o": 593.0,
+   "h": 618.0,
+   "l": 593.0,
+   "c": 612.0,
+   "v": 646259
   }
  ],
  "sr": {
-  "price": 583.0,
+  "price": 612.0,
   "resistance": [
-   591.85,
-   592.52
+   641.91,
+   657.62
   ],
   "support": [
-   578.26,
-   565.37
+   611.92,
+   602.0
   ],
   "strong_support": 435.91
  },
  "spark": [
-  615.0,
   588.0,
   568.0,
   575.0,
@@ -557,10 +556,11 @@
   631.0,
   585.0,
   567.0,
-  583.0
+  583.0,
+  612.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 29182,
+    "foreign": 223246,
     "trust": 0,
-    "dealer": 7460,
-    "total": 36642
+    "dealer": 16201,
+    "total": 239447
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 3.03,
+    "yield": 2.89,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

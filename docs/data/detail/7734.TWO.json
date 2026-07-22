@@ -1,17 +1,9 @@
 {
  "stock": "7734.TWO",
  "name": "印能科技",
- "price": 3115.0,
- "change_pct": 9.88,
+ "price": 3130.0,
+ "change_pct": 0.48,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 3587.54,
-   "h": 3627.29,
-   "l": 3368.9,
-   "c": 3368.9,
-   "v": 901010
-  },
   {
    "time": "2026-04-28",
    "o": 3204.93,
@@ -482,11 +474,19 @@
    "h": 3115.0,
    "l": 2865.0,
    "c": 3115.0,
-   "v": 389839
+   "v": 373137
+  },
+  {
+   "time": "2026-07-22",
+   "o": 3165.0,
+   "h": 3330.0,
+   "l": 3120.0,
+   "c": 3130.0,
+   "v": 446942
   }
  ],
  "sr": {
-  "price": 3115.0,
+  "price": 3130.0,
   "resistance": [
    3249.65,
    3270.0
@@ -498,7 +498,6 @@
   "strong_support": 615.38
  },
  "spark": [
-  3368.9,
   3319.22,
   3239.71,
   3383.81,
@@ -557,10 +556,11 @@
   3160.0,
   2850.0,
   2835.0,
-  3115.0
+  3115.0,
+  3130.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 119001,
-    "trust": -24000,
-    "dealer": 4690,
-    "total": 99691
+    "foreign": 4712,
+    "trust": 57000,
+    "dealer": 1546,
+    "total": 63258
    },
-   "severity": "info",
-   "as_of": "2026-07-21",
+   "severity": "warn",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.64,
+    "yield": 0.63,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

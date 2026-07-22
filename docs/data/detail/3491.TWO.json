@@ -1,17 +1,9 @@
 {
  "stock": "3491.TWO",
  "name": "昇達科",
- "price": 1185.0,
- "change_pct": -2.87,
+ "price": 1300.0,
+ "change_pct": 9.7,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 1650.0,
-   "h": 1650.0,
-   "l": 1520.0,
-   "c": 1605.0,
-   "v": 1948248
-  },
   {
    "time": "2026-04-28",
    "o": 1630.0,
@@ -482,23 +474,30 @@
    "h": 1215.0,
    "l": 1160.0,
    "c": 1185.0,
-   "v": 1256877
+   "v": 1166682
+  },
+  {
+   "time": "2026-07-22",
+   "o": 1280.0,
+   "h": 1300.0,
+   "l": 1250.0,
+   "c": 1300.0,
+   "v": 1321724
   }
  ],
  "sr": {
-  "price": 1185.0,
+  "price": 1300.0,
   "resistance": [
    1330.0,
    1405.0
   ],
   "support": [
-   1155.0,
-   1125.0
+   1250.0,
+   1230.0
   ],
   "strong_support": 238.62
  },
  "spark": [
-  1605.0,
   1620.0,
   1555.0,
   1550.0,
@@ -557,10 +556,11 @@
   1310.0,
   1355.0,
   1220.0,
-  1185.0
+  1185.0,
+  1300.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -127400,
-    "trust": 40000,
-    "dealer": 679,
-    "total": -86721
+    "foreign": 53812,
+    "trust": -2000,
+    "dealer": 2466,
+    "total": 54278
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -585,11 +585,11 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 0.57,
+    "yield": 0.52,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

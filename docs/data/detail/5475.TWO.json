@@ -1,17 +1,9 @@
 {
  "stock": "5475.TWO",
  "name": "德宏",
- "price": 146.5,
- "change_pct": -0.34,
+ "price": 153.0,
+ "change_pct": 4.44,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 331.5,
-   "h": 331.5,
-   "l": 302.0,
-   "c": 308.5,
-   "v": 2510541
-  },
   {
    "time": "2026-04-28",
    "o": 315.0,
@@ -482,11 +474,19 @@
    "h": 152.5,
    "l": 141.5,
    "c": 146.5,
-   "v": 3432169
+   "v": 3370006
+  },
+  {
+   "time": "2026-07-22",
+   "o": 150.5,
+   "h": 157.0,
+   "l": 149.0,
+   "c": 153.0,
+   "v": 2630932
   }
  ],
  "sr": {
-  "price": 146.5,
+  "price": 153.0,
   "resistance": [
    218.0,
    220.0
@@ -498,7 +498,6 @@
   "strong_support": 9.4
  },
  "spark": [
-  308.5,
   339.0,
   356.0,
   358.0,
@@ -557,10 +556,11 @@
   175.5,
   158.0,
   147.0,
-  146.5
+  146.5,
+  153.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 375360,
-    "trust": -130000,
-    "dealer": -404,
-    "total": 244956
+    "foreign": 256274,
+    "trust": 0,
+    "dealer": -264,
+    "total": 256010
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

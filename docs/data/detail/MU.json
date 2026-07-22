@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 865.46,
- "change_pct": 1.94,
+ "price": 970.82,
+ "change_pct": 12.17,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 482.21,
-   "h": 493.54,
-   "l": 471.73,
-   "c": 481.65,
-   "v": 38178000
-  },
   {
    "time": "2026-04-24",
    "o": 495.84,
@@ -482,23 +474,30 @@
    "h": 901.0,
    "l": 858.9,
    "c": 865.46,
-   "v": 37486400
+   "v": 37705200
+  },
+  {
+   "time": "2026-07-21",
+   "o": 925.35,
+   "h": 982.88,
+   "l": 916.57,
+   "c": 970.82,
+   "v": 49024700
   }
  ],
  "sr": {
-  "price": 865.46,
+  "price": 970.82,
   "resistance": [
    1035.5,
    1089.12
   ],
   "support": [
-   854.22,
-   652.11
+   891.66,
+   854.22
   ],
   "strong_support": 61.38
  },
  "spark": [
-  481.65,
   496.64,
   524.48,
   504.21,
@@ -557,11 +556,144 @@
   904.28,
   853.2,
   848.95,
-  865.46
+  865.46,
+  970.82
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-20",
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-07-21",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+   "value": {
+    "headline": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784722071,
+    "url": "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Cash-Producing Stocks with Promising Prospects and 1 We Question",
+   "value": {
+    "headline": "2 Cash-Producing Stocks with Promising Prospects and 1 We Question",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784721507,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-promising-115827047.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-promising-115827047.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI Chips Update - NVIDIA and Wowza Tackle Synthetic Video Threats Globally",
+   "value": {
+    "headline": "AI Chips Update - NVIDIA and Wowza Tackle Synthetic Video Threats Globally",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784720423,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ai-chips-nvidia-wowza-tackle-114023050.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/ai-chips-nvidia-wowza-tackle-114023050.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Earnings Season Totally Hinges On Great Results From 5 Stocks",
+   "value": {
+    "headline": "Earnings Season Totally Hinges On Great Results From 5 Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784719100,
+    "url": "https://finance.yahoo.com/m/00e83348-bd1b-3142-a5d0-9d69ca49bfb1/earnings-season-totally.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/00e83348-bd1b-3142-a5d0-9d69ca49bfb1/earnings-season-totally.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Prediction: Micron and Sandisk Stocks Will Both Plummet After July 30",
+   "value": {
+    "headline": "Prediction: Micron and Sandisk Stocks Will Both Plummet After July 30",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784718300,
+    "url": "https://www.fool.com/investing/2026/07/22/prediction-micron-and-sandisk-stock-will-both-plum/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/22/prediction-micron-and-sandisk-stock-will-both-plum/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-22",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 85963,
+    "days": 6,
+    "max_shares": 63921,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-07-22",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

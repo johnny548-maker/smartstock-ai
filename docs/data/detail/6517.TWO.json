@@ -1,17 +1,9 @@
 {
  "stock": "6517.TWO",
  "name": "保勝光學",
- "price": 74.2,
- "change_pct": -2.75,
+ "price": 70.8,
+ "change_pct": -4.58,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 58.5,
-   "h": 58.5,
-   "l": 56.0,
-   "c": 57.1,
-   "v": 171001
-  },
   {
    "time": "2026-04-28",
    "o": 58.3,
@@ -482,23 +474,30 @@
    "h": 79.9,
    "l": 73.7,
    "c": 74.2,
-   "v": 5327205
+   "v": 5305351
+  },
+  {
+   "time": "2026-07-22",
+   "o": 74.9,
+   "h": 76.6,
+   "l": 70.6,
+   "c": 70.8,
+   "v": 2349856
   }
  ],
  "sr": {
-  "price": 74.2,
+  "price": 70.8,
   "resistance": [
-   74.7,
-   74.88
+   71.3,
+   71.45
   ],
   "support": [
-   73.9,
-   71.45
+   69.98,
+   69.3
   ],
   "strong_support": 51.68
  },
  "spark": [
-  57.1,
   57.8,
   57.7,
   57.7,
@@ -557,10 +556,11 @@
   71.0,
   73.9,
   76.3,
-  74.2
+  74.2,
+  70.8
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,27 +570,14 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 34095,
+    "foreign": -23100,
     "trust": 0,
-    "dealer": -729,
-    "total": 33366
+    "dealer": 436,
+    "total": -22664
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
-  },
-  {
-   "source": "tpex",
-   "kind": "chip",
-   "label": "上櫃融資暴增",
-   "value": {
-    "today": 2722,
-    "prev": 2450,
-    "chg": 272
-   },
-   "severity": "warn",
-   "as_of": "2026-07-21",
-   "note": "margin balance surge ≥10%"
   },
   {
    "source": "tpex",
@@ -598,21 +585,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 2.02,
+    "yield": 2.12,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 21.2,
-   "severity": "info",
-   "as_of": "20260717",
-   "note": "大戶持股%=21.20；WoW+1.40；股東人數-186"
   }
  ],
  "trends": {

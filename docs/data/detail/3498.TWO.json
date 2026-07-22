@@ -1,17 +1,9 @@
 {
  "stock": "3498.TWO",
  "name": "陽程",
- "price": 105.5,
- "change_pct": -3.65,
+ "price": 111.5,
+ "change_pct": 5.69,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 79.5,
-   "h": 81.6,
-   "l": 76.3,
-   "c": 77.0,
-   "v": 2031244
-  },
   {
    "time": "2026-04-28",
    "o": 77.0,
@@ -482,11 +474,19 @@
    "h": 113.0,
    "l": 103.5,
    "c": 105.5,
-   "v": 1753872
+   "v": 1734768
+  },
+  {
+   "time": "2026-07-22",
+   "o": 107.5,
+   "h": 112.5,
+   "l": 106.5,
+   "c": 111.5,
+   "v": 1489559
   }
  ],
  "sr": {
-  "price": 105.5,
+  "price": 111.5,
   "resistance": [
    136.0,
    140.0
@@ -498,7 +498,6 @@
   "strong_support": 29.95
  },
  "spark": [
-  77.0,
   80.5,
   79.8,
   87.7,
@@ -557,10 +556,11 @@
   129.5,
   117.0,
   109.5,
-  105.5
+  105.5,
+  111.5
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -570,13 +570,13 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": 11909,
+    "foreign": -99673,
     "trust": 0,
-    "dealer": -87203,
-    "total": -75294
+    "dealer": 44598,
+    "total": -55075
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
   },
   {
@@ -589,7 +589,7 @@
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
   }
  ],

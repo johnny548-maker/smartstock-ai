@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 326.59,
- "change_pct": -2.14,
+ "price": 327.74,
+ "change_pct": 0.35,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 274.8,
-   "h": 275.52,
-   "l": 271.4,
-   "c": 273.18,
-   "v": 33399600
-  },
   {
    "time": "2026-04-24",
    "o": 272.51,
@@ -482,11 +474,19 @@
    "h": 333.71,
    "l": 323.68,
    "c": 326.59,
-   "v": 53396600
+   "v": 53468000
+  },
+  {
+   "time": "2026-07-21",
+   "o": 323.13,
+   "h": 329.6,
+   "l": 322.22,
+   "c": 327.74,
+   "v": 41255200
   }
  ],
  "sr": {
-  "price": 326.59,
+  "price": 327.74,
   "resistance": [],
   "support": [
    305.02,
@@ -495,7 +495,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  273.18,
   270.81,
   267.36,
   270.46,
@@ -554,135 +553,120 @@
   327.5,
   333.26,
   333.74,
-  326.59
+  326.59,
+  327.74
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-20",
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-07-21",
  "fundamental": {
-  "pe_trailing": 40.502426,
-  "pe_forward": 34.625034,
-  "eps_trailing": 8.24,
-  "eps_forward": 9.63869,
-  "stale": true,
+  "pe_trailing": 39.677963,
+  "pe_forward": 34.000923,
+  "eps_trailing": 8.26,
+  "eps_forward": 9.63915,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 326.59,
-  "stop": 309.86,
-  "target": 368.42,
-  "atr_bracket": 368.42,
-  "measured_move": null,
-  "target_band": [
-   368.42
-  ],
-  "stop_pct": -5.1,
-  "target_pct": 12.8,
-  "rr": 2.5,
-  "atr_pct": 2.6,
-  "swing_stop": 309.4,
-  "chandelier": 309.18,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
+   "label": "OpenAI IPO delayed by Apple threat?",
    "value": {
-    "headline": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
+    "headline": "OpenAI IPO delayed by Apple threat?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784633400,
-    "url": "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss",
+    "ts": 1784718000,
+    "url": "https://finance.yahoo.com/video/openai-ipo-delayed-apple-threat-110000269.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss"
+     "https://finance.yahoo.com/video/openai-ipo-delayed-apple-threat-110000269.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AAPL Stock Hits Historic 11x Sales Valuation Ahead of Tim Cook's Final Earnings Call as Apple CEO",
+   "label": "Intel results to test if AI-fueled rally has room to run",
    "value": {
-    "headline": "AAPL Stock Hits Historic 11x Sales Valuation Ahead of Tim Cook's Final Earnings Call as Apple CEO",
+    "headline": "Intel results to test if AI-fueled rally has room to run",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784629589,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aapl-stock-hits-historic-11x-102629358.html?.tsrc=rss",
+    "ts": 1784715297,
+    "url": "https://finance.yahoo.com/technology/articles/intel-results-test-ai-fueled-101457897.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aapl-stock-hits-historic-11x-102629358.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/intel-results-test-ai-fueled-101457897.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "China’s New AI Breakthrough Shows Tim Cook’s Risky Final Bet Might Actually Be Genius",
+   "label": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
    "value": {
-    "headline": "China’s New AI Breakthrough Shows Tim Cook’s Risky Final Bet Might Actually Be Genius",
+    "headline": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784628620,
-    "url": "https://247wallst.com/investing/2026/07/21/chinas-new-ai-breakthrough-shows-tim-cooks-risky-final-bet-might-actually-be-genius/?.tsrc=rss",
+    "ts": 1784712120,
+    "url": "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/07/21/chinas-new-ai-breakthrough-shows-tim-cooks-risky-final-bet-might-actually-be-genius/?.tsrc=rss"
+     "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction markets favour Nvidia to stay on top despite Apple's charge",
+   "label": "Apple vs. Nvidia: Which Is the Better Megacap Stock to Buy?",
    "value": {
-    "headline": "Prediction markets favour Nvidia to stay on top despite Apple's charge",
+    "headline": "Apple vs. Nvidia: Which Is the Better Megacap Stock to Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784628060,
-    "url": "https://www.proactiveinvestors.com/companies/news/1095762/prediction-markets-favour-nvidia-to-stay-on-top-despite-apple-s-charge-1095762.html?.tsrc=rss",
+    "ts": 1784708520,
+    "url": "https://www.fool.com/investing/2026/07/22/apple-vs-nvidia-which-is-the-better-stock-to-buy/?.tsrc=rss",
     "urls": [
-     "https://www.proactiveinvestors.com/companies/news/1095762/prediction-markets-favour-nvidia-to-stay-on-top-despite-apple-s-charge-1095762.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/22/apple-vs-nvidia-which-is-the-better-stock-to-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alibaba's Apple tie-up adds fuel to China's hottest ETF: Chart of the Day",
+   "label": "Jim Cramer vs. The AI Bears: Why Apple’s Consumer Ecosystem Remains Unbreakable",
    "value": {
-    "headline": "Alibaba's Apple tie-up adds fuel to China's hottest ETF: Chart of the Day",
+    "headline": "Jim Cramer vs. The AI Bears: Why Apple’s Consumer Ecosystem Remains Unbreakable",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784628000,
-    "url": "https://finance.yahoo.com/markets/article/alibabas-apple-tie-up-adds-fuel-to-chinas-hottest-etf-chart-of-the-day-101500518.html?.tsrc=rss",
+    "ts": 1784704987,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-vs-ai-bears-072307994.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/alibabas-apple-tie-up-adds-fuel-to-chinas-hottest-etf-chart-of-the-day-101500518.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-vs-ai-bears-072307994.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -697,22 +681,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 193 分 / 122 留言",
+   "label": "HN 討論熱度 20 篇 / 133 分 / 66 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 193,
-    "comments": 122,
+    "points": 133,
+    "comments": 66,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -727,7 +711,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

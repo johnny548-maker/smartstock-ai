@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 402.29,
- "change_pct": 2.15,
+ "price": 397.75,
+ "change_pct": -1.13,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 418.98,
-   "h": 422.74,
-   "l": 410.52,
-   "c": 414.85,
-   "v": 38308000
-  },
   {
    "time": "2026-04-24",
    "o": 416.07,
@@ -482,23 +474,30 @@
    "h": 403.18,
    "l": 389.65,
    "c": 402.29,
-   "v": 27863300
+   "v": 27915800
+  },
+  {
+   "time": "2026-07-21",
+   "o": 398.81,
+   "h": 401.47,
+   "l": 396.32,
+   "c": 397.75,
+   "v": 24054000
   }
  ],
  "sr": {
-  "price": 402.29,
+  "price": 397.75,
   "resistance": [
-   406.61,
-   412.16
+   405.99,
+   406.61
   ],
   "support": [
-   400.01,
-   397.15
+   397.15,
+   392.78
   ],
   "strong_support": 349.2
  },
  "spark": [
-  414.85,
   423.7,
   423.9,
   428.32,
@@ -557,16 +556,17 @@
   395.63,
   401.1,
   393.82,
-  402.29
+  402.29,
+  397.75
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-20",
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-07-21",
  "fundamental": {
-  "pe_trailing": 23.469606,
-  "pe_forward": 20.324642,
+  "pe_trailing": 23.703814,
+  "pe_forward": 20.524996,
   "eps_trailing": 16.78,
-  "eps_forward": 19.37648,
-  "stale": true,
+  "eps_forward": 19.37881,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here Are Tuesday’s Top Wall Street Analyst Research Calls: Adobe, Datadog, Five Below, Fortinet, Gilead Sciences, Goldma",
+   "label": "Google Earnings Due. Cloud Growth Could Frame AI Debate For Big Tech.",
    "value": {
-    "headline": "Here Are Tuesday’s Top Wall Street Analyst Research Calls: Adobe, Datadog, Five Below, Fortinet, Gilead Sciences, Goldman Sachs, Microsoft, Salesforce, and More",
+    "headline": "Google Earnings Due. Cloud Growth Could Frame AI Debate For Big Tech.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784634104,
-    "url": "https://247wallst.com/investing/2026/07/21/here-are-tuesdays-top-wall-street-analyst-research-calls-adobe-datadog-five-below-fortinet-gilead-sciences-goldman-sachs-microsoft-salesforce-and-more/?.tsrc=rss",
+    "ts": 1784721653,
+    "url": "https://finance.yahoo.com/m/295035f0-ab1b-3040-b39e-749f64665e5b/google-earnings-due.-cloud.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/07/21/here-are-tuesdays-top-wall-street-analyst-research-calls-adobe-datadog-five-below-fortinet-gilead-sciences-goldman-sachs-microsoft-salesforce-and-more/?.tsrc=rss"
+     "https://finance.yahoo.com/m/295035f0-ab1b-3040-b39e-749f64665e5b/google-earnings-due.-cloud.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
+   "label": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
    "value": {
-    "headline": "Apple and Nvidia Vie for the Position as the World's Biggest Company: Which Is the Better Buy Now?",
+    "headline": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784633400,
-    "url": "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss",
+    "ts": 1784721600,
+    "url": "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/21/apple-and-nvidia-vie-for-the-position-as-the-world/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-07-21",
+   "severity": "warn",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mining Company IREN Limited (IREN) Jumps 20% on $2.8 Billion AI Deal",
+   "label": "Manulife Expands Partnership with Microsoft to Accelerate Enterprise AI Governance and Innovation",
    "value": {
-    "headline": "Mining Company IREN Limited (IREN) Jumps 20% on $2.8 Billion AI Deal",
+    "headline": "Manulife Expands Partnership with Microsoft to Accelerate Enterprise AI Governance and Innovation",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784632242,
-    "url": "https://beincrypto.com/iren-stock-ai-cloud-deal-surge/?.tsrc=rss",
+    "ts": 1784721600,
+    "url": "https://finance.yahoo.com/technology/ai/articles/manulife-expands-partnership-microsoft-accelerate-120000461.html?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/iren-stock-ai-cloud-deal-surge/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/manulife-expands-partnership-microsoft-accelerate-120000461.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: Broadcom Stock Will Be Worth More Than Apple and Microsoft 10 Years From Now",
+   "label": "Oracle severed 21,000 employees during an AI spending spree, then hit a $7 billion Wisconsin power hurdle",
    "value": {
-    "headline": "Prediction: Broadcom Stock Will Be Worth More Than Apple and Microsoft 10 Years From Now",
+    "headline": "Oracle severed 21,000 employees during an AI spending spree, then hit a $7 billion Wisconsin power hurdle",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784623800,
-    "url": "https://www.fool.com/investing/2026/07/21/predict-broadcom-stock-worth-more-apple-microsoft/?.tsrc=rss",
+    "ts": 1784720700,
+    "url": "https://finance.yahoo.com/technology/ai/articles/oracle-severed-21-000-employees-114500493.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/21/predict-broadcom-stock-worth-more-apple-microsoft/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/oracle-severed-21-000-employees-114500493.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ADBE Stock Is Falling Again But Here’s Why One Wall Street Analyst Sees A 31% Upside",
+   "label": "Will SpaceX buy Tesla? Musk may soon offer clues on his plans",
    "value": {
-    "headline": "ADBE Stock Is Falling Again But Here’s Why One Wall Street Analyst Sees A 31% Upside",
+    "headline": "Will SpaceX buy Tesla? Musk may soon offer clues on his plans",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784621364,
-    "url": "https://stocktwits.com/news-articles/markets/equity/adbe-stock-is-falling-again-here-s-why-one-wall-street-analyst-sees-a-31-upside/cZZS2aZR7Hq?.tsrc=rss",
+    "ts": 1784718025,
+    "url": "https://www.cnn.com/2026/07/22/business/will-spacex-buy-tesla?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/adbe-stock-is-falling-again-here-s-why-one-wall-street-analyst-sees-a-31-upside/cZZS2aZR7Hq?.tsrc=rss"
+     "https://www.cnn.com/2026/07/22/business/will-spacex-buy-tesla?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

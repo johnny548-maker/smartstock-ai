@@ -1,17 +1,9 @@
 {
  "stock": "3577.TWO",
  "name": "泓格",
- "price": 157.0,
- "change_pct": 9.79,
+ "price": 152.0,
+ "change_pct": -3.18,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 82.34,
-   "h": 84.7,
-   "l": 80.07,
-   "c": 81.75,
-   "v": 322100
-  },
   {
    "time": "2026-04-28",
    "o": 81.85,
@@ -482,11 +474,19 @@
    "h": 157.0,
    "l": 138.0,
    "c": 157.0,
-   "v": 4935240
+   "v": 4761867
+  },
+  {
+   "time": "2026-07-22",
+   "o": 157.0,
+   "h": 169.0,
+   "l": 150.0,
+   "c": 152.0,
+   "v": 5500712
   }
  ],
  "sr": {
-  "price": 157.0,
+  "price": 152.0,
   "resistance": [
    170.88
   ],
@@ -497,7 +497,6 @@
   "strong_support": 43.9
  },
  "spark": [
-  81.75,
   80.47,
   81.06,
   85.98,
@@ -556,10 +555,11 @@
   138.5,
   130.0,
   143.0,
-  157.0
+  157.0,
+  152.0
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -569,14 +569,27 @@
    "kind": "inst",
    "label": "上櫃三大法人淨額",
    "value": {
-    "foreign": -483755,
+    "foreign": 272396,
     "trust": 0,
-    "dealer": 75547,
-    "total": -408208
+    "dealer": 52080,
+    "total": 324476
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC 3-institution daily net"
+  },
+  {
+   "source": "tpex",
+   "kind": "chip",
+   "label": "上櫃融資暴增",
+   "value": {
+    "today": 1971,
+    "prev": 1519,
+    "chg": 452
+   },
+   "severity": "warn",
+   "as_of": "2026-07-22",
+   "note": "margin balance surge ≥10%"
   },
   {
    "source": "tpex",
@@ -584,56 +597,12 @@
    "label": "上櫃本益比/殖利率/PB",
    "value": {
     "per": null,
-    "yield": 1.27,
+    "yield": 1.32,
     "pbr": null
    },
    "severity": "info",
-   "as_of": "2026-07-21",
+   "as_of": "2026-07-22",
    "note": "OTC valuation context"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 68.7,
-   "severity": "info",
-   "as_of": "20260717",
-   "note": "大戶持股%=68.70；WoW+1.34；股東人數-156"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-   "value": {
-    "headline": "【量大強漲股整理】【警告散戶】台股大反彈你又被洗下車了?【6505台塑化】⊕!【1810和成】⊕【3576聯合再生】+6%,軋空手行情才剛開始嗎?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784626424,
-    "url": "cnyes:6541661",
-    "urls": [
-     "cnyes:6541661"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
