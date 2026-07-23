@@ -1,8 +1,8 @@
 {
  "stock": "6838.TW",
  "name": "台新藥",
- "price": 23.45,
- "change_pct": 0.0,
+ "price": 23.85,
+ "change_pct": 1.71,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -179,16 +179,27 @@
    "l": 23.4,
    "c": 23.45,
    "v": 80305
+  },
+  {
+   "time": "2026-07-23",
+   "o": 23.45,
+   "h": 24.45,
+   "l": 23.35,
+   "c": 23.85,
+   "v": 119585
   }
  ],
  "sr": {
-  "price": 23.45,
+  "price": 23.85,
   "resistance": [
    24.65,
    25.8
   ],
-  "support": [],
-  "strong_support": 23.45
+  "support": [
+   23.45,
+   22.8
+  ],
+  "strong_support": 22.8
  },
  "spark": [
   24.65,
@@ -212,10 +223,11 @@
   24.0,
   22.8,
   23.45,
-  23.45
+  23.45,
+  23.85
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-22",
+ "spark_end": "2026-07-23",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

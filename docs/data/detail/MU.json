@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 970.82,
- "change_pct": 12.17,
+ "price": 959.48,
+ "change_pct": -1.17,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 495.84,
-   "h": 506.91,
-   "l": 489.28,
-   "c": 496.64,
-   "v": 35379600
-  },
   {
    "time": "2026-04-27",
    "o": 510.48,
@@ -482,11 +474,19 @@
    "h": 982.88,
    "l": 916.57,
    "c": 970.82,
-   "v": 49024700
+   "v": 49369000
+  },
+  {
+   "time": "2026-07-22",
+   "o": 938.25,
+   "h": 982.62,
+   "l": 936.06,
+   "c": 959.48,
+   "v": 31165700
   }
  ],
  "sr": {
-  "price": 970.82,
+  "price": 959.48,
   "resistance": [
    1035.5,
    1089.12
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  496.64,
   524.48,
   504.21,
   518.38,
@@ -557,10 +556,11 @@
   853.2,
   848.95,
   865.46,
-  970.82
+  970.82,
+  959.48
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -568,101 +568,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+   "label": "Social Buzz: Wallstreetbets Stocks Mixed Pre-Bell Thursday; ServiceNow to Advance, Tesla to Decline",
    "value": {
-    "headline": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+    "headline": "Social Buzz: Wallstreetbets Stocks Mixed Pre-Bell Thursday; ServiceNow to Advance, Tesla to Decline",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784722071,
-    "url": "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
+    "ts": 1784802964,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mixed-103604401.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mixed-103604401.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "2 Cash-Producing Stocks with Promising Prospects and 1 We Question",
+   "label": "Intel Needs More Than Blowout Earnings as Chips Rally Falters",
    "value": {
-    "headline": "2 Cash-Producing Stocks with Promising Prospects and 1 We Question",
+    "headline": "Intel Needs More Than Blowout Earnings as Chips Rally Falters",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784721507,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-promising-115827047.html?.tsrc=rss",
+    "ts": 1784795756,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/intel-needs-more-blowout-earnings-083556946.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-promising-115827047.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/intel-needs-more-blowout-earnings-083556946.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Chips Update - NVIDIA and Wowza Tackle Synthetic Video Threats Globally",
+   "label": "Micron and Sandisk Are Surging: Can the Rally Last Through 2027?",
    "value": {
-    "headline": "AI Chips Update - NVIDIA and Wowza Tackle Synthetic Video Threats Globally",
+    "headline": "Micron and Sandisk Are Surging: Can the Rally Last Through 2027?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784720423,
-    "url": "https://finance.yahoo.com/technology/ai/articles/ai-chips-nvidia-wowza-tackle-114023050.html?.tsrc=rss",
+    "ts": 1784794500,
+    "url": "https://www.fool.com/investing/2026/07/23/micron-sandisk-stock-surging-can-rally-last/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/ai-chips-nvidia-wowza-tackle-114023050.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/23/micron-sandisk-stock-surging-can-rally-last/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Earnings Season Totally Hinges On Great Results From 5 Stocks",
+   "label": "Prediction: Micron Will Hit $1,400 in 2027. Here's the Math.",
    "value": {
-    "headline": "Earnings Season Totally Hinges On Great Results From 5 Stocks",
+    "headline": "Prediction: Micron Will Hit $1,400 in 2027. Here's the Math.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784719100,
-    "url": "https://finance.yahoo.com/m/00e83348-bd1b-3142-a5d0-9d69ca49bfb1/earnings-season-totally.html?.tsrc=rss",
+    "ts": 1784793900,
+    "url": "https://www.fool.com/investing/2026/07/23/prediction-micron-will-hit-1400-in-2027-heres-the/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/00e83348-bd1b-3142-a5d0-9d69ca49bfb1/earnings-season-totally.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/23/prediction-micron-will-hit-1400-in-2027-heres-the/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: Micron and Sandisk Stocks Will Both Plummet After July 30",
+   "label": "Intel CFO David Zinsner Said Supply Would Improve 'Through the Rest of the Year' — Q2 Earnings Will Test That",
    "value": {
-    "headline": "Prediction: Micron and Sandisk Stocks Will Both Plummet After July 30",
+    "headline": "Intel CFO David Zinsner Said Supply Would Improve 'Through the Rest of the Year' — Q2 Earnings Will Test That",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784718300,
-    "url": "https://www.fool.com/investing/2026/07/22/prediction-micron-and-sandisk-stock-will-both-plum/?.tsrc=rss",
+    "ts": 1784791770,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/intel-cfo-david-zinsner-said-072930722.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/22/prediction-micron-and-sandisk-stock-will-both-plum/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/intel-cfo-david-zinsner-said-072930722.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -677,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

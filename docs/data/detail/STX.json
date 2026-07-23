@@ -1,17 +1,9 @@
 {
  "stock": "STX",
  "name": "Seagate Technology",
- "price": 891.83,
- "change_pct": 11.14,
+ "price": 908.1,
+ "change_pct": 1.82,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 592.28,
-   "h": 599.55,
-   "l": 578.01,
-   "c": 585.83,
-   "v": 2704100
-  },
   {
    "time": "2026-04-27",
    "o": 598.88,
@@ -482,11 +474,19 @@
    "h": 899.95,
    "l": 844.87,
    "c": 891.83,
-   "v": 6055000
+   "v": 6062900
+  },
+  {
+   "time": "2026-07-22",
+   "o": 861.71,
+   "h": 921.38,
+   "l": 855.19,
+   "c": 908.1,
+   "v": 5255800
   }
  ],
  "sr": {
-  "price": 891.83,
+  "price": 908.1,
   "resistance": [
    937.54,
    966.11
@@ -498,7 +498,6 @@
   "strong_support": 62.34
  },
  "spark": [
-  585.83,
   595.44,
   578.62,
   642.84,
@@ -557,10 +556,11 @@
   745.49,
   787.66,
   802.45,
-  891.83
+  891.83,
+  908.1
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-22",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -568,101 +568,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+   "label": "2 Semiconductor Stocks with Impressive Fundamentals and 1 Facing Challenges",
    "value": {
-    "headline": "Dow Jones Futures Fall As Oil Prices Jump; Two Big AI Earnings Movers With Google, Tesla Earnings Due",
+    "headline": "2 Semiconductor Stocks with Impressive Fundamentals and 1 Facing Challenges",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784722071,
+    "ts": 1784800728,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-impressive-fundamentals-095848992.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-impressive-fundamentals-095848992.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SanDisk's Bold Pivot From AI Boom Beneficiary to Bust Breaker",
+   "value": {
+    "headline": "SanDisk's Bold Pivot From AI Boom Beneficiary to Bust Breaker",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784751140,
+    "url": "https://www.trefis.com/articles/608389/sandisks-bold-pivot-from-ai-boom-beneficiary-to-bust-breaker/2026-07-22?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/608389/sandisks-bold-pivot-from-ai-boom-beneficiary-to-bust-breaker/2026-07-22?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Jim Cramer Defends His Dell Stance as Investors Complain About Missing Out",
+   "value": {
+    "headline": "Jim Cramer Defends His Dell Stance as Investors Complain About Missing Out",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784732143,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-defends-dell-stance-145543736.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-defends-dell-stance-145543736.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Sandisk Trades at 8.3X Discounted P/E: Time to Buy the Stock?",
+   "value": {
+    "headline": "Sandisk Trades at 8.3X Discounted P/E: Time to Buy the Stock?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784725320,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-trades-8-3x-discounted-130200688.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/sandisk-trades-8-3x-discounted-130200688.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Fall As Oil Prices Jump; Two AI Earnings Movers With Google, Tesla Due",
+   "value": {
+    "headline": "Dow Jones Futures Fall As Oil Prices Jump; Two AI Earnings Movers With Google, Tesla Due",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784722377,
     "url": "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
     "urls": [
      "https://finance.yahoo.com/m/a3af1dc6-2e2e-3d9f-8f14-fa68af7a14c9/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Real Signal In SanDisk Stock Was How Bad It Looked",
-   "value": {
-    "headline": "The Real Signal In SanDisk Stock Was How Bad It Looked",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784682247,
-    "url": "https://www.trefis.com/articles/608163/the-real-signal-in-sandisk-stock-was-how-bad-it-looked/2026-07-21?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/608163/the-real-signal-in-sandisk-stock-was-how-bad-it-looked/2026-07-21?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Seagate, Western Digital, FormFactor, Amkor, and Teradyne Shares Are Soaring, What You Need To Know",
-   "value": {
-    "headline": "Seagate, Western Digital, FormFactor, Amkor, and Teradyne Shares Are Soaring, What You Need To Know",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784666786,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/seagate-western-digital-formfactor-amkor-204626885.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/seagate-western-digital-formfactor-amkor-204626885.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "SpaceX, Micron, Western Digital, Sandisk, Danaher, and More Stocks That Explain Today’s Market",
-   "value": {
-    "headline": "SpaceX, Micron, Western Digital, Sandisk, Danaher, and More Stocks That Explain Today’s Market",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784665440,
-    "url": "https://finance.yahoo.com/m/fd4ba479-1ed5-34fa-be84-913a88f1ccad/spacex%2C-micron%2C-western.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/fd4ba479-1ed5-34fa-be84-913a88f1ccad/spacex%2C-micron%2C-western.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Seagate (STX) Stock May Be 34% Undervalued On Fresh AI Demand News",
-   "value": {
-    "headline": "Seagate (STX) Stock May Be 34% Undervalued On Fresh AI Demand News",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784664551,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/seagate-stx-stock-may-34-200911363.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/seagate-stx-stock-may-34-200911363.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -677,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

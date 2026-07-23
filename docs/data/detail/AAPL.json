@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 327.74,
- "change_pct": 0.35,
+ "price": 325.89,
+ "change_pct": -0.56,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 272.51,
-   "h": 272.81,
-   "l": 269.4,
-   "c": 270.81,
-   "v": 38157100
-  },
   {
    "time": "2026-04-27",
    "o": 265.85,
@@ -482,12 +474,22 @@
    "h": 329.6,
    "l": 322.22,
    "c": 327.74,
-   "v": 41255200
+   "v": 41338900
+  },
+  {
+   "time": "2026-07-22",
+   "o": 327.87,
+   "h": 329.0,
+   "l": 323.34,
+   "c": 325.89,
+   "v": 38700500
   }
  ],
  "sr": {
-  "price": 327.74,
-  "resistance": [],
+  "price": 325.89,
+  "resistance": [
+   334.99
+  ],
   "support": [
    305.02,
    287.38
@@ -495,7 +497,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  270.81,
   267.36,
   270.46,
   269.92,
@@ -554,16 +555,17 @@
   333.26,
   333.74,
   326.59,
-  327.74
+  327.74,
+  325.89
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-22",
  "fundamental": {
   "pe_trailing": 39.677963,
   "pe_forward": 34.000923,
   "eps_trailing": 8.26,
   "eps_forward": 9.63915,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -572,131 +574,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI IPO delayed by Apple threat?",
+   "label": "Apple is 'standing out' from the pack: Does it represent the anti-AI trade?",
    "value": {
-    "headline": "OpenAI IPO delayed by Apple threat?",
+    "headline": "Apple is 'standing out' from the pack: Does it represent the anti-AI trade?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784718000,
-    "url": "https://finance.yahoo.com/video/openai-ipo-delayed-apple-threat-110000269.html?.tsrc=rss",
+    "ts": 1784808000,
+    "url": "https://finance.yahoo.com/video/apple-standing-pack-does-represent-120000572.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/openai-ipo-delayed-apple-threat-110000269.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/apple-standing-pack-does-represent-120000572.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel results to test if AI-fueled rally has room to run",
+   "label": "Is Apple Stock a Buy Right Now?",
    "value": {
-    "headline": "Intel results to test if AI-fueled rally has room to run",
+    "headline": "Is Apple Stock a Buy Right Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784715297,
-    "url": "https://finance.yahoo.com/technology/articles/intel-results-test-ai-fueled-101457897.html?.tsrc=rss",
+    "ts": 1784807400,
+    "url": "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/intel-results-test-ai-fueled-101457897.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
+   "label": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
    "value": {
-    "headline": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
+    "headline": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784712120,
-    "url": "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss",
+    "ts": 1784805504,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple vs. Nvidia: Which Is the Better Megacap Stock to Buy?",
+   "label": "Alphabet Stock Is Falling as AI Spending Continues to Mount",
    "value": {
-    "headline": "Apple vs. Nvidia: Which Is the Better Megacap Stock to Buy?",
+    "headline": "Alphabet Stock Is Falling as AI Spending Continues to Mount",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784708520,
-    "url": "https://www.fool.com/investing/2026/07/22/apple-vs-nvidia-which-is-the-better-stock-to-buy/?.tsrc=rss",
+    "ts": 1784800380,
+    "url": "https://finance.yahoo.com/m/61ef1def-7f89-3879-b5f4-6853dbcbdb75/alphabet-stock-is-falling-as.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/22/apple-vs-nvidia-which-is-the-better-stock-to-buy/?.tsrc=rss"
+     "https://finance.yahoo.com/m/61ef1def-7f89-3879-b5f4-6853dbcbdb75/alphabet-stock-is-falling-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jim Cramer vs. The AI Bears: Why Apple’s Consumer Ecosystem Remains Unbreakable",
+   "label": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
    "value": {
-    "headline": "Jim Cramer vs. The AI Bears: Why Apple’s Consumer Ecosystem Remains Unbreakable",
+    "headline": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
     "sources": [
-     "yahoo_us"
+     "cnyes"
     ],
     "source_count": 1,
-    "ts": 1784704987,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-vs-ai-bears-072307994.html?.tsrc=rss",
+    "ts": 1784799306,
+    "url": "cnyes:6544030",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-vs-ai-bears-072307994.html?.tsrc=rss"
+     "cnyes:6544030"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 133 分 / 66 留言",
+   "label": "HN 討論熱度 20 篇 / 131 分 / 63 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 133,
-    "comments": 66,
+    "points": 131,
+    "comments": 63,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -711,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

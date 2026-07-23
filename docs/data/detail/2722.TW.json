@@ -1,8 +1,8 @@
 {
  "stock": "2722.TW",
  "name": "夏都",
- "price": 22.2,
- "change_pct": 0.45,
+ "price": 22.1,
+ "change_pct": -0.45,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -179,16 +179,26 @@
    "l": 22.05,
    "c": 22.2,
    "v": 56680
+  },
+  {
+   "time": "2026-07-23",
+   "o": 22.35,
+   "h": 22.35,
+   "l": 22.0,
+   "c": 22.1,
+   "v": 40185
   }
  ],
  "sr": {
-  "price": 22.2,
+  "price": 22.1,
   "resistance": [
    23.1,
    23.35
   ],
-  "support": [],
-  "strong_support": 22.5
+  "support": [
+   21.85
+  ],
+  "strong_support": 21.85
  },
  "spark": [
   23.3,
@@ -212,10 +222,11 @@
   22.45,
   22.15,
   22.1,
-  22.2
+  22.2,
+  22.1
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-22",
+ "spark_end": "2026-07-23",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

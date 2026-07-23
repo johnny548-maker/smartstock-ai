@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 544.43,
- "change_pct": 8.11,
+ "price": 552.33,
+ "change_pct": 1.45,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 336.76,
-   "h": 352.99,
-   "l": 334.54,
-   "c": 347.81,
-   "v": 81616700
-  },
   {
    "time": "2026-04-27",
    "o": 346.32,
@@ -482,14 +474,22 @@
    "h": 548.14,
    "l": 522.6,
    "c": 544.43,
-   "v": 28967100
+   "v": 29045100
+  },
+  {
+   "time": "2026-07-22",
+   "o": 526.88,
+   "h": 561.47,
+   "l": 526.6,
+   "c": 552.33,
+   "v": 24691200
   }
  ],
  "sr": {
-  "price": 544.43,
+  "price": 552.33,
   "resistance": [
-   546.44,
-   558.37
+   558.37,
+   562.99
   ],
   "support": [
    498.15,
@@ -498,7 +498,6 @@
   "strong_support": 149.22
  },
  "spark": [
-  347.81,
   334.63,
   323.21,
   337.11,
@@ -557,16 +556,17 @@
   500.94,
   495.76,
   503.57,
-  544.43
+  544.43,
+  552.33
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-22",
  "fundamental": {
   "pe_trailing": 182.0836,
   "pe_forward": 40.433754,
   "eps_trailing": 2.99,
   "eps_forward": 13.46474,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
+   "label": "Dow Jones Futures Fall As Oil Prices Top $90; Google, Tesla Skid On Earnings, Capital Spending",
    "value": {
-    "headline": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
+    "headline": "Dow Jones Futures Fall As Oil Prices Top $90; Google, Tesla Skid On Earnings, Capital Spending",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784721600,
-    "url": "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss",
+    "ts": 1784807973,
+    "url": "https://finance.yahoo.com/m/092ff924-f233-311d-95de-ed11a4dabc57/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "INTC, AMD, MU, NVDA: Chip Stocks Tumble Again, Stalling A Nascent Rebound",
-   "value": {
-    "headline": "INTC, AMD, MU, NVDA: Chip Stocks Tumble Again, Stalling A Nascent Rebound",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784714583,
-    "url": "https://stocktwits.com/news-articles/markets/equity/intc-amd-mu-nvda-chip-stocks-tumble-again-stalling-a-nascent-rebound/cZZmX14R7wo?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/intc-amd-mu-nvda-chip-stocks-tumble-again-stalling-a-nascent-rebound/cZZmX14R7wo?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
-   "value": {
-    "headline": "STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784712120,
-    "url": "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/news/startrader-introduces-24-7-us-092200465.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/092ff924-f233-311d-95de-ed11a4dabc57/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why AMD Stock Jumped Today",
+   "label": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
    "value": {
-    "headline": "Why AMD Stock Jumped Today",
+    "headline": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784690717,
-    "url": "https://www.fool.com/investing/2026/07/21/why-amd-stock-jumped-today/?.tsrc=rss",
+    "ts": 1784805504,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/21/why-amd-stock-jumped-today/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD stock gets a new reason to watch from Bank of America",
+   "label": "AMD expected to launch next generation of AI infrastructure to challenge Nvidia",
    "value": {
-    "headline": "AMD stock gets a new reason to watch from Bank of America",
+    "headline": "AMD expected to launch next generation of AI infrastructure to challenge Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784686620,
-    "url": "https://www.thestreet.com/investing/amd-stock-gets-a-new-reason-to-watch-from-bank-of-america?.tsrc=rss",
+    "ts": 1784801182,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amd-expected-launch-next-generation-100622118.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/amd-stock-gets-a-new-reason-to-watch-from-bank-of-america?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amd-expected-launch-next-generation-100622118.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Anthropic selects AMD Helios for 2GW GPU AI infrastructure",
+   "value": {
+    "headline": "Anthropic selects AMD Helios for 2GW GPU AI infrastructure",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784797476,
+    "url": "https://www.verdict.co.uk/anthropic-selects-amd-helios/?.tsrc=rss",
+    "urls": [
+     "https://www.verdict.co.uk/anthropic-selects-amd-helios/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nasdaq, S&P 500 Futures Fall As Tesla, Alphabet Earnings Revive AI Spending Fears: Why TSLA, GOOGL, SPCX, NOW, INTC, AMD",
+   "value": {
+    "headline": "Nasdaq, S&P 500 Futures Fall As Tesla, Alphabet Earnings Revive AI Spending Fears: Why TSLA, GOOGL, SPCX, NOW, INTC, AMD, SLS Are In Focus",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784796103,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-tsla-googl-ai-capex-spcx-amd-now-intc-sls-stock-focus/cZZn1LmR7x1?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-tsla-googl-ai-capex-spcx-amd-now-intc-sls-stock-focus/cZZn1LmR7x1?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

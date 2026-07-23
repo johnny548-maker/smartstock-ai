@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 207.29,
- "change_pct": 1.97,
+ "name": "NVIDIA",
+ "price": 212.06,
+ "change_pct": 2.3,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 199.73,
-   "h": 210.7,
-   "l": 199.58,
-   "c": 208.03,
-   "v": 214134400
-  },
   {
    "time": "2026-04-27",
    "o": 209.41,
@@ -482,23 +474,30 @@
    "h": 208.65,
    "l": 204.01,
    "c": 207.29,
-   "v": 108426500
+   "v": 108685600
+  },
+  {
+   "time": "2026-07-22",
+   "o": 205.81,
+   "h": 214.39,
+   "l": 204.95,
+   "c": 212.06,
+   "v": 137220500
   }
  ],
  "sr": {
-  "price": 207.29,
+  "price": 212.06,
   "resistance": [
    212.71,
    213.81
   ],
   "support": [
-   199.34,
-   194.51
+   208.54,
+   199.34
   ],
-  "strong_support": 189.8
+  "strong_support": 163.85
  },
  "spark": [
-  208.03,
   216.36,
   212.92,
   209.01,
@@ -557,48 +556,152 @@
   207.4,
   202.81,
   203.28,
-  207.29
+  207.29,
+  212.06
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
- "fundamental": null,
+ "spark_start": "2026-04-27",
+ "spark_end": "2026-07-22",
+ "fundamental": {
+  "pe_trailing": 32.47473,
+  "pe_forward": 16.478321,
+  "eps_trailing": 6.53,
+  "eps_forward": 12.86903,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "玉山未來全球算力ETF8/10開募,成分股台積電、NVIDIA等入列",
+   "label": "3 Uranium Stocks to Buy as Nuclear Heats Before the End of July",
    "value": {
-    "headline": "玉山未來全球算力ETF8/10開募,成分股台積電、NVIDIA等入列",
+    "headline": "3 Uranium Stocks to Buy as Nuclear Heats Before the End of July",
     "sources": [
-     "yahoo_tw"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784706499,
-    "url": "https://tw.stock.yahoo.com/news/%E7%8E%89%E5%B1%B1%E6%9C%AA%E4%BE%86%E5%85%A8%E7%90%83%E7%AE%97%E5%8A%9Betf8-10%E9%96%8B%E5%8B%9F-%E6%88%90%E5%88%86%E8%82%A1%E5%8F%B0%E7%A9%8D%E9%9B%BB-nvidia%E7%AD%89%E5%85%A5%E5%88%97-074819109.html",
+    "ts": 1784808000,
+    "url": "https://247wallst.com/investing/2026/07/23/3-uranium-stocks-to-buy-as-nuclear-heats-before-the-end-of-july/?.tsrc=rss",
     "urls": [
-     "https://tw.stock.yahoo.com/news/%E7%8E%89%E5%B1%B1%E6%9C%AA%E4%BE%86%E5%85%A8%E7%90%83%E7%AE%97%E5%8A%9Betf8-10%E9%96%8B%E5%8B%9F-%E6%88%90%E5%88%86%E8%82%A1%E5%8F%B0%E7%A9%8D%E9%9B%BB-nvidia%E7%AD%89%E5%85%A5%E5%88%97-074819109.html"
+     "https://247wallst.com/investing/2026/07/23/3-uranium-stocks-to-buy-as-nuclear-heats-before-the-end-of-july/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AT&T, Applied Digital, Autodesk, Duke Energy, Exxon Mobil, J",
+   "value": {
+    "headline": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AT&T, Applied Digital, Autodesk, Duke Energy, Exxon Mobil, JPMorgan Chase & Company, Live Nation Entertainment, and More",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784807680,
+    "url": "https://247wallst.com/investing/2026/07/23/here-are-thursdays-top-wall-street-analyst-research-calls-att-applied-digital-autodesk-duke-energy-exxon-mobil-jpmorgan-chase-company-live-nation-entertainment-and-more/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/07/23/here-are-thursdays-top-wall-street-analyst-research-calls-att-applied-digital-autodesk-duke-energy-exxon-mobil-jpmorgan-chase-company-live-nation-entertainment-and-more/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Apple Stock a Buy Right Now?",
+   "value": {
+    "headline": "Is Apple Stock a Buy Right Now?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784807400,
+    "url": "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "You Can Do Better Than Coca-Cola Stock. Buy This High-Yield Dividend Stock Instead.",
+   "value": {
+    "headline": "You Can Do Better Than Coca-Cola Stock. Buy This High-Yield Dividend Stock Instead.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784807100,
+    "url": "https://www.fool.com/investing/2026/07/23/you-can-do-better-than-coca-cola-stock-buy-this-hi/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/23/you-can-do-better-than-coca-cola-stock-buy-this-hi/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Bloom Energy Stock Soared 248% in the First Half of 2026",
+   "value": {
+    "headline": "Why Bloom Energy Stock Soared 248% in the First Half of 2026",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784806715,
+    "url": "https://www.fool.com/investing/2026/07/23/why-bloom-energy-stock-soared-248-in-the-first-hal/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/23/why-bloom-energy-stock-soared-248-in-the-first-hal/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_tw"
+     "cnyes",
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 144,061 股交割失敗）",
+   "value": {
+    "total_shares": 144061,
+    "days": 8,
+    "max_shares": 130400,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-23",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }
