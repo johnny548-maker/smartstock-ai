@@ -1,8 +1,8 @@
 {
  "stock": "3071.TWO",
  "name": "協禧",
- "price": 26.25,
- "change_pct": 0.19,
+ "price": 26.0,
+ "change_pct": -0.95,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,15 +163,25 @@
    "l": 25.8,
    "c": 26.25,
    "v": 181512
+  },
+  {
+   "time": "2026-07-24",
+   "o": 26.1,
+   "h": 26.7,
+   "l": 25.75,
+   "c": 26.0,
+   "v": 133443
   }
  ],
  "sr": {
-  "price": 26.25,
+  "price": 26.0,
   "resistance": [
    33.2
   ],
-  "support": [],
-  "strong_support": 30.6
+  "support": [
+   24.85
+  ],
+  "strong_support": 24.85
  },
  "spark": [
   33.2,
@@ -193,10 +203,11 @@
   25.75,
   25.9,
   26.2,
-  26.25
+  26.25,
+  26.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

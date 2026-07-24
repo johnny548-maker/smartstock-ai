@@ -1,8 +1,8 @@
 {
  "stock": "2230.TWO",
  "name": "泰茂",
- "price": 22.3,
- "change_pct": 1.59,
+ "price": 22.05,
+ "change_pct": -1.12,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,16 +163,26 @@
    "l": 21.9,
    "c": 22.3,
    "v": 95624
+  },
+  {
+   "time": "2026-07-24",
+   "o": 22.65,
+   "h": 22.85,
+   "l": 21.65,
+   "c": 22.05,
+   "v": 117062
   }
  ],
  "sr": {
-  "price": 22.3,
+  "price": 22.05,
   "resistance": [
    23.95,
    27.2
   ],
-  "support": [],
-  "strong_support": 24.3
+  "support": [
+   21.0
+  ],
+  "strong_support": 21.0
  },
  "spark": [
   27.1,
@@ -194,10 +204,11 @@
   21.95,
   22.25,
   21.95,
-  22.3
+  22.3,
+  22.05
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

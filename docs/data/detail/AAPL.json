@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 325.89,
- "change_pct": -0.56,
+ "price": 321.66,
+ "change_pct": -1.3,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 265.85,
-   "h": 268.11,
-   "l": 264.83,
-   "c": 267.36,
-   "v": 41466800
-  },
   {
    "time": "2026-04-28",
    "o": 272.09,
@@ -482,11 +474,19 @@
    "h": 329.0,
    "l": 323.34,
    "c": 325.89,
-   "v": 38700500
+   "v": 38755900
+  },
+  {
+   "time": "2026-07-23",
+   "o": 321.73,
+   "h": 323.3,
+   "l": 319.35,
+   "c": 321.66,
+   "v": 40812200
   }
  ],
  "sr": {
-  "price": 325.89,
+  "price": 321.66,
   "resistance": [
    334.99
   ],
@@ -497,7 +497,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  267.36,
   270.46,
   269.92,
   271.1,
@@ -556,16 +555,17 @@
   333.74,
   326.59,
   327.74,
-  325.89
+  325.89,
+  321.66
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-22",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-23",
  "fundamental": {
-  "pe_trailing": 39.677963,
-  "pe_forward": 34.000923,
-  "eps_trailing": 8.26,
-  "eps_forward": 9.63915,
-  "stale": true,
+  "pe_trailing": 38.8948,
+  "pe_forward": 33.362896,
+  "eps_trailing": 8.27,
+  "eps_forward": 9.64125,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,101 +574,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple is 'standing out' from the pack: Does it represent the anti-AI trade?",
+   "label": "2 of Warren Buffett's Biggest Swings and Misses Share a Common Theme",
    "value": {
-    "headline": "Apple is 'standing out' from the pack: Does it represent the anti-AI trade?",
+    "headline": "2 of Warren Buffett's Biggest Swings and Misses Share a Common Theme",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784808000,
-    "url": "https://finance.yahoo.com/video/apple-standing-pack-does-represent-120000572.html?.tsrc=rss",
+    "ts": 1784892360,
+    "url": "https://www.fool.com/investing/2026/07/24/2-of-warren-buffett-biggest-swings-and-misses/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/apple-standing-pack-does-represent-120000572.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/24/2-of-warren-buffett-biggest-swings-and-misses/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-07-23",
+   "severity": "warn",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Apple Stock a Buy Right Now?",
+   "label": "研調:AI生產力需求帶動摺疊手機升級 預估2026年市場成長21%",
    "value": {
-    "headline": "Is Apple Stock a Buy Right Now?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784807400,
-    "url": "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
-   "value": {
-    "headline": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784805504,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Alphabet Stock Is Falling as AI Spending Continues to Mount",
-   "value": {
-    "headline": "Alphabet Stock Is Falling as AI Spending Continues to Mount",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784800380,
-    "url": "https://finance.yahoo.com/m/61ef1def-7f89-3879-b5f4-6853dbcbdb75/alphabet-stock-is-falling-as.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/61ef1def-7f89-3879-b5f4-6853dbcbdb75/alphabet-stock-is-falling-as.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
-   "value": {
-    "headline": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
+    "headline": "研調:AI生產力需求帶動摺疊手機升級 預估2026年市場成長21%",
     "sources": [
      "cnyes"
     ],
     "source_count": 1,
-    "ts": 1784799306,
-    "url": "cnyes:6544030",
+    "ts": 1784890650,
+    "url": "cnyes:6545203",
     "urls": [
-     "cnyes:6544030"
+     "cnyes:6545203"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Volkswagen Q2 Earnings Call Highlights",
+   "value": {
+    "headline": "Volkswagen Q2 Earnings Call Highlights",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784887338,
+    "url": "https://www.marketbeat.com/instant-alerts/volkswagen-q2-earnings-call-highlights-2026-07-24/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/volkswagen-q2-earnings-call-highlights-2026-07-24/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meet the Trillion-Dollar Company Retail Investors Have Spent More Money Buying Than Any Other Stock in July",
+   "value": {
+    "headline": "Meet the Trillion-Dollar Company Retail Investors Have Spent More Money Buying Than Any Other Stock in July",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784885160,
+    "url": "https://www.fool.com/investing/2026/07/24/meet-trillion-dollar-retail-investors-buy-in-july/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/24/meet-trillion-dollar-retail-investors-buy-in-july/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How AI-Powered Earnings Powered Intel Stock Higher",
+   "value": {
+    "headline": "How AI-Powered Earnings Powered Intel Stock Higher",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784882400,
+    "url": "https://finance.yahoo.com/m/bf317748-aff6-3358-94e9-ad5ac764930f/how-ai-powered-earnings.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/bf317748-aff6-3358-94e9-ad5ac764930f/how-ai-powered-earnings.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 131 分 / 63 留言",
+   "label": "HN 討論熱度 20 篇 / 147 分 / 65 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 131,
-    "comments": 63,
+    "points": 147,
+    "comments": 65,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

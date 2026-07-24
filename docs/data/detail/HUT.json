@@ -1,17 +1,9 @@
 {
  "stock": "HUT",
  "name": "Hut 8 Corp",
- "price": 109.86,
- "change_pct": 0.81,
+ "price": 117.67,
+ "change_pct": 7.11,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 76.87,
-   "h": 76.89,
-   "l": 74.12,
-   "c": 75.71,
-   "v": 2540400
-  },
   {
    "time": "2026-04-28",
    "o": 71.65,
@@ -482,14 +474,22 @@
    "h": 114.6,
    "l": 105.07,
    "c": 109.86,
-   "v": 2836000
+   "v": 2841100
+  },
+  {
+   "time": "2026-07-23",
+   "o": 111.03,
+   "h": 120.38,
+   "l": 110.23,
+   "c": 117.67,
+   "v": 6151500
   }
  ],
  "sr": {
-  "price": 109.86,
+  "price": 117.67,
   "resistance": [
-   111.33,
-   112.26
+   126.46,
+   128.6
   ],
   "support": [
    109.3,
@@ -498,7 +498,6 @@
   "strong_support": 8.73
  },
  "spark": [
-  75.71,
   72.11,
   71.0,
   75.78,
@@ -557,11 +556,144 @@
   91.45,
   100.93,
   108.98,
-  109.86
+  109.86,
+  117.67
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-22",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "While Mark Cuban Jokes About Data Centers Becoming Pickleball Courts, Kevin O’Leary’s $100 Billion Utah Project Just Got",
+   "value": {
+    "headline": "While Mark Cuban Jokes About Data Centers Becoming Pickleball Courts, Kevin O’Leary’s $100 Billion Utah Project Just Got Scaled Back",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784889355,
+    "url": "https://247wallst.com/investing/2026/07/24/while-mark-cuban-jokes-about-data-centers-becoming-pickleball-courts-kevin-olearys-100-billion-utah-project-just-got-scaled-back/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/07/24/while-mark-cuban-jokes-about-data-centers-becoming-pickleball-courts-kevin-olearys-100-billion-utah-project-just-got-scaled-back/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Morgan Stanley sees AI data center pivot unlocking upside for bitcoin miners",
+   "value": {
+    "headline": "Morgan Stanley sees AI data center pivot unlocking upside for bitcoin miners",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784829227,
+    "url": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-sees-ai-data-175347881.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-sees-ai-data-175347881.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Morgan Stanley sees 141% upside for Hut 8 with $263 price target",
+   "value": {
+    "headline": "Morgan Stanley sees 141% upside for Hut 8 with $263 price target",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784817694,
+    "url": "https://blockspace.media/insight/hut-bitcoin-miners-ai-pivot-morgan-stanley-upside/?.tsrc=rss",
+    "urls": [
+     "https://blockspace.media/insight/hut-bitcoin-miners-ai-pivot-morgan-stanley-upside/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Rosenblatt lifts Hut 8’s 2028 forecast after $9.8 billion AI lease",
+   "value": {
+    "headline": "Rosenblatt lifts Hut 8’s 2028 forecast after $9.8 billion AI lease",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784816890,
+    "url": "https://blockspace.media/insight/hut-8-ai-data-center-lease-forecast-2028/?.tsrc=rss",
+    "urls": [
+     "https://blockspace.media/insight/hut-8-ai-data-center-lease-forecast-2028/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Autodesk initiated, Norwegian Cruise downgrade: Wall Street's top analyst calls",
+   "value": {
+    "headline": "Autodesk initiated, Norwegian Cruise downgrade: Wall Street's top analyst calls",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784814907,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/autodesk-initiated-norwegian-cruise-downgrade-135507863.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/autodesk-initiated-norwegian-cruise-downgrade-135507863.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 100,586 股交割失敗）",
+   "value": {
+    "total_shares": 100586,
+    "days": 9,
+    "max_shares": 44698,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-24",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

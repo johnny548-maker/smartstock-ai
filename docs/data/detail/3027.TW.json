@@ -1,8 +1,8 @@
 {
  "stock": "3027.TW",
  "name": "盛達",
- "price": 19.95,
- "change_pct": 5.56,
+ "price": 19.9,
+ "change_pct": -0.25,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -187,15 +187,25 @@
    "l": 19.2,
    "c": 19.95,
    "v": 356042
+  },
+  {
+   "time": "2026-07-24",
+   "o": 19.95,
+   "h": 20.2,
+   "l": 19.35,
+   "c": 19.9,
+   "v": 419483
   }
  ],
  "sr": {
-  "price": 19.95,
+  "price": 19.9,
   "resistance": [
    23.35
   ],
-  "support": [],
-  "strong_support": 19.95
+  "support": [
+   17.65
+  ],
+  "strong_support": 17.65
  },
  "spark": [
   21.0,
@@ -220,10 +230,11 @@
   18.35,
   18.1,
   18.9,
-  19.95
+  19.95,
+  19.9
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

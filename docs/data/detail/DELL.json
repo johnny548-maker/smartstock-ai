@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 441.8,
- "change_pct": 9.32,
+ "price": 439.34,
+ "change_pct": -0.56,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 217.42,
-   "h": 221.13,
-   "l": 212.41,
-   "c": 215.61,
-   "v": 5821000
-  },
   {
    "time": "2026-04-28",
    "o": 209.62,
@@ -482,11 +474,19 @@
    "h": 451.36,
    "l": 413.77,
    "c": 441.8,
-   "v": 7196000
+   "v": 7215000
+  },
+  {
+   "time": "2026-07-23",
+   "o": 438.0,
+   "h": 454.77,
+   "l": 434.1,
+   "c": 439.34,
+   "v": 5113800
   }
  ],
  "sr": {
-  "price": 441.8,
+  "price": 439.34,
   "resistance": [
    443.27,
    462.72
@@ -498,7 +498,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  215.61,
   205.59,
   205.32,
   208.61,
@@ -557,48 +556,12 @@
   395.69,
   381.25,
   404.15,
-  441.8
+  441.8,
+  439.34
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-22",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
-   "value": {
-    "headline": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784799306,
-    "url": "cnyes:6544030",
-    "urls": [
-     "cnyes:6544030"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-23",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

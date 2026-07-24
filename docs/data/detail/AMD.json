@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 552.33,
- "change_pct": 1.45,
+ "price": 539.69,
+ "change_pct": -2.29,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 346.32,
-   "h": 349.21,
-   "l": 328.81,
-   "c": 334.63,
-   "v": 50585300
-  },
   {
    "time": "2026-04-28",
    "o": 311.86,
@@ -482,14 +474,22 @@
    "h": 561.47,
    "l": 526.6,
    "c": 552.33,
-   "v": 24691200
+   "v": 24776700
+  },
+  {
+   "time": "2026-07-23",
+   "o": 544.74,
+   "h": 556.49,
+   "l": 525.0,
+   "c": 539.69,
+   "v": 27050700
   }
  ],
  "sr": {
-  "price": 552.33,
+  "price": 539.69,
   "resistance": [
-   558.37,
-   562.99
+   546.44,
+   558.37
   ],
   "support": [
    498.15,
@@ -498,7 +498,6 @@
   "strong_support": 149.22
  },
  "spark": [
-  334.63,
   323.21,
   337.11,
   354.49,
@@ -557,16 +556,17 @@
   495.76,
   503.57,
   544.43,
-  552.33
+  552.33,
+  539.69
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-22",
+ "spark_start": "2026-04-28",
+ "spark_end": "2026-07-23",
  "fundamental": {
-  "pe_trailing": 182.0836,
-  "pe_forward": 40.433754,
-  "eps_trailing": 2.99,
-  "eps_forward": 13.46474,
-  "stale": true,
+  "pe_trailing": 185.46048,
+  "pe_forward": 39.80517,
+  "eps_trailing": 2.91,
+  "eps_forward": 13.55829,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +575,133 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Fall As Oil Prices Top $90; Google, Tesla Skid On Earnings, Capital Spending",
+   "label": "仁寶參展 AMD AI 大會 秀出兩款 AI 伺服器平台",
    "value": {
-    "headline": "Dow Jones Futures Fall As Oil Prices Top $90; Google, Tesla Skid On Earnings, Capital Spending",
+    "headline": "仁寶參展 AMD AI 大會 秀出兩款 AI 伺服器平台",
     "sources": [
-     "yahoo_us"
+     "udn"
     ],
     "source_count": 1,
-    "ts": 1784807973,
-    "url": "https://finance.yahoo.com/m/092ff924-f233-311d-95de-ed11a4dabc57/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
+    "ts": 1784893379,
+    "url": "https://money.udn.com/money/story/11162/9649382",
     "urls": [
-     "https://finance.yahoo.com/m/092ff924-f233-311d-95de-ed11a4dabc57/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
+     "https://money.udn.com/money/story/11162/9649382"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
+   "label": "Latest News In AI Chips - AMD and Cerebras Team Up for AI Infrastructure Enhancement",
    "value": {
-    "headline": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Is Raising Prices Up to 10%. Can Customers Push Back?",
+    "headline": "Latest News In AI Chips - AMD and Cerebras Team Up for AI Infrastructure Enhancement",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784805504,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss",
+    "ts": 1784893073,
+    "url": "https://finance.yahoo.com/technology/ai/articles/latest-news-ai-chips-amd-113753874.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-111824767.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/latest-news-ai-chips-amd-113753874.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD expected to launch next generation of AI infrastructure to challenge Nvidia",
+   "label": "Why Nvidia Is Falling When Other Chip Stocks Are Rising",
    "value": {
-    "headline": "AMD expected to launch next generation of AI infrastructure to challenge Nvidia",
+    "headline": "Why Nvidia Is Falling When Other Chip Stocks Are Rising",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784801182,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amd-expected-launch-next-generation-100622118.html?.tsrc=rss",
+    "ts": 1784891280,
+    "url": "https://finance.yahoo.com/m/f253554a-266a-37e2-8473-09913fefd51b/why-nvidia-is-falling-when.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amd-expected-launch-next-generation-100622118.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/f253554a-266a-37e2-8473-09913fefd51b/why-nvidia-is-falling-when.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic selects AMD Helios for 2GW GPU AI infrastructure",
+   "label": "Ark Invest's Cathie Wood Just Sold AMD Stock and Bought SpaceX. Why I'd Be Doing the Opposite.",
    "value": {
-    "headline": "Anthropic selects AMD Helios for 2GW GPU AI infrastructure",
+    "headline": "Ark Invest's Cathie Wood Just Sold AMD Stock and Bought SpaceX. Why I'd Be Doing the Opposite.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784797476,
-    "url": "https://www.verdict.co.uk/anthropic-selects-amd-helios/?.tsrc=rss",
+    "ts": 1784888700,
+    "url": "https://www.fool.com/investing/2026/07/24/ark-invests-cathie-wood-just-sold-amd-stock-and-bo/?.tsrc=rss",
     "urls": [
-     "https://www.verdict.co.uk/anthropic-selects-amd-helios/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/24/ark-invests-cathie-wood-just-sold-amd-stock-and-bo/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq, S&P 500 Futures Fall As Tesla, Alphabet Earnings Revive AI Spending Fears: Why TSLA, GOOGL, SPCX, NOW, INTC, AMD",
+   "label": "AMD Stock Could Surge 48% as Daniel Newman Calls It a 'Top Conviction'—Patrick Moorhead Sees $200 Billion Server CPU Mar",
    "value": {
-    "headline": "Nasdaq, S&P 500 Futures Fall As Tesla, Alphabet Earnings Revive AI Spending Fears: Why TSLA, GOOGL, SPCX, NOW, INTC, AMD, SLS Are In Focus",
+    "headline": "AMD Stock Could Surge 48% as Daniel Newman Calls It a 'Top Conviction'—Patrick Moorhead Sees $200 Billion Server CPU Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784796103,
-    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-tsla-googl-ai-capex-spcx-amd-now-intc-sls-stock-focus/cZZn1LmR7x1?.tsrc=rss",
+    "ts": 1784875810,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-stock-could-surge-48-065010176.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-tsla-googl-ai-capex-spcx-amd-now-intc-sls-stock-focus/cZZn1LmR7x1?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amd-stock-could-surge-48-065010176.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 59 分 / 8 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 59,
+    "comments": 8,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-07-24",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +715,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

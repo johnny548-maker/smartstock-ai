@@ -1,8 +1,8 @@
 {
  "stock": "8234.TWO",
  "name": "新漢",
- "price": 64.7,
- "change_pct": 1.25,
+ "price": 64.3,
+ "change_pct": -0.62,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,15 +163,25 @@
    "l": 63.0,
    "c": 64.7,
    "v": 600882
+  },
+  {
+   "time": "2026-07-24",
+   "o": 64.5,
+   "h": 67.5,
+   "l": 62.8,
+   "c": 64.3,
+   "v": 954759
   }
  ],
  "sr": {
-  "price": 64.7,
+  "price": 64.3,
   "resistance": [
    75.0
   ],
-  "support": [],
-  "strong_support": 67.6
+  "support": [
+   56.5
+  ],
+  "strong_support": 56.5
  },
  "spark": [
   63.6,
@@ -193,10 +203,11 @@
   60.8,
   58.7,
   63.9,
-  64.7
+  64.7,
+  64.3
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

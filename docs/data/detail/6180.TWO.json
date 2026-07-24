@@ -1,8 +1,8 @@
 {
  "stock": "6180.TWO",
  "name": "橘子",
- "price": 43.5,
- "change_pct": 1.16,
+ "price": 43.25,
+ "change_pct": -0.57,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,16 +163,26 @@
    "l": 43.1,
    "c": 43.5,
    "v": 338873
+  },
+  {
+   "time": "2026-07-24",
+   "o": 43.3,
+   "h": 43.95,
+   "l": 42.6,
+   "c": 43.25,
+   "v": 424904
   }
  ],
  "sr": {
-  "price": 43.5,
+  "price": 43.25,
   "resistance": [
    50.4,
    52.1
   ],
-  "support": [],
-  "strong_support": 47.5
+  "support": [
+   42.55
+  ],
+  "strong_support": 42.55
  },
  "spark": [
   50.3,
@@ -194,10 +204,11 @@
   43.5,
   43.6,
   43.0,
-  43.5
+  43.5,
+  43.25
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

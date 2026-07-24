@@ -1,8 +1,8 @@
 {
  "stock": "1599.TWO",
  "name": "宏佳騰",
- "price": 22.75,
- "change_pct": -0.87,
+ "price": 23.5,
+ "change_pct": 3.3,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,16 +163,26 @@
    "l": 22.6,
    "c": 22.75,
    "v": 34671
+  },
+  {
+   "time": "2026-07-24",
+   "o": 22.95,
+   "h": 23.6,
+   "l": 22.6,
+   "c": 23.5,
+   "v": 135502
   }
  ],
  "sr": {
-  "price": 22.75,
+  "price": 23.5,
   "resistance": [
-   23.5,
    24.9
   ],
-  "support": [],
-  "strong_support": 23.05
+  "support": [
+   23.05,
+   22.5
+  ],
+  "strong_support": 22.5
  },
  "spark": [
   23.4,
@@ -194,10 +204,11 @@
   23.0,
   22.65,
   22.95,
-  22.75
+  22.75,
+  23.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

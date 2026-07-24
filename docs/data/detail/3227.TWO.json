@@ -1,8 +1,8 @@
 {
  "stock": "3227.TWO",
  "name": "原相",
- "price": 202.0,
- "change_pct": 0.25,
+ "price": 201.0,
+ "change_pct": -0.5,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -163,13 +163,23 @@
    "l": 198.0,
    "c": 202.0,
    "v": 1317258
+  },
+  {
+   "time": "2026-07-24",
+   "o": 199.5,
+   "h": 203.0,
+   "l": 197.0,
+   "c": 201.0,
+   "v": 991288
   }
  ],
  "sr": {
-  "price": 202.0,
+  "price": 201.0,
   "resistance": [],
-  "support": [],
-  "strong_support": 212.0
+  "support": [
+   174.5
+  ],
+  "strong_support": 174.5
  },
  "spark": [
   225.0,
@@ -191,10 +201,11 @@
   178.0,
   182.5,
   201.5,
-  202.0
+  202.0,
+  201.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

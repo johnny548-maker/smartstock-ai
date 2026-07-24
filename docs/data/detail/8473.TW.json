@@ -1,8 +1,8 @@
 {
  "stock": "8473.TW",
  "name": "山林水",
- "price": 44.5,
- "change_pct": 0.68,
+ "price": 44.25,
+ "change_pct": -0.56,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -187,16 +187,26 @@
    "l": 43.7,
    "c": 44.5,
    "v": 611523
+  },
+  {
+   "time": "2026-07-24",
+   "o": 45.05,
+   "h": 45.05,
+   "l": 43.6,
+   "c": 44.25,
+   "v": 249553
   }
  ],
  "sr": {
-  "price": 44.5,
+  "price": 44.25,
   "resistance": [
    47.3,
    50.8
   ],
-  "support": [],
-  "strong_support": 44.5
+  "support": [
+   42.75
+  ],
+  "strong_support": 42.75
  },
  "spark": [
   50.0,
@@ -221,10 +231,11 @@
   44.0,
   43.6,
   44.2,
-  44.5
+  44.5,
+  44.25
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-23",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
