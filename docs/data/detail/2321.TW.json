@@ -1,8 +1,8 @@
 {
  "stock": "2321.TW",
  "name": "東訊",
- "price": 0.0,
- "change_pct": -100.0,
+ "price": 15.0,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -195,15 +195,24 @@
    "l": 0.0,
    "c": 0.0,
    "v": 1125
+  },
+  {
+   "time": "2026-07-27",
+   "o": 14.3,
+   "h": 15.0,
+   "l": 14.25,
+   "c": 15.0,
+   "v": 10974
   }
  ],
  "sr": {
-  "price": 0.0,
+  "price": 15.0,
   "resistance": [
-   14.0,
    16.45
   ],
-  "support": [],
+  "support": [
+   14.2
+  ],
   "strong_support": 14.2
  },
  "spark": [
@@ -230,10 +239,11 @@
   15.2,
   15.2,
   15.9,
-  0.0
+  0.0,
+  15.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-24",
+ "spark_end": "2026-07-27",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

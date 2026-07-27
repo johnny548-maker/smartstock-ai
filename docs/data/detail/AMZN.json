@@ -1,41 +1,9 @@
 {
  "stock": "AMZN",
- "name": "亞馬遜",
- "price": 249.99,
- "change_pct": 1.12,
+ "name": "Amazon.com, Inc. - Common Stock",
+ "price": 232.11,
+ "change_pct": -0.66,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 255.39,
-   "h": 258.79,
-   "l": 253.07,
-   "c": 255.08,
-   "v": 39091400
-  },
-  {
-   "time": "2026-04-24",
-   "o": 259.98,
-   "h": 264.5,
-   "l": 257.69,
-   "c": 263.99,
-   "v": 53777400
-  },
-  {
-   "time": "2026-04-27",
-   "o": 263.46,
-   "h": 264.15,
-   "l": 260.34,
-   "c": 261.12,
-   "v": 44906800
-  },
-  {
-   "time": "2026-04-28",
-   "o": 258.39,
-   "h": 261.03,
-   "l": 256.63,
-   "c": 259.7,
-   "v": 42204400
-  },
   {
    "time": "2026-04-29",
    "o": 257.99,
@@ -482,26 +450,53 @@
    "h": 252.89,
    "l": 248.0,
    "c": 249.99,
-   "v": 32373200
+   "v": 32406500
+  },
+  {
+   "time": "2026-07-21",
+   "o": 249.11,
+   "h": 249.34,
+   "l": 246.42,
+   "c": 247.55,
+   "v": 27732100
+  },
+  {
+   "time": "2026-07-22",
+   "o": 248.27,
+   "h": 248.45,
+   "l": 242.45,
+   "c": 244.85,
+   "v": 34112700
+  },
+  {
+   "time": "2026-07-23",
+   "o": 236.26,
+   "h": 238.35,
+   "l": 232.05,
+   "c": 233.66,
+   "v": 47465300
+  },
+  {
+   "time": "2026-07-24",
+   "o": 234.38,
+   "h": 234.95,
+   "l": 231.34,
+   "c": 232.11,
+   "v": 34965800
   }
  ],
  "sr": {
-  "price": 249.99,
+  "price": 232.11,
   "resistance": [
-   251.75,
-   256.18
+   249.51,
+   249.71
   ],
   "support": [
-   238.49,
-   238.25
+   225.55
   ],
-  "strong_support": 196.0
+  "strong_support": 225.55
  },
  "spark": [
-  255.08,
-  263.99,
-  261.12,
-  259.7,
   263.04,
   265.06,
   268.26,
@@ -557,150 +552,15 @@
   254.96,
   249.89,
   247.23,
-  249.99
+  249.99,
+  247.55,
+  244.85,
+  233.66,
+  232.11
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-20",
- "fundamental": {
-  "pe_trailing": 29.938921,
-  "pe_forward": 25.161367,
-  "eps_trailing": 8.35,
-  "eps_forward": 9.93547,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-04-29",
+ "spark_end": "2026-07-24",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Is Amazon.com (AMZN) Undervalued Following Its $200b AI Infrastructure Push?",
-   "value": {
-    "headline": "Is Amazon.com (AMZN) Undervalued Following Its $200b AI Infrastructure Push?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784617782,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-undervalued-following-070942895.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-undervalued-following-070942895.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Amazon may be losing its biggest competitive edge",
-   "value": {
-    "headline": "Amazon may be losing its biggest competitive edge",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784592180,
-    "url": "https://www.thestreet.com/retail/amazon-losing-competitive-edge-price-more-important-then-speed?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/retail/amazon-losing-competitive-edge-price-more-important-then-speed?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Review & Preview: Rough Start",
-   "value": {
-    "headline": "Review & Preview: Rough Start",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784591700,
-    "url": "https://finance.yahoo.com/m/8bc95bd9-0e6a-3070-a835-6e5524283a63/review-%26-preview%3A-rough-start.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/8bc95bd9-0e6a-3070-a835-6e5524283a63/review-%26-preview%3A-rough-start.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Behind the Ticker: RISE Ditches the Usual EM Playbook",
-   "value": {
-    "headline": "Behind the Ticker: RISE Ditches the Usual EM Playbook",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784588583,
-    "url": "http://www.etf.com/sections/podcasts/behind-ticker-rise-ditches-usual-em-playbook?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss&.tsrc=rss",
-    "urls": [
-     "http://www.etf.com/sections/podcasts/behind-ticker-rise-ditches-usual-em-playbook?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Maria Sharapova Once Revealed Her 'Steely Mentality' Made People Uncomfortable— It Also Built a Tennis Dynasty and a Por",
-   "value": {
-    "headline": "Maria Sharapova Once Revealed Her 'Steely Mentality' Made People Uncomfortable— It Also Built a Tennis Dynasty and a Portfolio of Winning Bets",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784586618,
-    "url": "https://finance.yahoo.com/small-business/articles/maria-sharapova-once-revealed-her-223018539.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/small-business/articles/maria-sharapova-once-revealed-her-223018539.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 322,917 股交割失敗）",
-   "value": {
-    "total_shares": 322917,
-    "days": 8,
-    "max_shares": 152730,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-07-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

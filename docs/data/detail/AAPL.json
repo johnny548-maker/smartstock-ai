@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 321.66,
- "change_pct": -1.3,
+ "price": 333.02,
+ "change_pct": 3.53,
  "ohlc": [
-  {
-   "time": "2026-04-28",
-   "o": 272.09,
-   "h": 272.98,
-   "l": 268.41,
-   "c": 270.46,
-   "v": 40018900
-  },
   {
    "time": "2026-04-29",
    "o": 267.3,
@@ -482,11 +474,19 @@
    "h": 323.3,
    "l": 319.35,
    "c": 321.66,
-   "v": 40812200
+   "v": 40840800
+  },
+  {
+   "time": "2026-07-24",
+   "o": 321.79,
+   "h": 334.37,
+   "l": 321.62,
+   "c": 333.02,
+   "v": 47443900
   }
  ],
  "sr": {
-  "price": 321.66,
+  "price": 333.02,
   "resistance": [
    334.99
   ],
@@ -497,7 +497,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  270.46,
   269.92,
   271.1,
   279.88,
@@ -556,15 +555,16 @@
   326.59,
   327.74,
   325.89,
-  321.66
+  321.66,
+  333.02
  ],
- "spark_start": "2026-04-28",
- "spark_end": "2026-07-23",
+ "spark_start": "2026-04-29",
+ "spark_end": "2026-07-24",
  "fundamental": {
-  "pe_trailing": 38.8948,
-  "pe_forward": 33.362896,
-  "eps_trailing": 8.27,
-  "eps_forward": 9.64125,
+  "pe_trailing": 40.31719,
+  "pe_forward": 34.52369,
+  "eps_trailing": 8.26,
+  "eps_forward": 9.64613,
   "stale": false,
   "source": "yfinance"
  },
@@ -574,133 +574,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "2 of Warren Buffett's Biggest Swings and Misses Share a Common Theme",
+   "label": "Stock Market Today: Dow Jumps 575 Points On U.S.-Iran Hopes; Oil Prices Plunge (Live Coverage)",
    "value": {
-    "headline": "2 of Warren Buffett's Biggest Swings and Misses Share a Common Theme",
+    "headline": "Stock Market Today: Dow Jumps 575 Points On U.S.-Iran Hopes; Oil Prices Plunge (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784892360,
-    "url": "https://www.fool.com/investing/2026/07/24/2-of-warren-buffett-biggest-swings-and-misses/?.tsrc=rss",
+    "ts": 1785156933,
+    "url": "https://finance.yahoo.com/m/de8b5436-c73d-31ce-a62f-9df4d32cb08d/stock-market-today%3A-dow-jumps.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/24/2-of-warren-buffett-biggest-swings-and-misses/?.tsrc=rss"
+     "https://finance.yahoo.com/m/de8b5436-c73d-31ce-a62f-9df4d32cb08d/stock-market-today%3A-dow-jumps.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "研調:AI生產力需求帶動摺疊手機升級 預估2026年市場成長21%",
+   "label": "Apple Makes Privacy Central to Smart Glasses Push",
    "value": {
-    "headline": "研調:AI生產力需求帶動摺疊手機升級 預估2026年市場成長21%",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1784890650,
-    "url": "cnyes:6545203",
-    "urls": [
-     "cnyes:6545203"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Volkswagen Q2 Earnings Call Highlights",
-   "value": {
-    "headline": "Volkswagen Q2 Earnings Call Highlights",
+    "headline": "Apple Makes Privacy Central to Smart Glasses Push",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784887338,
-    "url": "https://www.marketbeat.com/instant-alerts/volkswagen-q2-earnings-call-highlights-2026-07-24/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1785156122,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-makes-privacy-central-smart-124202510.html?.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/volkswagen-q2-earnings-call-highlights-2026-07-24/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-makes-privacy-central-smart-124202510.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meet the Trillion-Dollar Company Retail Investors Have Spent More Money Buying Than Any Other Stock in July",
+   "label": "Apple Puts Privacy at Center of Smart Glasses Push",
    "value": {
-    "headline": "Meet the Trillion-Dollar Company Retail Investors Have Spent More Money Buying Than Any Other Stock in July",
+    "headline": "Apple Puts Privacy at Center of Smart Glasses Push",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784885160,
-    "url": "https://www.fool.com/investing/2026/07/24/meet-trillion-dollar-retail-investors-buy-in-july/?.tsrc=rss",
+    "ts": 1785155684,
+    "url": "https://finance.yahoo.com/technology/articles/apple-puts-privacy-center-smart-123444257.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/24/meet-trillion-dollar-retail-investors-buy-in-july/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/apple-puts-privacy-center-smart-123444257.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How AI-Powered Earnings Powered Intel Stock Higher",
+   "label": "Stocks Rise Pre-Bell as US, Iran Pause Strikes; Fed Policy Decision, Inflation Report on Deck",
    "value": {
-    "headline": "How AI-Powered Earnings Powered Intel Stock Higher",
+    "headline": "Stocks Rise Pre-Bell as US, Iran Pause Strikes; Fed Policy Decision, Inflation Report on Deck",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784882400,
-    "url": "https://finance.yahoo.com/m/bf317748-aff6-3358-94e9-ad5ac764930f/how-ai-powered-earnings.html?.tsrc=rss",
+    "ts": 1785153706,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-us-120146044.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/bf317748-aff6-3358-94e9-ad5ac764930f/how-ai-powered-earnings.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-us-120146044.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NinjaTrader to Offer CME Group Single Stock Futures, Giving Active Traders Direct Access to Top U.S. Brands Including Nv",
+   "value": {
+    "headline": "NinjaTrader to Offer CME Group Single Stock Futures, Giving Active Traders Direct Access to Top U.S. Brands Including Nvidia, Tesla and Apple",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785153600,
+    "url": "https://finance.yahoo.com/markets/options/articles/ninjatrader-offer-cme-group-single-120000625.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/options/articles/ninjatrader-offer-cme-group-single-120000625.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 147 分 / 65 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 147,
-    "comments": 65,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +698,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-24",
+   "as_of": "2026-07-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

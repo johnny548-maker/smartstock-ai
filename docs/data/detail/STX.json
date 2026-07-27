@@ -1,17 +1,9 @@
 {
  "stock": "STX",
  "name": "Seagate Technology",
- "price": 913.36,
- "change_pct": 0.58,
+ "price": 851.69,
+ "change_pct": -6.75,
  "ohlc": [
-  {
-   "time": "2026-04-28",
-   "o": 565.64,
-   "h": 592.42,
-   "l": 552.81,
-   "c": 578.62,
-   "v": 5956800
-  },
   {
    "time": "2026-04-29",
    "o": 667.5,
@@ -482,11 +474,19 @@
    "h": 936.49,
    "l": 905.0,
    "c": 913.36,
-   "v": 4552900
+   "v": 4559600
+  },
+  {
+   "time": "2026-07-24",
+   "o": 879.21,
+   "h": 906.0,
+   "l": 835.5,
+   "c": 851.69,
+   "v": 5201300
   }
  ],
  "sr": {
-  "price": 913.36,
+  "price": 851.69,
   "resistance": [
    937.54,
    966.11
@@ -498,7 +498,6 @@
   "strong_support": 62.34
  },
  "spark": [
-  578.62,
   642.84,
   673.16,
   726.41,
@@ -557,143 +556,12 @@
   802.45,
   891.83,
   908.1,
-  913.36
+  913.36,
+  851.69
  ],
- "spark_start": "2026-04-28",
- "spark_end": "2026-07-23",
+ "spark_start": "2026-04-29",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Seagate Stock Is Off 20% From Its High. Why July 28 Earnings Could Trigger a Rebound.",
-   "value": {
-    "headline": "Seagate Stock Is Off 20% From Its High. Why July 28 Earnings Could Trigger a Rebound.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784828371,
-    "url": "https://www.barchart.com/story/news/3432365/seagate-stock-is-off-20-from-its-high-why-july-28-earnings-could-trigger-a-rebound?.tsrc=rss",
-    "urls": [
-     "https://www.barchart.com/story/news/3432365/seagate-stock-is-off-20-from-its-high-why-july-28-earnings-could-trigger-a-rebound?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "2 Semiconductor Stocks with Impressive Fundamentals and 1 Facing Challenges",
-   "value": {
-    "headline": "2 Semiconductor Stocks with Impressive Fundamentals and 1 Facing Challenges",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784800728,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-impressive-fundamentals-095848992.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-impressive-fundamentals-095848992.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "SanDisk's Bold Pivot From AI Boom Beneficiary to Bust Breaker",
-   "value": {
-    "headline": "SanDisk's Bold Pivot From AI Boom Beneficiary to Bust Breaker",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784751140,
-    "url": "https://www.trefis.com/articles/608389/sandisks-bold-pivot-from-ai-boom-beneficiary-to-bust-breaker/2026-07-22?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/608389/sandisks-bold-pivot-from-ai-boom-beneficiary-to-bust-breaker/2026-07-22?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Jim Cramer Defends His Dell Stance as Investors Complain About Missing Out",
-   "value": {
-    "headline": "Jim Cramer Defends His Dell Stance as Investors Complain About Missing Out",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784732143,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-defends-dell-stance-145543736.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-defends-dell-stance-145543736.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Sandisk Trades at 8.3X Discounted P/E: Time to Buy the Stock?",
-   "value": {
-    "headline": "Sandisk Trades at 8.3X Discounted P/E: Time to Buy the Stock?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784725320,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-trades-8-3x-discounted-130200688.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sandisk-trades-8-3x-discounted-130200688.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-24",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 19792,
-    "days": 6,
-    "max_shares": 16639,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-07-24",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

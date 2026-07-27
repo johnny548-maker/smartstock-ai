@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 439.34,
- "change_pct": -0.56,
+ "price": 437.5,
+ "change_pct": -0.42,
  "ohlc": [
-  {
-   "time": "2026-04-28",
-   "o": 209.62,
-   "h": 210.16,
-   "l": 201.23,
-   "c": 205.59,
-   "v": 4437700
-  },
   {
    "time": "2026-04-29",
    "o": 205.72,
@@ -482,14 +474,22 @@
    "h": 454.77,
    "l": 434.1,
    "c": 439.34,
-   "v": 5113800
+   "v": 5118500
+  },
+  {
+   "time": "2026-07-24",
+   "o": 438.94,
+   "h": 451.48,
+   "l": 432.26,
+   "c": 437.5,
+   "v": 4596500
   }
  ],
  "sr": {
-  "price": 439.34,
+  "price": 437.5,
   "resistance": [
-   443.27,
-   462.72
+   437.8,
+   443.27
   ],
   "support": [
    378.04,
@@ -498,7 +498,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  205.59,
   205.32,
   208.61,
   209.82,
@@ -557,11 +556,144 @@
   381.25,
   404.15,
   441.8,
-  439.34
+  439.34,
+  437.5
  ],
- "spark_start": "2026-04-28",
- "spark_end": "2026-07-23",
+ "spark_start": "2026-04-29",
+ "spark_end": "2026-07-24",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Joins Industry Coalition to Launch Open Source AI Cybersecurity Alliance",
+   "value": {
+    "headline": "Joins Industry Coalition to Launch Open Source AI Cybersecurity Alliance",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785151435,
+    "url": "https://finance.yahoo.com/technology/ai/articles/joins-industry-coalition-launch-open-112355572.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/joins-industry-coalition-launch-open-112355572.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Crypto Treasury Firms Pivot to AI in Bid to Win Back Investors",
+   "value": {
+    "headline": "Crypto Treasury Firms Pivot to AI in Bid to Win Back Investors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785150862,
+    "url": "https://finance.yahoo.com/markets/crypto/articles/crypto-treasury-firms-pivot-ai-111422978.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/crypto/articles/crypto-treasury-firms-pivot-ai-111422978.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia's New AI Security Alliance Unites Microsoft, SpaceX, IBM To Push Open-Source Defense – But Meta's Missing From Th",
+   "value": {
+    "headline": "Nvidia's New AI Security Alliance Unites Microsoft, SpaceX, IBM To Push Open-Source Defense – But Meta's Missing From The List",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785150466,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nvidia-launches-open-secure-ai-alliance-microsoft-spacex-ibm/cZZxgUsR7CA?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/nvidia-launches-open-secure-ai-alliance-microsoft-spacex-ibm/cZZxgUsR7CA?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Zacks Analyst Blog Highlights INTC, DELL and PGR",
+   "value": {
+    "headline": "The Zacks Analyst Blog Highlights INTC, DELL and PGR",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785148260,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-intc-103100807.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-intc-103100807.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "This AI Stock Has Tripled in 2026. It Could Still Double in 3 Years (Hint: It's Not Micron)",
+   "value": {
+    "headline": "This AI Stock Has Tripled in 2026. It Could Still Double in 3 Years (Hint: It's Not Micron)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785080580,
+    "url": "https://www.fool.com/investing/2026/07/26/this-ai-stock-has-tripled-in-2026-it-could-still-d/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/07/26/this-ai-stock-has-tripled-in-2026-it-could-still-d/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-27",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 98966,
+    "days": 6,
+    "max_shares": 41320,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-07-27",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,7 +1,7 @@
 {
  "stock": "1615.TW",
  "name": "大山",
- "price": 42.95,
+ "price": 42.9,
  "change_pct": -0.12,
  "ohlc": [
   {
@@ -195,16 +195,26 @@
    "l": 42.5,
    "c": 42.95,
    "v": 95827
+  },
+  {
+   "time": "2026-07-27",
+   "o": 42.55,
+   "h": 43.0,
+   "l": 42.55,
+   "c": 42.9,
+   "v": 71406
   }
  ],
  "sr": {
-  "price": 42.95,
+  "price": 42.9,
   "resistance": [
    45.5,
    46.6
   ],
-  "support": [],
-  "strong_support": 44.2
+  "support": [
+   42.45
+  ],
+  "strong_support": 42.45
  },
  "spark": [
   45.2,
@@ -230,10 +240,11 @@
   46.55,
   43.1,
   43.0,
-  42.95
+  42.95,
+  42.9
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-07-24",
+ "spark_end": "2026-07-27",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
