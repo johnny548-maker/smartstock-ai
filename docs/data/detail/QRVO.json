@@ -1,17 +1,9 @@
 {
  "stock": "QRVO",
  "name": "Qorvo",
- "price": 86.51,
- "change_pct": -0.25,
+ "price": 89.76,
+ "change_pct": 3.76,
  "ohlc": [
-  {
-   "time": "2026-04-29",
-   "o": 85.47,
-   "h": 87.26,
-   "l": 85.0,
-   "c": 86.48,
-   "v": 930900
-  },
   {
    "time": "2026-04-30",
    "o": 87.57,
@@ -483,22 +475,29 @@
    "l": 86.08,
    "c": 86.51,
    "v": 1116400
+  },
+  {
+   "time": "2026-07-27",
+   "o": 86.83,
+   "h": 90.09,
+   "l": 86.36,
+   "c": 89.76,
+   "v": 1371100
   }
  ],
  "sr": {
-  "price": 86.51,
+  "price": 89.76,
   "resistance": [
-   89.37,
+   90.41,
    90.66
   ],
   "support": [
-   86.38,
-   86.14
+   88.12,
+   87.53
   ],
   "strong_support": 49.46
  },
  "spark": [
-  86.48,
   94.22,
   93.5,
   92.53,
@@ -557,11 +556,129 @@
   88.93,
   89.48,
   86.73,
-  86.51
+  86.51,
+  89.76
  ],
- "spark_start": "2026-04-29",
- "spark_end": "2026-07-24",
+ "spark_start": "2026-04-30",
+ "spark_end": "2026-07-27",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Qorvo (QRVO) Reports Q2: Everything You Need To Know Ahead Of Earnings",
+   "value": {
+    "headline": "Qorvo (QRVO) Reports Q2: Everything You Need To Know Ahead Of Earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785152942,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/qorvo-qrvo-reports-q2-everything-114902442.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/qorvo-qrvo-reports-q2-everything-114902442.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The American Chip Boom Picks Winners: TXN, INTC, and QRVO at Current Share Prices",
+   "value": {
+    "headline": "The American Chip Boom Picks Winners: TXN, INTC, and QRVO at Current Share Prices",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784781361,
+    "url": "https://247wallst.com/investing/2026/07/23/the-american-chip-boom-picks-winners-txn-intc-and-qrvo-at-current-prices/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/07/23/the-american-chip-boom-picks-winners-txn-intc-and-qrvo-at-current-prices/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Intel and AMD Get AI Earnings Setup",
+   "value": {
+    "headline": "Intel and AMD Get AI Earnings Setup",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784577650,
+    "url": "https://finance.yahoo.com/technology/ai/articles/intel-amd-ai-earnings-setup-200050646.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/intel-amd-ai-earnings-setup-200050646.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Skyworks Stock Just Got Downgraded",
+   "value": {
+    "headline": "Why Skyworks Stock Just Got Downgraded",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784230874,
+    "url": "https://www.barchart.com/story/news/3324461/why-skyworks-stock-just-got-downgraded?.tsrc=rss",
+    "urls": [
+     "https://www.barchart.com/story/news/3324461/why-skyworks-stock-just-got-downgraded?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Qorvo® to Distribute Quarterly Earnings on July 28, 2026",
+   "value": {
+    "headline": "Qorvo® to Distribute Quarterly Earnings on July 28, 2026",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1784145660,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/qorvo-distribute-quarterly-earnings-july-200100245.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/qorvo-distribute-quarterly-earnings-july-200100245.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

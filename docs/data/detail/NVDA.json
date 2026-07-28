@@ -1,33 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 212.06,
- "change_pct": 2.3,
+ "price": 196.51,
+ "change_pct": -4.99,
  "ohlc": [
-  {
-   "time": "2026-04-27",
-   "o": 209.41,
-   "h": 216.58,
-   "l": 207.14,
-   "c": 216.36,
-   "v": 187172400
-  },
-  {
-   "time": "2026-04-28",
-   "o": 209.25,
-   "h": 214.48,
-   "l": 207.96,
-   "c": 212.92,
-   "v": 180275400
-  },
-  {
-   "time": "2026-04-29",
-   "o": 212.45,
-   "h": 212.47,
-   "l": 207.34,
-   "c": 209.01,
-   "v": 123711800
-  },
   {
    "time": "2026-04-30",
    "o": 209.69,
@@ -482,25 +458,46 @@
    "h": 214.39,
    "l": 204.95,
    "c": 212.06,
-   "v": 137220500
+   "v": 137645600
+  },
+  {
+   "time": "2026-07-23",
+   "o": 209.46,
+   "h": 210.87,
+   "l": 205.96,
+   "c": 208.76,
+   "v": 110505300
+  },
+  {
+   "time": "2026-07-24",
+   "o": 207.45,
+   "h": 211.91,
+   "l": 204.81,
+   "c": 206.84,
+   "v": 114836800
+  },
+  {
+   "time": "2026-07-27",
+   "o": 208.2,
+   "h": 208.75,
+   "l": 195.44,
+   "c": 196.51,
+   "v": 153868500
   }
  ],
  "sr": {
-  "price": 212.06,
+  "price": 196.51,
   "resistance": [
-   212.71,
-   213.81
+   197.39,
+   211.92
   ],
   "support": [
-   208.54,
-   199.34
+   194.51,
+   191.14
   ],
   "strong_support": 163.85
  },
  "spark": [
-  216.36,
-  212.92,
-  209.01,
   199.34,
   198.22,
   198.25,
@@ -557,14 +554,17 @@
   202.81,
   203.28,
   207.29,
-  212.06
+  212.06,
+  208.76,
+  206.84,
+  196.51
  ],
- "spark_start": "2026-04-27",
- "spark_end": "2026-07-22",
+ "spark_start": "2026-04-30",
+ "spark_end": "2026-07-27",
  "fundamental": {
-  "pe_trailing": 32.47473,
-  "pe_forward": 16.478321,
-  "eps_trailing": 6.53,
+  "pe_trailing": 31.644121,
+  "pe_forward": 15.269993,
+  "eps_trailing": 6.21,
   "eps_forward": 12.86903,
   "stale": false,
   "source": "yfinance"
@@ -575,117 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 Uranium Stocks to Buy as Nuclear Heats Before the End of July",
+   "label": "Nvidia Stock Sinks After Report Raises Fresh AI Bubble Fears",
    "value": {
-    "headline": "3 Uranium Stocks to Buy as Nuclear Heats Before the End of July",
+    "headline": "Nvidia Stock Sinks After Report Raises Fresh AI Bubble Fears",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784808000,
-    "url": "https://247wallst.com/investing/2026/07/23/3-uranium-stocks-to-buy-as-nuclear-heats-before-the-end-of-july/?.tsrc=rss",
+    "ts": 1785240683,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-stock-sinks-report-raises-121123537.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/07/23/3-uranium-stocks-to-buy-as-nuclear-heats-before-the-end-of-july/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-stock-sinks-report-raises-121123537.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-07-23",
+   "severity": "warn",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AT&T, Applied Digital, Autodesk, Duke Energy, Exxon Mobil, J",
+   "label": "1 Reason to Buy NuScale Power Stock This August",
    "value": {
-    "headline": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AT&T, Applied Digital, Autodesk, Duke Energy, Exxon Mobil, JPMorgan Chase & Company, Live Nation Entertainment, and More",
+    "headline": "1 Reason to Buy NuScale Power Stock This August",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784807680,
-    "url": "https://247wallst.com/investing/2026/07/23/here-are-thursdays-top-wall-street-analyst-research-calls-att-applied-digital-autodesk-duke-energy-exxon-mobil-jpmorgan-chase-company-live-nation-entertainment-and-more/?.tsrc=rss",
+    "ts": 1785240240,
+    "url": "https://www.fool.com/investing/2026/07/28/1-reason-to-buy-nuscale-power-stock-this-august/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/07/23/here-are-thursdays-top-wall-street-analyst-research-calls-att-applied-digital-autodesk-duke-energy-exxon-mobil-jpmorgan-chase-company-live-nation-entertainment-and-more/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/28/1-reason-to-buy-nuscale-power-stock-this-august/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Apple Stock a Buy Right Now?",
+   "label": "Stocks Mostly Down Pre-Bell Amid Chip Sell-Off; Traders Await More Earnings",
    "value": {
-    "headline": "Is Apple Stock a Buy Right Now?",
+    "headline": "Stocks Mostly Down Pre-Bell Amid Chip Sell-Off; Traders Await More Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784807400,
-    "url": "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss",
+    "ts": 1785239637,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-mostly-down-pre-bell-115357169.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/23/is-apple-stock-a-buy-right-now/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/stocks-mostly-down-pre-bell-115357169.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-07-23",
+   "severity": "warn",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "You Can Do Better Than Coca-Cola Stock. Buy This High-Yield Dividend Stock Instead.",
+   "label": "Here's Exactly Why Wall Street Thinks Intuitive Surgical Stock Could Soar 102% Over the Next 12 Months",
    "value": {
-    "headline": "You Can Do Better Than Coca-Cola Stock. Buy This High-Yield Dividend Stock Instead.",
+    "headline": "Here's Exactly Why Wall Street Thinks Intuitive Surgical Stock Could Soar 102% Over the Next 12 Months",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784807100,
-    "url": "https://www.fool.com/investing/2026/07/23/you-can-do-better-than-coca-cola-stock-buy-this-hi/?.tsrc=rss",
+    "ts": 1785239400,
+    "url": "https://www.fool.com/investing/2026/07/28/heres-exactly-why-wall-street-thinks-intuitive-sur/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/23/you-can-do-better-than-coca-cola-stock-buy-this-hi/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/28/heres-exactly-why-wall-street-thinks-intuitive-sur/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Bloom Energy Stock Soared 248% in the First Half of 2026",
+   "label": "Dow set to extend gains as AI spending caution drags on Nasdaq",
    "value": {
-    "headline": "Why Bloom Energy Stock Soared 248% in the First Half of 2026",
+    "headline": "Dow set to extend gains as AI spending caution drags on Nasdaq",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784806715,
-    "url": "https://www.fool.com/investing/2026/07/23/why-bloom-energy-stock-soared-248-in-the-first-hal/?.tsrc=rss",
+    "ts": 1785239100,
+    "url": "https://www.proactiveinvestors.com/companies/news/1096134/dow-set-to-extend-gains-as-ai-spending-caution-drags-on-nasdaq-1096134.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/23/why-bloom-energy-stock-soared-248-in-the-first-hal/?.tsrc=rss"
+     "https://www.proactiveinvestors.com/companies/news/1096134/dow-set-to-extend-gains-as-ai-spending-caution-drags-on-nasdaq-1096134.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -700,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-23",
+   "as_of": "2026-07-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

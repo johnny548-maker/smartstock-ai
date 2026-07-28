@@ -1,17 +1,9 @@
 {
  "stock": "2337",
  "name": "旺宏",
- "price": 125.5,
- "change_pct": 1.21,
+ "price": 113.0,
+ "change_pct": -9.96,
  "ohlc": [
-  {
-   "time": "2026-05-04",
-   "o": 161.0,
-   "h": 163.0,
-   "l": 151.0,
-   "c": 154.5,
-   "v": 223563196
-  },
   {
    "time": "2026-05-05",
    "o": 155.0,
@@ -482,23 +474,30 @@
    "h": 125.5,
    "l": 118.0,
    "c": 125.5,
-   "v": 37377558
+   "v": 37028235
+  },
+  {
+   "time": "2026-07-28",
+   "o": 115.0,
+   "h": 116.0,
+   "l": 113.0,
+   "c": 113.0,
+   "v": 36993740
   }
  ],
  "sr": {
-  "price": 125.5,
+  "price": 113.0,
   "resistance": [
-   135.0,
-   150.5
+   120.5,
+   135.0
   ],
   "support": [
-   118.0,
-   115.5
+   88.8,
+   79.5
   ],
   "strong_support": 16.9
  },
  "spark": [
-  154.5,
   160.5,
   172.0,
   164.5,
@@ -557,10 +556,11 @@
   135.0,
   129.5,
   124.0,
-  125.5
+  125.5,
+  113.0
  ],
- "spark_start": "2026-05-04",
- "spark_end": "2026-07-27",
+ "spark_start": "2026-05-05",
+ "spark_end": "2026-07-28",
  "fundamental": {
   "rev_yoy": 216.1,
   "rev_accel": true,
@@ -569,6 +569,64 @@
  },
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "旺宏Q2大賺77億元創高、EPS 3.91元 再追加資本支出158億元",
+   "value": {
+    "headline": "旺宏Q2大賺77億元創高、EPS 3.91元 再追加資本支出158億元",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1785237524,
+    "url": "cnyes:6548742",
+    "urls": [
+     "cnyes:6548742"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "旺宏:eMMC漲價估延續到第4季 追加158億元擴產",
+   "value": {
+    "headline": "旺宏:eMMC漲價估延續到第4季 追加158億元擴產",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1785236072,
+    "url": "https://money.udn.com/money/story/5612/9656433",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9656433"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 2 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 2,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "udn"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -714,6 +772,10 @@
    {
     "t": "2026-07-27",
     "v": 21561
+   },
+   {
+    "t": "2026-07-28",
+    "v": 12086
    }
   ],
   "holder_pct": [

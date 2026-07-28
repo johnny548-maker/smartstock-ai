@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 333.02,
- "change_pct": 3.53,
+ "price": 336.91,
+ "change_pct": 1.17,
  "ohlc": [
-  {
-   "time": "2026-04-29",
-   "o": 267.3,
-   "h": 270.79,
-   "l": 266.79,
-   "c": 269.92,
-   "v": 30047900
-  },
   {
    "time": "2026-04-30",
    "o": 270.25,
@@ -482,14 +474,20 @@
    "h": 334.37,
    "l": 321.62,
    "c": 333.02,
-   "v": 47443900
+   "v": 47489400
+  },
+  {
+   "time": "2026-07-27",
+   "o": 334.54,
+   "h": 339.57,
+   "l": 334.02,
+   "c": 336.91,
+   "v": 49556300
   }
  ],
  "sr": {
-  "price": 333.02,
-  "resistance": [
-   334.99
-  ],
+  "price": 336.91,
+  "resistance": [],
   "support": [
    305.02,
    287.38
@@ -497,7 +495,6 @@
   "strong_support": 200.7
  },
  "spark": [
-  269.92,
   271.1,
   279.88,
   276.58,
@@ -556,16 +553,17 @@
   327.74,
   325.89,
   321.66,
-  333.02
+  333.02,
+  336.91
  ],
- "spark_start": "2026-04-29",
- "spark_end": "2026-07-24",
+ "spark_start": "2026-04-30",
+ "spark_end": "2026-07-27",
  "fundamental": {
   "pe_trailing": 40.31719,
   "pe_forward": 34.52369,
   "eps_trailing": 8.26,
   "eps_forward": 9.64613,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,117 +572,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Jumps 575 Points On U.S.-Iran Hopes; Oil Prices Plunge (Live Coverage)",
+   "label": "Should You Buy Apple Stock Before July 30?",
    "value": {
-    "headline": "Stock Market Today: Dow Jumps 575 Points On U.S.-Iran Hopes; Oil Prices Plunge (Live Coverage)",
+    "headline": "Should You Buy Apple Stock Before July 30?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785156933,
-    "url": "https://finance.yahoo.com/m/de8b5436-c73d-31ce-a62f-9df4d32cb08d/stock-market-today%3A-dow-jumps.html?.tsrc=rss",
+    "ts": 1785238320,
+    "url": "https://www.fool.com/investing/2026/07/28/should-you-buy-apple-stock-before-july-30/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/de8b5436-c73d-31ce-a62f-9df4d32cb08d/stock-market-today%3A-dow-jumps.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/07/28/should-you-buy-apple-stock-before-july-30/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Get Paid 10% To Let Someone Else Chase GOOGL Stock Higher",
+   "value": {
+    "headline": "Get Paid 10% To Let Someone Else Chase GOOGL Stock Higher",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785238069,
+    "url": "https://www.trefis.com/articles/609124/get-paid-10-to-let-someone-else-chase-googl-stock-higher/2026-07-28?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/609124/get-paid-10-to-let-someone-else-chase-googl-stock-higher/2026-07-28?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Chip stocks fall as South Korea's Kospi plunges 10% before earnings",
+   "value": {
+    "headline": "Chip stocks fall as South Korea's Kospi plunges 10% before earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785238021,
+    "url": "https://qz.com/chip-stocks-sell-off-kospi-nasdaq-futures-earnings-072826?.tsrc=rss",
+    "urls": [
+     "https://qz.com/chip-stocks-sell-off-kospi-nasdaq-futures-earnings-072826?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-07-27",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Makes Privacy Central to Smart Glasses Push",
+   "label": "Will this be the quarter Big Tech breaks out?",
    "value": {
-    "headline": "Apple Makes Privacy Central to Smart Glasses Push",
+    "headline": "Will this be the quarter Big Tech breaks out?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785156122,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-makes-privacy-central-smart-124202510.html?.tsrc=rss",
+    "ts": 1785236640,
+    "url": "https://finance.yahoo.com/technology/articles/quarter-big-tech-breaks-110400859.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-makes-privacy-central-smart-124202510.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/quarter-big-tech-breaks-110400859.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-27",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Puts Privacy at Center of Smart Glasses Push",
+   "label": "PayPal presses on with turnaround in pivotal quarter as sale questions linger",
    "value": {
-    "headline": "Apple Puts Privacy at Center of Smart Glasses Push",
+    "headline": "PayPal presses on with turnaround in pivotal quarter as sale questions linger",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785155684,
-    "url": "https://finance.yahoo.com/technology/articles/apple-puts-privacy-center-smart-123444257.html?.tsrc=rss",
+    "ts": 1785236590,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/paypal-presses-turnaround-pivotal-quarter-110310369.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/apple-puts-privacy-center-smart-123444257.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/paypal-presses-turnaround-pivotal-quarter-110310369.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-27",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stocks Rise Pre-Bell as US, Iran Pause Strikes; Fed Policy Decision, Inflation Report on Deck",
-   "value": {
-    "headline": "Stocks Rise Pre-Bell as US, Iran Pause Strikes; Fed Policy Decision, Inflation Report on Deck",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785153706,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-us-120146044.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-us-120146044.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-27",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NinjaTrader to Offer CME Group Single Stock Futures, Giving Active Traders Direct Access to Top U.S. Brands Including Nv",
-   "value": {
-    "headline": "NinjaTrader to Offer CME Group Single Stock Futures, Giving Active Traders Direct Access to Top U.S. Brands Including Nvidia, Tesla and Apple",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785153600,
-    "url": "https://finance.yahoo.com/markets/options/articles/ninjatrader-offer-cme-group-single-120000625.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/options/articles/ninjatrader-offer-cme-group-single-120000625.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-27",
+   "as_of": "2026-07-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-27",
+   "as_of": "2026-07-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 415 分 / 161 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 415,
+    "comments": 161,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-07-28",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -698,7 +711,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-27",
+   "as_of": "2026-07-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
