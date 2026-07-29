@@ -563,5 +563,137 @@
  "spark_end": "2026-07-27",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia (NVDA) Pours $5 Billion Into Safe AI And Expands Data Center Reach",
+   "value": {
+    "headline": "Nvidia (NVDA) Pours $5 Billion Into Safe AI And Expands Data Center Reach",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785294788,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-pours-5-billion-031308100.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-pours-5-billion-031308100.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Bitcoin Miner Ionic Climbs 25% On Nasdaq Debut, Joining Hut 8’s AI Shift",
+   "value": {
+    "headline": "Bitcoin Miner Ionic Climbs 25% On Nasdaq Debut, Joining Hut 8’s AI Shift",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785294613,
+    "url": "https://beincrypto.com/ionic-digital-stock-nasdaq-debut/?.tsrc=rss",
+    "urls": [
+     "https://beincrypto.com/ionic-digital-stock-nasdaq-debut/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Ionic Digital Reaches $2.75B Valuation After Nasdaq Debut",
+   "value": {
+    "headline": "Ionic Digital Reaches $2.75B Valuation After Nasdaq Debut",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785283440,
+    "url": "https://www.cryptoprowl.com/releases/ionic-digital-reaches-275b-valuation-after-nasdaq-debut-6277?.tsrc=rss",
+    "urls": [
+     "https://www.cryptoprowl.com/releases/ionic-digital-reaches-275b-valuation-after-nasdaq-debut-6277?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia Reportedly Signs Up to $50 Billion Texas Data-Center Lease",
+   "value": {
+    "headline": "Nvidia Reportedly Signs Up to $50 Billion Texas Data-Center Lease",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785266883,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-reportedly-signs-50-billion-192803623.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-reportedly-signs-50-billion-192803623.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Earnings Preview: Hut 8 (HUT) Q2 Earnings Expected to Decline",
+   "value": {
+    "headline": "Earnings Preview: Hut 8 (HUT) Q2 Earnings Expected to Decline",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785247213,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-hut-8-hut-140013206.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-hut-8-hut-140013206.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-29",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 100,586 股交割失敗）",
+   "value": {
+    "total_shares": 100586,
+    "days": 9,
+    "max_shares": 44698,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-07-29",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

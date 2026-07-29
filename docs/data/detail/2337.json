@@ -1,17 +1,9 @@
 {
  "stock": "2337",
  "name": "旺宏",
- "price": 113.0,
- "change_pct": -9.96,
+ "price": 102.0,
+ "change_pct": -9.73,
  "ohlc": [
-  {
-   "time": "2026-05-05",
-   "o": 155.0,
-   "h": 162.5,
-   "l": 153.0,
-   "c": 160.5,
-   "v": 171185097
-  },
   {
    "time": "2026-05-06",
    "o": 173.0,
@@ -482,11 +474,19 @@
    "h": 116.0,
    "l": 113.0,
    "c": 113.0,
-   "v": 36993740
+   "v": 36349240
+  },
+  {
+   "time": "2026-07-29",
+   "o": 110.0,
+   "h": 110.5,
+   "l": 102.0,
+   "c": 102.0,
+   "v": 79566586
   }
  ],
  "sr": {
-  "price": 113.0,
+  "price": 102.0,
   "resistance": [
    120.5,
    135.0
@@ -498,7 +498,6 @@
   "strong_support": 16.9
  },
  "spark": [
-  160.5,
   172.0,
   164.5,
   153.0,
@@ -557,10 +556,11 @@
   129.5,
   124.0,
   125.5,
-  113.0
+  113.0,
+  102.0
  ],
- "spark_start": "2026-05-05",
- "spark_end": "2026-07-28",
+ "spark_start": "2026-05-06",
+ "spark_end": "2026-07-29",
  "fundamental": {
   "rev_yoy": 216.1,
   "rev_accel": true,
@@ -573,57 +573,36 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "旺宏Q2大賺77億元創高、EPS 3.91元 再追加資本支出158億元",
+   "label": "鉅亨速報 - Factset 最新調查:旺宏(2337-TW)EPS預估上修至15.9元,預估目標價為183元",
    "value": {
-    "headline": "旺宏Q2大賺77億元創高、EPS 3.91元 再追加資本支出158億元",
+    "headline": "鉅亨速報 - Factset 最新調查:旺宏(2337-TW)EPS預估上修至15.9元,預估目標價為183元",
     "sources": [
      "cnyes"
     ],
     "source_count": 1,
-    "ts": 1785237524,
-    "url": "cnyes:6548742",
+    "ts": 1785312636,
+    "url": "cnyes:6550642",
     "urls": [
-     "cnyes:6548742"
+     "cnyes:6550642"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "旺宏:eMMC漲價估延續到第4季 追加158億元擴產",
-   "value": {
-    "headline": "旺宏:eMMC漲價估延續到第4季 追加158億元擴產",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1785236072,
-    "url": "https://money.udn.com/money/story/5612/9656433",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9656433"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 2 則（最高 1 來源確認）",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 2,
+    "headline_count": 1,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
-     "udn"
+     "cnyes"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-29",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
@@ -776,6 +755,10 @@
    {
     "t": "2026-07-28",
     "v": 12086
+   },
+   {
+    "t": "2026-07-29",
+    "v": -3281
    }
   ],
   "holder_pct": [
