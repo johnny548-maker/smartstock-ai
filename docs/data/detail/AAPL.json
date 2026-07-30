@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 336.91,
- "change_pct": 1.17,
+ "price": 338.19,
+ "change_pct": -0.56,
  "ohlc": [
-  {
-   "time": "2026-04-30",
-   "o": 270.25,
-   "h": 275.75,
-   "l": 267.89,
-   "c": 271.1,
-   "v": 91848200
-  },
-  {
-   "time": "2026-05-01",
-   "o": 278.6,
-   "h": 286.96,
-   "l": 278.11,
-   "c": 279.88,
-   "v": 79915400
-  },
   {
    "time": "2026-05-04",
    "o": 279.4,
@@ -482,21 +466,35 @@
    "h": 339.57,
    "l": 334.02,
    "c": 336.91,
-   "v": 49556300
+   "v": 49604300
+  },
+  {
+   "time": "2026-07-28",
+   "o": 340.03,
+   "h": 342.89,
+   "l": 335.6,
+   "c": 340.08,
+   "v": 51859000
+  },
+  {
+   "time": "2026-07-29",
+   "o": 339.73,
+   "h": 344.57,
+   "l": 337.35,
+   "c": 338.19,
+   "v": 55929000
   }
  ],
  "sr": {
-  "price": 336.91,
+  "price": 338.19,
   "resistance": [],
   "support": [
-   305.02,
-   287.38
+   319.35,
+   305.02
   ],
-  "strong_support": 200.7
+  "strong_support": 223.15
  },
  "spark": [
-  271.1,
-  279.88,
   276.58,
   283.92,
   287.25,
@@ -554,119 +552,143 @@
   325.89,
   321.66,
   333.02,
-  336.91
+  336.91,
+  340.08,
+  338.19
  ],
- "spark_start": "2026-04-30",
- "spark_end": "2026-07-27",
+ "spark_start": "2026-05-04",
+ "spark_end": "2026-07-29",
  "fundamental": {
-  "pe_trailing": 40.31719,
-  "pe_forward": 34.52369,
-  "eps_trailing": 8.26,
-  "eps_forward": 9.64613,
-  "stale": true,
+  "pe_trailing": 40.99273,
+  "pe_forward": 35.02048,
+  "eps_trailing": 8.25,
+  "eps_forward": 9.65692,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 338.19,
+  "stop": 322.55,
+  "target": 377.29,
+  "atr_bracket": 377.29,
+  "measured_move": 358.07,
+  "target_band": [
+   356.69,
+   358.07,
+   377.29
+  ],
+  "stop_pct": -4.6,
+  "target_pct": 11.6,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 317.0,
+  "chandelier": 320.16,
+  "fib_targets": [
+   348.71,
+   356.69,
+   365.51
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Buy Apple Stock Before July 30?",
+   "label": "Stock Futures Rise as Investors Await Key Inflation Report Following Fed Hold",
    "value": {
-    "headline": "Should You Buy Apple Stock Before July 30?",
+    "headline": "Stock Futures Rise as Investors Await Key Inflation Report Following Fed Hold",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785238320,
-    "url": "https://www.fool.com/investing/2026/07/28/should-you-buy-apple-stock-before-july-30/?.tsrc=rss",
+    "ts": 1785412124,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-rise-investors-await-114844580.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/07/28/should-you-buy-apple-stock-before-july-30/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/stock-futures-rise-investors-await-114844580.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Get Paid 10% To Let Someone Else Chase GOOGL Stock Higher",
+   "label": "Microsoft Earnings Lift Wall Street Pre-Bell; Asia Mixed, Europe Up",
    "value": {
-    "headline": "Get Paid 10% To Let Someone Else Chase GOOGL Stock Higher",
+    "headline": "Microsoft Earnings Lift Wall Street Pre-Bell; Asia Mixed, Europe Up",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785238069,
-    "url": "https://www.trefis.com/articles/609124/get-paid-10-to-let-someone-else-chase-googl-stock-higher/2026-07-28?.tsrc=rss",
+    "ts": 1785409815,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-earnings-lift-wall-street-111015695.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/609124/get-paid-10-to-let-someone-else-chase-googl-stock-higher/2026-07-28?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-earnings-lift-wall-street-111015695.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Chip stocks fall as South Korea's Kospi plunges 10% before earnings",
+   "label": "Qualcomm shares slide as higher costs, Apple-related weakness cloud profit forecast",
    "value": {
-    "headline": "Chip stocks fall as South Korea's Kospi plunges 10% before earnings",
+    "headline": "Qualcomm shares slide as higher costs, Apple-related weakness cloud profit forecast",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785238021,
-    "url": "https://qz.com/chip-stocks-sell-off-kospi-nasdaq-futures-earnings-072826?.tsrc=rss",
+    "ts": 1785409455,
+    "url": "https://finance.yahoo.com/technology/articles/qualcomm-shares-slide-higher-costs-110415585.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/chip-stocks-sell-off-kospi-nasdaq-futures-earnings-072826?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/qualcomm-shares-slide-higher-costs-110415585.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Markets Ride a Roller Coaster of Fed Confusion and AI Hope After Savage Selloff",
+   "value": {
+    "headline": "Markets Ride a Roller Coaster of Fed Confusion and AI Hope After Savage Selloff",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785408840,
+    "url": "https://finance.yahoo.com/m/c4bee633-879c-335c-b1e3-4557dfc9e79d/markets-ride-a-roller-coaster.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/c4bee633-879c-335c-b1e3-4557dfc9e79d/markets-ride-a-roller-coaster.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Will this be the quarter Big Tech breaks out?",
+   "label": "Social Buzz: Wallstreetbets Stocks Mostly Higher Pre-Bell Thursday; Microsoft, Nebius Group to Advance",
    "value": {
-    "headline": "Will this be the quarter Big Tech breaks out?",
+    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Higher Pre-Bell Thursday; Microsoft, Nebius Group to Advance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785236640,
-    "url": "https://finance.yahoo.com/technology/articles/quarter-big-tech-breaks-110400859.html?.tsrc=rss",
+    "ts": 1785407887,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103807709.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/quarter-big-tech-breaks-110400859.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103807709.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "PayPal presses on with turnaround in pivotal quarter as sale questions linger",
-   "value": {
-    "headline": "PayPal presses on with turnaround in pivotal quarter as sale questions linger",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785236590,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/paypal-presses-turnaround-pivotal-quarter-110310369.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/paypal-presses-turnaround-pivotal-quarter-110310369.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -681,22 +703,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 415 分 / 161 留言",
+   "label": "HN 討論熱度 20 篇 / 57 分 / 11 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 415,
-    "comments": 161,
+    "points": 57,
+    "comments": 11,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-07-28",
+   "severity": "info",
+   "as_of": "2026-07-30",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -711,7 +733,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-28",
+   "as_of": "2026-07-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,25 +1,9 @@
 {
  "stock": "VPG",
  "name": "Vishay Precision Group",
- "price": 102.31,
- "change_pct": -2.04,
+ "price": 81.26,
+ "change_pct": -11.56,
  "ohlc": [
-  {
-   "time": "2026-04-30",
-   "o": 57.35,
-   "h": 61.94,
-   "l": 57.28,
-   "c": 60.42,
-   "v": 283200
-  },
-  {
-   "time": "2026-05-01",
-   "o": 59.95,
-   "h": 60.68,
-   "l": 58.74,
-   "c": 60.22,
-   "v": 159900
-  },
   {
    "time": "2026-05-04",
    "o": 60.64,
@@ -483,23 +467,37 @@
    "l": 96.02,
    "c": 102.31,
    "v": 461800
+  },
+  {
+   "time": "2026-07-28",
+   "o": 98.09,
+   "h": 98.27,
+   "l": 86.17,
+   "c": 91.88,
+   "v": 763100
+  },
+  {
+   "time": "2026-07-29",
+   "o": 90.51,
+   "h": 93.16,
+   "l": 79.76,
+   "c": 81.26,
+   "v": 928300
   }
  ],
  "sr": {
-  "price": 102.31,
+  "price": 81.26,
   "resistance": [
    108.0,
    113.36
   ],
   "support": [
-   93.34,
-   90.01
+   55.2,
+   44.01
   ],
   "strong_support": 18.57
  },
  "spark": [
-  60.42,
-  60.22,
   60.03,
   63.95,
   63.57,
@@ -557,128 +555,13 @@
   110.23,
   110.54,
   104.44,
-  102.31
+  102.31,
+  91.88,
+  81.26
  ],
- "spark_start": "2026-04-30",
- "spark_end": "2026-07-27",
+ "spark_start": "2026-05-04",
+ "spark_end": "2026-07-29",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "CTS (CTS) Q2 Earnings and Revenues Beat Estimates",
-   "value": {
-    "headline": "CTS (CTS) Q2 Earnings and Revenues Beat Estimates",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785244503,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cts-cts-q2-earnings-revenues-131503953.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cts-cts-q2-earnings-revenues-131503953.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "TEL or VPG: Which Is the Better Value Stock Right Now?",
-   "value": {
-    "headline": "TEL or VPG: Which Is the Better Value Stock Right Now?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784907602,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tel-vpg-better-value-stock-154002294.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tel-vpg-better-value-stock-154002294.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 Stocks to Buy Before Wall Street Catches On Before the End of July",
-   "value": {
-    "headline": "3 Stocks to Buy Before Wall Street Catches On Before the End of July",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784894410,
-    "url": "https://247wallst.com/investing/2026/07/24/3-stocks-to-buy-before-wall-street-catches-on-before-the-end-of-july/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/07/24/3-stocks-to-buy-before-wall-street-catches-on-before-the-end-of-july/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Vishay Precision Group Announces Date for its Second Quarter Fiscal 2026 Earnings Conference Call",
-   "value": {
-    "headline": "Vishay Precision Group Announces Date for its Second Quarter Fiscal 2026 Earnings Conference Call",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784134800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/vishay-precision-group-announces-date-170000777.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/vishay-precision-group-announces-date-170000777.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 AI Infrastructure Stocks to Buy in July",
-   "value": {
-    "headline": "3 AI Infrastructure Stocks to Buy in July",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1783427410,
-    "url": "https://247wallst.com/investing/2026/07/07/3-ai-infrastructure-stocks-to-buy-in-july/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/07/07/3-ai-infrastructure-stocks-to-buy-in-july/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

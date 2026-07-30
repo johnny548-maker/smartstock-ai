@@ -1,57 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 397.75,
- "change_pct": -1.13,
+ "price": 390.54,
+ "change_pct": -0.71,
  "ohlc": [
-  {
-   "time": "2026-04-24",
-   "o": 416.07,
-   "h": 424.03,
-   "l": 414.9,
-   "c": 423.7,
-   "v": 27457400
-  },
-  {
-   "time": "2026-04-27",
-   "o": 421.47,
-   "h": 426.19,
-   "l": 416.17,
-   "c": 423.9,
-   "v": 30867300
-  },
-  {
-   "time": "2026-04-28",
-   "o": 423.65,
-   "h": 428.99,
-   "l": 420.99,
-   "c": 428.32,
-   "v": 30438100
-  },
-  {
-   "time": "2026-04-29",
-   "o": 423.66,
-   "h": 425.9,
-   "l": 419.38,
-   "c": 423.54,
-   "v": 38288300
-  },
-  {
-   "time": "2026-04-30",
-   "o": 409.92,
-   "h": 413.52,
-   "l": 397.15,
-   "c": 406.9,
-   "v": 70909400
-  },
-  {
-   "time": "2026-05-01",
-   "o": 411.91,
-   "h": 416.21,
-   "l": 409.55,
-   "c": 413.54,
-   "v": 31372400
-  },
   {
    "time": "2026-05-04",
    "o": 410.65,
@@ -482,28 +434,70 @@
    "h": 401.47,
    "l": 396.32,
    "c": 397.75,
-   "v": 24054000
+   "v": 24126600
+  },
+  {
+   "time": "2026-07-22",
+   "o": 399.58,
+   "h": 401.0,
+   "l": 386.96,
+   "c": 390.34,
+   "v": 28142500
+  },
+  {
+   "time": "2026-07-23",
+   "o": 389.97,
+   "h": 391.78,
+   "l": 377.39,
+   "c": 381.58,
+   "v": 30351800
+  },
+  {
+   "time": "2026-07-24",
+   "o": 387.05,
+   "h": 389.03,
+   "l": 380.65,
+   "c": 381.7,
+   "v": 27659400
+  },
+  {
+   "time": "2026-07-27",
+   "o": 390.08,
+   "h": 394.2,
+   "l": 387.99,
+   "c": 389.1,
+   "v": 27856200
+  },
+  {
+   "time": "2026-07-28",
+   "o": 393.16,
+   "h": 400.32,
+   "l": 391.3,
+   "c": 393.35,
+   "v": 32367500
+  },
+  {
+   "time": "2026-07-29",
+   "o": 393.4,
+   "h": 401.25,
+   "l": 388.74,
+   "c": 390.54,
+   "v": 44962100
   }
  ],
  "sr": {
-  "price": 397.75,
+  "price": 390.54,
   "resistance": [
-   405.99,
-   406.61
+   395.57,
+   405.99
   ],
   "support": [
-   397.15,
-   392.78
+   380.89,
+   377.39
   ],
   "strong_support": 349.2
  },
  "spark": [
-  423.7,
-  423.9,
-  428.32,
-  423.54,
-  406.9,
-  413.54,
   412.73,
   410.49,
   413.07,
@@ -557,15 +551,21 @@
   401.1,
   393.82,
   402.29,
-  397.75
+  397.75,
+  390.34,
+  381.58,
+  381.7,
+  389.1,
+  393.35,
+  390.54
  ],
- "spark_start": "2026-04-24",
- "spark_end": "2026-07-21",
+ "spark_start": "2026-05-04",
+ "spark_end": "2026-07-29",
  "fundamental": {
-  "pe_trailing": 23.703814,
-  "pe_forward": 20.524996,
-  "eps_trailing": 16.78,
-  "eps_forward": 19.37881,
+  "pe_trailing": 23.41367,
+  "pe_forward": 17.186779,
+  "eps_trailing": 16.68,
+  "eps_forward": 22.72328,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Google Earnings Due. Cloud Growth Could Frame AI Debate For Big Tech.",
+   "label": "Dow Jones Futures Rise; Microsoft, Meta Lead Big Earnings After Market Tumbles, Oil Prices Soar",
    "value": {
-    "headline": "Google Earnings Due. Cloud Growth Could Frame AI Debate For Big Tech.",
+    "headline": "Dow Jones Futures Rise; Microsoft, Meta Lead Big Earnings After Market Tumbles, Oil Prices Soar",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784721653,
-    "url": "https://finance.yahoo.com/m/295035f0-ab1b-3040-b39e-749f64665e5b/google-earnings-due.-cloud.html?.tsrc=rss",
+    "ts": 1785412575,
+    "url": "https://finance.yahoo.com/m/58bee05c-df37-343b-b099-b9d3d5fa6440/dow-jones-futures-rise%3B.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/295035f0-ab1b-3040-b39e-749f64665e5b/google-earnings-due.-cloud.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
-   "value": {
-    "headline": "Wiley Joins U.S. Department of Energy's Genesis Mission Consortium to Advance AI-Powered Scientific Discovery",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784721600,
-    "url": "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/wiley-joins-u-department-energys-120000469.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/58bee05c-df37-343b-b099-b9d3d5fa6440/dow-jones-futures-rise%3B.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Manulife Expands Partnership with Microsoft to Accelerate Enterprise AI Governance and Innovation",
+   "label": "Dow and Nasdaq set to rebound as Microsoft lifts futures",
    "value": {
-    "headline": "Manulife Expands Partnership with Microsoft to Accelerate Enterprise AI Governance and Innovation",
+    "headline": "Dow and Nasdaq set to rebound as Microsoft lifts futures",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784721600,
-    "url": "https://finance.yahoo.com/technology/ai/articles/manulife-expands-partnership-microsoft-accelerate-120000461.html?.tsrc=rss",
+    "ts": 1785412560,
+    "url": "https://www.proactiveinvestors.com/companies/news/1096286/dow-and-nasdaq-set-to-rebound-as-microsoft-lifts-futures-1096286.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/manulife-expands-partnership-microsoft-accelerate-120000461.html?.tsrc=rss"
+     "https://www.proactiveinvestors.com/companies/news/1096286/dow-and-nasdaq-set-to-rebound-as-microsoft-lifts-futures-1096286.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Oracle severed 21,000 employees during an AI spending spree, then hit a $7 billion Wisconsin power hurdle",
+   "label": "The Big Cash Flow Problem That Is Sinking Meta Stock After Earnings",
    "value": {
-    "headline": "Oracle severed 21,000 employees during an AI spending spree, then hit a $7 billion Wisconsin power hurdle",
+    "headline": "The Big Cash Flow Problem That Is Sinking Meta Stock After Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784720700,
-    "url": "https://finance.yahoo.com/technology/ai/articles/oracle-severed-21-000-employees-114500493.html?.tsrc=rss",
+    "ts": 1785412500,
+    "url": "https://finance.yahoo.com/m/4667ac71-f180-3aa4-8830-cd7a701b7d07/the-big-cash-flow-problem.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/oracle-severed-21-000-employees-114500493.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/4667ac71-f180-3aa4-8830-cd7a701b7d07/the-big-cash-flow-problem.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-07-22",
+   "severity": "warn",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Will SpaceX buy Tesla? Musk may soon offer clues on his plans",
+   "label": "Meta Is Spending Whatever It Takes to Win AI — And That’s What Worries Investors",
    "value": {
-    "headline": "Will SpaceX buy Tesla? Musk may soon offer clues on his plans",
+    "headline": "Meta Is Spending Whatever It Takes to Win AI — And That’s What Worries Investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1784718025,
-    "url": "https://www.cnn.com/2026/07/22/business/will-spacex-buy-tesla?.tsrc=rss",
+    "ts": 1785412387,
+    "url": "https://247wallst.com/investing/2026/07/30/meta-is-spending-whatever-it-takes-to-win-ai-and-thats-what-worries-investors/?.tsrc=rss",
     "urls": [
-     "https://www.cnn.com/2026/07/22/business/will-spacex-buy-tesla?.tsrc=rss"
+     "https://247wallst.com/investing/2026/07/30/meta-is-spending-whatever-it-takes-to-win-ai-and-thats-what-worries-investors/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Microsoft Earnings Prove Its Big AI Bet Is Paying Off",
+   "value": {
+    "headline": "Microsoft Earnings Prove Its Big AI Bet Is Paying Off",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785412320,
+    "url": "https://finance.yahoo.com/m/bbc2bbb7-f9bd-397b-860e-ddce816f53a0/microsoft-earnings-prove-its.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/bbc2bbb7-f9bd-397b-860e-ddce816f53a0/microsoft-earnings-prove-its.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-22",
+   "as_of": "2026-07-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

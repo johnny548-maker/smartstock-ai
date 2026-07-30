@@ -1,25 +1,9 @@
 {
  "stock": "HUT",
  "name": "Hut 8 Corp",
- "price": 104.59,
- "change_pct": -4.91,
+ "price": 88.18,
+ "change_pct": -12.81,
  "ohlc": [
-  {
-   "time": "2026-04-30",
-   "o": 74.41,
-   "h": 76.94,
-   "l": 73.3,
-   "c": 75.78,
-   "v": 4427800
-  },
-  {
-   "time": "2026-05-01",
-   "o": 77.0,
-   "h": 79.1,
-   "l": 76.09,
-   "c": 76.98,
-   "v": 2745600
-  },
   {
    "time": "2026-05-04",
    "o": 77.63,
@@ -483,23 +467,37 @@
    "l": 100.88,
    "c": 104.59,
    "v": 3988600
+  },
+  {
+   "time": "2026-07-28",
+   "o": 100.69,
+   "h": 103.04,
+   "l": 91.6,
+   "c": 101.14,
+   "v": 4650500
+  },
+  {
+   "time": "2026-07-29",
+   "o": 100.01,
+   "h": 100.34,
+   "l": 86.89,
+   "c": 88.18,
+   "v": 7198800
   }
  ],
  "sr": {
-  "price": 104.59,
+  "price": 88.18,
   "resistance": [
    111.33,
    112.26
   ],
   "support": [
-   104.25,
-   92.56
+   86.82,
+   83.3
   ],
   "strong_support": 8.73
  },
  "spark": [
-  75.78,
-  76.98,
   78.08,
   80.51,
   108.94,
@@ -557,143 +555,13 @@
   109.86,
   117.67,
   109.99,
-  104.59
+  104.59,
+  101.14,
+  88.18
  ],
- "spark_start": "2026-04-30",
- "spark_end": "2026-07-27",
+ "spark_start": "2026-05-04",
+ "spark_end": "2026-07-29",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia (NVDA) Pours $5 Billion Into Safe AI And Expands Data Center Reach",
-   "value": {
-    "headline": "Nvidia (NVDA) Pours $5 Billion Into Safe AI And Expands Data Center Reach",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785294788,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-pours-5-billion-031308100.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-pours-5-billion-031308100.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Bitcoin Miner Ionic Climbs 25% On Nasdaq Debut, Joining Hut 8’s AI Shift",
-   "value": {
-    "headline": "Bitcoin Miner Ionic Climbs 25% On Nasdaq Debut, Joining Hut 8’s AI Shift",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785294613,
-    "url": "https://beincrypto.com/ionic-digital-stock-nasdaq-debut/?.tsrc=rss",
-    "urls": [
-     "https://beincrypto.com/ionic-digital-stock-nasdaq-debut/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Ionic Digital Reaches $2.75B Valuation After Nasdaq Debut",
-   "value": {
-    "headline": "Ionic Digital Reaches $2.75B Valuation After Nasdaq Debut",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785283440,
-    "url": "https://www.cryptoprowl.com/releases/ionic-digital-reaches-275b-valuation-after-nasdaq-debut-6277?.tsrc=rss",
-    "urls": [
-     "https://www.cryptoprowl.com/releases/ionic-digital-reaches-275b-valuation-after-nasdaq-debut-6277?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia Reportedly Signs Up to $50 Billion Texas Data-Center Lease",
-   "value": {
-    "headline": "Nvidia Reportedly Signs Up to $50 Billion Texas Data-Center Lease",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785266883,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-reportedly-signs-50-billion-192803623.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-reportedly-signs-50-billion-192803623.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Earnings Preview: Hut 8 (HUT) Q2 Earnings Expected to Decline",
-   "value": {
-    "headline": "Earnings Preview: Hut 8 (HUT) Q2 Earnings Expected to Decline",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785247213,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-hut-8-hut-140013206.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-hut-8-hut-140013206.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-29",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 100,586 股交割失敗）",
-   "value": {
-    "total_shares": 100586,
-    "days": 9,
-    "max_shares": 44698,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-07-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
