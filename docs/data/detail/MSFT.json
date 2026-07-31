@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 390.54,
- "change_pct": -0.71,
+ "price": 451.1,
+ "change_pct": 15.51,
  "ohlc": [
-  {
-   "time": "2026-05-04",
-   "o": 410.65,
-   "h": 419.87,
-   "l": 409.91,
-   "c": 412.73,
-   "v": 28066500
-  },
   {
    "time": "2026-05-05",
    "o": 414.42,
@@ -482,23 +474,30 @@
    "h": 401.25,
    "l": 388.74,
    "c": 390.54,
-   "v": 44962100
+   "v": 47209000
+  },
+  {
+   "time": "2026-07-30",
+   "o": 437.9,
+   "h": 458.69,
+   "l": 432.44,
+   "c": 451.1,
+   "v": 109975300
   }
  ],
  "sr": {
-  "price": 390.54,
+  "price": 451.1,
   "resistance": [
-   395.57,
-   405.99
+   466.32,
+   481.6
   ],
   "support": [
-   380.89,
-   377.39
+   436.74,
+   410.52
   ],
   "strong_support": 349.2
  },
  "spark": [
-  412.73,
   410.49,
   413.07,
   419.86,
@@ -557,15 +556,16 @@
   381.7,
   389.1,
   393.35,
-  390.54
+  390.54,
+  451.1
  ],
- "spark_start": "2026-05-04",
- "spark_end": "2026-07-29",
+ "spark_start": "2026-05-05",
+ "spark_end": "2026-07-30",
  "fundamental": {
-  "pe_trailing": 23.41367,
-  "pe_forward": 17.186779,
-  "eps_trailing": 16.68,
-  "eps_forward": 22.72328,
+  "pe_trailing": 25.130919,
+  "pe_forward": 19.540962,
+  "eps_trailing": 17.95,
+  "eps_forward": 23.08484,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,116 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise; Microsoft, Meta Lead Big Earnings After Market Tumbles, Oil Prices Soar",
+   "label": "Microsoft Stock Just Had Its Best Day Since 2008",
    "value": {
-    "headline": "Dow Jones Futures Rise; Microsoft, Meta Lead Big Earnings After Market Tumbles, Oil Prices Soar",
+    "headline": "Microsoft Stock Just Had Its Best Day Since 2008",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785412575,
-    "url": "https://finance.yahoo.com/m/58bee05c-df37-343b-b099-b9d3d5fa6440/dow-jones-futures-rise%3B.html?.tsrc=rss",
+    "ts": 1785500383,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stock-just-had-best-121943604.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/58bee05c-df37-343b-b099-b9d3d5fa6440/dow-jones-futures-rise%3B.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dow and Nasdaq set to rebound as Microsoft lifts futures",
-   "value": {
-    "headline": "Dow and Nasdaq set to rebound as Microsoft lifts futures",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785412560,
-    "url": "https://www.proactiveinvestors.com/companies/news/1096286/dow-and-nasdaq-set-to-rebound-as-microsoft-lifts-futures-1096286.html?.tsrc=rss",
-    "urls": [
-     "https://www.proactiveinvestors.com/companies/news/1096286/dow-and-nasdaq-set-to-rebound-as-microsoft-lifts-futures-1096286.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-stock-just-had-best-121943604.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Big Cash Flow Problem That Is Sinking Meta Stock After Earnings",
+   "label": "Apple CEO Tim Cook says this '100 year flood' won't be receding anytime soon",
    "value": {
-    "headline": "The Big Cash Flow Problem That Is Sinking Meta Stock After Earnings",
+    "headline": "Apple CEO Tim Cook says this '100 year flood' won't be receding anytime soon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785412500,
-    "url": "https://finance.yahoo.com/m/4667ac71-f180-3aa4-8830-cd7a701b7d07/the-big-cash-flow-problem.html?.tsrc=rss",
+    "ts": 1785500312,
+    "url": "https://finance.yahoo.com/technology/article/apple-ceo-tim-cook-says-this-100-year-flood-wont-be-receding-anytime-soon-121832016.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/4667ac71-f180-3aa4-8830-cd7a701b7d07/the-big-cash-flow-problem.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Meta Is Spending Whatever It Takes to Win AI — And That’s What Worries Investors",
-   "value": {
-    "headline": "Meta Is Spending Whatever It Takes to Win AI — And That’s What Worries Investors",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785412387,
-    "url": "https://247wallst.com/investing/2026/07/30/meta-is-spending-whatever-it-takes-to-win-ai-and-thats-what-worries-investors/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/07/30/meta-is-spending-whatever-it-takes-to-win-ai-and-thats-what-worries-investors/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/apple-ceo-tim-cook-says-this-100-year-flood-wont-be-receding-anytime-soon-121832016.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Earnings Prove Its Big AI Bet Is Paying Off",
+   "label": "Dow Jones Futures: Apple, Amazon Diverge Late; What To Do As AI Stocks Rally",
    "value": {
-    "headline": "Microsoft Earnings Prove Its Big AI Bet Is Paying Off",
+    "headline": "Dow Jones Futures: Apple, Amazon Diverge Late; What To Do As AI Stocks Rally",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785412320,
-    "url": "https://finance.yahoo.com/m/bbc2bbb7-f9bd-397b-860e-ddce816f53a0/microsoft-earnings-prove-its.html?.tsrc=rss",
+    "ts": 1785499258,
+    "url": "https://finance.yahoo.com/m/410b5188-fada-3c74-b2e7-6fb6f4fcea6e/dow-jones-futures%3A-apple%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/bbc2bbb7-f9bd-397b-860e-ddce816f53a0/microsoft-earnings-prove-its.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/410b5188-fada-3c74-b2e7-6fb6f4fcea6e/dow-jones-futures%3A-apple%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nasdaq set to extend rebound as Amazon lifts AI hopes",
+   "value": {
+    "headline": "Nasdaq set to extend rebound as Amazon lifts AI hopes",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785499200,
+    "url": "https://www.proactiveinvestors.com/companies/news/1096356/nasdaq-set-to-extend-rebound-as-amazon-lifts-ai-hopes-1096356.html?.tsrc=rss",
+    "urls": [
+     "https://www.proactiveinvestors.com/companies/news/1096356/nasdaq-set-to-extend-rebound-as-amazon-lifts-ai-hopes-1096356.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Here Are Friday’s Top Wall Street Analyst Research Calls: Blackstone Mortgage, Boston Scientific, Edison International, ",
+   "value": {
+    "headline": "Here Are Friday’s Top Wall Street Analyst Research Calls: Blackstone Mortgage, Boston Scientific, Edison International, Ford, GoDaddy, International Paper, Roblox, Saia, and More",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785498704,
+    "url": "https://247wallst.com/investing/2026/07/31/here-are-fridays-top-wall-street-analyst-research-calls-blackstone-mortgage-boston-scientific-edison-international-ford-godaddy-international-paper-roblox-saia-and-more/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/07/31/here-are-fridays-top-wall-street-analyst-research-calls-blackstone-mortgage-boston-scientific-edison-international-ford-godaddy-international-paper-roblox-saia-and-more/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +700,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

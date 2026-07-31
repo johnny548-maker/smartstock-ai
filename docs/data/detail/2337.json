@@ -1,17 +1,9 @@
 {
  "stock": "2337",
  "name": "旺宏",
- "price": 91.8,
- "change_pct": -10.0,
+ "price": 100.5,
+ "change_pct": 9.48,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 172.0,
-   "h": 172.0,
-   "l": 160.0,
-   "c": 164.5,
-   "v": 232538438
-  },
   {
    "time": "2026-05-08",
    "o": 160.0,
@@ -482,14 +474,22 @@
    "h": 103.0,
    "l": 91.8,
    "c": 91.8,
-   "v": 94564166
+   "v": 93640086
+  },
+  {
+   "time": "2026-07-31",
+   "o": 100.5,
+   "h": 100.5,
+   "l": 100.5,
+   "c": 100.5,
+   "v": 11492225
   }
  ],
  "sr": {
-  "price": 91.8,
+  "price": 100.5,
   "resistance": [
-   95.5,
-   120.5
+   120.5,
+   135.0
   ],
   "support": [
    88.8,
@@ -498,7 +498,6 @@
   "strong_support": 16.9
  },
  "spark": [
-  164.5,
   153.0,
   159.5,
   153.0,
@@ -557,10 +556,11 @@
   125.5,
   113.0,
   102.0,
-  91.8
+  91.8,
+  100.5
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-07-30",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-07-31",
  "fundamental": {
   "rev_yoy": 216.1,
   "rev_accel": true,
@@ -569,43 +569,6 @@
  },
  "levels": null,
  "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "記憶體報價還沒漲完?旺宏加碼158億元擴產 毛利率挑戰7成",
-   "value": {
-    "headline": "記憶體報價還沒漲完?旺宏加碼158億元擴產 毛利率挑戰7成",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1785411851,
-    "url": "https://money.udn.com/money/story/5591/9661421",
-    "urls": [
-     "https://money.udn.com/money/story/5591/9661421"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "udn"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-30",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ],
  "trends": {
   "inst_cum": [
    {
@@ -763,6 +726,10 @@
    {
     "t": "2026-07-30",
     "v": -13069
+   },
+   {
+    "t": "2026-07-31",
+    "v": -16504
    }
   ],
   "holder_pct": [

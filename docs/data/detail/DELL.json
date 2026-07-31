@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 369.64,
- "change_pct": -5.73,
+ "price": 404.81,
+ "change_pct": 9.51,
  "ohlc": [
-  {
-   "time": "2026-05-04",
-   "o": 210.5,
-   "h": 214.63,
-   "l": 205.36,
-   "c": 211.29,
-   "v": 3842400
-  },
   {
    "time": "2026-05-05",
    "o": 214.67,
@@ -482,23 +474,30 @@
    "h": 394.96,
    "l": 364.17,
    "c": 369.64,
-   "v": 6318100
+   "v": 6349100
+  },
+  {
+   "time": "2026-07-30",
+   "o": 384.89,
+   "h": 413.0,
+   "l": 383.0,
+   "c": 404.81,
+   "v": 6133800
   }
  ],
  "sr": {
-  "price": 369.64,
+  "price": 404.81,
   "resistance": [
    437.8,
    443.27
   ],
   "support": [
-   367.54,
-   356.48
+   378.04,
+   367.54
   ],
   "strong_support": 64.73
  },
  "spark": [
-  211.29,
   215.96,
   238.41,
   229.89,
@@ -557,14 +556,75 @@
   437.5,
   426.91,
   392.1,
-  369.64
+  369.64,
+  404.81
  ],
- "spark_start": "2026-05-04",
- "spark_end": "2026-07-29",
+ "spark_start": "2026-05-05",
+ "spark_end": "2026-07-30",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Earn 8.4% On AAPL Stock By Selling Upside You Might Not Miss",
+   "value": {
+    "headline": "Earn 8.4% On AAPL Stock By Selling Upside You Might Not Miss",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785490488,
+    "url": "https://www.trefis.com/articles/609658/earn-8-4-on-aapl-stock-by-selling-upside-you-might-not-miss/2026-07-31?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/609658/earn-8-4-on-aapl-stock-by-selling-upside-you-might-not-miss/2026-07-31?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-07-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Apple (AAPL) Q3 Earnings and Revenues Beat Estimates",
+   "value": {
+    "headline": "Apple (AAPL) Q3 Earnings and Revenues Beat Estimates",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785448802,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-q3-earnings-revenues-220002623.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-q3-earnings-revenues-220002623.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The S&P 500's Biggest 2026 Winner Is Skyrocketing. Three Reasons To Stay Away.",
+   "value": {
+    "headline": "The S&P 500's Biggest 2026 Winner Is Skyrocketing. Three Reasons To Stay Away.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785441984,
+    "url": "https://finance.yahoo.com/m/08a53932-a831-3946-b7dd-82e55b75455b/the-s%26p-500%27s-biggest-2026.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/08a53932-a831-3946-b7dd-82e55b75455b/the-s%26p-500%27s-biggest-2026.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-07-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -602,67 +662,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dell Technologies (DELL) Joins Open Source AI Cybersecurity Alliance",
-   "value": {
-    "headline": "Dell Technologies (DELL) Joins Open Source AI Cybersecurity Alliance",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785337838,
-    "url": "https://finance.yahoo.com/technology/ai/articles/dell-technologies-dell-joins-open-151038834.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/dell-technologies-dell-joins-open-151038834.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Here's Why Dell Technologies (DELL) Could be Great Choice for a Bottom Fisher",
-   "value": {
-    "headline": "Here's Why Dell Technologies (DELL) Could be Great Choice for a Bottom Fisher",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785333302,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-dell-technologies-dell-135502720.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/heres-why-dell-technologies-dell-135502720.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-07-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Volatility Warning Embedded in Cisco Stock",
-   "value": {
-    "headline": "The Volatility Warning Embedded in Cisco Stock",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785332634,
-    "url": "https://www.trefis.com/articles/609111/the-volatility-warning-embedded-in-cisco-stock/2026-07-29?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/609111/the-volatility-warning-embedded-in-cisco-stock/2026-07-29?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -677,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-07-30",
+   "as_of": "2026-07-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
