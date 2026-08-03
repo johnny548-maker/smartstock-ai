@@ -618,11 +618,32 @@ def hs_export_momentum(rows, hs_code=SEMI_HS_CODE):
 #   works unchanged. If 電子零組件業 column is present (code=D&no=4) we prefer it.
 
 # ─ HTML cell extractor ─────────────────────────────────────────────────────────
+#
+# R3-005 audit fix (2026-08-03): the live service.moea.gov.tw page does NOT
+# match what this parser originally assumed. A live probe of the actual page
+# found: (1) the real report table is id="hldContent_tabReport", surrounded by
+# unrelated nav/menu tables elsewhere on the page; (2) its header row uses
+# <td> cells (never <th>) wrapped in <thead>, padded with DECORATIVE all-blank
+# <tr> rows above/below for border styling — the original "first <tr> with
+# <th> cells" rule never fired, so headers stayed [] and every data row was
+# silently dropped (this is why the MOEA gauges were None for ~2 months in
+# production while the OLD hand-built <th>-based test fixtures stayed green);
+# (3) the '年月別' (year-month) header cell spans TWO physically-separate body
+# columns — either via colspan="2" (EE521, GA major) or an explicit adjacent
+# blank <td> (GA detail) — with the year cell blank on monthly rows and the
+# month cell blank on the annual/cumulative-range row. See
+# _reconstruct_month_labels() for how the split year/month cells are rebuilt
+# into the single "NNN年M月" label the derive functions expect.
 
 _RE_TR = re.compile(r"<tr[^>]*>(.*?)</tr>", re.DOTALL | re.IGNORECASE)
 _RE_TH = re.compile(r"<th[^>]*>(.*?)</th>", re.DOTALL | re.IGNORECASE)
 _RE_TD = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL | re.IGNORECASE)
+_RE_CELL = re.compile(r"<t[hd]([^>]*)>(.*?)</t[hd]>", re.DOTALL | re.IGNORECASE)
+_RE_COLSPAN = re.compile(r'colspan\s*=\s*"?(\d+)"?', re.IGNORECASE)
 _RE_TAG = re.compile(r"<[^>]+>")
+_RE_TABLE_REPORT = re.compile(
+    r'<table[^>]*\bid\s*=\s*"hldContent_tabReport"[^>]*>.*?</table>',
+    re.DOTALL | re.IGNORECASE)
 
 
 def _html_text(cell_html):
@@ -632,39 +653,128 @@ def _html_text(cell_html):
     return t.strip()
 
 
-def _parse_moea_html_table(html):
-    """Parse the first HTML <table> in `html` → list of dicts (header-keyed rows).
+def _cell_texts_and_colspans(tr_html):
+    """One <tr>'s cells (<th> or <td>, either) → [(text, colspan_int), ...]."""
+    out = []
+    for attrs, content in _RE_CELL.findall(tr_html):
+        m = _RE_COLSPAN.search(attrs)
+        colspan = int(m.group(1)) if m else 1
+        out.append((_html_text(content), max(colspan, 1)))
+    return out
 
-    Returns [] on any error (graceful). The first <tr> with <th> cells is treated
-    as the header row; every subsequent <tr> with <td> cells is a data row. Rows
-    shorter than the header are right-padded with ''; longer rows are truncated.
-    Pure (only reads `html`)."""
+
+def _expand_header_row(cell_pairs):
+    """Expand a colspan>1 header cell into that many positional slots so the
+    header list stays 1:1 aligned with physically-separate body <td> cells
+    (e.g. a '年月別' cell with colspan=2 covers a separate year + month body
+    column). The first slot keeps the plain label; extra slots get a numbered
+    suffix so they never collide as dict keys with the true first slot."""
+    headers = []
+    for text, colspan in cell_pairs:
+        headers.append(text)
+        for extra in range(2, colspan + 1):
+            headers.append(("%s__%d" % (text, extra)) if text else "")
+    return headers
+
+
+def _parse_moea_html_table(html):
+    """Parse the service.moea.gov.tw report table in `html` → list of dicts
+    (header-keyed rows).
+
+    Scopes to <table id="hldContent_tabReport"> when present (falls back to
+    the whole `html` otherwise, e.g. for hand-built test fixtures). Within
+    <thead>, the header row is the <tr> with the MOST non-blank cells (the
+    live page pads real content with decorative all-blank border rows —
+    picking "the first <tr>" would grab a blank filler instead). Without an
+    explicit <thead>/<tbody> (legacy flat <table> shape), falls back to
+    "first row = header, rest = data". Colspan on header cells is expanded so
+    value columns never silently shift by one. Rows shorter than the header
+    are right-padded with ''; longer rows are truncated. Returns [] on any
+    error (graceful). Pure (only reads `html`)."""
     if not html:
         return []
-    rows = []
-    headers = []
     try:
-        for tr_m in _RE_TR.finditer(html):
-            tr_html = tr_m.group(1)
-            # header row: <th> cells
-            ths = _RE_TH.findall(tr_html)
-            if ths and not headers:
-                headers = [_html_text(h) for h in ths]
-                continue
-            # data row: <td> cells
+        m = _RE_TABLE_REPORT.search(html)
+        table_html = m.group(0) if m else html
+
+        thead_s = table_html.find("<thead")
+        thead_e = table_html.find("</thead>")
+        tbody_s = table_html.find("<tbody")
+        has_thead = thead_s != -1 and thead_e != -1
+
+        if has_thead:
+            thead_html = table_html[thead_s:thead_e]
+            body_html = table_html[tbody_s:] if tbody_s != -1 else table_html[thead_e:]
+            candidates = [_cell_texts_and_colspans(tr) for tr in _RE_TR.findall(thead_html)]
+            candidates = [c for c in candidates if c]
+            if not candidates:
+                return []
+            best = max(candidates, key=lambda cells: sum(1 for t, _ in cells if t.strip()))
+            data_trs = _RE_TR.findall(body_html)
+        else:
+            all_trs = _RE_TR.findall(table_html)
+            if not all_trs:
+                return []
+            best = _cell_texts_and_colspans(all_trs[0])
+            data_trs = all_trs[1:]
+
+        if not any(t.strip() for t, _ in best):
+            return []                      # every candidate header row was blank
+        headers = _expand_header_row(best)
+
+        rows = []
+        for tr_html in data_trs:
             tds = _RE_TD.findall(tr_html)
-            if not tds or not headers:
+            if not tds:
                 continue
             cells = [_html_text(c) for c in tds]
-            # pad / truncate to header width
             if len(cells) < len(headers):
                 cells += [""] * (len(headers) - len(cells))
             row = dict(zip(headers, cells[:len(headers)]))
             rows.append(row)
+        return rows
     except Exception as e:
         log.warning("SKIP _parse_moea_html_table: %s", e)
         return []
-    return rows
+
+
+_RE_YEAR_ONLY = re.compile(r"^(\d+)年$")
+_RE_MONTH_ONLY = re.compile(r"^(\d+)月$")
+
+
+def _reconstruct_month_labels(raw_rows):
+    """Forward-fill the year across the blank-year monthly rows and rebuild a
+    single 'NNN年M月' label under the ORIGINAL first-column key.
+
+    The live MOEA table splits the '年月別' header into TWO physical body
+    columns: an annual 'NNN年' cell (blank on every monthly row that follows
+    it) and a monthly 'M月' cell (blank on the annual row and on the
+    cumulative-range row, e.g. '1-6月'). This rebuilds the combined label the
+    existing _RE_ROC_MONTH-based matching in _moea_eo_yoy_to_rows /
+    _moea_ipi_to_rows already expects, so THAT logic needs no further change.
+    Annual-only and cumulative-range rows are dropped (neither ever matched
+    _RE_ROC_MONTH anyway — this fix only recovers the genuine monthly rows).
+    Pure: returns a NEW list of NEW dicts, never mutates an input row."""
+    if not raw_rows:
+        return []
+    keys = list(raw_rows[0].keys())
+    if len(keys) < 2:
+        return raw_rows
+    label_key, month_key = keys[0], keys[1]
+    out = []
+    current_year = None
+    for row in raw_rows:
+        year_cell = str(row.get(label_key, "")).strip()
+        month_cell = str(row.get(month_key, "")).strip()
+        m_year = _RE_YEAR_ONLY.match(year_cell)
+        if m_year:
+            current_year = m_year.group(1)
+            continue                      # annual/cumulative row -- no single month
+        m_month = _RE_MONTH_ONLY.match(month_cell)
+        if m_month and current_year:
+            combined = "%s年%s月" % (current_year, m_month.group(1))
+            out.append({**row, label_key: combined})
+    return out
 
 
 # ── MOEA 外銷訂單金額年增率 (EE521 code=B&no=3) → normalised export-order rows ──
@@ -683,6 +793,9 @@ def _moea_eo_yoy_to_rows(html):
       - one row with 貨品別='資訊通信' and 年增率=<ict_pct>  (if column present)
     These shapes match what _row_curr_prev / _is_electronics_row expect. Pure."""
     raw = _parse_moea_html_table(html)
+    if not raw:
+        return []
+    raw = _reconstruct_month_labels(raw)   # rebuild split year/month cells (R3-005)
     if not raw:
         return []
     # columns to extract (all are pre-computed YoY %)
@@ -775,6 +888,9 @@ def _moea_ipi_to_rows(html, elec_col_hints=("電子零組件", "電子零組件�
     YoY for the headline index (工業 / 製造業) and, if available, the
     電子零組件業 sub-index. Returns rows with 年增率 pre-computed (%). Pure-ish."""
     raw = _parse_moea_html_table(html)
+    if not raw:
+        return []
+    raw = _reconstruct_month_labels(raw)   # rebuild split year/month cells (R3-005)
     if not raw:
         return []
     # identify the year-month label column (first column)

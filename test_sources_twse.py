@@ -134,6 +134,28 @@ class TestFetchers(unittest.TestCase):
     def test_fetch_t86_network_error_graceful(self):
         self.assertEqual(twse.fetch_t86(fetch_fn=_boom, date="20260605"), [])
 
+    def test_fetch_t86_reordered_fields_raises(self):
+        # R3-001: TWSE reordering/inserting a T86 column must be caught loudly,
+        # not silently read as the wrong column. Swap fields[4] and fields[10]
+        # (foreign <-> trust) while leaving `data` unchanged -- the header no
+        # longer matches the positions this module reads.
+        bad_fields = list(T86_PAYLOAD_OK["fields"])
+        bad_fields[4], bad_fields[10] = bad_fields[10], bad_fields[4]
+        bad_payload = {**T86_PAYLOAD_OK, "fields": bad_fields}
+        with self.assertRaises(ValueError):
+            twse.fetch_t86(fetch_fn=_ok(bad_payload), date="20260605")
+
+    def test_fetch_t86_missing_fields_header_raises(self):
+        bad_payload = {"stat": "OK", "data": T86_PAYLOAD_OK["data"]}   # no 'fields' key
+        with self.assertRaises(ValueError):
+            twse.fetch_t86(fetch_fn=_ok(bad_payload), date="20260605")
+
+    def test_fetch_t86_matching_fields_unaffected(self):
+        # Sanity: the real fixture's fields[] already matches T86_I_* positions —
+        # validation must be a no-op here (existing behavior preserved).
+        rows = twse.fetch_t86(fetch_fn=_ok(T86_PAYLOAD_OK), date="20260605")
+        self.assertEqual(len(rows), 3)
+
     def test_fetch_t86_passes_date_param(self):
         seen = {}
         def spy(url, params=None):
@@ -347,11 +369,39 @@ class TestFetchT187ap03L(unittest.TestCase):
         self.assertEqual(twse.fetch_t187ap03_l(fetch_fn=_ok({"stat": "err"})), [])
 
 
+# R3-004 audit fix: live probe (2026-08-03) confirmed TWSE serves the shares key
+# as "已發行普通股數或TDR原股發行股數" (或=OR) -- ONE character different from the
+# originally-coded "已發行普通股數及TDR原股發行股數" (及=AND) -- so build_float_map
+# silently resolved shares=0 for every row (all excluded), leaving float_map
+# permanently empty (twse_short 0/0 for weeks). This fixture uses the LIVE key.
+T187_ROWS_LIVE_KEY = [
+    {
+        "公司代號": "2330",
+        "公司名稱": "台灣積體電路製造股份有限公司",
+        "公司簡稱": "台積電",
+        "已發行普通股數或TDR原股發行股數": "25930380458",
+    },
+    {
+        "公司代號": "2317",
+        "公司名稱": "鴻海精密工業股份有限公司",
+        "公司簡稱": "鴻海",
+        "已發行普通股數或TDR原股發行股數": "13861000000",
+    },
+]
+
+
 class TestBuildFloatMap(unittest.TestCase):
     """build_float_map: rows → {code: outstanding_shares int} (W4)."""
 
     def test_basic_mapping(self):
         m = twse.build_float_map(T187_ROWS)
+        self.assertEqual(m["2330"], 25930380458)
+        self.assertEqual(m["2317"], 13861000000)
+
+    def test_live_key_variant_resolves(self):
+        # R3-004: the actual live TWSE key ("或" not "及") must resolve, not
+        # silently 0-out every row.
+        m = twse.build_float_map(T187_ROWS_LIVE_KEY)
         self.assertEqual(m["2330"], 25930380458)
         self.assertEqual(m["2317"], 13861000000)
 

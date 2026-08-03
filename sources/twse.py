@@ -59,6 +59,36 @@ T86_I_TRUST = 10     # 投信買賣超股數
 T86_I_DEALER = 11    # 自營商買賣超股數
 T86_I_TOTAL = 18     # 三大法人買賣超股數
 
+# R3-001 audit fix: the live payload carries its OWN fields[] header (per the
+# module docstring) but this module previously never cross-checked it against
+# the T86_I_* positional indices above — if TWSE ever reorders/inserts a column,
+# every downstream metric would silently read the WRONG column with no error.
+# This maps each index this module reads to the column name it must be.
+T86_EXPECTED_FIELDS = {
+    T86_I_CODE: "證券代號",
+    T86_I_NAME: "證券名稱",
+    T86_I_FOREIGN: "外陸資買賣超股數(不含外資自營商)",
+    T86_I_TRUST: "投信買賣超股數",
+    T86_I_DEALER: "自營商買賣超股數",
+    T86_I_TOTAL: "三大法人買賣超股數",
+}
+
+
+def _validate_t86_fields(fields):
+    """Cross-check the live payload's fields[] header against the column names
+    this module reads POSITIONALLY (T86_I_*). Raises ValueError naming the exact
+    drift when TWSE reorders/inserts a T86 column — refusing to parse is safer
+    than silently returning a wrong-but-plausible-looking metric (R3-001)."""
+    if not isinstance(fields, list):
+        raise ValueError("T86 payload missing/invalid fields[] header — cannot "
+                          "validate positional column indices")
+    for idx, expected in T86_EXPECTED_FIELDS.items():
+        actual = fields[idx] if idx < len(fields) else "<missing>"
+        if actual != expected:
+            raise ValueError(
+                "T86 fields[] drift at index %d: expected %r, got %r — refusing "
+                "to parse (wrong-column risk)" % (idx, expected, actual))
+
 # MI_MARGN exact Chinese keys (byte-for-byte from the probe).
 MARGN_K_CODE = "股票代號"
 MARGN_K_NAME = "股票名稱"
@@ -152,7 +182,10 @@ def fetch_t86(fetch_fn=None, date=None):
         log.warning("SKIP fetch_t86: stat=%s (non-trading day?)", payload.get("stat"))
         return []
     data = payload.get("data")
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    _validate_t86_fields(payload.get("fields"))     # raises on schema drift (R3-001)
+    return data
 
 
 def fetch_margin(fetch_fn=None):
@@ -433,7 +466,16 @@ SHORT_PCT_WARN = 5.0   # percent; community rule-of-thumb for elevated short int
 
 # Chinese keys in t187ap03_L rows (byte-for-byte from the spec).
 T187_K_CODE = "公司代號"
-T187_K_SHARES = "已發行普通股數及TDR原股發行股數"
+# R3-004 audit fix: live probe (2026-08-03) confirmed TWSE actually serves
+# "已發行普通股數或TDR原股發行股數" (或=OR) — ONE character different from the
+# originally-coded "及" (AND) variant. That single-character drift made every
+# row's shares lookup miss, _to_int(None)→0, shares<=0→excluded — float_map was
+# permanently EMPTY (twse_short 0/0 for weeks, R3-004). Try both so a future
+# flip-back doesn't silently re-break this again.
+T187_K_SHARES_CANDIDATES = (
+    "已發行普通股數或TDR原股發行股數",
+    "已發行普通股數及TDR原股發行股數",
+)
 
 
 def fetch_t187ap03_l(fetch_fn=None):
@@ -464,7 +506,12 @@ def build_float_map(rows):
         code = str(row.get(T187_K_CODE, "")).strip()
         if not code:
             continue
-        shares = _to_int(row.get(T187_K_SHARES, ""))
+        shares_raw = ""
+        for key in T187_K_SHARES_CANDIDATES:
+            if key in row:
+                shares_raw = row.get(key, "")
+                break
+        shares = _to_int(shares_raw)
         if shares <= 0:
             continue
         out[code] = shares

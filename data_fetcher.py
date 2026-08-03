@@ -69,8 +69,25 @@ def get_universe(tickers, period=None, raise_on_empty=False):
             raise                       # let the caller retry/back-off (transient classification)
         log.warning("SKIP universe batch: %s", e)
         return {}
-    out = {}
     multi = hasattr(raw.columns, "levels")
+    if not multi and len(tickers) > 1 and not raw.empty:
+        # yf.download collapsed a MULTI-ticker request to a single-ticker-shaped
+        # frame (documented yfinance behavior). The naive per-symbol loop below
+        # would otherwise alias the SAME DataFrame object to every requested
+        # ticker (R2-01 audit — synthetic probe confirmed this cross-assignment).
+        # Distinct from the classic EMPTY-frame 429-swallow handled by the
+        # raise_on_empty branch below: here `raw` carries REAL rows, so reusing
+        # it across tickers would ship silently WRONG price/volume data, not
+        # just a thin universe.
+        msg = ("get_universe: yf.download returned a non-MultiIndex frame (%d rows) "
+               "for %d tickers -- refusing to cross-assign the same frame to every symbol"
+               % (len(raw), len(tickers)))
+        if raise_on_empty:
+            raise RuntimeError(msg)
+        log.warning("SKIP %s", msg)
+        return {}
+    out = {}
+    skipped = 0
     for sym in tickers:
         try:
             df = raw[sym] if multi and sym in raw.columns.get_level_values(0) else (raw if not multi else None)
@@ -79,8 +96,12 @@ def get_universe(tickers, period=None, raise_on_empty=False):
             df = df.dropna()
             if len(df) >= 30:
                 out[sym] = df
-        except Exception:
+        except Exception as e:
+            skipped += 1
+            log.warning("SKIP get_universe %s: %s", sym, e)
             continue
+    if skipped:
+        log.warning("get_universe: %d/%d ticker(s) skipped on per-symbol error", skipped, len(tickers))
     if raise_on_empty and tickers and not out:
         # non-empty batch, zero usable frames → yfinance most likely swallowed a 429 → retry
         raise RuntimeError("empty batch for %d tickers — likely transient (429)" % len(tickers))

@@ -327,7 +327,15 @@ def to_margin_metrics(rows):
     Defensive: resolves balance keys by fuzzy match; a row missing both today &
     prev balances is skipped (graceful-skip the row, never crash the batch).
     margin_chg = today - prev (net financing change, mirrors the 'compute yourself'
-    note in the probe)."""
+    note in the probe).
+
+    R3-002 audit fix: when today resolves but BOTH the prev-balance key AND all
+    three flow keys (buy/sell/cash-redemption) are unresolved — total schema
+    drift on the change side — the row is now SKIPPED (and logged) rather than
+    silently computing chg=0/prev=today. That fabricated "no change today" used
+    to be indistinguishable from a genuine zero-change read, and would
+    permanently suppress margin_surge_flag for the affected stock with no
+    signal that the schema had drifted."""
     out = {}
     for row in rows or []:
         if not isinstance(row, dict):
@@ -335,19 +343,27 @@ def to_margin_metrics(rows):
         code = _row_get(row, *_MARGIN_CODE_KEYS)
         if code is None or str(code).strip() == "":
             continue
-        today = _to_int(_row_get(row, *_MARGIN_TODAY_KEYS))
+        today_val = _row_get(row, *_MARGIN_TODAY_KEYS)
+        prev_val = _row_get(row, *_MARGIN_PREV_KEYS)
         # If neither balance resolved (schema mismatch), skip this row gracefully.
-        if _row_get(row, *_MARGIN_TODAY_KEYS) is None and \
-           _row_get(row, *_MARGIN_PREV_KEYS) is None:
+        if today_val is None and prev_val is None:
             continue
-        if _row_get(row, *_MARGIN_PREV_KEYS) is not None:
-            prev = _to_int(_row_get(row, *_MARGIN_PREV_KEYS))
+        today = _to_int(today_val)
+        if prev_val is not None:
+            prev = _to_int(prev_val)
             chg = today - prev
         else:
             # mainboard_margin_balance shape: derive from the day's flows.
-            chg = (_to_int(_row_get(row, *_MARGIN_FLOW_BUY_KEYS))
-                   - _to_int(_row_get(row, *_MARGIN_FLOW_SELL_KEYS))
-                   - _to_int(_row_get(row, *_MARGIN_FLOW_CASH_KEYS)))
+            buy_val = _row_get(row, *_MARGIN_FLOW_BUY_KEYS)
+            sell_val = _row_get(row, *_MARGIN_FLOW_SELL_KEYS)
+            cash_val = _row_get(row, *_MARGIN_FLOW_CASH_KEYS)
+            if buy_val is None and sell_val is None and cash_val is None:
+                log.warning(
+                    "SKIP tpex margin row %s: prev-balance AND all flow keys "
+                    "unresolved (schema drift) — refusing to fabricate chg=0",
+                    str(code).strip())
+                continue
+            chg = (_to_int(buy_val) - _to_int(sell_val) - _to_int(cash_val))
             prev = today - chg
         out[str(code).strip()] = {
             "margin_today": today,

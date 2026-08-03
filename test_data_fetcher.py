@@ -82,5 +82,84 @@ class TestGetUniverseRaiseOnEmpty(unittest.TestCase):
             self.assertEqual(dfetch.get_universe(["AAA"]), {})
 
 
+def _single_ticker_shaped_df(n=40):
+    """A REAL (non-empty), non-MultiIndex OHLCV frame — the shape yf.download can
+    return for a multi-ticker request when it silently collapses to single-ticker
+    columns (documented yfinance behavior; R2-01 audit)."""
+    idx = pd.date_range("2026-01-01", periods=n)
+    return pd.DataFrame({"Open": 1.0, "High": 1.0, "Low": 1.0,
+                         "Close": 1.0, "Volume": 100}, index=idx)
+
+
+class TestGetUniverseSchemaCollapse(unittest.TestCase):
+    """R2-01: a non-MultiIndex frame for a MULTI-ticker request must never be
+    cross-assigned to every symbol (previously every ticker aliased the SAME
+    DataFrame object — wrong price/volume data with zero signal). This is
+    distinct from the classic EMPTY-frame 429-swallow case (TestGetUniverse
+    RaiseOnEmpty above), which must keep working unchanged."""
+
+    def test_non_multiindex_multi_ticker_batch_yields_empty_not_aliased(self):
+        single_df = _single_ticker_shaped_df()
+        with mock.patch.object(dfetch.yf, "download", return_value=single_df):
+            out = dfetch.get_universe(["AAA", "BBB", "CCC"], period="3mo")
+        self.assertEqual(out, {})   # refused, not silently cross-assigned
+
+    def test_non_multiindex_multi_ticker_raises_when_flagged(self):
+        single_df = _single_ticker_shaped_df()
+        with mock.patch.object(dfetch.yf, "download", return_value=single_df):
+            with self.assertRaises(RuntimeError) as ctx:
+                dfetch.get_universe(["AAA", "BBB", "CCC"], period="3mo", raise_on_empty=True)
+        self.assertIn("non-MultiIndex", str(ctx.exception))
+
+    def test_single_ticker_request_non_multiindex_is_unaffected(self):
+        # A genuine single-ticker request naturally returns non-MultiIndex columns
+        # — this is CORRECT, not the collapse bug, and must still work.
+        single_df = _single_ticker_shaped_df()
+        with mock.patch.object(dfetch.yf, "download", return_value=single_df):
+            out = dfetch.get_universe(["AAA"], period="3mo")
+        self.assertIn("AAA", out)
+        self.assertEqual(len(out["AAA"]), 40)
+
+    def test_empty_frame_multi_ticker_still_hits_legacy_429_raise(self):
+        # Regression guard: an EMPTY (0-row) non-MultiIndex frame must still be
+        # treated as the classic 429-swallow path, not the new schema-collapse
+        # branch — same contract as TestGetUniverseRaiseOnEmpty above.
+        with mock.patch.object(dfetch.yf, "download", return_value=pd.DataFrame()):
+            with self.assertRaises(RuntimeError) as ctx:
+                dfetch.get_universe(["AAA", "BBB"], raise_on_empty=True)
+        self.assertIn("429", str(ctx.exception))
+
+    def test_per_symbol_error_is_logged_and_counted(self):
+        # A per-symbol exception in the loop must be logged (not a bare
+        # `except Exception: continue`) so a silent failure has SOME trace.
+        multi_cols = pd.MultiIndex.from_product([["AAA", "BBB"],
+                                                  ["Open", "High", "Low", "Close", "Volume"]])
+        idx = pd.date_range("2026-01-01", periods=40)
+        real = pd.DataFrame(1.0, index=idx, columns=multi_cols)
+
+        class _RaisingRaw:
+            """raw-like stand-in whose __getitem__ raises for one symbol -- proves
+            the per-symbol except-branch now logs instead of silently continuing."""
+            def __init__(self, df, boom_sym):
+                self._df, self._boom = df, boom_sym
+
+            @property
+            def columns(self):
+                return self._df.columns
+
+            def __getitem__(self, sym):
+                if sym == self._boom:
+                    raise KeyError("simulated per-symbol failure")
+                return self._df[sym]
+
+        raw = _RaisingRaw(real, boom_sym="BBB")
+        with mock.patch.object(dfetch.yf, "download", return_value=raw):
+            with self.assertLogs("data_fetcher", level="WARNING") as cm:
+                out = dfetch.get_universe(["AAA", "BBB"], period="3mo")
+        self.assertIn("AAA", out)
+        self.assertNotIn("BBB", out)     # raised → skipped, not crashed
+        self.assertTrue(any("BBB" in msg for msg in cm.output))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

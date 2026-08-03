@@ -230,6 +230,31 @@ class TestMargin(unittest.TestCase):
         self.assertEqual(m["6488"]["margin_chg"], 150)      # 500-300-50
         self.assertEqual(m["6488"]["margin_prev"], 11850)   # today - chg
 
+    def test_to_margin_metrics_total_schema_drift_skips_not_fabricates(self):
+        # R3-002: code + today resolve, but NEITHER the prev-balance key NOR any
+        # of the three flow keys resolve — total schema drift on the change
+        # side. Previously this fell through to chg=0/prev=today (fabricated
+        # "no change today", indistinguishable from a genuine zero-change read,
+        # and margin_surge_flag could never fire). Must now be SKIPPED (not
+        # silently zeroed) and logged.
+        rows = [{"SecuritiesCompanyCode": "5388",
+                 "MarginPurchaseBalance": "500,000",
+                 "SomeRenamedFlowField": "999"}]   # no prev key, no buy/sell/cash key
+        with self.assertLogs("sources.tpex", level="WARNING") as cm:
+            m = tpex.to_margin_metrics(rows)
+        self.assertNotIn("5388", m)
+        self.assertTrue(any("5388" in msg for msg in cm.output))
+
+    def test_to_margin_metrics_partial_flow_resolve_still_computed(self):
+        # Sanity: if AT LEAST ONE flow key resolves, this is a genuine partial
+        # schema (not total drift) — keep the existing defensive fallback
+        # behavior rather than over-eagerly skipping usable data.
+        rows = [{"SecuritiesCompanyCode": "6488",
+                 "MarginPurchase": "500", "MarginPurchaseBalance": "12,000"}]
+        m = tpex.to_margin_metrics(rows)
+        self.assertIn("6488", m)
+        self.assertEqual(m["6488"]["margin_chg"], 500)      # sell/cash unresolved -> 0
+
 
 # ── PE derive ─────────────────────────────────────────────────────────────────
 class TestPE(unittest.TestCase):

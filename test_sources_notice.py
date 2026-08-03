@@ -7,17 +7,22 @@ Run:
     python -m unittest test_sources_notice
 
 NO network I/O. All fetchers are exercised via their injectable fetch_fn.
-Pure derive functions are tested directly. Fixtures are byte-shaped to the live
-probe (2026-06-10):
+Pure derive functions are tested directly.
 
-  notice  — OpenAPI /v1/announcement/notice returns list[dict] with:
-              Number, Code, Name, NumberOfAnnouncement, TradingInfoForAttention,
-              Date (ROC YYYMMDD or ''), ClosingPrice, PE
-              GOTCHA: when there are no notice stocks the API returns ONE row with
-              Number='0', Code='', Name='' — not an empty list. We treat it as
-              "no data" (empty map).
+R3-003 audit fix (2026-08-03): the notice OpenAPI path (NOTICE_URL) was
+confirmed DEAD (always returns the empty-sentinel row across 15+ consecutive
+committed daily payloads AND a live re-probe); fetch_notice_stocks() now hits
+the main-site rwd endpoint (NOTICE_RWD_URL) instead, which serves real data as
+{stat, fields[], data[][]} — array-of-arrays, positional (mirrors twse.py's T86
+fetcher). Fixtures below are byte-shaped to that live probe (2026-08-03):
 
-  punish  — OpenAPI /v1/announcement/punish returns list[dict] with:
+  notice  — rwd/zh/announcement/notice?response=json returns:
+              {stat:'OK', fields:[編號,證券代號,證券名稱,累計次數,注意交易資訊,日期,
+              收盤價,本益比], data:[[...]]}. Date is dot-separated ROC
+              ('115.08.03'), not concatenated digits.
+
+  punish  — OpenAPI /v1/announcement/punish (unchanged, still alive) returns
+              list[dict] with:
               Number, Date (ROC YYYMMDD), Code, Name, NumberOfAnnouncement,
               ReasonsOfDisposition, DispositionPeriod, DispositionMeasures,
               Detail, LinkInformation
@@ -31,52 +36,36 @@ from sources import notice
 from sources.overlay import KINDS, SEVERITIES
 
 
-# ── notice fixtures ────────────────────────────────────────────────────────────
+# ── notice fixtures (rwd endpoint: array-of-arrays, NOTICE_I_* positional) ─────
 
-# Sentinel "no current notice stocks" row (TWSE returns this when list is empty).
-_NOTICE_EMPTY_ROW = {
-    "Number": "0",
-    "Code": "",
-    "Name": "",
-    "NumberOfAnnouncement": "0",
-    "TradingInfoForAttention": "",
-    "Date": "",
-    "ClosingPrice": "0",
-    "PE": "0",
-}
+_NOTICE_FIELDS_OK = ["編號", "證券代號", "證券名稱", "累計次數", "注意交易資訊",
+                     "日期", "收盤價", "本益比"]
 
-# Normal notice stock row.
-_NOTICE_ROW_2330 = {
-    "Number": "1",
-    "Code": "2330",
-    "Name": "台積電",
-    "NumberOfAnnouncement": "3",
-    "TradingInfoForAttention": "成交量異常",
-    "Date": "1150610",
-    "ClosingPrice": "1010.0",
-    "PE": "22.5",
-}
 
-_NOTICE_ROW_2317 = {
-    "Number": "2",
-    "Code": "2317",
-    "Name": "鴻海",
-    "NumberOfAnnouncement": "1",
-    "TradingInfoForAttention": "漲幅異常",
-    "Date": "1150610",
-    "ClosingPrice": "200.0",
-    "PE": "10.0",
-}
+def _notice_row(number, code, name, count, reason, date):
+    return [number, code, name, count, reason, date, "0", "0"]
 
-_NOTICE_ROW_BAD = {
-    "Number": "3",
-    "Code": "",          # blank code → skip
-    "Name": "壞資料",
-    "NumberOfAnnouncement": "1",
-    "TradingInfoForAttention": "",
-    "Date": "",
-    "ClosingPrice": "0",
-    "PE": "0",
+
+_NOTICE_ROW_2330 = _notice_row("1", "2330", "台積電", "3", "成交量異常", "115.06.10")
+_NOTICE_ROW_2317 = _notice_row("2", "2317", "鴻海", "1", "漲幅異常", "115.06.10")
+_NOTICE_ROW_BAD = _notice_row("3", "", "壞資料", "1", "", "")   # blank code → skip
+
+
+def _notice_payload(rows, fields=None):
+    return {
+        "stat": "OK",
+        "title": "公布注意有價證券資訊",
+        "fields": fields if fields is not None else _NOTICE_FIELDS_OK,
+        "data": rows,
+        "params": {}, "count": len(rows), "total": len(rows),
+    }
+
+
+# Live-confirmed DEAD-endpoint sentinel: the OpenAPI path always returns this
+# regardless of date — kept only to document why NOTICE_URL is no longer used.
+_NOTICE_OPENAPI_DEAD_SENTINEL_ROW = {
+    "Number": "0", "Code": "", "Name": "", "NumberOfAnnouncement": "0",
+    "TradingInfoForAttention": "", "Date": "", "ClosingPrice": "0", "PE": "0",
 }
 
 
@@ -124,10 +113,18 @@ _PUNISH_ROW_BAD = {
 
 # ── helper ─────────────────────────────────────────────────────────────────────
 
-def _fake_notice(rows):
-    """Return a fetch_fn that yields a fixed notice list."""
-    def _fn(url):
-        return rows
+def _fake_notice(rows, fields=None):
+    """Return a fetch_fn(url, params) that yields a fixed {stat,fields,data} payload."""
+    def _fn(url, params=None):
+        return _notice_payload(rows, fields=fields)
+    return _fn
+
+
+def _fake_notice_raw(payload):
+    """Return a fetch_fn(url, params) that yields an arbitrary raw payload
+    (bypasses _notice_payload wrapping — for malformed/non-dict/exception cases)."""
+    def _fn(url, params=None):
+        return payload
     return _fn
 
 
@@ -161,7 +158,7 @@ class TestRocToAd(unittest.TestCase):
 
 
 class TestParseNoticeRow(unittest.TestCase):
-    """notice.parse_notice_row — pure function."""
+    """notice.parse_notice_row — pure function (positional, rwd endpoint shape)."""
 
     def test_normal_row(self):
         rec = notice.parse_notice_row(_NOTICE_ROW_2330)
@@ -170,18 +167,26 @@ class TestParseNoticeRow(unittest.TestCase):
         self.assertEqual(rec["name"], "台積電")
         self.assertEqual(rec["reason"], "成交量異常")
         self.assertEqual(rec["count"], 3)
-        self.assertEqual(rec["date"], "2026-06-10")
+        self.assertEqual(rec["date"], "2026-06-10")   # dot-separated ROC -> AD
 
     def test_blank_code_returns_none(self):
         self.assertIsNone(notice.parse_notice_row(_NOTICE_ROW_BAD))
 
-    def test_empty_sentinel_row_returns_none(self):
-        # The TWSE sentinel row (Number='0', Code='') must be skipped.
-        self.assertIsNone(notice.parse_notice_row(_NOTICE_EMPTY_ROW))
+    def test_too_short_row_returns_none(self):
+        self.assertIsNone(notice.parse_notice_row(["1"]))   # code index out of range
 
-    def test_non_dict_returns_none(self):
+    def test_short_row_with_code_still_parses_defensively(self):
+        # Code present but trailing fields missing — degrades gracefully (mirrors
+        # twse.py's parse_t86_row per-field try/except), not a hard reject.
+        rec = notice.parse_notice_row(["1", "2330"])
+        self.assertIsNotNone(rec)
+        self.assertEqual(rec["code"], "2330")
+        self.assertEqual(rec["count"], 0)
+        self.assertIsNone(rec["date"])
+
+    def test_non_list_returns_none(self):
         self.assertIsNone(notice.parse_notice_row(None))
-        self.assertIsNone(notice.parse_notice_row([]))
+        self.assertIsNone(notice.parse_notice_row({"Code": "2330"}))
 
 
 class TestParsePunishRow(unittest.TestCase):
@@ -230,7 +235,7 @@ class TestLevelFromMeasures(unittest.TestCase):
 
 
 class TestFetchNoticeStocks(unittest.TestCase):
-    """fetch_notice_stocks — injectable, graceful-skip."""
+    """fetch_notice_stocks — injectable, graceful-skip (rwd endpoint, R3-003)."""
 
     def test_returns_dict_on_good_data(self):
         rows = [_NOTICE_ROW_2330, _NOTICE_ROW_2317]
@@ -240,10 +245,17 @@ class TestFetchNoticeStocks(unittest.TestCase):
         self.assertEqual(result["2330"]["reason"], "成交量異常")
         self.assertEqual(result["2317"]["reason"], "漲幅異常")
 
-    def test_sentinel_empty_row_yields_empty_dict(self):
-        # When TWSE has no notice stocks, returns the Number='0' sentinel.
-        rows = [_NOTICE_EMPTY_ROW]
-        result = notice.fetch_notice_stocks(fetch_fn=_fake_notice(rows))
+    def test_fetch_fn_receives_response_json_param(self):
+        seen = {}
+        def spy(url, params=None):
+            seen["url"], seen["params"] = url, params
+            return _notice_payload([_NOTICE_ROW_2330])
+        notice.fetch_notice_stocks(fetch_fn=spy)
+        self.assertEqual(seen["url"], notice.NOTICE_RWD_URL)
+        self.assertEqual(seen["params"], {"response": "json"})
+
+    def test_empty_data_list_yields_empty_dict(self):
+        result = notice.fetch_notice_stocks(fetch_fn=_fake_notice([]))
         self.assertEqual(result, {})
 
     def test_skips_blank_code_rows(self):
@@ -253,13 +265,18 @@ class TestFetchNoticeStocks(unittest.TestCase):
         self.assertNotIn("", result)
 
     def test_graceful_skip_on_exception(self):
-        def _boom(url):
+        def _boom(url, params=None):
             raise ConnectionError("network down")
         result = notice.fetch_notice_stocks(fetch_fn=_boom)
         self.assertEqual(result, {})
 
-    def test_graceful_skip_on_non_list(self):
-        result = notice.fetch_notice_stocks(fetch_fn=_fake_notice({"stat": "OK"}))
+    def test_graceful_skip_on_non_dict(self):
+        result = notice.fetch_notice_stocks(fetch_fn=_fake_notice_raw(["not", "a", "dict"]))
+        self.assertEqual(result, {})
+
+    def test_graceful_skip_on_non_ok_stat(self):
+        result = notice.fetch_notice_stocks(
+            fetch_fn=_fake_notice_raw({"stat": "查詢日期小於93年12月17日", "data": []}))
         self.assertEqual(result, {})
 
     def test_returns_required_keys(self):
@@ -267,6 +284,33 @@ class TestFetchNoticeStocks(unittest.TestCase):
         rec = notice.fetch_notice_stocks(fetch_fn=_fake_notice(rows))["2330"]
         for key in ("reason", "date", "count"):
             self.assertIn(key, rec)
+
+    # ── R3-003 regression coverage: DEAD OpenAPI sentinel + fields[] drift ────
+
+    def test_openapi_dead_sentinel_is_never_hit(self):
+        # Sanity: NOTICE_URL (the dead OpenAPI path) is no longer the fetch
+        # target — fetch_notice_stocks must call NOTICE_RWD_URL exclusively.
+        seen_urls = []
+        def spy(url, params=None):
+            seen_urls.append(url)
+            return _notice_payload([_NOTICE_ROW_2330])
+        notice.fetch_notice_stocks(fetch_fn=spy)
+        self.assertNotIn(notice.NOTICE_URL, seen_urls)
+
+    def test_fields_drift_yields_empty_dict(self):
+        # A reordered fields[] header (e.g. 證券代號/證券名稱 swapped) must refuse
+        # to parse -- same wrong-column-risk discipline as twse.py T86 (R3-001),
+        # but non-raising here to match this endpoint's existing {} contract.
+        bad_fields = list(_NOTICE_FIELDS_OK)
+        bad_fields[1], bad_fields[2] = bad_fields[2], bad_fields[1]
+        result = notice.fetch_notice_stocks(
+            fetch_fn=_fake_notice([_NOTICE_ROW_2330], fields=bad_fields))
+        self.assertEqual(result, {})
+
+    def test_missing_fields_header_yields_empty_dict(self):
+        result = notice.fetch_notice_stocks(
+            fetch_fn=_fake_notice_raw({"stat": "OK", "data": [_NOTICE_ROW_2330]}))
+        self.assertEqual(result, {})
 
 
 class TestFetchDispositionStocks(unittest.TestCase):

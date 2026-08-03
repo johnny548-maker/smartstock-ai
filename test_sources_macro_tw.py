@@ -374,40 +374,78 @@ class TestGoldenAdditiveInvariant(unittest.TestCase):
 
 
 # ── MOEA HTML-table fixtures ──────────────────────────────────────────────────
-# Minimal but realistic HTML mimicking service.moea.gov.tw EE521 code=B&no=3.
-# Pre-computed YoY % by product; most recent row = 115年4月.
+# R3-005 audit fix (2026-08-03): the ORIGINAL fixtures here used <th> header
+# cells and a single combined "115年4月"-style label cell — a shape that never
+# matched the LIVE service.moea.gov.tw page (live probe confirmed: <td>-based
+# header inside id="hldContent_tabReport", decorative all-blank <tr> filler
+# rows for border styling, and the '年月別' label split into TWO physical body
+# columns — an annual 'NNN年' cell (blank on monthly rows) via colspan=2 on
+# EE521/GA1, or an explicit adjacent blank <td> on GA4 — followed by a monthly
+# 'M月' cell (blank on the annual/cumulative row). Because these tests never
+# matched reality, the parser silently returned [] in PRODUCTION for ~2 months
+# while these tests stayed green. Fixtures below are byte-shaped to the live
+# probe; expected numeric values (48.07 / 120.94 / 142 etc.) are preserved so
+# downstream assertions still document the same scenario.
+
 MOEA_EE521_HTML = u"""
 <html><body>
-<table>
-  <tr><th>年月別</th><th>總計</th><th>資訊通信</th><th>電子產品</th><th>傳統貨品</th></tr>
-  <tr><td>114年</td><td>10.5</td><td>15.2</td><td>18.0</td><td>-2.3</td></tr>
-  <tr><td>114年4月</td><td>11.0</td><td>16.0</td><td>19.0</td><td>-1.5</td></tr>
-  <tr><td>115年3月</td><td>42.0</td><td>80.0</td><td>115.0</td><td>3.1</td></tr>
-  <tr><td>115年4月</td><td>48.07</td><td>89.71</td><td>120.94</td><td>5.0</td></tr>
+<table id="hldContent_tabReport">
+<thead>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="2">年月別</td><td>總計</td><td>資訊通信</td><td>電子產品</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</thead>
+<tbody>
+<tr><td>114年</td><td></td><td>10.5</td><td>15.2</td><td>18.0</td></tr>
+<tr><td></td><td>4月</td><td>11.0</td><td>16.0</td><td>19.0</td></tr>
+<tr><td>115年</td><td>1-4月</td><td>40.0</td><td>75.0</td><td>108.0</td></tr>
+<tr><td></td><td>3月</td><td>42.0</td><td>80.0</td><td>115.0</td></tr>
+<tr><td></td><td>4月</td><td>48.07</td><td>89.71</td><td>120.94</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody>
 </table>
 </body></html>
 """
 
-# Minimal HTML mimicking GA code=D&no=1 (major industries, absolute index base=100).
+# GA code=D&no=1 (major industries, absolute index base=100) — colspan=2 style
+# (mirrors the live probe of the MAJOR table).
 MOEA_GA_IPI_HTML = u"""
 <html><body>
-<table>
-  <tr><th>年月別</th><th>工業</th><th>製造業</th><th>電力及燃氣供應業</th></tr>
-  <tr><td>114年</td><td>100.0</td><td>102.0</td><td>98.5</td></tr>
-  <tr><td>114年4月</td><td>105.0</td><td>107.0</td><td>100.0</td></tr>
-  <tr><td>115年4月</td><td>115.5</td><td>118.0</td><td>105.0</td></tr>
+<table id="hldContent_tabReport">
+<thead>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="2">年月別</td><td>工業</td><td>製造業</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</thead>
+<tbody>
+<tr><td>114年</td><td></td><td>100.0</td><td>102.0</td></tr>
+<tr><td></td><td>4月</td><td>105.0</td><td>107.0</td></tr>
+<tr><td>115年</td><td></td><td>108.0</td><td>110.0</td></tr>
+<tr><td></td><td>4月</td><td>115.5</td><td>118.0</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</tbody>
 </table>
 </body></html>
 """
 
-# Minimal HTML mimicking GA code=D&no=4 (detail with 電子零組件業 column).
+# GA code=D&no=4 (detail with 電子零組件業 column) — explicit-adjacent-blank
+# style (mirrors the live probe of the DETAIL table, which used colspan=1 with
+# a separately-empty second <td> rather than colspan=2).
 MOEA_GA_IPI_DETAIL_HTML = u"""
 <html><body>
-<table>
-  <tr><th>年月別</th><th>製造業</th><th>電子零組件業</th><th>食品業</th></tr>
-  <tr><td>114年</td><td>102.0</td><td>110.0</td><td>98.0</td></tr>
-  <tr><td>114年4月</td><td>107.0</td><td>118.0</td><td>99.5</td></tr>
-  <tr><td>115年4月</td><td>118.0</td><td>142.0</td><td>101.0</td></tr>
+<table id="hldContent_tabReport">
+<thead>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>年月別</td><td></td><td>製造業</td><td>電子零組件業</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</thead>
+<tbody>
+<tr><td>114年</td><td></td><td>102.0</td><td>110.0</td></tr>
+<tr><td></td><td>4月</td><td>107.0</td><td>118.0</td></tr>
+<tr><td>115年</td><td></td><td>110.0</td><td>130.0</td></tr>
+<tr><td></td><td>4月</td><td>118.0</td><td>142.0</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</tbody>
 </table>
 </body></html>
 """
@@ -417,8 +455,11 @@ class TestMoeaHtmlParser(unittest.TestCase):
     """Unit tests for _parse_moea_html_table and the MOEA-specific parsers."""
 
     def test_parse_simple_table(self):
+        # R3-005 fixture: <thead> has 2 decorative all-blank filler <tr> rows
+        # around the real (<td>-based) header row; <tbody> has 6 rows (annual,
+        # monthly, cumulative, monthly, monthly, trailing-blank padding).
         rows = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
-        self.assertTrue(len(rows) >= 4)        # header excluded; 4 data rows
+        self.assertEqual(len(rows), 6)
         self.assertIn("年月別", rows[0])
         self.assertIn("總計", rows[0])
 
@@ -428,6 +469,81 @@ class TestMoeaHtmlParser(unittest.TestCase):
 
     def test_parse_no_table(self):
         self.assertEqual(macro_tw._parse_moea_html_table("<html><body>no table</body></html>"), [])
+
+    def test_parse_ignores_decorative_blank_header_rows(self):
+        # The all-blank <tr> rows (before/after the real <td>-based header row)
+        # must never be mistaken for the header — picking one would make every
+        # header key '' and collapse all columns together.
+        rows = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        first_row_keys = list(rows[0].keys())
+        self.assertIn("年月別", first_row_keys)
+        self.assertIn("總計", first_row_keys)
+        self.assertIn("電子產品", first_row_keys)
+
+    def test_parse_colspan_label_cell_aligns_year_and_month_columns(self):
+        # EE521/GA1 style: '年月別' has colspan="2" in the header, covering TWO
+        # physically-separate body <td> cells (year, then month). Without
+        # colspan-aware expansion the value columns shift by one and every
+        # numeric column reads the WRONG cell.
+        rows = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        annual_row = rows[0]     # <td>114年</td><td></td><td>10.5</td>...
+        self.assertEqual(annual_row["年月別"], "114年")
+        self.assertEqual(annual_row["總計"], "10.5")     # not shifted onto the month slot
+        monthly_row = rows[1]    # <td></td><td>4月</td><td>11.0</td>...
+        self.assertEqual(monthly_row["總計"], "11.0")
+
+    def test_parse_explicit_blank_neighbor_style_also_aligns(self):
+        # GA4 style: '年月別' is colspan=1 with an explicitly-separate blank
+        # <td> right after it (not a colspan merge) — must align identically.
+        rows = macro_tw._parse_moea_html_table(MOEA_GA_IPI_DETAIL_HTML)
+        annual_row = rows[0]
+        self.assertEqual(annual_row["年月別"], "114年")
+        self.assertEqual(annual_row["製造業"], "102.0")
+        self.assertEqual(annual_row["電子零組件業"], "110.0")
+
+
+class TestReconstructMonthLabels(unittest.TestCase):
+    """_reconstruct_month_labels — forward-fills the year across the blank-year
+    monthly rows and rebuilds a single 'NNN年M月' label (R3-005)."""
+
+    def test_forward_fills_year_onto_monthly_rows(self):
+        raw = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        rebuilt = macro_tw._reconstruct_month_labels(raw)
+        labels = [r["年月別"] for r in rebuilt]
+        self.assertIn("114年4月", labels)
+        self.assertIn("115年3月", labels)
+        self.assertIn("115年4月", labels)
+
+    def test_drops_annual_only_rows(self):
+        raw = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        rebuilt = macro_tw._reconstruct_month_labels(raw)
+        # bare '114年' / '115年' annual rows never match a month pattern -> dropped
+        self.assertFalse(any(r["年月別"] in ("114年", "115年") for r in rebuilt))
+
+    def test_drops_cumulative_range_rows(self):
+        raw = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        rebuilt = macro_tw._reconstruct_month_labels(raw)
+        # the '115年'/'1-4月' cumulative row must not leak through as a "month"
+        self.assertFalse(any("1-4" in r["年月別"] for r in rebuilt))
+
+    def test_drops_trailing_blank_padding_rows(self):
+        raw = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        rebuilt = macro_tw._reconstruct_month_labels(raw)
+        self.assertEqual(len(rebuilt), 3)   # only the 3 genuine monthly rows survive
+
+    def test_values_preserved_after_reconstruction(self):
+        raw = macro_tw._parse_moea_html_table(MOEA_EE521_HTML)
+        rebuilt = macro_tw._reconstruct_month_labels(raw)
+        latest = next(r for r in rebuilt if r["年月別"] == "115年4月")
+        self.assertEqual(latest["總計"], "48.07")
+        self.assertEqual(latest["電子產品"], "120.94")
+
+    def test_empty_input(self):
+        self.assertEqual(macro_tw._reconstruct_month_labels([]), [])
+
+
+class TestMoeaEoYoyAndIpiRows(unittest.TestCase):
+    """_moea_eo_yoy_to_rows / _moea_ipi_to_rows — end-to-end HTML -> derive-ready rows."""
 
     def test_moea_eo_yoy_to_rows_extracts_latest_month(self):
         rows = macro_tw._moea_eo_yoy_to_rows(MOEA_EE521_HTML)
