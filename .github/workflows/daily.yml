@@ -437,6 +437,17 @@ jobs:
             echo "::error::all-stocks git-file archive log shows a Traceback/Error"
             FAIL=1
           fi
+          # BL-P1-5(e): archive_allstocks_to_files()'s emit() isolates a per-source failure —
+          # it never raises/Tracebacks, only logs "SKIP <tab>: <exc>" and counts that tab -1 in
+          # the final "archive_allstocks_to_files done for <date>: {...}" counts dict (same -1
+          # convention as sync_allstocks_from_files below). The Traceback/Error grep above is
+          # BLIND to this — a silently-broken single source would tee a clean "SKIP tab: ..."
+          # line and an all-green run (same class of bug as audit finding 3 for the Sheet
+          # mirrors). Reuse ALL_LOG's own ': -1[,}]' pattern so both detectors are symmetric.
+          if [ -f "$FILES_LOG" ] && grep -E "': -1[,}]" "$FILES_LOG"; then
+            echo "::error::all-stocks git-file archive reported a source SKIP (tab=-1, see counts line above)"
+            FAIL=1
+          fi
           if [ "$FAIL" -eq 0 ]; then
             echo "::notice::Sheet-sync sentinel: both mirrors healthy (no tab=-1, no crash)"
           fi

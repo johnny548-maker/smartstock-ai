@@ -755,6 +755,83 @@ class TestPanelHealth(_TmpDirTest):
                          os.path.join(config.WEB_DIR, "data", "_panel.json.gz"))
 
 
+class TestTdccHealth(_TmpDirTest):
+    """BL-P1-5(a+b): archive/tdcc/ (TDCC 大戶分布) is CI-geo-blocked and backfilled weekly by
+    a human running tools/local_cron/ from a TW IP. Freshness is judged in TW TRADING days
+    (TDCC_OK_LAG_BD=6 / TDCC_STALE_LAG_BD=9) — measured cadence: Friday-to-Friday, business-day
+    gaps 4-6 (see data_health.py's provenance comment). NOW = 2026-06-11 06:00 (Thursday);
+    default payload date 2026-06-11. Business-day lags below are picked to land exactly on
+    each threshold boundary (mirrors TestBdayLag's precision)."""
+
+    def _tdcc_dir(self):
+        return os.path.join(self.data_dir, "tdcc")
+
+    def _write_snapshot(self, yyyymmdd):
+        d = self._tdcc_dir()
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, f"{yyyymmdd}.json.gz"), "wb") as f:
+            f.write(b"")   # content is irrelevant -- only the filename date is read
+        return d
+
+    def test_fresh_tdcc_is_ok(self):
+        path = self._write_snapshot("20260608")   # Mon -> Thu report = 3bd lag
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=path)
+        e = entry(report, "tdcc")
+        self.assertEqual(e["status"], "ok")
+        self.assertIn("2026-06-08", e["note"])
+
+    def test_boundary_ok_at_6bd(self):
+        path = self._write_snapshot("20260603")   # Wed -> Thu report = 6bd lag (== OK max)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=path)
+        self.assertEqual(entry(report, "tdcc")["status"], "ok")
+
+    def test_moderately_late_tdcc_degrades(self):
+        path = self._write_snapshot("20260602")   # Tue -> Thu report = 7bd lag
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=path)
+        self.assertEqual(entry(report, "tdcc")["status"], "degraded")
+
+    def test_boundary_degraded_at_9bd(self):
+        path = self._write_snapshot("20260529")   # Fri -> Thu report = 9bd lag (== stale min - 1)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=path)
+        self.assertEqual(entry(report, "tdcc")["status"], "degraded")
+
+    def test_very_stale_tdcc_is_stale(self):
+        path = self._write_snapshot("20260528")   # Thu -> Thu report = 10bd lag (missed a cycle)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=path)
+        self.assertEqual(entry(report, "tdcc")["status"], "stale")
+        self.assertEqual(report["overall"], "stale")
+
+    def test_missing_tdcc_dir_is_skip(self):
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW,
+                              tdcc_dir=os.path.join(self.data_dir, "no_such_tdcc"))
+        self.assertEqual(entry(report, "tdcc")["status"], "skip")
+
+    def test_empty_tdcc_dir_is_skip(self):
+        d = self._tdcc_dir()
+        os.makedirs(d, exist_ok=True)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=d)
+        self.assertEqual(entry(report, "tdcc")["status"], "skip")
+
+    def test_ignores_non_matching_filenames(self):
+        # a stray README or a differently-named file must not crash or be misread as a date.
+        d = self._tdcc_dir()
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "README.md"), "w", encoding="utf-8") as f:
+            f.write("notes")
+        with open(os.path.join(d, "20260608.json.gz"), "wb") as f:
+            f.write(b"")
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, tdcc_dir=d)
+        e = entry(report, "tdcc")
+        self.assertEqual(e["status"], "ok")
+        self.assertIn("2026-06-08", e["note"])
+
+    def test_default_tdcc_dir_resolves_under_config_archive_dir(self):
+        # deterministic plumbing check — doesn't touch the filesystem.
+        import config
+        self.assertEqual(dh._default_tdcc_dir(),
+                         os.path.join(config.ARCHIVE_DIR, "tdcc"))
+
+
 class TestInstitutionalStaleness(_TmpDirTest):
     """BL-P0-3(d) audit fix: institutional.get_institutional() can silently reuse up to
     TWSE_LOOKBACK_DAYS=7 calendar days of data as "today's" flows (V3-01). A companion fix

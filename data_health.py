@@ -23,6 +23,8 @@ Checks (each independent; anything that cannot be measured is marked SKIP —
                     FRED overlay — the 29-day mtime-TTL freeze shipped as ok)
   • validated:*   — optimize json exists but combo null / payload sleeve empty
   • news          — total item count (+ newest pubdate when feeds carry one)
+  • tdcc          — newest archive/tdcc/ snapshot vs now, in TW TRADING days (TDCC is
+                    weekly + 100% CI-geo-blocked; see TDCC_OK_LAG_BD provenance below)
 
 Timestamps for cache/state age come from EMBEDDED fields (fetched_at/updated/
 as_of/asof) — NEVER file mtime, which GitHub Actions checkout rewrites every
@@ -112,8 +114,25 @@ PANEL_MIN_CODES = 50
 # is normal (mirrors OHLCV_OK_LAG_BD's 1-business-day tolerance); >=2 days is a real fallback.
 INSTITUTIONAL_STALE_OK_MAX_DAYS = 1
 INSTITUTIONAL_STALE_STALE_MIN_DAYS = 4
+# why (BL-P1-5 a+b): archive/tdcc/ (大戶分布) is a WEEKLY chip read that is 100% CI-geo-blocked
+# (unlike t86, which lands from CI 10/10 days) — a human runs tools/local_cron/ from a TW IP to
+# backfill it (install_tdcc_weekly_task.ps1: Mon 21:00 TW). "Archiver PC dead" and "TDCC hasn't
+# published yet" look identical day-to-day, so the threshold must be trading-day-honest about
+# the ACTUAL cadence, not calendar days. Measured from the committed snapshot filenames
+# (archive/tdcc/*.json.gz, 2026-06-05..2026-07-24, 8 dates — NOT git commit dates: the same
+# daily "report: <date>" commit re-touches an already-archived file without its DATA date
+# changing, e.g. 2026-07-27..07-31 all re-committed archive/tdcc/20260724.json.gz, so a
+# commit-date metric would read "fresh" on a stalled weekly file): every gap is Friday-to-Friday,
+# business-days-elapsed 4/4/5/5/5/6/6 (median 5, max observed 6 — the 6-day gaps are
+# holiday-lengthened weeks). One full missed weekly cycle would show ~10-12 business days
+# elapsed, so OK stays generous through the measured max (<=6) and STALE requires being
+# unambiguously past one missed cycle (>9, i.e. 10+ business days) rather than merely late.
+TDCC_OK_LAG_BD = 6
+TDCC_STALE_LAG_BD = 9
 
 _DATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
+# archive/tdcc/<YYYYMMDD>.json[.gz] — matches sources.tdcc.save_weekly()'s file naming.
+_TDCC_FILE_RE = re.compile(r"^(\d{8})\.json(\.gz)?$")
 _ROW_COUNT_KEYS = ("picks", "news", "movers")
 # coverage keys whose ok=False is real rot (universe collapse), not a benign empty source → degrade
 _COVERAGE_CRITICAL = ("opp_ohlcv", "us_batch")
@@ -703,10 +722,59 @@ def _check_institutional_staleness(payload):
                         f"(TWSE T86 lookback fallback)")]
 
 
+def _default_tdcc_dir():
+    """archive/tdcc/ — SINGLE SOURCE OF TRUTH is config.ARCHIVE_DIR (sources.tdcc.TDCC_ARCHIVE_DIR
+    derives from the same constant); imported lazily like _default_cache_paths/_default_state_paths."""
+    import config
+    return os.path.join(config.ARCHIVE_DIR, "tdcc")
+
+
+def _newest_tdcc_date(tdcc_dir):
+    """The newest YYYYMMDD encoded in an archive/tdcc/*.json[.gz] filename, or None.
+
+    Deliberately reads the DATA date from the filename, never git/file mtime — see
+    TDCC_OK_LAG_BD's provenance comment for why a commit-based metric is dishonest here."""
+    if not tdcc_dir or not os.path.isdir(tdcc_dir):
+        return None
+    newest = None
+    for name in os.listdir(tdcc_dir):
+        m = _TDCC_FILE_RE.match(name)
+        if not m:
+            continue
+        try:
+            d = dt.datetime.strptime(m.group(1), "%Y%m%d").date()
+        except ValueError:
+            continue
+        if newest is None or d > newest:
+            newest = d
+    return newest
+
+
+def _check_tdcc(payload, now, tdcc_dir=None):
+    """BL-P1-5(a+b): archive/tdcc/ freshness, thresholded in TW TRADING days (TDCC_OK_LAG_BD/
+    TDCC_STALE_LAG_BD) because the source itself is weekly, not daily. Missing/empty dir ->
+    SKIP (fail-open; a fresh clone or pre-first-sync state must not read as rot)."""
+    path = tdcc_dir if tdcc_dir is not None else _default_tdcc_dir()
+    newest = _newest_tdcc_date(path)
+    if newest is None:
+        return [_entry("tdcc", "skip", note="archive/tdcc has no dated snapshot (SKIP)")]
+    ref = _parse_date(payload.get("date")) or now.date()
+    lag = _bday_lag(newest, ref)
+    if lag <= TDCC_OK_LAG_BD:
+        status = "ok"
+    elif lag <= TDCC_STALE_LAG_BD:
+        status = "degraded"
+    else:
+        status = "stale"
+    return [_entry("tdcc", status,
+                   note=f"newest archive/tdcc snapshot {newest.isoformat()} = {lag} "
+                        f"business day(s) behind report date (weekly cadence)")]
+
+
 # ── orchestration (fail-open) ─────────────────────────────────────────────────
 
 def summarize(payload, data_dir=None, now=None, state_paths=None,
-              optimize_paths=None, panel_path=None):
+              optimize_paths=None, panel_path=None, tdcc_dir=None):
     """Run every health check over *payload* → the payload `health` block.
 
     FAIL-OPEN: each check is fenced — a crashed check appends a degraded entry
@@ -721,6 +789,8 @@ def summarize(payload, data_dir=None, now=None, state_paths=None,
     validated_portfolio check; defaults to optimize_<sleeve>.json at repo root.
     *panel_path* (R2-03) injects the market_panel.py cache path for tests;
     production omits it and config.WEB_DIR/data/_panel.json.gz is used.
+    *tdcc_dir* (BL-P1-5) injects the archive/tdcc/ directory for tests; production omits
+    it and config.ARCHIVE_DIR/tdcc is used.
 
     Entry statuses: ok / degraded / stale / skip / warn. `warn` (news thinning)
     surfaces in `sources` but does NOT flip `overall` (OVERLAY spirit — the
@@ -752,6 +822,7 @@ def summarize(payload, data_dir=None, now=None, state_paths=None,
         ("news", lambda: _check_news(payload, now)),
         ("panel", lambda: _check_panel(payload, now, data_dir, panel_path)),
         ("institutional_staleness", lambda: _check_institutional_staleness(payload)),
+        ("tdcc", lambda: _check_tdcc(payload, now, tdcc_dir)),
     )
     sources = []
     sources_skip_count = 0

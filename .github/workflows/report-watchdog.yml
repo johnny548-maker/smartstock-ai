@@ -200,6 +200,96 @@ jobs:
             exit 1
           fi
 
+      # BL-P1-5(c): archive/tdcc + archive/allstocks staleness backstop. Both archives are
+      # OVERLAY-NOT-SCORER (never feed scoring) but a silently-dead archiver is exactly the
+      # "didn't run + no notification" failure mode this watchdog exists to catch — archive/tdcc
+      # is 100% CI-geo-blocked (a human runs tools/local_cron/ from a TW IP to backfill it
+      # weekly; see sources/tdcc.py), so unlike the report itself, "nothing new" here can mean
+      # "the human's task/PC died", not "the market was closed".
+      #
+      # Freshness is read from each file's NAME date, never git commit date: the daily
+      # "report: <date>" commit (daily.yml `git add docs/data archive`) can re-touch an
+      # already-archived tdcc file without its DATA date changing (measured 2026-07-27..07-31
+      # all re-committing archive/tdcc/20260724.json.gz), so a commit-date metric would read
+      # "fresh" on a completely stalled weekly file. data_health.py already solved this
+      # correctly (_newest_tdcc_date + TDCC_OK_LAG_BD/TDCC_STALE_LAG_BD) — this step imports it
+      # directly so the threshold + business-day math stay single-sourced, never duplicated.
+      - name: Archive staleness check (tdcc + allstocks)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          # archive/tdcc — weekly, CI-geo-blocked (see comment above).
+          read -r TDCC_STATUS TDCC_NEWEST TDCC_LAG <<< "$(python3 -c "
+          import sys
+          sys.path.insert(0, '.')
+          import datetime as dt
+          import data_health as dh
+          today = dt.datetime.utcnow().date()
+          newest = dh._newest_tdcc_date(dh._default_tdcc_dir())
+          if newest is None:
+              print('skip - 0')
+          else:
+              lag = dh._bday_lag(newest, today)
+              status = ('ok' if lag <= dh.TDCC_OK_LAG_BD
+                        else 'degraded' if lag <= dh.TDCC_STALE_LAG_BD else 'stale')
+              print(f'{status} {newest.isoformat()} {lag}')
+          ")"
+          echo "::notice::archive/tdcc status=${TDCC_STATUS} newest=${TDCC_NEWEST} lag=${TDCC_LAG}bd"
+          if [ "$TDCC_STATUS" = "stale" ]; then
+            TITLE="🟠 SmartStock archive/tdcc stale"
+            BODY="archive/tdcc newest snapshot is **${TDCC_NEWEST}** (${TDCC_LAG} business days behind — TDCC_STALE_LAG_BD=${TDCC_LAG}bd threshold in data_health.py). TDCC is CI-geo-blocked and backfilled weekly by a human running tools/local_cron/ from a TW IP — check the archiver PC / SmartStock_TDCC_Weekly scheduled task is still alive. Watchdog run: ${RUN_URL}"
+            NUM=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+            else
+              gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+            fi
+          fi
+
+          # archive/allstocks — 13 sub-source dirs at mixed daily/weekly/monthly/quarterly
+          # cadences (per-source thresholds are sheets_sync_allstocks.py's domain, out of scope
+          # here); this is a COARSE whole-tree backstop only. Most sub-dirs are CI-reachable
+          # daily sources, so as long as ANY of them is alive the tree-wide newest date stays
+          # fresh — this fires only when the ENTIRE sink has gone dark (a single dead sub-source
+          # is the per-tab log detector's job, see daily.yml's Sheet-sync sentinel). Mirrors
+          # data_health.py's OHLCV_OK_LAG_BD/OHLCV_STALE_LAG_BD (daily-cadence tolerance).
+          ALLSTOCKS_NEWEST=$(find archive/allstocks -type f -name '20*-*-*.*' 2>/dev/null \
+            | sed -E 's#.*/##; s/\.(csv|json)\.gz$//' \
+            | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' \
+            | sort | tail -1 || true)
+          if [ -z "$ALLSTOCKS_NEWEST" ]; then
+            echo "::warning::archive/allstocks has no dated snapshot"
+          else
+            read -r ALLSTOCKS_STATUS ALLSTOCKS_LAG <<< "$(python3 -c "
+          import sys
+          sys.path.insert(0, '.')
+          import datetime as dt
+          import data_health as dh
+          newest = dt.date.fromisoformat('${ALLSTOCKS_NEWEST}')
+          today = dt.datetime.utcnow().date()
+          lag = dh._bday_lag(newest, today)
+          status = ('ok' if lag <= dh.OHLCV_OK_LAG_BD
+                    else 'degraded' if lag <= dh.OHLCV_STALE_LAG_BD else 'stale')
+          print(f'{status} {lag}')
+          ")"
+            echo "::notice::archive/allstocks status=${ALLSTOCKS_STATUS} newest=${ALLSTOCKS_NEWEST} lag=${ALLSTOCKS_LAG}bd"
+            if [ "$ALLSTOCKS_STATUS" = "stale" ]; then
+              TITLE="🟠 SmartStock archive/allstocks stale"
+              BODY="archive/allstocks newest dated file across the WHOLE tree is **${ALLSTOCKS_NEWEST}** (${ALLSTOCKS_LAG} business days behind). The whole all-stocks archive sink (CI git-file archiver + human TW-IP backfill) looks dark — not just one sub-source. Watchdog run: ${RUN_URL}"
+              NUM=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+              if [ -n "$NUM" ]; then
+                gh issue comment "$NUM" --repo "$REPO" --body "$BODY"
+              else
+                gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+              fi
+            fi
+          fi
+
       # Actions cache usage monitor — the daily's market-panel cache uses a rolling per-run key,
       # so entries accumulate toward GitHub's 10 GB per-repo cap. Once full, evictions thrash the
       # panel restore and quietly shrink the verdict history. Warn + open ONE deduped issue
