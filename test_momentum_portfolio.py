@@ -332,6 +332,65 @@ class TestBuildLens(unittest.TestCase):
         self.assertTrue(all(isinstance(x, str) for x in lens["disclaimers"]))
         self.assertGreaterEqual(len(lens["disclaimers"]), 4)
 
+    def test_quantitative_caveat_shipped_in_both_pit_states(self):
+        # BL-P1-11(b): survivorship magnitude + "no DSR/PBO/SPA" must be ON-PAGE
+        # whether or not the artifact was built point-in-time.
+        for disc in (mp.DISCLAIMERS, mp.PIT_DISCLAIMERS):
+            joined = " ".join(disc)
+            self.assertIn("survivorship", joined)
+            self.assertIn("2–4%/y", joined)
+            self.assertIn("DSR/PBO/SPA", joined)
+            self.assertIn("上界", joined)          # headline stays flagged as a bound
+
+    def _mark_pit(self, path, **pit):
+        obj = json.load(open(path, encoding="utf-8"))
+        obj["pit_membership"] = pit
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(obj, f)
+
+    def test_masking_that_removed_nothing_does_not_claim_point_in_time(self):
+        # THE trap (measured 2026-08-03): added_date derived from each name's first
+        # cached bar → the mask runs over every name and cuts 0 bars. "applied" must
+        # NEVER be read as "bias fixed"; only measured `effective` counts.
+        for p in (self.tw_json, self.us_json):
+            self._mark_pit(p, applied=True, effective=False, n_dated=502,
+                           names_masked=0, bars_dropped=0)
+        lens = self._lens()
+        self.assertFalse(lens["pit_membership"])
+        self.assertFalse(lens["tw"]["track_record"]["pit_enabled"])
+        self.assertEqual(lens["disclaimers"], list(mp.DISCLAIMERS))
+        # the honest current-constituent wording must survive
+        self.assertIn("2026 的成分名單拿去篩 2012", " ".join(lens["disclaimers"]))
+
+    def test_pit_disclaimers_used_only_when_both_artifacts_are_pit(self):
+        # Arrange — only the TW artifact actually masked bars
+        self._mark_pit(self.tw_json, applied=True, effective=True, n_dated=150,
+                       names_masked=26, bars_dropped=12345)
+
+        # Act / Assert — mixed state is NOT allowed to claim point-in-time
+        mixed = self._lens()
+        self.assertFalse(mixed["pit_membership"])
+        self.assertEqual(mixed["disclaimers"], list(mp.DISCLAIMERS))
+        self.assertIn("2026 的成分名單拿去篩 2012", " ".join(mixed["disclaimers"]))
+
+        # Arrange — now BOTH sleeves masked real bars
+        self._mark_pit(self.us_json, applied=True, effective=True, n_dated=502,
+                       names_masked=63, bars_dropped=54321)
+
+        both = self._lens()
+        self.assertTrue(both["pit_membership"])
+        self.assertEqual(both["disclaimers"], list(mp.PIT_DISCLAIMERS))
+        joined = " ".join(both["disclaimers"])
+        # the constituent-look-ahead claim is now FALSE and must be gone ...
+        self.assertNotIn("2026 的成分名單拿去篩 2012", joined)
+        # ... while survivorship stays disclosed and the number stays a bound
+        self.assertIn("survivorship", joined)
+        self.assertIn("上界", joined)
+
+    def test_track_record_reports_pit_flag(self):
+        # absent key (old artifact) → False, never assume point-in-time
+        self.assertFalse(self._lens()["tw"]["track_record"]["pit_enabled"])
+
 
 class TestReportBlock(unittest.TestCase):
     """report_builder._momentum_portfolio_block / build_report wiring."""

@@ -46,8 +46,18 @@ from config import BREADTH_TW, BREADTH_US, BUSTED_PEERS, ADV_SLIPPAGE
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
+# COST CONVENTION OF *THIS* HARNESS (B2-03 — differs from backtest_portfolio.py, see below).
+# backtest.forward_return applies them as: buy×(1+slip), sell×(1−slip), then ONE flat
+# fee_bps subtracted from the round-trip return.
+#   all-in round trip, TW *and* US = 15×2 slip + 30 fee = 60 bps.
+# FEE_BPS here is a BLENDED number that ALREADY absorbs the TW 0.3% transaction tax, so no
+# tax is charged on top and TW and US cost the same.
+# ⚠ backtest_portfolio.py reads the SAME two constants but means something else by them:
+# there FEE_BPS is commission ONLY (charged half per side) and TW_SELL_TAX_BPS=30 is added
+# on sells → all-in TW round trip 90 bps (US 60). So TW numbers from the two harnesses are
+# NOT directly comparable (this one is 30 bps/RT cheaper on TW); US numbers are.
 SLIP_BPS = 15.0          # ~0.15% each side (bid/ask + impact) — the flat fallback/floor
-FEE_BPS = 30.0           # round-trip commission + TW transaction tax (net-of-cost, G9)
+FEE_BPS = 30.0           # round-trip commission + TW transaction tax, blended (net-of-cost, G9)
 NEXT_OPEN = True         # fill at next open (signal fires on close) — no exec look-ahead (G4)
 INCLUDE_BUSTED = True    # add boomed-then-busted peers to fight survivorship (G3)
 

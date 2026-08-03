@@ -11,8 +11,13 @@ Strategies
 (c) equal_weight     equal weight across the whole sleeve universe (benchmark)
 (d) buy_hold         buy-and-hold 0050.TW / SPY (benchmark)
 
-Costs (repo convention, run_backtest.py): SLIP_BPS=15 one-way + FEE_BPS=30
-round-trip → 30 bps per side; TW sleeve adds 30 bps transaction tax on sells.
+Costs: SLIP_BPS=15 charged on every side + FEE_BPS=30 commission split half per
+side → 30 bps per side; the TW sleeve adds TW_SELL_TAX_BPS=30 on sells.
+ALL-IN ROUND TRIP: TW = 90 bps, US = 60 bps. This is NOT the same convention as
+run_backtest.py, which reuses the same constant names but treats FEE_BPS as a
+blended tax-inclusive round-trip fee subtracted once (60 bps all-in on BOTH
+markets) — see the constants block below. TW results across the two harnesses
+are therefore not directly comparable (B2-03).
 
 Look-ahead protections
 ----------------------
@@ -22,6 +27,13 @@ Look-ahead protections
   day's open (next-open fill — same G4 convention as backtest.py).
 * The SMA200 filter uses the index series forward-filled onto the trade
   calendar — only past index closes are visible at the signal date.
+* C2 point-in-time membership (BL-P2-2): run_sleeve takes `added_dates` and masks
+  every bar BEFORE a name joined the index (run_backtest.apply_pit_membership — the
+  same helper run_backtest/run_validation use), so the 2012 cross-section is ranked
+  from 2012 members, not from today's list. main() reads added_date from the universe
+  CSV and applies it BY DEFAULT (`--no-pit` reproduces the old current-constituent
+  upper bound). This removes constituent look-ahead; the SURVIVORSHIP half (names
+  delisted before today never entered the CSV at all) is NOT fixed by it.
 
 Metrics: CAGR, annualised Sharpe, MaxDD, Wilson-CI lower bound of the monthly
 win rate vs the buy-and-hold benchmark, regime splits
@@ -67,10 +79,17 @@ VOLTGT_FLOOR = 0.5        # #12: min gross scale — MUST match run_optimize.SCA
                           #   the SAME strategy (no <0.5× de-gross); were [0,1.5] vs [0.5,1.5].
 VOLTGT_CLAMP = 1.5        # max gross scale (never lever beyond 1.5×) == run_optimize.SCALE_CLAMP[1]
 
-# repo cost convention (run_backtest.py)
-SLIP_BPS = 15.0           # one-way slippage
-FEE_BPS = 30.0            # round-trip commission (charged half per side)
-TW_SELL_TAX_BPS = 30.0    # TW transaction tax 0.3% on sells
+# COST CONVENTION OF *THIS* HARNESS (B2-03). simulate_portfolio charges, per bps of traded
+# value: buy = slip + fee/2 = 30; sell = slip + fee/2 + sell_tax = 60 (TW) / 30 (US).
+#   all-in round trip: TW = 90 bps, US = 60 bps.
+# ⚠ SAME constant NAMES as run_backtest.py, DIFFERENT meaning: there FEE_BPS=30 is a BLENDED
+# round-trip fee that already absorbs the TW transaction tax and is subtracted ONCE, so that
+# harness's all-in round trip is 60 bps on BOTH markets. Here FEE_BPS is commission ONLY and
+# the tax is charged separately on sells. Net effect: TW results from the two harnesses are
+# NOT comparable (this one is 30 bps/RT stricter); US results are (both 60 bps).
+SLIP_BPS = 15.0           # one-way slippage (charged on every buy AND every sell)
+FEE_BPS = 30.0            # commission ONLY, round-trip (charged half per side) — NOT tax-inclusive
+TW_SELL_TAX_BPS = 30.0    # TW transaction tax 0.3% on sells, ON TOP of slip+fee/2
 
 QUICK_N = 50
 QUICK_PERIOD = "5y"
@@ -538,8 +557,23 @@ def _voltgt_scale(close_ff, picks, asof):
     return min(VOLTGT_CLAMP, max(VOLTGT_SIGMA / rv, VOLTGT_FLOOR))
 
 
-def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
+def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N,
+               added_dates=None):
     """Run all four strategies for one sleeve on pre-loaded {ticker: OHLCV df}.
+
+    added_dates : optional {ticker: 'YYYY-MM-DD'|None} membership dates. When supplied,
+        C2 point-in-time masking (run_backtest.apply_pit_membership — the SAME helper
+        run_backtest/run_validation use) drops each name's bars BEFORE that date, so a
+        rebalance only ranks names already in the universe on the signal date. Absent /
+        blank dates → exact no-op (back-compat).
+
+        ⚠ EFFECT ≠ INTENT. The result's "pit_membership" block reports what masking
+        actually REMOVED (names_masked / bars_dropped / effective). With an added_date
+        column derived from each name's FIRST CACHED BAR (which is what
+        build_added_dates.py writes) the mask provably removes nothing — you cannot cut
+        bars before the first bar — so `effective` is False and the run is still a
+        CURRENT-CONSTITUENT view. Only a column carrying real index-inclusion dates
+        makes it bite. Downstream disclosure must read `effective`, never `applied`.
 
     Returns a results dict; daily NAV series stay under the private "_nav" key
     (kept out of the JSON dump by write_outputs).
@@ -548,6 +582,32 @@ def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
     bench_t, index_t = cfg["bench"], cfg["index"]
     sell_tax = cfg["sell_tax_bps"]
     warnings = []
+
+    # C2 PIT membership FIRST — masking can empty a name out entirely, and the
+    # universe/panel below must be built from the post-mask history.
+    n_pit_dated = sum(1 for v in (added_dates or {}).values() if v)
+    pit = {"applied": False, "n_dated": n_pit_dated, "names_masked": 0,
+           "bars_dropped": 0, "effective": False}
+    if n_pit_dated:
+        # local import: run_backtest owns the helper and pulls a heavy dependency
+        # chain — only paid when PIT is actually requested (repo convention, see
+        # run_backtest.py's own local `import backtest_portfolio`).
+        from run_backtest import apply_pit_membership
+        bars_before = {t: len(df) for t, df in (prices or {}).items()
+                       if df is not None}
+        prices = apply_pit_membership(prices, added_dates)
+        bars_after = {t: len(df) for t, df in prices.items() if df is not None}
+        dropped = sum(bars_before.values()) - sum(bars_after.values())
+        pit.update(applied=True,
+                   names_masked=sum(1 for t, b in bars_before.items()
+                                    if bars_after.get(t, 0) != b),
+                   bars_dropped=dropped,
+                   effective=dropped > 0)
+        warnings.append(
+            "PIT membership applied: %d dated names, %d names trimmed, %d bars masked%s"
+            % (n_pit_dated, pit["names_masked"], dropped,
+               "" if dropped else " — NO-OP (added_date is at/before each name's first "
+                                 "bar), still a current-constituent view"))
 
     if universe_tickers is None:
         universe_tickers = [t for t in prices if t not in (bench_t, index_t)]
@@ -653,7 +713,7 @@ def run_sleeve(prices, sleeve, universe_tickers=None, top_n=TOP_N):
 
     return {
         "sleeve": sleeve, "top_n": top_n, "n_universe": len(univ),
-        "bench": bench_t, "index": index_t,
+        "bench": bench_t, "index": index_t, "pit_membership": pit,
         "costs": {"slip_bps": SLIP_BPS, "fee_bps": FEE_BPS,
                   "sell_tax_bps": sell_tax},
         "lookback": LOOKBACK, "skip": SKIP, "sma_window": SMA_WINDOW,
@@ -676,10 +736,12 @@ def render_text(results):
     L.append("universe=%d names  top_n=%d  rebalance=quarterly  "
              "fill=next-open (signal on close)"
              % (results["n_universe"], results["top_n"]))
-    L.append("costs: slip %.0fbps one-way + fee %.0fbps round-trip"
+    L.append("costs: slip %.0fbps per side + fee %.0fbps round-trip (half per side)"
              % (c["slip_bps"], c["fee_bps"])
-             + (" + TW sell tax %.0fbps" % c["sell_tax_bps"]
-                if c["sell_tax_bps"] else ""))
+             + (" + sell tax %.0fbps" % c["sell_tax_bps"]
+                if c["sell_tax_bps"] else "")
+             + " → all-in %.0fbps per round trip"
+             % (2 * c["slip_bps"] + c["fee_bps"] + c["sell_tax_bps"]))
     L.append("momentum: 12-1 (LOOKBACK=%d, SKIP=%d)  SMA filter: index < SMA%d "
              "→ cash (%d/%d quarters risk-off)"
              % (results["lookback"], results["skip"], results["sma_window"],
@@ -687,6 +749,21 @@ def render_text(results):
     L.append("window: %s → %s  bench=%s  index=%s"
              % (results["start"], results["end"], results["bench"],
                 results["index"]))
+    pit = results.get("pit_membership")
+    if pit is not None:
+        if pit.get("effective"):
+            L.append("point-in-time membership: ACTIVE — %d bars masked across %d names "
+                     "(%d dated). Constituent look-ahead removed; SURVIVORSHIP (names "
+                     "delisted before the universe CSV was built) still NOT corrected."
+                     % (pit["bars_dropped"], pit["names_masked"], pit["n_dated"]))
+        else:
+            L.append("point-in-time membership: NO EFFECT (%s) — this run is a "
+                     "CURRENT-CONSTITUENT UPPER BOUND: constituent look-ahead AND "
+                     "survivorship both present."
+                     % ("masking ran over %d dated names but removed 0 bars; the "
+                        "added_date column is derived from each name's first cached "
+                        "bar, so it can never cut anything" % pit["n_dated"]
+                        if pit.get("applied") else "no added_date supplied"))
     for w in results.get("warnings", []):
         L.append("WARNING: " + w)
     L.append("")
@@ -789,6 +866,10 @@ def main(argv=None):
     ap.add_argument("--top-n", type=int, default=TOP_N)
     ap.add_argument("--csv", default=boc.UNIVERSE_CSV)
     ap.add_argument("--cache-dir", default=None)
+    ap.add_argument("--no-pit", action="store_true",
+                    help="disable C2 point-in-time membership masking (reproduces the "
+                         "old CURRENT-CONSTITUENT upper-bound numbers; PIT is ON by "
+                         "default so a rebalance only ranks names already in the index)")
     args = ap.parse_args(argv)
 
     cfg = SLEEVES[args.sleeve]
@@ -821,9 +902,40 @@ def main(argv=None):
     if san["dropped"]:
         print("  sanitize SKIP list: " + ", ".join(san["dropped"]))
 
+    # C2 point-in-time membership (BL-P2-2): read added_date from the SAME universe
+    # CSV the sibling harnesses use. Best-effort — an unreadable/absent column must
+    # never abort the backtest, it just degrades to the current-constituent view.
+    added = {}
+    if not args.no_pit:
+        try:
+            from run_backtest import load_universe_meta
+            meta = load_universe_meta(args.csv)
+            # this sleeve's universe only — bench/index are not universe members and
+            # the other market's names must not inflate this report's PIT counters
+            added = {t: meta.get(t) for t in tickers if meta.get(t)}
+        except Exception as e:
+            print(f"  PIT SKIP meta ({e}) — falling back to current-constituent view")
+            added = {}
+        n_dated = sum(1 for t in tickers if added.get(t))
+        print("pit: %d/%d %s tickers carry an added_date%s"
+              % (n_dated, len(tickers), cfg["market"],
+                 "" if n_dated else " — masking is a no-op"))
+
     res = run_sleeve(prices, args.sleeve,
                      universe_tickers=[t for t in tickers if t in prices],
-                     top_n=args.top_n)
+                     top_n=args.top_n, added_dates=added)
+    # run_sleeve reported what masking actually removed; record WHERE the dates came
+    # from so a reader can check their semantics (first-bar-derived ⇒ guaranteed no-op).
+    # repo-relative: the artifact is committed, an absolute home path would be noise
+    res["pit_membership"]["source"] = (
+        os.path.relpath(args.csv, _HERE).replace("\\", "/") if added else None)
+    res["pit_membership"]["requested"] = not args.no_pit
+    print("pit: %s" % ("no bars masked — added_date sits at/before each name's first "
+                       "cached bar, so this remains a CURRENT-CONSTITUENT run"
+                       if not res["pit_membership"]["effective"] else
+                       "%d bars masked across %d names"
+                       % (res["pit_membership"]["bars_dropped"],
+                          res["pit_membership"]["names_masked"])))
     res["quick"] = bool(args.quick)
     res["period"] = period
     res["cache"] = {k: len(v) for k, v in cache_res.items()

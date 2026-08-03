@@ -789,3 +789,94 @@ def test_run_sleeve_voltgt_present_and_not_worse_dd():
     assert s["momentum_voltgt"]["max_dd"] <= 0.0
     # vol-target drawdown shallower-or-equal (max_dd is negative; closer to 0 = shallower)
     assert s["momentum_voltgt"]["max_dd"] >= s["momentum"]["max_dd"] - 1e-9
+
+
+# ── C2 point-in-time membership in the portfolio harness (BL-P2-2) ───────────
+
+def test_run_sleeve_masks_bars_before_added_date():
+    # Arrange — LATE is a rocket that only JOINED the universe at bar 500; before
+    # that date it must be invisible to the cross-section, so the masked book has
+    # to be identical to a book where LATE simply does not exist.
+    dates = pd.bdate_range("2021-01-04", periods=700)
+    cut = dates[500]
+    prices = {
+        "OLD": _trend_df(dates, daily=0.0004),
+        "LATE": _trend_df(dates, daily=0.0025),     # best momentum from day one
+        "SPY": _trend_df(dates, daily=0.0004),
+        "^GSPC": _trend_df(dates, daily=0.0004),
+    }
+    kw = dict(sleeve="us", universe_tickers=["OLD", "LATE"], top_n=1)
+
+    # Act
+    pit = bp.run_sleeve(prices, added_dates={"LATE": str(cut.date())}, **kw)
+    raw = bp.run_sleeve(prices, **kw)                       # status quo: no masking
+    old_only = bp.run_sleeve({k: v for k, v in prices.items() if k != "LATE"},
+                             sleeve="us", universe_tickers=["OLD"], top_n=1)
+
+    # Assert — the run reports what masking actually REMOVED, not that it ran
+    assert pit["pit_membership"]["applied"] is True
+    assert pit["pit_membership"]["effective"] is True
+    assert pit["pit_membership"]["names_masked"] == 1
+    assert pit["pit_membership"]["bars_dropped"] == 500
+    assert raw["pit_membership"] == {"applied": False, "n_dated": 0,
+                                     "names_masked": 0, "bars_dropped": 0,
+                                     "effective": False}
+
+    # Assert — masked NAV before the added_date == the OLD-only NAV ...
+    nav_pit = pit["_nav"]["momentum"]
+    nav_raw = raw["_nav"]["momentum"]
+    nav_old = old_only["_nav"]["momentum"]
+    pre = nav_pit.index < cut
+    assert pre.sum() > 0
+    assert np.allclose(nav_pit[pre].to_numpy(), nav_old[pre].to_numpy())
+    # ... while the UNMASKED run held LATE early (guards against a vacuous pass)
+    assert not np.allclose(nav_raw[pre].to_numpy(), nav_old[pre].to_numpy())
+    # and after enough post-added_date history LATE is ranked again (not dropped)
+    assert not np.allclose(nav_pit.to_numpy(), nav_old.to_numpy())
+
+
+def test_first_bar_derived_added_dates_report_zero_effect():
+    # Regression for the 2026-08-03 measurement: build_added_dates.py sets added_date to
+    # each name's FIRST CACHED BAR, so the mask runs over every name and cuts NOTHING.
+    # The run must say so (effective=False) instead of letting "applied" pass for a fix.
+    dates = pd.bdate_range("2021-01-04", periods=700)
+    prices = {
+        "A": _trend_df(dates, daily=0.0012),
+        "B": _trend_df(dates[300:], daily=0.0020),      # "IPO" mid-window
+        "SPY": _trend_df(dates, daily=0.0005),
+        "^GSPC": _trend_df(dates, daily=0.0005),
+    }
+    first_bar = {t: str(df.index[0].date()) for t, df in prices.items()}
+
+    res = bp.run_sleeve(prices, sleeve="us", universe_tickers=["A", "B"], top_n=1,
+                        added_dates=first_bar)
+
+    pit = res["pit_membership"]
+    assert pit["applied"] is True          # masking DID run over 4 dated names
+    assert pit["n_dated"] == 4
+    assert pit["bars_dropped"] == 0        # ... and removed nothing
+    assert pit["effective"] is False       # ... so no bias claim may be made
+    assert any("NO-OP" in w for w in res["warnings"])
+
+
+def test_run_sleeve_pit_membership_is_no_op_without_dates():
+    # Arrange — same universe, three ways of saying "no added_date information"
+    dates = pd.bdate_range("2021-01-04", periods=700)
+    prices = {
+        "A": _trend_df(dates, daily=0.0012),
+        "B": _trend_df(dates, daily=0.0006),
+        "SPY": _trend_df(dates, daily=0.0005),
+        "^GSPC": _trend_df(dates, daily=0.0005),
+    }
+    kw = dict(sleeve="us", universe_tickers=["A", "B"], top_n=1)
+
+    # Act
+    base = bp.run_sleeve(prices, **kw)
+    empty = bp.run_sleeve(prices, added_dates={}, **kw)
+    undated = bp.run_sleeve(prices, added_dates={"A": None, "B": ""}, **kw)
+
+    # Assert — back-compat: an absent/blank added_date column changes nothing
+    for other in (empty, undated):
+        assert np.allclose(base["_nav"]["momentum"].to_numpy(),
+                           other["_nav"]["momentum"].to_numpy())
+        assert other["n_universe"] == base["n_universe"]

@@ -4,6 +4,15 @@
  "n_universe": 503,
  "bench": "SPY",
  "index": "^GSPC",
+ "pit_membership": {
+  "applied": true,
+  "n_dated": 502,
+  "names_masked": 0,
+  "bars_dropped": 0,
+  "effective": false,
+  "source": "universe_15y_draft.csv",
+  "requested": true
+ },
  "costs": {
   "slip_bps": 15.0,
   "fee_bps": 30.0,
@@ -16,7 +25,9 @@
  "sma200_risk_off_quarters": 9,
  "start": "2012-01-03",
  "end": "2026-07-16",
- "warnings": [],
+ "warnings": [
+  "PIT membership applied: 502 dated names, 0 names trimmed, 0 bars masked — NO-OP (added_date is at/before each name's first bar), still a current-constituent view"
+ ],
  "strategies": {
   "momentum": {
    "cagr": 0.43312702410329607,
@@ -57,7 +68,7 @@
      "max_dd": -0.27717195490207813,
      "n_days": 251
     },
-    "2023-26": {
+    "2023+": {
      "cagr": 0.9982147407210251,
      "sharpe": 1.9393280700177762,
      "max_dd": -0.3665657779549546,
@@ -112,7 +123,7 @@
      "max_dd": -0.14731205516923596,
      "n_days": 251
     },
-    "2023-26": {
+    "2023+": {
      "cagr": 0.47340188799981053,
      "sharpe": 1.9141314066423527,
      "max_dd": -0.20643503459452217,
@@ -167,7 +178,7 @@
      "max_dd": -0.24683031254572108,
      "n_days": 251
     },
-    "2023-26": {
+    "2023+": {
      "cagr": 0.5669166750901482,
      "sharpe": 1.492684730907261,
      "max_dd": -0.29992866916884486,
@@ -222,7 +233,7 @@
      "max_dd": -0.19960101439196076,
      "n_days": 251
     },
-    "2023-26": {
+    "2023+": {
      "cagr": 0.19752909849231504,
      "sharpe": 1.331634237484645,
      "max_dd": -0.18126094363907908,
@@ -272,7 +283,7 @@
      "max_dd": -0.24496382573917075,
      "n_days": 251
     },
-    "2023-26": {
+    "2023+": {
      "cagr": 0.22721906777238132,
      "sharpe": 1.431298467158285,
      "max_dd": -0.18755233666641313,
@@ -328,7 +339,7 @@
     "max_dd": -0.25425096619230403,
     "n_days": 251
    },
-   "2023-26": {
+   "2023+": {
     "cagr": 0.21155179035906824,
     "sharpe": 1.36429680428501,
     "max_dd": -0.18902206184283998,
@@ -347,8 +358,8 @@
  "quick": false,
  "period": "15y",
  "cache": {
-  "saved": 1,
-  "already": 504,
+  "saved": 0,
+  "already": 505,
   "skipped": 0
  },
  "sanitize": {
