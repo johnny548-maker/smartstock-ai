@@ -18,9 +18,11 @@ Usage:
 """
 import argparse
 import datetime
+import hashlib
 import json
 import math
 import os
+import sys
 
 import numpy as np
 import pandas as pd
@@ -30,6 +32,161 @@ import build_ohlcv_cache as boc
 import validation as val
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
+
+# ── Lockbox single-evaluation ledger (.decisions/2026-07-17-audit-remediation.md: "lockbox
+# held-out 只能評一次"). Until 2026-08-03 that contract was enforced by human discipline alone,
+# and the SAME window [2023-06-12..2026-06-18] was in fact scored >=8 times across 3 dates —
+# each re-score picking a different champion against an already-seen holdout. The ledger makes a
+# re-burn impossible to do silently: CI refuses outright, a local run is allowed but STAMPS the
+# artifact as contaminated so the number can never be read as a clean forward estimate.
+LOCKBOX_LEDGER = os.path.join(_HERE, ".lockbox_ledger.json")
+LOCKBOX_ADR = ("ADR 2026-07-17 (.decisions/2026-07-17-audit-remediation.md) — the terminal "
+               "lockbox may be evaluated exactly ONCE per (window, universe, sleeve-set)")
+LEDGER_SCHEMA = 1
+
+# n_trials values the DSR is re-computed at for the artifact's sensitivity table. The combo
+# claims n_trials=1 on pre-registration grounds; the audit showed the PASS verdict flips near
+# n_trials≈4-5, so the curve is published next to the verdict rather than left to be re-derived.
+DSR_SENSITIVITY_TRIALS = (1, 3, 5, 10, 45, 100)
+DSR_PASS_THRESHOLD = 0.95
+
+
+class LockboxReuseError(RuntimeError):
+    """A lockbox window already recorded in the ledger was about to be scored again in CI."""
+
+
+def _warn(msg):
+    """Stderr trace for a swallowed/degraded condition (this module logs with plain print)."""
+    print("WARN %s" % msg, file=sys.stderr)
+
+
+def universe_fingerprint(tickers):
+    """Stable short id for a universe = sha256 of its sorted unique tickers. Order- and
+    duplicate-insensitive so re-ordering universe.csv does not mint a 'fresh' lockbox."""
+    names = sorted({str(t) for t in (tickers or [])})
+    return hashlib.sha256("|".join(names).encode("utf-8")).hexdigest()[:16]
+
+
+def lockbox_key(lockbox_start, lockbox_end, universe_id, sleeves):
+    """Identity of ONE lockbox evaluation target: (window, universe, sleeve-set). Anything that
+    changes this is a genuinely different holdout and gets its own single evaluation."""
+    payload = "|".join([str(lockbox_start), str(lockbox_end), str(universe_id or ""),
+                        ",".join(sorted(str(s) for s in (sleeves or [])))])
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def load_lockbox_ledger(path=None):
+    """{key: [record, …]} from the ledger file. Missing file → {} (silent, that is the first
+    run); unreadable/corrupt → {} + WARN. NEVER raises: a broken ledger must not take the
+    pipeline down, and it must not be read as 'already burned' either."""
+    path = path or LOCKBOX_LEDGER
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        _warn("lockbox ledger unreadable (%s: %s) — treating as EMPTY; a prior evaluation of "
+              "this window may go undetected" % (path, e))
+        return {}
+    if isinstance(data, dict) and isinstance(data.get("evaluations"), dict):
+        return data["evaluations"]
+    if isinstance(data, dict):                      # legacy flat {key: [records]} mapping
+        return {k: v for k, v in data.items() if isinstance(v, list)}
+    _warn("lockbox ledger has an unexpected shape (%s) — treating as EMPTY" % path)
+    return {}
+
+
+def save_lockbox_ledger(evaluations, path=None):
+    """Write the ledger back. Returns True on success; a failure WARNs and returns False rather
+    than killing a run that has already done the compute."""
+    path = path or LOCKBOX_LEDGER
+    payload = {"schema": LEDGER_SCHEMA, "note": LOCKBOX_ADR, "evaluations": evaluations}
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=1, sort_keys=True)
+        return True
+    except Exception as e:
+        _warn("could not write lockbox ledger %s: %s (evaluation NOT recorded)" % (path, e))
+        return False
+
+
+def record_lockbox_eval(lockbox_start, lockbox_end, universe_id, sleeves, path=None,
+                        context=None, now=None):
+    """Claim the ONE evaluation of this lockbox window, or refuse.
+
+    In CI (GITHUB_ACTIONS set) a second evaluation of the same key raises LockboxReuseError —
+    the automated pipeline must never quietly re-score a holdout it has already seen. Locally
+    it proceeds (a human may need to re-run) but returns lockbox_reused=True + prior_evals=N so
+    the caller can stamp the artifact. Call this AFTER the window is known, BEFORE it is scored."""
+    key = lockbox_key(lockbox_start, lockbox_end, universe_id, sleeves)
+    ledger = load_lockbox_ledger(path)
+    prior = [r for r in (ledger.get(key) or []) if isinstance(r, dict)]
+    if prior and os.environ.get("GITHUB_ACTIONS"):
+        raise LockboxReuseError(
+            "LOCKBOX ALREADY EVALUATED %d time(s): window %s..%s / universe %s / sleeves %s. "
+            "Refusing to re-score it in CI per %s. Prior evaluations: %s. (ledger=%s key=%s)"
+            % (len(prior), lockbox_start, lockbox_end, universe_id,
+               ",".join(sorted(str(s) for s in (sleeves or []))), LOCKBOX_ADR,
+               ", ".join(str(r.get("ts")) for r in prior), path or LOCKBOX_LEDGER, key[:12]))
+    record = {"ts": now or datetime.datetime.now().isoformat(timespec="seconds"),
+              "lockbox_start": str(lockbox_start), "lockbox_end": str(lockbox_end),
+              "universe_id": universe_id, "sleeves": sorted(str(s) for s in (sleeves or [])),
+              "context": context, "ci": bool(os.environ.get("GITHUB_ACTIONS"))}
+    ledger[key] = prior + [record]
+    ok = save_lockbox_ledger(ledger, path)
+    if prior:
+        _warn("LOCKBOX RE-EVALUATION (%d prior) of %s..%s — artifact will be stamped "
+              "lockbox_contaminated=true; this is NOT a clean out-of-sample estimate (%s)"
+              % (len(prior), lockbox_start, lockbox_end, LOCKBOX_ADR))
+    return {"key": key, "prior_evals": len(prior), "lockbox_reused": bool(prior),
+            "window": [str(lockbox_start), str(lockbox_end)], "universe_id": universe_id,
+            "sleeves": record["sleeves"], "context": context, "recorded": ok,
+            "ledger_path": path or LOCKBOX_LEDGER}
+
+
+def dsr_sensitivity(sharpe, n_obs, skew=0.0, kurt=3.0, trials=DSR_SENSITIVITY_TRIALS,
+                    source=None):
+    """DSR re-computed across candidate n_trials → {trials: [{n_trials, dsr, pass}], n_star}.
+
+    n_star = the smallest tested n_trials at which the DSR drops to/below the 0.95 pass bar
+    (None = survives the whole range). A pre-registered n_trials=1 claim is only as good as the
+    pre-registration; publishing n_star says how much slack that claim actually has."""
+    rows = []
+    for n in trials:
+        v = float(val.deflated_sharpe_ratio(sharpe, n_trials=int(n), n_obs=int(n_obs),
+                                            skew=skew, kurt=kurt))
+        rows.append({"n_trials": int(n), "dsr": v, "pass": bool(v > DSR_PASS_THRESHOLD)})
+    n_star = next((r["n_trials"] for r in rows if not r["pass"]), None)
+    return {"trials": rows, "n_star": n_star, "threshold": DSR_PASS_THRESHOLD,
+            "sharpe": float(sharpe), "n_obs": int(n_obs), "skew": float(skew),
+            "kurt": float(kurt), "source": source}
+
+
+def _pbo_verdict(pbo_val):
+    """(pbo_pass, status) — FAIL-CLOSED: an un-computable PBO is INCONCLUSIVE, never a PASS.
+    Matches the dsr/spa/lockbox/flat formula shape (`x is not None and x <cmp>`); the old
+    `pbo_val is None or pbo_val < 0.5` turned a crashed/skipped CSCV into a silent pass."""
+    if pbo_val is None:
+        return False, "INCONCLUSIVE"
+    ok = bool(pbo_val < 0.5)
+    return ok, ("PASS" if ok else "FAIL")
+
+
+def _pbo_label(gate_dict):
+    """PASS / FAIL / INCONCLUSIVE for a gate dict, tolerant of pre-fix dicts without the key."""
+    return (gate_dict or {}).get("pbo_status") or \
+        ("PASS" if (gate_dict or {}).get("pbo_pass") else "FAIL")
+
+
+def _pbo_value(pbo):
+    """Normalise pbo_cscv's return (dict or bare float) to a float, or None if unusable."""
+    if isinstance(pbo, (int, float)) and not isinstance(pbo, bool):
+        return float(pbo)
+    if isinstance(pbo, dict):
+        v = pbo.get("pbo")
+        return float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+    return None
 
 # Economically-motivated search space — kept SMALL so DSR's n_trials stays controllable.
 # off + 3 sigma levels = 4 vol modes; 3 top_n x 2 rebalance x 2 lookback x 4 = 48 configs.
@@ -314,40 +471,57 @@ def flat_regime_lift(combo_rets, index_rets, fwd=21):
     return float((1.0 + cf.reindex(j)).prod() / icum)
 
 
-def gate_combo(sleeve_rets, split_date, index_rets, n_trials=1, maxdd_tol=0.40):
+def gate_combo(sleeve_rets, split_date, index_rets, n_trials=1, maxdd_tol=0.40,
+               ledger_path=None, universe_id=None):
     """Gate the inverse-vol COMBO of pre-registered sleeves. All five must pass (pre-registered,
     see ADR 2026-06-21): DSR>0.95 (n_trials=1, combo is pre-registered) AND PBO<0.5 (CSCV over the
     sleeve panel) AND SPA p<0.05 (sleeves beat the index after data-snooping) AND lockbox obj>0 with
-    tolerable MaxDD AND FLAT-regime lift>1. Pure on return series → directly toxicity-testable."""
+    tolerable MaxDD AND FLAT-regime lift>1. Pure on return series → directly toxicity-testable.
+
+    `ledger_path` (set by the pipeline entrypoint, None for library/unit-test callers) claims the
+    lockbox window in the single-evaluation ledger BEFORE it is scored — see record_lockbox_eval."""
     df = pd.DataFrame({k: v for k, v in sleeve_rets.items()
                        if v is not None and len(v)}).dropna(how="all")
     combo = inverse_vol_combo(sleeve_rets)
     search = combo[combo.index < split_date].dropna()
     lock = combo[combo.index >= split_date].dropna()
 
+    # Claim the lockbox BEFORE any of it is scored — a refusal must cost zero holdout information.
+    stamp = None
+    if ledger_path and len(lock):
+        stamp = record_lockbox_eval(
+            pd.Timestamp(lock.index[0]).date(), pd.Timestamp(lock.index[-1]).date(),
+            universe_id, sorted(sleeve_rets), path=ledger_path, context="combo")
+
     sd = float(search.std())
     sr_daily = float(search.mean() / sd) if sd else 0.0
+    skew = float(search.skew()) if len(search) > 30 else 0.0
+    kurt = float(search.kurtosis() + 3.0) if len(search) > 30 else 3.0
     dsr = val.deflated_sharpe_ratio(sr_daily, n_trials=n_trials, n_obs=int(len(search)),
-                                    skew=float(search.skew()),
-                                    kurt=float(search.kurtosis() + 3.0)) if len(search) > 30 else None
+                                    skew=skew, kurt=kurt) if len(search) > 30 else None
     dsr_pass = bool(dsr is not None and dsr > 0.95)
 
     panel = df[df.index < split_date].dropna()
     pbo_val = None
     try:
         if panel.shape[1] >= 2 and panel.shape[0] >= 32:
-            pbo = val.pbo_cscv(panel.to_numpy())
-            pbo_val = pbo if isinstance(pbo, (int, float)) else (pbo or {}).get("pbo")
-    except Exception:
+            pbo_val = _pbo_value(val.pbo_cscv(panel.to_numpy()))
+        else:
+            _warn("gate_combo: PBO (CSCV) NOT computable — panel is %dx%d (needs >=32 rows, "
+                  ">=2 sleeves) → INCONCLUSIVE, gate fails closed" % panel.shape)
+    except Exception as e:
+        _warn("gate_combo: PBO (CSCV) raised %s: %s → INCONCLUSIVE, gate fails closed"
+              % (type(e).__name__, e))
         pbo_val = None
-    pbo_pass = bool(pbo_val is None or pbo_val < 0.5)
+    pbo_pass, pbo_status = _pbo_verdict(pbo_val)
 
     spa_p = None
     try:
         ex = panel.sub(index_rets.reindex(panel.index), axis=0).dropna()
         if ex.shape[1] >= 1 and ex.shape[0] >= 32:
             spa_p = val.spa_test(ex.to_numpy()).get("p_value")
-    except Exception:
+    except Exception as e:
+        _warn("gate_combo: SPA raised %s: %s → gate fails closed" % (type(e).__name__, e))
         spa_p = None
     spa_pass = bool(spa_p is not None and spa_p < 0.05)
 
@@ -361,18 +535,22 @@ def gate_combo(sleeve_rets, split_date, index_rets, n_trials=1, maxdd_tol=0.40):
     return {
         "pass": overall, "n_trials": n_trials,
         "dsr": dsr, "dsr_pass": dsr_pass,
-        "pbo": pbo_val, "pbo_pass": pbo_pass,
+        "pbo": pbo_val, "pbo_pass": pbo_pass, "pbo_status": pbo_status,
         "spa_p": spa_p, "spa_pass": spa_pass,
         "lockbox": (lm and {"calmar": round(lm["calmar"], 3), "cagr": round(lm["cagr"], 4),
                             "max_dd": round(lm["max_dd"], 4)}) or None,
         "lockbox_pass": lock_pass,
         "flat_lift": (round(flift, 3) if flift is not None else None), "flat_pass": flat_pass,
         "n_search": int(len(search)), "n_lock": int(len(lock)),
+        "sr_daily": sr_daily, "skew": skew, "kurt": kurt,
+        "dsr_sensitivity": (dsr_sensitivity(sr_daily, len(search), skew=skew, kurt=kurt,
+                                            source="combo") if len(search) > 30 else None),
+        "lockbox_ledger": stamp,
     }
 
 
 def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=0.2,
-                   aux=None, n_trials=1):
+                   aux=None, n_trials=1, ledger_path=None):
     """Build the pre-registered factor sleeves, inverse-vol-blend them, and gate the combo on a
     true terminal lockbox. Returns the gate dict (see gate_combo) + per-sleeve diagnostics.
     `aux` carries the prebuilt iteration-2 chip/fundamental panels (None = price-only combo).
@@ -394,7 +572,8 @@ def rigorous_combo(prices, sleeve, universe_tickers, configs=None, lockbox_frac=
     index_rets = (idx_df["Close"].pct_change().dropna()
                   if idx_df is not None and "Close" in idx_df else pd.Series(dtype=float))
     out = gate_combo(sleeve_rets, split_date, index_rets,
-                     n_trials=n_trials, maxdd_tol=0.40)
+                     n_trials=n_trials, maxdd_tol=0.40, ledger_path=ledger_path,
+                     universe_id=universe_fingerprint(universe_tickers))
     out["sleeves"] = sorted(sleeve_rets)
     out["combo_configs"] = {k: configs[k] for k in sleeve_rets}
     return out
@@ -461,17 +640,27 @@ def gates(results, winner):
     dsr = val.deflated_sharpe_ratio(
         sr_daily, n_trials=n_trials, n_obs=winner["n_obs"],
         skew=float(rets.skew()), kurt=float(rets.kurtosis() + 3.0))
-    pbo = None
+    pbo_val = None
     try:
         mat = pd.concat([r["_rets"] for r in results], axis=1).dropna()
         if mat.shape[1] >= 2 and mat.shape[0] >= 32:
-            pbo = val.pbo_cscv(mat.to_numpy())
-    except Exception:
-        pbo = None
-    pbo_val = pbo if isinstance(pbo, (int, float)) else (pbo or {}).get("pbo") if isinstance(pbo, dict) else None
+            pbo_val = _pbo_value(val.pbo_cscv(mat.to_numpy()))
+        else:
+            _warn("gates: PBO (CSCV) NOT computable — config panel is %dx%d (needs >=32 rows, "
+                  ">=2 configs) → INCONCLUSIVE, gate fails closed" % mat.shape)
+    except Exception as e:
+        _warn("gates: PBO (CSCV) raised %s: %s → INCONCLUSIVE, gate fails closed"
+              % (type(e).__name__, e))
+        pbo_val = None
+    pbo_pass, pbo_status = _pbo_verdict(pbo_val)
     return {"n_trials": n_trials, "dsr": dsr, "pbo": pbo_val,
             "dsr_pass": bool(dsr is not None and dsr > 0.95),
-            "pbo_pass": bool(pbo_val is None or pbo_val < 0.5)}
+            "pbo_pass": pbo_pass, "pbo_status": pbo_status,
+            "sr_daily": sr_daily, "n_obs": winner["n_obs"],
+            "dsr_sensitivity": dsr_sensitivity(sr_daily, winner["n_obs"],
+                                               skew=float(rets.skew()),
+                                               kurt=float(rets.kurtosis() + 3.0),
+                                               source="grid")}
 
 
 def _cfg_key(c):
@@ -552,7 +741,8 @@ def run_walk_forward(prices, sleeve, universe_tickers, champion_cfg, n_folds=5):
 
 
 def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
-                            n_folds=4, embargo=0, lockbox_frac=0.2):
+                            n_folds=4, embargo=0, lockbox_frac=0.2, ledger_path=None,
+                            universe_id=None):
     """嚴謹版 selection — the honest form of 'iterate the strategy until return is maximised':
 
     1. Carve a TRUE terminal LOCKBOX (last lockbox_frac) — never touched during the search.
@@ -567,6 +757,14 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
     if close_df.empty:
         raise ValueError("walk_forward_oos_select: empty price panel")
     search_idx, lock_idx = split_lockbox(close_df.index, lockbox_frac)
+    # Claim the window the moment it is KNOWN — before the folds burn any compute and, more to
+    # the point, before a single lockbox bar is read. A CI refusal here costs no holdout info.
+    stamp = None
+    if ledger_path and len(lock_idx):
+        stamp = record_lockbox_eval(
+            lock_idx[0].date(), lock_idx[-1].date(),
+            universe_id if universe_id is not None else universe_fingerprint(universe_tickers),
+            [sleeve], path=ledger_path, context="rigorous")
     by_key = {}                                # cfg_key -> {"config":…, "rets":[per-fold _rets]}
     per_fold = []
     for i, (lo, hi) in enumerate(fold_slices(search_idx, n_folds, embargo)):
@@ -594,6 +792,9 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
     champ_key = max(by_key, key=_oos)
     champion = by_key[champ_key]["config"]
     lockbox = {"start": str(lock_idx[0].date()), "end": str(lock_idx[-1].date())}
+    if stamp:                                   # disclose re-use IN the lockbox block itself
+        lockbox["lockbox_reused"] = stamp["lockbox_reused"]
+        lockbox["prior_evals"] = stamp["prior_evals"]
     try:                                        # score the champion ONCE on the untouched lockbox
         lp = {t: df.loc[lock_idx[0]:lock_idx[-1]] for t, df in prices.items() if df is not None}
         lres, _ = run_grid(lp, sleeve, universe_tickers)
@@ -608,7 +809,8 @@ def walk_forward_oos_select(prices, sleeve, universe_tickers, objective_key_fn,
     return {"champion": champion, "oos_objective": round(_oos(champ_key), 4),
             "oos_cagr": (round(_cm["cagr"], 4) if _cm else None),
             "oos_max_dd": (round(_cm["max_dd"], 4) if _cm else None),
-            "per_fold": per_fold, "lockbox": lockbox, "n_trials": len(by_key)}
+            "per_fold": per_fold, "lockbox": lockbox, "n_trials": len(by_key),
+            "lockbox_ledger": stamp}
 
 
 def _clean(results):
@@ -617,10 +819,12 @@ def _clean(results):
 
 def render(sleeve, objective, ranked, g, wf=None, rigorous=None, combo=None):
     L = ["OPTIMIZE — sleeve=%s  objective=%s  grid=%d configs" % (sleeve, objective, g["n_trials"])]
-    L.append("gate: DSR=%.3f (%s, >0.95 req) | PBO=%s (%s, <0.5 req)" % (
+    # PBO renders its VERDICT, not a bare "n/a": an un-computable CSCV is INCONCLUSIVE and the
+    # gate fails closed — the old "n/a" sat next to a PASS and read like a harmless absence.
+    L.append("gate: DSR=%.3f (%s, >0.95 req) | PBO=%s" % (
         (g["dsr"] or 0.0), "PASS" if g["dsr_pass"] else "FAIL",
-        ("%.3f" % g["pbo"]) if g["pbo"] is not None else "n/a",
-        "PASS" if g["pbo_pass"] else "FAIL"))
+        ("%.3f (%s, <0.5 req)" % (g["pbo"], _pbo_label(g))) if g["pbo"] is not None
+        else "%s (un-computable → gate fails closed)" % _pbo_label(g)))
     L.append("")
     L.append("rank  cfg(vol/σ/topN/rebal/lookback/trend)      CAGR   Sharpe   MaxDD  Calmar  OOS-Calmar")
     for i, r in enumerate(ranked[:12], 1):
@@ -683,6 +887,11 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None, combo=None):
             lb.get("start"), lb.get("end"), objective,
             ("%.3f" % lb["objective"]) if isinstance(lb.get("objective"), (int, float)) else "n/a",
             _pct(lb.get("cagr")), _pct(lb.get("max_dd"))))
+        if lb.get("lockbox_reused"):
+            L.append("  ⚠ LOCKBOX CONTAMINATED: this window was already scored %d time(s) before "
+                     "this run (%s). Re-scoring a holdout after seeing it turns the 'honest "
+                     "forward estimate' into another in-sample number — treat it as such."
+                     % (lb.get("prior_evals", 0), LOCKBOX_ADR))
         L.append("  → compare the POOLED-OOS and LOCKBOX rows on the SAME metric: agree = the edge "
                  "is real; lockbox collapses vs pooled-OOS = the search overfit. Mind the MaxDD — a "
                  "high-CAGR/high-drawdown 'winner' may be one you can't actually hold.")
@@ -694,13 +903,30 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None, combo=None):
             L.append("  ERROR: %s" % combo["error"])
         else:
             v = lambda x: ("%.3f" % x) if isinstance(x, (int, float)) else "n/a"
+            pbo_frag = ("PBO %.3f<0.5 [%s]" % (combo["pbo"], _pbo_label(combo))
+                        if isinstance(combo.get("pbo"), (int, float))
+                        else "PBO %s (un-computable → fail-closed)" % _pbo_label(combo))
             L.append("  sleeves: %s" % ", ".join(combo.get("sleeves", [])))
-            L.append("  GATE (all 5 must pass; n_trials=%d): DSR %s>0.95 [%s] · PBO %s<0.5 [%s] · "
+            L.append("  GATE (all 5 must pass; n_trials=%d): DSR %s>0.95 [%s] · %s · "
                      "SPA_p %s<0.05 [%s] · lockbox>0&MaxDD ok [%s] · FLAT-lift %s>1 [%s]" % (
                          combo.get("n_trials", 1), v(combo.get("dsr")), combo.get("dsr_pass"),
-                         v(combo.get("pbo")), combo.get("pbo_pass"), v(combo.get("spa_p")),
+                         pbo_frag, v(combo.get("spa_p")),
                          combo.get("spa_pass"), combo.get("lockbox_pass"),
                          v(combo.get("flat_lift")), combo.get("flat_pass")))
+            _sens = combo.get("dsr_sensitivity") or {}
+            if _sens.get("trials"):
+                L.append("  DSR n_trials sensitivity (the PASS is only as good as the "
+                         "pre-registration claim): %s%s" % (
+                             " · ".join("n=%d→%.3f%s" % (r["n_trials"], r["dsr"],
+                                                         "" if r["pass"] else " FAIL")
+                                        for r in _sens["trials"]),
+                             ("  → flips to FAIL at n_trials=%s" % _sens["n_star"])
+                             if _sens.get("n_star") else "  → holds across the whole range"))
+            _led = combo.get("lockbox_ledger") or {}
+            if _led.get("lockbox_reused"):
+                L.append("  ⚠ LOCKBOX CONTAMINATED: this window was already evaluated %d time(s) "
+                         "(%s) — the lockbox numbers below are NOT a clean out-of-sample estimate."
+                         % (_led["prior_evals"], LOCKBOX_ADR))
             L.append("  lockbox: %s" % json.dumps(combo.get("lockbox"), ensure_ascii=False))
             L.append("  ==> COMBO %s" % ("PASS — deployable candidate (verify lockbox MaxDD holdable)"
                      if combo.get("pass") else
@@ -709,7 +935,48 @@ def render(sleeve, objective, ranked, g, wf=None, rigorous=None, combo=None):
     return "\n".join(L)
 
 
-def main(argv=None):
+def build_artifact(args, g, ranked, wf=None, rigorous=None, combo=None, period=None,
+                   price_panel_max_date=None, universe_tickers=None):
+    """Assemble optimize_<sleeve>.json — including an echo of the parameters that produced it.
+
+    Before 2026-08-03 the committed artifact carried NO record of --embargo, the universe, or
+    whether --rigorous/--combo even ran, so a reader could not tell a leak-free run from a
+    leaky one; and nothing disclosed that the lockbox had already been scored. Both are keys now:
+    `run_params` (what was asked for) and `lockbox_ledger`/`lockbox_contaminated` (what the
+    holdout had already been through)."""
+    stamps = [s for s in ((rigorous or {}).get("lockbox_ledger"),
+                          (combo or {}).get("lockbox_ledger")) if s]
+    universe_tickers = list(universe_tickers or [])
+    return {
+        "sleeve": getattr(args, "sleeve", None), "objective": getattr(args, "objective", None),
+        "quick": bool(getattr(args, "quick", False)), "period": period,
+        "run_params": {
+            "embargo": getattr(args, "embargo", None),
+            "lockbox_frac": getattr(args, "lockbox_frac", None),
+            "wf_folds": getattr(args, "wf_folds", None),
+            "walk_forward": not bool(getattr(args, "no_walk_forward", False)),
+            "rigorous": bool(getattr(args, "rigorous", False)),
+            "combo": bool(getattr(args, "combo", False)),
+            "quick": bool(getattr(args, "quick", False)),
+            "objective": getattr(args, "objective", None),
+            "maxdd_cap": getattr(args, "maxdd_cap", None),
+            "universe_csv": getattr(args, "csv", None),
+            "universe_id": universe_fingerprint(universe_tickers),
+            "n_universe": len(universe_tickers),
+            "n_trials": {"grid": (g or {}).get("n_trials"),
+                         "combo": (combo or {}).get("n_trials")},
+        },
+        "gate": g, "walk_forward": wf, "rigorous": rigorous, "combo": combo,
+        "dsr_sensitivity": ((combo or {}).get("dsr_sensitivity")
+                            or (g or {}).get("dsr_sensitivity")),
+        "lockbox_ledger": (stamps[0] if stamps else None),
+        "lockbox_contaminated": any(s.get("prior_evals", 0) > 0 for s in stamps),
+        "ranked": _clean(ranked),
+        "price_panel_max_date": price_panel_max_date,
+    }
+
+
+def build_parser():
     ap = argparse.ArgumentParser(description="Disciplined Calmar/Sharpe/DD optimisation of the sleeve.")
     ap.add_argument("--sleeve", required=True, choices=sorted(bp.SLEEVES))
     ap.add_argument("--objective", default="calmar", choices=("calmar", "sharpe", "maxdd_capped"))
@@ -721,9 +988,12 @@ def main(argv=None):
     ap.add_argument("--rigorous", action="store_true",
                     help="嚴謹版: select the champion by cross-fold OUT-OF-SAMPLE mean on a search "
                          "span excluding a terminal lockbox, then score it once on that lockbox")
-    ap.add_argument("--embargo", type=int, default=21,
+    # default was 21 — SHORTER than the longest lookback in the grid (252), i.e. the CLI shipped a
+    # leaky default while its own help text prescribed 252. Raised to 252 (audit 2026-08-03 B1-17);
+    # rigorous_search's own signature default is left alone, main() routes this value as before.
+    ap.add_argument("--embargo", type=int, default=252,
                     help="bars purged between walk-forward folds (>= max lookback, e.g. 252, for "
-                         "fully leak-free; default 21)")
+                         "fully leak-free; default 252)")
     ap.add_argument("--lockbox-frac", type=float, default=0.2,
                     help="terminal fraction held out as the never-searched lockbox (default 0.2)")
     ap.add_argument("--csv", default=boc.UNIVERSE_CSV)
@@ -731,7 +1001,15 @@ def main(argv=None):
     ap.add_argument("--combo", action="store_true",
                     help="run the pre-registered multi-factor inverse-vol COMBO + its gate "
                          "(DSR n_trials=1 / PBO / SPA / lockbox / FLAT-regime lift) — see ADR 2026-06-21")
-    args = ap.parse_args(argv)
+    ap.add_argument("--lockbox-ledger", default=LOCKBOX_LEDGER,
+                    help="path to the single-evaluation ledger; '' disables the check (NEVER do "
+                         "that in CI — see %s)" % LOCKBOX_ADR)
+    return ap
+
+
+def main(argv=None):
+    args = build_parser().parse_args(argv)
+    ledger_path = args.lockbox_ledger or None
 
     cfg = bp.SLEEVES[args.sleeve]
     rows = boc.load_universe(args.csv)
@@ -793,11 +1071,17 @@ def main(argv=None):
         try:
             rigorous = walk_forward_oos_select(
                 prices, args.sleeve, univ_in, objective_key(args.objective, args.maxdd_cap),
-                n_folds=args.wf_folds, embargo=args.embargo, lockbox_frac=args.lockbox_frac)
+                n_folds=args.wf_folds, embargo=args.embargo, lockbox_frac=args.lockbox_frac,
+                ledger_path=ledger_path)
             lb = rigorous["lockbox"]
             print("RIGOROUS champion (OOS-selected): %s | OOS-obj=%.3f | lockbox[%s..%s] obj=%s" % (
                 json.dumps(rigorous["champion"], ensure_ascii=False), rigorous["oos_objective"],
                 lb.get("start"), lb.get("end"), lb.get("objective")))
+        except LockboxReuseError as e:
+            # NEVER downgrade this to a WARN: the whole point is that CI cannot silently re-burn
+            # the holdout. Fail the run so a human decides (rerun locally, or re-cut the window).
+            print("ERROR %s" % e, file=sys.stderr)
+            raise SystemExit(2)
         except Exception as e:
             print("WARN rigorous selection skipped: %s" % e)
 
@@ -807,20 +1091,29 @@ def main(argv=None):
     combo = None
     if args.combo:
         try:
-            combo = rigorous_combo(prices, args.sleeve, univ_in, lockbox_frac=args.lockbox_frac)
+            combo = rigorous_combo(prices, args.sleeve, univ_in, lockbox_frac=args.lockbox_frac,
+                                   ledger_path=ledger_path)
             print("COMBO gate: PASS=%s | DSR=%s(%s) PBO=%s(%s) SPA_p=%s(%s) lockbox=%s(%s) flat_lift=%s(%s)"
                   % (combo.get("pass"), combo.get("dsr"), combo.get("dsr_pass"),
-                     combo.get("pbo"), combo.get("pbo_pass"), combo.get("spa_p"), combo.get("spa_pass"),
+                     combo.get("pbo"), _pbo_label(combo), combo.get("spa_p"), combo.get("spa_pass"),
                      combo.get("lockbox_pass"), combo.get("lockbox"),
                      combo.get("flat_lift"), combo.get("flat_pass")))
+        except LockboxReuseError as e:
+            print("ERROR %s" % e, file=sys.stderr)
+            raise SystemExit(2)
         except Exception as e:
             print("WARN combo skipped: %s" % e)
 
-    out = {"sleeve": args.sleeve, "objective": args.objective, "quick": bool(args.quick),
-           "period": period, "gate": g, "walk_forward": wf, "rigorous": rigorous,
-           "combo": combo, "ranked": _clean(ranked),
-           "price_panel_max_date": (price_panel_max_date.isoformat()
-                                    if price_panel_max_date else None)}
+    out = build_artifact(args, g, ranked, wf=wf, rigorous=rigorous, combo=combo, period=period,
+                         price_panel_max_date=(price_panel_max_date.isoformat()
+                                               if price_panel_max_date else None),
+                         universe_tickers=univ_in)
+    if out["lockbox_contaminated"]:
+        # ASCII on this path: stderr is not reconfigured (the module assumes `python -X utf8`
+        # for stdout only) and a late UnicodeEncodeError would abort a multi-hour run at write time.
+        print("WARNING: lockbox_contaminated=true - this window had already been evaluated; the "
+              "lockbox figures are NOT a clean forward estimate (%s)" % LOCKBOX_ADR,
+              file=sys.stderr)
     # Non-default objectives get an objective suffix so two objective runs (e.g. calmar +
     # maxdd_capped) write DISTINCT files — same-name files made the second CI commit conflict on
     # rebase and the result was lost. Default 'calmar' keeps the canonical optimize_<sleeve>.txt.

@@ -100,7 +100,18 @@ def _code_panels(prices):
     return close_df.rename(columns=rename), vol.rename(columns=rename)
 
 
-def run(years=15, universe_csv=None, backfill_range=None):
+def gate_aux_combo(prices_tw, configs, aux_tw, n_trials, ledger_path=None):
+    """Gate the price+aux combo, threading the lockbox single-evaluation ledger exactly as
+    run_optimize.main() does (universe_id is derived inside rigorous_combo from the ticker list).
+
+    The aux run burns a terminal lockbox just like the price-only run does, and until 2026-08-03
+    that burn went unrecorded. Its sleeve set differs (price sleeves + IC survivors), so it holds
+    its OWN ledger key — gating aux does not spend the price combo's single evaluation."""
+    return ro.rigorous_combo(prices_tw, "tw", list(prices_tw), configs=configs,
+                             aux=aux_tw, n_trials=n_trials, ledger_path=ledger_path)
+
+
+def run(years=15, universe_csv=None, backfill_range=None, ledger_path=ro.LOCKBOX_LEDGER):
     prices = _load_price_panels(years, universe_csv)
     if not prices:
         print("ERROR: no TW price frames loaded (build the 15y cache first).")
@@ -157,9 +168,11 @@ def run(years=15, universe_csv=None, backfill_range=None):
         # aux panels are code-keyed; rigorous_combo's sleeve build is .TW-keyed → reindex aux to .TW
         rename_tw = {c: c + ".TW" for c in close_code.columns}
         aux_tw = {fam: aux_panels[fam].rename(columns=rename_tw) for fam in survivors}
-        gate = ro.rigorous_combo(prices_tw, "tw", list(prices_tw), configs=configs,
-                                 aux=aux_tw, n_trials=n_trials)
+        gate = gate_aux_combo(prices_tw, configs, aux_tw, n_trials, ledger_path=ledger_path)
         result["gate"] = gate
+        result["lockbox_ledger"] = gate.get("lockbox_ledger")
+        result["lockbox_contaminated"] = bool(
+            (gate.get("lockbox_ledger") or {}).get("prior_evals", 0) > 0)
         print("\n[GATE @ n_trials=2]")
         print(json.dumps({k: gate.get(k) for k in
                           ("pass", "dsr", "dsr_pass", "pbo", "pbo_pass", "spa_p", "spa_pass",
@@ -205,4 +218,10 @@ def _parse_args(argv):
 
 if __name__ == "__main__":
     y, csv, bf = _parse_args(sys.argv)
-    run(years=y, universe_csv=csv, backfill_range=bf)
+    try:
+        run(years=y, universe_csv=csv, backfill_range=bf)
+    except ro.LockboxReuseError as e:
+        # Same contract as run_optimize.main(): a re-burn in CI fails the run, it never degrades
+        # to a warning — the aux lockbox gets exactly one evaluation too.
+        print(f"ERROR {e}", file=sys.stderr)
+        sys.exit(2)

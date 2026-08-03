@@ -104,10 +104,15 @@ def pbo_cscv(returns_matrix, n_splits=16, perf=None):
     (>~0.5) ⇒ the selection is not reproducible out of sample.
 
     `perf` maps an (rows×N) block → (N,) per-config performance (default = mean return).
-    Pure numpy + itertools (no scipy)."""
+    Pure numpy + itertools (no scipy).
+
+    Returns None when PBO is NOT COMPUTABLE (not a 2-D matrix, or fewer than 2 configs —
+    CSCV compares configs against each other, so one column has nothing to rank). Callers MUST
+    treat None as INCONCLUSIVE and fail closed. This used to return {"pbo": 0.0, ...}, i.e. the
+    most confident PASS in the range, for a computation that never ran (audit 2026-08-03 B1-04)."""
     M = np.asarray(returns_matrix, dtype=float)
     if M.ndim != 2 or M.shape[1] < 2:
-        return {"pbo": 0.0, "n_combos": 0, "lambda_median": 0.0}
+        return None
     T, N = M.shape
     perf = perf or (lambda block: block.mean(axis=0))
     S = max(2, int(n_splits) - (int(n_splits) % 2))     # even # of chunks
@@ -126,10 +131,12 @@ def pbo_cscv(returns_matrix, n_splits=16, perf=None):
         omega = min(max(omega, 1e-6), 1 - 1e-6)
         lambdas.append(math.log(omega / (1 - omega)))
     lam = np.asarray(lambdas, dtype=float)
+    if not lam.size:                       # no usable split → same contract as above, NOT pbo=0.0
+        return None
     return {
-        "pbo": float(np.mean(lam <= 0.0)) if lam.size else 0.0,
+        "pbo": float(np.mean(lam <= 0.0)),
         "n_combos": int(lam.size),
-        "lambda_median": float(np.median(lam)) if lam.size else 0.0,
+        "lambda_median": float(np.median(lam)),
     }
 
 

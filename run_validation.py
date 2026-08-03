@@ -37,6 +37,33 @@ FEE_BPS = rb.FEE_BPS
 NEXT_OPEN = rb.NEXT_OPEN
 
 
+def _warn(msg):
+    """Stderr trace for a degraded/skipped computation (this module logs with plain print)."""
+    print(f"WARN {msg}", file=sys.stderr)
+
+
+def family_pbo(M, n_splits=16):
+    """Family PBO (CSCV) over the T×N signal matrix, or None when it cannot be computed.
+
+    FAIL-CLOSED: fewer than 2 signals, or a raising pbo_cscv, returns None ("INCONCLUSIVE").
+    It used to return the hardcoded {"pbo": 0.0, ...} — the most confident PASS value in the
+    range — for an input the test had never actually run on, and any exception was unlogged."""
+    A = np.asarray(M, dtype=float)
+    if A.ndim != 2 or A.shape[1] < 2:
+        _warn("family PBO (CSCV) NOT computable — need >=2 signals, got "
+              f"{A.shape[1] if A.ndim == 2 else 0} → INCONCLUSIVE (was reported as pbo=0.0)")
+        return None
+    try:
+        out = validation.pbo_cscv(A, n_splits=n_splits)
+    except Exception as e:
+        _warn(f"family PBO (CSCV) raised {type(e).__name__}: {e} → INCONCLUSIVE")
+        return None
+    if out is None:                    # primitive itself reported "not computable"
+        _warn("family PBO (CSCV) returned no result for a "
+              f"{A.shape[0]}x{A.shape[1]} matrix → INCONCLUSIVE")
+    return out
+
+
 def _moments(x):
     """(mean, skew, kurt) of x; kurt is the standardised 4th moment (normal=3). Safe on
     tiny/constant input → (mean, 0, 3)."""
@@ -134,8 +161,7 @@ def build_validation_state(history, defs, bench_history=None, asof=None, horizon
             "wf_mean_lift": round(wf["mean_lift"], 3),
         }
 
-    pbo = validation.pbo_cscv(M, n_splits=pbo_splits) if M.shape[1] >= 2 else \
-        {"pbo": 0.0, "n_combos": 0, "lambda_median": 0.0}
+    pbo = family_pbo(M, n_splits=pbo_splits)          # None = INCONCLUSIVE, never a free pass
     spa = validation.spa_test(M, n_boot=n_boot) if M.shape[1] >= 1 and M.shape[0] >= 2 else \
         {"t_stat": 0.0, "p_value": 1.0, "n_trials": M.shape[1] if M.ndim == 2 else 0, "best_trial": -1}
 
@@ -146,13 +172,17 @@ def build_validation_state(history, defs, bench_history=None, asof=None, horizon
         "per_signal": per_signal,
         "family": {
             "n_trials": n_trials,
-            "pbo": round(pbo["pbo"], 4), "pbo_combos": pbo["n_combos"],
+            "pbo": (round(pbo["pbo"], 4) if pbo else None),
+            "pbo_status": ("COMPUTED" if pbo else "INCONCLUSIVE"),
+            "pbo_combos": (pbo["n_combos"] if pbo else 0),
             "spa_pvalue": round(spa["p_value"], 4), "spa_tstat": round(spa["t_stat"], 3),
             "spa_best_trial": (names[spa["best_trial"]] if 0 <= spa["best_trial"] < len(names) else None),
         },
         "note": ("OVERLAY-NOT-SCORER: robustness badge only. DSR haircuts Sharpe by n_trials+"
                  "skew/kurt; PBO=P(IS-best underperforms OOS median); SPA p=family data-snooping. "
-                 "Survivor-only universe — an optimistic upper bound."),
+                 "pbo=null (pbo_status=INCONCLUSIVE) means the CSCV could NOT be computed — read "
+                 "it as unknown, NEVER as a low-PBO pass. Survivor-only universe — an optimistic "
+                 "upper bound."),
     }
 
 
@@ -204,7 +234,8 @@ def main():
     path = write_validation_state(state)
     fam = state["family"]
     print(f"\n[written] {path}")
-    print(f"family: n_trials={fam['n_trials']}  PBO={fam['pbo']}  "
+    print(f"family: n_trials={fam['n_trials']}  "
+          f"PBO={fam['pbo'] if fam['pbo'] is not None else 'INCONCLUSIVE'}  "
           f"SPA p={fam['spa_pvalue']} (best={fam['spa_best_trial']})")
     print(f"{'signal':<24}{'nFired':>7}{'DSR':>8}{'wfStable':>9}{'wfMinLift':>10}")
     for name, s in state["per_signal"].items():
