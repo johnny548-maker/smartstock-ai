@@ -24,15 +24,21 @@ def load():
 
 
 def update(state, sym, date, foreign, trust, volume):
+    """Insert/replace one day in the rolling buffer.
+
+    `date` MUST be the AS-OF trading day the numbers came from, never the run date —
+    institutional.get_institutional walks back up to a week, so run-date keying replays a
+    stale snapshot as a fresh row and inflates the 20-day concentration window.
+    Idempotent per date ANYWHERE in the buffer (not just its tail): a stale as-of arriving
+    after a fresher one is slotted in by date instead of appended out of order."""
     stocks = state.setdefault("stocks", {})
-    buf = stocks.get(sym, [])
     row = {"d": date, "f": int(foreign or 0), "t": int(trust or 0), "v": int(volume or 0)}
-    if buf and buf[-1].get("d") == date:
-        buf[-1] = row                     # overwrite same-day re-run
-    else:
-        buf.append(row)
+    buf = [r for r in stocks.get(sym, []) if r.get("d") != date]   # replace any same-day row
+    buf.append(row)
+    buf.sort(key=lambda r: r.get("d") or "")
     stocks[sym] = buf[-MAX_DAYS:]
-    state["updated"] = date
+    prev = state.get("updated")
+    state["updated"] = max(prev, date) if isinstance(prev, str) and prev else date
     return state
 
 

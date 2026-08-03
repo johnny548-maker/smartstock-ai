@@ -239,6 +239,26 @@ def _bare(sym):
     return sym
 
 
+def _inputs_complete(sym, sector, inst, chips):
+    """True when every input OBTAINABLE for this symbol's market was present.
+
+    Cross-board comparability (2026-07-17 audit finding 4) caps any row scored on a REDUCED
+    input set, so that a 板塊外 row can never claim 🟢 買入 on the watchlist scale. 'Reduced'
+    only means anything measured against what the symbol's market can actually supply:
+    三大法人 comes from TWSE T86 and the 籌碼 buffer is derived from those same flows, so BOTH
+    exist for TW/TPEx listings ONLY. Demanding them from a US row marks a fully-supplied row
+    incomplete forever — measured 2026-08-03: it capped every US core pick at 觀察 permanently
+    (MSFT/AAPL at 118 would have shown 觀察, not 買入).
+
+    THE one definition of this invariant — callers read the row's `inputs_complete` field and
+    NEVER re-derive it, or the two copies drift apart."""
+    if sector is None:
+        return False
+    if sym.endswith((".TW", ".TWO")):
+        return inst is not None and chips is not None
+    return True
+
+
 def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None, chips_map=None):
     """Score + rank {symbol: DataFrame}. frames = {twii, sp500} for RS;
     chips_map = {sym: {conc, streak}} for 籌碼 factors."""
@@ -261,14 +281,13 @@ def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None,
                 "score": r["score"],
                 "factors": r["factors"],
                 "sector": sector,
-                # 2026-07-17 audit finding 4: cross-board comparability flag. True only
-                # when this row was scored with the FULL watchlist input set (sector +
-                # institutional + chips). Rows scored on price factors only (opportunity
-                # scan / keyless panel / US coverage) are NOT on the same scale as the
-                # core board → verdict assembly caps their light at 觀察 (verdict.
-                # capped_entry). Informational output field — never a scoring input.
-                "inputs_complete": (sector is not None and inst is not None
-                                    and chips is not None),
+                # 2026-07-17 audit finding 4: cross-board comparability flag. True only when
+                # this row was scored with every input its market can supply (see
+                # _inputs_complete). Rows scored on price factors only (opportunity scan /
+                # keyless panel / US coverage) are NOT on the core board's scale → verdict
+                # assembly caps their light at 觀察 (verdict.capped_entry). Informational
+                # output field — never a scoring input.
+                "inputs_complete": _inputs_complete(sym, sector, inst, chips),
             })
         except Exception:
             continue

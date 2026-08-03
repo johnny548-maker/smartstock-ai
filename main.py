@@ -130,6 +130,133 @@ def run_stage(log, skips, name, fn, default=None, msg=None):
         return default
 
 
+def refresh_skips(payload, skips):
+    """Stamp the CURRENT skip list into the payload before it is written.
+
+    build_payload copies `skips` by value (sorted(set(...))), but ~9 stages record their
+    SKIP after it — universe_index, market_panel, verdicts_index, radar_performance,
+    attribution, pick_outcomes, strategy_health, shadow_portfolio, health_export — so any
+    export that doesn't refresh ships a payload claiming fewer failures than the run had."""
+    payload["skips"] = sorted(set(skips or []))
+    return payload
+
+
+def export_payload(payload, skips, web_dir):
+    """web_export.export with the up-to-date skip list. Single write path for the run."""
+    refresh_skips(payload, skips)
+    return web_export.export(payload, web_dir)
+
+
+def resolve_risk(signal, indices):
+    """Return (signal, risk) with a CONSERVATIVE default when the market gauges are dead.
+
+    risk_engine.market_risk treats None inputs as benign, so a total ^VIX/^TNX outage
+    scores LOW — the loosest tier, the one that leaves the allocation fully risk-on. An
+    absent measurement is not a calm market: with no live gauge we publish HIGH (the tier
+    asset_allocation.adjust_allocation de-risks on) and mark risk_unknown so the surface
+    can say 'defaulted', not 'measured'. Returns a NEW signal dict."""
+    signal = dict(signal or {})
+    values = indices or {}
+    if any(values.get(k) is not None for k in ("vix", "tnx")) and signal.get("risk"):
+        return signal, signal["risk"]
+    signal["risk"] = "HIGH"
+    signal["risk_unknown"] = True
+    return signal, "HIGH"
+
+
+def build_verdict_map(ranked):
+    """Seed the verdict map from the CORE ranked list, honouring the partial-inputs cap.
+
+    The core board is the most prominent surface and was the only one assigning its light
+    with a bare light() call — the opportunity scan, US coverage and keyless panel all go
+    through verdict.capped_entry. A row scored without the full watchlist input set
+    (sector + 法人 + 籌碼; strategy.rank_stocks' inputs_complete) is not on the same scale,
+    so it can never claim 🟢 買入 here either. A row with no flag is treated as partial —
+    absence of the marker is not proof the inputs were complete."""
+    return {it["stock"]: verdict_mod.capped_entry(it["score"],
+                                                  it.get("inputs_complete", False))
+            for it in ranked}
+
+
+def cap_pick_card(card, row):
+    """Mirror the verdict-map cap onto a pick card (the PWA reads card['light'])."""
+    if row.get("inputs_complete", False) or not card:
+        return card
+    if card.get("light") == "green":
+        card["light"] = "amber"
+    card["partial_inputs"] = True
+    card["partial_reason"] = verdict_mod.PARTIAL_REASON
+    return card
+
+
+def _recent_bar_dates(df, n=15):
+    """The last n bar dates of a price frame as ISO strings ([] if not date-indexed)."""
+    try:
+        idx = df.index[-n:]
+        if not len(idx) or not hasattr(idx[-1], "date"):
+            return []
+        return [str(ts.date()) for ts in idx]
+    except Exception:
+        return []
+
+
+def gate_institutional(inst, as_of, data, run_date, syms=None):
+    """Withhold STALE 三大法人 data from today's scoring inputs; report how stale it is.
+
+    Returns (scoring_input, coverage). get_institutional walks back up to a week, so on a
+    TWSE outage yesterday's snapshot arrives as today's — feeding it to rank_stocks scores
+    today on data that has already been counted. The latest trading day is taken from the
+    TW price frames already in hand (their last bar), so stale_days counts TRADING days;
+    with no price data at all it falls back to calendar days vs the run date.
+    Stale → scoring gets {} (downstream treats 法人 as data-not-fresh, exactly as it does
+    on a SKIP) while the payload keeps the fetched data + the staleness marker."""
+    inst = inst or {}
+    cov = {"ok": bool(inst), "codes": len(inst), "as_of": as_of,
+           "stale_days": 0, "stale": False}
+    if not inst or not as_of:
+        return {}, cov
+
+    later, have_bars = set(), False
+    for sym, df in (data or {}).items():
+        if syms is not None and sym not in syms:
+            continue
+        bars = _recent_bar_dates(df)
+        if bars:
+            have_bars = True
+            later.update(d for d in bars if d > as_of)
+    if have_bars:
+        cov["stale_days"] = len(later)
+    else:                                   # no usable price frames → calendar fallback
+        try:
+            cov["stale_days"] = max(
+                0, (datetime.strptime(run_date, "%Y-%m-%d")
+                    - datetime.strptime(as_of, "%Y-%m-%d")).days)
+        except Exception:
+            cov["stale_days"] = 0
+    cov["stale"] = cov["stale_days"] > 0
+    return ({} if cov["stale"] else inst), cov
+
+
+def macro_tw_coverage(env):
+    """Per-gauge coverage for the macro_tw environment block.
+
+    The module-level ok only required ANY gauge to be non-null, so 4 of the 5 gauges could
+    sit dead for two months behind a green 'ok'. `ok`/`keys` keep their old meaning for
+    backward compatibility; gauges_ok / null_gauges make the dead ones visible."""
+    env = env or {}
+    names = sorted(k for k in env if k != "meta")
+    dead = (None, {"light": None, "score": None})     # a gauge that produced no reading
+    live = [k for k in names if not any(env[k] == d for d in dead)]
+    return {
+        "ok": bool(live),
+        "keys": len(live),
+        "gauges_live": len(live),
+        "gauges_total": len(names),
+        "gauges_ok": "%d/%d" % (len(live), len(names)),
+        "null_gauges": [k for k in names if k not in live],
+    }
+
+
 def main(web=False, dry_run=False, date_arg=None):
     setup_logging()
     log = logging.getLogger("main")
@@ -148,8 +275,12 @@ def main(web=False, dry_run=False, date_arg=None):
                                 default=({}, {}), msg="market context")
     signal = run_stage(log, skips, "signal",
                        lambda: data_fetcher.build_market_signal(frames, indices),
-                       default={"risk": "LOW"}, msg="market signal")
-    risk = signal.get("risk", "LOW")
+                       default={}, msg="market signal")
+    # Conservative default: no live ^VIX/^TNX reading → HIGH, never the loosest tier.
+    signal, risk = resolve_risk(signal, indices)
+    if signal.get("risk_unknown"):
+        log.warning("market gauges unavailable — risk defaulted to HIGH (not measured)")
+        skips.append("market_risk_unknown")
 
     # 2. News ----------------------------------------------------------------
     news = run_stage(log, skips, "news", news_digest.get_news, default={})
@@ -263,8 +394,11 @@ def main(web=False, dry_run=False, date_arg=None):
         log.warning("SKIP factor_validation: %s", e); skips.append("factor_validation")
 
     # 3. 三大法人 ------------------------------------------------------------
-    inst = run_stage(log, skips, "institutional",
-                     lambda: institutional.get_institutional(config.STOCKS_TW), default={})
+    #     get_institutional returns (data, as_of): the walk-back can serve data up to a week
+    #     old, so the AS-OF day — not the run date — keys the chip buffer and the freshness gate.
+    inst, inst_as_of = run_stage(
+        log, skips, "institutional",
+        lambda: institutional.get_institutional(config.STOCKS_TW), default=({}, None))
     if not inst:
         skips.append("institutional")
 
@@ -280,18 +414,29 @@ def main(web=False, dry_run=False, date_arg=None):
     fund_cache = fundamentals.load_cache()
     rev_state = run_stage(log, skips, "fundamentals", revenue_mod.load_state,
                           default=None, msg="revenue state load")
-    if inst:
+    if inst and inst_as_of:                  # no as-of → nothing safe to key the buffer by
         for sym in config.STOCKS_TW:
             di = inst.get(sym.replace(".TW", "")) or {}
             df = data.get(sym)
             volu = int(df["Volume"].iloc[-1]) if df is not None and len(df) else 0
             if di:
-                chip_state.update(chips_state, sym, date_str,
+                # keyed by the TWSE as-of day, not date_str: re-running on a stale snapshot
+                # must overwrite that day's row, never append a duplicate as today.
+                chip_state.update(chips_state, sym, inst_as_of,
                                   di.get("foreign", 0), di.get("trust", 0), volu)
-        chip_state.save(chips_state)
+        if not dry_run:                  # dry-run must not mutate the committed chip buffer
+            chip_state.save(chips_state)
+    # Freshness gate: stale 法人 data stays in the payload (informative) but is withheld
+    # from today's scoring inputs, so downstream sees data-not-fresh instead of a replay.
+    inst_scoring, inst_coverage = gate_institutional(
+        inst, inst_as_of, data, date_str, syms=set(config.STOCKS_TW))
+    if inst_coverage["stale"]:
+        log.warning("institutional as_of %s is %d trading day(s) stale — withheld from scoring",
+                    inst_as_of, inst_coverage["stale_days"])
     chips_map = {sym: chip_state.chips_for(chips_state, sym) for sym in all_syms}
 
-    ranked = strategy.rank_stocks(data, institutional_map=inst, frames=frames, chips_map=chips_map)
+    ranked = strategy.rank_stocks(data, institutional_map=inst_scoring, frames=frames,
+                                  chips_map=chips_map)
     log.info("ranked %d / %d symbols", len(ranked), len(all_syms))
 
     # 4b. 風險透鏡 — 每檔 beta/相關 vs 指數（OVERLAY-NOT-SCORER，純警示，不進評分）。把「可信選股=
@@ -356,11 +501,16 @@ def main(web=False, dry_run=False, date_arg=None):
                 fund_attached += 1
         except Exception as e:
             log.warning("SKIP fundamental badge %s: %s", sym, e)
-        pick_cards[sym] = verdict_mod.enrich(
-            item["stock"], item["score"], item["factors"],
-            data.get(item["stock"]), level_map.get(item["stock"]), fundamental=badge)
+        # same partial-inputs cap as the verdict map — the card's light is what the PWA
+        # renders on the most prominent board.
+        pick_cards[sym] = cap_pick_card(
+            verdict_mod.enrich(
+                item["stock"], item["score"], item["factors"],
+                data.get(item["stock"]), level_map.get(item["stock"]), fundamental=badge),
+            item)
     try:
-        fundamentals.save_cache(fund_cache)        # persist any US PE/EPS fetched/cached
+        if not dry_run:
+            fundamentals.save_cache(fund_cache)    # persist any US PE/EPS fetched/cached
         if fund_attached:
             log.info("fundamentals: %d pick badge(s) attached", fund_attached)
     except Exception as e:
@@ -520,7 +670,8 @@ def main(web=False, dry_run=False, date_arg=None):
         sv = shortvol_mod.fetch_short_volume(symbols=set(config.STOCKS_US))
         if sv.get("rows"):
             shortvol_mod.update_cache(sv_state, sv["date"], sv["rows"])
-            shortvol_mod.save_cache(sv_state)
+            if not dry_run:
+                shortvol_mod.save_cache(sv_state)
         log.info("short_volume FALLBACK: TW skipped (no keyless daily short-VOLUME; "
                  "融券 is a balance, not volume) — US-only overlay")
         sv_pick_syms = [it["stock"] for it in ranked[:config.DISPLAY_N]]
@@ -590,7 +741,8 @@ def main(web=False, dry_run=False, date_arg=None):
         ]
         watchlist_tracker.enroll(wl, enroll_picks, pins=[], date=date_str)
         watchlist_tracker.reevaluate(wl, data, frames, date_str)
-        watchlist_tracker.save(wl, wl_path)
+        if not dry_run:
+            watchlist_tracker.save(wl, wl_path)
         wl_board = watchlist_tracker.board(wl)
         log.info("watchlist: %d tracked name(s) on board", len(wl_board))
     except Exception as e:
@@ -680,7 +832,9 @@ def main(web=False, dry_run=False, date_arg=None):
                     ticker, df=df_opp, name=bc.get("name"), fundamental=_opp_fund(ticker))
 
         if details:
-            written = stock_detail.export_details(details, config.WEB_DIR)
+            written = []
+            if not dry_run:
+                written = stock_detail.export_details(details, config.WEB_DIR)
             log.info("detail files: %d written (picks=%d, revenue=%d, opp=%d)",
                      len(written),
                      len([k for k in details if k in {it["stock"] for it in ranked[:config.DISPLAY_N]}]),
@@ -703,13 +857,16 @@ def main(web=False, dry_run=False, date_arg=None):
     #   all-market search shows a current recommendation (買入≥90 / 觀望40-89 / 不持有<40).
     #   Seeded with the core picks; the opportunity universe + (over time) the keyless panel
     #   widen it. OVERLAY-NOT-SCORER: a display map, never feeds scoring.
-    verdict_map = {it["stock"]: {"s": it["score"], "l": verdict_mod.light(it["score"])}
-                   for it in ranked}
+    #   Seeded through verdict.capped_entry so a core row scored WITHOUT the full input set
+    #   (e.g. 法人 withheld as stale, or a US name that has no 法人/籌碼 at all) is capped at
+    #   觀察 exactly like the opportunity / US / panel surfaces already are.
+    verdict_map = build_verdict_map(ranked)
     try:
         _opp_data = (opp or {}).get("_data") or {} if isinstance(opp, dict) else {}
         if _opp_data:
             _core_syms = {it["stock"] for it in ranked}
-            _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst, frames=frames)
+            _opp_ranked = strategy.rank_stocks(_opp_data, institutional_map=inst_scoring,
+                                               frames=frames)
             # Audit finding 4: this call passes NO chips_map (and opp names have no
             # sector), so these rows are scored on a REDUCED input set vs the core
             # board → 板塊外 verdicts are capped at 觀察 (never 🟢 買入) via the
@@ -803,7 +960,8 @@ def main(web=False, dry_run=False, date_arg=None):
                     log.warning("SKIP US detail files: %s", _de)
                 _store = us_market.merge_store(
                     us_market.load_store(config.US_VERDICTS_STATE), _fresh, date_str)
-                us_market.save_store(config.US_VERDICTS_STATE, _store)
+                if not dry_run:
+                    us_market.save_store(config.US_VERDICTS_STATE, _store)
                 for _sym, _v in _store.items():
                     # Audit finding 4: itemC US coverage scores on frames only (no
                     # sector/inst/chips) → same partial-inputs cap as the opp scan.
@@ -824,8 +982,9 @@ def main(web=False, dry_run=False, date_arg=None):
     #   would silently strand EVERY opp/US/leader chart (→ '技術線圖尚未抓取' on click). Idempotent
     #   (re-writing the already-flushed picks is harmless). Mirrors the panel block's own flush.
     try:
-        log.info("opp/US chart detail files flushed: %d total",
-                 len(stock_detail.export_details(details, config.WEB_DIR)))   # returns a list, not int
+        if not dry_run:
+            log.info("opp/US chart detail files flushed: %d total",
+                     len(stock_detail.export_details(details, config.WEB_DIR)))   # a list, not int
     except Exception as _fe:
         log.warning("SKIP opp/US detail flush: %s", _fe)
 
@@ -863,6 +1022,10 @@ def main(web=False, dry_run=False, date_arg=None):
     #     source_coverage map records which sources returned data today (counts).
     overlays_map = {}            # symbol/code -> merged list[overlay]
     source_coverage = {}         # source name -> {"ok": bool, "codes": int, "overlays": int}
+    # 三大法人 freshness (computed at the fetch site): ok = the source answered; stale_days =
+    # how many trading days behind the latest bar its as-of is. A stale day is withheld from
+    # scoring, so health must see it rather than a silent 'ok'.
+    source_coverage["institutional"] = inst_coverage
 
     # #7: record the opportunity-OHLCV scan + US verdict batch coverage so a Yahoo rate-limit
     #   episode that collapses the wide universe DEGRADES health (visible in the banner) instead
@@ -1086,11 +1249,15 @@ def main(web=False, dry_run=False, date_arg=None):
                     environment["electronics_cycle"] = _cyc
             except Exception as _ce:
                 log.warning("SKIP electronics_cycle: %s", _ce)
-            _ig = [k for k, v in _industry_env.items()
-                   if k != "meta" and v not in (None, {"light": None, "score": None})]
-            source_coverage["macro_tw"] = {"ok": bool(_ig), "keys": len(_ig)}
+            # per-gauge coverage: a module-level 'ok' driven by ANY live gauge let 4 of the
+            # 5 sit dead for two months without a health signal.
+            source_coverage["macro_tw"] = macro_tw_coverage(_industry_env)
+            if source_coverage["macro_tw"]["null_gauges"]:
+                log.warning("macro_tw gauges %s — dead: %s",
+                            source_coverage["macro_tw"]["gauges_ok"],
+                            ", ".join(source_coverage["macro_tw"]["null_gauges"]))
         else:
-            source_coverage["macro_tw"] = {"ok": False, "keys": 0}
+            source_coverage["macro_tw"] = macro_tw_coverage(None)
     except Exception as e:
         log.warning("SKIP macro_tw environment: %s", e); skips.append("macro_tw_env")
 
@@ -1354,7 +1521,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 except Exception:
                     pass
             # re-export the detail files so the attached overlays land in the per-stock JSON.
-            if details:
+            if details and not dry_run:
                 stock_detail.export_details(details, config.WEB_DIR)
         except NameError:
             pass    # details may not exist if section 7c SKIPped
@@ -1373,8 +1540,9 @@ def main(web=False, dry_run=False, date_arg=None):
     #     Wrapped in try/except → SKIP-not-abort on any error.
     try:
         _opp_leaders = list((opp or {}).get("leaders", [])) if opp else []
-        overlay_snapshot.write_snapshot(
-            date_str, pick_cards, _opp_leaders, ranked=ranked)
+        if not dry_run:                  # writes docs/data/_overlay_history/<date>.json
+            overlay_snapshot.write_snapshot(
+                date_str, pick_cards, _opp_leaders, ranked=ranked)
     except Exception as e:
         log.warning("SKIP overlay_snapshot: %s", e); skips.append("overlay_snapshot")
 
@@ -1390,7 +1558,13 @@ def main(web=False, dry_run=False, date_arg=None):
         sent = notifier_email.send_email(f"📈 SmartStock 每日投資日報 {date_str}", markdown)
 
     # 8b. Web export for the PWA (history JSON + index) ----------------------
-    if web and not dry_run:
+    #     Split into BUILD (`if web`) and WRITE (`if web and not dry_run`): the whole export
+    #     half used to sit behind one `web and not dry_run`, so the PR-gate's --dry-run smoke
+    #     never executed build_payload's 25-kwarg surface — the exact drift class that took the
+    #     daily run down on 2026-06-22 (build_report TypeError). Building the payload is pure
+    #     (in-memory dict assembly); every disk/network side effect stays in the second block.
+    payload = None
+    if web:
         payload = web_export.build_payload(
             date_str, news, indices, inst, ranked, analyses,
             target, reb, risk, markdown, skips, movers=movers, level_map=level_map,
@@ -1416,7 +1590,14 @@ def main(web=False, dry_run=False, date_arg=None):
             "board_symbols": [r.get("stock") for r in (scored_universe or [])
                               if r.get("partial_inputs")],
         }
-        data_dir = web_export.export(payload, config.WEB_DIR)
+        log.info("payload built: %d pick(s), %d capped name(s)",
+                 len(payload.get("picks") or []), len(_partial_syms))
+    if web and dry_run:
+        log.info("DRY-RUN: payload built and validated — skipping web_export.export "
+                 "and every downstream write (index / panel / verdicts / outcomes / health)")
+
+    if web and not dry_run:
+        data_dir = export_payload(payload, skips, config.WEB_DIR)
         log.info("web data exported: %s", data_dir)
 
         # Fix 3 (GAP A): emit the all-market search index so the PWA can resolve ANY listed
@@ -1558,7 +1739,7 @@ def main(web=False, dry_run=False, date_arg=None):
             except Exception as _ae:
                 log.warning("SKIP attribution: %s", _ae); skips.append("attribution")
             # re-export so the freshly-computed hit-rate + attribution land in today's <date>.json.
-            web_export.export(payload, config.WEB_DIR)
+            export_payload(payload, skips, config.WEB_DIR)
             _pp = payload["pick_performance"]
             log.info("pick performance: %d scored / %d picks over %d dates",
                      _pp.get("n_scored") or 0, _pp.get("n_picks") or 0, _pp.get("n_dates") or 0)
@@ -1594,7 +1775,8 @@ def main(web=False, dry_run=False, date_arg=None):
                                  "sources": [], "overall": "degraded",
                                  "note": f"health check crashed: {e}"}
         try:
-            web_export.export(payload, config.WEB_DIR)   # land 8d keys in <date>.json
+            # land 8d keys + the FINAL skip list (R1-01) in <date>.json
+            export_payload(payload, skips, config.WEB_DIR)
             _h = payload.get("health") or {}
             log.info("health: %s (%d checks) | strategy_health: %d signal(s) | "
                      "shadow NAV %.4f (%d open)",

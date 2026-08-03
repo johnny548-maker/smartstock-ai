@@ -55,29 +55,37 @@ def _fetch(date_str):
 
 
 def get_institutional(symbols=None, lookback_days=TWSE_LOOKBACK_DAYS):
-    """Return {stock_code: {'foreign', 'trust', 'dealer'}} net share counts.
+    """Return ({stock_code: {'foreign', 'trust', 'dealer'}}, as_of) net share counts.
 
     symbols: optional iterable to filter (e.g. ['2330.TW']); '.TW' stripped.
     Walks back up to lookback_days to find the latest trading day with data.
+
+    as_of is the ISO date of the trading day the numbers ACTUALLY came from (None when
+    nothing was found). It is part of the return value because the walk-back can hand
+    over data up to lookback_days old: a caller that keys a cross-run buffer or a
+    freshness gate by the RUN date instead replays that old snapshot as fresh (measured
+    2026-06-24/25 + 06-25/26, 18/18 names, and it moved real scores).
     """
     wanted = {s.replace(".TW", "").strip() for s in symbols} if symbols else None
 
-    payload = None
+    payload, as_of = None, None
     today = date.today()
     for i in range(lookback_days):
-        ds = (today - timedelta(days=i)).strftime("%Y%m%d")
+        d = today - timedelta(days=i)
+        ds = d.strftime("%Y%m%d")
         try:
             payload = _fetch(ds)
         except Exception as e:
             log.warning("institutional fetch %s failed: %s", ds, e)
             payload = None
         if payload:
+            as_of = d.strftime("%Y-%m-%d")
             log.info("institutional: using trading day %s", ds)
             break
 
     if not payload:
         log.warning("SKIP institutional: no trading-day data in last %d days", lookback_days)
-        return {}
+        return {}, None
 
     # .get() not [] — a stat=OK response that omits/renames 'fields' or 'data' (schema drift) must
     # SKIP gracefully, not KeyError out of the (untried) overlay path.
@@ -85,14 +93,14 @@ def get_institutional(symbols=None, lookback_days=TWSE_LOOKBACK_DAYS):
     rows = payload.get("data")
     if not isinstance(fields, list) or not isinstance(rows, list):
         log.warning("SKIP institutional: T86 payload missing fields/data")
-        return {}
+        return {}, None
     i_code = _col_index(fields, CODE_FIELD, "證券", "代號")
     i_for = _col_index(fields, FOREIGN_FIELD, "外陸資", "買賣超")
     i_trust = _col_index(fields, TRUST_FIELD, "投信", "買賣超")
     i_deal = _col_index(fields, DEALER_FIELD)
     if i_code is None or i_for is None:
         log.warning("SKIP institutional: unexpected T86 schema")
-        return {}
+        return {}, None
 
     out = {}
     for row in rows:
@@ -109,4 +117,4 @@ def get_institutional(symbols=None, lookback_days=TWSE_LOOKBACK_DAYS):
         }
     if not out:
         log.warning("SKIP institutional: no matching rows for requested symbols")
-    return out
+    return out, as_of
