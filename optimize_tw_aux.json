@@ -1,12 +1,10 @@
 {
-  "asof": "2026-07-14",
+  "asof": "2026-06-22",
   "ic": {
-    "instflow": -0.012249089911153829,
-    "value": 0.06129370547930897
+    "instflow": 0.00022027932397480026,
+    "value": 0.014102906752534835
   },
-  "survivors": [
-    "value"
-  ],
+  "survivors": [],
   "ic_min": 0.05,
   "n_trials": 3,
   "excluded": [
@@ -15,68 +13,5 @@
     "quality",
     "size"
   ],
-  "gate": {
-    "pass": false,
-    "n_trials": 3,
-    "dsr": 0.9824580717366438,
-    "dsr_pass": true,
-    "pbo": 0.4296814296814297,
-    "pbo_pass": true,
-    "spa_p": null,
-    "spa_pass": false,
-    "lockbox": {
-      "calmar": 0.052,
-      "cagr": 0.0118,
-      "max_dd": -0.2248
-    },
-    "lockbox_pass": true,
-    "flat_lift": null,
-    "flat_pass": false,
-    "n_search": 1752,
-    "n_lock": 438,
-    "sleeves": [
-      "lowvol",
-      "mom",
-      "strev",
-      "value"
-    ],
-    "combo_configs": {
-      "lowvol": {
-        "family": "lowvol",
-        "vol_target": false,
-        "sigma_target": null,
-        "top_n": 20,
-        "rebalance": "monthly",
-        "lookback": 60,
-        "trend_ma": null
-      },
-      "strev": {
-        "family": "strev",
-        "vol_target": false,
-        "sigma_target": null,
-        "top_n": 20,
-        "rebalance": "monthly",
-        "lookback": 21,
-        "trend_ma": null
-      },
-      "mom": {
-        "family": "mom",
-        "vol_target": true,
-        "sigma_target": 0.2,
-        "top_n": 20,
-        "rebalance": "quarterly",
-        "lookback": 126,
-        "trend_ma": null
-      },
-      "value": {
-        "family": "value",
-        "vol_target": false,
-        "sigma_target": null,
-        "top_n": 20,
-        "rebalance": "monthly",
-        "lookback": 20,
-        "trend_ma": null
-      }
-    }
-  }
+  "gate": null
 }
