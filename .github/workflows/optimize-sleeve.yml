@@ -150,13 +150,22 @@ jobs:
           OBJ: ${{ github.event.inputs.objective || 'calmar' }}
           CAP: ${{ github.event.inputs.maxdd_cap || '0.35' }}
           UNIVERSE: ${{ github.event.inputs.universe || 'draft' }}
-          RIGOROUS: ${{ github.event.inputs.rigorous }}
-          COMBO: ${{ github.event.inputs.combo }}
+          # Finding B1-07 (2026-08-03): unlike SLEEVE/OBJ/CAP/UNIVERSE above, these two had NO
+          # `|| 'default'` fallback — on `schedule` events github.event.inputs is EMPTY, so
+          # RIGOROUS/COMBO resolved to "" which `!= "false"` evaluates true, silently forcing
+          # `--rigorous --embargo 252` (burning the terminal lockbox) on every monthly schedule
+          # run regardless of the (also-unset) combo flag. workflow_dispatch is unaffected —
+          # GitHub always fills in the declared input defaults (rigorous: true, combo: false) for
+          # that trigger — so this fallback only changes behavior on `schedule`.
+          RIGOROUS: ${{ github.event.inputs.rigorous || 'false' }}
+          COMBO: ${{ github.event.inputs.combo || 'false' }}
         run: |
           set -euo pipefail
           EXTRA=""
           if [ "$UNIVERSE" = "full" ]; then EXTRA="--csv universe_full_market.csv"; fi
-          # default true on schedule/blank; only 'false' disables the嚴謹 path
+          # workflow_dispatch defaults true (declared input default); schedule now defaults
+          # 'false' via the env fallback above (B1-07 fix) — only an explicit 'false' disables
+          # the嚴謹 path, and schedule is no longer ambient-true.
           if [ "$RIGOROUS" != "false" ]; then EXTRA="$EXTRA --rigorous --embargo 252"; fi
           if [ "$COMBO" = "true" ]; then EXTRA="$EXTRA --combo"; fi
           run_one () { python -X utf8 run_optimize.py --sleeve "$1" --objective "$OBJ" --maxdd-cap "$CAP" $EXTRA; }
@@ -187,16 +196,30 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add optimize_*.txt optimize_*.json universe_full_market.csv 2>/dev/null || true
+          # .lockbox_ledger.json must persist across runs or the reuse-refusal never fires (finding B1-08 / ADR .decisions/2026-07-17-audit-remediation.md).
+          git add optimize_*.txt optimize_*.json universe_full_market.csv .lockbox_ledger.json 2>/dev/null || true
           if [ "${{ github.event_name }}" = "schedule" ]; then
             MSG="optimize(scout): $(date -u +%F) monthly scheduled run (calmar, non-canonical)"
           else
             MSG="optimize: $(date -u +%F) (${{ github.event.inputs.objective || 'calmar' }})"
           fi
           git commit -m "$MSG" || echo "no changes to commit"
+          # Finding R7-01 (2026-08-03): the old loop had no post-loop failure check — if all 5
+          # push attempts failed, this step still exited 0, so the job went GREEN while the
+          # monthly (up to 350-min) optimisation results were never published to origin.
+          # PUSHED flag + explicit exit 1 (pattern from daily.yml:260-273) makes an all-retries-
+          # failed push a hard job failure instead of a silent no-op.
+          PUSHED=false
           for i in 1 2 3 4 5; do
-            git push && break
+            if git push; then
+              PUSHED=true
+              break
+            fi
             echo "push rejected (race), rebase + retry $i/5"
             git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
             sleep 5
           done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit optimisation results: push failed after 5 attempts. This run's optimisation results were NOT published to origin."
+            exit 1
+          fi

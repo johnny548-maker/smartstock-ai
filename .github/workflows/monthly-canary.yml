@@ -24,12 +24,29 @@ on:
   # 3rd of the month, 04:19 UTC. Odd minute avoids the contended :00/:30 free-tier slots
   # (GitHub drops those under load); 04:19 does not collide with the 13:33 monthly-sheet-backfill
   # that also runs on day 3.
+  #
+  # Finding OPS-1-02 (2026-08-03): the very FIRST-EVER scheduled tick (2026-08-03 04:19 UTC) was
+  # silently dropped — `gh run list` still showed zero runs ~3h after due, matching the same
+  # GitHub free-tier drop behavior daily.yml already documents and mitigates. Mirroring daily.yml's
+  # two-tick pattern: a second odd-minute tick ~2h later, same day, only matters if the primary
+  # was dropped.
+  #
+  # Skip-duplicate guard: mirrors daily.yml's proven "Skip duplicate scheduled run" pattern
+  # (team lead correction 2026-08-03 — prefer the existing mechanism over inventing a new one).
+  # daily.yml checks a git-committed dated artifact (docs/data/$DATE.json) because its job
+  # commits one; this canary commits NOTHING (permissions: contents: read), so there is no file
+  # to check — the equivalent is asking the GitHub Actions API whether a canary run already
+  # SUCCEEDED today (see the "Skip duplicate scheduled run" step in the `canary` job below).
+  # Same semantics as daily.yml: only a completed/successful prior run counts as "already ran",
+  # so if the primary genuinely failed (vs. was silently dropped) the backup still tries again.
   schedule:
-    - cron: '19 4 3 * *'
+    - cron: '19 4 3 * *'   # primary  ~12:19 TW (04:19 UTC)
+    - cron: '41 6 3 * *'   # backup   ~14:41 TW (06:41 UTC) — only useful if primary was dropped
   workflow_dispatch: {}
 
 permissions:
   contents: read
+  actions: read   # required for the skip-duplicate-run `gh run list` check in the canary job
 
 concurrency:
   group: smartstock-monthly-canary
@@ -103,9 +120,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # Skip-duplicate guard (finding OPS-1-02, mirrors daily.yml's "Skip duplicate scheduled
+      # run" — see the `on:` block comment above for why this checks `gh run list` instead of a
+      # committed file). Runs before checkout since it needs no repo state. workflow_dispatch
+      # always proceeds (skip=false unconditionally), same as daily.yml, so a human can always
+      # force a run.
+      - name: Skip duplicate scheduled run
+        id: canary_check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -uo pipefail
+          TODAY=$(date -u +%F)
+          ALREADY=$(gh run list --repo "$REPO" --workflow monthly-canary.yml --status success \
+            --json createdAt --jq "[.[] | select(.createdAt | startswith(\"$TODAY\"))] | length" 2>/dev/null)
+          # Fail open to "not skipped" — a gh/API hiccup here must never silently swallow a run;
+          # a harmless double-run is always safer than a silently-skipped canary.
+          case "$ALREADY" in ''|*[!0-9]*) ALREADY=0 ;; esac
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ALREADY" -gt 0 ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::A monthly-canary run already succeeded today ($TODAY) — backup tick is a no-op."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@v6
+        if: steps.canary_check.outputs.skip != 'true'
 
       - uses: actions/setup-python@v6
+        if: steps.canary_check.outputs.skip != 'true'
         with:
           python-version: '3.11'
           cache: pip
@@ -114,12 +158,13 @@ jobs:
       # `>=` dependency published a version that breaks install/resolution, this fails the job.
       # Deliberately NOT requirements.lock — testing the lock would defeat the entire purpose.
       - name: Install FLOATING requirements (latest, no lock)
+        if: steps.canary_check.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       # Capture the resolved product tree right after install (before pytest tooling is added)
       # so the failure issue + job summary show exactly what versions were in play.
       - name: Capture resolved dependency tree
-        if: always()
+        if: always() && steps.canary_check.outputs.skip != 'true'
         run: |
           set -euo pipefail
           mkdir -p canary-diag
@@ -136,6 +181,7 @@ jobs:
       # disk/network writes (no GOOGLE_SA_JSON needed; dry-run skips the Sheet mirror entirely,
       # so this floating-install job carries no secrets — minimal supply-chain exposure).
       - name: Pipeline dry-run smoke under floating deps
+        if: steps.canary_check.outputs.skip != 'true'
         run: python main.py --web --dry-run
 
       # OBSERVE-ONLY: the 73 test files have never run in this environment. continue-on-error so
@@ -143,6 +189,7 @@ jobs:
       # for triage. pytest is a dev-only tool (not in requirements.txt) so install the latest here.
       - name: Run test suite (observe-only)
         id: pytest
+        if: steps.canary_check.outputs.skip != 'true'
         continue-on-error: true
         run: |
           set -uo pipefail
@@ -164,7 +211,7 @@ jobs:
           fi
 
       - name: Upload canary diagnostics
-        if: always()
+        if: always() && steps.canary_check.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: canary-diag

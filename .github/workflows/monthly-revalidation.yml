@@ -85,7 +85,24 @@ jobs:
           git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" || true
           git add docs/data/_revalidation docs/data/_kelly_state.json
           git commit -m "revalidation: $(date -u +%Y-%m)" || echo "no changes to commit"
-          git push
+          # Finding R7-04 (2026-08-03): a single pull-rebase + bare push (no retry loop) meant a
+          # push race in the window between rebase and push failed the whole job outright after
+          # the heaviest step in the repo (up to 350 min 15y backtest). Ported the 5-attempt
+          # rebase-retry + PUSHED-flag pattern used elsewhere in this repo (daily.yml:260-273).
+          PUSHED=false
+          for i in 1 2 3 4 5; do
+            if git push; then
+              PUSHED=true
+              break
+            fi
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)" || git rebase --abort || true
+            sleep 5
+          done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit revalidation report: push failed after 5 attempts. This month's 15y backtest revalidation was NOT published to origin."
+            exit 1
+          fi
 
   # A2/A3 robustness gate — the offline weekly/monthly home for run_validation.
   # Runs AFTER `revalidate` (needs:) so the two heavy jobs never collide and the
@@ -124,4 +141,20 @@ jobs:
           git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" || true
           git add docs/data/_validation_state.json docs/data/_revalidation
           git commit -m "robustness gate: $(date -u +%Y-%m)" || echo "no changes to commit"
-          git push
+          # Finding R7-04 (2026-08-03): same fix as the `revalidate` job above — a bare push
+          # with no retry loop failed the whole job outright on any push race after the
+          # heaviest step in the repo (up to 350 min full walk-forward robustness gate).
+          PUSHED=false
+          for i in 1 2 3 4 5; do
+            if git push; then
+              PUSHED=true
+              break
+            fi
+            echo "push rejected (race), rebase + retry $i/5"
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)" || git rebase --abort || true
+            sleep 5
+          done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit refreshed validation state: push failed after 5 attempts. This month's robustness gate state was NOT published to origin."
+            exit 1
+          fi

@@ -33,6 +33,7 @@ if ($LASTEXITCODE -ne 0) { Log 'ABORT: python --archive-files failed.'; exit 1 }
 
 # 3. Stage ONLY the archive dir (never the user's other working changes).
 git add archive/allstocks 2>&1 | Out-File $log -Append -Encoding utf8
+if ($LASTEXITCODE -ne 0) { Log 'ABORT: git add archive/allstocks failed.'; exit 1 }
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) { Log 'No changes (holiday / nothing new). Done.'; Log '=== done ==='; exit 0 }
 
@@ -47,5 +48,10 @@ for ($i = 1; $i -le 3; $i++) {
     if ($LASTEXITCODE -eq 0) { $pushed = $true; break }
     Start-Sleep -Seconds ($i * 5)
 }
-if ($pushed) { Log 'committed + pushed OK' } else { Log 'push FAILED after 3 attempts' }
+# Findings R7-08/OPS-2-10 (2026-08-03): this else-branch used to just Log and fall through to
+# implicit exit 0 — Windows Task Scheduler's "Last Result" showed success even on a day the
+# TW-IP archive was captured locally but never reached origin, the ONLY channel for TWSE/TDCC
+# data blocked from GitHub Actions IPs. `exit 1` here matches the two earlier ABORT branches
+# above (git pull conflict, python fetch failure), which already call exit 1.
+if ($pushed) { Log 'committed + pushed OK' } else { Log 'push FAILED after 3 attempts'; Log '=== done ==='; exit 1 }
 Log '=== done ==='

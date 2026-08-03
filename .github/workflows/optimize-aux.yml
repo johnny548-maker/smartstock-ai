@@ -114,15 +114,57 @@ jobs:
           python -X utf8 run_aux_combo.py --csv universe_full_market.csv --years "$YEARS" \
                  --backfill "$START" "$END"
 
+      # Finding OPS-1-01 (2026-08-03): optimize-aux.yml never received the 2026-07-07-incident
+      # "canonical vs scout" fix that optimize-sleeve.yml got (see that workflow's header +
+      # its own Reroute step) — its scheduled (non-human-blessed) monthly run committed
+      # directly to the canonical optimize_tw_aux.{json,txt} via an unconditional git add,
+      # and it already happened for real (HEAD content is a scheduled bot commit, not a
+      # human workflow_dispatch run). Ported verbatim from optimize-sleeve.yml: on schedule,
+      # rename the fresh outputs to *_scout.* and restore the canonical files from HEAD
+      # before commit — a scout NEVER overwrites the canonical result; promote a scout by
+      # re-running via workflow_dispatch.
+      - name: Reroute scheduled outputs to scout files (never overwrite canonical)
+        if: github.event_name == 'schedule'
+        run: |
+          set -euo pipefail
+          for f in optimize_tw_aux.txt optimize_tw_aux.json; do
+            [ -e "$f" ] || continue
+            case "$f" in *_scout.*) continue ;; esac
+            base="${f%.*}"; ext="${f##*.}"
+            mv -f "$f" "${base}_scout.${ext}"
+            echo "scout: $f -> ${base}_scout.${ext}"
+          done
+          # restore the canonical files the aux pipeline clobbered in the workspace
+          for f in optimize_tw_aux.txt optimize_tw_aux.json; do
+            git checkout -- "$f" 2>/dev/null || true
+          done
+
       - name: Commit aux results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add optimize_tw_aux.txt optimize_tw_aux.json 2>/dev/null || true
-          git commit -m "optimize-aux: $(date -u +%F) (iter-2 chip/fundamental IC+gate)" || echo "no changes"
+          # .lockbox_ledger.json must persist across runs or the reuse-refusal never fires (finding B1-08 / ADR .decisions/2026-07-17-audit-remediation.md); aux will share this same ledger shortly.
+          git add optimize_tw_aux.txt optimize_tw_aux.json optimize_tw_aux_scout.txt optimize_tw_aux_scout.json .lockbox_ledger.json 2>/dev/null || true
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            MSG="optimize-aux(scout): $(date -u +%F) monthly scheduled run (iter-2 chip/fundamental IC+gate, non-canonical)"
+          else
+            MSG="optimize-aux: $(date -u +%F) (iter-2 chip/fundamental IC+gate)"
+          fi
+          git commit -m "$MSG" || echo "no changes"
+          # Finding R7-01 (2026-08-03): PUSHED flag + explicit exit 1 (pattern from
+          # daily.yml:260-273) — the old loop had no post-loop failure check, so an
+          # all-retries-failed push still exited 0 and the job went GREEN with nothing published.
+          PUSHED=false
           for i in 1 2 3 4 5; do
-            git push && break
+            if git push; then
+              PUSHED=true
+              break
+            fi
             echo "push rejected (race), rebase + retry $i/5"
             git pull --rebase origin "${GITHUB_REF_NAME}" || git rebase --abort || true
             sleep 5
           done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit aux results: push failed after 5 attempts. This run's aux results were NOT published to origin."
+            exit 1
+          fi

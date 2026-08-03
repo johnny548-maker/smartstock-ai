@@ -64,9 +64,21 @@ jobs:
           git commit -m "overlay-readiness: $(date -u +%F)" || { echo "no changes to commit"; exit 0; }
           # Push with pull --rebase retry: a concurrent bot/local push (daily archive,
           # freeze-lock, 14:45 task) advances the remote and a bare push would 404 non-ff.
+          # Finding R7-01 (2026-08-03): the old loop had no post-loop failure check — if all 5
+          # push attempts failed, this step still exited 0 (the loop's own exit code, from the
+          # last `sleep`, is 0), so the job went GREEN while the readiness report was never
+          # published to origin. PUSHED flag + explicit exit 1 closes that gap.
+          PUSHED=false
           for i in 1 2 3 4 5; do
-            git push && break
+            if git push; then
+              PUSHED=true
+              break
+            fi
             echo "push rejected (attempt $i) — rebasing on remote and retrying"
             git pull --rebase origin main || exit 1
             sleep $((RANDOM % 5 + 1))
           done
+          if [ "${PUSHED}" = "false" ]; then
+            echo "::error::Commit readiness report: push failed after 5 attempts. Monthly overlay readiness report was NOT published to origin."
+            exit 1
+          fi
