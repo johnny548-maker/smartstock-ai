@@ -3,7 +3,11 @@
 
 $ErrorActionPreference = 'Stop'
 $taskName = 'SmartStock_TDCC_Weekly'
-$cmdPath = "$env:USERPROFILE\Downloads\smartstock-ai\tools\local_cron\run_tdcc_weekly.cmd"
+# Derive from the script's own location instead of a hardcoded $env:USERPROFILE\Downloads\
+# smartstock-ai path (that path was wrong even for its own author: the actual repo lives at
+# Downloads\Claude Test\smartstock-ai, not Downloads\smartstock-ai — R7-10, 2026-08-03 audit).
+$repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
+$cmdPath = Join-Path $repoRoot "tools\local_cron\run_tdcc_weekly.cmd"
 
 if (-not (Test-Path $cmdPath)) {
     Write-Error "Command file not found: $cmdPath"

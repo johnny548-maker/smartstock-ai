@@ -42,7 +42,15 @@
 
 ## 2. 誠實的 forward 預期（lockbox，只評一次）
 
-| 指標 | LOCKBOX（held-out 2023-06→2026-06，只評一次） | pooled-OOS（跨窗，搜尋區） |
+> ⚠️ **誠信更新（2026-08-03 稽核）**：下表標「只評一次」的說法**不成立**——git 考古顯示同一個
+> terminal lockbox 視窗 `[2023-06-12..2026-06-18]` 實際被**重複評分 ≥8 次、橫跨 3 個日期**
+> （2026-06-21 / 2026-07-07 / 2026-07-17），是教科書式的 selection-on-holdout（每次評分挑出
+> 不同 champion 再拿同一份 holdout 打分）。統計意義上它已**汙染（contaminated holdout）**，
+> 下表數字應視為樂觀上界而非乾淨的樣本外估計。**現況**：`.lockbox_ledger.json` 已上線（見
+> `run_optimize.py` walk_forward_oos_select 的 ledger 查核），未來對同一 window 的重複評分會
+> 被擋下或標記 `lockbox_reused`；本表數字保留供歷史對照，不再視為首次乾淨評估。
+
+| 指標 | LOCKBOX（held-out 2023-06→2026-06，**已污染，見上方警示**） | pooled-OOS（跨窗，搜尋區） |
 |---|---|---|
 | CAGR | **19.73%** | 29.21% |
 | MaxDD | **-35.72%** | -16.35% |
@@ -103,7 +111,7 @@ gh workflow run optimize-sleeve.yml -f sleeve=tw -f objective=calmar -f universe
 
 - **Phase 0 事件型 TA 訊號**：布林 squeeze→突破 / Donchian / KD / MACD 跑 event-study lift gate（VDU/U-D 過關的同條路；gate 自證：U/D 重現 lift 1.35 KEEP）。全 FAIL：布林 lift 1.03/平盤 0.68(beta)、Donchian 0.89、MACD 0.84；**KD 黃金交叉(超賣) 最強 lift 1.21、贏 base、非 beta，但敗 Bonferroni**(p=0.0134>0.0125)。橫斷面 TA 早證死(|IC|≤0.0146)。**不加任何訊號。**（`ta_event_signals.py`/`run_ta_event_backtest.py`）
 - **Phase 1 scorer 15y 重驗**：8 個 base 因子全 rank-IC<0.05 但 reward 因子 top-decile edge 全正(rs 4.18..obv 2.29)→ 照 vol_stable 雙指標規則**無新降權**→ scorer 不動、**零 golden churn**。誠實：現有選股是 15y 驗證過的**觀察名單/輔助**，從未 SPA-vs-指數測過，**非贏大盤機器**。
-- **Phase 2/3 已接進 app（informational，非 scorer）**：`validated_portfolio.py` 把預註冊 LOWVOL+STREV+MOM 風控組合(`optimize_tw.json[combo]`：DSR 0.998✓/PBO 0.293✓/lockbox 10.7%/-21%✓ 但 **SPA p=0.17✗/flat 0.81✗→overall 未過**)當每日 track，**並列被動 0050/SPY 基準**。實證：被動 0050 15y CAGR **11.4%** > 組合 lockbox 10.7%——**被動贏報酬，組合只贏回撤**。PWA「驗證組合」tab + 永遠在頂「不承諾贏大盤」banner + 每因子 15y-IC 信心。
+- **Phase 2/3 已接進 app（informational，非 scorer）**：`validated_portfolio.py` 把預註冊 LOWVOL+STREV+MOM 風控組合(`optimize_tw.json[combo]`：DSR 0.998✓/PBO 0.293✓/lockbox 10.7%/-21%✓ 但 **SPA p=0.17✗/flat 0.81✗→overall 未過**)當每日 track，**並列被動 0050/SPY 基準**。（11.4% 已撤回——舊資料窗量測；現行基準以 `backtest_portfolio_tw.json` 的 `buy_hold`/`index_hold` 系列為準，勿引單一快照數字）PWA「驗證組合」tab + 永遠在頂「不承諾贏大盤」banner + 每因子 15y-IC 信心。
 - **Phase 4 CI**：`check_factor_drift.py` 月度監控因子跨越保留/降權邊界→開 HITL issue，**CI 絕不自動改權**。
 
 **底線不變**：keyless 公開資料**無**「過 gate 且大贏大盤」策略（含這輪布林等 TA 全證偽）。最誠實「最佳策略」= 被動指數；風控組合是可選主動 sleeve（抱得住但不贏指數）。ADR `.decisions/2026-06-22-scorer-15y-revalidation.md`。

@@ -19,6 +19,19 @@ EDGE_FLOOR = 1.0          # top-decile edge below this = no longer beats the uni
 RECOVER_EDGE = 1.5        # a demoted factor recovering past this warrants reconsideration
 ALERT_FILE = "docs/data/_factor_drift_alert.txt"
 
+# instflow (institutional net-flow: inst_foreign_buy/sell + inst_trust_buy) is NOT computed by
+# run_factor_ic.py — it lives in the separate aux-combo IC-screen pipeline (run_optimize.py /
+# factor_panels_aux.py), which found it FAILED (rank-IC -0.0122, commit 01025ee4f) and demoted
+# it 2026-08-03 (see .decisions/2026-08-03-instflow-demotion.md). Because it isn't one of
+# run_factor_ic.FAMILY_TO_PTS's families, it would otherwise be invisible to this monitor
+# entirely — registered here so (a) demoted_from_config() correctly reports it as demoted and
+# (b) if a future run ever writes an "instflow" rank_ic/edge pair into families (e.g. from a
+# re-gate of the live scorer's actual split formulation, merged into
+# docs/data/_factor_ic_state.json), find_drift() has a feedback channel to flag recovery.
+EXTRA_FAMILY_TO_PTS = {
+    "instflow": ["inst_foreign_buy", "inst_foreign_sell", "inst_trust_buy"],
+}
+
 
 def find_drift(families, demoted, edge_floor=EDGE_FLOOR, recover_edge=RECOVER_EDGE):
     """Pure: {family: {rank_ic, edge}} + the set of currently-demoted families → list of boundary
@@ -40,12 +53,17 @@ def find_drift(families, demoted, edge_floor=EDGE_FLOOR, recover_edge=RECOVER_ED
 
 def demoted_from_config(factor_pts=None):
     """A family is currently DEMOTED iff all its FACTOR_PTS reward keys are 0 (penalty-only
-    families with no reward key are never 'demoted'). Lazy import keeps find_drift dependency-free."""
+    families with no reward key are never 'demoted'). Lazy import keeps find_drift dependency-free.
+    Merges run_factor_ic.FAMILY_TO_PTS (base factors this module's own rank-IC pipeline covers)
+    with EXTRA_FAMILY_TO_PTS (families demoted via a sibling pipeline, e.g. instflow via the
+    aux-combo IC screen) so the watch-list isn't blind to demotions this module didn't compute."""
     from run_factor_ic import FAMILY_TO_PTS
     if factor_pts is None:
         from config import FACTOR_PTS as factor_pts
+    family_to_pts = dict(FAMILY_TO_PTS)
+    family_to_pts.update(EXTRA_FAMILY_TO_PTS)
     out = set()
-    for fam, keys in FAMILY_TO_PTS.items():
+    for fam, keys in family_to_pts.items():
         if keys and all(int(factor_pts.get(k, 0)) == 0 for k in keys):
             out.add(fam)
     return out

@@ -43,5 +43,18 @@ class TestFindDrift(unittest.TestCase):
         self.assertEqual(cd.find_drift(families, demoted=set()), [])
 
 
+class TestDemotedFromConfig(unittest.TestCase):
+    # 2026-08-03: instflow (institutional net-flow) is demoted via the aux-combo IC screen, a
+    # sibling pipeline to run_factor_ic.py's own base-factor families — EXTRA_FAMILY_TO_PTS
+    # registers it here so this monitor's watch-list isn't blind to that demotion (BL-P1-12).
+    def test_instflow_reported_demoted_when_all_three_inst_keys_zeroed(self):
+        factor_pts = {"inst_foreign_buy": 0, "inst_foreign_sell": 0, "inst_trust_buy": 0}
+        self.assertIn("instflow", cd.demoted_from_config(factor_pts))
+
+    def test_instflow_not_demoted_when_any_inst_key_still_nonzero(self):
+        factor_pts = {"inst_foreign_buy": 15, "inst_foreign_sell": 0, "inst_trust_buy": 0}
+        self.assertNotIn("instflow", cd.demoted_from_config(factor_pts))
+
+
 if __name__ == "__main__":
     unittest.main()

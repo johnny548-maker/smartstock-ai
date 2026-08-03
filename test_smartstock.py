@@ -83,23 +83,35 @@ class TestStrategy(unittest.TestCase):
         r = strategy.score_stock(make_df(np.linspace(100, 120, 30)), sector="AI伺服器")
         self.assertEqual(r["factors"].get("產業(AI伺服器)"), 20)
 
-    def test_institutional_buy_with_enough_ratio(self):
-        # net 5000 vs avg vol 1000 → ratio 5 ≥ 0.30 → full weight
+    def test_institutional_buy_demoted_to_zero(self):
+        # 2026-08-03 稽核：instflow（法人淨流，T86-based keyless panel）aux-combo IC 篩
+        # rank-IC -0.0122（未過 0.05 floor）→ 循 demotion-only 治理（vol_stable/near_high
+        # 前例）inst_foreign_buy/inst_foreign_sell/inst_trust_buy 權重降 0。因子仍註冊於
+        # FACTOR_PTS，但 0 權重 NEVER 進 factors dict（chip 卡片顯示自然消失）。舊斷言
+        # （net 5000 vs avg vol 1000 → ratio 5 ≥ 0.30 → 全權重 +15/投信+10）隨行為變更更新。
+        self.assertEqual(config.FACTOR_PTS["inst_foreign_buy"], 0)
+        self.assertEqual(config.FACTOR_PTS["inst_trust_buy"], 0)
         r = strategy.score_stock(make_df(np.linspace(100, 120, 30)),
                                  institutional={"foreign": 5000, "trust": 200})
-        self.assertEqual(r["factors"].get("外資買超"), 15)
-        self.assertIn("投信買超", r["factors"])
+        self.assertNotIn("外資買超", r["factors"])
+        self.assertNotIn("投信買超", r["factors"])
 
     def test_institutional_ignored_when_tiny_ratio(self):
         # net 50 vs avg vol 1000 → ratio 0.05 < 0.10 → treated as noise, no factor
+        # (also true post-2026-08-03 demotion regardless of ratio — see
+        # test_institutional_buy_demoted_to_zero — kept as its own case since it predates
+        # the demotion and still documents the ratio-gate contract in strategy.py)
         r = strategy.score_stock(make_df(np.linspace(100, 120, 30)),
                                  institutional={"foreign": 50})
         self.assertNotIn("外資買超", r["factors"])
 
-    def test_foreign_sell_penalty(self):
+    def test_foreign_sell_demoted_to_zero(self):
+        # 2026-08-03 demotion (see test_institutional_buy_demoted_to_zero) — old assertion
+        # (assertEqual ... -20) replaced; inst_foreign_sell no longer fires at any ratio.
+        self.assertEqual(config.FACTOR_PTS["inst_foreign_sell"], 0)
         r = strategy.score_stock(make_df(np.linspace(100, 120, 30)),
                                  institutional={"foreign": -5000})
-        self.assertEqual(r["factors"].get("外資賣超"), -20)
+        self.assertNotIn("外資賣超", r["factors"])
 
     def test_rsi_overbought_penalty(self):
         # monotonic rise → RSI saturates >75

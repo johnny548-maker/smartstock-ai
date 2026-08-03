@@ -114,9 +114,31 @@ FACTOR_PTS = {
                              #   factors (normal single-factor IC ~0.01-0.05); rsi's negative IC
                              #   is expected (non-monotonic) with a healthy edge 2.31 → KEPT.
                              #   See .decisions/2026-06-21-vol-stable-demotion.md.
-    "inst_foreign_buy": 15,  # 外資買超 (× liquidity mult)
-    "inst_foreign_sell": -20,  # 外資賣超 (× liquidity mult)
-    "inst_trust_buy": 10,    # 投信買超
+    "inst_foreign_buy": 0,   # 外資買超 (× liquidity mult) — DEMOTED 2026-08-03 (was 15): the
+                             #   keyless, PIT-lagged, multi-year T86-based institutional-flow
+                             #   panel (factor_panels_aux.instflow_panel) WAS run through the
+                             #   rigorous aux-combo IC screen and FAILED — rank-IC -0.0122,
+                             #   below the 0.05 floor, excluded from the combo (commit
+                             #   01025ee4f, 2026-07-14, optimize_tw_aux.txt "IC screen ...
+                             #   instflow: -0.012249..."). Same demotion-only governance as
+                             #   vol_stable/near_high (above): weight -> 0, factor stays
+                             #   registered in FACTOR_PTS, 0-weight never enters the factors
+                             #   dict (chip cards drop it naturally, reversibly, without
+                             #   editing strategy.py). CAVEAT (inference strength, documented
+                             #   not hidden): the aux combo's instflow panel is a COMBINED
+                             #   foreign+trust net/20d-volume ratio (factor_panels_aux.py), while
+                             #   the live scorer's liquidity-gated buy/sell/trust SPLIT
+                             #   (strategy.py:117-128, INST_RATIO_FULL/HALF) is a sibling
+                             #   implementation of the same institutional-flow hypothesis, not
+                             #   literally the same code path. User-approved 2026-08-03 under
+                             #   standing demotion-only governance given that caveat. Re-promote
+                             #   ONLY after a passing keyless IC re-gate of this split
+                             #   formulation. See .decisions/2026-08-03-instflow-demotion.md and
+                             #   check_factor_drift.py's instflow watch-list entry.
+    "inst_foreign_sell": 0,  # 外資賣超 (× liquidity mult) — DEMOTED 2026-08-03 (was -20): same
+                             #   instflow IC-screen failure + caveat as inst_foreign_buy above.
+    "inst_trust_buy": 0,     # 投信買超 — DEMOTED 2026-08-03 (was 10): same instflow IC-screen
+                             #   failure + caveat as inst_foreign_buy above.
     "rs_strong": 20,         # 相對強弱(強於大盤)
     "rs_mild": 15,           # 相對強弱(優於大盤)
     "rs_weak": -10,          # 相對弱勢(弱於大盤)
@@ -351,7 +373,11 @@ TWSE_LIST_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_DAYALL_URL = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
 TPEX_LIST_URL = "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O"
 TPEX_DAYALL_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
-HTTP_UA = {"User-Agent": "smartstock-ai/1.0 (github actions; contact johnny548@gmail.com)"}
+# Not a secret (SEC EDGAR/TWSE etc. require a descriptive contact in the UA string, and this one
+# is already public in git history) — env-overridable so a fork/deploy doesn't have to carry the
+# maintainer's personal address as a hardcoded literal (R1-19, 2026-08-03 audit hygiene).
+CONTACT_EMAIL = os.environ.get("SMARTSTOCK_CONTACT_EMAIL", "johnny548@gmail.com")
+HTTP_UA = {"User-Agent": f"smartstock-ai/1.0 (github actions; contact {CONTACT_EMAIL})"}
 OPP_TW_CAP_N = 400            # top-N TW names by dollar-volume eligible for the scan
 OPP_SCAN_LIMIT = 600         # full eligible universe: TW(400) + US CSV(~130) + anchors(~20)
                              # Raised from 260 (old artificial cap silently dropped ~9% of names).
@@ -362,7 +388,7 @@ OPP_RS_MIN = 80              # cross-sectional RS-Rating floor for a leadership 
 # SEC EDGAR — keyless US fundamental spine (quarterly revenue acceleration)
 EDGAR_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 EDGAR_FACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
-EDGAR_UA = "SmartStockDaily johnny548@gmail.com"   # SEC requires a descriptive UA (blank → 403)
+EDGAR_UA = f"SmartStockDaily {CONTACT_EMAIL}"   # SEC requires a descriptive UA (blank → 403)
 EDGAR_CACHE = os.path.join(_HERE, ".cache", "edgar")
 EDGAR_REVENUE_CONCEPTS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
                           "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet"]

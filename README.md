@@ -100,7 +100,9 @@ schtasks /Create /TN "SmartStock Daily" ^
 ## 測試
 
 ```bash
-python test_smartstock.py    # 19 個單元測試（純邏輯，無網路）
+python test_smartstock.py    # 這個檔本身就有 300+ 個單元測試（純邏輯，無網路）
+python -m pytest test_*.py   # 全 repo：2,405 個測試 / 82 個 test_*.py 檔（含 tools/maintenance/
+                              # 2 檔），2026-08-03 量測（`grep -c "def test_" test_*.py` 加總）
 ```
 
 ## 架構
