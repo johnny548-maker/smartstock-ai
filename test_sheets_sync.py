@@ -699,6 +699,37 @@ class TestSyncAllTabsMocked(unittest.TestCase):
         oc = sh.worksheets_by_title["outcomes"]
         self.assertEqual(len(oc._rows) - 1, 2)
 
+    def test_sync_payload_returns_per_tab_counts(self):
+        """R5-01: sync_payload's per-tab result dict must be returned (not discarded) so
+        callers like heal_missing() can inspect it for -1 (SKIP) sentinels."""
+        sh = _FakeSheet()
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES):
+            result = ss.sync_payload(sh, self._payload())
+        self.assertIsInstance(result, dict)
+        for tab in ("picks", "market", "opportunity", "news", "early_board", "watchlist",
+                    "outcomes"):
+            self.assertIn(tab, result)
+        self.assertNotIn(-1, result.values(), "no tab should have failed in this happy path")
+
+    def test_sync_payload_reports_tab_failure_as_negative_one(self):
+        """A raising _upsert on one tab must surface as -1 in the returned dict for
+        that tab specifically (other tabs stay at their real counts)."""
+        sh = _FakeSheet()
+        real_upsert = ss._upsert
+
+        def flaky_upsert(ws, date_str, rows):
+            if ws.title == "watchlist":
+                raise RuntimeError("boom")
+            return real_upsert(ws, date_str, rows)
+
+        with mock.patch.object(ss, "load_watchlist_state", return_value=SAMPLE_WATCHLIST_STATE), \
+             mock.patch.object(ss, "load_outcomes", return_value=SAMPLE_OUTCOMES), \
+             mock.patch.object(ss, "_upsert", side_effect=flaky_upsert):
+            result = ss.sync_payload(sh, self._payload())
+        self.assertEqual(result["watchlist"], -1)
+        self.assertNotEqual(result["outcomes"], -1)
+
 
 # ───────────────────────── my_positions read / echo-write (M2) ──────────────────────────
 
@@ -1333,6 +1364,33 @@ class TestHealMissingIntegration(unittest.TestCase):
                          "outcomes (global aggregate) is skipped when sync_outcomes=False")
         self.assertIn("picks", sh.worksheets_by_title, "per-date tabs still sync")
 
+    def test_heal_missing_summary_reports_failed_tabs(self):
+        """R5-01: a per-tab -1 (from sync_payload's now-returned result dict) must surface
+        in heal_missing()'s returned summary under 'failed' — previously the whole result
+        dict was discarded so a heal-missing tab failure was invisible to the caller."""
+        import datetime as _dt
+        sh = _FakeSheet()
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]), \
+                 mock.patch.object(ss, "sync_payload",
+                                   return_value={"picks": -1, "market": 1}):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["failed"], {"2026-06-26": ["picks"]})
+
+    def test_heal_missing_summary_empty_failed_when_all_tabs_ok(self):
+        import datetime as _dt
+        sh = _FakeSheet()
+        with tempfile.TemporaryDirectory() as td:
+            self._write_day(td, "2026-06-26")
+            with mock.patch.object(ss, "load_watchlist_state", return_value={"tracked": {}}), \
+                 mock.patch.object(ss, "load_outcomes", return_value=[]):
+                summary = ss.heal_missing(sh, days=1, data_dir=td,
+                                          today=_dt.date(2026, 6, 26), pace_s=0)
+        self.assertEqual(summary["failed"], {})
+
     def test_heal_writes_outcomes_once_for_multiday(self):
         """The outcomes full-replace (the big global write) runs ONCE for a multi-day heal,
         not once per gap day — the remaining per-minute-quota driver, now bounded."""
@@ -1443,6 +1501,30 @@ class TestHealMissingCLI(unittest.TestCase):
         self.assertEqual(mh.call_args.kwargs.get("days"), 12)
         msync.assert_not_called()
 
+    def test_heal_missing_cli_returns_nonzero_on_tab_failure(self):
+        """R5-01: main() must propagate heal_missing()'s per-tab failures as a non-zero
+        exit code — monthly-sheet-backfill.yml has no tee+grep sentinel for this mode
+        (unlike daily.yml's per-day mirror steps), so the exit code IS the failure signal."""
+        fake_sh = object()
+        fake_client = mock.Mock()
+        fake_client.open_by_key.return_value = fake_sh
+        with mock.patch.object(ss, "get_client", return_value=fake_client), \
+             mock.patch.object(ss, "heal_missing",
+                               return_value={"synced": ["2026-06-26"],
+                                             "failed": {"2026-06-26": ["picks"]}}):
+            rc = ss.main(["--heal-missing"])
+        self.assertEqual(rc, 1)
+
+    def test_heal_missing_cli_returns_zero_when_no_failures(self):
+        fake_sh = object()
+        fake_client = mock.Mock()
+        fake_client.open_by_key.return_value = fake_sh
+        with mock.patch.object(ss, "get_client", return_value=fake_client), \
+             mock.patch.object(ss, "heal_missing",
+                               return_value={"synced": ["2026-06-26"], "failed": {}}):
+            rc = ss.main(["--heal-missing"])
+        self.assertEqual(rc, 0)
+
 
 class TestBatchedDelete(unittest.TestCase):
     """D: deletes use ranged delete_rows(start, end) — 1 call per contiguous block, not 1/row.
@@ -1485,6 +1567,62 @@ class TestBatchedDelete(unittest.TestCase):
         ws.update(values=[["a", "b"]], range_name="A1")  # header only, no data rows
         ss._replace_all(ws, [["y", "0"]])
         self.assertEqual(ws.delete_calls, [], "nothing to delete when only header present")
+
+
+class TestUpsertReplaceAllAppendBeforeDelete(unittest.TestCase):
+    """R5-02: _upsert() and _replace_all() used to delete-then-append with no try/except
+    around the split — a non-429 failure between the two calls permanently lost the
+    just-deleted rows with nothing written back (_sync_tab/_sync_replace_tab's except only
+    retries on _is_rate_limit, everything else SKIPs+returns -1 with no rollback). Fixed by
+    reordering to append-before-delete (same fix as R5-03 in sheets_sync_allstocks.py's
+    _replace_tab_rows/_upsert_allstocks_keyset): the old row indices are captured from a
+    read done BEFORE the append, so they stay valid — the new rows land after them."""
+
+    def test_upsert_append_failure_preserves_old_date_rows(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["date", "v"]], range_name="A1")
+        ws.append_rows([["D", "1"], ["E", "2"]])
+        ws.append_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            ss._upsert(ws, "D", [["D", "new"]])
+        self.assertEqual(ws.delete_calls, [], "delete must not run before a successful append")
+        dates = [r[0] for r in ws._rows[1:]]
+        self.assertIn("D", dates, "stale D row must survive the failed append")
+        self.assertIn("E", dates)
+
+    def test_upsert_delete_failure_after_append_leaves_stale_plus_fresh(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["date", "v"]], range_name="A1")
+        ws.append_rows([["D", "1"], ["E", "2"]])
+        ws.delete_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            ss._upsert(ws, "D", [["D", "new"]])
+        rows = [r[:] for r in ws._rows[1:]]
+        self.assertIn(["D", "1"], rows, "stale D row must still be present (delete failed)")
+        self.assertIn(["D", "new"], rows, "new row must be present (append already succeeded)")
+
+    def test_replace_all_append_failure_preserves_old_rows(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["a", "b"]], range_name="A1")
+        ws.append_rows([["old1", "1"], ["old2", "2"]])
+        ws.append_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            ss._replace_all(ws, [["new", "9"]])
+        self.assertEqual(ws.delete_calls, [], "delete must not run before a successful append")
+        self.assertEqual(ws._rows[1:], [["old1", "1"], ["old2", "2"]],
+                         "old rows must survive the failed append")
+
+    def test_replace_all_delete_failure_after_append_leaves_stale_plus_fresh(self):
+        ws = _FakeWorksheet("t")
+        ws.update(values=[["a", "b"]], range_name="A1")
+        ws.append_rows([["old1", "1"], ["old2", "2"]])
+        ws.delete_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            ss._replace_all(ws, [["new", "9"]])
+        data = ws._rows[1:]
+        self.assertIn(["old1", "1"], data)
+        self.assertIn(["old2", "2"], data)
+        self.assertIn(["new", "9"], data)
 
 
 if __name__ == "__main__":

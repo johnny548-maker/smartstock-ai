@@ -1067,8 +1067,17 @@ def _upsert_allstocks_keyset(ws, key_col_idx, keys, rows):
 
     Deletes contiguous matching row blocks with a single ranged delete_rows(start,
     end) call (1 call/block, not 1/row), bottom-up so lower indices stay valid.
-    Every Sheets call is wrapped in _write_with_retry (429 backoff)."""
+    Every Sheets call is wrapped in _write_with_retry (429 backoff).
+
+    R5-03 fix: APPENDS the new rows before deleting the old matching ones (the old
+    row indices are captured up-front, before the append, so they stay valid — the
+    new rows land after the old last row). If append_rows raises, the old rows for
+    these keys are still untouched (nothing deleted yet). If delete_rows raises
+    afterwards, the tab is left with stale+fresh rows for the key (self-heals on the
+    next successful run) instead of the previous delete-then-append order, where an
+    append failure permanently lost the just-deleted rows with nothing written back."""
     keys = {k for k in (keys or set()) if k}
+    runs = []
     if keys:
         col_1based = key_col_idx + 1
         # reads can 429 too — wrap the present-keys read in the same backoff
@@ -1076,12 +1085,13 @@ def _upsert_allstocks_keyset(ws, key_col_idx, keys, rows):
                                 what=f"read {ws.title}")  # header at index 0
         dups = [i + 1 for i, v in enumerate(col) if i >= 1 and v in keys]
         runs = _contiguous_runs(sorted(dups))
-        # Delete bottom-up so earlier indices stay valid as rows are removed
-        for start, end in sorted(runs, key=lambda r: r[0], reverse=True):
-            _write_with_retry(ws.delete_rows, start, end, what=f"delete {ws.title}")
     if rows:
         _write_with_retry(ws.append_rows, rows, value_input_option="USER_ENTERED",
                           what=f"append {ws.title}")
+    # Delete the OLD matching rows only after the append succeeded, bottom-up so
+    # earlier indices stay valid as rows are removed.
+    for start, end in sorted(runs, key=lambda r: r[0], reverse=True):
+        _write_with_retry(ws.delete_rows, start, end, what=f"delete {ws.title}")
 
 
 def _upsert_allstocks(ws, date_col_idx, date_str, rows):
@@ -1098,15 +1108,25 @@ def _replace_tab_rows(ws, rows):
 
     For cumulative-snapshot sources (sec_ftd: the semimonthly file re-lists the whole
     period every day) where per-key upsert is meaningless and append-only floods the
-    10M-cell cap. One ranged delete (row 2..last non-empty) + one append. Callers MUST
-    guard rows non-empty — an empty fetch must never wipe an archive tab."""
+    10M-cell cap. One append + one ranged delete (row 2..last-BEFORE-append). Callers
+    MUST guard rows non-empty — an empty fetch must never wipe an archive tab.
+
+    R5-03 fix: appends the fresh rows BEFORE deleting the old ones (the old row range
+    is captured from `last` before the append, so it stays valid — the new rows land
+    after it). A non-429 failure between the two calls used to run delete-then-append,
+    which could leave the ENTIRE archive tab (up to ~58k rows for sec_ftd_semimonthly)
+    empty until the next successful run if the append then failed. With append first:
+    an append failure leaves the old rows fully intact (nothing deleted yet), and a
+    delete failure after a successful append leaves stale+fresh rows together —
+    recoverable duplication that the next successful run's delete/append cleans up,
+    never an empty tab."""
     col = _write_with_retry(ws.col_values, 1, what=f"read {ws.title}")
     last = len(col)
-    if last > 1:
-        _write_with_retry(ws.delete_rows, 2, last, what=f"clear {ws.title}")
     if rows:
         _write_with_retry(ws.append_rows, rows, value_input_option="USER_ENTERED",
                           what=f"append {ws.title}")
+    if last > 1:
+        _write_with_retry(ws.delete_rows, 2, last, what=f"clear {ws.title}")
 
 
 # ── Index helpers ─────────────────────────────────────────────────────────────

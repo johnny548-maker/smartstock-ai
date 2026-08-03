@@ -64,6 +64,7 @@ jobs:
       # ~1-read no-op. This replaces the naive per-day loop that re-wrote all 40 days and
       # exhausted the Sheets 60-writes/min quota (observed run 28247281154: 11 days dropped).
       - name: Heal missing days in the Google Sheet (trailing 40d)
+        id: heal_missing
         env:
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
           SHEETS_ID: 1-pZRldRcTglT8rkBiQAnRdDigu4KnHdcT2WF-WfxmVM
@@ -72,5 +73,37 @@ jobs:
           if [ -z "${GOOGLE_SA_JSON:-}" ]; then
             echo "::error::GOOGLE_SA_JSON secret not set — cannot sync the Sheet."; exit 1
           fi
-          python sheets_sync.py --heal-missing --days 40
+          python sheets_sync.py --heal-missing --days 40 2>&1 | tee "${RUNNER_TEMP}/sheets_heal_missing.log"
           echo "::notice::monthly heal-missing Sheet sync complete"
+
+      # Audit finding R5-01 (2026-08-03): this job's only Sheets step (--heal-missing) always
+      # `return 0` regardless of per-tab write failures, and unlike daily.yml's 'Sheet-sync
+      # sentinel' (added for the 2026-07-17 audit finding 3), nothing here teed the log or
+      # grepped it for a failure signature — a heal-missing tab=-1 during the monthly drift-heal
+      # went completely undetected (job stayed green). sheets_sync.py's main() now returns a
+      # non-zero exit when heal_missing() reports any per-tab -1, so `set -euo pipefail` in the
+      # step above already fails it on that path (steps.heal_missing.outcome == 'failure'); this
+      # sentinel mirrors daily.yml's belt-and-suspenders log-grep in case a Traceback or a future
+      # regression bypasses the clean return path without tripping the step's own exit code.
+      - name: Sheet-sync sentinel (fail on tab=-1 or heal-missing step failure)
+        if: always()
+        run: |
+          set -euo pipefail
+          FAIL=0
+          if [ "${{ steps.heal_missing.outcome }}" = "failure" ]; then
+            echo "::error::heal-missing Sheet sync step failed (see 'Heal missing days in the Google Sheet' log)"
+            FAIL=1
+          fi
+          LOG="${RUNNER_TEMP}/sheets_heal_missing.log"
+          # per-tab failures surface as "SKIP <title> tab..." lines and/or a "FAILED tab(s):"
+          # summary line (sheets_sync.py's heal_missing()); match both to avoid relying on
+          # exit-code propagation alone.
+          if [ -f "$LOG" ] && grep -E "SKIP .+ tab" "$LOG"; then
+            echo "::error::heal-missing skipped >=1 tab (matched lines above)"
+            FAIL=1
+          fi
+          if [ -f "$LOG" ] && grep -E "': -1[,}]|FAILED tab" "$LOG"; then
+            echo "::error::heal-missing reported a tab failure (matched line above)"
+            FAIL=1
+          fi
+          [ "$FAIL" = "0" ]

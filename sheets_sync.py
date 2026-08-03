@@ -756,13 +756,25 @@ def _upsert(ws, date_str, rows):
     """Idempotent: delete any existing rows for date_str, then append `rows`.
     Deletes contiguous row blocks with a single ranged delete (1 call/block, not 1/row)
     and processes blocks bottom-up so lower indices stay valid — slashes write calls on
-    re-syncs (the main Sheets 60-writes/min quota pressure)."""
+    re-syncs (the main Sheets 60-writes/min quota pressure).
+
+    R5-02 fix: appends the new rows BEFORE deleting the OLD date_str rows (their row
+    numbers are captured from a read done before the append, so they stay valid — the
+    new rows land after them). Previously this ran delete-then-append with no try/except
+    around the split; a non-429 failure in append_rows after a successful delete
+    permanently lost that date's rows with nothing written back (_sync_tab's except only
+    retries on a 429, everything else SKIPs+returns -1, no rollback). With append first,
+    an append failure leaves the old rows untouched, and a delete failure afterwards
+    leaves stale+fresh rows together (self-heals on the next successful re-sync) instead
+    of losing data. Same fix as sheets_sync_allstocks.py's _replace_tab_rows/
+    _upsert_allstocks_keyset (R5-03)."""
     date_col = ws.col_values(1)  # includes header at index 0
     dups = dup_row_numbers(date_col, date_str)
-    for start, end in sorted(_contiguous_runs(dups), reverse=True):
-        ws.delete_rows(start, end)
+    runs = sorted(_contiguous_runs(dups), reverse=True)
     if rows:
         ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
+    for start, end in runs:
+        ws.delete_rows(start, end)
 
 
 def _sync_tab(sh, title, headers, date_str, rows):
@@ -790,12 +802,17 @@ def _replace_all(ws, rows):
     """Full refresh: clear every data row (keep the header), then append `rows`.
     Used by the outcomes tab, which is a rolling aggregate keyed by picked_date
     (not the sync date) — a per-date upsert can't dedup it, so we rewrite it whole.
-    Idempotent: re-running yields the same row set."""
+    Idempotent: re-running yields the same row set.
+
+    R5-02 fix: appends before deleting the old rows (n is captured before the append,
+    so the row range 2..n stays valid — the new rows land after it). See _upsert's
+    docstring above for the failure-mode rationale (delete-then-append could wipe the
+    whole tab on an append failure; append-then-delete never does)."""
     n = len(ws.col_values(1))  # includes header
-    if n > 1:
-        ws.delete_rows(2, n)  # single ranged delete of ALL data rows (keep header)
     if rows:
         ws.append_rows(_json_safe(rows), value_input_option="USER_ENTERED")
+    if n > 1:
+        ws.delete_rows(2, n)  # single ranged delete of ALL OLD data rows (keep header)
 
 
 def _sync_replace_tab(sh, title, headers, rows):
@@ -826,7 +843,11 @@ def sync_payload(sh, payload, sync_outcomes=True):
     sync_outcomes=False skips the outcomes full-replace — outcomes is a GLOBAL aggregate
     (keyed by picked_date, identical every call), so a multi-day heal writes it ONCE instead
     of re-appending its (large) row set per gap day, which otherwise dominates the per-minute
-    write quota. The daily run leaves it True."""
+    write quota. The daily run leaves it True.
+
+    Returns {tab_name: row_count} (row_count == -1 means that tab's write SKIPped — see
+    _sync_tab/_sync_replace_tab). R5-01 fix: this used to be discarded by every caller,
+    so a heal-missing tab failure had no way to surface as a non-zero exit code."""
     date_str = payload.get("date")
 
     n_picks = _sync_tab(sh, "picks", PICKS_HEADERS, date_str, build_picks_rows(payload))
@@ -867,6 +888,8 @@ def sync_payload(sh, payload, sync_outcomes=True):
         f"news={n_news} early_board={n_eb} watchlist={n_wl} outcomes={n_oc} "
         f"positions_echo={n_pe} (-1 = tab skipped)"
     )
+    return {"picks": n_picks, "market": n_market, "opportunity": n_opp, "news": n_news,
+            "early_board": n_eb, "watchlist": n_wl, "outcomes": n_oc}
 
 
 def _load_day(day, data_dir=None):
@@ -946,7 +969,12 @@ def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
     is quota-light). A fully-present day writes nothing. Distinguishes a legitimately-empty
     optional tab (payload has no rows -> not expected -> not a gap) from a dropped write.
 
-    Returns a summary dict {window, candidates, checked_tabs, missing, synced}."""
+    Returns a summary dict {window, candidates, checked_tabs, missing, synced, failed}.
+    failed is {day: [tab_names]} for any day where sync_payload() reported a -1 (SKIP) on
+    one or more tabs — R5-01 fix: previously sync_payload()'s per-tab result was discarded
+    here, so a heal-missing tab failure was invisible to both this summary and main()'s
+    exit code (monthly-sheet-backfill.yml has no tee+grep sentinel for this mode, unlike
+    daily.yml's per-day mirror steps)."""
     data_dir = data_dir or DATA_DIR
     if today is None:
         today = datetime.now(timezone.utc).date()
@@ -955,6 +983,7 @@ def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
     _log(f"heal-missing: window={days}d candidates_with_file={len(candidates)} "
          f"gap_days={len(missing)} (per-tab check: {','.join(GAP_CHECK_TABS)})")
     synced = []
+    failed = {}
     last_idx = len(missing) - 1
     for i, day in enumerate(missing):
         payload = _load_day(day, data_dir)
@@ -962,13 +991,17 @@ def heal_missing(sh, days=DEFAULT_HEAL_DAYS, data_dir=None, today=None,
             continue
         # outcomes is a global aggregate — write it only once (on the last gap day) so a
         # multi-day heal doesn't re-append its large row set per day (the main quota driver).
-        sync_payload(sh, payload, sync_outcomes=(i == last_idx))
+        counts = sync_payload(sh, payload, sync_outcomes=(i == last_idx))
+        bad_tabs = [tab for tab, n in counts.items() if n == -1]
+        if bad_tabs:
+            failed[day] = bad_tabs
         synced.append(day)
         if pace_s and i < last_idx:
             time.sleep(pace_s)
-    _log(f"heal-missing done: synced {len(synced)}/{len(missing)} gap day(s): {synced}")
+    _log(f"heal-missing done: synced {len(synced)}/{len(missing)} gap day(s): {synced}"
+         + (f" — FAILED tab(s): {failed}" if failed else ""))
     return {"window": days, "candidates": candidates, "checked_tabs": list(GAP_CHECK_TABS),
-            "missing": missing, "synced": synced}
+            "missing": missing, "synced": synced, "failed": failed}
 
 
 def main(argv=None):
@@ -1006,7 +1039,14 @@ def main(argv=None):
         return 0
 
     if args.heal_missing:
-        heal_missing(sh, days=args.days)
+        result = heal_missing(sh, days=args.days)
+        failed = result.get("failed") or {}
+        if failed:
+            n_tabs = sum(len(v) for v in failed.values())
+            _log(f"heal-missing: {n_tabs} tab-failure(s) across {len(failed)} day(s) — "
+                 f"{failed} (R5-01: failing the run since monthly-sheet-backfill.yml has "
+                 f"no log-grep sentinel to catch a silent exit 0 for this mode)")
+            return 1
         return 0
 
     if args.backfill:

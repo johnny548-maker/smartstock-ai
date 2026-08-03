@@ -2048,6 +2048,31 @@ class TestUpsertKeyset(unittest.TestCase):
         self.assertEqual(ws.delete_calls, 0)
         self.assertEqual(len(ws._rows), 3)
 
+    def test_append_failure_preserves_old_matching_rows(self):
+        """R5-03: append-before-delete reorder — if append_rows raises (non-429) the old
+        rows for the matching keys (identified but not yet deleted) must survive untouched,
+        instead of having already been deleted with nothing successfully written back."""
+        ws = _FakeWorksheetFull("t", headers=["k", "v"])
+        ws._rows += [["a", "1"], ["b", "2"]]
+        ws.append_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            sa._upsert_allstocks_keyset(ws, 0, {"a"}, [["a", "9"]])
+        self.assertEqual(ws.delete_calls, 0, "delete must not run before a successful append")
+        self.assertIn(["a", "1"], ws._rows[1:], "stale row for key 'a' must survive")
+
+    def test_delete_failure_after_append_leaves_stale_plus_fresh_not_empty(self):
+        """If the append succeeds but the subsequent delete of the now-superseded OLD rows
+        raises, the tab ends up with stale+fresh rows for that key (self-heals on the next
+        successful run) rather than the append being lost."""
+        ws = _FakeWorksheetFull("t", headers=["k", "v"])
+        ws._rows += [["a", "1"], ["b", "2"]]
+        ws.delete_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            sa._upsert_allstocks_keyset(ws, 0, {"a"}, [["a", "9"]])
+        data = ws._rows[1:]
+        self.assertIn(["a", "1"], data, "stale row must still be present (delete failed)")
+        self.assertIn(["a", "9"], data, "new row must be present (append already succeeded)")
+
 
 class TestReplaceTabRows(unittest.TestCase):
     """_replace_tab_rows: clear ALL data rows (keep header), rewrite in full."""
@@ -2064,6 +2089,33 @@ class TestReplaceTabRows(unittest.TestCase):
         sa._replace_tab_rows(ws, [["new", "9"]])
         self.assertEqual(ws.delete_calls, 0)
         self.assertEqual(len(ws._rows), 2)
+
+    def test_append_failure_preserves_old_rows(self):
+        """R5-03: _replace_tab_rows is delete-then-append, so a non-429 failure between
+        the clear and the append used to leave the ENTIRE archive tab empty (up to ~58k
+        rows for sec_ftd_semimonthly) until the next successful run. Reordered to
+        append-before-delete: a failed append must leave the old rows untouched."""
+        ws = _FakeWorksheetFull("t", headers=["a", "b"])
+        ws._rows += [["old1", "1"], ["old2", "2"]]
+        ws.append_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            sa._replace_tab_rows(ws, [["new", "9"]])
+        self.assertEqual(ws.delete_calls, 0, "delete must not run before a successful append")
+        self.assertEqual(ws._rows[1:], [["old1", "1"], ["old2", "2"]],
+                         "old rows must survive the failed append")
+
+    def test_delete_failure_after_append_leaves_stale_plus_fresh_not_empty(self):
+        """A failed delete (after a successful append) leaves stale+fresh rows together —
+        recoverable duplication on the next run, never the empty-tab blast radius."""
+        ws = _FakeWorksheetFull("t", headers=["a", "b"])
+        ws._rows += [["old1", "1"], ["old2", "2"]]
+        ws.delete_rows = mock.Mock(side_effect=RuntimeError("boom"))
+        with self.assertRaises(RuntimeError):
+            sa._replace_tab_rows(ws, [["new", "9"]])
+        data = ws._rows[1:]
+        self.assertIn(["old1", "1"], data)
+        self.assertIn(["old2", "2"], data)
+        self.assertIn(["new", "9"], data)
 
 
 class TestSecFtdReplaceTabSemantics(unittest.TestCase):
