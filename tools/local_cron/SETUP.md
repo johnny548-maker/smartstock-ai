@@ -4,7 +4,7 @@ Two independent local tasks fill data that GitHub Actions IPs cannot fetch:
 
 | Task | What | Sink | Schedule | SA JSON? |
 | ---- | ---- | ---- | -------- | -------- |
-| **`SmartStock-AllStocks-TWArchive`** (primary) | ALL 13 all-stocks sources incl TWSE bwibbu/mi_margn/t86/stock_day + TDCC | git-file (`docs/data/_allstocks/*.csv.gz`) | daily 14:45 TW | **no** (keyless) |
+| **`SmartStock-AllStocks-TWArchive`** (primary) | ALL 13 all-stocks sources incl TWSE bwibbu/mi_margn/t86/stock_day + TDCC | git-file (`archive/allstocks/*.csv.gz`) | daily 14:45 TW | **no** (keyless) |
 | `SmartStock_TDCC_Weekly` (legacy, optional) | TDCC only | Google Sheet | Mon 21:00 TW | yes |
 
 The **AllStocks-TWArchive** task supersedes the TDCC-weekly one for the canonical
@@ -18,7 +18,8 @@ pushes the gz-CSV files CI cannot produce (TWSE/TDCC block GH Actions IPs). `emi
 writes no file for an empty source, so CI never clobbers these.
 
 - **Runner:** `tools/local_cron/twse_archive.ps1` (defensive: aborts on pull conflict,
-  stages only `docs/data/_allstocks`, rebase-retry push, logs to `logs/`).
+  stages only `archive/allstocks` (moved out of `docs/` 2026-07-18, commit `87185bfd6`),
+  rebase-retry push, logs to `logs/`).
 - **Install:** `powershell -ExecutionPolicy Bypass -File tools\local_cron\install_allstocks_archive_task.ps1`
 - **Run now:** `Start-ScheduledTask -TaskName 'SmartStock-AllStocks-TWArchive'`
 - **Next run:** `(Get-ScheduledTaskInfo -TaskName 'SmartStock-AllStocks-TWArchive').NextRunTime`

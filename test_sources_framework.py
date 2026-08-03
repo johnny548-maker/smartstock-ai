@@ -13,6 +13,7 @@ import os
 import shutil
 import tempfile
 import unittest
+from unittest import mock
 
 from sources import _cache
 from sources import overlay
@@ -216,6 +217,69 @@ class TestCachedFetch(TmpDirCase):
 
         out = _cache.cached_fetch(p, "k", ttl_sec=10, now_ts=1, fetch_fn=boom)
         self.assertIsNone(out)
+
+
+# ──────────────────────────── retry_call (R3-006) ─────────────────────────────
+class TestRetryCall(unittest.TestCase):
+    """R3-006 audit fix: sources/ network fetchers had zero retry/backoff, so a
+    transient failure (timeout / 429 / connection reset) was indistinguishable from a
+    permanent break. retry_call is the shared bounded-retry primitive now wired into
+    sec._real_fetch / sec_frames._fetch_frames_url / sec_flows._fetch_bytes+_fetch_text
+    / altdata._real_fetch."""
+
+    def setUp(self):
+        self._sleep_patcher = mock.patch("sources._cache.time.sleep")
+        self._sleep_patcher.start()
+        self.addCleanup(self._sleep_patcher.stop)
+
+    def test_succeeds_first_try_no_retry(self):
+        calls = {"n": 0}
+
+        def fn():
+            calls["n"] += 1
+            return "ok"
+
+        out = _cache.retry_call(fn)
+        self.assertEqual(out, "ok")
+        self.assertEqual(calls["n"], 1)
+
+    def test_transient_failure_then_success_retries(self):
+        calls = {"n": 0}
+
+        def fn():
+            calls["n"] += 1
+            if calls["n"] < 3:
+                raise ConnectionError("transient")
+            return "recovered"
+
+        out = _cache.retry_call(fn, retries=3, backoff=0.01)
+        self.assertEqual(out, "recovered")
+        self.assertEqual(calls["n"], 3)
+
+    def test_exhausts_retries_reraises_last_exception(self):
+        calls = {"n": 0}
+
+        def fn():
+            calls["n"] += 1
+            raise TimeoutError("dead endpoint attempt %d" % calls["n"])
+
+        with self.assertRaises(TimeoutError) as ctx:
+            _cache.retry_call(fn, retries=3, backoff=0.01)
+        self.assertEqual(calls["n"], 3)
+        self.assertIn("attempt 3", str(ctx.exception))
+
+    def test_caller_except_boundary_still_catches_it(self):
+        """retry_call re-raises after exhausting attempts — callers keep their existing
+        try/except SKIP contract unchanged; this only adds resilience, not a new
+        failure mode callers must special-case."""
+        def fn():
+            raise OSError("dead")
+
+        try:
+            _cache.retry_call(fn, retries=2, backoff=0.01)
+            self.fail("should have raised")
+        except Exception as e:
+            self.assertIsInstance(e, OSError)
 
 
 # ──────────────────────────────── overlay ────────────────────────────────────

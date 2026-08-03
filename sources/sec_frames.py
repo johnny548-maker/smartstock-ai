@@ -36,6 +36,8 @@ unit-tested with a fixture frames JSON.
 import logging
 from urllib.request import Request, urlopen
 
+from sources import _cache
+
 log = logging.getLogger(__name__)
 
 # ── constants (self-contained; NOT added to config.py — overlay framework convention)
@@ -56,10 +58,13 @@ def _fetch_frames_url(url):
     The SEC CDN honours gzip encoding when requested, but _real_fetch then tries to
     decode the compressed bytes as UTF-8, producing garbage → json.loads failure.
     By omitting Accept-Encoding the server returns plain JSON text. NOT called in
-    tests (tests inject fetch_fn). No throttling needed (frames are CDN-served)."""
-    req = Request(url, headers={"User-Agent": SEC_UA})
-    with urlopen(req, timeout=_FRAMES_TIMEOUT) as resp:
-        raw = resp.read()
+    tests (tests inject fetch_fn). No throttling needed (frames are CDN-served).
+    R3-006: bounded retry with exponential backoff on transient failures."""
+    def _do():
+        req = Request(url, headers={"User-Agent": SEC_UA})
+        with urlopen(req, timeout=_FRAMES_TIMEOUT) as resp:
+            return resp.read()
+    raw = _cache.retry_call(_do, label="sec_frames._fetch_frames_url")
     return raw.decode("utf-8", errors="replace")
 
 

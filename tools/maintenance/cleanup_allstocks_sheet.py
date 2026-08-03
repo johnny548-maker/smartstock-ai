@@ -200,7 +200,8 @@ def main(argv=None):
                     help="target month YYYY-MM (default: current UTC month — "
                          "schedule runs carry no inputs)")
     ap.add_argument("--index-path", default=None,
-                    help="path to _allstocks_sheets_index.json (default: docs/data/)")
+                    help="path to _allstocks_sheets_index.json (default: "
+                         "archive/allstocks_sheets_index.json — moved out of docs/ 2026-07-18)")
     ap.add_argument("--allstocks-dir", default=None,
                     help="git archive root (default: archive/allstocks)")
     ap.add_argument("--apply", action="store_true",

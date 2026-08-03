@@ -451,7 +451,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 _it["beta_low_corr"] = _b["low_corr"]
                 _it["beta_n"] = _b["n"]
     except Exception as e:
-        log.warning("SKIP beta lens: %s", e)
+        log.warning("SKIP beta lens: %s", e); skips.append("beta_lens")
 
     # 4c. 早期訊號雷達 (RS線新高/安靜吸籌/型態 gated on 月營收/主題) — informational
     try:
@@ -490,6 +490,7 @@ def main(web=False, dry_run=False, date_arg=None):
     #     OVERLAY-NOT-SCORER — a badge failure must SKIP, never abort the run.
     pick_cards = {}
     fund_attached = 0
+    fund_badge_failed = 0
     for item in ranked[:config.DISPLAY_N]:
         sym = item["stock"]
         badge = None
@@ -501,6 +502,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 fund_attached += 1
         except Exception as e:
             log.warning("SKIP fundamental badge %s: %s", sym, e)
+            fund_badge_failed += 1
         # same partial-inputs cap as the verdict map — the card's light is what the PWA
         # renders on the most prominent board.
         pick_cards[sym] = cap_pick_card(
@@ -508,6 +510,10 @@ def main(web=False, dry_run=False, date_arg=None):
                 item["stock"], item["score"], item["factors"],
                 data.get(item["stock"]), level_map.get(item["stock"]), fundamental=badge),
             item)
+    if fund_badge_failed:
+        # R1-08 audit fix: per-symbol fundamental badge failures used to have zero
+        # visibility in payload['skips'] (only the surrounding log file saw them).
+        skips.append("fundamentals_badge:%d" % fund_badge_failed)
     try:
         if not dry_run:
             fundamentals.save_cache(fund_cache)    # persist any US PE/EPS fetched/cached
@@ -522,7 +528,7 @@ def main(web=False, dry_run=False, date_arg=None):
         if regime:
             log.info("market regime: %s (%d%% exposure)", regime["label"], regime["exposure"])
     except Exception as e:
-        log.warning("SKIP regime: %s", e); regime = None
+        log.warning("SKIP regime: %s", e); regime = None; skips.append("regime")
     # 5c-macro. FRED macro spine (B6): yield-curve / credit / NFCI RISK-CONTEXT
     #     OVERLAY — informational backdrop only, NEVER summed into risk or any
     #     stock score (要做回測才加權). The live ^VIX/^TNX risk input is untouched.
@@ -542,6 +548,7 @@ def main(web=False, dry_run=False, date_arg=None):
             top_n=config.DISPLAY_N, conc_data=pick_data, names=config.STOCK_NAMES)
     except Exception as e:
         log.warning("SKIP concentration: %s", e); concentration = None; conc_summary = {}
+        skips.append("concentration")
 
     # 5d. Earnings-blackout overlay (analyst G5): flag picks with a binary earnings
     #     event in the next 7d — INFORMATIONAL only, never a score change.
@@ -565,7 +572,7 @@ def main(web=False, dry_run=False, date_arg=None):
             if sym in pick_cards and c.get("watch_vol") and "earnings" not in pick_cards[sym]:
                 pick_cards[sym]["earn_watch"] = c
     except Exception as e:
-        log.warning("SKIP earnings guard: %s", e)
+        log.warning("SKIP earnings guard: %s", e); skips.append("earnings_guard")
 
     # 5d-pos. 我的持倉 (P2-S1): a holdings-aware overnight-risk lens BESIDE the daily picks.
     #     OVERLAY-NOT-SCORER / INFORMATIONAL: every output here is a SUGGESTION the user
@@ -603,12 +610,14 @@ def main(web=False, dry_run=False, date_arg=None):
                              len(_fetched or {}), len(_missing))
                 except Exception as _fe:
                     log.warning("SKIP positions universe-extend fetch: %s", _fe)
+                    skips.append("positions_universe_extend")
             # earnings blackout for HELD names (reuse the SAME on-disk earnings cache — no
             # extra fetch budget for names already annotated above).
             try:
                 _held_earn = earnings_mod.annotate(_held_syms, cache_path=ecache)
             except Exception as _ee:
                 log.warning("SKIP positions earnings annotate: %s", _ee); _held_earn = {}
+                skips.append("positions_earnings_annotate")
             _clusters = (concentration or {}).get("clusters") if isinstance(concentration, dict) else None
             pos_evals = positions_mod.evaluate_positions(
                 _pos_state, _pos_price, indicators.atr, _held_earn, _clusters)
@@ -634,6 +643,7 @@ def main(web=False, dry_run=False, date_arg=None):
             for _t in _tix:
                 _cluster_count[_t] = len(_tix)
         _pretrade_n = 0
+        _pretrade_failed = 0
         for _item in ranked[:config.DISPLAY_N]:
             _sym = _item["stock"]
             _card = pick_cards.get(_sym)
@@ -655,8 +665,11 @@ def main(web=False, dry_run=False, date_arg=None):
                 _pretrade_n += 1
             except Exception as _pte:
                 log.warning("SKIP pretrade %s: %s", _sym, _pte)
+                _pretrade_failed += 1
         if _pretrade_n:
             log.info("pretrade checklist: %d pick card(s)", _pretrade_n)
+        if _pretrade_failed:
+            skips.append("pretrade_checklist:%d" % _pretrade_failed)
     except Exception as e:
         log.warning("SKIP pretrade: %s", e); skips.append("pretrade")
 
@@ -702,7 +715,7 @@ def main(web=False, dry_run=False, date_arg=None):
     try:
         events = calendar_events.upcoming_events([it["stock"] for it in ranked[:config.TOP_N]])
     except Exception as e:
-        log.warning("SKIP calendar: %s", e); events = []
+        log.warning("SKIP calendar: %s", e); events = []; skips.append("calendar")
     delta_changes = delta_mod.compute_delta(
         {"picks": ranked, "risk": risk, "institutional": inst},
         delta_mod.load_prev(date_str))
@@ -766,6 +779,7 @@ def main(web=False, dry_run=False, date_arg=None):
                     log.info("revenue OHLCV: %d/%d candidates fetched", len(rev_ohlcv), len(rev_codes))
             except Exception as e:
                 log.warning("SKIP revenue OHLCV batch (falling back to metadata-only): %s", e)
+                skips.append("revenue_ohlcv_batch")
 
         # 雷達/全市場精選 stocks must carry the SAME 基本面 dict as picks (rev_yoy + accel) so
         # the detail sheet reaches parity. TW codes resolve via the buffered revenue state (no
@@ -931,7 +945,7 @@ def main(web=False, dry_run=False, date_arg=None):
             _n_chart += 1
         log.info("opportunity chart detail files: +%d", _n_chart)
     except Exception as e:
-        log.warning("SKIP opportunity detail files: %s", e)
+        log.warning("SKIP opportunity detail files: %s", e); skips.append("opportunity_detail_files")
 
     # itemC: full-US-market verdict coverage. No keyless bulk OHLC exists for US, so a ROTATING
     #   ~500-name batch of the full Nasdaq Trader directory (~5653 common stocks) is scored each
@@ -957,7 +971,7 @@ def main(web=False, dry_run=False, date_arg=None):
                         details[_usym] = stock_detail.build_detail(
                             _usym, df=_udf, name=_us_names.get(_usym))
                 except Exception as _de:
-                    log.warning("SKIP US detail files: %s", _de)
+                    log.warning("SKIP US detail files: %s", _de); skips.append("us_detail_files")
                 _store = us_market.merge_store(
                     us_market.load_store(config.US_VERDICTS_STATE), _fresh, date_str)
                 if not dry_run:
@@ -986,7 +1000,7 @@ def main(web=False, dry_run=False, date_arg=None):
             log.info("opp/US chart detail files flushed: %d total",
                      len(stock_detail.export_details(details, config.WEB_DIR)))   # a list, not int
     except Exception as _fe:
-        log.warning("SKIP opp/US detail flush: %s", _fe)
+        log.warning("SKIP opp/US detail flush: %s", _fe); skips.append("opp_us_detail_flush")
 
     # P2 item8: holdings ↔ verdict second-pass. Positions were evaluated early (line ~386,
     #   before verdict_map existed). Now that verdict_map (core + opportunity universe) is
@@ -996,7 +1010,7 @@ def main(web=False, dry_run=False, date_arg=None):
         if my_positions:
             my_positions = positions_mod.merge_verdict_alerts(my_positions, verdict_map)
     except Exception as e:
-        log.warning("SKIP holdings↔verdict merge: %s", e)
+        log.warning("SKIP holdings↔verdict merge: %s", e); skips.append("holdings_verdict_merge")
 
     # Belt-and-suspenders: drop the heavy OHLCV frames from opp now that the
     # detail-file loop (A3) has consumed them.  web_export.build_payload also
@@ -1058,6 +1072,19 @@ def main(web=False, dry_run=False, date_arg=None):
             n_ov += len(ovs)
         source_coverage[source_name] = {"ok": codes > 0, "codes": codes, "overlays": n_ov}
 
+    def _mark_coverage_absent(*names):
+        """R1-09 audit fix: when an overlay block's try raises BEFORE every
+        _merge_overlays()/source_coverage[...] write inside it has run, the source(s) not
+        yet reached get NO source_coverage entry at all — a worse signal than an empty-
+        but-alive 'skip', because data_health._check_sources only iterates keys that ARE
+        present (an absent key produces no health entry whatsoever). Call this in the
+        except-block for every source name that guarded try owns, so a hard failure is
+        stamped fail-closed (ok:false) instead of silently vanishing from source_coverage.
+        Never overwrites an entry a successful call already wrote."""
+        for name in names:
+            if name not in source_coverage:
+                source_coverage[name] = {"ok": False, "codes": 0, "overlays": 0}
+
     # symbols of interest = the displayed picks (bare TWSE code + full symbol both kept so
     # a {2330 -> ...} overlay map resolves to a 2330.TW card and vice-versa).
     # Fix 4 (GAP D): WIDEN coverage beyond the ~12 displayed picks to the radar cohort —
@@ -1086,7 +1113,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 from sources import _cache as _src_cache
                 _src_cache.archive_snapshot(_twse_archive, _cache_date, parsed)
             except Exception as e:
-                log.warning("SKIP T86 snapshot archive: %s", e)
+                log.warning("SKIP T86 snapshot archive: %s", e); skips.append("t86_snapshot_archive")
         _merge_overlays(_twse.to_overlays_t86(t86_rows, symbols=_tw_codes, as_of=date_str),
                         "twse_t86")
         margin_rows = _twse.fetch_margin()
@@ -1096,6 +1123,7 @@ def main(web=False, dry_run=False, date_arg=None):
         _merge_overlays(_twse.to_overlays_pe(pe_rows, symbols=_tw_codes), "twse_pe")
     except Exception as e:
         log.warning("SKIP twse overlays: %s", e); skips.append("twse_overlays")
+        _mark_coverage_absent("twse_t86", "twse_margin", "twse_pe")
 
     # --- TPEx 上櫃 mirror (3insti + margin + PE) — OTC chip intelligence ----------------
     try:
@@ -1108,6 +1136,7 @@ def main(web=False, dry_run=False, date_arg=None):
             "tpex")
     except Exception as e:
         log.warning("SKIP tpex overlays: %s", e); skips.append("tpex_overlays")
+        _mark_coverage_absent("tpex")
 
     # --- W2: TWSE 注意股 / 處置股 regulatory-flag overlays (kind='risk') -----------------
     #     Per-code risk badges (⚠️注意股 / 🚫處置股第N次) beside any flagged pick. Independent
@@ -1120,6 +1149,7 @@ def main(web=False, dry_run=False, date_arg=None):
                         "twse_punish")
     except Exception as e:
         log.warning("SKIP notice/disposition overlays: %s", e); skips.append("notice_overlays")
+        _mark_coverage_absent("twse_notice", "twse_punish")
 
     # --- W4: 融券佔流通股% per-stock overlay (MI_MARGN 融券餘額 ÷ 已發行普通股數) ----------
     #     Pairs the existing MI_MARGN 融券數據 with a t187ap03_L float map to compute the
@@ -1133,6 +1163,7 @@ def main(web=False, dry_run=False, date_arg=None):
             "twse_short")
     except Exception as e:
         log.warning("SKIP short_pct overlays: %s", e); skips.append("short_pct_overlays")
+        _mark_coverage_absent("twse_short")
 
     # --- TDCC 集保戶股權分散 (weekly 大戶集中度) — save weekly archive for WoW trend ----
     try:
@@ -1144,7 +1175,7 @@ def main(web=False, dry_run=False, date_arg=None):
             try:
                 _tdcc.save_weekly(tdcc_rows, _tdcc_date, archive_dir=_tdcc_arch_dir)
             except Exception as e:
-                log.warning("SKIP tdcc weekly archive: %s", e)
+                log.warning("SKIP tdcc weekly archive: %s", e); skips.append("tdcc_weekly_archive")
             # last week's rows (if accrued) → WoW 大戶吸籌/散戶化 verdict, else snapshot-only.
             # Only the single most-recent PRIOR week is needed — read that one file (gzip-aware)
             # instead of merging every ~6.4MB weekly snapshot in the archive.
@@ -1159,6 +1190,7 @@ def main(web=False, dry_run=False, date_arg=None):
             source_coverage["tdcc"] = {"ok": False, "codes": 0, "overlays": 0}
     except Exception as e:
         log.warning("SKIP tdcc overlays: %s", e); skips.append("tdcc_overlays")
+        _mark_coverage_absent("tdcc")
 
     # --- SEC EDGAR Form-4 內部人交易 (US picks only) ------------------------------------
     try:
@@ -1186,6 +1218,7 @@ def main(web=False, dry_run=False, date_arg=None):
             source_coverage["sec"] = {"ok": False, "codes": 0, "overlays": 0}
     except Exception as e:
         log.warning("SKIP sec overlays: %s", e); skips.append("sec_overlays")
+        _mark_coverage_absent("sec")
 
     # 7e-P2. sources/ P2 keyless overlays — market/sector ENVIRONMENT + extra per-stock
     #     overlays. Same OVERLAY-NOT-SCORER contract: nothing here touches the scoring call
@@ -1211,6 +1244,7 @@ def main(web=False, dry_run=False, date_arg=None):
         }
     except Exception as e:
         log.warning("SKIP taifex environment: %s", e); skips.append("taifex_env")
+        _mark_coverage_absent("taifex")
 
     # --- W4: TPEx 上櫃現股當沖市場統計 — MARKET-WIDE daytrade ratio (NOT per-stock) -----------
     #     A single market-level gauge (當沖佔成交量%, 投機熱 when > threshold) → environment
@@ -1223,6 +1257,7 @@ def main(web=False, dry_run=False, date_arg=None):
         source_coverage["tpex_daytrade"] = {"ok": bool(_daytrade), "keys": 1 if _daytrade else 0}
     except Exception as e:
         log.warning("SKIP tpex_daytrade environment: %s", e); skips.append("tpex_daytrade_env")
+        _mark_coverage_absent("tpex_daytrade")
 
     # --- macro_tw industry/sector environment (外銷訂單→出貨→產出 + 景氣對策信號) — 24h cache -
     try:
@@ -1248,7 +1283,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 if _cyc.get("state"):
                     environment["electronics_cycle"] = _cyc
             except Exception as _ce:
-                log.warning("SKIP electronics_cycle: %s", _ce)
+                log.warning("SKIP electronics_cycle: %s", _ce); skips.append("electronics_cycle")
             # per-gauge coverage: a module-level 'ok' driven by ANY live gauge let 4 of the
             # 5 sit dead for two months without a health signal.
             source_coverage["macro_tw"] = macro_tw_coverage(_industry_env)
@@ -1292,6 +1327,7 @@ def main(web=False, dry_run=False, date_arg=None):
             source_coverage["sec_frames"] = {"ok": False, "codes": 0, "overlays": 0}
     except Exception as e:
         log.warning("SKIP sec_frames overlays: %s", e); skips.append("sec_frames_overlays")
+        _mark_coverage_absent("sec_frames")
 
     # --- peer (同業) valuation percentile overlays (M4) — where a name sits vs its peers ----
     #     ZERO new data source: a RECOMBINATION of feeds already pulled today. US = the SEC
@@ -1341,6 +1377,7 @@ def main(web=False, dry_run=False, date_arg=None):
                         "peer_valuation_tw")
     except Exception as e:
         log.warning("SKIP peer_valuation overlays: %s", e); skips.append("peer_valuation_overlays")
+        _mark_coverage_absent("peer_valuation_us", "peer_valuation_tw")
 
     # --- openFDA drug approval/recall catalyst overlays (US pharma picks, sponsor-mapped) --
     try:
@@ -1359,6 +1396,7 @@ def main(web=False, dry_run=False, date_arg=None):
             source_coverage["openfda"] = {"ok": False, "codes": 0, "overlays": 0}
     except Exception as e:
         log.warning("SKIP openfda overlays: %s", e); skips.append("openfda_overlays")
+        _mark_coverage_absent("openfda")
 
     # 7e-P3. sources/ P3 keyless news/catalyst/sentiment/attention/flows OVERLAYS. Same
     #     OVERLAY-NOT-SCORER contract: nothing here touches the scoring call (ranked is final).
@@ -1423,6 +1461,7 @@ def main(web=False, dry_run=False, date_arg=None):
         _merge_overlays(_news_catalyst.to_overlays(_deduped, as_of=date_str), "news_catalyst")
     except Exception as e:
         log.warning("SKIP news_catalyst overlays: %s", e); skips.append("news_catalyst_overlays")
+        _mark_coverage_absent("news_catalyst")
 
     # --- altdata: Wikipedia pageviews + Hacker News attention sentiment overlays ----------------
     #     Per pick with a mappable wiki title (any) / HN tech allow-list. Cached 6h (attention is
@@ -1457,6 +1496,7 @@ def main(web=False, dry_run=False, date_arg=None):
                 "altdata")
     except Exception as e:
         log.warning("SKIP altdata overlays: %s", e); skips.append("altdata_overlays")
+        _mark_coverage_absent("altdata")
 
     # --- sec_flows: SEC FTD per-stock chip overlays + CFTC COT sector-tilt environment ----------
     #     FTD = US-only (the file carries the ticker; scope to US picks). COT = SECTOR/MARKET-level
@@ -1470,6 +1510,7 @@ def main(web=False, dry_run=False, date_arg=None):
                         "sec_ftd")
     except Exception as e:
         log.warning("SKIP sec_ftd overlays: %s", e); skips.append("sec_ftd_overlays")
+        _mark_coverage_absent("sec_ftd")
 
     try:
         _cot_rows = _sec_flows.fetch_cot()
@@ -1479,6 +1520,7 @@ def main(web=False, dry_run=False, date_arg=None):
         source_coverage["cftc_cot"] = {"ok": bool(_cot_tilt), "keys": len(_cot_tilt)}
     except Exception as e:
         log.warning("SKIP cftc_cot environment: %s", e); skips.append("cftc_cot_env")
+        _mark_coverage_absent("cftc_cot")
 
     if environment:
         log.info("environment gauges: %s",
@@ -1653,6 +1695,7 @@ def main(web=False, dry_run=False, date_arg=None):
                             log.info("panel chart detail files: +%d", len(_pdetails))
                     except Exception as _pde:
                         log.warning("SKIP panel detail files: %s", _pde)
+                        skips.append("panel_detail_files")
                     log.info("market panel: %d names accumulated, %d scored into verdicts",
                              len(_panel), len(_panel_ranked))
         except Exception as _pe:
@@ -1679,17 +1722,22 @@ def main(web=False, dry_run=False, date_arg=None):
                 if not os.path.basename(f).startswith("_")
                 and os.path.basename(f) != "index.json"
             )
+            _oe_failed = 0
             for _fp in _pick_files[-10:]:                 # ~10 recent trading days
                 _asof = os.path.basename(_fp)[:-5]        # strip '.json'
                 try:
                     pick_outcomes.compute_outcomes(data_dir, _asof, n_days=5)
                 except Exception as _oe:
                     log.warning("SKIP compute_outcomes %s: %s", _asof, _oe)
+                    _oe_failed += 1
+            if _oe_failed:
+                skips.append("compute_outcomes:%d" % _oe_failed)
             payload["pick_performance"] = pick_outcomes.summarize_hit_rate(data_dir)
             # Fix 5: D+20 horizon — a SEPARATE ledger (n_days=20, _outcomes_20 subdir) so the
             #     D+5 stop/idempotency path above stays byte-identical. Merged additively into
             #     pick_performance as d20_win_rate / avg_ret_20 / n_scored_20. SKIP-not-abort.
             try:
+                _oe20_failed = 0
                 for _fp20 in _pick_files[-10:]:
                     _asof20 = os.path.basename(_fp20)[:-5]
                     try:
@@ -1697,17 +1745,21 @@ def main(web=False, dry_run=False, date_arg=None):
                                                        out_subdir="_outcomes_20")
                     except Exception as _oe20:
                         log.warning("SKIP compute_outcomes(D+20) %s: %s", _asof20, _oe20)
+                        _oe20_failed += 1
+                if _oe20_failed:
+                    skips.append("compute_outcomes_d20:%d" % _oe20_failed)
                 _d20 = pick_outcomes.summarize_horizon(data_dir, "_outcomes_20", "ret_20")
                 payload["pick_performance"]["d20_win_rate"] = _d20["win_rate"]
                 payload["pick_performance"]["avg_ret_20"] = _d20["avg_ret"]
                 payload["pick_performance"]["n_scored_20"] = _d20["n_scored"]
             except Exception as _e20:
-                log.warning("SKIP D+20 pass: %s", _e20)
+                log.warning("SKIP D+20 pass: %s", _e20); skips.append("d20_pass")
             # 8c-radar. Fix 2 (GAP E): radar forward-accuracy ledger — track the opportunity-
             #     leader + scored_universe cohort the SAME way picks are tracked, in a SEPARATE
             #     _radar_outcomes ledger (custom picks_loader). Surfaced as radar_performance so
             #     "雷達準確率" is answerable. OVERLAY-NOT-SCORER: never feeds scoring. SKIP-not-abort.
             try:
+                _oer_failed = 0
                 for _fpr in _pick_files[-10:]:
                     _asofr = os.path.basename(_fpr)[:-5]
                     try:
@@ -1717,6 +1769,9 @@ def main(web=False, dry_run=False, date_arg=None):
                             picks_loader=radar_outcomes.load_leaders)
                     except Exception as _oer:
                         log.warning("SKIP radar outcomes %s: %s", _asofr, _oer)
+                        _oer_failed += 1
+                if _oer_failed:
+                    skips.append("radar_outcomes:%d" % _oer_failed)
                 payload["radar_performance"] = radar_outcomes.summarize_radar(data_dir)
                 _rp = payload["radar_performance"]
                 log.info("radar performance: %d scored over %d dates, win %.0f%%",

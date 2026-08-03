@@ -45,7 +45,12 @@ def _clean(o):
     if hasattr(o, "item") and not isinstance(o, (str, bytes)):   # numpy scalar / 0-d array
         try:
             return _clean(o.item())
-        except Exception:
+        except Exception as e:
+            # R6-01 audit fix: this branch is documented as handling numpy SCALAR / 0-d array
+            # conversion only, but a bare except also silently swallowed genuine bugs (e.g. a
+            # multi-element ndarray leaking into the payload) — the whole field went to None
+            # in the exported JSON with zero trace. Logged so a conversion failure is visible.
+            log.warning("SKIP _clean numpy conversion for %r: %s", type(o).__name__, e)
             return None
     return o
 

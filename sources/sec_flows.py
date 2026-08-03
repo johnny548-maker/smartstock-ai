@@ -62,6 +62,7 @@ import xml.etree.ElementTree as ET
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+from sources import _cache
 # Reuse the SEC descriptive UA + daily-index plumbing from sources.sec (no drift).
 from sources.sec import SEC_UA, daily_index_url
 
@@ -153,19 +154,26 @@ def _fetch_bytes(url):
     """Default network fetch → raw bytes (for the FTD zip). Sends the SEC UA header.
 
     NOT called in tests (tests inject fetch_fn). The FTD zip is binary, so this
-    returns bytes (unlike the text fetchers)."""
-    req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
-    with urlopen(req, timeout=_FTD_TIMEOUT) as resp:
-        return resp.read()
+    returns bytes (unlike the text fetchers).
+    R3-006: bounded retry with exponential backoff on transient failures."""
+    def _do():
+        req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
+        with urlopen(req, timeout=_FTD_TIMEOUT) as resp:
+            return resp.read()
+    return _cache.retry_call(_do, label="sec_flows._fetch_bytes")
 
 
 def _fetch_text(url):
     """Default network fetch → text body (for COT JSON / 13F XML). Sends the SEC UA.
 
-    NOT called in tests (tests inject fetch_fn)."""
-    req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
-    with urlopen(req, timeout=_TIMEOUT) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+    NOT called in tests (tests inject fetch_fn).
+    R3-006: bounded retry with exponential backoff on transient failures."""
+    def _do():
+        req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
+        with urlopen(req, timeout=_TIMEOUT) as resp:
+            return resp.read()
+    raw = _cache.retry_call(_do, label="sec_flows._fetch_text")
+    return raw.decode("utf-8", errors="replace")
 
 
 def _default_period(now=None):

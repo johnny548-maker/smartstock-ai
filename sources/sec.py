@@ -35,6 +35,8 @@ import time
 import xml.etree.ElementTree as ET
 from urllib.request import Request, urlopen
 
+from sources import _cache
+
 log = logging.getLogger(__name__)
 
 # ── constants (defined here; NOT added to config.py — overlay framework is self-contained)
@@ -71,11 +73,15 @@ def _real_fetch(url):
     """Default network fetch — urllib with the REQUIRED SEC User-Agent header.
 
     Returns response body as text. NOT called in tests (tests inject fetch_fn).
+    R3-006: bounded retry with exponential backoff on transient failures (timeout /
+    connection reset / 429) — re-throttled on every attempt, not just the first.
     """
-    _throttle()
-    req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
-    with urlopen(req, timeout=_TIMEOUT) as resp:
-        raw = resp.read()
+    def _do():
+        _throttle()
+        req = Request(url, headers={"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
+        with urlopen(req, timeout=_TIMEOUT) as resp:
+            return resp.read()
+    raw = _cache.retry_call(_do, label="sec._real_fetch")
     return raw.decode("utf-8", errors="replace")
 
 

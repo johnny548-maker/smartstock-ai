@@ -101,7 +101,13 @@ def compute_daily_targets(prices, combo_configs, names=None):
         top_n = int(cfg.get("top_n", 20))
         try:
             panel = ro.factor_panel(family, close, lookback)
-        except Exception:
+        except Exception as e:
+            # R6-02 audit fix: this used to drop the sleeve with zero trace — a bad `family`
+            # string, incompatible lookback, or an internal factor_panel bug was
+            # indistinguishable from a legitimately-empty universe, and this silent catch
+            # defeated main.py's own outer safety net (build_track's try/except never fires
+            # because this loop already absorbed the exception and returned normally).
+            log.warning("SKIP validated_portfolio sleeve %s (family=%s): %s", sleeve, family, e)
             continue
         if panel is None or len(panel) == 0:
             continue

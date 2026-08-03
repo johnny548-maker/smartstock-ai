@@ -6,6 +6,8 @@ Factors: trend, momentum, volume, volatility, sector, institutional (liquidity-
 gated), relative-strength-vs-index, 52-week-high proximity, RSI-14 (replaces the
 old crude overheat rule), OBV volume-price divergence.
 """
+import logging
+
 import config
 import signal_registry
 from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN_BARS,
@@ -19,6 +21,8 @@ from config import (SECTOR_MAP, SECTOR_WEIGHTS, STOCK_NAMES, VOLATILITY_CAP, MIN
 # LEAD_* weights + the leadership predicates now live in signal_registry (B1, read via config.*).
 from indicators import rsi as rsi_ind, obv as obv_ind, slope
 from technical_setup import analyze_setup
+
+log = logging.getLogger(__name__)
 
 # The 52-week-high momentum premium needs most of a year of history to be meaningful — below
 # this, `hi` is just a recent high and the +20/+10 bonus would be unearned (and mislabel a short
@@ -266,6 +270,7 @@ def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None,
     institutional_map = institutional_map or {}
     chips_map = chips_map or {}
     results = []
+    _scoring_errors = 0
     for sym, df in data_dict.items():
         try:
             sector = sector_map.get(sym)
@@ -289,6 +294,15 @@ def rank_stocks(data_dict, sector_map=None, institutional_map=None, frames=None,
                 # output field — never a scoring input.
                 "inputs_complete": _inputs_complete(sym, sector, inst, chips),
             })
-        except Exception:
+        except Exception as e:
+            # R1-06 audit fix: this used to drop the symbol with zero trace — a config/
+            # registry drift or one indicator bug removed the ENTIRE row rather than one
+            # factor, and a systemic breakage silently returned an empty board. Now logged
+            # + counted so a mass-drop reads as "N symbols failed to score", not "nothing
+            # scored well today".
+            log.warning("SKIP rank_stocks %s: %s", sym, e)
+            _scoring_errors += 1
             continue
+    if _scoring_errors:
+        log.warning("rank_stocks: %d/%d symbol(s) failed to score", _scoring_errors, len(data_dict))
     return sorted(results, key=lambda x: x["score"], reverse=True)

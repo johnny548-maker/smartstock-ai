@@ -14,7 +14,11 @@ so we ALWAYS abspath() before taking dirname (see save_state).
 """
 import gzip
 import json
+import logging
 import os
+import time
+
+log = logging.getLogger(__name__)
 
 
 def load_state(path, default=None):
@@ -124,6 +128,35 @@ def archive_keys(archive_dir):
         elif n.endswith(".json"):
             keys.add(n[: -len(".json")])
     return sorted(keys)
+
+
+# R3-006 audit fix: every network fetcher across sources/ made a single-shot HTTP call
+# wrapped in one broad try/except that treated ANY failure (timeout, connection reset,
+# transient 429/5xx, or a permanent 404/schema break) identically — log + return []/{} —
+# with zero retry or backoff, so a momentary network blip was architecturally
+# indistinguishable from a permanent break. Mirrors the repo's existing bounded-retry
+# convention (data_fetcher._hist: 3 tries, exponential 0.6/1.2/2.4s backoff).
+RETRY_ATTEMPTS = 3
+RETRY_BACKOFF = 0.6   # seconds, exponential (0.6 / 1.2 / …)
+
+
+def retry_call(fn, retries=RETRY_ATTEMPTS, backoff=RETRY_BACKOFF, label="fetch"):
+    """Call fn() with up to `retries` attempts, sleeping an exponentially growing
+    backoff between them on ANY exception (transient network / 429 / timeout). Re-raises
+    the LAST exception after the final attempt unchanged — this only adds resilience to
+    transient failures; it does not change any caller's existing try/except graceful-
+    skip contract for a genuinely dead endpoint. `label` is just for the log line."""
+    last = None
+    for attempt in range(retries):
+        try:
+            return fn()
+        except Exception as e:
+            last = e
+            if attempt < retries - 1:
+                log.warning("%s: attempt %d/%d failed (%s), retrying in %.1fs",
+                           label, attempt + 1, retries, e, backoff * (2 ** attempt))
+                time.sleep(backoff * (2 ** attempt))
+    raise last
 
 
 def cached_fetch(cache_path, key, ttl_sec, now_ts, fetch_fn):

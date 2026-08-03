@@ -40,12 +40,16 @@ def _make_entry(title, epoch_ts=None):
     return entry
 
 
-def _make_parsed_result(entries, feed_title="TestFeed"):
-    """Build a minimal feedparser ParseResult-shaped object."""
+def _make_parsed_result(entries, feed_title="TestFeed", bozo=False, bozo_exception=None):
+    """Build a minimal feedparser ParseResult-shaped object. bozo defaults to False
+    (matching a healthy real feedparser.parse() result) — MagicMock auto-attributes
+    are truthy, so this must be explicit or every caller would spuriously look bozo."""
     result = MagicMock()
     result.entries = entries
     result.feed = MagicMock()
     result.feed.get = lambda k, default="": {"title": feed_title}.get(k, default)
+    result.bozo = bozo
+    result.bozo_exception = bozo_exception
     return result
 
 
@@ -119,6 +123,26 @@ class TestFetchFeedAgeFilter(unittest.TestCase):
     def test_constant_exists(self):
         """NEWS_MAX_AGE_HOURS must be exported from news_digest."""
         self.assertEqual(nd.NEWS_MAX_AGE_HOURS, 24)
+
+    def test_bozo_no_entries_skips_and_returns_empty(self):
+        """R2-05: feedparser sets bozo=True (e.g. URLError caught internally) WITHOUT
+        raising. With zero entries this is a hard failure — must return [] like the
+        except-Exception path, not silently succeed with an empty result."""
+        parsed = _make_parsed_result([], bozo=True, bozo_exception=OSError("Name or service not known"))
+        with patch("news_digest.feedparser.parse", return_value=parsed):
+            result = nd.fetch_feed("http://dead.example.com/rss")
+        self.assertEqual(result, [])
+
+    def test_bozo_with_entries_still_returns_content(self):
+        """R2-05: a bozo flag alongside SOME successfully parsed entries (a minor feed-XML
+        quirk, not a total fetch failure) must not blank out real content."""
+        entries = [_make_entry("recent headline", _NOW - 3600)]
+        parsed = _make_parsed_result(entries, bozo=True, bozo_exception=ValueError("minor XML quirk"))
+        with patch("news_digest.feedparser.parse", return_value=parsed), \
+             patch("news_digest._now_epoch", return_value=_NOW):
+            result = nd.fetch_feed("http://example.com/rss")
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["title"], "recent headline")
 
 
 class TestPubdateField(unittest.TestCase):

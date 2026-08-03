@@ -463,6 +463,22 @@ class TestTimingGate(unittest.TestCase):
         p, _ = pretrade._gate_timing({"exposure": 60, "label": "caution", "detail": {}})
         self.assertIsNone(p)
 
+    def test_unknown_trend_fails_not_passes(self):
+        """R7-08(collateral)/⑤a: market_regime.trend_state() can return 'unknown' (NaN bar
+        in the MA50/MA200 window — a data-quality gap, not a real read). Before this fix the
+        zh-label dict had no 'unknown' entry (literal 'unknown' leaked into the Chinese detail
+        string) AND the pass check only excluded 'downtrend', so a data-quality gap silently
+        PASSED the gate. market_regime.BASE_EXPOSURE already treats unknown as conservatively
+        as downtrend; this gate must match that, not fail-open on missing data."""
+        p, d = pretrade._gate_timing(_regime_trend("unknown", "uptrend"))
+        self.assertFalse(p)
+        self.assertNotIn("unknown", d)          # proper Chinese label, not the raw token
+        self.assertIn("資料不足", d)
+
+    def test_all_unknown_trend_fails(self):
+        p, _ = pretrade._gate_timing(_regime_trend("unknown", "unknown"))
+        self.assertFalse(p)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

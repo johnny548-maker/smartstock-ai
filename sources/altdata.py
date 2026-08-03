@@ -43,6 +43,8 @@ import time
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
+from sources import _cache
+
 log = logging.getLogger(__name__)
 
 # ── endpoints (defined here; NOT added to config.py — overlay framework is self-contained)
@@ -112,10 +114,13 @@ def _sanitize(text):
 
 # ── live fetch (real network; replaced by injectable fetch_fn in tests) ───────────
 def _real_fetch(url):
-    """Default network fetch → response body text. NOT called in tests (fetch_fn injected)."""
-    req = Request(url, headers={"User-Agent": ALTDATA_UA, "Accept-Encoding": "gzip, deflate"})
-    with urlopen(req, timeout=_TIMEOUT) as resp:
-        raw = resp.read()
+    """Default network fetch → response body text. NOT called in tests (fetch_fn injected).
+    R3-006: bounded retry with exponential backoff on transient failures."""
+    def _do():
+        req = Request(url, headers={"User-Agent": ALTDATA_UA, "Accept-Encoding": "gzip, deflate"})
+        with urlopen(req, timeout=_TIMEOUT) as resp:
+            return resp.read()
+    raw = _cache.retry_call(_do, label="altdata._real_fetch")
     return raw.decode("utf-8", errors="replace")
 
 

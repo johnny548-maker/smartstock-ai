@@ -167,9 +167,12 @@ def _gate_timing(regime):
     """⑥ 市場時機：大盤站在 200 日線上方（趨勢非空頭）？
 
     Reads market_regime()'s per-index 200dma trend states (detail[idx]['trend'] ∈
-    uptrend/neutral/downtrend). Conservative: any index in a downtrend → fail. Validated keyless
-    risk tool — 200dma timing improved the index's risk-adjusted return (Sharpe 0.98→1.07, drawdown
-    -34%→-21% over 15y). Complements gate ① (exposure magnitude) with explicit trend DIRECTION.
+    uptrend/neutral/downtrend/unknown — 'unknown' = trend_state() saw a NaN bar in its MA50/
+    MA200 window, a data-quality gap, not a real regime read; market_regime.BASE_EXPOSURE
+    already treats it as conservatively as downtrend). Conservative: any index in a downtrend
+    OR unknown state → fail, for the same reason. Validated keyless risk tool — 200dma timing
+    improved the index's risk-adjusted return (Sharpe 0.98→1.07, drawdown -34%→-21% over 15y).
+    Complements gate ① (exposure magnitude) with explicit trend DIRECTION.
     """
     if not regime or not isinstance(regime, dict):
         return None, "資料不足（無市場體制資料）"
@@ -178,8 +181,9 @@ def _gate_timing(regime):
               if isinstance(v, dict) and v.get("trend")]
     if not trends:
         return None, "資料不足（無 200 日線趨勢資料）"
-    zh = {"uptrend": "多頭(站上200日線)", "neutral": "中性", "downtrend": "空頭(跌破200日線)"}
-    passed = "downtrend" not in trends
+    zh = {"uptrend": "多頭(站上200日線)", "neutral": "中性", "downtrend": "空頭(跌破200日線)",
+          "unknown": "資料不足(200日線未知)"}
+    passed = not any(t in ("downtrend", "unknown") for t in trends)
     names = "/".join(zh.get(t, str(t)) for t in trends)
     exp = regime.get("exposure")
     extra = f"；建議曝險 {exp}%" if isinstance(exp, (int, float)) else ""

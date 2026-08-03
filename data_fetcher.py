@@ -124,7 +124,13 @@ def momentum_label(df, lookback=MOMENTUM_LOOKBACK, threshold=MOMENTUM_STRONG_THR
     lb = min(lookback, len(df) - 1)
     try:
         ret = df["Close"].iloc[-1] / df["Close"].iloc[-1 - lb] - 1
-    except Exception:
+    except Exception as e:
+        # R2-07 audit fix: this used to swallow silently — a malformed/foreign-shaped
+        # DataFrame (e.g. from market_panel.panel_frames reconstruction) or a missing
+        # 'Close' column produced a real-looking "WEAK" label with zero trace, feeding
+        # build_market_signal()'s us_momentum/tw_momentum/crypto fields that
+        # asset_allocation.adjust_allocation consumes.
+        log.warning("SKIP momentum_label: %s", e)
         return "WEAK"
     return "STRONG" if ret > threshold else "WEAK"
 

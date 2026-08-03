@@ -98,6 +98,21 @@ def fetch_feed(url, limit=NEWS_PER_FEED):
         log.warning("SKIP feed %s: %s", url, e)
         return []
 
+    # R2-05 audit fix: feedparser catches network/URL errors (DNS failure, connection
+    # refused, timeout while fetching the feed URL — the most common REAL failure mode)
+    # INSIDE feedparser.parse() and sets bozo=True/bozo_exception WITHOUT raising, so the
+    # except above never fires for it. This module's own docstring promises "log SKIP feed
+    # <url>: <err>" for any network/parse error — honor that contract for the bozo path
+    # too. bozo + zero entries = a hard failure (SKIP + return []); bozo with SOME entries
+    # still parsed (a minor feed-XML quirk) is logged but not treated as fatal since real
+    # content came through.
+    if getattr(parsed, "bozo", False):
+        bozo_exc = getattr(parsed, "bozo_exception", None)
+        if not parsed.entries:
+            log.warning("SKIP feed %s: %s", url, bozo_exc or "bozo (unparseable feed)")
+            return []
+        log.warning("feed %s parsed with warnings (bozo): %s", url, bozo_exc or "unknown")
+
     now = _now_epoch()
     cutoff = now - NEWS_MAX_AGE_HOURS * 3600
 

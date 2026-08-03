@@ -16,6 +16,7 @@ We keep COMMON STOCK only: drop ETFs, Test Issues, and obvious non-common instru
 (warrants / units / rights / preferreds / notes / depositary). ~5,700 names as of 2026-06.
 """
 import csv
+import logging
 import os
 import time
 
@@ -25,6 +26,8 @@ except Exception:                          # requests should be present; degrade
     requests = None
 
 from sources import _cache
+
+log = logging.getLogger(__name__)
 
 URL_NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
 URL_OTHER = "https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
@@ -105,8 +108,11 @@ def fetch_us_named(cache_path=None, now_ts=0, force=False):
             res = _do()
             _cache.save_state(cache_path, {"named": {"ts": now_ts, "val": res}})
             return res
-        except Exception:
-            pass
+        except Exception as e:
+            # R4-001 audit fix: this module had ZERO logging anywhere (unlike every sibling
+            # sources/ producer), so a true outage with no usable cache silently degraded to
+            # {} with no diagnostic trail. Falls through to the TTL-cached path below.
+            log.warning("SKIP nasdaq_trader force refresh: %s", e)
     return _cache.cached_fetch(cache_path, "named", _CACHE_TTL, now_ts, _do) or {}
 
 

@@ -228,7 +228,12 @@ def family_robustness_badge():
     """A single INFORMATIONAL family-level robustness badge from _validation_state.json, or
     None when the offline gate hasn't run. kind='robustness' marks it as an OVERLAY for the
     PWA — it carries PBO + SPA p-value + asof, and intentionally has NO 'score'/'factor' key.
-    Daily callers attach it to the payload top level, never to a pick's factors.
+    Intended for daily callers to attach it to the payload top level, never to a pick's
+    factors — BUT as of the 2026-08-03 audit sweep this function has ZERO production callers
+    (main.py/web_export.py never invoke it; only test_smartstock.py exercises it directly).
+    Left wired and unit-tested rather than deleted — it is the correct fail-closed
+    implementation (see the R1-02 note below) and a real caller can attach it once one is
+    designed; do not assume it currently reaches any payload or the PWA.
 
     R1-02 audit fix: a family dict that exists but carries NEITHER pbo NOR spa_pvalue used to
     fall through the isinstance checks (None fails both) straight to caution=False → a PASSING
