@@ -856,6 +856,30 @@ class TestRobustnessBadge(unittest.TestCase):
             "asof": "x", "family": {"pbo": 0.7, "spa_pvalue": 0.2, "n_trials": 15}}
         self.assertTrue(verdict.family_robustness_badge()["caution"])
 
+    # ── R1-02 audit fix: missing pbo/spa must render a third "unknown" state, never PASS ──
+    def test_badge_unknown_when_pbo_and_spa_missing(self):
+        verdict._VALIDATION_STATE_CACHE = {
+            "asof": "2026-01-01", "family": {"n_trials": 7}}       # family dict present, no pbo/spa
+        b = verdict.family_robustness_badge()
+        self.assertEqual(b["label"], "穩健度未知（無驗證資料）")
+        self.assertNotIn("通過", b["label"])                        # must never read as PASS
+        self.assertIsNone(b["caution"])                             # tri-state: None != False
+        self.assertTrue(b["unknown"])
+
+    def test_badge_unknown_when_family_dict_empty(self):
+        verdict._VALIDATION_STATE_CACHE = {"asof": None, "family": {}}
+        b = verdict.family_robustness_badge()
+        self.assertNotIn("通過", b["label"])
+        self.assertTrue(b["unknown"])
+
+    def test_badge_not_unknown_when_at_least_one_metric_present(self):
+        # only pbo present (spa missing) — still computable evidence, not the "no data" state
+        verdict._VALIDATION_STATE_CACHE = {
+            "asof": "x", "family": {"pbo": 0.2, "n_trials": 15}}
+        b = verdict.family_robustness_badge()
+        self.assertFalse(b["unknown"])
+        self.assertFalse(b["caution"])
+
 
 class TestSchemaVersion(unittest.TestCase):
     """C1: PWA payload carries a schema_version; _rebuild_index loads mixed-version files."""

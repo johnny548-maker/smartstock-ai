@@ -87,6 +87,31 @@ NEWS_PUBDATE_STALE_DAYS = 3.0
 # embedded-timestamp fields tried (in order) when dating a state/cache JSON — file mtime is
 # NEVER used: GitHub Actions checkout rewrites mtime every run ('0d old' forever, false ok).
 STATE_TS_FIELDS = ("fetched_at", "updated", "as_of", "asof")
+# why (V3-05): 'skip' is fail-open BY DESIGN for a single benign-empty source/pipeline-SKIP,
+# but an unbounded NUMBER of them means real rot is being individually forgiven — measured
+# 2026-07-15: 13 dead sources + 1 pipeline skip shipped health.overall='ok' (only flipped to
+# 'degraded' by an UNRELATED tpex flag). Thresholds are calibrated against the full 47-file
+# docs/data/*.json history, not guessed: routine daily skip-count (empty TW-only-day sources
+# like sec/openfda) ranges 0-11 on ~87% of days (median 9, p90 11) — a naive low floor (e.g.
+# >=3) would fire on almost every healthy day. A clean gap sits at 12-13 (zero observed days);
+# only 4 of 47 files exceed it (14, 15, 15, 16 — incl. the cited 07-15 AND a previously
+# undetected 2026-06-25 that shipped 'ok' with 15).
+SKIP_COUNT_DEGRADED_MIN = 12
+SKIP_COUNT_STALE_MIN = 16
+# why (R2-03): market_panel.py's cumulative whole-market OHLC cache updates roughly once
+# per trading day (one whole-market API call, like ohlcv) — mirrors OHLCV_OK_LAG_BD/
+# OHLCV_STALE_LAG_BD's business-day tolerance.
+PANEL_OK_LAG_BD = 1
+PANEL_STALE_LAG_BD = 5
+# a panel this small signals a reset/corrupted cache, not the normal cold-start ramp (which
+# fills in code COUNT on day one via a single whole-market snapshot; only bar DEPTH per code
+# ramps up over time — see market_panel.py's own cold-start docstring).
+PANEL_MIN_CODES = 50
+# why (BL-P0-3d): institutional.py's TWSE_LOOKBACK_DAYS=7 fallback can silently reuse a
+# previous day's flows as "today's" (V3-01). A same/next-calendar-day TWSE T86 publish lag
+# is normal (mirrors OHLCV_OK_LAG_BD's 1-business-day tolerance); >=2 days is a real fallback.
+INSTITUTIONAL_STALE_OK_MAX_DAYS = 1
+INSTITUTIONAL_STALE_STALE_MIN_DAYS = 4
 
 _DATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 _ROW_COUNT_KEYS = ("picks", "news", "movers")
@@ -141,11 +166,19 @@ def _bday_lag(newest, ref):
 # ── individual checks (each returns a list of entries) ───────────────────────
 
 def _check_generated_at(payload, now):
-    ts = _parse_dt(payload.get("generated_at"))
-    if ts is None:
+    """DATA-date staleness (V3-04 fix): compares the payload's own `date` (the trading day
+    the report claims to cover, at midnight) against wall-clock `now` — NOT
+    payload['generated_at'] against `now`. The latter was a tautology: both are stamped by
+    the SAME process moments apart (web_export.build_payload sets generated_at, then main.py
+    calls summarize() in the same run) and can structurally never diverge — measured: 38/38
+    committed payloads read '0.0h ago', so GENERATED_OK_MAX_H/GENERATED_STALE_MIN_H were dead
+    code. `date` lagging `now` by more than a day is a real, reachable signal (the pipeline
+    re-stamping/serving a stale trading day)."""
+    d = _parse_date(payload.get("date"))
+    if d is None:
         return [_entry("generated_at", "stale",
-                       note="generated_at missing/unparseable")]
-    age_h = (now - ts).total_seconds() / 3600.0
+                       note="report date missing/unparseable")]
+    age_h = (now - dt.datetime.combine(d, dt.time.min)).total_seconds() / 3600.0
     if age_h <= GENERATED_OK_MAX_H:
         status = "ok"
     elif age_h < GENERATED_STALE_MIN_H:
@@ -153,7 +186,7 @@ def _check_generated_at(payload, now):
     else:
         status = "stale"
     return [_entry("generated_at", status, age_h=age_h,
-                   note=f"payload generated {age_h:.1f}h ago")]
+                   note=f"report date {payload.get('date')} is {age_h:.1f}h old")]
 
 
 def _newest_bar_date(picks):
@@ -583,10 +616,97 @@ def _check_news(payload, now):
     return [_entry("news", "ok", note=note)]
 
 
+def _default_panel_path(data_dir=None):
+    """market_panel.py's cumulative whole-market OHLC cache path — lives beside the daily
+    payload snapshots (main.py: web_export.export() returns data_dir=WEB_DIR/data, and the
+    panel cache sits at that SAME data_dir/_panel.json.gz). Scoped to *data_dir* (like
+    _previous_payload) rather than reaching straight into config.WEB_DIR, so tests that pass
+    a tmp data_dir never accidentally read this machine's real, possibly-stale gitignored
+    panel cache; production's data_dir already equals config.WEB_DIR/data."""
+    if data_dir:
+        return os.path.join(data_dir, "_panel.json.gz")
+    import config
+    web_dir = getattr(config, "WEB_DIR", None)
+    return os.path.join(web_dir, "data", "_panel.json.gz") if web_dir else None
+
+
+def _check_panel(payload, now, data_dir=None, panel_path=None):
+    """R2-03 audit fix: market_panel.py's cumulative whole-market OHLC cache (widens daily
+    coverage from the ~600-name opportunity universe toward the full TW market, per its own
+    module docstring) had ZERO freshness/growth check anywhere in this module (grep 'panel'
+    data_health.py -> 0 matches) — exactly the silent-rot scenario this module exists to
+    catch. main.py's panel-update try/except has no else/skips.append branch (unlike its
+    sibling full_market_index check immediately above it), so a day the snapshot silently
+    fails to append leaves zero trace anywhere else in the payload either.
+
+    Missing/unreadable/empty panel file -> SKIP (fail-open; a never-yet-built panel, e.g. a
+    first deploy, must not read as rot)."""
+    path = panel_path if panel_path is not None else _default_panel_path(data_dir)
+    if not path or not os.path.isfile(path):
+        return [_entry("panel", "skip", note="panel cache absent (SKIP)")]
+    try:
+        import market_panel
+        panel = market_panel.load(path)
+    except Exception as e:
+        return [_entry("panel", "skip", note=f"panel unreadable: {e} (SKIP)")]
+    if not panel:
+        return [_entry("panel", "skip", note="panel cache empty (SKIP)")]
+    n_codes = len(panel)
+    newest = None
+    for p in panel.values():
+        days = p.get("d") if isinstance(p, dict) else None
+        if days:
+            d = _parse_date(days[-1])
+            if d and (newest is None or d > newest):
+                newest = d
+    if newest is None:
+        return [_entry("panel", "skip", note=f"{n_codes} codes, no dated bars (SKIP)")]
+    ref = _parse_date(payload.get("date")) or now.date()
+    lag = _bday_lag(newest, ref)
+    if n_codes < PANEL_MIN_CODES:
+        return [_entry("panel", "degraded",
+                       note=f"only {n_codes} codes in panel (<{PANEL_MIN_CODES}) — "
+                            f"cache reset or corrupted?")]
+    if lag <= PANEL_OK_LAG_BD:
+        status = "ok"
+    elif lag <= PANEL_STALE_LAG_BD:
+        status = "degraded"
+    else:
+        status = "stale"
+    return [_entry("panel", status,
+                   note=f"{n_codes} codes, newest bar {newest.isoformat()} = "
+                        f"{lag} business day(s) behind report date")]
+
+
+def _check_institutional_staleness(payload):
+    """BL-P0-3(d) audit fix: institutional.get_institutional() can silently reuse up to
+    TWSE_LOOKBACK_DAYS=7 calendar days of data as "today's" flows (V3-01) — a companion fix
+    (a different batch's ownership) teaches it to record how stale the hit was via
+    source_coverage['institutional']['stale_days']. This check surfaces that number.
+
+    DEFENSIVE NO-OP: the field is treated as OPTIONAL here since its producer side may land
+    in a separate change — absent/non-numeric -> SKIP, never degrade or crash."""
+    coverage = payload.get("source_coverage")
+    inst = coverage.get("institutional") if isinstance(coverage, dict) else None
+    stale_days = inst.get("stale_days") if isinstance(inst, dict) else None
+    if not isinstance(stale_days, (int, float)):
+        return [_entry("institutional_staleness", "skip",
+                       note="source_coverage.institutional.stale_days absent (SKIP)")]
+    if stale_days <= INSTITUTIONAL_STALE_OK_MAX_DAYS:
+        status = "ok"
+    elif stale_days < INSTITUTIONAL_STALE_STALE_MIN_DAYS:
+        status = "degraded"
+    else:
+        status = "stale"
+    return [_entry("institutional_staleness", status,
+                   note=f"institutional flows {stale_days:g}d stale "
+                        f"(TWSE T86 lookback fallback)")]
+
+
 # ── orchestration (fail-open) ─────────────────────────────────────────────────
 
 def summarize(payload, data_dir=None, now=None, state_paths=None,
-              optimize_paths=None):
+              optimize_paths=None, panel_path=None):
     """Run every health check over *payload* → the payload `health` block.
 
     FAIL-OPEN: each check is fenced — a crashed check appends a degraded entry
@@ -599,10 +719,18 @@ def summarize(payload, data_dir=None, now=None, state_paths=None,
     from config.KELLY_STATE / config.VALIDATION_STATE are used.
     *optimize_paths* (audit 假陰性 #3) likewise injects {sleeve: path} for the
     validated_portfolio check; defaults to optimize_<sleeve>.json at repo root.
+    *panel_path* (R2-03) injects the market_panel.py cache path for tests;
+    production omits it and config.WEB_DIR/data/_panel.json.gz is used.
 
     Entry statuses: ok / degraded / stale / skip / warn. `warn` (news thinning)
     surfaces in `sources` but does NOT flip `overall` (OVERLAY spirit — the
     contract stays overall ∈ {ok, degraded, stale}).
+
+    V3-05: an unbounded COUNT of 'skip' entries from the `sources` check (dead
+    source_coverage entries + pipeline skips — see SKIP_COUNT_DEGRADED_MIN/
+    SKIP_COUNT_STALE_MIN) can ALSO flip `overall`, even when no single entry is
+    individually degraded/stale — 'skip' being fail-open per-entry must not mean
+    an arbitrary pile-up of them is invisible.
     """
     if not isinstance(payload, dict):
         payload = {}
@@ -622,20 +750,26 @@ def summarize(payload, data_dir=None, now=None, state_paths=None,
         ("macro_asof", lambda: _check_macro_freshness(payload, now)),
         ("validated", lambda: _check_validated(payload, optimize_paths)),
         ("news", lambda: _check_news(payload, now)),
+        ("panel", lambda: _check_panel(payload, now, data_dir, panel_path)),
+        ("institutional_staleness", lambda: _check_institutional_staleness(payload)),
     )
     sources = []
+    sources_skip_count = 0
     for name, run in checks:
         try:
-            sources.extend(run())
+            entries = run()
         except Exception as e:                     # pragma: no cover — fail-open
             log.warning("data_health check %s crashed (fail-open): %s", name, e)
-            sources.append(_entry(name, "degraded",
-                                  note=f"health check crashed: {e}"))
+            entries = [_entry(name, "degraded",
+                              note=f"health check crashed: {e}")]
+        if name == "sources":
+            sources_skip_count = sum(1 for e in entries if e.get("status") == "skip")
+        sources.extend(entries)
 
     statuses = {s.get("status") for s in sources}
-    if "stale" in statuses:
+    if "stale" in statuses or sources_skip_count >= SKIP_COUNT_STALE_MIN:
         overall = "stale"
-    elif "degraded" in statuses:
+    elif "degraded" in statuses or sources_skip_count >= SKIP_COUNT_DEGRADED_MIN:
         overall = "degraded"
     else:
         overall = "ok"

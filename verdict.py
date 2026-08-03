@@ -228,16 +228,33 @@ def family_robustness_badge():
     """A single INFORMATIONAL family-level robustness badge from _validation_state.json, or
     None when the offline gate hasn't run. kind='robustness' marks it as an OVERLAY for the
     PWA — it carries PBO + SPA p-value + asof, and intentionally has NO 'score'/'factor' key.
-    Daily callers attach it to the payload top level, never to a pick's factors."""
+    Daily callers attach it to the payload top level, never to a pick's factors.
+
+    R1-02 audit fix: a family dict that exists but carries NEITHER pbo NOR spa_pvalue used to
+    fall through the isinstance checks (None fails both) straight to caution=False → a PASSING
+    label — absence of evidence rendered as evidence of robustness. That case now returns a
+    THIRD state (unknown=True, caution=None, label='穩健度未知（無驗證資料）') instead of ever
+    reading as PASS. Any evidence at all (pbo OR spa present) still uses the normal two-state
+    caution logic — only total absence is ambiguous."""
     st = _load_validation_state()
     fam = (st or {}).get("family")
     if not isinstance(fam, dict):
         return None
     pbo = fam.get("pbo")
     spa = fam.get("spa_pvalue")
+    pbo_known = isinstance(pbo, (int, float))
+    spa_known = isinstance(spa, (int, float))
+    if not pbo_known and not spa_known:
+        return {
+            "kind": "robustness",
+            "asof": st.get("asof"),
+            "pbo": pbo, "spa_pvalue": spa, "n_trials": fam.get("n_trials"),
+            "label": "穩健度未知（無驗證資料）",
+            "caution": None,          # tri-state: None = unknown, distinct from True/False
+            "unknown": True,
+        }
     # honest one-liner: high PBO or non-significant SPA = treat the family's edge with caution
-    caution = (isinstance(pbo, (int, float)) and pbo > 0.5) or \
-              (isinstance(spa, (int, float)) and spa > 0.05)
+    caution = (pbo_known and pbo > 0.5) or (spa_known and spa > 0.05)
     return {
         "kind": "robustness",
         "asof": st.get("asof"),
@@ -245,6 +262,7 @@ def family_robustness_badge():
         "label": ("⚠️ family edge 脆弱（高 PBO / SPA 不顯著）" if caution
                   else "family edge 通過 PBO/SPA 穩健度檢驗"),
         "caution": bool(caution),
+        "unknown": False,
     }
 
 

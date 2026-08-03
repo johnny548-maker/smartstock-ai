@@ -124,6 +124,21 @@ def _overlays_for(symbol, overlays_map):
     return out
 
 
+def _scored_with_overlays(scored_universe, overlays_map):
+    """SYNTH-01 fix: scored_universe (TPEx names ARE displayed here — 3/12 on 2026-07-31)
+    never received the overlays_map treatment picks[] gets via _overlays_for — the picks
+    loop was the ONLY call site, leaving TPEx's daily ~1,742-overlay production with zero
+    consumer for the majority of names actually shown to users. Pure: returns NEW dicts,
+    never mutates its input (OVERLAY-NOT-SCORER / golden-additive invariant)."""
+    out = []
+    for row in (scored_universe or []):
+        if not isinstance(row, dict):
+            continue
+        overlays = _overlays_for(row.get("stock"), overlays_map)
+        out.append({**row, "overlays": overlays} if overlays else row)
+    return out
+
+
 def select_scored_universe(opp_ranked, exclude=None, top_n=12):
     """Top-N of the WIDE-universe rank_stocks output, minus the core picks.
 
@@ -300,7 +315,7 @@ def build_payload(date_str, news, indices, institutional, ranked, analyses,
         # names simply don't fire chip/法人 factors → lower, not penalised). ADDITIVE
         # top-level board; NEVER perturbs picks/score/rank (golden-additive invariant).
         # Backward-compatible: defaults to [] so older callers/payloads are unaffected.
-        "scored_universe": scored_universe or [],
+        "scored_universe": _scored_with_overlays(scored_universe, overlays_map),
         "picks": picks,
         "search": search,
         "allocation": allocation,

@@ -401,6 +401,27 @@ class TestReportBlock(unittest.TestCase):
             ranked=[], analyses={}, allocation={}, rebalance_diff={}, risk="LOW")
         self.assertNotIn("動能組合", md)
 
+    # ── B2-02 audit fix: the daily EMAIL/markdown must not disagree with the PWA ──
+    def test_oos_label_matches_pwa_honest_wording(self):
+        # commit 1f9ee78 (2026-06-21) relabeled docs/app.js's SAME 'oos.cagr' JSON key to
+        # the honest "近2年尾段 CAGR（同樣本尾段，非獨立 holdout）" but never touched this
+        # file, so the daily email kept saying the bare, misleading "OOS 2y CAGR" for an
+        # in-sample tail metric. Both the full (sharpe-present) and short renderings must
+        # use the honest label.
+        import report_builder
+        md = report_builder._momentum_portfolio_block(self._lens())
+        self.assertNotIn("OOS 2y", md)
+        self.assertIn("近2年尾段 CAGR（同樣本尾段，非獨立 holdout）", md)
+
+    def test_oos_label_honest_in_short_rendering_without_sharpe(self):
+        # the 'else' branch (no sharpe) has its own separate f-string with the same label
+        lens = self._lens()
+        del lens["tw"]["track_record"]["sharpe"]
+        import report_builder
+        md = report_builder._momentum_portfolio_block(lens)
+        self.assertNotIn("OOS 2y", md)
+        self.assertIn("近2年尾段 CAGR（同樣本尾段，非獨立 holdout）", md)
+
 
 class TestPayloadPassthrough(unittest.TestCase):
     """web_export.build_payload threads momentum_portfolio through (default {})."""

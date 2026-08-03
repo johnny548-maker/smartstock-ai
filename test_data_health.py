@@ -57,33 +57,51 @@ class _TmpDirTest(unittest.TestCase):
 
 
 # ── generated_at freshness ────────────────────────────────────────────────────
+#
+# V3-04 audit fix: this check used to compare payload['generated_at'] (stamped by
+# web_export.build_payload moments before main.py calls summarize(), same process) against
+# `now` — a tautology that measured 0.0h on 38/38 committed payloads, making
+# GENERATED_OK_MAX_H/GENERATED_STALE_MIN_H dead code. It now compares the payload's `date`
+# (the trading day the report claims to cover, at midnight) against `now`, which can
+# genuinely diverge if the pipeline re-stamps/serves a stale trading day.
 
 class TestGeneratedAt(_TmpDirTest):
 
     def test_fresh_is_ok(self):
+        # NOW = 2026-06-11 06:00; default payload date = 2026-06-11 (midnight) -> 6.0h old
         report = dh.summarize(make_payload(), self.data_dir, now=NOW)
         e = entry(report, "generated_at")
         self.assertEqual(e["status"], "ok")
-        self.assertLess(e["age_h"], 1.0)
+        self.assertAlmostEqual(e["age_h"], 6.0, places=1)
 
     def test_one_day_late_is_degraded(self):
         report = dh.summarize(
-            make_payload(generated_at="2026-06-10T00:00:00"),
-            self.data_dir, now=NOW)            # 30h old
+            make_payload(date="2026-06-10"),
+            self.data_dir, now=NOW)            # midnight 06-10 -> 06-11 06:00 = 30h old
         self.assertEqual(entry(report, "generated_at")["status"], "degraded")
 
-    def test_two_days_late_is_stale(self):
+    def test_several_days_late_is_stale(self):
         report = dh.summarize(
-            make_payload(generated_at="2026-06-08T12:00:00"),
-            self.data_dir, now=NOW)            # 66h old
+            make_payload(date="2026-06-08"),
+            self.data_dir, now=NOW)            # midnight 06-08 -> 06-11 06:00 = 78h old
         self.assertEqual(entry(report, "generated_at")["status"], "stale")
         self.assertEqual(report["overall"], "stale")
 
-    def test_missing_generated_at_is_stale(self):
+    def test_missing_date_is_stale(self):
         p = make_payload()
-        del p["generated_at"]
+        del p["date"]
         report = dh.summarize(p, self.data_dir, now=NOW)
         self.assertEqual(entry(report, "generated_at")["status"], "stale")
+
+    def test_stale_generated_at_timestamp_alone_no_longer_flags(self):
+        # V3-04 regression guard: generated_at (the build instant) is no longer read by
+        # this check AT ALL — an ancient build timestamp with a FRESH date must stay ok,
+        # proving the tautology is gone (this check now measures data staleness, not
+        # build-instant staleness, which could never move).
+        report = dh.summarize(
+            make_payload(generated_at="2020-01-01T00:00:00"),
+            self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "generated_at")["status"], "ok")
 
 
 # ── OHLCV bar freshness ───────────────────────────────────────────────────────
@@ -142,6 +160,44 @@ class TestSources(_TmpDirTest):
         report = dh.summarize(p, self.data_dir, now=NOW)
         self.assertEqual(entry(report, "skip:news")["status"], "skip")
         self.assertEqual(entry(report, "skip:macro")["status"], "skip")
+
+    # ── V3-05 audit fix: 'skip' count itself must be able to flip overall ──
+    #
+    # 'skip' never influenced overall before this fix — measured 2026-07-15: 13 dead
+    # sources shipped health.overall='ok' (only 'degraded' via one UNRELATED tpex flag).
+    # Thresholds are calibrated against the full 47-file docs/data/*.json history, NOT
+    # guessed: the routine skip-count (empty TW-only-day sources like sec/openfda) ranges
+    # 0-11 on ~87% of days (median 9, p90 11) — a naive low floor (e.g. >=3) would have
+    # fired on almost every healthy day. A clean gap sits at 12-13 (zero observed days);
+    # only 4 of 47 files exceed it (14, 15, 15, 16 — including the audit's cited 07-15 AND
+    # a previously-undetected 2026-06-25 that shipped 'ok' under the old code with 15).
+
+    def test_skip_count_at_normal_ceiling_stays_ok(self):
+        # 11 dead sources = the observed p90 ceiling of routine daily variation
+        cov = {f"src{i}": {"ok": False, "codes": 0} for i in range(11)}
+        p = make_payload(source_coverage=cov)
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(report["overall"], "ok")
+
+    def test_many_dead_sources_degrades_even_without_other_flags(self):
+        # 12 dead sources, no other degraded/stale signal anywhere else
+        cov = {f"src{i}": {"ok": False, "codes": 0} for i in range(12)}
+        p = make_payload(source_coverage=cov)
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(report["overall"], "degraded")
+
+    def test_catastrophic_skip_count_is_stale(self):
+        cov = {f"src{i}": {"ok": False, "codes": 0} for i in range(16)}
+        p = make_payload(source_coverage=cov)
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(report["overall"], "stale")
+
+    def test_skip_count_from_pipeline_skips_also_counts(self):
+        # the historical 07-15 incident was 13 coverage-skips + 1 pipeline skip = 14 total
+        cov = {f"src{i}": {"ok": False, "codes": 0} for i in range(13)}
+        p = make_payload(source_coverage=cov, skips=["revenue"])
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(report["overall"], "degraded")
 
 
 # ── row-count ring comparison (環比) ──────────────────────────────────────────
@@ -627,6 +683,121 @@ class TestBdayLag(unittest.TestCase):
     def test_same_or_future_bar_is_zero(self):
         self.assertEqual(dh._bday_lag(dt.date(2026, 6, 19), dt.date(2026, 6, 19)), 0)
         self.assertEqual(dh._bday_lag(dt.date(2026, 6, 19), dt.date(2026, 6, 20)), 0)  # Fri bar, Sat report
+
+
+class TestPanelHealth(_TmpDirTest):
+    """R2-03 audit fix: market_panel.py's cumulative whole-market OHLC cache (widens daily
+    coverage from the ~600-name opportunity universe toward the full TW market) had ZERO
+    freshness/growth check anywhere in data_health.py (grep 'panel' -> 0 matches). NOW = 2026-06-11
+    06:00, default payload date 2026-06-11 (a Thursday)."""
+
+    def _panel_path(self):
+        return os.path.join(self.data_dir, "_panel.json.gz")
+
+    def _write_panel(self, codes_days):
+        """codes_days: {code: [date,...]} -> writes a synthetic gzipped panel via the real
+        market_panel.save(), so the check reads the ACTUAL on-disk shape, not a mock."""
+        import market_panel
+        panel = {}
+        for code, days in codes_days.items():
+            n = len(days)
+            panel[code] = {"d": list(days), "o": [1.0] * n, "h": [1.0] * n,
+                           "l": [1.0] * n, "c": [1.0] * n, "v": [1.0] * n}
+        path = self._panel_path()
+        market_panel.save(path, panel)
+        return path
+
+    def test_fresh_panel_is_ok(self):
+        codes = {f"S{i}.TW": ["2026-06-09", "2026-06-10"] for i in range(60)}   # Wed, 1bd lag
+        path = self._write_panel(codes)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, panel_path=path)
+        self.assertEqual(entry(report, "panel")["status"], "ok")
+
+    def test_moderately_stale_panel_degrades(self):
+        codes = {f"S{i}.TW": ["2026-06-08"] for i in range(60)}   # Mon -> Thu = 3bd lag
+        path = self._write_panel(codes)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, panel_path=path)
+        self.assertEqual(entry(report, "panel")["status"], "degraded")
+
+    def test_very_stale_panel_is_stale(self):
+        codes = {f"S{i}.TW": ["2026-05-25"] for i in range(60)}   # >2 weeks back
+        path = self._write_panel(codes)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, panel_path=path)
+        self.assertEqual(entry(report, "panel")["status"], "stale")
+        self.assertEqual(report["overall"], "stale")
+
+    def test_tiny_panel_is_degraded_regardless_of_freshness(self):
+        # freshness is fine (same-day bar) but the codes count collapsed -> reset/corruption
+        codes = {f"S{i}.TW": ["2026-06-11"] for i in range(5)}
+        path = self._write_panel(codes)
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, panel_path=path)
+        e = entry(report, "panel")
+        self.assertEqual(e["status"], "degraded")
+        self.assertIn("5 codes", e["note"])
+
+    def test_missing_panel_file_is_skip(self):
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW,
+                              panel_path=os.path.join(self.data_dir, "no_such_panel.json.gz"))
+        self.assertEqual(entry(report, "panel")["status"], "skip")
+
+    def test_empty_panel_is_skip(self):
+        import market_panel
+        path = self._panel_path()
+        market_panel.save(path, {})
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW, panel_path=path)
+        self.assertEqual(entry(report, "panel")["status"], "skip")
+
+    def test_default_panel_path_resolves_under_config_web_dir(self):
+        # deterministic plumbing check — doesn't touch the filesystem, so it can't be
+        # flaky against whatever _panel.json.gz happens to exist locally.
+        import config
+        self.assertEqual(dh._default_panel_path(),
+                         os.path.join(config.WEB_DIR, "data", "_panel.json.gz"))
+
+
+class TestInstitutionalStaleness(_TmpDirTest):
+    """BL-P0-3(d) audit fix: institutional.get_institutional() can silently reuse up to
+    TWSE_LOOKBACK_DAYS=7 calendar days of data as "today's" flows (V3-01). A companion fix
+    (owned by a different batch) teaches it to record source_coverage['institutional']
+    ['stale_days']; this check surfaces that number. DEFENSIVE: the field may not land in
+    the same change, so its absence must be a silent no-op (SKIP), never a crash."""
+
+    def test_absent_field_is_skip_noop(self):
+        report = dh.summarize(make_payload(), self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "skip")
+
+    def test_no_institutional_key_in_coverage_is_skip_noop(self):
+        p = make_payload(source_coverage={"twse_t86": {"ok": True, "codes": 12}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "skip")
+
+    def test_zero_days_is_ok(self):
+        p = make_payload(source_coverage={"institutional": {"ok": True, "stale_days": 0}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "ok")
+
+    def test_one_day_is_ok(self):
+        # a same/next-calendar-day TWSE T86 publish lag is normal, like OHLCV's 1bd tolerance
+        p = make_payload(source_coverage={"institutional": {"ok": True, "stale_days": 1}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "ok")
+
+    def test_two_days_degrades(self):
+        p = make_payload(source_coverage={"institutional": {"ok": True, "stale_days": 2}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "degraded")
+        self.assertEqual(report["overall"], "degraded")
+
+    def test_four_days_is_stale(self):
+        p = make_payload(source_coverage={"institutional": {"ok": True, "stale_days": 4}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "stale")
+        self.assertEqual(report["overall"], "stale")
+
+    def test_non_numeric_stale_days_is_skip_not_crash(self):
+        p = make_payload(source_coverage={"institutional": {"ok": True, "stale_days": None}})
+        report = dh.summarize(p, self.data_dir, now=NOW)
+        self.assertEqual(entry(report, "institutional_staleness")["status"], "skip")
 
 
 if __name__ == "__main__":

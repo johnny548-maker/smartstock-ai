@@ -353,14 +353,18 @@ def _momentum_portfolio_block(mp):
         tr = sleeve.get("track_record")
         if tr:
             oos = tr.get("oos") or {}
+            # B2-02 audit fix: commit 1f9ee78 relabeled the PWA's SAME 'oos.cagr' key to this
+            # honest wording (an in-sample tail, not a held-out sample) but skipped this file —
+            # two live surfaces disagreed about the same number's epistemic status.
+            oos_label = "近2年尾段 CAGR（同樣本尾段，非獨立 holdout）"
             out.append(
                 f"**{label}**（15y 擴大 universe {tr.get('n_universe', '?')} 檔回測）："
                 f"CAGR **{_pct(tr.get('cagr'))}**／Sharpe {tr.get('sharpe'):.2f}"
                 f"／MaxDD {_pct(tr.get('max_dd'))}"
-                f"／OOS 2y CAGR {_pct(oos.get('cagr'))}"
+                f"／{oos_label} {_pct(oos.get('cagr'))}"
                 f"（等權 {_pct(tr.get('equal_weight_cagr'))}、買進持有 {_pct(tr.get('buy_hold_cagr'))}）"
                 if tr.get("sharpe") is not None else
-                f"**{label}**：CAGR **{_pct(tr.get('cagr'))}**／OOS 2y {_pct(oos.get('cagr'))}")
+                f"**{label}**：CAGR **{_pct(tr.get('cagr'))}**／{oos_label} {_pct(oos.get('cagr'))}")
         else:
             out.append(f"**{label}**：_回測 track record 暫不可得_")
         for h in holdings:

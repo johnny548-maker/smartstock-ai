@@ -76,5 +76,48 @@ class TestScoredUniverseNames(unittest.TestCase):
         self.assertEqual(p["names"].get("3317.TWO"), "尼克森")
 
 
+class TestScoredUniverseOverlays(unittest.TestCase):
+    """SYNTH-01 fix: the ONLY _overlays_for call site used to be the picks[:DISPLAY_N] loop,
+    so TPEx's daily ~1,742-overlay production (972 codes) had ZERO consumer for names shown
+    via scored_universe (TPEx names ARE displayed there — 3/12 on 2026-07-31) even though
+    source_coverage.tpex reported {ok:true, codes:972, overlays:1742} as if the overlays were
+    reaching users. scored_universe rows must now flow through _overlays_for exactly like
+    picks do, matching on the bare code fallback ('3293.TWO' -> '3293')."""
+
+    def _payload(self, scored_universe, overlays_map):
+        return web_export.build_payload(
+            "2026-07-31", news=[], indices={}, institutional={},
+            ranked=[], analyses={}, allocation={}, rebalance_diff={}, risk="LOW",
+            markdown="", skips=[], scored_universe=scored_universe, overlays_map=overlays_map)
+
+    def test_scored_universe_entry_gets_matching_overlay_via_bare_code(self):
+        p = self._payload(
+            scored_universe=[{"stock": "3293.TWO", "name": "鈊象", "score": 90}],
+            overlays_map={"3293": [{"kind": "chip", "label": "測試"}]})
+        row = p["scored_universe"][0]
+        self.assertEqual(row["overlays"], [{"kind": "chip", "label": "測試"}])
+
+    def test_scored_universe_entry_without_overlay_match_stays_clean(self):
+        p = self._payload(
+            scored_universe=[{"stock": "9999.TWO", "name": "無資料", "score": 10}],
+            overlays_map={})
+        row = p["scored_universe"][0]
+        self.assertNotIn("overlays", row)
+
+    def test_scored_universe_overlays_does_not_mutate_caller_input(self):
+        # OVERLAY-NOT-SCORER / golden-additive invariant: pure, never mutates its input.
+        original = [{"stock": "3293.TWO", "name": "鈊象", "score": 90}]
+        self._payload(scored_universe=original, overlays_map={"3293": [{"kind": "chip"}]})
+        self.assertNotIn("overlays", original[0])
+
+    def test_absent_overlays_map_is_graceful(self):
+        p = web_export.build_payload(
+            "2026-07-31", news=[], indices={}, institutional={},
+            ranked=[], analyses={}, allocation={}, rebalance_diff={}, risk="LOW",
+            markdown="", skips=[],
+            scored_universe=[{"stock": "3293.TWO", "name": "鈊象", "score": 90}])
+        self.assertNotIn("overlays", p["scored_universe"][0])
+
+
 if __name__ == "__main__":
     unittest.main()
