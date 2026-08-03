@@ -1,17 +1,9 @@
 {
  "stock": "TDY",
  "name": "Teledyne Technologies",
- "price": 649.18,
- "change_pct": 2.82,
+ "price": 655.57,
+ "change_pct": 0.98,
  "ohlc": [
-  {
-   "time": "2026-05-05",
-   "o": 640.08,
-   "h": 644.0,
-   "l": 627.93,
-   "c": 631.87,
-   "v": 229500
-  },
   {
    "time": "2026-05-06",
    "o": 635.26,
@@ -483,10 +475,18 @@
    "l": 631.01,
    "c": 649.18,
    "v": 585700
+  },
+  {
+   "time": "2026-07-31",
+   "o": 655.5,
+   "h": 668.32,
+   "l": 647.79,
+   "c": 655.57,
+   "v": 467700
   }
  ],
  "sr": {
-  "price": 649.18,
+  "price": 655.57,
   "resistance": [
    663.95,
    668.34
@@ -495,10 +495,9 @@
    643.1,
    631.47
   ],
-  "strong_support": 397.78
+  "strong_support": 416.0
  },
  "spark": [
-  631.87,
   644.13,
   630.78,
   621.38,
@@ -557,11 +556,129 @@
   651.65,
   649.67,
   631.35,
-  649.18
+  649.18,
+  655.57
  ],
- "spark_start": "2026-05-05",
- "spark_end": "2026-07-30",
+ "spark_start": "2026-05-06",
+ "spark_end": "2026-07-31",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Large-Cap Stocks for Long-Term Investors and 1 Facing Challenges",
+   "value": {
+    "headline": "2 Large-Cap Stocks for Long-Term Investors and 1 Facing Challenges",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785500615,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-long-122335600.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-large-cap-stocks-long-122335600.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "HII Q2 Earnings Surpass Estimates, Revenues Increase Y/Y",
+   "value": {
+    "headline": "HII Q2 Earnings Surpass Estimates, Revenues Increase Y/Y",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785427200,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/hii-q2-earnings-surpass-estimates-160000966.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/hii-q2-earnings-surpass-estimates-160000966.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Hexcel Q2 Earnings Surpass Estimates, Revenues Improve Y/Y",
+   "value": {
+    "headline": "Hexcel Q2 Earnings Surpass Estimates, Revenues Improve Y/Y",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785426960,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/hexcel-q2-earnings-surpass-estimates-155600427.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/hexcel-q2-earnings-surpass-estimates-155600427.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "WWD Q3 Earnings Beat on Aerospace and Industrial Strength",
+   "value": {
+    "headline": "WWD Q3 Earnings Beat on Aerospace and Industrial Strength",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785419160,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/wwd-q3-earnings-beat-aerospace-134600430.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/wwd-q3-earnings-beat-aerospace-134600430.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Teledyne FLIR Defense Receives Significant Order to Support AV’s Titan MS Counter-UAS Solution for JIATF-401",
+   "value": {
+    "headline": "Teledyne FLIR Defense Receives Significant Order to Support AV’s Titan MS Counter-UAS Solution for JIATF-401",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785330420,
+    "url": "https://finance.yahoo.com/technology/articles/teledyne-flir-defense-receives-significant-130700804.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/teledyne-flir-defense-receives-significant-130700804.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

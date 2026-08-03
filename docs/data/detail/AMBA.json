@@ -1,17 +1,9 @@
 {
  "stock": "AMBA",
  "name": "Ambarella",
- "price": 74.09,
- "change_pct": 7.08,
+ "price": 86.0,
+ "change_pct": 16.08,
  "ohlc": [
-  {
-   "time": "2026-05-05",
-   "o": 72.0,
-   "h": 74.44,
-   "l": 70.5,
-   "c": 74.36,
-   "v": 834100
-  },
   {
    "time": "2026-05-06",
    "o": 76.1,
@@ -483,22 +475,29 @@
    "l": 68.72,
    "c": 74.09,
    "v": 1513600
+  },
+  {
+   "time": "2026-07-31",
+   "o": 76.74,
+   "h": 91.34,
+   "l": 74.07,
+   "c": 86.0,
+   "v": 9177800
   }
  ],
  "sr": {
-  "price": 74.09,
+  "price": 86.0,
   "resistance": [
-   74.58,
-   75.59
+   86.76,
+   87.49
   ],
   "support": [
-   72.58,
-   72.38
+   81.26,
+   81.16
   ],
   "strong_support": 38.86
  },
  "spark": [
-  74.36,
   75.48,
   74.27,
   76.3,
@@ -557,11 +556,144 @@
   68.23,
   68.97,
   69.19,
-  74.09
+  74.09,
+  86.0
  ],
- "spark_start": "2026-05-05",
- "spark_end": "2026-07-30",
+ "spark_start": "2026-05-06",
+ "spark_end": "2026-07-31",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Strength Seen in Ambarella (AMBA): Can Its 16.1% Jump Turn into More Strength?",
+   "value": {
+    "headline": "Strength Seen in Ambarella (AMBA): Can Its 16.1% Jump Turn into More Strength?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785737280,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/strength-seen-ambarella-amba-16-060800443.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/strength-seen-ambarella-amba-16-060800443.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Ambarella (AMBA) Cheap After Rumored NXP Takeover Talks?",
+   "value": {
+    "headline": "Is Ambarella (AMBA) Cheap After Rumored NXP Takeover Talks?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785630002,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ambarella-amba-cheap-rumored-nxp-002002501.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ambarella-amba-cheap-rumored-nxp-002002501.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMBA Stock Rockets 18% On NXP Buyout Talks For Self-Driving Chip Maker",
+   "value": {
+    "headline": "AMBA Stock Rockets 18% On NXP Buyout Talks For Self-Driving Chip Maker",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785545810,
+    "url": "https://stocktwits.com/news-articles/markets/equity/amba-stock-rockets-18-on-nxp-buyout-talks-for-self-driving-chip-maker/cZ8xigcRJPU?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/amba-stock-rockets-18-on-nxp-buyout-talks-for-self-driving-chip-maker/cZ8xigcRJPU?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Ambarella stock surges on reported NXP takeover talks",
+   "value": {
+    "headline": "Ambarella stock surges on reported NXP takeover talks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785527894,
+    "url": "https://investorshub.advfn.com/market-news/article/33165/ambarella-stock-nxp-semiconductors-takeover-talks?.tsrc=rss",
+    "urls": [
+     "https://investorshub.advfn.com/market-news/article/33165/ambarella-stock-nxp-semiconductors-takeover-talks?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
+   "value": {
+    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785526893,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194133265.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194133265.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 10794,
+    "days": 3,
+    "max_shares": 10200,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-03",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "NTAP",
  "name": "NetApp",
- "price": 173.98,
- "change_pct": 0.43,
+ "price": 178.5,
+ "change_pct": 2.6,
  "ohlc": [
-  {
-   "time": "2026-05-05",
-   "o": 111.43,
-   "h": 115.02,
-   "l": 110.97,
-   "c": 113.79,
-   "v": 1800800
-  },
   {
    "time": "2026-05-06",
    "o": 113.67,
@@ -483,12 +475,19 @@
    "l": 170.5,
    "c": 173.98,
    "v": 1995200
+  },
+  {
+   "time": "2026-07-31",
+   "o": 179.27,
+   "h": 179.81,
+   "l": 174.04,
+   "c": 178.5,
+   "v": 1829200
   }
  ],
  "sr": {
-  "price": 173.98,
+  "price": 178.5,
   "resistance": [
-   176.97,
    192.25
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 70.26
  },
  "spark": [
-  113.79,
   111.4,
   112.66,
   117.64,
@@ -557,11 +555,144 @@
   169.8,
   174.53,
   173.23,
-  173.98
+  173.98,
+  178.5
  ],
- "spark_start": "2026-05-05",
- "spark_end": "2026-07-30",
+ "spark_start": "2026-05-06",
+ "spark_end": "2026-07-31",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "GE Aerospace, AI Play Lead Five Stocks Near Buy Points",
+   "value": {
+    "headline": "GE Aerospace, AI Play Lead Five Stocks Near Buy Points",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785597730,
+    "url": "https://finance.yahoo.com/m/df151b04-cc7c-3a1a-a082-cc5bd30c5d51/ge-aerospace%2C-ai-play-lead.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/df151b04-cc7c-3a1a-a082-cc5bd30c5d51/ge-aerospace%2C-ai-play-lead.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp (NTAP) Exceeds Market Returns: Some Facts to Consider",
+   "value": {
+    "headline": "NetApp (NTAP) Exceeds Market Returns: Some Facts to Consider",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785534601,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/netapp-ntap-exceeds-market-returns-215001632.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/netapp-ntap-exceeds-market-returns-215001632.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Here is What to Know Beyond Why NetApp, Inc. (NTAP) is a Trending Stock",
+   "value": {
+    "headline": "Here is What to Know Beyond Why NetApp, Inc. (NTAP) is a Trending Stock",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785416404,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-netapp-inc-130004672.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-netapp-inc-130004672.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What The Options Market Is Signaling About The Volatility In SanDisk Stock",
+   "value": {
+    "headline": "What The Options Market Is Signaling About The Volatility In SanDisk Stock",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785282929,
+    "url": "https://www.trefis.com/articles/609110/what-the-options-market-is-signaling-about-the-volatility-in-sandisk-stock/2026-07-28?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/609110/what-the-options-market-is-signaling-about-the-volatility-in-sandisk-stock/2026-07-28?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Joins Industry Coalition to Launch Open Source AI Cybersecurity Alliance",
+   "value": {
+    "headline": "Joins Industry Coalition to Launch Open Source AI Cybersecurity Alliance",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785151435,
+    "url": "https://finance.yahoo.com/technology/ai/articles/joins-industry-coalition-launch-open-112355572.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/joins-industry-coalition-launch-open-112355572.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 111,017 股交割失敗）",
+   "value": {
+    "total_shares": 111017,
+    "days": 3,
+    "max_shares": 96199,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-03",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
