@@ -1,17 +1,9 @@
 {
  "stock": "INVZ",
  "name": "Innoviz Technologies",
- "price": 0.43,
- "change_pct": 2.14,
+ "price": 0.41,
+ "change_pct": -4.43,
  "ohlc": [
-  {
-   "time": "2026-05-06",
-   "o": 0.69,
-   "h": 0.77,
-   "l": 0.68,
-   "c": 0.75,
-   "v": 3292900
-  },
   {
    "time": "2026-05-07",
    "o": 0.74,
@@ -482,20 +474,29 @@
    "h": 0.44,
    "l": 0.41,
    "c": 0.43,
-   "v": 3465300
+   "v": 3466200
+  },
+  {
+   "time": "2026-08-03",
+   "o": 0.43,
+   "h": 0.43,
+   "l": 0.4,
+   "c": 0.41,
+   "v": 3398400
   }
  ],
  "sr": {
-  "price": 0.43,
+  "price": 0.41,
   "resistance": [
    0.65,
    0.66
   ],
-  "support": [],
-  "strong_support": 0.45
+  "support": [
+   0.38
+  ],
+  "strong_support": 0.38
  },
  "spark": [
-  0.75,
   0.69,
   0.73,
   0.8,
@@ -554,10 +555,11 @@
   0.45,
   0.38,
   0.42,
-  0.43
+  0.43,
+  0.41
  ],
- "spark_start": "2026-05-06",
- "spark_end": "2026-07-31",
+ "spark_start": "2026-05-07",
+ "spark_end": "2026-08-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

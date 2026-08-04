@@ -1,8 +1,8 @@
 {
  "stock": "6237.TWO",
  "name": "驊訊",
- "price": 33.1,
- "change_pct": 0.91,
+ "price": 33.85,
+ "change_pct": 2.27,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,16 +211,27 @@
    "l": 32.2,
    "c": 33.1,
    "v": 206033
+  },
+  {
+   "time": "2026-08-04",
+   "o": 33.65,
+   "h": 34.15,
+   "l": 33.0,
+   "c": 33.85,
+   "v": 160132
   }
  ],
  "sr": {
-  "price": 33.1,
+  "price": 33.85,
   "resistance": [
    47.8,
    48.6
   ],
-  "support": [],
-  "strong_support": 33.45
+  "support": [
+   33.45,
+   30.1
+  ],
+  "strong_support": 30.1
  },
  "spark": [
   46.0,
@@ -248,10 +259,11 @@
   33.0,
   31.0,
   32.8,
-  33.1
+  33.1,
+  33.85
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

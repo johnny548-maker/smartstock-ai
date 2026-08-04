@@ -1,8 +1,8 @@
 {
  "stock": "8432.TWO",
  "name": "東生華",
- "price": 49.9,
- "change_pct": 0.5,
+ "price": 50.4,
+ "change_pct": 1.0,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,15 +211,26 @@
    "l": 49.6,
    "c": 49.9,
    "v": 15000
+  },
+  {
+   "time": "2026-08-04",
+   "o": 50.0,
+   "h": 50.5,
+   "l": 50.0,
+   "c": 50.4,
+   "v": 9090
   }
  ],
  "sr": {
-  "price": 49.9,
+  "price": 50.4,
   "resistance": [
    51.0,
    52.8
   ],
-  "support": [],
+  "support": [
+   49.95,
+   49.9
+  ],
   "strong_support": 49.9
  },
  "spark": [
@@ -248,10 +259,11 @@
   50.0,
   48.8,
   49.65,
-  49.9
+  49.9,
+  50.4
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,17 +1,9 @@
 {
  "stock": "MVIS",
  "name": "MicroVision",
- "price": 3.99,
- "change_pct": 1242.53,
+ "price": 3.83,
+ "change_pct": -4.01,
  "ohlc": [
-  {
-   "time": "2026-04-23",
-   "o": 0.67,
-   "h": 0.68,
-   "l": 0.63,
-   "c": 0.63,
-   "v": 3369216
-  },
   {
    "time": "2026-04-24",
    "o": 0.65,
@@ -483,10 +475,18 @@
    "l": 3.51,
    "c": 3.99,
    "v": 271877
+  },
+  {
+   "time": "2026-08-03",
+   "o": 4.06,
+   "h": 4.23,
+   "l": 3.62,
+   "c": 3.83,
+   "v": 794538
   }
  ],
  "sr": {
-  "price": 3.99,
+  "price": 3.83,
   "resistance": [],
   "support": [
    1.37,
@@ -495,7 +495,6 @@
   "strong_support": 0.26
  },
  "spark": [
-  0.63,
   0.65,
   0.62,
   0.65,
@@ -554,143 +553,12 @@
   0.31,
   0.3,
   0.3,
-  3.99
+  3.99,
+  3.83
  ],
- "spark_start": "2026-04-23",
- "spark_end": "2026-07-31",
+ "spark_start": "2026-04-24",
+ "spark_end": "2026-08-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MicroVision to Announce Second Quarter 2026 Results on August 6, 2026",
-   "value": {
-    "headline": "MicroVision to Announce Second Quarter 2026 Results on August 6, 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785244800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microvision-announce-second-quarter-2026-132000845.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microvision-announce-second-quarter-2026-132000845.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MicroVision Announces Reverse Split of Common Stock to Support Continued Nasdaq Listing and Long-Term Growth Strategy",
-   "value": {
-    "headline": "MicroVision Announces Reverse Split of Common Stock to Support Continued Nasdaq Listing and Long-Term Growth Strategy",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784725800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microvision-announces-reverse-split-common-131000410.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microvision-announces-reverse-split-common-131000410.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MicroVision Pitches ‘Lidar 2.0’ Strategy, Keeps 2026 Revenue Outlook Intact",
-   "value": {
-    "headline": "MicroVision Pitches ‘Lidar 2.0’ Strategy, Keeps 2026 Revenue Outlook Intact",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784142152,
-    "url": "https://www.marketbeat.com/instant-alerts/microvision-pitches-lidar-20-strategy-keeps-2026-revenue-outlook-intact-2026-07-15/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/microvision-pitches-lidar-20-strategy-keeps-2026-revenue-outlook-intact-2026-07-15/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MicroVision Appoints James Byun as Chief Commercial Officer",
-   "value": {
-    "headline": "MicroVision Appoints James Byun as Chief Commercial Officer",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784121600,
-    "url": "https://finance.yahoo.com/technology/articles/microvision-appoints-james-byun-chief-132000995.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/microvision-appoints-james-byun-chief-132000995.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MicroVision Launches MicroVision Semiconductor to Expand ASIC Development and Lidar Capabilities",
-   "value": {
-    "headline": "MicroVision Launches MicroVision Semiconductor to Expand ASIC Development and Lidar Capabilities",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1784039908,
-    "url": "https://investorshub.advfn.com/market-news/article/31857/microvision-launches-microvision-semiconductor-to-expand-asic-development-and-lidar-capabilities?.tsrc=rss",
-    "urls": [
-     "https://investorshub.advfn.com/market-news/article/31857/microvision-launches-microvision-semiconductor-to-expand-asic-development-and-lidar-capabilities?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-03",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 2,662,972 股交割失敗）",
-   "value": {
-    "total_shares": 2662972,
-    "days": 9,
-    "max_shares": 1847265,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-03",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

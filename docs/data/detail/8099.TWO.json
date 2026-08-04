@@ -1,8 +1,8 @@
 {
  "stock": "8099.TWO",
  "name": "大世科",
- "price": 55.0,
- "change_pct": -2.48,
+ "price": 55.6,
+ "change_pct": 1.09,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,13 +211,24 @@
    "l": 54.8,
    "c": 55.0,
    "v": 131896
+  },
+  {
+   "time": "2026-08-04",
+   "o": 55.2,
+   "h": 56.0,
+   "l": 54.9,
+   "c": 55.6,
+   "v": 158354
   }
  ],
  "sr": {
-  "price": 55.0,
+  "price": 55.6,
   "resistance": [],
-  "support": [],
-  "strong_support": 55.2
+  "support": [
+   55.2,
+   54.1
+  ],
+  "strong_support": 54.1
  },
  "spark": [
   60.2,
@@ -245,10 +256,11 @@
   57.0,
   55.8,
   56.4,
-  55.0
+  55.0,
+  55.6
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

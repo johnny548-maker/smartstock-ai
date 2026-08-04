@@ -1,8 +1,8 @@
 {
  "stock": "4503.TWO",
  "name": "金雨",
- "price": 32.95,
- "change_pct": 1.38,
+ "price": 32.85,
+ "change_pct": -0.3,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,16 +211,26 @@
    "l": 32.15,
    "c": 32.95,
    "v": 84515
+  },
+  {
+   "time": "2026-08-04",
+   "o": 32.95,
+   "h": 33.05,
+   "l": 32.35,
+   "c": 32.85,
+   "v": 99021
   }
  ],
  "sr": {
-  "price": 32.95,
+  "price": 32.85,
   "resistance": [
    38.8,
    48.05
   ],
-  "support": [],
-  "strong_support": 34.85
+  "support": [
+   30.25
+  ],
+  "strong_support": 30.25
  },
  "spark": [
   38.4,
@@ -248,10 +258,11 @@
   33.6,
   31.0,
   32.5,
-  32.95
+  32.95,
+  32.85
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

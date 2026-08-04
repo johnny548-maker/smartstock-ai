@@ -1,8 +1,8 @@
 {
  "stock": "6568.TWO",
  "name": "宏觀",
- "price": 131.0,
- "change_pct": -0.76,
+ "price": 133.0,
+ "change_pct": 1.53,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,15 +211,26 @@
    "l": 126.5,
    "c": 131.0,
    "v": 215294
+  },
+  {
+   "time": "2026-08-04",
+   "o": 132.5,
+   "h": 136.0,
+   "l": 131.5,
+   "c": 133.0,
+   "v": 122092
   }
  ],
  "sr": {
-  "price": 131.0,
+  "price": 133.0,
   "resistance": [
    168.5
   ],
-  "support": [],
-  "strong_support": 132.0
+  "support": [
+   132.0,
+   120.5
+  ],
+  "strong_support": 120.5
  },
  "spark": [
   176.5,
@@ -247,10 +258,11 @@
   133.5,
   125.0,
   132.0,
-  131.0
+  131.0,
+  133.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

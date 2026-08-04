@@ -1,8 +1,8 @@
 {
  "stock": "6925.TWO",
  "name": "意藍",
- "price": 51.1,
- "change_pct": 0.0,
+ "price": 52.3,
+ "change_pct": 2.35,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,15 +211,26 @@
    "l": 50.0,
    "c": 51.1,
    "v": 30058
+  },
+  {
+   "time": "2026-08-04",
+   "o": 52.1,
+   "h": 52.3,
+   "l": 51.2,
+   "c": 52.3,
+   "v": 15010
   }
  ],
  "sr": {
-  "price": 51.1,
+  "price": 52.3,
   "resistance": [
    65.0
   ],
-  "support": [],
-  "strong_support": 52.1
+  "support": [
+   52.1,
+   48.7
+  ],
+  "strong_support": 48.7
  },
  "spark": [
   63.7,
@@ -247,10 +258,11 @@
   52.0,
   50.0,
   51.1,
-  51.1
+  51.1,
+  52.3
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

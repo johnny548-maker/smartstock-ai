@@ -1,57 +1,9 @@
 {
  "stock": "AMZN",
- "name": "Amazon.com, Inc. - Common Stock",
- "price": 232.11,
- "change_pct": -0.66,
+ "name": "亞馬遜",
+ "price": 284.02,
+ "change_pct": 4.58,
  "ohlc": [
-  {
-   "time": "2026-04-29",
-   "o": 257.99,
-   "h": 265.91,
-   "l": 257.7,
-   "c": 263.04,
-   "v": 72367900
-  },
-  {
-   "time": "2026-04-30",
-   "o": 273.17,
-   "h": 273.88,
-   "l": 256.16,
-   "c": 265.06,
-   "v": 100974900
-  },
-  {
-   "time": "2026-05-01",
-   "o": 265.58,
-   "h": 273.32,
-   "l": 262.74,
-   "c": 268.26,
-   "v": 50825200
-  },
-  {
-   "time": "2026-05-04",
-   "o": 268.8,
-   "h": 276.1,
-   "l": 268.8,
-   "c": 272.05,
-   "v": 49083700
-  },
-  {
-   "time": "2026-05-05",
-   "o": 276.08,
-   "h": 278.56,
-   "l": 272.38,
-   "c": 273.55,
-   "v": 41908500
-  },
-  {
-   "time": "2026-05-06",
-   "o": 272.89,
-   "h": 277.8,
-   "l": 272.21,
-   "c": 274.99,
-   "v": 44552000
-  },
   {
    "time": "2026-05-07",
    "o": 275.02,
@@ -482,27 +434,67 @@
    "h": 234.95,
    "l": 231.34,
    "c": 232.11,
-   "v": 34965800
+   "v": 35017400
+  },
+  {
+   "time": "2026-07-27",
+   "o": 235.67,
+   "h": 235.89,
+   "l": 230.99,
+   "c": 231.39,
+   "v": 34999500
+  },
+  {
+   "time": "2026-07-28",
+   "o": 232.85,
+   "h": 233.11,
+   "l": 228.1,
+   "c": 230.86,
+   "v": 44521600
+  },
+  {
+   "time": "2026-07-29",
+   "o": 229.32,
+   "h": 232.82,
+   "l": 226.16,
+   "c": 226.65,
+   "v": 44957500
+  },
+  {
+   "time": "2026-07-30",
+   "o": 233.35,
+   "h": 239.82,
+   "l": 231.06,
+   "c": 235.5,
+   "v": 101839800
+  },
+  {
+   "time": "2026-07-31",
+   "o": 265.0,
+   "h": 273.23,
+   "l": 262.01,
+   "c": 271.58,
+   "v": 129054800
+  },
+  {
+   "time": "2026-08-03",
+   "o": 278.29,
+   "h": 287.2,
+   "l": 278.0,
+   "c": 284.02,
+   "v": 90320300
   }
  ],
  "sr": {
-  "price": 232.11,
-  "resistance": [
-   249.51,
-   249.71
-  ],
+  "price": 284.02,
+  "resistance": [],
   "support": [
-   225.55
+   256.16,
+   255.19
   ],
-  "strong_support": 225.55
+  "strong_support": 196.0
  },
  "spark": [
-  263.04,
-  265.06,
-  268.26,
-  272.05,
-  273.55,
-  274.99,
   271.17,
   272.68,
   268.99,
@@ -556,11 +548,156 @@
   247.55,
   244.85,
   233.66,
-  232.11
+  232.11,
+  231.39,
+  230.86,
+  226.65,
+  235.5,
+  271.58,
+  284.02
  ],
- "spark_start": "2026-04-29",
- "spark_end": "2026-07-24",
- "fundamental": null,
+ "spark_start": "2026-05-07",
+ "spark_end": "2026-08-03",
+ "fundamental": {
+  "pe_trailing": 22.83119,
+  "pe_forward": 27.528173,
+  "eps_trailing": 12.44,
+  "eps_forward": 10.31743,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Google exec warns AI spending could trigger a painful revenue gap",
+   "value": {
+    "headline": "Google exec warns AI spending could trigger a painful revenue gap",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785844557,
+    "url": "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Thunder Signs Strategic Collaboration Agreement with Amazon Web Services to Deliver AI-Powered Contact Center Solutions",
+   "value": {
+    "headline": "Thunder Signs Strategic Collaboration Agreement with Amazon Web Services to Deliver AI-Powered Contact Center Solutions",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785843300,
+    "url": "https://finance.yahoo.com/technology/ai/articles/thunder-signs-strategic-collaboration-agreement-113500353.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/thunder-signs-strategic-collaboration-agreement-113500353.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+   "value": {
+    "headline": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785843072,
+    "url": "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss",
+    "urls": [
+     "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Amazon and Microsoft Gained a Combined $1.04 Trillion in Market Cap in 2 Days, While Apple and Meta Platforms Lost $510 ",
+   "value": {
+    "headline": "Amazon and Microsoft Gained a Combined $1.04 Trillion in Market Cap in 2 Days, While Apple and Meta Platforms Lost $510 Billion. Meet the Vanguard ETF That's Built for This Exact Market.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785843000,
+    "url": "https://www.fool.com/investing/2026/08/04/amazon-and-microsoft-just-gained-a-combined-104-tr/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/04/amazon-and-microsoft-just-gained-a-combined-104-tr/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Oil edges higher, stocks gain as investors eye political risks",
+   "value": {
+    "headline": "Oil edges higher, stocks gain as investors eye political risks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785842453,
+    "url": "https://finance.yahoo.com/markets/world-indices/articles/stocks-mixed-seoul-stabilises-oil-025545782.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/world-indices/articles/stocks-mixed-seoul-stabilises-oil-025545782.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 9164,
+    "days": 6,
+    "max_shares": 3000,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-04",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

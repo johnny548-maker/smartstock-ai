@@ -1,17 +1,9 @@
 {
  "stock": "VSAT",
  "name": "Viasat",
- "price": 76.93,
- "change_pct": -0.86,
+ "price": 81.29,
+ "change_pct": 5.67,
  "ohlc": [
-  {
-   "time": "2026-05-06",
-   "o": 66.07,
-   "h": 67.48,
-   "l": 65.15,
-   "c": 67.3,
-   "v": 1299200
-  },
   {
    "time": "2026-05-07",
    "o": 67.97,
@@ -483,10 +475,18 @@
    "l": 74.71,
    "c": 76.93,
    "v": 1366200
+  },
+  {
+   "time": "2026-08-03",
+   "o": 75.41,
+   "h": 83.54,
+   "l": 75.2,
+   "c": 81.29,
+   "v": 3536100
   }
  ],
  "sr": {
-  "price": 76.93,
+  "price": 81.29,
   "resistance": [
    89.79,
    93.03
@@ -498,7 +498,6 @@
   "strong_support": 6.69
  },
  "spark": [
-  67.3,
   66.33,
   70.01,
   73.07,
@@ -557,11 +556,144 @@
   74.13,
   70.19,
   77.6,
-  76.93
+  76.93,
+  81.29
  ],
- "spark_start": "2026-05-06",
- "spark_end": "2026-07-31",
+ "spark_start": "2026-05-07",
+ "spark_end": "2026-08-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What IJR's Own History Says About Its Price Today",
+   "value": {
+    "headline": "What IJR's Own History Says About Its Price Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785840352,
+    "url": "https://www.trefis.com/articles/609832/what-ijrs-own-history-says-about-its-price-today/2026-08-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/609832/what-ijrs-own-history-says-about-its-price-today/2026-08-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SpaceX’s First Earnings Offer a Chance to Reverse Stock’s Plunge",
+   "value": {
+    "headline": "SpaceX’s First Earnings Offer a Chance to Reverse Stock’s Plunge",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785831979,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-first-earnings-offer-chance-082619954.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/spacex-first-earnings-offer-chance-082619954.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Viasat Set to Report Q1 Results: Can Revenue Growth Lift Earnings?",
+   "value": {
+    "headline": "Viasat Set to Report Q1 Results: Can Revenue Growth Lift Earnings?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785774780,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/viasat-set-report-q1-results-163300327.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/viasat-set-report-q1-results-163300327.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Gravitics Appoints Philip Wong as Chief Financial Officer",
+   "value": {
+    "headline": "Gravitics Appoints Philip Wong as Chief Financial Officer",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785762000,
+    "url": "https://finance.yahoo.com/technology/articles/gravitics-appoints-philip-wong-chief-130000861.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/gravitics-appoints-philip-wong-chief-130000861.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Earnings To Watch: Viasat (VSAT) Reports Q2 Results Tomorrow",
+   "value": {
+    "headline": "Earnings To Watch: Viasat (VSAT) Reports Q2 Results Tomorrow",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785727522,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/earnings-watch-viasat-vsat-reports-032522050.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/earnings-watch-viasat-vsat-reports-032522050.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 336,026 股交割失敗）",
+   "value": {
+    "total_shares": 336026,
+    "days": 4,
+    "max_shares": 123629,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-04",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

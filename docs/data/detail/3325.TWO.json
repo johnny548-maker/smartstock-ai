@@ -1,8 +1,8 @@
 {
  "stock": "3325.TWO",
  "name": "旭品",
- "price": 11.85,
- "change_pct": 0.42,
+ "price": 12.05,
+ "change_pct": 1.69,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,16 +211,27 @@
    "l": 11.8,
    "c": 11.85,
    "v": 160645
+  },
+  {
+   "time": "2026-08-04",
+   "o": 11.8,
+   "h": 12.1,
+   "l": 11.8,
+   "c": 12.05,
+   "v": 64773
   }
  ],
  "sr": {
-  "price": 11.85,
+  "price": 12.05,
   "resistance": [
    13.2,
    13.25
   ],
-  "support": [],
-  "strong_support": 12.0
+  "support": [
+   12.0,
+   10.95
+  ],
+  "strong_support": 10.95
  },
  "spark": [
   12.6,
@@ -248,10 +259,11 @@
   11.7,
   11.55,
   11.8,
-  11.85
+  11.85,
+  12.05
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

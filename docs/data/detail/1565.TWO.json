@@ -1,8 +1,8 @@
 {
  "stock": "1565.TWO",
  "name": "精華",
- "price": 92.0,
- "change_pct": 0.0,
+ "price": 92.6,
+ "change_pct": 0.65,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,16 +211,27 @@
    "l": 91.4,
    "c": 92.0,
    "v": 100788
+  },
+  {
+   "time": "2026-08-04",
+   "o": 91.5,
+   "h": 92.6,
+   "l": 91.5,
+   "c": 92.6,
+   "v": 109939
   }
  ],
  "sr": {
-  "price": 92.0,
+  "price": 92.6,
   "resistance": [
    95.1,
    101.0
   ],
-  "support": [],
-  "strong_support": 92.1
+  "support": [
+   92.1,
+   90.4
+  ],
+  "strong_support": 90.4
  },
  "spark": [
   93.9,
@@ -248,10 +259,11 @@
   92.2,
   91.0,
   92.0,
-  92.0
+  92.0,
+  92.6
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,25 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet Inc. - Class A Common Stock",
- "price": 333.66,
- "change_pct": -0.91,
+ "name": "Alphabet",
+ "price": 373.51,
+ "change_pct": 4.88,
  "ohlc": [
-  {
-   "time": "2026-05-05",
-   "o": 386.0,
-   "h": 392.59,
-   "l": 383.79,
-   "c": 388.2,
-   "v": 23878600
-  },
-  {
-   "time": "2026-05-06",
-   "o": 394.01,
-   "h": 399.61,
-   "l": 392.53,
-   "c": 397.8,
-   "v": 31308500
-  },
   {
    "time": "2026-05-07",
    "o": 399.68,
@@ -482,24 +466,38 @@
    "h": 336.51,
    "l": 330.34,
    "c": 333.66,
-   "v": 30050100
+   "v": 30168000
+  },
+  {
+   "time": "2026-07-31",
+   "o": 340.83,
+   "h": 358.58,
+   "l": 340.0,
+   "c": 356.13,
+   "v": 46498000
+  },
+  {
+   "time": "2026-08-03",
+   "o": 365.45,
+   "h": 376.69,
+   "l": 363.35,
+   "c": 373.51,
+   "v": 38596000
   }
  ],
  "sr": {
-  "price": 333.66,
+  "price": 373.51,
   "resistance": [
-   373.16,
-   375.27
+   375.27,
+   376.0
   ],
   "support": [
-   330.2,
-   314.9
+   357.87,
+   351.08
   ],
-  "strong_support": 314.9
+  "strong_support": 196.04
  },
  "spark": [
-  388.2,
-  397.8,
   397.75,
   400.56,
   388.41,
@@ -557,11 +555,167 @@
   326.56,
   333.71,
   336.71,
-  333.66
+  333.66,
+  356.13,
+  373.51
  ],
- "spark_start": "2026-05-05",
- "spark_end": "2026-07-30",
- "fundamental": null,
+ "spark_start": "2026-05-07",
+ "spark_end": "2026-08-03",
+ "fundamental": {
+  "pe_trailing": 18.731695,
+  "pe_forward": 25.34947,
+  "eps_trailing": 19.94,
+  "eps_forward": 14.73443,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Google exec warns AI spending could trigger a painful revenue gap",
+   "value": {
+    "headline": "Google exec warns AI spending could trigger a painful revenue gap",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785844557,
+    "url": "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+   "value": {
+    "headline": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785843072,
+    "url": "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss",
+    "urls": [
+     "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Want to Buy SpaceX? Why You May Be Better Off Just Buying Alphabet's Stock",
+   "value": {
+    "headline": "Want to Buy SpaceX? Why You May Be Better Off Just Buying Alphabet's Stock",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785842400,
+    "url": "https://www.fool.com/investing/2026/08/04/want-to-buy-spacex-why-you-may-be-better-off-just/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/04/want-to-buy-spacex-why-you-may-be-better-off-just/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SK Hynix and Sandisk May Have Just Solved AI’s Biggest Bottleneck — And It Could Reshape the Memory Market",
+   "value": {
+    "headline": "SK Hynix and Sandisk May Have Just Solved AI’s Biggest Bottleneck — And It Could Reshape the Memory Market",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785841958,
+    "url": "https://247wallst.com/investing/2026/08/04/sk-hynix-and-sandisk-may-have-just-solved-ais-biggest-bottleneck-and-it-could-reshape-the-memory-market/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/04/sk-hynix-and-sandisk-may-have-just-solved-ais-biggest-bottleneck-and-it-could-reshape-the-memory-market/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Google partners with RWE for Crooked Creek Solar project energy",
+   "value": {
+    "headline": "Google partners with RWE for Crooked Creek Solar project energy",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785841441,
+    "url": "https://www.power-technology.com/news/google-rwe-crooked-creek-solar-project/?.tsrc=rss",
+    "urls": [
+     "https://www.power-technology.com/news/google-rwe-crooked-creek-solar-project/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 96 分 / 105 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 96,
+    "comments": 105,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-08-04",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 261,067 股交割失敗）",
+   "value": {
+    "total_shares": 261067,
+    "days": 7,
+    "max_shares": 227318,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-04",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

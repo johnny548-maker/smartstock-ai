@@ -1,8 +1,8 @@
 {
  "stock": "3206.TWO",
  "name": "志豐",
- "price": 33.2,
- "change_pct": 1.37,
+ "price": 33.15,
+ "change_pct": -0.15,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -211,15 +211,25 @@
    "l": 32.75,
    "c": 33.2,
    "v": 41409
+  },
+  {
+   "time": "2026-08-04",
+   "o": 33.4,
+   "h": 33.55,
+   "l": 33.0,
+   "c": 33.15,
+   "v": 27267
   }
  ],
  "sr": {
-  "price": 33.2,
+  "price": 33.15,
   "resistance": [
    40.05
   ],
-  "support": [],
-  "strong_support": 33.2
+  "support": [
+   31.0
+  ],
+  "strong_support": 31.0
  },
  "spark": [
   38.5,
@@ -247,10 +257,11 @@
   32.7,
   31.4,
   32.75,
-  33.2
+  33.2,
+  33.15
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-03",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
