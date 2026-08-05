@@ -1,0 +1,50 @@
+[validation] universe=669 years=15 adv_slippage=True quick=False
+[load] 25/669 cache=0 miss=25 dropped=0
+[load] 50/669 cache=0 miss=50 dropped=0
+[load] 75/669 cache=0 miss=75 dropped=0
+[load] 100/669 cache=0 miss=100 dropped=0
+[load] 125/669 cache=0 miss=125 dropped=0
+[load] 150/669 cache=0 miss=150 dropped=0
+[load] 175/669 cache=0 miss=175 dropped=0
+[load] 200/669 cache=0 miss=200 dropped=0
+[load] 225/669 cache=0 miss=225 dropped=0
+[load] 250/669 cache=0 miss=250 dropped=0
+[load] 275/669 cache=0 miss=275 dropped=0
+[load] 300/669 cache=0 miss=300 dropped=0
+[load] 325/669 cache=0 miss=325 dropped=0
+[load] 350/669 cache=0 miss=350 dropped=0
+[load] 375/669 cache=0 miss=375 dropped=0
+[load] 400/669 cache=0 miss=400 dropped=0
+[load] 425/669 cache=0 miss=425 dropped=0
+[load] 450/669 cache=0 miss=450 dropped=0
+[load] 475/669 cache=0 miss=475 dropped=0
+[load] 500/669 cache=0 miss=500 dropped=0
+[load] 525/669 cache=0 miss=525 dropped=0
+[load] 550/669 cache=0 miss=550 dropped=0
+[load] 575/669 cache=0 miss=575 dropped=0
+[load] 600/669 cache=0 miss=600 dropped=0
+[load] 625/669 cache=0 miss=625 dropped=0
+[load] 650/669 cache=0 miss=650 dropped=0
+[load] 669/669 cache=0 miss=669 dropped=0
+[load] hist=660 cache=0 fetched=660
+[PIT] applied (652 dated; 660->660)
+[load done] 660 histories
+
+[written] /home/runner/work/smartstock-ai/smartstock-ai/docs/data/_validation_state.json
+family: n_trials=15  PBO=0.0  SPA p=0.0 (best=Mom12-1>0)
+signal                   nFired     DSR wfStable wfMinLift
+Trend Template            58120   1.000    False      0.52
+VCP 收縮                    12208   1.000    False      0.71
+Pocket pivot              21543   1.000    False      0.82
+Power pivot(放量突破)           731   1.000     True      1.30
+首次新高(久盤後)                   682   1.000    False      0.49
+VDU→Thrust(量縮噴出)           1354   1.000    False      0.88
+U/D量比吸籌                   47051   1.000     True      1.31
+A/D吸籌A/B級                 95784   1.000    False      0.56
+RS線新高(純)                  16897   1.000    False      0.51
+VCP∧TrendTemplate          3542   1.000    False      0.45
+RS純∧TrendTemplate          8625   1.000    False      0.47
+PowerPivot∧TrendTmpl        458   1.000    False      0.77
+Mom12-1>0                149008   1.000    False      0.82
+Close>SMA200             143581   1.000    False      0.56
+Mom12-1∧SMA200           120435   1.000    False      0.52
