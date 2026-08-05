@@ -1,8 +1,8 @@
 {
  "stock": "2515.TW",
  "name": "中工",
- "price": 12.05,
- "change_pct": 3.43,
+ "price": 12.0,
+ "change_pct": -0.41,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -243,15 +243,25 @@
    "l": 11.8,
    "c": 12.05,
    "v": 10993097
+  },
+  {
+   "time": "2026-08-05",
+   "o": 12.0,
+   "h": 12.05,
+   "l": 11.8,
+   "c": 12.0,
+   "v": 5761587
   }
  ],
  "sr": {
-  "price": 12.05,
+  "price": 12.0,
   "resistance": [
    15.3
   ],
-  "support": [],
-  "strong_support": 12.8
+  "support": [
+   11.3
+  ],
+  "strong_support": 11.3
  },
  "spark": [
   13.35,
@@ -283,10 +293,11 @@
   11.75,
   11.65,
   11.65,
-  12.05
+  12.05,
+  12.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

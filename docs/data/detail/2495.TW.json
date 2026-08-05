@@ -1,8 +1,8 @@
 {
  "stock": "2495.TW",
  "name": "普安",
- "price": 35.3,
- "change_pct": 10.83,
+ "price": 37.5,
+ "change_pct": 6.23,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -243,15 +243,26 @@
    "l": 34.25,
    "c": 35.3,
    "v": 1406498
+  },
+  {
+   "time": "2026-08-05",
+   "o": 35.0,
+   "h": 37.55,
+   "l": 35.0,
+   "c": 37.5,
+   "v": 2476401
   }
  ],
  "sr": {
-  "price": 35.3,
+  "price": 37.5,
   "resistance": [
    54.3
   ],
-  "support": [],
-  "strong_support": 36.0
+  "support": [
+   36.0,
+   31.25
+  ],
+  "strong_support": 31.25
  },
  "spark": [
   52.1,
@@ -283,10 +294,11 @@
   33.9,
   32.5,
   31.85,
-  35.3
+  35.3,
+  37.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,17 +1,9 @@
 {
  "stock": "HPE",
  "name": "Hewlett Packard Enterprise",
- "price": 50.24,
- "change_pct": 4.89,
+ "price": 52.39,
+ "change_pct": 4.28,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 29.94,
-   "h": 29.96,
-   "l": 29.22,
-   "c": 29.61,
-   "v": 15708600
-  },
   {
    "time": "2026-05-08",
    "o": 29.91,
@@ -482,14 +474,21 @@
    "h": 50.56,
    "l": 46.3,
    "c": 50.24,
-   "v": 16955200
+   "v": 17026300
+  },
+  {
+   "time": "2026-08-04",
+   "o": 52.61,
+   "h": 53.42,
+   "l": 50.39,
+   "c": 52.39,
+   "v": 25650200
   }
  ],
  "sr": {
-  "price": 50.24,
+  "price": 52.39,
   "resistance": [
-   50.45,
-   51.08
+   64.06
   ],
   "support": [
    44.61,
@@ -498,7 +497,6 @@
   "strong_support": 11.64
  },
  "spark": [
-  29.61,
   31.26,
   30.78,
   30.12,
@@ -557,11 +555,144 @@
   44.44,
   47.14,
   47.9,
-  50.24
+  50.24,
+  52.39
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Hewlett Packard Enterprise (HPE) Stock A Bargain Or Fully Priced?",
+   "value": {
+    "headline": "Is Hewlett Packard Enterprise (HPE) Stock A Bargain Or Fully Priced?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785924695,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/hewlett-packard-enterprise-hpe-stock-101135397.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/hewlett-packard-enterprise-hpe-stock-101135397.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI Infrastructure Backlog: How Dell, HPE, SMCI, and GE Vernova Are Positioned",
+   "value": {
+    "headline": "AI Infrastructure Backlog: How Dell, HPE, SMCI, and GE Vernova Are Positioned",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785918169,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ai-infrastructure-backlog-dell-hpe-082249164.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/ai-infrastructure-backlog-dell-hpe-082249164.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp's Buyback Is Better Funded Than It Is Big",
+   "value": {
+    "headline": "NetApp's Buyback Is Better Funded Than It Is Big",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785865921,
+    "url": "https://www.trefis.com/articles/610051/netapps-buyback-is-better-funded-than-it-is-big/2026-08-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/610051/netapps-buyback-is-better-funded-than-it-is-big/2026-08-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dell and Super Micro Rally 10%, Hewlett Packard Enterprise Climbs 6% as AI Server Stocks Surge",
+   "value": {
+    "headline": "Dell and Super Micro Rally 10%, Hewlett Packard Enterprise Climbs 6% as AI Server Stocks Surge",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785864012,
+    "url": "https://247wallst.com/investing/2026/08/04/dell-and-super-micro-rally-10-hewlett-packard-enterprise-climbs-6-as-ai-server-stocks-surge/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/04/dell-and-super-micro-rally-10-hewlett-packard-enterprise-climbs-6-as-ai-server-stocks-surge/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "IQM Quantum Computers Q2 Earnings Call Highlights",
+   "value": {
+    "headline": "IQM Quantum Computers Q2 Earnings Call Highlights",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785859469,
+    "url": "https://www.marketbeat.com/instant-alerts/iqm-quantum-computers-q2-earnings-call-highlights-2026-08-04/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/iqm-quantum-computers-q2-earnings-call-highlights-2026-08-04/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 25697,
+    "days": 3,
+    "max_shares": 11100,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

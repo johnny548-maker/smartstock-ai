@@ -1,8 +1,8 @@
 {
  "stock": "5481.TWO",
  "name": "新華",
- "price": 19.9,
- "change_pct": -0.5,
+ "price": 19.95,
+ "change_pct": 0.25,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -219,15 +219,25 @@
    "l": 19.7,
    "c": 19.9,
    "v": 46802
+  },
+  {
+   "time": "2026-08-05",
+   "o": 20.4,
+   "h": 20.4,
+   "l": 19.65,
+   "c": 19.95,
+   "v": 60403
   }
  ],
  "sr": {
-  "price": 19.9,
+  "price": 19.95,
   "resistance": [
    22.95
   ],
-  "support": [],
-  "strong_support": 20.35
+  "support": [
+   19.6
+  ],
+  "strong_support": 19.6
  },
  "spark": [
   22.75,
@@ -256,10 +266,11 @@
   20.3,
   20.0,
   20.0,
-  19.9
+  19.9,
+  19.95
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

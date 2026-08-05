@@ -1,17 +1,9 @@
 {
  "stock": "NTAP",
  "name": "NetApp",
- "price": 182.92,
- "change_pct": 2.48,
+ "price": 190.46,
+ "change_pct": 4.12,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 111.89,
-   "h": 114.66,
-   "l": 110.54,
-   "c": 112.66,
-   "v": 2029700
-  },
   {
    "time": "2026-05-08",
    "o": 113.03,
@@ -483,10 +475,18 @@
    "l": 176.02,
    "c": 182.92,
    "v": 1964500
+  },
+  {
+   "time": "2026-08-04",
+   "o": 185.81,
+   "h": 195.7,
+   "l": 184.7,
+   "c": 190.46,
+   "v": 3764900
   }
  ],
  "sr": {
-  "price": 182.92,
+  "price": 190.46,
   "resistance": [
    192.25
   ],
@@ -497,7 +497,6 @@
   "strong_support": 70.26
  },
  "spark": [
-  112.66,
   117.64,
   117.37,
   115.88,
@@ -556,11 +555,144 @@
   173.23,
   173.98,
   178.5,
-  182.92
+  182.92,
+  190.46
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp's Buyback Is Better Funded Than It Is Big",
+   "value": {
+    "headline": "NetApp's Buyback Is Better Funded Than It Is Big",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785865921,
+    "url": "https://www.trefis.com/articles/610051/netapps-buyback-is-better-funded-than-it-is-big/2026-08-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/610051/netapps-buyback-is-better-funded-than-it-is-big/2026-08-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Price of Reinvention for SanDisk Stock",
+   "value": {
+    "headline": "The Price of Reinvention for SanDisk Stock",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785842711,
+    "url": "https://www.trefis.com/articles/609833/the-price-of-reinvention-for-sandisk-stock/2026-08-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/609833/the-price-of-reinvention-for-sandisk-stock/2026-08-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "5 Tech Stocks Holding Their Ground Through the AI Trade Pullback",
+   "value": {
+    "headline": "5 Tech Stocks Holding Their Ground Through the AI Trade Pullback",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785771000,
+    "url": "https://www.marketbeat.com/articles/5-tech-stocks-holding-their-ground-through-the-ai-trade-pullback/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/articles/5-tech-stocks-holding-their-ground-through-the-ai-trade-pullback/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "GE Aerospace, AI Play Lead Five Stocks Near Buy Points",
+   "value": {
+    "headline": "GE Aerospace, AI Play Lead Five Stocks Near Buy Points",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785597730,
+    "url": "https://finance.yahoo.com/m/df151b04-cc7c-3a1a-a082-cc5bd30c5d51/ge-aerospace%2C-ai-play-lead.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/df151b04-cc7c-3a1a-a082-cc5bd30c5d51/ge-aerospace%2C-ai-play-lead.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp (NTAP) Exceeds Market Returns: Some Facts to Consider",
+   "value": {
+    "headline": "NetApp (NTAP) Exceeds Market Returns: Some Facts to Consider",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785534601,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/netapp-ntap-exceeds-market-returns-215001632.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/netapp-ntap-exceeds-market-returns-215001632.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 111,017 股交割失敗）",
+   "value": {
+    "total_shares": 111017,
+    "days": 3,
+    "max_shares": 96199,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,8 +1,8 @@
 {
  "stock": "5292.TW",
  "name": "華懋",
- "price": 161.0,
- "change_pct": 6.62,
+ "price": 163.0,
+ "change_pct": 1.24,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -243,16 +243,27 @@
    "l": 155.5,
    "c": 161.0,
    "v": 170805
+  },
+  {
+   "time": "2026-08-05",
+   "o": 159.0,
+   "h": 164.0,
+   "l": 159.0,
+   "c": 163.0,
+   "v": 55957
   }
  ],
  "sr": {
-  "price": 161.0,
+  "price": 163.0,
   "resistance": [
    180.0,
    231.5
   ],
-  "support": [],
-  "strong_support": 161.0
+  "support": [
+   161.0,
+   150.0
+  ],
+  "strong_support": 150.0
  },
  "spark": [
   228.5,
@@ -284,10 +295,11 @@
   160.0,
   155.5,
   151.0,
-  161.0
+  161.0,
+  163.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 487.65,
- "change_pct": 4.93,
+ "price": 492.81,
+ "change_pct": 1.06,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 419.2,
-   "h": 427.06,
-   "l": 417.85,
-   "c": 419.86,
-   "v": 34942400
-  },
   {
    "time": "2026-05-08",
    "o": 416.49,
@@ -482,23 +474,30 @@
    "h": 491.65,
    "l": 475.0,
    "c": 487.65,
-   "v": 66651900
+   "v": 66762100
+  },
+  {
+   "time": "2026-08-04",
+   "o": 480.9,
+   "h": 499.44,
+   "l": 479.17,
+   "c": 492.81,
+   "v": 50258300
   }
  ],
  "sr": {
-  "price": 487.65,
+  "price": 492.81,
   "resistance": [
-   490.12,
-   491.31
+   507.87,
+   508.75
   ],
   "support": [
-   473.09,
-   468.79
+   490.15,
+   489.27
   ],
   "strong_support": 349.2
  },
  "spark": [
-  419.86,
   414.22,
   411.77,
   406.89,
@@ -557,119 +556,136 @@
   390.54,
   451.1,
   464.72,
-  487.65
+  487.65,
+  492.81
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
  "fundamental": {
-  "pe_trailing": 25.904123,
-  "pe_forward": 19.801651,
-  "eps_trailing": 17.94,
+  "pe_trailing": 27.167034,
+  "pe_forward": 20.998562,
+  "eps_trailing": 18.14,
   "eps_forward": 23.46875,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 492.81,
+  "stop": 458.31,
+  "target": 579.05,
+  "atr_bracket": 579.05,
+  "measured_move": null,
+  "target_band": [
+   579.05
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.6,
+  "swing_stop": 372.01,
+  "chandelier": 453.86,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Netcraft Names Industry Veterans Susan Koski and Kelly Bissell as Strategic Advisors",
+   "label": "Microsoft Extends Winning Streak Amid Earnings Surge; Is The Stock A Buy Now?",
    "value": {
-    "headline": "Netcraft Names Industry Veterans Susan Koski and Kelly Bissell as Strategic Advisors",
+    "headline": "Microsoft Extends Winning Streak Amid Earnings Surge; Is The Stock A Buy Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844980,
-    "url": "https://finance.yahoo.com/technology/ai/articles/netcraft-names-industry-veterans-susan-120300768.html?.tsrc=rss",
+    "ts": 1785931248,
+    "url": "https://finance.yahoo.com/m/32d0b68b-7dcb-32ac-8506-1db647296a24/microsoft-extends-winning.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/netcraft-names-industry-veterans-susan-120300768.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/32d0b68b-7dcb-32ac-8506-1db647296a24/microsoft-extends-winning.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Darwinbox Launches Cortex, Its New AI-Native HCM Platform",
+   "label": "Stocks mostly rise tracking earnings, US-Iran hopes",
    "value": {
-    "headline": "Darwinbox Launches Cortex, Its New AI-Native HCM Platform",
+    "headline": "Stocks mostly rise tracking earnings, US-Iran hopes",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844800,
-    "url": "https://finance.yahoo.com/technology/ai/articles/darwinbox-launches-cortex-ai-native-120000598.html?.tsrc=rss",
+    "ts": 1785930033,
+    "url": "https://finance.yahoo.com/markets/world-indices/articles/tech-back-fashion-asian-markets-030055893.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/darwinbox-launches-cortex-ai-native-120000598.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/world-indices/articles/tech-back-fashion-asian-markets-030055893.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "LegalZoom Brings Legal Services to Microsoft 365 Copilot",
+   "label": "Canada's Shopify forecasts revenue above estimates, shares surge",
    "value": {
-    "headline": "LegalZoom Brings Legal Services to Microsoft 365 Copilot",
+    "headline": "Canada's Shopify forecasts revenue above estimates, shares surge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844800,
-    "url": "https://finance.yahoo.com/small-business/articles/legalzoom-brings-legal-services-microsoft-120000150.html?.tsrc=rss",
+    "ts": 1785928163,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/legalzoom-brings-legal-services-microsoft-120000150.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Google exec warns AI spending could trigger a painful revenue gap",
+   "label": "History Says Software-as-a-Service (SaaS) Stocks Will Be the Ultimate AI Winners. 3 SaaS Stocks to Buy Now.",
    "value": {
-    "headline": "Google exec warns AI spending could trigger a painful revenue gap",
+    "headline": "History Says Software-as-a-Service (SaaS) Stocks Will Be the Ultimate AI Winners. 3 SaaS Stocks to Buy Now.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844557,
-    "url": "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss",
+    "ts": 1785927900,
+    "url": "https://www.fool.com/investing/2026/08/05/history-says-software-as-a-service-saas-stocks-wil/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/05/history-says-software-as-a-service-saas-stocks-wil/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+   "label": "Zacks Investment Ideas feature highlights: Microsoft, Bloom and EMCOR",
    "value": {
-    "headline": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+    "headline": "Zacks Investment Ideas feature highlights: Microsoft, Bloom and EMCOR",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785843072,
-    "url": "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss",
+    "ts": 1785927420,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-105700496.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-105700496.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +700,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

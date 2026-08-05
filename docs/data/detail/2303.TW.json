@@ -1,8 +1,8 @@
 {
  "stock": "2303.TW",
  "name": "聯電",
- "price": 118.0,
- "change_pct": 7.27,
+ "price": 118.5,
+ "change_pct": 0.42,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -243,16 +243,26 @@
    "l": 116.0,
    "c": 118.0,
    "v": 372708183
+  },
+  {
+   "time": "2026-08-05",
+   "o": 118.5,
+   "h": 120.0,
+   "l": 115.5,
+   "c": 118.5,
+   "v": 181714211
   }
  ],
  "sr": {
-  "price": 118.0,
+  "price": 118.5,
   "resistance": [
    168.0,
    185.5
   ],
-  "support": [],
-  "strong_support": 125.5
+  "support": [
+   102.5
+  ],
+  "strong_support": 102.5
  },
  "spark": [
   145.5,
@@ -284,10 +294,11 @@
   113.5,
   102.5,
   110.0,
-  118.0
+  118.0,
+  118.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

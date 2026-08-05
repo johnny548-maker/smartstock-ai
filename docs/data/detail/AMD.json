@@ -1,65 +1,9 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
- "price": 521.95,
- "change_pct": -3.29,
+ "name": "AMD",
+ "price": 518.58,
+ "change_pct": 7.0,
  "ohlc": [
-  {
-   "time": "2026-04-29",
-   "o": 326.58,
-   "h": 340.17,
-   "l": 318.86,
-   "c": 337.11,
-   "v": 44704400
-  },
-  {
-   "time": "2026-04-30",
-   "o": 341.36,
-   "h": 354.96,
-   "l": 332.6,
-   "c": 354.49,
-   "v": 42115300
-  },
-  {
-   "time": "2026-05-01",
-   "o": 351.87,
-   "h": 362.79,
-   "l": 349.25,
-   "c": 360.54,
-   "v": 34279200
-  },
-  {
-   "time": "2026-05-04",
-   "o": 360.31,
-   "h": 361.85,
-   "l": 338.7,
-   "c": 341.54,
-   "v": 42000200
-  },
-  {
-   "time": "2026-05-05",
-   "o": 351.51,
-   "h": 359.57,
-   "l": 344.88,
-   "c": 355.26,
-   "v": 64235100
-  },
-  {
-   "time": "2026-05-06",
-   "o": 409.49,
-   "h": 430.6,
-   "l": 402.04,
-   "c": 421.39,
-   "v": 87732200
-  },
-  {
-   "time": "2026-05-07",
-   "o": 417.07,
-   "h": 421.71,
-   "l": 401.08,
-   "c": 408.46,
-   "v": 44885500
-  },
   {
    "time": "2026-05-08",
    "o": 418.59,
@@ -482,11 +426,67 @@
    "h": 549.0,
    "l": 518.0,
    "c": 521.95,
-   "v": 27136700
+   "v": 27200700
+  },
+  {
+   "time": "2026-07-27",
+   "o": 527.51,
+   "h": 528.0,
+   "l": 476.93,
+   "c": 494.95,
+   "v": 31800300
+  },
+  {
+   "time": "2026-07-28",
+   "o": 467.0,
+   "h": 472.75,
+   "l": 442.27,
+   "c": 454.62,
+   "v": 36315500
+  },
+  {
+   "time": "2026-07-29",
+   "o": 452.68,
+   "h": 457.22,
+   "l": 424.03,
+   "c": 429.56,
+   "v": 32304900
+  },
+  {
+   "time": "2026-07-30",
+   "o": 460.0,
+   "h": 498.2,
+   "l": 457.68,
+   "c": 485.39,
+   "v": 36936600
+  },
+  {
+   "time": "2026-07-31",
+   "o": 510.28,
+   "h": 515.62,
+   "l": 475.76,
+   "c": 476.15,
+   "v": 26615700
+  },
+  {
+   "time": "2026-08-03",
+   "o": 461.79,
+   "h": 490.95,
+   "l": 455.3,
+   "c": 484.64,
+   "v": 24422300
+  },
+  {
+   "time": "2026-08-04",
+   "o": 504.0,
+   "h": 530.13,
+   "l": 502.2,
+   "c": 518.58,
+   "v": 47385900
   }
  ],
  "sr": {
-  "price": 521.95,
+  "price": 518.58,
   "resistance": [
    527.2,
    546.44
@@ -495,16 +495,9 @@
    498.15,
    495.35
   ],
-  "strong_support": 393.36
+  "strong_support": 149.22
  },
  "spark": [
-  337.11,
-  354.49,
-  360.54,
-  341.54,
-  355.26,
-  421.39,
-  408.46,
   455.19,
   458.79,
   448.29,
@@ -557,11 +550,157 @@
   544.43,
   552.33,
   539.69,
-  521.95
+  521.95,
+  494.95,
+  454.62,
+  429.56,
+  485.39,
+  476.15,
+  484.64,
+  518.58
  ],
- "spark_start": "2026-04-29",
- "spark_end": "2026-07-24",
- "fundamental": null,
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
+ "fundamental": {
+  "pe_trailing": 161.0497,
+  "pe_forward": 37.2609,
+  "eps_trailing": 3.22,
+  "eps_forward": 13.91754,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Rise; SpaceX, AMD Dive As Arista, Eli Lilly Jump With S&P 500 At Highs",
+   "value": {
+    "headline": "Dow Jones Futures Rise; SpaceX, AMD Dive As Arista, Eli Lilly Jump With S&P 500 At Highs",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785932322,
+    "url": "https://finance.yahoo.com/m/63f73cc3-b9b2-3295-a581-3f2fee0b0e0e/dow-jones-futures-rise%3B.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/63f73cc3-b9b2-3295-a581-3f2fee0b0e0e/dow-jones-futures-rise%3B.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stocks Rise Pre-Bell Amid Growing Hopes for Hormuz Deal; Traders Await More Corporate Earnings",
+   "value": {
+    "headline": "Stocks Rise Pre-Bell Amid Growing Hopes for Hormuz Deal; Traders Await More Corporate Earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785932158,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-amid-121558765.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-amid-121558765.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "'This was not an exceptional result': Why AMD stock tanked 10% after earnings",
+   "value": {
+    "headline": "'This was not an exceptional result': Why AMD stock tanked 10% after earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785928884,
+    "url": "https://finance.yahoo.com/markets/article/this-was-not-an-exceptional-result-why-amd-stock-tanked-10-after-earnings-112124288.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/article/this-was-not-an-exceptional-result-why-amd-stock-tanked-10-after-earnings-112124288.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Advanced Micro Devices Shares Fall Despite Second-Quarter Beat",
+   "value": {
+    "headline": "Advanced Micro Devices Shares Fall Despite Second-Quarter Beat",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785928881,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-shares-fall-112121820.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-shares-fall-112121820.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Super Micro Computer (SMCI) Fully Valued On Its New AI Server Push?",
+   "value": {
+    "headline": "Is Super Micro Computer (SMCI) Fully Valued On Its New AI Server Push?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785928200,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-smci-fully-111000886.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-smci-fully-111000886.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 565,539 股交割失敗）",
+   "value": {
+    "total_shares": 565539,
+    "days": 9,
+    "max_shares": 243276,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

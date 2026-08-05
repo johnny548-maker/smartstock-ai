@@ -1,65 +1,9 @@
 {
  "stock": "AVGO",
- "name": "Broadcom Inc. - Common Stock",
- "price": 381.92,
- "change_pct": -2.69,
+ "name": "博通",
+ "price": 418.16,
+ "change_pct": 6.61,
  "ohlc": [
-  {
-   "time": "2026-04-29",
-   "o": 402.86,
-   "h": 405.0,
-   "l": 396.15,
-   "c": 404.81,
-   "v": 15962500
-  },
-  {
-   "time": "2026-04-30",
-   "o": 414.86,
-   "h": 417.72,
-   "l": 403.59,
-   "c": 416.77,
-   "v": 21821600
-  },
-  {
-   "time": "2026-05-01",
-   "o": 414.43,
-   "h": 422.5,
-   "l": 412.63,
-   "c": 420.61,
-   "v": 11882600
-  },
-  {
-   "time": "2026-05-04",
-   "o": 417.56,
-   "h": 423.16,
-   "l": 408.88,
-   "c": 415.84,
-   "v": 15140400
-  },
-  {
-   "time": "2026-05-05",
-   "o": 420.99,
-   "h": 432.71,
-   "l": 418.69,
-   "c": 426.68,
-   "v": 21175200
-  },
-  {
-   "time": "2026-05-06",
-   "o": 434.87,
-   "h": 436.99,
-   "l": 417.12,
-   "c": 424.77,
-   "v": 20707000
-  },
-  {
-   "time": "2026-05-07",
-   "o": 421.15,
-   "h": 425.82,
-   "l": 405.66,
-   "c": 411.91,
-   "v": 22791700
-  },
   {
    "time": "2026-05-08",
    "o": 419.14,
@@ -482,29 +426,78 @@
    "h": 389.27,
    "l": 378.75,
    "c": 381.92,
-   "v": 15130500
+   "v": 15149400
+  },
+  {
+   "time": "2026-07-27",
+   "o": 389.82,
+   "h": 389.9,
+   "l": 373.5,
+   "c": 383.22,
+   "v": 18502100
+  },
+  {
+   "time": "2026-07-28",
+   "o": 374.36,
+   "h": 385.8,
+   "l": 371.52,
+   "c": 380.91,
+   "v": 20328400
+  },
+  {
+   "time": "2026-07-29",
+   "o": 380.64,
+   "h": 386.12,
+   "l": 369.51,
+   "c": 370.32,
+   "v": 21374400
+  },
+  {
+   "time": "2026-07-30",
+   "o": 380.35,
+   "h": 388.68,
+   "l": 377.54,
+   "c": 387.84,
+   "v": 23639800
+  },
+  {
+   "time": "2026-07-31",
+   "o": 394.83,
+   "h": 399.92,
+   "l": 379.71,
+   "c": 389.28,
+   "v": 20391000
+  },
+  {
+   "time": "2026-08-03",
+   "o": 384.41,
+   "h": 392.61,
+   "l": 374.61,
+   "c": 392.23,
+   "v": 17315100
+  },
+  {
+   "time": "2026-08-04",
+   "o": 402.97,
+   "h": 422.07,
+   "l": 400.68,
+   "c": 418.16,
+   "v": 29511600
   }
  ],
  "sr": {
-  "price": 381.92,
+  "price": 418.16,
   "resistance": [
-   407.52,
-   414.64
+   428.63,
+   436.99
   ],
   "support": [
-   369.74,
-   357.8
+   405.66,
+   405.22
   ],
-  "strong_support": 356.43
+  "strong_support": 279.82
  },
  "spark": [
-  404.81,
-  416.77,
-  420.61,
-  415.84,
-  426.68,
-  424.77,
-  411.91,
   429.32,
   427.75,
   418.64,
@@ -557,11 +550,172 @@
   386.5,
   396.81,
   392.47,
-  381.92
+  381.92,
+  383.22,
+  380.91,
+  370.32,
+  387.84,
+  389.28,
+  392.23,
+  418.16
  ],
- "spark_start": "2026-04-29",
- "spark_end": "2026-07-24",
- "fundamental": null,
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
+ "fundamental": {
+  "pe_trailing": 65.3375,
+  "pe_forward": 21.452948,
+  "eps_trailing": 6.4,
+  "eps_forward": 19.49196,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "This Week In AI Chips - AI Efficiency Boost Through Multiverse And Qualcomm Collaboration",
+   "value": {
+    "headline": "This Week In AI Chips - AI Efficiency Boost Through Multiverse And Qualcomm Collaboration",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785929876,
+    "url": "https://finance.yahoo.com/technology/ai/articles/week-ai-chips-ai-efficiency-113756908.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/week-ai-chips-ai-efficiency-113756908.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "US Ban on Chinese Optical Parts Hurts Hyperscalers, Report Says",
+   "value": {
+    "headline": "US Ban on Chinese Optical Parts Hurts Hyperscalers, Report Says",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785918187,
+    "url": "https://finance.yahoo.com/technology/ai/articles/us-ban-chinese-optical-parts-082307752.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/us-ban-chinese-optical-parts-082307752.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "I’m Buying Broadcom Because It Sucks Up The Hyperscaler AI Capex That Doesn’t Go To Nvidia",
+   "value": {
+    "headline": "I’m Buying Broadcom Because It Sucks Up The Hyperscaler AI Capex That Doesn’t Go To Nvidia",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785903566,
+    "url": "https://247wallst.com/investing/2026/08/05/im-buying-broadcom-because-it-sucks-up-the-hyperscaler-ai-capex-that-doesnt-go-to-nvidia/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/05/im-buying-broadcom-because-it-sucks-up-the-hyperscaler-ai-capex-that-doesnt-go-to-nvidia/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD Vs. Broadcom: Why Broadcom is Actually Nvidia’s Biggest Problem",
+   "value": {
+    "headline": "AMD Vs. Broadcom: Why Broadcom is Actually Nvidia’s Biggest Problem",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785903391,
+    "url": "https://247wallst.com/investing/2026/08/05/amd-vs-broadcom-why-broadcom-is-actually-nvidias-biggest-problem/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/05/amd-vs-broadcom-why-broadcom-is-actually-nvidias-biggest-problem/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Marvell Technology Stock Is On Sale, But Is It A Bargain?",
+   "value": {
+    "headline": "Marvell Technology Stock Is On Sale, But Is It A Bargain?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785876668,
+    "url": "https://www.trefis.com/articles/610005/marvell-technology-stock-is-on-sale-but-is-it-a-bargain/2026-08-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/610005/marvell-technology-stock-is-on-sale-but-is-it-a-bargain/2026-08-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 777 分 / 251 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 777,
+    "comments": 251,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 6514,
+    "days": 5,
+    "max_shares": 6300,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

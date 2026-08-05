@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 373.51,
- "change_pct": 4.88,
+ "price": 377.65,
+ "change_pct": 1.11,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 399.68,
-   "h": 399.86,
-   "l": 392.45,
-   "c": 397.75,
-   "v": 24433500
-  },
   {
    "time": "2026-05-08",
    "o": 396.76,
@@ -482,14 +474,22 @@
    "h": 376.69,
    "l": 363.35,
    "c": 373.51,
-   "v": 38596000
+   "v": 38669700
+  },
+  {
+   "time": "2026-08-04",
+   "o": 368.22,
+   "h": 380.52,
+   "l": 367.5,
+   "c": 377.65,
+   "v": 35649100
   }
  ],
  "sr": {
-  "price": 373.51,
+  "price": 377.65,
   "resistance": [
-   375.27,
-   376.0
+   393.64,
+   408.37
   ],
   "support": [
    357.87,
@@ -498,7 +498,6 @@
   "strong_support": 196.04
  },
  "spark": [
-  397.75,
   400.56,
   388.41,
   387.12,
@@ -557,16 +556,17 @@
   336.71,
   333.66,
   356.13,
-  373.51
+  373.51,
+  377.65
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
  "fundamental": {
   "pe_trailing": 18.731695,
   "pe_forward": 25.34947,
   "eps_trailing": 19.94,
   "eps_forward": 14.73443,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Google exec warns AI spending could trigger a painful revenue gap",
+   "label": "Got $500? 2 Magnificent AI Stocks to Buy Hand Over Fist Before the Anthropic IPO",
    "value": {
-    "headline": "Google exec warns AI spending could trigger a painful revenue gap",
+    "headline": "Got $500? 2 Magnificent AI Stocks to Buy Hand Over Fist Before the Anthropic IPO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844557,
-    "url": "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss",
+    "ts": 1785928260,
+    "url": "https://www.fool.com/investing/2026/08/05/magnificent-ai-stocks-buy-anthropic-ipo/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/google-exec-warns-ai-spending-115557174.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/05/magnificent-ai-stocks-buy-anthropic-ipo/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+   "label": "Canada's Shopify forecasts revenue above estimates, shares surge",
    "value": {
-    "headline": "Dow hits record, Palantir stock jumps 16% on Q2 earnings",
+    "headline": "Canada's Shopify forecasts revenue above estimates, shares surge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785843072,
-    "url": "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss",
+    "ts": 1785928163,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/dow-record-palantir-stock-earnings-premarket-080426?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Want to Buy SpaceX? Why You May Be Better Off Just Buying Alphabet's Stock",
+   "label": "Uber Gives In-Line Outlook, Says Brazil Rivals Hurt Trips Growth",
    "value": {
-    "headline": "Want to Buy SpaceX? Why You May Be Better Off Just Buying Alphabet's Stock",
+    "headline": "Uber Gives In-Line Outlook, Says Brazil Rivals Hurt Trips Growth",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785842400,
-    "url": "https://www.fool.com/investing/2026/08/04/want-to-buy-spacex-why-you-may-be-better-off-just/?.tsrc=rss",
+    "ts": 1785927418,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/uber-gives-line-outlook-says-105658166.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/04/want-to-buy-spacex-why-you-may-be-better-off-just/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/uber-gives-line-outlook-says-105658166.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "SK Hynix and Sandisk May Have Just Solved AI’s Biggest Bottleneck — And It Could Reshape the Memory Market",
+   "label": "NiSource Announces Second Quarter Results",
    "value": {
-    "headline": "SK Hynix and Sandisk May Have Just Solved AI’s Biggest Bottleneck — And It Could Reshape the Memory Market",
+    "headline": "NiSource Announces Second Quarter Results",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785841958,
-    "url": "https://247wallst.com/investing/2026/08/04/sk-hynix-and-sandisk-may-have-just-solved-ais-biggest-bottleneck-and-it-could-reshape-the-memory-market/?.tsrc=rss",
+    "ts": 1785925800,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nisource-announces-second-quarter-results-103000419.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/04/sk-hynix-and-sandisk-may-have-just-solved-ais-biggest-bottleneck-and-it-could-reshape-the-memory-market/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/nisource-announces-second-quarter-results-103000419.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Google partners with RWE for Crooked Creek Solar project energy",
+   "label": "AI CapEx fears: Is big tech overspending?",
    "value": {
-    "headline": "Google partners with RWE for Crooked Creek Solar project energy",
+    "headline": "AI CapEx fears: Is big tech overspending?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785841441,
-    "url": "https://www.power-technology.com/news/google-rwe-crooked-creek-solar-project/?.tsrc=rss",
+    "ts": 1785924000,
+    "url": "https://finance.yahoo.com/video/ai-capex-fears-big-tech-100000522.html?.tsrc=rss",
     "urls": [
-     "https://www.power-technology.com/news/google-rwe-crooked-creek-solar-project/?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-capex-fears-big-tech-100000522.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,23 +684,8 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 96 分 / 105 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 96,
-    "comments": 105,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-08-04",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-05",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

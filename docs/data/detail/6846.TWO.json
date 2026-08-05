@@ -1,8 +1,8 @@
 {
  "stock": "6846.TWO",
  "name": "綠茵",
- "price": 61.9,
- "change_pct": 0.81,
+ "price": 61.0,
+ "change_pct": -1.45,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -219,16 +219,26 @@
    "l": 60.5,
    "c": 61.9,
    "v": 2000
+  },
+  {
+   "time": "2026-08-05",
+   "o": 60.3,
+   "h": 61.9,
+   "l": 60.3,
+   "c": 61.0,
+   "v": 18174
   }
  ],
  "sr": {
-  "price": 61.9,
+  "price": 61.0,
   "resistance": [
    64.3,
    66.4
   ],
-  "support": [],
-  "strong_support": 62.0
+  "support": [
+   60.0
+  ],
+  "strong_support": 60.0
  },
  "spark": [
   67.3,
@@ -257,10 +267,11 @@
   60.2,
   60.8,
   61.4,
-  61.9
+  61.9,
+  61.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-04",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

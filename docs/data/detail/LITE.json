@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 779.89,
- "change_pct": 9.24,
+ "price": 849.47,
+ "change_pct": 8.92,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 915.97,
-   "h": 918.02,
-   "l": 854.62,
-   "c": 892.58,
-   "v": 7268200
-  },
   {
    "time": "2026-05-08",
    "o": 917.0,
@@ -482,23 +474,30 @@
    "h": 785.34,
    "l": 671.0,
    "c": 779.89,
-   "v": 4182500
+   "v": 4198400
+  },
+  {
+   "time": "2026-08-04",
+   "o": 852.35,
+   "h": 868.32,
+   "l": 813.26,
+   "c": 849.47,
+   "v": 6633200
   }
  ],
  "sr": {
-  "price": 779.89,
+  "price": 849.47,
   "resistance": [
-   783.8,
-   808.8
+   897.0,
+   925.5
   ],
   "support": [
-   776.01,
-   680.43
+   845.0,
+   806.62
   ],
   "strong_support": 45.65
  },
  "spark": [
-  892.58,
   903.8,
   1053.09,
   992.37,
@@ -557,11 +556,144 @@
   602.35,
   693.24,
   713.94,
-  779.89
+  779.89,
+  849.47
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-08",
+ "spark_end": "2026-08-04",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "New report warns China transceiver ban would hurt U.S. AI giants",
+   "value": {
+    "headline": "New report warns China transceiver ban would hurt U.S. AI giants",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785922786,
+    "url": "https://finance.yahoo.com/technology/ai/articles/report-warns-china-transceiver-ban-093946021.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/report-warns-china-transceiver-ban-093946021.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Bull of the Day: Amkor (AMKR)",
+   "value": {
+    "headline": "Bull of the Day: Amkor (AMKR)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785921600,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/bull-day-amkor-amkr-092000813.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/bull-day-amkor-amkr-092000813.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "US Ban on Chinese Optical Parts Hurts Hyperscalers, Report Says",
+   "value": {
+    "headline": "US Ban on Chinese Optical Parts Hurts Hyperscalers, Report Says",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785918187,
+    "url": "https://finance.yahoo.com/technology/ai/articles/us-ban-chinese-optical-parts-082307752.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/us-ban-chinese-optical-parts-082307752.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Lumentum, Coherent Leads Networking Stocks Rally as Trump Considers Chinese Hardware Ban",
+   "value": {
+    "headline": "Lumentum, Coherent Leads Networking Stocks Rally as Trump Considers Chinese Hardware Ban",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785867994,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-coherent-leads-networking-stocks-182634665.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lumentum-coherent-leads-networking-stocks-182634665.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Marvell Surges as China Ban Report Reignites Optical-Networking Stocks",
+   "value": {
+    "headline": "Marvell Surges as China Ban Report Reignites Optical-Networking Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785866760,
+    "url": "https://finance.yahoo.com/m/d907cc32-bb09-37ff-9b73-71565d5b1823/marvell-surges-as-china-ban.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/d907cc32-bb09-37ff-9b73-71565d5b1823/marvell-surges-as-china-ban.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 16,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
+   "value": {
+    "total_shares": 7965,
+    "days": 7,
+    "max_shares": 3774,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
