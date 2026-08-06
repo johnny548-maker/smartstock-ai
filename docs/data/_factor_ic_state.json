@@ -1,99 +1,99 @@
 {
-  "asof": "2026-07-06",
+  "asof": "2026-08-06",
   "universe": "full",
   "n_universe": 669,
   "n_used": 643,
   "ic_min": 0.05,
   "families": {
     "trend": {
-      "n_dates": 2229,
-      "top_decile_fwd": 7.36,
-      "universe_fwd": 5.21,
-      "edge": 2.15,
-      "rank_ic": 0.0089
+      "n_dates": 2191,
+      "top_decile_fwd": 7.5,
+      "universe_fwd": 5.4,
+      "edge": 2.09,
+      "rank_ic": 0.0124
     },
     "momentum": {
-      "n_dates": 2229,
-      "top_decile_fwd": 6.86,
-      "universe_fwd": 5.21,
-      "edge": 1.66,
-      "rank_ic": 0.0088
+      "n_dates": 2191,
+      "top_decile_fwd": 6.83,
+      "universe_fwd": 5.4,
+      "edge": 1.43,
+      "rank_ic": 0.0065
     },
     "volume": {
-      "n_dates": 2229,
-      "top_decile_fwd": 6.78,
-      "universe_fwd": 5.21,
-      "edge": 1.57,
-      "rank_ic": 0.0022
+      "n_dates": 2191,
+      "top_decile_fwd": 6.96,
+      "universe_fwd": 5.4,
+      "edge": 1.56,
+      "rank_ic": -0.0001
     },
     "vol_stable": {
-      "n_dates": 2229,
-      "top_decile_fwd": 7.05,
-      "universe_fwd": 5.21,
-      "edge": 1.84,
-      "rank_ic": -0.009
+      "n_dates": 2191,
+      "top_decile_fwd": 7.93,
+      "universe_fwd": 5.4,
+      "edge": 2.53,
+      "rank_ic": -0.0137
     },
     "rs": {
-      "n_dates": 2229,
-      "top_decile_fwd": 8.03,
-      "universe_fwd": 5.21,
-      "edge": 2.82,
-      "rank_ic": 0.0306
+      "n_dates": 2191,
+      "top_decile_fwd": 8.87,
+      "universe_fwd": 5.4,
+      "edge": 3.47,
+      "rank_ic": 0.0315
     },
     "high52": {
-      "n_dates": 2229,
-      "top_decile_fwd": 6.47,
-      "universe_fwd": 5.21,
-      "edge": 1.27,
-      "rank_ic": -0.0125
+      "n_dates": 2191,
+      "top_decile_fwd": 6.44,
+      "universe_fwd": 5.4,
+      "edge": 1.03,
+      "rank_ic": -0.0065
     },
     "rsi": {
-      "n_dates": 2229,
-      "top_decile_fwd": 6.91,
-      "universe_fwd": 5.21,
-      "edge": 1.7,
-      "rank_ic": -0.0101
+      "n_dates": 2191,
+      "top_decile_fwd": 7.94,
+      "universe_fwd": 5.4,
+      "edge": 2.54,
+      "rank_ic": -0.018
     },
     "obv": {
-      "n_dates": 2229,
-      "top_decile_fwd": 7.21,
-      "universe_fwd": 5.21,
-      "edge": 2.01,
-      "rank_ic": 0.0024
+      "n_dates": 2191,
+      "top_decile_fwd": 7.73,
+      "universe_fwd": 5.4,
+      "edge": 2.32,
+      "rank_ic": -0.0096
     }
   },
   "demote_candidates": [
     {
       "family": "trend",
-      "rank_ic": 0.0089
+      "rank_ic": 0.0124
     },
     {
       "family": "momentum",
-      "rank_ic": 0.0088
+      "rank_ic": 0.0065
     },
     {
       "family": "volume",
-      "rank_ic": 0.0022
+      "rank_ic": -0.0001
     },
     {
       "family": "vol_stable",
-      "rank_ic": -0.009
+      "rank_ic": -0.0137
     },
     {
       "family": "rs",
-      "rank_ic": 0.0306
+      "rank_ic": 0.0315
     },
     {
       "family": "high52",
-      "rank_ic": -0.0125
+      "rank_ic": -0.0065
     },
     {
       "family": "rsi",
-      "rank_ic": -0.0101
+      "rank_ic": -0.018
     },
     {
       "family": "obv",
-      "rank_ic": 0.0024
+      "rank_ic": -0.0096
     }
   ],
   "dry_run_override": {
@@ -101,9 +101,9 @@
     "momentum": 0,
     "volume": 0,
     "vol_stable": 0,
-    "inst_foreign_buy": 15,
-    "inst_foreign_sell": -20,
-    "inst_trust_buy": 10,
+    "inst_foreign_buy": 0,
+    "inst_foreign_sell": 0,
+    "inst_trust_buy": 0,
     "rs_strong": 0,
     "rs_mild": 0,
     "rs_weak": -10,
@@ -137,10 +137,6 @@
     },
     "rs_mild": {
       "from": 15,
-      "to": 0
-    },
-    "near_high": {
-      "from": 20,
       "to": 0
     },
     "near_mid": {
