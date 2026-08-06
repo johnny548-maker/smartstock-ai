@@ -1,17 +1,9 @@
 {
  "stock": "2337",
  "name": "旺宏",
- "price": 117.5,
- "change_pct": -2.08,
+ "price": 129.0,
+ "change_pct": 9.79,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 149.0,
-   "h": 168.0,
-   "l": 147.0,
-   "c": 168.0,
-   "v": 236659909
-  },
   {
    "time": "2026-05-14",
    "o": 172.0,
@@ -482,23 +474,30 @@
    "h": 127.5,
    "l": 117.0,
    "c": 117.5,
-   "v": 173342630
+   "v": 172044661
+  },
+  {
+   "time": "2026-08-06",
+   "o": 117.5,
+   "h": 129.0,
+   "l": 116.0,
+   "c": 129.0,
+   "v": 122432227
   }
  ],
  "sr": {
-  "price": 117.5,
+  "price": 129.0,
   "resistance": [
-   120.5,
-   135.0
+   135.0,
+   150.5
   ],
   "support": [
-   115.5,
-   91.8
+   118.0,
+   115.5
   ],
   "strong_support": 16.9
  },
  "spark": [
-  168.0,
   169.0,
   162.5,
   160.0,
@@ -557,10 +556,11 @@
   100.5,
   110.5,
   120.0,
-  117.5
+  117.5,
+  129.0
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-06",
  "fundamental": {
   "rev_yoy": 216.1,
   "rev_accel": true,
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 5181,
+    "short_today": 2020,
     "outstanding": 1981308820,
-    "short_pct": 0.00026149381397292727
+    "short_pct": 0.00010195280915369872
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台積跌40元台股收在44396點 旺宏漲停00992A表現吸睛",
+   "value": {
+    "headline": "台積跌40元台股收在44396點 旺宏漲停00992A表現吸睛",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1786011460,
+    "url": "https://tw.news.yahoo.com/%E5%8F%B0%E7%A9%8D%E8%B7%8C40%E5%85%83%E5%8F%B0%E8%82%A1%E6%94%B6%E5%9C%A844396%E9%BB%9E-%E6%97%BA%E5%AE%8F%E6%BC%B2%E5%81%9C00992a%E8%A1%A8%E7%8F%BE%E5%90%B8%E7%9D%9B-101740101.html",
+    "urls": [
+     "https://tw.news.yahoo.com/%E5%8F%B0%E7%A9%8D%E8%B7%8C40%E5%85%83%E5%8F%B0%E8%82%A1%E6%94%B6%E5%9C%A844396%E9%BB%9E-%E6%97%BA%E5%AE%8F%E6%BC%B2%E5%81%9C00992a%E8%A1%A8%E7%8F%BE%E5%90%B8%E7%9D%9B-101740101.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -753,6 +788,10 @@
    {
     "t": "2026-08-05",
     "v": -48564
+   },
+   {
+    "t": "2026-08-06",
+    "v": -28781
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 849.47,
- "change_pct": 8.92,
+ "price": 826.26,
+ "change_pct": -2.73,
  "ohlc": [
-  {
-   "time": "2026-05-08",
-   "o": 917.0,
-   "h": 934.92,
-   "l": 866.0,
-   "c": 903.8,
-   "v": 6727600
-  },
   {
    "time": "2026-05-11",
    "o": 949.72,
@@ -482,23 +474,30 @@
    "h": 868.32,
    "l": 813.26,
    "c": 849.47,
-   "v": 6633200
+   "v": 6642900
+  },
+  {
+   "time": "2026-08-05",
+   "o": 824.79,
+   "h": 883.65,
+   "l": 824.0,
+   "c": 826.26,
+   "v": 3411500
   }
  ],
  "sr": {
-  "price": 849.47,
+  "price": 826.26,
   "resistance": [
-   897.0,
-   925.5
+   839.88,
+   897.0
   ],
   "support": [
-   845.0,
-   806.62
+   806.62,
+   800.56
   ],
   "strong_support": 45.65
  },
  "spark": [
-  903.8,
   1053.09,
   992.37,
   1030.37,
@@ -557,14 +556,75 @@
   693.24,
   713.94,
   779.89,
-  849.47
+  849.47,
+  826.26
  ],
- "spark_start": "2026-05-08",
- "spark_end": "2026-08-04",
+ "spark_start": "2026-05-11",
+ "spark_end": "2026-08-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "LITE Stock Alert: Analysts See Big Upside Ahead for Lumentum as Trump Aims to Restrict Chinese Data Center Components",
+   "value": {
+    "headline": "LITE Stock Alert: Analysts See Big Upside Ahead for Lumentum as Trump Aims to Restrict Chinese Data Center Components",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785952449,
+    "url": "https://www.barchart.com/story/news/3670467/lite-stock-alert-analysts-see-big-upside-ahead-for-lumentum-as-trump-aims-to-restrict-chinese-data-center-components?.tsrc=rss",
+    "urls": [
+     "https://www.barchart.com/story/news/3670467/lite-stock-alert-analysts-see-big-upside-ahead-for-lumentum-as-trump-aims-to-restrict-chinese-data-center-components?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Lumentum (LITE) Quietly Redefining Its Moat With This Post-Retirement Quality Guru Arrangement?",
+   "value": {
+    "headline": "Is Lumentum (LITE) Quietly Redefining Its Moat With This Post-Retirement Quality Guru Arrangement?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785942906,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-lite-quietly-redefining-moat-151506282.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lumentum-lite-quietly-redefining-moat-151506282.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Buy These 2 High-Flying AI-Led Photonics Stocks With More Room to Grow",
+   "value": {
+    "headline": "Buy These 2 High-Flying AI-Led Photonics Stocks With More Room to Grow",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785934380,
+    "url": "https://finance.yahoo.com/technology/ai/articles/buy-2-high-flying-ai-125300882.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/buy-2-high-flying-ai-125300882.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,27 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Bull of the Day: Amkor (AMKR)",
-   "value": {
-    "headline": "Bull of the Day: Amkor (AMKR)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785921600,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bull-day-amkor-amkr-092000813.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/bull-day-amkor-amkr-092000813.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -622,62 +662,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Lumentum, Coherent Leads Networking Stocks Rally as Trump Considers Chinese Hardware Ban",
-   "value": {
-    "headline": "Lumentum, Coherent Leads Networking Stocks Rally as Trump Considers Chinese Hardware Ban",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785867994,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-coherent-leads-networking-stocks-182634665.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/lumentum-coherent-leads-networking-stocks-182634665.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-05",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Marvell Surges as China Ban Report Reignites Optical-Networking Stocks",
-   "value": {
-    "headline": "Marvell Surges as China Ban Report Reignites Optical-Networking Stocks",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785866760,
-    "url": "https://finance.yahoo.com/m/d907cc32-bb09-37ff-9b73-71565d5b1823/marvell-surges-as-china-ban.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/d907cc32-bb09-37ff-9b73-71565d5b1823/marvell-surges-as-china-ban.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

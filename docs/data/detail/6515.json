@@ -1,17 +1,9 @@
 {
  "stock": "6515",
  "name": "穎崴",
- "price": 6885.0,
- "change_pct": 4.71,
+ "price": 6775.0,
+ "change_pct": -1.6,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 9827.33,
-   "h": 10075.5,
-   "l": 9509.68,
-   "c": 9802.51,
-   "v": 354127
-  },
   {
    "time": "2026-05-14",
    "o": 10125.13,
@@ -482,11 +474,19 @@
    "h": 7220.0,
    "l": 6825.0,
    "c": 6885.0,
-   "v": 496781
+   "v": 462117
+  },
+  {
+   "time": "2026-08-06",
+   "o": 6800.0,
+   "h": 6890.0,
+   "l": 6230.0,
+   "c": 6775.0,
+   "v": 480471
   }
  ],
  "sr": {
-  "price": 6885.0,
+  "price": 6775.0,
   "resistance": [
    7180.0,
    8536.87
@@ -498,7 +498,6 @@
   "strong_support": 678.63
  },
  "spark": [
-  9802.51,
   10462.63,
   9708.21,
   10164.83,
@@ -557,10 +556,11 @@
   5815.0,
   6250.0,
   6575.0,
-  6885.0
+  6885.0,
+  6775.0
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-06",
  "fundamental": {
   "rev_yoy": 287.9,
   "rev_accel": true,
@@ -571,29 +571,73 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_notice",
-   "kind": "risk",
-   "label": "⚠️ 注意股：六個營業日起迄兩個營業日收盤價價差達1470.00 元且當日收盤價為最近六個營業日收盤價最高者<font color='#FF0000'>﹝第十一款﹞</font>。",
-   "value": {
-    "reason": "六個營業日起迄兩個營業日收盤價價差達1470.00 元且當日收盤價為最近六個營業日收盤價最高者<font color='#FF0000'>﹝第十一款﹞</font>。",
-    "count": 1
-   },
-   "severity": "warn",
-   "as_of": "2026-08-05",
-   "note": "注意交易資訊 overlay（投機過熱警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 3,
+    "short_today": 4,
     "outstanding": 36038042,
-    "short_pct": 8.324536610507308e-06
+    "short_pct": 1.1099382147343077e-05
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "穎崴上半年賺近四個股本 創歷年同期新高",
+   "value": {
+    "headline": "穎崴上半年賺近四個股本 創歷年同期新高",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1786016332,
+    "url": "https://money.udn.com/money/story/5612/9675576",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9675576"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "穎崴7月營收16億元年增155% 創歷史新高",
+   "value": {
+    "headline": "穎崴7月營收16億元年增155% 創歷史新高",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786013547,
+    "url": "cnyes:6562927",
+    "urls": [
+     "cnyes:6562927"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 2 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 2,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "udn"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-06",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -765,6 +809,10 @@
    {
     "t": "2026-08-05",
     "v": -720
+   },
+   {
+    "t": "2026-08-06",
+    "v": -725
    }
   ],
   "holder_pct": [

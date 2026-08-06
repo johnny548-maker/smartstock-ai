@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 492.81,
- "change_pct": 1.06,
+ "price": 487.46,
+ "change_pct": -1.09,
  "ohlc": [
-  {
-   "time": "2026-05-08",
-   "o": 416.49,
-   "h": 417.73,
-   "l": 413.11,
-   "c": 414.22,
-   "v": 33383800
-  },
   {
    "time": "2026-05-11",
    "o": 406.99,
@@ -482,23 +474,30 @@
    "h": 499.44,
    "l": 479.17,
    "c": 492.81,
-   "v": 50258300
+   "v": 50455500
+  },
+  {
+   "time": "2026-08-05",
+   "o": 496.36,
+   "h": 498.24,
+   "l": 485.68,
+   "c": 487.46,
+   "v": 33273800
   }
  ],
  "sr": {
-  "price": 492.81,
+  "price": 487.46,
   "resistance": [
-   507.87,
-   508.75
+   487.51,
+   487.53
   ],
   "support": [
-   490.15,
-   489.27
+   473.09,
+   468.79
   ],
   "strong_support": 349.2
  },
  "spark": [
-  414.22,
   411.77,
   406.89,
   404.33,
@@ -557,135 +556,120 @@
   451.1,
   464.72,
   487.65,
-  492.81
+  492.81,
+  487.46
  ],
- "spark_start": "2026-05-08",
- "spark_end": "2026-08-04",
+ "spark_start": "2026-05-11",
+ "spark_end": "2026-08-05",
  "fundamental": {
-  "pe_trailing": 27.167034,
-  "pe_forward": 20.998562,
-  "eps_trailing": 18.14,
+  "pe_trailing": 27.478016,
+  "pe_forward": 20.7706,
+  "eps_trailing": 17.74,
   "eps_forward": 23.46875,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 492.81,
-  "stop": 458.31,
-  "target": 579.05,
-  "atr_bracket": 579.05,
-  "measured_move": null,
-  "target_band": [
-   579.05
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 3.6,
-  "swing_stop": 372.01,
-  "chandelier": 453.86,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Extends Winning Streak Amid Earnings Surge; Is The Stock A Buy Now?",
+   "label": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
    "value": {
-    "headline": "Microsoft Extends Winning Streak Amid Earnings Surge; Is The Stock A Buy Now?",
+    "headline": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785931248,
-    "url": "https://finance.yahoo.com/m/32d0b68b-7dcb-32ac-8506-1db647296a24/microsoft-extends-winning.html?.tsrc=rss",
+    "ts": 1786017644,
+    "url": "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/32d0b68b-7dcb-32ac-8506-1db647296a24/microsoft-extends-winning.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stocks mostly rise tracking earnings, US-Iran hopes",
+   "label": "Hexaware Joins the Microsoft Intelligent Security Association (MISA)",
    "value": {
-    "headline": "Stocks mostly rise tracking earnings, US-Iran hopes",
+    "headline": "Hexaware Joins the Microsoft Intelligent Security Association (MISA)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785930033,
-    "url": "https://finance.yahoo.com/markets/world-indices/articles/tech-back-fashion-asian-markets-030055893.html?.tsrc=rss",
+    "ts": 1786017600,
+    "url": "https://finance.yahoo.com/technology/articles/hexaware-joins-microsoft-intelligent-security-120000027.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/world-indices/articles/tech-back-fashion-asian-markets-030055893.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/hexaware-joins-microsoft-intelligent-security-120000027.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Canada's Shopify forecasts revenue above estimates, shares surge",
+   "label": "Load Up On AMD Because Its High Beta Will Reward You Now",
    "value": {
-    "headline": "Canada's Shopify forecasts revenue above estimates, shares surge",
+    "headline": "Load Up On AMD Because Its High Beta Will Reward You Now",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785928163,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss",
+    "ts": 1786016852,
+    "url": "https://247wallst.com/investing/2026/08/06/load-up-on-amd-because-its-high-beta-will-reward-you-now/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/canadas-shopify-forecasts-quarterly-revenue-110923561.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/06/load-up-on-amd-because-its-high-beta-will-reward-you-now/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "History Says Software-as-a-Service (SaaS) Stocks Will Be the Ultimate AI Winners. 3 SaaS Stocks to Buy Now.",
+   "label": "Is Microsoft Still Undervalued After Its 25% Post-Earnings Rally?",
    "value": {
-    "headline": "History Says Software-as-a-Service (SaaS) Stocks Will Be the Ultimate AI Winners. 3 SaaS Stocks to Buy Now.",
+    "headline": "Is Microsoft Still Undervalued After Its 25% Post-Earnings Rally?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785927900,
-    "url": "https://www.fool.com/investing/2026/08/05/history-says-software-as-a-service-saas-stocks-wil/?.tsrc=rss",
+    "ts": 1786016100,
+    "url": "https://www.fool.com/investing/2026/08/06/microsoft-undervalued-after-earnings-rally/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/05/history-says-software-as-a-service-saas-stocks-wil/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/microsoft-undervalued-after-earnings-rally/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zacks Investment Ideas feature highlights: Microsoft, Bloom and EMCOR",
+   "label": "Nvidia, Microsoft Partner Breaks Out. Three Clues Bode Well.",
    "value": {
-    "headline": "Zacks Investment Ideas feature highlights: Microsoft, Bloom and EMCOR",
+    "headline": "Nvidia, Microsoft Partner Breaks Out. Three Clues Bode Well.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785927420,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-105700496.html?.tsrc=rss",
+    "ts": 1786014905,
+    "url": "https://finance.yahoo.com/m/4c427706-d807-397b-8248-5aafd35373c7/nvidia%2C-microsoft-partner.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-105700496.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/4c427706-d807-397b-8248-5aafd35373c7/nvidia%2C-microsoft-partner.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -700,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-05",
+   "as_of": "2026-08-06",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

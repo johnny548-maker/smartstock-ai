@@ -1,33 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 200.75,
- "change_pct": 2.93,
+ "price": 219.22,
+ "change_pct": 3.43,
  "ohlc": [
-  {
-   "time": "2026-05-06",
-   "o": 199.66,
-   "h": 208.03,
-   "l": 198.38,
-   "c": 207.59,
-   "v": 188362800
-  },
-  {
-   "time": "2026-05-07",
-   "o": 208.1,
-   "h": 213.95,
-   "l": 206.26,
-   "c": 211.25,
-   "v": 168307900
-  },
-  {
-   "time": "2026-05-08",
-   "o": 212.78,
-   "h": 217.55,
-   "l": 212.64,
-   "c": 214.95,
-   "v": 136421400
-  },
   {
    "time": "2026-05-11",
    "o": 213.79,
@@ -482,25 +458,46 @@
    "h": 202.0,
    "l": 194.95,
    "c": 200.75,
-   "v": 139659700
+   "v": 139961200
+  },
+  {
+   "time": "2026-08-03",
+   "o": 197.69,
+   "h": 208.74,
+   "l": 196.85,
+   "c": 206.64,
+   "v": 128406900
+  },
+  {
+   "time": "2026-08-04",
+   "o": 211.3,
+   "h": 213.06,
+   "l": 209.05,
+   "c": 211.94,
+   "v": 134922000
+  },
+  {
+   "time": "2026-08-05",
+   "o": 216.86,
+   "h": 222.22,
+   "l": 216.4,
+   "c": 219.22,
+   "v": 157555300
   }
  ],
  "sr": {
-  "price": 200.75,
+  "price": 219.22,
   "resistance": [
-   211.92,
-   212.71
+   232.01,
+   236.26
   ],
   "support": [
-   199.34,
-   197.97
+   208.54,
+   199.34
   ],
   "strong_support": 163.85
  },
  "spark": [
-  207.59,
-  211.25,
-  214.95,
   219.18,
   220.52,
   225.57,
@@ -557,119 +554,139 @@
   197.01,
   190.01,
   195.04,
-  200.75
+  200.75,
+  206.64,
+  211.94,
+  219.22
  ],
- "spark_start": "2026-05-06",
- "spark_end": "2026-07-31",
+ "spark_start": "2026-05-11",
+ "spark_end": "2026-08-05",
  "fundamental": {
-  "pe_trailing": 30.789877,
-  "pe_forward": 15.573568,
-  "eps_trailing": 6.52,
+  "pe_trailing": 33.57121,
+  "pe_forward": 17.006414,
+  "eps_trailing": 6.53,
   "eps_forward": 12.89043,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 219.22,
+  "stop": 203.87,
+  "target": 257.58,
+  "atr_bracket": 257.58,
+  "measured_move": 230.81,
+  "target_band": [
+   230.81,
+   257.58
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.7,
+  "swing_stop": 187.61,
+  "chandelier": 198.28,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "GameStop Drops 6%, AMC Rallies 6% in Meme Stock Divergence",
+   "label": "Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy?",
    "value": {
-    "headline": "GameStop Drops 6%, AMC Rallies 6% in Meme Stock Divergence",
+    "headline": "Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785762395,
-    "url": "https://247wallst.com/investing/2026/08/03/gamestop-drops-6-amc-rallies-6-in-meme-stock-divergence/?.tsrc=rss",
+    "ts": 1786017960,
+    "url": "https://www.fool.com/investing/2026/08/06/elon-musk-tesla-worst-week-stock-buy/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/03/gamestop-drops-6-amc-rallies-6-in-meme-stock-divergence/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/elon-musk-tesla-worst-week-stock-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Price Prediction: CoreWeave Will Trade at This Price in 2027",
+   "label": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
    "value": {
-    "headline": "Price Prediction: CoreWeave Will Trade at This Price in 2027",
+    "headline": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785762058,
-    "url": "https://247wallst.com/investing/2026/08/03/price-prediction-coreweave-will-trade-at-this-price-in-2027/?.tsrc=rss",
+    "ts": 1786017889,
+    "url": "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/03/price-prediction-coreweave-will-trade-at-this-price-in-2027/?.tsrc=rss"
+     "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Pays Cash. Amazon Borrows. Here's How Big Tech Funds Its AI Boom.",
+   "label": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
    "value": {
-    "headline": "Microsoft Pays Cash. Amazon Borrows. Here's How Big Tech Funds Its AI Boom.",
+    "headline": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785761880,
-    "url": "https://www.fool.com/investing/2026/08/03/microsoft-pays-cash-amazon-borrows/?.tsrc=rss",
+    "ts": 1786017644,
+    "url": "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/03/microsoft-pays-cash-amazon-borrows/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Seagate Technology Is Soaring After Its Strong Earnings Report. Should You Buy Western Digital Before Its Earnings Repor",
+   "label": "Up 58% in 12 Months, This Is Where Rocket Lab Will End The Year",
    "value": {
-    "headline": "Seagate Technology Is Soaring After Its Strong Earnings Report. Should You Buy Western Digital Before Its Earnings Report?",
+    "headline": "Up 58% in 12 Months, This Is Where Rocket Lab Will End The Year",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785761400,
-    "url": "https://www.fool.com/investing/2026/08/03/seagate-is-soaring-should-you-buy-western-digital/?.tsrc=rss",
+    "ts": 1786017604,
+    "url": "https://247wallst.com/investing/2026/08/06/up-58-in-12-months-this-is-where-rocket-lab-will-end-the-year/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/03/seagate-is-soaring-should-you-buy-western-digital/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/06/up-58-in-12-months-this-is-where-rocket-lab-will-end-the-year/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Goldman Sachs Adds Financial Giant to the August Conviction List of Top Stock Picks",
+   "label": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AppLovin, Charles River, Global Payments, HubSpot, Insulet C",
    "value": {
-    "headline": "Goldman Sachs Adds Financial Giant to the August Conviction List of Top Stock Picks",
+    "headline": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AppLovin, Charles River, Global Payments, HubSpot, Insulet Corporation, Roper Technologies, Sabra Health Care, Western Digital, Zillow Group, and More",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785760998,
-    "url": "https://247wallst.com/investing/2026/08/03/goldman-sachs-adds-top-financial-to-a-august-conviction-list-stacked-with-dividend-giants/?.tsrc=rss",
+    "ts": 1786017574,
+    "url": "https://247wallst.com/investing/2026/08/06/here-are-thursdays-top-wall-street-analyst-research-calls-applovin-charles-river-global-payments-hubspot-insulet-corporation-roper-technologies-sabra-health-care-western-digital-zill/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/03/goldman-sachs-adds-top-financial-to-a-august-conviction-list-stacked-with-dividend-giants/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/06/here-are-thursdays-top-wall-street-analyst-research-calls-applovin-charles-river-global-payments-hubspot-insulet-corporation-roper-technologies-sabra-health-care-western-digital-zill/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +701,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-03",
+   "as_of": "2026-08-06",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

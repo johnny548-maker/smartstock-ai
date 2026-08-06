@@ -1,8 +1,8 @@
 {
  "stock": "6182.TWO",
  "name": "合晶",
- "price": 104.0,
- "change_pct": 7.33,
+ "price": 108.0,
+ "change_pct": 3.85,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -227,15 +227,26 @@
    "l": 98.0,
    "c": 104.0,
    "v": 10845022
+  },
+  {
+   "time": "2026-08-06",
+   "o": 100.5,
+   "h": 108.0,
+   "l": 99.0,
+   "c": 108.0,
+   "v": 5702980
   }
  ],
  "sr": {
-  "price": 104.0,
+  "price": 108.0,
   "resistance": [
    189.0
   ],
-  "support": [],
-  "strong_support": 106.5
+  "support": [
+   106.5,
+   82.1
+  ],
+  "strong_support": 82.1
  },
  "spark": [
   120.0,
@@ -265,10 +276,11 @@
   89.0,
   88.1,
   96.9,
-  104.0
+  104.0,
+  108.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-05",
+ "spark_end": "2026-08-06",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

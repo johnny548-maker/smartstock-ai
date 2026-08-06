@@ -1,8 +1,8 @@
 {
  "stock": "2371.TW",
  "name": "大同",
- "price": 25.25,
- "change_pct": 0.0,
+ "price": 25.5,
+ "change_pct": 0.99,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -251,16 +251,27 @@
    "l": 24.85,
    "c": 25.25,
    "v": 6337976
+  },
+  {
+   "time": "2026-08-06",
+   "o": 25.45,
+   "h": 25.8,
+   "l": 25.3,
+   "c": 25.5,
+   "v": 6664584
   }
  ],
  "sr": {
-  "price": 25.25,
+  "price": 25.5,
   "resistance": [
    27.0,
    28.3
   ],
-  "support": [],
-  "strong_support": 25.45
+  "support": [
+   25.45,
+   23.3
+  ],
+  "strong_support": 23.3
  },
  "spark": [
   28.3,
@@ -293,10 +304,11 @@
   24.1,
   23.5,
   25.25,
-  25.25
+  25.25,
+  25.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-05",
+ "spark_end": "2026-08-06",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

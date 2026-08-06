@@ -1,25 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 700.07,
- "change_pct": 1.76,
+ "price": 717.3,
+ "change_pct": -0.9,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 695.82,
-   "h": 700.47,
-   "l": 691.01,
-   "c": 694.18,
-   "v": 43779100
-  },
-  {
-   "time": "2026-05-08",
-   "o": 699.15,
-   "h": 710.45,
-   "l": 698.73,
-   "c": 710.45,
-   "v": 44320400
-  },
   {
    "time": "2026-05-11",
    "o": 709.58,
@@ -482,24 +466,38 @@
    "h": 701.59,
    "l": 685.82,
    "c": 700.07,
-   "v": 44814900
+   "v": 44965100
+  },
+  {
+   "time": "2026-08-04",
+   "o": 708.16,
+   "h": 725.66,
+   "l": 707.53,
+   "c": 723.85,
+   "v": 59778600
+  },
+  {
+   "time": "2026-08-05",
+   "o": 726.25,
+   "h": 728.54,
+   "l": 716.92,
+   "c": 717.3,
+   "v": 33239300
   }
  ],
  "sr": {
-  "price": 700.07,
+  "price": 717.3,
   "resistance": [
    721.24,
    726.39
   ],
   "support": [
-   694.49,
-   686.76
+   702.81,
+   700.91
   ],
   "strong_support": 554.99
  },
  "spark": [
-  694.18,
-  710.45,
   712.51,
   706.46,
   713.93,
@@ -557,16 +555,18 @@
   661.73,
   683.55,
   687.99,
-  700.07
+  700.07,
+  723.85,
+  717.3
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-11",
+ "spark_end": "2026-08-05",
  "fundamental": {
-  "pe_trailing": 30.529755,
+  "pe_trailing": 31.830395,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What IJR's Own History Says About Its Price Today",
+   "label": "Stock Market Today: Dow Rises, Nasdaq Falls As AI Stocks Sandisk, Western Digital Plunge On Earnings (Live Coverage)",
    "value": {
-    "headline": "What IJR's Own History Says About Its Price Today",
+    "headline": "Stock Market Today: Dow Rises, Nasdaq Falls As AI Stocks Sandisk, Western Digital Plunge On Earnings (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785840352,
-    "url": "https://www.trefis.com/articles/609832/what-ijrs-own-history-says-about-its-price-today/2026-08-04?.tsrc=rss",
+    "ts": 1786018600,
+    "url": "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/609832/what-ijrs-own-history-says-about-its-price-today/2026-08-04?.tsrc=rss"
+     "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-04",
+   "severity": "warn",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bull of the Day: Invesco (IVZ)",
+   "label": "History Says Investing $400 per Month in This ETF Could Set You Up for Life. Here's How.",
    "value": {
-    "headline": "Bull of the Day: Invesco (IVZ)",
+    "headline": "History Says Investing $400 per Month in This ETF Could Set You Up for Life. Here's How.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785830400,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bull-day-invesco-ivz-080000365.html?.tsrc=rss",
+    "ts": 1786013400,
+    "url": "https://www.fool.com/investing/2026/08/06/history-says-investing-this-etf-set-for-life-qqq/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/bull-day-invesco-ivz-080000365.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/history-says-investing-this-etf-set-for-life-qqq/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Ordinary Income Trap: Why JEPI’s Monthly Distributions Are Quietly Gutting Your After-Tax Returns",
+   "label": "Nasdaq, Dow Futures Mixed Ahead Of Jobless Claims: Why SPCX, SNDK, SOUN, IONQ, FIG Stocks Are In Focus",
    "value": {
-    "headline": "Ordinary Income Trap: Why JEPI’s Monthly Distributions Are Quietly Gutting Your After-Tax Returns",
+    "headline": "Nasdaq, Dow Futures Mixed Ahead Of Jobless Claims: Why SPCX, SNDK, SOUN, IONQ, FIG Stocks Are In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785816927,
-    "url": "https://247wallst.com/investing/etf/2026/08/04/ordinary-income-trap-why-jepis-monthly-distributions-are-quietly-gutting-your-after-tax-returns/?.tsrc=rss",
+    "ts": 1786006122,
+    "url": "https://stocktwits.com/news-articles/markets/equity/why-nasdaq-futures-falling-premarket-jobless-claims-spcx-sndk-soun-ionq-fig-stocks-in-focus/cZoJAYjRJ7T?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/08/04/ordinary-income-trap-why-jepis-monthly-distributions-are-quietly-gutting-your-after-tax-returns/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/why-nasdaq-futures-falling-premarket-jobless-claims-spcx-sndk-soun-ionq-fig-stocks-in-focus/cZoJAYjRJ7T?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A Major Bitcoin Signal Is Flashing Green",
+   "label": "How ProShares Ultra QQQ Quietly Built $14.46 Billion in Assets Despite Warnings That Leveraged ETFs Destroy Long-Term We",
    "value": {
-    "headline": "A Major Bitcoin Signal Is Flashing Green",
+    "headline": "How ProShares Ultra QQQ Quietly Built $14.46 Billion in Assets Despite Warnings That Leveraged ETFs Destroy Long-Term Wealth",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785801600,
-    "url": "https://www.coinage.media/2026/a-major-bitcoin-signal-is-flashing-green?.tsrc=rss",
+    "ts": 1785962819,
+    "url": "https://247wallst.com/investing/etf/2026/08/05/how-proshares-ultra-qqq-quietly-built-14-46-billion-in-assets-despite-warnings-that-leveraged-etfs-destroy-long-term-wealth/?.tsrc=rss",
     "urls": [
-     "https://www.coinage.media/2026/a-major-bitcoin-signal-is-flashing-green?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/08/05/how-proshares-ultra-qqq-quietly-built-14-46-billion-in-assets-despite-warnings-that-leveraged-etfs-destroy-long-term-wealth/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-04",
+   "severity": "warn",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P500, Nasdaq End Higher, Dow Hits Record High On Strong Mag 7 Performance And Falling Oil Prices — BA, XOM, CVX, HOOD,",
+   "label": "The Cheapest ETFs for Building a Core Portfolio",
    "value": {
-    "headline": "S&P500, Nasdaq End Higher, Dow Hits Record High On Strong Mag 7 Performance And Falling Oil Prices — BA, XOM, CVX, HOOD, AMD In Focus",
+    "headline": "The Cheapest ETFs for Building a Core Portfolio",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785792790,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p500-nasdaq-end-higher-dow-hits-record-high-on-strong-mag-7-performance/cZoTYo1RJ3K?.tsrc=rss",
+    "ts": 1785961860,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cheapest-etfs-building-core-portfolio-203100733.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p500-nasdaq-end-higher-dow-hits-record-high-on-strong-mag-7-performance/cZoTYo1RJ3K?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/cheapest-etfs-building-core-portfolio-203100733.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-06",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
