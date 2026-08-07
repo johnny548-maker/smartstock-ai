@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 219.22,
- "change_pct": 3.43,
+ "price": 218.99,
+ "change_pct": -0.1,
  "ohlc": [
-  {
-   "time": "2026-05-11",
-   "o": 213.79,
-   "h": 222.04,
-   "l": 213.64,
-   "c": 219.18,
-   "v": 160685800
-  },
   {
    "time": "2026-05-12",
    "o": 218.3,
@@ -482,11 +474,19 @@
    "h": 222.22,
    "l": 216.4,
    "c": 219.22,
-   "v": 157555300
+   "v": 158187400
+  },
+  {
+   "time": "2026-08-06",
+   "o": 221.53,
+   "h": 223.63,
+   "l": 217.27,
+   "c": 218.99,
+   "v": 113051990
   }
  ],
  "sr": {
-  "price": 219.22,
+  "price": 218.99,
   "resistance": [
    232.01,
    236.26
@@ -498,7 +498,6 @@
   "strong_support": 163.85
  },
  "spark": [
-  219.18,
   220.52,
   225.57,
   235.47,
@@ -557,136 +556,120 @@
   200.75,
   206.64,
   211.94,
-  219.22
+  219.22,
+  218.99
  ],
- "spark_start": "2026-05-11",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-12",
+ "spark_end": "2026-08-06",
  "fundamental": {
   "pe_trailing": 33.57121,
   "pe_forward": 17.006414,
   "eps_trailing": 6.53,
   "eps_forward": 12.89043,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 219.22,
-  "stop": 203.87,
-  "target": 257.58,
-  "atr_bracket": 257.58,
-  "measured_move": 230.81,
-  "target_band": [
-   230.81,
-   257.58
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 3.7,
-  "swing_stop": 187.61,
-  "chandelier": 198.28,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy?",
+   "label": "Four of Google's Top AI Researchers Just Left to Start One Company. Alphabet Is Investing in It.",
    "value": {
-    "headline": "Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy?",
+    "headline": "Four of Google's Top AI Researchers Just Left to Start One Company. Alphabet Is Investing in It.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786017960,
-    "url": "https://www.fool.com/investing/2026/08/06/elon-musk-tesla-worst-week-stock-buy/?.tsrc=rss",
+    "ts": 1786060920,
+    "url": "https://www.fool.com/investing/2026/08/06/four-of-googles-top-ai-researchers-just-left-to-st/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/06/elon-musk-tesla-worst-week-stock-buy/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/four-of-googles-top-ai-researchers-just-left-to-st/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
+   "label": "Why Occidental Stock Is Up Today",
    "value": {
-    "headline": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
+    "headline": "Why Occidental Stock Is Up Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786017889,
-    "url": "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss",
+    "ts": 1786060117,
+    "url": "https://www.fool.com/investing/2026/08/06/why-occidental-stock-is-up-today/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/why-occidental-stock-is-up-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
+   "label": "AMD Buys Toronto AI Chip Startup Taalas — Retail Says It’s A Move To ‘Compete More Directly With Nvidia’",
    "value": {
-    "headline": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
+    "headline": "AMD Buys Toronto AI Chip Startup Taalas — Retail Says It’s A Move To ‘Compete More Directly With Nvidia’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786017644,
-    "url": "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss",
+    "ts": 1786058752,
+    "url": "https://stocktwits.com/news-articles/markets/equity/amd-buys-toronto-ai-chip-startup-taalas-retail-says-its-a-move-to-compete-more-directly-with-nvidia/cZoBg5yRJJM?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/amd-buys-toronto-ai-chip-startup-taalas-retail-says-its-a-move-to-compete-more-directly-with-nvidia/cZoBg5yRJJM?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Up 58% in 12 Months, This Is Where Rocket Lab Will End The Year",
+   "label": "Nuclear Wipeout: These 5 Nuclear Stocks Are Now Down 44.3% to 82.2%. Time to Buy?",
    "value": {
-    "headline": "Up 58% in 12 Months, This Is Where Rocket Lab Will End The Year",
+    "headline": "Nuclear Wipeout: These 5 Nuclear Stocks Are Now Down 44.3% to 82.2%. Time to Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786017604,
-    "url": "https://247wallst.com/investing/2026/08/06/up-58-in-12-months-this-is-where-rocket-lab-will-end-the-year/?.tsrc=rss",
+    "ts": 1786058400,
+    "url": "https://www.fool.com/investing/2026/08/06/nuclear-wipeout-these-5-nuclear-stocks-are-now-dow/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/06/up-58-in-12-months-this-is-where-rocket-lab-will-end-the-year/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/06/nuclear-wipeout-these-5-nuclear-stocks-are-now-dow/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AppLovin, Charles River, Global Payments, HubSpot, Insulet C",
+   "label": "Brookfield (TSX:BN) Completed The Oaktree Acquisition",
    "value": {
-    "headline": "Here Are Thursday’s Top Wall Street Analyst Research Calls: AppLovin, Charles River, Global Payments, HubSpot, Insulet Corporation, Roper Technologies, Sabra Health Care, Western Digital, Zillow Group, and More",
+    "headline": "Brookfield (TSX:BN) Completed The Oaktree Acquisition",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786017574,
-    "url": "https://247wallst.com/investing/2026/08/06/here-are-thursdays-top-wall-street-analyst-research-calls-applovin-charles-river-global-payments-hubspot-insulet-corporation-roper-technologies-sabra-health-care-western-digital-zill/?.tsrc=rss",
+    "ts": 1786058199,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/brookfield-tsx-bn-completed-oaktree-231639317.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/06/here-are-thursdays-top-wall-street-analyst-research-calls-applovin-charles-river-global-payments-hubspot-insulet-corporation-roper-technologies-sabra-health-care-western-digital-zill/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/brookfield-tsx-bn-completed-oaktree-231639317.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -701,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

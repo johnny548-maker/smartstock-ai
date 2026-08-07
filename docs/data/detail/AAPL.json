@@ -1,33 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 303.42,
- "change_pct": -1.78,
+ "price": 312.41,
+ "change_pct": 0.45,
  "ohlc": [
-  {
-   "time": "2026-05-07",
-   "o": 289.0,
-   "h": 291.86,
-   "l": 285.52,
-   "c": 287.18,
-   "v": 45224300
-  },
-  {
-   "time": "2026-05-08",
-   "o": 289.74,
-   "h": 294.49,
-   "l": 289.73,
-   "c": 293.05,
-   "v": 52692800
-  },
-  {
-   "time": "2026-05-11",
-   "o": 291.98,
-   "h": 293.88,
-   "l": 290.23,
-   "c": 292.68,
-   "v": 42247300
-  },
   {
    "time": "2026-05-12",
    "o": 292.56,
@@ -482,25 +458,46 @@
    "h": 311.8,
    "l": 302.56,
    "c": 303.42,
-   "v": 74824300
+   "v": 75052000
+  },
+  {
+   "time": "2026-08-04",
+   "o": 302.73,
+   "h": 310.42,
+   "l": 301.32,
+   "c": 309.38,
+   "v": 68001000
+  },
+  {
+   "time": "2026-08-05",
+   "o": 309.36,
+   "h": 311.71,
+   "l": 305.67,
+   "c": 311.0,
+   "v": 49438800
+  },
+  {
+   "time": "2026-08-06",
+   "o": 314.34,
+   "h": 316.29,
+   "l": 309.23,
+   "c": 312.41,
+   "v": 45392526
   }
  ],
  "sr": {
-  "price": 303.42,
+  "price": 312.41,
   "resistance": [
    317.4,
    334.99
   ],
   "support": [
-   287.38,
-   273.75
+   305.02,
+   300.0
   ],
   "strong_support": 223.15
  },
  "spark": [
-  287.18,
-  293.05,
-  292.68,
   294.8,
   298.87,
   298.21,
@@ -557,16 +554,19 @@
   338.19,
   333.43,
   308.91,
-  303.42
+  303.42,
+  309.38,
+  311.0,
+  312.41
  ],
- "spark_start": "2026-05-07",
- "spark_end": "2026-08-03",
+ "spark_start": "2026-05-12",
+ "spark_end": "2026-08-06",
  "fundamental": {
-  "pe_trailing": 35.46613,
-  "pe_forward": 32.472168,
+  "pe_trailing": 35.86797,
+  "pe_forward": 32.84008,
   "eps_trailing": 8.71,
   "eps_forward": 9.51307,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here Are Tuesday’s Top Wall Street Analyst Research Calls: Apple, CoreWeave, eBay, Exxon Mobil, Intuit, Nebius Group, Pa",
+   "label": "MP Earnings Show Chinese Rare-Earth Monopoly Is Fading",
    "value": {
-    "headline": "Here Are Tuesday’s Top Wall Street Analyst Research Calls: Apple, CoreWeave, eBay, Exxon Mobil, Intuit, Nebius Group, Palantir Technologies, SK hynix, and More",
+    "headline": "MP Earnings Show Chinese Rare-Earth Monopoly Is Fading",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785845482,
-    "url": "https://247wallst.com/investing/2026/08/04/here-are-tuesdays-top-wall-street-analyst-research-calls-apple-coreweave-ebay-exxon-mobil-intuit-nebius-group-palantir-technologies-sk-hynix-and-more/?.tsrc=rss",
+    "ts": 1786051080,
+    "url": "https://finance.yahoo.com/m/49f884c2-1522-38ee-81b6-226112e1c1b6/mp-earnings-show-chinese.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/04/here-are-tuesdays-top-wall-street-analyst-research-calls-apple-coreweave-ebay-exxon-mobil-intuit-nebius-group-palantir-technologies-sk-hynix-and-more/?.tsrc=rss"
+     "https://finance.yahoo.com/m/49f884c2-1522-38ee-81b6-226112e1c1b6/mp-earnings-show-chinese.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Are Billionaire Investor Warren Buffett’s Top 5 Stock Picks a Buy in August?",
+   "label": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
    "value": {
-    "headline": "Are Billionaire Investor Warren Buffett’s Top 5 Stock Picks a Buy in August?",
+    "headline": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785844843,
-    "url": "https://247wallst.com/investing/2026/08/04/are-billionaire-investor-warren-buffetts-top-5-stock-picks-a-buy-in-august/?.tsrc=rss",
+    "ts": 1786050429,
+    "url": "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/04/are-billionaire-investor-warren-buffetts-top-5-stock-picks-a-buy-in-august/?.tsrc=rss"
+     "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon and Microsoft Gained a Combined $1.04 Trillion in Market Cap in 2 Days, While Apple and Meta Platforms Lost $510 ",
+   "label": "Top Research Reports for Apple, Shell & Toyota Motor",
    "value": {
-    "headline": "Amazon and Microsoft Gained a Combined $1.04 Trillion in Market Cap in 2 Days, While Apple and Meta Platforms Lost $510 Billion. Meet the Vanguard ETF That's Built for This Exact Market.",
+    "headline": "Top Research Reports for Apple, Shell & Toyota Motor",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785843000,
-    "url": "https://www.fool.com/investing/2026/08/04/amazon-and-microsoft-just-gained-a-combined-104-tr/?.tsrc=rss",
+    "ts": 1786047240,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/top-research-reports-apple-shell-201400129.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/04/amazon-and-microsoft-just-gained-a-combined-104-tr/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/top-research-reports-apple-shell-201400129.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Eli Lilly Ripe for Stock Split After Obesity Drug-Fueled Rally",
+   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
    "value": {
-    "headline": "Eli Lilly Ripe for Stock Split After Obesity Drug-Fueled Rally",
+    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785841205,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/eli-lilly-ripe-stock-split-110005696.html?.tsrc=rss",
+    "ts": 1786046365,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-195925324.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/eli-lilly-ripe-stock-split-110005696.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-195925324.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has Apple's Stock Peaked?",
+   "label": "Apple App Store revenue ticks up despite falling downloads",
    "value": {
-    "headline": "Has Apple's Stock Peaked?",
+    "headline": "Apple App Store revenue ticks up despite falling downloads",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785838800,
-    "url": "https://www.fool.com/investing/2026/08/04/has-apples-stock-peaked/?.tsrc=rss",
+    "ts": 1786045380,
+    "url": "https://www.proactiveinvestors.com/companies/news/1096688/apple-app-store-revenue-ticks-up-despite-falling-downloads-1096688.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/04/has-apples-stock-peaked/?.tsrc=rss"
+     "https://www.proactiveinvestors.com/companies/news/1096688/apple-app-store-revenue-ticks-up-despite-falling-downloads-1096688.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 288 分 / 228 留言",
+   "label": "HN 討論熱度 20 篇 / 298 分 / 222 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 288,
-    "comments": 228,
+    "points": 298,
+    "comments": 222,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +715,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-04",
+   "as_of": "2026-08-07",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

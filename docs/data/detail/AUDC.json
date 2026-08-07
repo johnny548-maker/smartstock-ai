@@ -1,17 +1,9 @@
 {
  "stock": "AUDC",
  "name": "AudioCodes",
- "price": 9.88,
- "change_pct": -1.59,
+ "price": 9.9,
+ "change_pct": 0.2,
  "ohlc": [
-  {
-   "time": "2026-05-11",
-   "o": 8.36,
-   "h": 8.64,
-   "l": 8.36,
-   "c": 8.63,
-   "v": 88900
-  },
   {
    "time": "2026-05-12",
    "o": 8.44,
@@ -483,10 +475,18 @@
    "l": 9.5,
    "c": 9.88,
    "v": 160300
+  },
+  {
+   "time": "2026-08-06",
+   "o": 9.8,
+   "h": 10.12,
+   "l": 9.78,
+   "c": 9.9,
+   "v": 115484
   }
  ],
  "sr": {
-  "price": 9.88,
+  "price": 9.9,
   "resistance": [
    10.04,
    10.14
@@ -498,7 +498,6 @@
   "strong_support": 6.76
  },
  "spark": [
-  8.63,
   8.48,
   8.45,
   8.43,
@@ -557,11 +556,129 @@
   9.58,
   9.8,
   10.04,
-  9.88
+  9.88,
+  9.9
  ],
- "spark_start": "2026-05-11",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-12",
+ "spark_end": "2026-08-06",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AudioCodes (AUDC) Q2 2026 Earnings Call Transcript",
+   "value": {
+    "headline": "AudioCodes (AUDC) Q2 2026 Earnings Call Transcript",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785900427,
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/08/04/audiocodes-audc-q2-2026-earnings-call-transcript/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/earnings/call-transcripts/2026/08/04/audiocodes-audc-q2-2026-earnings-call-transcript/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AudioCodes Ltd (AUDC) (Q2 2026) Earnings Call Highlights: Voice AI Surges Over 50% as Company ...",
+   "value": {
+    "headline": "AudioCodes Ltd (AUDC) (Q2 2026) Earnings Call Highlights: Voice AI Surges Over 50% as Company ...",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785877515,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/audiocodes-ltd-audc-q2-2026-210515656.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/audiocodes-ltd-audc-q2-2026-210515656.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AudioCodes Ltd. Q2 2026 Earnings Call Summary",
+   "value": {
+    "headline": "AudioCodes Ltd. Q2 2026 Earnings Call Summary",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785877277,
+    "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-audiocodes-ltd-q2-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+    "urls": [
+     "https://app.moby.co/home/research/tools/earningsCalendar/earnings-audiocodes-ltd-q2-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AudioCodes Q2 Earnings Call Highlights",
+   "value": {
+    "headline": "AudioCodes Q2 Earnings Call Highlights",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785852274,
+    "url": "https://www.marketbeat.com/instant-alerts/audiocodes-q2-earnings-call-highlights-2026-08-04/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/audiocodes-q2-earnings-call-highlights-2026-08-04/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AudioCodes Reports Second Quarter 2026 Results and Declares Semi-Annual Dividend of 20 cents per share",
+   "value": {
+    "headline": "AudioCodes Reports Second Quarter 2026 Results and Declares Semi-Annual Dividend of 20 cents per share",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785823200,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/audiocodes-reports-second-quarter-2026-060000249.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/audiocodes-reports-second-quarter-2026-060000249.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 717.3,
- "change_pct": -0.9,
+ "price": 714.65,
+ "change_pct": -0.37,
  "ohlc": [
-  {
-   "time": "2026-05-11",
-   "o": 709.58,
-   "h": 713.81,
-   "l": 708.13,
-   "c": 712.51,
-   "v": 36019100
-  },
   {
    "time": "2026-05-12",
    "o": 707.44,
@@ -482,11 +474,19 @@
    "h": 728.54,
    "l": 716.92,
    "c": 717.3,
-   "v": 33239300
+   "v": 33540200
+  },
+  {
+   "time": "2026-08-06",
+   "o": 710.76,
+   "h": 719.32,
+   "l": 708.5,
+   "c": 714.65,
+   "v": 30571597
   }
  ],
  "sr": {
-  "price": 717.3,
+  "price": 714.65,
   "resistance": [
    721.24,
    726.39
@@ -498,7 +498,6 @@
   "strong_support": 554.99
  },
  "spark": [
-  712.51,
   706.46,
   713.93,
   719.0,
@@ -557,16 +556,17 @@
   687.99,
   700.07,
   723.85,
-  717.3
+  717.3,
+  714.65
  ],
- "spark_start": "2026-05-11",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-12",
+ "spark_end": "2026-08-06",
  "fundamental": {
   "pe_trailing": 31.830395,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Rises, Nasdaq Falls As AI Stocks Sandisk, Western Digital Plunge On Earnings (Live Coverage)",
+   "label": "S&P 500 Gains as Iran-Oman Deal Eases Oil Fears",
    "value": {
-    "headline": "Stock Market Today: Dow Rises, Nasdaq Falls As AI Stocks Sandisk, Western Digital Plunge On Earnings (Live Coverage)",
+    "headline": "S&P 500 Gains as Iran-Oman Deal Eases Oil Fears",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786018600,
-    "url": "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow.html?.tsrc=rss",
+    "ts": 1786051637,
+    "url": "https://finance.yahoo.com/energy/articles/p-500-gains-iran-oman-212717705.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "History Says Investing $400 per Month in This ETF Could Set You Up for Life. Here's How.",
-   "value": {
-    "headline": "History Says Investing $400 per Month in This ETF Could Set You Up for Life. Here's How.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786013400,
-    "url": "https://www.fool.com/investing/2026/08/06/history-says-investing-this-etf-set-for-life-qqq/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/06/history-says-investing-this-etf-set-for-life-qqq/?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/p-500-gains-iran-oman-212717705.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq, Dow Futures Mixed Ahead Of Jobless Claims: Why SPCX, SNDK, SOUN, IONQ, FIG Stocks Are In Focus",
+   "label": "S&P 500, Dow, Nasdaq End Lower Amid Hormuz Uncertainty As Investors Await Jobs Data To Judge Fed Rate Course — SOUN, GOO",
    "value": {
-    "headline": "Nasdaq, Dow Futures Mixed Ahead Of Jobless Claims: Why SPCX, SNDK, SOUN, IONQ, FIG Stocks Are In Focus",
+    "headline": "S&P 500, Dow, Nasdaq End Lower Amid Hormuz Uncertainty As Investors Await Jobs Data To Judge Fed Rate Course — SOUN, GOOGL, SPCX, NVDA In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786006122,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-nasdaq-futures-falling-premarket-jobless-claims-spcx-sndk-soun-ionq-fig-stocks-in-focus/cZoJAYjRJ7T?.tsrc=rss",
+    "ts": 1786050279,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-dow-nasdaq-end-lower-amid-hormuz-uncertainty/cZoB9g9RJJo?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-nasdaq-futures-falling-premarket-jobless-claims-spcx-sndk-soun-ionq-fig-stocks-in-focus/cZoJAYjRJ7T?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-dow-nasdaq-end-lower-amid-hormuz-uncertainty/cZoB9g9RJJo?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How ProShares Ultra QQQ Quietly Built $14.46 Billion in Assets Despite Warnings That Leveraged ETFs Destroy Long-Term We",
+   "label": "SCHG Quintupled Your Money in 10 Years, and the 4-Cent Fee Is Doing Heavy Lifting",
    "value": {
-    "headline": "How ProShares Ultra QQQ Quietly Built $14.46 Billion in Assets Despite Warnings That Leveraged ETFs Destroy Long-Term Wealth",
+    "headline": "SCHG Quintupled Your Money in 10 Years, and the 4-Cent Fee Is Doing Heavy Lifting",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785962819,
-    "url": "https://247wallst.com/investing/etf/2026/08/05/how-proshares-ultra-qqq-quietly-built-14-46-billion-in-assets-despite-warnings-that-leveraged-etfs-destroy-long-term-wealth/?.tsrc=rss",
+    "ts": 1786040109,
+    "url": "https://247wallst.com/investing/etf/2026/08/06/schg-quintupled-your-money-in-10-years-and-the-4-cent-fee-is-doing-heavy-lifting/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/08/05/how-proshares-ultra-qqq-quietly-built-14-46-billion-in-assets-despite-warnings-that-leveraged-etfs-destroy-long-term-wealth/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Cheapest ETFs for Building a Core Portfolio",
-   "value": {
-    "headline": "The Cheapest ETFs for Building a Core Portfolio",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785961860,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cheapest-etfs-building-core-portfolio-203100733.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cheapest-etfs-building-core-portfolio-203100733.html?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/08/06/schg-quintupled-your-money-in-10-years-and-the-4-cent-fee-is-doing-heavy-lifting/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Kevin Warsh Opens Door to Surprise Fed Move",
+   "value": {
+    "headline": "Kevin Warsh Opens Door to Surprise Fed Move",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786037641,
+    "url": "https://finance.yahoo.com/economy/policy/articles/kevin-warsh-opens-door-surprise-173401450.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/economy/policy/articles/kevin-warsh-opens-door-surprise-173401450.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "U.S. Labor Market Just Flashed Surprising Signal",
+   "value": {
+    "headline": "U.S. Labor Market Just Flashed Surprising Signal",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786037167,
+    "url": "https://finance.yahoo.com/economy/articles/u-labor-market-just-flashed-172607774.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/economy/articles/u-labor-market-just-flashed-172607774.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -482,7 +482,7 @@
    "h": 10100.0,
    "l": 9510.0,
    "c": 10100.0,
-   "v": 677827
+   "v": 645598
   }
  ],
  "sr": {
@@ -568,29 +568,77 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_notice",
-   "kind": "risk",
-   "label": "⚠️ 注意股：最近六個營業日累積收盤價漲幅達36.22%。且六個營業日起迄兩個營業日收盤價價差達2960.00 元﹝第一款﹞。最近九十個營業日起迄兩個營業日之收盤價漲幅達180.55% ﹝第二款﹞。",
-   "value": {
-    "reason": "最近六個營業日累積收盤價漲幅達36.22%。且六個營業日起迄兩個營業日收盤價價差達2960.00 元﹝第一款﹞。最近九十個營業日起迄兩個營業日之收盤價漲幅達180.55% ﹝第二款﹞。",
-    "count": 1
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "注意交易資訊 overlay（投機過熱警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 30,
+    "short_today": 38,
     "outstanding": 95297072,
-    "short_pct": 3.1480505508081084e-05
+    "short_pct": 3.987530697690271e-05
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
+   "value": {
+    "headline": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786060515,
+    "url": "cnyes:6563597",
+    "urls": [
+     "cnyes:6563597"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "川湖賺逾11股本 上半年EPS 110.96元 登上萬元股",
+   "value": {
+    "headline": "川湖賺逾11股本 上半年EPS 110.96元 登上萬元股",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1786033205,
+    "url": "https://money.udn.com/money/story/5612/9676023",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9676023"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "川湖專利護城河 猛吸訂單",
+   "value": {
+    "headline": "川湖專利護城河 猛吸訂單",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1786033016,
+    "url": "https://money.udn.com/money/story/5612/9676027",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9676027"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
@@ -609,7 +657,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -629,82 +677,24 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "台股第3檔萬元股誕生 川湖漲逾6%收10100元",
-   "value": {
-    "headline": "台股第3檔萬元股誕生 川湖漲逾6%收10100元",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1786009862,
-    "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%AC%AC3%E6%AA%94%E8%90%AC%E5%85%83%E8%82%A1%E8%AA%95%E7%94%9F-%E5%B7%9D%E6%B9%96%E6%BC%B2%E9%80%BE6-%E6%94%B610100%E5%85%83-095102819.html",
-    "urls": [
-     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%AC%AC3%E6%AA%94%E8%90%AC%E5%85%83%E8%82%A1%E8%AA%95%E7%94%9F-%E5%B7%9D%E6%B9%96%E6%BC%B2%E9%80%BE6-%E6%94%B610100%E5%85%83-095102819.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "台股收跌214點!外資小買20億 股后川湖晉升萬金股",
-   "value": {
-    "headline": "台股收跌214點!外資小買20億 股后川湖晉升萬金股",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1786009526,
-    "url": "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E6%94%B6%E8%B7%8C214%E9%BB%9E-%E5%A4%96%E8%B3%87%E5%B0%8F%E8%B2%B720%E5%84%84-%E8%82%A1%E5%90%8E%E5%B7%9D%E6%B9%96%E6%99%89%E5%8D%87%E8%90%AC%E9%87%91%E8%82%A1-094526549.html",
-    "urls": [
-     "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E6%94%B6%E8%B7%8C214%E9%BB%9E-%E5%A4%96%E8%B3%87%E5%B0%8F%E8%B2%B720%E5%84%84-%E8%82%A1%E5%90%8E%E5%B7%9D%E6%B9%96%E6%99%89%E5%8D%87%E8%90%AC%E9%87%91%E8%82%A1-094526549.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "權值股腿軟小兵續衝!台股收跌214點 川湖成第3檔「萬金股」|Yahoo財經掃描",
-   "value": {
-    "headline": "權值股腿軟小兵續衝!台股收跌214點 川湖成第3檔「萬金股」|Yahoo財經掃描",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1786008669,
-    "url": "https://tw.stock.yahoo.com/news/%E6%AC%8A%E5%80%BC%E8%82%A1%E8%85%BF%E8%BB%9F%E5%B0%8F%E5%85%B5%E7%BA%8C%E8%A1%9D%EF%BC%81%E5%8F%B0%E8%82%A1%E6%94%B6%E8%B7%8C214%E9%BB%9E-%E5%B7%9D%E6%B9%96%E6%88%90%E7%AC%AC3%E6%AA%94%E3%80%8C%E8%90%AC%E9%87%91%E8%82%A1%E3%80%8D%EF%BD%9Cyahoo%E8%B2%A1%E7%B6%93%E6%8E%83%E6%8F%8F-093109785.html",
-    "urls": [
-     "https://tw.stock.yahoo.com/news/%E6%AC%8A%E5%80%BC%E8%82%A1%E8%85%BF%E8%BB%9F%E5%B0%8F%E5%85%B5%E7%BA%8C%E8%A1%9D%EF%BC%81%E5%8F%B0%E8%82%A1%E6%94%B6%E8%B7%8C214%E9%BB%9E-%E5%B7%9D%E6%B9%96%E6%88%90%E7%AC%AC3%E6%AA%94%E3%80%8C%E8%90%AC%E9%87%91%E8%82%A1%E3%80%8D%EF%BD%9Cyahoo%E8%B2%A1%E7%B6%93%E6%8E%83%E6%8F%8F-093109785.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 8 則（最高 1 來源確認）",
+   "label": "新聞聲量 7 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 8,
+    "headline_count": 7,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
+     "udn",
      "yahoo_tw"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
@@ -881,6 +871,10 @@
    {
     "t": "2026-08-06",
     "v": -17
+   },
+   {
+    "t": "2026-08-07",
+    "v": -121
    }
   ],
   "holder_pct": [

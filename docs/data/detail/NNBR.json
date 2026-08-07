@@ -1,17 +1,9 @@
 {
  "stock": "NNBR",
  "name": "NN Inc",
- "price": 3.9,
- "change_pct": 1.3,
+ "price": 3.87,
+ "change_pct": -0.77,
  "ohlc": [
-  {
-   "time": "2026-05-11",
-   "o": 2.75,
-   "h": 2.81,
-   "l": 2.57,
-   "c": 2.58,
-   "v": 1129200
-  },
   {
    "time": "2026-05-12",
    "o": 2.55,
@@ -482,23 +474,30 @@
    "h": 3.93,
    "l": 3.77,
    "c": 3.9,
-   "v": 2527600
+   "v": 2561600
+  },
+  {
+   "time": "2026-08-06",
+   "o": 4.42,
+   "h": 4.48,
+   "l": 3.71,
+   "c": 3.87,
+   "v": 13929274
   }
  ],
  "sr": {
-  "price": 3.9,
+  "price": 3.87,
   "resistance": [
    4.03,
    4.07
   ],
   "support": [
-   3.88,
-   3.61
+   3.61,
+   3.57
   ],
   "strong_support": 1.1
  },
  "spark": [
-  2.58,
   2.37,
   2.26,
   2.33,
@@ -557,143 +556,12 @@
   3.31,
   3.62,
   3.85,
-  3.9
+  3.9,
+  3.87
  ],
- "spark_start": "2026-05-11",
- "spark_end": "2026-08-05",
+ "spark_start": "2026-05-12",
+ "spark_end": "2026-08-06",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN Inc. (NNBR) Q2 Earnings and Revenues Surpass Estimates",
-   "value": {
-    "headline": "NN Inc. (NNBR) Q2 Earnings and Revenues Surpass Estimates",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785976513,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-inc-nnbr-q2-earnings-003513531.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nn-inc-nnbr-q2-earnings-003513531.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN’s (NASDAQ:NNBR) Q2 CY2026: Strong Sales, Stock Soars",
-   "value": {
-    "headline": "NN’s (NASDAQ:NNBR) Q2 CY2026: Strong Sales, Stock Soars",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785966554,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-nasdaq-nnbr-q2-cy2026-214914409.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nn-nasdaq-nnbr-q2-cy2026-214914409.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN, Inc. Reports Second Quarter 2026 Results",
-   "value": {
-    "headline": "NN, Inc. Reports Second Quarter 2026 Results",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785961800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-inc-reports-second-quarter-203000267.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nn-inc-reports-second-quarter-203000267.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN, INC. Announces $124 Million Refinancing and Deleveraging Transaction",
-   "value": {
-    "headline": "NN, INC. Announces $124 Million Refinancing and Deleveraging Transaction",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785960900,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-inc-announces-124-million-201500772.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nn-inc-announces-124-million-201500772.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 of Wall Street’s Favorite Stocks with Warning Signs",
-   "value": {
-    "headline": "3 of Wall Street’s Favorite Stocks with Warning Signs",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785506149,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-wall-street-favorite-stocks-135549350.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-wall-street-favorite-stocks-135549350.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 271,417 股交割失敗）",
-   "value": {
-    "total_shares": 271417,
-    "days": 5,
-    "max_shares": 126625,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

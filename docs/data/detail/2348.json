@@ -482,7 +482,7 @@
    "h": 72.6,
    "l": 68.6,
    "c": 69.6,
-   "v": 1095127
+   "v": 1054240
   }
  ],
  "sr": {
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 12,
+    "short_today": 14,
     "outstanding": 151898853,
-    "short_pct": 7.899993820229835e-06
+    "short_pct": 9.216659456934806e-06
    },
    "severity": "info",
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
+   "value": {
+    "headline": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786060515,
+    "url": "cnyes:6563597",
+    "urls": [
+     "cnyes:6563597"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -757,6 +792,10 @@
    {
     "t": "2026-08-06",
     "v": 1373
+   },
+   {
+    "t": "2026-08-07",
+    "v": 1292
    }
   ],
   "holder_pct": [
