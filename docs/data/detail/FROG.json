@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 83.04,
- "change_pct": -1.75,
+ "price": 89.52,
+ "change_pct": 7.8,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 68.34,
-   "h": 68.78,
-   "l": 65.18,
-   "c": 67.55,
-   "v": 3853400
-  },
   {
    "time": "2026-05-13",
    "o": 67.9,
@@ -482,14 +474,21 @@
    "h": 85.49,
    "l": 79.5,
    "c": 83.04,
-   "v": 2918073
+   "v": 3118000
+  },
+  {
+   "time": "2026-08-07",
+   "o": 96.25,
+   "h": 96.25,
+   "l": 84.79,
+   "c": 89.52,
+   "v": 4369500
   }
  ],
  "sr": {
-  "price": 83.04,
+  "price": 89.52,
   "resistance": [
-   84.3,
-   87.86
+   99.22
   ],
   "support": [
    76.58,
@@ -498,7 +497,6 @@
   "strong_support": 25.93
  },
  "spark": [
-  67.55,
   64.18,
   65.08,
   66.16,
@@ -557,11 +555,144 @@
   82.4,
   86.22,
   84.52,
-  83.04
+  83.04,
+  89.52
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-13",
+ "spark_end": "2026-08-07",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Compared to Estimates, JFrog (FROG) Q2 Earnings: A Look at Key Metrics",
+   "value": {
+    "headline": "Compared to Estimates, JFrog (FROG) Q2 Earnings: A Look at Key Metrics",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786145401,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/compared-estimates-jfrog-frog-q2-233001148.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/compared-estimates-jfrog-frog-q2-233001148.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Software Stocks Trade Like It’s 2022 After Atlassian Leads Earnings Rally",
+   "value": {
+    "headline": "Software Stocks Trade Like It’s 2022 After Atlassian Leads Earnings Rally",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786128000,
+    "url": "https://finance.yahoo.com/m/e77487b5-b63f-344b-b6c5-1cd451916bfa/software-stocks-trade-like.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/e77487b5-b63f-344b-b6c5-1cd451916bfa/software-stocks-trade-like.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "JFrog Q2 Earnings Beat Estimates on Cloud and Security Growth",
+   "value": {
+    "headline": "JFrog Q2 Earnings Beat Estimates on Cloud and Security Growth",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786126440,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jfrog-q2-earnings-beat-estimates-181400287.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/jfrog-q2-earnings-beat-estimates-181400287.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why JFrog Stock Jumped Today",
+   "value": {
+    "headline": "Why JFrog Stock Jumped Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786121083,
+    "url": "https://www.fool.com/investing/2026/08/07/why-jfrog-stock-jumped-today/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/07/why-jfrog-stock-jumped-today/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Software Stocks Are a Hot Mess. So Is the Whole AI Trade.",
+   "value": {
+    "headline": "Software Stocks Are a Hot Mess. So Is the Whole AI Trade.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786099920,
+    "url": "https://finance.yahoo.com/m/5bbbf632-f28e-388c-8cc6-86eb1dc56574/software-stocks-are-a-hot.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/5bbbf632-f28e-388c-8cc6-86eb1dc56574/software-stocks-are-a-hot.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 1897,
+    "days": 6,
+    "max_shares": 843,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-10",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

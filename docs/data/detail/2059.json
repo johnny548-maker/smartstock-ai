@@ -1,25 +1,9 @@
 {
  "stock": "2059",
  "name": "川湖",
- "price": 10100.0,
- "change_pct": 6.65,
+ "price": 11905.0,
+ "change_pct": 7.16,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 5400.0,
-   "h": 5400.0,
-   "l": 5010.0,
-   "c": 5010.0,
-   "v": 197401
-  },
-  {
-   "time": "2026-05-15",
-   "o": 5160.0,
-   "h": 5160.0,
-   "l": 4725.0,
-   "c": 4860.0,
-   "v": 238712
-  },
   {
    "time": "2026-05-18",
    "o": 4730.0,
@@ -483,10 +467,26 @@
    "l": 9510.0,
    "c": 10100.0,
    "v": 645598
+  },
+  {
+   "time": "2026-08-07",
+   "o": 11110.0,
+   "h": 11110.0,
+   "l": 11110.0,
+   "c": 11110.0,
+   "v": 310213
+  },
+  {
+   "time": "2026-08-10",
+   "o": 12220.0,
+   "h": 12220.0,
+   "l": 11590.0,
+   "c": 11905.0,
+   "v": 1014622
   }
  ],
  "sr": {
-  "price": 10100.0,
+  "price": 11905.0,
   "resistance": [],
   "support": [
    7580.0,
@@ -495,8 +495,6 @@
   "strong_support": 1013.77
  },
  "spark": [
-  5010.0,
-  4860.0,
   4765.0,
   4450.0,
   4500.0,
@@ -554,10 +552,12 @@
   8635.0,
   9495.0,
   9470.0,
-  10100.0
+  10100.0,
+  11110.0,
+  11905.0
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-18",
+ "spark_end": "2026-08-10",
  "fundamental": {
   "rev_yoy": 220.5,
   "rev_accel": true,
@@ -568,6 +568,58 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 193,074 股",
+   "value": {
+    "foreign": 227675,
+    "trust": -10721,
+    "dealer": -23880,
+    "total": 193074
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 61.2 / 殖利率 0.46% / PB 31.37",
+   "value": {
+    "pe": 61.25,
+    "yield": 0.46,
+    "pb": 31.37
+   },
+   "severity": "info",
+   "as_of": "2026-08-07",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "twse_notice",
+   "kind": "risk",
+   "label": "⚠️ 注意股：最近六個營業日累積收盤價漲幅達43.49%。且六個營業日起迄兩個營業日收盤價價差達3270.00 元﹝第一款﹞。最近六十個營業日起迄兩個營業日之收盤價漲幅達144.95% 。最近九十個營業日起迄兩個營業日之收盤價漲幅達274.96% ﹝第二款﹞。",
+   "value": {
+    "reason": "最近六個營業日累積收盤價漲幅達43.49%。且六個營業日起迄兩個營業日收盤價價差達3270.00 元﹝第一款﹞。最近六十個營業日起迄兩個營業日之收盤價漲幅達144.95% 。最近九十個營業日起迄兩個營業日之收盤價漲幅達274.96% ﹝第二款﹞。",
+    "count": 1
+   },
+   "severity": "warn",
+   "as_of": "2026-08-10",
+   "note": "注意交易資訊 overlay（投機過熱警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+  },
+  {
+   "source": "twse_punish",
+   "kind": "risk",
+   "label": "🚫 處置股（第1次） 處置期間：115/08/10～115/08/14",
+   "value": {
+    "level": 1,
+    "reason": "連續三次",
+    "period": "115/08/10～115/08/14"
+   },
+   "severity": "warn",
+   "as_of": "2026-08-10",
+   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
@@ -577,125 +629,17 @@
     "short_pct": 3.987530697690271e-05
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
-   "value": {
-    "headline": "營收速報 - 2026年8月7日台股中小型公司7月營收一覽(新增350家)",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1786060515,
-    "url": "cnyes:6563597",
-    "urls": [
-     "cnyes:6563597"
-    ]
-   },
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 66.2,
    "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "川湖賺逾11股本 上半年EPS 110.96元 登上萬元股",
-   "value": {
-    "headline": "川湖賺逾11股本 上半年EPS 110.96元 登上萬元股",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1786033205,
-    "url": "https://money.udn.com/money/story/5612/9676023",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9676023"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "川湖專利護城河 猛吸訂單",
-   "value": {
-    "headline": "川湖專利護城河 猛吸訂單",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1786033016,
-    "url": "https://money.udn.com/money/story/5612/9676027",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9676027"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "川湖股價衝上萬元!躍台股史上第3檔「萬金股」 半年狂賺11個股本、7月營收再創高",
-   "value": {
-    "headline": "川湖股價衝上萬元!躍台股史上第3檔「萬金股」 半年狂賺11個股本、7月營收再創高",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1786010543,
-    "url": "https://tw.news.yahoo.com/%E5%B7%9D%E6%B9%96%E8%82%A1%E5%83%B9%E8%A1%9D%E4%B8%8A%E8%90%AC%E5%85%83-%E8%BA%8D%E5%8F%B0%E8%82%A1%E5%8F%B2%E4%B8%8A%E7%AC%AC3%E6%AA%94-%E8%90%AC%E9%87%91%E8%82%A1-%E5%8D%8A%E5%B9%B4%E7%8B%82%E8%B3%BA11%E5%80%8B%E8%82%A1%E6%9C%AC-7%E6%9C%88%E7%87%9F%E6%94%B6%E5%86%8D%E5%89%B5%E9%AB%98-100223701.html",
-    "urls": [
-     "https://tw.news.yahoo.com/%E5%B7%9D%E6%B9%96%E8%82%A1%E5%83%B9%E8%A1%9D%E4%B8%8A%E8%90%AC%E5%85%83-%E8%BA%8D%E5%8F%B0%E8%82%A1%E5%8F%B2%E4%B8%8A%E7%AC%AC3%E6%AA%94-%E8%90%AC%E9%87%91%E8%82%A1-%E5%8D%8A%E5%B9%B4%E7%8B%82%E8%B3%BA11%E5%80%8B%E8%82%A1%E6%9C%AC-7%E6%9C%88%E7%87%9F%E6%94%B6%E5%86%8D%E5%89%B5%E9%AB%98-100223701.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "半年賺11個股本!川湖Q2 EPS狂飆74.38元 股價衝破萬元成台股第3檔萬元",
-   "value": {
-    "headline": "半年賺11個股本!川湖Q2 EPS狂飆74.38元 股價衝破萬元成台股第3檔萬元",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1786009928,
-    "url": "https://tw.stock.yahoo.com/news/%E5%8D%8A%E5%B9%B4%E8%B3%BA11%E5%80%8B%E8%82%A1%E6%9C%AC-%E5%B7%9D%E6%B9%96q2-eps%E7%8B%82%E9%A3%8674-38%E5%85%83-%E8%82%A1%E5%83%B9%E8%A1%9D%E7%A0%B4%E8%90%AC%E5%85%83%E6%88%90%E5%8F%B0%E8%82%A1%E7%AC%AC3%E6%AA%94%E8%90%AC%E5%85%83-095208231.html",
-    "urls": [
-     "https://tw.stock.yahoo.com/news/%E5%8D%8A%E5%B9%B4%E8%B3%BA11%E5%80%8B%E8%82%A1%E6%9C%AC-%E5%B7%9D%E6%B9%96q2-eps%E7%8B%82%E9%A3%8674-38%E5%85%83-%E8%82%A1%E5%83%B9%E8%A1%9D%E7%A0%B4%E8%90%AC%E5%85%83%E6%88%90%E5%8F%B0%E8%82%A1%E7%AC%AC3%E6%AA%94%E8%90%AC%E5%85%83-095208231.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 7 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 7,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes",
-     "udn",
-     "yahoo_tw"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-07",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+   "as_of": "20260807",
+   "note": "大戶持股%=66.20；WoW+0.20；股東人數-3258"
   }
  ],
  "trends": {
@@ -875,6 +819,10 @@
    {
     "t": "2026-08-07",
     "v": -121
+   },
+   {
+    "t": "2026-08-10",
+    "v": 72
    }
   ],
   "holder_pct": [
@@ -913,6 +861,10 @@
    {
     "t": "2026-07-31",
     "v": 66.0
+   },
+   {
+    "t": "2026-08-07",
+    "v": 66.2
    }
   ],
   "rev_yoy": [

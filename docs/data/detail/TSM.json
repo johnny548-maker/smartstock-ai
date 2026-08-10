@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 418.2,
- "change_pct": 1.01,
+ "price": 420.04,
+ "change_pct": 0.44,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 396.82,
-   "h": 401.3,
-   "l": 385.22,
-   "c": 396.35,
-   "v": 18121800
-  },
   {
    "time": "2026-05-13",
    "o": 397.34,
@@ -479,26 +471,33 @@
   {
    "time": "2026-08-06",
    "o": 409.54,
-   "h": 423.68,
+   "h": 423.91,
    "l": 407.99,
    "c": 418.2,
-   "v": 10537518
+   "v": 10628900
+  },
+  {
+   "time": "2026-08-07",
+   "o": 424.79,
+   "h": 424.79,
+   "l": 413.1,
+   "c": 420.04,
+   "v": 9145500
   }
  ],
  "sr": {
-  "price": 418.2,
+  "price": 420.04,
   "resistance": [
-   419.02,
-   420.98
+   420.98,
+   425.4
   ],
   "support": [
-   404.56,
-   386.02
+   419.19,
+   404.56
   ],
   "strong_support": 221.25
  },
  "spark": [
-  396.35,
   398.87,
   416.74,
   403.41,
@@ -557,14 +556,15 @@
   406.11,
   417.17,
   414.0,
-  418.2
+  418.2,
+  420.04
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-13",
+ "spark_end": "2026-08-07",
  "fundamental": {
-  "pe_trailing": 36.878307,
-  "pe_forward": 19.353863,
-  "eps_trailing": 11.34,
+  "pe_trailing": 36.91037,
+  "pe_forward": 19.439016,
+  "eps_trailing": 11.38,
   "eps_forward": 21.60809,
   "stale": false,
   "source": "yfinance"
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Cloudflare Leads 5 Software Earnings Winners Late; Jobs Report On Tap",
+   "label": "TSMC July 2026 revenue jumps 44.7% on AI chip demand",
    "value": {
-    "headline": "Dow Jones Futures: Cloudflare Leads 5 Software Earnings Winners Late; Jobs Report On Tap",
+    "headline": "TSMC July 2026 revenue jumps 44.7% on AI chip demand",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786060912,
-    "url": "https://finance.yahoo.com/m/316189c0-0208-3a52-907e-8f1448ccd2e8/dow-jones-futures%3A-cloudflare.html?.tsrc=rss",
+    "ts": 1786360082,
+    "url": "https://qz.com/tsmc-july-revenue-ai-chip-demand-081026?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/316189c0-0208-3a52-907e-8f1448ccd2e8/dow-jones-futures%3A-cloudflare.html?.tsrc=rss"
+     "https://qz.com/tsmc-july-revenue-ai-chip-demand-081026?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC’s $64 Billion Investment Signals Mega-Growth: Why Pivoting Away From The Titan Makes Little Sense",
+   "label": "Key Republican urges US to stop any advanced chips from reaching sanctioned Chinese firms",
    "value": {
-    "headline": "TSMC’s $64 Billion Investment Signals Mega-Growth: Why Pivoting Away From The Titan Makes Little Sense",
+    "headline": "Key Republican urges US to stop any advanced chips from reaching sanctioned Chinese firms",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786029536,
-    "url": "https://247wallst.com/investing/2026/08/06/tsmcs-64-billion-investment-signals-mega-growth-why-pivoting-away-from-the-titan-makes-little-sense/?.tsrc=rss",
+    "ts": 1786356312,
+    "url": "https://finance.yahoo.com/technology/articles/key-republican-urges-us-stop-100512815.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/06/tsmcs-64-billion-investment-signals-mega-growth-why-pivoting-away-from-the-titan-makes-little-sense/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/key-republican-urges-us-stop-100512815.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor Manufacturing Company (TSM) Raised Its 2026 Outlook as AI Demand Accelerated",
+   "label": "Taiwan Semiconductor’s Blockbuster Run Rolls On: July Revenue Surges 45%",
    "value": {
-    "headline": "Taiwan Semiconductor Manufacturing Company (TSM) Raised Its 2026 Outlook as AI Demand Accelerated",
+    "headline": "Taiwan Semiconductor’s Blockbuster Run Rolls On: July Revenue Surges 45%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786018461,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-raised-2026-outlook-121421021.html?.tsrc=rss",
+    "ts": 1786354984,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-blockbuster-run-rolls-094304031.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-raised-2026-outlook-121421021.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-blockbuster-run-rolls-094304031.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cathie Wood invests a combined $28.7 million in TSMC, SpaceX after trimming investments in Amazon, Alphabet and Shopify",
+   "label": "Why Is TSM Stock Rising Premarket?",
    "value": {
-    "headline": "Cathie Wood invests a combined $28.7 million in TSMC, SpaceX after trimming investments in Amazon, Alphabet and Shopify",
+    "headline": "Why Is TSM Stock Rising Premarket?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786016700,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-combined-28-114500645.html?.tsrc=rss",
+    "ts": 1786351788,
+    "url": "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-combined-28-114500645.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor Manufacturing (TSM) Eyes Faster 3 Nanometer Output, Is The Stock Expensive?",
+   "label": "S&P 500, Nasdaq, Dow Futures Mixed As Hormuz Uncertainty Weighs: Why AAPL, TSM, MU, SPCX, ASTS, SLS Stocks Are In Focus",
    "value": {
-    "headline": "Taiwan Semiconductor Manufacturing (TSM) Eyes Faster 3 Nanometer Output, Is The Stock Expensive?",
+    "headline": "S&P 500, Nasdaq, Dow Futures Mixed As Hormuz Uncertainty Weighs: Why AAPL, TSM, MU, SPCX, ASTS, SLS Stocks Are In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1785953491,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-tsm-eyes-181131277.html?.tsrc=rss",
+    "ts": 1786350288,
+    "url": "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-dow-futures-mixed-hormuz-uncertainty-weighs-why-aapl-tsm-mu-spcx-asts-sls-stocks-are-in-focus/cZojj8RRJaw?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-tsm-eyes-181131277.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-dow-futures-mixed-hormuz-uncertainty-weighs-why-aapl-tsm-mu-spcx-asts-sls-stocks-are-in-focus/cZojj8RRJaw?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 439 分 / 285 留言",
+   "label": "HN 討論熱度 20 篇 / 50 分 / 6 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 439,
-    "comments": 285,
+    "points": 50,
+    "comments": 6,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-08-07",
+   "severity": "info",
+   "as_of": "2026-08-10",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "MXL",
  "name": "MaxLinear",
- "price": 70.2,
- "change_pct": 4.06,
+ "price": 74.98,
+ "change_pct": 6.81,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 98.49,
-   "h": 99.98,
-   "l": 86.8,
-   "c": 91.93,
-   "v": 5898500
-  },
   {
    "time": "2026-05-13",
    "o": 100.23,
@@ -480,13 +472,21 @@
    "time": "2026-08-06",
    "o": 65.9,
    "h": 72.51,
-   "l": 64.59,
+   "l": 64.54,
    "c": 70.2,
-   "v": 2005436
+   "v": 2043500
+  },
+  {
+   "time": "2026-08-07",
+   "o": 73.0,
+   "h": 77.12,
+   "l": 71.49,
+   "c": 74.98,
+   "v": 2012000
   }
  ],
  "sr": {
-  "price": 70.2,
+  "price": 74.98,
   "resistance": [
    94.55,
    98.49
@@ -498,7 +498,6 @@
   "strong_support": 8.35
  },
  "spark": [
-  91.93,
   87.73,
   88.78,
   92.34,
@@ -557,11 +556,144 @@
   67.11,
   72.72,
   67.46,
-  70.2
+  70.2,
+  74.98
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-13",
+ "spark_end": "2026-08-07",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Panther Storage Accelerator Wins FMS 2026 Best of Show Award in Servers & Networking Category",
+   "value": {
+    "headline": "MaxLinear Panther Storage Accelerator Wins FMS 2026 Best of Show Award in Servers & Networking Category",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786019700,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-panther-storage-accelerator-wins-123500338.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-panther-storage-accelerator-wins-123500338.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "CMS and MaxLinear Expand OpenZFS Storage for AI, Cloud, and Hyperscale Infrastructure",
+   "value": {
+    "headline": "CMS and MaxLinear Expand OpenZFS Storage for AI, Cloud, and Hyperscale Infrastructure",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785846900,
+    "url": "https://finance.yahoo.com/technology/ai/articles/cms-maxlinear-expand-openzfs-storage-123500908.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/cms-maxlinear-expand-openzfs-storage-123500908.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Everspin Technologies and MaxLinear Collaborate to Advance Memory Efficiency in AI Servers",
+   "value": {
+    "headline": "Everspin Technologies and MaxLinear Collaborate to Advance Memory Efficiency in AI Servers",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785841260,
+    "url": "https://finance.yahoo.com/technology/ai/articles/everspin-technologies-maxlinear-collaborate-advance-110100232.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/everspin-technologies-maxlinear-collaborate-advance-110100232.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Showcases Panther for AI Storage Efficiency and AI Inference Performance at FMS 2026",
+   "value": {
+    "headline": "MaxLinear Showcases Panther for AI Storage Efficiency and AI Inference Performance at FMS 2026",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785328500,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-showcases-panther-ai-storage-123500910.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-showcases-panther-ai-storage-123500910.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Zacks Analyst Blog Highlights MaxLinear, Marvell Technology and Broadcom",
+   "value": {
+    "headline": "The Zacks Analyst Blog Highlights MaxLinear, Marvell Technology and Broadcom",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1785242760,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-maxlinear-124600962.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-maxlinear-124600962.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-10",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日、累計 176,225 股交割失敗）",
+   "value": {
+    "total_shares": 176225,
+    "days": 2,
+    "max_shares": 175840,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-10",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

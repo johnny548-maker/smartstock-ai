@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 312.41,
- "change_pct": 0.45,
+ "price": 313.33,
+ "change_pct": 0.29,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 292.56,
-   "h": 295.27,
-   "l": 292.56,
-   "c": 294.8,
-   "v": 45748100
-  },
   {
    "time": "2026-05-13",
    "o": 293.5,
@@ -482,11 +474,19 @@
    "h": 316.29,
    "l": 309.23,
    "c": 312.41,
-   "v": 45392526
+   "v": 46139900
+  },
+  {
+   "time": "2026-08-07",
+   "o": 311.45,
+   "h": 314.81,
+   "l": 310.74,
+   "c": 313.33,
+   "v": 34407100
   }
  ],
  "sr": {
-  "price": 312.41,
+  "price": 313.33,
   "resistance": [
    317.4,
    334.99
@@ -498,7 +498,6 @@
   "strong_support": 223.15
  },
  "spark": [
-  294.8,
   298.87,
   298.21,
   300.23,
@@ -557,13 +556,14 @@
   303.42,
   309.38,
   311.0,
-  312.41
+  312.41,
+  313.33
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-13",
+ "spark_end": "2026-08-07",
  "fundamental": {
-  "pe_trailing": 35.86797,
-  "pe_forward": 32.84008,
+  "pe_trailing": 35.97359,
+  "pe_forward": 32.93679,
   "eps_trailing": 8.71,
   "eps_forward": 9.51307,
   "stale": false,
@@ -575,132 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MP Earnings Show Chinese Rare-Earth Monopoly Is Fading",
+   "label": "US Treasury, IRS set out initial framework for Saver’s Match rollout",
    "value": {
-    "headline": "MP Earnings Show Chinese Rare-Earth Monopoly Is Fading",
+    "headline": "US Treasury, IRS set out initial framework for Saver’s Match rollout",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786051080,
-    "url": "https://finance.yahoo.com/m/49f884c2-1522-38ee-81b6-226112e1c1b6/mp-earnings-show-chinese.html?.tsrc=rss",
+    "ts": 1786360678,
+    "url": "https://www.theaccountant-online.com/news/us-treasury-irs-set-out-initial-framework-for-savers-match-rollout/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/49f884c2-1522-38ee-81b6-226112e1c1b6/mp-earnings-show-chinese.html?.tsrc=rss"
+     "https://www.theaccountant-online.com/news/us-treasury-irs-set-out-initial-framework-for-savers-match-rollout/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
+   "label": "Apple reportedly tests CXMT memory chips as AI demand tightens global supply",
    "value": {
-    "headline": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
+    "headline": "Apple reportedly tests CXMT memory chips as AI demand tightens global supply",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786050429,
-    "url": "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss",
+    "ts": 1786357009,
+    "url": "https://investorshub.advfn.com/market-news/article/33818/apple-reportedly-tests-cxmt-memory-chips-as-ai-demand-tightens-global-supply?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss"
+     "https://investorshub.advfn.com/market-news/article/33818/apple-reportedly-tests-cxmt-memory-chips-as-ai-demand-tightens-global-supply?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top Research Reports for Apple, Shell & Toyota Motor",
+   "label": "Airbnb CEO: Why AI is the best thing to happen to us",
    "value": {
-    "headline": "Top Research Reports for Apple, Shell & Toyota Motor",
+    "headline": "Airbnb CEO: Why AI is the best thing to happen to us",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786047240,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-research-reports-apple-shell-201400129.html?.tsrc=rss",
+    "ts": 1786356000,
+    "url": "https://finance.yahoo.com/video/airbnb-ceo-why-ai-best-100000572.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-research-reports-apple-shell-201400129.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/airbnb-ceo-why-ai-best-100000572.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
+   "label": "Why Is TSM Stock Rising Premarket?",
    "value": {
-    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
+    "headline": "Why Is TSM Stock Rising Premarket?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786046365,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-195925324.html?.tsrc=rss",
+    "ts": 1786351788,
+    "url": "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-195925324.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple App Store revenue ticks up despite falling downloads",
+   "label": "Micron Stock Gains Even as Apple Looks to China for Memory-Chip Supply",
    "value": {
-    "headline": "Apple App Store revenue ticks up despite falling downloads",
+    "headline": "Micron Stock Gains Even as Apple Looks to China for Memory-Chip Supply",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786045380,
-    "url": "https://www.proactiveinvestors.com/companies/news/1096688/apple-app-store-revenue-ticks-up-despite-falling-downloads-1096688.html?.tsrc=rss",
+    "ts": 1786350600,
+    "url": "https://finance.yahoo.com/m/14ff16a9-1887-316e-aed1-5f3c0161aae3/micron-stock-gains-even-as.html?.tsrc=rss",
     "urls": [
-     "https://www.proactiveinvestors.com/companies/news/1096688/apple-app-store-revenue-ticks-up-despite-falling-downloads-1096688.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/14ff16a9-1887-316e-aed1-5f3c0161aae3/micron-stock-gains-even-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 298 分 / 222 留言",
+   "label": "HN 討論熱度 20 篇 / 257 分 / 45 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 298,
-    "comments": 222,
+    "points": 257,
+    "comments": 45,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

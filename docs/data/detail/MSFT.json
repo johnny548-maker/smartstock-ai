@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 499.86,
- "change_pct": 2.54,
+ "price": 499.99,
+ "change_pct": 0.03,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 413.58,
-   "h": 414.6,
-   "l": 405.76,
-   "c": 406.89,
-   "v": 38594200
-  },
   {
    "time": "2026-05-13",
    "o": 402.33,
@@ -478,15 +470,23 @@
   },
   {
    "time": "2026-08-06",
-   "o": 488.89,
-   "h": 501.55,
+   "o": 488.55,
+   "h": 501.56,
    "l": 488.52,
    "c": 499.86,
-   "v": 32788866
+   "v": 36441500
+  },
+  {
+   "time": "2026-08-07",
+   "o": 499.21,
+   "h": 505.18,
+   "l": 498.73,
+   "c": 499.99,
+   "v": 28818000
   }
  ],
  "sr": {
-  "price": 499.86,
+  "price": 499.99,
   "resistance": [
    507.87,
    508.75
@@ -498,7 +498,6 @@
   "strong_support": 349.2
  },
  "spark": [
-  406.89,
   404.33,
   408.55,
   421.01,
@@ -557,135 +556,120 @@
   487.65,
   492.81,
   487.46,
-  499.86
+  499.86,
+  499.99
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-13",
+ "spark_end": "2026-08-07",
  "fundamental": {
-  "pe_trailing": 27.478016,
-  "pe_forward": 20.7706,
-  "eps_trailing": 17.74,
-  "eps_forward": 23.46875,
-  "stale": true,
+  "pe_trailing": 27.854595,
+  "pe_forward": 21.299555,
+  "eps_trailing": 17.95,
+  "eps_forward": 23.4742,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 499.86,
-  "stop": 464.87,
-  "target": 587.34,
-  "atr_bracket": 587.34,
-  "measured_move": null,
-  "target_band": [
-   587.34
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 3.6,
-  "swing_stop": 371.99,
-  "chandelier": 454.81,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Unspoken Agreement You've Made Holding Meta Platforms Stock",
+   "label": "Dan Ives Says Big Tech Earnings Were The 'Wow Moment' For AI Monetization — 'It's All Starting To Come Together'",
    "value": {
-    "headline": "The Unspoken Agreement You've Made Holding Meta Platforms Stock",
+    "headline": "Dan Ives Says Big Tech Earnings Were The 'Wow Moment' For AI Monetization — 'It's All Starting To Come Together'",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786052922,
-    "url": "https://www.trefis.com/articles/610349/the-unspoken-agreement-youve-made-holding-meta-platforms-stock/2026-08-06?.tsrc=rss",
+    "ts": 1786358232,
+    "url": "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-big-tech-earnings-were-the-wow-moment-for-ai-monetization-it-s-all-starting-to-come-together/cZojVIGRJa6?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/610349/the-unspoken-agreement-youve-made-holding-meta-platforms-stock/2026-08-06?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-big-tech-earnings-were-the-wow-moment-for-ai-monetization-it-s-all-starting-to-come-together/cZojVIGRJa6?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Sinks 464 Points, But Chip Firm Surges; Microsoft Surpasses Buy Zone (Live Coverage)",
+   "label": "JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off",
    "value": {
-    "headline": "Stock Market Today: Dow Sinks 464 Points, But Chip Firm Surges; Microsoft Surpasses Buy Zone (Live Coverage)",
+    "headline": "JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786049885,
-    "url": "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow-sinks.html?.tsrc=rss",
+    "ts": 1786354100,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-strategists-raise-p-500-092820794.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/786ee4d7-d4c1-31a2-876f-42e58d681c63/stock-market-today%3A-dow-sinks.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-strategists-raise-p-500-092820794.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-08-07",
+   "severity": "info",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft’s (MSFT) Record Rally Puts Alphabet (GOOGL) Rivalry Back In Focus",
+   "label": "Why Is TSM Stock Rising Premarket?",
    "value": {
-    "headline": "Microsoft’s (MSFT) Record Rally Puts Alphabet (GOOGL) Rivalry Back In Focus",
+    "headline": "Why Is TSM Stock Rising Premarket?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786049782,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-record-rally-puts-205622595.html?.tsrc=rss",
+    "ts": 1786351788,
+    "url": "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-record-rally-puts-205622595.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft vs. Automatic Data Processing: Scale vs. Seasonality in Revenue",
+   "label": "Sovereign AI Infrastructure Market Till 2040 Now Available — Forecasts Growth from $24.8B to $301.6B, Profiles NVIDIA, M",
    "value": {
-    "headline": "Microsoft vs. Automatic Data Processing: Scale vs. Seasonality in Revenue",
+    "headline": "Sovereign AI Infrastructure Market Till 2040 Now Available — Forecasts Growth from $24.8B to $301.6B, Profiles NVIDIA, Microsoft, AWS, and 15 Other Key Players",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786048261,
-    "url": "https://www.fool.com/coverage/charts/2026/08/06/microsoft-vs-automatic-data-processing-scale-vs-seasonality-in-revenue/?.tsrc=rss",
+    "ts": 1786349100,
+    "url": "https://finance.yahoo.com/technology/ai/articles/sovereign-ai-infrastructure-market-till-080500128.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/charts/2026/08/06/microsoft-vs-automatic-data-processing-scale-vs-seasonality-in-revenue/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/sovereign-ai-infrastructure-market-till-080500128.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft’s AI Revenue is 70% OpenAI",
+   "label": "Can Microsoft Out-AI OpenAI And Anthropic? SemiAnalysis Says Yes, Points To $100B-Per-GW Inference Opportunity",
    "value": {
-    "headline": "Microsoft’s AI Revenue is 70% OpenAI",
+    "headline": "Can Microsoft Out-AI OpenAI And Anthropic? SemiAnalysis Says Yes, Points To $100B-Per-GW Inference Opportunity",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786048200,
-    "url": "https://app.moby.co/home/news/news-microsofts-ai-revenue-is-70-openai?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+    "ts": 1786346539,
+    "url": "https://stocktwits.com/news-articles/markets/equity/can-microsoft-out-ai-open-ai-and-anthropic-semi-analysis-says-yes-points-to-100-b-per-gw-inference-opportunity/cZoj1GTRJaM?.tsrc=rss",
     "urls": [
-     "https://app.moby.co/home/news/news-microsofts-ai-revenue-is-70-openai?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/can-microsoft-out-ai-open-ai-and-anthropic-semi-analysis-says-yes-points-to-100-b-per-gw-inference-opportunity/cZoj1GTRJaM?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -700,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
