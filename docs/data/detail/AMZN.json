@@ -1,25 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 272.26,
- "change_pct": -0.14,
+ "price": 278.09,
+ "change_pct": 1.32,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 266.71,
-   "h": 267.65,
-   "l": 262.63,
-   "c": 265.82,
-   "v": 36776200
-  },
-  {
-   "time": "2026-05-13",
-   "o": 264.43,
-   "h": 270.72,
-   "l": 263.2,
-   "c": 270.13,
-   "v": 39670900
-  },
   {
    "time": "2026-05-14",
    "o": 269.15,
@@ -480,16 +464,32 @@
    "time": "2026-08-06",
    "o": 272.77,
    "h": 275.48,
-   "l": 271.08,
+   "l": 271.06,
    "c": 272.26,
-   "v": 27906615
+   "v": 30672900
+  },
+  {
+   "time": "2026-08-07",
+   "o": 272.87,
+   "h": 278.31,
+   "l": 272.75,
+   "c": 274.48,
+   "v": 33861400
+  },
+  {
+   "time": "2026-08-10",
+   "o": 274.01,
+   "h": 280.14,
+   "l": 273.6,
+   "c": 278.09,
+   "v": 35684300
   }
  ],
  "sr": {
-  "price": 272.26,
+  "price": 278.09,
   "resistance": [
-   274.75,
-   278.56
+   278.56,
+   287.2
   ],
   "support": [
    256.16,
@@ -498,8 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  265.82,
-  270.13,
   267.22,
   264.14,
   264.86,
@@ -557,16 +555,18 @@
   284.02,
   277.42,
   272.65,
-  272.26
+  272.26,
+  274.48,
+  278.09
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-10",
  "fundamental": {
-  "pe_trailing": 21.917202,
-  "pe_forward": 26.39668,
-  "eps_trailing": 12.44,
-  "eps_forward": 10.32895,
-  "stale": true,
+  "pe_trailing": 22.070635,
+  "pe_forward": 26.919212,
+  "eps_trailing": 12.6,
+  "eps_forward": 10.33054,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bezos’s $4 Billion Amazon Sale Was Scheduled Before the Earnings Beat",
+   "label": "Amazon Fights Back Against Mamdani, Spending $5 Million To Stop New Plan",
    "value": {
-    "headline": "Bezos’s $4 Billion Amazon Sale Was Scheduled Before the Earnings Beat",
+    "headline": "Amazon Fights Back Against Mamdani, Spending $5 Million To Stop New Plan",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786056369,
-    "url": "https://beincrypto.com/bezos-amazon-sale-trading-plan-timing/?.tsrc=rss",
+    "ts": 1786445850,
+    "url": "https://247wallst.com/investing/2026/08/11/amazon-fights-back-against-mamdani-spending-5-million-to-stop-new-plan/?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/bezos-amazon-sale-trading-plan-timing/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/11/amazon-fights-back-against-mamdani-spending-5-million-to-stop-new-plan/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Unspoken Agreement You've Made Holding Meta Platforms Stock",
+   "label": "Amazon, Microsoft, and Alphabet: 2 Winners and 1 Loser in the Cloud Computing Arena",
    "value": {
-    "headline": "The Unspoken Agreement You've Made Holding Meta Platforms Stock",
+    "headline": "Amazon, Microsoft, and Alphabet: 2 Winners and 1 Loser in the Cloud Computing Arena",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786052922,
-    "url": "https://www.trefis.com/articles/610349/the-unspoken-agreement-youve-made-holding-meta-platforms-stock/2026-08-06?.tsrc=rss",
+    "ts": 1786444500,
+    "url": "https://www.fool.com/investing/2026/08/11/amazon-microsoft-and-alphabet-2-winners-and-1-lose/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/610349/the-unspoken-agreement-youve-made-holding-meta-platforms-stock/2026-08-06?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/11/amazon-microsoft-and-alphabet-2-winners-and-1-lose/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
+   "label": "Larry Fink says Americans’ retirement savings need to fund $10 trillion AI infrastructure demands. Protect your wealth",
    "value": {
-    "headline": "$2.9 Billion In Payouts, A Lagging Stock: The SNAP Trade-Off",
+    "headline": "Larry Fink says Americans’ retirement savings need to fund $10 trillion AI infrastructure demands. Protect your wealth",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786050429,
-    "url": "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss",
+    "ts": 1786443300,
+    "url": "https://finance.yahoo.com/technology/ai/articles/larry-fink-says-americans-retirement-101500090.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/610341/2-9-billion-in-payouts-a-lagging-stock-the-snap-trade-off/2026-08-06?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/larry-fink-says-americans-retirement-101500090.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft is starting to show its payoff on major AI plays",
+   "label": "This AI Cloud Stock Is Obliterating Amazon, Microsoft, and Alphabet With a 1-Year Return of 275%. Is It Still a Buy?",
    "value": {
-    "headline": "Microsoft is starting to show its payoff on major AI plays",
+    "headline": "This AI Cloud Stock Is Obliterating Amazon, Microsoft, and Alphabet With a 1-Year Return of 275%. Is It Still a Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786045052,
-    "url": "https://finance.yahoo.com/video/microsoft-starting-show-payoff-major-193732756.html?.tsrc=rss",
+    "ts": 1786438500,
+    "url": "https://www.fool.com/investing/2026/08/11/this-ai-cloud-stock-alphabet-1-year-return-275-buy/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/microsoft-starting-show-payoff-major-193732756.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/11/this-ai-cloud-stock-alphabet-1-year-return-275-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sandisk Earnings Were So Much Better Than Expected. Why the Stock Is Dropping Anyway.",
+   "label": "Behind AI Investment, U.S. Trade Deficit Grows 4th Consecutive Month",
    "value": {
-    "headline": "Sandisk Earnings Were So Much Better Than Expected. Why the Stock Is Dropping Anyway.",
+    "headline": "Behind AI Investment, U.S. Trade Deficit Grows 4th Consecutive Month",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786044480,
-    "url": "https://finance.yahoo.com/m/1b53b2c0-2a97-33a2-9ad0-71d1341b42cf/sandisk-earnings-were-so-much.html?.tsrc=rss",
+    "ts": 1786437900,
+    "url": "https://www.forbes.com/sites/kenroberts/2026/08/11/behind-ai-investment-us-trade-deficit-grows-4th-consecutive-month/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/1b53b2c0-2a97-33a2-9ad0-71d1341b42cf/sandisk-earnings-were-so-much.html?.tsrc=rss"
+     "https://www.forbes.com/sites/kenroberts/2026/08/11/behind-ai-investment-us-trade-deficit-grows-4th-consecutive-month/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-07",
+   "severity": "warn",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

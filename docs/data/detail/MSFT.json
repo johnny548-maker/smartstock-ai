@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 499.99,
- "change_pct": 0.03,
+ "price": 506.06,
+ "change_pct": 1.21,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 402.33,
-   "h": 405.43,
-   "l": 400.16,
-   "c": 404.33,
-   "v": 29667100
-  },
   {
    "time": "2026-05-14",
    "o": 403.61,
@@ -482,23 +474,30 @@
    "h": 505.18,
    "l": 498.73,
    "c": 499.99,
-   "v": 28818000
+   "v": 28846200
+  },
+  {
+   "time": "2026-08-10",
+   "o": 503.44,
+   "h": 513.73,
+   "l": 502.27,
+   "c": 506.06,
+   "v": 31176700
   }
  ],
  "sr": {
-  "price": 499.99,
+  "price": 506.06,
   "resistance": [
    507.87,
    508.75
   ],
   "support": [
-   495.37,
-   490.15
+   502.82,
+   501.86
   ],
   "strong_support": 349.2
  },
  "spark": [
-  404.33,
   408.55,
   421.01,
   422.62,
@@ -557,119 +556,136 @@
   492.81,
   487.46,
   499.86,
-  499.99
+  499.99,
+  506.06
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-07",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-10",
  "fundamental": {
   "pe_trailing": 27.854595,
   "pe_forward": 21.299555,
   "eps_trailing": 17.95,
   "eps_forward": 23.4742,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 506.06,
+  "stop": 470.64,
+  "target": 594.62,
+  "atr_bracket": 594.62,
+  "measured_move": null,
+  "target_band": [
+   594.62
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.6,
+  "swing_stop": 371.97,
+  "chandelier": 466.8,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dan Ives Says Big Tech Earnings Were The 'Wow Moment' For AI Monetization — 'It's All Starting To Come Together'",
+   "label": "RemoFirst Named to the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
    "value": {
-    "headline": "Dan Ives Says Big Tech Earnings Were The 'Wow Moment' For AI Monetization — 'It's All Starting To Come Together'",
+    "headline": "RemoFirst Named to the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786358232,
-    "url": "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-big-tech-earnings-were-the-wow-moment-for-ai-monetization-it-s-all-starting-to-come-together/cZojVIGRJa6?.tsrc=rss",
+    "ts": 1786446300,
+    "url": "https://finance.yahoo.com/small-business/articles/remofirst-named-2026-inc-5000-110500065.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-big-tech-earnings-were-the-wow-moment-for-ai-monetization-it-s-all-starting-to-come-together/cZojVIGRJa6?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/remofirst-named-2026-inc-5000-110500065.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off",
+   "label": "Payabli Named No. 43 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Compa",
    "value": {
-    "headline": "JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off",
+    "headline": "Payabli Named No. 43 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786354100,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-strategists-raise-p-500-092820794.html?.tsrc=rss",
+    "ts": 1786446300,
+    "url": "https://finance.yahoo.com/small-business/articles/payabli-named-no-43-2026-110500735.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-strategists-raise-p-500-092820794.html?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/payabli-named-no-43-2026-110500735.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is TSM Stock Rising Premarket?",
+   "label": "Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in America 2026",
    "value": {
-    "headline": "Why Is TSM Stock Rising Premarket?",
+    "headline": "Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in America 2026",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786351788,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss",
+    "ts": 1786446120,
+    "url": "https://finance.yahoo.com/small-business/articles/archive360-named-inc-5000-list-110200179.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/archive360-named-inc-5000-list-110200179.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sovereign AI Infrastructure Market Till 2040 Now Available — Forecasts Growth from $24.8B to $301.6B, Profiles NVIDIA, M",
+   "label": "ORO Labs Earns Top-100 Spot on the 2026 Inc. 5000 List",
    "value": {
-    "headline": "Sovereign AI Infrastructure Market Till 2040 Now Available — Forecasts Growth from $24.8B to $301.6B, Profiles NVIDIA, Microsoft, AWS, and 15 Other Key Players",
+    "headline": "ORO Labs Earns Top-100 Spot on the 2026 Inc. 5000 List",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786349100,
-    "url": "https://finance.yahoo.com/technology/ai/articles/sovereign-ai-infrastructure-market-till-080500128.html?.tsrc=rss",
+    "ts": 1786446000,
+    "url": "https://finance.yahoo.com/small-business/articles/oro-labs-earns-top-100-110000460.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/sovereign-ai-infrastructure-market-till-080500128.html?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/oro-labs-earns-top-100-110000460.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can Microsoft Out-AI OpenAI And Anthropic? SemiAnalysis Says Yes, Points To $100B-Per-GW Inference Opportunity",
+   "label": "FamFluence Named No. 220 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America's Fastest-Growing Private C",
    "value": {
-    "headline": "Can Microsoft Out-AI OpenAI And Anthropic? SemiAnalysis Says Yes, Points To $100B-Per-GW Inference Opportunity",
+    "headline": "FamFluence Named No. 220 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America's Fastest-Growing Private Companies",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786346539,
-    "url": "https://stocktwits.com/news-articles/markets/equity/can-microsoft-out-ai-open-ai-and-anthropic-semi-analysis-says-yes-points-to-100-b-per-gw-inference-opportunity/cZoj1GTRJaM?.tsrc=rss",
+    "ts": 1786446000,
+    "url": "https://finance.yahoo.com/small-business/articles/famfluence-named-no-220-2026-110000666.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/can-microsoft-out-ai-open-ai-and-anthropic-semi-analysis-says-yes-points-to-100-b-per-gw-inference-opportunity/cZoj1GTRJaM?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/famfluence-named-no-220-2026-110000666.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +700,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

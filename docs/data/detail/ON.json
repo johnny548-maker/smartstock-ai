@@ -1,17 +1,9 @@
 {
  "stock": "ON",
  "name": "ON Semiconductor",
- "price": 81.17,
- "change_pct": 3.63,
+ "price": 79.78,
+ "change_pct": -1.71,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 108.9,
-   "h": 115.99,
-   "l": 108.06,
-   "c": 115.71,
-   "v": 21549700
-  },
   {
    "time": "2026-05-14",
    "o": 115.12,
@@ -482,11 +474,19 @@
    "h": 81.63,
    "l": 79.72,
    "c": 81.17,
-   "v": 9837600
+   "v": 9839500
+  },
+  {
+   "time": "2026-08-10",
+   "o": 81.5,
+   "h": 82.51,
+   "l": 79.72,
+   "c": 79.78,
+   "v": 8384600
   }
  ],
  "sr": {
-  "price": 81.17,
+  "price": 79.78,
   "resistance": [
    94.26,
    102.64
@@ -498,7 +498,6 @@
   "strong_support": 31.04
  },
  "spark": [
-  115.71,
   118.37,
   113.11,
   109.43,
@@ -557,11 +556,49 @@
   80.78,
   76.91,
   78.33,
-  81.17
+  81.17,
+  79.78
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-07",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-10",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "確定了!台積電攜手Sony砸46.9億美元!日本熊本攻次世代影像感測器、2029年量產",
+   "value": {
+    "headline": "確定了!台積電攜手Sony砸46.9億美元!日本熊本攻次世代影像感測器、2029年量產",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786446006,
+    "url": "cnyes:6571555",
+    "urls": [
+     "cnyes:6571555"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-11",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

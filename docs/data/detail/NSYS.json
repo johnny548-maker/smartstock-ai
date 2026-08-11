@@ -1,17 +1,9 @@
 {
  "stock": "NSYS",
  "name": "Nortech Systems",
- "price": 15.43,
- "change_pct": 7.75,
+ "price": 14.64,
+ "change_pct": -5.12,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 13.98,
-   "h": 14.2,
-   "l": 13.85,
-   "c": 13.96,
-   "v": 16700
-  },
   {
    "time": "2026-05-14",
    "o": 13.52,
@@ -483,22 +475,29 @@
    "l": 14.17,
    "c": 15.43,
    "v": 35800
+  },
+  {
+   "time": "2026-08-10",
+   "o": 15.28,
+   "h": 15.29,
+   "l": 14.5,
+   "c": 14.64,
+   "v": 11400
   }
  ],
  "sr": {
-  "price": 15.43,
+  "price": 14.64,
   "resistance": [
-   15.46,
-   17.6
+   14.84,
+   15.39
   ],
   "support": [
-   15.42,
-   13.4
+   13.4,
+   13.18
   ],
   "strong_support": 6.5
  },
  "spark": [
-  13.96,
   12.11,
   12.41,
   12.39,
@@ -557,128 +556,12 @@
   14.69,
   14.1,
   14.32,
-  15.43
+  15.43,
+  14.64
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-07",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-10",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nortech Systems Incorporated to Report Second Quarter 2026 Financial Results and Hold a Conference Call on August 12, 20",
-   "value": {
-    "headline": "Nortech Systems Incorporated to Report Second Quarter 2026 Financial Results and Hold a Conference Call on August 12, 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785787500,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-incorporated-report-second-200500823.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-incorporated-report-second-200500823.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nortech Systems Inc (NSYS) Q1 2026 Earnings Call Highlights: Strategic Restructuring Drives ...",
-   "value": {
-    "headline": "Nortech Systems Inc (NSYS) Q1 2026 Earnings Call Highlights: Strategic Restructuring Drives ...",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1778821397,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-inc-nsys-q1-050317007.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-inc-nsys-q1-050317007.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nortech Systems Reports First Quarter Results",
-   "value": {
-    "headline": "Nortech Systems Reports First Quarter Results",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1778704500,
-    "url": "https://finance.yahoo.com/news/nortech-systems-reports-first-quarter-203500602.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/news/nortech-systems-reports-first-quarter-203500602.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nortech Systems Incorporated to Report First Quarter 2026 Financial Results and Hold a Conference Call on May 14, 2026",
-   "value": {
-    "headline": "Nortech Systems Incorporated to Report First Quarter 2026 Financial Results and Hold a Conference Call on May 14, 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1778097600,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-incorporated-report-first-200000411.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nortech-systems-incorporated-report-first-200000411.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nortech Systems Launches Power over Fiber Technology Platform for EMI-Sensitive Applications",
-   "value": {
-    "headline": "Nortech Systems Launches Power over Fiber Technology Platform for EMI-Sensitive Applications",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1775592300,
-    "url": "https://finance.yahoo.com/sectors/technology/articles/nortech-systems-launches-power-over-200500974.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/sectors/technology/articles/nortech-systems-launches-power-over-200500974.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 12 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 12,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

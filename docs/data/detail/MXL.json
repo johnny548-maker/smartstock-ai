@@ -1,17 +1,9 @@
 {
  "stock": "MXL",
  "name": "MaxLinear",
- "price": 74.98,
- "change_pct": 6.81,
+ "price": 68.44,
+ "change_pct": -8.72,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 100.23,
-   "h": 104.0,
-   "l": 87.14,
-   "c": 87.73,
-   "v": 5752000
-  },
   {
    "time": "2026-05-14",
    "o": 86.5,
@@ -482,11 +474,19 @@
    "h": 77.12,
    "l": 71.49,
    "c": 74.98,
-   "v": 2012000
+   "v": 2014200
+  },
+  {
+   "time": "2026-08-10",
+   "o": 75.76,
+   "h": 76.0,
+   "l": 68.38,
+   "c": 68.44,
+   "v": 2937300
   }
  ],
  "sr": {
-  "price": 74.98,
+  "price": 68.44,
   "resistance": [
    94.55,
    98.49
@@ -498,7 +498,6 @@
   "strong_support": 8.35
  },
  "spark": [
-  87.73,
   88.78,
   92.34,
   87.46,
@@ -557,14 +556,75 @@
   72.72,
   67.46,
   70.2,
-  74.98
+  74.98,
+  68.44
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-07",
+ "spark_start": "2026-05-14",
+ "spark_end": "2026-08-10",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Introduces RackCommanderTM Control-Plane Portfolio for Next-Generation AI Infrastructure",
+   "value": {
+    "headline": "MaxLinear Introduces RackCommanderTM Control-Plane Portfolio for Next-Generation AI Infrastructure",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786418580,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-rackcommander-control-plane-032300998.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-rackcommander-control-plane-032300998.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Expands AI Infrastructure Control-Plane Portfolio with Intelligent eFuse Solutions for Rack-Scale Power Protec",
+   "value": {
+    "headline": "MaxLinear Expands AI Infrastructure Control-Plane Portfolio with Intelligent eFuse Solutions for Rack-Scale Power Protection and Telemetry",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786418280,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-expands-ai-infrastructure-control-031800444.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-expands-ai-infrastructure-control-031800444.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Introduces CarmelTM High-Speed USB-to-UART Product for Next-Generation AI Data Center Console Access",
+   "value": {
+    "headline": "MaxLinear Introduces CarmelTM High-Speed USB-to-UART Product for Next-Generation AI Data Center Console Access",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786416060,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-carmel-high-speed-024100109.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-carmel-high-speed-024100109.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -602,67 +662,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Everspin Technologies and MaxLinear Collaborate to Advance Memory Efficiency in AI Servers",
-   "value": {
-    "headline": "Everspin Technologies and MaxLinear Collaborate to Advance Memory Efficiency in AI Servers",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785841260,
-    "url": "https://finance.yahoo.com/technology/ai/articles/everspin-technologies-maxlinear-collaborate-advance-110100232.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/everspin-technologies-maxlinear-collaborate-advance-110100232.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MaxLinear Showcases Panther for AI Storage Efficiency and AI Inference Performance at FMS 2026",
-   "value": {
-    "headline": "MaxLinear Showcases Panther for AI Storage Efficiency and AI Inference Performance at FMS 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785328500,
-    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-showcases-panther-ai-storage-123500910.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/maxlinear-showcases-panther-ai-storage-123500910.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Zacks Analyst Blog Highlights MaxLinear, Marvell Technology and Broadcom",
-   "value": {
-    "headline": "The Zacks Analyst Blog Highlights MaxLinear, Marvell Technology and Broadcom",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785242760,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-maxlinear-124600962.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-maxlinear-124600962.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -677,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
