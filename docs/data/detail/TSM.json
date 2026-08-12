@@ -1,25 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 420.04,
- "change_pct": 0.44,
+ "price": 422.06,
+ "change_pct": 0.86,
  "ohlc": [
-  {
-   "time": "2026-05-13",
-   "o": 397.34,
-   "h": 403.73,
-   "l": 390.56,
-   "c": 398.87,
-   "v": 13127800
-  },
-  {
-   "time": "2026-05-14",
-   "o": 402.27,
-   "h": 420.98,
-   "l": 401.16,
-   "c": 416.74,
-   "v": 18577100
-  },
   {
    "time": "2026-05-15",
    "o": 405.55,
@@ -482,14 +466,30 @@
    "h": 424.79,
    "l": 413.1,
    "c": 420.04,
-   "v": 9145500
+   "v": 9159600
+  },
+  {
+   "time": "2026-08-10",
+   "o": 420.34,
+   "h": 425.88,
+   "l": 416.0,
+   "c": 418.47,
+   "v": 11776100
+  },
+  {
+   "time": "2026-08-11",
+   "o": 424.2,
+   "h": 424.9,
+   "l": 418.87,
+   "c": 422.06,
+   "v": 9684100
   }
  ],
  "sr": {
-  "price": 420.04,
+  "price": 422.06,
   "resistance": [
-   420.98,
-   425.4
+   425.4,
+   426.3
   ],
   "support": [
    419.19,
@@ -498,8 +498,6 @@
   "strong_support": 221.25
  },
  "spark": [
-  398.87,
-  416.74,
   403.41,
   395.02,
   391.69,
@@ -557,15 +555,17 @@
   417.17,
   414.0,
   418.2,
-  420.04
+  420.04,
+  418.47,
+  422.06
  ],
- "spark_start": "2026-05-13",
- "spark_end": "2026-08-07",
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-11",
  "fundamental": {
-  "pe_trailing": 36.91037,
-  "pe_forward": 19.439016,
-  "eps_trailing": 11.38,
-  "eps_forward": 21.60809,
+  "pe_trailing": 36.63715,
+  "pe_forward": 19.39352,
+  "eps_trailing": 11.52,
+  "eps_forward": 21.76294,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC July 2026 revenue jumps 44.7% on AI chip demand",
+   "label": "Dow Jones Futures Rise With CPI Inflation Due; AI Stocks Rally As 3 Nvidia Partners Lead Earnings Movers",
    "value": {
-    "headline": "TSMC July 2026 revenue jumps 44.7% on AI chip demand",
+    "headline": "Dow Jones Futures Rise With CPI Inflation Due; AI Stocks Rally As 3 Nvidia Partners Lead Earnings Movers",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786360082,
-    "url": "https://qz.com/tsmc-july-revenue-ai-chip-demand-081026?.tsrc=rss",
+    "ts": 1786532069,
+    "url": "https://finance.yahoo.com/m/7170c7f6-3bd3-35bf-bee2-a691a7f3afbd/dow-jones-futures-rise-with.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/tsmc-july-revenue-ai-chip-demand-081026?.tsrc=rss"
+     "https://finance.yahoo.com/m/7170c7f6-3bd3-35bf-bee2-a691a7f3afbd/dow-jones-futures-rise-with.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Key Republican urges US to stop any advanced chips from reaching sanctioned Chinese firms",
+   "label": "Taiwan Semiconductor's July Revenue Rose 45% and the Stock Sits 13% Below Its High",
    "value": {
-    "headline": "Key Republican urges US to stop any advanced chips from reaching sanctioned Chinese firms",
+    "headline": "Taiwan Semiconductor's July Revenue Rose 45% and the Stock Sits 13% Below Its High",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786356312,
-    "url": "https://finance.yahoo.com/technology/articles/key-republican-urges-us-stop-100512815.html?.tsrc=rss",
+    "ts": 1786521480,
+    "url": "https://www.fool.com/investing/2026/08/12/taiwan-semiconductors-july-revenue-rose-45-and-the/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/key-republican-urges-us-stop-100512815.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/12/taiwan-semiconductors-july-revenue-rose-45-and-the/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor’s Blockbuster Run Rolls On: July Revenue Surges 45%",
+   "label": "Microsoft New AI Chip Could Be a Big Win for Marvell and TSMC",
    "value": {
-    "headline": "Taiwan Semiconductor’s Blockbuster Run Rolls On: July Revenue Surges 45%",
+    "headline": "Microsoft New AI Chip Could Be a Big Win for Marvell and TSMC",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786354984,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-blockbuster-run-rolls-094304031.html?.tsrc=rss",
+    "ts": 1786476055,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-chip-could-big-192055770.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-blockbuster-run-rolls-094304031.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-chip-could-big-192055770.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is TSM Stock Rising Premarket?",
+   "label": "Microsoft Stock Slips as Custom AI-Chip Ambitions Accelerate",
    "value": {
-    "headline": "Why Is TSM Stock Rising Premarket?",
+    "headline": "Microsoft Stock Slips as Custom AI-Chip Ambitions Accelerate",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786351788,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss",
+    "ts": 1786475735,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-stock-slips-custom-ai-191535812.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-is-tsm-stock-rising-premarket/cZojkOXRJaU?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-stock-slips-custom-ai-191535812.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq, Dow Futures Mixed As Hormuz Uncertainty Weighs: Why AAPL, TSM, MU, SPCX, ASTS, SLS Stocks Are In Focus",
+   "label": "ASML Holding (ENXTAM:ASML) Gains On TSMC Demand Signal, Is The Stock Now Too Expensive?",
    "value": {
-    "headline": "S&P 500, Nasdaq, Dow Futures Mixed As Hormuz Uncertainty Weighs: Why AAPL, TSM, MU, SPCX, ASTS, SLS Stocks Are In Focus",
+    "headline": "ASML Holding (ENXTAM:ASML) Gains On TSMC Demand Signal, Is The Stock Now Too Expensive?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786350288,
-    "url": "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-dow-futures-mixed-hormuz-uncertainty-weighs-why-aapl-tsm-mu-spcx-asts-sls-stocks-are-in-focus/cZojj8RRJaw?.tsrc=rss",
+    "ts": 1786475673,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-gains-191433381.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-dow-futures-mixed-hormuz-uncertainty-weighs-why-aapl-tsm-mu-spcx-asts-sls-stocks-are-in-focus/cZojj8RRJaw?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-gains-191433381.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 50 分 / 6 留言",
+   "label": "HN 討論熱度 20 篇 / 117 分 / 16 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 50,
-    "comments": 6,
+    "points": 117,
+    "comments": 16,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-10",
+   "as_of": "2026-08-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

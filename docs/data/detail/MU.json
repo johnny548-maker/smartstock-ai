@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 861.0,
- "change_pct": -1.89,
+ "price": 868.52,
+ "change_pct": 0.87,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 787.5,
-   "h": 811.88,
-   "l": 775.51,
-   "c": 775.89,
-   "v": 42142700
-  },
   {
    "time": "2026-05-15",
    "o": 732.46,
@@ -482,11 +474,19 @@
    "h": 894.99,
    "l": 854.4,
    "c": 861.0,
-   "v": 27664000
+   "v": 27818600
+  },
+  {
+   "time": "2026-08-11",
+   "o": 871.8,
+   "h": 879.0,
+   "l": 844.62,
+   "c": 868.52,
+   "v": 29340500
   }
  ],
  "sr": {
-  "price": 861.0,
+  "price": 868.52,
   "resistance": [
    930.88,
    1011.77
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  775.89,
   724.55,
   681.44,
   698.63,
@@ -557,11 +556,49 @@
   893.19,
   881.47,
   877.57,
-  861.0
+  861.0,
+  868.52
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-10",
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-11",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】AI算力黑馬【麗台】⊕【宏致】⊕【英業達】+16% 輝達聯手華爾街砸5000億!AI基建最強黑馬股名單大公開?!",
+   "value": {
+    "headline": "【量大強漲股整理】AI算力黑馬【麗台】⊕【宏致】⊕【英業達】+16% 輝達聯手華爾街砸5000億!AI基建最強黑馬股名單大公開?!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786528083,
+    "url": "cnyes:6573279",
+    "urls": [
+     "cnyes:6573279"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-12",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

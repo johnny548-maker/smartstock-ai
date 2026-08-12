@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 506.06,
- "change_pct": 1.21,
+ "price": 503.81,
+ "change_pct": -0.44,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 403.61,
-   "h": 410.95,
-   "l": 400.01,
-   "c": 408.55,
-   "v": 27077500
-  },
   {
    "time": "2026-05-15",
    "o": 413.37,
@@ -482,11 +474,19 @@
    "h": 513.73,
    "l": 502.27,
    "c": 506.06,
-   "v": 31176700
+   "v": 31206100
+  },
+  {
+   "time": "2026-08-11",
+   "o": 504.33,
+   "h": 505.33,
+   "l": 499.55,
+   "c": 503.81,
+   "v": 23019100
   }
  ],
  "sr": {
-  "price": 506.06,
+  "price": 503.81,
   "resistance": [
    507.87,
    508.75
@@ -498,7 +498,6 @@
   "strong_support": 349.2
  },
  "spark": [
-  408.55,
   421.01,
   422.62,
   416.52,
@@ -557,135 +556,120 @@
   487.46,
   499.86,
   499.99,
-  506.06
+  506.06,
+  503.81
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-10",
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-11",
  "fundamental": {
-  "pe_trailing": 27.854595,
-  "pe_forward": 21.299555,
-  "eps_trailing": 17.95,
-  "eps_forward": 23.4742,
-  "stale": true,
+  "pe_trailing": 28.083054,
+  "pe_forward": 21.390762,
+  "eps_trailing": 17.94,
+  "eps_forward": 23.55269,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 506.06,
-  "stop": 470.64,
-  "target": 594.62,
-  "atr_bracket": 594.62,
-  "measured_move": null,
-  "target_band": [
-   594.62
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 3.6,
-  "swing_stop": 371.97,
-  "chandelier": 466.8,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "RemoFirst Named to the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
+   "label": "AcuityMD Ranked No. 316 on the 2026 Inc. 5000 List, The Most Prestigious Ranking of America’s Fastest-Growing Private Co",
    "value": {
-    "headline": "RemoFirst Named to the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
+    "headline": "AcuityMD Ranked No. 316 on the 2026 Inc. 5000 List, The Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446300,
-    "url": "https://finance.yahoo.com/small-business/articles/remofirst-named-2026-inc-5000-110500065.html?.tsrc=rss",
+    "ts": 1786532700,
+    "url": "https://finance.yahoo.com/technology/ai/articles/acuitymd-ranked-no-316-2026-110500635.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/remofirst-named-2026-inc-5000-110500065.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/acuitymd-ranked-no-316-2026-110500635.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Payabli Named No. 43 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Compa",
+   "label": "Recurrent Energy Powers Up Carwarp Energy Park in Australia Under Long-Term Microsoft PPA",
    "value": {
-    "headline": "Payabli Named No. 43 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America’s Fastest-Growing Private Companies",
+    "headline": "Recurrent Energy Powers Up Carwarp Energy Park in Australia Under Long-Term Microsoft PPA",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446300,
-    "url": "https://finance.yahoo.com/small-business/articles/payabli-named-no-43-2026-110500735.html?.tsrc=rss",
+    "ts": 1786532400,
+    "url": "https://finance.yahoo.com/energy/articles/recurrent-energy-powers-carwarp-energy-110000406.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/payabli-named-no-43-2026-110500735.html?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/recurrent-energy-powers-carwarp-energy-110000406.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in America 2026",
+   "label": "Darrow Ranks Among Top 30% on the 2026 Inc. 5000",
    "value": {
-    "headline": "Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in America 2026",
+    "headline": "Darrow Ranks Among Top 30% on the 2026 Inc. 5000",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446120,
-    "url": "https://finance.yahoo.com/small-business/articles/archive360-named-inc-5000-list-110200179.html?.tsrc=rss",
+    "ts": 1786532400,
+    "url": "https://finance.yahoo.com/technology/ai/articles/darrow-ranks-among-top-30-110000319.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/archive360-named-inc-5000-list-110200179.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/darrow-ranks-among-top-30-110000319.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ORO Labs Earns Top-100 Spot on the 2026 Inc. 5000 List",
+   "label": "AMD Trades at 63x Forward Earnings, While Nvidia Trades at 24x. History Says This Is the Better Buy.",
    "value": {
-    "headline": "ORO Labs Earns Top-100 Spot on the 2026 Inc. 5000 List",
+    "headline": "AMD Trades at 63x Forward Earnings, While Nvidia Trades at 24x. History Says This Is the Better Buy.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446000,
-    "url": "https://finance.yahoo.com/small-business/articles/oro-labs-earns-top-100-110000460.html?.tsrc=rss",
+    "ts": 1786531200,
+    "url": "https://www.fool.com/investing/2026/08/12/amd-trades-forward-earnings-nvidia-buy/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/oro-labs-earns-top-100-110000460.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/12/amd-trades-forward-earnings-nvidia-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "FamFluence Named No. 220 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America's Fastest-Growing Private C",
+   "label": "I've Been Wrong About Microsoft Stock for Years. Here's Why I'm Finally Changing My Mind.",
    "value": {
-    "headline": "FamFluence Named No. 220 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America's Fastest-Growing Private Companies",
+    "headline": "I've Been Wrong About Microsoft Stock for Years. Here's Why I'm Finally Changing My Mind.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446000,
-    "url": "https://finance.yahoo.com/small-business/articles/famfluence-named-no-220-2026-110000666.html?.tsrc=rss",
+    "ts": 1786530000,
+    "url": "https://www.fool.com/investing/2026/08/12/ive-been-wrong-about-msft-stock-for-years-heres/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/famfluence-named-no-220-2026-110000666.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/12/ive-been-wrong-about-msft-stock-for-years-heres/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -700,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

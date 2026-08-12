@@ -1,41 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet",
- "price": 362.43,
- "change_pct": -4.03,
+ "name": "Alphabet Inc. - Class A Common Stock",
+ "price": 343.8,
+ "change_pct": -3.84,
  "ohlc": [
-  {
-   "time": "2026-05-11",
-   "o": 393.42,
-   "h": 397.2,
-   "l": 388.24,
-   "c": 388.41,
-   "v": 30753700
-  },
-  {
-   "time": "2026-05-12",
-   "o": 387.11,
-   "h": 388.29,
-   "l": 382.54,
-   "c": 387.12,
-   "v": 26017500
-  },
-  {
-   "time": "2026-05-13",
-   "o": 385.37,
-   "h": 403.46,
-   "l": 384.77,
-   "c": 402.38,
-   "v": 28144600
-  },
-  {
-   "time": "2026-05-14",
-   "o": 397.04,
-   "h": 402.69,
-   "l": 395.6,
-   "c": 400.83,
-   "v": 21136700
-  },
   {
    "time": "2026-05-15",
    "o": 396.08,
@@ -482,26 +450,54 @@
    "h": 384.48,
    "l": 356.77,
    "c": 362.43,
-   "v": 46705600
+   "v": 46926300
+  },
+  {
+   "time": "2026-08-06",
+   "o": 360.77,
+   "h": 364.13,
+   "l": 356.88,
+   "c": 357.75,
+   "v": 25235900
+  },
+  {
+   "time": "2026-08-07",
+   "o": 356.72,
+   "h": 358.9,
+   "l": 353.78,
+   "c": 354.3,
+   "v": 19859900
+  },
+  {
+   "time": "2026-08-10",
+   "o": 355.18,
+   "h": 357.61,
+   "l": 352.71,
+   "c": 357.52,
+   "v": 18991400
+  },
+  {
+   "time": "2026-08-11",
+   "o": 355.89,
+   "h": 356.81,
+   "l": 343.39,
+   "c": 343.8,
+   "v": 28963000
   }
  ],
  "sr": {
-  "price": 362.43,
+  "price": 343.8,
   "resistance": [
    373.16,
    375.27
   ],
   "support": [
-   357.87,
-   351.08
+   341.36,
+   330.2
   ],
-  "strong_support": 196.04
+  "strong_support": 314.9
  },
  "spark": [
-  388.41,
-  387.12,
-  402.38,
-  400.83,
   396.54,
   396.7,
   387.43,
@@ -557,165 +553,15 @@
   356.13,
   373.51,
   377.65,
-  362.43
+  362.43,
+  357.75,
+  354.3,
+  357.52,
+  343.8
  ],
- "spark_start": "2026-05-11",
- "spark_end": "2026-08-05",
- "fundamental": {
-  "pe_trailing": 18.166916,
-  "pe_forward": 24.597488,
-  "eps_trailing": 19.95,
-  "eps_forward": 14.73443,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-11",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Google’s AI Architect Just Quit, Sparking Fears It Could Fall Behind in the AI Race",
-   "value": {
-    "headline": "Google’s AI Architect Just Quit, Sparking Fears It Could Fall Behind in the AI Race",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786018051,
-    "url": "https://247wallst.com/investing/2026/08/06/googles-ai-architect-just-quit-sparking-fears-it-could-fall-behind-in-the-ai-race/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/06/googles-ai-architect-just-quit-sparking-fears-it-could-fall-behind-in-the-ai-race/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
-   "value": {
-    "headline": "Dow Jones Futures Rise But Techs Fall As Sandisk, Western Digital, Datadog Lead Earnings Losers",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786017889,
-    "url": "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/23f39a0c-7e02-33c1-8c52-010f887f1807/dow-jones-futures-rise-but.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
-   "value": {
-    "headline": "The Hyperscaler Guarantee Keeps Me Buying Nvidia Before Aug. 26 Earnings",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786017644,
-    "url": "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/06/the-hyperscaler-guarantee-keeps-me-buying-nvidia-before-aug-26-earnings/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Cathie Wood invests a combined $28.7 million in TSMC, SpaceX after trimming investments in Amazon, Alphabet and Shopify",
-   "value": {
-    "headline": "Cathie Wood invests a combined $28.7 million in TSMC, SpaceX after trimming investments in Amazon, Alphabet and Shopify",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786016700,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-combined-28-114500645.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-combined-28-114500645.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 Reasons Alphabet Stock Has Investors Buzzing Right Now",
-   "value": {
-    "headline": "3 Reasons Alphabet Stock Has Investors Buzzing Right Now",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786016400,
-    "url": "https://www.fool.com/investing/2026/08/06/3-reasons-alphabet-stock-has-investors-buzzing-rig/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/06/3-reasons-alphabet-stock-has-investors-buzzing-rig/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 50 分 / 12 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 50,
-    "comments": 12,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-08-06",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 261,067 股交割失敗）",
-   "value": {
-    "total_shares": 261067,
-    "days": 7,
-    "max_shares": 227318,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-06",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 106.2,
- "change_pct": 3.04,
+ "price": 117.18,
+ "change_pct": 10.34,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 102.86,
-   "h": 108.75,
-   "l": 99.15,
-   "c": 106.34,
-   "v": 2113000
-  },
   {
    "time": "2026-05-15",
    "o": 99.63,
@@ -482,14 +474,22 @@
    "h": 112.61,
    "l": 102.1,
    "c": 106.2,
-   "v": 3085200
+   "v": 3091300
+  },
+  {
+   "time": "2026-08-11",
+   "o": 106.45,
+   "h": 118.5,
+   "l": 104.32,
+   "c": 117.18,
+   "v": 2521500
   }
  ],
  "sr": {
-  "price": 106.2,
+  "price": 117.18,
   "resistance": [
-   108.75,
-   110.2
+   121.8,
+   126.62
   ],
   "support": [
    86.58,
@@ -498,7 +498,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  106.34,
   99.5,
   83.57,
   81.14,
@@ -557,14 +556,55 @@
   98.78,
   99.74,
   103.07,
-  106.2
+  106.2,
+  117.18
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-10",
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-11",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "An Aehr Test Systems Vice President Sells 1,000 Shares as the Stock Soars. Here's a Deeper Look at the Transaction.",
+   "value": {
+    "headline": "An Aehr Test Systems Vice President Sells 1,000 Shares as the Stock Soars. Here's a Deeper Look at the Transaction.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786480295,
+    "url": "https://www.fool.com/coverage/filings/2026/08/11/an-aehr-test-systems-vice-president-sells-1-000-shares-as-the-stock-soars-here-s-a-deeper-look-at-the-transaction/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/coverage/filings/2026/08/11/an-aehr-test-systems-vice-president-sells-1-000-shares-as-the-stock-soars-here-s-a-deeper-look-at-the-transaction/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Aehr Test Systems Surges on Tuesday as the Optics Earnings Season Heats Up",
+   "value": {
+    "headline": "Aehr Test Systems Surges on Tuesday as the Optics Earnings Season Heats Up",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786465959,
+    "url": "https://247wallst.com/investing/2026/08/11/the-biggest-market-movers-aehr-test-systems-climbs-on-strong-earnings/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/11/the-biggest-market-movers-aehr-test-systems-climbs-on-strong-earnings/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,7 +622,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -602,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -622,62 +662,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Microsoft vs. Aehr Test Systems: Comparing Revenue Trends Between These Artificial Intelligence Companies",
-   "value": {
-    "headline": "Microsoft vs. Aehr Test Systems: Comparing Revenue Trends Between These Artificial Intelligence Companies",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785885901,
-    "url": "https://www.fool.com/coverage/charts/2026/08/04/microsoft-vs-aehr-test-systems-comparing-revenue-trends-between-these-artificial-intelligence-companies/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/charts/2026/08/04/microsoft-vs-aehr-test-systems-comparing-revenue-trends-between-these-artificial-intelligence-companies/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-11",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "An Aehr Test Systems Insider Sells Shares Worth $2.5 Million as the Stock Soars. Here's a Closer Look at the Transaction",
-   "value": {
-    "headline": "An Aehr Test Systems Insider Sells Shares Worth $2.5 Million as the Stock Soars. Here's a Closer Look at the Transaction.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1785884161,
-    "url": "https://www.fool.com/coverage/filings/2026/08/04/an-aehr-test-systems-insider-sells-shares-worth-usd2-5-million-as-the-stock-soars-here-s-a-closer-look-at-the-transaction/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/filings/2026/08/04/an-aehr-test-systems-insider-sells-shares-worth-usd2-5-million-as-the-stock-soars-here-s-a-closer-look-at-the-transaction/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

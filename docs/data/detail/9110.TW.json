@@ -1,8 +1,8 @@
 {
  "stock": "9110.TW",
  "name": "越南控-DR",
- "price": 0.0,
- "change_pct": -100.0,
+ "price": 3.14,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -267,15 +267,26 @@
    "l": 0.0,
    "c": 0.0,
    "v": 400
+  },
+  {
+   "time": "2026-08-12",
+   "o": 2.9,
+   "h": 3.14,
+   "l": 2.9,
+   "c": 3.14,
+   "v": 11000
   }
  ],
  "sr": {
-  "price": 0.0,
+  "price": 3.14,
   "resistance": [
    3.43,
    3.49
   ],
-  "support": [],
+  "support": [
+   2.95,
+   0.0
+  ],
   "strong_support": 0.0
  },
  "spark": [
@@ -311,10 +322,11 @@
   3.43,
   3.13,
   3.07,
-  0.0
+  0.0,
+  3.14
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-11",
+ "spark_end": "2026-08-12",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
