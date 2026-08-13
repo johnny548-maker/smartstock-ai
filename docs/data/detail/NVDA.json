@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 217.55,
- "change_pct": -2.86,
+ "price": 224.09,
+ "change_pct": 3.03,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 229.58,
-   "h": 236.26,
-   "l": 229.03,
-   "c": 235.47,
-   "v": 180782900
-  },
-  {
-   "time": "2026-05-15",
-   "o": 229.49,
-   "h": 231.23,
-   "l": 223.98,
-   "c": 225.06,
-   "v": 180977600
-  },
   {
    "time": "2026-05-18",
    "o": 229.6,
@@ -482,11 +466,27 @@
    "h": 224.14,
    "l": 216.77,
    "c": 217.55,
-   "v": 115521800
+   "v": 115846600
+  },
+  {
+   "time": "2026-08-11",
+   "o": 222.17,
+   "h": 222.2,
+   "l": 216.2,
+   "c": 217.5,
+   "v": 101273100
+  },
+  {
+   "time": "2026-08-12",
+   "o": 221.04,
+   "h": 225.1,
+   "l": 220.2,
+   "c": 224.09,
+   "v": 108543600
   }
  ],
  "sr": {
-  "price": 217.55,
+  "price": 224.09,
   "resistance": [
    232.01,
    236.26
@@ -498,8 +498,6 @@
   "strong_support": 163.85
  },
  "spark": [
-  235.47,
-  225.06,
   222.06,
   220.35,
   223.21,
@@ -557,16 +555,18 @@
   219.22,
   218.99,
   223.96,
-  217.55
+  217.55,
+  217.5,
+  224.09
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-10",
+ "spark_start": "2026-05-18",
+ "spark_end": "2026-08-12",
  "fundamental": {
-  "pe_trailing": 34.244648,
-  "pe_forward": 17.37413,
-  "eps_trailing": 6.54,
-  "eps_forward": 12.89043,
-  "stale": true,
+  "pe_trailing": 33.346725,
+  "pe_forward": 17.484507,
+  "eps_trailing": 6.72,
+  "eps_forward": 12.81649,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AbbVie Piles on $8 Billion in Debt for Its Apogee Deal -- Should Dividend Investors Worry?",
+   "label": "I’m Buying More and More Nvidia Because Of One Massive AI Transition Underway",
    "value": {
-    "headline": "AbbVie Piles on $8 Billion in Debt for Its Apogee Deal -- Should Dividend Investors Worry?",
+    "headline": "I’m Buying More and More Nvidia Because Of One Massive AI Transition Underway",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786446300,
-    "url": "https://www.fool.com/investing/2026/08/11/abbvie-piles-on-8-billion-in-debt-for-its-apogee-d/?.tsrc=rss",
+    "ts": 1786619113,
+    "url": "https://247wallst.com/investing/2026/08/13/im-buying-more-and-more-nvidia-because-of-one-massive-ai-transition-underway/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/11/abbvie-piles-on-8-billion-in-debt-for-its-apogee-d/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/13/im-buying-more-and-more-nvidia-because-of-one-massive-ai-transition-underway/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This Crypto Industry Leader Wants to Change Bitcoin's Supply Policy. What Would It Mean for Investors?",
+   "label": "5 Monthly Dividend Stocks Retirees Can Count On in August",
    "value": {
-    "headline": "This Crypto Industry Leader Wants to Change Bitcoin's Supply Policy. What Would It Mean for Investors?",
+    "headline": "5 Monthly Dividend Stocks Retirees Can Count On in August",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786445820,
-    "url": "https://www.fool.com/investing/2026/08/11/this-crypto-leader-wants-to-change-bitcoin-policy/?.tsrc=rss",
+    "ts": 1786618850,
+    "url": "https://247wallst.com/investing/2026/08/13/5-monthly-dividend-stocks-retirees-can-count-on-in-august/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/11/this-crypto-leader-wants-to-change-bitcoin-policy/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/13/5-monthly-dividend-stocks-retirees-can-count-on-in-august/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Own Walmart for Its Dividend King Status or Costco for Its Special Dividend? Here's the Answer.",
+   "label": "3 Semiconductor Stocks to Buy Before the Next AI Earnings Wave in August",
    "value": {
-    "headline": "Should You Own Walmart for Its Dividend King Status or Costco for Its Special Dividend? Here's the Answer.",
+    "headline": "3 Semiconductor Stocks to Buy Before the Next AI Earnings Wave in August",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786445400,
-    "url": "https://www.fool.com/investing/2026/08/11/should-you-own-walmart-for-its-dividend-king-statu/?.tsrc=rss",
+    "ts": 1786618848,
+    "url": "https://247wallst.com/investing/2026/08/13/3-semiconductor-stocks-to-buy-before-the-next-ai-earnings-wave-in-august/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/11/should-you-own-walmart-for-its-dividend-king-statu/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/13/3-semiconductor-stocks-to-buy-before-the-next-ai-earnings-wave-in-august/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cathie Wood Bought The NVDA Dip Across Five Funds – Here’s What Else ARK Bought And Sold",
+   "label": "Apple Dropped by 5% After Earnings. History Says This May Happen Next",
    "value": {
-    "headline": "Cathie Wood Bought The NVDA Dip Across Five Funds – Here’s What Else ARK Bought And Sold",
+    "headline": "Apple Dropped by 5% After Earnings. History Says This May Happen Next",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786444945,
-    "url": "https://stocktwits.com/news-articles/markets/equity/cathie-woods-ark-invest-adds-nvda-net-stocks-spacex-merger-rumors/cZoZMKORJQJ?.tsrc=rss",
+    "ts": 1786618200,
+    "url": "https://www.fool.com/investing/2026/08/13/apple-dropped-by-5-after-earning-history-says-this/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/cathie-woods-ark-invest-adds-nvda-net-stocks-spacex-merger-rumors/cZoZMKORJQJ?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/13/apple-dropped-by-5-after-earning-history-says-this/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon, Microsoft, and Alphabet: 2 Winners and 1 Loser in the Cloud Computing Arena",
+   "label": "Jeff Bezos Remains Amazon's Largest Individual Shareholder With Roughly 900 Million Shares. Here's Why That Stake Still ",
    "value": {
-    "headline": "Amazon, Microsoft, and Alphabet: 2 Winners and 1 Loser in the Cloud Computing Arena",
+    "headline": "Jeff Bezos Remains Amazon's Largest Individual Shareholder With Roughly 900 Million Shares. Here's Why That Stake Still Anchors the Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786444500,
-    "url": "https://www.fool.com/investing/2026/08/11/amazon-microsoft-and-alphabet-2-winners-and-1-lose/?.tsrc=rss",
+    "ts": 1786617300,
+    "url": "https://www.fool.com/investing/2026/08/13/jeff-bezos-remains-amazons-largest-individual-shar/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/11/amazon-microsoft-and-alphabet-2-winners-and-1-lose/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/13/jeff-bezos-remains-amazons-largest-individual-shar/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-11",
+   "as_of": "2026-08-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

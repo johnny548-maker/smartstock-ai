@@ -1,17 +1,9 @@
 {
  "stock": "2305",
  "name": "全友",
- "price": 27.8,
- "change_pct": 2.02,
+ "price": 30.55,
+ "change_pct": 9.89,
  "ohlc": [
-  {
-   "time": "2026-05-20",
-   "o": 16.4,
-   "h": 16.9,
-   "l": 16.1,
-   "c": 16.6,
-   "v": 1360000
-  },
   {
    "time": "2026-05-21",
    "o": 16.95,
@@ -482,23 +474,30 @@
    "h": 28.25,
    "l": 27.0,
    "c": 27.8,
-   "v": 4093181
+   "v": 4082436
+  },
+  {
+   "time": "2026-08-13",
+   "o": 27.95,
+   "h": 30.55,
+   "l": 27.95,
+   "c": 30.55,
+   "v": 9337529
   }
  ],
  "sr": {
-  "price": 27.8,
+  "price": 30.55,
   "resistance": [
    33.2,
    35.0
   ],
   "support": [
-   26.4,
-   26.3
+   30.0,
+   26.4
   ],
   "strong_support": 9.05
  },
  "spark": [
-  16.6,
   17.7,
   18.8,
   20.65,
@@ -557,10 +556,11 @@
   26.5,
   29.05,
   27.25,
-  27.8
+  27.8,
+  30.55
  ],
- "spark_start": "2026-05-20",
- "spark_end": "2026-08-12",
+ "spark_start": "2026-05-21",
+ "spark_end": "2026-08-13",
  "fundamental": {
   "rev_yoy": 197.8,
   "rev_accel": true,
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 131,
+    "short_today": 89,
     "outstanding": 205660827,
-    "short_pct": 6.369710844350538e-05
+    "short_pct": 4.327513474406091e-05
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-13",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】MSCI調升權重,暴賺下一波如何掌握?",
+   "value": {
+    "headline": "【量大強漲股整理】MSCI調升權重,暴賺下一波如何掌握?",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786613547,
+    "url": "cnyes:6575555",
+    "urls": [
+     "cnyes:6575555"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-13",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -773,6 +808,10 @@
    {
     "t": "2026-08-12",
     "v": -4311
+   },
+   {
+    "t": "2026-08-13",
+    "v": -2185
    }
   ],
   "holder_pct": [

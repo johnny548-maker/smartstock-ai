@@ -1,17 +1,9 @@
 {
  "stock": "AEVA",
  "name": "Aeva Technologies",
- "price": 23.69,
- "change_pct": -11.01,
+ "price": 25.16,
+ "change_pct": 4.57,
  "ohlc": [
-  {
-   "time": "2026-05-14",
-   "o": 20.13,
-   "h": 22.16,
-   "l": 19.85,
-   "c": 21.23,
-   "v": 3673100
-  },
   {
    "time": "2026-05-15",
    "o": 20.07,
@@ -373,14 +365,6 @@
    "v": 1308200
   },
   {
-   "time": "2026-07-22",
-   "o": 17.27,
-   "h": 17.47,
-   "l": 16.7,
-   "c": 16.75,
-   "v": 989900
-  },
-  {
    "time": "2026-07-23",
    "o": 16.5,
    "h": 17.04,
@@ -483,13 +467,29 @@
    "l": 22.91,
    "c": 23.69,
    "v": 2238000
+  },
+  {
+   "time": "2026-08-11",
+   "o": 23.92,
+   "h": 25.33,
+   "l": 23.35,
+   "c": 24.06,
+   "v": 1273800
+  },
+  {
+   "time": "2026-08-12",
+   "o": 25.5,
+   "h": 25.86,
+   "l": 24.06,
+   "c": 25.16,
+   "v": 1408200
   }
  ],
  "sr": {
-  "price": 23.69,
+  "price": 25.16,
   "resistance": [
    28.24,
-   29.82
+   28.42
   ],
   "support": [
    20.77,
@@ -498,7 +498,6 @@
   "strong_support": 2.36
  },
  "spark": [
-  21.23,
   20.48,
   19.45,
   19.0,
@@ -544,7 +543,6 @@
   16.71,
   15.9,
   17.69,
-  16.75,
   16.1,
   14.85,
   15.53,
@@ -557,143 +555,13 @@
   19.61,
   25.26,
   26.62,
-  23.69
+  23.69,
+  24.06,
+  25.16
  ],
- "spark_start": "2026-05-14",
- "spark_end": "2026-08-10",
+ "spark_start": "2026-05-15",
+ "spark_end": "2026-08-12",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Robotics Stocks Rally as Unitree’s 8000X Oversubscribed IPO Draws Frenzied Demand: Ouster, Symbotic, and Teradyne in Foc",
-   "value": {
-    "headline": "Robotics Stocks Rally as Unitree’s 8000X Oversubscribed IPO Draws Frenzied Demand: Ouster, Symbotic, and Teradyne in Focus",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786473126,
-    "url": "https://247wallst.com/investing/2026/08/11/robotics-stocks-rally-as-unitrees-8000x-oversubscribed-ipo-draws-frenzied-demand-ouster-symbotic-and-teradyne-in-focus/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/11/robotics-stocks-rally-as-unitrees-8000x-oversubscribed-ipo-draws-frenzied-demand-ouster-symbotic-and-teradyne-in-focus/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "A Red-Hot Robotics IPO Is 8,000 Times Oversubscribed. SpaceX Drew 4X Demand.",
-   "value": {
-    "headline": "A Red-Hot Robotics IPO Is 8,000 Times Oversubscribed. SpaceX Drew 4X Demand.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786462059,
-    "url": "https://247wallst.com/investing/2026/08/11/a-red-hot-robotics-ipo-is-8000-times-oversubscribed-spacex-drew-4x-demand/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/11/a-red-hot-robotics-ipo-is-8000-times-oversubscribed-spacex-drew-4x-demand/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Ouster Stock Doubles YTD: Buy OUST After Another Quarter of Beat?",
-   "value": {
-    "headline": "Ouster Stock Doubles YTD: Buy OUST After Another Quarter of Beat?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786369740,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ouster-stock-doubles-ytd-buy-134900962.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ouster-stock-doubles-ytd-buy-134900962.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aeva Technologies (AEVA) Could Be 59% Undervalued After AI Data Center Expansion",
-   "value": {
-    "headline": "Aeva Technologies (AEVA) Could Be 59% Undervalued After AI Data Center Expansion",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786123279,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aeva-technologies-aeva-could-59-172119933.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aeva-technologies-aeva-could-59-172119933.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aeva Technologies' 'Transformational' Hyperscaler Deal Could Potentially Drive Billions in Revenue, Oppenheimer Says",
-   "value": {
-    "headline": "Aeva Technologies' 'Transformational' Hyperscaler Deal Could Potentially Drive Billions in Revenue, Oppenheimer Says",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786041014,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aeva-technologies-apos-apos-transformational-183014133.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aeva-technologies-apos-apos-transformational-183014133.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 16,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日）",
-   "value": {
-    "total_shares": 10911,
-    "days": 9,
-    "max_shares": 2039,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-08-12",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
