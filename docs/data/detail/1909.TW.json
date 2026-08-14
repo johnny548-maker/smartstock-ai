@@ -1,8 +1,8 @@
 {
  "stock": "1909.TW",
  "name": "榮成",
- "price": 0.0,
- "change_pct": -100.0,
+ "price": 10.15,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -291,15 +291,26 @@
    "l": 0.0,
    "c": 0.0,
    "v": 0
+  },
+  {
+   "time": "2026-08-14",
+   "o": 10.45,
+   "h": 10.85,
+   "l": 10.1,
+   "c": 10.15,
+   "v": 10559012
   }
  ],
  "sr": {
-  "price": 0.0,
+  "price": 10.15,
   "resistance": [
    10.4,
    11.15
   ],
-  "support": [],
+  "support": [
+   9.81,
+   9.75
+  ],
   "strong_support": 9.38
  },
  "spark": [
@@ -338,10 +349,11 @@
   10.0,
   10.15,
   10.1,
-  0.0
+  0.0,
+  10.15
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-13",
+ "spark_end": "2026-08-14",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

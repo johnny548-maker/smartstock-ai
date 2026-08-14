@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 932.47,
- "change_pct": 13.63,
+ "price": 880.41,
+ "change_pct": -5.58,
  "ohlc": [
-  {
-   "time": "2026-05-18",
-   "o": 953.29,
-   "h": 954.26,
-   "l": 857.0,
-   "c": 884.98,
-   "v": 7197500
-  },
   {
    "time": "2026-05-19",
    "o": 873.17,
@@ -482,14 +474,22 @@
    "h": 966.6,
    "l": 836.31,
    "c": 932.47,
-   "v": 11752700
+   "v": 11774600
+  },
+  {
+   "time": "2026-08-13",
+   "o": 927.59,
+   "h": 946.92,
+   "l": 875.59,
+   "c": 880.41,
+   "v": 4620500
   }
  ],
  "sr": {
-  "price": 932.47,
+  "price": 880.41,
   "resistance": [
-   960.0,
-   977.27
+   897.0,
+   925.5
   ],
   "support": [
    854.62,
@@ -498,7 +498,6 @@
   "strong_support": 45.65
  },
  "spark": [
-  884.98,
   890.09,
   868.07,
   964.5,
@@ -557,11 +556,49 @@
   890.17,
   813.51,
   820.59,
-  932.47
+  932.47,
+  880.41
  ],
- "spark_start": "2026-05-18",
- "spark_end": "2026-08-12",
+ "spark_start": "2026-05-19",
+ "spark_end": "2026-08-13",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "聯亞(3081-TW)展望很好已不是重點,但你應該真正要看這兩件事",
+   "value": {
+    "headline": "聯亞(3081-TW)展望很好已不是重點,但你應該真正要看這兩件事",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1786696260,
+    "url": "cnyes:6577173",
+    "urls": [
+     "cnyes:6577173"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

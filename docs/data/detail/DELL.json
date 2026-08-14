@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 484.5,
- "change_pct": 9.87,
+ "price": 494.51,
+ "change_pct": 2.07,
  "ohlc": [
-  {
-   "time": "2026-05-18",
-   "o": 244.2,
-   "h": 244.55,
-   "l": 231.82,
-   "c": 237.64,
-   "v": 5132600
-  },
   {
    "time": "2026-05-19",
    "o": 233.86,
@@ -482,14 +474,20 @@
    "h": 484.74,
    "l": 455.0,
    "c": 484.5,
-   "v": 6219300
+   "v": 6243900
+  },
+  {
+   "time": "2026-08-13",
+   "o": 499.68,
+   "h": 514.0,
+   "l": 487.12,
+   "c": 494.51,
+   "v": 8051500
   }
  ],
  "sr": {
-  "price": 484.5,
-  "resistance": [
-   485.7
-  ],
+  "price": 494.51,
+  "resistance": [],
   "support": [
    416.3,
    378.04
@@ -497,7 +495,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  237.64,
   234.87,
   242.53,
   252.38,
@@ -556,11 +553,144 @@
   453.77,
   457.88,
   440.97,
-  484.5
+  484.5,
+  494.51
  ],
- "spark_start": "2026-05-18",
- "spark_end": "2026-08-12",
+ "spark_start": "2026-05-19",
+ "spark_end": "2026-08-13",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "3 AI Infrastructure Stocks Powering the Data Center Boom in August",
+   "value": {
+    "headline": "3 AI Infrastructure Stocks Powering the Data Center Boom in August",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786705247,
+    "url": "https://247wallst.com/investing/2026/08/14/3-ai-infrastructure-stocks-powering-the-data-center-boom-in-august/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/14/3-ai-infrastructure-stocks-powering-the-data-center-boom-in-august/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Arista Networks Stock Is Priced For Its Peak Margin",
+   "value": {
+    "headline": "Arista Networks Stock Is Priced For Its Peak Margin",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786665524,
+    "url": "https://www.trefis.com/articles/611360/arista-networks-stock-is-priced-for-its-peak-margin/2026-08-13?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611360/arista-networks-stock-is-priced-for-its-peak-margin/2026-08-13?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Number Cisco Stopped Leading With Explains What You Now Own",
+   "value": {
+    "headline": "The Number Cisco Stopped Leading With Explains What You Now Own",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786663752,
+    "url": "https://www.trefis.com/articles/611356/the-number-cisco-stopped-leading-with-explains-what-you-now-own/2026-08-13?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611356/the-number-cisco-stopped-leading-with-explains-what-you-now-own/2026-08-13?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "US Stock Futures Rangebound After S&P 500 Ends At Record Highs As Data Shows Cooling Inflation — WDAY, SNDK, AMD, DELL, ",
+   "value": {
+    "headline": "US Stock Futures Rangebound After S&P 500 Ends At Record Highs As Data Shows Cooling Inflation — WDAY, SNDK, AMD, DELL, HTZ In Focus",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786661961,
+    "url": "https://stocktwits.com/news-articles/markets/equity/us-stock-futures-rangebound-after-s-and-p-500-ends-at-record-highs-as-data-shows-cooling-inflation-wday-sndk-amd-dell-htz-in-focus/cZoqpLeRJLz?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/us-stock-futures-rangebound-after-s-and-p-500-ends-at-record-highs-as-data-shows-cooling-inflation-wday-sndk-amd-dell-htz-in-focus/cZoqpLeRJLz?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dell Technologies (DELL) Exceeds Market Returns: Some Facts to Consider",
+   "value": {
+    "headline": "Dell Technologies (DELL) Exceeds Market Returns: Some Facts to Consider",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786657502,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/dell-technologies-dell-exceeds-market-214502252.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/dell-technologies-dell-exceeds-market-214502252.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 14,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 176,500 股交割失敗）",
+   "value": {
+    "total_shares": 176500,
+    "days": 7,
+    "max_shares": 166315,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-14",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

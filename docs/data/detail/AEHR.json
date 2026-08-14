@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 129.23,
- "change_pct": 10.28,
+ "price": 123.3,
+ "change_pct": -4.59,
  "ohlc": [
-  {
-   "time": "2026-05-18",
-   "o": 98.98,
-   "h": 99.75,
-   "l": 81.3,
-   "c": 83.57,
-   "v": 3956600
-  },
   {
    "time": "2026-05-19",
    "o": 81.69,
@@ -482,12 +474,22 @@
    "h": 133.35,
    "l": 119.02,
    "c": 129.23,
-   "v": 3141100
+   "v": 3149400
+  },
+  {
+   "time": "2026-08-13",
+   "o": 123.01,
+   "h": 129.92,
+   "l": 116.5,
+   "c": 123.3,
+   "v": 3010000
   }
  ],
  "sr": {
-  "price": 129.23,
-  "resistance": [],
+  "price": 123.3,
+  "resistance": [
+   126.62
+  ],
   "support": [
    86.58,
    84.62
@@ -495,7 +497,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  83.57,
   81.14,
   82.34,
   91.3,
@@ -554,14 +555,75 @@
   103.07,
   106.2,
   117.18,
-  129.23
+  129.23,
+  123.3
  ],
- "spark_start": "2026-05-18",
- "spark_end": "2026-08-12",
+ "spark_start": "2026-05-19",
+ "spark_end": "2026-08-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "DRAM Movers: These Memory/Storage ETFs Are Soaring as Sandisk, Micron Rally",
+   "value": {
+    "headline": "DRAM Movers: These Memory/Storage ETFs Are Soaring as Sandisk, Micron Rally",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786644735,
+    "url": "https://247wallst.com/investing/2026/08/13/dram-movers-these-memory-storage-etfs-are-soaring-as-sandisk-micron-rally/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/13/dram-movers-these-memory-storage-etfs-are-soaring-as-sandisk-micron-rally/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can Aehr's $22M AI Order Unlock a Bigger WLBI Opportunity?",
+   "value": {
+    "headline": "Can Aehr's $22M AI Order Unlock a Bigger WLBI Opportunity?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786636080,
+    "url": "https://finance.yahoo.com/technology/ai/articles/aehrs-22m-ai-order-unlock-154800690.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/aehrs-22m-ai-order-unlock-154800690.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Aehr Test Systems to Participate in the Needham Virtual Semiconductor and SemiCap 1x1 Conference on August 19",
+   "value": {
+    "headline": "Aehr Test Systems to Participate in the Needham Virtual Semiconductor and SemiCap 1x1 Conference on August 19",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786620600,
+    "url": "https://finance.yahoo.com/technology/ai/articles/aehr-test-systems-participate-needham-113000977.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/aehr-test-systems-participate-needham-113000977.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -579,7 +641,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -599,82 +661,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "A $22 Million Reason Why AEHR Stock Is Up Today",
-   "value": {
-    "headline": "A $22 Million Reason Why AEHR Stock Is Up Today",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786561085,
-    "url": "https://www.barchart.com/story/news/3811501/a-22-million-reason-why-aehr-stock-is-up-today?.tsrc=rss",
-    "urls": [
-     "https://www.barchart.com/story/news/3811501/a-22-million-reason-why-aehr-stock-is-up-today?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems Stock Soars 72% in a Month: Is it Still a Buy?",
-   "value": {
-    "headline": "Aehr Test Systems Stock Soars 72% in a Month: Is it Still a Buy?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786553340,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-164900826.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-164900826.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Receives $22 Million Follow-On Order for AI Processor Wafer-Level Burn-In Systems",
-   "value": {
-    "headline": "Aehr Receives $22 Million Follow-On Order for AI Processor Wafer-Level Burn-In Systems",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786534200,
-    "url": "https://finance.yahoo.com/technology/ai/articles/aehr-receives-22-million-order-113000777.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/aehr-receives-22-million-order-113000777.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -689,7 +691,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

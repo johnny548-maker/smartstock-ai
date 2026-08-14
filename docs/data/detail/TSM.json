@@ -1,25 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 422.06,
- "change_pct": 0.86,
+ "price": 430.49,
+ "change_pct": 0.31,
  "ohlc": [
-  {
-   "time": "2026-05-15",
-   "o": 405.55,
-   "h": 408.91,
-   "l": 397.9,
-   "c": 403.41,
-   "v": 11868600
-  },
-  {
-   "time": "2026-05-18",
-   "o": 405.93,
-   "h": 405.93,
-   "l": 390.14,
-   "c": 395.02,
-   "v": 12117200
-  },
   {
    "time": "2026-05-19",
    "o": 388.6,
@@ -482,14 +466,30 @@
    "h": 424.9,
    "l": 418.87,
    "c": 422.06,
-   "v": 9684100
+   "v": 9703600
+  },
+  {
+   "time": "2026-08-12",
+   "o": 432.65,
+   "h": 433.28,
+   "l": 427.02,
+   "c": 429.15,
+   "v": 9534200
+  },
+  {
+   "time": "2026-08-13",
+   "o": 429.15,
+   "h": 436.04,
+   "l": 428.39,
+   "c": 430.49,
+   "v": 8176300
   }
  ],
  "sr": {
-  "price": 422.06,
+  "price": 430.49,
   "resistance": [
-   425.4,
-   426.3
+   449.11,
+   476.79
   ],
   "support": [
    419.19,
@@ -498,8 +498,6 @@
   "strong_support": 221.25
  },
  "spark": [
-  403.41,
-  395.02,
   391.69,
   400.68,
   406.2,
@@ -557,15 +555,17 @@
   418.2,
   420.04,
   418.47,
-  422.06
+  422.06,
+  429.15,
+  430.49
  ],
- "spark_start": "2026-05-15",
- "spark_end": "2026-08-11",
+ "spark_start": "2026-05-19",
+ "spark_end": "2026-08-13",
  "fundamental": {
-  "pe_trailing": 36.63715,
-  "pe_forward": 19.39352,
-  "eps_trailing": 11.52,
-  "eps_forward": 21.76294,
+  "pe_trailing": 32.36767,
+  "pe_forward": 19.764229,
+  "eps_trailing": 13.3,
+  "eps_forward": 21.78127,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise With CPI Inflation Due; AI Stocks Rally As 3 Nvidia Partners Lead Earnings Movers",
+   "label": "Prediction: 2 Unstoppable Artificial Intelligence (AI) Hardware Leaders That Will Join Alphabet in the $4 Trillion Club ",
    "value": {
-    "headline": "Dow Jones Futures Rise With CPI Inflation Due; AI Stocks Rally As 3 Nvidia Partners Lead Earnings Movers",
+    "headline": "Prediction: 2 Unstoppable Artificial Intelligence (AI) Hardware Leaders That Will Join Alphabet in the $4 Trillion Club by 2028",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786532069,
-    "url": "https://finance.yahoo.com/m/7170c7f6-3bd3-35bf-bee2-a691a7f3afbd/dow-jones-futures-rise-with.html?.tsrc=rss",
+    "ts": 1786696500,
+    "url": "https://www.fool.com/investing/2026/08/14/prediction-2-unstoppable-artificial-intelligence-a/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/7170c7f6-3bd3-35bf-bee2-a691a7f3afbd/dow-jones-futures-rise-with.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/14/prediction-2-unstoppable-artificial-intelligence-a/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor's July Revenue Rose 45% and the Stock Sits 13% Below Its High",
+   "label": "Analyst Sees Trouble Brewing for Hot Chip Stocks",
    "value": {
-    "headline": "Taiwan Semiconductor's July Revenue Rose 45% and the Stock Sits 13% Below Its High",
+    "headline": "Analyst Sees Trouble Brewing for Hot Chip Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786521480,
-    "url": "https://www.fool.com/investing/2026/08/12/taiwan-semiconductors-july-revenue-rose-45-and-the/?.tsrc=rss",
+    "ts": 1786649484,
+    "url": "https://finance.yahoo.com/technology/articles/analyst-sees-trouble-brewing-hot-193124128.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/12/taiwan-semiconductors-july-revenue-rose-45-and-the/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/analyst-sees-trouble-brewing-hot-193124128.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft New AI Chip Could Be a Big Win for Marvell and TSMC",
+   "label": "These 3 Tech Stocks Made Double-Digit Dividend Raises This Year",
    "value": {
-    "headline": "Microsoft New AI Chip Could Be a Big Win for Marvell and TSMC",
+    "headline": "These 3 Tech Stocks Made Double-Digit Dividend Raises This Year",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786476055,
-    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-chip-could-big-192055770.html?.tsrc=rss",
+    "ts": 1786644180,
+    "url": "https://www.fool.com/investing/2026/08/13/these-3-tech-stocks-made-double-digit-dividend/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-chip-could-big-192055770.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/13/these-3-tech-stocks-made-double-digit-dividend/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Stock Slips as Custom AI-Chip Ambitions Accelerate",
+   "label": "Intel’s Best Growth in 15 Years: 25% Revenue Surge and Our New Price Target",
    "value": {
-    "headline": "Microsoft Stock Slips as Custom AI-Chip Ambitions Accelerate",
+    "headline": "Intel’s Best Growth in 15 Years: 25% Revenue Surge and Our New Price Target",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786475735,
-    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-stock-slips-custom-ai-191535812.html?.tsrc=rss",
+    "ts": 1786629630,
+    "url": "https://247wallst.com/investing/2026/08/13/intels-best-growth-in-15-years-25-revenue-surge-and-our-new-price-target/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/microsoft-stock-slips-custom-ai-191535812.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/13/intels-best-growth-in-15-years-25-revenue-surge-and-our-new-price-target/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ASML Holding (ENXTAM:ASML) Gains On TSMC Demand Signal, Is The Stock Now Too Expensive?",
+   "label": "The Biggest Chip Stocks All Yield Under 1%. Here's Where the Cash Actually Goes.",
    "value": {
-    "headline": "ASML Holding (ENXTAM:ASML) Gains On TSMC Demand Signal, Is The Stock Now Too Expensive?",
+    "headline": "The Biggest Chip Stocks All Yield Under 1%. Here's Where the Cash Actually Goes.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786475673,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-gains-191433381.html?.tsrc=rss",
+    "ts": 1786627920,
+    "url": "https://www.fool.com/investing/2026/08/13/the-biggest-chip-stocks-all-yield-under-1-heres-wh/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-gains-191433381.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/13/the-biggest-chip-stocks-all-yield-under-1-heres-wh/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 10 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 10,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 117 分 / 16 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 117,
-    "comments": 16,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-08-12",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-12",
+   "as_of": "2026-08-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

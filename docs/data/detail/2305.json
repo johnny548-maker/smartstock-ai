@@ -1,17 +1,9 @@
 {
  "stock": "2305",
  "name": "全友",
- "price": 30.55,
- "change_pct": 9.89,
+ "price": 29.35,
+ "change_pct": -3.93,
  "ohlc": [
-  {
-   "time": "2026-05-21",
-   "o": 16.95,
-   "h": 18.25,
-   "l": 16.8,
-   "c": 17.7,
-   "v": 9567961
-  },
   {
    "time": "2026-05-22",
    "o": 18.3,
@@ -482,23 +474,30 @@
    "h": 30.55,
    "l": 27.95,
    "c": 30.55,
-   "v": 9337529
+   "v": 9290519
+  },
+  {
+   "time": "2026-08-14",
+   "o": 31.55,
+   "h": 31.7,
+   "l": 29.1,
+   "c": 29.35,
+   "v": 10176461
   }
  ],
  "sr": {
-  "price": 30.55,
+  "price": 29.35,
   "resistance": [
    33.2,
    35.0
   ],
   "support": [
-   30.0,
-   26.4
+   26.4,
+   26.3
   ],
   "strong_support": 9.05
  },
  "spark": [
-  17.7,
   18.8,
   20.65,
   20.8,
@@ -557,10 +556,11 @@
   29.05,
   27.25,
   27.8,
-  30.55
+  30.55,
+  29.35
  ],
- "spark_start": "2026-05-21",
- "spark_end": "2026-08-13",
+ "spark_start": "2026-05-22",
+ "spark_end": "2026-08-14",
  "fundamental": {
   "rev_yoy": 197.8,
   "rev_accel": true,
@@ -575,32 +575,32 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 89,
+    "short_today": 114,
     "outstanding": 205660827,
-    "short_pct": 4.327513474406091e-05
+    "short_pct": 5.543107146992071e-05
    },
    "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "【量大強漲股整理】MSCI調升權重,暴賺下一波如何掌握?",
+   "label": "台股盤後|無人機與 AI PC 強勢噴發!加權指數洗盤拉回 210 點,外資單日大買 453 億元挺台股,關注「外本比排行」策略標的漢翔、方土昶、全友",
    "value": {
-    "headline": "【量大強漲股整理】MSCI調升權重,暴賺下一波如何掌握?",
+    "headline": "台股盤後|無人機與 AI PC 強勢噴發!加權指數洗盤拉回 210 點,外資單日大買 453 億元挺台股,關注「外本比排行」策略標的漢翔、方土昶、全友",
     "sources": [
-     "cnyes"
+     "yahoo_tw"
     ],
     "source_count": 1,
-    "ts": 1786613547,
-    "url": "cnyes:6575555",
+    "ts": 1786700802,
+    "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%9B%A4%E5%BE%8C-%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%88%87-ai-pc-%E5%BC%B7%E5%8B%A2%E5%99%B4%E7%99%BC-094642548.html",
     "urls": [
-     "cnyes:6575555"
+     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%9B%A4%E5%BE%8C-%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%88%87-ai-pc-%E5%BC%B7%E5%8B%A2%E5%99%B4%E7%99%BC-094642548.html"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -611,11 +611,11 @@
     "headline_count": 1,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes"
+     "yahoo_tw"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
