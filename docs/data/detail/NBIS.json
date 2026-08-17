@@ -1,17 +1,9 @@
 {
  "stock": "NBIS",
  "name": "Nebius Group",
- "price": 255.04,
- "change_pct": -1.6,
+ "price": 277.68,
+ "change_pct": 8.88,
  "ohlc": [
-  {
-   "time": "2026-05-19",
-   "o": 191.0,
-   "h": 202.81,
-   "l": 183.0,
-   "c": 197.73,
-   "v": 16832900
-  },
   {
    "time": "2026-05-20",
    "o": 203.97,
@@ -482,11 +474,19 @@
    "h": 275.96,
    "l": 247.38,
    "c": 255.04,
-   "v": 36045100
+   "v": 36239100
+  },
+  {
+   "time": "2026-08-14",
+   "o": 258.09,
+   "h": 278.66,
+   "l": 256.9,
+   "c": 277.68,
+   "v": 28947000
   }
  ],
  "sr": {
-  "price": 255.04,
+  "price": 277.68,
   "resistance": [
    278.84,
    290.6
@@ -498,7 +498,6 @@
   "strong_support": 17.39
  },
  "spark": [
-  197.73,
   191.82,
   219.93,
   214.77,
@@ -557,11 +556,144 @@
   184.11,
   193.23,
   259.2,
-  255.04
+  255.04,
+  277.68
  ],
- "spark_start": "2026-05-19",
- "spark_end": "2026-08-13",
+ "spark_start": "2026-05-20",
+ "spark_end": "2026-08-14",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
+   "value": {
+    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786962843,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nebius Group (NBIS) Emerges As A Key Bidder In Decart AI Talks",
+   "value": {
+    "headline": "Nebius Group (NBIS) Emerges As A Key Bidder In Decart AI Talks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786957817,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nebius-group-nbis-emerges-key-091017819.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/nebius-group-nbis-emerges-key-091017819.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NBIS Jumps Premarket As Strong Q2 Fuels Best Weekly Move Since 2024: Analysts Praise ‘Backlog-Fueled Capacity Expansion’",
+   "value": {
+    "headline": "NBIS Jumps Premarket As Strong Q2 Fuels Best Weekly Move Since 2024: Analysts Praise ‘Backlog-Fueled Capacity Expansion’",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786955758,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nbis-jumps-premarket-as-strong-q2-fuels-best-weekly-move-since-2024-analysts-praise-backlog-fueled-capacity-expansion/cZo6DCERJKt?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/nbis-jumps-premarket-as-strong-q2-fuels-best-weekly-move-since-2024-analysts-praise-backlog-fueled-capacity-expansion/cZo6DCERJKt?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Major Catalysts Are Lifting IREN Stock. How to Play It Here.",
+   "value": {
+    "headline": "2 Major Catalysts Are Lifting IREN Stock. How to Play It Here.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786908602,
+    "url": "https://www.barchart.com/story/news/3877364/2-major-catalysts-are-lifting-iren-stock-how-to-play-it-here?.tsrc=rss",
+    "urls": [
+     "https://www.barchart.com/story/news/3877364/2-major-catalysts-are-lifting-iren-stock-how-to-play-it-here?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nebius' Contracted Power Guidance Continues to Surge. Here's What That Means for the Stock.",
+   "value": {
+    "headline": "Nebius' Contracted Power Guidance Continues to Surge. Here's What That Means for the Stock.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786897620,
+    "url": "https://www.fool.com/investing/2026/08/16/nebius-contracted-power-guidance-continues-to-surg/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/16/nebius-contracted-power-guidance-continues-to-surg/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 16,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 354,375 股交割失敗）",
+   "value": {
+    "total_shares": 354375,
+    "days": 9,
+    "max_shares": 80439,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-17",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

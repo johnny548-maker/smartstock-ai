@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 880.41,
- "change_pct": -5.58,
+ "price": 926.14,
+ "change_pct": 5.19,
  "ohlc": [
-  {
-   "time": "2026-05-19",
-   "o": 873.17,
-   "h": 910.0,
-   "l": 845.0,
-   "c": 890.09,
-   "v": 5025800
-  },
   {
    "time": "2026-05-20",
    "o": 917.01,
@@ -482,14 +474,22 @@
    "h": 946.92,
    "l": 875.59,
    "c": 880.41,
-   "v": 4620500
+   "v": 4646000
+  },
+  {
+   "time": "2026-08-14",
+   "o": 892.68,
+   "h": 957.9,
+   "l": 885.27,
+   "c": 926.14,
+   "v": 4237900
   }
  ],
  "sr": {
-  "price": 880.41,
+  "price": 926.14,
   "resistance": [
-   897.0,
-   925.5
+   960.0,
+   977.27
   ],
   "support": [
    854.62,
@@ -498,7 +498,6 @@
   "strong_support": 45.65
  },
  "spark": [
-  890.09,
   868.07,
   964.5,
   946.9,
@@ -557,48 +556,12 @@
   813.51,
   820.59,
   932.47,
-  880.41
+  880.41,
+  926.14
  ],
- "spark_start": "2026-05-19",
- "spark_end": "2026-08-13",
+ "spark_start": "2026-05-20",
+ "spark_end": "2026-08-14",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "聯亞(3081-TW)展望很好已不是重點,但你應該真正要看這兩件事",
-   "value": {
-    "headline": "聯亞(3081-TW)展望很好已不是重點,但你應該真正要看這兩件事",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1786696260,
-    "url": "cnyes:6577173",
-    "urls": [
-     "cnyes:6577173"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-14",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,8 +1,8 @@
 {
  "stock": "2414.TW",
  "name": "精技",
- "price": 52.8,
- "change_pct": 0.0,
+ "price": 53.3,
+ "change_pct": 0.95,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -299,16 +299,27 @@
    "l": 52.5,
    "c": 52.8,
    "v": 242184
+  },
+  {
+   "time": "2026-08-17",
+   "o": 52.8,
+   "h": 53.7,
+   "l": 51.9,
+   "c": 53.3,
+   "v": 417546
   }
  ],
  "sr": {
-  "price": 52.8,
+  "price": 53.3,
   "resistance": [
    59.7,
    63.5
   ],
-  "support": [],
-  "strong_support": 53.2
+  "support": [
+   53.2,
+   51.3
+  ],
+  "strong_support": 51.3
  },
  "spark": [
   62.8,
@@ -347,10 +358,11 @@
   56.7,
   51.9,
   52.8,
-  52.8
+  52.8,
+  53.3
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-14",
+ "spark_end": "2026-08-17",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

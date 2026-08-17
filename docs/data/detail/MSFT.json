@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 496.88,
- "change_pct": 0.9,
+ "price": 495.4,
+ "change_pct": -0.3,
  "ohlc": [
-  {
-   "time": "2026-05-19",
-   "o": 428.97,
-   "h": 431.76,
-   "l": 415.59,
-   "c": 416.52,
-   "v": 33018700
-  },
   {
    "time": "2026-05-20",
    "o": 413.27,
@@ -482,11 +474,19 @@
    "h": 501.34,
    "l": 493.01,
    "c": 496.88,
-   "v": 23017200
+   "v": 23039000
+  },
+  {
+   "time": "2026-08-14",
+   "o": 496.36,
+   "h": 500.01,
+   "l": 493.92,
+   "c": 495.4,
+   "v": 16205200
   }
  ],
  "sr": {
-  "price": 496.88,
+  "price": 495.4,
   "resistance": [
    507.87,
    508.75
@@ -498,7 +498,6 @@
   "strong_support": 349.2
  },
  "spark": [
-  416.52,
   420.15,
   419.09,
   418.57,
@@ -557,14 +556,15 @@
   506.06,
   503.81,
   492.43,
-  496.88
+  496.88,
+  495.4
  ],
- "spark_start": "2026-05-19",
- "spark_end": "2026-08-13",
+ "spark_start": "2026-05-20",
+ "spark_end": "2026-08-14",
  "fundamental": {
-  "pe_trailing": 27.391401,
-  "pe_forward": 21.078102,
-  "eps_trailing": 18.14,
+  "pe_trailing": 27.62967,
+  "pe_forward": 21.015318,
+  "eps_trailing": 17.93,
   "eps_forward": 23.57328,
   "stale": false,
   "source": "yfinance"
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A Big Inflation Risk Still Looms for Stock Markets",
+   "label": "Market Chatter: Nvidia Discussing $3 Billion Investment SB Energy's OpenAI Ohio Data Center",
    "value": {
-    "headline": "A Big Inflation Risk Still Looms for Stock Markets",
+    "headline": "Market Chatter: Nvidia Discussing $3 Billion Investment SB Energy's OpenAI Ohio Data Center",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786704720,
-    "url": "https://finance.yahoo.com/m/22d19ee7-2a0b-38a9-a30d-734163261d28/a-big-inflation-risk-still.html?.tsrc=rss",
+    "ts": 1786954285,
+    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-nvidia-discussing-3-081125623.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/22d19ee7-2a0b-38a9-a30d-734163261d28/a-big-inflation-risk-still.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/market-chatter-nvidia-discussing-3-081125623.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Walks Away From China",
+   "label": "Michael Burry Says ‘You Could Have Heard It First’ — As Big Tech’s $3T AI Spending Risk Comes Into Focus",
    "value": {
-    "headline": "Microsoft Walks Away From China",
+    "headline": "Michael Burry Says ‘You Could Have Heard It First’ — As Big Tech’s $3T AI Spending Risk Comes Into Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786702891,
-    "url": "https://247wallst.com/investing/2026/08/14/microsoft-walks-away-from-china/?.tsrc=rss",
+    "ts": 1786945931,
+    "url": "https://stocktwits.com/news-articles/markets/equity/michael-burry-says-you-could-have-heard-it-first-as-big-tech-s-3-t-ai-spending-risk-comes-into-focus/cZo6sZzRJKV?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/14/microsoft-walks-away-from-china/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/michael-burry-says-you-could-have-heard-it-first-as-big-tech-s-3-t-ai-spending-risk-comes-into-focus/cZo6sZzRJKV?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+   "label": "Elon Musk and Jensen Huang’s New Partnership Could Create the Next Era of Technology",
    "value": {
-    "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+    "headline": "Elon Musk and Jensen Huang’s New Partnership Could Create the Next Era of Technology",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786701660,
-    "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html?.tsrc=rss",
+    "ts": 1786921068,
+    "url": "https://247wallst.com/investing/2026/08/16/elon-musk-and-jensen-huangs-new-partnership-could-create-the-next-era-of-technology/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/16/elon-musk-and-jensen-huangs-new-partnership-could-create-the-next-era-of-technology/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zacks Investment Ideas feature highlights: CoreWeave, Nebius and NVIDIA",
+   "label": "Amazon, Alphabet, and Microsoft Are Dropping Nearly $600 Billion on Capital Expenditures: 1 Clear Winner Emerges",
    "value": {
-    "headline": "Zacks Investment Ideas feature highlights: CoreWeave, Nebius and NVIDIA",
+    "headline": "Amazon, Alphabet, and Microsoft Are Dropping Nearly $600 Billion on Capital Expenditures: 1 Clear Winner Emerges",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786699020,
-    "url": "https://finance.yahoo.com/technology/ai/articles/zacks-investment-ideas-feature-highlights-091700503.html?.tsrc=rss",
+    "ts": 1786919220,
+    "url": "https://www.fool.com/investing/2026/08/16/amazon-alphabet-and-microsoft-are-dropping-nearly/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/zacks-investment-ideas-feature-highlights-091700503.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/16/amazon-alphabet-and-microsoft-are-dropping-nearly/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MetriStar Top Provider: Room Video Conferencing Report: Evaluating Customer Sentiment, Business Value, and Market Strate",
+   "label": "Billionaire Investor David Tepper Just Exited 12 Stocks. These 5 Are the Most Surprising.",
    "value": {
-    "headline": "MetriStar Top Provider: Room Video Conferencing Report: Evaluating Customer Sentiment, Business Value, and Market Strategies of Cisco, Zoom, Microsoft, and Logitech",
+    "headline": "Billionaire Investor David Tepper Just Exited 12 Stocks. These 5 Are the Most Surprising.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786694460,
-    "url": "https://finance.yahoo.com/technology/articles/metristar-top-provider-room-video-080100716.html?.tsrc=rss",
+    "ts": 1786916631,
+    "url": "https://247wallst.com/investing/2026/08/16/billionaire-investor-david-tepper-just-exited-12-stocks-these-5-are-the-most-surprising/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/metristar-top-provider-room-video-080100716.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/16/billionaire-investor-david-tepper-just-exited-12-stocks-these-5-are-the-most-surprising/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

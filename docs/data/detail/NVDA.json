@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 225.3,
- "change_pct": 0.54,
+ "price": 225.16,
+ "change_pct": -0.06,
  "ohlc": [
-  {
-   "time": "2026-05-19",
-   "o": 219.36,
-   "h": 224.22,
-   "l": 217.66,
-   "c": 220.35,
-   "v": 140948200
-  },
   {
    "time": "2026-05-20",
    "o": 222.92,
@@ -482,23 +474,30 @@
    "h": 227.23,
    "l": 223.71,
    "c": 225.3,
-   "v": 98607900
+   "v": 98867200
+  },
+  {
+   "time": "2026-08-14",
+   "o": 226.77,
+   "h": 227.49,
+   "l": 224.5,
+   "c": 225.16,
+   "v": 75504000
   }
  ],
  "sr": {
-  "price": 225.3,
+  "price": 225.16,
   "resistance": [
    232.01,
    236.26
   ],
   "support": [
-   208.54,
-   199.34
+   216.2,
+   208.54
   ],
   "strong_support": 163.85
  },
  "spark": [
-  220.35,
   223.21,
   219.25,
   215.08,
@@ -557,16 +556,17 @@
   217.55,
   217.5,
   224.09,
-  225.3
+  225.3,
+  225.16
  ],
- "spark_start": "2026-05-19",
- "spark_end": "2026-08-13",
+ "spark_start": "2026-05-20",
+ "spark_end": "2026-08-14",
  "fundamental": {
-  "pe_trailing": 33.346725,
-  "pe_forward": 17.484507,
-  "eps_trailing": 6.72,
-  "eps_forward": 12.81649,
-  "stale": true,
+  "pe_trailing": 34.480858,
+  "pe_forward": 17.59288,
+  "eps_trailing": 6.53,
+  "eps_forward": 12.79836,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 Market-Beating Auto Stock Up 746% in the Past 10 Years That Warren Buffett Would Agree Is a Compounder (Hint: It's Not",
+   "label": "HIVE Stock Surges After $350M Nvidia AI Cloud Contract Puts $200M ARR Goal Within Reach",
    "value": {
-    "headline": "1 Market-Beating Auto Stock Up 746% in the Past 10 Years That Warren Buffett Would Agree Is a Compounder (Hint: It's Not Tesla)",
+    "headline": "HIVE Stock Surges After $350M Nvidia AI Cloud Contract Puts $200M ARR Goal Within Reach",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786705500,
-    "url": "https://www.fool.com/investing/2026/08/14/market-beating-stock-up-10-years-warren-buffett/?.tsrc=rss",
+    "ts": 1786963593,
+    "url": "https://stocktwits.com/news-articles/markets/equity/hive-stock-rallies-350m-nvidia-ai-contract-200m-arr-target/cZo6602RJKU?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/14/market-beating-stock-up-10-years-warren-buffett/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/hive-stock-rallies-350m-nvidia-ai-contract-200m-arr-target/cZo6602RJKU?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Week Ahead: Walmart, Target Lead Retail Earnings; Nvidia Among Stocks In Buy Areas",
+   "label": "Elon Musk’s 5-Word Statement Should Have Every Micron Investor Paying Attention",
    "value": {
-    "headline": "Stock Market Week Ahead: Walmart, Target Lead Retail Earnings; Nvidia Among Stocks In Buy Areas",
+    "headline": "Elon Musk’s 5-Word Statement Should Have Every Micron Investor Paying Attention",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786705428,
-    "url": "https://finance.yahoo.com/m/6a6353b8-8fc1-3171-8248-a06969fd8844/stock-market-week-ahead%3A.html?.tsrc=rss",
+    "ts": 1786963197,
+    "url": "https://247wallst.com/investing/2026/08/17/elon-musks-5-word-statement-should-have-every-micron-investor-paying-attention/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6a6353b8-8fc1-3171-8248-a06969fd8844/stock-market-week-ahead%3A.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/17/elon-musks-5-word-statement-should-have-every-micron-investor-paying-attention/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 AI Infrastructure Stocks Powering the Data Center Boom in August",
+   "label": "$10,000 in Oklo Stock at Its High Is Worth About $2,300 Today",
    "value": {
-    "headline": "3 AI Infrastructure Stocks Powering the Data Center Boom in August",
+    "headline": "$10,000 in Oklo Stock at Its High Is Worth About $2,300 Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786705247,
-    "url": "https://247wallst.com/investing/2026/08/14/3-ai-infrastructure-stocks-powering-the-data-center-boom-in-august/?.tsrc=rss",
+    "ts": 1786963080,
+    "url": "https://www.fool.com/investing/2026/08/17/10000-in-oklo-stock-at-its-high-is-worth-about-230/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/14/3-ai-infrastructure-stocks-powering-the-data-center-boom-in-august/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/17/10000-in-oklo-stock-at-its-high-is-worth-about-230/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "5 Dividend Kings to Buy and Hold Forever in August",
+   "label": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
    "value": {
-    "headline": "5 Dividend Kings to Buy and Hold Forever in August",
+    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786705247,
-    "url": "https://247wallst.com/investing/2026/08/14/5-dividend-kings-to-buy-and-hold-forever-in-august/?.tsrc=rss",
+    "ts": 1786962843,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/14/5-dividend-kings-to-buy-and-hold-forever-in-august/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 High-Yield Dividend Stocks Under $30 to Buy in August",
+   "label": "His Company Joined the S&P 500. His 401(k) Started Buying More of It Without Asking Him.",
    "value": {
-    "headline": "3 High-Yield Dividend Stocks Under $30 to Buy in August",
+    "headline": "His Company Joined the S&P 500. His 401(k) Started Buying More of It Without Asking Him.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786705246,
-    "url": "https://247wallst.com/investing/2026/08/14/3-high-yield-dividend-stocks-under-30-to-buy-in-august/?.tsrc=rss",
+    "ts": 1786962623,
+    "url": "https://247wallst.com/personal-finance/2026/08/17/his-company-joined-the-sp-500-his-401k-started-buying-more-of-it-without-asking-him/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/14/3-high-yield-dividend-stocks-under-30-to-buy-in-august/?.tsrc=rss"
+     "https://247wallst.com/personal-finance/2026/08/17/his-company-joined-the-sp-500-his-401k-started-buying-more-of-it-without-asking-him/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-14",
+   "as_of": "2026-08-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
