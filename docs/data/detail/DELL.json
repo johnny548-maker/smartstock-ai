@@ -482,7 +482,7 @@
    "h": 500.76,
    "l": 488.65,
    "c": 490.81,
-   "v": 3989100
+   "v": 3992900
   }
  ],
  "sr": {
@@ -560,5 +560,137 @@
  "spark_end": "2026-08-14",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Up More Than 3,400% in the Past 12 Months, Here's Why Sandisk's Stock Could Still Go Higher",
+   "value": {
+    "headline": "Up More Than 3,400% in the Past 12 Months, Here's Why Sandisk's Stock Could Still Go Higher",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787048400,
+    "url": "https://www.fool.com/investing/2026/08/18/up-more-than-3100-in-the-past-12-months-heres-why/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/18/up-more-than-3100-in-the-past-12-months-heres-why/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Kept Coming Up When Analysts Grilled CSCO",
+   "value": {
+    "headline": "What Kept Coming Up When Analysts Grilled CSCO",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787008718,
+    "url": "https://www.trefis.com/articles/611673/what-kept-coming-up-when-analysts-grilled-csco/2026-08-17?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611673/what-kept-coming-up-when-analysts-grilled-csco/2026-08-17?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What You Actually Pay To Join The AAPL Run",
+   "value": {
+    "headline": "What You Actually Pay To Join The AAPL Run",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786996844,
+    "url": "https://www.trefis.com/articles/611667/what-you-actually-pay-to-join-the-aapl-run-2/2026-08-17?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611667/what-you-actually-pay-to-join-the-aapl-run-2/2026-08-17?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Cisco Grew Faster By Selling Hardware And Charging More For It",
+   "value": {
+    "headline": "Cisco Grew Faster By Selling Hardware And Charging More For It",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786992913,
+    "url": "https://www.trefis.com/articles/611686/cisco-grew-faster-by-selling-hardware-and-charging-more-for-it/2026-08-17?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611686/cisco-grew-faster-by-selling-hardware-and-charging-more-for-it/2026-08-17?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI Networking Stocks Are Rallying on Monday. Marvell Up 8%, Credo Up 8%, Ciena Joins the Move",
+   "value": {
+    "headline": "AI Networking Stocks Are Rallying on Monday. Marvell Up 8%, Credo Up 8%, Ciena Joins the Move",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786986418,
+    "url": "https://247wallst.com/investing/2026/08/17/ai-networking-stocks-are-rallying-on-monday-marvell-up-8-credo-up-8-ciena-joins-the-move/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/17/ai-networking-stocks-are-rallying-on-monday-marvell-up-8-credo-up-8-ciena-joins-the-move/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 13,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 176,500 股交割失敗）",
+   "value": {
+    "total_shares": 176500,
+    "days": 7,
+    "max_shares": 166315,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-18",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

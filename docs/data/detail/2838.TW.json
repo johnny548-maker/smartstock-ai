@@ -1,8 +1,8 @@
 {
  "stock": "2838.TW",
  "name": "聯邦銀",
- "price": 19.9,
- "change_pct": -1.24,
+ "price": 19.95,
+ "change_pct": 0.25,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -307,15 +307,25 @@
    "l": 19.9,
    "c": 19.9,
    "v": 2145660
+  },
+  {
+   "time": "2026-08-18",
+   "o": 19.9,
+   "h": 20.05,
+   "l": 19.8,
+   "c": 19.95,
+   "v": 1644896
   }
  ],
  "sr": {
-  "price": 19.9,
+  "price": 19.95,
   "resistance": [
    24.9
   ],
-  "support": [],
-  "strong_support": 20.05
+  "support": [
+   19.75
+  ],
+  "strong_support": 19.75
  },
  "spark": [
   22.75,
@@ -355,10 +365,11 @@
   19.9,
   19.9,
   20.15,
-  19.9
+  19.9,
+  19.95
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-08-17",
+ "spark_end": "2026-08-18",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

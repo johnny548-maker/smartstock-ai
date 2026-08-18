@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 700.0,
- "change_pct": 3.7,
+ "price": 770.0,
+ "change_pct": 10.0,
  "ohlc": [
-  {
-   "time": "2026-05-25",
-   "o": 855.84,
-   "h": 909.58,
-   "l": 840.92,
-   "c": 874.75,
-   "v": 7764657
-  },
   {
    "time": "2026-05-26",
    "o": 860.82,
@@ -482,23 +474,30 @@
    "h": 700.0,
    "l": 675.0,
    "c": 700.0,
-   "v": 516673
+   "v": 493357
+  },
+  {
+   "time": "2026-08-18",
+   "o": 762.0,
+   "h": 770.0,
+   "l": 753.0,
+   "c": 770.0,
+   "v": 5841207
   }
  ],
  "sr": {
-  "price": 700.0,
+  "price": 770.0,
   "resistance": [
-   716.52,
-   736.0
+   889.68,
+   909.58
   ],
   "support": [
-   658.8,
-   620.98
+   763.29,
+   761.3
   ],
   "strong_support": 58.24
  },
  "spark": [
-  874.75,
   826.98,
   816.04,
   791.16,
@@ -557,10 +556,11 @@
   672.0,
   674.0,
   675.0,
-  700.0
+  700.0,
+  770.0
  ],
- "spark_start": "2026-05-25",
- "spark_end": "2026-08-17",
+ "spark_start": "2026-05-26",
+ "spark_end": "2026-08-18",
  "fundamental": {
   "rev_yoy": 152.9,
   "rev_accel": true,
@@ -571,30 +571,52 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第2次） 處置期間：115/08/11～115/08/17",
-   "value": {
-    "level": 2,
-    "reason": "連續三次",
-    "period": "115/08/11～115/08/17"
-   },
-   "severity": "risk",
-   "as_of": "2026-08-17",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 10,
+    "short_today": 23,
     "outstanding": 89513491,
-    "short_pct": 1.117150039428135e-05
+    "short_pct": 2.5694450906847103e-05
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-18",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】【大立光】+43%、【聯亞】+71%錯過了別慌!九月選股兩大主軸曝光?! 底部起漲買點浮現?",
+   "value": {
+    "headline": "【量大強漲股整理】【大立光】+43%、【聯亞】+71%錯過了別慌!九月選股兩大主軸曝光?! 底部起漲買點浮現?",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1787045471,
+    "url": "cnyes:6580477",
+    "urls": [
+     "cnyes:6580477"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -794,6 +816,10 @@
    {
     "t": "2026-08-17",
     "v": -3637
+   },
+   {
+    "t": "2026-08-18",
+    "v": -3652
    }
   ],
   "holder_pct": [

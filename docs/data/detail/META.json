@@ -1,25 +1,9 @@
 {
  "stock": "META",
- "name": "Meta Platforms, Inc. - Class A Common Stock",
- "price": 594.97,
- "change_pct": 2.78,
+ "name": "Meta",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-05-19",
-   "o": 608.36,
-   "h": 613.36,
-   "l": 599.99,
-   "c": 602.05,
-   "v": 11749900
-  },
-  {
-   "time": "2026-05-20",
-   "o": 600.2,
-   "h": 607.44,
-   "l": 597.26,
-   "c": 604.5,
-   "v": 11329700
-  },
   {
    "time": "2026-05-21",
    "o": 599.44,
@@ -482,24 +466,32 @@
    "h": 595.85,
    "l": 579.39,
    "c": 594.97,
-   "v": 11129700
+   "v": 11164200
+  },
+  {
+   "time": "2026-08-14",
+   "o": 596.98,
+   "h": 601.86,
+   "l": 589.29,
+   "c": 589.85,
+   "v": 8758000
+  },
+  {
+   "time": "2026-08-17",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 17080805
   }
  ],
  "sr": {
-  "price": 594.97,
-  "resistance": [
-   605.81,
-   628.28
-  ],
-  "support": [
-   594.26,
-   577.07
-  ],
-  "strong_support": 524.49
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 519.78
  },
  "spark": [
-  602.05,
-  604.5,
   606.82,
   609.69,
   611.77,
@@ -557,11 +549,167 @@
   594.92,
   599.12,
   578.85,
-  594.97
+  594.97,
+  589.85,
+  null
  ],
- "spark_start": "2026-05-19",
- "spark_end": "2026-08-13",
- "fundamental": null,
+ "spark_start": "2026-05-21",
+ "spark_end": "2026-08-17",
+ "fundamental": {
+  "pe_trailing": 22.22539,
+  "pe_forward": 16.309875,
+  "eps_trailing": 25.6,
+  "eps_forward": 34.885,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta faces 29-state trial that could reshape Instagram and Facebook",
+   "value": {
+    "headline": "Meta faces 29-state trial that could reshape Instagram and Facebook",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787047381,
+    "url": "https://finance.yahoo.com/media-advertising/articles/meta-faces-29-state-trial-100301025.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/media-advertising/articles/meta-faces-29-state-trial-100301025.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "After Skyrocketing 95% in 3 Years, Here Are the Bull and Bear Cases Investors Must Know About This Trillion-Dollar AI St",
+   "value": {
+    "headline": "After Skyrocketing 95% in 3 Years, Here Are the Bull and Bear Cases Investors Must Know About This Trillion-Dollar AI Stock",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787041200,
+    "url": "https://www.fool.com/investing/2026/08/18/skyrocket-bull-bear-trillion-dollar-ai-stock/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/18/skyrocket-bull-bear-trillion-dollar-ai-stock/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "A dropout living in a trailer, he got $1 million from Peter Thiel at 19—now he’s a billionaire who says the American Dre",
+   "value": {
+    "headline": "A dropout living in a trailer, he got $1 million from Peter Thiel at 19—now he’s a billionaire who says the American Dream isn’t dead",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787036520,
+    "url": "https://finance.yahoo.com/small-business/articles/dropout-living-trailer-got-1-070200887.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/small-business/articles/dropout-living-trailer-got-1-070200887.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Zacks Investment Ideas feature highlights: NVDA, GOOGL, AMZN, INTC and others",
+   "value": {
+    "headline": "Zacks Investment Ideas feature highlights: NVDA, GOOGL, AMZN, INTC and others",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787035620,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-064700198.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-064700198.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta stock battered by threat that is hurting the social media giant",
+   "value": {
+    "headline": "Meta stock battered by threat that is hurting the social media giant",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787014980,
+    "url": "https://www.thestreet.com/technology/meta-lawsuit-batters-stock?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/technology/meta-lawsuit-batters-stock?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 12 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 12,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 266 分 / 183 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 266,
+    "comments": 183,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 158,735 股交割失敗）",
+   "value": {
+    "total_shares": 158735,
+    "days": 8,
+    "max_shares": 40753,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-18",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

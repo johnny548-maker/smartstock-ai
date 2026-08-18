@@ -482,7 +482,7 @@
    "h": 346.17,
    "l": 317.21,
    "c": 325.83,
-   "v": 8740100
+   "v": 8757800
   }
  ],
  "sr": {
@@ -563,5 +563,42 @@
  "spark_end": "2026-08-14",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】【大立光】+43%、【聯亞】+71%錯過了別慌!九月選股兩大主軸曝光?! 底部起漲買點浮現?",
+   "value": {
+    "headline": "【量大強漲股整理】【大立光】+43%、【聯亞】+71%錯過了別慌!九月選股兩大主軸曝光?! 底部起漲買點浮現?",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1787045471,
+    "url": "cnyes:6580477",
+    "urls": [
+     "cnyes:6580477"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }
