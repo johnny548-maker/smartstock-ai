@@ -1,73 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 714.65,
- "change_pct": -0.37,
+ "price": 717.51,
+ "change_pct": -1.69,
  "ohlc": [
-  {
-   "time": "2026-05-12",
-   "o": 707.44,
-   "h": 709.4,
-   "l": 695.88,
-   "c": 706.46,
-   "v": 45873000
-  },
-  {
-   "time": "2026-05-13",
-   "o": 709.18,
-   "h": 715.86,
-   "l": 704.06,
-   "c": 713.93,
-   "v": 40012500
-  },
-  {
-   "time": "2026-05-14",
-   "o": 713.84,
-   "h": 721.24,
-   "l": 713.44,
-   "c": 719.0,
-   "v": 33327500
-  },
-  {
-   "time": "2026-05-15",
-   "o": 709.36,
-   "h": 714.35,
-   "l": 704.78,
-   "c": 708.15,
-   "v": 51792700
-  },
-  {
-   "time": "2026-05-18",
-   "o": 710.76,
-   "h": 711.29,
-   "l": 698.08,
-   "c": 705.11,
-   "v": 49834500
-  },
-  {
-   "time": "2026-05-19",
-   "o": 699.04,
-   "h": 705.71,
-   "l": 694.49,
-   "c": 700.76,
-   "v": 46827500
-  },
-  {
-   "time": "2026-05-20",
-   "o": 704.52,
-   "h": 712.37,
-   "l": 703.02,
-   "c": 712.37,
-   "v": 36779200
-  },
-  {
-   "time": "2026-05-21",
-   "o": 708.21,
-   "h": 716.33,
-   "l": 705.99,
-   "c": 713.73,
-   "v": 36415400
-  },
   {
    "time": "2026-05-22",
    "o": 717.28,
@@ -478,15 +414,79 @@
   },
   {
    "time": "2026-08-06",
-   "o": 710.76,
+   "o": 710.82,
    "h": 719.32,
    "l": 708.5,
    "c": 714.65,
-   "v": 30571597
+   "v": 33035900
+  },
+  {
+   "time": "2026-08-07",
+   "o": 720.15,
+   "h": 723.63,
+   "l": 716.51,
+   "c": 723.03,
+   "v": 31070400
+  },
+  {
+   "time": "2026-08-10",
+   "o": 722.39,
+   "h": 724.67,
+   "l": 720.33,
+   "c": 720.87,
+   "v": 26243200
+  },
+  {
+   "time": "2026-08-11",
+   "o": 723.29,
+   "h": 723.35,
+   "l": 715.5,
+   "c": 718.45,
+   "v": 29286100
+  },
+  {
+   "time": "2026-08-12",
+   "o": 727.08,
+   "h": 727.25,
+   "l": 722.92,
+   "c": 723.7,
+   "v": 29066000
+  },
+  {
+   "time": "2026-08-13",
+   "o": 725.15,
+   "h": 733.96,
+   "l": 724.03,
+   "c": 732.07,
+   "v": 31599700
+  },
+  {
+   "time": "2026-08-14",
+   "o": 733.41,
+   "h": 734.39,
+   "l": 728.32,
+   "c": 731.07,
+   "v": 23790600
+  },
+  {
+   "time": "2026-08-17",
+   "o": 732.95,
+   "h": 734.58,
+   "l": 729.27,
+   "c": 729.87,
+   "v": 26452600
+  },
+  {
+   "time": "2026-08-18",
+   "o": 720.21,
+   "h": 722.13,
+   "l": 715.92,
+   "c": 717.51,
+   "v": 48736100
   }
  ],
  "sr": {
-  "price": 714.65,
+  "price": 717.51,
   "resistance": [
    721.24,
    726.39
@@ -498,14 +498,6 @@
   "strong_support": 554.99
  },
  "spark": [
-  706.46,
-  713.93,
-  719.0,
-  708.15,
-  705.11,
-  700.76,
-  712.37,
-  713.73,
   716.75,
   729.48,
   728.65,
@@ -557,16 +549,24 @@
   700.07,
   723.85,
   717.3,
-  714.65
+  714.65,
+  723.03,
+  720.87,
+  718.45,
+  723.7,
+  732.07,
+  731.07,
+  729.87,
+  717.51
  ],
- "spark_start": "2026-05-12",
- "spark_end": "2026-08-06",
+ "spark_start": "2026-05-22",
+ "spark_end": "2026-08-18",
  "fundamental": {
-  "pe_trailing": 31.830395,
+  "pe_trailing": 30.680885,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500 Gains as Iran-Oman Deal Eases Oil Fears",
+   "label": "Volatility Is Falling. It’s a Good Time to Buy Options Again.",
    "value": {
-    "headline": "S&P 500 Gains as Iran-Oman Deal Eases Oil Fears",
+    "headline": "Volatility Is Falling. It’s a Good Time to Buy Options Again.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786051637,
-    "url": "https://finance.yahoo.com/energy/articles/p-500-gains-iran-oman-212717705.html?.tsrc=rss",
+    "ts": 1787117400,
+    "url": "https://finance.yahoo.com/m/0d0ccec4-7f3c-3b73-ac24-b7ce71aa2a5c/volatility-is-falling.-it%E2%80%99s-a.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/p-500-gains-iran-oman-212717705.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/0d0ccec4-7f3c-3b73-ac24-b7ce71aa2a5c/volatility-is-falling.-it%E2%80%99s-a.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Dow, Nasdaq End Lower Amid Hormuz Uncertainty As Investors Await Jobs Data To Judge Fed Rate Course — SOUN, GOO",
+   "label": "Apple Shares Jump Tuesday While the Nasdaq Plummets: Here’s Why It Led Magnificent 7 Stocks",
    "value": {
-    "headline": "S&P 500, Dow, Nasdaq End Lower Amid Hormuz Uncertainty As Investors Await Jobs Data To Judge Fed Rate Course — SOUN, GOOGL, SPCX, NVDA In Focus",
+    "headline": "Apple Shares Jump Tuesday While the Nasdaq Plummets: Here’s Why It Led Magnificent 7 Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786050279,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-dow-nasdaq-end-lower-amid-hormuz-uncertainty/cZoB9g9RJJo?.tsrc=rss",
+    "ts": 1787107965,
+    "url": "https://247wallst.com/investing/2026/08/18/apple-shares-jump-tuesday-while-the-nasdaq-plummets-heres-why-it-led-magnificent-7-stocks/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-dow-nasdaq-end-lower-amid-hormuz-uncertainty/cZoB9g9RJJo?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/18/apple-shares-jump-tuesday-while-the-nasdaq-plummets-heres-why-it-led-magnificent-7-stocks/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "SCHG Quintupled Your Money in 10 Years, and the 4-Cent Fee Is Doing Heavy Lifting",
+   "label": "VOO’s 0.03% Fee Hides the Real Cost: 38% of Your S&P 500 Money Is Now in One Sector",
    "value": {
-    "headline": "SCHG Quintupled Your Money in 10 Years, and the 4-Cent Fee Is Doing Heavy Lifting",
+    "headline": "VOO’s 0.03% Fee Hides the Real Cost: 38% of Your S&P 500 Money Is Now in One Sector",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786040109,
-    "url": "https://247wallst.com/investing/etf/2026/08/06/schg-quintupled-your-money-in-10-years-and-the-4-cent-fee-is-doing-heavy-lifting/?.tsrc=rss",
+    "ts": 1787091918,
+    "url": "https://247wallst.com/investing/etf/2026/08/18/voos-0-03-fee-hides-the-real-cost-38-of-your-sp-500-money-is-now-in-one-sector/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/08/06/schg-quintupled-your-money-in-10-years-and-the-4-cent-fee-is-doing-heavy-lifting/?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/08/18/voos-0-03-fee-hides-the-real-cost-38-of-your-sp-500-money-is-now-in-one-sector/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Kevin Warsh Opens Door to Surprise Fed Move",
+   "label": "QYLD Holders Left $56,700 Per $10,000 on the Table Chasing Twelve Years of Monthly Income",
    "value": {
-    "headline": "Kevin Warsh Opens Door to Surprise Fed Move",
+    "headline": "QYLD Holders Left $56,700 Per $10,000 on the Table Chasing Twelve Years of Monthly Income",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786037641,
-    "url": "https://finance.yahoo.com/economy/policy/articles/kevin-warsh-opens-door-surprise-173401450.html?.tsrc=rss",
+    "ts": 1787089559,
+    "url": "https://247wallst.com/investing/etf/2026/08/18/qyld-holders-left-56700-per-10000-on-the-table-chasing-twelve-years-of-monthly-income/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/policy/articles/kevin-warsh-opens-door-surprise-173401450.html?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/08/18/qyld-holders-left-56700-per-10000-on-the-table-chasing-twelve-years-of-monthly-income/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "U.S. Labor Market Just Flashed Surprising Signal",
+   "label": "US Stocks End Third Session Lower As Higher Treasury Yields, Oil Prices Weigh — BABA, AAPL, GRRR, KLAR, CRWD In Focus",
    "value": {
-    "headline": "U.S. Labor Market Just Flashed Surprising Signal",
+    "headline": "US Stocks End Third Session Lower As Higher Treasury Yields, Oil Prices Weigh — BABA, AAPL, GRRR, KLAR, CRWD In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786037167,
-    "url": "https://finance.yahoo.com/economy/articles/u-labor-market-just-flashed-172607774.html?.tsrc=rss",
+    "ts": 1787088908,
+    "url": "https://stocktwits.com/news-articles/markets/equity/us-stocks-end-third-session-lower-as-higher-treasury-yields-oil-prices-weigh/cZYcnUERJjD?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/articles/u-labor-market-just-flashed-172607774.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/us-stocks-end-third-session-lower-as-higher-treasury-yields-oil-prices-weigh/cZYcnUERJjD?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

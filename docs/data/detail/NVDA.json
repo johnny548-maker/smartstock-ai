@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 225.16,
- "change_pct": -0.06,
+ "price": 219.74,
+ "change_pct": -2.34,
  "ohlc": [
-  {
-   "time": "2026-05-20",
-   "o": 222.92,
-   "h": 225.87,
-   "l": 220.24,
-   "c": 223.21,
-   "v": 184201600
-  },
-  {
-   "time": "2026-05-21",
-   "o": 222.03,
-   "h": 227.14,
-   "l": 217.68,
-   "c": 219.25,
-   "v": 203381800
-  },
   {
    "time": "2026-05-22",
    "o": 220.64,
@@ -482,11 +466,27 @@
    "h": 227.49,
    "l": 224.5,
    "c": 225.16,
-   "v": 75504000
+   "v": 75680900
+  },
+  {
+   "time": "2026-08-17",
+   "o": 225.98,
+   "h": 227.92,
+   "l": 224.86,
+   "c": 225.01,
+   "v": 93678700
+  },
+  {
+   "time": "2026-08-18",
+   "o": 220.45,
+   "h": 221.64,
+   "l": 218.69,
+   "c": 219.74,
+   "v": 102769900
   }
  ],
  "sr": {
-  "price": 225.16,
+  "price": 219.74,
   "resistance": [
    232.01,
    236.26
@@ -498,8 +498,6 @@
   "strong_support": 163.85
  },
  "spark": [
-  223.21,
-  219.25,
   215.08,
   214.61,
   212.35,
@@ -557,15 +555,17 @@
   217.5,
   224.09,
   225.3,
-  225.16
+  225.16,
+  225.01,
+  219.74
  ],
- "spark_start": "2026-05-20",
- "spark_end": "2026-08-14",
+ "spark_start": "2026-05-22",
+ "spark_end": "2026-08-18",
  "fundamental": {
-  "pe_trailing": 34.480858,
-  "pe_forward": 17.59288,
-  "eps_trailing": 6.53,
-  "eps_forward": 12.79836,
+  "pe_trailing": 34.49608,
+  "pe_forward": 17.121721,
+  "eps_trailing": 6.37,
+  "eps_forward": 12.83399,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,116 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "HIVE Stock Surges After $350M Nvidia AI Cloud Contract Puts $200M ARR Goal Within Reach",
+   "label": "SpaceX Is Back Trading Near Its Opening-Day Price. History Says Shares Will Be Worth This Much in 1 Year.",
    "value": {
-    "headline": "HIVE Stock Surges After $350M Nvidia AI Cloud Contract Puts $200M ARR Goal Within Reach",
+    "headline": "SpaceX Is Back Trading Near Its Opening-Day Price. History Says Shares Will Be Worth This Much in 1 Year.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786963593,
-    "url": "https://stocktwits.com/news-articles/markets/equity/hive-stock-rallies-350m-nvidia-ai-contract-200m-arr-target/cZo6602RJKU?.tsrc=rss",
+    "ts": 1787136600,
+    "url": "https://www.fool.com/investing/2026/08/19/spacex-is-back-to-trading-near-its-opening-day-pri/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/hive-stock-rallies-350m-nvidia-ai-contract-200m-arr-target/cZo6602RJKU?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/19/spacex-is-back-to-trading-near-its-opening-day-pri/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Elon Musk’s 5-Word Statement Should Have Every Micron Investor Paying Attention",
+   "label": "Nebius Just Revealed the Most Important Number That Could Change the AI Stock's Investment Thesis",
    "value": {
-    "headline": "Elon Musk’s 5-Word Statement Should Have Every Micron Investor Paying Attention",
+    "headline": "Nebius Just Revealed the Most Important Number That Could Change the AI Stock's Investment Thesis",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786963197,
-    "url": "https://247wallst.com/investing/2026/08/17/elon-musks-5-word-statement-should-have-every-micron-investor-paying-attention/?.tsrc=rss",
+    "ts": 1787135700,
+    "url": "https://www.fool.com/investing/2026/08/19/nebius-just-revealed-the-most-important-number-tha/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/17/elon-musks-5-word-statement-should-have-every-micron-investor-paying-attention/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/19/nebius-just-revealed-the-most-important-number-tha/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "$10,000 in Oklo Stock at Its High Is Worth About $2,300 Today",
+   "label": "Is Joby Aviation the Best Growth Stock in the Industrial Sector?",
    "value": {
-    "headline": "$10,000 in Oklo Stock at Its High Is Worth About $2,300 Today",
+    "headline": "Is Joby Aviation the Best Growth Stock in the Industrial Sector?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786963080,
-    "url": "https://www.fool.com/investing/2026/08/17/10000-in-oklo-stock-at-its-high-is-worth-about-230/?.tsrc=rss",
+    "ts": 1787135100,
+    "url": "https://www.fool.com/investing/2026/08/19/is-joby-the-best-growth-stock-in-the-industr/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/17/10000-in-oklo-stock-at-its-high-is-worth-about-230/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/19/is-joby-the-best-growth-stock-in-the-industr/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
+   "label": "Is This a Buy-the-Dip Opportunity for XRP Right Now?",
    "value": {
-    "headline": "Social Buzz: Wallstreetbets Stocks Mostly Higher Premarket Monday; Sandisk, Micron to Advance",
+    "headline": "Is This a Buy-the-Dip Opportunity for XRP Right Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786962843,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss",
+    "ts": 1787135040,
+    "url": "https://www.fool.com/investing/2026/08/19/is-this-a-buy-the-dip-opportunity-for-crypto-right/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103403952.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/19/is-this-a-buy-the-dip-opportunity-for-crypto-right/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "His Company Joined the S&P 500. His 401(k) Started Buying More of It Without Asking Him.",
+   "label": "3 High-Yield Dividend Stocks I'd Buy With $5,000 Right Now",
    "value": {
-    "headline": "His Company Joined the S&P 500. His 401(k) Started Buying More of It Without Asking Him.",
+    "headline": "3 High-Yield Dividend Stocks I'd Buy With $5,000 Right Now",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1786962623,
-    "url": "https://247wallst.com/personal-finance/2026/08/17/his-company-joined-the-sp-500-his-401k-started-buying-more-of-it-without-asking-him/?.tsrc=rss",
+    "ts": 1787134803,
+    "url": "https://www.fool.com/investing/2026/08/19/3-high-yield-dividend-stocks-i-d-buy-with-usd5-000-right-now/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/personal-finance/2026/08/17/his-company-joined-the-sp-500-his-401k-started-buying-more-of-it-without-asking-him/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/19/3-high-yield-dividend-stocks-i-d-buy-with-usd5-000-right-now/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +700,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-17",
+   "as_of": "2026-08-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

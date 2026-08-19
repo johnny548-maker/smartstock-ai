@@ -1,25 +1,9 @@
 {
  "stock": "NTAP",
  "name": "NetApp",
- "price": 207.08,
- "change_pct": 1.02,
+ "price": 204.71,
+ "change_pct": 0.25,
  "ohlc": [
-  {
-   "time": "2026-05-20",
-   "o": 119.81,
-   "h": 121.12,
-   "l": 118.29,
-   "c": 118.61,
-   "v": 1828200
-  },
-  {
-   "time": "2026-05-21",
-   "o": 118.54,
-   "h": 123.84,
-   "l": 118.39,
-   "c": 123.57,
-   "v": 2098000
-  },
   {
    "time": "2026-05-22",
    "o": 123.25,
@@ -483,11 +467,29 @@
    "l": 201.89,
    "c": 207.08,
    "v": 2338400
+  },
+  {
+   "time": "2026-08-17",
+   "o": 207.4,
+   "h": 207.85,
+   "l": 202.09,
+   "c": 204.2,
+   "v": 2106600
+  },
+  {
+   "time": "2026-08-18",
+   "o": 201.69,
+   "h": 207.96,
+   "l": 200.62,
+   "c": 204.71,
+   "v": 2422200
   }
  ],
  "sr": {
-  "price": 207.08,
-  "resistance": [],
+  "price": 204.71,
+  "resistance": [
+   209.06
+  ],
   "support": [
    156.26,
    148.82
@@ -495,8 +497,6 @@
   "strong_support": 70.26
  },
  "spark": [
-  118.61,
-  123.57,
   138.94,
   138.53,
   142.31,
@@ -554,11 +554,145 @@
   198.47,
   202.05,
   204.99,
-  207.08
+  207.08,
+  204.2,
+  204.71
  ],
- "spark_start": "2026-05-20",
- "spark_end": "2026-08-14",
+ "spark_start": "2026-05-22",
+ "spark_end": "2026-08-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "1 S&P 500 Stock to Consider Right Now and 2 We Find Risky",
+   "value": {
+    "headline": "1 S&P 500 Stock to Consider Right Now and 2 We Find Risky",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787049453,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/1-p-500-stock-consider-103733983.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/1-p-500-stock-consider-103733983.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SanDisk Rallied On Contracts It Had Already Signed",
+   "value": {
+    "headline": "SanDisk Rallied On Contracts It Had Already Signed",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786991341,
+    "url": "https://www.trefis.com/articles/611683/sandisk-rallied-on-contracts-it-had-already-signed/2026-08-17?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611683/sandisk-rallied-on-contracts-it-had-already-signed/2026-08-17?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SanDisk Has Delivered A Return The Index Cannot, And The Swings That Come With It",
+   "value": {
+    "headline": "SanDisk Has Delivered A Return The Index Cannot, And The Swings That Come With It",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786733812,
+    "url": "https://www.trefis.com/articles/611554/sandisk-has-delivered-a-return-the-index-cannot-and-the-swings-that-come-with-it/2026-08-14?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611554/sandisk-has-delivered-a-return-the-index-cannot-and-the-swings-that-come-with-it/2026-08-14?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Super Micro's Margin Surprise Is Already Guided Back Down",
+   "value": {
+    "headline": "Super Micro's Margin Surprise Is Already Guided Back Down",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786718280,
+    "url": "https://www.trefis.com/articles/611553/super-micros-margin-surprise-is-already-guided-back-down/2026-08-14?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/611553/super-micros-margin-surprise-is-already-guided-back-down/2026-08-14?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Morgan Stanley Turns More Bullish on IT Hardware as ‘Chipflation’ Drives Faster Spending",
+   "value": {
+    "headline": "Morgan Stanley Turns More Bullish on IT Hardware as ‘Chipflation’ Drives Faster Spending",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1786716000,
+    "url": "https://investorshub.advfn.com/market-news/article/34270/morgan-stanley-turns-more-bullish-on-it-hardware-as-chipflation-drives-faster-spending?.tsrc=rss",
+    "urls": [
+     "https://investorshub.advfn.com/market-news/article/34270/morgan-stanley-turns-more-bullish-on-it-hardware-as-chipflation-drives-faster-spending?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 111,017 股交割失敗）",
+   "value": {
+    "total_shares": 111017,
+    "days": 3,
+    "max_shares": 96199,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-19",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,25 +1,9 @@
 {
  "stock": "TSM",
- "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
- "price": 426.35,
- "change_pct": -0.96,
+ "name": "台積電 ADR",
+ "price": 413.41,
+ "change_pct": -4.07,
  "ohlc": [
-  {
-   "time": "2026-05-20",
-   "o": 396.07,
-   "h": 402.94,
-   "l": 395.02,
-   "c": 400.68,
-   "v": 10254300
-  },
-  {
-   "time": "2026-05-21",
-   "o": 398.58,
-   "h": 410.5,
-   "l": 398.58,
-   "c": 406.2,
-   "v": 8937900
-  },
   {
    "time": "2026-05-22",
    "o": 408.47,
@@ -483,23 +467,37 @@
    "l": 424.1,
    "c": 426.35,
    "v": 6324700
+  },
+  {
+   "time": "2026-08-17",
+   "o": 429.97,
+   "h": 435.71,
+   "l": 426.8,
+   "c": 430.97,
+   "v": 9479400
+  },
+  {
+   "time": "2026-08-18",
+   "o": 417.0,
+   "h": 419.63,
+   "l": 410.77,
+   "c": 413.41,
+   "v": 14008700
   }
  ],
  "sr": {
-  "price": 426.35,
+  "price": 413.41,
   "resistance": [
-   449.11,
-   476.79
+   413.53,
+   419.02
   ],
   "support": [
-   419.19,
-   404.56
+   404.56,
+   386.02
   ],
-  "strong_support": 372.72
+  "strong_support": 223.16
  },
  "spark": [
-  400.68,
-  406.2,
   403.57,
   411.36,
   421.74,
@@ -557,11 +555,152 @@
   422.06,
   429.15,
   430.49,
-  426.35
+  426.35,
+  430.97,
+  413.41
  ],
- "spark_start": "2026-05-20",
- "spark_end": "2026-08-14",
- "fundamental": null,
+ "spark_start": "2026-05-22",
+ "spark_end": "2026-08-18",
+ "fundamental": {
+  "pe_trailing": 30.967041,
+  "pe_forward": 18.98007,
+  "eps_trailing": 13.35,
+  "eps_forward": 21.78127,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Samsung hikes chipmaking prices by up to 15% on demand spike, sources say",
+   "value": {
+    "headline": "Samsung hikes chipmaking prices by up to 15% on demand spike, sources say",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787128196,
+    "url": "https://finance.yahoo.com/technology/ai/articles/samsung-hikes-chipmaking-prices-15-082956191.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/samsung-hikes-chipmaking-prices-15-082956191.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Michael Burry Flags New AI Chip Startup By Harvard Dropouts As ‘Serious Competition’ For Nvidia",
+   "value": {
+    "headline": "Michael Burry Flags New AI Chip Startup By Harvard Dropouts As ‘Serious Competition’ For Nvidia",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787123469,
+    "url": "https://stocktwits.com/news-articles/markets/equity/michael-burry-flags-new-ai-chip-startup-by-harvard-dropouts-as-serious-competition-for-nvidia/cZYdJbiRJk0?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/michael-burry-flags-new-ai-chip-startup-by-harvard-dropouts-as-serious-competition-for-nvidia/cZYdJbiRJk0?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Prediction: 3 Unstoppable Artificial Intelligence Stocks That Will Join Nvidia, Apple, and Alphabet in the $4 Trillion C",
+   "value": {
+    "headline": "Prediction: 3 Unstoppable Artificial Intelligence Stocks That Will Join Nvidia, Apple, and Alphabet in the $4 Trillion Club by 2028",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787115000,
+    "url": "https://www.fool.com/investing/2026/08/19/prediction-3-unstoppable-artificial-intelligence-s/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/19/prediction-3-unstoppable-artificial-intelligence-s/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Broadcom (AVGO) Faces Rising Hedge Fund Caution",
+   "value": {
+    "headline": "Broadcom (AVGO) Faces Rising Hedge Fund Caution",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787091059,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-faces-rising-hedge-221059949.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-faces-rising-hedge-221059949.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "BofA Sends Bullish Message For Taiwan Semiconductor Stock Fans",
+   "value": {
+    "headline": "BofA Sends Bullish Message For Taiwan Semiconductor Stock Fans",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787086022,
+    "url": "https://finance.yahoo.com/technology/articles/bofa-sends-bullish-message-taiwan-204702561.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/bofa-sends-bullish-message-taiwan-204702561.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 13,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-19",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 1951,
+    "days": 5,
+    "max_shares": 1262,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-19",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
