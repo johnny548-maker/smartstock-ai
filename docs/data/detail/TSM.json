@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 413.41,
- "change_pct": -4.07,
+ "price": 412.09,
+ "change_pct": -0.32,
  "ohlc": [
-  {
-   "time": "2026-05-22",
-   "o": 408.47,
-   "h": 409.71,
-   "l": 401.92,
-   "c": 403.57,
-   "v": 7111900
-  },
   {
    "time": "2026-05-26",
    "o": 412.15,
@@ -482,11 +474,19 @@
    "h": 419.63,
    "l": 410.77,
    "c": 413.41,
-   "v": 14008700
+   "v": 14030100
+  },
+  {
+   "time": "2026-08-19",
+   "o": 418.13,
+   "h": 419.6,
+   "l": 407.88,
+   "c": 412.09,
+   "v": 8402700
   }
  ],
  "sr": {
-  "price": 413.41,
+  "price": 412.09,
   "resistance": [
    413.53,
    419.02
@@ -498,7 +498,6 @@
   "strong_support": 223.16
  },
  "spark": [
-  403.57,
   411.36,
   421.74,
   423.87,
@@ -557,14 +556,15 @@
   430.49,
   426.35,
   430.97,
-  413.41
+  413.41,
+  412.09
  ],
- "spark_start": "2026-05-22",
- "spark_end": "2026-08-18",
+ "spark_start": "2026-05-26",
+ "spark_end": "2026-08-19",
  "fundamental": {
-  "pe_trailing": 30.967041,
-  "pe_forward": 18.98007,
-  "eps_trailing": 13.35,
+  "pe_trailing": 30.96093,
+  "pe_forward": 18.919466,
+  "eps_trailing": 13.31,
   "eps_forward": 21.78127,
   "stale": false,
   "source": "yfinance"
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Samsung hikes chipmaking prices by up to 15% on demand spike, sources say",
+   "label": "Taiwan Semiconductor vs. ASML: Which Semiconductor Titan Is the Better Buy Today?",
    "value": {
-    "headline": "Samsung hikes chipmaking prices by up to 15% on demand spike, sources say",
+    "headline": "Taiwan Semiconductor vs. ASML: Which Semiconductor Titan Is the Better Buy Today?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787128196,
-    "url": "https://finance.yahoo.com/technology/ai/articles/samsung-hikes-chipmaking-prices-15-082956191.html?.tsrc=rss",
+    "ts": 1787216100,
+    "url": "https://www.fool.com/investing/2026/08/20/taiwan-semiconductor-vs-asml-which-semiconductor-t/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/samsung-hikes-chipmaking-prices-15-082956191.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/20/taiwan-semiconductor-vs-asml-which-semiconductor-t/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Michael Burry Flags New AI Chip Startup By Harvard Dropouts As ‘Serious Competition’ For Nvidia",
+   "label": "TSMC Trades 30.87% Above GF Value as Chip Capacity Tightens",
    "value": {
-    "headline": "Michael Burry Flags New AI Chip Startup By Harvard Dropouts As ‘Serious Competition’ For Nvidia",
+    "headline": "TSMC Trades 30.87% Above GF Value as Chip Capacity Tightens",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787123469,
-    "url": "https://stocktwits.com/news-articles/markets/equity/michael-burry-flags-new-ai-chip-startup-by-harvard-dropouts-as-serious-competition-for-nvidia/cZYdJbiRJk0?.tsrc=rss",
+    "ts": 1787177172,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-trades-30-87-above-220612599.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/michael-burry-flags-new-ai-chip-startup-by-harvard-dropouts-as-serious-competition-for-nvidia/cZYdJbiRJk0?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/tsmc-trades-30-87-above-220612599.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: 3 Unstoppable Artificial Intelligence Stocks That Will Join Nvidia, Apple, and Alphabet in the $4 Trillion C",
+   "label": "Samsung Tumbled Nearly 8% in Seoul Even as AI Demand Drives Chip Prices Up To 15%",
    "value": {
-    "headline": "Prediction: 3 Unstoppable Artificial Intelligence Stocks That Will Join Nvidia, Apple, and Alphabet in the $4 Trillion Club by 2028",
+    "headline": "Samsung Tumbled Nearly 8% in Seoul Even as AI Demand Drives Chip Prices Up To 15%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787115000,
-    "url": "https://www.fool.com/investing/2026/08/19/prediction-3-unstoppable-artificial-intelligence-s/?.tsrc=rss",
+    "ts": 1787173940,
+    "url": "https://www.benzinga.com/markets/prediction-markets/26/08/61317561/samsung-chip-prices-ai-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/19/prediction-3-unstoppable-artificial-intelligence-s/?.tsrc=rss"
+     "https://www.benzinga.com/markets/prediction-markets/26/08/61317561/samsung-chip-prices-ai-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-19",
+   "severity": "warn",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Broadcom (AVGO) Faces Rising Hedge Fund Caution",
+   "label": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
    "value": {
-    "headline": "Broadcom (AVGO) Faces Rising Hedge Fund Caution",
+    "headline": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787091059,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-faces-rising-hedge-221059949.html?.tsrc=rss",
+    "ts": 1787171054,
+    "url": "https://finance.yahoo.com/m/642b6381-df48-3594-a5ee-3051d399c3b8/u.s.-markets-prepare-for-ai.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-faces-rising-hedge-221059949.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/642b6381-df48-3594-a5ee-3051d399c3b8/u.s.-markets-prepare-for-ai.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "BofA Sends Bullish Message For Taiwan Semiconductor Stock Fans",
+   "label": "SoundHound AI vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "BofA Sends Bullish Message For Taiwan Semiconductor Stock Fans",
+    "headline": "SoundHound AI vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787086022,
-    "url": "https://finance.yahoo.com/technology/articles/bofa-sends-bullish-message-taiwan-204702561.html?.tsrc=rss",
+    "ts": 1787169077,
+    "url": "https://www.fool.com/coverage/better-buy/2026/08/19/soundhound-ai-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/bofa-sends-bullish-message-taiwan-204702561.html?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/08/19/soundhound-ai-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 115 分 / 18 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 115,
+    "comments": 18,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-08-20",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

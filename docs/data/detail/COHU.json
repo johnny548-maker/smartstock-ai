@@ -1,9 +1,17 @@
 {
  "stock": "COHU",
  "name": "Cohu Inc",
- "price": 59.22,
- "change_pct": -5.43,
+ "price": 55.19,
+ "change_pct": -6.81,
  "ohlc": [
+  {
+   "time": "2026-05-21",
+   "o": 44.84,
+   "h": 46.5,
+   "l": 44.68,
+   "c": 45.65,
+   "v": 762800
+  },
   {
    "time": "2026-05-22",
    "o": 45.98,
@@ -317,22 +325,6 @@
    "v": 470700
   },
   {
-   "time": "2026-07-21",
-   "o": 54.62,
-   "h": 56.38,
-   "l": 53.85,
-   "c": 56.22,
-   "v": 690500
-  },
-  {
-   "time": "2026-07-22",
-   "o": 54.1,
-   "h": 56.38,
-   "l": 54.1,
-   "c": 55.01,
-   "v": 482600
-  },
-  {
    "time": "2026-07-23",
    "o": 54.47,
    "h": 56.17,
@@ -482,14 +474,22 @@
    "h": 60.74,
    "l": 56.89,
    "c": 59.22,
-   "v": 1836300
+   "v": 1836800
+  },
+  {
+   "time": "2026-08-19",
+   "o": 59.59,
+   "h": 60.08,
+   "l": 54.0,
+   "c": 55.19,
+   "v": 975100
   }
  ],
  "sr": {
-  "price": 59.22,
+  "price": 55.19,
   "resistance": [
-   70.92,
-   74.6
+   56.17,
+   57.88
   ],
   "support": [
    51.0,
@@ -498,6 +498,7 @@
   "strong_support": 12.57
  },
  "spark": [
+  45.65,
   46.53,
   49.93,
   54.94,
@@ -537,8 +538,6 @@
   51.51,
   51.19,
   51.55,
-  56.22,
-  55.01,
   54.51,
   50.7,
   47.81,
@@ -557,143 +556,12 @@
   58.34,
   59.3,
   62.62,
-  59.22
+  59.22,
+  55.19
  ],
- "spark_start": "2026-05-22",
- "spark_end": "2026-08-18",
+ "spark_start": "2026-05-21",
+ "spark_end": "2026-08-19",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems Soars Again Friday. Shares Now Up More than 500% On the Year.",
-   "value": {
-    "headline": "Aehr Test Systems Soars Again Friday. Shares Now Up More than 500% On the Year.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786723903,
-    "url": "https://247wallst.com/investing/2026/08/14/aehr-test-systems-soars-again-friday-shares-now-up-more-than-500-on-the-year/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/14/aehr-test-systems-soars-again-friday-shares-now-up-more-than-500-on-the-year/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Teradyne Drives Robotics With AI: Can It Outpace KLAC and COHU?",
-   "value": {
-    "headline": "Teradyne Drives Robotics With AI: Can It Outpace KLAC and COHU?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786636440,
-    "url": "https://finance.yahoo.com/technology/ai/articles/teradyne-drives-robotics-ai-outpace-155400182.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/teradyne-drives-robotics-ai-outpace-155400182.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Cohu to Present at Upcoming Investor Conferences",
-   "value": {
-    "headline": "Cohu to Present at Upcoming Investor Conferences",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786564800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cohu-present-upcoming-investor-conferences-200000931.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cohu-present-upcoming-investor-conferences-200000931.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems Stock Soars 72% in a Month: Is it Still a Buy?",
-   "value": {
-    "headline": "Aehr Test Systems Stock Soars 72% in a Month: Is it Still a Buy?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786553340,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-164900826.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-164900826.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Onto Innovation Jumps 6% Tuesday Following Camtek Earnings and NVIDIA’s $500 Billion Partnership",
-   "value": {
-    "headline": "Onto Innovation Jumps 6% Tuesday Following Camtek Earnings and NVIDIA’s $500 Billion Partnership",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786466932,
-    "url": "https://247wallst.com/investing/2026/08/11/onto-innovation-jumps-6-tuesday-following-camtek-earnings-and-nvidias-500-billion-partnership/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/11/onto-innovation-jumps-6-tuesday-following-camtek-earnings-and-nvidias-500-billion-partnership/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 14,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 44698,
-    "days": 2,
-    "max_shares": 34394,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-08-19",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

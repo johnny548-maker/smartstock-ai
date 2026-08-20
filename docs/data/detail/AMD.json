@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
- "name": "AMD",
- "price": 484.39,
- "change_pct": -4.27,
+ "name": "Advanced Micro Devices, Inc. - Common Stock",
+ "price": 466.42,
+ "change_pct": -3.71,
  "ohlc": [
-  {
-   "time": "2026-05-22",
-   "o": 469.84,
-   "h": 481.41,
-   "l": 461.71,
-   "c": 467.51,
-   "v": 34758600
-  },
   {
    "time": "2026-05-26",
    "o": 484.74,
@@ -482,11 +474,19 @@
    "h": 491.81,
    "l": 474.98,
    "c": 484.39,
-   "v": 23643000
+   "v": 23721500
+  },
+  {
+   "time": "2026-08-19",
+   "o": 486.08,
+   "h": 487.01,
+   "l": 462.55,
+   "c": 466.42,
+   "v": 19089400
   }
  ],
  "sr": {
-  "price": 484.39,
+  "price": 466.42,
   "resistance": [
    527.2,
    530.13
@@ -495,10 +495,9 @@
    463.21,
    460.21
   ],
-  "strong_support": 149.22
+  "strong_support": 424.03
  },
  "spark": [
-  467.51,
   503.89,
   495.54,
   518.09,
@@ -557,173 +556,12 @@
   483.01,
   514.39,
   506.0,
-  484.39
+  484.39,
+  466.42
  ],
- "spark_start": "2026-05-22",
- "spark_end": "2026-08-18",
- "fundamental": {
-  "pe_trailing": 123.56888,
-  "pe_forward": 31.316774,
-  "eps_trailing": 3.92,
-  "eps_forward": 15.46743,
-  "stale": false,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 484.39,
-  "stop": 450.48,
-  "target": 569.16,
-  "atr_bracket": 569.16,
-  "measured_move": 604.96,
-  "target_band": [
-   569.16,
-   584.28,
-   604.96
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 6.1,
-  "swing_stop": 454.28,
-  "chandelier": 462.96,
-  "fib_targets": [
-   558.39,
-   584.28,
-   612.87
-  ]
- },
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】八月底選股策略? 兩大方向 搶先佈局九月大行情?!",
-   "value": {
-    "headline": "【量大強漲股整理】八月底選股策略? 兩大方向 搶先佈局九月大行情?!",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1787132727,
-    "url": "cnyes:6581634",
-    "urls": [
-     "cnyes:6581634"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Cerebras Unveils CS-4, OpenAI and AMD Partnerships to Accelerate AI Inference",
-   "value": {
-    "headline": "Cerebras Unveils CS-4, OpenAI and AMD Partnerships to Accelerate AI Inference",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787104933,
-    "url": "https://www.marketbeat.com/instant-alerts/cerebras-unveils-cs-4-openai-and-amd-partnerships-to-accelerate-ai-inference-2026-08-18/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/cerebras-unveils-cs-4-openai-and-amd-partnerships-to-accelerate-ai-inference-2026-08-18/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Micron, Other Chip Stocks Drop During Dog Days Of Summer",
-   "value": {
-    "headline": "Micron, Other Chip Stocks Drop During Dog Days Of Summer",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787087467,
-    "url": "https://finance.yahoo.com/m/47aad014-8127-390d-b5bf-5fe35d3c29d4/micron%2C-other-chip-stocks.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/47aad014-8127-390d-b5bf-5fe35d3c29d4/micron%2C-other-chip-stocks.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AMD’s $1.3 Billion Portfolio Reveals Its Biggest Investments and Where AI Demand Lands Next",
-   "value": {
-    "headline": "AMD’s $1.3 Billion Portfolio Reveals Its Biggest Investments and Where AI Demand Lands Next",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787087279,
-    "url": "https://247wallst.com/investing/2026/08/18/amds-1-3-billion-portfolio-reveals-its-biggest-investments-and-where-ai-demand-lands-next/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/18/amds-1-3-billion-portfolio-reveals-its-biggest-investments-and-where-ai-demand-lands-next/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AMD vs. Nvidia: 1 Metric Tells Me Which Is Clearly the Better Buy for 2026",
-   "value": {
-    "headline": "AMD vs. Nvidia: 1 Metric Tells Me Which Is Clearly the Better Buy for 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787086620,
-    "url": "https://www.fool.com/investing/2026/08/18/amd-vs-nvidia-1-metric-tells-me-which-is-clearly-t/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/18/amd-vs-nvidia-1-metric-tells-me-which-is-clearly-t/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 12 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 12,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes",
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 565,539 股交割失敗）",
-   "value": {
-    "total_shares": 565539,
-    "days": 9,
-    "max_shares": 243276,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-19",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "spark_start": "2026-05-26",
+ "spark_end": "2026-08-19",
+ "fundamental": null,
+ "levels": null,
+ "generated_for": "detail"
 }

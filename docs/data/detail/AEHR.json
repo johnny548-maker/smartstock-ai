@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 123.25,
- "change_pct": -15.36,
+ "price": 107.96,
+ "change_pct": -12.41,
  "ohlc": [
-  {
-   "time": "2026-05-22",
-   "o": 92.65,
-   "h": 97.15,
-   "l": 90.14,
-   "c": 95.02,
-   "v": 1857300
-  },
   {
    "time": "2026-05-26",
    "o": 99.0,
@@ -482,13 +474,22 @@
    "h": 141.38,
    "l": 121.14,
    "c": 123.25,
-   "v": 3214400
+   "v": 3238200
+  },
+  {
+   "time": "2026-08-19",
+   "o": 123.64,
+   "h": 124.74,
+   "l": 107.41,
+   "c": 107.96,
+   "v": 2942800
   }
  ],
  "sr": {
-  "price": 123.25,
+  "price": 107.96,
   "resistance": [
-   126.62
+   108.75,
+   110.2
   ],
   "support": [
    86.58,
@@ -497,7 +498,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  95.02,
   109.92,
   103.82,
   99.99,
@@ -556,14 +556,55 @@
   123.3,
   134.06,
   145.61,
-  123.25
+  123.25,
+  107.96
  ],
- "spark_start": "2026-05-22",
- "spark_end": "2026-08-18",
+ "spark_start": "2026-05-26",
+ "spark_end": "2026-08-19",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Aehr Test Systems Sinks 10%, Teradyne Falls 5%, FormFactor Drops 6%: What’s Hitting These Semiconductor Test Equipment S",
+   "value": {
+    "headline": "Aehr Test Systems Sinks 10%, Teradyne Falls 5%, FormFactor Drops 6%: What’s Hitting These Semiconductor Test Equipment Stocks?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787153309,
+    "url": "https://247wallst.com/investing/2026/08/19/aehr-test-systems-sinks-10-teradyne-falls-5-formfactor-drops-6-whats-hitting-these-semiconductor-test-equipment-stocks/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/08/19/aehr-test-systems-sinks-10-teradyne-falls-5-formfactor-drops-6-whats-hitting-these-semiconductor-test-equipment-stocks/?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-08-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can AEHR Turn Silicon Photonics Momentum Into Sustained Growth?",
+   "value": {
+    "headline": "Can AEHR Turn Silicon Photonics Momentum Into Sustained Growth?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787148420,
+    "url": "https://finance.yahoo.com/technology/articles/aehr-turn-silicon-photonics-momentum-140700815.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/aehr-turn-silicon-photonics-momentum-140700815.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -581,7 +622,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -601,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -621,62 +662,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Here Are Friday’s Top Wall Street Analyst Research Calls: Cinemark, Digital Realty, Fox Corporation, Krystal Biotech, LT",
-   "value": {
-    "headline": "Here Are Friday’s Top Wall Street Analyst Research Calls: Cinemark, Digital Realty, Fox Corporation, Krystal Biotech, LTC Properties, Roku, Sandisk, T-Mobile US, Wayfair, and More",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786708557,
-    "url": "https://247wallst.com/investing/2026/08/14/here-are-fridays-top-wall-street-analyst-research-calls-cinemark-digital-realty-fox-corporation-krystal-biotech-ltc-properties-roku-sandisk-t-mobile-us-wayfair-and-more/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/14/here-are-fridays-top-wall-street-analyst-research-calls-cinemark-digital-realty-fox-corporation-krystal-biotech-ltc-properties-roku-sandisk-t-mobile-us-wayfair-and-more/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "DRAM Movers: These Memory/Storage ETFs Are Soaring as Sandisk, Micron Rally",
-   "value": {
-    "headline": "DRAM Movers: These Memory/Storage ETFs Are Soaring as Sandisk, Micron Rally",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786644735,
-    "url": "https://247wallst.com/investing/2026/08/13/dram-movers-these-memory-storage-etfs-are-soaring-as-sandisk-micron-rally/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/13/dram-movers-these-memory-storage-etfs-are-soaring-as-sandisk-micron-rally/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -691,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

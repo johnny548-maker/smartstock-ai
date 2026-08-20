@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 310.03,
- "change_pct": 1.45,
+ "price": 316.83,
+ "change_pct": 2.19,
  "ohlc": [
-  {
-   "time": "2026-05-22",
-   "o": 305.86,
-   "h": 311.13,
-   "l": 305.58,
-   "c": 308.55,
-   "v": 43670200
-  },
   {
    "time": "2026-05-26",
    "o": 309.29,
@@ -482,14 +474,22 @@
    "h": 311.49,
    "l": 305.74,
    "c": 310.03,
-   "v": 53370900
+   "v": 53424500
+  },
+  {
+   "time": "2026-08-19",
+   "o": 310.14,
+   "h": 319.28,
+   "l": 309.6,
+   "c": 316.83,
+   "v": 50428000
   }
  ],
  "sr": {
-  "price": 310.03,
+  "price": 316.83,
   "resistance": [
-   316.02,
-   317.13
+   317.13,
+   334.7
   ],
   "support": [
    304.76,
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  308.55,
   308.06,
   310.58,
   312.24,
@@ -557,171 +556,150 @@
   305.26,
   305.93,
   305.59,
-  310.03
+  310.03,
+  316.83
  ],
- "spark_start": "2026-05-22",
- "spark_end": "2026-08-18",
+ "spark_start": "2026-05-26",
+ "spark_end": "2026-08-19",
  "fundamental": {
-  "pe_trailing": 35.071266,
-  "pe_forward": 32.500492,
-  "eps_trailing": 8.84,
-  "eps_forward": 9.53924,
+  "pe_trailing": 35.598877,
+  "pe_forward": 33.213127,
+  "eps_trailing": 8.9,
+  "eps_forward": 9.5393,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 310.03,
-  "stop": 293.47,
-  "target": 351.44,
-  "atr_bracket": 351.44,
-  "measured_move": 332.29,
-  "target_band": [
-   326.9,
-   332.29,
-   351.44
-  ],
-  "stop_pct": -5.3,
-  "target_pct": 13.4,
-  "rr": 2.5,
-  "atr_pct": 2.7,
-  "swing_stop": 298.09,
-  "chandelier": 319.82,
-  "fib_targets": [
-   321.27,
-   326.9,
-   333.12
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Kestra Financial Hires Wealth Management Head from BlackRock",
+   "label": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
    "value": {
-    "headline": "Kestra Financial Hires Wealth Management Head from BlackRock",
+    "headline": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787133600,
-    "url": "https://www.wealthmanagement.com/ibd-news/kestra-financial-hires-wealth-management-head-from-blackrock?.tsrc=rss",
+    "ts": 1787223000,
+    "url": "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss",
     "urls": [
-     "https://www.wealthmanagement.com/ibd-news/kestra-financial-hires-wealth-management-head-from-blackrock?.tsrc=rss"
+     "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This 3X Tech ETN Owns the Market’s Biggest Winners and Lost 87% the Last Time They Stumbled",
+   "label": "San Francisco Bay Area dethroned as largest 'tech talent' market",
    "value": {
-    "headline": "This 3X Tech ETN Owns the Market’s Biggest Winners and Lost 87% the Last Time They Stumbled",
+    "headline": "San Francisco Bay Area dethroned as largest 'tech talent' market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787131988,
-    "url": "https://247wallst.com/investing/etf/2026/08/19/this-3x-tech-etn-owns-the-markets-biggest-winners-and-lost-87-the-last-time-they-stumbled/?.tsrc=rss",
+    "ts": 1787220000,
+    "url": "https://finance.yahoo.com/technology/articles/san-francisco-bay-area-dethroned-100000021.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/08/19/this-3x-tech-etn-owns-the-markets-biggest-winners-and-lost-87-the-last-time-they-stumbled/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The Magnificent 7 are struggling. Don't let them sink your 401(k)",
-   "value": {
-    "headline": "The Magnificent 7 are struggling. Don't let them sink your 401(k)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787130308,
-    "url": "https://www.usatoday.com/story/money/personal-finance/2026/08/19/magnificent-seven-stocks-401k-wall-street/91354381007/?.tsrc=rss",
-    "urls": [
-     "https://www.usatoday.com/story/money/personal-finance/2026/08/19/magnificent-seven-stocks-401k-wall-street/91354381007/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Western Digital (WDC) Could Be 51% Overvalued On Apple China Memory Push",
-   "value": {
-    "headline": "Western Digital (WDC) Could Be 51% Overvalued On Apple China Memory Push",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787127268,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/western-digital-wdc-could-51-081428418.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/western-digital-wdc-could-51-081428418.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/san-francisco-bay-area-dethroned-100000021.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet eyes record A$5 billion Australian bond debut as AI spending surges",
+   "label": "Apple (AAPL) Eases App Store Fees and Tracking Rules Under European Pressure",
    "value": {
-    "headline": "Alphabet eyes record A$5 billion Australian bond debut as AI spending surges",
+    "headline": "Apple (AAPL) Eases App Store Fees and Tracking Rules Under European Pressure",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787122020,
-    "url": "https://www.proactiveinvestors.com/companies/news/1097248/alphabet-eyes-record-a-5-billion-australian-bond-debut-as-ai-spending-surges-1097248.html?.tsrc=rss",
+    "ts": 1787217102,
+    "url": "https://finance.yahoo.com/technology/articles/apple-aapl-eases-app-store-091142942.html?.tsrc=rss",
     "urls": [
-     "https://www.proactiveinvestors.com/companies/news/1097248/alphabet-eyes-record-a-5-billion-australian-bond-debut-as-ai-spending-surges-1097248.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/apple-aapl-eases-app-store-091142942.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures: S&P 500, Nasdaq Rise As Moderna, Merck, Gold Shine But Not These Techs",
+   "value": {
+    "headline": "Dow Jones Futures: S&P 500, Nasdaq Rise As Moderna, Merck, Gold Shine But Not These Techs",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787195558,
+    "url": "https://finance.yahoo.com/m/68a3e9b8-8858-3a96-8c98-dd4126c44fbe/dow-jones-futures%3A-s%26p-500%2C.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/68a3e9b8-8858-3a96-8c98-dd4126c44fbe/dow-jones-futures%3A-s%26p-500%2C.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta ran ads for an app that only needs one photo and no consent",
+   "value": {
+    "headline": "Meta ran ads for an app that only needs one photo and no consent",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787190420,
+    "url": "https://www.thestreet.com/technology/meta-ran-ads-for-an-app-that-only-needs-one-photo-and-no-consent?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/technology/meta-ran-ads-for-an-app-that-only-needs-one-photo-and-no-consent?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 12 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 12,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 52 分 / 13 留言",
+   "label": "HN 討論熱度 20 篇 / 76 分 / 25 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 52,
-    "comments": 13,
+    "points": 76,
+    "comments": 25,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-19",
+   "as_of": "2026-08-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
