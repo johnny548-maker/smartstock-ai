@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 316.83,
- "change_pct": 2.19,
+ "price": 311.3,
+ "change_pct": -1.75,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 309.29,
-   "h": 311.55,
-   "l": 307.4,
-   "c": 308.06,
-   "v": 48000500
-  },
   {
    "time": "2026-05-27",
    "o": 308.06,
@@ -482,14 +474,22 @@
    "h": 319.28,
    "l": 309.6,
    "c": 316.83,
-   "v": 50428000
+   "v": 50505600
+  },
+  {
+   "time": "2026-08-20",
+   "o": 317.46,
+   "h": 320.28,
+   "l": 310.65,
+   "c": 311.3,
+   "v": 40895100
   }
  ],
  "sr": {
-  "price": 316.83,
+  "price": 311.3,
   "resistance": [
-   317.13,
-   334.7
+   316.02,
+   317.13
   ],
   "support": [
    304.76,
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  308.06,
   310.58,
   312.24,
   311.79,
@@ -557,14 +556,15 @@
   305.93,
   305.59,
   310.03,
-  316.83
+  316.83,
+  311.3
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
+ "spark_start": "2026-05-27",
+ "spark_end": "2026-08-20",
  "fundamental": {
-  "pe_trailing": 35.598877,
-  "pe_forward": 33.213127,
-  "eps_trailing": 8.9,
+  "pe_trailing": 35.69954,
+  "pe_forward": 32.63342,
+  "eps_trailing": 8.72,
   "eps_forward": 9.5393,
   "stale": false,
   "source": "yfinance"
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
+   "label": "This 2.7% ‘Dividend’ ETF Quietly Holds 28% Big Tech. Here’s Who Should Own It Anyway",
    "value": {
-    "headline": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
+    "headline": "This 2.7% ‘Dividend’ ETF Quietly Holds 28% Big Tech. Here’s Who Should Own It Anyway",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787223000,
-    "url": "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss",
+    "ts": 1787302207,
+    "url": "https://247wallst.com/investing/etf/2026/08/21/this-2-7-dividend-etf-quietly-holds-28-big-tech-heres-who-should-own-it-anyway/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/08/21/this-2-7-dividend-etf-quietly-holds-28-big-tech-heres-who-should-own-it-anyway/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "San Francisco Bay Area dethroned as largest 'tech talent' market",
+   "label": "Apple Reportedly Lays Off Vision Pro Staff As Smart Glasses Take Priority – Ternus CEO Transition Nears",
    "value": {
-    "headline": "San Francisco Bay Area dethroned as largest 'tech talent' market",
+    "headline": "Apple Reportedly Lays Off Vision Pro Staff As Smart Glasses Take Priority – Ternus CEO Transition Nears",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787220000,
-    "url": "https://finance.yahoo.com/technology/articles/san-francisco-bay-area-dethroned-100000021.html?.tsrc=rss",
+    "ts": 1787283569,
+    "url": "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-lays-off-vision-pro-staff-as-smart-glasses-take-priority-ternus-ceo-transition-nears/cZYBKnuRJNT?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/san-francisco-bay-area-dethroned-100000021.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-lays-off-vision-pro-staff-as-smart-glasses-take-priority-ternus-ceo-transition-nears/cZYBKnuRJNT?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple (AAPL) Eases App Store Fees and Tracking Rules Under European Pressure",
+   "label": "Wall Street is starting to warm to Apple's $2,199 foldable gamble",
    "value": {
-    "headline": "Apple (AAPL) Eases App Store Fees and Tracking Rules Under European Pressure",
+    "headline": "Wall Street is starting to warm to Apple's $2,199 foldable gamble",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787217102,
-    "url": "https://finance.yahoo.com/technology/articles/apple-aapl-eases-app-store-091142942.html?.tsrc=rss",
+    "ts": 1787281620,
+    "url": "https://www.thestreet.com/technology/rothschild-bets-on-apple-iphone-ultra-foldable-phone?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/apple-aapl-eases-app-store-091142942.html?.tsrc=rss"
+     "https://www.thestreet.com/technology/rothschild-bets-on-apple-iphone-ultra-foldable-phone?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: S&P 500, Nasdaq Rise As Moderna, Merck, Gold Shine But Not These Techs",
+   "label": "Own DELL Stock? Here Is How To Collect 21% A Year On It",
    "value": {
-    "headline": "Dow Jones Futures: S&P 500, Nasdaq Rise As Moderna, Merck, Gold Shine But Not These Techs",
+    "headline": "Own DELL Stock? Here Is How To Collect 21% A Year On It",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787195558,
-    "url": "https://finance.yahoo.com/m/68a3e9b8-8858-3a96-8c98-dd4126c44fbe/dow-jones-futures%3A-s%26p-500%2C.html?.tsrc=rss",
+    "ts": 1787270438,
+    "url": "https://www.trefis.com/articles/612204/own-dell-stock-here-is-how-to-collect-21-a-year-on-it/2026-08-20?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/68a3e9b8-8858-3a96-8c98-dd4126c44fbe/dow-jones-futures%3A-s%26p-500%2C.html?.tsrc=rss"
+     "https://www.trefis.com/articles/612204/own-dell-stock-here-is-how-to-collect-21-a-year-on-it/2026-08-20?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta ran ads for an app that only needs one photo and no consent",
+   "label": "Apple Inc. (AAPL) Wants to Pay Publishers to Fix Siri. What’s the Catch?",
    "value": {
-    "headline": "Meta ran ads for an app that only needs one photo and no consent",
+    "headline": "Apple Inc. (AAPL) Wants to Pay Publishers to Fix Siri. What’s the Catch?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787190420,
-    "url": "https://www.thestreet.com/technology/meta-ran-ads-for-an-app-that-only-needs-one-photo-and-no-consent?.tsrc=rss",
+    "ts": 1787267642,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-inc-aapl-wants-pay-231402505.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/technology/meta-ran-ads-for-an-app-that-only-needs-one-photo-and-no-consent?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-inc-aapl-wants-pay-231402505.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 76 分 / 25 留言",
+   "label": "HN 討論熱度 20 篇 / 136 分 / 50 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 76,
-    "comments": 25,
+    "points": 136,
+    "comments": 50,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

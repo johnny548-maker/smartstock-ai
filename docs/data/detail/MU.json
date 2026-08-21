@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 937.11,
- "change_pct": -0.39,
+ "price": 974.33,
+ "change_pct": 3.97,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 820.37,
-   "h": 916.66,
-   "l": 820.17,
-   "c": 895.74,
-   "v": 76560800
-  },
   {
    "time": "2026-05-27",
    "o": 955.51,
@@ -482,11 +474,19 @@
    "h": 960.0,
    "l": 915.18,
    "c": 937.11,
-   "v": 26661900
+   "v": 26901900
+  },
+  {
+   "time": "2026-08-20",
+   "o": 935.01,
+   "h": 977.28,
+   "l": 929.07,
+   "c": 974.33,
+   "v": 25055000
   }
  ],
  "sr": {
-  "price": 937.11,
+  "price": 974.33,
   "resistance": [
    1011.77,
    1035.5
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  895.74,
   928.27,
   923.38,
   970.85,
@@ -557,11 +556,145 @@
   971.66,
   1011.75,
   940.76,
-  937.11
+  937.11,
+  974.33
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
+ "spark_start": "2026-05-27",
+ "spark_end": "2026-08-20",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Micron to launch US memory research lab with $10bn investment",
+   "value": {
+    "headline": "Micron to launch US memory research lab with $10bn investment",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787309641,
+    "url": "https://www.verdict.co.uk/micron-to-launch-research-lab/?.tsrc=rss",
+    "urls": [
+     "https://www.verdict.co.uk/micron-to-launch-research-lab/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Rise After Bearish Market Signal; Bitcoin Keeps Surging",
+   "value": {
+    "headline": "Dow Jones Futures Rise After Bearish Market Signal; Bitcoin Keeps Surging",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787308786,
+    "url": "https://finance.yahoo.com/m/91327cea-fed2-33ed-a182-385b27c0298f/dow-jones-futures-rise-after.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/91327cea-fed2-33ed-a182-385b27c0298f/dow-jones-futures-rise-after.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】台股開低走高藏玄機,輝達開獎前「必買清單」曝光!",
+   "value": {
+    "headline": "【量大強漲股整理】台股開低走高藏玄機,輝達開獎前「必買清單」曝光!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1787306330,
+    "url": "cnyes:6583736",
+    "urls": [
+     "cnyes:6583736"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Micron (MU) Just Made a $10B Bet on Its Future",
+   "value": {
+    "headline": "Micron (MU) Just Made a $10B Bet on Its Future",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787301884,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-just-made-10b-084444893.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/micron-mu-just-made-10b-084444893.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
+   "value": {
+    "headline": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787299620,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 21,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 78044,
+    "days": 5,
+    "max_shares": 74955,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

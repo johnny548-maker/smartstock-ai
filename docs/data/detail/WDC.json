@@ -1,17 +1,9 @@
 {
  "stock": "WDC",
  "name": "Western Digital",
- "price": 462.09,
- "change_pct": -6.87,
+ "price": 469.05,
+ "change_pct": 1.51,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 504.7,
-   "h": 535.98,
-   "l": 500.37,
-   "c": 524.51,
-   "v": 7552500
-  },
   {
    "time": "2026-05-27",
    "o": 538.83,
@@ -482,14 +474,22 @@
    "h": 500.0,
    "l": 460.28,
    "c": 462.09,
-   "v": 6956100
+   "v": 6981500
+  },
+  {
+   "time": "2026-08-20",
+   "o": 463.39,
+   "h": 477.28,
+   "l": 453.7,
+   "c": 469.05,
+   "v": 5358600
   }
  ],
  "sr": {
-  "price": 462.09,
+  "price": 469.05,
   "resistance": [
    525.01,
-   576.37
+   548.6
   ],
   "support": [
    433.89,
@@ -498,7 +498,6 @@
   "strong_support": 28.7
  },
  "spark": [
-  524.51,
   530.46,
   531.04,
   531.07,
@@ -557,11 +556,49 @@
   508.8,
   536.01,
   496.16,
-  462.09
+  462.09,
+  469.05
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
+ "spark_start": "2026-05-27",
+ "spark_end": "2026-08-20",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】台股開低走高藏玄機,輝達開獎前「必買清單」曝光!",
+   "value": {
+    "headline": "【量大強漲股整理】台股開低走高藏玄機,輝達開獎前「必買清單」曝光!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1787306330,
+    "url": "cnyes:6583736",
+    "urls": [
+     "cnyes:6583736"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

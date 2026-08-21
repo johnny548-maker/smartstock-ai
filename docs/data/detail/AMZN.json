@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 265.84,
- "change_pct": 2.46,
+ "price": 260.11,
+ "change_pct": -2.16,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 267.94,
-   "h": 269.3,
-   "l": 262.07,
-   "c": 265.29,
-   "v": 38028100
-  },
   {
    "time": "2026-05-27",
    "o": 266.15,
@@ -482,11 +474,19 @@
    "h": 266.4,
    "l": 258.58,
    "c": 265.84,
-   "v": 35613300
+   "v": 35762400
+  },
+  {
+   "time": "2026-08-20",
+   "o": 263.16,
+   "h": 263.84,
+   "l": 259.52,
+   "c": 260.11,
+   "v": 28301300
   }
  ],
  "sr": {
-  "price": 265.84,
+  "price": 260.11,
   "resistance": [
    274.75,
    278.56
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  265.29,
   271.85,
   274.0,
   270.64,
@@ -557,15 +556,16 @@
   262.65,
   261.31,
   259.45,
-  265.84
+  265.84,
+  260.11
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
+ "spark_start": "2026-05-27",
+ "spark_end": "2026-08-20",
  "fundamental": {
-  "pe_trailing": 20.882954,
-  "pe_forward": 25.553528,
-  "eps_trailing": 12.73,
-  "eps_forward": 10.40326,
+  "pe_trailing": 20.925983,
+  "pe_forward": 25.033419,
+  "eps_trailing": 12.43,
+  "eps_forward": 10.39051,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
+   "label": "Electric Vehicles Today - Rising Demand Driving China's Charging Services Market Expansion",
    "value": {
-    "headline": "Great Eight? Why SpaceX Stock Isn’t Like the Magnificent Seven.",
+    "headline": "Electric Vehicles Today - Rising Demand Driving China's Charging Services Market Expansion",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787223000,
-    "url": "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss",
+    "ts": 1787308797,
+    "url": "https://finance.yahoo.com/energy/articles/electric-vehicles-today-rising-demand-103957658.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ab1ae4f0-5de5-3f06-be21-8239b6ea5edc/great-eight%3F-why-spacex-stock.html?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/electric-vehicles-today-rising-demand-103957658.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic’s Revenue Run Rate Just Hit $65 Billion. SpaceX and Amazon May Be the Biggest Winners.",
+   "label": "Analysis-US corporate AI debt surge tests investor limits as fatigue emerges",
    "value": {
-    "headline": "Anthropic’s Revenue Run Rate Just Hit $65 Billion. SpaceX and Amazon May Be the Biggest Winners.",
+    "headline": "Analysis-US corporate AI debt surge tests investor limits as fatigue emerges",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787222701,
-    "url": "https://www.fool.com/investing/2026/08/20/anthropics-revenue-run-rate-just-hit-65-billion-amazon-and-spacex-may-be-the-biggest-winners/?.tsrc=rss",
+    "ts": 1787306538,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/analysis-us-corporate-ai-debt-100218069.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/20/anthropics-revenue-run-rate-just-hit-65-billion-amazon-and-spacex-may-be-the-biggest-winners/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/analysis-us-corporate-ai-debt-100218069.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Elon Musk Says SpaceX Could Generate $1 Trillion in Revenue by 2030. Here Are 2 Companies That Could Get There First",
+   "label": "I Examined the Top Holdings of 17 Billionaire Money Managers, and These 3 Stocks Were the Common Denominators",
    "value": {
-    "headline": "Elon Musk Says SpaceX Could Generate $1 Trillion in Revenue by 2030. Here Are 2 Companies That Could Get There First",
+    "headline": "I Examined the Top Holdings of 17 Billionaire Money Managers, and These 3 Stocks Were the Common Denominators",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787221203,
-    "url": "https://www.fool.com/investing/2026/08/20/elon-musk-says-spacex-could-generate-usd1-trillion-in-revenue-by-2030-here-are-2-companies-that-could-get-there-first/?.tsrc=rss",
+    "ts": 1787300760,
+    "url": "https://www.fool.com/investing/2026/08/21/examine-top-holding-17-billionaire-3-common-stocks/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/20/elon-musk-says-spacex-could-generate-usd1-trillion-in-revenue-by-2030-here-are-2-companies-that-could-get-there-first/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/21/examine-top-holding-17-billionaire-3-common-stocks/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Gains in AI company stakes juice second-quarter earnings for S&P 500",
+   "label": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
    "value": {
-    "headline": "Gains in AI company stakes juice second-quarter earnings for S&P 500",
+    "headline": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787220259,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/gains-ai-company-stakes-juice-100419261.html?.tsrc=rss",
+    "ts": 1787299620,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/gains-ai-company-stakes-juice-100419261.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Stocks Have Soared. Is It Too Late to Buy This Vanguard ETF?",
+   "label": "The Zacks Analyst Blog Highlights Dell, Celestica, Lumentum and Vertiv",
    "value": {
-    "headline": "AI Stocks Have Soared. Is It Too Late to Buy This Vanguard ETF?",
+    "headline": "The Zacks Analyst Blog Highlights Dell, Celestica, Lumentum and Vertiv",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787219400,
-    "url": "https://www.fool.com/investing/2026/08/20/ai-stocks-soared-is-too-late-buy-vanguard-etf-vug/?.tsrc=rss",
+    "ts": 1787296140,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-dell-070900789.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/20/ai-stocks-soared-is-too-late-buy-vanguard-etf-vug/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-dell-070900789.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 11 篇 / 149 分 / 75 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 149,
-    "comments": 75,
-    "n": 11,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-08-20",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
