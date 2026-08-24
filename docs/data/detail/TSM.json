@@ -1,25 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 412.09,
- "change_pct": -0.32,
+ "price": 418.95,
+ "change_pct": 0.71,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 412.15,
-   "h": 415.52,
-   "l": 409.11,
-   "c": 411.36,
-   "v": 10132000
-  },
-  {
-   "time": "2026-05-27",
-   "o": 426.02,
-   "h": 429.54,
-   "l": 414.41,
-   "c": 421.74,
-   "v": 14695600
-  },
   {
    "time": "2026-05-28",
    "o": 421.23,
@@ -482,14 +466,30 @@
    "h": 419.6,
    "l": 407.88,
    "c": 412.09,
-   "v": 8402700
+   "v": 8424700
+  },
+  {
+   "time": "2026-08-20",
+   "o": 408.6,
+   "h": 417.96,
+   "l": 407.72,
+   "c": 416.0,
+   "v": 10447900
+  },
+  {
+   "time": "2026-08-21",
+   "o": 423.02,
+   "h": 425.68,
+   "l": 416.7,
+   "c": 418.95,
+   "v": 8936800
   }
  ],
  "sr": {
-  "price": 412.09,
+  "price": 418.95,
   "resistance": [
-   413.53,
-   419.02
+   419.02,
+   420.98
   ],
   "support": [
    404.56,
@@ -498,8 +498,6 @@
   "strong_support": 223.16
  },
  "spark": [
-  411.36,
-  421.74,
   423.87,
   417.47,
   434.61,
@@ -557,14 +555,16 @@
   426.35,
   430.97,
   413.41,
-  412.09
+  412.09,
+  416.0,
+  418.95
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
+ "spark_start": "2026-05-28",
+ "spark_end": "2026-08-21",
  "fundamental": {
-  "pe_trailing": 30.96093,
-  "pe_forward": 18.919466,
-  "eps_trailing": 13.31,
+  "pe_trailing": 31.241611,
+  "pe_forward": 19.234417,
+  "eps_trailing": 13.41,
   "eps_forward": 21.78127,
   "stale": false,
   "source": "yfinance"
@@ -575,131 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor vs. ASML: Which Semiconductor Titan Is the Better Buy Today?",
+   "label": "Beyond Nvidia, AMD, and Broadcom: Why This Chip Stock Will Emerge as the Biggest Winner of the AI Semiconductor Boom",
    "value": {
-    "headline": "Taiwan Semiconductor vs. ASML: Which Semiconductor Titan Is the Better Buy Today?",
+    "headline": "Beyond Nvidia, AMD, and Broadcom: Why This Chip Stock Will Emerge as the Biggest Winner of the AI Semiconductor Boom",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787216100,
-    "url": "https://www.fool.com/investing/2026/08/20/taiwan-semiconductor-vs-asml-which-semiconductor-t/?.tsrc=rss",
+    "ts": 1787564100,
+    "url": "https://www.fool.com/investing/2026/08/24/beyond-nvidia-amd-and-broadcom-why-this-chip-stock/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/20/taiwan-semiconductor-vs-asml-which-semiconductor-t/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/24/beyond-nvidia-amd-and-broadcom-why-this-chip-stock/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC Trades 30.87% Above GF Value as Chip Capacity Tightens",
+   "label": "8 Billionaire Money Managers Dumped Micron in the Second Quarter, With Several Favoring This Foundational AI Stock Inste",
    "value": {
-    "headline": "TSMC Trades 30.87% Above GF Value as Chip Capacity Tightens",
+    "headline": "8 Billionaire Money Managers Dumped Micron in the Second Quarter, With Several Favoring This Foundational AI Stock Instead",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787177172,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-trades-30-87-above-220612599.html?.tsrc=rss",
+    "ts": 1787563560,
+    "url": "https://www.fool.com/investing/2026/08/24/8-billionaire-money-managers-dump-mu-in-favor-tsm/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tsmc-trades-30-87-above-220612599.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/24/8-billionaire-money-managers-dump-mu-in-favor-tsm/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Samsung Tumbled Nearly 8% in Seoul Even as AI Demand Drives Chip Prices Up To 15%",
+   "label": "小米發表新一代自研晶片Xring O3 傳台積電3奈米代工、鎖定旗艦折疊手機",
    "value": {
-    "headline": "Samsung Tumbled Nearly 8% in Seoul Even as AI Demand Drives Chip Prices Up To 15%",
+    "headline": "小米發表新一代自研晶片Xring O3 傳台積電3奈米代工、鎖定旗艦折疊手機",
     "sources": [
-     "yahoo_us"
+     "cnyes"
     ],
     "source_count": 1,
-    "ts": 1787173940,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/08/61317561/samsung-chip-prices-ai-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1787554807,
+    "url": "cnyes:6585236",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/08/61317561/samsung-chip-prices-ai-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "cnyes:6585236"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-08-20",
+   "severity": "info",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
+   "label": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
    "value": {
-    "headline": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
+    "headline": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787171054,
-    "url": "https://finance.yahoo.com/m/642b6381-df48-3594-a5ee-3051d399c3b8/u.s.-markets-prepare-for-ai.html?.tsrc=rss",
+    "ts": 1787552541,
+    "url": "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/642b6381-df48-3594-a5ee-3051d399c3b8/u.s.-markets-prepare-for-ai.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "SoundHound AI vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
+   "label": "AMD Is Investing More Than $10 Billion in Taiwan to Build Advanced Chip Packaging With TSMC. Here's What Lisa Su Is Actu",
    "value": {
-    "headline": "SoundHound AI vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
+    "headline": "AMD Is Investing More Than $10 Billion in Taiwan to Build Advanced Chip Packaging With TSMC. Here's What Lisa Su Is Actually Buying With That Money.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787169077,
-    "url": "https://www.fool.com/coverage/better-buy/2026/08/19/soundhound-ai-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+    "ts": 1787500200,
+    "url": "https://www.fool.com/investing/2026/08/23/amd-is-investing-more-than-xx-billion-in-taiwan-to/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/08/19/soundhound-ai-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/23/amd-is-investing-more-than-xx-billion-in-taiwan-to/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 115 分 / 18 留言",
+   "label": "HN 討論熱度 20 篇 / 120 分 / 62 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 115,
-    "comments": 18,
+    "points": 120,
+    "comments": 62,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-20",
+   "as_of": "2026-08-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

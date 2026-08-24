@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 311.3,
- "change_pct": -1.75,
+ "price": 309.35,
+ "change_pct": -0.63,
  "ohlc": [
-  {
-   "time": "2026-05-27",
-   "o": 308.06,
-   "h": 312.99,
-   "l": 308.03,
-   "c": 310.58,
-   "v": 50430900
-  },
   {
    "time": "2026-05-28",
    "o": 310.41,
@@ -482,11 +474,19 @@
    "h": 320.28,
    "l": 310.65,
    "c": 311.3,
-   "v": 40895100
+   "v": 40959200
+  },
+  {
+   "time": "2026-08-21",
+   "o": 312.05,
+   "h": 312.38,
+   "l": 307.01,
+   "c": 309.35,
+   "v": 46768100
   }
  ],
  "sr": {
-  "price": 311.3,
+  "price": 309.35,
   "resistance": [
    316.02,
    317.13
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  310.58,
   312.24,
   311.79,
   306.05,
@@ -557,15 +556,16 @@
   305.59,
   310.03,
   316.83,
-  311.3
+  311.3,
+  309.35
  ],
- "spark_start": "2026-05-27",
- "spark_end": "2026-08-20",
+ "spark_start": "2026-05-28",
+ "spark_end": "2026-08-21",
  "fundamental": {
-  "pe_trailing": 35.69954,
-  "pe_forward": 32.63342,
+  "pe_trailing": 35.475918,
+  "pe_forward": 32.43169,
   "eps_trailing": 8.72,
-  "eps_forward": 9.5393,
+  "eps_forward": 9.53851,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,131 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This 2.7% ‘Dividend’ ETF Quietly Holds 28% Big Tech. Here’s Who Should Own It Anyway",
+   "label": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
    "value": {
-    "headline": "This 2.7% ‘Dividend’ ETF Quietly Holds 28% Big Tech. Here’s Who Should Own It Anyway",
+    "headline": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787302207,
-    "url": "https://247wallst.com/investing/etf/2026/08/21/this-2-7-dividend-etf-quietly-holds-28-big-tech-heres-who-should-own-it-anyway/?.tsrc=rss",
+    "ts": 1787563440,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/08/21/this-2-7-dividend-etf-quietly-holds-28-big-tech-heres-who-should-own-it-anyway/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Reportedly Lays Off Vision Pro Staff As Smart Glasses Take Priority – Ternus CEO Transition Nears",
+   "label": "AAPL Stock Ticks Up Premarket As New Foldable iPhone Details Emerge",
    "value": {
-    "headline": "Apple Reportedly Lays Off Vision Pro Staff As Smart Glasses Take Priority – Ternus CEO Transition Nears",
+    "headline": "AAPL Stock Ticks Up Premarket As New Foldable iPhone Details Emerge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787283569,
-    "url": "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-lays-off-vision-pro-staff-as-smart-glasses-take-priority-ternus-ceo-transition-nears/cZYBKnuRJNT?.tsrc=rss",
+    "ts": 1787560308,
+    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-ticks-up-premarket-as-new-foldable-i-phone-details-emerge/cZYKBwsRJnj?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-lays-off-vision-pro-staff-as-smart-glasses-take-priority-ternus-ceo-transition-nears/cZYBKnuRJNT?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-ticks-up-premarket-as-new-foldable-i-phone-details-emerge/cZYKBwsRJnj?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wall Street is starting to warm to Apple's $2,199 foldable gamble",
+   "label": "三星今年可望超越蘋果 登全球智慧型手機出貨量冠軍",
    "value": {
-    "headline": "Wall Street is starting to warm to Apple's $2,199 foldable gamble",
+    "headline": "三星今年可望超越蘋果 登全球智慧型手機出貨量冠軍",
     "sources": [
-     "yahoo_us"
+     "cna"
     ],
     "source_count": 1,
-    "ts": 1787281620,
-    "url": "https://www.thestreet.com/technology/rothschild-bets-on-apple-iphone-ultra-foldable-phone?.tsrc=rss",
+    "ts": 1787554652,
+    "url": "https://www.cna.com.tw/news/aopl/202608240170.aspx",
     "urls": [
-     "https://www.thestreet.com/technology/rothschild-bets-on-apple-iphone-ultra-foldable-phone?.tsrc=rss"
+     "https://www.cna.com.tw/news/aopl/202608240170.aspx"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Own DELL Stock? Here Is How To Collect 21% A Year On It",
+   "label": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
    "value": {
-    "headline": "Own DELL Stock? Here Is How To Collect 21% A Year On It",
+    "headline": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787270438,
-    "url": "https://www.trefis.com/articles/612204/own-dell-stock-here-is-how-to-collect-21-a-year-on-it/2026-08-20?.tsrc=rss",
+    "ts": 1787552541,
+    "url": "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/612204/own-dell-stock-here-is-how-to-collect-21-a-year-on-it/2026-08-20?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Inc. (AAPL) Wants to Pay Publishers to Fix Siri. What’s the Catch?",
+   "label": "A $650 smartphone takes aim at Apple and Samsung’s surging repair costs",
    "value": {
-    "headline": "Apple Inc. (AAPL) Wants to Pay Publishers to Fix Siri. What’s the Catch?",
+    "headline": "A $650 smartphone takes aim at Apple and Samsung’s surging repair costs",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787267642,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-inc-aapl-wants-pay-231402505.html?.tsrc=rss",
+    "ts": 1787544180,
+    "url": "https://www.thestreet.com/retail/a-650-smartphone-takes-aim-at-apple-and-samsungs-surging-repair-costs?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-inc-aapl-wants-pay-231402505.html?.tsrc=rss"
+     "https://www.thestreet.com/retail/a-650-smartphone-takes-aim-at-apple-and-samsungs-surging-repair-costs?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 136 分 / 50 留言",
+   "label": "HN 討論熱度 20 篇 / 60 分 / 12 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 136,
-    "comments": 50,
+    "points": 60,
+    "comments": 12,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +715,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

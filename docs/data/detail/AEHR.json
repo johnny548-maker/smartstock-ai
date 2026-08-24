@@ -1,17 +1,9 @@
 {
  "stock": "AEHR",
  "name": "Aehr Test Systems",
- "price": 105.97,
- "change_pct": -1.84,
+ "price": 101.73,
+ "change_pct": -4.0,
  "ohlc": [
-  {
-   "time": "2026-05-27",
-   "o": 108.44,
-   "h": 112.0,
-   "l": 101.41,
-   "c": 103.82,
-   "v": 2802800
-  },
   {
    "time": "2026-05-28",
    "o": 103.3,
@@ -482,14 +474,22 @@
    "h": 108.5,
    "l": 102.74,
    "c": 105.97,
-   "v": 1844800
+   "v": 1851100
+  },
+  {
+   "time": "2026-08-21",
+   "o": 108.5,
+   "h": 108.5,
+   "l": 98.04,
+   "c": 101.73,
+   "v": 1926400
   }
  ],
  "sr": {
-  "price": 105.97,
+  "price": 101.73,
   "resistance": [
-   108.75,
-   110.2
+   102.48,
+   108.75
   ],
   "support": [
    86.58,
@@ -498,7 +498,6 @@
   "strong_support": 6.27
  },
  "spark": [
-  103.82,
   99.99,
   92.33,
   93.62,
@@ -557,14 +556,95 @@
   145.61,
   123.25,
   107.96,
-  105.97
+  105.97,
+  101.73
  ],
- "spark_start": "2026-05-27",
- "spark_end": "2026-08-20",
+ "spark_start": "2026-05-28",
+ "spark_end": "2026-08-21",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Flash in the Pan or Sustained Rally Contender? 3 Momentum Stocks to Watch",
+   "value": {
+    "headline": "Flash in the Pan or Sustained Rally Contender? 3 Momentum Stocks to Watch",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787399400,
+    "url": "https://www.marketbeat.com/articles/flash-in-the-pan-or-sustained-rally-contender-3-momentum-stocks-to-watch/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/articles/flash-in-the-pan-or-sustained-rally-contender-3-momentum-stocks-to-watch/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Lam Research (LRCX) Outperforming Other Computer and Technology Stocks This Year?",
+   "value": {
+    "headline": "Is Lam Research (LRCX) Outperforming Other Computer and Technology Stocks This Year?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787319602,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lam-research-lrcx-outperforming-other-134002982.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lam-research-lrcx-outperforming-other-134002982.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Keysight Focuses on AI Infrastructure to Spur Growth: Worth a Buy?",
+   "value": {
+    "headline": "Keysight Focuses on AI Infrastructure to Spur Growth: Worth a Buy?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787318400,
+    "url": "https://finance.yahoo.com/technology/ai/articles/keysight-focuses-ai-infrastructure-spur-132000209.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/keysight-focuses-ai-infrastructure-spur-132000209.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Aehr Test Systems to Participate in the Jefferies Semiconductor, IT Hardware & Communications Technology Conference on A",
+   "value": {
+    "headline": "Aehr Test Systems to Participate in the Jefferies Semiconductor, IT Hardware & Communications Technology Conference on August 25, 2026",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787311800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/aehr-test-systems-participate-jefferies-113000309.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/aehr-test-systems-participate-jefferies-113000309.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-24",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,102 +662,22 @@
     ]
    },
    "severity": "warn",
-   "as_of": "2026-08-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Can AEHR Turn Silicon Photonics Momentum Into Sustained Growth?",
-   "value": {
-    "headline": "Can AEHR Turn Silicon Photonics Momentum Into Sustained Growth?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787148420,
-    "url": "https://finance.yahoo.com/technology/articles/aehr-turn-silicon-photonics-momentum-140700815.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/aehr-turn-silicon-photonics-momentum-140700815.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Did CRWD, S, AEHR Stocks Hit 52-Week Highs Last Week?",
-   "value": {
-    "headline": "Why Did CRWD, S, AEHR Stocks Hit 52-Week Highs Last Week?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786936163,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-did-crwd-s-aehr-stocks-hit-52-week-highs-last-week/cZo6o9eRJKi?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-did-crwd-s-aehr-stocks-hit-52-week-highs-last-week/cZo6o9eRJKi?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems' CEO Sells Shares Worth $5.2 Million After a 564% Rally in Price. Here's a Closer Look at the Transact",
-   "value": {
-    "headline": "Aehr Test Systems' CEO Sells Shares Worth $5.2 Million After a 564% Rally in Price. Here's a Closer Look at the Transaction.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786725304,
-    "url": "https://www.fool.com/coverage/filings/2026/08/14/aehr-test-systems-ceo-sells-shares-worth-usd5-2-million-after-a-564-rally-in-price-here-s-a-closer-look-at-the-transaction/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/filings/2026/08/14/aehr-test-systems-ceo-sells-shares-worth-usd5-2-million-after-a-564-rally-in-price-here-s-a-closer-look-at-the-transaction/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Aehr Test Systems Soars Again Friday. Shares Now Up More than 500% On the Year.",
-   "value": {
-    "headline": "Aehr Test Systems Soars Again Friday. Shares Now Up More than 500% On the Year.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1786723903,
-    "url": "https://247wallst.com/investing/2026/08/14/aehr-test-systems-soars-again-friday-shares-now-up-more-than-500-on-the-year/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/08/14/aehr-test-systems-soars-again-friday-shares-now-up-more-than-500-on-the-year/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -692,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
