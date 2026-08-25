@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 214.72,
- "change_pct": -0.98,
+ "price": 208.48,
+ "change_pct": -2.91,
  "ohlc": [
-  {
-   "time": "2026-05-28",
-   "o": 211.03,
-   "h": 215.27,
-   "l": 210.97,
-   "c": 214.0,
-   "v": 143996000
-  },
   {
    "time": "2026-05-29",
    "o": 214.33,
@@ -482,23 +474,30 @@
    "h": 218.74,
    "l": 214.5,
    "c": 214.72,
-   "v": 98545600
+   "v": 98869300
+  },
+  {
+   "time": "2026-08-24",
+   "o": 215.53,
+   "h": 215.59,
+   "l": 207.25,
+   "c": 208.48,
+   "v": 134796300
   }
  ],
  "sr": {
-  "price": 214.72,
+  "price": 208.48,
   "resistance": [
-   216.58,
-   227.92
+   211.92,
+   212.71
   ],
   "support": [
-   208.54,
-   199.34
+   199.34,
+   197.97
   ],
   "strong_support": 163.85
  },
  "spark": [
-  214.0,
   210.89,
   224.1,
   222.56,
@@ -557,16 +556,17 @@
   219.74,
   217.56,
   216.85,
-  214.72
+  214.72,
+  208.48
  ],
- "spark_start": "2026-05-28",
- "spark_end": "2026-08-21",
+ "spark_start": "2026-05-29",
+ "spark_end": "2026-08-24",
  "fundamental": {
   "pe_trailing": 32.88208,
   "pe_forward": 16.482347,
   "eps_trailing": 6.53,
   "eps_forward": 13.02727,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "YieldMax® ETFs Announces Distributions on MSST, NVIT, and TEST",
+   "label": "AMD Stock Gains After Upgrade: Analyst Sees ‘Strongest Combination’ Of Earnings Leverage, Data Center Gains",
    "value": {
-    "headline": "YieldMax® ETFs Announces Distributions on MSST, NVIT, and TEST",
+    "headline": "AMD Stock Gains After Upgrade: Analyst Sees ‘Strongest Combination’ Of Earnings Leverage, Data Center Gains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787568900,
-    "url": "https://finance.yahoo.com/markets/options/articles/yieldmax-etfs-announces-distributions-msst-105500298.html?.tsrc=rss",
+    "ts": 1787654783,
+    "url": "https://stocktwits.com/news-articles/markets/equity/amd-stock-upgrade-strongest-combination-earnings-leverage-data-center-gains/cZYklV4RJ80?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/options/articles/yieldmax-etfs-announces-distributions-msst-105500298.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/amd-stock-upgrade-strongest-combination-earnings-leverage-data-center-gains/cZYklV4RJ80?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 Things Nvidia Needs to Get Right This Week",
+   "label": "Prediction: This Stock Will Outperform the \"Magnificent Seven\" in the Second Half of 2026",
    "value": {
-    "headline": "3 Things Nvidia Needs to Get Right This Week",
+    "headline": "Prediction: This Stock Will Outperform the \"Magnificent Seven\" in the Second Half of 2026",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787568780,
-    "url": "https://www.fool.com/investing/2026/08/24/3-things-nvidia-needs-to-get-right-this-week/?.tsrc=rss",
+    "ts": 1787654100,
+    "url": "https://www.fool.com/investing/2026/08/25/prediction-this-stock-will-outperform-the-magnific/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/24/3-things-nvidia-needs-to-get-right-this-week/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/prediction-this-stock-will-outperform-the-magnific/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Market Fear Index Jumps",
+   "label": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
    "value": {
-    "headline": "Market Fear Index Jumps",
+    "headline": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787568661,
-    "url": "https://finance.yahoo.com/m/fdb8ea42-b401-3e7a-a999-98fee9af790f/market-fear-index-jumps.html?.tsrc=rss",
+    "ts": 1787654100,
+    "url": "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/fdb8ea42-b401-3e7a-a999-98fee9af790f/market-fear-index-jumps.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Oil falls ahead of US plan for economic war on Iran",
+   "label": "3 Energy Stocks Positioned to Benefit From Iraq's Oil Ambitions",
    "value": {
-    "headline": "Oil falls ahead of US plan for economic war on Iran",
+    "headline": "3 Energy Stocks Positioned to Benefit From Iraq's Oil Ambitions",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787568491,
-    "url": "https://finance.yahoo.com/energy/articles/oil-falls-trump-pledges-economic-030019769.html?.tsrc=rss",
+    "ts": 1787653204,
+    "url": "https://www.fool.com/investing/2026/08/25/3-energy-stocks-positioned-to-benefit-from-iraq-s-oil-ambitions/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/oil-falls-trump-pledges-economic-030019769.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/3-energy-stocks-positioned-to-benefit-from-iraq-s-oil-ambitions/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Markets Face Double Blow if Nvidia and the Fed Fail to Deliver",
+   "label": "I Own SCHD, and I Still Believe in It. Here's Why I Also Bought This 10.5%-Yielding ETF Almost Nobody Knows About.",
    "value": {
-    "headline": "Stock Markets Face Double Blow if Nvidia and the Fed Fail to Deliver",
+    "headline": "I Own SCHD, and I Still Believe in It. Here's Why I Also Bought This 10.5%-Yielding ETF Almost Nobody Knows About.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787568420,
-    "url": "https://finance.yahoo.com/m/a3fc48c6-3ebb-300d-89f9-d86585f28f67/stock-markets-face-double.html?.tsrc=rss",
+    "ts": 1787653200,
+    "url": "https://www.fool.com/investing/2026/08/25/i-own-schd-and-i-still-believe-in-it-heres-why-i-a/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a3fc48c6-3ebb-300d-89f9-d86585f28f67/stock-markets-face-double.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/i-own-schd-and-i-still-believe-in-it-heres-why-i-a/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

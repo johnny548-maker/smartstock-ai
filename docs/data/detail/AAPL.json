@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 309.35,
- "change_pct": -0.63,
+ "price": 310.34,
+ "change_pct": 0.32,
  "ohlc": [
-  {
-   "time": "2026-05-28",
-   "o": 310.41,
-   "h": 312.53,
-   "l": 309.3,
-   "c": 312.24,
-   "v": 48220400
-  },
   {
    "time": "2026-05-29",
    "o": 311.51,
@@ -482,11 +474,19 @@
    "h": 312.38,
    "l": 307.01,
    "c": 309.35,
-   "v": 46768100
+   "v": 46876800
+  },
+  {
+   "time": "2026-08-24",
+   "o": 311.47,
+   "h": 313.36,
+   "l": 309.97,
+   "c": 310.34,
+   "v": 34655000
   }
  ],
  "sr": {
-  "price": 309.35,
+  "price": 310.34,
   "resistance": [
    316.02,
    317.13
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  312.24,
   311.79,
   306.05,
   314.93,
@@ -557,16 +556,17 @@
   310.03,
   316.83,
   311.3,
-  309.35
+  309.35,
+  310.34
  ],
- "spark_start": "2026-05-28",
- "spark_end": "2026-08-21",
+ "spark_start": "2026-05-29",
+ "spark_end": "2026-08-24",
  "fundamental": {
   "pe_trailing": 35.475918,
   "pe_forward": 32.43169,
   "eps_trailing": 8.72,
   "eps_forward": 9.53851,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
+   "label": "Full Circle Electronics Acquires Mac of All Trades, Expanding Leadership in Refurbished Apple Technology and Circular IT",
    "value": {
-    "headline": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
+    "headline": "Full Circle Electronics Acquires Mac of All Trades, Expanding Leadership in Refurbished Apple Technology and Circular IT Solutions",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787563440,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss",
+    "ts": 1787653800,
+    "url": "https://finance.yahoo.com/technology/articles/full-circle-electronics-acquires-mac-103000671.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/full-circle-electronics-acquires-mac-103000671.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AAPL Stock Ticks Up Premarket As New Foldable iPhone Details Emerge",
+   "label": "Nvidia faces growth test as Rubin debut meets AI financing scrutiny",
    "value": {
-    "headline": "AAPL Stock Ticks Up Premarket As New Foldable iPhone Details Emerge",
+    "headline": "Nvidia faces growth test as Rubin debut meets AI financing scrutiny",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787560308,
-    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-ticks-up-premarket-as-new-foldable-i-phone-details-emerge/cZYKBwsRJnj?.tsrc=rss",
+    "ts": 1787652154,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-faces-growth-test-rubin-100234535.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-ticks-up-premarket-as-new-foldable-i-phone-details-emerge/cZYKBwsRJnj?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-faces-growth-test-rubin-100234535.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "三星今年可望超越蘋果 登全球智慧型手機出貨量冠軍",
+   "label": "Monster Run: This Consumer Stock Turned $1,000 Into $1M Over 22 Years",
    "value": {
-    "headline": "三星今年可望超越蘋果 登全球智慧型手機出貨量冠軍",
+    "headline": "Monster Run: This Consumer Stock Turned $1,000 Into $1M Over 22 Years",
     "sources": [
-     "cna"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787554652,
-    "url": "https://www.cna.com.tw/news/aopl/202608240170.aspx",
+    "ts": 1787651676,
+    "url": "https://stocktwits.com/news-articles/markets/equity/monster-run-this-consumer-stock-turned-1-000-into-1-m-over-22-years/cZYkj7GRJ8L?.tsrc=rss",
     "urls": [
-     "https://www.cna.com.tw/news/aopl/202608240170.aspx"
+     "https://stocktwits.com/news-articles/markets/equity/monster-run-this-consumer-stock-turned-1-000-into-1-m-over-22-years/cZYkj7GRJ8L?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
+   "label": "Prediction: TSMC Stock Will Soar After Aug. 26 Thanks to Nvidia’s Historic Quarter",
    "value": {
-    "headline": "Xiaomi launches new Xring chip, partners with TSMC for production, sources say",
+    "headline": "Prediction: TSMC Stock Will Soar After Aug. 26 Thanks to Nvidia’s Historic Quarter",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787552541,
-    "url": "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss",
+    "ts": 1787643781,
+    "url": "https://www.fool.com/investing/2026/08/25/prediction-tsmc-stock-will-soar-after-aug-26-thanks-to-nvidia-s-historic-quarter/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/xiaomi-launches-new-xring-chip-partners-with-tsmc-for-production-sources-say-062221305.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/prediction-tsmc-stock-will-soar-after-aug-26-thanks-to-nvidia-s-historic-quarter/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A $650 smartphone takes aim at Apple and Samsung’s surging repair costs",
+   "label": "Trump Snapped Up SpaceX Shares 11 Days After $1.77 Trillion IPO: Here's What Else He Purchased",
    "value": {
-    "headline": "A $650 smartphone takes aim at Apple and Samsung’s surging repair costs",
+    "headline": "Trump Snapped Up SpaceX Shares 11 Days After $1.77 Trillion IPO: Here's What Else He Purchased",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787544180,
-    "url": "https://www.thestreet.com/retail/a-650-smartphone-takes-aim-at-apple-and-samsungs-surging-repair-costs?.tsrc=rss",
+    "ts": 1787628907,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/trump-snapped-spacex-shares-11-033507082.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/retail/a-650-smartphone-takes-aim-at-apple-and-samsungs-surging-repair-costs?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/trump-snapped-spacex-shares-11-033507082.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -680,27 +680,26 @@
     "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 60 分 / 12 留言",
+   "label": "HN 討論熱度 20 篇 / 1552 分 / 818 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 60,
-    "comments": 12,
+    "points": 1552,
+    "comments": 818,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-08-24",
+   "severity": "warn",
+   "as_of": "2026-08-25",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

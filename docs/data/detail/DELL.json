@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 442.08,
- "change_pct": 1.68,
+ "price": 433.19,
+ "change_pct": -2.01,
  "ohlc": [
-  {
-   "time": "2026-05-28",
-   "o": 316.51,
-   "h": 327.19,
-   "l": 311.01,
-   "c": 316.53,
-   "v": 26611300
-  },
   {
    "time": "2026-05-29",
    "o": 417.31,
@@ -482,14 +474,22 @@
    "h": 444.43,
    "l": 429.45,
    "c": 442.08,
-   "v": 3674900
+   "v": 3687700
+  },
+  {
+   "time": "2026-08-24",
+   "o": 438.21,
+   "h": 451.57,
+   "l": 424.0,
+   "c": 433.19,
+   "v": 4337900
   }
  ],
  "sr": {
-  "price": 442.08,
+  "price": 433.19,
   "resistance": [
-   443.27,
-   454.77
+   437.8,
+   443.27
   ],
   "support": [
    416.3,
@@ -498,7 +498,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  316.53,
   420.22,
   465.19,
   434.59,
@@ -557,11 +556,144 @@
   468.65,
   437.55,
   434.78,
-  442.08
+  442.08,
+  433.19
  ],
- "spark_start": "2026-05-28",
- "spark_end": "2026-08-21",
+ "spark_start": "2026-05-29",
+ "spark_end": "2026-08-24",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Dell (DELL) Using Esports To Quietly Reposition Its AI Infrastructure Narrative?",
+   "value": {
+    "headline": "Is Dell (DELL) Using Esports To Quietly Reposition Its AI Infrastructure Narrative?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787602225,
+    "url": "https://finance.yahoo.com/technology/ai/articles/dell-dell-using-esports-quietly-201025877.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/dell-dell-using-esports-quietly-201025877.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Arista Networks Is Buying Further Ahead Than It Can See",
+   "value": {
+    "headline": "Arista Networks Is Buying Further Ahead Than It Can See",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787600522,
+    "url": "https://www.trefis.com/articles/612580/arista-networks-is-buying-further-ahead-than-it-can-see/2026-08-24?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/612580/arista-networks-is-buying-further-ahead-than-it-can-see/2026-08-24?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dell, NetApp, HP Face Toughest Near-Term Earnings Setups, Morgan Stanley Says",
+   "value": {
+    "headline": "Dell, NetApp, HP Face Toughest Near-Term Earnings Setups, Morgan Stanley Says",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787590082,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/dell-netapp-hp-face-toughest-164802244.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/dell-netapp-hp-face-toughest-164802244.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Okta Gears Up to Report Q2 Earnings: What's in Store for the Stock?",
+   "value": {
+    "headline": "Okta Gears Up to Report Q2 Earnings: What's in Store for the Stock?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787588700,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/okta-gears-report-q2-earnings-162500463.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/okta-gears-report-q2-earnings-162500463.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Supermicro (SMCI) Stock Looks Cheap Even As AI Demand Stays Strong",
+   "value": {
+    "headline": "Supermicro (SMCI) Stock Looks Cheap Even As AI Demand Stays Strong",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787587836,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/supermicro-smci-stock-looks-cheap-161036868.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/supermicro-smci-stock-looks-cheap-161036868.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-25",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 176,500 股交割失敗）",
+   "value": {
+    "total_shares": 176500,
+    "days": 7,
+    "max_shares": 166315,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-25",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

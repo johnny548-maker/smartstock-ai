@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 483.24,
- "change_pct": 0.43,
+ "price": 487.31,
+ "change_pct": 0.84,
  "ohlc": [
-  {
-   "time": "2026-05-28",
-   "o": 412.2,
-   "h": 428.68,
-   "l": 411.89,
-   "c": 426.19,
-   "v": 47250500
-  },
   {
    "time": "2026-05-29",
    "o": 431.74,
@@ -482,14 +474,22 @@
    "h": 486.36,
    "l": 478.53,
    "c": 483.24,
-   "v": 22489200
+   "v": 22510800
+  },
+  {
+   "time": "2026-08-24",
+   "o": 483.21,
+   "h": 490.61,
+   "l": 481.86,
+   "c": 487.31,
+   "v": 17216300
   }
  ],
  "sr": {
-  "price": 483.24,
+  "price": 487.31,
   "resistance": [
-   486.51,
-   486.59
+   489.2,
+   490.39
   ],
   "support": [
    476.25,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  426.19,
   449.39,
   459.65,
   440.48,
@@ -557,35 +556,36 @@
   480.73,
   483.4,
   481.15,
-  483.24
+  483.24,
+  487.31
  ],
- "spark_start": "2026-05-28",
- "spark_end": "2026-08-21",
+ "spark_start": "2026-05-29",
+ "spark_end": "2026-08-24",
  "fundamental": {
   "pe_trailing": 26.951477,
   "pe_forward": 20.49948,
   "eps_trailing": 17.93,
   "eps_forward": 23.57328,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 483.24,
-  "stop": 462.21,
-  "target": 535.81,
-  "atr_bracket": 535.81,
+  "entry": 487.31,
+  "stop": 467.92,
+  "target": 535.78,
+  "atr_bracket": 535.78,
   "measured_move": 648.85,
   "target_band": [
-   535.81,
+   535.78,
    648.85,
    696.44
   ],
-  "stop_pct": -4.4,
-  "target_pct": 10.9,
+  "stop_pct": -4.0,
+  "target_pct": 9.9,
   "rr": 2.5,
-  "atr_pct": 2.2,
-  "swing_stop": 473.1,
-  "chandelier": 469.34,
+  "atr_pct": 2.0,
+  "swing_stop": 473.35,
+  "chandelier": 470.1,
   "fib_targets": [
    649.35,
    696.44,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "If an AI Bubble Burst Is Coming, Warren Buffett's 1999 Warning to Investors Is More Crucial Than Ever",
+   "label": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
    "value": {
-    "headline": "If an AI Bubble Burst Is Coming, Warren Buffett's 1999 Warning to Investors Is More Crucial Than Ever",
+    "headline": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787566800,
-    "url": "https://www.fool.com/investing/2026/08/24/if-an-ai-bubble-burst-is-coming-warren-buffetts-19/?.tsrc=rss",
+    "ts": 1787654100,
+    "url": "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/24/if-an-ai-bubble-burst-is-coming-warren-buffetts-19/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-08-24",
+   "severity": "info",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
+   "label": "Coinbase’s Tokenized Stocks Are Live on Base. The SEC’s Framework Isn’t.",
    "value": {
-    "headline": "The Zacks Analyst Blog Highlights Apple, Alphabet, Microsoft and Amazon",
+    "headline": "Coinbase’s Tokenized Stocks Are Live on Base. The SEC’s Framework Isn’t.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787563440,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss",
+    "ts": 1787651125,
+    "url": "https://finance.yahoo.com/markets/crypto/articles/coinbase-tokenized-stocks-live-sec-094525267.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-092400354.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/crypto/articles/coinbase-tokenized-stocks-live-sec-094525267.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "I've Covered Semiconductors for Years. Nvidia Is My No. 1 Pick Heading Into 2027.",
+   "label": "India AI Data Center Firm Orders 9,000 Nvidia Vera Rubin Systems",
    "value": {
-    "headline": "I've Covered Semiconductors for Years. Nvidia Is My No. 1 Pick Heading Into 2027.",
+    "headline": "India AI Data Center Firm Orders 9,000 Nvidia Vera Rubin Systems",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787558700,
-    "url": "https://www.fool.com/investing/2026/08/24/ive-covered-semiconductors-for-years-nvidia-is-m/?.tsrc=rss",
+    "ts": 1787650942,
+    "url": "https://finance.yahoo.com/technology/ai/articles/india-ai-data-center-firm-orders-9000-nvidia-vera-rubin-systems-094222289.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/24/ive-covered-semiconductors-for-years-nvidia-is-m/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/india-ai-data-center-firm-orders-9000-nvidia-vera-rubin-systems-094222289.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Farmers & Merchants Bancorp’s Dividend Hike Shapes FMCB’s Capital Return Strategy for Investors",
+   "label": "Forget Nvidia. This ETF Could Be the Next Big Winner From the AI Boom",
    "value": {
-    "headline": "How Farmers & Merchants Bancorp’s Dividend Hike Shapes FMCB’s Capital Return Strategy for Investors",
+    "headline": "Forget Nvidia. This ETF Could Be the Next Big Winner From the AI Boom",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787545789,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/farmers-merchants-bancorp-dividend-hike-042949456.html?.tsrc=rss",
+    "ts": 1787650800,
+    "url": "https://www.fool.com/investing/2026/08/25/forget-nvidia-this-etf-next-big-ai-boom-winner-vpu/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/farmers-merchants-bancorp-dividend-hike-042949456.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/25/forget-nvidia-this-etf-next-big-ai-boom-winner-vpu/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "NVDA Stock Comes Off Rough Week: AI Darling Reportedly Plans Major Price Hike As Q2 Earnings Loom",
+   "label": "The data center era that's reshaping America",
    "value": {
-    "headline": "NVDA Stock Comes Off Rough Week: AI Darling Reportedly Plans Major Price Hike As Q2 Earnings Loom",
+    "headline": "The data center era that's reshaping America",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787541657,
-    "url": "https://stocktwits.com/news-articles/markets/equity/nvda-stock-comes-off-rough-week-ai-darling-reportedly-plans-major-price-hike-as-q2-earnings-loom/cZYKTZqRJnc?.tsrc=rss",
+    "ts": 1787650205,
+    "url": "https://www.axios.com/2026/08/25/data-centers-ai-electricity-water-politics#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-AI?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/nvda-stock-comes-off-rough-week-ai-darling-reportedly-plans-major-price-hike-as-q2-earnings-loom/cZYKTZqRJnc?.tsrc=rss"
+     "https://www.axios.com/2026/08/25/data-centers-ai-electricity-water-politics#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-AI?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-24",
+   "as_of": "2026-08-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
