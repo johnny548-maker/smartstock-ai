@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 487.31,
- "change_pct": 0.84,
+ "price": 491.71,
+ "change_pct": 0.9,
  "ohlc": [
-  {
-   "time": "2026-05-29",
-   "o": 431.74,
-   "h": 449.48,
-   "l": 431.55,
-   "c": 449.39,
-   "v": 79654400
-  },
   {
    "time": "2026-06-01",
    "o": 463.97,
@@ -482,23 +474,30 @@
    "h": 490.61,
    "l": 481.86,
    "c": 487.31,
-   "v": 17216300
+   "v": 17230800
+  },
+  {
+   "time": "2026-08-25",
+   "o": 485.44,
+   "h": 492.44,
+   "l": 484.3,
+   "c": 491.71,
+   "v": 19498800
   }
  ],
  "sr": {
-  "price": 487.31,
+  "price": 491.71,
   "resistance": [
-   489.2,
-   490.39
+   507.79,
+   509.31
   ],
   "support": [
-   476.25,
-   472.2
+   489.22,
+   488.35
   ],
   "strong_support": 348.54
  },
  "spark": [
-  449.39,
   459.65,
   440.48,
   426.54,
@@ -557,35 +556,36 @@
   483.4,
   481.15,
   483.24,
-  487.31
+  487.31,
+  491.71
  ],
- "spark_start": "2026-05-29",
- "spark_end": "2026-08-24",
+ "spark_start": "2026-06-01",
+ "spark_end": "2026-08-25",
  "fundamental": {
-  "pe_trailing": 26.951477,
-  "pe_forward": 20.49948,
-  "eps_trailing": 17.93,
+  "pe_trailing": 27.393312,
+  "pe_forward": 20.858786,
+  "eps_trailing": 17.95,
   "eps_forward": 23.57328,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 487.31,
-  "stop": 467.92,
-  "target": 535.78,
-  "atr_bracket": 535.78,
+  "entry": 491.71,
+  "stop": 472.95,
+  "target": 538.61,
+  "atr_bracket": 538.61,
   "measured_move": 648.85,
   "target_band": [
-   535.78,
+   538.61,
    648.85,
    696.44
   ],
-  "stop_pct": -4.0,
-  "target_pct": 9.9,
+  "stop_pct": -3.8,
+  "target_pct": 9.5,
   "rr": 2.5,
-  "atr_pct": 2.0,
-  "swing_stop": 473.35,
-  "chandelier": 470.1,
+  "atr_pct": 1.9,
+  "swing_stop": 473.44,
+  "chandelier": 470.13,
   "fib_targets": [
    649.35,
    696.44,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
+   "label": "Nvidia earnings could reveal its fastest-growing business isn't chips: Chart of the Day",
    "value": {
-    "headline": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
+    "headline": "Nvidia earnings could reveal its fastest-growing business isn't chips: Chart of the Day",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787654100,
-    "url": "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss",
+    "ts": 1787738400,
+    "url": "https://finance.yahoo.com/markets/article/nvidia-earnings-could-reveal-its-fastest-growing-business-isnt-chips-chart-of-the-day-100000332.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/nvidia-earnings-could-reveal-its-fastest-growing-business-isnt-chips-chart-of-the-day-100000332.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Coinbase’s Tokenized Stocks Are Live on Base. The SEC’s Framework Isn’t.",
+   "label": "Bill Ackman's Pershing Square Made Microsoft Its Largest AI Holding by Selling Alphabet. Here's the Thesis Behind the Sw",
    "value": {
-    "headline": "Coinbase’s Tokenized Stocks Are Live on Base. The SEC’s Framework Isn’t.",
+    "headline": "Bill Ackman's Pershing Square Made Microsoft Its Largest AI Holding by Selling Alphabet. Here's the Thesis Behind the Switch.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787651125,
-    "url": "https://finance.yahoo.com/markets/crypto/articles/coinbase-tokenized-stocks-live-sec-094525267.html?.tsrc=rss",
+    "ts": 1787736900,
+    "url": "https://www.fool.com/investing/2026/08/26/bill-ackmans-pershing-square-made-microsoft-its/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/crypto/articles/coinbase-tokenized-stocks-live-sec-094525267.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/26/bill-ackmans-pershing-square-made-microsoft-its/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "India AI Data Center Firm Orders 9,000 Nvidia Vera Rubin Systems",
+   "label": "Microsoft and HUMAIN announce long-term strategic collaboration to enable AI transformation in Saudi Arabia and beyond",
    "value": {
-    "headline": "India AI Data Center Firm Orders 9,000 Nvidia Vera Rubin Systems",
+    "headline": "Microsoft and HUMAIN announce long-term strategic collaboration to enable AI transformation in Saudi Arabia and beyond",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787650942,
-    "url": "https://finance.yahoo.com/technology/ai/articles/india-ai-data-center-firm-orders-9000-nvidia-vera-rubin-systems-094222289.html?.tsrc=rss",
+    "ts": 1787732820,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-announce-long-term-082700727.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/india-ai-data-center-firm-orders-9000-nvidia-vera-rubin-systems-094222289.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-announce-long-term-082700727.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Forget Nvidia. This ETF Could Be the Next Big Winner From the AI Boom",
+   "label": "Market Chatter: SoftBank Considering Up to $20 Billion Bond Offering to Refinance OpenAI Investment Loan",
    "value": {
-    "headline": "Forget Nvidia. This ETF Could Be the Next Big Winner From the AI Boom",
+    "headline": "Market Chatter: SoftBank Considering Up to $20 Billion Bond Offering to Refinance OpenAI Investment Loan",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787650800,
-    "url": "https://www.fool.com/investing/2026/08/25/forget-nvidia-this-etf-next-big-ai-boom-winner-vpu/?.tsrc=rss",
+    "ts": 1787732035,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/market-chatter-softbank-considering-20-081355496.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/25/forget-nvidia-this-etf-next-big-ai-boom-winner-vpu/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/market-chatter-softbank-considering-20-081355496.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The data center era that's reshaping America",
+   "label": "Nvidia’s Paradox: Stellar Earnings and a Sliding Stock",
    "value": {
-    "headline": "The data center era that's reshaping America",
+    "headline": "Nvidia’s Paradox: Stellar Earnings and a Sliding Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787650205,
-    "url": "https://www.axios.com/2026/08/25/data-centers-ai-electricity-water-politics#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-AI?.tsrc=rss",
+    "ts": 1787727600,
+    "url": "https://finance.yahoo.com/m/fa303cac-07c3-3871-8606-fa43d89d5825/nvidia%E2%80%99s-paradox%3A-stellar.html?.tsrc=rss",
     "urls": [
-     "https://www.axios.com/2026/08/25/data-centers-ai-electricity-water-politics#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-AI?.tsrc=rss"
+     "https://finance.yahoo.com/m/fa303cac-07c3-3871-8606-fa43d89d5825/nvidia%E2%80%99s-paradox%3A-stellar.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-25",
+   "as_of": "2026-08-26",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
