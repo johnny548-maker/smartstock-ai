@@ -482,7 +482,7 @@
    "h": 2485.0,
    "l": 2270.0,
    "c": 2370.0,
-   "v": 1083151
+   "v": 1030256
   }
  ],
  "sr": {
@@ -580,43 +580,8 @@
     "short_pct": 4.175772169870412e-06
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Uber 登台13周年 揭台灣三大移動趨勢、新代言人蔡依林廣告上線",
-   "value": {
-    "headline": "Uber 登台13周年 揭台灣三大移動趨勢、新代言人蔡依林廣告上線",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1787738296,
-    "url": "https://money.udn.com/money/story/5612/9715898",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9715898"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "udn"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-26",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -844,6 +809,10 @@
    {
     "t": "2026-08-26",
     "v": -49
+   },
+   {
+    "t": "2026-08-27",
+    "v": 74
    }
   ],
   "holder_pct": [

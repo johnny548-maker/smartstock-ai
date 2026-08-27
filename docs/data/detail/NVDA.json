@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": 208.48,
- "change_pct": -2.91,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 209.66,
+ "change_pct": -1.59,
  "ohlc": [
-  {
-   "time": "2026-05-29",
-   "o": 214.33,
-   "h": 217.61,
-   "l": 210.88,
-   "c": 210.89,
-   "v": 289410600
-  },
-  {
-   "time": "2026-06-01",
-   "o": 215.48,
-   "h": 224.61,
-   "l": 215.45,
-   "c": 224.1,
-   "v": 212850700
-  },
   {
    "time": "2026-06-02",
    "o": 226.92,
@@ -482,24 +466,38 @@
    "h": 215.59,
    "l": 207.25,
    "c": 208.48,
-   "v": 134796300
+   "v": 135187300
+  },
+  {
+   "time": "2026-08-25",
+   "o": 211.03,
+   "h": 214.73,
+   "l": 210.11,
+   "c": 213.05,
+   "v": 122309000
+  },
+  {
+   "time": "2026-08-26",
+   "o": 212.42,
+   "h": 213.6,
+   "l": 209.23,
+   "c": 209.66,
+   "v": 145070184
   }
  ],
  "sr": {
-  "price": 208.48,
+  "price": 209.66,
   "resistance": [
-   211.92,
-   212.71
+   212.71,
+   213.81
   ],
   "support": [
    199.34,
    197.97
   ],
-  "strong_support": 163.85
+  "strong_support": 189.8
  },
  "spark": [
-  210.89,
-  224.1,
   222.56,
   214.5,
   218.66,
@@ -557,150 +555,13 @@
   217.56,
   216.85,
   214.72,
-  208.48
+  208.48,
+  213.05,
+  209.66
  ],
- "spark_start": "2026-05-29",
- "spark_end": "2026-08-24",
- "fundamental": {
-  "pe_trailing": 32.88208,
-  "pe_forward": 16.482347,
-  "eps_trailing": 6.53,
-  "eps_forward": 13.02727,
-  "stale": true,
-  "source": "yfinance"
- },
+ "spark_start": "2026-06-02",
+ "spark_end": "2026-08-26",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AMD Stock Gains After Upgrade: Analyst Sees ‘Strongest Combination’ Of Earnings Leverage, Data Center Gains",
-   "value": {
-    "headline": "AMD Stock Gains After Upgrade: Analyst Sees ‘Strongest Combination’ Of Earnings Leverage, Data Center Gains",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787654783,
-    "url": "https://stocktwits.com/news-articles/markets/equity/amd-stock-upgrade-strongest-combination-earnings-leverage-data-center-gains/cZYklV4RJ80?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/amd-stock-upgrade-strongest-combination-earnings-leverage-data-center-gains/cZYklV4RJ80?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Prediction: This Stock Will Outperform the \"Magnificent Seven\" in the Second Half of 2026",
-   "value": {
-    "headline": "Prediction: This Stock Will Outperform the \"Magnificent Seven\" in the Second Half of 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787654100,
-    "url": "https://www.fool.com/investing/2026/08/25/prediction-this-stock-will-outperform-the-magnific/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/25/prediction-this-stock-will-outperform-the-magnific/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
-   "value": {
-    "headline": "Most Investors Overlook MSFT's AI Moat. I Think That's a Mistake.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787654100,
-    "url": "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/25/most-investors-overlook-msft-ai-moat-microsoft/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 Energy Stocks Positioned to Benefit From Iraq's Oil Ambitions",
-   "value": {
-    "headline": "3 Energy Stocks Positioned to Benefit From Iraq's Oil Ambitions",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787653204,
-    "url": "https://www.fool.com/investing/2026/08/25/3-energy-stocks-positioned-to-benefit-from-iraq-s-oil-ambitions/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/25/3-energy-stocks-positioned-to-benefit-from-iraq-s-oil-ambitions/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "I Own SCHD, and I Still Believe in It. Here's Why I Also Bought This 10.5%-Yielding ETF Almost Nobody Knows About.",
-   "value": {
-    "headline": "I Own SCHD, and I Still Believe in It. Here's Why I Also Bought This 10.5%-Yielding ETF Almost Nobody Knows About.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787653200,
-    "url": "https://www.fool.com/investing/2026/08/25/i-own-schd-and-i-still-believe-in-it-heres-why-i-a/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/08/25/i-own-schd-and-i-still-believe-in-it-heres-why-i-a/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 18,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-25",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 193,168 股交割失敗）",
-   "value": {
-    "total_shares": 193168,
-    "days": 9,
-    "max_shares": 151895,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-25",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

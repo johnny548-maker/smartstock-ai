@@ -1,17 +1,9 @@
 {
  "stock": "INSG",
  "name": "Inseego Corp",
- "price": 4.53,
- "change_pct": 3.19,
+ "price": 4.52,
+ "change_pct": -0.22,
  "ohlc": [
-  {
-   "time": "2026-06-01",
-   "o": 12.88,
-   "h": 14.26,
-   "l": 12.64,
-   "c": 13.75,
-   "v": 624600
-  },
   {
    "time": "2026-06-02",
    "o": 13.65,
@@ -483,19 +475,28 @@
    "l": 4.39,
    "c": 4.53,
    "v": 140000
+  },
+  {
+   "time": "2026-08-26",
+   "o": 4.56,
+   "h": 4.58,
+   "l": 4.42,
+   "c": 4.52,
+   "v": 198308
   }
  ],
  "sr": {
-  "price": 4.53,
+  "price": 4.52,
   "resistance": [
    7.58,
    7.8
   ],
-  "support": [],
-  "strong_support": 4.77
+  "support": [
+   3.93
+  ],
+  "strong_support": 3.93
  },
  "spark": [
-  13.75,
   14.54,
   13.82,
   14.01,
@@ -554,10 +555,11 @@
   4.02,
   4.39,
   4.39,
-  4.53
+  4.53,
+  4.52
  ],
- "spark_start": "2026-06-01",
- "spark_end": "2026-08-25",
+ "spark_start": "2026-06-02",
+ "spark_end": "2026-08-26",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

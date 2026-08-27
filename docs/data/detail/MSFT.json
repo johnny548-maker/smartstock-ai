@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 491.71,
- "change_pct": 0.9,
+ "price": 496.37,
+ "change_pct": 0.95,
  "ohlc": [
-  {
-   "time": "2026-06-01",
-   "o": 463.97,
-   "h": 465.44,
-   "l": 457.41,
-   "c": 459.65,
-   "v": 53628900
-  },
   {
    "time": "2026-06-02",
    "o": 446.04,
@@ -482,11 +474,19 @@
    "h": 492.44,
    "l": 484.3,
    "c": 491.71,
-   "v": 19498800
+   "v": 19519000
+  },
+  {
+   "time": "2026-08-26",
+   "o": 487.85,
+   "h": 497.4,
+   "l": 487.31,
+   "c": 496.37,
+   "v": 19997284
   }
  ],
  "sr": {
-  "price": 491.71,
+  "price": 496.37,
   "resistance": [
    507.79,
    509.31
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  459.65,
   440.48,
   426.54,
   427.25,
@@ -557,35 +556,36 @@
   481.15,
   483.24,
   487.31,
-  491.71
+  491.71,
+  496.37
  ],
- "spark_start": "2026-06-01",
- "spark_end": "2026-08-25",
+ "spark_start": "2026-06-02",
+ "spark_end": "2026-08-26",
  "fundamental": {
   "pe_trailing": 27.393312,
   "pe_forward": 20.858786,
   "eps_trailing": 17.95,
   "eps_forward": 23.57328,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 491.71,
-  "stop": 472.95,
-  "target": 538.61,
-  "atr_bracket": 538.61,
+  "entry": 496.37,
+  "stop": 478.18,
+  "target": 541.85,
+  "atr_bracket": 541.85,
   "measured_move": 648.85,
   "target_band": [
-   538.61,
+   541.85,
    648.85,
    696.44
   ],
-  "stop_pct": -3.8,
-  "target_pct": 9.5,
+  "stop_pct": -3.7,
+  "target_pct": 9.2,
   "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 473.44,
-  "chandelier": 470.13,
+  "atr_pct": 1.8,
+  "swing_stop": 473.52,
+  "chandelier": 470.46,
   "fib_targets": [
    649.35,
    696.44,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia earnings could reveal its fastest-growing business isn't chips: Chart of the Day",
+   "label": "Nvidia doubles revenue, forecasts even more AI spending",
    "value": {
-    "headline": "Nvidia earnings could reveal its fastest-growing business isn't chips: Chart of the Day",
+    "headline": "Nvidia doubles revenue, forecasts even more AI spending",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787738400,
-    "url": "https://finance.yahoo.com/markets/article/nvidia-earnings-could-reveal-its-fastest-growing-business-isnt-chips-chart-of-the-day-100000332.html?.tsrc=rss",
+    "ts": 1787781998,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/nvidia-earnings-could-reveal-its-fastest-growing-business-isnt-chips-chart-of-the-day-100000332.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bill Ackman's Pershing Square Made Microsoft Its Largest AI Holding by Selling Alphabet. Here's the Thesis Behind the Sw",
+   "label": "Anthropic continues compute-gobbling streak in $45B deal with Nscale",
    "value": {
-    "headline": "Bill Ackman's Pershing Square Made Microsoft Its Largest AI Holding by Selling Alphabet. Here's the Thesis Behind the Switch.",
+    "headline": "Anthropic continues compute-gobbling streak in $45B deal with Nscale",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787736900,
-    "url": "https://www.fool.com/investing/2026/08/26/bill-ackmans-pershing-square-made-microsoft-its/?.tsrc=rss",
+    "ts": 1787780259,
+    "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-continues-compute-gobbling-streak-213739548.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/26/bill-ackmans-pershing-square-made-microsoft-its/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/anthropic-continues-compute-gobbling-streak-213739548.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft and HUMAIN announce long-term strategic collaboration to enable AI transformation in Saudi Arabia and beyond",
+   "label": "Decoding ANET Stock's Premium Valuation",
    "value": {
-    "headline": "Microsoft and HUMAIN announce long-term strategic collaboration to enable AI transformation in Saudi Arabia and beyond",
+    "headline": "Decoding ANET Stock's Premium Valuation",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787732820,
-    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-announce-long-term-082700727.html?.tsrc=rss",
+    "ts": 1787779529,
+    "url": "https://www.trefis.com/articles/612945/decoding-anet-stocks-premium-valuation/2026-08-26?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-announce-long-term-082700727.html?.tsrc=rss"
+     "https://www.trefis.com/articles/612945/decoding-anet-stocks-premium-valuation/2026-08-26?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Market Chatter: SoftBank Considering Up to $20 Billion Bond Offering to Refinance OpenAI Investment Loan",
+   "label": "Has Wall Street Given Up On Oracle Stock Too Soon?",
    "value": {
-    "headline": "Market Chatter: SoftBank Considering Up to $20 Billion Bond Offering to Refinance OpenAI Investment Loan",
+    "headline": "Has Wall Street Given Up On Oracle Stock Too Soon?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787732035,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/market-chatter-softbank-considering-20-081355496.html?.tsrc=rss",
+    "ts": 1787775231,
+    "url": "https://www.trefis.com/articles/612956/has-wall-street-given-up-on-oracle-stock-too-soon/2026-08-26?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/market-chatter-softbank-considering-20-081355496.html?.tsrc=rss"
+     "https://www.trefis.com/articles/612956/has-wall-street-given-up-on-oracle-stock-too-soon/2026-08-26?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia’s Paradox: Stellar Earnings and a Sliding Stock",
+   "label": "Anthropic Ramps Up Infrastructure Spending Ahead Of IPO, Says Report — Plans $45B Computing Push",
    "value": {
-    "headline": "Nvidia’s Paradox: Stellar Earnings and a Sliding Stock",
+    "headline": "Anthropic Ramps Up Infrastructure Spending Ahead Of IPO, Says Report — Plans $45B Computing Push",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787727600,
-    "url": "https://finance.yahoo.com/m/fa303cac-07c3-3871-8606-fa43d89d5825/nvidia%E2%80%99s-paradox%3A-stellar.html?.tsrc=rss",
+    "ts": 1787774660,
+    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-ramps-up-infrastructure-spending-ahead-of-ipo-says-report-plans-45-b-computing-push/cZYV3ofRJp5?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/fa303cac-07c3-3871-8606-fa43d89d5825/nvidia%E2%80%99s-paradox%3A-stellar.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/anthropic-ramps-up-infrastructure-spending-ahead-of-ipo-says-report-plans-45-b-computing-push/cZYV3ofRJp5?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

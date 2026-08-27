@@ -1,41 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 260.11,
- "change_pct": -2.16,
+ "price": 260.28,
+ "change_pct": -0.3,
  "ohlc": [
-  {
-   "time": "2026-05-27",
-   "o": 266.15,
-   "h": 272.41,
-   "l": 265.7,
-   "c": 271.85,
-   "v": 40061900
-  },
-  {
-   "time": "2026-05-28",
-   "o": 272.27,
-   "h": 274.5,
-   "l": 267.44,
-   "c": 274.0,
-   "v": 40630400
-  },
-  {
-   "time": "2026-05-29",
-   "o": 271.29,
-   "h": 274.75,
-   "l": 269.64,
-   "c": 270.64,
-   "v": 54749600
-  },
-  {
-   "time": "2026-06-01",
-   "o": 266.29,
-   "h": 266.63,
-   "l": 260.7,
-   "c": 261.26,
-   "v": 53604400
-  },
   {
    "time": "2026-06-02",
    "o": 257.16,
@@ -482,26 +450,54 @@
    "h": 263.84,
    "l": 259.52,
    "c": 260.11,
-   "v": 28301300
+   "v": 28374100
+  },
+  {
+   "time": "2026-08-21",
+   "o": 260.74,
+   "h": 261.09,
+   "l": 257.04,
+   "c": 258.63,
+   "v": 35723000
+  },
+  {
+   "time": "2026-08-24",
+   "o": 259.6,
+   "h": 263.32,
+   "l": 259.05,
+   "c": 262.07,
+   "v": 28070500
+  },
+  {
+   "time": "2026-08-25",
+   "o": 262.51,
+   "h": 263.89,
+   "l": 259.83,
+   "c": 261.06,
+   "v": 25550200
+  },
+  {
+   "time": "2026-08-26",
+   "o": 261.27,
+   "h": 262.05,
+   "l": 258.24,
+   "c": 260.28,
+   "v": 20669810
   }
  ],
  "sr": {
-  "price": 260.11,
+  "price": 260.28,
   "resistance": [
-   274.75,
-   278.56
+   266.4,
+   274.75
   ],
   "support": [
-   256.16,
-   255.19
+   257.04,
+   256.16
   ],
   "strong_support": 196.0
  },
  "spark": [
-  271.85,
-  274.0,
-  270.64,
-  261.26,
   256.52,
   250.02,
   253.79,
@@ -557,13 +553,17 @@
   261.31,
   259.45,
   265.84,
-  260.11
+  260.11,
+  258.63,
+  262.07,
+  261.06,
+  260.28
  ],
- "spark_start": "2026-05-27",
- "spark_end": "2026-08-20",
+ "spark_start": "2026-06-02",
+ "spark_end": "2026-08-26",
  "fundamental": {
-  "pe_trailing": 20.925983,
-  "pe_forward": 25.033419,
+  "pe_trailing": 20.939661,
+  "pe_forward": 25.049782,
   "eps_trailing": 12.43,
   "eps_forward": 10.39051,
   "stale": false,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Electric Vehicles Today - Rising Demand Driving China's Charging Services Market Expansion",
+   "label": "Amazon just tripled its order of Nvidia chips over ‘surging demand’",
    "value": {
-    "headline": "Electric Vehicles Today - Rising Demand Driving China's Charging Services Market Expansion",
+    "headline": "Amazon just tripled its order of Nvidia chips over ‘surging demand’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787308797,
-    "url": "https://finance.yahoo.com/energy/articles/electric-vehicles-today-rising-demand-103957658.html?.tsrc=rss",
+    "ts": 1787788038,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-just-tripled-order-nvidia-234718526.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/electric-vehicles-today-rising-demand-103957658.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-just-tripled-order-nvidia-234718526.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Analysis-US corporate AI debt surge tests investor limits as fatigue emerges",
+   "label": "Autonomous Trucks Are Here: Einride’s 27% Revenue Jump",
    "value": {
-    "headline": "Analysis-US corporate AI debt surge tests investor limits as fatigue emerges",
+    "headline": "Autonomous Trucks Are Here: Einride’s 27% Revenue Jump",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787306538,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/analysis-us-corporate-ai-debt-100218069.html?.tsrc=rss",
+    "ts": 1787784018,
+    "url": "https://finance.yahoo.com/technology/articles/autonomous-trucks-einride-27-revenue-224018722.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/analysis-us-corporate-ai-debt-100218069.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/autonomous-trucks-einride-27-revenue-224018722.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "I Examined the Top Holdings of 17 Billionaire Money Managers, and These 3 Stocks Were the Common Denominators",
+   "label": "Rivian Automotive vs. Tesla: Which Electric Vehicle Stock Is a Better Investment in 2026?",
    "value": {
-    "headline": "I Examined the Top Holdings of 17 Billionaire Money Managers, and These 3 Stocks Were the Common Denominators",
+    "headline": "Rivian Automotive vs. Tesla: Which Electric Vehicle Stock Is a Better Investment in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787300760,
-    "url": "https://www.fool.com/investing/2026/08/21/examine-top-holding-17-billionaire-3-common-stocks/?.tsrc=rss",
+    "ts": 1787782801,
+    "url": "https://www.fool.com/coverage/better-buy/2026/08/26/rivian-automotive-vs-tesla-which-electric-vehicle-stock-is-a-better-investment-in-2026/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/21/examine-top-holding-17-billionaire-3-common-stocks/?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/08/26/rivian-automotive-vs-tesla-which-electric-vehicle-stock-is-a-better-investment-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
+   "label": "Nvidia doubles revenue, forecasts even more AI spending",
    "value": {
-    "headline": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
+    "headline": "Nvidia doubles revenue, forecasts even more AI spending",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787299620,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss",
+    "ts": 1787781998,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/memory-stocks-struggle-momentum-smart-080700264.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Zacks Analyst Blog Highlights Dell, Celestica, Lumentum and Vertiv",
+   "label": "Nvidia Rallies On Major Amazon Contract, Fiscal Q2 Beat-And-Raise Report",
    "value": {
-    "headline": "The Zacks Analyst Blog Highlights Dell, Celestica, Lumentum and Vertiv",
+    "headline": "Nvidia Rallies On Major Amazon Contract, Fiscal Q2 Beat-And-Raise Report",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787296140,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-dell-070900789.html?.tsrc=rss",
+    "ts": 1787781771,
+    "url": "https://finance.yahoo.com/m/2c85f5e2-5d51-37a6-ac7d-103fd18836b6/nvidia-rallies-on-major.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-dell-070900789.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/2c85f5e2-5d51-37a6-ac7d-103fd18836b6/nvidia-rallies-on-major.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -680,12 +680,28 @@
     "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 4 篇 / 46 分 / 48 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 46,
+    "comments": 48,
+    "n": 4,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-08-27",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-21",
+   "as_of": "2026-08-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

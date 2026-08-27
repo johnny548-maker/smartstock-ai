@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 309.9,
- "change_pct": -0.14,
+ "price": 313.45,
+ "change_pct": 1.15,
  "ohlc": [
-  {
-   "time": "2026-06-01",
-   "o": 309.36,
-   "h": 310.67,
-   "l": 304.76,
-   "c": 306.05,
-   "v": 48849900
-  },
   {
    "time": "2026-06-02",
    "o": 307.2,
@@ -482,11 +474,19 @@
    "h": 313.59,
    "l": 308.21,
    "c": 309.9,
-   "v": 25842000
+   "v": 25869800
+  },
+  {
+   "time": "2026-08-26",
+   "o": 310.24,
+   "h": 315.43,
+   "l": 308.8,
+   "c": 313.45,
+   "v": 33571543
   }
  ],
  "sr": {
-  "price": 309.9,
+  "price": 313.45,
   "resistance": [
    316.02,
    317.13
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  306.05,
   314.93,
   309.99,
   310.96,
@@ -557,16 +556,17 @@
   311.3,
   309.35,
   310.34,
-  309.9
+  309.9,
+  313.45
  ],
- "spark_start": "2026-06-01",
- "spark_end": "2026-08-25",
+ "spark_start": "2026-06-02",
+ "spark_end": "2026-08-26",
  "fundamental": {
   "pe_trailing": 35.579792,
   "pe_forward": 32.48935,
   "eps_trailing": 8.71,
   "eps_forward": 9.53851,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 Unpopular Stock That Deserves a Second Chance and 2 We Brush Off",
+   "label": "Nvidia, Meta, Revolution Medicines, Abercrombie, Intuit, Salesforce, Moderna, and More Stocks That Explain Today’s Marke",
    "value": {
-    "headline": "1 Unpopular Stock That Deserves a Second Chance and 2 We Brush Off",
+    "headline": "Nvidia, Meta, Revolution Medicines, Abercrombie, Intuit, Salesforce, Moderna, and More Stocks That Explain Today’s Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787740513,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/1-unpopular-stock-deserves-second-103513853.html?.tsrc=rss",
+    "ts": 1787780580,
+    "url": "https://finance.yahoo.com/m/cca03820-a665-3555-8f42-1379277d10e1/nvidia%2C-meta%2C-revolution.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/1-unpopular-stock-deserves-second-103513853.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/cca03820-a665-3555-8f42-1379277d10e1/nvidia%2C-meta%2C-revolution.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Warren Buffett's Successor, Greg Abel, Has 30% of Berkshire's $358 Billion Portfolio Invested in 2 Preeminent AI Stocks",
+   "label": "Apple Is One of the Most Profitable Businesses in the World. Here's Why the Stock Will Be Worth $366 a Share in 1 Year.",
    "value": {
-    "headline": "Warren Buffett's Successor, Greg Abel, Has 30% of Berkshire's $358 Billion Portfolio Invested in 2 Preeminent AI Stocks",
+    "headline": "Apple Is One of the Most Profitable Businesses in the World. Here's Why the Stock Will Be Worth $366 a Share in 1 Year.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787736360,
-    "url": "https://www.fool.com/investing/2026/08/26/warren-buffett-abel-30-brka-portfolio-2-ai-stocks/?.tsrc=rss",
+    "ts": 1787776620,
+    "url": "https://www.fool.com/investing/2026/08/26/apple-profitable-business-stock-price-366-1-year/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/26/warren-buffett-abel-30-brka-portfolio-2-ai-stocks/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/26/apple-profitable-business-stock-price-366-1-year/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jason Calacanis Says TSLA's Optimus Will Eclipse AAPL's iPhone, Predicts 1 Billion Robots By 2036",
+   "label": "Warren Buffett “Blew It” on Alphabet (GOOGL) And Made It Berkshire’s Third-Biggest Bet",
    "value": {
-    "headline": "Jason Calacanis Says TSLA's Optimus Will Eclipse AAPL's iPhone, Predicts 1 Billion Robots By 2036",
+    "headline": "Warren Buffett “Blew It” on Alphabet (GOOGL) And Made It Berkshire’s Third-Biggest Bet",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787736060,
-    "url": "https://finance.yahoo.com/technology/ai/articles/jason-calacanis-says-tslas-optimus-092100231.html?.tsrc=rss",
+    "ts": 1787775823,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-blew-alphabet-googl-202343918.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/jason-calacanis-says-tslas-optimus-092100231.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-blew-alphabet-googl-202343918.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet, Apple, and Meta Platforms Were Top Billionaire Investor Buys in Q2. Should Retail Investors Follow Suit?",
+   "label": "AAPL Stock Gains 1%; Apple Is Expected To Ship 10M Foldable iPhones In The First Year, IDC Predicts",
    "value": {
-    "headline": "Alphabet, Apple, and Meta Platforms Were Top Billionaire Investor Buys in Q2. Should Retail Investors Follow Suit?",
+    "headline": "AAPL Stock Gains 1%; Apple Is Expected To Ship 10M Foldable iPhones In The First Year, IDC Predicts",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787734920,
-    "url": "https://www.fool.com/investing/2026/08/26/alphabet-apple-meta-platforms-top-billionaire/?.tsrc=rss",
+    "ts": 1787773847,
+    "url": "https://stocktwits.com/news-articles/markets/equity/apple-is-expected-to-ship-10-m-foldable-i-phones-in-the-first-year-idc-predicts/cZYVd98RJpc?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/26/alphabet-apple-meta-platforms-top-billionaire/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/apple-is-expected-to-ship-10-m-foldable-i-phones-in-the-first-year-idc-predicts/cZYVd98RJpc?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Earnings Give Investors a Barometer for State of AI Trade",
+   "label": "Jim Cramer Highlights Sandisk’s (SNDK) Massive Buybacks After Stock Surge",
    "value": {
-    "headline": "Nvidia Earnings Give Investors a Barometer for State of AI Trade",
+    "headline": "Jim Cramer Highlights Sandisk’s (SNDK) Massive Buybacks After Stock Surge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787730536,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-earnings-give-investors-a-barometer-for-state-of-ai-trade-074856874.html?.tsrc=rss",
+    "ts": 1787771043,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-highlights-sandisk-sndk-190403019.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-earnings-give-investors-a-barometer-for-state-of-ai-trade-074856874.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-highlights-sandisk-sndk-190403019.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 78 分 / 20 留言",
+   "label": "HN 討論熱度 20 篇 / 658 分 / 419 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 78,
-    "comments": 20,
+    "points": 658,
+    "comments": 419,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-08-26",
+   "severity": "warn",
+   "as_of": "2026-08-27",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-26",
+   "as_of": "2026-08-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
