@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 209.66,
- "change_pct": -1.59,
+ "name": "NVIDIA",
+ "price": 227.98,
+ "change_pct": 8.74,
  "ohlc": [
-  {
-   "time": "2026-06-02",
-   "o": 226.92,
-   "h": 232.01,
-   "l": 221.09,
-   "c": 222.56,
-   "v": 193362900
-  },
   {
    "time": "2026-06-03",
    "o": 221.46,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-08-26",
-   "o": 212.42,
+   "o": 212.64,
    "h": 213.6,
    "l": 209.23,
    "c": 209.66,
-   "v": 145070184
+   "v": 179900000
+  },
+  {
+   "time": "2026-08-27",
+   "o": 222.59,
+   "h": 230.47,
+   "l": 220.9,
+   "c": 227.98,
+   "v": 297197891
   }
  ],
  "sr": {
-  "price": 209.66,
+  "price": 227.98,
   "resistance": [
-   212.71,
-   213.81
+   232.01,
+   236.26
   ],
   "support": [
-   199.34,
-   197.97
+   216.2,
+   208.54
   ],
-  "strong_support": 189.8
+  "strong_support": 163.85
  },
  "spark": [
-  222.56,
   214.5,
   218.66,
   205.1,
@@ -557,11 +556,151 @@
   214.72,
   208.48,
   213.05,
-  209.66
+  209.66,
+  227.98
  ],
- "spark_start": "2026-06-02",
- "spark_end": "2026-08-26",
- "fundamental": null,
+ "spark_start": "2026-06-03",
+ "spark_end": "2026-08-27",
+ "fundamental": {
+  "pe_trailing": 34.96626,
+  "pe_forward": 15.692964,
+  "eps_trailing": 6.52,
+  "eps_forward": 14.52753,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+   "value": {
+    "headline": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787882803,
+    "url": "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Wendy's Stock Dropped Today",
+   "value": {
+    "headline": "Why Wendy's Stock Dropped Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787880320,
+    "url": "https://www.fool.com/investing/2026/08/27/why-wendys-stock-dropped-today/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/27/why-wendys-stock-dropped-today/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia Just Guided for 70% Revenue Growth in Fiscal Year 2028. Here's What That Means for AI Stocks.",
+   "value": {
+    "headline": "Nvidia Just Guided for 70% Revenue Growth in Fiscal Year 2028. Here's What That Means for AI Stocks.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787880000,
+    "url": "https://www.fool.com/investing/2026/08/27/nvidia-just-guided-for-70-revenue-growth-in-fiscal/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/27/nvidia-just-guided-for-70-revenue-growth-in-fiscal/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NVDA Q2 Deep Dive: AI Infrastructure Demand and Supply Constraints Drive Results",
+   "value": {
+    "headline": "NVDA Q2 Deep Dive: AI Infrastructure Demand and Supply Constraints Drive Results",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787879107,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nvda-q2-deep-dive-ai-010507193.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nvda-q2-deep-dive-ai-010507193.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Oklo and NuScale Power Have Shed a Combined 85.3% This Year. Why Are Nuclear Stocks Falling?",
+   "value": {
+    "headline": "Oklo and NuScale Power Have Shed a Combined 85.3% This Year. Why Are Nuclear Stocks Falling?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787876700,
+    "url": "https://www.fool.com/investing/2026/08/27/oklo-and-nuscale-power-have-shed-a-combined-853-th/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/27/oklo-and-nuscale-power-have-shed-a-combined-853-th/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 193,168 股交割失敗）",
+   "value": {
+    "total_shares": 193168,
+    "days": 9,
+    "max_shares": 151895,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-08-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

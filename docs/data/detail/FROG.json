@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 92.8,
- "change_pct": 3.71,
+ "price": 104.03,
+ "change_pct": 12.1,
  "ohlc": [
-  {
-   "time": "2026-06-02",
-   "o": 84.57,
-   "h": 89.16,
-   "l": 83.73,
-   "c": 88.05,
-   "v": 3660600
-  },
   {
    "time": "2026-06-03",
    "o": 85.8,
@@ -478,19 +470,24 @@
   },
   {
    "time": "2026-08-26",
-   "o": 88.63,
+   "o": 88.12,
    "h": 93.75,
    "l": 87.15,
    "c": 92.8,
-   "v": 1142077
+   "v": 1142700
+  },
+  {
+   "time": "2026-08-27",
+   "o": 96.4,
+   "h": 104.83,
+   "l": 96.4,
+   "c": 104.03,
+   "v": 3822238
   }
  ],
  "sr": {
-  "price": 92.8,
-  "resistance": [
-   96.25,
-   98.47
-  ],
+  "price": 104.03,
+  "resistance": [],
   "support": [
    86.04,
    79.5
@@ -498,7 +495,6 @@
   "strong_support": 26.1
  },
  "spark": [
-  88.05,
   83.86,
   86.16,
   84.0,
@@ -557,11 +553,144 @@
   92.13,
   90.14,
   89.48,
-  92.8
+  92.8,
+  104.03
  ],
- "spark_start": "2026-06-02",
- "spark_end": "2026-08-26",
+ "spark_start": "2026-06-03",
+ "spark_end": "2026-08-27",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+   "value": {
+    "headline": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787882803,
+    "url": "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "JFrog Introduces the Software Supply Chain Traffic Controller: One Trusted Path for Every Software Package",
+   "value": {
+    "headline": "JFrog Introduces the Software Supply Chain Traffic Controller: One Trusted Path for Every Software Package",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787836500,
+    "url": "https://finance.yahoo.com/technology/ai/articles/jfrog-introduces-software-supply-chain-131500973.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/jfrog-introduces-software-supply-chain-131500973.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Software Stocks to Target This Week and 1 We Brush Off",
+   "value": {
+    "headline": "2 Software Stocks to Target This Week and 1 We Brush Off",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787834947,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-software-stocks-target-week-124907083.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-software-stocks-target-week-124907083.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why JFrog (FROG) Stock Is Trading Up Today",
+   "value": {
+    "headline": "Why JFrog (FROG) Stock Is Trading Up Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787769793,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-jfrog-frog-stock-trading-184313617.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-jfrog-frog-stock-trading-184313617.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "JFrog Can Become 'System of Record' for Software Development in AI Era, RBC Says",
+   "value": {
+    "headline": "JFrog Can Become 'System of Record' for Software Development in AI Era, RBC Says",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787756244,
+    "url": "https://finance.yahoo.com/technology/ai/articles/jfrog-become-apos-system-record-145724677.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/jfrog-become-apos-system-record-145724677.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-28",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 1897,
+    "days": 6,
+    "max_shares": 843,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-08-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
