@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 314.58,
- "change_pct": 0.36,
+ "price": 319.7,
+ "change_pct": 1.63,
  "ohlc": [
-  {
-   "time": "2026-06-03",
-   "o": 313.91,
-   "h": 316.67,
-   "l": 308.58,
-   "c": 309.99,
-   "v": 50836700
-  },
   {
    "time": "2026-06-04",
    "o": 312.96,
@@ -482,23 +474,30 @@
    "h": 315.4,
    "l": 309.4,
    "c": 314.58,
-   "v": 32248789
+   "v": 32419200
+  },
+  {
+   "time": "2026-08-28",
+   "o": 317.09,
+   "h": 322.37,
+   "l": 315.45,
+   "c": 319.7,
+   "v": 38500185
   }
  ],
  "sr": {
-  "price": 314.58,
+  "price": 319.7,
   "resistance": [
-   316.02,
-   317.13
+   320.28,
+   334.7
   ],
   "support": [
-   304.76,
-   300.57
+   319.07,
+   304.76
   ],
   "strong_support": 225.12
  },
  "spark": [
-  309.99,
   310.96,
   307.08,
   301.28,
@@ -557,16 +556,17 @@
   310.34,
   309.9,
   313.45,
-  314.58
+  314.58,
+  319.7
  ],
- "spark_start": "2026-06-03",
- "spark_end": "2026-08-27",
+ "spark_start": "2026-06-04",
+ "spark_end": "2026-08-28",
  "fundamental": {
   "pe_trailing": 36.117104,
   "pe_forward": 32.979992,
   "eps_trailing": 8.71,
   "eps_forward": 9.53851,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is Wall Street Doubting Google Stock?",
+   "label": "Apple Makes Costly Move Subscribers Won't Miss",
    "value": {
-    "headline": "Why Is Wall Street Doubting Google Stock?",
+    "headline": "Apple Makes Costly Move Subscribers Won't Miss",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787873991,
-    "url": "https://www.trefis.com/articles/613260/why-is-wall-street-doubting-google-stock/2026-08-27?.tsrc=rss",
+    "ts": 1787955894,
+    "url": "https://finance.yahoo.com/media-advertising/articles/apple-makes-costly-move-subscribers-222454691.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613260/why-is-wall-street-doubting-google-stock/2026-08-27?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/apple-makes-costly-move-subscribers-222454691.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-28",
+   "severity": "warn",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Bull Case For Apple (AAPL) Could Change Following Its AI-Centric Mac Refresh With New M6 Chip",
+   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
    "value": {
-    "headline": "The Bull Case For Apple (AAPL) Could Change Following Its AI-Centric Mac Refresh With New M6 Chip",
+    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787872313,
-    "url": "https://finance.yahoo.com/technology/ai/articles/bull-case-apple-aapl-could-231153158.html?.tsrc=rss",
+    "ts": 1787955055,
+    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/bull-case-apple-aapl-could-231153158.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wearable AI devices are creating a whole new generation of privacy concerns",
+   "label": "Weekly Wrap: Bitcoin Holds Onto Gains",
    "value": {
-    "headline": "Wearable AI devices are creating a whole new generation of privacy concerns",
+    "headline": "Weekly Wrap: Bitcoin Holds Onto Gains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787866115,
-    "url": "https://finance.yahoo.com/video/wearable-ai-devices-creating-whole-212835059.html?.tsrc=rss",
+    "ts": 1787954280,
+    "url": "https://www.cryptoprowl.com/releases/weekly-wrap-bitcoin-holds-onto-gains-6579?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/wearable-ai-devices-creating-whole-212835059.html?.tsrc=rss"
+     "https://www.cryptoprowl.com/releases/weekly-wrap-bitcoin-holds-onto-gains-6579?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500 investors are quietly making a huge shift",
+   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
    "value": {
-    "headline": "S&P 500 investors are quietly making a huge shift",
+    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787865420,
-    "url": "https://www.thestreet.com/investing/rsp-equal-weight-sp-500-etf-100-billion-magnificent-seven?.tsrc=rss",
+    "ts": 1787954034,
+    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/rsp-equal-weight-sp-500-etf-100-billion-magnificent-seven?.tsrc=rss"
+     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Koss Corporation Releases Fourth Quarter and Full Year Results",
+   "label": "Dell Stock Widens Your Portfolio Instead Of Steadying It",
    "value": {
-    "headline": "Koss Corporation Releases Fourth Quarter and Full Year Results",
+    "headline": "Dell Stock Widens Your Portfolio Instead Of Steadying It",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787865300,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/koss-corporation-releases-fourth-quarter-211500828.html?.tsrc=rss",
+    "ts": 1787951159,
+    "url": "https://www.trefis.com/articles/613542/dell-stock-widens-your-portfolio-instead-of-steadying-it/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/koss-corporation-releases-fourth-quarter-211500828.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613542/dell-stock-widens-your-portfolio-instead-of-steadying-it/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 208 分 / 52 留言",
+   "label": "HN 討論熱度 20 篇 / 143 分 / 49 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 208,
-    "comments": 52,
+    "points": 143,
+    "comments": 49,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

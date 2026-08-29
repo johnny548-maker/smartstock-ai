@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 472.26,
- "change_pct": 1.82,
+ "price": 456.24,
+ "change_pct": -3.39,
  "ohlc": [
-  {
-   "time": "2026-06-03",
-   "o": 433.07,
-   "h": 435.28,
-   "l": 406.33,
-   "c": 420.39,
-   "v": 14231100
-  },
   {
    "time": "2026-06-04",
    "o": 401.21,
@@ -482,14 +474,22 @@
    "h": 472.5,
    "l": 459.13,
    "c": 472.26,
-   "v": 4635914
+   "v": 4642600
+  },
+  {
+   "time": "2026-08-28",
+   "o": 467.58,
+   "h": 474.54,
+   "l": 452.9,
+   "c": 456.24,
+   "v": 3936721
   }
  ],
  "sr": {
-  "price": 472.26,
+  "price": 456.24,
   "resistance": [
-   485.7,
-   514.0
+   462.72,
+   468.7
   ],
   "support": [
    424.0,
@@ -498,7 +498,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  420.39,
   421.35,
   393.74,
   400.11,
@@ -557,143 +556,12 @@
   433.19,
   451.5,
   463.82,
-  472.26
+  472.26,
+  456.24
  ],
- "spark_start": "2026-06-03",
- "spark_end": "2026-08-27",
+ "spark_start": "2026-06-04",
+ "spark_end": "2026-08-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AI Bubble Could Be Ready to Pop and Jim Cramer May Be the Warning Sign",
-   "value": {
-    "headline": "AI Bubble Could Be Ready to Pop and Jim Cramer May Be the Warning Sign",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787868063,
-    "url": "https://finance.yahoo.com/technology/ai/articles/ai-bubble-could-ready-pop-220103672.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/ai-bubble-could-ready-pop-220103672.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today, Aug. 27: HP Slips 3% on Weak PC Shipments Despite Fiscal Q3 Beat",
-   "value": {
-    "headline": "Stock Market Today, Aug. 27: HP Slips 3% on Weak PC Shipments Despite Fiscal Q3 Beat",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787865190,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/08/27/stock-market-today-aug-27-hp-slips-3-on-weak-pc-shipments-despite-fiscal-q3-beat/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/08/27/stock-market-today-aug-27-hp-slips-3-on-weak-pc-shipments-despite-fiscal-q3-beat/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "8-27-2026: Nvidia Surge, Oil Relief + Jackson Hole in Focus",
-   "value": {
-    "headline": "8-27-2026: Nvidia Surge, Oil Relief + Jackson Hole in Focus",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787859002,
-    "url": "https://finance.yahoo.com/video/8-27-2026-nvidia-surge-193002330.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/8-27-2026-nvidia-surge-193002330.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dell's Multiple Falls On Servers It Cannot Build Fast Enough",
-   "value": {
-    "headline": "Dell's Multiple Falls On Servers It Cannot Build Fast Enough",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787856016,
-    "url": "https://www.trefis.com/articles/613288/dells-multiple-falls-on-servers-it-cannot-build-fast-enough/2026-08-27?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/613288/dells-multiple-falls-on-servers-it-cannot-build-fast-enough/2026-08-27?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Everpure Stock Slides Despite 'Stellar' Results. What To Know.",
-   "value": {
-    "headline": "Everpure Stock Slides Despite 'Stellar' Results. What To Know.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787851002,
-    "url": "https://finance.yahoo.com/m/1136a0f6-1f6d-33c3-b56e-efad1a03192a/everpure-stock-slides-despite.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/1136a0f6-1f6d-33c3-b56e-efad1a03192a/everpure-stock-slides-despite.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 17,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 176,500 股交割失敗）",
-   "value": {
-    "total_shares": 176500,
-    "days": 7,
-    "max_shares": 166315,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-08-28",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,25 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 260.28,
- "change_pct": -0.3,
+ "price": 266.43,
+ "change_pct": 3.97,
  "ohlc": [
-  {
-   "time": "2026-06-02",
-   "o": 257.16,
-   "h": 261.2,
-   "l": 254.37,
-   "c": 256.52,
-   "v": 41811000
-  },
-  {
-   "time": "2026-06-03",
-   "o": 254.7,
-   "h": 257.09,
-   "l": 247.71,
-   "c": 250.02,
-   "v": 51394200
-  },
   {
    "time": "2026-06-04",
    "o": 253.12,
@@ -478,18 +462,34 @@
   },
   {
    "time": "2026-08-26",
-   "o": 261.27,
+   "o": 261.28,
    "h": 262.05,
    "l": 258.24,
    "c": 260.28,
-   "v": 20669810
+   "v": 21528400
+  },
+  {
+   "time": "2026-08-27",
+   "o": 259.23,
+   "h": 259.66,
+   "l": 255.02,
+   "c": 256.26,
+   "v": 35927800
+  },
+  {
+   "time": "2026-08-28",
+   "o": 258.32,
+   "h": 267.56,
+   "l": 257.78,
+   "c": 266.43,
+   "v": 49322804
   }
  ],
  "sr": {
-  "price": 260.28,
+  "price": 266.43,
   "resistance": [
-   266.4,
-   274.75
+   274.75,
+   278.56
   ],
   "support": [
    257.04,
@@ -498,8 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  256.52,
-  250.02,
   253.79,
   246.03,
   245.22,
@@ -557,150 +555,168 @@
   258.63,
   262.07,
   261.06,
-  260.28
+  260.28,
+  256.26,
+  266.43
  ],
- "spark_start": "2026-06-02",
- "spark_end": "2026-08-26",
+ "spark_start": "2026-06-04",
+ "spark_end": "2026-08-28",
  "fundamental": {
-  "pe_trailing": 20.939661,
-  "pe_forward": 25.049782,
+  "pe_trailing": 21.434431,
+  "pe_forward": 25.641668,
   "eps_trailing": 12.43,
   "eps_forward": 10.39051,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 266.43,
+  "stop": 254.82,
+  "target": 295.45,
+  "atr_bracket": 295.45,
+  "measured_move": 270.74,
+  "target_band": [
+   270.74,
+   295.45
+  ],
+  "stop_pct": -4.4,
+  "target_pct": 10.9,
+  "rr": 2.5,
+  "atr_pct": 2.2,
+  "swing_stop": 255.3,
+  "chandelier": 261.96,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon just tripled its order of Nvidia chips over ‘surging demand’",
+   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
    "value": {
-    "headline": "Amazon just tripled its order of Nvidia chips over ‘surging demand’",
+    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787788038,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-just-tripled-order-nvidia-234718526.html?.tsrc=rss",
+    "ts": 1787955055,
+    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-just-tripled-order-nvidia-234718526.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Autonomous Trucks Are Here: Einride’s 27% Revenue Jump",
+   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
    "value": {
-    "headline": "Autonomous Trucks Are Here: Einride’s 27% Revenue Jump",
+    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787784018,
-    "url": "https://finance.yahoo.com/technology/articles/autonomous-trucks-einride-27-revenue-224018722.html?.tsrc=rss",
+    "ts": 1787954034,
+    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/autonomous-trucks-einride-27-revenue-224018722.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Rivian Automotive vs. Tesla: Which Electric Vehicle Stock Is a Better Investment in 2026?",
+   "label": "Can PLTR Stock Live Up To Its Multiple?",
    "value": {
-    "headline": "Rivian Automotive vs. Tesla: Which Electric Vehicle Stock Is a Better Investment in 2026?",
+    "headline": "Can PLTR Stock Live Up To Its Multiple?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787782801,
-    "url": "https://www.fool.com/coverage/better-buy/2026/08/26/rivian-automotive-vs-tesla-which-electric-vehicle-stock-is-a-better-investment-in-2026/?.tsrc=rss",
+    "ts": 1787953730,
+    "url": "https://www.trefis.com/articles/613491/can-pltr-stock-live-up-to-its-multiple-4/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/08/26/rivian-automotive-vs-tesla-which-electric-vehicle-stock-is-a-better-investment-in-2026/?.tsrc=rss"
+     "https://www.trefis.com/articles/613491/can-pltr-stock-live-up-to-its-multiple-4/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia doubles revenue, forecasts even more AI spending",
+   "label": "Costco Stock's Premium Rests On A Visit Rate That Keeps Slowing",
    "value": {
-    "headline": "Nvidia doubles revenue, forecasts even more AI spending",
+    "headline": "Costco Stock's Premium Rests On A Visit Rate That Keeps Slowing",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787781998,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss",
+    "ts": 1787950737,
+    "url": "https://www.trefis.com/articles/613538/costco-stocks-premium-rests-on-a-visit-rate-that-keeps-slowing/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-revenue-forecasts-even-220638927.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613538/costco-stocks-premium-rests-on-a-visit-rate-that-keeps-slowing/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Rallies On Major Amazon Contract, Fiscal Q2 Beat-And-Raise Report",
+   "label": "Microsoft Just Gained 14% in a Month: Take Profits, or Buy More?",
    "value": {
-    "headline": "Nvidia Rallies On Major Amazon Contract, Fiscal Q2 Beat-And-Raise Report",
+    "headline": "Microsoft Just Gained 14% in a Month: Take Profits, or Buy More?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787781771,
-    "url": "https://finance.yahoo.com/m/2c85f5e2-5d51-37a6-ac7d-103fd18836b6/nvidia-rallies-on-major.html?.tsrc=rss",
+    "ts": 1787944017,
+    "url": "https://247wallst.com/investing/2026/08/28/microsoft-just-gained-14-in-a-month-take-profits-or-buy-more/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/2c85f5e2-5d51-37a6-ac7d-103fd18836b6/nvidia-rallies-on-major.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/28/microsoft-just-gained-14-in-a-month-take-profits-or-buy-more/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 4 篇 / 46 分 / 48 留言",
+   "label": "HN 討論熱度 7 篇 / 106 分 / 79 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 46,
-    "comments": 48,
-    "n": 4,
+    "points": 106,
+    "comments": 79,
+    "n": 7,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +731,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-27",
+   "as_of": "2026-08-29",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

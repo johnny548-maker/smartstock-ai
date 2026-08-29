@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 505.06,
- "change_pct": 1.75,
+ "price": 513.53,
+ "change_pct": 1.68,
  "ohlc": [
-  {
-   "time": "2026-06-03",
-   "o": 437.63,
-   "h": 439.56,
-   "l": 423.45,
-   "c": 426.54,
-   "v": 39037000
-  },
   {
    "time": "2026-06-04",
    "o": 434.99,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-08-27",
-   "o": 494.65,
-   "h": 506.47,
+   "o": 494.88,
+   "h": 506.48,
    "l": 490.08,
    "c": 505.06,
-   "v": 28615865
+   "v": 28688800
+  },
+  {
+   "time": "2026-08-28",
+   "o": 505.33,
+   "h": 517.78,
+   "l": 504.87,
+   "c": 513.53,
+   "v": 28953449
   }
  ],
  "sr": {
-  "price": 505.06,
+  "price": 513.53,
   "resistance": [
-   507.79,
-   509.31
+   515.06,
+   526.7
   ],
   "support": [
    501.87,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  426.54,
   427.25,
   415.89,
   410.97,
@@ -557,35 +556,36 @@
   487.31,
   491.71,
   496.37,
-  505.06
+  505.06,
+  513.53
  ],
- "spark_start": "2026-06-03",
- "spark_end": "2026-08-27",
+ "spark_start": "2026-06-04",
+ "spark_end": "2026-08-28",
  "fundamental": {
   "pe_trailing": 28.105732,
   "pe_forward": 21.425104,
   "eps_trailing": 17.97,
   "eps_forward": 23.57328,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 505.06,
-  "stop": 485.45,
-  "target": 554.09,
-  "atr_bracket": 554.09,
+  "entry": 513.53,
+  "stop": 494.03,
+  "target": 562.28,
+  "atr_bracket": 562.28,
   "measured_move": 648.85,
   "target_band": [
-   554.09,
+   562.28,
    648.85,
    696.44
   ],
-  "stop_pct": -3.9,
-  "target_pct": 9.7,
+  "stop_pct": -3.8,
+  "target_pct": 9.5,
   "rr": 2.5,
   "atr_pct": 1.9,
-  "swing_stop": 473.31,
-  "chandelier": 469.75,
+  "swing_stop": 473.33,
+  "chandelier": 474.71,
   "fib_targets": [
    649.35,
    696.44,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+   "label": "Why ZM Stock Prints So Much Cash Right Now",
    "value": {
-    "headline": "Dow Jones Futures Rise With Fed Chief Warsh Due; Nvidia, These 7 Stocks Are In Buy Zones",
+    "headline": "Why ZM Stock Prints So Much Cash Right Now",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787882803,
-    "url": "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss",
+    "ts": 1787955454,
+    "url": "https://www.trefis.com/articles/613490/why-zm-stock-prints-so-much-cash-right-now/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/28709650-6bf3-32e0-9253-5d5f0e46e8fa/dow-jones-futures-rise-with.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613490/why-zm-stock-prints-so-much-cash-right-now/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "C3.ai vs. Oracle: Which Artificial Intelligence Stock Is a Better Investment in 2026?",
+   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
    "value": {
-    "headline": "C3.ai vs. Oracle: Which Artificial Intelligence Stock Is a Better Investment in 2026?",
+    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787875019,
-    "url": "https://www.fool.com/coverage/better-buy/2026/08/27/c3-ai-vs-oracle-which-artificial-intelligence-stock-is-a-better-investment-in-2026/?.tsrc=rss",
+    "ts": 1787955055,
+    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/08/27/c3-ai-vs-oracle-which-artificial-intelligence-stock-is-a-better-investment-in-2026/?.tsrc=rss"
+     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is Wall Street Doubting Google Stock?",
+   "label": "Is BlackBerry Stock Pricing In A Turnaround That Hasn't Arrived?",
    "value": {
-    "headline": "Why Is Wall Street Doubting Google Stock?",
+    "headline": "Is BlackBerry Stock Pricing In A Turnaround That Hasn't Arrived?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787873991,
-    "url": "https://www.trefis.com/articles/613260/why-is-wall-street-doubting-google-stock/2026-08-27?.tsrc=rss",
+    "ts": 1787954769,
+    "url": "https://www.trefis.com/articles/613492/is-blackberry-stock-pricing-in-a-turnaround-that-hasnt-arrived/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613260/why-is-wall-street-doubting-google-stock/2026-08-27?.tsrc=rss"
+     "https://www.trefis.com/articles/613492/is-blackberry-stock-pricing-in-a-turnaround-that-hasnt-arrived/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Much Track Is Left For SNOW Stock?",
+   "label": "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?",
    "value": {
-    "headline": "How Much Track Is Left For SNOW Stock?",
+    "headline": "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787872499,
-    "url": "https://www.trefis.com/articles/613264/how-much-track-is-left-for-snow-stock/2026-08-27?.tsrc=rss",
+    "ts": 1787954398,
+    "url": "https://www.trefis.com/articles/613489/is-adobe-stocks-ai-strategy-worth-the-near-term-risk/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613264/how-much-track-is-left-for-snow-stock/2026-08-27?.tsrc=rss"
+     "https://www.trefis.com/articles/613489/is-adobe-stocks-ai-strategy-worth-the-near-term-risk/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "IREN Q4 Earnings Call Highlights",
+   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
    "value": {
-    "headline": "IREN Q4 Earnings Call Highlights",
+    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787871869,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-iren-q4-earnings-call-highlights-2026-08-27/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1787954034,
+    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-iren-q4-earnings-call-highlights-2026-08-27/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-29",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 956.14,
- "change_pct": 1.82,
+ "price": 895.0,
+ "change_pct": -6.39,
  "ohlc": [
-  {
-   "time": "2026-06-03",
-   "o": 1029.07,
-   "h": 1049.53,
-   "l": 932.5,
-   "c": 938.0,
-   "v": 6202200
-  },
   {
    "time": "2026-06-04",
    "o": 900.1,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-08-27",
-   "o": 958.57,
+   "o": 958.73,
    "h": 970.32,
    "l": 918.01,
    "c": 956.14,
-   "v": 4107874
+   "v": 4119600
+  },
+  {
+   "time": "2026-08-28",
+   "o": 941.74,
+   "h": 941.75,
+   "l": 893.65,
+   "c": 895.0,
+   "v": 3439848
   }
  ],
  "sr": {
-  "price": 956.14,
+  "price": 895.0,
   "resistance": [
-   960.0,
-   977.27
+   897.0,
+   925.5
   ],
   "support": [
    854.62,
@@ -498,7 +498,6 @@
   "strong_support": 45.65
  },
  "spark": [
-  938.0,
   945.08,
   863.66,
   895.4,
@@ -557,143 +556,12 @@
   830.17,
   885.57,
   939.03,
-  956.14
+  956.14,
+  895.0
  ],
- "spark_start": "2026-06-03",
- "spark_end": "2026-08-27",
+ "spark_start": "2026-06-04",
+ "spark_end": "2026-08-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Lumentum Sees AI Data Centers Driving Major Optical Connectivity Growth",
-   "value": {
-    "headline": "Lumentum Sees AI Data Centers Driving Major Optical Connectivity Growth",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787878926,
-    "url": "https://www.marketbeat.com/instant-alerts/event-lumentum-sees-ai-data-centers-driving-major-optical-connectivity-growth-2026-08-27/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/event-lumentum-sees-ai-data-centers-driving-major-optical-connectivity-growth-2026-08-27/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Amgen Stock Signals Its Confidence. The Market Agrees.",
-   "value": {
-    "headline": "Amgen Stock Signals Its Confidence. The Market Agrees.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787876389,
-    "url": "https://www.trefis.com/articles/613276/amgen-stock-signals-its-confidence-the-market-agrees/2026-08-27?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/613276/amgen-stock-signals-its-confidence-the-market-agrees/2026-08-27?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Super Micro Stock And 2 AI Infrastructure Names Trading Below Fair Value",
-   "value": {
-    "headline": "Super Micro Stock And 2 AI Infrastructure Names Trading Below Fair Value",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787876250,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-stock-2-ai-001730952.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/super-micro-stock-2-ai-001730952.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Macro Takeaways from Apple Earnings",
-   "value": {
-    "headline": "Macro Takeaways from Apple Earnings",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787863200,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/macro-takeaways-apple-earnings-204000517.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/macro-takeaways-apple-earnings-204000517.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AXT's Supply Agreements Expand: Can They Strengthen Revenue Growth?",
-   "value": {
-    "headline": "AXT's Supply Agreements Expand: Can They Strengthen Revenue Growth?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787842260,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/axts-supply-agreements-expand-strengthen-145100457.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/axts-supply-agreements-expand-strengthen-145100457.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-28",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
-   "value": {
-    "total_shares": 7965,
-    "days": 7,
-    "max_shares": 3774,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-08-28",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
