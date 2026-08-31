@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 217.55,
- "change_pct": -4.57,
+ "price": 219.48,
+ "change_pct": 0.89,
  "ohlc": [
-  {
-   "time": "2026-06-04",
-   "o": 213.91,
-   "h": 221.6,
-   "l": 210.97,
-   "c": 218.66,
-   "v": 169022200
-  },
   {
    "time": "2026-06-05",
    "o": 214.53,
@@ -478,15 +470,23 @@
   },
   {
    "time": "2026-08-28",
-   "o": 227.33,
+   "o": 227.36,
    "h": 229.26,
    "l": 216.81,
    "c": 217.55,
-   "v": 194036188
+   "v": 194586600
+  },
+  {
+   "time": "2026-08-31",
+   "o": 218.86,
+   "h": 220.6,
+   "l": 216.21,
+   "c": 219.48,
+   "v": 60647642
   }
  ],
  "sr": {
-  "price": 217.55,
+  "price": 219.48,
   "resistance": [
    227.92,
    232.01
@@ -498,7 +498,6 @@
   "strong_support": 163.85
  },
  "spark": [
-  218.66,
   205.1,
   208.64,
   208.19,
@@ -557,134 +556,156 @@
   213.05,
   209.66,
   227.98,
-  217.55
+  217.55,
+  219.48
  ],
- "spark_start": "2026-06-04",
- "spark_end": "2026-08-28",
+ "spark_start": "2026-06-05",
+ "spark_end": "2026-08-31",
  "fundamental": {
-  "pe_trailing": 34.96626,
-  "pe_forward": 15.692964,
-  "eps_trailing": 6.52,
-  "eps_forward": 14.52753,
-  "stale": true,
+  "pe_trailing": 27.71212,
+  "pe_forward": 14.339494,
+  "eps_trailing": 7.92,
+  "eps_forward": 15.30598,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 219.48,
+  "stop": 205.96,
+  "target": 253.29,
+  "atr_bracket": 253.29,
+  "measured_move": 253.69,
+  "target_band": [
+   253.29,
+   253.69
+  ],
+  "stop_pct": -6.2,
+  "target_pct": 15.4,
+  "rr": 2.5,
+  "atr_pct": 3.1,
+  "swing_stop": 205.22,
+  "chandelier": 209.19,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Elastic Stock Snapped Back Today",
+   "label": "輝達砸35億美元認購聯發科ECB 結盟進軍AI工廠、客製化XPU｜2 來源確認",
    "value": {
-    "headline": "Why Elastic Stock Snapped Back Today",
+    "headline": "輝達砸35億美元認購聯發科ECB 結盟進軍AI工廠、客製化XPU",
     "sources": [
-     "yahoo_us"
+     "cnyes",
+     "yahoo_tw"
     ],
-    "source_count": 1,
-    "ts": 1787966133,
-    "url": "https://www.fool.com/investing/2026/08/28/why-elastic-stock-is-up-today/?.tsrc=rss",
+    "source_count": 2,
+    "ts": 1788182220,
+    "url": "cnyes:6593121",
     "urls": [
-     "https://www.fool.com/investing/2026/08/28/why-elastic-stock-is-up-today/?.tsrc=rss"
+     "cnyes:6593121",
+     "https://tw.stock.yahoo.com/news/%E8%BC%9D%E9%81%94%E7%A0%B835%E5%84%84%E7%BE%8E%E5%85%83%E8%AA%8D%E8%B3%BC%E8%81%AF%E7%99%BC%E7%A7%91ecb-%E7%B5%90%E7%9B%9F%E9%80%B2%E8%BB%8Dai%E5%B7%A5%E5%BB%A0-%E5%AE%A2%E8%A3%BD%E5%8C%96xpu-131700308.html"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bill Ackman Just Bought Visa, Mastercard, and S&P Global Stock. Each One Collects a Toll on Somebody Else's Sale.",
+   "label": "Why Take-Two Interactive Stock Is Sinking Today",
    "value": {
-    "headline": "Bill Ackman Just Bought Visa, Mastercard, and S&P Global Stock. Each One Collects a Toll on Somebody Else's Sale.",
+    "headline": "Why Take-Two Interactive Stock Is Sinking Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787964841,
-    "url": "https://www.fool.com/investing/2026/08/28/bill-ackman-just-bought-visa-mastercard-and-s-and-p-global-stock-each-one-collects-a-toll-on-somebody-else-s-sale/?.tsrc=rss",
+    "ts": 1788197755,
+    "url": "https://www.fool.com/investing/2026/08/31/why-take-two-interactive-stock-is-sinking-today/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/28/bill-ackman-just-bought-visa-mastercard-and-s-and-p-global-stock-each-one-collects-a-toll-on-somebody-else-s-sale/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/31/why-take-two-interactive-stock-is-sinking-today/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-29",
+   "severity": "warn",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "GE Vernova's Electrification Revenue Jumped 68% on Data Center Deals in a Single Quarter. So Why Did the Stock Sell Off?",
+   "label": "ARM vs. NVDA: Which AI Chip Designer is Worth Investing in?",
    "value": {
-    "headline": "GE Vernova's Electrification Revenue Jumped 68% on Data Center Deals in a Single Quarter. So Why Did the Stock Sell Off?",
+    "headline": "ARM vs. NVDA: Which AI Chip Designer is Worth Investing in?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787963100,
-    "url": "https://www.fool.com/investing/2026/08/28/ge-vernovas-electrification-revenue-jumped-68-on-d/?.tsrc=rss",
+    "ts": 1788197460,
+    "url": "https://finance.yahoo.com/technology/ai/articles/arm-vs-nvda-ai-chip-173100394.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/28/ge-vernovas-electrification-revenue-jumped-68-on-d/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/arm-vs-nvda-ai-chip-173100394.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "InterDigital (IDCC) Could Be 28% Undervalued On Its Licensing Narrative",
+   "label": "Wall Street Is Looking Here. I’m Looking Somewhere Else",
    "value": {
-    "headline": "InterDigital (IDCC) Could Be 28% Undervalued On Its Licensing Narrative",
+    "headline": "Wall Street Is Looking Here. I’m Looking Somewhere Else",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787962575,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/interdigital-idcc-could-28-undervalued-001615699.html?.tsrc=rss",
+    "ts": 1788197428,
+    "url": "https://247wallst.com/investing/2026/08/31/wall-street-is-looking-here-im-looking-somewhere-else/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/interdigital-idcc-could-28-undervalued-001615699.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/31/wall-street-is-looking-here-im-looking-somewhere-else/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Review & Preview: Warsh Gets Real on Inflation",
+   "label": "This Vanguard ETF Is Up 12% in 2026. Here's Whether Long-Term Investors Should Still Be Buying at These Levels.",
    "value": {
-    "headline": "Review & Preview: Warsh Gets Real on Inflation",
+    "headline": "This Vanguard ETF Is Up 12% in 2026. Here's Whether Long-Term Investors Should Still Be Buying at These Levels.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787961300,
-    "url": "https://finance.yahoo.com/m/6081bfc8-098f-3e6b-90be-d6e767fee376/review-%26-preview%3A-warsh-gets.html?.tsrc=rss",
+    "ts": 1788197400,
+    "url": "https://www.fool.com/investing/2026/08/31/this-vanguard-etf-is-up-xx-in-2026-heres-whether-l/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6081bfc8-098f-3e6b-90be-d6e767fee376/review-%26-preview%3A-warsh-gets.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/31/this-vanguard-etf-is-up-xx-in-2026-heres-whether-l/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 25 則（最高 2 來源確認）",
    "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
+    "headline_count": 25,
+    "max_source_count": 2,
     "distinct_sources": [
+     "cnyes",
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +720,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

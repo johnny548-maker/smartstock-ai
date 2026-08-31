@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 513.53,
- "change_pct": 1.68,
+ "price": 510.73,
+ "change_pct": -0.55,
  "ohlc": [
-  {
-   "time": "2026-06-04",
-   "o": 434.99,
-   "h": 435.33,
-   "l": 425.61,
-   "c": 427.25,
-   "v": 26899500
-  },
   {
    "time": "2026-06-05",
    "o": 427.54,
@@ -482,14 +474,22 @@
    "h": 517.78,
    "l": 504.87,
    "c": 513.53,
-   "v": 28953449
+   "v": 29178300
+  },
+  {
+   "time": "2026-08-31",
+   "o": 510.33,
+   "h": 512.19,
+   "l": 507.31,
+   "c": 510.73,
+   "v": 8769986
   }
  ],
  "sr": {
-  "price": 513.53,
+  "price": 510.73,
   "resistance": [
-   515.06,
-   526.7
+   512.76,
+   515.06
   ],
   "support": [
    501.87,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  427.25,
   415.89,
   410.97,
   402.65,
@@ -557,26 +556,27 @@
   491.71,
   496.37,
   505.06,
-  513.53
+  513.53,
+  510.73
  ],
- "spark_start": "2026-06-04",
- "spark_end": "2026-08-28",
+ "spark_start": "2026-06-05",
+ "spark_end": "2026-08-31",
  "fundamental": {
-  "pe_trailing": 28.105732,
-  "pe_forward": 21.425104,
+  "pe_trailing": 28.421259,
+  "pe_forward": 21.665632,
   "eps_trailing": 17.97,
   "eps_forward": 23.57328,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 513.53,
-  "stop": 494.03,
-  "target": 562.28,
-  "atr_bracket": 562.28,
+  "entry": 510.73,
+  "stop": 491.27,
+  "target": 559.38,
+  "atr_bracket": 559.38,
   "measured_move": 648.85,
   "target_band": [
-   562.28,
+   559.38,
    648.85,
    696.44
   ],
@@ -585,7 +585,7 @@
   "rr": 2.5,
   "atr_pct": 1.9,
   "swing_stop": 473.33,
-  "chandelier": 474.71,
+  "chandelier": 483.13,
   "fib_targets": [
    649.35,
    696.44,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why ZM Stock Prints So Much Cash Right Now",
+   "label": "IREN's $4B Contracted ARR: How Quickly Can It Convert Into Revenues?",
    "value": {
-    "headline": "Why ZM Stock Prints So Much Cash Right Now",
+    "headline": "IREN's $4B Contracted ARR: How Quickly Can It Convert Into Revenues?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787955454,
-    "url": "https://www.trefis.com/articles/613490/why-zm-stock-prints-so-much-cash-right-now/2026-08-28?.tsrc=rss",
+    "ts": 1788196920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/irens-4b-contracted-arr-quickly-172200534.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613490/why-zm-stock-prints-so-much-cash-right-now/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/irens-4b-contracted-arr-quickly-172200534.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+   "label": "Here comes the AI capex shocker, Goldman Sachs says",
    "value": {
-    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+    "headline": "Here comes the AI capex shocker, Goldman Sachs says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787955055,
-    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
+    "ts": 1788196226,
+    "url": "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is BlackBerry Stock Pricing In A Turnaround That Hasn't Arrived?",
+   "label": "Microsoft and HUMAIN Expand Strategic Collaboration at LEAP 2026 with New Enterprise AI Offering and AI PC",
    "value": {
-    "headline": "Is BlackBerry Stock Pricing In A Turnaround That Hasn't Arrived?",
+    "headline": "Microsoft and HUMAIN Expand Strategic Collaboration at LEAP 2026 with New Enterprise AI Offering and AI PC",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787954769,
-    "url": "https://www.trefis.com/articles/613492/is-blackberry-stock-pricing-in-a-turnaround-that-hasnt-arrived/2026-08-28?.tsrc=rss",
+    "ts": 1788194700,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-expand-strategic-collaboration-164500702.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613492/is-blackberry-stock-pricing-in-a-turnaround-that-hasnt-arrived/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-humain-expand-strategic-collaboration-164500702.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?",
+   "label": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
    "value": {
-    "headline": "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?",
+    "headline": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787954398,
-    "url": "https://www.trefis.com/articles/613489/is-adobe-stocks-ai-strategy-worth-the-near-term-risk/2026-08-28?.tsrc=rss",
+    "ts": 1788194506,
+    "url": "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613489/is-adobe-stocks-ai-strategy-worth-the-near-term-risk/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
+   "label": "Salesforce Stock Repriced A Fear, Not A Forecast",
    "value": {
-    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
+    "headline": "Salesforce Stock Repriced A Fear, Not A Forecast",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787954034,
-    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
+    "ts": 1788194189,
+    "url": "https://www.trefis.com/articles/613714/salesforce-stock-repriced-a-fear-not-a-forecast/2026-08-31?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
+     "https://www.trefis.com/articles/613714/salesforce-stock-repriced-a-fear-not-a-forecast/2026-08-31?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

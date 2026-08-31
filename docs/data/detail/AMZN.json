@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 266.43,
- "change_pct": 3.97,
+ "price": 260.95,
+ "change_pct": -2.06,
  "ohlc": [
-  {
-   "time": "2026-06-04",
-   "o": 253.12,
-   "h": 255.83,
-   "l": 251.75,
-   "c": 253.79,
-   "v": 35609800
-  },
   {
    "time": "2026-06-05",
    "o": 254.26,
@@ -482,14 +474,22 @@
    "h": 267.56,
    "l": 257.78,
    "c": 266.43,
-   "v": 49322804
+   "v": 49475500
+  },
+  {
+   "time": "2026-08-31",
+   "o": 263.83,
+   "h": 264.36,
+   "l": 259.72,
+   "c": 260.95,
+   "v": 15443461
   }
  ],
  "sr": {
-  "price": 266.43,
+  "price": 260.95,
   "resistance": [
-   274.75,
-   278.56
+   266.4,
+   274.75
   ],
   "support": [
    257.04,
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  253.79,
   246.03,
   245.22,
   244.19,
@@ -557,166 +556,150 @@
   261.06,
   260.28,
   256.26,
-  266.43
+  266.43,
+  260.95
  ],
- "spark_start": "2026-06-04",
- "spark_end": "2026-08-28",
+ "spark_start": "2026-06-05",
+ "spark_end": "2026-08-31",
  "fundamental": {
-  "pe_trailing": 21.434431,
-  "pe_forward": 25.641668,
-  "eps_trailing": 12.43,
+  "pe_trailing": 20.979101,
+  "pe_forward": 25.117151,
+  "eps_trailing": 12.44,
   "eps_forward": 10.39051,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 266.43,
-  "stop": 254.82,
-  "target": 295.45,
-  "atr_bracket": 295.45,
-  "measured_move": 270.74,
-  "target_band": [
-   270.74,
-   295.45
-  ],
-  "stop_pct": -4.4,
-  "target_pct": 10.9,
-  "rr": 2.5,
-  "atr_pct": 2.2,
-  "swing_stop": 255.3,
-  "chandelier": 261.96,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+   "label": "Stock Market Today: Dow Skids As Oil Stock Tests Entry; Aon Flashes Sell Signal On This, PG&E Dives (Live Coverage)",
    "value": {
-    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+    "headline": "Stock Market Today: Dow Skids As Oil Stock Tests Entry; Aon Flashes Sell Signal On This, PG&E Dives (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787955055,
-    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
+    "ts": 1788197970,
+    "url": "https://finance.yahoo.com/m/c57f0554-71e8-33dd-9dcc-a2cad75076ba/stock-market-today%3A-dow-skids.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/m/c57f0554-71e8-33dd-9dcc-a2cad75076ba/stock-market-today%3A-dow-skids.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
+   "label": "Should You Buy, Sell, or Hold SNOW Stock Before Q2 Earnings Release?",
    "value": {
-    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
+    "headline": "Should You Buy, Sell, or Hold SNOW Stock Before Q2 Earnings Release?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787954034,
-    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
+    "ts": 1788196800,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-snow-stock-172000428.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-snow-stock-172000428.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can PLTR Stock Live Up To Its Multiple?",
+   "label": "Here comes the AI capex shocker, Goldman Sachs says",
    "value": {
-    "headline": "Can PLTR Stock Live Up To Its Multiple?",
+    "headline": "Here comes the AI capex shocker, Goldman Sachs says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787953730,
-    "url": "https://www.trefis.com/articles/613491/can-pltr-stock-live-up-to-its-multiple-4/2026-08-28?.tsrc=rss",
+    "ts": 1788196226,
+    "url": "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613491/can-pltr-stock-live-up-to-its-multiple-4/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Costco Stock's Premium Rests On A Visit Rate That Keeps Slowing",
+   "label": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
    "value": {
-    "headline": "Costco Stock's Premium Rests On A Visit Rate That Keeps Slowing",
+    "headline": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787950737,
-    "url": "https://www.trefis.com/articles/613538/costco-stocks-premium-rests-on-a-visit-rate-that-keeps-slowing/2026-08-28?.tsrc=rss",
+    "ts": 1788194506,
+    "url": "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613538/costco-stocks-premium-rests-on-a-visit-rate-that-keeps-slowing/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Just Gained 14% in a Month: Take Profits, or Buy More?",
+   "label": "Amazon’s $5.3 Billion Saudi Arabia Bet Is Turning Heads on Wall Street",
    "value": {
-    "headline": "Microsoft Just Gained 14% in a Month: Take Profits, or Buy More?",
+    "headline": "Amazon’s $5.3 Billion Saudi Arabia Bet Is Turning Heads on Wall Street",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787944017,
-    "url": "https://247wallst.com/investing/2026/08/28/microsoft-just-gained-14-in-a-month-take-profits-or-buy-more/?.tsrc=rss",
+    "ts": 1788193962,
+    "url": "https://247wallst.com/investing/2026/08/31/amazons-5-3-billion-saudi-arabia-bet-is-turning-heads-on-wall-street/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/28/microsoft-just-gained-14-in-a-month-take-profits-or-buy-more/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/31/amazons-5-3-billion-saudi-arabia-bet-is-turning-heads-on-wall-street/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 7 篇 / 106 分 / 79 留言",
+   "label": "HN 討論熱度 5 篇 / 152 分 / 106 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 106,
-    "comments": 79,
-    "n": 7,
+    "points": 152,
+    "comments": 106,
+    "n": 5,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -731,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

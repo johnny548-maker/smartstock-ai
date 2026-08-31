@@ -580,8 +580,43 @@
     "short_pct": 3.251403324800886e-05
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台積電供應鏈志聖迎60周年慶 AI核心業務占上半年營收已占70%",
+   "value": {
+    "headline": "台積電供應鏈志聖迎60周年慶 AI核心業務占上半年營收已占70%",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1788164856,
+    "url": "cnyes:6592719",
+    "urls": [
+     "cnyes:6592719"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-31",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -817,6 +852,10 @@
    {
     "t": "2026-08-29",
     "v": 2637
+   },
+   {
+    "t": "2026-08-31",
+    "v": 2581
    }
   ],
   "holder_pct": [

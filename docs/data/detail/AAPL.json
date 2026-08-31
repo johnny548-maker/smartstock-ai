@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 319.7,
- "change_pct": 1.63,
+ "price": 314.22,
+ "change_pct": -1.71,
  "ohlc": [
-  {
-   "time": "2026-06-04",
-   "o": 312.96,
-   "h": 313.27,
-   "l": 309.38,
-   "c": 310.96,
-   "v": 44869100
-  },
   {
    "time": "2026-06-05",
    "o": 312.59,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-08-28",
-   "o": 317.09,
+   "o": 316.85,
    "h": 322.37,
    "l": 315.45,
    "c": 319.7,
-   "v": 38500185
+   "v": 38609800
+  },
+  {
+   "time": "2026-08-31",
+   "o": 319.56,
+   "h": 321.23,
+   "l": 312.8,
+   "c": 314.22,
+   "v": 16632686
   }
  ],
  "sr": {
-  "price": 319.7,
+  "price": 314.22,
   "resistance": [
-   320.28,
-   334.7
+   316.02,
+   317.13
   ],
   "support": [
-   319.07,
-   304.76
+   304.76,
+   300.57
   ],
   "strong_support": 225.12
  },
  "spark": [
-  310.96,
   307.08,
   301.28,
   290.3,
@@ -557,149 +556,172 @@
   309.9,
   313.45,
   314.58,
-  319.7
+  319.7,
+  314.22
  ],
- "spark_start": "2026-06-04",
- "spark_end": "2026-08-28",
+ "spark_start": "2026-06-05",
+ "spark_end": "2026-08-31",
  "fundamental": {
-  "pe_trailing": 36.117104,
-  "pe_forward": 32.979992,
-  "eps_trailing": 8.71,
+  "pe_trailing": 35.99198,
+  "pe_forward": 32.9412,
+  "eps_trailing": 8.73,
   "eps_forward": 9.53851,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 314.22,
+  "stop": 301.97,
+  "target": 344.85,
+  "atr_bracket": 344.85,
+  "measured_move": 339.99,
+  "target_band": [
+   338.9,
+   339.99,
+   344.85
+  ],
+  "stop_pct": -3.9,
+  "target_pct": 9.7,
+  "rr": 2.5,
+  "atr_pct": 1.9,
+  "swing_stop": 305.17,
+  "chandelier": 299.15,
+  "fib_targets": [
+   332.08,
+   338.9,
+   346.43
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Makes Costly Move Subscribers Won't Miss",
+   "label": "Apple vet Schiller steps down from App Store and product event roles - Bloomberg",
    "value": {
-    "headline": "Apple Makes Costly Move Subscribers Won't Miss",
+    "headline": "Apple vet Schiller steps down from App Store and product event roles - Bloomberg",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787955894,
-    "url": "https://finance.yahoo.com/media-advertising/articles/apple-makes-costly-move-subscribers-222454691.html?.tsrc=rss",
+    "ts": 1788196777,
+    "url": "https://finance.yahoo.com/technology/articles/apple-vet-schiller-steps-down-171937419.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/apple-makes-costly-move-subscribers-222454691.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/apple-vet-schiller-steps-down-171937419.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Tim Cook told employees on his last day at Apple",
+   "value": {
+    "headline": "What Tim Cook told employees on his last day at Apple",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788196506,
+    "url": "https://finance.yahoo.com/technology/article/what-tim-cook-told-employees-on-his-last-day-at-apple-171506698.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/article/what-tim-cook-told-employees-on-his-last-day-at-apple-171506698.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-08-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Egan-Jones Examines How Strong Credits Can Still Produce Severe Bond Losses",
+   "value": {
+    "headline": "Egan-Jones Examines How Strong Credits Can Still Produce Severe Bond Losses",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788195600,
+    "url": "https://finance.yahoo.com/markets/articles/egan-jones-examines-strong-credits-170000586.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/articles/egan-jones-examines-strong-credits-170000586.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+   "label": "Steve Jobs' 8th grade science project sells for $34,375 as rare Apple memorabilia fetches millions at auction",
    "value": {
-    "headline": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
+    "headline": "Steve Jobs' 8th grade science project sells for $34,375 as rare Apple memorabilia fetches millions at auction",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787955055,
-    "url": "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss",
+    "ts": 1788193800,
+    "url": "https://finance.yahoo.com/media-advertising/articles/steve-jobs-8th-grade-science-163000810.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613494/has-microsoft-stock-run-ahead-of-its-ai-payoff/2026-08-28?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/steve-jobs-8th-grade-science-163000810.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Weekly Wrap: Bitcoin Holds Onto Gains",
+   "label": "Apple Is Facing One of Its Most Challenging Times in a Decade. Time to Sell?",
    "value": {
-    "headline": "Weekly Wrap: Bitcoin Holds Onto Gains",
+    "headline": "Apple Is Facing One of Its Most Challenging Times in a Decade. Time to Sell?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1787954280,
-    "url": "https://www.cryptoprowl.com/releases/weekly-wrap-bitcoin-holds-onto-gains-6579?.tsrc=rss",
+    "ts": 1788191664,
+    "url": "https://247wallst.com/investing/2026/08/31/apple-is-facing-one-of-its-most-challenging-times-in-a-decade-time-to-sell/?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/weekly-wrap-bitcoin-holds-onto-gains-6579?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/31/apple-is-facing-one-of-its-most-challenging-times-in-a-decade-time-to-sell/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "How Much Upside Can AAPL Stock's Growth Deliver?",
-   "value": {
-    "headline": "How Much Upside Can AAPL Stock's Growth Deliver?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787954034,
-    "url": "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/613496/how-much-upside-can-aapl-stocks-growth-deliver/2026-08-28?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dell Stock Widens Your Portfolio Instead Of Steadying It",
-   "value": {
-    "headline": "Dell Stock Widens Your Portfolio Instead Of Steadying It",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787951159,
-    "url": "https://www.trefis.com/articles/613542/dell-stock-widens-your-portfolio-instead-of-steadying-it/2026-08-28?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/613542/dell-stock-widens-your-portfolio-instead-of-steadying-it/2026-08-28?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 143 分 / 49 留言",
+   "label": "HN 討論熱度 20 篇 / 179 分 / 129 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 143,
-    "comments": 49,
+    "points": 179,
+    "comments": 129,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +736,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-29",
+   "as_of": "2026-08-31",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
