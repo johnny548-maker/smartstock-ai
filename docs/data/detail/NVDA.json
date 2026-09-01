@@ -1,8 +1,8 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 219.48,
- "change_pct": 0.89,
+ "price": 220.78,
+ "change_pct": 1.48,
  "ohlc": [
   {
    "time": "2026-06-05",
@@ -479,14 +479,14 @@
   {
    "time": "2026-08-31",
    "o": 218.86,
-   "h": 220.6,
+   "h": 221.29,
    "l": 216.21,
-   "c": 219.48,
-   "v": 60647642
+   "c": 220.78,
+   "v": 124033835
   }
  ],
  "sr": {
-  "price": 219.48,
+  "price": 220.78,
   "resistance": [
    227.92,
    232.01
@@ -557,7 +557,7 @@
   209.66,
   227.98,
   217.55,
-  219.48
+  220.78
  ],
  "spark_start": "2026-06-05",
  "spark_end": "2026-08-31",
@@ -566,27 +566,10 @@
   "pe_forward": 14.339494,
   "eps_trailing": 7.92,
   "eps_forward": 15.30598,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 219.48,
-  "stop": 205.96,
-  "target": 253.29,
-  "atr_bracket": 253.29,
-  "measured_move": 253.69,
-  "target_band": [
-   253.29,
-   253.69
-  ],
-  "stop_pct": -6.2,
-  "target_pct": 15.4,
-  "rr": 2.5,
-  "atr_pct": 3.1,
-  "swing_stop": 205.22,
-  "chandelier": 209.19,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
@@ -608,87 +591,87 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Take-Two Interactive Stock Is Sinking Today",
+   "label": "Here's What September Has Done to AMD Stock Over the Past 10 Years",
    "value": {
-    "headline": "Why Take-Two Interactive Stock Is Sinking Today",
+    "headline": "Here's What September Has Done to AMD Stock Over the Past 10 Years",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788197755,
-    "url": "https://www.fool.com/investing/2026/08/31/why-take-two-interactive-stock-is-sinking-today/?.tsrc=rss",
+    "ts": 1788220681,
+    "url": "https://www.fool.com/investing/2026/08/31/here-s-what-september-has-done-to-amd-stock-over-the-past-10-years/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/31/why-take-two-interactive-stock-is-sinking-today/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-08-31",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "ARM vs. NVDA: Which AI Chip Designer is Worth Investing in?",
-   "value": {
-    "headline": "ARM vs. NVDA: Which AI Chip Designer is Worth Investing in?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1788197460,
-    "url": "https://finance.yahoo.com/technology/ai/articles/arm-vs-nvda-ai-chip-173100394.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/arm-vs-nvda-ai-chip-173100394.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/31/here-s-what-september-has-done-to-amd-stock-over-the-past-10-years/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wall Street Is Looking Here. I’m Looking Somewhere Else",
+   "label": "Why Deere Stock Rallied Today",
    "value": {
-    "headline": "Wall Street Is Looking Here. I’m Looking Somewhere Else",
+    "headline": "Why Deere Stock Rallied Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788197428,
-    "url": "https://247wallst.com/investing/2026/08/31/wall-street-is-looking-here-im-looking-somewhere-else/?.tsrc=rss",
+    "ts": 1788220006,
+    "url": "https://www.fool.com/investing/2026/08/31/why-deere-stock-is-up-today/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/31/wall-street-is-looking-here-im-looking-somewhere-else/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/31/why-deere-stock-is-up-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This Vanguard ETF Is Up 12% in 2026. Here's Whether Long-Term Investors Should Still Be Buying at These Levels.",
+   "label": "Nvidia (NVDA) Invests $3.5 Billion in MediaTek. Is This the Next Leg of Its AI Growth?",
    "value": {
-    "headline": "This Vanguard ETF Is Up 12% in 2026. Here's Whether Long-Term Investors Should Still Be Buying at These Levels.",
+    "headline": "Nvidia (NVDA) Invests $3.5 Billion in MediaTek. Is This the Next Leg of Its AI Growth?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788197400,
-    "url": "https://www.fool.com/investing/2026/08/31/this-vanguard-etf-is-up-xx-in-2026-heres-whether-l/?.tsrc=rss",
+    "ts": 1788219608,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-invests-3-5-234008357.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/31/this-vanguard-etf-is-up-xx-in-2026-heres-whether-l/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-invests-3-5-234008357.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia stock flashes unusual signal for investors",
+   "value": {
+    "headline": "Nvidia stock flashes unusual signal for investors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788219420,
+    "url": "https://www.thestreet.com/investing/stocks/nvidia-stock-semiconductor-correlation?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/investing/stocks/nvidia-stock-semiconductor-correlation?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -705,22 +688,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 193,168 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 344,862 股交割失敗）",
    "value": {
-    "total_shares": 193168,
-    "days": 9,
-    "max_shares": 151895,
+    "total_shares": 344862,
+    "days": 10,
+    "max_shares": 108422,
     "persistent": true,
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

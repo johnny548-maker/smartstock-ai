@@ -1,73 +1,9 @@
 {
  "stock": "AVGO",
- "name": "Broadcom Inc. - Common Stock",
- "price": 362.48,
- "change_pct": -4.61,
+ "name": "博通",
+ "price": 370.34,
+ "change_pct": 0.42,
  "ohlc": [
-  {
-   "time": "2026-05-26",
-   "o": 417.84,
-   "h": 434.62,
-   "l": 416.34,
-   "c": 421.34,
-   "v": 22562900
-  },
-  {
-   "time": "2026-05-27",
-   "o": 424.4,
-   "h": 432.12,
-   "l": 415.83,
-   "c": 421.19,
-   "v": 17601000
-  },
-  {
-   "time": "2026-05-28",
-   "o": 420.47,
-   "h": 429.0,
-   "l": 413.36,
-   "c": 425.91,
-   "v": 17855600
-  },
-  {
-   "time": "2026-05-29",
-   "o": 432.27,
-   "h": 448.19,
-   "l": 430.79,
-   "c": 446.06,
-   "v": 41798400
-  },
-  {
-   "time": "2026-06-01",
-   "o": 449.38,
-   "h": 465.31,
-   "l": 441.52,
-   "c": 459.24,
-   "v": 30586000
-  },
-  {
-   "time": "2026-06-02",
-   "o": 488.02,
-   "h": 488.05,
-   "l": 469.72,
-   "c": 480.81,
-   "v": 38306700
-  },
-  {
-   "time": "2026-06-03",
-   "o": 494.0,
-   "h": 494.22,
-   "l": 471.89,
-   "c": 478.47,
-   "v": 50126400
-  },
-  {
-   "time": "2026-06-04",
-   "o": 408.34,
-   "h": 425.81,
-   "l": 402.37,
-   "c": 418.25,
-   "v": 80979400
-  },
   {
    "time": "2026-06-05",
    "o": 406.97,
@@ -482,30 +418,86 @@
    "h": 373.91,
    "l": 357.61,
    "c": 362.48,
-   "v": 35008300
+   "v": 35091400
+  },
+  {
+   "time": "2026-08-20",
+   "o": 364.39,
+   "h": 367.12,
+   "l": 362.25,
+   "c": 364.03,
+   "v": 19729800
+  },
+  {
+   "time": "2026-08-21",
+   "o": 370.69,
+   "h": 375.13,
+   "l": 365.05,
+   "c": 368.45,
+   "v": 19037100
+  },
+  {
+   "time": "2026-08-24",
+   "o": 364.97,
+   "h": 366.17,
+   "l": 358.71,
+   "c": 358.76,
+   "v": 18717200
+  },
+  {
+   "time": "2026-08-25",
+   "o": 361.1,
+   "h": 362.99,
+   "l": 355.31,
+   "c": 356.74,
+   "v": 18014900
+  },
+  {
+   "time": "2026-08-26",
+   "o": 357.12,
+   "h": 359.47,
+   "l": 350.06,
+   "c": 355.59,
+   "v": 19196300
+  },
+  {
+   "time": "2026-08-27",
+   "o": 361.79,
+   "h": 371.72,
+   "l": 360.61,
+   "c": 371.54,
+   "v": 21330000
+  },
+  {
+   "time": "2026-08-28",
+   "o": 373.6,
+   "h": 376.59,
+   "l": 365.35,
+   "c": 368.79,
+   "v": 16572500
+  },
+  {
+   "time": "2026-08-31",
+   "o": 369.45,
+   "h": 372.75,
+   "l": 366.5,
+   "c": 370.34,
+   "v": 21734663
   }
  ],
  "sr": {
-  "price": 362.48,
+  "price": 370.34,
   "resistance": [
-   398.59,
-   407.52
+   371.51,
+   384.33
   ],
   "support": [
-   357.8,
-   356.43
+   369.74,
+   369.51
   ],
-  "strong_support": 356.43
+  "strong_support": 289.5
  },
  "spark": [
-  421.34,
-  421.19,
-  425.91,
-  446.06,
-  459.24,
-  480.81,
-  478.47,
-  418.25,
   385.12,
   395.97,
   391.54,
@@ -557,11 +549,173 @@
   392.99,
   392.43,
   380.0,
-  362.48
+  362.48,
+  364.03,
+  368.45,
+  358.76,
+  356.74,
+  355.59,
+  371.54,
+  368.79,
+  370.34
  ],
- "spark_start": "2026-05-26",
- "spark_end": "2026-08-19",
- "fundamental": null,
+ "spark_start": "2026-06-05",
+ "spark_end": "2026-08-31",
+ "fundamental": {
+  "pe_trailing": 61.62063,
+  "pe_forward": 18.921156,
+  "eps_trailing": 6.01,
+  "eps_forward": 19.5728,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Broadcom's Next Earnings Report on September 2 Could Send the Stock Soaring. Here's Why.",
+   "value": {
+    "headline": "Broadcom's Next Earnings Report on September 2 Could Send the Stock Soaring. Here's Why.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788213901,
+    "url": "https://www.fool.com/investing/2026/08/31/broadcoms-next-earnings-report-on-september-2-could-send-the-stock-soaring-heres-why/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/31/broadcoms-next-earnings-report-on-september-2-could-send-the-stock-soaring-heres-why/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Biggest Risk To Cerebras Systems Stock Is Sitting Inside Its Backlog",
+   "value": {
+    "headline": "The Biggest Risk To Cerebras Systems Stock Is Sitting Inside Its Backlog",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788209895,
+    "url": "https://www.trefis.com/articles/613716/the-biggest-risk-to-cerebras-systems-stock-is-sitting-inside-its-backlog/2026-08-31?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/613716/the-biggest-risk-to-cerebras-systems-stock-is-sitting-inside-its-backlog/2026-08-31?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Broadcom (AVGO) Stock a Buy Before Its Q3 Earnings?",
+   "value": {
+    "headline": "Is Broadcom (AVGO) Stock a Buy Before Its Q3 Earnings?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788208740,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-stock-buy-q3-203900190.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-stock-buy-q3-203900190.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "VGT’s $58 Billion AI Chip Concentration Could Derail Your 2027 Returns",
+   "value": {
+    "headline": "VGT’s $58 Billion AI Chip Concentration Could Derail Your 2027 Returns",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788207910,
+    "url": "https://247wallst.com/investing/etf/2026/08/31/vgts-58-billion-ai-chip-concentration-could-derail-your-2027-returns/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/etf/2026/08/31/vgts-58-billion-ai-chip-concentration-could-derail-your-2027-returns/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Broadcom Has Trailed the S&P 500 This Year. That Shouldn't Last Much Longer.",
+   "value": {
+    "headline": "Broadcom Has Trailed the S&P 500 This Year. That Shouldn't Last Much Longer.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788203100,
+    "url": "https://www.fool.com/investing/2026/08/31/broadcom-has-trailed-the-sp-500-this-year-that-sho/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/08/31/broadcom-has-trailed-the-sp-500-this-year-that-sho/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 8 篇 / 212 分 / 113 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 212,
+    "comments": 113,
+    "n": 8,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 10 個交割日）",
+   "value": {
+    "total_shares": 96611,
+    "days": 10,
+    "max_shares": 74936,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

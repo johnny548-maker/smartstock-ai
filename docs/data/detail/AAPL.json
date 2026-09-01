@@ -1,8 +1,8 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 314.22,
- "change_pct": -1.71,
+ "price": 316.85,
+ "change_pct": -0.89,
  "ohlc": [
   {
    "time": "2026-06-05",
@@ -480,16 +480,16 @@
    "time": "2026-08-31",
    "o": 319.56,
    "h": 321.23,
-   "l": 312.8,
-   "c": 314.22,
-   "v": 16632686
+   "l": 312.85,
+   "c": 316.85,
+   "v": 40667429
   }
  ],
  "sr": {
-  "price": 314.22,
+  "price": 316.85,
   "resistance": [
-   316.02,
-   317.13
+   317.13,
+   320.28
   ],
   "support": [
    304.76,
@@ -557,7 +557,7 @@
   313.45,
   314.58,
   319.7,
-  314.22
+  316.85
  ],
  "spark_start": "2026-06-05",
  "spark_end": "2026-08-31",
@@ -566,26 +566,26 @@
   "pe_forward": 32.9412,
   "eps_trailing": 8.73,
   "eps_forward": 9.53851,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 314.22,
-  "stop": 301.97,
-  "target": 344.85,
-  "atr_bracket": 344.85,
+  "entry": 316.85,
+  "stop": 304.6,
+  "target": 347.47,
+  "atr_bracket": 347.47,
   "measured_move": 339.99,
   "target_band": [
    338.9,
    339.99,
-   344.85
+   347.47
   ],
   "stop_pct": -3.9,
   "target_pct": 9.7,
   "rr": 2.5,
   "atr_pct": 1.9,
   "swing_stop": 305.17,
-  "chandelier": 299.15,
+  "chandelier": 299.16,
   "fib_targets": [
    332.08,
    338.9,
@@ -597,146 +597,146 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple vet Schiller steps down from App Store and product event roles - Bloomberg",
+   "label": "Dell Stock Could Halve Or Double Within Thirteen Months",
    "value": {
-    "headline": "Apple vet Schiller steps down from App Store and product event roles - Bloomberg",
+    "headline": "Dell Stock Could Halve Or Double Within Thirteen Months",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788196777,
-    "url": "https://finance.yahoo.com/technology/articles/apple-vet-schiller-steps-down-171937419.html?.tsrc=rss",
+    "ts": 1788216493,
+    "url": "https://www.trefis.com/articles/613720/dell-stock-could-halve-or-double-within-thirteen-months/2026-08-31?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/apple-vet-schiller-steps-down-171937419.html?.tsrc=rss"
+     "https://www.trefis.com/articles/613720/dell-stock-could-halve-or-double-within-thirteen-months/2026-08-31?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Tim Cook told employees on his last day at Apple",
+   "label": "JPMorgan Built a Version of JEPI Designed to Keep the IRS Waiting",
    "value": {
-    "headline": "What Tim Cook told employees on his last day at Apple",
+    "headline": "JPMorgan Built a Version of JEPI Designed to Keep the IRS Waiting",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788196506,
-    "url": "https://finance.yahoo.com/technology/article/what-tim-cook-told-employees-on-his-last-day-at-apple-171506698.html?.tsrc=rss",
+    "ts": 1788212727,
+    "url": "https://247wallst.com/investing/2026/08/31/jpmorgan-built-a-version-of-jepi-designed-to-keep-the-irs-waiting/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/what-tim-cook-told-employees-on-his-last-day-at-apple-171506698.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/08/31/jpmorgan-built-a-version-of-jepi-designed-to-keep-the-irs-waiting/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Egan-Jones Examines How Strong Credits Can Still Produce Severe Bond Losses",
+   "label": "Rewind to 2011: Tim Cook's first Apple product launch as CEO",
    "value": {
-    "headline": "Egan-Jones Examines How Strong Credits Can Still Produce Severe Bond Losses",
+    "headline": "Rewind to 2011: Tim Cook's first Apple product launch as CEO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788195600,
-    "url": "https://finance.yahoo.com/markets/articles/egan-jones-examines-strong-credits-170000586.html?.tsrc=rss",
+    "ts": 1788211592,
+    "url": "https://finance.yahoo.com/video/rewind-2011-tim-cooks-first-212632931.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/articles/egan-jones-examines-strong-credits-170000586.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/rewind-2011-tim-cooks-first-212632931.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-08-31",
+   "severity": "info",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Steve Jobs' 8th grade science project sells for $34,375 as rare Apple memorabilia fetches millions at auction",
+   "label": "Apple To Begin New Chapter With CEO John Ternus",
    "value": {
-    "headline": "Steve Jobs' 8th grade science project sells for $34,375 as rare Apple memorabilia fetches millions at auction",
+    "headline": "Apple To Begin New Chapter With CEO John Ternus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788193800,
-    "url": "https://finance.yahoo.com/media-advertising/articles/steve-jobs-8th-grade-science-163000810.html?.tsrc=rss",
+    "ts": 1788208188,
+    "url": "https://finance.yahoo.com/m/a8a193f1-e79f-328b-b784-83bb33fb41f5/apple-to-begin-new-chapter.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/steve-jobs-8th-grade-science-163000810.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/a8a193f1-e79f-328b-b784-83bb33fb41f5/apple-to-begin-new-chapter.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Is Facing One of Its Most Challenging Times in a Decade. Time to Sell?",
+   "label": "Sector Update: Tech Stocks Rise Late Afternoon",
    "value": {
-    "headline": "Apple Is Facing One of Its Most Challenging Times in a Decade. Time to Sell?",
+    "headline": "Sector Update: Tech Stocks Rise Late Afternoon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788191664,
-    "url": "https://247wallst.com/investing/2026/08/31/apple-is-facing-one-of-its-most-challenging-times-in-a-decade-time-to-sell/?.tsrc=rss",
+    "ts": 1788206445,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-rise-afternoon-200045050.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/31/apple-is-facing-one-of-its-most-challenging-times-in-a-decade-time-to-sell/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-rise-afternoon-200045050.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 179 分 / 129 留言",
+   "label": "HN 討論熱度 20 篇 / 303 分 / 168 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 179,
-    "comments": 129,
+    "points": 303,
+    "comments": 168,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-08-31",
+   "severity": "warn",
+   "as_of": "2026-09-01",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 117,236 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
    "value": {
-    "total_shares": 117236,
-    "days": 8,
-    "max_shares": 85824,
+    "total_shares": 11659,
+    "days": 5,
+    "max_shares": 3910,
     "persistent": true,
-    "elevated": true
+    "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,8 +1,8 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 260.95,
- "change_pct": -2.06,
+ "price": 259.77,
+ "change_pct": -2.5,
  "ohlc": [
   {
    "time": "2026-06-05",
@@ -480,13 +480,13 @@
    "time": "2026-08-31",
    "o": 263.83,
    "h": 264.36,
-   "l": 259.72,
-   "c": 260.95,
-   "v": 15443461
+   "l": 257.15,
+   "c": 259.77,
+   "v": 45422317
   }
  ],
  "sr": {
-  "price": 260.95,
+  "price": 259.77,
   "resistance": [
    266.4,
    274.75
@@ -557,7 +557,7 @@
   260.28,
   256.26,
   266.43,
-  260.95
+  259.77
  ],
  "spark_start": "2026-06-05",
  "spark_end": "2026-08-31",
@@ -566,155 +566,172 @@
   "pe_forward": 25.117151,
   "eps_trailing": 12.44,
   "eps_forward": 10.39051,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 259.77,
+  "stop": 247.9,
+  "target": 289.44,
+  "atr_bracket": 289.44,
+  "measured_move": 270.74,
+  "target_band": [
+   270.74,
+   289.44
+  ],
+  "stop_pct": -4.6,
+  "target_pct": 11.4,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 253.24,
+  "chandelier": 262.5,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Skids As Oil Stock Tests Entry; Aon Flashes Sell Signal On This, PG&E Dives (Live Coverage)",
+   "label": "Amazon Ads Launches \"First Day Ready,\" a Multi-Brand Campaign Connecting Brands to Gen Z at College's Biggest Moment",
    "value": {
-    "headline": "Stock Market Today: Dow Skids As Oil Stock Tests Entry; Aon Flashes Sell Signal On This, PG&E Dives (Live Coverage)",
+    "headline": "Amazon Ads Launches \"First Day Ready,\" a Multi-Brand Campaign Connecting Brands to Gen Z at College's Biggest Moment",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788197970,
-    "url": "https://finance.yahoo.com/m/c57f0554-71e8-33dd-9dcc-a2cad75076ba/stock-market-today%3A-dow-skids.html?.tsrc=rss",
+    "ts": 1788220800,
+    "url": "https://finance.yahoo.com/media-advertising/articles/amazon-ads-launches-first-day-144200931.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c57f0554-71e8-33dd-9dcc-a2cad75076ba/stock-market-today%3A-dow-skids.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/amazon-ads-launches-first-day-144200931.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Buy, Sell, or Hold SNOW Stock Before Q2 Earnings Release?",
+   "label": "FTC Lawsuit Puts Amazon’s (AMZN) High-Margin Advertising Business in Focus",
    "value": {
-    "headline": "Should You Buy, Sell, or Hold SNOW Stock Before Q2 Earnings Release?",
+    "headline": "FTC Lawsuit Puts Amazon’s (AMZN) High-Margin Advertising Business in Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788196800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-snow-stock-172000428.html?.tsrc=rss",
+    "ts": 1788220257,
+    "url": "https://finance.yahoo.com/media-advertising/articles/ftc-lawsuit-puts-amazon-amzn-235057590.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-snow-stock-172000428.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/ftc-lawsuit-puts-amazon-amzn-235057590.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-31",
+   "severity": "warn",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here comes the AI capex shocker, Goldman Sachs says",
+   "label": "Jensen Huang Told Investors in June to 'Buy at a Discount' During Nvidia's Sell-Off. Nearly Three Months Later, Nvidia I",
    "value": {
-    "headline": "Here comes the AI capex shocker, Goldman Sachs says",
+    "headline": "Jensen Huang Told Investors in June to 'Buy at a Discount' During Nvidia's Sell-Off. Nearly Three Months Later, Nvidia Is Up 4%, and a Broader AI Basket Gained 8%. Did His Call Pay Off?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788196226,
-    "url": "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss",
+    "ts": 1788219300,
+    "url": "https://www.fool.com/investing/2026/08/31/jensen-huang-told-investors-in-june-to-buy-at-a-di/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/08/31/jensen-huang-told-investors-in-june-to-buy-at-a-di/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-31",
+   "severity": "warn",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
+   "label": "US regulator, 22 states accuse Amazon of 'manipulating' ad auctions: lawsuit",
    "value": {
-    "headline": "Softline Retailers to Continue Reaping Gains From AI Boom, UBS Says",
+    "headline": "US regulator, 22 states accuse Amazon of 'manipulating' ad auctions: lawsuit",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788194506,
-    "url": "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss",
+    "ts": 1788217584,
+    "url": "https://finance.yahoo.com/media-advertising/articles/us-regulator-22-states-accuse-230624178.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/softline-retailers-continue-reaping-gains-164146008.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/us-regulator-22-states-accuse-230624178.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-08-31",
+   "severity": "warn",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon’s $5.3 Billion Saudi Arabia Bet Is Turning Heads on Wall Street",
+   "label": "FTC, 22 states sue Amazon over deceptive advertising practices",
    "value": {
-    "headline": "Amazon’s $5.3 Billion Saudi Arabia Bet Is Turning Heads on Wall Street",
+    "headline": "FTC, 22 states sue Amazon over deceptive advertising practices",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788193962,
-    "url": "https://247wallst.com/investing/2026/08/31/amazons-5-3-billion-saudi-arabia-bet-is-turning-heads-on-wall-street/?.tsrc=rss",
+    "ts": 1788215434,
+    "url": "https://www.axios.com/2026/08/31/ftc-amazon-deceptive-advertising-lawsuit#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-media?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/31/amazons-5-3-billion-saudi-arabia-bet-is-turning-heads-on-wall-street/?.tsrc=rss"
+     "https://www.axios.com/2026/08/31/ftc-amazon-deceptive-advertising-lawsuit#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-media?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 11 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 11,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 5 篇 / 152 分 / 106 留言",
+   "label": "HN 討論熱度 5 篇 / 154 分 / 106 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 152,
+    "points": 154,
     "comments": 106,
     "n": 5,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 246,915 股交割失敗）",
    "value": {
-    "total_shares": 9164,
-    "days": 6,
-    "max_shares": 3000,
+    "total_shares": 246915,
+    "days": 7,
+    "max_shares": 136460,
     "persistent": true,
-    "elevated": false
+    "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -581,20 +581,31 @@
     "total": 15440607
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -69
+   },
+   "severity": "info",
+   "as_of": "2026-09-01",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 20.0 / 殖利率 0.28% / PB 4.95",
+   "label": "PE 20.1 / 殖利率 0.27% / PB 4.98",
    "value": {
-    "pe": 20.01,
-    "yield": 0.28,
-    "pb": 4.95
+    "pe": 20.12,
+    "yield": 0.27,
+    "pb": 4.98
    },
    "severity": "info",
-   "as_of": "2026-08-28",
+   "as_of": "2026-08-31",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -602,12 +613,12 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 4669,
+    "short_today": 4600,
     "outstanding": 4500000193,
-    "short_pct": 0.00010375555110559525
+    "short_pct": 0.00010222221783802489
    },
    "severity": "info",
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
@@ -857,6 +868,10 @@
    {
     "t": "2026-08-31",
     "v": -254605
+   },
+   {
+    "t": "2026-09-01",
+    "v": -239164
    }
   ],
   "holder_pct": [
