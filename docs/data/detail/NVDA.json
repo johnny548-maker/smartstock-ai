@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 220.78,
- "change_pct": 1.48,
+ "price": 223.46,
+ "change_pct": 2.77,
  "ohlc": [
-  {
-   "time": "2026-06-05",
-   "o": 214.53,
-   "h": 214.87,
-   "l": 204.33,
-   "c": 205.1,
-   "v": 219655500
-  },
-  {
-   "time": "2026-06-08",
-   "o": 210.18,
-   "h": 210.47,
-   "l": 206.0,
-   "c": 208.64,
-   "v": 138372800
-  },
   {
    "time": "2026-06-09",
    "o": 210.62,
@@ -474,22 +458,38 @@
    "h": 229.26,
    "l": 216.81,
    "c": 217.55,
-   "v": 194586600
+   "v": 195116400
   },
   {
    "time": "2026-08-31",
-   "o": 218.86,
-   "h": 221.29,
+   "o": 218.87,
+   "h": 221.3,
    "l": 216.21,
    "c": 220.78,
-   "v": 124033835
+   "v": 124702700
+  },
+  {
+   "time": "2026-09-01",
+   "o": 216.75,
+   "h": 220.41,
+   "l": 215.1,
+   "c": 217.44,
+   "v": 109484400
+  },
+  {
+   "time": "2026-09-02",
+   "o": 218.79,
+   "h": 223.8,
+   "l": 218.48,
+   "c": 223.46,
+   "v": 36613710
   }
  ],
  "sr": {
-  "price": 220.78,
+  "price": 223.46,
   "resistance": [
    227.92,
-   232.01
+   230.47
   ],
   "support": [
    216.2,
@@ -498,8 +498,6 @@
   "strong_support": 163.85
  },
  "spark": [
-  205.1,
-  208.64,
   208.19,
   200.42,
   204.87,
@@ -557,16 +555,18 @@
   209.66,
   227.98,
   217.55,
-  220.78
+  220.78,
+  217.44,
+  223.46
  ],
- "spark_start": "2026-06-05",
- "spark_end": "2026-08-31",
+ "spark_start": "2026-06-09",
+ "spark_end": "2026-09-02",
  "fundamental": {
-  "pe_trailing": 27.71212,
-  "pe_forward": 14.339494,
-  "eps_trailing": 7.92,
-  "eps_forward": 15.30598,
-  "stale": true,
+  "pe_trailing": 28.246523,
+  "pe_forward": 14.504438,
+  "eps_trailing": 7.91,
+  "eps_forward": 15.40425,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,112 +575,110 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "輝達砸35億美元認購聯發科ECB 結盟進軍AI工廠、客製化XPU｜2 來源確認",
+   "label": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Exec",
    "value": {
-    "headline": "輝達砸35億美元認購聯發科ECB 結盟進軍AI工廠、客製化XPU",
+    "headline": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Execution",
     "sources": [
-     "cnyes",
-     "yahoo_tw"
+     "yahoo_us"
     ],
-    "source_count": 2,
-    "ts": 1788182220,
-    "url": "cnyes:6593121",
+    "source_count": 1,
+    "ts": 1788359760,
+    "url": "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss",
     "urls": [
-     "cnyes:6593121",
-     "https://tw.stock.yahoo.com/news/%E8%BC%9D%E9%81%94%E7%A0%B835%E5%84%84%E7%BE%8E%E5%85%83%E8%AA%8D%E8%B3%BC%E8%81%AF%E7%99%BC%E7%A7%91ecb-%E7%B5%90%E7%9B%9F%E9%80%B2%E8%BB%8Dai%E5%B7%A5%E5%BB%A0-%E5%AE%A2%E8%A3%BD%E5%8C%96xpu-131700308.html"
+     "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-01",
+   "severity": "warn",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here's What September Has Done to AMD Stock Over the Past 10 Years",
+   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
    "value": {
-    "headline": "Here's What September Has Done to AMD Stock Over the Past 10 Years",
+    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788220681,
-    "url": "https://www.fool.com/investing/2026/08/31/here-s-what-september-has-done-to-amd-stock-over-the-past-10-years/?.tsrc=rss",
+    "ts": 1788359280,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/31/here-s-what-september-has-done-to-amd-stock-over-the-past-10-years/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Deere Stock Rallied Today",
+   "label": "Strategy CEO Defends Bitcoin Purchases And Sales",
    "value": {
-    "headline": "Why Deere Stock Rallied Today",
+    "headline": "Strategy CEO Defends Bitcoin Purchases And Sales",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788220006,
-    "url": "https://www.fool.com/investing/2026/08/31/why-deere-stock-is-up-today/?.tsrc=rss",
+    "ts": 1788359280,
+    "url": "https://www.cryptoprowl.com/releases/strategy-ceo-defends-bitcoin-purchases-and-sales-6611?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/31/why-deere-stock-is-up-today/?.tsrc=rss"
+     "https://www.cryptoprowl.com/releases/strategy-ceo-defends-bitcoin-purchases-and-sales-6611?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia (NVDA) Invests $3.5 Billion in MediaTek. Is This the Next Leg of Its AI Growth?",
+   "label": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
    "value": {
-    "headline": "Nvidia (NVDA) Invests $3.5 Billion in MediaTek. Is This the Next Leg of Its AI Growth?",
+    "headline": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788219608,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-invests-3-5-234008357.html?.tsrc=rss",
+    "ts": 1788358920,
+    "url": "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-invests-3-5-234008357.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia stock flashes unusual signal for investors",
+   "label": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
    "value": {
-    "headline": "Nvidia stock flashes unusual signal for investors",
+    "headline": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788219420,
-    "url": "https://www.thestreet.com/investing/stocks/nvidia-stock-semiconductor-correlation?.tsrc=rss",
+    "ts": 1788358920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/nvidia-stock-semiconductor-correlation?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 25 則（最高 2 來源確認）",
+   "label": "新聞聲量 22 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 25,
-    "max_source_count": 2,
+    "headline_count": 22,
+    "max_source_count": 1,
     "distinct_sources": [
      "cnyes",
      "yahoo_tw",
@@ -688,7 +686,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -703,7 +701,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,8 +1,8 @@
 {
  "stock": "8284.TWO",
  "name": "三竹",
- "price": 66.8,
- "change_pct": 1.21,
+ "price": 65.8,
+ "change_pct": -1.5,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -283,11 +283,22 @@
    "l": 66.6,
    "c": 66.8,
    "v": 10435
+  },
+  {
+   "time": "2026-09-02",
+   "o": 66.2,
+   "h": 66.2,
+   "l": 65.8,
+   "c": 65.8,
+   "v": 32105
   }
  ],
  "sr": {
-  "price": 66.8,
-  "resistance": [],
+  "price": 65.8,
+  "resistance": [
+   66.8,
+   70.0
+  ],
   "support": [
    60.8,
    60.1
@@ -329,10 +340,11 @@
   65.7,
   68.1,
   66.0,
-  66.8
+  66.8,
+  65.8
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-01",
+ "spark_end": "2026-09-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

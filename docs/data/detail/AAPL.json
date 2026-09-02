@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 316.85,
- "change_pct": -0.89,
+ "price": 324.1,
+ "change_pct": -0.32,
  "ohlc": [
-  {
-   "time": "2026-06-05",
-   "o": 312.59,
-   "h": 314.9,
-   "l": 306.89,
-   "c": 307.08,
-   "v": 65310500
-  },
-  {
-   "time": "2026-06-08",
-   "o": 308.47,
-   "h": 317.13,
-   "l": 300.91,
-   "c": 301.28,
-   "v": 77949100
-  },
   {
    "time": "2026-06-09",
    "o": 300.02,
@@ -474,32 +458,46 @@
    "h": 322.37,
    "l": 315.45,
    "c": 319.7,
-   "v": 38609800
+   "v": 38649400
   },
   {
    "time": "2026-08-31",
-   "o": 319.56,
-   "h": 321.23,
-   "l": 312.85,
+   "o": 319.6,
+   "h": 321.24,
+   "l": 312.8,
    "c": 316.85,
-   "v": 40667429
+   "v": 41242700
+  },
+  {
+   "time": "2026-09-01",
+   "o": 316.98,
+   "h": 327.3,
+   "l": 314.73,
+   "c": 325.13,
+   "v": 53119500
+  },
+  {
+   "time": "2026-09-02",
+   "o": 326.97,
+   "h": 328.4,
+   "l": 323.53,
+   "c": 324.1,
+   "v": 8502651
   }
  ],
  "sr": {
-  "price": 316.85,
+  "price": 324.1,
   "resistance": [
-   317.13,
-   320.28
+   334.7,
+   344.27
   ],
   "support": [
-   304.76,
-   300.57
+   319.07,
+   304.76
   ],
   "strong_support": 225.12
  },
  "spark": [
-  307.08,
-  301.28,
   290.3,
   291.33,
   295.38,
@@ -557,35 +555,37 @@
   313.45,
   314.58,
   319.7,
-  316.85
+  316.85,
+  325.13,
+  324.1
  ],
- "spark_start": "2026-06-05",
- "spark_end": "2026-08-31",
+ "spark_start": "2026-06-09",
+ "spark_end": "2026-09-02",
  "fundamental": {
-  "pe_trailing": 35.99198,
-  "pe_forward": 32.9412,
-  "eps_trailing": 8.73,
-  "eps_forward": 9.53851,
-  "stale": true,
+  "pe_trailing": 37.207233,
+  "pe_forward": 33.969666,
+  "eps_trailing": 8.71,
+  "eps_forward": 9.54013,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 316.85,
-  "stop": 304.6,
-  "target": 347.47,
-  "atr_bracket": 347.47,
+  "entry": 324.1,
+  "stop": 310.65,
+  "target": 357.74,
+  "atr_bracket": 357.74,
   "measured_move": 339.99,
   "target_band": [
    338.9,
    339.99,
-   347.47
+   357.74
   ],
-  "stop_pct": -3.9,
-  "target_pct": 9.7,
+  "stop_pct": -4.2,
+  "target_pct": 10.4,
   "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 305.17,
-  "chandelier": 299.16,
+  "atr_pct": 2.1,
+  "swing_stop": 304.99,
+  "chandelier": 308.61,
   "fib_targets": [
    332.08,
    338.9,
@@ -597,131 +597,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dell Stock Could Halve Or Double Within Thirteen Months",
+   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
    "value": {
-    "headline": "Dell Stock Could Halve Or Double Within Thirteen Months",
+    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788216493,
-    "url": "https://www.trefis.com/articles/613720/dell-stock-could-halve-or-double-within-thirteen-months/2026-08-31?.tsrc=rss",
+    "ts": 1788359280,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/613720/dell-stock-could-halve-or-double-within-thirteen-months/2026-08-31?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "JPMorgan Built a Version of JEPI Designed to Keep the IRS Waiting",
+   "label": "ADP Brings +38K Private-Sector Jobs in August",
    "value": {
-    "headline": "JPMorgan Built a Version of JEPI Designed to Keep the IRS Waiting",
+    "headline": "ADP Brings +38K Private-Sector Jobs in August",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788212727,
-    "url": "https://247wallst.com/investing/2026/08/31/jpmorgan-built-a-version-of-jepi-designed-to-keep-the-irs-waiting/?.tsrc=rss",
+    "ts": 1788358320,
+    "url": "https://finance.yahoo.com/economy/articles/adp-brings-38k-private-sector-141200036.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/08/31/jpmorgan-built-a-version-of-jepi-designed-to-keep-the-irs-waiting/?.tsrc=rss"
+     "https://finance.yahoo.com/economy/articles/adp-brings-38k-private-sector-141200036.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Rewind to 2011: Tim Cook's first Apple product launch as CEO",
+   "label": "MANGOS ETFs: The Next Big AI Tech Investing Theme",
    "value": {
-    "headline": "Rewind to 2011: Tim Cook's first Apple product launch as CEO",
+    "headline": "MANGOS ETFs: The Next Big AI Tech Investing Theme",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788211592,
-    "url": "https://finance.yahoo.com/video/rewind-2011-tim-cooks-first-212632931.html?.tsrc=rss",
+    "ts": 1788357600,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/mangos-etfs-next-big-ai-140000152.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/rewind-2011-tim-cooks-first-212632931.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/mangos-etfs-next-big-ai-140000152.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple To Begin New Chapter With CEO John Ternus",
+   "label": "Cramer’s Radical Fix for Nvidia: 5x the Buybacks, Repurchase 10% of Stock",
    "value": {
-    "headline": "Apple To Begin New Chapter With CEO John Ternus",
+    "headline": "Cramer’s Radical Fix for Nvidia: 5x the Buybacks, Repurchase 10% of Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788208188,
-    "url": "https://finance.yahoo.com/m/a8a193f1-e79f-328b-b784-83bb33fb41f5/apple-to-begin-new-chapter.html?.tsrc=rss",
+    "ts": 1788356148,
+    "url": "https://247wallst.com/investing/2026/09/02/cramers-radical-fix-for-nvidia-5x-the-buybacks-repurchase-10-of-stock/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a8a193f1-e79f-328b-b784-83bb33fb41f5/apple-to-begin-new-chapter.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/02/cramers-radical-fix-for-nvidia-5x-the-buybacks-repurchase-10-of-stock/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sector Update: Tech Stocks Rise Late Afternoon",
+   "label": "Apple stock becomes hedge as AI trade wobbles in 2026",
    "value": {
-    "headline": "Sector Update: Tech Stocks Rise Late Afternoon",
+    "headline": "Apple stock becomes hedge as AI trade wobbles in 2026",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788206445,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-rise-afternoon-200045050.html?.tsrc=rss",
+    "ts": 1788355763,
+    "url": "https://qz.com/apple-stock-hedge-ai-trade-selloff-nasdaq-090226?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-rise-afternoon-200045050.html?.tsrc=rss"
+     "https://qz.com/apple-stock-hedge-ai-trade-selloff-nasdaq-090226?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 303 分 / 168 留言",
+   "label": "HN 討論熱度 20 篇 / 51 分 / 7 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 303,
-    "comments": 168,
+    "points": 51,
+    "comments": 7,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-09-01",
+   "severity": "info",
+   "as_of": "2026-09-02",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

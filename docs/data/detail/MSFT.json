@@ -1,25 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 507.29,
- "change_pct": -1.22,
+ "price": 497.11,
+ "change_pct": -0.78,
  "ohlc": [
-  {
-   "time": "2026-06-05",
-   "o": 427.54,
-   "h": 428.66,
-   "l": 413.62,
-   "c": 415.89,
-   "v": 34782200
-  },
-  {
-   "time": "2026-06-08",
-   "o": 413.36,
-   "h": 416.38,
-   "l": 407.79,
-   "c": 410.97,
-   "v": 32086700
-  },
   {
    "time": "2026-06-09",
    "o": 408.26,
@@ -474,32 +458,46 @@
    "h": 517.78,
    "l": 504.87,
    "c": 513.53,
-   "v": 29178300
+   "v": 29207300
   },
   {
    "time": "2026-08-31",
-   "o": 510.33,
+   "o": 510.38,
    "h": 512.19,
-   "l": 506.4,
+   "l": 506.39,
    "c": 507.29,
-   "v": 26637042
+   "v": 27208900
+  },
+  {
+   "time": "2026-09-01",
+   "o": 497.52,
+   "h": 505.97,
+   "l": 496.78,
+   "c": 501.02,
+   "v": 21032500
+  },
+  {
+   "time": "2026-09-02",
+   "o": 500.17,
+   "h": 500.27,
+   "l": 495.3,
+   "c": 497.11,
+   "v": 3629042
   }
  ],
  "sr": {
-  "price": 507.29,
+  "price": 497.11,
   "resistance": [
    507.79,
    509.31
   ],
   "support": [
-   501.87,
-   500.92
+   489.22,
+   488.35
   ],
   "strong_support": 348.54
  },
  "spark": [
-  415.89,
-  410.97,
   402.65,
   396.61,
   389.61,
@@ -557,156 +555,136 @@
   496.37,
   505.06,
   513.53,
-  507.29
+  507.29,
+  501.02,
+  497.11
  ],
- "spark_start": "2026-06-05",
- "spark_end": "2026-08-31",
+ "spark_start": "2026-06-09",
+ "spark_end": "2026-09-02",
  "fundamental": {
-  "pe_trailing": 28.421259,
-  "pe_forward": 21.665632,
-  "eps_trailing": 17.97,
+  "pe_trailing": 27.709585,
+  "pe_forward": 21.087858,
+  "eps_trailing": 17.94,
   "eps_forward": 23.57328,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 507.29,
-  "stop": 487.7,
-  "target": 556.27,
-  "atr_bracket": 556.27,
-  "measured_move": 648.85,
-  "target_band": [
-   556.27,
-   648.85,
-   696.44
-  ],
-  "stop_pct": -3.9,
-  "target_pct": 9.7,
-  "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 473.31,
-  "chandelier": 483.01,
-  "fib_targets": [
-   649.35,
-   696.44,
-   748.42
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jensen Huang Told Investors in June to 'Buy at a Discount' During Nvidia's Sell-Off. Nearly Three Months Later, Nvidia I",
+   "label": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Exec",
    "value": {
-    "headline": "Jensen Huang Told Investors in June to 'Buy at a Discount' During Nvidia's Sell-Off. Nearly Three Months Later, Nvidia Is Up 4%, and a Broader AI Basket Gained 8%. Did His Call Pay Off?",
+    "headline": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Execution",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788219300,
-    "url": "https://www.fool.com/investing/2026/08/31/jensen-huang-told-investors-in-june-to-buy-at-a-di/?.tsrc=rss",
+    "ts": 1788359760,
+    "url": "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/08/31/jensen-huang-told-investors-in-june-to-buy-at-a-di/?.tsrc=rss"
+     "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft (MSFT) Brings Arabic Language AI Models To Its Ecosystem",
+   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
    "value": {
-    "headline": "Microsoft (MSFT) Brings Arabic Language AI Models To Its Ecosystem",
+    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788210336,
-    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-msft-brings-arabic-language-210536821.html?.tsrc=rss",
+    "ts": 1788359280,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/microsoft-msft-brings-arabic-language-210536821.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Software Stocks & ETFs: Is the AI Sell-Off Over?",
+   "label": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
    "value": {
-    "headline": "Software Stocks & ETFs: Is the AI Sell-Off Over?",
+    "headline": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788209400,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/software-stocks-etfs-ai-sell-205000363.html?.tsrc=rss",
+    "ts": 1788358920,
+    "url": "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/software-stocks-etfs-ai-sell-205000363.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-01",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "How Investors May Respond To JPMorgan Chase (JPM) Bond Issuance, Branch Expansion and Higher Payouts",
-   "value": {
-    "headline": "How Investors May Respond To JPMorgan Chase (JPM) Bond Issuance, Branch Expansion and Higher Payouts",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1788207774,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-jpmorgan-chase-202254218.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-jpmorgan-chase-202254218.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top Analyst Reports for Microsoft, Intel & Bank of America",
+   "label": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
    "value": {
-    "headline": "Top Analyst Reports for Microsoft, Intel & Bank of America",
+    "headline": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788207000,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-microsoft-intel-201000476.html?.tsrc=rss",
+    "ts": 1788358920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-microsoft-intel-201000476.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "CPAY Stock Rises 15% in 3 Months: Here's What You Should Know",
+   "value": {
+    "headline": "CPAY Stock Rises 15% in 3 Months: Here's What You Should Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788358860,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cpay-stock-rises-15-3-142100401.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/cpay-stock-rises-15-3-142100401.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

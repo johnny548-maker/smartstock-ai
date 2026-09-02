@@ -1,57 +1,9 @@
 {
  "stock": "META",
- "name": "Meta Platforms, Inc. - Class A Common Stock",
- "price": 570.05,
- "change_pct": 1.97,
+ "name": "Meta",
+ "price": 596.72,
+ "change_pct": 3.14,
  "ohlc": [
-  {
-   "time": "2026-06-01",
-   "o": 629.82,
-   "h": 635.16,
-   "l": 598.97,
-   "c": 599.91,
-   "v": 29138800
-  },
-  {
-   "time": "2026-06-02",
-   "o": 602.68,
-   "h": 608.32,
-   "l": 596.13,
-   "c": 597.08,
-   "v": 18252000
-  },
-  {
-   "time": "2026-06-03",
-   "o": 602.44,
-   "h": 623.57,
-   "l": 599.71,
-   "c": 622.4,
-   "v": 23020100
-  },
-  {
-   "time": "2026-06-04",
-   "o": 623.09,
-   "h": 641.81,
-   "l": 621.85,
-   "c": 626.99,
-   "v": 21469200
-  },
-  {
-   "time": "2026-06-05",
-   "o": 622.88,
-   "h": 628.57,
-   "l": 582.37,
-   "c": 592.45,
-   "v": 30091600
-  },
-  {
-   "time": "2026-06-08",
-   "o": 591.45,
-   "h": 591.45,
-   "l": 578.68,
-   "c": 584.85,
-   "v": 19512400
-  },
   {
    "time": "2026-06-09",
    "o": 590.45,
@@ -482,28 +434,70 @@
    "h": 570.8,
    "l": 561.4,
    "c": 570.05,
-   "v": 9750300
+   "v": 9769100
+  },
+  {
+   "time": "2026-08-26",
+   "o": 590.31,
+   "h": 593.34,
+   "l": 561.88,
+   "c": 576.14,
+   "v": 31416300
+  },
+  {
+   "time": "2026-08-27",
+   "o": 576.48,
+   "h": 588.39,
+   "l": 567.62,
+   "c": 571.1,
+   "v": 15221400
+  },
+  {
+   "time": "2026-08-28",
+   "o": 571.55,
+   "h": 589.19,
+   "l": 571.0,
+   "c": 578.02,
+   "v": 16042400
+  },
+  {
+   "time": "2026-08-31",
+   "o": 577.63,
+   "h": 578.68,
+   "l": 569.14,
+   "c": 572.34,
+   "v": 13383800
+  },
+  {
+   "time": "2026-09-01",
+   "o": 558.35,
+   "h": 584.95,
+   "l": 556.1,
+   "c": 578.54,
+   "v": 15773300
+  },
+  {
+   "time": "2026-09-02",
+   "o": 579.55,
+   "h": 600.38,
+   "l": 577.0,
+   "c": 596.72,
+   "v": 5982539
   }
  ],
  "sr": {
-  "price": 570.05,
+  "price": 596.72,
   "resistance": [
    605.81,
    612.43
   ],
   "support": [
-   556.49,
-   540.18
+   594.26,
+   592.05
   ],
-  "strong_support": 524.49
+  "strong_support": 519.78
  },
  "spark": [
-  599.91,
-  597.08,
-  622.4,
-  626.99,
-  592.45,
-  584.85,
   584.05,
   570.45,
   567.9,
@@ -557,11 +551,171 @@
   545.83,
   549.9,
   559.02,
-  570.05
+  570.05,
+  576.14,
+  571.1,
+  578.02,
+  572.34,
+  578.54,
+  596.72
  ],
- "spark_start": "2026-06-01",
- "spark_end": "2026-08-25",
- "fundamental": null,
+ "spark_start": "2026-06-09",
+ "spark_end": "2026-09-02",
+ "fundamental": {
+  "pe_trailing": 22.485876,
+  "pe_forward": 17.076826,
+  "eps_trailing": 26.55,
+  "eps_forward": 34.95966,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Medicare Decoded: What to Know Before You Turn 65",
+   "value": {
+    "headline": "Medicare Decoded: What to Know Before You Turn 65",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788359400,
+    "url": "https://www.thestreet.com/retirement/medicare-decoded-what-to-know-before-you-turn-65?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/retirement/medicare-decoded-what-to-know-before-you-turn-65?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "XRP ETFs Attract $170 million Of Capital In 11 Days",
+   "value": {
+    "headline": "XRP ETFs Attract $170 million Of Capital In 11 Days",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788359400,
+    "url": "https://www.cryptoprowl.com/releases/xrp-etfs-attract-170-million-of-capital-in-11-days-6612?.tsrc=rss",
+    "urls": [
+     "https://www.cryptoprowl.com/releases/xrp-etfs-attract-170-million-of-capital-in-11-days-6612?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "3 Reasons PINS Has Explosive Upside Potential",
+   "value": {
+    "headline": "3 Reasons PINS Has Explosive Upside Potential",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788359303,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-pins-explosive-upside-142823517.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/3-reasons-pins-explosive-upside-142823517.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NextDoor bets on real neighbors reviews over AI algorithms",
+   "value": {
+    "headline": "NextDoor bets on real neighbors reviews over AI algorithms",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788359100,
+    "url": "https://finance.yahoo.com/video/nextdoor-bets-real-neighbors-reviews-142500177.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/nextdoor-bets-real-neighbors-reviews-142500177.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Form 8.3",
+   "value": {
+    "headline": "Form 8.3",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788359100,
+    "url": "https://finance.yahoo.com/markets/options/articles/form-8-3-142500601.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/options/articles/form-8-3-142500601.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 17,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 89 分 / 68 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 89,
+    "comments": 68,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-02",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 44550,
+    "days": 5,
+    "max_shares": 38654,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
