@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 324.1,
- "change_pct": -0.32,
+ "price": 328.3,
+ "change_pct": 1.03,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 300.02,
-   "h": 300.49,
-   "l": 287.53,
-   "c": 290.3,
-   "v": 70108800
-  },
   {
    "time": "2026-06-10",
    "o": 290.49,
@@ -474,19 +466,27 @@
    "h": 327.3,
    "l": 314.73,
    "c": 325.13,
-   "v": 53119500
+   "v": 53167400
   },
   {
    "time": "2026-09-02",
-   "o": 326.97,
+   "o": 326.87,
    "h": 328.4,
    "l": 323.53,
-   "c": 324.1,
-   "v": 8502651
+   "c": 324.96,
+   "v": 33746700
+  },
+  {
+   "time": "2026-09-03",
+   "o": 324.95,
+   "h": 330.68,
+   "l": 324.11,
+   "c": 328.3,
+   "v": 8857935
   }
  ],
  "sr": {
-  "price": 324.1,
+  "price": 328.3,
   "resistance": [
    334.7,
    344.27
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  290.3,
   291.33,
   295.38,
   290.88,
@@ -557,172 +556,136 @@
   319.7,
   316.85,
   325.13,
-  324.1
+  324.96,
+  328.3
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": {
-  "pe_trailing": 37.207233,
-  "pe_forward": 33.969666,
+  "pe_trailing": 37.698048,
+  "pe_forward": 34.41777,
   "eps_trailing": 8.71,
   "eps_forward": 9.54013,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 324.1,
-  "stop": 310.65,
-  "target": 357.74,
-  "atr_bracket": 357.74,
-  "measured_move": 339.99,
-  "target_band": [
-   338.9,
-   339.99,
-   357.74
-  ],
-  "stop_pct": -4.2,
-  "target_pct": 10.4,
-  "rr": 2.5,
-  "atr_pct": 2.1,
-  "swing_stop": 304.99,
-  "chandelier": 308.61,
-  "fib_targets": [
-   332.08,
-   338.9,
-   346.43
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+   "label": "Apple Dividend Scorecard: Can a 0.32% Yield Still Earn an A?",
    "value": {
-    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+    "headline": "Apple Dividend Scorecard: Can a 0.32% Yield Still Earn an A?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359280,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
+    "ts": 1788443953,
+    "url": "https://247wallst.com/investing/2026/09/03/apple-dividend-scorecard-can-a-0-32-yield-still-earn-an-a/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/03/apple-dividend-scorecard-can-a-0-32-yield-still-earn-an-a/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ADP Brings +38K Private-Sector Jobs in August",
+   "label": "Apple's App Rules Just Picked Up a $2.7 Billion Legal Risk",
    "value": {
-    "headline": "ADP Brings +38K Private-Sector Jobs in August",
+    "headline": "Apple's App Rules Just Picked Up a $2.7 Billion Legal Risk",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788358320,
-    "url": "https://finance.yahoo.com/economy/articles/adp-brings-38k-private-sector-141200036.html?.tsrc=rss",
+    "ts": 1788443482,
+    "url": "https://finance.yahoo.com/technology/articles/apples-app-rules-just-picked-135122478.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/articles/adp-brings-38k-private-sector-141200036.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/apples-app-rules-just-picked-135122478.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MANGOS ETFs: The Next Big AI Tech Investing Theme",
+   "label": "Jamf Named a Customers’ Choice in the 2026 Gartner Peer InsightsTM \"Voice of the Customer\" for Endpoint Management Tools",
    "value": {
-    "headline": "MANGOS ETFs: The Next Big AI Tech Investing Theme",
+    "headline": "Jamf Named a Customers’ Choice in the 2026 Gartner Peer InsightsTM \"Voice of the Customer\" for Endpoint Management Tools",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788357600,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/mangos-etfs-next-big-ai-140000152.html?.tsrc=rss",
+    "ts": 1788440400,
+    "url": "https://finance.yahoo.com/technology/articles/jamf-named-customers-choice-2026-130000495.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/mangos-etfs-next-big-ai-140000152.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/jamf-named-customers-choice-2026-130000495.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cramer’s Radical Fix for Nvidia: 5x the Buybacks, Repurchase 10% of Stock",
+   "label": "Apple faces $2.7 billion U.K. lawsuit over app tracking rules",
    "value": {
-    "headline": "Cramer’s Radical Fix for Nvidia: 5x the Buybacks, Repurchase 10% of Stock",
+    "headline": "Apple faces $2.7 billion U.K. lawsuit over app tracking rules",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788356148,
-    "url": "https://247wallst.com/investing/2026/09/02/cramers-radical-fix-for-nvidia-5x-the-buybacks-repurchase-10-of-stock/?.tsrc=rss",
+    "ts": 1788440118,
+    "url": "https://qz.com/apple-lawsuit-uk-app-tracking-transparency-2-7-billion-090326?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/02/cramers-radical-fix-for-nvidia-5x-the-buybacks-repurchase-10-of-stock/?.tsrc=rss"
+     "https://qz.com/apple-lawsuit-uk-app-tracking-transparency-2-7-billion-090326?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-02",
+   "severity": "warn",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple stock becomes hedge as AI trade wobbles in 2026",
+   "label": "Tim Cook’s final words of warning as Apple CEO: US now at risk from ‘hundred-year flood’ — even Elon Musk is worried",
    "value": {
-    "headline": "Apple stock becomes hedge as AI trade wobbles in 2026",
+    "headline": "Tim Cook’s final words of warning as Apple CEO: US now at risk from ‘hundred-year flood’ — even Elon Musk is worried",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788355763,
-    "url": "https://qz.com/apple-stock-hedge-ai-trade-selloff-nasdaq-090226?.tsrc=rss",
+    "ts": 1788439500,
+    "url": "https://finance.yahoo.com/technology/articles/tim-cook-final-words-warning-124500312.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/apple-stock-hedge-ai-trade-selloff-nasdaq-090226?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/tim-cook-final-words-warning-124500312.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-02",
+   "severity": "warn",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 51 分 / 7 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 51,
-    "comments": 7,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-02",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -736,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

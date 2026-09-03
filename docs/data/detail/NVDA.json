@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 223.46,
- "change_pct": 2.77,
+ "price": 226.67,
+ "change_pct": 1.01,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 210.62,
-   "h": 211.4,
-   "l": 199.34,
-   "c": 208.19,
-   "v": 180962500
-  },
   {
    "time": "2026-06-10",
    "o": 204.43,
@@ -474,19 +466,27 @@
    "h": 220.41,
    "l": 215.1,
    "c": 217.44,
-   "v": 109484400
+   "v": 109756200
   },
   {
    "time": "2026-09-02",
    "o": 218.79,
-   "h": 223.8,
+   "h": 227.95,
    "l": 218.48,
-   "c": 223.46,
-   "v": 36613710
+   "c": 224.41,
+   "v": 156676500
+  },
+  {
+   "time": "2026-09-03",
+   "o": 226.02,
+   "h": 229.07,
+   "l": 224.75,
+   "c": 226.67,
+   "v": 39726295
   }
  ],
  "sr": {
-  "price": 223.46,
+  "price": 226.67,
   "resistance": [
    227.92,
    230.47
@@ -495,10 +495,9 @@
    216.2,
    208.54
   ],
-  "strong_support": 163.85
+  "strong_support": 164.08
  },
  "spark": [
-  208.19,
   200.42,
   204.87,
   205.19,
@@ -557,14 +556,15 @@
   217.55,
   220.78,
   217.44,
-  223.46
+  224.41,
+  226.67
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": {
-  "pe_trailing": 28.246523,
-  "pe_forward": 14.504438,
-  "eps_trailing": 7.91,
+  "pe_trailing": 28.692404,
+  "pe_forward": 14.71477,
+  "eps_trailing": 7.9,
   "eps_forward": 15.40425,
   "stale": false,
   "source": "yfinance"
@@ -575,118 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Exec",
+   "label": "Are investors underappreciating Broadcom's strong performance?",
    "value": {
-    "headline": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Execution",
+    "headline": "Are investors underappreciating Broadcom's strong performance?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359760,
-    "url": "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss",
+    "ts": 1788445442,
+    "url": "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "If a Stock Market Crash Is Coming, This Is Warren Buffett's No. 1 Piece of Advice for Investors Right Now",
+   "value": {
+    "headline": "If a Stock Market Crash Is Coming, This Is Warren Buffett's No. 1 Piece of Advice for Investors Right Now",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788445200,
+    "url": "https://www.fool.com/investing/2026/09/03/if-a-stock-market-crash-is-coming-this-is-warren-b/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/09/03/if-a-stock-market-crash-is-coming-this-is-warren-b/?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+   "label": "Nu Holdings Cleared $1 Billion in Quarterly Net Income With 139 Million Customers",
    "value": {
-    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+    "headline": "Nu Holdings Cleared $1 Billion in Quarterly Net Income With 139 Million Customers",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359280,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
+    "ts": 1788445200,
+    "url": "https://www.fool.com/investing/2026/09/03/nu-holdings-cleared-1-billion-quarterly-net-income/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/03/nu-holdings-cleared-1-billion-quarterly-net-income/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Strategy CEO Defends Bitcoin Purchases And Sales",
+   "label": "Upbeat AI Data Centers Demand Propels SK Hynix: More Growth Ahead?",
    "value": {
-    "headline": "Strategy CEO Defends Bitcoin Purchases And Sales",
+    "headline": "Upbeat AI Data Centers Demand Propels SK Hynix: More Growth Ahead?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359280,
-    "url": "https://www.cryptoprowl.com/releases/strategy-ceo-defends-bitcoin-purchases-and-sales-6611?.tsrc=rss",
+    "ts": 1788444960,
+    "url": "https://finance.yahoo.com/technology/ai/articles/upbeat-ai-data-centers-demand-141600641.html?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/strategy-ceo-defends-bitcoin-purchases-and-sales-6611?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/upbeat-ai-data-centers-demand-141600641.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
+   "label": "Stock Market Today: Nasdaq Leads As Fed's Waller Signals This; Snowflake Soars (Live Coverage)",
    "value": {
-    "headline": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
+    "headline": "Stock Market Today: Nasdaq Leads As Fed's Waller Signals This; Snowflake Soars (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788358920,
-    "url": "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss",
+    "ts": 1788444868,
+    "url": "https://finance.yahoo.com/m/9ebcfa1b-fe54-35b4-80f4-a19bd972d821/stock-market-today%3A-nasdaq.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/9ebcfa1b-fe54-35b4-80f4-a19bd972d821/stock-market-today%3A-nasdaq.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
-   "value": {
-    "headline": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1788358920,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 22 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 22,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
-     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -701,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

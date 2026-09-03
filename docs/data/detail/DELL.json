@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 443.46,
- "change_pct": 4.34,
+ "price": 505.92,
+ "change_pct": 2.79,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 402.26,
-   "h": 407.07,
-   "l": 356.48,
-   "c": 381.15,
-   "v": 10471800
-  },
   {
    "time": "2026-06-10",
    "o": 376.3,
@@ -474,22 +466,29 @@
    "h": 463.0,
    "l": 421.89,
    "c": 425.0,
-   "v": 15362000
+   "v": 15948000
   },
   {
    "time": "2026-09-02",
    "o": 462.05,
-   "h": 483.94,
+   "h": 497.99,
    "l": 432.27,
-   "c": 443.46,
-   "v": 14398433
+   "c": 492.2,
+   "v": 36609700
+  },
+  {
+   "time": "2026-09-03",
+   "o": 486.31,
+   "h": 513.5,
+   "l": 478.31,
+   "c": 505.92,
+   "v": 6412767
   }
  ],
  "sr": {
-  "price": 443.46,
+  "price": 505.92,
   "resistance": [
-   454.77,
-   462.72
+   514.0
   ],
   "support": [
    424.0,
@@ -498,7 +497,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  381.15,
   369.22,
   390.8,
   394.92,
@@ -557,11 +555,144 @@
   456.24,
   456.01,
   425.0,
-  443.46
+  492.2,
+  505.92
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Are investors underappreciating Broadcom's strong performance?",
+   "value": {
+    "headline": "Are investors underappreciating Broadcom's strong performance?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788445442,
+    "url": "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why HPE Stock Is Falling Amid Fiscal Q3 Earnings Beat",
+   "value": {
+    "headline": "Why HPE Stock Is Falling Amid Fiscal Q3 Earnings Beat",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788444692,
+    "url": "https://finance.yahoo.com/m/a2f2adc2-6143-3989-8187-b989b6d743dc/why-hpe-stock-is-falling-amid.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/a2f2adc2-6143-3989-8187-b989b6d743dc/why-hpe-stock-is-falling-amid.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dell Stock Is Surging on Its $95 Billion AI Backlog. Could DELL Hit $600 Next?",
+   "value": {
+    "headline": "Dell Stock Is Surging on Its $95 Billion AI Backlog. Could DELL Hit $600 Next?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788444044,
+    "url": "https://247wallst.com/investing/2026/09/03/dell-stock-is-surging-on-its-95-billion-ai-backlog-could-dell-hit-600-next/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/03/dell-stock-is-surging-on-its-95-billion-ai-backlog-could-dell-hit-600-next/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Data Center Solutions Market Surges to $1,336.55 billion at a CAGR 20.1% by 2031 | Report by MarketsandMarketsTM",
+   "value": {
+    "headline": "Data Center Solutions Market Surges to $1,336.55 billion at a CAGR 20.1% by 2031 | Report by MarketsandMarketsTM",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788444000,
+    "url": "https://finance.yahoo.com/technology/articles/data-center-solutions-market-surges-140000359.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/data-center-solutions-market-surges-140000359.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Hewlett Packard Enterprise Falls 5% as Supply Constraints Overshadow Raised Guidance, Super Micro Slips, Dell Holds Stea",
+   "value": {
+    "headline": "Hewlett Packard Enterprise Falls 5% as Supply Constraints Overshadow Raised Guidance, Super Micro Slips, Dell Holds Steady",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788443542,
+    "url": "https://247wallst.com/investing/2026/09/03/hewlett-packard-enterprise-falls-5-as-supply-constraints-overshadow-raised-guidance-super-micro-slips-dell-holds-steady/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/03/hewlett-packard-enterprise-falls-5-as-supply-constraints-overshadow-raised-guidance-super-micro-slips-dell-holds-steady/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 7699,
+    "days": 5,
+    "max_shares": 7625,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-03",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

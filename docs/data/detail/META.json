@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 596.72,
- "change_pct": 3.14,
+ "price": 610.07,
+ "change_pct": 2.9,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 590.45,
-   "h": 597.08,
-   "l": 580.47,
-   "c": 584.05,
-   "v": 16977400
-  },
   {
    "time": "2026-06-10",
    "o": 580.19,
@@ -474,31 +466,38 @@
    "h": 584.95,
    "l": 556.1,
    "c": 578.54,
-   "v": 15773300
+   "v": 15796900
   },
   {
    "time": "2026-09-02",
-   "o": 579.55,
+   "o": 578.79,
    "h": 600.38,
    "l": 577.0,
-   "c": 596.72,
-   "v": 5982539
+   "c": 592.85,
+   "v": 16487300
+  },
+  {
+   "time": "2026-09-03",
+   "o": 604.49,
+   "h": 619.42,
+   "l": 604.35,
+   "c": 610.07,
+   "v": 6292499
   }
  ],
  "sr": {
-  "price": 596.72,
+  "price": 610.07,
   "resistance": [
-   605.81,
-   612.43
+   612.43,
+   623.15
   ],
   "support": [
-   594.26,
-   592.05
+   608.46,
+   599.64
   ],
   "strong_support": 519.78
  },
  "spark": [
-  584.05,
   570.45,
   567.9,
   566.45,
@@ -557,14 +556,15 @@
   578.02,
   572.34,
   578.54,
-  596.72
+  592.85,
+  610.07
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": {
-  "pe_trailing": 22.485876,
-  "pe_forward": 17.076826,
-  "eps_trailing": 26.55,
+  "pe_trailing": 22.974022,
+  "pe_forward": 17.454117,
+  "eps_trailing": 26.56,
   "eps_forward": 34.95966,
   "stale": false,
   "source": "yfinance"
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Medicare Decoded: What to Know Before You Turn 65",
+   "label": "Stocks edge up as Nvidia leads tech higher following Hugging Face deal announcement: AlphaCheck",
    "value": {
-    "headline": "Medicare Decoded: What to Know Before You Turn 65",
+    "headline": "Stocks edge up as Nvidia leads tech higher following Hugging Face deal announcement: AlphaCheck",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359400,
-    "url": "https://www.thestreet.com/retirement/medicare-decoded-what-to-know-before-you-turn-65?.tsrc=rss",
+    "ts": 1788444288,
+    "url": "https://finance.yahoo.com/markets/article/stocks-edge-up-as-nvidia-leads-tech-higher-following-hugging-face-deal-announcement-alphacheck-140448366.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/retirement/medicare-decoded-what-to-know-before-you-turn-65?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/stocks-edge-up-as-nvidia-leads-tech-higher-following-hugging-face-deal-announcement-alphacheck-140448366.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "XRP ETFs Attract $170 million Of Capital In 11 Days",
+   "label": "Hyperscalers Are the Backbone of AI. Here's Why I Own Amazon, Alphabet, and Meta Platforms.",
    "value": {
-    "headline": "XRP ETFs Attract $170 million Of Capital In 11 Days",
+    "headline": "Hyperscalers Are the Backbone of AI. Here's Why I Own Amazon, Alphabet, and Meta Platforms.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359400,
-    "url": "https://www.cryptoprowl.com/releases/xrp-etfs-attract-170-million-of-capital-in-11-days-6612?.tsrc=rss",
+    "ts": 1788442920,
+    "url": "https://www.fool.com/investing/2026/09/03/hyperscalers-are-the-backbone-of-ai-heres-why-i-ow/?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/xrp-etfs-attract-170-million-of-capital-in-11-days-6612?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/03/hyperscalers-are-the-backbone-of-ai-heres-why-i-ow/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 Reasons PINS Has Explosive Upside Potential",
+   "label": "Meta’s Next Trillion Dollars Could Come From AI. Here’s Our Price Target for 2027",
    "value": {
-    "headline": "3 Reasons PINS Has Explosive Upside Potential",
+    "headline": "Meta’s Next Trillion Dollars Could Come From AI. Here’s Our Price Target for 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359303,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-pins-explosive-upside-142823517.html?.tsrc=rss",
+    "ts": 1788442218,
+    "url": "https://247wallst.com/investing/2026/09/03/metas-next-trillion-dollars-could-come-from-ai-heres-our-price-target-for-2027/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-reasons-pins-explosive-upside-142823517.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/03/metas-next-trillion-dollars-could-come-from-ai-heres-our-price-target-for-2027/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "NextDoor bets on real neighbors reviews over AI algorithms",
+   "label": "Assessment of the U.S. Nuclear Power and Small Modular Reactor Market 2026 Now Available — Reveals Why Big Tech Is Becom",
    "value": {
-    "headline": "NextDoor bets on real neighbors reviews over AI algorithms",
+    "headline": "Assessment of the U.S. Nuclear Power and Small Modular Reactor Market 2026 Now Available — Reveals Why Big Tech Is Becoming an Active Force in Nuclear Project Formation, Not Just a Power Buyer",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359100,
-    "url": "https://finance.yahoo.com/video/nextdoor-bets-real-neighbors-reviews-142500177.html?.tsrc=rss",
+    "ts": 1788440460,
+    "url": "https://finance.yahoo.com/energy/articles/assessment-u-nuclear-power-small-130100032.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nextdoor-bets-real-neighbors-reviews-142500177.html?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/assessment-u-nuclear-power-small-130100032.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Form 8.3",
+   "label": "Microsoft and Meta Signed Multi-Decade Nuclear Power Deals. These 3 Stocks Supply That Power",
    "value": {
-    "headline": "Form 8.3",
+    "headline": "Microsoft and Meta Signed Multi-Decade Nuclear Power Deals. These 3 Stocks Supply That Power",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359100,
-    "url": "https://finance.yahoo.com/markets/options/articles/form-8-3-142500601.html?.tsrc=rss",
+    "ts": 1788440449,
+    "url": "https://247wallst.com/investing/2026/09/03/microsoft-and-meta-signed-multi-decade-nuclear-power-deals-these-3-stocks-supply-that-power/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/options/articles/form-8-3-142500601.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/03/microsoft-and-meta-signed-multi-decade-nuclear-power-deals-these-3-stocks-supply-that-power/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 89 分 / 68 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 89,
-    "comments": 68,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-02",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

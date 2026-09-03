@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 948.6,
- "change_pct": 1.62,
+ "price": 933.57,
+ "change_pct": -2.35,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 988.03,
-   "h": 989.0,
-   "l": 854.22,
-   "c": 935.75,
-   "v": 73448600
-  },
   {
    "time": "2026-06-10",
    "o": 904.99,
@@ -474,19 +466,27 @@
    "h": 969.44,
    "l": 922.39,
    "c": 933.44,
-   "v": 27676900
+   "v": 27762200
   },
   {
    "time": "2026-09-02",
    "o": 930.83,
-   "h": 957.49,
+   "h": 958.0,
    "l": 927.16,
-   "c": 948.6,
-   "v": 7819329
+   "c": 956.08,
+   "v": 21378500
+  },
+  {
+   "time": "2026-09-03",
+   "o": 956.78,
+   "h": 959.76,
+   "l": 918.88,
+   "c": 933.57,
+   "v": 8829448
   }
  ],
  "sr": {
-  "price": 948.6,
+  "price": 933.57,
   "resistance": [
    989.96,
    1011.77
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  935.75,
   891.74,
   995.72,
   981.46,
@@ -557,48 +556,12 @@
   932.86,
   958.73,
   933.44,
-  948.6
+  956.08,
+  933.57
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "〈SEMICON〉台美合作開新局!龔明鑫爆赴美「加碼」200億美元再掀一波投資潮",
-   "value": {
-    "headline": "〈SEMICON〉台美合作開新局!龔明鑫爆赴美「加碼」200億美元再掀一波投資潮",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1788345340,
-    "url": "cnyes:6595465",
-    "urls": [
-     "cnyes:6595465"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-02",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-02",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

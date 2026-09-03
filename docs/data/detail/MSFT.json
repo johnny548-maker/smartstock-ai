@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 497.11,
- "change_pct": -0.78,
+ "price": 509.62,
+ "change_pct": 2.58,
  "ohlc": [
-  {
-   "time": "2026-06-09",
-   "o": 408.26,
-   "h": 411.21,
-   "l": 397.73,
-   "c": 402.65,
-   "v": 35317300
-  },
   {
    "time": "2026-06-10",
    "o": 397.8,
@@ -474,31 +466,38 @@
    "h": 505.97,
    "l": 496.78,
    "c": 501.02,
-   "v": 21032500
+   "v": 21046900
   },
   {
    "time": "2026-09-02",
-   "o": 500.17,
+   "o": 499.85,
    "h": 500.27,
-   "l": 495.3,
-   "c": 497.11,
-   "v": 3629042
+   "l": 493.81,
+   "c": 496.82,
+   "v": 15323000
+  },
+  {
+   "time": "2026-09-03",
+   "o": 502.14,
+   "h": 512.92,
+   "l": 500.8,
+   "c": 509.62,
+   "v": 5866651
   }
  ],
  "sr": {
-  "price": 497.11,
+  "price": 509.62,
   "resistance": [
-   507.79,
-   509.31
+   512.76,
+   515.06
   ],
   "support": [
-   489.22,
-   488.35
+   501.87,
+   500.92
   ],
   "strong_support": 348.54
  },
  "spark": [
-  402.65,
   396.61,
   389.61,
   390.01,
@@ -557,13 +556,14 @@
   513.53,
   507.29,
   501.02,
-  497.11
+  496.82,
+  509.62
  ],
- "spark_start": "2026-06-09",
- "spark_end": "2026-09-02",
+ "spark_start": "2026-06-10",
+ "spark_end": "2026-09-03",
  "fundamental": {
-  "pe_trailing": 27.709585,
-  "pe_forward": 21.087858,
+  "pe_trailing": 28.407747,
+  "pe_forward": 21.61918,
   "eps_trailing": 17.94,
   "eps_forward": 23.57328,
   "stale": false,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Exec",
+   "label": "Cypress Creek Energy's Ostrea Solar Reaches Commercial Operation, Helping Power Nation's Fastest-Growing State Economy",
    "value": {
-    "headline": "Kahuna Workforce Solutions Announces Strategic Partnership with Oracle to Connect Core HR Operations with Frontline Execution",
+    "headline": "Cypress Creek Energy's Ostrea Solar Reaches Commercial Operation, Helping Power Nation's Fastest-Growing State Economy",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359760,
-    "url": "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss",
+    "ts": 1788445800,
+    "url": "https://finance.yahoo.com/energy/articles/cypress-creek-energys-ostrea-solar-143000322.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/healthcare/articles/kahuna-workforce-solutions-announces-strategic-143600654.html?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/cypress-creek-energys-ostrea-solar-143000322.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-02",
+   "severity": "info",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+   "label": "Microsoft Corporation (MSFT) Generates Revenues and Profits Beyond AI Theme",
    "value": {
-    "headline": "ETFs to Watch as Memory-Chip Scarcity Could Extend Through 2027",
+    "headline": "Microsoft Corporation (MSFT) Generates Revenues and Profits Beyond AI Theme",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788359280,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss",
+    "ts": 1788444860,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-generates-revenues-141420996.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/etfs-watch-memory-chip-scarcity-142800655.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-generates-revenues-141420996.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
+   "label": "Market Chatter: Anthropic, OpenAI Take Different Positions on Massachusetts AI Safety Bill",
    "value": {
-    "headline": "Can BigBear.ai's $270M Backlog Translate Into Stronger Revenue Growth?",
+    "headline": "Market Chatter: Anthropic, OpenAI Take Different Positions on Massachusetts AI Safety Bill",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788358920,
-    "url": "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss",
+    "ts": 1788444378,
+    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-anthropic-openai-different-140618170.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/bigbear-ais-270m-backlog-translate-142200754.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/market-chatter-anthropic-openai-different-140618170.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
+   "label": "3 of Wall Street’s Safest High-Yield Dividend Stocks With Over 25-Year Increase Streaks",
    "value": {
-    "headline": "MDB Q2 Earnings Beat Estimates on Atlas & EA Strength, Outlook Raised",
+    "headline": "3 of Wall Street’s Safest High-Yield Dividend Stocks With Over 25-Year Increase Streaks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788358920,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss",
+    "ts": 1788444050,
+    "url": "https://247wallst.com/investing/2026/09/03/3-of-wall-streets-safest-high-yield-dividend-stocks-with-over-25-year-increase-streaks/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/mdb-q2-earnings-beat-estimates-142200400.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/03/3-of-wall-streets-safest-high-yield-dividend-stocks-with-over-25-year-increase-streaks/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CPAY Stock Rises 15% in 3 Months: Here's What You Should Know",
+   "label": "Senteon and SPECTRA Announce Partnership to Strengthen Cyber Resilience for MSPs and Their Customers",
    "value": {
-    "headline": "CPAY Stock Rises 15% in 3 Months: Here's What You Should Know",
+    "headline": "Senteon and SPECTRA Announce Partnership to Strengthen Cyber Resilience for MSPs and Their Customers",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788358860,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/cpay-stock-rises-15-3-142100401.html?.tsrc=rss",
+    "ts": 1788444000,
+    "url": "https://finance.yahoo.com/technology/articles/senteon-spectra-announce-partnership-strengthen-140000176.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/cpay-stock-rises-15-3-142100401.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/senteon-spectra-announce-partnership-strengthen-140000176.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-02",
+   "as_of": "2026-09-03",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

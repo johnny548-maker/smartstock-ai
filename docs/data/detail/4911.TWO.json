@@ -1,8 +1,8 @@
 {
  "stock": "4911.TWO",
  "name": "德英",
- "price": 29.95,
- "change_pct": 3.28,
+ "price": 29.85,
+ "change_pct": -0.33,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -291,16 +291,26 @@
    "l": 29.2,
    "c": 29.95,
    "v": 27852
+  },
+  {
+   "time": "2026-09-03",
+   "o": 29.4,
+   "h": 30.0,
+   "l": 29.2,
+   "c": 29.85,
+   "v": 8401
   }
  ],
  "sr": {
-  "price": 29.95,
+  "price": 29.85,
   "resistance": [
    34.5,
    35.7
   ],
-  "support": [],
-  "strong_support": 30.8
+  "support": [
+   27.35
+  ],
+  "strong_support": 27.35
  },
  "spark": [
   31.1,
@@ -338,10 +348,11 @@
   28.3,
   27.8,
   29.0,
-  29.95
+  29.95,
+  29.85
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-02",
+ "spark_end": "2026-09-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
