@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 933.57,
- "change_pct": -2.35,
+ "price": 997.06,
+ "change_pct": 4.06,
  "ohlc": [
-  {
-   "time": "2026-06-10",
-   "o": 904.99,
-   "h": 957.33,
-   "l": 883.11,
-   "c": 891.74,
-   "v": 55712600
-  },
   {
    "time": "2026-06-11",
    "o": 904.23,
@@ -474,31 +466,38 @@
    "h": 958.0,
    "l": 927.16,
    "c": 956.08,
-   "v": 21378500
+   "v": 21440500
   },
   {
    "time": "2026-09-03",
-   "o": 956.78,
+   "o": 956.91,
    "h": 959.76,
    "l": 918.88,
-   "c": 933.57,
-   "v": 8829448
+   "c": 958.16,
+   "v": 24116400
+  },
+  {
+   "time": "2026-09-04",
+   "o": 971.06,
+   "h": 1003.71,
+   "l": 969.0,
+   "c": 997.06,
+   "v": 13033737
   }
  ],
  "sr": {
-  "price": 933.57,
+  "price": 997.06,
   "resistance": [
-   989.96,
-   1011.77
+   1011.77,
+   1035.5
   ],
   "support": [
-   891.66,
-   887.61
+   990.95,
+   891.66
   ],
   "strong_support": 61.38
  },
  "spark": [
-  891.74,
   995.72,
   981.46,
   1087.82,
@@ -557,11 +556,144 @@
   958.73,
   933.44,
   956.08,
-  933.57
+  958.16,
+  997.06
  ],
- "spark_start": "2026-06-10",
- "spark_end": "2026-09-03",
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Goldman Sachs Says the AI Trade Is Barely Started. The Stocks That Got You Here Will Not Take You There",
+   "value": {
+    "headline": "Goldman Sachs Says the AI Trade Is Barely Started. The Stocks That Got You Here Will Not Take You There",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788528615,
+    "url": "https://247wallst.com/investing/2026/09/04/goldman-sachs-says-the-ai-trade-is-barely-started-the-stocks-that-got-you-here-will-not-take-you-there/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/04/goldman-sachs-says-the-ai-trade-is-barely-started-the-stocks-that-got-you-here-will-not-take-you-there/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI Chips Update - AI Circuit Breaker Revolutionizes Security In Autonomous Systems",
+   "value": {
+    "headline": "AI Chips Update - AI Circuit Breaker Revolutionizes Security In Autonomous Systems",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788521840,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ai-chips-ai-circuit-breaker-113720314.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/ai-chips-ai-circuit-breaker-113720314.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Social Buzz: Wallstreetbets Stocks Mixed Premarket Friday; Micron to Rise, Lululemon to Fall",
+   "value": {
+    "headline": "Social Buzz: Wallstreetbets Stocks Mixed Premarket Friday; Micron to Rise, Lululemon to Fall",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788518171,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mixed-103611296.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mixed-103611296.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Micron Stock Is Trading Today",
+   "value": {
+    "headline": "How Micron Stock Is Trading Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788515820,
+    "url": "https://finance.yahoo.com/m/c14cc0ec-a7ad-37b2-a6b9-54ccdeb2ec18/how-micron-stock-is-trading.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/c14cc0ec-a7ad-37b2-a6b9-54ccdeb2ec18/how-micron-stock-is-trading.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Netlist (NLST) Is Down 8.6% After Appeals Court Upholds Invalidation Of Five Memory Patents – Has The Bull Case Changed?",
+   "value": {
+    "headline": "Netlist (NLST) Is Down 8.6% After Appeals Court Upholds Invalidation Of Five Memory Patents – Has The Bull Case Changed?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788512829,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/netlist-nlst-down-8-6-090709405.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/netlist-nlst-down-8-6-090709405.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 33629,
+    "days": 8,
+    "max_shares": 12028,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-04",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

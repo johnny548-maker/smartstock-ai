@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 226.67,
- "change_pct": 1.01,
+ "price": 234.13,
+ "change_pct": 2.49,
  "ohlc": [
-  {
-   "time": "2026-06-10",
-   "o": 204.43,
-   "h": 207.22,
-   "l": 199.92,
-   "c": 200.42,
-   "v": 161746600
-  },
   {
    "time": "2026-06-11",
    "o": 201.49,
@@ -474,31 +466,37 @@
    "h": 227.95,
    "l": 218.48,
    "c": 224.41,
-   "v": 156676500
+   "v": 157104700
   },
   {
    "time": "2026-09-03",
    "o": 226.02,
-   "h": 229.07,
+   "h": 230.4,
    "l": 224.75,
-   "c": 226.67,
-   "v": 39726295
+   "c": 228.45,
+   "v": 133994100
+  },
+  {
+   "time": "2026-09-04",
+   "o": 231.14,
+   "h": 234.65,
+   "l": 229.82,
+   "c": 234.13,
+   "v": 45969494
   }
  ],
  "sr": {
-  "price": 226.67,
+  "price": 234.13,
   "resistance": [
-   227.92,
-   230.47
+   236.26
   ],
   "support": [
    216.2,
-   208.54
+   215.1
   ],
   "strong_support": 164.08
  },
  "spark": [
-  200.42,
   204.87,
   205.19,
   212.45,
@@ -557,16 +555,17 @@
   220.78,
   217.44,
   224.41,
-  226.67
+  228.45,
+  234.13
  ],
- "spark_start": "2026-06-10",
- "spark_end": "2026-09-03",
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
  "fundamental": {
   "pe_trailing": 28.692404,
   "pe_forward": 14.71477,
   "eps_trailing": 7.9,
   "eps_forward": 15.40425,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +574,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Are investors underappreciating Broadcom's strong performance?",
+   "label": "Nvidia Is Eyeing a $2.5 Billion Bet on Mira Murati's AI Startup",
    "value": {
-    "headline": "Are investors underappreciating Broadcom's strong performance?",
+    "headline": "Nvidia Is Eyeing a $2.5 Billion Bet on Mira Murati's AI Startup",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788445442,
-    "url": "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss",
+    "ts": 1788532156,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-eyeing-2-5-billion-142916646.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/are-investors-underappreciating-broadcoms-strong-performance-142402034.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-eyeing-2-5-billion-142916646.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "If a Stock Market Crash Is Coming, This Is Warren Buffett's No. 1 Piece of Advice for Investors Right Now",
+   "label": "Should You Buy Stocks Now or Wait for a Pullback? History Offers a Clear Answer",
    "value": {
-    "headline": "If a Stock Market Crash Is Coming, This Is Warren Buffett's No. 1 Piece of Advice for Investors Right Now",
+    "headline": "Should You Buy Stocks Now or Wait for a Pullback? History Offers a Clear Answer",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788445200,
-    "url": "https://www.fool.com/investing/2026/09/03/if-a-stock-market-crash-is-coming-this-is-warren-b/?.tsrc=rss",
+    "ts": 1788531600,
+    "url": "https://www.fool.com/investing/2026/09/04/should-you-buy-stocks-now-or-wait-for-a-pullback/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/03/if-a-stock-market-crash-is-coming-this-is-warren-b/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/04/should-you-buy-stocks-now-or-wait-for-a-pullback/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-03",
+   "severity": "info",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nu Holdings Cleared $1 Billion in Quarterly Net Income With 139 Million Customers",
+   "label": "Stock Market Today: Dow Slides On Surprise Jobs Report; Nvidia Rises In Buy Zone (Live Coverage)",
    "value": {
-    "headline": "Nu Holdings Cleared $1 Billion in Quarterly Net Income With 139 Million Customers",
+    "headline": "Stock Market Today: Dow Slides On Surprise Jobs Report; Nvidia Rises In Buy Zone (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788445200,
-    "url": "https://www.fool.com/investing/2026/09/03/nu-holdings-cleared-1-billion-quarterly-net-income/?.tsrc=rss",
+    "ts": 1788531486,
+    "url": "https://finance.yahoo.com/m/64f13108-e2e0-3872-9691-3d148d5fa88d/stock-market-today%3A-dow.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/03/nu-holdings-cleared-1-billion-quarterly-net-income/?.tsrc=rss"
+     "https://finance.yahoo.com/m/64f13108-e2e0-3872-9691-3d148d5fa88d/stock-market-today%3A-dow.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Upbeat AI Data Centers Demand Propels SK Hynix: More Growth Ahead?",
+   "label": "AI Is Driving an Increased Need for Cybersecurity. Here's the Best Way to Invest.",
    "value": {
-    "headline": "Upbeat AI Data Centers Demand Propels SK Hynix: More Growth Ahead?",
+    "headline": "AI Is Driving an Increased Need for Cybersecurity. Here's the Best Way to Invest.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444960,
-    "url": "https://finance.yahoo.com/technology/ai/articles/upbeat-ai-data-centers-demand-141600641.html?.tsrc=rss",
+    "ts": 1788530700,
+    "url": "https://www.fool.com/investing/2026/09/04/ai-is-driving-an-increased-need-for-cybersecurity/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/upbeat-ai-data-centers-demand-141600641.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/04/ai-is-driving-an-increased-need-for-cybersecurity/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Leads As Fed's Waller Signals This; Snowflake Soars (Live Coverage)",
+   "label": "Blowout jobs report raises worries of Fed rate hike: AlphaCheck",
    "value": {
-    "headline": "Stock Market Today: Nasdaq Leads As Fed's Waller Signals This; Snowflake Soars (Live Coverage)",
+    "headline": "Blowout jobs report raises worries of Fed rate hike: AlphaCheck",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444868,
-    "url": "https://finance.yahoo.com/m/9ebcfa1b-fe54-35b4-80f4-a19bd972d821/stock-market-today%3A-nasdaq.html?.tsrc=rss",
+    "ts": 1788530562,
+    "url": "https://finance.yahoo.com/markets/article/blowout-jobs-report-raises-worries-of-fed-rate-hike-alphacheck-140242787.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/9ebcfa1b-fe54-35b4-80f4-a19bd972d821/stock-market-today%3A-nasdaq.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/blowout-jobs-report-raises-worries-of-fed-rate-hike-alphacheck-140242787.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +698,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

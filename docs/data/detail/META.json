@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 610.07,
- "change_pct": 2.9,
+ "price": 609.76,
+ "change_pct": -0.15,
  "ohlc": [
-  {
-   "time": "2026-06-10",
-   "o": 580.19,
-   "h": 590.77,
-   "l": 570.07,
-   "c": 570.45,
-   "v": 17064000
-  },
   {
    "time": "2026-06-11",
    "o": 565.31,
@@ -474,19 +466,27 @@
    "h": 600.38,
    "l": 577.0,
    "c": 592.85,
-   "v": 16487300
+   "v": 16552700
   },
   {
    "time": "2026-09-03",
    "o": 604.49,
-   "h": 619.42,
+   "h": 619.46,
    "l": 604.35,
-   "c": 610.07,
-   "v": 6292499
+   "c": 610.68,
+   "v": 19702000
+  },
+  {
+   "time": "2026-09-04",
+   "o": 612.49,
+   "h": 616.33,
+   "l": 605.27,
+   "c": 609.76,
+   "v": 3653283
   }
  ],
  "sr": {
-  "price": 610.07,
+  "price": 609.76,
   "resistance": [
    612.43,
    623.15
@@ -498,7 +498,6 @@
   "strong_support": 519.78
  },
  "spark": [
-  570.45,
   567.9,
   566.45,
   593.48,
@@ -557,16 +556,17 @@
   572.34,
   578.54,
   592.85,
-  610.07
+  610.68,
+  609.76
  ],
- "spark_start": "2026-06-10",
- "spark_end": "2026-09-03",
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
  "fundamental": {
   "pe_trailing": 22.974022,
   "pe_forward": 17.454117,
   "eps_trailing": 26.56,
   "eps_forward": 34.95966,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stocks edge up as Nvidia leads tech higher following Hugging Face deal announcement: AlphaCheck",
+   "label": "Crusoe signs $13 billion AI cloud deal with market maker Jane Street: Bloomberg",
    "value": {
-    "headline": "Stocks edge up as Nvidia leads tech higher following Hugging Face deal announcement: AlphaCheck",
+    "headline": "Crusoe signs $13 billion AI cloud deal with market maker Jane Street: Bloomberg",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444288,
-    "url": "https://finance.yahoo.com/markets/article/stocks-edge-up-as-nvidia-leads-tech-higher-following-hugging-face-deal-announcement-alphacheck-140448366.html?.tsrc=rss",
+    "ts": 1788530396,
+    "url": "https://blockspace.media/insight/crusoe-signs-jane-street-ai-cloud-deal/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/stocks-edge-up-as-nvidia-leads-tech-higher-following-hugging-face-deal-announcement-alphacheck-140448366.html?.tsrc=rss"
+     "https://blockspace.media/insight/crusoe-signs-jane-street-ai-cloud-deal/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Hyperscalers Are the Backbone of AI. Here's Why I Own Amazon, Alphabet, and Meta Platforms.",
+   "label": "Arista Networks Offers Entry After 42% Gain Amid Earnings Beat; Data Center Demand Surging",
    "value": {
-    "headline": "Hyperscalers Are the Backbone of AI. Here's Why I Own Amazon, Alphabet, and Meta Platforms.",
+    "headline": "Arista Networks Offers Entry After 42% Gain Amid Earnings Beat; Data Center Demand Surging",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788442920,
-    "url": "https://www.fool.com/investing/2026/09/03/hyperscalers-are-the-backbone-of-ai-heres-why-i-ow/?.tsrc=rss",
+    "ts": 1788525043,
+    "url": "https://finance.yahoo.com/m/9c642f45-62a0-383b-9606-da2704f88787/arista-networks-offers-entry.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/03/hyperscalers-are-the-backbone-of-ai-heres-why-i-ow/?.tsrc=rss"
+     "https://finance.yahoo.com/m/9c642f45-62a0-383b-9606-da2704f88787/arista-networks-offers-entry.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta’s Next Trillion Dollars Could Come From AI. Here’s Our Price Target for 2027",
+   "label": "Meta Stock Jumps After Unveiling New AI Coding Model",
    "value": {
-    "headline": "Meta’s Next Trillion Dollars Could Come From AI. Here’s Our Price Target for 2027",
+    "headline": "Meta Stock Jumps After Unveiling New AI Coding Model",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788442218,
-    "url": "https://247wallst.com/investing/2026/09/03/metas-next-trillion-dollars-could-come-from-ai-heres-our-price-target-for-2027/?.tsrc=rss",
+    "ts": 1788524824,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-stock-jumps-unveiling-ai-122704553.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/03/metas-next-trillion-dollars-could-come-from-ai-heres-our-price-target-for-2027/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-stock-jumps-unveiling-ai-122704553.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Assessment of the U.S. Nuclear Power and Small Modular Reactor Market 2026 Now Available — Reveals Why Big Tech Is Becom",
+   "label": "Michael Burry Sends Shocking Message on Tumbling Lululemon Stock",
    "value": {
-    "headline": "Assessment of the U.S. Nuclear Power and Small Modular Reactor Market 2026 Now Available — Reveals Why Big Tech Is Becoming an Active Force in Nuclear Project Formation, Not Just a Power Buyer",
+    "headline": "Michael Burry Sends Shocking Message on Tumbling Lululemon Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788440460,
-    "url": "https://finance.yahoo.com/energy/articles/assessment-u-nuclear-power-small-130100032.html?.tsrc=rss",
+    "ts": 1788524566,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-sends-shocking-message-122246857.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/assessment-u-nuclear-power-small-130100032.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/michael-burry-sends-shocking-message-122246857.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft and Meta Signed Multi-Decade Nuclear Power Deals. These 3 Stocks Supply That Power",
+   "label": "Every Hyperscaler Raised Capex Again. These 3 Boring Industrials Get Paid No Matter Who Wins the AI Race.",
    "value": {
-    "headline": "Microsoft and Meta Signed Multi-Decade Nuclear Power Deals. These 3 Stocks Supply That Power",
+    "headline": "Every Hyperscaler Raised Capex Again. These 3 Boring Industrials Get Paid No Matter Who Wins the AI Race.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788440449,
-    "url": "https://247wallst.com/investing/2026/09/03/microsoft-and-meta-signed-multi-decade-nuclear-power-deals-these-3-stocks-supply-that-power/?.tsrc=rss",
+    "ts": 1788522600,
+    "url": "https://www.fool.com/investing/2026/09/04/every-hyperscaler-raised-capex-again-these-3-borin/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/03/microsoft-and-meta-signed-multi-decade-nuclear-power-deals-these-3-stocks-supply-that-power/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/04/every-hyperscaler-raised-capex-again-these-3-borin/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 123 分 / 71 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 123,
+    "comments": 71,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

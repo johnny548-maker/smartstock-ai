@@ -1,8 +1,8 @@
 {
  "stock": "5225.TW",
  "name": "東科-KY",
- "price": 61.1,
- "change_pct": 0.33,
+ "price": 61.0,
+ "change_pct": -0.16,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -339,16 +339,26 @@
    "l": 60.7,
    "c": 61.1,
    "v": 77889
+  },
+  {
+   "time": "2026-09-04",
+   "o": 61.0,
+   "h": 61.7,
+   "l": 60.6,
+   "c": 61.0,
+   "v": 179001
   }
  ],
  "sr": {
-  "price": 61.1,
+  "price": 61.0,
   "resistance": [
    73.3,
    74.8
   ],
-  "support": [],
-  "strong_support": 68.9
+  "support": [
+   60.0
+  ],
+  "strong_support": 60.0
  },
  "spark": [
   74.0,
@@ -392,10 +402,11 @@
   60.8,
   60.4,
   60.9,
-  61.1
+  61.1,
+  61.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-03",
+ "spark_end": "2026-09-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

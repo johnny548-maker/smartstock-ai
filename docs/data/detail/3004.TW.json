@@ -1,8 +1,8 @@
 {
  "stock": "3004.TW",
  "name": "豐達科",
- "price": 120.0,
- "change_pct": 0.0,
+ "price": 123.0,
+ "change_pct": 2.5,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -339,16 +339,27 @@
    "l": 119.5,
    "c": 120.0,
    "v": 151692
+  },
+  {
+   "time": "2026-09-04",
+   "o": 126.5,
+   "h": 129.0,
+   "l": 123.0,
+   "c": 123.0,
+   "v": 1065876
   }
  ],
  "sr": {
-  "price": 120.0,
+  "price": 123.0,
   "resistance": [
    130.0,
    160.5
   ],
-  "support": [],
-  "strong_support": 121.0
+  "support": [
+   121.0,
+   117.5
+  ],
+  "strong_support": 117.5
  },
  "spark": [
   134.5,
@@ -392,10 +403,11 @@
   125.0,
   118.5,
   120.0,
-  120.0
+  120.0,
+  123.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-03",
+ "spark_end": "2026-09-04",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

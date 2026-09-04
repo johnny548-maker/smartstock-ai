@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 328.3,
- "change_pct": 1.03,
+ "price": 320.9,
+ "change_pct": -2.23,
  "ohlc": [
-  {
-   "time": "2026-06-10",
-   "o": 290.49,
-   "h": 294.5,
-   "l": 287.13,
-   "c": 291.33,
-   "v": 52793300
-  },
   {
    "time": "2026-06-11",
    "o": 293.47,
@@ -474,19 +466,27 @@
    "h": 328.4,
    "l": 323.53,
    "c": 324.96,
-   "v": 33746700
+   "v": 33776400
   },
   {
    "time": "2026-09-03",
-   "o": 324.95,
-   "h": 330.68,
+   "o": 324.87,
+   "h": 330.81,
    "l": 324.11,
-   "c": 328.3,
-   "v": 8857935
+   "c": 328.21,
+   "v": 37203500
+  },
+  {
+   "time": "2026-09-04",
+   "o": 328.3,
+   "h": 328.93,
+   "l": 320.85,
+   "c": 320.9,
+   "v": 8774182
   }
  ],
  "sr": {
-  "price": 328.3,
+  "price": 320.9,
   "resistance": [
    334.7,
    344.27
@@ -498,7 +498,6 @@
   "strong_support": 225.12
  },
  "spark": [
-  291.33,
   295.38,
   290.88,
   296.16,
@@ -557,16 +556,17 @@
   316.85,
   325.13,
   324.96,
-  328.3
+  328.21,
+  320.9
  ],
- "spark_start": "2026-06-10",
- "spark_end": "2026-09-03",
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
  "fundamental": {
   "pe_trailing": 37.698048,
   "pe_forward": 34.41777,
   "eps_trailing": 8.71,
   "eps_forward": 9.54013,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Dividend Scorecard: Can a 0.32% Yield Still Earn an A?",
+   "label": "Apple's Foldable iPhone Runs Into Early Trouble",
    "value": {
-    "headline": "Apple Dividend Scorecard: Can a 0.32% Yield Still Earn an A?",
+    "headline": "Apple's Foldable iPhone Runs Into Early Trouble",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788443953,
-    "url": "https://247wallst.com/investing/2026/09/03/apple-dividend-scorecard-can-a-0-32-yield-still-earn-an-a/?.tsrc=rss",
+    "ts": 1788531657,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apples-foldable-iphone-runs-early-142057518.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/03/apple-dividend-scorecard-can-a-0-32-yield-still-earn-an-a/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apples-foldable-iphone-runs-early-142057518.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple's App Rules Just Picked Up a $2.7 Billion Legal Risk",
+   "label": "Nvidia and Apple Are Both Winning in 2026 And Doing It Because Of This Contrarian AI Move",
    "value": {
-    "headline": "Apple's App Rules Just Picked Up a $2.7 Billion Legal Risk",
+    "headline": "Nvidia and Apple Are Both Winning in 2026 And Doing It Because Of This Contrarian AI Move",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788443482,
-    "url": "https://finance.yahoo.com/technology/articles/apples-app-rules-just-picked-135122478.html?.tsrc=rss",
+    "ts": 1788529449,
+    "url": "https://247wallst.com/investing/2026/09/04/nvidia-and-apple-are-both-winning-in-2026-and-doing-it-because-of-this-contrarian-ai-move/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/apples-app-rules-just-picked-135122478.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/04/nvidia-and-apple-are-both-winning-in-2026-and-doing-it-because-of-this-contrarian-ai-move/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jamf Named a Customers’ Choice in the 2026 Gartner Peer InsightsTM \"Voice of the Customer\" for Endpoint Management Tools",
+   "label": "Top Funds Sink Their Teeth Into Apple Stock. Sweet Breakout Ahead?",
    "value": {
-    "headline": "Jamf Named a Customers’ Choice in the 2026 Gartner Peer InsightsTM \"Voice of the Customer\" for Endpoint Management Tools",
+    "headline": "Top Funds Sink Their Teeth Into Apple Stock. Sweet Breakout Ahead?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788440400,
-    "url": "https://finance.yahoo.com/technology/articles/jamf-named-customers-choice-2026-130000495.html?.tsrc=rss",
+    "ts": 1788528991,
+    "url": "https://finance.yahoo.com/m/77efd63f-8b71-3de8-99c6-d2999eccae38/top-funds-sink-their-teeth.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/jamf-named-customers-choice-2026-130000495.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Apple faces $2.7 billion U.K. lawsuit over app tracking rules",
-   "value": {
-    "headline": "Apple faces $2.7 billion U.K. lawsuit over app tracking rules",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1788440118,
-    "url": "https://qz.com/apple-lawsuit-uk-app-tracking-transparency-2-7-billion-090326?.tsrc=rss",
-    "urls": [
-     "https://qz.com/apple-lawsuit-uk-app-tracking-transparency-2-7-billion-090326?.tsrc=rss"
+     "https://finance.yahoo.com/m/77efd63f-8b71-3de8-99c6-d2999eccae38/top-funds-sink-their-teeth.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tim Cook’s final words of warning as Apple CEO: US now at risk from ‘hundred-year flood’ — even Elon Musk is worried",
+   "label": "Meet the Low-Cost Vanguard ETF With 26.2% Invested in Nvidia and Alphabet, While VOO Has Just 13.4%.",
    "value": {
-    "headline": "Tim Cook’s final words of warning as Apple CEO: US now at risk from ‘hundred-year flood’ — even Elon Musk is worried",
+    "headline": "Meet the Low-Cost Vanguard ETF With 26.2% Invested in Nvidia and Alphabet, While VOO Has Just 13.4%.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788439500,
-    "url": "https://finance.yahoo.com/technology/articles/tim-cook-final-words-warning-124500312.html?.tsrc=rss",
+    "ts": 1788528900,
+    "url": "https://www.fool.com/investing/2026/09/04/meet-the-low-cost-vanguard-etf-with-26-invested-in/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/tim-cook-final-words-warning-124500312.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/04/meet-the-low-cost-vanguard-etf-with-26-invested-in/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-03",
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Citi names key Apple supply chain gainers before iPhone 18 debut",
+   "value": {
+    "headline": "Citi names key Apple supply chain gainers before iPhone 18 debut",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788528600,
+    "url": "https://www.proactiveinvestors.com/companies/news/1098119/citi-names-key-apple-supply-chain-gainers-before-iphone-18-debut-1098119.html?.tsrc=rss",
+    "urls": [
+     "https://www.proactiveinvestors.com/companies/news/1098119/citi-names-key-apple-supply-chain-gainers-before-iphone-18-debut-1098119.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 103 分 / 19 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 103,
+    "comments": 19,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-04",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 509.62,
- "change_pct": 2.58,
+ "price": 502.26,
+ "change_pct": -1.54,
  "ohlc": [
-  {
-   "time": "2026-06-10",
-   "o": 397.8,
-   "h": 404.28,
-   "l": 396.41,
-   "c": 396.61,
-   "v": 32576000
-  },
   {
    "time": "2026-06-11",
    "o": 394.47,
@@ -474,22 +466,30 @@
    "h": 500.27,
    "l": 493.81,
    "c": 496.82,
-   "v": 15323000
+   "v": 15336100
   },
   {
    "time": "2026-09-03",
-   "o": 502.14,
-   "h": 512.92,
+   "o": 501.66,
+   "h": 515.65,
    "l": 500.8,
-   "c": 509.62,
-   "v": 5866651
+   "c": 510.12,
+   "v": 24111400
+  },
+  {
+   "time": "2026-09-04",
+   "o": 510.0,
+   "h": 511.0,
+   "l": 501.49,
+   "c": 502.26,
+   "v": 3597219
   }
  ],
  "sr": {
-  "price": 509.62,
+  "price": 502.26,
   "resistance": [
-   512.76,
-   515.06
+   509.31,
+   512.76
   ],
   "support": [
    501.87,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  396.61,
   389.61,
   390.01,
   399.01,
@@ -557,16 +556,17 @@
   507.29,
   501.02,
   496.82,
-  509.62
+  510.12,
+  502.26
  ],
- "spark_start": "2026-06-10",
- "spark_end": "2026-09-03",
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
  "fundamental": {
   "pe_trailing": 28.407747,
   "pe_forward": 21.61918,
   "eps_trailing": 17.94,
   "eps_forward": 23.57328,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cypress Creek Energy's Ostrea Solar Reaches Commercial Operation, Helping Power Nation's Fastest-Growing State Economy",
+   "label": "Microsoft CEO Makes Major $43 Million Stock Move",
    "value": {
-    "headline": "Cypress Creek Energy's Ostrea Solar Reaches Commercial Operation, Helping Power Nation's Fastest-Growing State Economy",
+    "headline": "Microsoft CEO Makes Major $43 Million Stock Move",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788445800,
-    "url": "https://finance.yahoo.com/energy/articles/cypress-creek-energys-ostrea-solar-143000322.html?.tsrc=rss",
+    "ts": 1788530679,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-ceo-makes-major-43-140439392.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/cypress-creek-energys-ostrea-solar-143000322.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-ceo-makes-major-43-140439392.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Corporation (MSFT) Generates Revenues and Profits Beyond AI Theme",
+   "label": "Market Chatter: Abu Dhabi AI Firm G42 Held Talks to Sell Majority Stake to US Companies",
    "value": {
-    "headline": "Microsoft Corporation (MSFT) Generates Revenues and Profits Beyond AI Theme",
+    "headline": "Market Chatter: Abu Dhabi AI Firm G42 Held Talks to Sell Majority Stake to US Companies",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444860,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-generates-revenues-141420996.html?.tsrc=rss",
+    "ts": 1788530536,
+    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-abu-dhabi-ai-140216761.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-generates-revenues-141420996.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/market-chatter-abu-dhabi-ai-140216761.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Market Chatter: Anthropic, OpenAI Take Different Positions on Massachusetts AI Safety Bill",
+   "label": "Industry-Leading Email Signature Platform Crossware Is Now Available Through Ingram Micro's Xvantage Platform as Part of",
    "value": {
-    "headline": "Market Chatter: Anthropic, OpenAI Take Different Positions on Massachusetts AI Safety Bill",
+    "headline": "Industry-Leading Email Signature Platform Crossware Is Now Available Through Ingram Micro's Xvantage Platform as Part of the Microsoft Marketplace Private Offers",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444378,
-    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-anthropic-openai-different-140618170.html?.tsrc=rss",
+    "ts": 1788525660,
+    "url": "https://finance.yahoo.com/technology/articles/industry-leading-email-signature-platform-124100181.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/market-chatter-anthropic-openai-different-140618170.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/industry-leading-email-signature-platform-124100181.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 of Wall Street’s Safest High-Yield Dividend Stocks With Over 25-Year Increase Streaks",
+   "label": "This Week In Cloud AI - Opti9 Expands Canadian Reach with Strategic Hut 8 Acquisition",
    "value": {
-    "headline": "3 of Wall Street’s Safest High-Yield Dividend Stocks With Over 25-Year Increase Streaks",
+    "headline": "This Week In Cloud AI - Opti9 Expands Canadian Reach with Strategic Hut 8 Acquisition",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444050,
-    "url": "https://247wallst.com/investing/2026/09/03/3-of-wall-streets-safest-high-yield-dividend-stocks-with-over-25-year-increase-streaks/?.tsrc=rss",
+    "ts": 1788525470,
+    "url": "https://finance.yahoo.com/technology/ai/articles/week-cloud-ai-opti9-expands-123750589.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/03/3-of-wall-streets-safest-high-yield-dividend-stocks-with-over-25-year-increase-streaks/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/week-cloud-ai-opti9-expands-123750589.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Senteon and SPECTRA Announce Partnership to Strengthen Cyber Resilience for MSPs and Their Customers",
+   "label": "Arista Networks Offers Entry After 42% Gain Amid Earnings Beat; Data Center Demand Surging",
    "value": {
-    "headline": "Senteon and SPECTRA Announce Partnership to Strengthen Cyber Resilience for MSPs and Their Customers",
+    "headline": "Arista Networks Offers Entry After 42% Gain Amid Earnings Beat; Data Center Demand Surging",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788444000,
-    "url": "https://finance.yahoo.com/technology/articles/senteon-spectra-announce-partnership-strengthen-140000176.html?.tsrc=rss",
+    "ts": 1788525043,
+    "url": "https://finance.yahoo.com/m/9c642f45-62a0-383b-9606-da2704f88787/arista-networks-offers-entry.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/senteon-spectra-announce-partnership-strengthen-140000176.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/9c642f45-62a0-383b-9606-da2704f88787/arista-networks-offers-entry.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-03",
+   "as_of": "2026-09-04",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
