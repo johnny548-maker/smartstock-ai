@@ -1,65 +1,65 @@
 {
-  "asof": "2026-08-06",
+  "asof": "2026-09-06",
   "universe": "full",
   "n_universe": 669,
-  "n_used": 643,
+  "n_used": 640,
   "ic_min": 0.05,
   "families": {
     "trend": {
-      "n_dates": 2191,
-      "top_decile_fwd": 7.5,
-      "universe_fwd": 5.4,
-      "edge": 2.09,
+      "n_dates": 2207,
+      "top_decile_fwd": 7.44,
+      "universe_fwd": 5.43,
+      "edge": 2.01,
       "rank_ic": 0.0124
     },
     "momentum": {
-      "n_dates": 2191,
-      "top_decile_fwd": 6.83,
-      "universe_fwd": 5.4,
-      "edge": 1.43,
-      "rank_ic": 0.0065
+      "n_dates": 2207,
+      "top_decile_fwd": 6.81,
+      "universe_fwd": 5.43,
+      "edge": 1.39,
+      "rank_ic": 0.0071
     },
     "volume": {
-      "n_dates": 2191,
-      "top_decile_fwd": 6.96,
-      "universe_fwd": 5.4,
-      "edge": 1.56,
-      "rank_ic": -0.0001
+      "n_dates": 2207,
+      "top_decile_fwd": 6.89,
+      "universe_fwd": 5.43,
+      "edge": 1.47,
+      "rank_ic": 0.0005
     },
     "vol_stable": {
-      "n_dates": 2191,
-      "top_decile_fwd": 7.93,
-      "universe_fwd": 5.4,
-      "edge": 2.53,
-      "rank_ic": -0.0137
+      "n_dates": 2207,
+      "top_decile_fwd": 7.84,
+      "universe_fwd": 5.43,
+      "edge": 2.41,
+      "rank_ic": -0.012
     },
     "rs": {
-      "n_dates": 2191,
-      "top_decile_fwd": 8.87,
-      "universe_fwd": 5.4,
-      "edge": 3.47,
-      "rank_ic": 0.0315
+      "n_dates": 2207,
+      "top_decile_fwd": 8.97,
+      "universe_fwd": 5.43,
+      "edge": 3.54,
+      "rank_ic": 0.0309
     },
     "high52": {
-      "n_dates": 2191,
-      "top_decile_fwd": 6.44,
-      "universe_fwd": 5.4,
-      "edge": 1.03,
-      "rank_ic": -0.0065
+      "n_dates": 2207,
+      "top_decile_fwd": 6.53,
+      "universe_fwd": 5.43,
+      "edge": 1.1,
+      "rank_ic": -0.0063
     },
     "rsi": {
-      "n_dates": 2191,
-      "top_decile_fwd": 7.94,
-      "universe_fwd": 5.4,
-      "edge": 2.54,
-      "rank_ic": -0.018
+      "n_dates": 2207,
+      "top_decile_fwd": 7.85,
+      "universe_fwd": 5.43,
+      "edge": 2.42,
+      "rank_ic": -0.0167
     },
     "obv": {
-      "n_dates": 2191,
-      "top_decile_fwd": 7.73,
-      "universe_fwd": 5.4,
-      "edge": 2.32,
-      "rank_ic": -0.0096
+      "n_dates": 2207,
+      "top_decile_fwd": 7.64,
+      "universe_fwd": 5.43,
+      "edge": 2.22,
+      "rank_ic": -0.0083
     }
   },
   "demote_candidates": [
@@ -69,31 +69,31 @@
     },
     {
       "family": "momentum",
-      "rank_ic": 0.0065
+      "rank_ic": 0.0071
     },
     {
       "family": "volume",
-      "rank_ic": -0.0001
+      "rank_ic": 0.0005
     },
     {
       "family": "vol_stable",
-      "rank_ic": -0.0137
+      "rank_ic": -0.012
     },
     {
       "family": "rs",
-      "rank_ic": 0.0315
+      "rank_ic": 0.0309
     },
     {
       "family": "high52",
-      "rank_ic": -0.0065
+      "rank_ic": -0.0063
     },
     {
       "family": "rsi",
-      "rank_ic": -0.018
+      "rank_ic": -0.0167
     },
     {
       "family": "obv",
-      "rank_ic": -0.0096
+      "rank_ic": -0.0083
     }
   ],
   "dry_run_override": {
