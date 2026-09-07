@@ -1,8 +1,8 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 515.36,
- "change_pct": -0.2,
+ "price": 524.14,
+ "change_pct": 1.5,
  "ohlc": [
   {
    "time": "2026-06-11",
@@ -474,19 +474,19 @@
    "h": 530.78,
    "l": 478.31,
    "c": 516.39,
-   "v": 20294600
+   "v": 20328000
   },
   {
    "time": "2026-09-04",
    "o": 513.78,
-   "h": 534.96,
-   "l": 510.27,
-   "c": 515.36,
-   "v": 3122352
+   "h": 534.99,
+   "l": 510.15,
+   "c": 524.14,
+   "v": 11108300
   }
  ],
  "sr": {
-  "price": 515.36,
+  "price": 524.14,
   "resistance": [],
   "support": [
    424.0,
@@ -554,11 +554,143 @@
   425.0,
   492.2,
   516.39,
-  515.36
+  524.14
  ],
  "spark_start": "2026-06-11",
  "spark_end": "2026-09-04",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The S&P 100 ETF Just Dumped Nike and Colgate for 4 AI Stocks. Here’s What That Means for Your Portfolio",
+   "value": {
+    "headline": "The S&P 100 ETF Just Dumped Nike and Colgate for 4 AI Stocks. Here’s What That Means for Your Portfolio",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788789176,
+    "url": "https://247wallst.com/investing/etf/2026/09/07/the-sp-100-etf-just-dumped-nike-and-colgate-for-4-ai-stocks-heres-what-that-means-for-your-portfolio/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/etf/2026/09/07/the-sp-100-etf-just-dumped-nike-and-colgate-for-4-ai-stocks-heres-what-that-means-for-your-portfolio/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Investors Heavily Search Dell Technologies Inc. (DELL): Here is What You Need to Know",
+   "value": {
+    "headline": "Investors Heavily Search Dell Technologies Inc. (DELL): Here is What You Need to Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788786004,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-dell-technologies-130004372.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-dell-technologies-130004372.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nike Exits S&P 100 After Nearly 18 Years. Dell, SanDisk and 2 Tech Giants Take Its Place",
+   "value": {
+    "headline": "Nike Exits S&P 100 After Nearly 18 Years. Dell, SanDisk and 2 Tech Giants Take Its Place",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788784565,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-nearly-123605968.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-nearly-123605968.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "62-Year-Old Retail Giant Gets Booted Off S&P 500",
+   "value": {
+    "headline": "62-Year-Old Retail Giant Gets Booted Off S&P 500",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788784268,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/62-old-retail-giant-gets-123108769.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/62-old-retail-giant-gets-123108769.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dell and HPE Just Posted Record AI Numbers. Why Did Their Stocks Split?",
+   "value": {
+    "headline": "Dell and HPE Just Posted Record AI Numbers. Why Did Their Stocks Split?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788751890,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/dell-hpe-just-posted-record-033130037.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/dell-hpe-just-posted-record-033130037.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 7699,
+    "days": 5,
+    "max_shares": 7625,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-07",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

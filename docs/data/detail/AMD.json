@@ -1,41 +1,9 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
- "price": 470.72,
- "change_pct": 1.1,
+ "name": "AMD",
+ "price": 477.57,
+ "change_pct": 4.69,
  "ohlc": [
-  {
-   "time": "2026-06-05",
-   "o": 499.53,
-   "h": 505.62,
-   "l": 463.95,
-   "c": 466.38,
-   "v": 46900600
-  },
-  {
-   "time": "2026-06-08",
-   "o": 485.0,
-   "h": 494.97,
-   "l": 477.71,
-   "c": 490.33,
-   "v": 25158800
-  },
-  {
-   "time": "2026-06-09",
-   "o": 502.75,
-   "h": 505.0,
-   "l": 437.23,
-   "c": 475.51,
-   "v": 37799800
-  },
-  {
-   "time": "2026-06-10",
-   "o": 467.97,
-   "h": 477.45,
-   "l": 448.33,
-   "c": 452.4,
-   "v": 27777400
-  },
   {
    "time": "2026-06-11",
    "o": 461.6,
@@ -474,19 +442,51 @@
    "h": 478.75,
    "l": 465.29,
    "c": 465.58,
-   "v": 15338800
+   "v": 15373900
   },
   {
    "time": "2026-08-31",
    "o": 466.22,
    "h": 475.81,
-   "l": 463.7,
+   "l": 463.68,
    "c": 470.72,
-   "v": 12251488
+   "v": 12463000
+  },
+  {
+   "time": "2026-09-01",
+   "o": 459.91,
+   "h": 461.5,
+   "l": 452.3,
+   "c": 459.61,
+   "v": 16212800
+  },
+  {
+   "time": "2026-09-02",
+   "o": 459.51,
+   "h": 462.21,
+   "l": 452.36,
+   "c": 457.06,
+   "v": 11938800
+  },
+  {
+   "time": "2026-09-03",
+   "o": 453.15,
+   "h": 459.77,
+   "l": 440.5,
+   "c": 456.16,
+   "v": 14868100
+  },
+  {
+   "time": "2026-09-04",
+   "o": 462.0,
+   "h": 478.83,
+   "l": 458.0,
+   "c": 477.57,
+   "v": 19651900
   }
  ],
  "sr": {
-  "price": 470.72,
+  "price": 477.57,
   "resistance": [
    491.12,
    517.35
@@ -495,13 +495,9 @@
    463.21,
    460.21
   ],
-  "strong_support": 424.03
+  "strong_support": 149.85
  },
  "spark": [
-  466.38,
-  490.33,
-  475.51,
-  452.4,
   488.45,
   511.57,
   547.26,
@@ -557,11 +553,154 @@
   480.93,
   476.67,
   465.58,
-  470.72
+  470.72,
+  459.61,
+  457.06,
+  456.16,
+  477.57
  ],
- "spark_start": "2026-06-05",
- "spark_end": "2026-08-31",
- "fundamental": null,
+ "spark_start": "2026-06-11",
+ "spark_end": "2026-09-04",
+ "fundamental": {
+  "pe_trailing": 121.82908,
+  "pe_forward": 30.90922,
+  "eps_trailing": 3.92,
+  "eps_forward": 15.45073,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD Is Behind The AI Chip Shift Nobody Is Talking About",
+   "value": {
+    "headline": "AMD Is Behind The AI Chip Shift Nobody Is Talking About",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788792057,
+    "url": "https://247wallst.com/investing/2026/09/07/amd-is-behind-the-ai-chip-shift-nobody-is-talking-about/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/07/amd-is-behind-the-ai-chip-shift-nobody-is-talking-about/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NVIDIA's Hugging Face Buyout: Can It Further Strengthen AI Dominance?",
+   "value": {
+    "headline": "NVIDIA's Hugging Face Buyout: Can It Further Strengthen AI Dominance?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788786120,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidias-hugging-face-buyout-further-130200882.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/nvidias-hugging-face-buyout-further-130200882.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD’s Whole AI Story Has One Threat It Cannot Ignore: Broadcom",
+   "value": {
+    "headline": "AMD’s Whole AI Story Has One Threat It Cannot Ignore: Broadcom",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788785248,
+    "url": "https://247wallst.com/investing/2026/09/07/amds-whole-ai-story-has-one-threat-it-cannot-ignore-broadcom/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/07/amds-whole-ai-story-has-one-threat-it-cannot-ignore-broadcom/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Micron Jumps 6% as AI Memory Trade Keeps Running",
+   "value": {
+    "headline": "Micron Jumps 6% as AI Memory Trade Keeps Running",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788782988,
+    "url": "https://finance.yahoo.com/technology/ai/articles/micron-jumps-6-ai-memory-120948403.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/micron-jumps-6-ai-memory-120948403.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia just sent a strong signal to AMD and Intel investors",
+   "value": {
+    "headline": "Nvidia just sent a strong signal to AMD and Intel investors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1788778980,
+    "url": "https://www.thestreet.com/investing/stocks/nvidia-vera-cpu-strong-signal-to-amd-intel-investors?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/investing/stocks/nvidia-vera-cpu-strong-signal-to-amd-intel-investors?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-07",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 249,645 股交割失敗）",
+   "value": {
+    "total_shares": 249645,
+    "days": 5,
+    "max_shares": 162653,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-09-07",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
