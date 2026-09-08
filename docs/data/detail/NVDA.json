@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 230.36,
- "change_pct": 0.84,
+ "price": 227.25,
+ "change_pct": -1.35,
  "ohlc": [
-  {
-   "time": "2026-06-11",
-   "o": 201.49,
-   "h": 205.66,
-   "l": 199.54,
-   "c": 204.87,
-   "v": 158643200
-  },
   {
    "time": "2026-06-12",
    "o": 204.86,
@@ -483,13 +475,21 @@
    "l": 229.63,
    "c": 230.36,
    "v": 134946800
+  },
+  {
+   "time": "2026-09-08",
+   "o": 233.21,
+   "h": 233.71,
+   "l": 227.18,
+   "c": 227.25,
+   "v": 35348034
   }
  ],
  "sr": {
-  "price": 230.36,
+  "price": 227.25,
   "resistance": [
-   230.47,
-   232.01
+   227.92,
+   230.47
   ],
   "support": [
    216.2,
@@ -498,7 +498,6 @@
   "strong_support": 164.08
  },
  "spark": [
-  204.87,
   205.19,
   212.45,
   207.41,
@@ -557,16 +556,17 @@
   217.44,
   224.41,
   228.45,
-  230.36
+  230.36,
+  227.25
  ],
- "spark_start": "2026-06-11",
- "spark_end": "2026-09-04",
+ "spark_start": "2026-06-12",
+ "spark_end": "2026-09-08",
  "fundamental": {
   "pe_trailing": 29.159492,
   "pe_forward": 14.843682,
   "eps_trailing": 7.9,
   "eps_forward": 15.51906,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 Stat That Makes Costco Hard to Ignore this September",
+   "label": "Starbucks Is Up 24% This Year While Dutch Bros Is Down 24%. Here's Why Only 1 of These Coffee Stocks Is a Buy in Septemb",
    "value": {
-    "headline": "1 Stat That Makes Costco Hard to Ignore this September",
+    "headline": "Starbucks Is Up 24% This Year While Dutch Bros Is Down 24%. Here's Why Only 1 of These Coffee Stocks Is a Buy in September.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788795540,
-    "url": "https://www.fool.com/investing/2026/09/07/1-stat-that-makes-costco-hard-to-ignore-this-septe/?.tsrc=rss",
+    "ts": 1788878220,
+    "url": "https://www.fool.com/investing/2026/09/08/starbucks-is-up-24-while-dutch-bros-is-down-24/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/07/1-stat-that-makes-costco-hard-to-ignore-this-septe/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/08/starbucks-is-up-24-while-dutch-bros-is-down-24/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Up 26% in 2026, Is Coca-Cola a Buy Near an All-Time High?",
+   "label": "ExxonMobil Has Raised Its Dividend 43 Years Running. Here's the One Year the Streak Almost Broke.",
    "value": {
-    "headline": "Up 26% in 2026, Is Coca-Cola a Buy Near an All-Time High?",
+    "headline": "ExxonMobil Has Raised Its Dividend 43 Years Running. Here's the One Year the Streak Almost Broke.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788795420,
-    "url": "https://www.fool.com/investing/2026/09/07/up-26-in-2026-is-coca-cola-a-buy-near-an-all-time/?.tsrc=rss",
+    "ts": 1788878100,
+    "url": "https://www.fool.com/investing/2026/09/08/exxonmobil-has-raised-its-dividend-43-years-runnin/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/07/up-26-in-2026-is-coca-cola-a-buy-near-an-all-time/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/08/exxonmobil-has-raised-its-dividend-43-years-runnin/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What If the Clarity Act Doesn't Pass This Year? Here Are 3 Ways to Bulletproof Your Crypto Portfolio.",
+   "label": "Why Gold Will Outperform Silver in 2027",
    "value": {
-    "headline": "What If the Clarity Act Doesn't Pass This Year? Here Are 3 Ways to Bulletproof Your Crypto Portfolio.",
+    "headline": "Why Gold Will Outperform Silver in 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788794700,
-    "url": "https://www.fool.com/investing/2026/09/07/what-if-the-clarity-act-doesnt-pass-this-year-here/?.tsrc=rss",
+    "ts": 1788877200,
+    "url": "https://www.fool.com/investing/2026/09/08/why-gold-will-outperform-silver-in-2027/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/07/what-if-the-clarity-act-doesnt-pass-this-year-here/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/08/why-gold-will-outperform-silver-in-2027/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What's Wrong With PepsiCo Stock?",
+   "label": "The Zacks Analyst Blog Highlights FANUY, ABBNY, KYCCF, NVDA, ISRG, ILMN, NOVT, BOTZ, ROBO, ROBT and IBOT",
    "value": {
-    "headline": "What's Wrong With PepsiCo Stock?",
+    "headline": "The Zacks Analyst Blog Highlights FANUY, ABBNY, KYCCF, NVDA, ISRG, ILMN, NOVT, BOTZ, ROBO, ROBT and IBOT",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788794401,
-    "url": "https://www.fool.com/investing/2026/09/07/what-s-wrong-with-pepsico-stock/?.tsrc=rss",
+    "ts": 1788876660,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-fanuy-141100603.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/07/what-s-wrong-with-pepsico-stock/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-fanuy-141100603.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Caterpillar's Power Generation Backlog Just Hit $72 Billion. The Construction Cycle Barely Matters Anymore.",
+   "label": "IREN Surges 7% on Conditional ERCOT Status for 2GW Sweetwater Hub, Applied Digital Climbs 6%",
    "value": {
-    "headline": "Caterpillar's Power Generation Backlog Just Hit $72 Billion. The Construction Cycle Barely Matters Anymore.",
+    "headline": "IREN Surges 7% on Conditional ERCOT Status for 2GW Sweetwater Hub, Applied Digital Climbs 6%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788793500,
-    "url": "https://www.fool.com/investing/2026/09/07/caterpillars-power-generation-backlog-just-hit-72/?.tsrc=rss",
+    "ts": 1788876659,
+    "url": "https://247wallst.com/investing/2026/09/08/iren-surges-7-on-conditional-ercot-status-for-2gw-sweetwater-hub-applied-digital-climbs-6/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/07/caterpillars-power-generation-backlog-just-hit-72/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/08/iren-surges-7-on-conditional-ercot-status-for-2gw-sweetwater-hub-applied-digital-climbs-6/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 3 篇 / 805 分 / 502 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 805,
-    "comments": 502,
-    "n": 3,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-09-07",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-07",
+   "as_of": "2026-09-08",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
