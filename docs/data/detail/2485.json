@@ -1,17 +1,9 @@
 {
  "stock": "2485",
  "name": "兆赫",
- "price": 39.9,
- "change_pct": -1.97,
+ "price": 40.65,
+ "change_pct": 1.88,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 64.2,
-   "h": 65.0,
-   "l": 60.2,
-   "c": 60.5,
-   "v": 13463555
-  },
   {
    "time": "2026-06-17",
    "o": 60.0,
@@ -482,23 +474,30 @@
    "h": 40.85,
    "l": 39.9,
    "c": 39.9,
-   "v": 1870668
+   "v": 1833981
+  },
+  {
+   "time": "2026-09-09",
+   "o": 40.0,
+   "h": 41.1,
+   "l": 40.0,
+   "c": 40.65,
+   "v": 1599253
   }
  ],
  "sr": {
-  "price": 39.9,
+  "price": 40.65,
   "resistance": [
    45.65,
    49.5
   ],
   "support": [
-   39.7,
-   39.3
+   40.0,
+   39.7
   ],
   "strong_support": 9.9
  },
  "spark": [
-  60.5,
   63.0,
   61.7,
   60.6,
@@ -557,10 +556,11 @@
   40.7,
   41.3,
   40.7,
-  39.9
+  39.9,
+  40.65
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-09",
  "fundamental": {
   "rev_yoy": 133.4,
   "rev_accel": true,
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 214,
+    "short_today": 195,
     "outstanding": 317689037,
-    "short_pct": 6.736146831531992e-05
+    "short_pct": 6.138077720321208e-05
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "營收速報 - 兆赫(2485)8月營收2.49億元年增率高達38.41%",
+   "value": {
+    "headline": "營收速報 - 兆赫(2485)8月營收2.49億元年增率高達38.41%",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1788954633,
+    "url": "cnyes:6601937",
+    "urls": [
+     "cnyes:6601937"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-09",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -845,6 +880,10 @@
    {
     "t": "2026-09-08",
     "v": 15085
+   },
+   {
+    "t": "2026-09-09",
+    "v": 15556
    }
   ],
   "holder_pct": [

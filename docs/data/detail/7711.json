@@ -1,17 +1,9 @@
 {
  "stock": "7711",
  "name": "永擎",
- "price": 594.0,
- "change_pct": -10.0,
+ "price": 610.0,
+ "change_pct": 2.69,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 362.17,
-   "h": 366.06,
-   "l": 354.39,
-   "c": 354.88,
-   "v": 394050
-  },
   {
    "time": "2026-06-17",
    "o": 352.93,
@@ -482,11 +474,19 @@
    "h": 650.0,
    "l": 594.0,
    "c": 594.0,
-   "v": 2411184
+   "v": 2311300
+  },
+  {
+   "time": "2026-09-09",
+   "o": 594.0,
+   "h": 617.0,
+   "l": 575.0,
+   "c": 610.0,
+   "v": 1857364
   }
  ],
  "sr": {
-  "price": 594.0,
+  "price": 610.0,
   "resistance": [],
   "support": [
    472.0,
@@ -495,7 +495,6 @@
   "strong_support": 183.76
  },
  "spark": [
-  354.88,
   350.5,
   354.39,
   346.13,
@@ -554,10 +553,11 @@
   575.0,
   632.0,
   660.0,
-  594.0
+  594.0,
+  610.0
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-09",
  "fundamental": {
   "rev_yoy": 286.2,
   "rev_accel": true,
@@ -568,17 +568,53 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 191,051 股",
+   "value": {
+    "foreign": -212687,
+    "trust": 0,
+    "dealer": 21636,
+    "total": -191051
+   },
+   "severity": "info",
+   "as_of": "2026-09-09",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 26.1 / 殖利率 1.51% / PB 7.84",
+   "value": {
+    "pe": 26.14,
+    "yield": 1.51,
+    "pb": 7.84
+   },
+   "severity": "info",
+   "as_of": "2026-09-08",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 56,
+    "short_today": 115,
     "outstanding": 71700445,
-    "short_pct": 7.810272307236029e-05
+    "short_pct": 0.0001603895205950256
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 62.93,
+   "severity": "info",
+   "as_of": "20260904",
+   "note": "大戶持股%=62.93；WoW+1.13；股東人數-139"
   }
  ],
  "trends": {
@@ -842,6 +878,10 @@
    {
     "t": "2026-09-08",
     "v": 1176
+   },
+   {
+    "t": "2026-09-09",
+    "v": 984
    }
   ],
   "holder_pct": [

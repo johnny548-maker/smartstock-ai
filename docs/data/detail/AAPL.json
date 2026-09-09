@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 315.78,
- "change_pct": -1.31,
+ "price": 313.18,
+ "change_pct": -0.96,
  "ohlc": [
-  {
-   "time": "2026-06-12",
-   "o": 295.77,
-   "h": 296.88,
-   "l": 289.37,
-   "c": 290.88,
-   "v": 38742100
-  },
   {
    "time": "2026-06-15",
    "o": 293.87,
@@ -474,19 +466,27 @@
    "h": 328.93,
    "l": 317.86,
    "c": 319.97,
-   "v": 39551800
+   "v": 39606900
   },
   {
    "time": "2026-09-08",
-   "o": 317.12,
+   "o": 317.1,
    "h": 320.7,
-   "l": 315.27,
-   "c": 315.78,
-   "v": 8543213
+   "l": 314.9,
+   "c": 316.22,
+   "v": 35423000
+  },
+  {
+   "time": "2026-09-09",
+   "o": 315.41,
+   "h": 318.13,
+   "l": 312.95,
+   "c": 313.18,
+   "v": 9133765
   }
  ],
  "sr": {
-  "price": 315.78,
+  "price": 313.18,
   "resistance": [
    316.02,
    317.13
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  290.88,
   296.16,
   298.98,
   295.69,
@@ -557,16 +556,17 @@
   324.96,
   328.21,
   319.97,
-  315.78
+  316.22,
+  313.18
  ],
- "spark_start": "2026-06-12",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-15",
+ "spark_end": "2026-09-09",
  "fundamental": {
-  "pe_trailing": 36.60984,
-  "pe_forward": 33.4195,
-  "eps_trailing": 8.74,
-  "eps_forward": 9.57435,
-  "stale": true,
+  "pe_trailing": 35.878582,
+  "pe_forward": 32.703495,
+  "eps_trailing": 8.73,
+  "eps_forward": 9.57757,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What investors should expect at Ternus’s first iPhone launch as CEO",
+   "label": "Apple Is Raising Streaming Prices and the Next iPhone Could Cost You $500 More",
    "value": {
-    "headline": "What investors should expect at Ternus’s first iPhone launch as CEO",
+    "headline": "Apple Is Raising Streaming Prices and the Next iPhone Could Cost You $500 More",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788878240,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/investors-expect-ternus-first-iphone-143720437.html?.tsrc=rss",
+    "ts": 1788964180,
+    "url": "https://247wallst.com/investing/2026/09/09/apple-is-raising-streaming-prices-and-the-next-iphone-could-cost-you-500-more/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/investors-expect-ternus-first-iphone-143720437.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/09/apple-is-raising-streaming-prices-and-the-next-iphone-could-cost-you-500-more/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Zacks Analyst Blog Highlights Apple, Broadcom, Shell and KVH Industries",
+   "label": "A foldable iPhone is nice, but Apple still needs to improve its AI user experience",
    "value": {
-    "headline": "The Zacks Analyst Blog Highlights Apple, Broadcom, Shell and KVH Industries",
+    "headline": "A foldable iPhone is nice, but Apple still needs to improve its AI user experience",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788877740,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-142900957.html?.tsrc=rss",
+    "ts": 1788963152,
+    "url": "https://finance.yahoo.com/video/foldable-iphone-nice-apple-still-141232195.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-142900957.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/foldable-iphone-nice-apple-still-141232195.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Sells Off 500 Points On U.S.-Iran Attacks; SK Hynix Breaks Out (Live Coverage)",
+   "label": "Stock Market Today: Dow Off 350 Points As Oil Surges; Chevron Shares Move Past A Buy Point (Live Coverage)",
    "value": {
-    "headline": "Stock Market Today: Dow Sells Off 500 Points On U.S.-Iran Attacks; SK Hynix Breaks Out (Live Coverage)",
+    "headline": "Stock Market Today: Dow Off 350 Points As Oil Surges; Chevron Shares Move Past A Buy Point (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788875119,
-    "url": "https://finance.yahoo.com/m/e8996bc1-197c-3547-a5f4-23a6a4308b86/stock-market-today%3A-dow-sells.html?.tsrc=rss",
+    "ts": 1788962977,
+    "url": "https://finance.yahoo.com/m/c9fb09f4-06dd-363a-b51e-90ed64687309/stock-market-today%3A-dow-off.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/e8996bc1-197c-3547-a5f4-23a6a4308b86/stock-market-today%3A-dow-sells.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/c9fb09f4-06dd-363a-b51e-90ed64687309/stock-market-today%3A-dow-off.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple’s new CEO John Ternus expected to debut foldable iPhone at event Wednesday",
+   "label": "Apple, Jersey Mike’s, Casey’s, Meta, ServiceTitan, and More Stocks That Explain Today’s Market",
    "value": {
-    "headline": "Apple’s new CEO John Ternus expected to debut foldable iPhone at event Wednesday",
+    "headline": "Apple, Jersey Mike’s, Casey’s, Meta, ServiceTitan, and More Stocks That Explain Today’s Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788873734,
-    "url": "https://finance.yahoo.com/technology/article/apples-new-ceo-john-ternus-expected-to-debut-foldable-iphone-at-event-wednesday-132214684.html?.tsrc=rss",
+    "ts": 1788962640,
+    "url": "https://finance.yahoo.com/m/13a3fc8d-331b-3afb-987e-238ad4d3ede5/apple%2C-jersey-mike%E2%80%99s%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/apples-new-ceo-john-ternus-expected-to-debut-foldable-iphone-at-event-wednesday-132214684.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/13a3fc8d-331b-3afb-987e-238ad4d3ede5/apple%2C-jersey-mike%E2%80%99s%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech stocks today: Apple kicks off new era Wednesday, Anthropic S1 watch",
+   "label": "Pixalate Unveils Q2 2026 Ad SDK Trust Index 1.0: Independent Source-Code Ratings Let App Developers Audit 698 Ad & Data ",
    "value": {
-    "headline": "Tech stocks today: Apple kicks off new era Wednesday, Anthropic S1 watch",
+    "headline": "Pixalate Unveils Q2 2026 Ad SDK Trust Index 1.0: Independent Source-Code Ratings Let App Developers Audit 698 Ad & Data Broker SDKs (Across iOS & Android) for FTC Section 5 (Unfair & Deceptive Practices) & App Store Compliance Violation Risks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788872023,
-    "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-apple-kicks-off-new-era-wednesday-anthropic-s1-watch-125343211.html?.tsrc=rss",
+    "ts": 1788962400,
+    "url": "https://finance.yahoo.com/media-advertising/articles/pixalate-unveils-q2-2026-ad-140000384.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/live/tech-stocks-today-apple-kicks-off-new-era-wednesday-anthropic-s1-watch-125343211.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/pixalate-unveils-q2-2026-ad-140000384.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 151 分 / 3 留言",
+   "label": "HN 討論熱度 20 篇 / 59 分 / 18 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 151,
-    "comments": 3,
+    "points": 59,
+    "comments": 18,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

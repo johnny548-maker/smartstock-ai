@@ -1,17 +1,9 @@
 {
  "stock": "2305",
  "name": "全友",
- "price": 33.2,
- "change_pct": -0.6,
+ "price": 35.0,
+ "change_pct": 5.42,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 30.35,
-   "h": 30.35,
-   "l": 30.35,
-   "c": 30.35,
-   "v": 1761125
-  },
   {
    "time": "2026-06-17",
    "o": 30.0,
@@ -482,23 +474,30 @@
    "h": 36.2,
    "l": 32.75,
    "c": 33.2,
-   "v": 21618687
+   "v": 21580346
+  },
+  {
+   "time": "2026-09-09",
+   "o": 33.7,
+   "h": 35.0,
+   "l": 32.55,
+   "c": 35.0,
+   "v": 12269584
   }
  ],
  "sr": {
-  "price": 33.2,
+  "price": 35.0,
   "resistance": [
-   35.0,
-   40.0
+   40.0,
+   40.35
   ],
   "support": [
-   30.0,
-   26.4
+   34.05,
+   33.55
   ],
   "strong_support": 9.05
  },
  "spark": [
-  30.35,
   30.6,
   33.65,
   37.0,
@@ -557,10 +556,11 @@
   30.1,
   30.85,
   33.4,
-  33.2
+  33.2,
+  35.0
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-09",
  "fundamental": {
   "rev_yoy": 197.8,
   "rev_accel": true,
@@ -571,53 +571,17 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人賣超 1,755,060 股",
-   "value": {
-    "foreign": -1865222,
-    "trust": 0,
-    "dealer": 110162,
-    "total": -1755060
-   },
-   "severity": "info",
-   "as_of": "2026-09-08",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 40.7 / PB 2.78",
-   "value": {
-    "pe": 40.73,
-    "yield": null,
-    "pb": 2.78
-   },
-   "severity": "info",
-   "as_of": "2026-09-07",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 180,
+    "short_today": 145,
     "outstanding": 205660827,
-    "short_pct": 8.75227444261906e-05
+    "short_pct": 7.050443300998688e-05
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "散戶化/出貨",
-   "value": 63.17,
-   "severity": "warn",
-   "as_of": "20260904",
-   "note": "大戶持股%=63.17；WoW-0.55；股東人數-75"
   }
  ],
  "trends": {
@@ -881,6 +845,10 @@
    {
     "t": "2026-09-08",
     "v": -2085
+   },
+   {
+    "t": "2026-09-09",
+    "v": -1641
    }
   ],
   "holder_pct": [

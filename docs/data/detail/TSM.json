@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 434.59,
- "change_pct": 1.32,
+ "price": 435.75,
+ "change_pct": -0.74,
  "ohlc": [
-  {
-   "time": "2026-06-12",
-   "o": 420.05,
-   "h": 426.94,
-   "l": 417.21,
-   "c": 423.93,
-   "v": 10362500
-  },
   {
    "time": "2026-06-15",
    "o": 438.68,
@@ -481,24 +473,31 @@
    "o": 438.02,
    "h": 444.29,
    "l": 433.72,
-   "c": 434.59,
-   "v": 4029751
+   "c": 439.0,
+   "v": 13079900
+  },
+  {
+   "time": "2026-09-09",
+   "o": 434.46,
+   "h": 439.4,
+   "l": 434.46,
+   "c": 435.75,
+   "v": 2059226
   }
  ],
  "sr": {
-  "price": 434.59,
+  "price": 435.75,
   "resistance": [
    436.04,
    449.11
   ],
   "support": [
    419.19,
-   405.15
+   407.82
   ],
   "strong_support": 264.73
  },
  "spark": [
-  423.93,
   441.4,
   425.83,
   432.15,
@@ -557,14 +556,15 @@
   415.5,
   417.01,
   428.91,
-  434.59
+  439.0,
+  435.75
  ],
- "spark_start": "2026-06-12",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-15",
+ "spark_end": "2026-09-09",
  "fundamental": {
-  "pe_trailing": 32.263546,
-  "pe_forward": 19.821573,
-  "eps_trailing": 13.47,
+  "pe_trailing": 32.229843,
+  "pe_forward": 19.874367,
+  "eps_trailing": 13.52,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel Climbs 5% on High-NA EUV Production Lead, ASML and Taiwan Semiconductor Advance 3%",
+   "label": "Gate-All-Around (GAA) Transistor Market Surges to USD 2,283.00 Million by 2035, at 12.8% CAGR – Report by SNS Insider",
    "value": {
-    "headline": "Intel Climbs 5% on High-NA EUV Production Lead, ASML and Taiwan Semiconductor Advance 3%",
+    "headline": "Gate-All-Around (GAA) Transistor Market Surges to USD 2,283.00 Million by 2035, at 12.8% CAGR – Report by SNS Insider",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788874341,
-    "url": "https://247wallst.com/investing/2026/09/08/intel-climbs-5-on-high-na-euv-production-lead-asml-and-taiwan-semiconductor-advance-3/?.tsrc=rss",
+    "ts": 1788964200,
+    "url": "https://finance.yahoo.com/technology/articles/gate-around-gaa-transistor-market-143000777.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/08/intel-climbs-5-on-high-na-euv-production-lead-asml-and-taiwan-semiconductor-advance-3/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/gate-around-gaa-transistor-market-143000777.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Is Worth $5 Trillion. But This Could Be the Next Big Catalyst for the Stock",
+   "label": "Taiwan Semiconductor Manufacturing Company Ltd. (TSM) is Attracting Investor Attention: Here is What You Should Know",
    "value": {
-    "headline": "Nvidia Is Worth $5 Trillion. But This Could Be the Next Big Catalyst for the Stock",
+    "headline": "Taiwan Semiconductor Manufacturing Company Ltd. (TSM) is Attracting Investor Attention: Here is What You Should Know",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788872437,
-    "url": "https://247wallst.com/investing/2026/09/08/nvidia-is-worth-5-trillion-but-this-could-be-the-next-big-catalyst-for-the-stock/?.tsrc=rss",
+    "ts": 1788958806,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-ltd-130006363.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/08/nvidia-is-worth-5-trillion-but-this-could-be-the-next-big-catalyst-for-the-stock/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-ltd-130006363.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC and Samsung commit to ASML High NA EUV machines for AI chips",
+   "label": "Dow Jones Futures Fall As Oil Prices Push Stocks Toward Breaking Point; Apple iPhone Event Due",
    "value": {
-    "headline": "TSMC and Samsung commit to ASML High NA EUV machines for AI chips",
+    "headline": "Dow Jones Futures Fall As Oil Prices Push Stocks Toward Breaking Point; Apple iPhone Event Due",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788871928,
-    "url": "https://qz.com/tsmc-samsung-asml-high-na-euv-ai-chips-090826?.tsrc=rss",
+    "ts": 1788956015,
+    "url": "https://finance.yahoo.com/m/61edb329-2f31-3e10-8832-6860b7819ab2/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/tsmc-samsung-asml-high-na-euv-ai-chips-090826?.tsrc=rss"
+     "https://finance.yahoo.com/m/61edb329-2f31-3e10-8832-6860b7819ab2/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire David Tepper Just Bought These 2 Artificial Intelligence (AI) Stocks That Wall Street Thinks Could Soar by 5",
+   "label": "TSMC’s High-NA Plan Gives ASML a Catalyst, but Investors Face Two Different Timelines",
    "value": {
-    "headline": "Billionaire David Tepper Just Bought These 2 Artificial Intelligence (AI) Stocks That Wall Street Thinks Could Soar by 50% or More",
+    "headline": "TSMC’s High-NA Plan Gives ASML a Catalyst, but Investors Face Two Different Timelines",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788871801,
-    "url": "https://www.fool.com/investing/2026/09/08/billionaire-david-tepper-just-bought-these-2-artificial-intelligence-ai-stocks-that-wall-street-thinks-could-soar-by-50-or-more/?.tsrc=rss",
+    "ts": 1788949111,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-high-na-plan-gives-101831920.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/08/billionaire-david-tepper-just-bought-these-2-artificial-intelligence-ai-stocks-that-wall-street-thinks-could-soar-by-50-or-more/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/tsmc-high-na-plan-gives-101831920.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ASML Stock Rises 3% on TSMC and Samsung Commitments",
+   "label": "INTC Stock Slips Overnight: AMD Reaffirms TSMC Ties Amid Intel Foundry Buzz — But Keeps Supplier Options Open",
    "value": {
-    "headline": "ASML Stock Rises 3% on TSMC and Samsung Commitments",
+    "headline": "INTC Stock Slips Overnight: AMD Reaffirms TSMC Ties Amid Intel Foundry Buzz — But Keeps Supplier Options Open",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788869834,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/asml-stock-rises-3-tsmc-121714761.html?.tsrc=rss",
+    "ts": 1788925507,
+    "url": "https://stocktwits.com/news-articles/markets/equity/intc-stock-amd-reaffirms-tsmc-ties-intel-foundry-buzz-supplier-options-open/cZtepN6RJyS?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/asml-stock-rises-3-tsmc-121714761.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/intc-stock-amd-reaffirms-tsmc-ties-intel-foundry-buzz-supplier-options-open/cZtepN6RJyS?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 99 分 / 69 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 99,
+    "comments": 69,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-09",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
