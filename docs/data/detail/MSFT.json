@@ -1,25 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 492.13,
- "change_pct": -1.51,
+ "price": 491.55,
+ "change_pct": -0.02,
  "ohlc": [
-  {
-   "time": "2026-06-12",
-   "o": 390.69,
-   "h": 391.0,
-   "l": 381.55,
-   "c": 390.01,
-   "v": 34865800
-  },
-  {
-   "time": "2026-06-15",
-   "o": 396.05,
-   "h": 401.0,
-   "l": 392.11,
-   "c": 399.01,
-   "v": 32266400
-  },
   {
    "time": "2026-06-16",
    "o": 395.05,
@@ -474,19 +458,35 @@
    "h": 511.0,
    "l": 499.36,
    "c": 499.7,
-   "v": 18074400
+   "v": 18101800
   },
   {
    "time": "2026-09-08",
    "o": 493.01,
    "h": 495.19,
-   "l": 490.19,
-   "c": 492.13,
-   "v": 4277228
+   "l": 490.15,
+   "c": 493.95,
+   "v": 18882300
+  },
+  {
+   "time": "2026-09-09",
+   "o": 493.07,
+   "h": 494.39,
+   "l": 489.8,
+   "c": 491.65,
+   "v": 12875900
+  },
+  {
+   "time": "2026-09-10",
+   "o": 488.32,
+   "h": 491.9,
+   "l": 486.0,
+   "c": 491.55,
+   "v": 2946076
   }
  ],
  "sr": {
-  "price": 492.13,
+  "price": 491.55,
   "resistance": [
    509.31,
    512.76
@@ -498,8 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  390.01,
-  399.01,
   393.09,
   378.2,
   378.69,
@@ -557,16 +555,18 @@
   496.82,
   510.12,
   499.7,
-  492.13
+  493.95,
+  491.65,
+  491.55
  ],
- "spark_start": "2026-06-12",
- "spark_end": "2026-09-08",
+ "spark_start": "2026-06-16",
+ "spark_end": "2026-09-10",
  "fundamental": {
-  "pe_trailing": 27.853958,
-  "pe_forward": 21.19773,
-  "eps_trailing": 17.94,
+  "pe_trailing": 27.381336,
+  "pe_forward": 20.849665,
+  "eps_trailing": 17.95,
   "eps_forward": 23.57328,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Stock Is Pulling Back From Its High. Here’s Why I’d Buy the Dip.",
+   "label": "Cramer Thinks the US Debt Market Is Saturated. Amazon Just Went to London to Borrow",
    "value": {
-    "headline": "Alphabet Stock Is Pulling Back From Its High. Here’s Why I’d Buy the Dip.",
+    "headline": "Cramer Thinks the US Debt Market Is Saturated. Amazon Just Went to London to Borrow",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788877815,
-    "url": "https://247wallst.com/investing/2026/09/08/alphabet-stock-is-pulling-back-from-its-high-heres-why-id-buy-the-dip/?.tsrc=rss",
+    "ts": 1789050032,
+    "url": "https://247wallst.com/investing/2026/09/10/cramer-thinks-the-us-debt-market-is-saturated-amazon-just-went-to-london-to-borrow/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/08/alphabet-stock-is-pulling-back-from-its-high-heres-why-id-buy-the-dip/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/10/cramer-thinks-the-us-debt-market-is-saturated-amazon-just-went-to-london-to-borrow/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "SanDisk Up Over 40% Past Month: Can the Rally Last?",
+   "label": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
    "value": {
-    "headline": "SanDisk Up Over 40% Past Month: Can the Rally Last?",
+    "headline": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788876000,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-over-40-past-month-140000402.html?.tsrc=rss",
+    "ts": 1789048830,
+    "url": "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sandisk-over-40-past-month-140000402.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Network to Code Appoints Chris Millerick as Chief Revenue Officer to Scale Commercial Software Growth",
+   "label": "Stacklet Introduces the Cloud AI FinOps Benchmark to Govern GPU and Model Infrastructure",
    "value": {
-    "headline": "Network to Code Appoints Chris Millerick as Chief Revenue Officer to Scale Commercial Software Growth",
+    "headline": "Stacklet Introduces the Cloud AI FinOps Benchmark to Govern GPU and Model Infrastructure",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788873000,
-    "url": "https://finance.yahoo.com/technology/ai/articles/network-code-appoints-chris-millerick-131000910.html?.tsrc=rss",
+    "ts": 1789048800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/stacklet-introduces-cloud-ai-finops-140000787.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/network-code-appoints-chris-millerick-131000910.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/stacklet-introduces-cloud-ai-finops-140000787.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Salesforce Stock Gains 34% in a Month: Time to Hold or Book Profits?",
+   "label": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
    "value": {
-    "headline": "Salesforce Stock Gains 34% in a Month: Time to Hold or Book Profits?",
+    "headline": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788872760,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-stock-gains-34-month-130600766.html?.tsrc=rss",
+    "ts": 1789047051,
+    "url": "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/salesforce-stock-gains-34-month-130600766.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "eMazzanti Technologies' Messaging Architects Partners with miniOrange to Deliver Unified Identity and Access Management ",
+   "label": "I’m Buying Apple’s Dip For Its Unbeatable Two-Way Game",
    "value": {
-    "headline": "eMazzanti Technologies' Messaging Architects Partners with miniOrange to Deliver Unified Identity and Access Management for Legacy and Hybrid IT Environments",
+    "headline": "I’m Buying Apple’s Dip For Its Unbeatable Two-Way Game",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788872700,
-    "url": "https://finance.yahoo.com/technology/articles/emazzanti-technologies-messaging-architects-partners-130500896.html?.tsrc=rss",
+    "ts": 1789045953,
+    "url": "https://247wallst.com/investing/2026/09/10/im-buying-apples-dip-for-its-unbeatable-two-way-game/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/emazzanti-technologies-messaging-architects-partners-130500896.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/10/im-buying-apples-dip-for-its-unbeatable-two-way-game/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

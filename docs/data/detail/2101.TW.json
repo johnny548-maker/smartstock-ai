@@ -1,8 +1,8 @@
 {
  "stock": "2101.TW",
  "name": "南港",
- "price": 30.65,
- "change_pct": -1.45,
+ "price": 30.85,
+ "change_pct": 0.65,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -371,15 +371,25 @@
    "l": 30.65,
    "c": 30.65,
    "v": 2030971
+  },
+  {
+   "time": "2026-09-10",
+   "o": 30.7,
+   "h": 30.95,
+   "l": 30.55,
+   "c": 30.85,
+   "v": 1376779
   }
  ],
  "sr": {
-  "price": 30.65,
+  "price": 30.85,
   "resistance": [
    31.85,
    35.3
   ],
-  "support": [],
+  "support": [
+   30.75
+  ],
   "strong_support": 30.75
  },
  "spark": [
@@ -428,10 +438,11 @@
   31.4,
   31.35,
   31.1,
-  30.65
+  30.65,
+  30.85
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-09",
+ "spark_end": "2026-09-10",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

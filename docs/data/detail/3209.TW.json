@@ -1,8 +1,8 @@
 {
  "stock": "3209.TW",
  "name": "全科",
- "price": 45.35,
- "change_pct": -1.2,
+ "price": 45.5,
+ "change_pct": 0.33,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -371,15 +371,25 @@
    "l": 45.35,
    "c": 45.35,
    "v": 1133810
+  },
+  {
+   "time": "2026-09-10",
+   "o": 45.5,
+   "h": 45.6,
+   "l": 45.05,
+   "c": 45.5,
+   "v": 589467
   }
  ],
  "sr": {
-  "price": 45.35,
+  "price": 45.5,
   "resistance": [
    58.7,
    59.3
   ],
-  "support": [],
+  "support": [
+   45.4
+  ],
   "strong_support": 45.4
  },
  "spark": [
@@ -428,10 +438,11 @@
   47.0,
   46.6,
   45.9,
-  45.35
+  45.35,
+  45.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-09",
+ "spark_end": "2026-09-10",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

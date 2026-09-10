@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 313.18,
- "change_pct": -0.96,
+ "price": 319.42,
+ "change_pct": 1.29,
  "ohlc": [
-  {
-   "time": "2026-06-15",
-   "o": 293.87,
-   "h": 297.52,
-   "l": 291.45,
-   "c": 296.16,
-   "v": 45732600
-  },
   {
    "time": "2026-06-16",
    "o": 295.0,
@@ -474,31 +466,38 @@
    "h": 320.7,
    "l": 314.9,
    "c": 316.22,
-   "v": 35423000
+   "v": 35477100
   },
   {
    "time": "2026-09-09",
-   "o": 315.41,
-   "h": 318.13,
-   "l": 312.95,
-   "c": 313.18,
-   "v": 9133765
+   "o": 315.49,
+   "h": 319.15,
+   "l": 309.9,
+   "c": 315.34,
+   "v": 65371600
+  },
+  {
+   "time": "2026-09-10",
+   "o": 316.79,
+   "h": 323.13,
+   "l": 316.57,
+   "c": 319.42,
+   "v": 16071315
   }
  ],
  "sr": {
-  "price": 313.18,
+  "price": 319.42,
   "resistance": [
-   316.02,
-   317.13
+   320.28,
+   330.81
   ],
   "support": [
-   304.76,
-   300.57
+   319.07,
+   304.76
   ],
   "strong_support": 242.76
  },
  "spark": [
-  296.16,
   298.98,
   295.69,
   297.75,
@@ -557,16 +556,17 @@
   328.21,
   319.97,
   316.22,
-  313.18
+  315.34,
+  319.42
  ],
- "spark_start": "2026-06-15",
- "spark_end": "2026-09-09",
+ "spark_start": "2026-06-16",
+ "spark_end": "2026-09-10",
  "fundamental": {
   "pe_trailing": 35.878582,
   "pe_forward": 32.703495,
   "eps_trailing": 8.73,
   "eps_forward": 9.57757,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,132 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Is Raising Streaming Prices and the Next iPhone Could Cost You $500 More",
+   "label": "Apple's iPhone Duo Distracts From Wearable AI Advancements",
    "value": {
-    "headline": "Apple Is Raising Streaming Prices and the Next iPhone Could Cost You $500 More",
+    "headline": "Apple's iPhone Duo Distracts From Wearable AI Advancements",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788964180,
-    "url": "https://247wallst.com/investing/2026/09/09/apple-is-raising-streaming-prices-and-the-next-iphone-could-cost-you-500-more/?.tsrc=rss",
+    "ts": 1789050243,
+    "url": "https://finance.yahoo.com/m/31f9df70-24de-3d5f-b543-846073343e26/apple%27s-iphone-duo-distracts.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/09/apple-is-raising-streaming-prices-and-the-next-iphone-could-cost-you-500-more/?.tsrc=rss"
+     "https://finance.yahoo.com/m/31f9df70-24de-3d5f-b543-846073343e26/apple%27s-iphone-duo-distracts.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A foldable iPhone is nice, but Apple still needs to improve its AI user experience",
+   "label": "AI’s next winners are the companies receiving funds",
    "value": {
-    "headline": "A foldable iPhone is nice, but Apple still needs to improve its AI user experience",
+    "headline": "AI’s next winners are the companies receiving funds",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788963152,
-    "url": "https://finance.yahoo.com/video/foldable-iphone-nice-apple-still-141232195.html?.tsrc=rss",
+    "ts": 1789050240,
+    "url": "https://finance.yahoo.com/video/ai-next-winners-companies-receiving-142400798.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/foldable-iphone-nice-apple-still-141232195.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-next-winners-companies-receiving-142400798.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Off 350 Points As Oil Surges; Chevron Shares Move Past A Buy Point (Live Coverage)",
+   "label": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
    "value": {
-    "headline": "Stock Market Today: Dow Off 350 Points As Oil Surges; Chevron Shares Move Past A Buy Point (Live Coverage)",
+    "headline": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788962977,
-    "url": "https://finance.yahoo.com/m/c9fb09f4-06dd-363a-b51e-90ed64687309/stock-market-today%3A-dow-off.html?.tsrc=rss",
+    "ts": 1789049645,
+    "url": "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c9fb09f4-06dd-363a-b51e-90ed64687309/stock-market-today%3A-dow-off.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple, Jersey Mike’s, Casey’s, Meta, ServiceTitan, and More Stocks That Explain Today’s Market",
+   "label": "Treasury yields rise as investors raise bets on Fed rate hike: AlphaCheck",
    "value": {
-    "headline": "Apple, Jersey Mike’s, Casey’s, Meta, ServiceTitan, and More Stocks That Explain Today’s Market",
+    "headline": "Treasury yields rise as investors raise bets on Fed rate hike: AlphaCheck",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788962640,
-    "url": "https://finance.yahoo.com/m/13a3fc8d-331b-3afb-987e-238ad4d3ede5/apple%2C-jersey-mike%E2%80%99s%2C.html?.tsrc=rss",
+    "ts": 1789048612,
+    "url": "https://finance.yahoo.com/markets/article/treasury-yields-rise-as-investors-raise-bets-on-fed-rate-hike-alphacheck-135652896.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/13a3fc8d-331b-3afb-987e-238ad4d3ede5/apple%2C-jersey-mike%E2%80%99s%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/treasury-yields-rise-as-investors-raise-bets-on-fed-rate-hike-alphacheck-135652896.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Pixalate Unveils Q2 2026 Ad SDK Trust Index 1.0: Independent Source-Code Ratings Let App Developers Audit 698 Ad & Data ",
+   "label": "Why Is Netflix Growing Fastest And Falling Furthest?",
    "value": {
-    "headline": "Pixalate Unveils Q2 2026 Ad SDK Trust Index 1.0: Independent Source-Code Ratings Let App Developers Audit 698 Ad & Data Broker SDKs (Across iOS & Android) for FTC Section 5 (Unfair & Deceptive Practices) & App Store Compliance Violation Risks",
+    "headline": "Why Is Netflix Growing Fastest And Falling Furthest?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788962400,
-    "url": "https://finance.yahoo.com/media-advertising/articles/pixalate-unveils-q2-2026-ad-140000384.html?.tsrc=rss",
+    "ts": 1789048343,
+    "url": "https://www.trefis.com/articles/614905/why-is-netflix-growing-fastest-and-falling-furthest/2026-09-10?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/pixalate-unveils-q2-2026-ad-140000384.html?.tsrc=rss"
+     "https://www.trefis.com/articles/614905/why-is-netflix-growing-fastest-and-falling-furthest/2026-09-10?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_tw",
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 59 分 / 18 留言",
+   "label": "HN 討論熱度 20 篇 / 153 分 / 91 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 59,
-    "comments": 18,
+    "points": 153,
+    "comments": 91,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

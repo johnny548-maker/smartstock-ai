@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 224.52,
- "change_pct": -0.54,
+ "price": 218.19,
+ "change_pct": -2.45,
  "ohlc": [
-  {
-   "time": "2026-06-15",
-   "o": 208.92,
-   "h": 212.71,
-   "l": 208.34,
-   "c": 212.45,
-   "v": 149936700
-  },
   {
    "time": "2026-06-16",
    "o": 211.18,
@@ -474,19 +466,27 @@
    "h": 233.71,
    "l": 224.85,
    "c": 225.73,
-   "v": 122580300
+   "v": 122965600
   },
   {
    "time": "2026-09-09",
-   "o": 225.27,
+   "o": 225.28,
    "h": 226.18,
-   "l": 223.55,
-   "c": 224.52,
-   "v": 25100879
+   "l": 223.46,
+   "c": 223.67,
+   "v": 82737000
+  },
+  {
+   "time": "2026-09-10",
+   "o": 220.49,
+   "h": 220.99,
+   "l": 217.2,
+   "c": 218.19,
+   "v": 31146485
   }
  ],
  "sr": {
-  "price": 224.52,
+  "price": 218.19,
   "resistance": [
    227.92,
    230.47
@@ -498,7 +498,6 @@
   "strong_support": 164.08
  },
  "spark": [
-  212.45,
   207.41,
   204.65,
   210.69,
@@ -557,16 +556,17 @@
   228.45,
   230.36,
   225.73,
-  224.52
+  223.67,
+  218.19
  ],
- "spark_start": "2026-06-15",
- "spark_end": "2026-09-09",
+ "spark_start": "2026-06-16",
+ "spark_end": "2026-09-10",
  "fundamental": {
   "pe_trailing": 28.422783,
   "pe_forward": 14.468659,
   "eps_trailing": 7.9,
   "eps_forward": 15.51906,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Grab Nebius In Anticipation of Full Capacity Pricing?",
+   "label": "The Odds of a September Rate Hike Just Jumped. Should You Still Buy the S&P 500?",
    "value": {
-    "headline": "Should You Grab Nebius In Anticipation of Full Capacity Pricing?",
+    "headline": "The Odds of a September Rate Hike Just Jumped. Should You Still Buy the S&P 500?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788964410,
-    "url": "https://247wallst.com/investing/2026/09/09/should-you-grab-nebius-in-anticipation-of-full-capacity-pricing/?.tsrc=rss",
+    "ts": 1789050000,
+    "url": "https://www.fool.com/investing/2026/09/10/odds-of-september-rate-hike-jumped-buy-sp-500/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/09/should-you-grab-nebius-in-anticipation-of-full-capacity-pricing/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/10/odds-of-september-rate-hike-jumped-buy-sp-500/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: This Could Be the Next AI Stock to Join the $5 Trillion Club",
+   "label": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
    "value": {
-    "headline": "Prediction: This Could Be the Next AI Stock to Join the $5 Trillion Club",
+    "headline": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788964209,
-    "url": "https://247wallst.com/investing/2026/09/09/prediction-this-could-be-the-next-ai-stock-to-join-the-5-trillion-club/?.tsrc=rss",
+    "ts": 1789049645,
+    "url": "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/09/prediction-this-could-be-the-next-ai-stock-to-join-the-5-trillion-club/?.tsrc=rss"
+     "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: $2,304 Invested in Nvidia Today Will Be Worth Triple That Amount in 5 Years",
+   "label": "Jim Cramer has strong message for Nvidia, Broadcom investors",
    "value": {
-    "headline": "Prediction: $2,304 Invested in Nvidia Today Will Be Worth Triple That Amount in 5 Years",
+    "headline": "Jim Cramer has strong message for Nvidia, Broadcom investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788963660,
-    "url": "https://www.fool.com/investing/2026/09/09/predict-invest-nvidia-today-triple-5-years/?.tsrc=rss",
+    "ts": 1789049220,
+    "url": "https://www.thestreet.com/investing/stocks/jim-cramer-nvidia-broadcom-stocks-benefit-from-openai-gpt6-astra?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/09/predict-invest-nvidia-today-triple-5-years/?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/jim-cramer-nvidia-broadcom-stocks-benefit-from-openai-gpt6-astra?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zacks Investment Ideas feature highlights: Dell, Hewlett Packard and Nvidia",
+   "label": "Should You Buy Archer Aviation Below $6?",
    "value": {
-    "headline": "Zacks Investment Ideas feature highlights: Dell, Hewlett Packard and Nvidia",
+    "headline": "Should You Buy Archer Aviation Below $6?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788963480,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-141800969.html?.tsrc=rss",
+    "ts": 1789049100,
+    "url": "https://www.fool.com/investing/2026/09/10/should-you-buy-archer-aviation-below-6/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-141800969.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/10/should-you-buy-archer-aviation-below-6/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: These 3 Artificial Intelligence (AI) Stocks Will Be the Top Performers to End 2026",
+   "label": "Intel Sinks 6% as Profit Taking Hits a Parabolic Run; NVIDIA and AMD Retreat 3%",
    "value": {
-    "headline": "Prediction: These 3 Artificial Intelligence (AI) Stocks Will Be the Top Performers to End 2026",
+    "headline": "Intel Sinks 6% as Profit Taking Hits a Parabolic Run; NVIDIA and AMD Retreat 3%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788963180,
-    "url": "https://www.fool.com/investing/2026/09/09/prediction-these-3-ai-stocks-will-be-the-top/?.tsrc=rss",
+    "ts": 1789048895,
+    "url": "https://247wallst.com/investing/2026/09/10/intel-sinks-6-as-profit-taking-hits-a-parabolic-run-nvidia-and-amd-retreat-3/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/09/prediction-these-3-ai-stocks-will-be-the-top/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/10/intel-sinks-6-as-profit-taking-hits-a-parabolic-run-nvidia-and-amd-retreat-3/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-09",
+   "severity": "warn",
+   "as_of": "2026-09-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
