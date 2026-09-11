@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 517.61,
- "change_pct": -3.3,
+ "price": 563.11,
+ "change_pct": 11.15,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 412.46,
-   "h": 421.12,
-   "l": 401.59,
-   "c": 403.41,
-   "v": 6326500
-  },
   {
    "time": "2026-06-17",
    "o": 411.32,
@@ -474,19 +466,27 @@
    "h": 562.99,
    "l": 532.39,
    "c": 535.25,
-   "v": 7271500
+   "v": 7282300
   },
   {
    "time": "2026-09-10",
    "o": 523.83,
-   "h": 530.45,
-   "l": 515.16,
-   "c": 517.61,
-   "v": 1918078
+   "h": 530.51,
+   "l": 506.25,
+   "c": 506.62,
+   "v": 5869800
+  },
+  {
+   "time": "2026-09-11",
+   "o": 518.07,
+   "h": 567.75,
+   "l": 517.52,
+   "c": 563.11,
+   "v": 5490849
   }
  ],
  "sr": {
-  "price": 517.61,
+  "price": 563.11,
   "resistance": [],
   "support": [
    424.0,
@@ -495,7 +495,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  403.41,
   418.63,
   408.82,
   418.02,
@@ -554,11 +553,144 @@
   524.14,
   533.88,
   535.25,
-  517.61
+  506.62,
+  563.11
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-10",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Prediction: DELL Could Be Ready for Another Rally. Here’s Our Price Target",
+   "value": {
+    "headline": "Prediction: DELL Could Be Ready for Another Rally. Here’s Our Price Target",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789135207,
+    "url": "https://247wallst.com/investing/2026/09/11/prediction-dell-could-be-ready-for-another-rally-heres-our-price-target/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/11/prediction-dell-could-be-ready-for-another-rally-heres-our-price-target/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Chewy downgraded, Shopify initiated: Wall Street's top analyst calls",
+   "value": {
+    "headline": "Chewy downgraded, Shopify initiated: Wall Street's top analyst calls",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789134036,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/chewy-downgraded-shopify-initiated-wall-134036018.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/chewy-downgraded-shopify-initiated-wall-134036018.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can HPE Sustain Its AI Infrastructure Momentum Amid the Capex Cycle?",
+   "value": {
+    "headline": "Can HPE Sustain Its AI Infrastructure Momentum Amid the Capex Cycle?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789134000,
+    "url": "https://finance.yahoo.com/technology/ai/articles/hpe-sustain-ai-infrastructure-momentum-134000627.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/hpe-sustain-ai-infrastructure-momentum-134000627.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Top Funds Aren't Fooling Around. Witness Massive Bets On CrowdStrike And Beyond.",
+   "value": {
+    "headline": "Top Funds Aren't Fooling Around. Witness Massive Bets On CrowdStrike And Beyond.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789128053,
+    "url": "https://finance.yahoo.com/m/d8f363d5-3816-30bc-9762-25fdf424b4b5/top-funds-aren%27t-fooling.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/d8f363d5-3816-30bc-9762-25fdf424b4b5/top-funds-aren%27t-fooling.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Here Are Friday’s Top Wall Street Analyst Research Calls: Atmos Energy, Celanese, Check Point Software, Chewy, Dell Tech",
+   "value": {
+    "headline": "Here Are Friday’s Top Wall Street Analyst Research Calls: Atmos Energy, Celanese, Check Point Software, Chewy, Dell Technologies, Fortinet, Global Payments, HP, Shopify, and More",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789127703,
+    "url": "https://247wallst.com/investing/2026/09/11/here-are-fridays-top-wall-street-analyst-research-calls-atmos-energy-celanese-check-point-software-chewy-dell-technologies-fortinet-global-payments-hp-shopify-and-more/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/11/here-are-fridays-top-wall-street-analyst-research-calls-atmos-energy-celanese-check-point-software-chewy-dell-technologies-fortinet-global-payments-hp-shopify-and-more/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 7699,
+    "days": 5,
+    "max_shares": 7625,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-11",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

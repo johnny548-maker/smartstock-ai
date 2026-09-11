@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 491.55,
- "change_pct": -0.02,
+ "price": 495.39,
+ "change_pct": 0.6,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 395.05,
-   "h": 396.09,
-   "l": 389.96,
-   "c": 393.09,
-   "v": 31506800
-  },
   {
    "time": "2026-06-17",
    "o": 389.52,
@@ -474,19 +466,27 @@
    "h": 494.39,
    "l": 489.8,
    "c": 491.65,
-   "v": 12875900
+   "v": 12889600
   },
   {
    "time": "2026-09-10",
    "o": 488.32,
-   "h": 491.9,
+   "h": 494.52,
    "l": 486.0,
-   "c": 491.55,
-   "v": 2946076
+   "c": 492.44,
+   "v": 16018200
+  },
+  {
+   "time": "2026-09-11",
+   "o": 495.62,
+   "h": 498.97,
+   "l": 493.32,
+   "c": 495.39,
+   "v": 3413608
   }
  ],
  "sr": {
-  "price": 491.55,
+  "price": 495.39,
   "resistance": [
    509.31,
    512.76
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  393.09,
   378.2,
   378.69,
   366.65,
@@ -557,16 +556,17 @@
   499.7,
   493.95,
   491.65,
-  491.55
+  492.44,
+  495.39
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-10",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": {
   "pe_trailing": 27.381336,
   "pe_forward": 20.849665,
   "eps_trailing": 17.95,
   "eps_forward": 23.57328,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cramer Thinks the US Debt Market Is Saturated. Amazon Just Went to London to Borrow",
+   "label": "Can IBM's Latest Innovation Hub Advance Quantum Computing Ecosystem?",
    "value": {
-    "headline": "Cramer Thinks the US Debt Market Is Saturated. Amazon Just Went to London to Borrow",
+    "headline": "Can IBM's Latest Innovation Hub Advance Quantum Computing Ecosystem?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789050032,
-    "url": "https://247wallst.com/investing/2026/09/10/cramer-thinks-the-us-debt-market-is-saturated-amazon-just-went-to-london-to-borrow/?.tsrc=rss",
+    "ts": 1789136100,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ibms-latest-innovation-hub-advance-141500761.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/cramer-thinks-the-us-debt-market-is-saturated-amazon-just-went-to-london-to-borrow/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/ibms-latest-innovation-hub-advance-141500761.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
+   "label": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
    "value": {
-    "headline": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
+    "headline": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048830,
-    "url": "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss",
+    "ts": 1789132829,
+    "url": "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stacklet Introduces the Cloud AI FinOps Benchmark to Govern GPU and Model Infrastructure",
+   "label": "Expect Microsoft to Be Anything But Slow For The Rest of September",
    "value": {
-    "headline": "Stacklet Introduces the Cloud AI FinOps Benchmark to Govern GPU and Model Infrastructure",
+    "headline": "Expect Microsoft to Be Anything But Slow For The Rest of September",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048800,
-    "url": "https://finance.yahoo.com/technology/ai/articles/stacklet-introduces-cloud-ai-finops-140000787.html?.tsrc=rss",
+    "ts": 1789130709,
+    "url": "https://247wallst.com/investing/2026/09/11/expect-microsoft-to-be-anything-but-slow-for-the-rest-of-september/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/stacklet-introduces-cloud-ai-finops-140000787.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/expect-microsoft-to-be-anything-but-slow-for-the-rest-of-september/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
+   "label": "Nebius' Heavy CapEx Push: Can Customer Prepayments Ease the Strain?",
    "value": {
-    "headline": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
+    "headline": "Nebius' Heavy CapEx Push: Can Customer Prepayments Ease the Strain?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789047051,
-    "url": "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss",
+    "ts": 1789129320,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "I’m Buying Apple’s Dip For Its Unbeatable Two-Way Game",
+   "label": "Piper Sandler Says Marvell Could Be a Major AI Chip Winner",
    "value": {
-    "headline": "I’m Buying Apple’s Dip For Its Unbeatable Two-Way Game",
+    "headline": "Piper Sandler Says Marvell Could Be a Major AI Chip Winner",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789045953,
-    "url": "https://247wallst.com/investing/2026/09/10/im-buying-apples-dip-for-its-unbeatable-two-way-game/?.tsrc=rss",
+    "ts": 1789128576,
+    "url": "https://finance.yahoo.com/technology/ai/articles/piper-sandler-says-marvell-could-120936521.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/im-buying-apples-dip-for-its-unbeatable-two-way-game/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/piper-sandler-says-marvell-could-120936521.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

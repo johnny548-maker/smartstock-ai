@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 319.42,
- "change_pct": 1.29,
+ "price": 332.98,
+ "change_pct": 1.96,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 295.0,
-   "h": 300.22,
-   "l": 293.72,
-   "c": 298.98,
-   "v": 39874400
-  },
   {
    "time": "2026-06-17",
    "o": 300.59,
@@ -474,22 +466,30 @@
    "h": 319.15,
    "l": 309.9,
    "c": 315.34,
-   "v": 65371600
+   "v": 65640000
   },
   {
    "time": "2026-09-10",
-   "o": 316.79,
-   "h": 323.13,
-   "l": 316.57,
-   "c": 319.42,
-   "v": 16071315
+   "o": 316.67,
+   "h": 326.74,
+   "l": 316.51,
+   "c": 326.57,
+   "v": 69925100
+  },
+  {
+   "time": "2026-09-11",
+   "o": 327.63,
+   "h": 334.59,
+   "l": 326.3,
+   "c": 332.98,
+   "v": 15273136
   }
  ],
  "sr": {
-  "price": 319.42,
+  "price": 332.98,
   "resistance": [
-   320.28,
-   330.81
+   334.7,
+   344.27
   ],
   "support": [
    319.07,
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  298.98,
   295.69,
   297.75,
   296.75,
@@ -557,16 +556,17 @@
   319.97,
   316.22,
   315.34,
-  319.42
+  326.57,
+  332.98
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-10",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": {
-  "pe_trailing": 35.878582,
-  "pe_forward": 32.703495,
-  "eps_trailing": 8.73,
-  "eps_forward": 9.57757,
-  "stale": true,
+  "pe_trailing": 38.205273,
+  "pe_forward": 34.79508,
+  "eps_trailing": 8.72,
+  "eps_forward": 9.57463,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,132 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple's iPhone Duo Distracts From Wearable AI Advancements",
+   "label": "Skyworks Rises 7%, Qorvo Gains 5% as CEO Says $22B Merger Is in Final Stages; Qualcomm Ticks Up",
    "value": {
-    "headline": "Apple's iPhone Duo Distracts From Wearable AI Advancements",
+    "headline": "Skyworks Rises 7%, Qorvo Gains 5% as CEO Says $22B Merger Is in Final Stages; Qualcomm Ticks Up",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789050243,
-    "url": "https://finance.yahoo.com/m/31f9df70-24de-3d5f-b543-846073343e26/apple%27s-iphone-duo-distracts.html?.tsrc=rss",
+    "ts": 1789135861,
+    "url": "https://247wallst.com/investing/2026/09/11/skyworks-rises-7-qorvo-gains-5-as-ceo-says-22b-merger-is-in-final-stages-qualcomm-ticks-up/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/31f9df70-24de-3d5f-b543-846073343e26/apple%27s-iphone-duo-distracts.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/skyworks-rises-7-qorvo-gains-5-as-ceo-says-22b-merger-is-in-final-stages-qualcomm-ticks-up/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI’s next winners are the companies receiving funds",
+   "label": "Company News for Sep 11, 2026",
    "value": {
-    "headline": "AI’s next winners are the companies receiving funds",
+    "headline": "Company News for Sep 11, 2026",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789050240,
-    "url": "https://finance.yahoo.com/video/ai-next-winners-companies-receiving-142400798.html?.tsrc=rss",
+    "ts": 1789133100,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-11-2026-132500285.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-next-winners-companies-receiving-142400798.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-11-2026-132500285.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
+   "label": "Tesla’s Drag on XLY Was Softened by Amazon’s Gain; QQQ Felt Almost Nothing",
    "value": {
-    "headline": "Stock Market Today: Nasdaq On Losing Streak As Oil Surges; Apple Advances On iPhone Launch (Live Coverage)",
+    "headline": "Tesla’s Drag on XLY Was Softened by Amazon’s Gain; QQQ Felt Almost Nothing",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789049645,
-    "url": "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss",
+    "ts": 1789128337,
+    "url": "https://247wallst.com/investing/etf/2026/09/11/teslas-drag-on-xly-was-softened-by-amazons-gain-qqq-felt-almost-nothing/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/9987e23c-83e5-3b7f-bae7-41125f2e9cc4/stock-market-today%3A-nasdaq-on.html?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/09/11/teslas-drag-on-xly-was-softened-by-amazons-gain-qqq-felt-almost-nothing/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Treasury yields rise as investors raise bets on Fed rate hike: AlphaCheck",
+   "label": "Apple has taken its 'biggest gamble in years' - should you?",
    "value": {
-    "headline": "Treasury yields rise as investors raise bets on Fed rate hike: AlphaCheck",
+    "headline": "Apple has taken its 'biggest gamble in years' - should you?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048612,
-    "url": "https://finance.yahoo.com/markets/article/treasury-yields-rise-as-investors-raise-bets-on-fed-rate-hike-alphacheck-135652896.html?.tsrc=rss",
+    "ts": 1789128180,
+    "url": "https://uk.finance.yahoo.com/news/apple-taken-biggest-gamble-years-120300818.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/treasury-yields-rise-as-investors-raise-bets-on-fed-rate-hike-alphacheck-135652896.html?.tsrc=rss"
+     "https://uk.finance.yahoo.com/news/apple-taken-biggest-gamble-years-120300818.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is Netflix Growing Fastest And Falling Furthest?",
+   "label": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
    "value": {
-    "headline": "Why Is Netflix Growing Fastest And Falling Furthest?",
+    "headline": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048343,
-    "url": "https://www.trefis.com/articles/614905/why-is-netflix-growing-fastest-and-falling-furthest/2026-09-10?.tsrc=rss",
+    "ts": 1789128110,
+    "url": "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/614905/why-is-netflix-growing-fastest-and-falling-furthest/2026-09-10?.tsrc=rss"
+     "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 153 分 / 91 留言",
+   "label": "HN 討論熱度 20 篇 / 188 分 / 107 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 153,
-    "comments": 91,
+    "points": 188,
+    "comments": 107,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

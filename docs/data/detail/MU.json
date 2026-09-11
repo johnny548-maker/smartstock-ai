@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 992.21,
- "change_pct": -3.46,
+ "price": 981.49,
+ "change_pct": 0.42,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 1099.53,
-   "h": 1110.23,
-   "l": 1019.84,
-   "c": 1020.6,
-   "v": 45499800
-  },
   {
    "time": "2026-06-17",
    "o": 1061.14,
@@ -474,31 +466,38 @@
    "h": 1042.4,
    "l": 992.29,
    "c": 1027.77,
-   "v": 23726900
+   "v": 23812000
   },
   {
    "time": "2026-09-10",
-   "o": 996.78,
+   "o": 997.0,
    "h": 999.0,
-   "l": 982.14,
-   "c": 992.21,
-   "v": 9124341
+   "l": 973.5,
+   "c": 977.41,
+   "v": 26071000
+  },
+  {
+   "time": "2026-09-11",
+   "o": 993.25,
+   "h": 993.99,
+   "l": 967.38,
+   "c": 981.49,
+   "v": 7955157
   }
  ],
  "sr": {
-  "price": 992.21,
+  "price": 981.49,
   "resistance": [
-   1011.77,
-   1035.5
+   989.96,
+   1011.77
   ],
   "support": [
-   990.95,
-   918.88
+   918.88,
+   891.66
   ],
   "strong_support": 61.38
  },
  "spark": [
-  1020.6,
   1043.03,
   1133.82,
   1211.19,
@@ -557,11 +556,144 @@
   1016.59,
   1000.26,
   1027.77,
-  992.21
+  977.41,
+  981.49
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-10",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Far Could Intel Stock Fall After More Than Quadrupling In A Year?",
+   "value": {
+    "headline": "How Far Could Intel Stock Fall After More Than Quadrupling In A Year?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789134263,
+    "url": "https://www.trefis.com/articles/615060/how-far-could-intel-stock-fall-after-more-than-quadrupling-in-a-year/2026-09-11?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/615060/how-far-could-intel-stock-fall-after-more-than-quadrupling-in-a-year/2026-09-11?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Goldman Sachs and Billionaires Like These 2 AI Stocks",
+   "value": {
+    "headline": "Goldman Sachs and Billionaires Like These 2 AI Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789131206,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-billionaires-2-ai-125326359.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-billionaires-2-ai-125326359.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Micron Bets on Long-Term SCA Deals: Can It Lower Earnings Cyclicality?",
+   "value": {
+    "headline": "Micron Bets on Long-Term SCA Deals: Can It Lower Earnings Cyclicality?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789130040,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/micron-bets-long-term-sca-123400284.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/micron-bets-long-term-sca-123400284.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Next Phase of the AI Boom Could Be Great News for NVIDIA, Micron, and SanDisk",
+   "value": {
+    "headline": "The Next Phase of the AI Boom Could Be Great News for NVIDIA, Micron, and SanDisk",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789129837,
+    "url": "https://247wallst.com/investing/2026/09/11/the-next-phase-of-the-ai-boom-could-be-great-news-for-nvidia-micron-and-sandisk/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/11/the-next-phase-of-the-ai-boom-could-be-great-news-for-nvidia-micron-and-sandisk/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Micron Stock Is Getting an AI Boost From Oracle Earnings",
+   "value": {
+    "headline": "Why Micron Stock Is Getting an AI Boost From Oracle Earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789129020,
+    "url": "https://finance.yahoo.com/m/78f2aab7-e37a-374a-8bf8-dfb098f29375/why-micron-stock-is-getting.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/78f2aab7-e37a-374a-8bf8-dfb098f29375/why-micron-stock-is-getting.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-11",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 33629,
+    "days": 8,
+    "max_shares": 12028,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-11",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 655.46,
- "change_pct": 0.27,
+ "price": 652.05,
+ "change_pct": 1.19,
  "ohlc": [
-  {
-   "time": "2026-06-16",
-   "o": 593.65,
-   "h": 605.81,
-   "l": 592.0,
-   "c": 600.21,
-   "v": 11344400
-  },
   {
    "time": "2026-06-17",
    "o": 592.0,
@@ -474,31 +466,38 @@
    "h": 657.86,
    "l": 638.56,
    "c": 653.69,
-   "v": 35843200
+   "v": 35900700
   },
   {
    "time": "2026-09-10",
-   "o": 653.6,
+   "o": 653.71,
    "h": 663.5,
-   "l": 643.09,
-   "c": 655.46,
-   "v": 7077760
+   "l": 642.14,
+   "c": 644.38,
+   "v": 21487500
+  },
+  {
+   "time": "2026-09-11",
+   "o": 653.02,
+   "h": 664.24,
+   "l": 648.51,
+   "c": 652.05,
+   "v": 4728796
   }
  ],
  "sr": {
-  "price": 655.46,
+  "price": 652.05,
   "resistance": [
    659.82,
    662.17
   ],
   "support": [
-   652.45,
-   645.35
+   645.35,
+   642.35
   ],
   "strong_support": 519.78
  },
  "spark": [
-  600.21,
   567.58,
   577.22,
   563.85,
@@ -557,16 +556,17 @@
   616.77,
   613.48,
   653.69,
-  655.46
+  644.38,
+  652.05
  ],
- "spark_start": "2026-06-16",
- "spark_end": "2026-09-10",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": {
-  "pe_trailing": 24.2372,
-  "pe_forward": 18.413795,
-  "eps_trailing": 26.56,
+  "pe_trailing": 24.553675,
+  "pe_forward": 18.647207,
+  "eps_trailing": 26.55,
   "eps_forward": 34.95966,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
+   "label": "Fidji Simo joins Nscale board ahead of IPO",
    "value": {
-    "headline": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
+    "headline": "Fidji Simo joins Nscale board ahead of IPO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048830,
-    "url": "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss",
+    "ts": 1789134949,
+    "url": "https://qz.com/fidji-simo-nscale-board-ipo-091126?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/ai-companies-debt-now-equals-68-of-new-long-term-u-s-treasury-borrowing-this-year-jpmorgan-finds/?.tsrc=rss"
+     "https://qz.com/fidji-simo-nscale-board-ipo-091126?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta upgraded, Nvidia initiated: Wall Street's top analyst calls",
+   "label": "Meta at $645: Recent Momentum Makes One Thing Very Clear",
    "value": {
-    "headline": "Meta upgraded, Nvidia initiated: Wall Street's top analyst calls",
+    "headline": "Meta at $645: Recent Momentum Makes One Thing Very Clear",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789048336,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-upgraded-okta-downgraded-134312557.html?.tsrc=rss",
+    "ts": 1789133219,
+    "url": "https://247wallst.com/investing/2026/09/11/meta-at-645-recent-momentum-makes-one-thing-very-clear/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-upgraded-okta-downgraded-134312557.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/meta-at-645-recent-momentum-makes-one-thing-very-clear/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
+   "label": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
    "value": {
-    "headline": "Prediction: One of the World’s Biggest Stocks Could Still Have Room to Run",
+    "headline": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789047051,
-    "url": "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss",
+    "ts": 1789132829,
+    "url": "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/prediction-one-of-the-worlds-biggest-stocks-could-still-have-room-to-run/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Company News for Sep 10, 2026",
+   "label": "What a Republican 'wipeout' in the midterm elections means for investors",
    "value": {
-    "headline": "Company News for Sep 10, 2026",
+    "headline": "What a Republican 'wipeout' in the midterm elections means for investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789046520,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-10-2026-132200852.html?.tsrc=rss",
+    "ts": 1789128000,
+    "url": "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-10-2026-132200852.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock’s 10-Year, 6,800% Rally Was Just the Beginning. Here’s Where AMD Could Be Headed Next",
+   "label": "Meta reversing course on flat org structure in Applied AI division",
    "value": {
-    "headline": "AMD Stock’s 10-Year, 6,800% Rally Was Just the Beginning. Here’s Where AMD Could Be Headed Next",
+    "headline": "Meta reversing course on flat org structure in Applied AI division",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789046106,
-    "url": "https://247wallst.com/investing/2026/09/10/amd-stocks-10-year-6800-rally-was-just-the-beginning-heres-where-amd-could-be-headed-next/?.tsrc=rss",
+    "ts": 1789125628,
+    "url": "https://qz.com/meta-applied-ai-division-managers-restructuring-091126?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/10/amd-stocks-10-year-6800-rally-was-just-the-beginning-heres-where-amd-could-be-headed-next/?.tsrc=rss"
+     "https://qz.com/meta-applied-ai-division-managers-restructuring-091126?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 156 分 / 81 留言",
+   "label": "HN 討論熱度 20 篇 / 398 分 / 205 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 156,
-    "comments": 81,
+    "points": 398,
+    "comments": 205,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-09-10",
+   "severity": "warn",
+   "as_of": "2026-09-11",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

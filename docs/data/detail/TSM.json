@@ -1,25 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 435.75,
- "change_pct": -0.74,
+ "price": 431.38,
+ "change_pct": 0.78,
  "ohlc": [
-  {
-   "time": "2026-06-15",
-   "o": 438.68,
-   "h": 442.58,
-   "l": 431.93,
-   "c": 441.4,
-   "v": 11184900
-  },
-  {
-   "time": "2026-06-16",
-   "o": 436.02,
-   "h": 440.33,
-   "l": 425.2,
-   "c": 425.83,
-   "v": 10943500
-  },
   {
    "time": "2026-06-17",
    "o": 434.75,
@@ -480,16 +464,32 @@
    "time": "2026-09-09",
    "o": 434.46,
    "h": 439.4,
-   "l": 434.46,
-   "c": 435.75,
-   "v": 2059226
+   "l": 431.87,
+   "c": 435.36,
+   "v": 7499300
+  },
+  {
+   "time": "2026-09-10",
+   "o": 426.44,
+   "h": 432.53,
+   "l": 424.05,
+   "c": 428.03,
+   "v": 8341200
+  },
+  {
+   "time": "2026-09-11",
+   "o": 431.55,
+   "h": 433.85,
+   "l": 428.9,
+   "c": 431.38,
+   "v": 2636667
   }
  ],
  "sr": {
-  "price": 435.75,
+  "price": 431.38,
   "resistance": [
    436.04,
-   449.11
+   444.29
   ],
   "support": [
    419.19,
@@ -498,8 +498,6 @@
   "strong_support": 264.73
  },
  "spark": [
-  441.4,
-  425.83,
   432.15,
   462.12,
   467.67,
@@ -557,149 +555,168 @@
   417.01,
   428.91,
   439.0,
-  435.75
+  435.36,
+  428.03,
+  431.38
  ],
- "spark_start": "2026-06-15",
- "spark_end": "2026-09-09",
+ "spark_start": "2026-06-17",
+ "spark_end": "2026-09-11",
  "fundamental": {
-  "pe_trailing": 32.229843,
-  "pe_forward": 19.874367,
-  "eps_trailing": 13.52,
+  "pe_trailing": 31.788874,
+  "pe_forward": 19.674938,
+  "eps_trailing": 13.57,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 431.38,
+  "stop": 411.83,
+  "target": 480.25,
+  "atr_bracket": 480.25,
+  "measured_move": 480.76,
+  "target_band": [
+   480.25,
+   480.76
+  ],
+  "stop_pct": -4.5,
+  "target_pct": 11.3,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 404.89,
+  "chandelier": 413.84,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Gate-All-Around (GAA) Transistor Market Surges to USD 2,283.00 Million by 2035, at 12.8% CAGR – Report by SNS Insider",
+   "label": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Dri",
    "value": {
-    "headline": "Gate-All-Around (GAA) Transistor Market Surges to USD 2,283.00 Million by 2035, at 12.8% CAGR – Report by SNS Insider",
+    "headline": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788964200,
-    "url": "https://finance.yahoo.com/technology/articles/gate-around-gaa-transistor-market-143000777.html?.tsrc=rss",
+    "ts": 1789136264,
+    "url": "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/gate-around-gaa-transistor-market-143000777.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor Manufacturing Company Ltd. (TSM) is Attracting Investor Attention: Here is What You Should Know",
+   "label": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
    "value": {
-    "headline": "Taiwan Semiconductor Manufacturing Company Ltd. (TSM) is Attracting Investor Attention: Here is What You Should Know",
+    "headline": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788958806,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-ltd-130006363.html?.tsrc=rss",
+    "ts": 1789131422,
+    "url": "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-ltd-130006363.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Fall As Oil Prices Push Stocks Toward Breaking Point; Apple iPhone Event Due",
+   "label": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
    "value": {
-    "headline": "Dow Jones Futures Fall As Oil Prices Push Stocks Toward Breaking Point; Apple iPhone Event Due",
+    "headline": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788956015,
-    "url": "https://finance.yahoo.com/m/61edb329-2f31-3e10-8832-6860b7819ab2/dow-jones-futures-fall-as-oil.html?.tsrc=rss",
+    "ts": 1789128110,
+    "url": "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/61edb329-2f31-3e10-8832-6860b7819ab2/dow-jones-futures-fall-as-oil.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC’s High-NA Plan Gives ASML a Catalyst, but Investors Face Two Different Timelines",
+   "label": "3 Top-Ranked AI Semiconductor Equipment Stocks Amid Huge Price Upside",
    "value": {
-    "headline": "TSMC’s High-NA Plan Gives ASML a Catalyst, but Investors Face Two Different Timelines",
+    "headline": "3 Top-Ranked AI Semiconductor Equipment Stocks Amid Huge Price Upside",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788949111,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-high-na-plan-gives-101831920.html?.tsrc=rss",
+    "ts": 1789126500,
+    "url": "https://finance.yahoo.com/technology/ai/articles/3-top-ranked-ai-semiconductor-113500618.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tsmc-high-na-plan-gives-101831920.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/3-top-ranked-ai-semiconductor-113500618.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "INTC Stock Slips Overnight: AMD Reaffirms TSMC Ties Amid Intel Foundry Buzz — But Keeps Supplier Options Open",
+   "label": "JPMorgan names KLA top chip-equipment pick, lifts WFE forecasts",
    "value": {
-    "headline": "INTC Stock Slips Overnight: AMD Reaffirms TSMC Ties Amid Intel Foundry Buzz — But Keeps Supplier Options Open",
+    "headline": "JPMorgan names KLA top chip-equipment pick, lifts WFE forecasts",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1788925507,
-    "url": "https://stocktwits.com/news-articles/markets/equity/intc-stock-amd-reaffirms-tsmc-ties-intel-foundry-buzz-supplier-options-open/cZtepN6RJyS?.tsrc=rss",
+    "ts": 1789126456,
+    "url": "https://finance.yahoo.com/technology/articles/jpmorgan-names-kla-top-chip-113416814.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/intc-stock-amd-reaffirms-tsmc-ties-intel-foundry-buzz-supplier-options-open/cZtepN6RJyS?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/jpmorgan-names-kla-top-chip-113416814.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 99 分 / 69 留言",
+   "label": "HN 討論熱度 20 篇 / 101 分 / 95 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 99,
-    "comments": 69,
+    "points": 101,
+    "comments": 95,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +731,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
