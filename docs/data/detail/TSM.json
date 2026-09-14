@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 431.38,
- "change_pct": 0.78,
+ "price": 419.86,
+ "change_pct": -3.09,
  "ohlc": [
-  {
-   "time": "2026-06-17",
-   "o": 434.75,
-   "h": 442.5,
-   "l": 431.64,
-   "c": 432.15,
-   "v": 10934100
-  },
   {
    "time": "2026-06-18",
    "o": 438.88,
@@ -474,22 +466,30 @@
    "h": 432.53,
    "l": 424.05,
    "c": 428.03,
-   "v": 8341200
+   "v": 8368100
   },
   {
    "time": "2026-09-11",
    "o": 431.55,
-   "h": 433.85,
+   "h": 435.37,
    "l": 428.9,
-   "c": 431.38,
-   "v": 2636667
+   "c": 433.24,
+   "v": 10629200
+  },
+  {
+   "time": "2026-09-14",
+   "o": 416.01,
+   "h": 423.8,
+   "l": 416.02,
+   "c": 419.86,
+   "v": 7174302
   }
  ],
  "sr": {
-  "price": 431.38,
+  "price": 419.86,
   "resistance": [
-   436.04,
-   444.29
+   420.98,
+   425.4
   ],
   "support": [
    419.19,
@@ -498,7 +498,6 @@
   "strong_support": 264.73
  },
  "spark": [
-  432.15,
   462.12,
   467.67,
   436.39,
@@ -557,167 +556,136 @@
   439.0,
   435.36,
   428.03,
-  431.38
+  433.24,
+  419.86
  ],
- "spark_start": "2026-06-17",
- "spark_end": "2026-09-11",
+ "spark_start": "2026-06-18",
+ "spark_end": "2026-09-14",
  "fundamental": {
-  "pe_trailing": 31.788874,
-  "pe_forward": 19.674938,
-  "eps_trailing": 13.57,
+  "pe_trailing": 30.960176,
+  "pe_forward": 19.147917,
+  "eps_trailing": 13.56,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 431.38,
-  "stop": 411.83,
-  "target": 480.25,
-  "atr_bracket": 480.25,
-  "measured_move": 480.76,
-  "target_band": [
-   480.25,
-   480.76
-  ],
-  "stop_pct": -4.5,
-  "target_pct": 11.3,
-  "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 404.89,
-  "chandelier": 413.84,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Dri",
+   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
    "value": {
-    "headline": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
+    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789136264,
-    "url": "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss",
+    "ts": 1789402519,
+    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
+   "label": "GSME Joined TSMC OIP Value Chain Alliance in North America",
    "value": {
-    "headline": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
+    "headline": "GSME Joined TSMC OIP Value Chain Alliance in North America",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789131422,
-    "url": "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss",
+    "ts": 1789390800,
+    "url": "https://finance.yahoo.com/technology/articles/gsme-joined-tsmc-oip-value-130000612.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/gsme-joined-tsmc-oip-value-130000612.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
+   "label": "Alchip Technologies Showcases Advanced ASIC Design and Packaging at AI Infra Summit 2026",
    "value": {
-    "headline": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
+    "headline": "Alchip Technologies Showcases Advanced ASIC Design and Packaging at AI Infra Summit 2026",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128110,
-    "url": "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss",
+    "ts": 1789390800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/alchip-technologies-showcases-advanced-asic-130000284.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/alchip-technologies-showcases-advanced-asic-130000284.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 Top-Ranked AI Semiconductor Equipment Stocks Amid Huge Price Upside",
+   "label": "Buy These 5 Top-Ranked Wide Moat Stocks to Strengthen Your Portfolio",
    "value": {
-    "headline": "3 Top-Ranked AI Semiconductor Equipment Stocks Amid Huge Price Upside",
+    "headline": "Buy These 5 Top-Ranked Wide Moat Stocks to Strengthen Your Portfolio",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789126500,
-    "url": "https://finance.yahoo.com/technology/ai/articles/3-top-ranked-ai-semiconductor-113500618.html?.tsrc=rss",
+    "ts": 1789389900,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/buy-5-top-ranked-wide-124500520.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/3-top-ranked-ai-semiconductor-113500618.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/buy-5-top-ranked-wide-124500520.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "JPMorgan names KLA top chip-equipment pick, lifts WFE forecasts",
+   "label": "VLSI Semiconductors Market Surges to USD 120.00 Billion by 2035, at 5.8% CAGR – Research by SNS Insider",
    "value": {
-    "headline": "JPMorgan names KLA top chip-equipment pick, lifts WFE forecasts",
+    "headline": "VLSI Semiconductors Market Surges to USD 120.00 Billion by 2035, at 5.8% CAGR – Research by SNS Insider",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789126456,
-    "url": "https://finance.yahoo.com/technology/articles/jpmorgan-names-kla-top-chip-113416814.html?.tsrc=rss",
+    "ts": 1789381800,
+    "url": "https://finance.yahoo.com/technology/articles/vlsi-semiconductors-market-surges-usd-103000039.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/jpmorgan-names-kla-top-chip-113416814.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/vlsi-semiconductors-market-surges-usd-103000039.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 101 分 / 95 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 101,
-    "comments": 95,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-11",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -731,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

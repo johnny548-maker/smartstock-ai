@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 332.98,
- "change_pct": 1.96,
+ "price": 334.67,
+ "change_pct": 0.72,
  "ohlc": [
-  {
-   "time": "2026-06-17",
-   "o": 300.59,
-   "h": 301.81,
-   "l": 294.11,
-   "c": 295.69,
-   "v": 42745100
-  },
   {
    "time": "2026-06-18",
    "o": 297.85,
@@ -474,31 +466,38 @@
    "h": 326.74,
    "l": 316.51,
    "c": 326.57,
-   "v": 69925100
+   "v": 70011900
   },
   {
    "time": "2026-09-11",
-   "o": 327.63,
-   "h": 334.59,
+   "o": 327.45,
+   "h": 336.22,
    "l": 326.3,
-   "c": 332.98,
-   "v": 15273136
+   "c": 332.27,
+   "v": 50659000
+  },
+  {
+   "time": "2026-09-14",
+   "o": 334.83,
+   "h": 335.5,
+   "l": 331.34,
+   "c": 334.67,
+   "v": 17959698
   }
  ],
  "sr": {
-  "price": 332.98,
+  "price": 334.67,
   "resistance": [
    334.7,
    344.27
   ],
   "support": [
    319.07,
-   304.76
+   309.9
   ],
   "strong_support": 242.76
  },
  "spark": [
-  295.69,
   297.75,
   296.75,
   294.05,
@@ -557,149 +556,172 @@
   316.22,
   315.34,
   326.57,
-  332.98
+  332.27,
+  334.67
  ],
- "spark_start": "2026-06-17",
- "spark_end": "2026-09-11",
+ "spark_start": "2026-06-18",
+ "spark_end": "2026-09-14",
  "fundamental": {
-  "pe_trailing": 38.205273,
-  "pe_forward": 34.79508,
-  "eps_trailing": 8.72,
-  "eps_forward": 9.57463,
+  "pe_trailing": 38.423653,
+  "pe_forward": 34.923847,
+  "eps_trailing": 8.71,
+  "eps_forward": 9.58285,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 334.67,
+  "stop": 318.96,
+  "target": 373.95,
+  "atr_bracket": 373.95,
+  "measured_move": 354.61,
+  "target_band": [
+   348.41,
+   354.61,
+   373.95
+  ],
+  "stop_pct": -4.7,
+  "target_pct": 11.7,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 307.54,
+  "chandelier": 314.89,
+  "fib_targets": [
+   340.17,
+   348.41,
+   357.5
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Skyworks Rises 7%, Qorvo Gains 5% as CEO Says $22B Merger Is in Final Stages; Qualcomm Ticks Up",
+   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
    "value": {
-    "headline": "Skyworks Rises 7%, Qorvo Gains 5% as CEO Says $22B Merger Is in Final Stages; Qualcomm Ticks Up",
+    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789135861,
-    "url": "https://247wallst.com/investing/2026/09/11/skyworks-rises-7-qorvo-gains-5-as-ceo-says-22b-merger-is-in-final-stages-qualcomm-ticks-up/?.tsrc=rss",
+    "ts": 1789402519,
+    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/skyworks-rises-7-qorvo-gains-5-as-ceo-says-22b-merger-is-in-final-stages-qualcomm-ticks-up/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Company News for Sep 11, 2026",
+   "label": "Intel Is Stuck in Neutral. There Is Exactly One Thing That Should Change Your Mind.",
    "value": {
-    "headline": "Company News for Sep 11, 2026",
+    "headline": "Intel Is Stuck in Neutral. There Is Exactly One Thing That Should Change Your Mind.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789133100,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-11-2026-132500285.html?.tsrc=rss",
+    "ts": 1789402338,
+    "url": "https://247wallst.com/investing/2026/09/14/intel-is-stuck-in-neutral-there-is-exactly-one-thing-that-should-change-your-mind/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-11-2026-132500285.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/intel-is-stuck-in-neutral-there-is-exactly-one-thing-that-should-change-your-mind/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tesla’s Drag on XLY Was Softened by Amazon’s Gain; QQQ Felt Almost Nothing",
+   "label": "3 S&P 500 Stocks to Research Further",
    "value": {
-    "headline": "Tesla’s Drag on XLY Was Softened by Amazon’s Gain; QQQ Felt Almost Nothing",
+    "headline": "3 S&P 500 Stocks to Research Further",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128337,
-    "url": "https://247wallst.com/investing/etf/2026/09/11/teslas-drag-on-xly-was-softened-by-amazons-gain-qqq-felt-almost-nothing/?.tsrc=rss",
+    "ts": 1789402290,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-research-161130191.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/09/11/teslas-drag-on-xly-was-softened-by-amazons-gain-qqq-felt-almost-nothing/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-research-161130191.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple has taken its 'biggest gamble in years' - should you?",
+   "label": "Founded by Apple’s Ex-Head of Worldwide Logistics Procurement, Aron Launches With First AI Chief of Staff for Procuremen",
    "value": {
-    "headline": "Apple has taken its 'biggest gamble in years' - should you?",
+    "headline": "Founded by Apple’s Ex-Head of Worldwide Logistics Procurement, Aron Launches With First AI Chief of Staff for Procurement Teams and Raises $8 Million in Funding from Menlo Ventures and Storm Ventures",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128180,
-    "url": "https://uk.finance.yahoo.com/news/apple-taken-biggest-gamble-years-120300818.html?.tsrc=rss",
+    "ts": 1789401600,
+    "url": "https://finance.yahoo.com/technology/ai/articles/founded-apple-ex-head-worldwide-160000375.html?.tsrc=rss",
     "urls": [
-     "https://uk.finance.yahoo.com/news/apple-taken-biggest-gamble-years-120300818.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/founded-apple-ex-head-worldwide-160000375.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
+   "label": "Musk’s xAI Resolves Claims Against Apple Over AI Competition",
    "value": {
-    "headline": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
+    "headline": "Musk’s xAI Resolves Claims Against Apple Over AI Competition",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128110,
-    "url": "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss",
+    "ts": 1789399331,
+    "url": "https://finance.yahoo.com/technology/ai/articles/musk-xai-resolves-claims-against-152211610.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c29e8241-4bb8-3a14-aa17-d5e2fa2c38f6/dow-jones-futures-rise%2C-oil.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/musk-xai-resolves-claims-against-152211610.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 188 分 / 107 留言",
+   "label": "HN 討論熱度 20 篇 / 745 分 / 289 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 188,
-    "comments": 107,
+    "points": 745,
+    "comments": 289,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-09-11",
+   "severity": "warn",
+   "as_of": "2026-09-14",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

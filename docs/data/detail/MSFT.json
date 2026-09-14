@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 495.39,
- "change_pct": 0.6,
+ "price": 505.28,
+ "change_pct": 1.95,
  "ohlc": [
-  {
-   "time": "2026-06-17",
-   "o": 389.52,
-   "h": 389.64,
-   "l": 376.61,
-   "c": 378.2,
-   "v": 41987800
-  },
   {
    "time": "2026-06-18",
    "o": 377.11,
@@ -474,31 +466,38 @@
    "h": 494.52,
    "l": 486.0,
    "c": 492.44,
-   "v": 16018200
+   "v": 16038800
   },
   {
    "time": "2026-09-11",
-   "o": 495.62,
+   "o": 495.65,
    "h": 498.97,
-   "l": 493.32,
-   "c": 495.39,
-   "v": 3413608
+   "l": 492.58,
+   "c": 495.63,
+   "v": 14510500
+  },
+  {
+   "time": "2026-09-14",
+   "o": 497.5,
+   "h": 505.84,
+   "l": 495.34,
+   "c": 505.28,
+   "v": 10110759
   }
  ],
  "sr": {
-  "price": 495.39,
+  "price": 505.28,
   "resistance": [
    509.31,
    512.76
   ],
   "support": [
-   489.22,
-   476.25
+   501.87,
+   500.92
   ],
   "strong_support": 348.54
  },
  "spark": [
-  378.2,
   378.69,
   366.65,
   373.24,
@@ -557,134 +556,152 @@
   493.95,
   491.65,
   492.44,
-  495.39
+  495.63,
+  505.28
  ],
- "spark_start": "2026-06-17",
- "spark_end": "2026-09-11",
+ "spark_start": "2026-06-18",
+ "spark_end": "2026-09-14",
  "fundamental": {
-  "pe_trailing": 27.381336,
-  "pe_forward": 20.849665,
-  "eps_trailing": 17.95,
-  "eps_forward": 23.57328,
-  "stale": true,
+  "pe_trailing": 28.1687,
+  "pe_forward": 21.43753,
+  "eps_trailing": 17.94,
+  "eps_forward": 23.57298,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 505.28,
+  "stop": 484.91,
+  "target": 556.19,
+  "atr_bracket": 556.19,
+  "measured_move": 537.49,
+  "target_band": [
+   537.49,
+   556.19
+  ],
+  "stop_pct": -4.0,
+  "target_pct": 10.1,
+  "rr": 2.5,
+  "atr_pct": 2.0,
+  "swing_stop": 482.95,
+  "chandelier": 488.77,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can IBM's Latest Innovation Hub Advance Quantum Computing Ecosystem?",
+   "label": "IDrive Adds Microsoft Entra ID Backup to Strengthen Identity and Access Protection for Microsoft 365 Organizations",
    "value": {
-    "headline": "Can IBM's Latest Innovation Hub Advance Quantum Computing Ecosystem?",
+    "headline": "IDrive Adds Microsoft Entra ID Backup to Strengthen Identity and Access Protection for Microsoft 365 Organizations",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789136100,
-    "url": "https://finance.yahoo.com/technology/ai/articles/ibms-latest-innovation-hub-advance-141500761.html?.tsrc=rss",
+    "ts": 1789402620,
+    "url": "https://finance.yahoo.com/technology/articles/idrive-adds-microsoft-entra-id-161700529.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/ibms-latest-innovation-hub-advance-141500761.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/idrive-adds-microsoft-entra-id-161700529.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
+   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
    "value": {
-    "headline": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
+    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789132829,
-    "url": "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss",
+    "ts": 1789402519,
+    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Expect Microsoft to Be Anything But Slow For The Rest of September",
+   "label": "Michael Burry says AI slowdown warnings may hide a bigger problem",
    "value": {
-    "headline": "Expect Microsoft to Be Anything But Slow For The Rest of September",
+    "headline": "Michael Burry says AI slowdown warnings may hide a bigger problem",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789130709,
-    "url": "https://247wallst.com/investing/2026/09/11/expect-microsoft-to-be-anything-but-slow-for-the-rest-of-september/?.tsrc=rss",
+    "ts": 1789402448,
+    "url": "https://finance.yahoo.com/technology/ai/articles/michael-burry-says-ai-slowdown-161408390.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/expect-microsoft-to-be-anything-but-slow-for-the-rest-of-september/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/michael-burry-says-ai-slowdown-161408390.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-11",
+   "severity": "warn",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nebius' Heavy CapEx Push: Can Customer Prepayments Ease the Strain?",
+   "label": "Top Midday Stories: No OpenAI IPO in 2026, Altman Reportedly Says; Nvidia, Palantir Said to Restrict AI Usage Over Custo",
    "value": {
-    "headline": "Nebius' Heavy CapEx Push: Can Customer Prepayments Ease the Strain?",
+    "headline": "Top Midday Stories: No OpenAI IPO in 2026, Altman Reportedly Says; Nvidia, Palantir Said to Restrict AI Usage Over Customer Data Fears",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789129320,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html?.tsrc=rss",
+    "ts": 1789401389,
+    "url": "https://finance.yahoo.com/technology/ai/articles/top-midday-stories-no-openai-155629835.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/top-midday-stories-no-openai-155629835.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Piper Sandler Says Marvell Could Be a Major AI Chip Winner",
+   "label": "Do AI CEOs’ safety warnings mean real regulation is coming?",
    "value": {
-    "headline": "Piper Sandler Says Marvell Could Be a Major AI Chip Winner",
+    "headline": "Do AI CEOs’ safety warnings mean real regulation is coming?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128576,
-    "url": "https://finance.yahoo.com/technology/ai/articles/piper-sandler-says-marvell-could-120936521.html?.tsrc=rss",
+    "ts": 1789400700,
+    "url": "https://finance.yahoo.com/video/ai-ceos-safety-warnings-mean-154500108.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/piper-sandler-says-marvell-could-120936521.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-ceos-safety-warnings-mean-154500108.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-11",
+   "severity": "warn",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

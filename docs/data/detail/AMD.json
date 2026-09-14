@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 517.92,
- "change_pct": 2.84,
+ "price": 492.86,
+ "change_pct": -4.51,
  "ohlc": [
-  {
-   "time": "2026-06-17",
-   "o": 529.66,
-   "h": 532.5,
-   "l": 507.3,
-   "c": 512.48,
-   "v": 27085300
-  },
   {
    "time": "2026-06-18",
    "o": 531.58,
@@ -474,31 +466,38 @@
    "h": 516.33,
    "l": 502.81,
    "c": 503.6,
-   "v": 15959000
+   "v": 16005500
   },
   {
    "time": "2026-09-11",
-   "o": 511.18,
+   "o": 510.71,
    "h": 521.06,
    "l": 501.35,
-   "c": 517.92,
-   "v": 6691781
+   "c": 516.13,
+   "v": 19001000
+  },
+  {
+   "time": "2026-09-14",
+   "o": 486.13,
+   "h": 494.57,
+   "l": 480.33,
+   "c": 492.86,
+   "v": 13527352
   }
  ],
  "sr": {
-  "price": 517.92,
+  "price": 492.86,
   "resistance": [
-   527.2,
-   530.13
+   517.35,
+   526.79
   ],
   "support": [
-   498.15,
-   495.35
+   463.21,
+   460.21
   ],
   "strong_support": 149.85
  },
  "spark": [
-  512.48,
   537.37,
   551.63,
   519.85,
@@ -557,15 +556,16 @@
   505.74,
   521.1,
   503.6,
-  517.92
+  516.13,
+  492.86
  ],
- "spark_start": "2026-06-17",
- "spark_end": "2026-09-11",
+ "spark_start": "2026-06-18",
+ "spark_end": "2026-09-14",
  "fundamental": {
-  "pe_trailing": 131.75572,
-  "pe_forward": 33.126244,
-  "eps_trailing": 3.93,
-  "eps_forward": 15.63111,
+  "pe_trailing": 125.69809,
+  "pe_forward": 31.767952,
+  "eps_trailing": 3.92,
+  "eps_forward": 15.51049,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Leopold Aschenbrenner's Situational Awareness buying options after collapse",
+   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
    "value": {
-    "headline": "Leopold Aschenbrenner's Situational Awareness buying options after collapse",
+    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789136400,
-    "url": "https://qz.com/situational-awareness-options-amd-coreweave-bloom-energy-091126?.tsrc=rss",
+    "ts": 1789402519,
+    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
     "urls": [
-     "https://qz.com/situational-awareness-options-amd-coreweave-bloom-energy-091126?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Dri",
+   "label": "Memory Falls Hardest as AI Chiefs Ask the Industry to Slow Down",
    "value": {
-    "headline": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
+    "headline": "Memory Falls Hardest as AI Chiefs Ask the Industry to Slow Down",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789136264,
-    "url": "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss",
+    "ts": 1789401936,
+    "url": "https://finance.yahoo.com/technology/ai/articles/memory-falls-hardest-ai-chiefs-160536129.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/memory-falls-hardest-ai-chiefs-160536129.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Far Could Intel Stock Fall After More Than Quadrupling In A Year?",
+   "label": "All Eyes Set on September FOMC Meet",
    "value": {
-    "headline": "How Far Could Intel Stock Fall After More Than Quadrupling In A Year?",
+    "headline": "All Eyes Set on September FOMC Meet",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789134263,
-    "url": "https://www.trefis.com/articles/615060/how-far-could-intel-stock-fall-after-more-than-quadrupling-in-a-year/2026-09-11?.tsrc=rss",
+    "ts": 1789398840,
+    "url": "https://finance.yahoo.com/economy/policy/articles/eyes-set-september-fomc-meet-151400834.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/615060/how-far-could-intel-stock-fall-after-more-than-quadrupling-in-a-year/2026-09-11?.tsrc=rss"
+     "https://finance.yahoo.com/economy/policy/articles/eyes-set-september-fomc-meet-151400834.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MRVL Rides on the AI Capex Wave: What's Ahead for Investors?",
+   "label": "CBRS Expands AI Inference Reach: Can It Challenge NVDA & GOOGL?",
    "value": {
-    "headline": "MRVL Rides on the AI Capex Wave: What's Ahead for Investors?",
+    "headline": "CBRS Expands AI Inference Reach: Can It Challenge NVDA & GOOGL?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789132320,
-    "url": "https://finance.yahoo.com/technology/ai/articles/mrvl-rides-ai-capex-wave-131200023.html?.tsrc=rss",
+    "ts": 1789397100,
+    "url": "https://finance.yahoo.com/technology/ai/articles/cbrs-expands-ai-inference-reach-144500212.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/mrvl-rides-ai-capex-wave-131200023.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/cbrs-expands-ai-inference-reach-144500212.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
+   "label": "AI Trade Stumbles as CEOs Talk Model Slowdown",
    "value": {
-    "headline": "TSM’s Record Sales Say AI Chips Are Booming. The Nvidia-AMD Fight Is Now About Who Keeps the Margin",
+    "headline": "AI Trade Stumbles as CEOs Talk Model Slowdown",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789131422,
-    "url": "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss",
+    "ts": 1789396840,
+    "url": "https://www.investopedia.com/market-update-ai-trade-stumbles-as-ceos-talk-model-slowdown-nvda-mrvl-amd-intc-panw-crwd-crm-adbe-spcx-12120488?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/tsm-record-sales-ai-chips-125702278.html?.tsrc=rss"
+     "https://www.investopedia.com/market-update-ai-trade-stumbles-as-ceos-talk-model-slowdown-nvda-mrvl-amd-intc-panw-crwd-crm-adbe-spcx-12120488?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-11",
+   "severity": "warn",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 55 分 / 14 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 55,
-    "comments": 14,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-11",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

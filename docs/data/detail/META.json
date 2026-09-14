@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 652.05,
- "change_pct": 1.19,
+ "price": 660.2,
+ "change_pct": 1.88,
  "ohlc": [
-  {
-   "time": "2026-06-17",
-   "o": 592.0,
-   "h": 593.81,
-   "l": 566.19,
-   "c": 567.58,
-   "v": 20478300
-  },
   {
    "time": "2026-06-18",
    "o": 572.82,
@@ -474,31 +466,38 @@
    "h": 663.5,
    "l": 642.14,
    "c": 644.38,
-   "v": 21487500
+   "v": 21531900
   },
   {
    "time": "2026-09-11",
-   "o": 653.02,
+   "o": 653.51,
    "h": 664.24,
-   "l": 648.51,
-   "c": 652.05,
-   "v": 4728796
+   "l": 646.2,
+   "c": 648.03,
+   "v": 16908400
+  },
+  {
+   "time": "2026-09-14",
+   "o": 657.62,
+   "h": 663.9,
+   "l": 649.25,
+   "c": 660.2,
+   "v": 9719196
   }
  ],
  "sr": {
-  "price": 652.05,
+  "price": 660.2,
   "resistance": [
-   659.82,
-   662.17
+   662.17,
+   664.34
   ],
   "support": [
-   645.35,
-   642.35
+   652.45,
+   645.35
   ],
   "strong_support": 519.78
  },
  "spark": [
-  567.58,
   577.22,
   563.85,
   562.2,
@@ -557,149 +556,170 @@
   613.48,
   653.69,
   644.38,
-  652.05
+  648.03,
+  660.2
  ],
- "spark_start": "2026-06-17",
- "spark_end": "2026-09-11",
+ "spark_start": "2026-06-18",
+ "spark_end": "2026-09-14",
  "fundamental": {
-  "pe_trailing": 24.553675,
-  "pe_forward": 18.647207,
-  "eps_trailing": 26.55,
+  "pe_trailing": 24.84481,
+  "pe_forward": 18.882523,
+  "eps_trailing": 26.57,
   "eps_forward": 34.95966,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 660.2,
+  "stop": 617.44,
+  "target": 767.09,
+  "atr_bracket": 767.09,
+  "measured_move": null,
+  "target_band": [
+   767.09
+  ],
+  "stop_pct": -6.5,
+  "target_pct": 16.2,
+  "rr": 2.5,
+  "atr_pct": 3.2,
+  "swing_stop": 549.69,
+  "chandelier": 605.15,
+  "fib_targets": [
+   627.42,
+   646.82,
+   668.24
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Fidji Simo joins Nscale board ahead of IPO",
+   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
    "value": {
-    "headline": "Fidji Simo joins Nscale board ahead of IPO",
+    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789134949,
-    "url": "https://qz.com/fidji-simo-nscale-board-ipo-091126?.tsrc=rss",
+    "ts": 1789402519,
+    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
     "urls": [
-     "https://qz.com/fidji-simo-nscale-board-ipo-091126?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta at $645: Recent Momentum Makes One Thing Very Clear",
+   "label": "Prediction: Meta Stock Has More Upside Than Its Valuation Suggests",
    "value": {
-    "headline": "Meta at $645: Recent Momentum Makes One Thing Very Clear",
+    "headline": "Prediction: Meta Stock Has More Upside Than Its Valuation Suggests",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789133219,
-    "url": "https://247wallst.com/investing/2026/09/11/meta-at-645-recent-momentum-makes-one-thing-very-clear/?.tsrc=rss",
+    "ts": 1789401611,
+    "url": "https://247wallst.com/investing/2026/09/14/prediction-meta-stock-has-more-upside-than-its-valuation-suggests/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/meta-at-645-recent-momentum-makes-one-thing-very-clear/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/prediction-meta-stock-has-more-upside-than-its-valuation-suggests/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
+   "label": "Cathie Wood buys $27.9 million of surging megacap stock",
    "value": {
-    "headline": "Mark Zuckerberg’s $100-a-Month Muse Bet Signals Meta’s Desperate Pivot Away From Ads",
+    "headline": "Cathie Wood buys $27.9 million of surging megacap stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789132829,
-    "url": "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss",
+    "ts": 1789400005,
+    "url": "https://www.thestreet.com/investing/stocks/cathie-wood-buys-meta-27-9-million-surging-megacap-stock?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/11/mark-zuckerbergs-100-a-month-muse-bet-signals-metas-desperate-pivot-away-from-ads/?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/cathie-wood-buys-meta-27-9-million-surging-megacap-stock?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What a Republican 'wipeout' in the midterm elections means for investors",
+   "label": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
    "value": {
-    "headline": "What a Republican 'wipeout' in the midterm elections means for investors",
+    "headline": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789128000,
-    "url": "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html?.tsrc=rss",
+    "ts": 1789396884,
+    "url": "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta reversing course on flat org structure in Applied AI division",
+   "label": "Meta, Alphabet and Microsoft Rise While Nvidia Falls After Three AI Chiefs Call For Slowing Down Frontier Models",
    "value": {
-    "headline": "Meta reversing course on flat org structure in Applied AI division",
+    "headline": "Meta, Alphabet and Microsoft Rise While Nvidia Falls After Three AI Chiefs Call For Slowing Down Frontier Models",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789125628,
-    "url": "https://qz.com/meta-applied-ai-division-managers-restructuring-091126?.tsrc=rss",
+    "ts": 1789395884,
+    "url": "https://247wallst.com/investing/2026/09/14/meta-alphabet-and-microsoft-rise-while-nvidia-falls-after-three-ai-chiefs-call-for-slowing-down-frontier-models/?.tsrc=rss",
     "urls": [
-     "https://qz.com/meta-applied-ai-division-managers-restructuring-091126?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/14/meta-alphabet-and-microsoft-rise-while-nvidia-falls-after-three-ai-chiefs-call-for-slowing-down-frontier-models/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 398 分 / 205 留言",
+   "label": "HN 討論熱度 20 篇 / 111 分 / 140 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 398,
-    "comments": 205,
+    "points": 111,
+    "comments": 140,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-09-11",
+   "severity": "info",
+   "as_of": "2026-09-14",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +734,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-11",
+   "as_of": "2026-09-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
