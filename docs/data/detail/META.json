@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 660.2,
- "change_pct": 1.88,
+ "price": 670.84,
+ "change_pct": 0.79,
  "ohlc": [
-  {
-   "time": "2026-06-18",
-   "o": 572.82,
-   "h": 580.22,
-   "l": 563.1,
-   "c": 577.22,
-   "v": 28824600
-  },
   {
    "time": "2026-06-22",
    "o": 572.02,
@@ -474,22 +466,30 @@
    "h": 664.24,
    "l": 646.2,
    "c": 648.03,
-   "v": 16908400
+   "v": 16925000
   },
   {
    "time": "2026-09-14",
-   "o": 657.62,
-   "h": 663.9,
-   "l": 649.25,
-   "c": 660.2,
-   "v": 9719196
+   "o": 657.83,
+   "h": 668.6,
+   "l": 649.22,
+   "c": 665.6,
+   "v": 19300300
+  },
+  {
+   "time": "2026-09-15",
+   "o": 659.3,
+   "h": 678.87,
+   "l": 656.2,
+   "c": 670.84,
+   "v": 6979896
   }
  ],
  "sr": {
-  "price": 660.2,
+  "price": 670.84,
   "resistance": [
-   662.17,
-   664.34
+   671.02,
+   671.57
   ],
   "support": [
    652.45,
@@ -498,7 +498,6 @@
   "strong_support": 519.78
  },
  "spark": [
-  577.22,
   563.85,
   562.2,
   557.67,
@@ -557,170 +556,136 @@
   653.69,
   644.38,
   648.03,
-  660.2
+  665.6,
+  670.84
  ],
- "spark_start": "2026-06-18",
- "spark_end": "2026-09-14",
+ "spark_start": "2026-06-22",
+ "spark_end": "2026-09-15",
  "fundamental": {
   "pe_trailing": 24.84481,
   "pe_forward": 18.882523,
   "eps_trailing": 26.57,
   "eps_forward": 34.95966,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 660.2,
-  "stop": 617.44,
-  "target": 767.09,
-  "atr_bracket": 767.09,
-  "measured_move": null,
-  "target_band": [
-   767.09
-  ],
-  "stop_pct": -6.5,
-  "target_pct": 16.2,
-  "rr": 2.5,
-  "atr_pct": 3.2,
-  "swing_stop": 549.69,
-  "chandelier": 605.15,
-  "fib_targets": [
-   627.42,
-   646.82,
-   668.24
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+   "label": "Meta stock rises on cost-saving AI chip deployment plans",
    "value": {
-    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+    "headline": "Meta stock rises on cost-saving AI chip deployment plans",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402519,
-    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
+    "ts": 1789483536,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/meta-stock-rises-cost-saving-144536465.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/meta-stock-rises-cost-saving-144536465.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: Meta Stock Has More Upside Than Its Valuation Suggests",
+   "label": "Can Verizon's 6G Acceleration Initiatives and AI Trials Drive Growth?",
    "value": {
-    "headline": "Prediction: Meta Stock Has More Upside Than Its Valuation Suggests",
+    "headline": "Can Verizon's 6G Acceleration Initiatives and AI Trials Drive Growth?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789401611,
-    "url": "https://247wallst.com/investing/2026/09/14/prediction-meta-stock-has-more-upside-than-its-valuation-suggests/?.tsrc=rss",
+    "ts": 1789482480,
+    "url": "https://finance.yahoo.com/technology/ai/articles/verizons-6g-acceleration-initiatives-ai-142800212.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/prediction-meta-stock-has-more-upside-than-its-valuation-suggests/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/verizons-6g-acceleration-initiatives-ai-142800212.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cathie Wood buys $27.9 million of surging megacap stock",
+   "label": "Bloom Energy vs. Oklo: Which Industrials Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "Cathie Wood buys $27.9 million of surging megacap stock",
+    "headline": "Bloom Energy vs. Oklo: Which Industrials Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789400005,
-    "url": "https://www.thestreet.com/investing/stocks/cathie-wood-buys-meta-27-9-million-surging-megacap-stock?.tsrc=rss",
+    "ts": 1789481491,
+    "url": "https://www.fool.com/coverage/better-buy/2026/09/15/bloom-energy-vs-oklo-which-industrials-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/cathie-wood-buys-meta-27-9-million-surging-megacap-stock?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/09/15/bloom-energy-vs-oklo-which-industrials-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
+   "label": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
    "value": {
-    "headline": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
+    "headline": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789396884,
-    "url": "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss",
+    "ts": 1789480816,
+    "url": "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta, Alphabet and Microsoft Rise While Nvidia Falls After Three AI Chiefs Call For Slowing Down Frontier Models",
+   "label": "Reddit Drops 4% Despite User Growth; Meta Platforms Holds Steady, Snap Rises 1%",
    "value": {
-    "headline": "Meta, Alphabet and Microsoft Rise While Nvidia Falls After Three AI Chiefs Call For Slowing Down Frontier Models",
+    "headline": "Reddit Drops 4% Despite User Growth; Meta Platforms Holds Steady, Snap Rises 1%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789395884,
-    "url": "https://247wallst.com/investing/2026/09/14/meta-alphabet-and-microsoft-rise-while-nvidia-falls-after-three-ai-chiefs-call-for-slowing-down-frontier-models/?.tsrc=rss",
+    "ts": 1789478867,
+    "url": "https://247wallst.com/investing/2026/09/15/reddit-drops-4-despite-user-growth-meta-platforms-holds-steady-snap-rises-1/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/meta-alphabet-and-microsoft-rise-while-nvidia-falls-after-three-ai-chiefs-call-for-slowing-down-frontier-models/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/15/reddit-drops-4-despite-user-growth-meta-platforms-holds-steady-snap-rises-1/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 111 分 / 140 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 111,
-    "comments": 140,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -734,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

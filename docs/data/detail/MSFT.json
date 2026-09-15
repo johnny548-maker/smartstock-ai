@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 505.28,
- "change_pct": 1.95,
+ "price": 500.98,
+ "change_pct": -0.88,
  "ohlc": [
-  {
-   "time": "2026-06-18",
-   "o": 377.11,
-   "h": 380.65,
-   "l": 372.58,
-   "c": 378.69,
-   "v": 59714200
-  },
   {
    "time": "2026-06-22",
    "o": 375.03,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-09-14",
-   "o": 497.5,
-   "h": 505.84,
+   "o": 497.06,
+   "h": 509.95,
    "l": 495.34,
-   "c": 505.28,
-   "v": 10110759
+   "c": 505.41,
+   "v": 23070000
+  },
+  {
+   "time": "2026-09-15",
+   "o": 500.0,
+   "h": 505.9,
+   "l": 498.2,
+   "c": 500.98,
+   "v": 4413744
   }
  ],
  "sr": {
-  "price": 505.28,
+  "price": 500.98,
   "resistance": [
    509.31,
    512.76
   ],
   "support": [
-   501.87,
-   500.92
+   500.92,
+   489.22
   ],
   "strong_support": 348.54
  },
  "spark": [
-  378.69,
   366.65,
   373.24,
   364.77,
@@ -557,34 +556,35 @@
   491.65,
   492.44,
   495.63,
-  505.28
+  505.41,
+  500.98
  ],
- "spark_start": "2026-06-18",
- "spark_end": "2026-09-14",
+ "spark_start": "2026-06-22",
+ "spark_end": "2026-09-15",
  "fundamental": {
   "pe_trailing": 28.1687,
   "pe_forward": 21.43753,
   "eps_trailing": 17.94,
   "eps_forward": 23.57298,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 505.28,
-  "stop": 484.91,
-  "target": 556.19,
-  "atr_bracket": 556.19,
+  "entry": 500.98,
+  "stop": 480.09,
+  "target": 553.21,
+  "atr_bracket": 553.21,
   "measured_move": 537.49,
   "target_band": [
    537.49,
-   556.19
+   553.21
   ],
-  "stop_pct": -4.0,
-  "target_pct": 10.1,
+  "stop_pct": -4.2,
+  "target_pct": 10.4,
   "rr": 2.5,
-  "atr_pct": 2.0,
-  "swing_stop": 482.95,
-  "chandelier": 488.77,
+  "atr_pct": 2.1,
+  "swing_stop": 482.87,
+  "chandelier": 488.37,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -592,101 +592,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "IDrive Adds Microsoft Entra ID Backup to Strengthen Identity and Access Protection for Microsoft 365 Organizations",
+   "label": "Will CoreWeave's Margins Continue Expanding Through 2026?",
    "value": {
-    "headline": "IDrive Adds Microsoft Entra ID Backup to Strengthen Identity and Access Protection for Microsoft 365 Organizations",
+    "headline": "Will CoreWeave's Margins Continue Expanding Through 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402620,
-    "url": "https://finance.yahoo.com/technology/articles/idrive-adds-microsoft-entra-id-161700529.html?.tsrc=rss",
+    "ts": 1789483920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/coreweaves-margins-continue-expanding-2026-145200838.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/idrive-adds-microsoft-entra-id-161700529.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/coreweaves-margins-continue-expanding-2026-145200838.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+   "label": "Nvidia’s Anthropic Investment: Securing AI Demand Amid Rising Competition",
    "value": {
-    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+    "headline": "Nvidia’s Anthropic Investment: Securing AI Demand Amid Rising Competition",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402519,
-    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
+    "ts": 1789482516,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-anthropic-investment-securing-ai-142836122.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidia-anthropic-investment-securing-ai-142836122.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Michael Burry says AI slowdown warnings may hide a bigger problem",
+   "label": "Is CrowdStrike Stock Betting That Its Record Quarter Is The New Normal?",
    "value": {
-    "headline": "Michael Burry says AI slowdown warnings may hide a bigger problem",
+    "headline": "Is CrowdStrike Stock Betting That Its Record Quarter Is The New Normal?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402448,
-    "url": "https://finance.yahoo.com/technology/ai/articles/michael-burry-says-ai-slowdown-161408390.html?.tsrc=rss",
+    "ts": 1789480856,
+    "url": "https://www.trefis.com/articles/615352/is-crowdstrike-stock-betting-that-its-record-quarter-is-the-new-normal/2026-09-15?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/michael-burry-says-ai-slowdown-161408390.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Top Midday Stories: No OpenAI IPO in 2026, Altman Reportedly Says; Nvidia, Palantir Said to Restrict AI Usage Over Custo",
-   "value": {
-    "headline": "Top Midday Stories: No OpenAI IPO in 2026, Altman Reportedly Says; Nvidia, Palantir Said to Restrict AI Usage Over Customer Data Fears",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789401389,
-    "url": "https://finance.yahoo.com/technology/ai/articles/top-midday-stories-no-openai-155629835.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/top-midday-stories-no-openai-155629835.html?.tsrc=rss"
+     "https://www.trefis.com/articles/615352/is-crowdstrike-stock-betting-that-its-record-quarter-is-the-new-normal/2026-09-15?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Do AI CEOs’ safety warnings mean real regulation is coming?",
+   "label": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
    "value": {
-    "headline": "Do AI CEOs’ safety warnings mean real regulation is coming?",
+    "headline": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789400700,
-    "url": "https://finance.yahoo.com/video/ai-ceos-safety-warnings-mean-154500108.html?.tsrc=rss",
+    "ts": 1789480816,
+    "url": "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-ceos-safety-warnings-mean-154500108.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-14",
+   "severity": "info",
+   "as_of": "2026-09-15",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI Doomerism Unleashed: ‘Most Predictions Are Wrong’",
+   "value": {
+    "headline": "AI Doomerism Unleashed: ‘Most Predictions Are Wrong’",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1789480380,
+    "url": "https://finance.yahoo.com/m/94040da2-7424-3c80-924b-d755a9c10214/ai-doomerism-unleashed%3A-%E2%80%98most.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/94040da2-7424-3c80-924b-d755a9c10214/ai-doomerism-unleashed%3A-%E2%80%98most.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -701,7 +701,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

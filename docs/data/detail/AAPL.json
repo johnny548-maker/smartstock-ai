@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 334.67,
- "change_pct": 0.72,
+ "price": 329.7,
+ "change_pct": -1.01,
  "ohlc": [
-  {
-   "time": "2026-06-18",
-   "o": 297.85,
-   "h": 300.31,
-   "l": 295.37,
-   "c": 297.75,
-   "v": 85962200
-  },
   {
    "time": "2026-06-22",
    "o": 297.05,
@@ -474,22 +466,30 @@
    "h": 336.22,
    "l": 326.3,
    "c": 332.27,
-   "v": 50659000
+   "v": 50716900
   },
   {
    "time": "2026-09-14",
-   "o": 334.83,
+   "o": 334.79,
    "h": 335.5,
    "l": 331.34,
-   "c": 334.67,
-   "v": 17959698
+   "c": 333.08,
+   "v": 39223900
+  },
+  {
+   "time": "2026-09-15",
+   "o": 330.26,
+   "h": 331.59,
+   "l": 328.35,
+   "c": 329.7,
+   "v": 8912789
   }
  ],
  "sr": {
-  "price": 334.67,
+  "price": 329.7,
   "resistance": [
-   334.7,
-   344.27
+   330.81,
+   334.7
   ],
   "support": [
    319.07,
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  297.75,
   296.75,
   294.05,
   292.83,
@@ -557,141 +556,120 @@
   315.34,
   326.57,
   332.27,
-  334.67
+  333.08,
+  329.7
  ],
- "spark_start": "2026-06-18",
- "spark_end": "2026-09-14",
+ "spark_start": "2026-06-22",
+ "spark_end": "2026-09-15",
  "fundamental": {
   "pe_trailing": 38.423653,
   "pe_forward": 34.923847,
   "eps_trailing": 8.71,
   "eps_forward": 9.58285,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 334.67,
-  "stop": 318.96,
-  "target": 373.95,
-  "atr_bracket": 373.95,
-  "measured_move": 354.61,
-  "target_band": [
-   348.41,
-   354.61,
-   373.95
-  ],
-  "stop_pct": -4.7,
-  "target_pct": 11.7,
-  "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 307.54,
-  "chandelier": 314.89,
-  "fib_targets": [
-   340.17,
-   348.41,
-   357.5
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+   "label": "OpenAI acquires Glass Imaging camera startup for $300 million",
    "value": {
-    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
+    "headline": "OpenAI acquires Glass Imaging camera startup for $300 million",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402519,
-    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
+    "ts": 1789480147,
+    "url": "https://qz.com/openai-acquires-glass-imaging-camera-startup-300-million-091526?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
+     "https://qz.com/openai-acquires-glass-imaging-camera-startup-300-million-091526?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel Is Stuck in Neutral. There Is Exactly One Thing That Should Change Your Mind.",
+   "label": "Cloudflare Helps End the Search-or-AI-Training Tradeoff",
    "value": {
-    "headline": "Intel Is Stuck in Neutral. There Is Exactly One Thing That Should Change Your Mind.",
+    "headline": "Cloudflare Helps End the Search-or-AI-Training Tradeoff",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402338,
-    "url": "https://247wallst.com/investing/2026/09/14/intel-is-stuck-in-neutral-there-is-exactly-one-thing-that-should-change-your-mind/?.tsrc=rss",
+    "ts": 1789477500,
+    "url": "https://finance.yahoo.com/technology/ai/articles/cloudflare-helps-end-search-ai-130500321.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/14/intel-is-stuck-in-neutral-there-is-exactly-one-thing-that-should-change-your-mind/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/cloudflare-helps-end-search-ai-130500321.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 S&P 500 Stocks to Research Further",
+   "label": "Apple’s Outstanding Comedy Widow’s Bay triumphs as the most decorated freshman comedy in Emmy history and Apple TV leads",
    "value": {
-    "headline": "3 S&P 500 Stocks to Research Further",
+    "headline": "Apple’s Outstanding Comedy Widow’s Bay triumphs as the most decorated freshman comedy in Emmy history and Apple TV leads as the most awarded network at the 78th Primetime Emmy Awards",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402290,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-research-161130191.html?.tsrc=rss",
+    "ts": 1789465200,
+    "url": "https://finance.yahoo.com/media-advertising/articles/apple-outstanding-comedy-widow-bay-094000521.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-research-161130191.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/apple-outstanding-comedy-widow-bay-094000521.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Founded by Apple’s Ex-Head of Worldwide Logistics Procurement, Aron Launches With First AI Chief of Staff for Procuremen",
+   "label": "Gene Munster Says iPhone 18 Pre-Order Wait Times Are Climbing, Calls It a 'Favorable Sign for Demand'",
    "value": {
-    "headline": "Founded by Apple’s Ex-Head of Worldwide Logistics Procurement, Aron Launches With First AI Chief of Staff for Procurement Teams and Raises $8 Million in Funding from Menlo Ventures and Storm Ventures",
+    "headline": "Gene Munster Says iPhone 18 Pre-Order Wait Times Are Climbing, Calls It a 'Favorable Sign for Demand'",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789401600,
-    "url": "https://finance.yahoo.com/technology/ai/articles/founded-apple-ex-head-worldwide-160000375.html?.tsrc=rss",
+    "ts": 1789455318,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/gene-munster-says-iphone-18-065518667.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/founded-apple-ex-head-worldwide-160000375.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/gene-munster-says-iphone-18-065518667.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Musk’s xAI Resolves Claims Against Apple Over AI Competition",
+   "label": "Amazon Could Buy Up to $60 Billion From Qualcomm Just as Apple Brings Modems In-House. Is the AI Pivot Real?",
    "value": {
-    "headline": "Musk’s xAI Resolves Claims Against Apple Over AI Competition",
+    "headline": "Amazon Could Buy Up to $60 Billion From Qualcomm Just as Apple Brings Modems In-House. Is the AI Pivot Real?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789399331,
-    "url": "https://finance.yahoo.com/technology/ai/articles/musk-xai-resolves-claims-against-152211610.html?.tsrc=rss",
+    "ts": 1789445485,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-could-buy-60-billion-041125286.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/musk-xai-resolves-claims-against-152211610.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-could-buy-60-billion-041125286.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -706,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 745 分 / 289 留言",
+   "label": "HN 討論熱度 20 篇 / 112 分 / 29 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 745,
-    "comments": 289,
+    "points": 112,
+    "comments": 29,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-09-14",
+   "severity": "info",
+   "as_of": "2026-09-15",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
