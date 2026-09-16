@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 329.7,
- "change_pct": -1.01,
+ "price": 333.71,
+ "change_pct": 0.72,
  "ohlc": [
-  {
-   "time": "2026-06-22",
-   "o": 297.05,
-   "h": 302.16,
-   "l": 296.5,
-   "c": 296.75,
-   "v": 44879900
-  },
   {
    "time": "2026-06-23",
    "o": 297.28,
@@ -474,22 +466,30 @@
    "h": 335.5,
    "l": 331.34,
    "c": 333.08,
-   "v": 39223900
+   "v": 39269100
   },
   {
    "time": "2026-09-15",
-   "o": 330.26,
-   "h": 331.59,
+   "o": 330.14,
+   "h": 331.78,
    "l": 328.35,
-   "c": 329.7,
-   "v": 8912789
+   "c": 331.34,
+   "v": 31694100
+  },
+  {
+   "time": "2026-09-16",
+   "o": 332.42,
+   "h": 335.48,
+   "l": 331.87,
+   "c": 333.71,
+   "v": 9518039
   }
  ],
  "sr": {
-  "price": 329.7,
+  "price": 333.71,
   "resistance": [
-   330.81,
-   334.7
+   334.7,
+   336.22
   ],
   "support": [
    319.07,
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  296.75,
   294.05,
   292.83,
   274.91,
@@ -557,16 +556,17 @@
   326.57,
   332.27,
   333.08,
-  329.7
+  331.34,
+  333.71
  ],
- "spark_start": "2026-06-22",
- "spark_end": "2026-09-15",
+ "spark_start": "2026-06-23",
+ "spark_end": "2026-09-16",
  "fundamental": {
-  "pe_trailing": 38.423653,
-  "pe_forward": 34.923847,
+  "pe_trailing": 38.31343,
+  "pe_forward": 34.823666,
   "eps_trailing": 8.71,
   "eps_forward": 9.58285,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI acquires Glass Imaging camera startup for $300 million",
+   "label": "Apple Watch Rival Garmin Traverses Rocky Road Toward Buy Range",
    "value": {
-    "headline": "OpenAI acquires Glass Imaging camera startup for $300 million",
+    "headline": "Apple Watch Rival Garmin Traverses Rocky Road Toward Buy Range",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789480147,
-    "url": "https://qz.com/openai-acquires-glass-imaging-camera-startup-300-million-091526?.tsrc=rss",
+    "ts": 1789569453,
+    "url": "https://finance.yahoo.com/m/a07623ab-9a13-3ed0-9b10-2987631f92c6/apple-watch-rival-garmin.html?.tsrc=rss",
     "urls": [
-     "https://qz.com/openai-acquires-glass-imaging-camera-startup-300-million-091526?.tsrc=rss"
+     "https://finance.yahoo.com/m/a07623ab-9a13-3ed0-9b10-2987631f92c6/apple-watch-rival-garmin.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cloudflare Helps End the Search-or-AI-Training Tradeoff",
+   "label": "Apple Investors Can Breathe A Sigh Of Relief After OpenAI Gives Update On Long-Rumored Device",
    "value": {
-    "headline": "Cloudflare Helps End the Search-or-AI-Training Tradeoff",
+    "headline": "Apple Investors Can Breathe A Sigh Of Relief After OpenAI Gives Update On Long-Rumored Device",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789477500,
-    "url": "https://finance.yahoo.com/technology/ai/articles/cloudflare-helps-end-search-ai-130500321.html?.tsrc=rss",
+    "ts": 1789567007,
+    "url": "https://247wallst.com/investing/2026/09/16/apple-investors-can-breathe-a-sigh-of-relief-after-openai-gives-update-on-long-rumored-device/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/cloudflare-helps-end-search-ai-130500321.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/16/apple-investors-can-breathe-a-sigh-of-relief-after-openai-gives-update-on-long-rumored-device/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple’s Outstanding Comedy Widow’s Bay triumphs as the most decorated freshman comedy in Emmy history and Apple TV leads",
+   "label": "Apple building M8 AI servers, talks with Nvidia, reports The Information",
    "value": {
-    "headline": "Apple’s Outstanding Comedy Widow’s Bay triumphs as the most decorated freshman comedy in Emmy history and Apple TV leads as the most awarded network at the 78th Primetime Emmy Awards",
+    "headline": "Apple building M8 AI servers, talks with Nvidia, reports The Information",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789465200,
-    "url": "https://finance.yahoo.com/media-advertising/articles/apple-outstanding-comedy-widow-bay-094000521.html?.tsrc=rss",
+    "ts": 1789566567,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-building-m8-ai-servers-134927360.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/apple-outstanding-comedy-widow-bay-094000521.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-building-m8-ai-servers-134927360.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Gene Munster Says iPhone 18 Pre-Order Wait Times Are Climbing, Calls It a 'Favorable Sign for Demand'",
+   "label": "The White House Thinks the Fed Is About to Hike Into a Slowdown",
    "value": {
-    "headline": "Gene Munster Says iPhone 18 Pre-Order Wait Times Are Climbing, Calls It a 'Favorable Sign for Demand'",
+    "headline": "The White House Thinks the Fed Is About to Hike Into a Slowdown",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789455318,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/gene-munster-says-iphone-18-065518667.html?.tsrc=rss",
+    "ts": 1789563630,
+    "url": "https://247wallst.com/investing/2026/09/16/the-white-house-thinks-the-fed-is-about-to-hike-into-a-slowdown/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/gene-munster-says-iphone-18-065518667.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/16/the-white-house-thinks-the-fed-is-about-to-hike-into-a-slowdown/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Could Buy Up to $60 Billion From Qualcomm Just as Apple Brings Modems In-House. Is the AI Pivot Real?",
+   "label": "Debt-Financed AI Buildout Reshapes Hedge Fund Positioning in August, According to Data Insights",
    "value": {
-    "headline": "Amazon Could Buy Up to $60 Billion From Qualcomm Just as Apple Brings Modems In-House. Is the AI Pivot Real?",
+    "headline": "Debt-Financed AI Buildout Reshapes Hedge Fund Positioning in August, According to Data Insights",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789445485,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-could-buy-60-billion-041125286.html?.tsrc=rss",
+    "ts": 1789561800,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/debt-financed-ai-buildout-reshapes-123000965.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-could-buy-60-billion-041125286.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/debt-financed-ai-buildout-reshapes-123000965.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 112 分 / 29 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 112,
-    "comments": 29,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-15",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

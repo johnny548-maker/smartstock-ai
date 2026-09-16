@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 500.98,
- "change_pct": -0.88,
+ "price": 492.89,
+ "change_pct": -0.85,
  "ohlc": [
-  {
-   "time": "2026-06-22",
-   "o": 375.03,
-   "h": 380.91,
-   "l": 366.38,
-   "c": 366.65,
-   "v": 45171100
-  },
   {
    "time": "2026-06-23",
    "o": 371.68,
@@ -474,31 +466,38 @@
    "h": 509.95,
    "l": 495.34,
    "c": 505.41,
-   "v": 23070000
+   "v": 23091900
   },
   {
    "time": "2026-09-15",
-   "o": 500.0,
+   "o": 500.06,
    "h": 505.9,
-   "l": 498.2,
-   "c": 500.98,
-   "v": 4413744
+   "l": 495.54,
+   "c": 497.12,
+   "v": 17774000
+  },
+  {
+   "time": "2026-09-16",
+   "o": 493.17,
+   "h": 495.92,
+   "l": 491.13,
+   "c": 492.89,
+   "v": 3982684
   }
  ],
  "sr": {
-  "price": 500.98,
+  "price": 492.89,
   "resistance": [
    509.31,
    512.76
   ],
   "support": [
-   500.92,
-   489.22
+   489.22,
+   486.0
   ],
   "strong_support": 348.54
  },
  "spark": [
-  366.65,
   373.24,
   364.77,
   352.17,
@@ -557,151 +556,135 @@
   492.44,
   495.63,
   505.41,
-  500.98
+  497.12,
+  492.89
  ],
- "spark_start": "2026-06-22",
- "spark_end": "2026-09-15",
+ "spark_start": "2026-06-23",
+ "spark_end": "2026-09-16",
  "fundamental": {
-  "pe_trailing": 28.1687,
-  "pe_forward": 21.43753,
-  "eps_trailing": 17.94,
-  "eps_forward": 23.57298,
-  "stale": true,
+  "pe_trailing": 27.928612,
+  "pe_forward": 20.893768,
+  "eps_trailing": 17.65,
+  "eps_forward": 23.59268,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 500.98,
-  "stop": 480.09,
-  "target": 553.21,
-  "atr_bracket": 553.21,
-  "measured_move": 537.49,
-  "target_band": [
-   537.49,
-   553.21
-  ],
-  "stop_pct": -4.2,
-  "target_pct": 10.4,
-  "rr": 2.5,
-  "atr_pct": 2.1,
-  "swing_stop": 482.87,
-  "chandelier": 488.37,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Will CoreWeave's Margins Continue Expanding Through 2026?",
+   "label": "Microsoft raises its dividend 8% as cash returns keep climbing",
    "value": {
-    "headline": "Will CoreWeave's Margins Continue Expanding Through 2026?",
+    "headline": "Microsoft raises its dividend 8% as cash returns keep climbing",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789483920,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/coreweaves-margins-continue-expanding-2026-145200838.html?.tsrc=rss",
+    "ts": 1789570647,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-raises-dividend-8-cash-145727345.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/coreweaves-margins-continue-expanding-2026-145200838.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-raises-dividend-8-cash-145727345.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia’s Anthropic Investment: Securing AI Demand Amid Rising Competition",
+   "label": "Oracle Beats Q1 Estimates as AI Optimism Grows: How to Play the Stock",
    "value": {
-    "headline": "Nvidia’s Anthropic Investment: Securing AI Demand Amid Rising Competition",
+    "headline": "Oracle Beats Q1 Estimates as AI Optimism Grows: How to Play the Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789482516,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-anthropic-investment-securing-ai-142836122.html?.tsrc=rss",
+    "ts": 1789570560,
+    "url": "https://finance.yahoo.com/technology/ai/articles/oracle-beats-q1-estimates-ai-145600447.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-anthropic-investment-securing-ai-142836122.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/oracle-beats-q1-estimates-ai-145600447.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is CrowdStrike Stock Betting That Its Record Quarter Is The New Normal?",
+   "label": "Amazon's AI Bet Is Paying Off in Revenues: Why Isn't FCF Following?",
    "value": {
-    "headline": "Is CrowdStrike Stock Betting That Its Record Quarter Is The New Normal?",
+    "headline": "Amazon's AI Bet Is Paying Off in Revenues: Why Isn't FCF Following?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789480856,
-    "url": "https://www.trefis.com/articles/615352/is-crowdstrike-stock-betting-that-its-record-quarter-is-the-new-normal/2026-09-15?.tsrc=rss",
+    "ts": 1789570440,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazons-ai-bet-paying-off-145400682.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/615352/is-crowdstrike-stock-betting-that-its-record-quarter-is-the-new-normal/2026-09-15?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazons-ai-bet-paying-off-145400682.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
+   "label": "What Happens To Microsoft Stock If Its AI Spending Keeps Climbing?",
    "value": {
-    "headline": "Alphabet Has 50% Upside and the Cheapest Multiple of the Big Six",
+    "headline": "What Happens To Microsoft Stock If Its AI Spending Keeps Climbing?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789480816,
-    "url": "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss",
+    "ts": 1789569934,
+    "url": "https://www.trefis.com/articles/615540/what-happens-to-microsoft-stock-if-its-ai-spending-keeps-climbing/2026-09-16?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/15/alphabet-has-50-upside-and-the-cheapest-multiple-of-the-big-six/?.tsrc=rss"
+     "https://www.trefis.com/articles/615540/what-happens-to-microsoft-stock-if-its-ai-spending-keeps-climbing/2026-09-16?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Doomerism Unleashed: ‘Most Predictions Are Wrong’",
+   "label": "How worried should software, semiconductor stocks be about AI risks?",
    "value": {
-    "headline": "AI Doomerism Unleashed: ‘Most Predictions Are Wrong’",
+    "headline": "How worried should software, semiconductor stocks be about AI risks?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789480380,
-    "url": "https://finance.yahoo.com/m/94040da2-7424-3c80-924b-d755a9c10214/ai-doomerism-unleashed%3A-%E2%80%98most.html?.tsrc=rss",
+    "ts": 1789568100,
+    "url": "https://finance.yahoo.com/video/worried-software-semiconductor-stocks-ai-141500749.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/94040da2-7424-3c80-924b-d755a9c10214/ai-doomerism-unleashed%3A-%E2%80%98most.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/worried-software-semiconductor-stocks-ai-141500749.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

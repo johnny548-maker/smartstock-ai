@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 931.65,
- "change_pct": 0.82,
+ "price": 931.8,
+ "change_pct": 0.45,
  "ohlc": [
-  {
-   "time": "2026-06-22",
-   "o": 1196.04,
-   "h": 1213.37,
-   "l": 1168.39,
-   "c": 1211.19,
-   "v": 53140800
-  },
   {
    "time": "2026-06-23",
    "o": 1079.83,
@@ -474,19 +466,27 @@
    "h": 932.21,
    "l": 902.6,
    "c": 924.03,
-   "v": 27027600
+   "v": 27141900
   },
   {
    "time": "2026-09-15",
-   "o": 937.81,
-   "h": 944.89,
-   "l": 928.01,
-   "c": 931.65,
-   "v": 8472292
+   "o": 937.5,
+   "h": 944.94,
+   "l": 920.13,
+   "c": 927.6,
+   "v": 20367700
+  },
+  {
+   "time": "2026-09-16",
+   "o": 935.23,
+   "h": 939.21,
+   "l": 922.71,
+   "c": 931.8,
+   "v": 6211937
   }
  ],
  "sr": {
-  "price": 931.65,
+  "price": 931.8,
   "resistance": [
    989.96,
    1011.77
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  1211.19,
   1051.61,
   1048.35,
   1213.37,
@@ -557,51 +556,12 @@
   977.41,
   975.26,
   924.03,
-  931.65
+  927.6,
+  931.8
  ],
- "spark_start": "2026-06-22",
- "spark_end": "2026-09-15",
+ "spark_start": "2026-06-23",
+ "spark_end": "2026-09-16",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "兩樣情!台積電赴美增資200億美元推升前8月僑外投資近「倍增」陸資來台縮水91%｜2 來源確認",
-   "value": {
-    "headline": "兩樣情!台積電赴美增資200億美元推升前8月僑外投資近「倍增」陸資來台縮水91%",
-    "sources": [
-     "cnyes",
-     "yahoo_tw"
-    ],
-    "source_count": 2,
-    "ts": 1789466170,
-    "url": "cnyes:6606970",
-    "urls": [
-     "cnyes:6606970",
-     "https://tw.stock.yahoo.com/news/%E5%85%A9%E6%A8%A3%E6%83%85-%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%B5%B4%E7%BE%8E%E5%A2%9E%E8%B3%87200%E5%84%84%E7%BE%8E%E5%85%83%E6%8E%A8%E5%8D%87%E5%89%8D8%E6%9C%88%E5%83%91%E5%A4%96%E6%8A%95%E8%B3%87%E8%BF%91-%E5%80%8D%E5%A2%9E-%E9%99%B8%E8%B3%87%E4%BE%86%E5%8F%B0%E7%B8%AE%E6%B0%B491-095610024.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-15",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 2 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 2,
-    "distinct_sources": [
-     "cnyes",
-     "yahoo_tw"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-15",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }
