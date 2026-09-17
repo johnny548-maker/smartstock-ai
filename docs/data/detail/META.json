@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 678.62,
- "change_pct": 1.25,
+ "price": 672.37,
+ "change_pct": -0.14,
  "ohlc": [
-  {
-   "time": "2026-06-23",
-   "o": 562.25,
-   "h": 572.2,
-   "l": 561.02,
-   "c": 562.2,
-   "v": 13103300
-  },
   {
    "time": "2026-06-24",
    "o": 561.89,
@@ -474,22 +466,30 @@
    "h": 678.87,
    "l": 656.2,
    "c": 670.24,
-   "v": 19485700
+   "v": 19502800
   },
   {
    "time": "2026-09-16",
-   "o": 679.75,
+   "o": 679.91,
    "h": 685.31,
-   "l": 674.29,
-   "c": 678.62,
-   "v": 5217428
+   "l": 671.91,
+   "c": 673.31,
+   "v": 17168100
+  },
+  {
+   "time": "2026-09-17",
+   "o": 682.44,
+   "h": 683.07,
+   "l": 667.05,
+   "c": 672.37,
+   "v": 4745864
   }
  ],
  "sr": {
-  "price": 678.62,
+  "price": 672.37,
   "resistance": [
-   681.87,
-   686.08
+   672.38,
+   674.95
   ],
   "support": [
    652.45,
@@ -498,7 +498,6 @@
   "strong_support": 519.78
  },
  "spark": [
-  562.2,
   557.67,
   542.87,
   550.25,
@@ -557,14 +556,15 @@
   648.03,
   665.6,
   670.24,
-  678.62
+  673.31,
+  672.37
  ],
- "spark_start": "2026-06-23",
- "spark_end": "2026-09-16",
+ "spark_start": "2026-06-24",
+ "spark_end": "2026-09-17",
  "fundamental": {
-  "pe_trailing": 25.57272,
-  "pe_forward": 19.413805,
-  "eps_trailing": 26.54,
+  "pe_trailing": 25.347906,
+  "pe_forward": 19.235886,
+  "eps_trailing": 26.53,
   "eps_forward": 34.95966,
   "stale": false,
   "source": "yfinance"
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zuckerberg just picked a side in the AI slowdown fight",
+   "label": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
    "value": {
-    "headline": "Zuckerberg just picked a side in the AI slowdown fight",
+    "headline": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789570170,
-    "url": "https://finance.yahoo.com/technology/ai/articles/zuckerberg-just-picked-side-ai-144930454.html?.tsrc=rss",
+    "ts": 1789656332,
+    "url": "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/zuckerberg-just-picked-side-ai-144930454.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Inverse Equity ETFs to Consider Amid Rising Market Risks",
+   "label": "Snap Advances 4% as Specs Glasses Add Salesforce and NVIDIA Enterprise Tools; Meta Holds Steady",
    "value": {
-    "headline": "Inverse Equity ETFs to Consider Amid Rising Market Risks",
+    "headline": "Snap Advances 4% as Specs Glasses Add Salesforce and NVIDIA Enterprise Tools; Meta Holds Steady",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789569960,
-    "url": "https://finance.yahoo.com/markets/options/articles/inverse-equity-etfs-consider-amid-144600313.html?.tsrc=rss",
+    "ts": 1789654176,
+    "url": "https://247wallst.com/investing/2026/09/17/snap-advances-3-as-specs-glasses-add-salesforce-and-nvidia-enterprise-tools-meta-holds-steady/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/options/articles/inverse-equity-etfs-consider-amid-144600313.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/17/snap-advances-3-as-specs-glasses-add-salesforce-and-nvidia-enterprise-tools-meta-holds-steady/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zuckerberg Says Labs Don't Need Permission to Slow Down",
+   "label": "AI is the latest addiction — Does it need to be regulated like cigarettes?",
    "value": {
-    "headline": "Zuckerberg Says Labs Don't Need Permission to Slow Down",
+    "headline": "AI is the latest addiction — Does it need to be regulated like cigarettes?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789569277,
-    "url": "https://finance.yahoo.com/technology/ai/articles/zuckerberg-says-labs-dont-permission-143437017.html?.tsrc=rss",
+    "ts": 1789653424,
+    "url": "https://finance.yahoo.com/video/ai-latest-addiction-does-regulated-135704921.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/zuckerberg-says-labs-dont-permission-143437017.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-latest-addiction-does-regulated-135704921.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-16",
+   "severity": "info",
+   "as_of": "2026-09-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Nvidia Stock Is Rising as Meta’s Zuckerberg Weighs In on AI Safety",
+   "label": "Nebius Stock Jumps On Cloud Computing Price Hikes",
    "value": {
-    "headline": "Why Nvidia Stock Is Rising as Meta’s Zuckerberg Weighs In on AI Safety",
+    "headline": "Nebius Stock Jumps On Cloud Computing Price Hikes",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789567020,
-    "url": "https://finance.yahoo.com/m/214630f6-a5e7-3e15-bef4-dcdf0f44aed7/why-nvidia-stock-is-rising-as.html?.tsrc=rss",
+    "ts": 1789651700,
+    "url": "https://finance.yahoo.com/m/ab635572-2824-35c2-b212-7d02077adb00/nebius-stock-jumps-on-cloud.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/214630f6-a5e7-3e15-bef4-dcdf0f44aed7/why-nvidia-stock-is-rising-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/ab635572-2824-35c2-b212-7d02077adb00/nebius-stock-jumps-on-cloud.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why this billionaire didn't invest in Facebook",
+   "label": "Meta hit by German court ruling over fake Facebook and Instagram ads",
    "value": {
-    "headline": "Why this billionaire didn't invest in Facebook",
+    "headline": "Meta hit by German court ruling over fake Facebook and Instagram ads",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789565492,
-    "url": "https://myfirstmillion.videonest.co/videos/2138197/why-this-billionaire-didn-t-invest-in-facebook-jAUhhDdJ-l?.tsrc=rss",
+    "ts": 1789651661,
+    "url": "https://finance.yahoo.com/media-advertising/articles/meta-hit-german-court-ruling-132741368.html?.tsrc=rss",
     "urls": [
-     "https://myfirstmillion.videonest.co/videos/2138197/why-this-billionaire-didn-t-invest-in-facebook-jAUhhDdJ-l?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/meta-hit-german-court-ruling-132741368.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 81 分 / 108 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 81,
+    "comments": 108,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-17",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,33 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet",
- "price": 346.26,
- "change_pct": 2.29,
+ "name": "Alphabet Inc. - Class A Common Stock",
+ "price": 345.44,
+ "change_pct": 0.75,
  "ohlc": [
-  {
-   "time": "2026-06-18",
-   "o": 365.52,
-   "h": 369.24,
-   "l": 358.44,
-   "c": 367.79,
-   "v": 44470100
-  },
-  {
-   "time": "2026-06-22",
-   "o": 357.72,
-   "h": 358.69,
-   "l": 341.5,
-   "c": 349.46,
-   "v": 52814800
-  },
-  {
-   "time": "2026-06-23",
-   "o": 340.47,
-   "h": 349.07,
-   "l": 339.98,
-   "c": 345.91,
-   "v": 34007700
-  },
   {
    "time": "2026-06-24",
    "o": 348.82,
@@ -474,33 +450,54 @@
    "h": 342.98,
    "l": 335.03,
    "c": 338.5,
-   "v": 24677500
+   "v": 24708300
   },
   {
    "time": "2026-09-14",
-   "o": 343.2,
-   "h": 347.28,
-   "l": 342.28,
-   "c": 346.26,
-   "v": 14835764
+   "o": 343.12,
+   "h": 349.91,
+   "l": 342.14,
+   "c": 349.39,
+   "v": 35905400
+  },
+  {
+   "time": "2026-09-15",
+   "o": 346.8,
+   "h": 348.07,
+   "l": 342.7,
+   "c": 344.98,
+   "v": 21928600
+  },
+  {
+   "time": "2026-09-16",
+   "o": 347.08,
+   "h": 348.4,
+   "l": 340.64,
+   "c": 342.87,
+   "v": 18860000
+  },
+  {
+   "time": "2026-09-17",
+   "o": 348.67,
+   "h": 349.5,
+   "l": 343.89,
+   "c": 345.44,
+   "v": 5431232
   }
  ],
  "sr": {
-  "price": 346.26,
+  "price": 345.44,
   "resistance": [
-   348.32,
+   349.91,
    351.37
   ],
   "support": [
-   346.14,
-   341.14
+   341.14,
+   340.66
   ],
-  "strong_support": 235.23
+  "strong_support": 314.7
  },
  "spark": [
-  367.79,
-  349.46,
-  345.91,
   345.07,
   343.49,
   337.17,
@@ -557,165 +554,14 @@
   330.65,
   332.6,
   338.5,
-  346.26
+  349.39,
+  344.98,
+  342.87,
+  345.44
  ],
- "spark_start": "2026-06-18",
- "spark_end": "2026-09-14",
- "fundamental": {
-  "pe_trailing": 17.365847,
-  "pe_forward": 23.280823,
-  "eps_trailing": 19.94,
-  "eps_forward": 14.87383,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-06-24",
+ "spark_end": "2026-09-17",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
-   "value": {
-    "headline": "Forget the Magnificent 7. This Duo Says Broadcom, Not Nvidia, Wins the Next Leg of AI.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789402519,
-    "url": "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/14/forget-the-magnificent-7-this-duo-says-broadcom-not-nvidia-wins-the-next-leg-of-ai/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Google: Measurement Shouldn't Be A Record Of Where Budget Went",
-   "value": {
-    "headline": "Google: Measurement Shouldn't Be A Record Of Where Budget Went",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789402162,
-    "url": "https://www.mediapost.com/publications/article/417924/google-measurement-shouldnt-be-a-record-of-where.html?.tsrc=rss",
-    "urls": [
-     "https://www.mediapost.com/publications/article/417924/google-measurement-shouldnt-be-a-record-of-where.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "IREN falls 5% despite CEO's bullish AI supply warning",
-   "value": {
-    "headline": "IREN falls 5% despite CEO's bullish AI supply warning",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789401358,
-    "url": "https://finance.yahoo.com/technology/ai/articles/iren-falls-5-despite-ceos-155558469.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/iren-falls-5-despite-ceos-155558469.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today: Dow Falls, Oil Jumps On Houthi Moves; Trump Hits Out At These AI Fears (Live Coverage)",
-   "value": {
-    "headline": "Stock Market Today: Dow Falls, Oil Jumps On Houthi Moves; Trump Hits Out At These AI Fears (Live Coverage)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789401063,
-    "url": "https://finance.yahoo.com/m/e8c0a567-addf-325b-8e69-657d5975fcc3/stock-market-today%3A-dow.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/e8c0a567-addf-325b-8e69-657d5975fcc3/stock-market-today%3A-dow.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Forget Nvidia. Apple Could Be the AI Stock to Watch Next.",
-   "value": {
-    "headline": "Forget Nvidia. Apple Could Be the AI Stock to Watch Next.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789398035,
-    "url": "https://247wallst.com/investing/2026/09/14/forget-nvidia-apple-could-be-the-ai-stock-to-watch-next/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/14/forget-nvidia-apple-could-be-the-ai-stock-to-watch-next/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-14",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 985 分 / 406 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 985,
-    "comments": 406,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-09-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 205,717 股交割失敗）",
-   "value": {
-    "total_shares": 205717,
-    "days": 8,
-    "max_shares": 107800,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-09-14",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

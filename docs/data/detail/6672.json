@@ -1,17 +1,9 @@
 {
  "stock": "6672",
  "name": "騰輝電子-KY",
- "price": 304.0,
- "change_pct": 4.47,
+ "price": 293.5,
+ "change_pct": -3.45,
  "ohlc": [
-  {
-   "time": "2026-06-25",
-   "o": 265.5,
-   "h": 289.5,
-   "l": 258.5,
-   "c": 289.5,
-   "v": 9252963
-  },
   {
    "time": "2026-06-26",
    "o": 289.0,
@@ -482,23 +474,30 @@
    "h": 306.0,
    "l": 290.0,
    "c": 304.0,
-   "v": 5003813
+   "v": 4916726
+  },
+  {
+   "time": "2026-09-17",
+   "o": 306.0,
+   "h": 315.0,
+   "l": 285.5,
+   "c": 293.5,
+   "v": 10153345
   }
  ],
  "sr": {
-  "price": 304.0,
+  "price": 293.5,
   "resistance": [
-   317.5,
-   324.5
+   294.5,
+   295.0
   ],
   "support": [
-   261.5,
-   255.0
+   285.0,
+   261.5
   ],
   "strong_support": 51.78
  },
  "spark": [
-  289.5,
   292.0,
   281.5,
   300.0,
@@ -557,10 +556,11 @@
   292.0,
   294.5,
   291.0,
-  304.0
+  304.0,
+  293.5
  ],
- "spark_start": "2026-06-25",
- "spark_end": "2026-09-16",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-17",
  "fundamental": {
   "rev_yoy": 133.2,
   "rev_accel": true,
@@ -571,53 +571,52 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 529,492 股",
-   "value": {
-    "foreign": 495718,
-    "trust": 9000,
-    "dealer": 24774,
-    "total": 529492
-   },
-   "severity": "info",
-   "as_of": "2026-09-16",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 44.0 / 殖利率 1.15% / PB 4.94",
-   "value": {
-    "pe": 43.96,
-    "yield": 1.15,
-    "pb": 4.94
-   },
-   "severity": "info",
-   "as_of": "2026-09-15",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 55,
+    "short_today": 30,
     "outstanding": 81620212,
-    "short_pct": 6.738526971726071e-05
+    "short_pct": 3.6755601663960396e-05
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-17",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 32.97,
+   "source": "news",
+   "kind": "catalyst",
+   "label": "騰輝-KY董事會通過承租昆山廠房擴產 承接AI與HDI外溢訂單",
+   "value": {
+    "headline": "騰輝-KY董事會通過承租昆山廠房擴產 承接AI與HDI外溢訂單",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1789651713,
+    "url": "cnyes:6609386",
+    "urls": [
+     "cnyes:6609386"
+    ]
+   },
    "severity": "info",
-   "as_of": "20260911",
-   "note": "大戶持股%=32.97；WoW+2.58；股東人數-445"
+   "as_of": "2026-09-17",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-17",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -905,6 +904,10 @@
    {
     "t": "2026-09-16",
     "v": 4724
+   },
+   {
+    "t": "2026-09-17",
+    "v": 3225
    }
   ],
   "holder_pct": [
