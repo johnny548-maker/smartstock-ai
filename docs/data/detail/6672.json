@@ -1,17 +1,9 @@
 {
  "stock": "6672",
  "name": "騰輝電子-KY",
- "price": 293.5,
- "change_pct": -3.45,
+ "price": 302.0,
+ "change_pct": 2.9,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 289.0,
-   "h": 311.5,
-   "l": 284.0,
-   "c": 292.0,
-   "v": 16486046
-  },
   {
    "time": "2026-06-29",
    "o": 290.0,
@@ -482,14 +474,22 @@
    "h": 315.0,
    "l": 285.5,
    "c": 293.5,
-   "v": 10153345
+   "v": 9915230
+  },
+  {
+   "time": "2026-09-18",
+   "o": 299.5,
+   "h": 309.5,
+   "l": 297.0,
+   "c": 302.0,
+   "v": 5883062
   }
  ],
  "sr": {
-  "price": 293.5,
+  "price": 302.0,
   "resistance": [
-   294.5,
-   295.0
+   317.5,
+   324.5
   ],
   "support": [
    285.0,
@@ -498,7 +498,6 @@
   "strong_support": 51.78
  },
  "spark": [
-  292.0,
   281.5,
   300.0,
   290.5,
@@ -557,10 +556,11 @@
   294.5,
   291.0,
   304.0,
-  293.5
+  293.5,
+  302.0
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-18",
  "fundamental": {
   "rev_yoy": 133.2,
   "rev_accel": true,
@@ -575,48 +575,13 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 30,
+    "short_today": 19,
     "outstanding": 81620212,
-    "short_pct": 3.6755601663960396e-05
+    "short_pct": 2.327854772050825e-05
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "騰輝-KY董事會通過承租昆山廠房擴產 承接AI與HDI外溢訂單",
-   "value": {
-    "headline": "騰輝-KY董事會通過承租昆山廠房擴產 承接AI與HDI外溢訂單",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1789651713,
-    "url": "cnyes:6609386",
-    "urls": [
-     "cnyes:6609386"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-17",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -908,6 +873,10 @@
    {
     "t": "2026-09-17",
     "v": 3225
+   },
+   {
+    "t": "2026-09-18",
+    "v": 4688
    }
   ],
   "holder_pct": [

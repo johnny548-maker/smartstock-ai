@@ -2,16 +2,8 @@
  "stock": "3231",
  "name": "緯創",
  "price": 186.5,
- "change_pct": 1.91,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 153.38,
-   "h": 153.38,
-   "l": 147.59,
-   "c": 147.59,
-   "v": 41972467
-  },
   {
    "time": "2026-06-29",
    "o": 148.55,
@@ -482,7 +474,15 @@
    "h": 188.5,
    "l": 184.0,
    "c": 186.5,
-   "v": 30880483
+   "v": 30518943
+  },
+  {
+   "time": "2026-09-18",
+   "o": 189.5,
+   "h": 190.5,
+   "l": 186.5,
+   "c": 186.5,
+   "v": 39960432
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 68.84
  },
  "spark": [
-  147.59,
   149.03,
   152.89,
   153.86,
@@ -557,10 +556,11 @@
   181.0,
   182.5,
   183.0,
+  186.5,
   186.5
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-18",
  "fundamental": {
   "rev_yoy": 166.5,
   "rev_accel": true,
@@ -575,13 +575,72 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 424,
+    "short_today": 529,
     "outstanding": 3180052250,
-    "short_pct": 1.3333114259364762e-05
+    "short_pct": 1.663494680000934e-05
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "緯創AI訂單旺 林憲銘提醒居安思危:想好煞車怎麼踩｜2 來源確認",
+   "value": {
+    "headline": "緯創AI訂單旺 林憲銘提醒居安思危:想好煞車怎麼踩",
+    "sources": [
+     "cna",
+     "udn"
+    ],
+    "source_count": 2,
+    "ts": 1789728943,
+    "url": "https://www.cna.com.tw/news/afe/202609180262.aspx",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9763657",
+     "https://www.cna.com.tw/news/afe/202609180262.aspx"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI三巨頭齊喊煞車 緯創林憲銘、和碩童子賢仍樂觀看AI產業",
+   "value": {
+    "headline": "AI三巨頭齊喊煞車 緯創林憲銘、和碩童子賢仍樂觀看AI產業",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1789726313,
+    "url": "cnyes:6610297",
+    "urls": [
+     "cnyes:6610297"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 2 則（最高 2 來源確認）",
+   "value": {
+    "headline_count": 2,
+    "max_source_count": 2,
+    "distinct_sources": [
+     "cna",
+     "cnyes",
+     "udn"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -873,6 +932,10 @@
    {
     "t": "2026-09-17",
     "v": -2957
+   },
+   {
+    "t": "2026-09-18",
+    "v": -2782
    }
   ],
   "holder_pct": [

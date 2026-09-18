@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 817.0,
- "change_pct": -0.85,
+ "price": 834.0,
+ "change_pct": 2.08,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 788.17,
-   "h": 796.13,
-   "l": 761.3,
-   "c": 761.3,
-   "v": 361584
-  },
   {
    "time": "2026-06-29",
    "o": 770.26,
@@ -482,11 +474,19 @@
    "h": 843.0,
    "l": 795.0,
    "c": 817.0,
-   "v": 4538227
+   "v": 4456279
+  },
+  {
+   "time": "2026-09-18",
+   "o": 833.0,
+   "h": 855.0,
+   "l": 810.0,
+   "c": 834.0,
+   "v": 7029494
   }
  ],
  "sr": {
-  "price": 817.0,
+  "price": 834.0,
   "resistance": [
    839.0,
    889.68
@@ -498,7 +498,6 @@
   "strong_support": 58.24
  },
  "spark": [
-  761.3,
   770.26,
   837.93,
   837.93,
@@ -557,10 +556,11 @@
   810.0,
   792.0,
   824.0,
-  817.0
+  817.0,
+  834.0
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-18",
  "fundamental": {
   "rev_yoy": 153.0,
   "rev_accel": true,
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 104,
+    "short_today": 89,
     "outstanding": 89513491,
-    "short_pct": 0.00011618360410052603
+    "short_pct": 9.942635350910401e-05
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台股大漲強勢站上47180點!台積漲35元 友達成交爆大量居冠",
+   "value": {
+    "headline": "台股大漲強勢站上47180點!台積漲35元 友達成交爆大量居冠",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1789739559,
+    "url": "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E5%A4%A7%E6%BC%B2%E5%BC%B7%E5%8B%A2%E7%AB%99%E4%B8%8A47180%E9%BB%9E-%E5%8F%B0%E7%A9%8D%E6%BC%B235%E5%85%83-%E5%8F%8B%E9%81%94%E6%88%90%E4%BA%A4%E7%88%86%E5%A4%A7%E9%87%8F%E5%B1%85%E5%86%A0-135239623.html",
+    "urls": [
+     "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E5%A4%A7%E6%BC%B2%E5%BC%B7%E5%8B%A2%E7%AB%99%E4%B8%8A47180%E9%BB%9E-%E5%8F%B0%E7%A9%8D%E6%BC%B235%E5%85%83-%E5%8F%8B%E9%81%94%E6%88%90%E4%BA%A4%E7%88%86%E5%A4%A7%E9%87%8F%E5%B1%85%E5%86%A0-135239623.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-18",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -873,6 +908,10 @@
    {
     "t": "2026-09-17",
     "v": -2687
+   },
+   {
+    "t": "2026-09-18",
+    "v": -3204
    }
   ],
   "holder_pct": [

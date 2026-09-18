@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 672.37,
- "change_pct": -0.14,
+ "price": 674.49,
+ "change_pct": -1.15,
  "ohlc": [
-  {
-   "time": "2026-06-24",
-   "o": 561.89,
-   "h": 569.04,
-   "l": 555.55,
-   "c": 557.67,
-   "v": 13963600
-  },
   {
    "time": "2026-06-25",
    "o": 555.55,
@@ -474,22 +466,30 @@
    "h": 685.31,
    "l": 671.91,
    "c": 673.31,
-   "v": 17168100
+   "v": 17217800
   },
   {
    "time": "2026-09-17",
    "o": 682.44,
-   "h": 683.07,
+   "h": 683.2,
    "l": 667.05,
-   "c": 672.37,
-   "v": 4745864
+   "c": 682.31,
+   "v": 15888400
+  },
+  {
+   "time": "2026-09-18",
+   "o": 686.82,
+   "h": 690.15,
+   "l": 668.49,
+   "c": 674.49,
+   "v": 7286766
   }
  ],
  "sr": {
-  "price": 672.37,
+  "price": 674.49,
   "resistance": [
-   672.38,
-   674.95
+   674.95,
+   681.87
   ],
   "support": [
    652.45,
@@ -498,7 +498,6 @@
   "strong_support": 519.78
  },
  "spark": [
-  557.67,
   542.87,
   550.25,
   562.6,
@@ -557,16 +556,17 @@
   665.6,
   670.24,
   673.31,
-  672.37
+  682.31,
+  674.49
  ],
- "spark_start": "2026-06-24",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-25",
+ "spark_end": "2026-09-18",
  "fundamental": {
   "pe_trailing": 25.347906,
   "pe_forward": 19.235886,
   "eps_trailing": 26.53,
   "eps_forward": 34.95966,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
+   "label": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
    "value": {
-    "headline": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
+    "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789656332,
-    "url": "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss",
+    "ts": 1789740802,
+    "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Snap Advances 4% as Specs Glasses Add Salesforce and NVIDIA Enterprise Tools; Meta Holds Steady",
+   "label": "Alphabet Rises 3%, Meta and Microsoft Slip: Is This a Momentum Run Rather Than a Tech Rally?",
    "value": {
-    "headline": "Snap Advances 4% as Specs Glasses Add Salesforce and NVIDIA Enterprise Tools; Meta Holds Steady",
+    "headline": "Alphabet Rises 3%, Meta and Microsoft Slip: Is This a Momentum Run Rather Than a Tech Rally?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789654176,
-    "url": "https://247wallst.com/investing/2026/09/17/snap-advances-3-as-specs-glasses-add-salesforce-and-nvidia-enterprise-tools-meta-holds-steady/?.tsrc=rss",
+    "ts": 1789739660,
+    "url": "https://247wallst.com/investing/2026/09/18/alphabet-rises-3-meta-and-microsoft-slip-is-this-a-momentum-run-rather-than-a-tech-rally/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/17/snap-advances-3-as-specs-glasses-add-salesforce-and-nvidia-enterprise-tools-meta-holds-steady/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/18/alphabet-rises-3-meta-and-microsoft-slip-is-this-a-momentum-run-rather-than-a-tech-rally/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI is the latest addiction — Does it need to be regulated like cigarettes?",
+   "label": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
    "value": {
-    "headline": "AI is the latest addiction — Does it need to be regulated like cigarettes?",
+    "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789653424,
-    "url": "https://finance.yahoo.com/video/ai-latest-addiction-does-regulated-135704921.html?.tsrc=rss",
+    "ts": 1789739302,
+    "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-latest-addiction-does-regulated-135704921.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-17",
+   "severity": "warn",
+   "as_of": "2026-09-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nebius Stock Jumps On Cloud Computing Price Hikes",
+   "label": "Update: Market Chatter: Meta Platforms' Smart Glasses Face France Probe Over Nonconsensual Filming",
    "value": {
-    "headline": "Nebius Stock Jumps On Cloud Computing Price Hikes",
+    "headline": "Update: Market Chatter: Meta Platforms' Smart Glasses Face France Probe Over Nonconsensual Filming",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789651700,
-    "url": "https://finance.yahoo.com/m/ab635572-2824-35c2-b212-7d02077adb00/nebius-stock-jumps-on-cloud.html?.tsrc=rss",
+    "ts": 1789738684,
+    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-meta-platforms-apos-133804982.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ab635572-2824-35c2-b212-7d02077adb00/nebius-stock-jumps-on-cloud.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/market-chatter-meta-platforms-apos-133804982.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-17",
+   "severity": "warn",
+   "as_of": "2026-09-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta hit by German court ruling over fake Facebook and Instagram ads",
+   "label": "Dan Ives Says AI Leaders Can't 'Stop The Elevator' With Meta In The 'Ferrari Left Lane' As AI Race Accelerates",
    "value": {
-    "headline": "Meta hit by German court ruling over fake Facebook and Instagram ads",
+    "headline": "Dan Ives Says AI Leaders Can't 'Stop The Elevator' With Meta In The 'Ferrari Left Lane' As AI Race Accelerates",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789651661,
-    "url": "https://finance.yahoo.com/media-advertising/articles/meta-hit-german-court-ruling-132741368.html?.tsrc=rss",
+    "ts": 1789738178,
+    "url": "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-ai-leaders-cant-stop-the-elevator-with-meta-in-the-ferrari-left-lane/cZtuDjwRB3r?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/meta-hit-german-court-ruling-132741368.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-ai-leaders-cant-stop-the-elevator-with-meta-in-the-ferrari-left-lane/cZtuDjwRB3r?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 81 分 / 108 留言",
+   "label": "HN 討論熱度 20 篇 / 123 分 / 27 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 81,
-    "comments": 108,
+    "points": 123,
+    "comments": 27,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-18",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
