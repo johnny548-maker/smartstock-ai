@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 546.34,
- "change_pct": 0.23,
+ "price": 611.8,
+ "change_pct": 9.29,
  "ohlc": [
-  {
-   "time": "2026-06-25",
-   "o": 543.93,
-   "h": 550.88,
-   "l": 507.0,
-   "c": 532.57,
-   "v": 27031300
-  },
   {
    "time": "2026-06-26",
    "o": 519.8,
@@ -474,23 +466,28 @@
    "h": 551.42,
    "l": 527.6,
    "c": 545.09,
-   "v": 28380800
+   "v": 28464700
   },
   {
    "time": "2026-09-18",
-   "o": 547.56,
-   "h": 552.95,
-   "l": 544.0,
-   "c": 546.34,
-   "v": 7606965
+   "o": 547.37,
+   "h": 559.91,
+   "l": 541.53,
+   "c": 559.82,
+   "v": 31785700
+  },
+  {
+   "time": "2026-09-21",
+   "o": 583.94,
+   "h": 615.99,
+   "l": 582.27,
+   "c": 611.8,
+   "v": 26218293
   }
  ],
  "sr": {
-  "price": 546.34,
-  "resistance": [
-   546.44,
-   558.37
-  ],
+  "price": 611.8,
+  "resistance": [],
   "support": [
    498.15,
    495.35
@@ -498,7 +495,6 @@
   "strong_support": 154.78
  },
  "spark": [
-  532.57,
   521.58,
   539.49,
   580.91,
@@ -557,119 +553,142 @@
   504.2,
   512.5,
   545.09,
-  546.34
+  559.82,
+  611.8
  ],
- "spark_start": "2026-06-25",
- "spark_end": "2026-09-18",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 139.65385,
-  "pe_forward": 34.979183,
-  "eps_trailing": 3.9,
+  "pe_trailing": 156.07909,
+  "pe_forward": 39.2937,
+  "eps_trailing": 3.92,
   "eps_forward": 15.57069,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 611.8,
+  "stop": 568.98,
+  "target": 718.87,
+  "atr_bracket": 718.87,
+  "measured_move": 613.08,
+  "target_band": [
+   613.08,
+   619.95,
+   718.87
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.2,
+  "swing_stop": 472.69,
+  "chandelier": 549.22,
+  "fib_targets": [
+   590.09,
+   619.95,
+   652.91
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Techs Move Higher As Dow Slides; Taiwan Semiconductor Nears Buy Point (Live Coverage)",
+   "label": "AI Leader AMD Breaks Out Past New Buy Point With This Bullish Signal",
    "value": {
-    "headline": "Stock Market Today: Techs Move Higher As Dow Slides; Taiwan Semiconductor Nears Buy Point (Live Coverage)",
+    "headline": "AI Leader AMD Breaks Out Past New Buy Point With This Bullish Signal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789741499,
-    "url": "https://finance.yahoo.com/m/a79cf87c-d3f5-3e16-8ee6-e536ba767ccf/stock-market-today%3A-techs.html?.tsrc=rss",
+    "ts": 1790008006,
+    "url": "https://finance.yahoo.com/m/dfc5af30-4a2d-3c4f-b662-605a3b800743/ai-leader-amd-breaks-out-past.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a79cf87c-d3f5-3e16-8ee6-e536ba767ccf/stock-market-today%3A-techs.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/dfc5af30-4a2d-3c4f-b662-605a3b800743/ai-leader-amd-breaks-out-past.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Needs To Be True To Buy Qualcomm Stock Now?",
+   "label": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
    "value": {
-    "headline": "What Needs To Be True To Buy Qualcomm Stock Now?",
+    "headline": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789740210,
-    "url": "https://www.trefis.com/articles/615901/what-needs-to-be-true-to-buy-qualcomm-stock-now/2026-09-18?.tsrc=rss",
+    "ts": 1790007387,
+    "url": "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/615901/what-needs-to-be-true-to-buy-qualcomm-stock-now/2026-09-18?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: AMD’s Biggest Growth Opportunity May Still Be Ahead",
+   "label": "From $24 to $109: Intel’s Comeback Is Real. The Price Tag Is Now the Problem",
    "value": {
-    "headline": "Prediction: AMD’s Biggest Growth Opportunity May Still Be Ahead",
+    "headline": "From $24 to $109: Intel’s Comeback Is Real. The Price Tag Is Now the Problem",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789740028,
-    "url": "https://247wallst.com/investing/2026/09/18/prediction-amds-biggest-growth-opportunity-may-still-be-ahead/?.tsrc=rss",
+    "ts": 1790006746,
+    "url": "https://247wallst.com/investing/2026/09/21/from-24-to-109-intels-comeback-is-real-the-price-tag-is-now-the-problem/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/18/prediction-amds-biggest-growth-opportunity-may-still-be-ahead/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/21/from-24-to-109-intels-comeback-is-real-the-price-tag-is-now-the-problem/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The HBM Bottleneck: 3 Tech Companies Have Locked Up 85% of the Supply of AI's Scarcest Asset",
+   "label": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
    "value": {
-    "headline": "The HBM Bottleneck: 3 Tech Companies Have Locked Up 85% of the Supply of AI's Scarcest Asset",
+    "headline": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789738380,
-    "url": "https://www.fool.com/investing/2026/09/18/the-hbm-bottleneck-3-stocks-that-have-locked-up-85/?.tsrc=rss",
+    "ts": 1790006202,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/18/the-hbm-bottleneck-3-stocks-that-have-locked-up-85/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "These Are The 5 Best Stocks To Buy Or Watch Now",
+   "label": "Why Direxion Daily Semiconductor Bull 3X ETF Just Popped",
    "value": {
-    "headline": "These Are The 5 Best Stocks To Buy Or Watch Now",
+    "headline": "Why Direxion Daily Semiconductor Bull 3X ETF Just Popped",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789738318,
-    "url": "https://finance.yahoo.com/m/5f695c14-bc91-363c-995e-e994c1f0807e/these-are-the-5-best-stocks.html?.tsrc=rss",
+    "ts": 1790006102,
+    "url": "https://www.fool.com/investing/2026/09/21/why-direxion-daily-semiconductor-bull-3x-etf-just/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/5f695c14-bc91-363c-995e-e994c1f0807e/these-are-the-5-best-stocks.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/21/why-direxion-daily-semiconductor-bull-3x-etf-just/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +703,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +718,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

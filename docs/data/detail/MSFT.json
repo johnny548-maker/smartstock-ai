@@ -1,33 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 492.89,
- "change_pct": -0.85,
+ "price": 495.36,
+ "change_pct": 0.32,
  "ohlc": [
-  {
-   "time": "2026-06-23",
-   "o": 371.68,
-   "h": 376.51,
-   "l": 369.97,
-   "c": 373.24,
-   "v": 40647600
-  },
-  {
-   "time": "2026-06-24",
-   "o": 370.87,
-   "h": 378.17,
-   "l": 364.09,
-   "c": 364.77,
-   "v": 44509900
-  },
-  {
-   "time": "2026-06-25",
-   "o": 362.09,
-   "h": 363.55,
-   "l": 348.54,
-   "c": 352.17,
-   "v": 66179000
-  },
   {
    "time": "2026-06-26",
    "o": 356.48,
@@ -474,33 +450,54 @@
    "h": 505.9,
    "l": 495.54,
    "c": 497.12,
-   "v": 17774000
+   "v": 17794600
   },
   {
    "time": "2026-09-16",
-   "o": 493.17,
-   "h": 495.92,
-   "l": 491.13,
-   "c": 492.89,
-   "v": 3982684
+   "o": 493.03,
+   "h": 495.97,
+   "l": 487.23,
+   "c": 490.3,
+   "v": 16670300
+  },
+  {
+   "time": "2026-09-17",
+   "o": 497.8,
+   "h": 501.47,
+   "l": 493.17,
+   "c": 497.75,
+   "v": 17841600
+  },
+  {
+   "time": "2026-09-18",
+   "o": 497.97,
+   "h": 498.65,
+   "l": 491.1,
+   "c": 493.78,
+   "v": 39544100
+  },
+  {
+   "time": "2026-09-21",
+   "o": 495.58,
+   "h": 497.39,
+   "l": 491.33,
+   "c": 495.36,
+   "v": 9257327
   }
  ],
  "sr": {
-  "price": 492.89,
+  "price": 495.36,
   "resistance": [
    509.31,
-   512.76
+   509.95
   ],
   "support": [
    489.22,
-   486.0
+   487.23
   ],
   "strong_support": 348.54
  },
  "spark": [
-  373.24,
-  364.77,
-  352.17,
   372.27,
   367.88,
   372.32,
@@ -557,14 +554,17 @@
   495.63,
   505.41,
   497.12,
-  492.89
+  490.3,
+  497.75,
+  493.78,
+  495.36
  ],
- "spark_start": "2026-06-23",
- "spark_end": "2026-09-16",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 27.928612,
-  "pe_forward": 20.893768,
-  "eps_trailing": 17.65,
+  "pe_trailing": 27.563997,
+  "pe_forward": 20.99486,
+  "eps_trailing": 17.97,
   "eps_forward": 23.59268,
   "stale": false,
   "source": "yfinance"
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft raises its dividend 8% as cash returns keep climbing",
+   "label": "Microsoft vs Alibaba: Which Cloud AI Stock Is Better Positioned?",
    "value": {
-    "headline": "Microsoft raises its dividend 8% as cash returns keep climbing",
+    "headline": "Microsoft vs Alibaba: Which Cloud AI Stock Is Better Positioned?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789570647,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-raises-dividend-8-cash-145727345.html?.tsrc=rss",
+    "ts": 1790004720,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-alibaba-cloud-ai-153200503.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-raises-dividend-8-cash-145727345.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-alibaba-cloud-ai-153200503.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Oracle Beats Q1 Estimates as AI Optimism Grows: How to Play the Stock",
+   "label": "Microsoft Slips as AI Testimony Sharpens Copyright Risk",
    "value": {
-    "headline": "Oracle Beats Q1 Estimates as AI Optimism Grows: How to Play the Stock",
+    "headline": "Microsoft Slips as AI Testimony Sharpens Copyright Risk",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789570560,
-    "url": "https://finance.yahoo.com/technology/ai/articles/oracle-beats-q1-estimates-ai-145600447.html?.tsrc=rss",
+    "ts": 1790004314,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-slips-ai-testimony-sharpens-152514329.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/oracle-beats-q1-estimates-ai-145600447.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-slips-ai-testimony-sharpens-152514329.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon's AI Bet Is Paying Off in Revenues: Why Isn't FCF Following?",
+   "label": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
    "value": {
-    "headline": "Amazon's AI Bet Is Paying Off in Revenues: Why Isn't FCF Following?",
+    "headline": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789570440,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazons-ai-bet-paying-off-145400682.html?.tsrc=rss",
+    "ts": 1790003628,
+    "url": "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazons-ai-bet-paying-off-145400682.html?.tsrc=rss"
+     "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Happens To Microsoft Stock If Its AI Spending Keeps Climbing?",
+   "label": "Microsoft AI CEO Sends Stark Warning on AI Rules",
    "value": {
-    "headline": "What Happens To Microsoft Stock If Its AI Spending Keeps Climbing?",
+    "headline": "Microsoft AI CEO Sends Stark Warning on AI Rules",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789569934,
-    "url": "https://www.trefis.com/articles/615540/what-happens-to-microsoft-stock-if-its-ai-spending-keeps-climbing/2026-09-16?.tsrc=rss",
+    "ts": 1790002781,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-ceo-sends-stark-145941847.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/615540/what-happens-to-microsoft-stock-if-its-ai-spending-keeps-climbing/2026-09-16?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-ai-ceo-sends-stark-145941847.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-16",
+   "severity": "warn",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How worried should software, semiconductor stocks be about AI risks?",
+   "label": "Can CoreWeave Stock Handle The Cost Of Its Own Growth?",
    "value": {
-    "headline": "How worried should software, semiconductor stocks be about AI risks?",
+    "headline": "Can CoreWeave Stock Handle The Cost Of Its Own Growth?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789568100,
-    "url": "https://finance.yahoo.com/video/worried-software-semiconductor-stocks-ai-141500749.html?.tsrc=rss",
+    "ts": 1790002488,
+    "url": "https://www.trefis.com/articles/616006/can-coreweave-stock-handle-the-cost-of-its-own-growth/2026-09-21?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/worried-software-semiconductor-stocks-ai-141500749.html?.tsrc=rss"
+     "https://www.trefis.com/articles/616006/can-coreweave-stock-handle-the-cost-of-its-own-growth/2026-09-21?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-16",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

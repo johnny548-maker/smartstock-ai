@@ -1,49 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 253.64,
- "change_pct": -1.22,
+ "price": 258.03,
+ "change_pct": 1.7,
  "ohlc": [
-  {
-   "time": "2026-06-18",
-   "o": 240.12,
-   "h": 245.73,
-   "l": 236.02,
-   "c": 244.39,
-   "v": 75624400
-  },
-  {
-   "time": "2026-06-22",
-   "o": 240.08,
-   "h": 242.0,
-   "l": 232.24,
-   "c": 232.79,
-   "v": 68388500
-  },
-  {
-   "time": "2026-06-23",
-   "o": 232.55,
-   "h": 236.87,
-   "l": 232.0,
-   "c": 234.11,
-   "v": 60492600
-  },
-  {
-   "time": "2026-06-24",
-   "o": 233.85,
-   "h": 242.42,
-   "l": 232.95,
-   "c": 234.27,
-   "v": 70282600
-  },
-  {
-   "time": "2026-06-25",
-   "o": 232.02,
-   "h": 232.32,
-   "l": 225.55,
-   "c": 227.01,
-   "v": 77674100
-  },
   {
    "time": "2026-06-26",
    "o": 227.21,
@@ -474,35 +434,70 @@
    "h": 257.59,
    "l": 253.14,
    "c": 256.78,
-   "v": 26682800
+   "v": 26724100
   },
   {
    "time": "2026-09-14",
-   "o": 253.38,
-   "h": 255.2,
-   "l": 250.75,
-   "c": 253.64,
-   "v": 15170825
+   "o": 253.15,
+   "h": 255.95,
+   "l": 250.74,
+   "c": 253.54,
+   "v": 34352800
+  },
+  {
+   "time": "2026-09-15",
+   "o": 252.24,
+   "h": 253.27,
+   "l": 247.22,
+   "c": 248.42,
+   "v": 36275400
+  },
+  {
+   "time": "2026-09-16",
+   "o": 248.1,
+   "h": 249.26,
+   "l": 244.3,
+   "c": 245.96,
+   "v": 33488500
+  },
+  {
+   "time": "2026-09-17",
+   "o": 251.07,
+   "h": 252.73,
+   "l": 249.24,
+   "c": 251.19,
+   "v": 30438800
+  },
+  {
+   "time": "2026-09-18",
+   "o": 252.92,
+   "h": 255.43,
+   "l": 251.88,
+   "c": 253.71,
+   "v": 52148900
+  },
+  {
+   "time": "2026-09-21",
+   "o": 256.52,
+   "h": 258.15,
+   "l": 253.6,
+   "c": 258.03,
+   "v": 17302232
   }
  ],
  "sr": {
-  "price": 253.64,
+  "price": 258.03,
   "resistance": [
-   256.18,
-   258.08
+   258.08,
+   258.6
   ],
   "support": [
-   251.93,
-   238.49
+   257.04,
+   256.16
   ],
   "strong_support": 196.0
  },
  "spark": [
-  244.39,
-  232.79,
-  234.11,
-  234.27,
-  227.01,
   232.69,
   240.14,
   238.34,
@@ -557,15 +552,20 @@
   252.4,
   251.89,
   256.78,
-  253.64
+  253.54,
+  248.42,
+  245.96,
+  251.19,
+  253.71,
+  258.03
  ],
- "spark_start": "2026-06-18",
- "spark_end": "2026-09-14",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 20.40547,
-  "pe_forward": 24.379343,
+  "pe_trailing": 20.756235,
+  "pe_forward": 24.8674,
   "eps_trailing": 12.43,
-  "eps_forward": 10.40389,
+  "eps_forward": 10.37503,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon makes a major logistics move after Miami crash",
+   "label": "Amazon Locks Meta's Muse Out of Its Store",
    "value": {
-    "headline": "Amazon makes a major logistics move after Miami crash",
+    "headline": "Amazon Locks Meta's Muse Out of Its Store",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789402193,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-makes-major-logistics-move-160953815.html?.tsrc=rss",
+    "ts": 1790005942,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-locks-metas-muse-store-155222583.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amazon-makes-major-logistics-move-160953815.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-locks-metas-muse-store-155222583.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-14",
+   "severity": "info",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "MercadoLibre's AI Investments Are Set to Drive the Next Growth Chapter",
+   "label": "Meta Jumps Nearly 7% as Amazon Blocks Muse From Shopping on Its Marketplace",
    "value": {
-    "headline": "MercadoLibre's AI Investments Are Set to Drive the Next Growth Chapter",
+    "headline": "Meta Jumps Nearly 7% as Amazon Blocks Muse From Shopping on Its Marketplace",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789399740,
-    "url": "https://finance.yahoo.com/technology/ai/articles/mercadolibres-ai-investments-set-drive-152900583.html?.tsrc=rss",
+    "ts": 1790005731,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/meta-jumps-nearly-7-amazon-154851686.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/mercadolibres-ai-investments-set-drive-152900583.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/meta-jumps-nearly-7-amazon-154851686.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Kroger knows what's wrong with its stores",
+   "label": "Should You Bet on IDCC After Dividend Hike Amid Macro Uncertainty?",
    "value": {
-    "headline": "Kroger knows what's wrong with its stores",
+    "headline": "Should You Bet on IDCC After Dividend Hike Amid Macro Uncertainty?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789398420,
-    "url": "https://www.thestreet.com/retail/kroger-knows-whats-wrong-with-its-stores?.tsrc=rss",
+    "ts": 1790004000,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/bet-idcc-dividend-hike-amid-152000169.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/retail/kroger-knows-whats-wrong-with-its-stores?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/bet-idcc-dividend-hike-amid-152000169.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
+   "label": "Amazon Rallies While Drawing Its Own AI Safety Line",
    "value": {
-    "headline": "What Anthropic's AI Slowdown Call Could Mean For Cloud Giants Amazon, Microsoft, Google",
+    "headline": "Amazon Rallies While Drawing Its Own AI Safety Line",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789396884,
-    "url": "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss",
+    "ts": 1790003916,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-rallies-while-drawing-own-151836652.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ddd9c8cc-f7e8-379c-8f95-d7163be9b782/what-anthropic%27s-ai-slowdown.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-rallies-while-drawing-own-151836652.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech pulls back on AI concerns, cybersecurity takes a step up",
+   "label": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
    "value": {
-    "headline": "Tech pulls back on AI concerns, cybersecurity takes a step up",
+    "headline": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789396740,
-    "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html?.tsrc=rss",
+    "ts": 1790003628,
+    "url": "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html?.tsrc=rss"
+     "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 12 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 12,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-14",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

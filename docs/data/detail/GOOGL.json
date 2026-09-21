@@ -1,25 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet Inc. - Class A Common Stock",
- "price": 345.44,
- "change_pct": 0.75,
+ "name": "Alphabet",
+ "price": 356.2,
+ "change_pct": 1.91,
  "ohlc": [
-  {
-   "time": "2026-06-24",
-   "o": 348.82,
-   "h": 353.25,
-   "l": 341.71,
-   "c": 345.07,
-   "v": 44997300
-  },
-  {
-   "time": "2026-06-25",
-   "o": 336.51,
-   "h": 345.35,
-   "l": 335.62,
-   "c": 343.49,
-   "v": 44491400
-  },
   {
    "time": "2026-06-26",
    "o": 342.33,
@@ -474,32 +458,46 @@
    "h": 348.4,
    "l": 340.64,
    "c": 342.87,
-   "v": 18860000
+   "v": 18928900
   },
   {
    "time": "2026-09-17",
-   "o": 348.67,
+   "o": 348.68,
    "h": 349.5,
    "l": 343.89,
-   "c": 345.44,
-   "v": 5431232
+   "c": 347.33,
+   "v": 19238400
+  },
+  {
+   "time": "2026-09-18",
+   "o": 357.31,
+   "h": 359.44,
+   "l": 348.45,
+   "c": 349.54,
+   "v": 47526100
+  },
+  {
+   "time": "2026-09-21",
+   "o": 350.67,
+   "h": 357.58,
+   "l": 349.1,
+   "c": 356.2,
+   "v": 12770442
   }
  ],
  "sr": {
-  "price": 345.44,
+  "price": 356.2,
   "resistance": [
-   349.91,
-   351.37
+   372.92,
+   375.03
   ],
   "support": [
-   341.14,
-   340.66
+   350.85,
+   346.14
   ],
-  "strong_support": 314.7
+  "strong_support": 235.23
  },
  "spark": [
-  345.07,
-  343.49,
   337.17,
   353.42,
   357.14,
@@ -557,11 +555,167 @@
   349.39,
   344.98,
   342.87,
-  345.44
+  347.33,
+  349.54,
+  356.2
  ],
- "spark_start": "2026-06-24",
- "spark_end": "2026-09-17",
- "fundamental": null,
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
+ "fundamental": {
+  "pe_trailing": 17.881023,
+  "pe_forward": 23.934492,
+  "eps_trailing": 19.92,
+  "eps_forward": 14.88187,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Target Uses AI Personalization to Deepen Digital Guest Engagement",
+   "value": {
+    "headline": "Target Uses AI Personalization to Deepen Digital Guest Engagement",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790007420,
+    "url": "https://finance.yahoo.com/technology/ai/articles/target-uses-ai-personalization-deepen-161700548.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/target-uses-ai-personalization-deepen-161700548.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Apple and Google Go Hunting for Crypto Talent, Hint at Stablecoin Push",
+   "value": {
+    "headline": "Apple and Google Go Hunting for Crypto Talent, Hint at Stablecoin Push",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790007363,
+    "url": "https://decrypt.co/378811/apple-google-crypto-talent-stablecoin?.tsrc=rss",
+    "urls": [
+     "https://decrypt.co/378811/apple-google-crypto-talent-stablecoin?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
+   "value": {
+    "headline": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790006983,
+    "url": "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SMARTIESTM Vietnam Announces 2026 Shortlist, Celebrating 187 Standout Entries",
+   "value": {
+    "headline": "SMARTIESTM Vietnam Announces 2026 Shortlist, Celebrating 187 Standout Entries",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790006220,
+    "url": "https://finance.yahoo.com/media-advertising/articles/smarties-vietnam-announces-2026-shortlist-155700599.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/media-advertising/articles/smarties-vietnam-announces-2026-shortlist-155700599.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is SpaceX Stock Worth Buying Ahead of Its 14th Starship Test?",
+   "value": {
+    "headline": "Is SpaceX Stock Worth Buying Ahead of Its 14th Starship Test?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790003760,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-worth-buying-ahead-151600344.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-worth-buying-ahead-151600344.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 62 分 / 14 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 62,
+    "comments": 14,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 205,717 股交割失敗）",
+   "value": {
+    "total_shares": 205717,
+    "days": 8,
+    "max_shares": 107800,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-09-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

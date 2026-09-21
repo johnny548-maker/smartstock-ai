@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 219.26,
- "change_pct": 2.51,
+ "price": 226.37,
+ "change_pct": 1.84,
  "ohlc": [
-  {
-   "time": "2026-06-24",
-   "o": 199.9,
-   "h": 201.44,
-   "l": 196.36,
-   "c": 198.78,
-   "v": 151810700
-  },
-  {
-   "time": "2026-06-25",
-   "o": 199.86,
-   "h": 200.58,
-   "l": 191.92,
-   "c": 195.52,
-   "v": 149550000
-  },
   {
    "time": "2026-06-26",
    "o": 192.9,
@@ -474,19 +458,35 @@
    "h": 216.76,
    "l": 212.5,
    "c": 213.9,
-   "v": 96079300
+   "v": 96563600
   },
   {
    "time": "2026-09-17",
-   "o": 218.39,
-   "h": 219.87,
+   "o": 218.38,
+   "h": 219.91,
    "l": 217.15,
-   "c": 219.26,
-   "v": 34482664
+   "c": 219.34,
+   "v": 94191300
+  },
+  {
+   "time": "2026-09-18",
+   "o": 219.35,
+   "h": 222.73,
+   "l": 218.03,
+   "c": 222.27,
+   "v": 189683500
+  },
+  {
+   "time": "2026-09-21",
+   "o": 222.93,
+   "h": 226.39,
+   "l": 221.56,
+   "c": 226.37,
+   "v": 49554682
   }
  ],
  "sr": {
-  "price": 219.26,
+  "price": 226.37,
   "resistance": [
    227.67,
    230.21
@@ -498,8 +498,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  198.78,
-  195.52,
   192.31,
   194.75,
   199.87,
@@ -557,15 +555,17 @@
   210.96,
   212.17,
   213.9,
-  219.26
+  219.34,
+  222.27,
+  226.37
  ],
- "spark_start": "2026-06-24",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 27.721872,
-  "pe_forward": 14.043006,
+  "pe_trailing": 28.616308,
+  "pe_forward": 14.433485,
   "eps_trailing": 7.91,
-  "eps_forward": 15.61489,
+  "eps_forward": 15.68263,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "JEPI and JEPQ Yield Way More Than SCHD, but SCHD Could Produce More Passive Income Over the Long Term. Here's Why.",
+   "label": "What Sort of Retirement Can a $2 Million IRA Buy You?",
    "value": {
-    "headline": "JEPI and JEPQ Yield Way More Than SCHD, but SCHD Could Produce More Passive Income Over the Long Term. Here's Why.",
+    "headline": "What Sort of Retirement Can a $2 Million IRA Buy You?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789657500,
-    "url": "https://www.fool.com/investing/2026/09/17/jepi-jepq-covered-call-etf-schd-dividend-stock/?.tsrc=rss",
+    "ts": 1790007840,
+    "url": "https://www.fool.com/retirement/2026/09/21/what-sort-of-retirement-can-a-2-million-ira-buy-yo/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/17/jepi-jepq-covered-call-etf-schd-dividend-stock/?.tsrc=rss"
+     "https://www.fool.com/retirement/2026/09/21/what-sort-of-retirement-can-a-2-million-ira-buy-yo/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: This AI Infrastructure Stock Will Go Parabolic After Sept. 30 (Hint: It’s Not Micron)",
+   "label": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
    "value": {
-    "headline": "Prediction: This AI Infrastructure Stock Will Go Parabolic After Sept. 30 (Hint: It’s Not Micron)",
+    "headline": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789657381,
-    "url": "https://www.fool.com/investing/2026/09/17/prediction-this-ai-infrastructure-stock-will-go-parabolic-after-sept-30-hint-it-s-not-micron/?.tsrc=rss",
+    "ts": 1790007387,
+    "url": "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/17/prediction-this-ai-infrastructure-stock-will-go-parabolic-after-sept-30-hint-it-s-not-micron/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Steve Eisman Calls AI 'Terminator' Fears 'Garbage': If You're Scared, 'Postpone Your IPO'",
+   "label": "Nebius Stock Is Down Over 20% From Its High. Is Now the Time to Buy?",
    "value": {
-    "headline": "Steve Eisman Calls AI 'Terminator' Fears 'Garbage': If You're Scared, 'Postpone Your IPO'",
+    "headline": "Nebius Stock Is Down Over 20% From Its High. Is Now the Time to Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789657079,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61846721/steve-eisman-ai-fears-anthropic-ipo-nvidia?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1790007373,
+    "url": "https://www.fool.com/investing/2026/09/21/nebius-stock-is-down-over-20-from-its-high-is-now-the-time-to-buy/?.tsrc=rss",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/09/61846721/steve-eisman-ai-fears-anthropic-ipo-nvidia?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/21/nebius-stock-is-down-over-20-from-its-high-is-now-the-time-to-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "NASA's New Moon Base Contract Could Be an Out-of-This-World Opportunity for This Under-the-Radar Nuclear Power Stock",
+   "label": "Why Novo Nordisk Stock Just Crashed",
    "value": {
-    "headline": "NASA's New Moon Base Contract Could Be an Out-of-This-World Opportunity for This Under-the-Radar Nuclear Power Stock",
+    "headline": "Why Novo Nordisk Stock Just Crashed",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789656600,
-    "url": "https://www.fool.com/investing/2026/09/17/nasas-new-moon-base-contract-could-be-an-out-of/?.tsrc=rss",
+    "ts": 1790007269,
+    "url": "https://www.fool.com/investing/2026/09/21/why-novo-nordisk-stock-just-crashed/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/17/nasas-new-moon-base-contract-could-be-an-out-of/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/21/why-novo-nordisk-stock-just-crashed/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-17",
+   "severity": "warn",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
+   "label": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
    "value": {
-    "headline": "CoreWeave is in the News Because of Nvidia Again: Do You Buy It?",
+    "headline": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789656332,
-    "url": "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss",
+    "ts": 1790006983,
+    "url": "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/17/coreweave-is-in-the-news-because-of-nvidia-again-do-you-buy-it/?.tsrc=rss"
+     "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 2 篇 / 348 分 / 76 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 348,
-    "comments": 76,
-    "n": 2,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-09-17",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

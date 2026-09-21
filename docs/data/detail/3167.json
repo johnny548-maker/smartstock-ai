@@ -482,7 +482,7 @@
    "h": 855.0,
    "l": 810.0,
    "c": 834.0,
-   "v": 7029494
+   "v": 6938399
   }
  ],
  "sr": {
@@ -575,48 +575,13 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 89,
+    "short_today": 128,
     "outstanding": 89513491,
-    "short_pct": 9.942635350910401e-05
+    "short_pct": 0.00014299520504680127
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "台股大漲強勢站上47180點!台積漲35元 友達成交爆大量居冠",
-   "value": {
-    "headline": "台股大漲強勢站上47180點!台積漲35元 友達成交爆大量居冠",
-    "sources": [
-     "yahoo_tw"
-    ],
-    "source_count": 1,
-    "ts": 1789739559,
-    "url": "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E5%A4%A7%E6%BC%B2%E5%BC%B7%E5%8B%A2%E7%AB%99%E4%B8%8A47180%E9%BB%9E-%E5%8F%B0%E7%A9%8D%E6%BC%B235%E5%85%83-%E5%8F%8B%E9%81%94%E6%88%90%E4%BA%A4%E7%88%86%E5%A4%A7%E9%87%8F%E5%B1%85%E5%86%A0-135239623.html",
-    "urls": [
-     "https://tw.news.yahoo.com/%E5%8F%B0%E8%82%A1%E5%A4%A7%E6%BC%B2%E5%BC%B7%E5%8B%A2%E7%AB%99%E4%B8%8A47180%E9%BB%9E-%E5%8F%B0%E7%A9%8D%E6%BC%B235%E5%85%83-%E5%8F%8B%E9%81%94%E6%88%90%E4%BA%A4%E7%88%86%E5%A4%A7%E9%87%8F%E5%B1%85%E5%86%A0-135239623.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-18",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_tw"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-18",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -912,6 +877,10 @@
    {
     "t": "2026-09-18",
     "v": -3204
+   },
+   {
+    "t": "2026-09-21",
+    "v": -3792
    }
   ],
   "holder_pct": [
@@ -974,6 +943,10 @@
    {
     "t": "2026-09-11",
     "v": 56.91
+   },
+   {
+    "t": "2026-09-18",
+    "v": 55.54
    }
   ],
   "rev_yoy": [

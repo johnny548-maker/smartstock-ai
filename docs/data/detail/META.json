@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 674.49,
- "change_pct": -1.15,
+ "price": 729.57,
+ "change_pct": 9.59,
  "ohlc": [
-  {
-   "time": "2026-06-25",
-   "o": 555.55,
-   "h": 556.34,
-   "l": 540.18,
-   "c": 542.87,
-   "v": 16968600
-  },
   {
    "time": "2026-06-26",
    "o": 543.34,
@@ -474,31 +466,38 @@
    "h": 683.2,
    "l": 667.05,
    "c": 682.31,
-   "v": 15888400
+   "v": 15928000
   },
   {
    "time": "2026-09-18",
-   "o": 686.82,
+   "o": 688.62,
    "h": 690.15,
-   "l": 668.49,
-   "c": 674.49,
-   "v": 7286766
+   "l": 660.8,
+   "c": 665.75,
+   "v": 27548000
+  },
+  {
+   "time": "2026-09-21",
+   "o": 680.38,
+   "h": 729.66,
+   "l": 679.6,
+   "c": 729.57,
+   "v": 22205829
   }
  ],
  "sr": {
-  "price": 674.49,
+  "price": 729.57,
   "resistance": [
-   674.95,
-   681.87
+   733.36,
+   742.68
   ],
   "support": [
-   652.45,
-   645.35
+   697.52,
+   688.72
   ],
   "strong_support": 519.78
  },
  "spark": [
-  542.87,
   550.25,
   562.6,
   563.29,
@@ -557,149 +556,170 @@
   670.24,
   673.31,
   682.31,
-  674.49
+  665.75,
+  729.57
  ],
- "spark_start": "2026-06-25",
- "spark_end": "2026-09-18",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 25.347906,
-  "pe_forward": 19.235886,
-  "eps_trailing": 26.53,
+  "pe_trailing": 27.464985,
+  "pe_forward": 20.866049,
+  "eps_trailing": 26.56,
   "eps_forward": 34.95966,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 729.57,
+  "stop": 678.5,
+  "target": 857.24,
+  "atr_bracket": 857.24,
+  "measured_move": null,
+  "target_band": [
+   857.24
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.5,
+  "swing_stop": 548.4,
+  "chandelier": 663.17,
+  "fib_targets": [
+   627.42,
+   646.82,
+   668.24
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
+   "label": "Union targets big tech after Labour’s workers’ rights overhaul",
    "value": {
-    "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
+    "headline": "Union targets big tech after Labour’s workers’ rights overhaul",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789740802,
-    "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html?.tsrc=rss",
+    "ts": 1790008062,
+    "url": "https://uk.finance.yahoo.com/news/union-targets-big-tech-labour-162742753.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html?.tsrc=rss"
+     "https://uk.finance.yahoo.com/news/union-targets-big-tech-labour-162742753.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Rises 3%, Meta and Microsoft Slip: Is This a Momentum Run Rather Than a Tech Rally?",
+   "label": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
    "value": {
-    "headline": "Alphabet Rises 3%, Meta and Microsoft Slip: Is This a Momentum Run Rather Than a Tech Rally?",
+    "headline": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789739660,
-    "url": "https://247wallst.com/investing/2026/09/18/alphabet-rises-3-meta-and-microsoft-slip-is-this-a-momentum-run-rather-than-a-tech-rally/?.tsrc=rss",
+    "ts": 1790007387,
+    "url": "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/18/alphabet-rises-3-meta-and-microsoft-slip-is-this-a-momentum-run-rather-than-a-tech-rally/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
+   "label": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
    "value": {
-    "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
+    "headline": "Stock Market Today: Dow Up As Boeing, Nvidia Pop; Bessent Touts This China AI Move (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789739302,
-    "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html?.tsrc=rss",
+    "ts": 1790006983,
+    "url": "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-18",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Update: Market Chatter: Meta Platforms' Smart Glasses Face France Probe Over Nonconsensual Filming",
-   "value": {
-    "headline": "Update: Market Chatter: Meta Platforms' Smart Glasses Face France Probe Over Nonconsensual Filming",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789738684,
-    "url": "https://finance.yahoo.com/technology/ai/articles/market-chatter-meta-platforms-apos-133804982.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/market-chatter-meta-platforms-apos-133804982.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-18",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dan Ives Says AI Leaders Can't 'Stop The Elevator' With Meta In The 'Ferrari Left Lane' As AI Race Accelerates",
-   "value": {
-    "headline": "Dan Ives Says AI Leaders Can't 'Stop The Elevator' With Meta In The 'Ferrari Left Lane' As AI Race Accelerates",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789738178,
-    "url": "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-ai-leaders-cant-stop-the-elevator-with-meta-in-the-ferrari-left-lane/cZtuDjwRB3r?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/dan-ives-says-ai-leaders-cant-stop-the-elevator-with-meta-in-the-ferrari-left-lane/cZtuDjwRB3r?.tsrc=rss"
+     "https://finance.yahoo.com/m/b7ca9b65-19fd-32e7-bad5-f53a1ee49def/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can Pinterest's Latest Visual Search Ads Boost Its Market Position?",
+   "value": {
+    "headline": "Can Pinterest's Latest Visual Search Ads Boost Its Market Position?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790006280,
+    "url": "https://finance.yahoo.com/media-advertising/articles/pinterests-latest-visual-search-ads-155800014.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/media-advertising/articles/pinterests-latest-visual-search-ads-155800014.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
+   "value": {
+    "headline": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790006202,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 123 分 / 27 留言",
+   "label": "HN 討論熱度 20 篇 / 156 分 / 103 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 123,
-    "comments": 27,
+    "points": 156,
+    "comments": 103,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +734,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-18",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

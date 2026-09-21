@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 332.71,
- "change_pct": 0.09,
+ "price": 338.8,
+ "change_pct": 0.79,
  "ohlc": [
-  {
-   "time": "2026-06-24",
-   "o": 295.11,
-   "h": 299.44,
-   "l": 292.69,
-   "c": 292.83,
-   "v": 53081900
-  },
-  {
-   "time": "2026-06-25",
-   "o": 287.15,
-   "h": 288.55,
-   "l": 273.51,
-   "c": 274.91,
-   "v": 107013700
-  },
   {
    "time": "2026-06-26",
    "o": 274.76,
@@ -474,22 +458,37 @@
    "h": 335.48,
    "l": 330.7,
    "c": 332.41,
-   "v": 35920400
+   "v": 35981000
   },
   {
    "time": "2026-09-17",
-   "o": 334.76,
-   "h": 335.58,
-   "l": 330.19,
-   "c": 332.71,
-   "v": 9522434
+   "o": 334.77,
+   "h": 338.34,
+   "l": 330.18,
+   "c": 337.0,
+   "v": 36700200
+  },
+  {
+   "time": "2026-09-18",
+   "o": 337.91,
+   "h": 338.49,
+   "l": 332.53,
+   "c": 336.13,
+   "v": 86433100
+  },
+  {
+   "time": "2026-09-21",
+   "o": 335.2,
+   "h": 339.0,
+   "l": 333.05,
+   "c": 338.8,
+   "v": 14977344
   }
  ],
  "sr": {
-  "price": 332.71,
+  "price": 338.8,
   "resistance": [
-   334.7,
-   336.22
+   344.27
   ],
   "support": [
    319.07,
@@ -498,8 +497,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  292.83,
-  274.91,
   283.54,
   281.5,
   289.11,
@@ -557,135 +554,169 @@
   333.08,
   331.34,
   332.41,
-  332.71
+  337.0,
+  336.13,
+  338.8
  ],
- "spark_start": "2026-06-24",
- "spark_end": "2026-09-17",
+ "spark_start": "2026-06-26",
+ "spark_end": "2026-09-21",
  "fundamental": {
-  "pe_trailing": 38.20092,
-  "pe_forward": 34.700584,
+  "pe_trailing": 38.896095,
+  "pe_forward": 35.33206,
   "eps_trailing": 8.71,
   "eps_forward": 9.5886,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 338.8,
+  "stop": 323.75,
+  "target": 376.41,
+  "atr_bracket": 376.41,
+  "measured_move": 362.54,
+  "target_band": [
+   362.54,
+   376.41
+  ],
+  "stop_pct": -4.4,
+  "target_pct": 11.1,
+  "rr": 2.5,
+  "atr_pct": 2.2,
+  "swing_stop": 307.64,
+  "chandelier": 317.38,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI Fires Back at Apple (AAPL)",
+   "label": "Apple and Google Go Hunting for Crypto Talent, Hint at Stablecoin Push",
    "value": {
-    "headline": "OpenAI Fires Back at Apple (AAPL)",
+    "headline": "Apple and Google Go Hunting for Crypto Talent, Hint at Stablecoin Push",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789655346,
-    "url": "https://finance.yahoo.com/technology/ai/articles/openai-fires-back-apple-aapl-142906076.html?.tsrc=rss",
+    "ts": 1790007363,
+    "url": "https://decrypt.co/378811/apple-google-crypto-talent-stablecoin?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/openai-fires-back-apple-aapl-142906076.html?.tsrc=rss"
+     "https://decrypt.co/378811/apple-google-crypto-talent-stablecoin?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple iPhone Demand Should Hold Up On Higher Carrier Incentives, BofA Says",
+   "label": "Why AMD Stock Is Rising Fast Today",
    "value": {
-    "headline": "Apple iPhone Demand Should Hold Up On Higher Carrier Incentives, BofA Says",
+    "headline": "Why AMD Stock Is Rising Fast Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789650726,
-    "url": "https://stocktwits.com/news-articles/markets/equity/apple-iphone-demand-should-hold-up-on-higher-carrier-incentives-bofa-says/cZtroUxRBdG?.tsrc=rss",
+    "ts": 1790004180,
+    "url": "https://www.fool.com/investing/2026/09/21/why-amd-stock-is-rising-fast-today/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/apple-iphone-demand-should-hold-up-on-higher-carrier-incentives-bofa-says/cZtroUxRBdG?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/21/why-amd-stock-is-rising-fast-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top strategist thinks the Federal Reserve interest rate hike won't fix this huge earnings risk",
+   "label": "UUUU vs. MP: Which Rare Earth Stock is a Better Pick Now?",
    "value": {
-    "headline": "Top strategist thinks the Federal Reserve interest rate hike won't fix this huge earnings risk",
+    "headline": "UUUU vs. MP: Which Rare Earth Stock is a Better Pick Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789647379,
-    "url": "https://finance.yahoo.com/markets/article/top-strategist-thinks-the-federal-reserve-interest-rate-hike-wont-fix-this-huge-earnings-risk-121619669.html?.tsrc=rss",
+    "ts": 1790003640,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/uuuu-vs-mp-rare-earth-151400381.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/top-strategist-thinks-the-federal-reserve-interest-rate-hike-wont-fix-this-huge-earnings-risk-121619669.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/uuuu-vs-mp-rare-earth-151400381.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Same Stock but in 2 Different IRAs: By Retirement, the Tax Bill Is the Only Thing That Changes",
+   "label": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
    "value": {
-    "headline": "The Same Stock but in 2 Different IRAs: By Retirement, the Tax Bill Is the Only Thing That Changes",
+    "headline": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789646441,
-    "url": "https://247wallst.com/personal-finance/2026/09/17/the-same-stock-but-in-2-different-iras-by-retirement-the-tax-bill-is-the-only-thing-that-changes/?.tsrc=rss",
+    "ts": 1790003628,
+    "url": "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/personal-finance/2026/09/17/the-same-stock-but-in-2-different-iras-by-retirement-the-tax-bill-is-the-only-thing-that-changes/?.tsrc=rss"
+     "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Touts Big Emmy Wins: Will Marketing Do A Big Job?",
+   "label": "Hugging Face Proves These Two AI Hyperscalers Were Best Protected Against AI Threats",
    "value": {
-    "headline": "Apple Touts Big Emmy Wins: Will Marketing Do A Big Job?",
+    "headline": "Hugging Face Proves These Two AI Hyperscalers Were Best Protected Against AI Threats",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1789646400,
-    "url": "https://www.mediapost.com/publications/article/418051/apple-touts-big-emmy-wins-will-marketing-do-a-big.html?.tsrc=rss",
+    "ts": 1790003490,
+    "url": "https://247wallst.com/investing/2026/09/21/hugging-face-proves-these-two-ai-hyperscalers-were-best-protected-against-ai-threats/?.tsrc=rss",
     "urls": [
-     "https://www.mediapost.com/publications/article/418051/apple-touts-big-emmy-wins-will-marketing-do-a-big.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/21/hugging-face-proves-these-two-ai-hyperscalers-were-best-protected-against-ai-threats/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 168 分 / 55 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 168,
+    "comments": 55,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-21",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +730,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-17",
+   "as_of": "2026-09-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
