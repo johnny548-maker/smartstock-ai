@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 611.8,
- "change_pct": 9.29,
+ "price": 615.94,
+ "change_pct": 0.07,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 519.8,
-   "h": 525.11,
-   "l": 502.61,
-   "c": 521.58,
-   "v": 52705100
-  },
   {
    "time": "2026-06-29",
    "o": 522.84,
@@ -474,19 +466,27 @@
    "h": 559.91,
    "l": 541.53,
    "c": 559.82,
-   "v": 31785700
+   "v": 31867300
   },
   {
    "time": "2026-09-21",
-   "o": 583.94,
-   "h": 615.99,
+   "o": 583.88,
+   "h": 616.69,
    "l": 582.27,
-   "c": 611.8,
-   "v": 26218293
+   "c": 615.52,
+   "v": 44270000
+  },
+  {
+   "time": "2026-09-22",
+   "o": 607.1,
+   "h": 622.0,
+   "l": 606.31,
+   "c": 615.94,
+   "v": 10991908
   }
  ],
  "sr": {
-  "price": 611.8,
+  "price": 615.94,
   "resistance": [],
   "support": [
    498.15,
@@ -495,7 +495,6 @@
   "strong_support": 154.78
  },
  "spark": [
-  521.58,
   539.49,
   580.91,
   540.88,
@@ -554,156 +553,136 @@
   512.5,
   545.09,
   559.82,
-  611.8
+  615.52,
+  615.94
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-21",
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-22",
  "fundamental": {
   "pe_trailing": 156.07909,
   "pe_forward": 39.2937,
   "eps_trailing": 3.92,
   "eps_forward": 15.57069,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 611.8,
-  "stop": 568.98,
-  "target": 718.87,
-  "atr_bracket": 718.87,
-  "measured_move": 613.08,
-  "target_band": [
-   613.08,
-   619.95,
-   718.87
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.2,
-  "swing_stop": 472.69,
-  "chandelier": 549.22,
-  "fib_targets": [
-   590.09,
-   619.95,
-   652.91
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Leader AMD Breaks Out Past New Buy Point With This Bullish Signal",
+   "label": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
    "value": {
-    "headline": "AI Leader AMD Breaks Out Past New Buy Point With This Bullish Signal",
+    "headline": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790008006,
-    "url": "https://finance.yahoo.com/m/dfc5af30-4a2d-3c4f-b662-605a3b800743/ai-leader-amd-breaks-out-past.html?.tsrc=rss",
+    "ts": 1790087521,
+    "url": "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/dfc5af30-4a2d-3c4f-b662-605a3b800743/ai-leader-amd-breaks-out-past.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
+   "label": "Nvidia Price Prediction: Wall Street and Our Model Finally Agree",
    "value": {
-    "headline": "AMD stock soars to new record as semiconductors bounce: Chart of the Day",
+    "headline": "Nvidia Price Prediction: Wall Street and Our Model Finally Agree",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790007387,
-    "url": "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss",
+    "ts": 1790087444,
+    "url": "https://247wallst.com/investing/2026/09/22/nvidia-price-prediction-wall-street-and-our-model-finally-agree/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/amd-stock-soars-to-new-record-as-semiconductors-bounce-chart-of-the-day-161627271.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/22/nvidia-price-prediction-wall-street-and-our-model-finally-agree/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "From $24 to $109: Intel’s Comeback Is Real. The Price Tag Is Now the Problem",
+   "label": "Stock Market Today: Dow Slips, Oil Stocks Fall On U.S.-Iran Hopes; Homebuilders, Retailers Shine (Live Coverage)",
    "value": {
-    "headline": "From $24 to $109: Intel’s Comeback Is Real. The Price Tag Is Now the Problem",
+    "headline": "Stock Market Today: Dow Slips, Oil Stocks Fall On U.S.-Iran Hopes; Homebuilders, Retailers Shine (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790006746,
-    "url": "https://247wallst.com/investing/2026/09/21/from-24-to-109-intels-comeback-is-real-the-price-tag-is-now-the-problem/?.tsrc=rss",
+    "ts": 1790086769,
+    "url": "https://finance.yahoo.com/m/0143595d-3423-3fca-8750-9ab0a98fa022/stock-market-today%3A-dow.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/21/from-24-to-109-intels-comeback-is-real-the-price-tag-is-now-the-problem/?.tsrc=rss"
+     "https://finance.yahoo.com/m/0143595d-3423-3fca-8750-9ab0a98fa022/stock-market-today%3A-dow.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
+   "label": "AMD’s path to $1T market cap: A timeline of CEO Lisa Su’s big wins",
    "value": {
-    "headline": "Meta AI agent ‘Muse’ triggers massive tech rally as chips and Wall Street soar",
+    "headline": "AMD’s path to $1T market cap: A timeline of CEO Lisa Su’s big wins",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790006202,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss",
+    "ts": 1790086561,
+    "url": "https://finance.yahoo.com/video/amd-path-1t-market-cap-141601813.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-ai-agent-muse-triggers-155642786.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/amd-path-1t-market-cap-141601813.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Direxion Daily Semiconductor Bull 3X ETF Just Popped",
+   "label": "Why Gabelli Global Growth Fund Added Advanced Micro Devices (AMD) in Q2",
    "value": {
-    "headline": "Why Direxion Daily Semiconductor Bull 3X ETF Just Popped",
+    "headline": "Why Gabelli Global Growth Fund Added Advanced Micro Devices (AMD) in Q2",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790006102,
-    "url": "https://www.fool.com/investing/2026/09/21/why-direxion-daily-semiconductor-bull-3x-etf-just/?.tsrc=rss",
+    "ts": 1790086247,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-global-growth-fund-141047976.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/21/why-direxion-daily-semiconductor-bull-3x-etf-just/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-global-growth-fund-141047976.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -718,7 +697,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
