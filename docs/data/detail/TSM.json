@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
- "name": "台積電 ADR",
- "price": 442.3,
- "change_pct": 1.76,
+ "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
+ "price": 449.44,
+ "change_pct": 0.97,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 423.86,
-   "h": 434.96,
-   "l": 418.07,
-   "c": 431.19,
-   "v": 17974100
-  },
   {
    "time": "2026-06-29",
    "o": 435.83,
@@ -474,31 +466,37 @@
    "h": 434.82,
    "l": 428.98,
    "c": 434.67,
-   "v": 12884300
+   "v": 12905100
   },
   {
    "time": "2026-09-21",
    "o": 440.8,
-   "h": 442.3,
-   "l": 437.07,
-   "c": 442.3,
-   "v": 4428582
+   "h": 445.72,
+   "l": 437.06,
+   "c": 445.14,
+   "v": 9943100
+  },
+  {
+   "time": "2026-09-23",
+   "o": 449.79,
+   "h": 450.87,
+   "l": 442.88,
+   "c": 449.44,
+   "v": 4477395
   }
  ],
  "sr": {
-  "price": 442.3,
+  "price": 449.44,
   "resistance": [
-   443.1,
-   447.91
+   477.72
   ],
   "support": [
    418.07,
    411.45
   ],
-  "strong_support": 264.03
+  "strong_support": 371.72
  },
  "spark": [
-  431.19,
   453.88,
   476.29,
   443.04,
@@ -557,165 +555,12 @@
   417.72,
   430.26,
   434.67,
-  442.3
+  445.14,
+  449.44
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-21",
- "fundamental": {
-  "pe_trailing": 33.03137,
-  "pe_forward": 20.17277,
-  "eps_trailing": 13.39,
-  "eps_forward": 21.9251,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-23",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "ASML Holding (ENXTAM:ASML) Alliances Put Valuation Back In Focus",
-   "value": {
-    "headline": "ASML Holding (ENXTAM:ASML) Alliances Put Valuation Back In Focus",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790007193,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-alliances-161313232.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/asml-holding-enxtam-asml-alliances-161313232.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "TSMC Gains as 88.7 Hectares Target Packaging Friction",
-   "value": {
-    "headline": "TSMC Gains as 88.7 Hectares Target Packaging Friction",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790005436,
-    "url": "https://finance.yahoo.com/technology/articles/tsmc-gains-88-7-hectares-154356702.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/tsmc-gains-88-7-hectares-154356702.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AMD Set to Top $1 Trillion in Market Value as Chip Stocks Soar",
-   "value": {
-    "headline": "AMD Set to Top $1 Trillion in Market Value as Chip Stocks Soar",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790005004,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-set-top-1-trillion-153644877.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amd-set-top-1-trillion-153644877.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "AMD Rises 5% as Report Flags 10% Chip Price Increase; NVIDIA and Taiwan Semiconductor Tick Up",
-   "value": {
-    "headline": "AMD Rises 5% as Report Flags 10% Chip Price Increase; NVIDIA and Taiwan Semiconductor Tick Up",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789997873,
-    "url": "https://247wallst.com/investing/2026/09/21/amd-rises-5-as-report-flags-10-chip-price-increase-nvidia-and-taiwan-semiconductor-tick-up/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/21/amd-rises-5-as-report-flags-10-chip-price-increase-nvidia-and-taiwan-semiconductor-tick-up/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Amkor's AI and HPC Packaging Demand Grows: Can Growth Continue?",
-   "value": {
-    "headline": "Amkor's AI and HPC Packaging Demand Grows: Can Growth Continue?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1789996020,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amkors-ai-hpc-packaging-demand-130700257.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amkors-ai-hpc-packaging-demand-130700257.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 63 分 / 14 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 63,
-    "comments": 14,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-21",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 29731,
-    "days": 6,
-    "max_shares": 15565,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-09-21",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

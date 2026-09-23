@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 258.03,
- "change_pct": 1.7,
+ "price": 250.51,
+ "change_pct": -3.07,
  "ohlc": [
-  {
-   "time": "2026-06-26",
-   "o": 227.21,
-   "h": 233.9,
-   "l": 226.13,
-   "c": 232.69,
-   "v": 248372100
-  },
   {
    "time": "2026-06-29",
    "o": 234.22,
@@ -474,31 +466,38 @@
    "h": 255.43,
    "l": 251.88,
    "c": 253.71,
-   "v": 52148900
+   "v": 52274700
   },
   {
    "time": "2026-09-21",
-   "o": 256.52,
-   "h": 258.15,
+   "o": 256.4,
+   "h": 259.49,
    "l": 253.6,
-   "c": 258.03,
-   "v": 17302232
+   "c": 258.45,
+   "v": 42979400
+  },
+  {
+   "time": "2026-09-23",
+   "o": 253.33,
+   "h": 253.81,
+   "l": 248.19,
+   "c": 250.51,
+   "v": 14277024
   }
  ],
  "sr": {
-  "price": 258.03,
+  "price": 250.51,
   "resistance": [
-   258.08,
-   258.6
+   251.75,
+   256.18
   ],
   "support": [
-   257.04,
-   256.16
+   244.3,
+   238.49
   ],
   "strong_support": 196.0
  },
  "spark": [
-  232.69,
   240.14,
   238.34,
   241.7,
@@ -557,15 +556,16 @@
   245.96,
   251.19,
   253.71,
-  258.03
+  258.45,
+  250.51
  ],
- "spark_start": "2026-06-26",
- "spark_end": "2026-09-21",
+ "spark_start": "2026-06-29",
+ "spark_end": "2026-09-23",
  "fundamental": {
-  "pe_trailing": 20.756235,
-  "pe_forward": 24.8674,
-  "eps_trailing": 12.43,
-  "eps_forward": 10.37503,
+  "pe_trailing": 20.169083,
+  "pe_forward": 24.113295,
+  "eps_trailing": 12.42,
+  "eps_forward": 10.38846,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Locks Meta's Muse Out of Its Store",
+   "label": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
    "value": {
-    "headline": "Amazon Locks Meta's Muse Out of Its Store",
+    "headline": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790005942,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-locks-metas-muse-store-155222583.html?.tsrc=rss",
+    "ts": 1790174460,
+    "url": "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-locks-metas-muse-store-155222583.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Jumps Nearly 7% as Amazon Blocks Muse From Shopping on Its Marketplace",
+   "label": "What Microsoft's Trailing Multiple Leaves Out",
    "value": {
-    "headline": "Meta Jumps Nearly 7% as Amazon Blocks Muse From Shopping on Its Marketplace",
+    "headline": "What Microsoft's Trailing Multiple Leaves Out",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790005731,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/meta-jumps-nearly-7-amazon-154851686.html?.tsrc=rss",
+    "ts": 1790174239,
+    "url": "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/meta-jumps-nearly-7-amazon-154851686.html?.tsrc=rss"
+     "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Bet on IDCC After Dividend Hike Amid Macro Uncertainty?",
+   "label": "ReFiBuy Announces General Availability of Support for Amazon's Alexa for Shopping",
    "value": {
-    "headline": "Should You Bet on IDCC After Dividend Hike Amid Macro Uncertainty?",
+    "headline": "ReFiBuy Announces General Availability of Support for Amazon's Alexa for Shopping",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790004000,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bet-idcc-dividend-hike-amid-152000169.html?.tsrc=rss",
+    "ts": 1790172000,
+    "url": "https://finance.yahoo.com/technology/articles/refibuy-announces-general-availability-support-140000125.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/bet-idcc-dividend-hike-amid-152000169.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/refibuy-announces-general-availability-support-140000125.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Rallies While Drawing Its Own AI Safety Line",
+   "label": "Trump Logged 1,156 Trades in One Month and Sold Microsoft. The Reason Is a Tax Strategy You Can Copy.",
    "value": {
-    "headline": "Amazon Rallies While Drawing Its Own AI Safety Line",
+    "headline": "Trump Logged 1,156 Trades in One Month and Sold Microsoft. The Reason Is a Tax Strategy You Can Copy.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790003916,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-rallies-while-drawing-own-151836652.html?.tsrc=rss",
+    "ts": 1790171424,
+    "url": "https://247wallst.com/personal-finance/2026/09/23/trump-logged-1156-trades-in-one-month-and-sold-microsoft-the-reason-is-a-tax-strategy-you-can-copy/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-rallies-while-drawing-own-151836652.html?.tsrc=rss"
+     "https://247wallst.com/personal-finance/2026/09/23/trump-logged-1156-trades-in-one-month-and-sold-microsoft-the-reason-is-a-tax-strategy-you-can-copy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
+   "label": "Can Disney's International Streaming Expansion Challenge NFLX & AMZN?",
    "value": {
-    "headline": "Is It Too Late To Buy Microsoft Stock After Its Summer Run?",
+    "headline": "Can Disney's International Streaming Expansion Challenge NFLX & AMZN?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790003628,
-    "url": "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss",
+    "ts": 1790171280,
+    "url": "https://finance.yahoo.com/media-advertising/articles/disneys-international-streaming-expansion-challenge-134800800.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/615998/is-it-too-late-to-buy-microsoft-stock-after-its-summer-run/2026-09-21?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/disneys-international-streaming-expansion-challenge-134800800.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 12 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 12,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-21",
+   "as_of": "2026-09-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

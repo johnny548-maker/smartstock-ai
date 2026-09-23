@@ -1,8 +1,8 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 748.44,
- "change_pct": 0.97,
+ "price": 748.73,
+ "change_pct": 1.01,
  "ohlc": [
   {
    "time": "2026-06-29",
@@ -474,19 +474,19 @@
    "h": 753.0,
    "l": 679.6,
    "c": 741.25,
-   "v": 48572800
+   "v": 48720500
   },
   {
-   "time": "2026-09-22",
-   "o": 731.47,
-   "h": 757.27,
-   "l": 730.0,
-   "c": 748.44,
-   "v": 13109690
+   "time": "2026-09-23",
+   "o": 747.95,
+   "h": 763.9,
+   "l": 739.51,
+   "c": 748.73,
+   "v": 13024937
   }
  ],
  "sr": {
-  "price": 748.44,
+  "price": 748.73,
   "resistance": [
    756.59
   ],
@@ -556,16 +556,16 @@
   681.77,
   665.23,
   741.25,
-  748.44
+  748.73
  ],
  "spark_start": "2026-06-29",
- "spark_end": "2026-09-22",
+ "spark_end": "2026-09-23",
  "fundamental": {
-  "pe_trailing": 27.464985,
-  "pe_forward": 20.866049,
-  "eps_trailing": 26.56,
-  "eps_forward": 34.95966,
-  "stale": true,
+  "pe_trailing": 28.393438,
+  "pe_forward": 21.49087,
+  "eps_trailing": 26.37,
+  "eps_forward": 34.83968,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,133 +574,135 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TJX Companies' Digital Reach: Can Engagement Lift Store Traffic?",
+   "label": "涉違詐防條例挨罰千萬 Meta:逾99%時限內處置完成｜2 來源確認",
    "value": {
-    "headline": "TJX Companies' Digital Reach: Can Engagement Lift Store Traffic?",
+    "headline": "涉違詐防條例挨罰千萬 Meta:逾99%時限內處置完成",
     "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790089020,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tjx-companies-digital-reach-engagement-145700000.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tjx-companies-digital-reach-engagement-145700000.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Facebook-Parent Meta Surges Ahead of Connect 2026 Event",
-   "value": {
-    "headline": "Facebook-Parent Meta Surges Ahead of Connect 2026 Event",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790088360,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/facebook-parent-meta-surges-ahead-144600850.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/facebook-parent-meta-surges-ahead-144600850.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "A Powerful Voice Just Reaffirmed My Confidence in My Non-Stop Alphabet Accumulation",
-   "value": {
-    "headline": "A Powerful Voice Just Reaffirmed My Confidence in My Non-Stop Alphabet Accumulation",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790088102,
-    "url": "https://247wallst.com/investing/2026/09/22/a-powerful-voice-just-reaffirmed-my-confidence-in-my-non-stop-alphabet-accumulation/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/22/a-powerful-voice-just-reaffirmed-my-confidence-in-my-non-stop-alphabet-accumulation/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "These 2 Companies Are Quietly Powering the AI Boom. No, It's Not Nvidia or Palantir.",
-   "value": {
-    "headline": "These 2 Companies Are Quietly Powering the AI Boom. No, It's Not Nvidia or Palantir.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790088000,
-    "url": "https://www.fool.com/investing/2026/09/22/companies-powering-ai-boom-be-ceg/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/22/companies-powering-ai-boom-be-ceg/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Meta Muse 是什麼?現象級爆紅的 AI 代理人 靠兩大賣點脫穎而出",
-   "value": {
-    "headline": "Meta Muse 是什麼?現象級爆紅的 AI 代理人 靠兩大賣點脫穎而出",
-    "sources": [
+     "cna",
      "udn"
     ],
-    "source_count": 1,
-    "ts": 1790087404,
-    "url": "https://money.udn.com/money/story/5612/9771552",
+    "source_count": 2,
+    "ts": 1790165919,
+    "url": "https://www.cna.com.tw/news/afe/202609230333.aspx",
     "urls": [
-     "https://money.udn.com/money/story/5612/9771552"
+     "https://money.udn.com/money/story/5612/9773882",
+     "https://www.cna.com.tw/news/afe/202609230333.aspx"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta Rallies Into Connect Conference. Why The Muse AI Agent Is Sending Some Stocks Lower.",
+   "value": {
+    "headline": "Meta Rallies Into Connect Conference. Why The Muse AI Agent Is Sending Some Stocks Lower.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790175554,
+    "url": "https://finance.yahoo.com/m/85be438c-9628-3e6b-a6e4-3f7644dca512/meta-rallies-into-connect.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/85be438c-9628-3e6b-a6e4-3f7644dca512/meta-rallies-into-connect.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Meta's Muse is driving a magic moment for the stock market",
+   "value": {
+    "headline": "How Meta's Muse is driving a magic moment for the stock market",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790174673,
+    "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
+   "value": {
+    "headline": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790173930,
+    "url": "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-plus-one-on-one-with-ibm-vice-chair-143210140.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-plus-one-on-one-with-ibm-vice-chair-143210140.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Does Meta's Muse AI Raise Risks for Banks & Other Finance Firms?",
+   "value": {
+    "headline": "How Does Meta's Muse AI Raise Risks for Banks & Other Finance Firms?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790173860,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/does-metas-muse-ai-raise-143100261.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/does-metas-muse-ai-raise-143100261.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 2 來源確認）",
    "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
+    "headline_count": 19,
+    "max_source_count": 2,
     "distinct_sources": [
+     "cna",
      "udn",
-     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 80 分 / 11 留言",
+   "label": "HN 討論熱度 20 篇 / 297 分 / 181 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 80,
-    "comments": 11,
+    "points": 297,
+    "comments": 181,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -715,7 +717,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

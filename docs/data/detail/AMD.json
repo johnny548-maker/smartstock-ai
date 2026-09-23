@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 615.94,
- "change_pct": 0.07,
+ "price": 615.38,
+ "change_pct": -0.02,
  "ohlc": [
   {
    "time": "2026-06-29",
@@ -474,25 +474,25 @@
    "h": 616.69,
    "l": 582.27,
    "c": 615.52,
-   "v": 44270000
+   "v": 44494300
   },
   {
-   "time": "2026-09-22",
-   "o": 607.1,
-   "h": 622.0,
-   "l": 606.31,
-   "c": 615.94,
-   "v": 10991908
+   "time": "2026-09-23",
+   "o": 622.15,
+   "h": 624.69,
+   "l": 608.09,
+   "c": 615.38,
+   "v": 6762396
   }
  ],
  "sr": {
-  "price": 615.94,
+  "price": 615.38,
   "resistance": [],
   "support": [
    498.15,
    495.35
   ],
-  "strong_support": 154.78
+  "strong_support": 188.22
  },
  "spark": [
   539.49,
@@ -554,16 +554,16 @@
   545.09,
   559.82,
   615.52,
-  615.94
+  615.38
  ],
  "spark_start": "2026-06-29",
- "spark_end": "2026-09-22",
+ "spark_end": "2026-09-23",
  "fundamental": {
-  "pe_trailing": 156.07909,
-  "pe_forward": 39.2937,
-  "eps_trailing": 3.92,
+  "pe_trailing": 154.23685,
+  "pe_forward": 39.523296,
+  "eps_trailing": 3.99,
   "eps_forward": 15.57069,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -572,118 +572,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
+   "label": "How Meta's Muse is driving a magic moment for the stock market",
    "value": {
-    "headline": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
+    "headline": "How Meta's Muse is driving a magic moment for the stock market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790087521,
-    "url": "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss",
+    "ts": 1790174673,
+    "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss"
+     "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Price Prediction: Wall Street and Our Model Finally Agree",
+   "label": "Billionaire Chase Coleman’s Top 2 New AI Stock Picks",
    "value": {
-    "headline": "Nvidia Price Prediction: Wall Street and Our Model Finally Agree",
+    "headline": "Billionaire Chase Coleman’s Top 2 New AI Stock Picks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790087444,
-    "url": "https://247wallst.com/investing/2026/09/22/nvidia-price-prediction-wall-street-and-our-model-finally-agree/?.tsrc=rss",
+    "ts": 1790174064,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-chase-coleman-top-2-143424880.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/22/nvidia-price-prediction-wall-street-and-our-model-finally-agree/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/billionaire-chase-coleman-top-2-143424880.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Slips, Oil Stocks Fall On U.S.-Iran Hopes; Homebuilders, Retailers Shine (Live Coverage)",
+   "label": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
    "value": {
-    "headline": "Stock Market Today: Dow Slips, Oil Stocks Fall On U.S.-Iran Hopes; Homebuilders, Retailers Shine (Live Coverage)",
+    "headline": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790086769,
-    "url": "https://finance.yahoo.com/m/0143595d-3423-3fca-8750-9ab0a98fa022/stock-market-today%3A-dow.html?.tsrc=rss",
+    "ts": 1790173030,
+    "url": "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0143595d-3423-3fca-8750-9ab0a98fa022/stock-market-today%3A-dow.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-22",
+   "severity": "warn",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD’s path to $1T market cap: A timeline of CEO Lisa Su’s big wins",
+   "label": "Intel’s Price Targets Reveal Just How Much Is Riding on Its Turnaround",
    "value": {
-    "headline": "AMD’s path to $1T market cap: A timeline of CEO Lisa Su’s big wins",
+    "headline": "Intel’s Price Targets Reveal Just How Much Is Riding on Its Turnaround",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790086561,
-    "url": "https://finance.yahoo.com/video/amd-path-1t-market-cap-141601813.html?.tsrc=rss",
+    "ts": 1790172002,
+    "url": "https://247wallst.com/investing/2026/09/23/intels-price-targets-reveal-just-how-much-is-riding-on-its-turnaround/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/amd-path-1t-market-cap-141601813.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/23/intels-price-targets-reveal-just-how-much-is-riding-on-its-turnaround/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Gabelli Global Growth Fund Added Advanced Micro Devices (AMD) in Q2",
+   "label": "AI Boom Is ‘Dot-Com and Subprime All Merged in One,’ Former Fidelity Manager Tells Steve Eisman",
    "value": {
-    "headline": "Why Gabelli Global Growth Fund Added Advanced Micro Devices (AMD) in Q2",
+    "headline": "AI Boom Is ‘Dot-Com and Subprime All Merged in One,’ Former Fidelity Manager Tells Steve Eisman",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790086247,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-global-growth-fund-141047976.html?.tsrc=rss",
+    "ts": 1790171984,
+    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61946770/ai-boom-dot-com-subprime-george-noble?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-global-growth-fund-141047976.html?.tsrc=rss"
+     "https://www.benzinga.com/markets/prediction-markets/26/09/61946770/ai-boom-dot-com-subprime-george-noble?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 64 分 / 20 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 64,
+    "comments": 20,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-23",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -697,7 +711,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

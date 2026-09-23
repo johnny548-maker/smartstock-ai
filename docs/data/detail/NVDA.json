@@ -1,8 +1,8 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 228.34,
- "change_pct": 0.42,
+ "price": 226.23,
+ "change_pct": -0.51,
  "ohlc": [
   {
    "time": "2026-06-29",
@@ -474,22 +474,22 @@
    "h": 228.5,
    "l": 221.56,
    "c": 227.38,
-   "v": 109479900
+   "v": 109806100
   },
   {
-   "time": "2026-09-22",
-   "o": 226.91,
-   "h": 229.6,
-   "l": 226.5,
-   "c": 228.34,
-   "v": 30128754
+   "time": "2026-09-23",
+   "o": 228.08,
+   "h": 228.95,
+   "l": 225.02,
+   "c": 226.23,
+   "v": 27550731
   }
  ],
  "sr": {
-  "price": 228.34,
+  "price": 226.23,
   "resistance": [
-   230.21,
-   231.75
+   227.67,
+   230.21
   ],
   "support": [
    215.96,
@@ -557,134 +557,151 @@
   219.34,
   222.27,
   227.38,
-  228.34
+  226.23
  ],
  "spark_start": "2026-06-29",
- "spark_end": "2026-09-22",
+ "spark_end": "2026-09-23",
  "fundamental": {
-  "pe_trailing": 28.616308,
-  "pe_forward": 14.433485,
+  "pe_trailing": 28.600506,
+  "pe_forward": 14.425514,
   "eps_trailing": 7.91,
   "eps_forward": 15.68263,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 226.23,
+  "stop": 214.38,
+  "target": 255.85,
+  "atr_bracket": 255.85,
+  "measured_move": 254.14,
+  "target_band": [
+   254.14,
+   255.85
+  ],
+  "stop_pct": -5.2,
+  "target_pct": 13.1,
+  "rr": 2.5,
+  "atr_pct": 2.6,
+  "swing_stop": 207.15,
+  "chandelier": 214.03,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Buy Moderna Stock? Why Many Wall Street Analysts Say \"No.\"",
+   "label": "Prediction: This Underrated ETF Could Be the Most Surprising Outperformer of the Next 10 Years",
    "value": {
-    "headline": "Should You Buy Moderna Stock? Why Many Wall Street Analysts Say \"No.\"",
+    "headline": "Prediction: This Underrated ETF Could Be the Most Surprising Outperformer of the Next 10 Years",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790088780,
-    "url": "https://www.fool.com/investing/2026/09/22/should-you-buy-moderna-stock-why-many-wall-street/?.tsrc=rss",
+    "ts": 1790175000,
+    "url": "https://www.fool.com/investing/2026/09/23/prediction-this-underrated-etf-could-be-the-most/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/22/should-you-buy-moderna-stock-why-many-wall-street/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/23/prediction-this-underrated-etf-could-be-the-most/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Scorpio Tankers Stock Dropped Today",
+   "label": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
    "value": {
-    "headline": "Why Scorpio Tankers Stock Dropped Today",
+    "headline": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790088086,
-    "url": "https://www.fool.com/investing/2026/09/22/why-scorpio-tankers-stock-dropped-today/?.tsrc=rss",
+    "ts": 1790174785,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/22/why-scorpio-tankers-stock-dropped-today/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "These 2 Companies Are Quietly Powering the AI Boom. No, It's Not Nvidia or Palantir.",
+   "label": "Why Manchester United Stock Fumbled Today",
    "value": {
-    "headline": "These 2 Companies Are Quietly Powering the AI Boom. No, It's Not Nvidia or Palantir.",
+    "headline": "Why Manchester United Stock Fumbled Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790088000,
-    "url": "https://www.fool.com/investing/2026/09/22/companies-powering-ai-boom-be-ceg/?.tsrc=rss",
+    "ts": 1790174736,
+    "url": "https://www.fool.com/investing/2026/09/23/why-manchester-united-stock-fumbled-today/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/22/companies-powering-ai-boom-be-ceg/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/23/why-manchester-united-stock-fumbled-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Exclusive: SB Energy Nasdaq IPO moving forward as planned",
+   "label": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
    "value": {
-    "headline": "Exclusive: SB Energy Nasdaq IPO moving forward as planned",
+    "headline": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790087957,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/exclusive-sb-energy-nasdaq-ipo-143917161.html?.tsrc=rss",
+    "ts": 1790173909,
+    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/exclusive-sb-energy-nasdaq-ipo-143917161.html?.tsrc=rss"
+     "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
+   "label": "CoreWeave Stock Has a Massive AI Catalyst. We See 94% Upside",
    "value": {
-    "headline": "AMD Just Crossed $1 Trillion. Is it Still Worth Buying Now?",
+    "headline": "CoreWeave Stock Has a Massive AI Catalyst. We See 94% Upside",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790087521,
-    "url": "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss",
+    "ts": 1790173841,
+    "url": "https://247wallst.com/investing/2026/09/23/coreweave-stock-has-a-massive-ai-catalyst-heres-our-price-target/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/22/amd-just-crossed-usd1-trillion-is-it-still-worth-buying-now/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/23/coreweave-stock-has-a-massive-ai-catalyst-heres-our-price-target/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-22",
+   "as_of": "2026-09-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
