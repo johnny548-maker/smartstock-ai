@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 748.73,
- "change_pct": 1.01,
+ "price": 765.46,
+ "change_pct": 2.87,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 559.56,
-   "h": 570.45,
-   "l": 557.56,
-   "c": 562.16,
-   "v": 15011400
-  },
-  {
-   "time": "2026-06-30",
-   "o": 560.5,
-   "h": 565.09,
-   "l": 551.0,
-   "c": 562.85,
-   "v": 18111100
-  },
   {
    "time": "2026-07-01",
    "o": 607.43,
@@ -477,19 +461,33 @@
    "v": 48720500
   },
   {
+   "time": "2026-09-22",
+   "o": 731.4,
+   "h": 757.27,
+   "l": 730.0,
+   "c": 736.6,
+   "v": 28122100
+  },
+  {
    "time": "2026-09-23",
-   "o": 747.95,
+   "o": 747.6,
    "h": 763.9,
    "l": 739.51,
-   "c": 748.73,
-   "v": 13024937
+   "c": 744.1,
+   "v": 30346000
+  },
+  {
+   "time": "2026-09-24",
+   "o": 744.35,
+   "h": 770.9,
+   "l": 743.01,
+   "c": 765.46,
+   "v": 16610855
   }
  ],
  "sr": {
-  "price": 748.73,
-  "resistance": [
-   756.59
-  ],
+  "price": 765.46,
+  "resistance": [],
   "support": [
    696.97,
    688.18
@@ -497,8 +495,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  562.16,
-  562.85,
   612.43,
   582.44,
   599.82,
@@ -556,15 +552,17 @@
   681.77,
   665.23,
   741.25,
-  748.73
+  736.6,
+  744.1,
+  765.46
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-01",
+ "spark_end": "2026-09-24",
  "fundamental": {
-  "pe_trailing": 28.393438,
-  "pe_forward": 21.49087,
-  "eps_trailing": 26.37,
-  "eps_forward": 34.83968,
+  "pe_trailing": 28.82116,
+  "pe_forward": 21.916353,
+  "eps_trailing": 26.56,
+  "eps_forward": 34.9278,
   "stale": false,
   "source": "yfinance"
  },
@@ -574,136 +572,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "涉違詐防條例挨罰千萬 Meta:逾99%時限內處置完成｜2 來源確認",
+   "label": "Meta Platforms (META) Gets Blocked From AI Shopping Access as Commerce Tensions Rise",
    "value": {
-    "headline": "涉違詐防條例挨罰千萬 Meta:逾99%時限內處置完成",
+    "headline": "Meta Platforms (META) Gets Blocked From AI Shopping Access as Commerce Tensions Rise",
     "sources": [
-     "cna",
-     "udn"
+     "yahoo_us"
     ],
-    "source_count": 2,
-    "ts": 1790165919,
-    "url": "https://www.cna.com.tw/news/afe/202609230333.aspx",
+    "source_count": 1,
+    "ts": 1790262800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-gets-blocked-151320634.html?.tsrc=rss",
     "urls": [
-     "https://money.udn.com/money/story/5612/9773882",
-     "https://www.cna.com.tw/news/afe/202609230333.aspx"
+     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-gets-blocked-151320634.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Rallies Into Connect Conference. Why The Muse AI Agent Is Sending Some Stocks Lower.",
+   "label": "Meta Muse's E-Commerce Adoption Remains Uncertain, Wedbush Says",
    "value": {
-    "headline": "Meta Rallies Into Connect Conference. Why The Muse AI Agent Is Sending Some Stocks Lower.",
+    "headline": "Meta Muse's E-Commerce Adoption Remains Uncertain, Wedbush Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790175554,
-    "url": "https://finance.yahoo.com/m/85be438c-9628-3e6b-a6e4-3f7644dca512/meta-rallies-into-connect.html?.tsrc=rss",
+    "ts": 1790262771,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-muse-apos-e-commerce-151251469.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/85be438c-9628-3e6b-a6e4-3f7644dca512/meta-rallies-into-connect.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-muse-apos-e-commerce-151251469.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Meta's Muse is driving a magic moment for the stock market",
+   "label": "Trebellar Raises $18M Series A to Bring AI to Corporate Real Estate Management",
    "value": {
-    "headline": "How Meta's Muse is driving a magic moment for the stock market",
+    "headline": "Trebellar Raises $18M Series A to Bring AI to Corporate Real Estate Management",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174673,
-    "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss",
+    "ts": 1790262000,
+    "url": "https://finance.yahoo.com/technology/ai/articles/trebellar-raises-18m-series-bring-150000454.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/trebellar-raises-18m-series-bring-150000454.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
+   "label": "Meta launches camera-free AI glasses after ‘pervert’ backlash",
    "value": {
-    "headline": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
+    "headline": "Meta launches camera-free AI glasses after ‘pervert’ backlash",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173930,
-    "url": "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-plus-one-on-one-with-ibm-vice-chair-143210140.html?.tsrc=rss",
+    "ts": 1790261695,
+    "url": "https://uk.finance.yahoo.com/news/meta-launches-camera-free-ai-145455413.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-plus-one-on-one-with-ibm-vice-chair-143210140.html?.tsrc=rss"
+     "https://uk.finance.yahoo.com/news/meta-launches-camera-free-ai-145455413.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Does Meta's Muse AI Raise Risks for Banks & Other Finance Firms?",
+   "label": "Welcome to the age of listening devices",
    "value": {
-    "headline": "How Does Meta's Muse AI Raise Risks for Banks & Other Finance Firms?",
+    "headline": "Welcome to the age of listening devices",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173860,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/does-metas-muse-ai-raise-143100261.html?.tsrc=rss",
+    "ts": 1790261325,
+    "url": "https://finance.yahoo.com/technology/article/welcome-to-the-age-of-listening-devices-144845987.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/does-metas-muse-ai-raise-143100261.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/welcome-to-the-age-of-listening-devices-144845987.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 2 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
-    "max_source_count": 2,
+    "headline_count": 18,
+    "max_source_count": 1,
     "distinct_sources": [
-     "cna",
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 297 分 / 181 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 297,
-    "comments": 181,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -717,7 +696,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

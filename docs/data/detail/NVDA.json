@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 226.23,
- "change_pct": -0.51,
+ "price": 221.76,
+ "change_pct": -1.66,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 193.63,
-   "h": 195.96,
-   "l": 189.59,
-   "c": 194.75,
-   "v": 148835700
-  },
-  {
-   "time": "2026-06-30",
-   "o": 197.02,
-   "h": 200.41,
-   "l": 194.89,
-   "c": 199.87,
-   "v": 166476700
-  },
   {
    "time": "2026-07-01",
    "o": 195.98,
@@ -477,16 +461,32 @@
    "v": 109806100
   },
   {
+   "time": "2026-09-22",
+   "o": 226.85,
+   "h": 229.98,
+   "l": 226.5,
+   "c": 228.87,
+   "v": 95746700
+  },
+  {
    "time": "2026-09-23",
-   "o": 228.08,
+   "o": 228.03,
    "h": 228.95,
-   "l": 225.02,
-   "c": 226.23,
-   "v": 27550731
+   "l": 224.02,
+   "c": 225.51,
+   "v": 89306700
+  },
+  {
+   "time": "2026-09-24",
+   "o": 222.12,
+   "h": 223.23,
+   "l": 221.09,
+   "c": 221.76,
+   "v": 23884328
   }
  ],
  "sr": {
-  "price": 226.23,
+  "price": 221.76,
   "resistance": [
    227.67,
    230.21
@@ -498,8 +498,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  194.75,
-  199.87,
   197.36,
   194.61,
   195.33,
@@ -557,151 +555,136 @@
   219.34,
   222.27,
   227.38,
-  226.23
+  228.87,
+  225.51,
+  221.76
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-01",
+ "spark_end": "2026-09-24",
  "fundamental": {
-  "pe_trailing": 28.600506,
-  "pe_forward": 14.425514,
-  "eps_trailing": 7.91,
+  "pe_trailing": 28.003786,
+  "pe_forward": 14.142398,
+  "eps_trailing": 7.92,
   "eps_forward": 15.68263,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 226.23,
-  "stop": 214.38,
-  "target": 255.85,
-  "atr_bracket": 255.85,
-  "measured_move": 254.14,
-  "target_band": [
-   254.14,
-   255.85
-  ],
-  "stop_pct": -5.2,
-  "target_pct": 13.1,
-  "rr": 2.5,
-  "atr_pct": 2.6,
-  "swing_stop": 207.15,
-  "chandelier": 214.03,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: This Underrated ETF Could Be the Most Surprising Outperformer of the Next 10 Years",
+   "label": "Why Oracle Stock Just Dropped",
    "value": {
-    "headline": "Prediction: This Underrated ETF Could Be the Most Surprising Outperformer of the Next 10 Years",
+    "headline": "Why Oracle Stock Just Dropped",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790175000,
-    "url": "https://www.fool.com/investing/2026/09/23/prediction-this-underrated-etf-could-be-the-most/?.tsrc=rss",
+    "ts": 1790262389,
+    "url": "https://www.fool.com/investing/2026/09/24/why-oracle-stock-just-dropped/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/23/prediction-this-underrated-etf-could-be-the-most/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/24/why-oracle-stock-just-dropped/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+   "label": "Is Centrus Energy the Ultimate Pick-and-Shovel Play on the Nuclear Technology Boom?",
    "value": {
-    "headline": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+    "headline": "Is Centrus Energy the Ultimate Pick-and-Shovel Play on the Nuclear Technology Boom?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174785,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss",
+    "ts": 1790262300,
+    "url": "https://www.fool.com/investing/2026/09/24/is-centrus-energy-the-ultimate-picks-and-shovels/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/24/is-centrus-energy-the-ultimate-picks-and-shovels/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Manchester United Stock Fumbled Today",
+   "label": "AI-Driven Innovation Reshapes Vaccine Adjuvant Discovery as Investment Surges Across Public and Private Sectors",
    "value": {
-    "headline": "Why Manchester United Stock Fumbled Today",
+    "headline": "AI-Driven Innovation Reshapes Vaccine Adjuvant Discovery as Investment Surges Across Public and Private Sectors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174736,
-    "url": "https://www.fool.com/investing/2026/09/23/why-manchester-united-stock-fumbled-today/?.tsrc=rss",
+    "ts": 1790261760,
+    "url": "https://finance.yahoo.com/healthcare/articles/ai-driven-innovation-reshapes-vaccine-145600355.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/23/why-manchester-united-stock-fumbled-today/?.tsrc=rss"
+     "https://finance.yahoo.com/healthcare/articles/ai-driven-innovation-reshapes-vaccine-145600355.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
+   "label": "If There's a Stock Market Crash Ahead, History Highlights the Best Strategy for Investors",
    "value": {
-    "headline": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
+    "headline": "If There's a Stock Market Crash Ahead, History Highlights the Best Strategy for Investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173909,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1790261400,
+    "url": "https://www.fool.com/investing/2026/09/24/if-a-stock-market-crash-ahead-history-highlights/?.tsrc=rss",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/24/if-a-stock-market-crash-ahead-history-highlights/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-23",
+   "severity": "warn",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave Stock Has a Massive AI Catalyst. We See 94% Upside",
+   "label": "Stock Market Today: Dow Extends Losses On Surprise Economic Data; Everpure Shoots Higher (Live Coverage)",
    "value": {
-    "headline": "CoreWeave Stock Has a Massive AI Catalyst. We See 94% Upside",
+    "headline": "Stock Market Today: Dow Extends Losses On Surprise Economic Data; Everpure Shoots Higher (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173841,
-    "url": "https://247wallst.com/investing/2026/09/23/coreweave-stock-has-a-massive-ai-catalyst-heres-our-price-target/?.tsrc=rss",
+    "ts": 1790261284,
+    "url": "https://finance.yahoo.com/m/a54a90ad-a14d-3ff8-9f09-e455a0eca8cf/stock-market-today%3A-dow.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/23/coreweave-stock-has-a-massive-ai-catalyst-heres-our-price-target/?.tsrc=rss"
+     "https://finance.yahoo.com/m/a54a90ad-a14d-3ff8-9f09-e455a0eca8cf/stock-market-today%3A-dow.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-23",
+   "severity": "warn",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

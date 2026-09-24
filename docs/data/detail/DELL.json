@@ -1,25 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 551.05,
- "change_pct": -4.22,
+ "price": 532.5,
+ "change_pct": -3.15,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 393.17,
-   "h": 415.75,
-   "l": 378.04,
-   "c": 413.93,
-   "v": 8818500
-  },
-  {
-   "time": "2026-06-30",
-   "o": 409.96,
-   "h": 432.78,
-   "l": 408.33,
-   "c": 430.75,
-   "v": 6903800
-  },
   {
    "time": "2026-07-01",
    "o": 417.31,
@@ -477,17 +461,35 @@
    "v": 7736600
   },
   {
+   "time": "2026-09-22",
+   "o": 569.8,
+   "h": 574.6,
+   "l": 547.71,
+   "c": 548.92,
+   "v": 9781600
+  },
+  {
    "time": "2026-09-23",
    "o": 559.0,
    "h": 570.72,
-   "l": 549.65,
-   "c": 551.05,
-   "v": 3450499
+   "l": 542.23,
+   "c": 549.83,
+   "v": 8238900
+  },
+  {
+   "time": "2026-09-24",
+   "o": 535.97,
+   "h": 545.94,
+   "l": 531.01,
+   "c": 532.5,
+   "v": 2398426
   }
  ],
  "sr": {
-  "price": 551.05,
-  "resistance": [],
+  "price": 532.5,
+  "resistance": [
+   595.51
+  ],
   "support": [
    506.25,
    424.0
@@ -495,8 +497,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  413.93,
-  430.75,
   424.55,
   393.67,
   411.12,
@@ -554,143 +554,13 @@
   588.4,
   568.06,
   575.31,
-  551.05
+  548.92,
+  549.83,
+  532.5
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-01",
+ "spark_end": "2026-09-24",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "ADP Stock Rises 33% in 6 Months: Here's What You Should Know",
-   "value": {
-    "headline": "ADP Stock Rises 33% in 6 Months: Here's What You Should Know",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790173800,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/adp-stock-rises-33-6-143000039.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/adp-stock-rises-33-6-143000039.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Sandisk, Super Micro, IonQ, Six Flags, and More Stocks That Explain Today’s Market",
-   "value": {
-    "headline": "Sandisk, Super Micro, IonQ, Six Flags, and More Stocks That Explain Today’s Market",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790158680,
-    "url": "https://finance.yahoo.com/m/0425a4bd-b145-34b7-ab74-ac10f40500b3/sandisk%2C-super-micro%2C-ionq%2C.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/0425a4bd-b145-34b7-ab74-ac10f40500b3/sandisk%2C-super-micro%2C-ionq%2C.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dell Falls 2.5% as $1,199 Googlebook Tests PC Margin",
-   "value": {
-    "headline": "Dell Falls 2.5% as $1,199 Googlebook Tests PC Margin",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790105283,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/dell-falls-2-5-1-192803149.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/dell-falls-2-5-1-192803149.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Has Arista Networks Stock Quietly Become A Different Bet?",
-   "value": {
-    "headline": "Has Arista Networks Stock Quietly Become A Different Bet?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790105228,
-    "url": "https://www.trefis.com/articles/616165/has-arista-networks-stock-quietly-become-a-different-bet/2026-09-22?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/616165/has-arista-networks-stock-quietly-become-a-different-bet/2026-09-22?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Rising Memory Costs Dampen Consumer PC Demand, UBS Says",
-   "value": {
-    "headline": "Rising Memory Costs Dampen Consumer PC Demand, UBS Says",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790104071,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/rising-memory-costs-dampen-consumer-190751554.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/rising-memory-costs-dampen-consumer-190751554.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 18,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 7699,
-    "days": 5,
-    "max_shares": 7625,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-09-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

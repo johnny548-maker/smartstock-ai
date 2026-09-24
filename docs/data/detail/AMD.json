@@ -1,25 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 615.38,
- "change_pct": -0.02,
+ "price": 612.77,
+ "change_pct": -0.3,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 522.84,
-   "h": 542.19,
-   "l": 495.35,
-   "c": 539.49,
-   "v": 26671000
-  },
-  {
-   "time": "2026-06-30",
-   "o": 545.57,
-   "h": 584.73,
-   "l": 545.57,
-   "c": 580.91,
-   "v": 34488500
-  },
   {
    "time": "2026-07-01",
    "o": 557.53,
@@ -477,16 +461,32 @@
    "v": 44494300
   },
   {
+   "time": "2026-09-22",
+   "o": 606.57,
+   "h": 624.52,
+   "l": 606.31,
+   "c": 623.77,
+   "v": 28282800
+  },
+  {
    "time": "2026-09-23",
-   "o": 622.15,
+   "o": 621.5,
    "h": 624.69,
-   "l": 608.09,
-   "c": 615.38,
-   "v": 6762396
+   "l": 608.08,
+   "c": 614.61,
+   "v": 16299200
+  },
+  {
+   "time": "2026-09-24",
+   "o": 600.76,
+   "h": 624.84,
+   "l": 599.35,
+   "c": 612.77,
+   "v": 9963729
   }
  ],
  "sr": {
-  "price": 615.38,
+  "price": 612.77,
   "resistance": [],
   "support": [
    498.15,
@@ -495,8 +495,6 @@
   "strong_support": 188.22
  },
  "spark": [
-  539.49,
-  580.91,
   540.88,
   517.82,
   552.05,
@@ -554,14 +552,16 @@
   545.09,
   559.82,
   615.52,
-  615.38
+  623.77,
+  614.61,
+  612.77
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-01",
+ "spark_end": "2026-09-24",
  "fundamental": {
-  "pe_trailing": 154.23685,
-  "pe_forward": 39.523296,
-  "eps_trailing": 3.99,
+  "pe_trailing": 155.92113,
+  "pe_forward": 39.35407,
+  "eps_trailing": 3.93,
   "eps_forward": 15.57069,
   "stale": false,
   "source": "yfinance"
@@ -572,101 +572,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Meta's Muse is driving a magic moment for the stock market",
+   "label": "Micron's Rally Looks Overdone Until You Price The Memory Shortage",
    "value": {
-    "headline": "How Meta's Muse is driving a magic moment for the stock market",
+    "headline": "Micron's Rally Looks Overdone Until You Price The Memory Shortage",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174673,
-    "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss",
+    "ts": 1790258372,
+    "url": "https://www.trefis.com/articles/616418/microns-rally-looks-overdone-until-you-price-the-memory-shortage/2026-09-24?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html?.tsrc=rss"
+     "https://www.trefis.com/articles/616418/microns-rally-looks-overdone-until-you-price-the-memory-shortage/2026-09-24?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Chase Coleman’s Top 2 New AI Stock Picks",
+   "label": "NVIDIA's $279B Supply Commitments: Can These Secure Its Growth Runway?",
    "value": {
-    "headline": "Billionaire Chase Coleman’s Top 2 New AI Stock Picks",
+    "headline": "NVIDIA's $279B Supply Commitments: Can These Secure Its Growth Runway?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174064,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-chase-coleman-top-2-143424880.html?.tsrc=rss",
+    "ts": 1790257260,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidias-279b-supply-commitments-secure-134100685.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/billionaire-chase-coleman-top-2-143424880.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidias-279b-supply-commitments-secure-134100685.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
+   "label": "Intel Drops 3% as Profit Taking Follows 223% YTD Run; AMD Falls 3%, NVIDIA Slips",
    "value": {
-    "headline": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
+    "headline": "Intel Drops 3% as Profit Taking Follows 223% YTD Run; AMD Falls 3%, NVIDIA Slips",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173030,
-    "url": "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html?.tsrc=rss",
+    "ts": 1790256559,
+    "url": "https://247wallst.com/investing/2026/09/24/intel-drops-3-as-profit-taking-follows-223-ytd-run-amd-falls-3-nvidia-slips/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/24/intel-drops-3-as-profit-taking-follows-223-ytd-run-amd-falls-3-nvidia-slips/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-23",
+   "severity": "info",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel’s Price Targets Reveal Just How Much Is Riding on Its Turnaround",
+   "label": "Advanced Micro Devices (AMD) is Emerging as a Viable Alternative to Nvidia",
    "value": {
-    "headline": "Intel’s Price Targets Reveal Just How Much Is Riding on Its Turnaround",
+    "headline": "Advanced Micro Devices (AMD) is Emerging as a Viable Alternative to Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790172002,
-    "url": "https://247wallst.com/investing/2026/09/23/intels-price-targets-reveal-just-how-much-is-riding-on-its-turnaround/?.tsrc=rss",
+    "ts": 1790254919,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-amd-positions-130159537.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/23/intels-price-targets-reveal-just-how-much-is-riding-on-its-turnaround/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-amd-positions-130159537.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Boom Is ‘Dot-Com and Subprime All Merged in One,’ Former Fidelity Manager Tells Steve Eisman",
+   "label": "AMD CEO Shares Trump-Xi Expectations at IMPERIA Summit: NYSE Content Update",
    "value": {
-    "headline": "AI Boom Is ‘Dot-Com and Subprime All Merged in One,’ Former Fidelity Manager Tells Steve Eisman",
+    "headline": "AMD CEO Shares Trump-Xi Expectations at IMPERIA Summit: NYSE Content Update",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790171984,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61946770/ai-boom-dot-com-subprime-george-noble?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1790254500,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-ceo-shares-trump-xi-125500647.html?.tsrc=rss",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/09/61946770/ai-boom-dot-com-subprime-george-noble?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amd-ceo-shares-trump-xi-125500647.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -681,23 +681,8 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 64 分 / 20 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 64,
-    "comments": 20,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -711,7 +696,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

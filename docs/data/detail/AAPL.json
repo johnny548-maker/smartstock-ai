@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 337.92,
- "change_pct": -0.31,
+ "price": 336.23,
+ "change_pct": -0.23,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 286.48,
-   "h": 288.12,
-   "l": 279.61,
-   "c": 281.5,
-   "v": 66427000
-  },
-  {
-   "time": "2026-06-30",
-   "o": 280.93,
-   "h": 289.69,
-   "l": 280.46,
-   "c": 289.11,
-   "v": 65100200
-  },
   {
    "time": "2026-07-01",
    "o": 293.19,
@@ -477,16 +461,32 @@
    "v": 34999200
   },
   {
+   "time": "2026-09-22",
+   "o": 340.14,
+   "h": 345.34,
+   "l": 338.75,
+   "c": 339.75,
+   "v": 40711800
+  },
+  {
    "time": "2026-09-23",
    "o": 341.08,
    "h": 341.8,
-   "l": 336.41,
-   "c": 337.92,
-   "v": 9535334
+   "l": 335.5,
+   "c": 337.02,
+   "v": 31587800
+  },
+  {
+   "time": "2026-09-24",
+   "o": 336.32,
+   "h": 338.26,
+   "l": 334.3,
+   "c": 336.23,
+   "v": 7311419
   }
  ],
  "sr": {
-  "price": 337.92,
+  "price": 336.23,
   "resistance": [
    344.27
   ],
@@ -497,8 +497,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  281.5,
-  289.11,
   294.13,
   308.36,
   312.39,
@@ -556,135 +554,169 @@
   337.0,
   336.13,
   338.98,
-  337.92
+  339.75,
+  337.02,
+  336.23
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-01",
+ "spark_end": "2026-09-24",
  "fundamental": {
-  "pe_trailing": 38.70791,
-  "pe_forward": 35.35061,
+  "pe_trailing": 38.51432,
+  "pe_forward": 35.065598,
   "eps_trailing": 8.73,
-  "eps_forward": 9.5591,
+  "eps_forward": 9.5886,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 336.23,
+  "stop": 322.13,
+  "target": 371.47,
+  "atr_bracket": 371.47,
+  "measured_move": 380.78,
+  "target_band": [
+   371.47,
+   380.78
+  ],
+  "stop_pct": -4.2,
+  "target_pct": 10.5,
+  "rr": 2.5,
+  "atr_pct": 2.1,
+  "swing_stop": 307.79,
+  "chandelier": 323.92,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jamf Takes Apple Management into the AI Era at JNUC 2026",
+   "label": "Welcome to the age of listening devices",
    "value": {
-    "headline": "Jamf Takes Apple Management into the AI Era at JNUC 2026",
+    "headline": "Welcome to the age of listening devices",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790175600,
-    "url": "https://finance.yahoo.com/technology/ai/articles/jamf-takes-apple-management-ai-150000490.html?.tsrc=rss",
+    "ts": 1790261325,
+    "url": "https://finance.yahoo.com/technology/article/welcome-to-the-age-of-listening-devices-144845987.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/jamf-takes-apple-management-ai-150000490.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/welcome-to-the-age-of-listening-devices-144845987.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+   "label": "Qualcomm Renews Global Apple Patent License — Extends Key Licensing Relationship Into 2027",
    "value": {
-    "headline": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+    "headline": "Qualcomm Renews Global Apple Patent License — Extends Key Licensing Relationship Into 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174785,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss",
+    "ts": 1790258912,
+    "url": "https://stocktwits.com/news-articles/markets/equity/qualcomm-renews-global-apple-patent-license-extends-key-licensing-relationship-into-2027/cZMJP0WRB9i?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/qualcomm-renews-global-apple-patent-license-extends-key-licensing-relationship-into-2027/cZMJP0WRB9i?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Microsoft's Trailing Multiple Leaves Out",
+   "label": "Smartphone Li-Ion Battery Market Report 2026-2031 | Fast Charging, Premium Devices and Supply Chain Shifts Unlock New Op",
    "value": {
-    "headline": "What Microsoft's Trailing Multiple Leaves Out",
+    "headline": "Smartphone Li-Ion Battery Market Report 2026-2031 | Fast Charging, Premium Devices and Supply Chain Shifts Unlock New Opportunities",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174239,
-    "url": "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss",
+    "ts": 1790258760,
+    "url": "https://finance.yahoo.com/technology/articles/smartphone-li-ion-battery-market-140600239.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/smartphone-li-ion-battery-market-140600239.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
+   "label": "Qualcomm or Cisco: One Dividend Will Outpace the Other From Here",
    "value": {
-    "headline": "EXCLUSIVE: AI Data Center Boom Is ‘Overkill,’ Defense AI CEO Warns Compute Demand Will Drop",
+    "headline": "Qualcomm or Cisco: One Dividend Will Outpace the Other From Here",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790173909,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1790258705,
+    "url": "https://247wallst.com/investing/2026/09/24/qualcomm-or-cisco-one-dividend-will-outpace-the-other-from-here/?.tsrc=rss",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/09/61948255/ai-data-center-boom-overkill-compute-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/24/qualcomm-or-cisco-one-dividend-will-outpace-the-other-from-here/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Apple's stock chart is probably putting a smile on the face of new CEO John Ternus",
+   "label": "Apple Price Prediction: Why Our Target Sits Above Wall Street’s",
    "value": {
-    "headline": "Why Apple's stock chart is probably putting a smile on the face of new CEO John Ternus",
+    "headline": "Apple Price Prediction: Why Our Target Sits Above Wall Street’s",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790171620,
-    "url": "https://finance.yahoo.com/markets/stocks/article/why-apples-stock-chart-is-probably-putting-a-smile-on-the-face-of-new-ceo-john-ternus-135340248.html?.tsrc=rss",
+    "ts": 1790258439,
+    "url": "https://247wallst.com/investing/2026/09/24/apple-price-prediction-why-our-target-sits-above-wall-streets/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/article/why-apples-stock-chart-is-probably-putting-a-smile-on-the-face-of-new-ceo-john-ternus-135340248.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/24/apple-price-prediction-why-our-target-sits-above-wall-streets/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 407 分 / 239 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 407,
+    "comments": 239,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-09-24",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -698,7 +730,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-24",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
