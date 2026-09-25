@@ -482,7 +482,7 @@
    "h": 337.5,
    "l": 315.0,
    "c": 337.5,
-   "v": 15279336
+   "v": 14972487
   }
  ],
  "sr": {
@@ -568,29 +568,53 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_notice",
-   "kind": "risk",
-   "label": "⚠️ 注意股：最近六個營業日之累積週轉率為54.17%。且09月24日之週轉率為18.60%<font color='#FF0000'>﹝第十款﹞</font>。",
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 2,940,747 股",
    "value": {
-    "reason": "最近六個營業日之累積週轉率為54.17%。且09月24日之週轉率為18.60%<font color='#FF0000'>﹝第十款﹞</font>。",
-    "count": 1
+    "foreign": 2855913,
+    "trust": -3000,
+    "dealer": 87834,
+    "total": 2940747
    },
-   "severity": "warn",
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 51.0 / 殖利率 0.99% / PB 5.73",
+   "value": {
+    "pe": 50.98,
+    "yield": 0.99,
+    "pb": 5.73
+   },
+   "severity": "info",
    "as_of": "2026-09-24",
-   "note": "注意交易資訊 overlay（投機過熱警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 31,
+    "short_today": 72,
     "outstanding": 81620212,
-    "short_pct": 3.7980788386092404e-05
+    "short_pct": 8.821344399350494e-05
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 33.64,
+   "severity": "info",
+   "as_of": "20260924",
+   "note": "大戶持股%=33.64；WoW+1.11；股東人數-1138"
   }
  ],
  "trends": {
@@ -902,6 +926,10 @@
    {
     "t": "2026-09-24",
     "v": 8550
+   },
+   {
+    "t": "2026-09-25",
+    "v": 11490
    }
   ],
   "holder_pct": [
@@ -968,6 +996,10 @@
    {
     "t": "2026-09-18",
     "v": 32.53
+   },
+   {
+    "t": "2026-09-24",
+    "v": 33.64
    }
   ],
   "rev_yoy": [

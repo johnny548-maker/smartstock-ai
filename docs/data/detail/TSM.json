@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 443.66,
- "change_pct": -0.65,
+ "price": 451.4,
+ "change_pct": 0.06,
  "ohlc": [
-  {
-   "time": "2026-07-01",
-   "o": 466.42,
-   "h": 467.26,
-   "l": 442.28,
-   "c": 443.04,
-   "v": 18534800
-  },
   {
    "time": "2026-07-02",
    "o": 449.33,
@@ -474,22 +466,30 @@
    "h": 450.88,
    "l": 442.87,
    "c": 446.57,
-   "v": 10167700
+   "v": 10181300
   },
   {
    "time": "2026-09-24",
    "o": 441.8,
-   "h": 444.93,
-   "l": 440.69,
-   "c": 443.66,
-   "v": 1943986
+   "h": 452.56,
+   "l": 440.6,
+   "c": 451.15,
+   "v": 7706700
+  },
+  {
+   "time": "2026-09-25",
+   "o": 452.39,
+   "h": 455.02,
+   "l": 449.15,
+   "c": 451.4,
+   "v": 2399933
   }
  ],
  "sr": {
-  "price": 443.66,
+  "price": 451.4,
   "resistance": [
-   447.91,
-   475.51
+   475.51,
+   477.72
   ],
   "support": [
    418.07,
@@ -498,7 +498,6 @@
   "strong_support": 264.03
  },
  "spark": [
-  443.04,
   433.0,
   450.58,
   431.41,
@@ -557,14 +556,15 @@
   445.14,
   452.0,
   446.57,
-  443.66
+  451.15,
+  451.4
  ],
- "spark_start": "2026-07-01",
- "spark_end": "2026-09-24",
+ "spark_start": "2026-07-02",
+ "spark_end": "2026-09-25",
  "fundamental": {
-  "pe_trailing": 33.00521,
-  "pe_forward": 20.232061,
-  "eps_trailing": 13.44,
+  "pe_trailing": 33.461823,
+  "pe_forward": 20.588274,
+  "eps_trailing": 13.49,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Taiwan Semiconductor (TSM): The Key Enabler of AI Chips and a Durable Long-Term Share Gainer",
+   "label": "HSBC Upgrades Synopsys to Buy, Sees 28% Earnings Growth Through 2028",
    "value": {
-    "headline": "Taiwan Semiconductor (TSM): The Key Enabler of AI Chips and a Durable Long-Term Share Gainer",
+    "headline": "HSBC Upgrades Synopsys to Buy, Sees 28% Earnings Growth Through 2028",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790260557,
-    "url": "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductor-tsm-key-enabler-143557399.html?.tsrc=rss",
+    "ts": 1790345742,
+    "url": "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductor-tsm-key-enabler-143557399.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here's My Top Low-Risk, High-Potential-Reward Stock That's Thriving in the Artificial Intelligence (AI) Boom",
+   "label": "Advanced Micro Devices vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "Here's My Top Low-Risk, High-Potential-Reward Stock That's Thriving in the Artificial Intelligence (AI) Boom",
+    "headline": "Advanced Micro Devices vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790256780,
-    "url": "https://www.fool.com/investing/2026/09/24/heres-my-top-low-risk-high-potential-reward-stock/?.tsrc=rss",
+    "ts": 1790341381,
+    "url": "https://www.fool.com/coverage/better-buy/2026/09/25/advanced-micro-devices-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/24/heres-my-top-low-risk-high-potential-reward-stock/?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/09/25/advanced-micro-devices-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump-Xi Summit: Here’s the Current State of the AI Battle",
+   "label": "Bet on These 5 Dividend Growth Stocks Amid Rising Treasury Yields",
    "value": {
-    "headline": "Trump-Xi Summit: Here’s the Current State of the AI Battle",
+    "headline": "Bet on These 5 Dividend Growth Stocks Amid Rising Treasury Yields",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790231400,
-    "url": "https://finance.yahoo.com/m/44ba6b60-ebe8-38d5-a0e3-d90907649e8b/trump-xi-summit%3A-here%E2%80%99s-the.html?.tsrc=rss",
+    "ts": 1790339280,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/bet-5-dividend-growth-stocks-122800072.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/44ba6b60-ebe8-38d5-a0e3-d90907649e8b/trump-xi-summit%3A-here%E2%80%99s-the.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/bet-5-dividend-growth-stocks-122800072.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Arm vs. Taiwan Semiconductor Manufacturing: Which Chip Stock Is a Better Buy in 2026?",
+   "label": "Technology Stocks Are Back, Because Nothing Else Is",
    "value": {
-    "headline": "Arm vs. Taiwan Semiconductor Manufacturing: Which Chip Stock Is a Better Buy in 2026?",
+    "headline": "Technology Stocks Are Back, Because Nothing Else Is",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790199608,
-    "url": "https://www.fool.com/coverage/better-buy/2026/09/23/arm-vs-taiwan-semiconductor-manufacturing-which-chip-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+    "ts": 1790339030,
+    "url": "https://finance.yahoo.com/m/6e83da33-e6c4-3c4b-909e-53a8a1eeff49/technology-stocks-are-back%2C.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/09/23/arm-vs-taiwan-semiconductor-manufacturing-which-chip-stock-is-a-better-buy-in-2026/?.tsrc=rss"
+     "https://finance.yahoo.com/m/6e83da33-e6c4-3c4b-909e-53a8a1eeff49/technology-stocks-are-back%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Synopsys and TSMC Partner to Accelerate AI Systems Innovation with Agentic AI and Advanced Design",
+   "label": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
    "value": {
-    "headline": "Synopsys and TSMC Partner to Accelerate AI Systems Innovation with Agentic AI and Advanced Design",
+    "headline": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790190060,
-    "url": "https://finance.yahoo.com/technology/ai/articles/synopsys-tsmc-partner-accelerate-ai-190100128.html?.tsrc=rss",
+    "ts": 1790337893,
+    "url": "https://finance.yahoo.com/m/f20152d5-c38c-3d1c-80ad-574b31be1248/dow-jones-futures-signal.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/synopsys-tsmc-partner-accelerate-ai-190100128.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/f20152d5-c38c-3d1c-80ad-574b31be1248/dow-jones-futures-signal.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 103 分 / 120 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 103,
+    "comments": 120,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-24",
+   "as_of": "2026-09-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

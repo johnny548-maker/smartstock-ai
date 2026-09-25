@@ -1,33 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 499.35,
- "change_pct": -0.45,
+ "price": 514.14,
+ "change_pct": 3.26,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 376.79,
-   "h": 379.79,
-   "l": 359.22,
-   "c": 367.88,
-   "v": 51229900
-  },
-  {
-   "time": "2026-06-30",
-   "o": 370.33,
-   "h": 373.45,
-   "l": 366.76,
-   "c": 372.32,
-   "v": 44945700
-  },
-  {
-   "time": "2026-07-01",
-   "o": 380.11,
-   "h": 388.1,
-   "l": 374.19,
-   "c": 383.56,
-   "v": 48065800
-  },
   {
    "time": "2026-07-02",
    "o": 383.76,
@@ -477,30 +453,51 @@
    "v": 27959900
   },
   {
+   "time": "2026-09-22",
+   "o": 507.32,
+   "h": 508.5,
+   "l": 493.65,
+   "c": 498.0,
+   "v": 21652800
+  },
+  {
    "time": "2026-09-23",
    "o": 500.76,
    "h": 509.44,
-   "l": 495.9,
-   "c": 499.35,
-   "v": 7820840
+   "l": 495.88,
+   "c": 500.59,
+   "v": 19445600
+  },
+  {
+   "time": "2026-09-24",
+   "o": 495.07,
+   "h": 498.9,
+   "l": 491.22,
+   "c": 497.93,
+   "v": 16637200
+  },
+  {
+   "time": "2026-09-25",
+   "o": 499.14,
+   "h": 517.48,
+   "l": 497.3,
+   "c": 514.14,
+   "v": 15981279
   }
  ],
  "sr": {
-  "price": 499.35,
+  "price": 514.14,
   "resistance": [
-   509.31,
-   509.95
+   515.65,
+   517.78
   ],
   "support": [
-   489.22,
-   487.23
+   501.87,
+   489.22
   ],
   "strong_support": 348.54
  },
  "spark": [
-  367.88,
-  372.32,
-  383.56,
   389.76,
   386.01,
   388.11,
@@ -557,134 +554,159 @@
   497.75,
   493.78,
   501.61,
-  499.35
+  498.0,
+  500.59,
+  497.93,
+  514.14
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
+ "spark_start": "2026-07-02",
+ "spark_end": "2026-09-25",
  "fundamental": {
-  "pe_trailing": 28.002327,
-  "pe_forward": 21.088192,
-  "eps_trailing": 17.83,
+  "pe_trailing": 28.611021,
+  "pe_forward": 21.715773,
+  "eps_trailing": 17.97,
   "eps_forward": 23.67588,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 514.14,
+  "stop": 492.53,
+  "target": 568.17,
+  "atr_bracket": 568.17,
+  "measured_move": 533.9,
+  "target_band": [
+   525.98,
+   533.9,
+   568.17
+  ],
+  "stop_pct": -4.2,
+  "target_pct": 10.5,
+  "rr": 2.5,
+  "atr_pct": 2.1,
+  "swing_stop": 483.99,
+  "chandelier": 484.23,
+  "fib_targets": [
+   517.69,
+   525.98,
+   535.13
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Stock Gets Another Upgrade, Price-Target Hike",
+   "label": "Oppenheimer resets Microsoft stock price target after HQ visit",
    "value": {
-    "headline": "Microsoft Stock Gets Another Upgrade, Price-Target Hike",
+    "headline": "Oppenheimer resets Microsoft stock price target after HQ visit",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790175709,
-    "url": "https://finance.yahoo.com/m/87f2f4b3-94ae-38c6-aad5-741ff974d445/microsoft-stock-gets-another.html?.tsrc=rss",
+    "ts": 1790347020,
+    "url": "https://www.thestreet.com/investing/stocks/oppenheimer-resets-microsoft-stock-price-target-after-hq-visit?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/87f2f4b3-94ae-38c6-aad5-741ff974d445/microsoft-stock-gets-another.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/oppenheimer-resets-microsoft-stock-price-target-after-hq-visit?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Americans Fear of Losing Their Job Is Highest in 13 Years",
+   "label": "AI financing fears are mounting, sparked by Oracle's force majeure notice",
    "value": {
-    "headline": "Americans Fear of Losing Their Job Is Highest in 13 Years",
+    "headline": "AI financing fears are mounting, sparked by Oracle's force majeure notice",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790175446,
-    "url": "https://247wallst.com/investing/2026/09/23/americans-fear-of-losing-their-job-is-highest-in-13-years/?.tsrc=rss",
+    "ts": 1790346851,
+    "url": "https://finance.yahoo.com/video/ai-financing-fears-are-mounting-sparked-by-oracles-force-majeure-notice-143411405.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/23/americans-fear-of-losing-their-job-is-highest-in-13-years/?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-financing-fears-are-mounting-sparked-by-oracles-force-majeure-notice-143411405.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+   "label": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
    "value": {
-    "headline": "Apple Takes AI Fight Straight to Nvidia and Microsoft",
+    "headline": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174785,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss",
+    "ts": 1790346000,
+    "url": "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-takes-ai-fight-straight-144625209.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Street is Finally Going Bullish on Salesforce and I Keep Buying",
+   "label": "Microsoft CEO Satya Nadella talks US-China AI safety norms",
    "value": {
-    "headline": "The Street is Finally Going Bullish on Salesforce and I Keep Buying",
+    "headline": "Microsoft CEO Satya Nadella talks US-China AI safety norms",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174749,
-    "url": "https://247wallst.com/investing/2026/09/23/the-street-is-finally-going-bullish-on-salesforce-and-i-keep-buying/?.tsrc=rss",
+    "ts": 1790345277,
+    "url": "https://finance.yahoo.com/video/microsoft-ceo-satya-nadella-talks-us-china-ai-safety-norms-140757895.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/23/the-street-is-finally-going-bullish-on-salesforce-and-i-keep-buying/?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-ceo-satya-nadella-talks-us-china-ai-safety-norms-140757895.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
+   "label": "Qualcomm's CMO reveals the secret behind Snapdragon's rise",
    "value": {
-    "headline": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
+    "headline": "Qualcomm's CMO reveals the secret behind Snapdragon's rise",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790174460,
-    "url": "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss",
+    "ts": 1790345225,
+    "url": "https://finance.yahoo.com/video/qualcomms-cmo-reveals-secret-behind-140705053.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/qualcomms-cmo-reveals-secret-behind-140705053.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +721,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-23",
+   "as_of": "2026-09-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

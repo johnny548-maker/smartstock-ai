@@ -1,33 +1,9 @@
 {
  "stock": "AMZN",
- "name": "亞馬遜",
- "price": 250.51,
- "change_pct": -3.07,
+ "name": "Amazon.com, Inc. - Common Stock",
+ "price": 249.17,
+ "change_pct": -0.08,
  "ohlc": [
-  {
-   "time": "2026-06-29",
-   "o": 234.22,
-   "h": 249.71,
-   "l": 233.8,
-   "c": 240.14,
-   "v": 77619200
-  },
-  {
-   "time": "2026-06-30",
-   "o": 237.35,
-   "h": 241.54,
-   "l": 237.17,
-   "c": 238.34,
-   "v": 66228300
-  },
-  {
-   "time": "2026-07-01",
-   "o": 239.75,
-   "h": 244.9,
-   "l": 234.9,
-   "c": 241.7,
-   "v": 53829900
-  },
   {
    "time": "2026-07-02",
    "o": 241.61,
@@ -477,30 +453,51 @@
    "v": 42979400
   },
   {
+   "time": "2026-09-22",
+   "o": 255.11,
+   "h": 259.0,
+   "l": 253.78,
+   "c": 254.98,
+   "v": 41982600
+  },
+  {
    "time": "2026-09-23",
-   "o": 253.33,
-   "h": 253.81,
-   "l": 248.19,
-   "c": 250.51,
-   "v": 14277024
+   "o": 253.0,
+   "h": 253.99,
+   "l": 247.76,
+   "c": 249.27,
+   "v": 44209200
+  },
+  {
+   "time": "2026-09-24",
+   "o": 246.02,
+   "h": 250.43,
+   "l": 245.6,
+   "c": 249.38,
+   "v": 32986900
+  },
+  {
+   "time": "2026-09-25",
+   "o": 248.56,
+   "h": 250.16,
+   "l": 247.18,
+   "c": 249.17,
+   "v": 12583436
   }
  ],
  "sr": {
-  "price": 250.51,
+  "price": 249.17,
   "resistance": [
-   251.75,
-   256.18
+   258.08,
+   259.49
   ],
   "support": [
    244.3,
-   238.49
+   238.25
   ],
-  "strong_support": 196.0
+  "strong_support": 226.16
  },
  "spark": [
-  240.14,
-  238.34,
-  241.7,
   242.67,
   244.16,
   245.98,
@@ -557,150 +554,14 @@
   251.19,
   253.71,
   258.45,
-  250.51
+  254.98,
+  249.27,
+  249.38,
+  249.17
  ],
- "spark_start": "2026-06-29",
- "spark_end": "2026-09-23",
- "fundamental": {
-  "pe_trailing": 20.169083,
-  "pe_forward": 24.113295,
-  "eps_trailing": 12.42,
-  "eps_forward": 10.38846,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-07-02",
+ "spark_end": "2026-09-25",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
-   "value": {
-    "headline": "BABA Stock After Q1: Can Qwen, Chips & Global AI Expansion Deliver?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790174460,
-    "url": "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/baba-stock-q1-qwen-chips-144100947.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What Microsoft's Trailing Multiple Leaves Out",
-   "value": {
-    "headline": "What Microsoft's Trailing Multiple Leaves Out",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790174239,
-    "url": "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/616304/what-microsofts-trailing-multiple-leaves-out/2026-09-23?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "ReFiBuy Announces General Availability of Support for Amazon's Alexa for Shopping",
-   "value": {
-    "headline": "ReFiBuy Announces General Availability of Support for Amazon's Alexa for Shopping",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790172000,
-    "url": "https://finance.yahoo.com/technology/articles/refibuy-announces-general-availability-support-140000125.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/refibuy-announces-general-availability-support-140000125.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Trump Logged 1,156 Trades in One Month and Sold Microsoft. The Reason Is a Tax Strategy You Can Copy.",
-   "value": {
-    "headline": "Trump Logged 1,156 Trades in One Month and Sold Microsoft. The Reason Is a Tax Strategy You Can Copy.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790171424,
-    "url": "https://247wallst.com/personal-finance/2026/09/23/trump-logged-1156-trades-in-one-month-and-sold-microsoft-the-reason-is-a-tax-strategy-you-can-copy/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/personal-finance/2026/09/23/trump-logged-1156-trades-in-one-month-and-sold-microsoft-the-reason-is-a-tax-strategy-you-can-copy/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Can Disney's International Streaming Expansion Challenge NFLX & AMZN?",
-   "value": {
-    "headline": "Can Disney's International Streaming Expansion Challenge NFLX & AMZN?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790171280,
-    "url": "https://finance.yahoo.com/media-advertising/articles/disneys-international-streaming-expansion-challenge-134800800.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/disneys-international-streaming-expansion-challenge-134800800.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 18,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-23",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 246,915 股交割失敗）",
-   "value": {
-    "total_shares": 246915,
-    "days": 7,
-    "max_shares": 136460,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-09-23",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

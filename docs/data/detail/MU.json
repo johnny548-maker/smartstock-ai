@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 1056.83,
- "change_pct": -1.4,
+ "price": 1083.87,
+ "change_pct": 0.31,
  "ohlc": [
-  {
-   "time": "2026-07-01",
-   "o": 1081.84,
-   "h": 1096.83,
-   "l": 1032.04,
-   "c": 1032.12,
-   "v": 51328100
-  },
   {
    "time": "2026-07-02",
    "o": 1041.34,
@@ -474,19 +466,27 @@
    "h": 1105.5,
    "l": 1064.25,
    "c": 1071.88,
-   "v": 21470000
+   "v": 21572800
   },
   {
    "time": "2026-09-24",
    "o": 1049.75,
-   "h": 1061.78,
+   "h": 1081.04,
    "l": 1044.0,
-   "c": 1056.83,
-   "v": 8307847
+   "c": 1080.53,
+   "v": 22001600
+  },
+  {
+   "time": "2026-09-25",
+   "o": 1095.47,
+   "h": 1108.72,
+   "l": 1074.51,
+   "c": 1083.87,
+   "v": 9696164
   }
  ],
  "sr": {
-  "price": 1056.83,
+  "price": 1083.87,
   "resistance": [
    1089.12,
    1254.81
@@ -498,7 +498,6 @@
   "strong_support": 61.38
  },
  "spark": [
-  1032.12,
   975.41,
   984.75,
   938.38,
@@ -557,11 +556,144 @@
   1043.96,
   1096.16,
   1071.88,
-  1056.83
+  1080.53,
+  1083.87
  ],
- "spark_start": "2026-07-01",
- "spark_end": "2026-09-24",
+ "spark_start": "2026-07-02",
+ "spark_end": "2026-09-25",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Could Go Wrong At Micron From Here?",
+   "value": {
+    "headline": "What Could Go Wrong At Micron From Here?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790346007,
+    "url": "https://www.trefis.com/articles/616645/what-could-go-wrong-at-micron-from-here/2026-09-25?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/616645/what-could-go-wrong-at-micron-from-here/2026-09-25?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today: Dow Rises On U.S.-Iran Peace Hopes; Software Name Soars On Anthropic Deal (Live Coverage)",
+   "value": {
+    "headline": "Stock Market Today: Dow Rises On U.S.-Iran Peace Hopes; Software Name Soars On Anthropic Deal (Live Coverage)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790345533,
+    "url": "https://finance.yahoo.com/m/225d690f-7913-3ffb-a43f-d4610f997f55/stock-market-today%3A-dow-rises.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/225d690f-7913-3ffb-a43f-d4610f997f55/stock-market-today%3A-dow-rises.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Two Numbers to Watch in Micron’s Earnings Report Next Week",
+   "value": {
+    "headline": "Two Numbers to Watch in Micron’s Earnings Report Next Week",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790345400,
+    "url": "https://finance.yahoo.com/m/85886f6d-24cd-3ef8-85d2-fd589bbcab6a/two-numbers-to-watch-in.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/85886f6d-24cd-3ef8-85d2-fd589bbcab6a/two-numbers-to-watch-in.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Is The Case For Waiting On Intel Stock?",
+   "value": {
+    "headline": "What Is The Case For Waiting On Intel Stock?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790341321,
+    "url": "https://www.trefis.com/articles/616652/what-is-the-case-for-waiting-on-intel-stock/2026-09-25?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/616652/what-is-the-case-for-waiting-on-intel-stock/2026-09-25?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Countdown to Micron (MU) Q4 Earnings: A Look at Estimates Beyond Revenue and EPS",
+   "value": {
+    "headline": "Countdown to Micron (MU) Q4 Earnings: A Look at Estimates Beyond Revenue and EPS",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790338513,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/countdown-micron-mu-q4-earnings-121513849.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/countdown-micron-mu-q4-earnings-121513849.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 17,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-25",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 33629,
+    "days": 8,
+    "max_shares": 12028,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-09-25",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
