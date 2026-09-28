@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 224.42,
- "change_pct": -0.07,
+ "price": 230.11,
+ "change_pct": 2.24,
  "ohlc": [
-  {
-   "time": "2026-07-02",
-   "o": 196.92,
-   "h": 199.84,
-   "l": 192.14,
-   "c": 194.61,
-   "v": 142068700
-  },
   {
    "time": "2026-07-06",
    "o": 194.2,
@@ -474,22 +466,30 @@
    "h": 224.94,
    "l": 221.09,
    "c": 224.58,
-   "v": 77305200
+   "v": 77469900
   },
   {
    "time": "2026-09-25",
-   "o": 225.15,
+   "o": 225.13,
    "h": 226.94,
    "l": 223.13,
-   "c": 224.42,
-   "v": 29564026
+   "c": 225.07,
+   "v": 89808400
+  },
+  {
+   "time": "2026-09-28",
+   "o": 229.7,
+   "h": 233.21,
+   "l": 228.46,
+   "c": 230.11,
+   "v": 100639864
   }
  ],
  "sr": {
-  "price": 224.42,
+  "price": 230.11,
   "resistance": [
-   227.67,
-   229.98
+   230.21,
+   231.75
   ],
   "support": [
    215.96,
@@ -498,7 +498,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  194.61,
   195.33,
   196.71,
   203.89,
@@ -557,14 +556,15 @@
   228.87,
   225.51,
   224.58,
-  224.42
+  225.07,
+  230.11
  ],
- "spark_start": "2026-07-02",
- "spark_end": "2026-09-25",
+ "spark_start": "2026-07-06",
+ "spark_end": "2026-09-28",
  "fundamental": {
-  "pe_trailing": 28.371681,
-  "pe_forward": 14.3101,
-  "eps_trailing": 7.91,
+  "pe_trailing": 29.12848,
+  "pe_forward": 14.673241,
+  "eps_trailing": 7.9,
   "eps_forward": 15.68263,
   "stale": false,
   "source": "yfinance"
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Shares Are About to Become Even More Valuable And That Keeps Me Buying",
+   "label": "The Bond Market Is Repeating a Pattern Last Observed Ahead of the Great Recession. Here's What History Says Comes Next.",
    "value": {
-    "headline": "AMD Shares Are About to Become Even More Valuable And That Keeps Me Buying",
+    "headline": "The Bond Market Is Repeating a Pattern Last Observed Ahead of the Great Recession. Here's What History Says Comes Next.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790347521,
-    "url": "https://247wallst.com/investing/2026/09/25/amd-shares-are-about-to-become-even-more-valuable-and-that-keeps-me-buying/?.tsrc=rss",
+    "ts": 1790618700,
+    "url": "https://www.fool.com/investing/2026/09/28/bond-market-repeating-pattern-great-recession/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/25/amd-shares-are-about-to-become-even-more-valuable-and-that-keeps-me-buying/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/28/bond-market-repeating-pattern-great-recession/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Ford Stock a Buy for Its Dividend?",
+   "label": "McDonald's Just Announced a Big Move That Could Unlock a Billion-Dollar Growth Opportunity for Its Business",
    "value": {
-    "headline": "Is Ford Stock a Buy for Its Dividend?",
+    "headline": "McDonald's Just Announced a Big Move That Could Unlock a Billion-Dollar Growth Opportunity for Its Business",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346900,
-    "url": "https://www.fool.com/investing/2026/09/25/is-ford-stock-a-buy-for-its-dividend/?.tsrc=rss",
+    "ts": 1790617801,
+    "url": "https://www.fool.com/investing/2026/09/28/mcdonald-s-just-announced-a-big-move-that-could-unlock-a-billion-dollar-growth-opportunity-for-its-business/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/25/is-ford-stock-a-buy-for-its-dividend/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/28/mcdonald-s-just-announced-a-big-move-that-could-unlock-a-billion-dollar-growth-opportunity-for-its-business/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What mortgage rate surges mean for home improvement stocks",
+   "label": "S&P Global and Moody's Have Rated Debt for More Than 100 Years. Here's Why That Moat Still Holds.",
    "value": {
-    "headline": "What mortgage rate surges mean for home improvement stocks",
+    "headline": "S&P Global and Moody's Have Rated Debt for More Than 100 Years. Here's Why That Moat Still Holds.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346652,
-    "url": "https://finance.yahoo.com/video/mortgage-rate-surges-mean-home-143052293.html?.tsrc=rss",
+    "ts": 1790617800,
+    "url": "https://www.fool.com/investing/2026/09/28/sp-global-and-moodys-have-rated-debt-for-more-than/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/mortgage-rate-surges-mean-home-143052293.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/28/sp-global-and-moodys-have-rated-debt-for-more-than/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This Magnificent Seven Stock Could Deliver Outsized Returns Over the Next 5 Years",
+   "label": "3 Things to Know About RMDs Before You're Forced to Take Them",
    "value": {
-    "headline": "This Magnificent Seven Stock Could Deliver Outsized Returns Over the Next 5 Years",
+    "headline": "3 Things to Know About RMDs Before You're Forced to Take Them",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346642,
-    "url": "https://247wallst.com/investing/2026/09/25/this-magnificent-seven-stock-could-deliver-outsized-returns-over-the-next-5-years/?.tsrc=rss",
+    "ts": 1790617680,
+    "url": "https://www.fool.com/retirement/2026/09/28/3-things-to-know-about-rmds-before-youre-forced-to/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/25/this-magnificent-seven-stock-could-deliver-outsized-returns-over-the-next-5-years/?.tsrc=rss"
+     "https://www.fool.com/retirement/2026/09/28/3-things-to-know-about-rmds-before-youre-forced-to/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Could Go Wrong At Micron From Here?",
+   "label": "Jim Cramer on Nvidia's $150 billion buyback expansion",
    "value": {
-    "headline": "What Could Go Wrong At Micron From Here?",
+    "headline": "Jim Cramer on Nvidia's $150 billion buyback expansion",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346007,
-    "url": "https://www.trefis.com/articles/616645/what-could-go-wrong-at-micron-from-here/2026-09-25?.tsrc=rss",
+    "ts": 1790617607,
+    "url": "https://qz.com/jim-cramer-nvidia-buyback-150-billion-significant-092826?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/616645/what-could-go-wrong-at-micron-from-here/2026-09-25?.tsrc=rss"
+     "https://qz.com/jim-cramer-nvidia-buyback-150-billion-significant-092826?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

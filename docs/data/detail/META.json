@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 751.13,
- "change_pct": -3.4,
+ "price": 721.82,
+ "change_pct": -3.97,
  "ohlc": [
-  {
-   "time": "2026-07-02",
-   "o": 607.42,
-   "h": 609.52,
-   "l": 579.96,
-   "c": 582.44,
-   "v": 21705900
-  },
   {
    "time": "2026-07-06",
    "o": 594.37,
@@ -474,21 +466,30 @@
    "h": 779.82,
    "l": 743.01,
    "c": 777.59,
-   "v": 34744400
+   "v": 34808500
   },
   {
    "time": "2026-09-25",
-   "o": 768.84,
+   "o": 768.85,
    "h": 769.57,
-   "l": 747.49,
-   "c": 751.13,
-   "v": 11738580
+   "l": 746.54,
+   "c": 751.66,
+   "v": 25753100
+  },
+  {
+   "time": "2026-09-28",
+   "o": 750.42,
+   "h": 750.58,
+   "l": 717.25,
+   "c": 721.82,
+   "v": 18588784
   }
  ],
  "sr": {
-  "price": 751.13,
+  "price": 721.82,
   "resistance": [
-   756.59
+   732.78,
+   742.09
   ],
   "support": [
    696.97,
@@ -497,7 +498,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  582.44,
   599.82,
   615.09,
   602.64,
@@ -556,15 +556,16 @@
   736.6,
   744.1,
   777.59,
-  751.13
+  751.66,
+  721.82
  ],
- "spark_start": "2026-07-02",
- "spark_end": "2026-09-25",
+ "spark_start": "2026-07-06",
+ "spark_end": "2026-09-28",
  "fundamental": {
-  "pe_trailing": 28.324282,
-  "pe_forward": 21.482239,
-  "eps_trailing": 26.52,
-  "eps_forward": 34.96656,
+  "pe_trailing": 27.20505,
+  "pe_forward": 20.723656,
+  "eps_trailing": 26.53,
+  "eps_forward": 34.82735,
   "stale": false,
   "source": "yfinance"
  },
@@ -574,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Shares Are About to Become Even More Valuable And That Keeps Me Buying",
+   "label": "Update: US Equity Indexes Fall in Midday Trading as Treasury Yields Rise Amid US-Iran Deadlock",
    "value": {
-    "headline": "AMD Shares Are About to Become Even More Valuable And That Keeps Me Buying",
+    "headline": "Update: US Equity Indexes Fall in Midday Trading as Treasury Yields Rise Amid US-Iran Deadlock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790347521,
-    "url": "https://247wallst.com/investing/2026/09/25/amd-shares-are-about-to-become-even-more-valuable-and-that-keeps-me-buying/?.tsrc=rss",
+    "ts": 1790617139,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-fall-midday-173859853.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/25/amd-shares-are-about-to-become-even-more-valuable-and-that-keeps-me-buying/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-fall-midday-173859853.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Slides 4% as Retracement Follows 32% Monthly Run; Pinterest and Snap Inch Higher",
+   "label": "Meta enters the enterprise AI battle",
    "value": {
-    "headline": "Meta Slides 4% as Retracement Follows 32% Monthly Run; Pinterest and Snap Inch Higher",
+    "headline": "Meta enters the enterprise AI battle",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790347293,
-    "url": "https://247wallst.com/investing/2026/09/25/meta-slides-4-as-retracement-follows-32-monthly-run-pinterest-and-snap-inch-higher/?.tsrc=rss",
+    "ts": 1790616745,
+    "url": "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/25/meta-slides-4-as-retracement-follows-32-monthly-run-pinterest-and-snap-inch-higher/?.tsrc=rss"
+     "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
+   "label": "AI safety: Is there too much industry self-interest for regulation now?",
    "value": {
-    "headline": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
+    "headline": "AI safety: Is there too much industry self-interest for regulation now?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346000,
-    "url": "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss",
+    "ts": 1790614582,
+    "url": "https://finance.yahoo.com/video/ai-safety-too-much-industry-165622306.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-safety-too-much-industry-165622306.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Split As Nasdaq Hits High, Dow Jones Slides Amid Surging Treasury Yields: Weekly Review",
+   "label": "Meta launches enterprise AI platform, hires MongoDB CEO to lead new initiative",
    "value": {
-    "headline": "Stock Market Split As Nasdaq Hits High, Dow Jones Slides Amid Surging Treasury Yields: Weekly Review",
+    "headline": "Meta launches enterprise AI platform, hires MongoDB CEO to lead new initiative",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790345922,
-    "url": "https://finance.yahoo.com/m/a04cf70a-8f06-39e7-aae3-89f1e8a87d24/stock-market-split-as-nasdaq.html?.tsrc=rss",
+    "ts": 1790614358,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-launches-enterprise-ai-platform-165238853.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a04cf70a-8f06-39e7-aae3-89f1e8a87d24/stock-market-split-as-nasdaq.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-launches-enterprise-ai-platform-165238853.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta's Muse Shakes Up The AI Battle. Here's What Investors Should Know.",
+   "label": "5 Reasons to Buy Stocks Now",
    "value": {
-    "headline": "Meta's Muse Shakes Up The AI Battle. Here's What Investors Should Know.",
+    "headline": "5 Reasons to Buy Stocks Now",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790345539,
-    "url": "https://finance.yahoo.com/m/51529d76-cf3a-3bbe-8289-2d3a4122e23a/meta%27s-muse-shakes-up-the-ai.html?.tsrc=rss",
+    "ts": 1790613900,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-reasons-buy-stocks-now-164500521.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/51529d76-cf3a-3bbe-8289-2d3a4122e23a/meta%27s-muse-shakes-up-the-ai.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/5-reasons-buy-stocks-now-164500521.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 248 分 / 178 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 248,
+    "comments": 178,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-28",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -698,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

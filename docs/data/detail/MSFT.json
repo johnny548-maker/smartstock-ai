@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 514.14,
- "change_pct": 3.26,
+ "price": 511.78,
+ "change_pct": -0.85,
  "ohlc": [
-  {
-   "time": "2026-07-02",
-   "o": 383.76,
-   "h": 391.46,
-   "l": 382.98,
-   "c": 389.76,
-   "v": 42128900
-  },
   {
    "time": "2026-07-06",
    "o": 386.31,
@@ -474,22 +466,30 @@
    "h": 498.9,
    "l": 491.22,
    "c": 497.93,
-   "v": 16637200
+   "v": 16657600
   },
   {
    "time": "2026-09-25",
-   "o": 499.14,
-   "h": 517.48,
-   "l": 497.3,
-   "c": 514.14,
-   "v": 15981279
+   "o": 499.04,
+   "h": 519.4,
+   "l": 497.25,
+   "c": 516.17,
+   "v": 38154200
+  },
+  {
+   "time": "2026-09-28",
+   "o": 505.42,
+   "h": 513.33,
+   "l": 502.22,
+   "c": 511.78,
+   "v": 11240144
   }
  ],
  "sr": {
-  "price": 514.14,
+  "price": 511.78,
   "resistance": [
-   515.65,
-   517.78
+   512.76,
+   515.65
   ],
   "support": [
    501.87,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  389.76,
   386.01,
   388.11,
   382.62,
@@ -557,39 +556,40 @@
   498.0,
   500.59,
   497.93,
-  514.14
+  516.17,
+  511.78
  ],
- "spark_start": "2026-07-02",
- "spark_end": "2026-09-25",
+ "spark_start": "2026-07-06",
+ "spark_end": "2026-09-28",
  "fundamental": {
-  "pe_trailing": 28.611021,
-  "pe_forward": 21.715773,
-  "eps_trailing": 17.97,
+  "pe_trailing": 28.493877,
+  "pe_forward": 21.614824,
+  "eps_trailing": 17.96,
   "eps_forward": 23.67588,
   "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 514.14,
-  "stop": 492.53,
-  "target": 568.17,
-  "atr_bracket": 568.17,
+  "entry": 511.78,
+  "stop": 489.26,
+  "target": 568.08,
+  "atr_bracket": 568.08,
   "measured_move": 533.9,
   "target_band": [
-   525.98,
+   529.97,
    533.9,
-   568.17
+   568.08
   ],
-  "stop_pct": -4.2,
-  "target_pct": 10.5,
+  "stop_pct": -4.4,
+  "target_pct": 11.0,
   "rr": 2.5,
-  "atr_pct": 2.1,
-  "swing_stop": 483.99,
-  "chandelier": 484.23,
+  "atr_pct": 2.2,
+  "swing_stop": 487.84,
+  "chandelier": 485.06,
   "fib_targets": [
-   517.69,
-   525.98,
-   535.13
+   521.68,
+   529.97,
+   539.12
   ]
  },
  "generated_for": "detail",
@@ -597,101 +597,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Oppenheimer resets Microsoft stock price target after HQ visit",
+   "label": "What You Actually Pay To Join The AAPL Run",
    "value": {
-    "headline": "Oppenheimer resets Microsoft stock price target after HQ visit",
+    "headline": "What You Actually Pay To Join The AAPL Run",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790347020,
-    "url": "https://www.thestreet.com/investing/stocks/oppenheimer-resets-microsoft-stock-price-target-after-hq-visit?.tsrc=rss",
+    "ts": 1790617331,
+    "url": "https://www.trefis.com/articles/616741/what-you-actually-pay-to-join-the-aapl-run-3/2026-09-28?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/oppenheimer-resets-microsoft-stock-price-target-after-hq-visit?.tsrc=rss"
+     "https://www.trefis.com/articles/616741/what-you-actually-pay-to-join-the-aapl-run-3/2026-09-28?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI financing fears are mounting, sparked by Oracle's force majeure notice",
+   "label": "Meta enters the enterprise AI battle",
    "value": {
-    "headline": "AI financing fears are mounting, sparked by Oracle's force majeure notice",
+    "headline": "Meta enters the enterprise AI battle",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346851,
-    "url": "https://finance.yahoo.com/video/ai-financing-fears-are-mounting-sparked-by-oracles-force-majeure-notice-143411405.html?.tsrc=rss",
+    "ts": 1790616745,
+    "url": "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-financing-fears-are-mounting-sparked-by-oracles-force-majeure-notice-143411405.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
+   "label": "Microsoft CEO names one key concern with its AI",
    "value": {
-    "headline": "The \"Magnificent Seven\" Stocks: Here's the 1 I'm Buying Hand Over Fist Right Now",
+    "headline": "Microsoft CEO names one key concern with its AI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790346000,
-    "url": "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss",
+    "ts": 1790615820,
+    "url": "https://www.thestreet.com/technology/microsoft-ceo-names-the-one-concern-microsoft-has-with-its-ai?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/25/the-magnificent-seven-stocks-heres-the-1-im-buying/?.tsrc=rss"
+     "https://www.thestreet.com/technology/microsoft-ceo-names-the-one-concern-microsoft-has-with-its-ai?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft CEO Satya Nadella talks US-China AI safety norms",
+   "label": "Microsoft cuts hundreds more jobs as restructuring deepens",
    "value": {
-    "headline": "Microsoft CEO Satya Nadella talks US-China AI safety norms",
+    "headline": "Microsoft cuts hundreds more jobs as restructuring deepens",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790345277,
-    "url": "https://finance.yahoo.com/video/microsoft-ceo-satya-nadella-talks-us-china-ai-safety-norms-140757895.html?.tsrc=rss",
+    "ts": 1790615392,
+    "url": "https://www.thestreet.com/employment/microsoft-cuts-hundreds-more-jobs-layoffs-restructuring-warn?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/microsoft-ceo-satya-nadella-talks-us-china-ai-safety-norms-140757895.html?.tsrc=rss"
+     "https://www.thestreet.com/employment/microsoft-cuts-hundreds-more-jobs-layoffs-restructuring-warn?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-09-25",
+   "severity": "warn",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Qualcomm's CMO reveals the secret behind Snapdragon's rise",
+   "label": "Here’s How Two of The Biggest Hyperscalers Have Best Monetized AI Capex So Far",
    "value": {
-    "headline": "Qualcomm's CMO reveals the secret behind Snapdragon's rise",
+    "headline": "Here’s How Two of The Biggest Hyperscalers Have Best Monetized AI Capex So Far",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790345225,
-    "url": "https://finance.yahoo.com/video/qualcomms-cmo-reveals-secret-behind-140705053.html?.tsrc=rss",
+    "ts": 1790612665,
+    "url": "https://247wallst.com/investing/2026/09/28/heres-how-two-of-the-biggest-hyperscalers-have-best-monetized-ai-capex-so-far/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/qualcomms-cmo-reveals-secret-behind-140705053.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/28/heres-how-two-of-the-biggest-hyperscalers-have-best-monetized-ai-capex-so-far/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -706,7 +706,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

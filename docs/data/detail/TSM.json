@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 451.4,
- "change_pct": 0.06,
+ "price": 453.31,
+ "change_pct": 0.6,
  "ohlc": [
-  {
-   "time": "2026-07-02",
-   "o": 449.33,
-   "h": 460.24,
-   "l": 428.35,
-   "c": 433.0,
-   "v": 18375000
-  },
   {
    "time": "2026-07-06",
    "o": 446.58,
@@ -474,19 +466,27 @@
    "h": 452.56,
    "l": 440.6,
    "c": 451.15,
-   "v": 7706700
+   "v": 7720300
   },
   {
    "time": "2026-09-25",
-   "o": 452.39,
-   "h": 455.02,
-   "l": 449.15,
-   "c": 451.4,
-   "v": 2399933
+   "o": 452.4,
+   "h": 455.03,
+   "l": 449.01,
+   "c": 450.61,
+   "v": 7751900
+  },
+  {
+   "time": "2026-09-28",
+   "o": 448.39,
+   "h": 455.27,
+   "l": 443.11,
+   "c": 453.31,
+   "v": 4898310
   }
  ],
  "sr": {
-  "price": 451.4,
+  "price": 453.31,
   "resistance": [
    475.51,
    477.72
@@ -498,7 +498,6 @@
   "strong_support": 264.03
  },
  "spark": [
-  433.0,
   450.58,
   431.41,
   435.81,
@@ -557,14 +556,15 @@
   452.0,
   446.57,
   451.15,
-  451.4
+  450.61,
+  453.31
  ],
- "spark_start": "2026-07-02",
- "spark_end": "2026-09-25",
+ "spark_start": "2026-07-06",
+ "spark_end": "2026-09-28",
  "fundamental": {
-  "pe_trailing": 33.461823,
-  "pe_forward": 20.588274,
-  "eps_trailing": 13.49,
+  "pe_trailing": 33.753536,
+  "pe_forward": 20.67539,
+  "eps_trailing": 13.43,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
@@ -575,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "HSBC Upgrades Synopsys to Buy, Sees 28% Earnings Growth Through 2028",
+   "label": "Synopsys Could Be One of the Biggest AI Picks Nobody Talks About",
    "value": {
-    "headline": "HSBC Upgrades Synopsys to Buy, Sees 28% Earnings Growth Through 2028",
+    "headline": "Synopsys Could Be One of the Biggest AI Picks Nobody Talks About",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790345742,
-    "url": "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/?.tsrc=rss",
+    "ts": 1790614834,
+    "url": "https://247wallst.com/investing/2026/09/28/synopsys-could-be-one-of-the-biggest-ai-picks-nobody-talks-about/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/28/synopsys-could-be-one-of-the-biggest-ai-picks-nobody-talks-about/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Advanced Micro Devices vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
+   "label": "Nvidia, Apple Partner TSMC Reveals These Clues On How To Read Charts",
    "value": {
-    "headline": "Advanced Micro Devices vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
+    "headline": "Nvidia, Apple Partner TSMC Reveals These Clues On How To Read Charts",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790341381,
-    "url": "https://www.fool.com/coverage/better-buy/2026/09/25/advanced-micro-devices-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+    "ts": 1790612110,
+    "url": "https://finance.yahoo.com/m/9d354324-7049-3304-a302-132d423b0a1b/nvidia%2C-apple-partner-tsmc.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/09/25/advanced-micro-devices-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
+     "https://finance.yahoo.com/m/9d354324-7049-3304-a302-132d423b0a1b/nvidia%2C-apple-partner-tsmc.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bet on These 5 Dividend Growth Stocks Amid Rising Treasury Yields",
+   "label": "Intel Drops 4% on Oil-Driven Rate Fears, NVIDIA Rises 3% on Record $150B Buyback; Taiwan Semiconductor Slips",
    "value": {
-    "headline": "Bet on These 5 Dividend Growth Stocks Amid Rising Treasury Yields",
+    "headline": "Intel Drops 4% on Oil-Driven Rate Fears, NVIDIA Rises 3% on Record $150B Buyback; Taiwan Semiconductor Slips",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790339280,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bet-5-dividend-growth-stocks-122800072.html?.tsrc=rss",
+    "ts": 1790606000,
+    "url": "https://247wallst.com/investing/2026/09/28/intel-drops-4-on-oil-driven-rate-fears-nvidia-rises-3-on-record-150b-buyback-taiwan-semiconductor-slips/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/bet-5-dividend-growth-stocks-122800072.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/28/intel-drops-4-on-oil-driven-rate-fears-nvidia-rises-3-on-record-150b-buyback-taiwan-semiconductor-slips/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Technology Stocks Are Back, Because Nothing Else Is",
+   "label": "Apple and Nvidia Just Delivered a Major Boost for TSMC Chip Business",
    "value": {
-    "headline": "Technology Stocks Are Back, Because Nothing Else Is",
+    "headline": "Apple and Nvidia Just Delivered a Major Boost for TSMC Chip Business",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790339030,
-    "url": "https://finance.yahoo.com/m/6e83da33-e6c4-3c4b-909e-53a8a1eeff49/technology-stocks-are-back%2C.html?.tsrc=rss",
+    "ts": 1790598150,
+    "url": "https://finance.yahoo.com/technology/articles/apple-nvidia-just-delivered-major-122230915.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6e83da33-e6c4-3c4b-909e-53a8a1eeff49/technology-stocks-are-back%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/apple-nvidia-just-delivered-major-122230915.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
+   "label": "As Cadence Strengthens Its Partnership With TSMC, Here's What It Could Mean for AI Stocks",
    "value": {
-    "headline": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
+    "headline": "As Cadence Strengthens Its Partnership With TSMC, Here's What It Could Mean for AI Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790337893,
-    "url": "https://finance.yahoo.com/m/f20152d5-c38c-3d1c-80ad-574b31be1248/dow-jones-futures-signal.html?.tsrc=rss",
+    "ts": 1790593203,
+    "url": "https://www.barchart.com/story/news/4829133/as-cadence-strengthens-its-partnership-with-tsmc-here-s-what-it-could-mean-for-ai-stocks?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f20152d5-c38c-3d1c-80ad-574b31be1248/dow-jones-futures-signal.html?.tsrc=rss"
+     "https://www.barchart.com/story/news/4829133/as-cadence-strengthens-its-partnership-with-tsmc-here-s-what-it-could-mean-for-ai-stocks?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 103 分 / 120 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 103,
-    "comments": 120,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-09-25",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-25",
+   "as_of": "2026-09-28",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
