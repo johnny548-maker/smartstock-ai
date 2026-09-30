@@ -1,25 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 605.4,
- "change_pct": -4.0,
+ "price": 601.9,
+ "change_pct": -0.93,
  "ohlc": [
-  {
-   "time": "2026-07-06",
-   "o": 535.35,
-   "h": 572.5,
-   "l": 527.0,
-   "c": 552.05,
-   "v": 30684200
-  },
-  {
-   "time": "2026-07-07",
-   "o": 515.91,
-   "h": 524.97,
-   "l": 503.11,
-   "c": 516.11,
-   "v": 29166800
-  },
   {
    "time": "2026-07-08",
    "o": 504.81,
@@ -474,20 +458,38 @@
    "h": 639.0,
    "l": 625.52,
    "c": 630.63,
-   "v": 17594900
+   "v": 17632100
   },
   {
    "time": "2026-09-28",
    "o": 624.9,
-   "h": 629.65,
+   "h": 629.75,
    "l": 596.07,
-   "c": 605.4,
-   "v": 15637406
+   "c": 607.87,
+   "v": 22124100
+  },
+  {
+   "time": "2026-09-29",
+   "o": 616.74,
+   "h": 624.13,
+   "l": 605.25,
+   "c": 607.57,
+   "v": 16449600
+  },
+  {
+   "time": "2026-09-30",
+   "o": 609.33,
+   "h": 615.17,
+   "l": 600.1,
+   "c": 601.9,
+   "v": 7703433
   }
  ],
  "sr": {
-  "price": 605.4,
-  "resistance": [],
+  "price": 601.9,
+  "resistance": [
+   639.0
+  ],
   "support": [
    498.15,
    495.35
@@ -495,8 +497,6 @@
   "strong_support": 188.22
  },
  "spark": [
-  552.05,
-  516.11,
   517.41,
   546.72,
   557.89,
@@ -554,14 +554,16 @@
   614.61,
   629.26,
   630.63,
-  605.4
+  607.87,
+  607.57,
+  601.9
  ],
- "spark_start": "2026-07-06",
- "spark_end": "2026-09-28",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": {
-  "pe_trailing": 154.86955,
-  "pe_forward": 38.87076,
-  "eps_trailing": 3.91,
+  "pe_trailing": 159.65518,
+  "pe_forward": 38.637104,
+  "eps_trailing": 3.77,
   "eps_forward": 15.57829,
   "stale": false,
   "source": "yfinance"
@@ -572,116 +574,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "When Should You Buy NVIDIA Stock After This Run?",
+   "label": "Jim Cramer delivers unmistakable verdict on AMD’s future after 281% run",
    "value": {
-    "headline": "When Should You Buy NVIDIA Stock After This Run?",
+    "headline": "Jim Cramer delivers unmistakable verdict on AMD’s future after 281% run",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790616262,
-    "url": "https://www.trefis.com/articles/616783/when-should-you-buy-nvidia-stock-after-this-run/2026-09-28?.tsrc=rss",
+    "ts": 1790785020,
+    "url": "https://www.thestreet.com/investing/stocks/jim-cramer-delivers-unmistakable-verdict-on-amds-future-after-281-run?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/616783/when-should-you-buy-nvidia-stock-after-this-run/2026-09-28?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/jim-cramer-delivers-unmistakable-verdict-on-amds-future-after-281-run?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Your Micron Shares Could Swing Hundreds Of Dollars, And That Is The Calm Case",
+   "label": "HPE, IBD Stock Of The Day, Breaks Out On Hiked Guidance, AI Momentum",
    "value": {
-    "headline": "Your Micron Shares Could Swing Hundreds Of Dollars, And That Is The Calm Case",
+    "headline": "HPE, IBD Stock Of The Day, Breaks Out On Hiked Guidance, AI Momentum",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790615427,
-    "url": "https://www.trefis.com/articles/616786/your-micron-shares-could-swing-hundreds-of-dollars-and-that-is-the-calm-case/2026-09-28?.tsrc=rss",
+    "ts": 1790784655,
+    "url": "https://finance.yahoo.com/m/c04bcab1-069f-3d62-901d-22e4449eb944/hpe%2C-ibd-stock-of-the-day%2C.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/616786/your-micron-shares-could-swing-hundreds-of-dollars-and-that-is-the-calm-case/2026-09-28?.tsrc=rss"
+     "https://finance.yahoo.com/m/c04bcab1-069f-3d62-901d-22e4449eb944/hpe%2C-ibd-stock-of-the-day%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Midday, Sept. 28: Stocks Slide as Yields Rise, MongoDB Tumbles",
+   "label": "EMS Broadens Product Offering Across Fencing and Hurricane Protection with Acquisition of AMD Supply",
    "value": {
-    "headline": "Stock Market Midday, Sept. 28: Stocks Slide as Yields Rise, MongoDB Tumbles",
+    "headline": "EMS Broadens Product Offering Across Fencing and Hurricane Protection with Acquisition of AMD Supply",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790614501,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/09/28/stock-market-midday-sept-28-stocks-slide-as-yields-rise-mongodb-tumbles/?.tsrc=rss",
+    "ts": 1790781180,
+    "url": "https://finance.yahoo.com/small-business/articles/ems-broadens-product-offering-across-151300626.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/09/28/stock-market-midday-sept-28-stocks-slide-as-yields-rise-mongodb-tumbles/?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/ems-broadens-product-offering-across-151300626.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-28",
+   "severity": "info",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Drops 4.5% as Perplexity Puts Agents on Local PCs",
+   "label": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
    "value": {
-    "headline": "AMD Stock Drops 4.5% as Perplexity Puts Agents on Local PCs",
+    "headline": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790613806,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amd-stock-drops-4-5-164326085.html?.tsrc=rss",
+    "ts": 1790780852,
+    "url": "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amd-stock-drops-4-5-164326085.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia, Apple Partner TSMC Reveals These Clues On How To Read Charts",
+   "label": "Hewlett Packard Enterprise Jumps 5% on AMD Order; Dell and Super Micro Barely Move",
    "value": {
-    "headline": "Nvidia, Apple Partner TSMC Reveals These Clues On How To Read Charts",
+    "headline": "Hewlett Packard Enterprise Jumps 5% on AMD Order; Dell and Super Micro Barely Move",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790612110,
-    "url": "https://finance.yahoo.com/m/9d354324-7049-3304-a302-132d423b0a1b/nvidia%2C-apple-partner-tsmc.html?.tsrc=rss",
+    "ts": 1790779293,
+    "url": "https://247wallst.com/investing/2026/09/30/hewlett-packard-enterprise-jumps-5-on-amd-order-dell-and-super-micro-barely-move/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/9d354324-7049-3304-a302-132d423b0a1b/nvidia%2C-apple-partner-tsmc.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/30/hewlett-packard-enterprise-jumps-5-on-amd-order-dell-and-super-micro-barely-move/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -696,7 +698,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

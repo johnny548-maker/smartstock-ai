@@ -1,8 +1,8 @@
 {
  "stock": "2390.TW",
  "name": "云辰",
- "price": 10.1,
- "change_pct": 0.0,
+ "price": 10.2,
+ "change_pct": 0.99,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -451,15 +451,25 @@
    "l": 10.1,
    "c": 10.1,
    "v": 91320
+  },
+  {
+   "time": "2026-09-30",
+   "o": 10.15,
+   "h": 10.35,
+   "l": 10.1,
+   "c": 10.2,
+   "v": 264078
   }
  ],
  "sr": {
-  "price": 10.1,
+  "price": 10.2,
   "resistance": [
    10.35,
    10.5
   ],
-  "support": [],
+  "support": [
+   10.1
+  ],
   "strong_support": 10.1
  },
  "spark": [
@@ -518,10 +528,11 @@
   10.15,
   10.1,
   10.1,
-  10.1
+  10.1,
+  10.2
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-29",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": null,
- "change_pct": null,
+ "price": 230.42,
+ "change_pct": 1.41,
  "ohlc": [
-  {
-   "time": "2026-07-06",
-   "o": 194.2,
-   "h": 197.33,
-   "l": 193.77,
-   "c": 195.33,
-   "v": 108999000
-  },
-  {
-   "time": "2026-07-07",
-   "o": 192.15,
-   "h": 198.19,
-   "l": 190.93,
-   "c": 196.71,
-   "v": 124154600
-  },
   {
    "time": "2026-07-08",
    "o": 194.96,
@@ -474,26 +458,46 @@
    "h": 226.94,
    "l": 223.13,
    "c": 225.07,
-   "v": 89808400
+   "v": 89947700
   },
   {
    "time": "2026-09-28",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 141276939
+   "o": 229.75,
+   "h": 233.21,
+   "l": 228.04,
+   "c": 228.86,
+   "v": 142344300
+  },
+  {
+   "time": "2026-09-29",
+   "o": 230.97,
+   "h": 232.82,
+   "l": 227.03,
+   "c": 227.21,
+   "v": 101203000
+  },
+  {
+   "time": "2026-09-30",
+   "o": 229.0,
+   "h": 232.37,
+   "l": 228.8,
+   "c": 230.42,
+   "v": 44339360
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 230.42,
+  "resistance": [
+   231.75,
+   234.5
+  ],
+  "support": [
+   221.09,
+   215.96
+  ],
   "strong_support": 163.9
  },
  "spark": [
-  195.33,
-  196.71,
   203.89,
   202.55,
   210.72,
@@ -551,134 +555,153 @@
   225.51,
   224.58,
   225.07,
-  null
+  228.86,
+  227.21,
+  230.42
  ],
- "spark_start": "2026-07-06",
- "spark_end": "2026-09-28",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": {
-  "pe_trailing": 29.12848,
-  "pe_forward": 14.673241,
-  "eps_trailing": 7.9,
+  "pe_trailing": 29.130392,
+  "pe_forward": 14.692779,
+  "eps_trailing": 7.91,
   "eps_forward": 15.68263,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 230.42,
+  "stop": 219.83,
+  "target": 256.91,
+  "atr_bracket": 256.91,
+  "measured_move": 245.33,
+  "target_band": [
+   245.33,
+   256.91
+  ],
+  "stop_pct": -4.6,
+  "target_pct": 11.5,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 219.5,
+  "chandelier": 217.39,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Conagra Brands's Next Earnings Report on Sep. 30 2026 Could Send the Stock Soaring. Here's Why.",
+   "label": "Why Alphabet Stock Popped on Wednesday",
    "value": {
-    "headline": "Conagra Brands's Next Earnings Report on Sep. 30 2026 Could Send the Stock Soaring. Here's Why.",
+    "headline": "Why Alphabet Stock Popped on Wednesday",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790642005,
-    "url": "https://www.fool.com/investing/2026/09/28/conagra-brands-s-next-earnings-report-on-sep-30-2026-could-send-the-stock-soaring-here-s-why/?.tsrc=rss",
+    "ts": 1790784767,
+    "url": "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/28/conagra-brands-s-next-earnings-report-on-sep-30-2026-could-send-the-stock-soaring-here-s-why/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nike Faces 2 Major Tests This Week. Earnings Isn't the One To Watch",
+   "label": "Joby Aviation: Bull vs. Bear",
    "value": {
-    "headline": "Nike Faces 2 Major Tests This Week. Earnings Isn't the One To Watch",
+    "headline": "Joby Aviation: Bull vs. Bear",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790641201,
-    "url": "https://www.fool.com/investing/2026/09/28/nike-faces-2-major-test-this-week-earnings-isn-t-the-one-to-watch/?.tsrc=rss",
+    "ts": 1790784300,
+    "url": "https://www.fool.com/investing/2026/09/30/hot-stock-bull-vs-bear/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/28/nike-faces-2-major-test-this-week-earnings-isn-t-the-one-to-watch/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/30/hot-stock-bull-vs-bear/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sandisk Jumped 22% the Day After Micron's Last Report. Micron Reports Again Wednesday.",
+   "label": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
    "value": {
-    "headline": "Sandisk Jumped 22% the Day After Micron's Last Report. Micron Reports Again Wednesday.",
+    "headline": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790638441,
-    "url": "https://www.fool.com/investing/2026/09/28/sandisk-jumped-22-the-day-after-micron-s-last-report-micron-reports-again-wednesday/?.tsrc=rss",
+    "ts": 1790784110,
+    "url": "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/28/sandisk-jumped-22-the-day-after-micron-s-last-report-micron-reports-again-wednesday/?.tsrc=rss"
+     "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Samsung to Invest $1 Billion in KKR’s AI Infrastructure Company",
+   "label": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "Samsung to Invest $1 Billion in KKR’s AI Infrastructure Company",
+    "headline": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790637663,
-    "url": "https://finance.yahoo.com/technology/ai/articles/samsung-invest-1-billion-kkr-232103234.html?.tsrc=rss",
+    "ts": 1790783488,
+    "url": "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/samsung-invest-1-billion-kkr-232103234.html?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Use This Zacks Tool to Find Strong AI Stocks",
+   "label": "Could Buying Constellation Energy Today Set You Up for Life?",
    "value": {
-    "headline": "Use This Zacks Tool to Find Strong AI Stocks",
+    "headline": "Could Buying Constellation Energy Today Set You Up for Life?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790637420,
-    "url": "https://finance.yahoo.com/technology/ai/articles/zacks-tool-strong-ai-stocks-231700002.html?.tsrc=rss",
+    "ts": 1790783400,
+    "url": "https://www.fool.com/investing/2026/09/30/could-buying-constellation-energy-today-set-you-up/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/zacks-tool-strong-ai-stocks-231700002.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/09/30/could-buying-constellation-energy-today-set-you-up/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

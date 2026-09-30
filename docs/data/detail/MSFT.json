@@ -1,25 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 511.78,
- "change_pct": -0.85,
+ "price": 517.5,
+ "change_pct": 1.68,
  "ohlc": [
-  {
-   "time": "2026-07-06",
-   "o": 386.31,
-   "h": 388.42,
-   "l": 380.5,
-   "c": 386.01,
-   "v": 34224500
-  },
-  {
-   "time": "2026-07-07",
-   "o": 391.75,
-   "h": 394.83,
-   "l": 387.49,
-   "c": 388.11,
-   "v": 29297500
-  },
   {
    "time": "2026-07-08",
    "o": 383.31,
@@ -474,32 +458,46 @@
    "h": 519.4,
    "l": 497.25,
    "c": 516.17,
-   "v": 38154200
+   "v": 38193100
   },
   {
    "time": "2026-09-28",
-   "o": 505.42,
+   "o": 505.47,
    "h": 513.33,
    "l": 502.22,
-   "c": 511.78,
-   "v": 11240144
+   "c": 509.22,
+   "v": 19626900
+  },
+  {
+   "time": "2026-09-29",
+   "o": 508.31,
+   "h": 513.64,
+   "l": 502.4,
+   "c": 508.96,
+   "v": 21326100
+  },
+  {
+   "time": "2026-09-30",
+   "o": 510.8,
+   "h": 519.83,
+   "l": 510.33,
+   "c": 517.5,
+   "v": 8750303
   }
  ],
  "sr": {
-  "price": 511.78,
+  "price": 517.5,
   "resistance": [
-   512.76,
-   515.65
+   517.78,
+   526.7
   ],
   "support": [
    501.87,
-   489.22
+   491.22
   ],
   "strong_support": 348.54
  },
  "spark": [
-  386.01,
-  388.11,
   382.62,
   383.64,
   384.38,
@@ -557,156 +555,153 @@
   500.59,
   497.93,
   516.17,
-  511.78
+  509.22,
+  508.96,
+  517.5
  ],
- "spark_start": "2026-07-06",
- "spark_end": "2026-09-28",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": {
-  "pe_trailing": 28.493877,
-  "pe_forward": 21.614824,
+  "pe_trailing": 28.819046,
+  "pe_forward": 21.86149,
   "eps_trailing": 17.96,
   "eps_forward": 23.67588,
   "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 511.78,
-  "stop": 489.26,
-  "target": 568.08,
-  "atr_bracket": 568.08,
-  "measured_move": 533.9,
+  "entry": 517.5,
+  "stop": 493.69,
+  "target": 577.01,
+  "atr_bracket": 577.01,
+  "measured_move": 547.58,
   "target_band": [
-   529.97,
-   533.9,
-   568.08
+   547.58,
+   577.01
   ],
-  "stop_pct": -4.4,
-  "target_pct": 11.0,
+  "stop_pct": -4.6,
+  "target_pct": 11.5,
   "rr": 2.5,
-  "atr_pct": 2.2,
-  "swing_stop": 487.84,
-  "chandelier": 485.06,
-  "fib_targets": [
-   521.68,
-   529.97,
-   539.12
-  ]
+  "atr_pct": 2.3,
+  "swing_stop": 487.65,
+  "chandelier": 486.47,
+  "fib_targets": []
  },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What You Actually Pay To Join The AAPL Run",
+   "label": "Piper Sandler Raises Microsoft Target, Sees Billions in Potential From E7 and AI",
    "value": {
-    "headline": "What You Actually Pay To Join The AAPL Run",
+    "headline": "Piper Sandler Raises Microsoft Target, Sees Billions in Potential From E7 and AI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790617331,
-    "url": "https://www.trefis.com/articles/616741/what-you-actually-pay-to-join-the-aapl-run-3/2026-09-28?.tsrc=rss",
+    "ts": 1790784926,
+    "url": "https://247wallst.com/investing/2026/09/30/piper-sandler-raises-microsoft-target-sees-billions-in-potential-from-e7-and-ai/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/616741/what-you-actually-pay-to-join-the-aapl-run-3/2026-09-28?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/30/piper-sandler-raises-microsoft-target-sees-billions-in-potential-from-e7-and-ai/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta enters the enterprise AI battle",
+   "label": "Is CrowdStrike Stock Paying You Enough For The Swings?",
    "value": {
-    "headline": "Meta enters the enterprise AI battle",
+    "headline": "Is CrowdStrike Stock Paying You Enough For The Swings?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790616745,
-    "url": "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss",
+    "ts": 1790782850,
+    "url": "https://www.trefis.com/articles/617148/is-crowdstrike-stock-paying-you-enough-for-the-swings/2026-09-30?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/meta-enters-enterprise-ai-battle-173225331.html?.tsrc=rss"
+     "https://www.trefis.com/articles/617148/is-crowdstrike-stock-paying-you-enough-for-the-swings/2026-09-30?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft CEO names one key concern with its AI",
+   "label": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
    "value": {
-    "headline": "Microsoft CEO names one key concern with its AI",
+    "headline": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790615820,
-    "url": "https://www.thestreet.com/technology/microsoft-ceo-names-the-one-concern-microsoft-has-with-its-ai?.tsrc=rss",
+    "ts": 1790782834,
+    "url": "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/technology/microsoft-ceo-names-the-one-concern-microsoft-has-with-its-ai?.tsrc=rss"
+     "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft cuts hundreds more jobs as restructuring deepens",
+   "label": "Why Gabelli Bought Microsoft Corporation (MSFT) Near Its 52-Week Lows",
    "value": {
-    "headline": "Microsoft cuts hundreds more jobs as restructuring deepens",
+    "headline": "Why Gabelli Bought Microsoft Corporation (MSFT) Near Its 52-Week Lows",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790615392,
-    "url": "https://www.thestreet.com/employment/microsoft-cuts-hundreds-more-jobs-layoffs-restructuring-warn?.tsrc=rss",
+    "ts": 1790782742,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-bought-microsoft-corporation-153902653.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/employment/microsoft-cuts-hundreds-more-jobs-layoffs-restructuring-warn?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-bought-microsoft-corporation-153902653.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-28",
+   "severity": "info",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here’s How Two of The Biggest Hyperscalers Have Best Monetized AI Capex So Far",
+   "label": "Should You Buy The Dip In UiPath Stock?",
    "value": {
-    "headline": "Here’s How Two of The Biggest Hyperscalers Have Best Monetized AI Capex So Far",
+    "headline": "Should You Buy The Dip In UiPath Stock?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790612665,
-    "url": "https://247wallst.com/investing/2026/09/28/heres-how-two-of-the-biggest-hyperscalers-have-best-monetized-ai-capex-so-far/?.tsrc=rss",
+    "ts": 1790782495,
+    "url": "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/28/heres-how-two-of-the-biggest-hyperscalers-have-best-monetized-ai-capex-so-far/?.tsrc=rss"
+     "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-28",
+   "as_of": "2026-09-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

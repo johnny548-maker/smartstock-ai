@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 736.75,
+ "change_pct": -0.28,
  "ohlc": [
-  {
-   "time": "2026-07-06",
-   "o": 594.37,
-   "h": 603.1,
-   "l": 581.3,
-   "c": 599.82,
-   "v": 17674100
-  },
-  {
-   "time": "2026-07-07",
-   "o": 607.11,
-   "h": 624.88,
-   "l": 603.18,
-   "c": 615.09,
-   "v": 18560800
-  },
   {
    "time": "2026-07-08",
    "o": 613.91,
@@ -474,26 +458,46 @@
    "h": 769.57,
    "l": 746.54,
    "c": 751.66,
-   "v": 25753100
+   "v": 25826700
   },
   {
    "time": "2026-09-28",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 27629348
+   "o": 750.04,
+   "h": 750.58,
+   "l": 713.19,
+   "c": 715.62,
+   "v": 27943100
+  },
+  {
+   "time": "2026-09-29",
+   "o": 725.0,
+   "h": 740.45,
+   "l": 715.1,
+   "c": 738.79,
+   "v": 23460100
+  },
+  {
+   "time": "2026-09-30",
+   "o": 729.0,
+   "h": 738.25,
+   "l": 721.3,
+   "c": 736.75,
+   "v": 8827017
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 736.75,
+  "resistance": [
+   742.09,
+   756.59
+  ],
+  "support": [
+   696.97,
+   688.18
+  ],
   "strong_support": 519.37
  },
  "spark": [
-  599.82,
-  615.09,
   602.64,
   630.98,
   668.68,
@@ -551,16 +555,18 @@
   744.1,
   777.59,
   751.66,
-  null
+  715.62,
+  738.79,
+  736.75
  ],
- "spark_start": "2026-07-06",
- "spark_end": "2026-09-28",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": {
-  "pe_trailing": 27.20505,
-  "pe_forward": 20.723656,
-  "eps_trailing": 26.53,
-  "eps_forward": 34.82735,
-  "stale": true,
+  "pe_trailing": 26.883255,
+  "pe_forward": 21.073563,
+  "eps_trailing": 27.41,
+  "eps_forward": 34.96656,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Atlassian (TEAM) Stock Is Down Today",
+   "label": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
    "value": {
-    "headline": "Why Atlassian (TEAM) Stock Is Down Today",
+    "headline": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790640876,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-atlassian-team-stock-down-001436323.html?.tsrc=rss",
+    "ts": 1790784827,
+    "url": "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-atlassian-team-stock-down-001436323.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Shopify (SHOP)’s AI Opportunity Bigger Than it Looks?",
+   "label": "Meta's Muse tops 5 million downloads, faster than ChatGPT, Claude",
    "value": {
-    "headline": "Is Shopify (SHOP)’s AI Opportunity Bigger Than it Looks?",
+    "headline": "Meta's Muse tops 5 million downloads, faster than ChatGPT, Claude",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790639983,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/shopify-shop-ai-opportunity-bigger-235943704.html?.tsrc=rss",
+    "ts": 1790784705,
+    "url": "https://finance.yahoo.com/technology/article/metas-muse-tops-5-million-downloads-faster-than-chatgpt-claude-161145561.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/shopify-shop-ai-opportunity-bigger-235943704.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/metas-muse-tops-5-million-downloads-faster-than-chatgpt-claude-161145561.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI Cancels Latest Model Release Ahead of DevDay Conference: Report",
+   "label": "Needham names top SaaS picks amid Meta Enterprise Platform concerns",
    "value": {
-    "headline": "OpenAI Cancels Latest Model Release Ahead of DevDay Conference: Report",
+    "headline": "Needham names top SaaS picks amid Meta Enterprise Platform concerns",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790636580,
-    "url": "https://finance.yahoo.com/m/b98b6905-ff10-31ab-a2e2-c39a394f5ff2/openai-cancels-latest-model.html?.tsrc=rss",
+    "ts": 1790784632,
+    "url": "https://finance.yahoo.com/technology/articles/needham-names-top-saas-picks-161032003.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/b98b6905-ff10-31ab-a2e2-c39a394f5ff2/openai-cancels-latest-model.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/needham-names-top-saas-picks-161032003.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Meta (META) Stock Is Trading Lower Today",
+   "label": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
    "value": {
-    "headline": "Why Meta (META) Stock Is Trading Lower Today",
+    "headline": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790636556,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-meta-meta-stock-trading-230236657.html?.tsrc=rss",
+    "ts": 1790784455,
+    "url": "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-meta-meta-stock-trading-230236657.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Platforms (META): Are You Going to Buy the Promise?",
+   "label": "Kin Welcomes AI Insurance Shopping: Muse Can Shop on Kin.com",
    "value": {
-    "headline": "Meta Platforms (META): Are You Going to Buy the Promise?",
+    "headline": "Kin Welcomes AI Insurance Shopping: Muse Can Shop on Kin.com",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790635964,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-going-buy-225244358.html?.tsrc=rss",
+    "ts": 1790784180,
+    "url": "https://finance.yahoo.com/technology/ai/articles/kin-welcomes-ai-insurance-shopping-160300036.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-going-buy-225244358.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/kin-welcomes-ai-insurance-shopping-160300036.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 224 分 / 78 留言",
+   "label": "HN 討論熱度 20 篇 / 84 分 / 114 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 224,
-    "comments": 78,
+    "points": 84,
+    "comments": 114,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -708,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

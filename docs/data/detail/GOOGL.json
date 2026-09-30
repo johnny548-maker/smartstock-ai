@@ -1,33 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet Inc. - Class A Common Stock",
- "price": 343.92,
- "change_pct": 0.46,
+ "name": "Alphabet",
+ "price": 351.82,
+ "change_pct": 3.2,
  "ohlc": [
-  {
-   "time": "2026-07-02",
-   "o": 359.25,
-   "h": 363.98,
-   "l": 353.19,
-   "c": 359.68,
-   "v": 25974800
-  },
-  {
-   "time": "2026-07-06",
-   "o": 361.32,
-   "h": 367.69,
-   "l": 357.15,
-   "c": 366.22,
-   "v": 26915800
-  },
-  {
-   "time": "2026-07-07",
-   "o": 368.83,
-   "h": 372.92,
-   "l": 365.27,
-   "c": 366.79,
-   "v": 24045600
-  },
   {
    "time": "2026-07-08",
    "o": 364.53,
@@ -482,25 +458,46 @@
    "h": 347.03,
    "l": 341.11,
    "c": 343.92,
-   "v": 21854700
+   "v": 21880800
+  },
+  {
+   "time": "2026-09-28",
+   "o": 340.7,
+   "h": 343.59,
+   "l": 339.56,
+   "c": 342.75,
+   "v": 19318300
+  },
+  {
+   "time": "2026-09-29",
+   "o": 341.95,
+   "h": 342.84,
+   "l": 338.02,
+   "c": 340.92,
+   "v": 21010200
+  },
+  {
+   "time": "2026-09-30",
+   "o": 344.21,
+   "h": 352.6,
+   "l": 344.08,
+   "c": 351.82,
+   "v": 14369203
   }
  ],
  "sr": {
-  "price": 343.92,
+  "price": 351.82,
   "resistance": [
-   344.46,
-   349.91
+   364.17,
+   372.92
   ],
   "support": [
-   341.14,
-   340.66
+   350.85,
+   346.14
   ],
-  "strong_support": 314.7
+  "strong_support": 235.23
  },
  "spark": [
-  359.68,
-  366.22,
-  366.79,
   361.69,
   358.66,
   356.95,
@@ -557,11 +554,168 @@
   351.16,
   337.83,
   342.36,
-  343.92
+  343.92,
+  342.75,
+  340.92,
+  351.82
  ],
- "spark_start": "2026-07-02",
- "spark_end": "2026-09-25",
- "fundamental": null,
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
+ "fundamental": {
+  "pe_trailing": 17.643955,
+  "pe_forward": 23.343369,
+  "eps_trailing": 19.94,
+  "eps_forward": 15.07154,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
+   "value": {
+    "headline": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790784827,
+    "url": "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Alphabet Stock Popped on Wednesday",
+   "value": {
+    "headline": "Why Alphabet Stock Popped on Wednesday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790784767,
+    "url": "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+   "value": {
+    "headline": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790784455,
+    "url": "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Fujifilm Expands Consumer Photo Printing Capabilities with the Introduction of \"Fujifilm for Google Photos Print Store\"",
+   "value": {
+    "headline": "Fujifilm Expands Consumer Photo Printing Capabilities with the Introduction of \"Fujifilm for Google Photos Print Store\"",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790784000,
+    "url": "https://finance.yahoo.com/media-advertising/articles/fujifilm-expands-consumer-photo-printing-160000286.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/media-advertising/articles/fujifilm-expands-consumer-photo-printing-160000286.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The AI Revolution Could Be Microsoft’s Next Trillion-Dollar Opportunity",
+   "value": {
+    "headline": "The AI Revolution Could Be Microsoft’s Next Trillion-Dollar Opportunity",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790782251,
+    "url": "https://247wallst.com/investing/2026/09/30/the-ai-revolution-could-be-microsofts-next-trillion-dollar-opportunity/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/09/30/the-ai-revolution-could-be-microsofts-next-trillion-dollar-opportunity/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 238 分 / 143 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 238,
+    "comments": 143,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-09-30",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 205,717 股交割失敗）",
+   "value": {
+    "total_shares": 205717,
+    "days": 8,
+    "max_shares": 107800,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-09-30",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

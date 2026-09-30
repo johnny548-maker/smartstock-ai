@@ -1,17 +1,9 @@
 {
  "stock": "3231",
  "name": "緯創",
- "price": 184.5,
- "change_pct": 2.5,
+ "price": 185.5,
+ "change_pct": 0.54,
  "ohlc": [
-  {
-   "time": "2026-07-03",
-   "o": 151.93,
-   "h": 155.79,
-   "l": 151.93,
-   "c": 153.38,
-   "v": 24456191
-  },
   {
    "time": "2026-07-06",
    "o": 155.3,
@@ -483,10 +475,18 @@
    "l": 178.0,
    "c": 184.5,
    "v": 27226763
+  },
+  {
+   "time": "2026-09-29",
+   "o": 182.5,
+   "h": 186.5,
+   "l": 182.0,
+   "c": 185.5,
+   "v": 31839366
   }
  ],
  "sr": {
-  "price": 184.5,
+  "price": 185.5,
   "resistance": [
    188.0,
    190.5
@@ -498,7 +498,6 @@
   "strong_support": 68.84
  },
  "spark": [
-  153.38,
   152.41,
   150.0,
   146.5,
@@ -557,10 +556,11 @@
   186.5,
   180.5,
   180.0,
-  184.5
+  184.5,
+  185.5
  ],
- "spark_start": "2026-07-03",
- "spark_end": "2026-09-24",
+ "spark_start": "2026-07-06",
+ "spark_end": "2026-09-29",
  "fundamental": {
   "rev_yoy": 166.5,
   "rev_accel": true,
@@ -575,48 +575,13 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 361,
+    "short_today": 377,
     "outstanding": 3180052250,
-    "short_pct": 1.1352014734978017e-05
+    "short_pct": 1.1855151122123859e-05
    },
    "severity": "info",
-   "as_of": "2026-09-29",
+   "as_of": "2026-09-30",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【5萬點倒數?】台股連假後變盤!這三大族群最有機會噴",
-   "value": {
-    "headline": "【5萬點倒數?】台股連假後變盤!這三大族群最有機會噴",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1790639238,
-    "url": "cnyes:6617469",
-    "urls": [
-     "cnyes:6617469"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-29",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -940,6 +905,10 @@
    {
     "t": "2026-09-29",
     "v": -17191
+   },
+   {
+    "t": "2026-09-30",
+    "v": -18798
    }
   ],
   "holder_pct": [
