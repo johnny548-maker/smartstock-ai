@@ -1,9 +1,17 @@
 {
  "stock": "NTAP",
  "name": "NetApp",
- "price": 212.07,
- "change_pct": 1.38,
+ "price": 209.18,
+ "change_pct": 2.33,
  "ohlc": [
+  {
+   "time": "2026-07-07",
+   "o": 163.05,
+   "h": 167.21,
+   "l": 162.64,
+   "c": 165.28,
+   "v": 3664800
+  },
   {
    "time": "2026-07-08",
    "o": 162.25,
@@ -475,18 +483,10 @@
    "l": 200.79,
    "c": 209.18,
    "v": 2717000
-  },
-  {
-   "time": "2026-09-30",
-   "o": 210.09,
-   "h": 216.81,
-   "l": 209.21,
-   "c": 212.07,
-   "v": 994573
   }
  ],
  "sr": {
-  "price": 212.07,
+  "price": 209.18,
   "resistance": [],
   "support": [
    190.89,
@@ -495,6 +495,7 @@
   "strong_support": 70.26
  },
  "spark": [
+  165.28,
   164.9,
   171.21,
   168.87,
@@ -553,12 +554,143 @@
   197.24,
   201.15,
   204.41,
-  209.18,
-  212.07
+  209.18
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-07",
+ "spark_end": "2026-09-29",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp Unveils Novus, AI Data Engine Upgrades to Power Agentic AI",
+   "value": {
+    "headline": "NetApp Unveils Novus, AI Data Engine Upgrades to Power Agentic AI",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790812940,
+    "url": "https://www.marketbeat.com/instant-alerts/event-netapp-unveils-novus-ai-data-engine-upgrades-to-power-agentic-ai-2026-09-30/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/event-netapp-unveils-novus-ai-data-engine-upgrades-to-power-agentic-ai-2026-09-30/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today: Dow Knocked Down, Nasdaq Pares Gain; Micron Holds Firm After Earnings Soar",
+   "value": {
+    "headline": "Stock Market Today: Dow Knocked Down, Nasdaq Pares Gain; Micron Holds Firm After Earnings Soar",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790801662,
+    "url": "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-dow.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-dow.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp's Keystone Sovereign Targets Europe's Regulated Data Market",
+   "value": {
+    "headline": "NetApp's Keystone Sovereign Targets Europe's Regulated Data Market",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790773740,
+    "url": "https://finance.yahoo.com/technology/articles/netapps-keystone-sovereign-targets-europes-130900360.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/netapps-keystone-sovereign-targets-europes-130900360.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NetApp’s AI Opportunity Can Support Higher Growth, Says BofA — Raises Target After INSIGHT Event",
+   "value": {
+    "headline": "NetApp’s AI Opportunity Can Support Higher Growth, Says BofA — Raises Target After INSIGHT Event",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790772613,
+    "url": "https://stocktwits.com/news-articles/markets/equity/net-app-s-ai-opportunity-can-support-higher-growth-says-bof-a-raises-target-after-insight-event/cZMFeeiRBhn?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/net-app-s-ai-opportunity-can-support-higher-growth-says-bof-a-raises-target-after-insight-event/cZMFeeiRBhn?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How are NTAP's New Partnerships Expanding Its AI Strategy?",
+   "value": {
+    "headline": "How are NTAP's New Partnerships Expanding Its AI Strategy?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790772000,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ntaps-partnerships-expanding-ai-strategy-124000830.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/ntaps-partnerships-expanding-ai-strategy-124000830.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 20,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-01",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 4357,
+    "days": 3,
+    "max_shares": 3229,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-01",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

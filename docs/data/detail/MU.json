@@ -1,9 +1,17 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 1073.37,
- "change_pct": 0.78,
+ "price": 1065.08,
+ "change_pct": 1.05,
  "ohlc": [
+  {
+   "time": "2026-07-07",
+   "o": 923.01,
+   "h": 942.02,
+   "l": 891.66,
+   "c": 938.38,
+   "v": 52367500
+  },
   {
    "time": "2026-07-08",
    "o": 902.64,
@@ -474,22 +482,14 @@
    "h": 1082.66,
    "l": 1057.7,
    "c": 1065.08,
-   "v": 19596500
-  },
-  {
-   "time": "2026-09-30",
-   "o": 1076.33,
-   "h": 1083.5,
-   "l": 1064.06,
-   "c": 1073.37,
-   "v": 10786356
+   "v": 19723100
   }
  ],
  "sr": {
-  "price": 1073.37,
+  "price": 1065.08,
   "resistance": [
    1089.12,
-   1108.72
+   1254.81
   ],
   "support": [
    990.95,
@@ -498,6 +498,7 @@
   "strong_support": 61.38
  },
  "spark": [
+  938.38,
   948.8,
   991.64,
   979.3,
@@ -556,144 +557,11 @@
   1080.53,
   1082.28,
   1053.98,
-  1065.08,
-  1073.37
+  1065.08
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-07",
+ "spark_end": "2026-09-29",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-   "value": {
-    "headline": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782834,
-    "url": "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "If You Buy Micron Today, Here's Where It Could Be in 5 Years",
-   "value": {
-    "headline": "If You Buy Micron Today, Here's Where It Could Be in 5 Years",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782680,
-    "url": "https://www.fool.com/investing/2026/09/30/if-you-buy-micron-today-heres-where-it-could-be-in/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/30/if-you-buy-micron-today-heres-where-it-could-be-in/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Did You Miss Out on Nvidia and Micron Technology? This Super Semiconductor Stock Could Soar Over the Next Few Years.",
-   "value": {
-    "headline": "Did You Miss Out on Nvidia and Micron Technology? This Super Semiconductor Stock Could Soar Over the Next Few Years.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782140,
-    "url": "https://www.fool.com/investing/2026/09/30/did-miss-out-nvidia-micron-semiconductor-stock-soa/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/30/did-miss-out-nvidia-micron-semiconductor-stock-soa/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Archer Aviation (ACHR) Dropped, So What Is Driving Attention Now?",
-   "value": {
-    "headline": "Archer Aviation (ACHR) Dropped, So What Is Driving Attention Now?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790780980,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-achr-dropped-driving-150940999.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-achr-dropped-driving-150940999.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
-   "value": {
-    "headline": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790780852,
-    "url": "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 16,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
-   "value": {
-    "total_shares": 33629,
-    "days": 8,
-    "max_shares": 12028,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-09-30",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

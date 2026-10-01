@@ -1,8 +1,8 @@
 {
  "stock": "2707.TW",
  "name": "晶華",
- "price": 175.0,
- "change_pct": -0.85,
+ "price": 175.5,
+ "change_pct": 0.29,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -459,15 +459,25 @@
    "l": 175.0,
    "c": 175.0,
    "v": 158264
+  },
+  {
+   "time": "2026-10-01",
+   "o": 175.5,
+   "h": 176.0,
+   "l": 175.0,
+   "c": 175.5,
+   "v": 87939
   }
  ],
  "sr": {
-  "price": 175.0,
+  "price": 175.5,
   "resistance": [
    180.0,
    181.5
   ],
-  "support": [],
+  "support": [
+   175.0
+  ],
   "strong_support": 175.0
  },
  "spark": [
@@ -527,10 +537,11 @@
   176.5,
   176.5,
   176.5,
-  175.0
+  175.0,
+  175.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-30",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

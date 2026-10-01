@@ -1,8 +1,8 @@
 {
  "stock": "1445.TW",
  "name": "大宇",
- "price": 10.0,
- "change_pct": -0.5,
+ "price": 10.1,
+ "change_pct": 1.0,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -459,15 +459,25 @@
    "l": 10.0,
    "c": 10.0,
    "v": 49254
+  },
+  {
+   "time": "2026-10-01",
+   "o": 10.05,
+   "h": 10.1,
+   "l": 10.0,
+   "c": 10.1,
+   "v": 57497
   }
  ],
  "sr": {
-  "price": 10.0,
+  "price": 10.1,
   "resistance": [
    10.45,
    10.5
   ],
-  "support": [],
+  "support": [
+   10.0
+  ],
   "strong_support": 10.0
  },
  "spark": [
@@ -527,10 +537,11 @@
   10.05,
   10.05,
   10.05,
-  10.0
+  10.0,
+  10.1
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-09-30",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

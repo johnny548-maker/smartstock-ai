@@ -1,9 +1,17 @@
 {
  "stock": "MSFT",
- "name": "微軟",
- "price": 517.5,
- "change_pct": 1.68,
+ "name": "Microsoft Corporation - Common Stock",
+ "price": 508.96,
+ "change_pct": -0.05,
  "ohlc": [
+  {
+   "time": "2026-07-07",
+   "o": 391.75,
+   "h": 394.83,
+   "l": 387.49,
+   "c": 388.11,
+   "v": 29297500
+  },
   {
    "time": "2026-07-08",
    "o": 383.31,
@@ -474,30 +482,23 @@
    "h": 513.64,
    "l": 502.4,
    "c": 508.96,
-   "v": 21326100
-  },
-  {
-   "time": "2026-09-30",
-   "o": 510.8,
-   "h": 519.83,
-   "l": 510.33,
-   "c": 517.5,
-   "v": 8750303
+   "v": 21341800
   }
  ],
  "sr": {
-  "price": 517.5,
+  "price": 508.96,
   "resistance": [
-   517.78,
-   526.7
+   509.95,
+   512.76
   ],
   "support": [
-   501.87,
-   491.22
+   491.22,
+   487.23
   ],
-  "strong_support": 348.54
+  "strong_support": 372.65
  },
  "spark": [
+  388.11,
   382.62,
   383.64,
   384.38,
@@ -556,168 +557,11 @@
   497.93,
   516.17,
   509.22,
-  508.96,
-  517.5
+  508.96
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
- "fundamental": {
-  "pe_trailing": 28.819046,
-  "pe_forward": 21.86149,
-  "eps_trailing": 17.96,
-  "eps_forward": 23.67588,
-  "stale": false,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 517.5,
-  "stop": 493.69,
-  "target": 577.01,
-  "atr_bracket": 577.01,
-  "measured_move": 547.58,
-  "target_band": [
-   547.58,
-   577.01
-  ],
-  "stop_pct": -4.6,
-  "target_pct": 11.5,
-  "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 487.65,
-  "chandelier": 486.47,
-  "fib_targets": []
- },
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Piper Sandler Raises Microsoft Target, Sees Billions in Potential From E7 and AI",
-   "value": {
-    "headline": "Piper Sandler Raises Microsoft Target, Sees Billions in Potential From E7 and AI",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790784926,
-    "url": "https://247wallst.com/investing/2026/09/30/piper-sandler-raises-microsoft-target-sees-billions-in-potential-from-e7-and-ai/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/30/piper-sandler-raises-microsoft-target-sees-billions-in-potential-from-e7-and-ai/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Is CrowdStrike Stock Paying You Enough For The Swings?",
-   "value": {
-    "headline": "Is CrowdStrike Stock Paying You Enough For The Swings?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782850,
-    "url": "https://www.trefis.com/articles/617148/is-crowdstrike-stock-paying-you-enough-for-the-swings/2026-09-30?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/617148/is-crowdstrike-stock-paying-you-enough-for-the-swings/2026-09-30?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-   "value": {
-    "headline": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782834,
-    "url": "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Gabelli Bought Microsoft Corporation (MSFT) Near Its 52-Week Lows",
-   "value": {
-    "headline": "Why Gabelli Bought Microsoft Corporation (MSFT) Near Its 52-Week Lows",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782742,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-bought-microsoft-corporation-153902653.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-gabelli-bought-microsoft-corporation-153902653.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Should You Buy The Dip In UiPath Stock?",
-   "value": {
-    "headline": "Should You Buy The Dip In UiPath Stock?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782495,
-    "url": "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 17,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 269,929 股交割失敗）",
-   "value": {
-    "total_shares": 269929,
-    "days": 10,
-    "max_shares": 114387,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-09-30",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "spark_start": "2026-07-07",
+ "spark_end": "2026-09-29",
+ "fundamental": null,
+ "levels": null,
+ "generated_for": "detail"
 }
