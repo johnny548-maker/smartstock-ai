@@ -1,17 +1,9 @@
 {
  "stock": "VECO",
  "name": "Veeco Instruments",
- "price": 51.37,
- "change_pct": 4.69,
+ "price": 51.9,
+ "change_pct": 1.03,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 50.92,
-   "h": 53.67,
-   "l": 49.28,
-   "c": 53.35,
-   "v": 1654200
-  },
   {
    "time": "2026-07-08",
    "o": 53.35,
@@ -483,10 +475,18 @@
    "l": 49.71,
    "c": 51.37,
    "v": 900800
+  },
+  {
+   "time": "2026-09-30",
+   "o": 51.84,
+   "h": 52.98,
+   "l": 50.98,
+   "c": 51.9,
+   "v": 726900
   }
  ],
  "sr": {
-  "price": 51.37,
+  "price": 51.9,
   "resistance": [
    53.43,
    54.98
@@ -498,7 +498,6 @@
   "strong_support": 16.92
  },
  "spark": [
-  53.35,
   54.47,
   57.45,
   57.4,
@@ -557,11 +556,29 @@
   45.45,
   49.67,
   49.07,
-  51.37
+  51.37,
+  51.9
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 13081,
+    "days": 3,
+    "max_shares": 12272,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "MTSI",
  "name": "MACOM Technology Solutions",
- "price": 284.27,
- "change_pct": 2.05,
+ "price": 284.82,
+ "change_pct": 0.19,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 310.3,
-   "h": 315.11,
-   "l": 298.48,
-   "c": 304.82,
-   "v": 2697100
-  },
   {
    "time": "2026-07-08",
    "o": 305.01,
@@ -483,10 +475,18 @@
    "l": 278.9,
    "c": 284.27,
    "v": 912300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 284.19,
+   "h": 287.32,
+   "l": 278.0,
+   "c": 284.82,
+   "v": 916200
   }
  ],
  "sr": {
-  "price": 284.27,
+  "price": 284.82,
   "resistance": [
    285.95,
    286.18
@@ -498,7 +498,6 @@
   "strong_support": 84.0
  },
  "spark": [
-  304.82,
   305.23,
   317.35,
   308.52,
@@ -557,11 +556,29 @@
   284.94,
   285.57,
   278.56,
-  284.27
+  284.27,
+  284.82
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 3904,
+    "days": 4,
+    "max_shares": 2306,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

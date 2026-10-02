@@ -1,17 +1,9 @@
 {
  "stock": "MRCY",
  "name": "Mercury Systems",
- "price": 82.64,
- "change_pct": 3.15,
+ "price": 83.0,
+ "change_pct": 0.44,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 122.11,
-   "h": 123.31,
-   "l": 114.34,
-   "c": 115.83,
-   "v": 519600
-  },
   {
    "time": "2026-07-08",
    "o": 112.92,
@@ -483,10 +475,18 @@
    "l": 78.61,
    "c": 82.64,
    "v": 844400
+  },
+  {
+   "time": "2026-09-30",
+   "o": 83.91,
+   "h": 84.67,
+   "l": 81.59,
+   "c": 83.0,
+   "v": 667400
   }
  ],
  "sr": {
-  "price": 82.64,
+  "price": 83.0,
   "resistance": [
    85.33,
    85.77
@@ -498,7 +498,6 @@
   "strong_support": 32.32
  },
  "spark": [
-  115.83,
   112.41,
   114.25,
   107.98,
@@ -557,11 +556,29 @@
   83.18,
   82.18,
   80.12,
-  82.64
+  82.64,
+  83.0
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 207,
+    "days": 2,
+    "max_shares": 187,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

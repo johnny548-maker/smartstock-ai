@@ -1,17 +1,9 @@
 {
  "stock": "CORZ",
  "name": "Core Scientific",
- "price": 16.31,
- "change_pct": -1.27,
+ "price": 15.98,
+ "change_pct": -2.02,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 21.99,
-   "h": 22.28,
-   "l": 20.71,
-   "c": 21.54,
-   "v": 11696600
-  },
   {
    "time": "2026-07-08",
    "o": 21.41,
@@ -483,22 +475,29 @@
    "l": 16.23,
    "c": 16.31,
    "v": 13685600
+  },
+  {
+   "time": "2026-09-30",
+   "o": 16.43,
+   "h": 16.49,
+   "l": 15.85,
+   "c": 15.98,
+   "v": 9702300
   }
  ],
  "sr": {
-  "price": 16.31,
+  "price": 15.98,
   "resistance": [
-   16.64,
-   16.7
+   16.18,
+   16.64
   ],
   "support": [
-   16.2,
-   16.01
+   15.95,
+   15.61
   ],
   "strong_support": 6.2
  },
  "spark": [
-  21.54,
   23.5,
   23.74,
   23.49,
@@ -557,11 +556,29 @@
   18.12,
   17.34,
   16.52,
-  16.31
+  16.31,
+  15.98
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 482,
+    "days": 4,
+    "max_shares": 200,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,8 +1,8 @@
 {
  "stock": "5603.TWO",
  "name": "陸海",
- "price": 13.35,
- "change_pct": 0.0,
+ "price": 13.5,
+ "change_pct": 1.12,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -387,15 +387,25 @@
    "l": 13.35,
    "c": 13.35,
    "v": 92217
+  },
+  {
+   "time": "2026-10-02",
+   "o": 13.4,
+   "h": 13.5,
+   "l": 13.25,
+   "c": 13.5,
+   "v": 194581
   }
  ],
  "sr": {
-  "price": 13.35,
+  "price": 13.5,
   "resistance": [
    14.45,
    15.0
   ],
-  "support": [],
+  "support": [
+   13.4
+  ],
   "strong_support": 13.4
  },
  "spark": [
@@ -446,10 +456,11 @@
   13.55,
   13.55,
   13.35,
-  13.35
+  13.35,
+  13.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-01",
+ "spark_end": "2026-10-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

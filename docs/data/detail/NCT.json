@@ -1,17 +1,9 @@
 {
  "stock": "NCT",
  "name": "Intercont (Cayman) Limited - Class A Ordinary shares",
- "price": 1.89,
- "change_pct": -24.4,
+ "price": 1.56,
+ "change_pct": -17.46,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 61.0,
-   "h": 73.25,
-   "l": 32.5,
-   "c": 71.75,
-   "v": 32412
-  },
   {
    "time": "2026-07-08",
    "o": 70.0,
@@ -483,10 +475,18 @@
    "l": 1.75,
    "c": 1.89,
    "v": 207300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 1.92,
+   "h": 1.95,
+   "l": 1.29,
+   "c": 1.56,
+   "v": 1128400
   }
  ],
  "sr": {
-  "price": 1.89,
+  "price": 1.56,
   "resistance": [
    14.48,
    95.25
@@ -495,7 +495,6 @@
   "strong_support": 6.5
  },
  "spark": [
-  71.75,
   71.25,
   72.75,
   72.0,
@@ -554,11 +553,29 @@
   4.65,
   4.43,
   2.5,
-  1.89
+  1.89,
+  1.56
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 920,466 股交割失敗）",
+   "value": {
+    "total_shares": 920466,
+    "days": 9,
+    "max_shares": 289041,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

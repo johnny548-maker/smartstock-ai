@@ -1,17 +1,9 @@
 {
  "stock": "LITE",
  "name": "Lumentum Holdings",
- "price": 973.49,
- "change_pct": 5.66,
+ "price": 971.26,
+ "change_pct": -0.23,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 699.42,
-   "h": 732.57,
-   "l": 680.43,
-   "c": 698.91,
-   "v": 3750800
-  },
   {
    "time": "2026-07-08",
    "o": 688.9,
@@ -483,10 +475,18 @@
    "l": 934.51,
    "c": 973.49,
    "v": 6036700
+  },
+  {
+   "time": "2026-09-30",
+   "o": 985.53,
+   "h": 1009.45,
+   "l": 940.27,
+   "c": 971.26,
+   "v": 3996400
   }
  ],
  "sr": {
-  "price": 973.49,
+  "price": 971.26,
   "resistance": [
    977.27,
    998.5
@@ -498,7 +498,6 @@
   "strong_support": 45.65
  },
  "spark": [
-  698.91,
   707.1,
   785.77,
   802.01,
@@ -557,11 +556,29 @@
   929.04,
   941.65,
   921.32,
-  973.49
+  973.49,
+  971.26
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 10205,
+    "days": 3,
+    "max_shares": 9527,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

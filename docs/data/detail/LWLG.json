@@ -1,17 +1,9 @@
 {
  "stock": "LWLG",
  "name": "Lightwave Logic",
- "price": 5.17,
- "change_pct": 3.4,
+ "price": 5.0,
+ "change_pct": -3.29,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 7.22,
-   "h": 7.33,
-   "l": 6.6,
-   "c": 6.74,
-   "v": 4579400
-  },
   {
    "time": "2026-07-08",
    "o": 6.63,
@@ -483,13 +475,21 @@
    "l": 5.0,
    "c": 5.17,
    "v": 5610400
+  },
+  {
+   "time": "2026-09-30",
+   "o": 5.16,
+   "h": 5.2,
+   "l": 4.98,
+   "c": 5.0,
+   "v": 2503600
   }
  ],
  "sr": {
-  "price": 5.17,
+  "price": 5.0,
   "resistance": [
-   5.64,
-   5.65
+   5.16,
+   5.64
   ],
   "support": [
    4.94,
@@ -498,7 +498,6 @@
   "strong_support": 0.79
  },
  "spark": [
-  6.74,
   6.84,
   7.09,
   6.83,
@@ -557,11 +556,29 @@
   5.28,
   5.31,
   5.0,
-  5.17
+  5.17,
+  5.0
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 160,945 股交割失敗）",
+   "value": {
+    "total_shares": 160945,
+    "days": 4,
+    "max_shares": 134963,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

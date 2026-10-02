@@ -1,17 +1,9 @@
 {
  "stock": "ROK",
  "name": "Rockwell Automation",
- "price": 431.53,
- "change_pct": 0.07,
+ "price": 435.33,
+ "change_pct": 0.88,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 475.91,
-   "h": 475.91,
-   "l": 457.63,
-   "c": 467.46,
-   "v": 1008500
-  },
   {
    "time": "2026-07-08",
    "o": 459.12,
@@ -483,22 +475,29 @@
    "l": 427.7,
    "c": 431.53,
    "v": 356800
+  },
+  {
+   "time": "2026-09-30",
+   "o": 436.94,
+   "h": 439.95,
+   "l": 432.5,
+   "c": 435.33,
+   "v": 820500
   }
  ],
  "sr": {
-  "price": 431.53,
+  "price": 435.33,
   "resistance": [
-   434.52,
-   436.0
+   436.0,
+   436.29
   ],
   "support": [
-   426.98,
-   417.55
+   432.67,
+   431.81
   ],
   "strong_support": 210.45
  },
  "spark": [
-  467.46,
   462.19,
   466.04,
   470.67,
@@ -557,11 +556,29 @@
   432.93,
   434.15,
   431.22,
-  431.53
+  431.53,
+  435.33
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 8804,
+    "days": 3,
+    "max_shares": 6764,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

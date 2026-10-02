@@ -2,16 +2,8 @@
  "stock": "WOLF",
  "name": "Wolfspeed",
  "price": 28.13,
- "change_pct": 1.99,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 37.44,
-   "h": 37.6,
-   "l": 34.01,
-   "c": 36.0,
-   "v": 5885600
-  },
   {
    "time": "2026-07-08",
    "o": 35.25,
@@ -483,6 +475,14 @@
    "l": 27.38,
    "c": 28.13,
    "v": 2038900
+  },
+  {
+   "time": "2026-09-30",
+   "o": 28.3,
+   "h": 29.49,
+   "l": 27.37,
+   "c": 28.13,
+   "v": 4103100
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 13.48
  },
  "spark": [
-  36.0,
   35.86,
   37.25,
   35.29,
@@ -557,11 +556,29 @@
   26.3,
   27.57,
   27.58,
+  28.13,
   28.13
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 778,609 股交割失敗）",
+   "value": {
+    "total_shares": 778609,
+    "days": 8,
+    "max_shares": 317822,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

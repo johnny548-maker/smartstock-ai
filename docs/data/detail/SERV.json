@@ -1,17 +1,9 @@
 {
  "stock": "SERV",
  "name": "Serve Robotics",
- "price": 4.63,
- "change_pct": 4.51,
+ "price": 4.65,
+ "change_pct": 0.43,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 6.32,
-   "h": 6.37,
-   "l": 5.98,
-   "c": 6.05,
-   "v": 3968400
-  },
   {
    "time": "2026-07-08",
    "o": 5.91,
@@ -483,10 +475,18 @@
    "l": 4.41,
    "c": 4.63,
    "v": 2867100
+  },
+  {
+   "time": "2026-09-30",
+   "o": 4.68,
+   "h": 4.99,
+   "l": 4.65,
+   "c": 4.65,
+   "v": 5994800
   }
  ],
  "sr": {
-  "price": 4.63,
+  "price": 4.65,
   "resistance": [
    4.67,
    5.27
@@ -498,7 +498,6 @@
   "strong_support": 4.17
  },
  "spark": [
-  6.05,
   5.89,
   6.04,
   5.92,
@@ -557,11 +556,29 @@
   4.51,
   4.45,
   4.43,
-  4.63
+  4.63,
+  4.65
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 1,349,485 股交割失敗）",
+   "value": {
+    "total_shares": 1349485,
+    "days": 9,
+    "max_shares": 513467,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

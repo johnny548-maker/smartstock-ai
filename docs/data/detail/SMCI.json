@@ -1,17 +1,9 @@
 {
  "stock": "SMCI",
  "name": "Super Micro Computer",
- "price": 41.02,
- "change_pct": -1.82,
+ "price": 41.07,
+ "change_pct": 0.12,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 26.58,
-   "h": 26.97,
-   "l": 25.41,
-   "c": 26.25,
-   "v": 38985400
-  },
   {
    "time": "2026-07-08",
    "o": 26.14,
@@ -483,10 +475,18 @@
    "l": 40.86,
    "c": 41.02,
    "v": 25272900
+  },
+  {
+   "time": "2026-09-30",
+   "o": 42.17,
+   "h": 42.68,
+   "l": 40.47,
+   "c": 41.07,
+   "v": 31947800
   }
  ],
  "sr": {
-  "price": 41.02,
+  "price": 41.07,
   "resistance": [
    41.53,
    42.31
@@ -498,7 +498,6 @@
   "strong_support": 17.25
  },
  "spark": [
-  26.25,
   28.17,
   28.24,
   28.31,
@@ -557,11 +556,29 @@
   41.51,
   43.26,
   41.78,
-  41.02
+  41.02,
+  41.07
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 277,616 股交割失敗）",
+   "value": {
+    "total_shares": 277616,
+    "days": 7,
+    "max_shares": 170475,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

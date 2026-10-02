@@ -1,8 +1,8 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": 230.42,
- "change_pct": 1.41,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 228.38,
+ "change_pct": 0.51,
  "ohlc": [
   {
    "time": "2026-07-08",
@@ -474,28 +474,28 @@
    "h": 232.82,
    "l": 227.03,
    "c": 227.21,
-   "v": 101203000
+   "v": 101494900
   },
   {
    "time": "2026-09-30",
-   "o": 229.0,
+   "o": 229.27,
    "h": 232.37,
-   "l": 228.8,
-   "c": 230.42,
-   "v": 44339360
+   "l": 228.17,
+   "c": 228.38,
+   "v": 121732200
   }
  ],
  "sr": {
-  "price": 230.42,
+  "price": 228.38,
   "resistance": [
-   231.75,
-   234.5
+   229.98,
+   230.21
   ],
   "support": [
    221.09,
    215.96
   ],
-  "strong_support": 163.9
+  "strong_support": 189.8
  },
  "spark": [
   203.89,
@@ -557,166 +557,27 @@
   225.07,
   228.86,
   227.21,
-  230.42
+  228.38
  ],
  "spark_start": "2026-07-08",
  "spark_end": "2026-09-30",
- "fundamental": {
-  "pe_trailing": 29.130392,
-  "pe_forward": 14.692779,
-  "eps_trailing": 7.91,
-  "eps_forward": 15.68263,
-  "stale": false,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 230.42,
-  "stop": 219.83,
-  "target": 256.91,
-  "atr_bracket": 256.91,
-  "measured_move": 245.33,
-  "target_band": [
-   245.33,
-   256.91
-  ],
-  "stop_pct": -4.6,
-  "target_pct": 11.5,
-  "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 219.5,
-  "chandelier": 217.39,
-  "fib_targets": []
- },
+ "fundamental": null,
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Alphabet Stock Popped on Wednesday",
-   "value": {
-    "headline": "Why Alphabet Stock Popped on Wednesday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790784767,
-    "url": "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Joby Aviation: Bull vs. Bear",
-   "value": {
-    "headline": "Joby Aviation: Bull vs. Bear",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790784300,
-    "url": "https://www.fool.com/investing/2026/09/30/hot-stock-bull-vs-bear/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/30/hot-stock-bull-vs-bear/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
-   "value": {
-    "headline": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790784110,
-    "url": "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
-   "value": {
-    "headline": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790783488,
-    "url": "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Could Buying Constellation Energy Today Set You Up for Life?",
-   "value": {
-    "headline": "Could Buying Constellation Energy Today Set You Up for Life?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790783400,
-    "url": "https://www.fool.com/investing/2026/09/30/could-buying-constellation-energy-today-set-you-up/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/09/30/could-buying-constellation-energy-today-set-you-up/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 10 個交割日、累計 344,862 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 228,010 股交割失敗）",
    "value": {
-    "total_shares": 344862,
-    "days": 10,
-    "max_shares": 108422,
+    "total_shares": 228010,
+    "days": 6,
+    "max_shares": 203811,
     "persistent": true,
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-02",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

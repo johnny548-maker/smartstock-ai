@@ -1,17 +1,9 @@
 {
  "stock": "INVZ",
  "name": "Innoviz Technologies",
- "price": 0.38,
- "change_pct": 0.53,
+ "price": 0.36,
+ "change_pct": -4.51,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 0.71,
-   "h": 0.71,
-   "l": 0.67,
-   "c": 0.69,
-   "v": 1522000
-  },
   {
    "time": "2026-07-08",
    "o": 0.69,
@@ -483,22 +475,29 @@
    "l": 0.36,
    "c": 0.38,
    "v": 1603300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 0.38,
+   "h": 0.39,
+   "l": 0.36,
+   "c": 0.36,
+   "v": 1871100
   }
  ],
  "sr": {
-  "price": 0.38,
+  "price": 0.36,
   "resistance": [
-   0.42,
-   0.47
+   0.37,
+   0.42
   ],
   "support": [
-   0.38,
-   0.35
+   0.35,
+   0.32
   ],
   "strong_support": 0.29
  },
  "spark": [
-  0.69,
   0.68,
   0.67,
   0.63,
@@ -557,11 +556,29 @@
   0.37,
   0.38,
   0.38,
-  0.38
+  0.38,
+  0.36
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 370,951 股交割失敗）",
+   "value": {
+    "total_shares": 370951,
+    "days": 4,
+    "max_shares": 277492,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

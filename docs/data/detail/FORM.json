@@ -1,17 +1,9 @@
 {
  "stock": "FORM",
  "name": "FormFactor",
- "price": 136.25,
- "change_pct": 4.03,
+ "price": 149.31,
+ "change_pct": 9.59,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 111.78,
-   "h": 113.17,
-   "l": 104.02,
-   "c": 106.05,
-   "v": 2737100
-  },
   {
    "time": "2026-07-08",
    "o": 106.0,
@@ -483,13 +475,21 @@
    "l": 132.51,
    "c": 136.25,
    "v": 1270700
+  },
+  {
+   "time": "2026-09-30",
+   "o": 142.3,
+   "h": 150.65,
+   "l": 140.14,
+   "c": 149.31,
+   "v": 2288400
   }
  ],
  "sr": {
-  "price": 136.25,
+  "price": 149.31,
   "resistance": [
-   139.8,
-   139.92
+   157.24,
+   157.63
   ],
   "support": [
    129.25,
@@ -498,7 +498,6 @@
   "strong_support": 22.58
  },
  "spark": [
-  106.05,
   111.59,
   119.44,
   117.52,
@@ -557,11 +556,29 @@
   129.04,
   129.69,
   130.97,
-  136.25
+  136.25,
+  149.31
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 172,
+    "days": 2,
+    "max_shares": 122,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "CRNC",
  "name": "Cerence",
- "price": 7.67,
- "change_pct": -1.67,
+ "price": 7.83,
+ "change_pct": 2.09,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 10.81,
-   "h": 11.02,
-   "l": 10.15,
-   "c": 10.31,
-   "v": 675500
-  },
   {
    "time": "2026-07-08",
    "o": 10.08,
@@ -483,22 +475,29 @@
    "l": 7.61,
    "c": 7.67,
    "v": 466300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 7.79,
+   "h": 7.97,
+   "l": 7.72,
+   "c": 7.83,
+   "v": 553000
   }
  ],
  "sr": {
-  "price": 7.67,
+  "price": 7.83,
   "resistance": [
-   7.73,
-   7.97
+   7.97,
+   8.14
   ],
   "support": [
-   7.6,
-   7.58
+   7.8,
+   7.67
   ],
   "strong_support": 2.76
  },
  "spark": [
-  10.31,
   10.17,
   10.46,
   10.47,
@@ -557,11 +556,29 @@
   7.93,
   7.95,
   7.8,
-  7.67
+  7.67,
+  7.83
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 6343,
+    "days": 2,
+    "max_shares": 5984,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

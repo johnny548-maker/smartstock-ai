@@ -1,17 +1,9 @@
 {
  "stock": "INDI",
  "name": "indie Semiconductor",
- "price": 2.96,
- "change_pct": 2.07,
+ "price": 2.92,
+ "change_pct": -1.35,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 4.4,
-   "h": 4.59,
-   "l": 3.99,
-   "c": 4.12,
-   "v": 8221500
-  },
   {
    "time": "2026-07-08",
    "o": 4.07,
@@ -483,22 +475,29 @@
    "l": 2.88,
    "c": 2.96,
    "v": 8383400
+  },
+  {
+   "time": "2026-09-30",
+   "o": 2.99,
+   "h": 3.03,
+   "l": 2.92,
+   "c": 2.92,
+   "v": 3882500
   }
  ],
  "sr": {
-  "price": 2.96,
+  "price": 2.92,
   "resistance": [
    3.0,
    3.2
   ],
   "support": [
-   2.94,
-   2.72
+   2.72,
+   2.51
   ],
   "strong_support": 1.53
  },
  "spark": [
-  4.12,
   4.37,
   4.71,
   4.44,
@@ -557,11 +556,29 @@
   3.05,
   3.02,
   2.9,
-  2.96
+  2.96,
+  2.92
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 113,034 股交割失敗）",
+   "value": {
+    "total_shares": 113034,
+    "days": 4,
+    "max_shares": 54217,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

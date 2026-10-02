@@ -1,17 +1,9 @@
 {
  "stock": "6691",
  "name": "洋基工程",
- "price": 719.0,
- "change_pct": 9.94,
+ "price": 733.0,
+ "change_pct": 1.95,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 659.51,
-   "h": 677.1,
-   "l": 640.16,
-   "c": 640.16,
-   "v": 1473478
-  },
   {
    "time": "2026-07-08",
    "o": 640.16,
@@ -483,10 +475,18 @@
    "l": 665.0,
    "c": 719.0,
    "v": 2341164
+  },
+  {
+   "time": "2026-10-01",
+   "o": 727.0,
+   "h": 748.0,
+   "l": 719.0,
+   "c": 733.0,
+   "v": 1648125
   }
  ],
  "sr": {
-  "price": 719.0,
+  "price": 733.0,
   "resistance": [
    733.37
   ],
@@ -497,7 +497,6 @@
   "strong_support": 216.0
  },
  "spark": [
-  640.16,
   628.73,
   622.58,
   622.58,
@@ -556,10 +555,11 @@
   646.0,
   667.0,
   654.0,
-  719.0
+  719.0,
+  733.0
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-10-01",
  "fundamental": {
   "rev_yoy": 213.7,
   "rev_accel": true,
@@ -579,63 +579,8 @@
     "short_pct": 5.990403523315736e-06
    },
    "severity": "info",
-   "as_of": "2026-10-01",
+   "as_of": "2026-10-02",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "光輝十月就會噴上5萬點? 全友、 宏齊、貿聯⊕、群創⊕",
-   "value": {
-    "headline": "光輝十月就會噴上5萬點? 全友、 宏齊、貿聯⊕、群創⊕",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1790763148,
-    "url": "cnyes:6618816",
-    "urls": [
-     "cnyes:6618816"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-01",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【量大強漲股整理】大盤吹起反攻號角!點名預告CPO與集團股全數噴發下一個接棒的主角會是誰?",
-   "value": {
-    "headline": "【量大強漲股整理】大盤吹起反攻號角!點名預告CPO與集團股全數噴發下一個接棒的主角會是誰?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1790760986,
-    "url": "cnyes:6618793",
-    "urls": [
-     "cnyes:6618793"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-01",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 2 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 2,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-01",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -967,6 +912,10 @@
    {
     "t": "2026-10-01",
     "v": -1072
+   },
+   {
+    "t": "2026-10-02",
+    "v": -812
    }
   ],
   "holder_pct": [

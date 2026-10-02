@@ -1,17 +1,9 @@
 {
  "stock": "PLXS",
  "name": "Plexus Corp",
- "price": 266.13,
- "change_pct": 0.44,
+ "price": 260.95,
+ "change_pct": -1.95,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 264.64,
-   "h": 269.16,
-   "l": 253.26,
-   "c": 255.94,
-   "v": 437400
-  },
   {
    "time": "2026-07-08",
    "o": 254.23,
@@ -483,13 +475,21 @@
    "l": 262.38,
    "c": 266.13,
    "v": 129100
+  },
+  {
+   "time": "2026-09-30",
+   "o": 266.4,
+   "h": 267.38,
+   "l": 258.87,
+   "c": 260.95,
+   "v": 299700
   }
  ],
  "sr": {
-  "price": 266.13,
+  "price": 260.95,
   "resistance": [
-   274.98,
-   275.83
+   264.08,
+   269.79
   ],
   "support": [
    258.09,
@@ -498,7 +498,6 @@
   "strong_support": 103.43
  },
  "spark": [
-  255.94,
   265.89,
   270.56,
   267.27,
@@ -557,11 +556,29 @@
   261.61,
   263.09,
   264.96,
-  266.13
+  266.13,
+  260.95
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 84,
+    "days": 2,
+    "max_shares": 79,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "FN",
  "name": "Fabrinet",
- "price": 424.12,
- "change_pct": 3.45,
+ "price": 424.27,
+ "change_pct": 0.04,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 483.24,
-   "h": 497.0,
-   "l": 461.02,
-   "c": 468.48,
-   "v": 1030500
-  },
   {
    "time": "2026-07-08",
    "o": 466.91,
@@ -483,10 +475,18 @@
    "l": 411.42,
    "c": 424.12,
    "v": 755200
+  },
+  {
+   "time": "2026-09-30",
+   "o": 422.6,
+   "h": 430.0,
+   "l": 411.07,
+   "c": 424.27,
+   "v": 766700
   }
  ],
  "sr": {
-  "price": 424.12,
+  "price": 424.27,
   "resistance": [
    428.5,
    432.0
@@ -498,7 +498,6 @@
   "strong_support": 148.55
  },
  "spark": [
-  468.48,
   480.07,
   482.78,
   471.13,
@@ -557,11 +556,29 @@
   398.36,
   417.39,
   409.96,
-  424.12
+  424.12,
+  424.27
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 163,
+    "days": 2,
+    "max_shares": 115,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

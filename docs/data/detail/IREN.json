@@ -1,17 +1,9 @@
 {
  "stock": "IREN",
  "name": "IREN Ltd",
- "price": 41.38,
- "change_pct": -0.81,
+ "price": 40.88,
+ "change_pct": -1.21,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 42.24,
-   "h": 42.71,
-   "l": 39.19,
-   "c": 39.81,
-   "v": 42364000
-  },
   {
    "time": "2026-07-08",
    "o": 40.74,
@@ -483,22 +475,29 @@
    "l": 40.98,
    "c": 41.38,
    "v": 33902800
+  },
+  {
+   "time": "2026-09-30",
+   "o": 42.15,
+   "h": 42.4,
+   "l": 40.6,
+   "c": 40.88,
+   "v": 25977800
   }
  ],
  "sr": {
-  "price": 41.38,
+  "price": 40.88,
   "resistance": [
    42.24,
    43.52
   ],
   "support": [
-   40.97,
-   39.93
+   39.93,
+   39.7
   ],
   "strong_support": 5.12
  },
  "spark": [
-  39.81,
   43.01,
   41.72,
   41.14,
@@ -557,11 +556,29 @@
   46.15,
   44.12,
   41.72,
-  41.38
+  41.38,
+  40.88
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 4,306,322 股交割失敗）",
+   "value": {
+    "total_shares": 4306322,
+    "days": 9,
+    "max_shares": 1457586,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

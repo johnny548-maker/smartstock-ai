@@ -1,17 +1,9 @@
 {
  "stock": "NCTY",
  "name": "The9 Limited - American Depository Shares",
- "price": 3.39,
- "change_pct": 1.5,
+ "price": 3.32,
+ "change_pct": -2.06,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 4.93,
-   "h": 5.2,
-   "l": 4.7,
-   "c": 4.91,
-   "v": 46400
-  },
   {
    "time": "2026-07-08",
    "o": 4.77,
@@ -483,10 +475,18 @@
    "l": 3.25,
    "c": 3.39,
    "v": 145300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 3.46,
+   "h": 3.49,
+   "l": 3.12,
+   "c": 3.32,
+   "v": 233600
   }
  ],
  "sr": {
-  "price": 3.39,
+  "price": 3.32,
   "resistance": [
    4.39,
    4.99
@@ -497,7 +497,6 @@
   "strong_support": 3.14
  },
  "spark": [
-  4.91,
   4.65,
   4.64,
   4.34,
@@ -556,11 +555,29 @@
   3.57,
   3.65,
   3.34,
-  3.39
+  3.39,
+  3.32
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 48881,
+    "days": 5,
+    "max_shares": 29620,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

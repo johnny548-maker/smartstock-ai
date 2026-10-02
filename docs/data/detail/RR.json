@@ -1,17 +1,9 @@
 {
  "stock": "RR",
  "name": "Richtech Robotics",
- "price": 1.59,
- "change_pct": 1.27,
+ "price": 1.58,
+ "change_pct": -0.63,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 2.04,
-   "h": 2.07,
-   "l": 1.82,
-   "c": 1.83,
-   "v": 13735000
-  },
   {
    "time": "2026-07-08",
    "o": 1.8,
@@ -483,10 +475,18 @@
    "l": 1.56,
    "c": 1.59,
    "v": 4332800
+  },
+  {
+   "time": "2026-09-30",
+   "o": 1.61,
+   "h": 1.63,
+   "l": 1.57,
+   "c": 1.58,
+   "v": 2633300
   }
  ],
  "sr": {
-  "price": 1.59,
+  "price": 1.58,
   "resistance": [
    1.7,
    1.78
@@ -498,7 +498,6 @@
   "strong_support": 0.52
  },
  "spark": [
-  1.83,
   1.81,
   1.78,
   1.72,
@@ -557,11 +556,29 @@
   1.64,
   1.7,
   1.57,
-  1.59
+  1.59,
+  1.58
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 6,544,697 股交割失敗）",
+   "value": {
+    "total_shares": 6544697,
+    "days": 8,
+    "max_shares": 1158589,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "CIEN",
  "name": "Ciena Corp",
- "price": 354.92,
- "change_pct": 3.12,
+ "price": 351.82,
+ "change_pct": -0.87,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 418.77,
-   "h": 425.96,
-   "l": 404.43,
-   "c": 418.91,
-   "v": 1815700
-  },
   {
    "time": "2026-07-08",
    "o": 419.22,
@@ -483,10 +475,18 @@
    "l": 344.8,
    "c": 354.92,
    "v": 2226000
+  },
+  {
+   "time": "2026-09-30",
+   "o": 354.92,
+   "h": 359.98,
+   "l": 340.52,
+   "c": 351.82,
+   "v": 2656100
   }
  ],
  "sr": {
-  "price": 354.92,
+  "price": 351.82,
   "resistance": [
    365.9,
    376.74
@@ -498,7 +498,6 @@
   "strong_support": 49.21
  },
  "spark": [
-  418.91,
   440.97,
   462.34,
   460.72,
@@ -557,11 +556,29 @@
   358.43,
   356.91,
   344.19,
-  354.92
+  354.92,
+  351.82
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 62391,
+    "days": 5,
+    "max_shares": 39058,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

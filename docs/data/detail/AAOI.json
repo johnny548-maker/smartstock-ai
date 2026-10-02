@@ -1,17 +1,9 @@
 {
  "stock": "AAOI",
  "name": "Applied Optoelectronics",
- "price": 100.67,
- "change_pct": 3.98,
+ "price": 99.26,
+ "change_pct": -1.4,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 118.15,
-   "h": 126.19,
-   "l": 111.5,
-   "c": 114.41,
-   "v": 9265800
-  },
   {
    "time": "2026-07-08",
    "o": 113.02,
@@ -483,10 +475,18 @@
    "l": 97.43,
    "c": 100.67,
    "v": 7288100
+  },
+  {
+   "time": "2026-09-30",
+   "o": 101.9,
+   "h": 104.25,
+   "l": 96.41,
+   "c": 99.26,
+   "v": 5827300
   }
  ],
  "sr": {
-  "price": 100.67,
+  "price": 99.26,
   "resistance": [
    110.0,
    110.74
@@ -498,7 +498,6 @@
   "strong_support": 9.71
  },
  "spark": [
-  114.41,
   114.44,
   122.21,
   119.92,
@@ -557,11 +556,29 @@
   101.03,
   101.4,
   96.82,
-  100.67
+  100.67,
+  99.26
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 477,014 股交割失敗）",
+   "value": {
+    "total_shares": 477014,
+    "days": 3,
+    "max_shares": 379772,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

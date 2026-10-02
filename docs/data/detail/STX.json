@@ -1,17 +1,9 @@
 {
  "stock": "STX",
  "name": "Seagate Technology",
- "price": 913.45,
- "change_pct": -0.87,
+ "price": 922.34,
+ "change_pct": 0.97,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 820.63,
-   "h": 837.08,
-   "l": 785.38,
-   "c": 826.98,
-   "v": 4146000
-  },
   {
    "time": "2026-07-08",
    "o": 810.62,
@@ -483,13 +475,21 @@
    "l": 900.1,
    "c": 913.45,
    "v": 2593300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 921.0,
+   "h": 928.92,
+   "l": 907.03,
+   "c": 922.34,
+   "v": 3080400
   }
  ],
  "sr": {
-  "price": 913.45,
+  "price": 922.34,
   "resistance": [
-   921.04,
-   924.7
+   924.7,
+   935.74
   ],
   "support": [
    800.68,
@@ -498,7 +498,6 @@
   "strong_support": 62.29
  },
  "spark": [
-  826.98,
   859.33,
   889.38,
   909.61,
@@ -557,11 +556,29 @@
   905.92,
   916.83,
   921.51,
-  913.45
+  913.45,
+  922.34
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 582,
+    "days": 3,
+    "max_shares": 347,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

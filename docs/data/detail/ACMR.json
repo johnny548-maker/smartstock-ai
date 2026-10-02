@@ -1,17 +1,9 @@
 {
  "stock": "ACMR",
  "name": "ACM Research",
- "price": 75.61,
- "change_pct": -0.45,
+ "price": 80.92,
+ "change_pct": 7.02,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 92.56,
-   "h": 94.9,
-   "l": 89.26,
-   "c": 94.66,
-   "v": 1841300
-  },
   {
    "time": "2026-07-08",
    "o": 94.66,
@@ -483,22 +475,29 @@
    "l": 74.82,
    "c": 75.61,
    "v": 692500
+  },
+  {
+   "time": "2026-09-30",
+   "o": 76.42,
+   "h": 82.46,
+   "l": 76.11,
+   "c": 80.92,
+   "v": 1822700
   }
  ],
  "sr": {
-  "price": 75.61,
+  "price": 80.92,
   "resistance": [
-   78.71,
-   82.78
+   82.78,
+   83.5
   ],
   "support": [
-   75.45,
-   74.19
+   77.46,
+   75.45
   ],
   "strong_support": 13.87
  },
  "spark": [
-  94.66,
   98.07,
   106.04,
   103.0,
@@ -557,11 +556,29 @@
   76.18,
   77.3,
   75.95,
-  75.61
+  75.61,
+  80.92
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 34342,
+    "days": 3,
+    "max_shares": 29486,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

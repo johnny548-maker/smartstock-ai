@@ -1,8 +1,8 @@
 {
  "stock": "1539.TW",
  "name": "巨庭",
- "price": 15.45,
- "change_pct": 0.0,
+ "price": 15.65,
+ "change_pct": 1.29,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -467,15 +467,26 @@
    "l": 15.45,
    "c": 15.45,
    "v": 18001
+  },
+  {
+   "time": "2026-10-02",
+   "o": 15.75,
+   "h": 15.8,
+   "l": 15.45,
+   "c": 15.65,
+   "v": 25405
   }
  ],
  "sr": {
-  "price": 15.45,
+  "price": 15.65,
   "resistance": [
    15.75,
    16.1
   ],
-  "support": [],
+  "support": [
+   15.5,
+   15.45
+  ],
   "strong_support": 15.45
  },
  "spark": [
@@ -536,10 +547,11 @@
   15.5,
   15.5,
   15.45,
-  15.45
+  15.45,
+  15.65
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-01",
+ "spark_end": "2026-10-02",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

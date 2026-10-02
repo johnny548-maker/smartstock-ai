@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 887.0,
- "change_pct": -1.77,
+ "price": 975.0,
+ "change_pct": 9.92,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 908.59,
-   "h": 916.55,
-   "l": 825.99,
-   "c": 829.97,
-   "v": 3840238
-  },
   {
    "time": "2026-07-08",
    "o": 836.94,
@@ -483,13 +475,20 @@
    "l": 879.0,
    "c": 887.0,
    "v": 3986320
+  },
+  {
+   "time": "2026-10-01",
+   "o": 908.0,
+   "h": 975.0,
+   "l": 908.0,
+   "c": 975.0,
+   "v": 8687758
   }
  ],
  "sr": {
-  "price": 887.0,
+  "price": 975.0,
   "resistance": [
-   889.68,
-   909.58
+   1010.09
   ],
   "support": [
    781.0,
@@ -498,7 +497,6 @@
   "strong_support": 58.24
  },
  "spark": [
-  829.97,
   806.09,
   775.0,
   775.0,
@@ -557,10 +555,11 @@
   890.0,
   949.0,
   903.0,
-  887.0
+  887.0,
+  975.0
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-10-01",
  "fundamental": {
   "rev_yoy": 153.0,
   "rev_accel": true,
@@ -575,13 +574,69 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 89,
+    "short_today": 155,
     "outstanding": 89513491,
-    "short_pct": 9.942635350910401e-05
+    "short_pct": 0.0001731582561113609
    },
    "severity": "info",
-   "as_of": "2026-10-01",
+   "as_of": "2026-10-02",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "9月車市回暖 掛牌量增15% 減徵貨物稅+特斯拉、賓士大量交車助攻",
+   "value": {
+    "headline": "9月車市回暖 掛牌量增15% 減徵貨物稅+特斯拉、賓士大量交車助攻",
+    "sources": [
+     "udn"
+    ],
+    "source_count": 1,
+    "ts": 1790876302,
+    "url": "https://money.udn.com/money/story/10871/9789417",
+    "urls": [
+     "https://money.udn.com/money/story/10871/9789417"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】台股漲價潮全面擴散,下一波接棒主角換誰當?!",
+   "value": {
+    "headline": "【量大強漲股整理】台股漲價潮全面擴散,下一波接棒主角換誰當?!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1790849551,
+    "url": "cnyes:6619710",
+    "urls": [
+     "cnyes:6619710"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 2 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 2,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "udn"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-02",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -913,6 +968,10 @@
    {
     "t": "2026-10-01",
     "v": -1854
+   },
+   {
+    "t": "2026-10-02",
+    "v": 251
    }
   ],
   "holder_pct": [

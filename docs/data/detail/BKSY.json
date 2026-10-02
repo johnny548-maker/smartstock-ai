@@ -1,17 +1,9 @@
 {
  "stock": "BKSY",
  "name": "BlackSky Technology",
- "price": 21.89,
- "change_pct": -4.62,
+ "price": 21.31,
+ "change_pct": -2.65,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 27.0,
-   "h": 27.0,
-   "l": 25.32,
-   "c": 25.46,
-   "v": 1164600
-  },
   {
    "time": "2026-07-08",
    "o": 25.38,
@@ -483,10 +475,18 @@
    "l": 21.81,
    "c": 21.89,
    "v": 807300
+  },
+  {
+   "time": "2026-09-30",
+   "o": 22.1,
+   "h": 22.99,
+   "l": 21.3,
+   "c": 21.31,
+   "v": 1127800
   }
  ],
  "sr": {
-  "price": 21.89,
+  "price": 21.31,
   "resistance": [
    21.92,
    22.48
@@ -498,7 +498,6 @@
   "strong_support": 6.25
  },
  "spark": [
-  25.46,
   25.88,
   25.55,
   25.02,
@@ -557,11 +556,29 @@
   23.17,
   23.25,
   22.95,
-  21.89
+  21.89,
+  21.31
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 42176,
+    "days": 5,
+    "max_shares": 31796,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "SYM",
  "name": "Symbotic",
- "price": 41.51,
- "change_pct": -1.17,
+ "price": 42.07,
+ "change_pct": 1.35,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 44.07,
-   "h": 44.18,
-   "l": 40.85,
-   "c": 41.32,
-   "v": 1606800
-  },
   {
    "time": "2026-07-08",
    "o": 40.29,
@@ -483,10 +475,18 @@
    "l": 41.3,
    "c": 41.51,
    "v": 1084200
+  },
+  {
+   "time": "2026-09-30",
+   "o": 42.05,
+   "h": 42.53,
+   "l": 41.52,
+   "c": 42.07,
+   "v": 1160700
   }
  ],
  "sr": {
-  "price": 41.51,
+  "price": 42.07,
   "resistance": [
    42.15,
    42.75
@@ -498,7 +498,6 @@
   "strong_support": 16.32
  },
  "spark": [
-  41.32,
   41.69,
   43.15,
   43.64,
@@ -557,11 +556,29 @@
   44.04,
   43.47,
   42.0,
-  41.51
+  41.51,
+  42.07
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
+ "spark_start": "2026-07-08",
+ "spark_end": "2026-09-30",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 8254,
+    "days": 4,
+    "max_shares": 5920,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-02",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
