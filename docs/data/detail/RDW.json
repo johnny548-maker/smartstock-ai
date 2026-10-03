@@ -1,17 +1,9 @@
 {
  "stock": "RDW",
  "name": "Redwire Corp",
- "price": 10.44,
- "change_pct": -2.7,
+ "price": 10.57,
+ "change_pct": 1.25,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 10.23,
-   "h": 10.97,
-   "l": 10.19,
-   "c": 10.58,
-   "v": 14441900
-  },
   {
    "time": "2026-07-09",
    "o": 10.55,
@@ -483,22 +475,29 @@
    "l": 10.44,
    "c": 10.44,
    "v": 11942000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 10.67,
+   "h": 10.95,
+   "l": 10.38,
+   "c": 10.57,
+   "v": 12586800
   }
  ],
  "sr": {
-  "price": 10.44,
+  "price": 10.57,
   "resistance": [
-   10.57,
-   11.5
+   11.5,
+   11.73
   ],
   "support": [
-   10.23,
-   10.21
+   10.48,
+   10.23
   ],
   "strong_support": 4.87
  },
  "spark": [
-  10.58,
   10.47,
   10.18,
   9.59,
@@ -557,28 +556,12 @@
   11.62,
   11.2,
   10.73,
-  10.44
+  10.44,
+  10.57
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 114,474 股交割失敗）",
-   "value": {
-    "total_shares": 114474,
-    "days": 5,
-    "max_shares": 57253,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

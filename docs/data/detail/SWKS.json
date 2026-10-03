@@ -1,17 +1,9 @@
 {
  "stock": "SWKS",
  "name": "Skyworks Solutions",
- "price": 85.48,
- "change_pct": -2.91,
+ "price": 83.16,
+ "change_pct": -2.71,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 59.28,
-   "h": 59.52,
-   "l": 57.21,
-   "c": 58.49,
-   "v": 7460200
-  },
   {
    "time": "2026-07-09",
    "o": 60.11,
@@ -483,22 +475,29 @@
    "l": 84.43,
    "c": 85.48,
    "v": 6069700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 86.21,
+   "h": 86.62,
+   "l": 82.74,
+   "c": 83.16,
+   "v": 5064300
   }
  ],
  "sr": {
-  "price": 85.48,
+  "price": 83.16,
   "resistance": [
-   85.51,
-   85.99
+   85.18,
+   85.34
   ],
   "support": [
-   83.19,
-   82.22
+   82.22,
+   82.1
   ],
   "strong_support": 45.53
  },
  "spark": [
-  58.49,
   59.95,
   60.38,
   58.24,
@@ -557,28 +556,12 @@
   89.34,
   87.59,
   88.04,
-  85.48
+  85.48,
+  83.16
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 329,479 股交割失敗）",
-   "value": {
-    "total_shares": 329479,
-    "days": 7,
-    "max_shares": 116860,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

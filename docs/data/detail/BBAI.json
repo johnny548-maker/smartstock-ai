@@ -1,17 +1,9 @@
 {
  "stock": "BBAI",
  "name": "BigBear.ai",
- "price": 2.65,
- "change_pct": -0.0,
+ "price": 2.74,
+ "change_pct": 3.4,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 3.37,
-   "h": 3.45,
-   "l": 3.27,
-   "c": 3.31,
-   "v": 23362400
-  },
   {
    "time": "2026-07-09",
    "o": 3.29,
@@ -483,22 +475,29 @@
    "l": 2.65,
    "c": 2.65,
    "v": 11737600
+  },
+  {
+   "time": "2026-10-01",
+   "o": 2.67,
+   "h": 2.86,
+   "l": 2.63,
+   "c": 2.74,
+   "v": 22382400
   }
  ],
  "sr": {
-  "price": 2.65,
+  "price": 2.74,
   "resistance": [
    2.95,
    3.24
   ],
   "support": [
-   2.59,
-   2.48
+   2.7,
+   2.67
   ],
   "strong_support": 1.51
  },
  "spark": [
-  3.31,
   3.32,
   3.27,
   3.09,
@@ -557,28 +556,12 @@
   2.8,
   2.66,
   2.65,
-  2.65
+  2.65,
+  2.74
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 943,386 股交割失敗）",
-   "value": {
-    "total_shares": 943386,
-    "days": 9,
-    "max_shares": 446870,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,8 +1,8 @@
 {
  "stock": "1229.TW",
  "name": "聯華",
- "price": 40.2,
- "change_pct": 0.75,
+ "price": 40.0,
+ "change_pct": -0.5,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -475,18 +475,27 @@
    "l": 39.95,
    "c": 40.2,
    "v": 2550357
+  },
+  {
+   "time": "2026-10-03",
+   "o": 40.25,
+   "h": 40.3,
+   "l": 39.85,
+   "c": 40.0,
+   "v": 2092675
   }
  ],
  "sr": {
-  "price": 40.2,
+  "price": 40.0,
   "resistance": [
    41.7,
    42.0
   ],
   "support": [
-   39.9
+   39.9,
+   39.5
   ],
-  "strong_support": 39.9
+  "strong_support": 39.5
  },
  "spark": [
   41.9,
@@ -547,10 +556,11 @@
   40.1,
   39.55,
   39.9,
-  40.2
+  40.2,
+  40.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-02",
+ "spark_end": "2026-10-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

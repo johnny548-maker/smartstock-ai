@@ -1,17 +1,9 @@
 {
  "stock": "POWI",
  "name": "Power Integrations",
- "price": 51.8,
- "change_pct": 1.41,
+ "price": 51.5,
+ "change_pct": -0.58,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 64.94,
-   "h": 67.47,
-   "l": 64.94,
-   "c": 66.18,
-   "v": 944200
-  },
   {
    "time": "2026-07-09",
    "o": 69.61,
@@ -483,22 +475,29 @@
    "l": 50.79,
    "c": 51.8,
    "v": 1124800
+  },
+  {
+   "time": "2026-10-01",
+   "o": 51.8,
+   "h": 52.13,
+   "l": 50.48,
+   "c": 51.5,
+   "v": 852600
   }
  ],
  "sr": {
-  "price": 51.8,
+  "price": 51.5,
   "resistance": [
-   53.15,
-   55.53
+   51.7,
+   51.73
   ],
   "support": [
-   51.61,
-   49.75
+   49.75,
+   49.08
   ],
   "strong_support": 30.33
  },
  "spark": [
-  66.18,
   70.53,
   71.77,
   69.15,
@@ -557,28 +556,12 @@
   52.22,
   51.84,
   51.08,
-  51.8
+  51.8,
+  51.5
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 5952,
-    "days": 2,
-    "max_shares": 5903,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

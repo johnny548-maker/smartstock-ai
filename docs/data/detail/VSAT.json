@@ -1,17 +1,9 @@
 {
  "stock": "VSAT",
  "name": "Viasat",
- "price": 70.38,
- "change_pct": 1.87,
+ "price": 70.35,
+ "change_pct": -0.04,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 74.58,
-   "h": 77.75,
-   "l": 73.09,
-   "c": 74.0,
-   "v": 1775300
-  },
   {
    "time": "2026-07-09",
    "o": 76.33,
@@ -483,10 +475,18 @@
    "l": 68.51,
    "c": 70.38,
    "v": 1280300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 69.87,
+   "h": 72.2,
+   "l": 68.01,
+   "c": 70.35,
+   "v": 1271500
   }
  ],
  "sr": {
-  "price": 70.38,
+  "price": 70.35,
   "resistance": [
    75.14,
    75.57
@@ -498,7 +498,6 @@
   "strong_support": 6.69
  },
  "spark": [
-  74.0,
   70.39,
   73.56,
   69.54,
@@ -557,28 +556,12 @@
   73.02,
   71.65,
   69.09,
-  70.38
+  70.38,
+  70.35
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 43614,
-    "days": 5,
-    "max_shares": 18672,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

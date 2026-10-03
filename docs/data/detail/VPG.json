@@ -1,17 +1,9 @@
 {
  "stock": "VPG",
  "name": "Vishay Precision Group",
- "price": 72.74,
- "change_pct": 1.45,
+ "price": 75.09,
+ "change_pct": 3.23,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 106.9,
-   "h": 112.29,
-   "l": 105.79,
-   "c": 107.95,
-   "v": 512000
-  },
   {
    "time": "2026-07-09",
    "o": 113.5,
@@ -483,13 +475,21 @@
    "l": 70.25,
    "c": 72.74,
    "v": 366600
+  },
+  {
+   "time": "2026-10-01",
+   "o": 73.46,
+   "h": 75.75,
+   "l": 70.97,
+   "c": 75.09,
+   "v": 336500
   }
  ],
  "sr": {
-  "price": 72.74,
+  "price": 75.09,
   "resistance": [
-   73.3,
-   76.58
+   76.58,
+   102.12
   ],
   "support": [
    64.37,
@@ -498,7 +498,6 @@
   "strong_support": 18.57
  },
  "spark": [
-  107.95,
   113.49,
   112.7,
   105.67,
@@ -557,28 +556,12 @@
   71.63,
   70.88,
   71.7,
-  72.74
+  72.74,
+  75.09
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 516,
-    "days": 2,
-    "max_shares": 508,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

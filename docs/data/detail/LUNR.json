@@ -1,17 +1,9 @@
 {
  "stock": "LUNR",
  "name": "Intuitive Machines",
- "price": 14.24,
- "change_pct": -2.13,
+ "price": 14.05,
+ "change_pct": -1.33,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 17.93,
-   "h": 18.55,
-   "l": 16.72,
-   "c": 17.02,
-   "v": 9384800
-  },
   {
    "time": "2026-07-09",
    "o": 17.0,
@@ -483,22 +475,29 @@
    "l": 14.22,
    "c": 14.24,
    "v": 8940000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 14.31,
+   "h": 14.53,
+   "l": 13.92,
+   "c": 14.05,
+   "v": 8267000
   }
  ],
  "sr": {
-  "price": 14.24,
+  "price": 14.05,
   "resistance": [
    14.89,
    14.9
   ],
   "support": [
-   14.18,
-   13.6
+   13.6,
+   13.48
   ],
   "strong_support": 6.14
  },
  "spark": [
-  17.02,
   16.9,
   16.14,
   15.15,
@@ -557,28 +556,12 @@
   15.61,
   15.2,
   14.55,
-  14.24
+  14.24,
+  14.05
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 600,737 股交割失敗）",
-   "value": {
-    "total_shares": 600737,
-    "days": 8,
-    "max_shares": 242954,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

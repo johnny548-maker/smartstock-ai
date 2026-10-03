@@ -1,17 +1,9 @@
 {
  "stock": "PENG",
  "name": "Penguin Solutions",
- "price": 54.69,
- "change_pct": -1.97,
+ "price": 54.98,
+ "change_pct": 0.53,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 67.85,
-   "h": 80.0,
-   "l": 63.76,
-   "c": 78.47,
-   "v": 13797400
-  },
   {
    "time": "2026-07-09",
    "o": 82.6,
@@ -483,10 +475,18 @@
    "l": 54.04,
    "c": 54.69,
    "v": 1446100
+  },
+  {
+   "time": "2026-10-01",
+   "o": 54.49,
+   "h": 55.67,
+   "l": 53.44,
+   "c": 54.98,
+   "v": 1157400
   }
  ],
  "sr": {
-  "price": 54.69,
+  "price": 54.98,
   "resistance": [
    57.5,
    65.75
@@ -498,7 +498,6 @@
   "strong_support": 14.2
  },
  "spark": [
-  78.47,
   81.39,
   78.35,
   77.21,
@@ -557,28 +556,12 @@
   56.22,
   54.98,
   55.79,
-  54.69
+  54.69,
+  54.98
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 11270,
-    "days": 3,
-    "max_shares": 10942,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

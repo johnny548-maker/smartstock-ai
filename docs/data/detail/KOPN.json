@@ -1,17 +1,9 @@
 {
  "stock": "KOPN",
  "name": "Kopin Corp",
- "price": 4.6,
- "change_pct": -3.16,
+ "price": 4.61,
+ "change_pct": 0.22,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 3.75,
-   "h": 3.99,
-   "l": 3.73,
-   "c": 3.94,
-   "v": 2883700
-  },
   {
    "time": "2026-07-09",
    "o": 4.06,
@@ -483,10 +475,18 @@
    "l": 4.58,
    "c": 4.6,
    "v": 4980700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 4.61,
+   "h": 4.79,
+   "l": 4.47,
+   "c": 4.61,
+   "v": 2780100
   }
  ],
  "sr": {
-  "price": 4.6,
+  "price": 4.61,
   "resistance": [
    4.62,
    4.63
@@ -498,7 +498,6 @@
   "strong_support": 0.65
  },
  "spark": [
-  3.94,
   4.09,
   3.9,
   3.63,
@@ -557,28 +556,12 @@
   4.99,
   4.75,
   4.75,
-  4.6
+  4.6,
+  4.61
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 36790,
-    "days": 3,
-    "max_shares": 30589,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

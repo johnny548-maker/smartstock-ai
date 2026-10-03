@@ -1,17 +1,9 @@
 {
  "stock": "RKLB",
  "name": "Rocket Lab",
- "price": 69.68,
- "change_pct": -0.03,
+ "price": 70.46,
+ "change_pct": 1.12,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 86.5,
-   "h": 86.5,
-   "l": 81.0,
-   "c": 83.35,
-   "v": 19194500
-  },
   {
    "time": "2026-07-09",
    "o": 86.29,
@@ -483,10 +475,18 @@
    "l": 69.63,
    "c": 69.68,
    "v": 22428600
+  },
+  {
+   "time": "2026-10-01",
+   "o": 72.31,
+   "h": 72.64,
+   "l": 69.42,
+   "c": 70.46,
+   "v": 23312600
   }
  ],
  "sr": {
-  "price": 69.68,
+  "price": 70.46,
   "resistance": [
    72.94,
    73.67
@@ -498,7 +498,6 @@
   "strong_support": 8.99
  },
  "spark": [
-  83.35,
   82.55,
   81.04,
   76.73,
@@ -557,28 +556,12 @@
   73.95,
   72.19,
   69.7,
-  69.68
+  69.68,
+  70.46
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 2,739,100 股交割失敗）",
-   "value": {
-    "total_shares": 2739100,
-    "days": 4,
-    "max_shares": 1723650,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

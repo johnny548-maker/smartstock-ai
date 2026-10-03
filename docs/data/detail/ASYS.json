@@ -1,17 +1,9 @@
 {
  "stock": "ASYS",
  "name": "Amtech Systems",
- "price": 16.78,
- "change_pct": 1.02,
+ "price": 17.25,
+ "change_pct": 2.8,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 17.52,
-   "h": 18.16,
-   "l": 16.9,
-   "c": 17.69,
-   "v": 437700
-  },
   {
    "time": "2026-07-09",
    "o": 18.44,
@@ -483,22 +475,29 @@
    "l": 16.56,
    "c": 16.78,
    "v": 179900
+  },
+  {
+   "time": "2026-10-01",
+   "o": 16.78,
+   "h": 17.35,
+   "l": 16.66,
+   "c": 17.25,
+   "v": 212700
   }
  ],
  "sr": {
-  "price": 16.78,
+  "price": 17.25,
   "resistance": [
    17.41,
    17.49
   ],
   "support": [
-   16.26,
-   16.12
+   16.9,
+   16.26
   ],
   "strong_support": 3.2
  },
  "spark": [
-  17.69,
   18.67,
   18.66,
   18.01,
@@ -557,28 +556,12 @@
   15.78,
   15.85,
   16.61,
-  16.78
+  16.78,
+  17.25
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 2759,
-    "days": 2,
-    "max_shares": 1811,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

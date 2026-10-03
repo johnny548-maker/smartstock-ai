@@ -1,17 +1,9 @@
 {
  "stock": "VIAV",
  "name": "Viavi Solutions",
- "price": 41.92,
- "change_pct": 0.24,
+ "price": 44.78,
+ "change_pct": 6.82,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 39.92,
-   "h": 40.83,
-   "l": 38.89,
-   "c": 40.7,
-   "v": 5027600
-  },
   {
    "time": "2026-07-09",
    "o": 42.96,
@@ -483,22 +475,29 @@
    "l": 39.91,
    "c": 41.92,
    "v": 5534700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 42.27,
+   "h": 45.4,
+   "l": 41.27,
+   "c": 44.78,
+   "v": 7255900
   }
  ],
  "sr": {
-  "price": 41.92,
+  "price": 44.78,
   "resistance": [
-   43.64,
-   43.74
+   46.66,
+   48.89
   ],
   "support": [
-   38.89,
-   37.66
+   44.26,
+   42.18
   ],
   "strong_support": 8.1
  },
  "spark": [
-  40.7,
   42.88,
   43.08,
   40.92,
@@ -557,28 +556,12 @@
   40.68,
   40.87,
   41.82,
-  41.92
+  41.92,
+  44.78
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 25594,
-    "days": 3,
-    "max_shares": 25036,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

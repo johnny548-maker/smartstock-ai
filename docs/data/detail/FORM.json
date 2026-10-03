@@ -1,17 +1,9 @@
 {
  "stock": "FORM",
  "name": "FormFactor",
- "price": 149.31,
- "change_pct": 9.59,
+ "price": 148.44,
+ "change_pct": -0.58,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 106.0,
-   "h": 112.39,
-   "l": 105.35,
-   "c": 111.59,
-   "v": 1533600
-  },
   {
    "time": "2026-07-09",
    "o": 119.95,
@@ -483,10 +475,18 @@
    "l": 140.14,
    "c": 149.31,
    "v": 2288400
+  },
+  {
+   "time": "2026-10-01",
+   "o": 149.45,
+   "h": 149.7,
+   "l": 145.07,
+   "c": 148.44,
+   "v": 1199700
   }
  ],
  "sr": {
-  "price": 149.31,
+  "price": 148.44,
   "resistance": [
    157.24,
    157.63
@@ -498,7 +498,6 @@
   "strong_support": 22.58
  },
  "spark": [
-  111.59,
   119.44,
   117.52,
   110.3,
@@ -557,28 +556,12 @@
   129.69,
   130.97,
   136.25,
-  149.31
+  149.31,
+  148.44
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 172,
-    "days": 2,
-    "max_shares": 122,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

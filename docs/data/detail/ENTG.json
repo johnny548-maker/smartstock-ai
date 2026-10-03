@@ -1,17 +1,9 @@
 {
  "stock": "ENTG",
  "name": "Entegris",
- "price": 154.06,
- "change_pct": -0.46,
+ "price": 158.48,
+ "change_pct": 2.87,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 133.39,
-   "h": 142.14,
-   "l": 131.78,
-   "c": 138.6,
-   "v": 3344000
-  },
   {
    "time": "2026-07-09",
    "o": 147.73,
@@ -483,13 +475,21 @@
    "l": 151.89,
    "c": 154.06,
    "v": 1224300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 155.61,
+   "h": 160.0,
+   "l": 153.74,
+   "c": 158.48,
+   "v": 1646700
   }
  ],
  "sr": {
-  "price": 154.06,
+  "price": 158.48,
   "resistance": [
-   156.3,
-   158.91
+   158.91,
+   166.2
   ],
   "support": [
    134.75,
@@ -498,7 +498,6 @@
   "strong_support": 60.4
  },
  "spark": [
-  138.6,
   145.98,
   145.23,
   136.15,
@@ -557,28 +556,12 @@
   151.89,
   150.63,
   154.77,
-  154.06
+  154.06,
+  158.48
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 12310,
-    "days": 2,
-    "max_shares": 12270,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

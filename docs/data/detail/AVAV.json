@@ -1,17 +1,9 @@
 {
  "stock": "AVAV",
  "name": "AeroVironment",
- "price": 142.22,
- "change_pct": -0.71,
+ "price": 140.31,
+ "change_pct": -1.34,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 165.67,
-   "h": 168.89,
-   "l": 157.01,
-   "c": 157.78,
-   "v": 2378300
-  },
   {
    "time": "2026-07-09",
    "o": 153.0,
@@ -483,22 +475,29 @@
    "l": 142.02,
    "c": 142.22,
    "v": 1430800
+  },
+  {
+   "time": "2026-10-01",
+   "o": 142.78,
+   "h": 143.53,
+   "l": 138.4,
+   "c": 140.31,
+   "v": 1266200
   }
  ],
  "sr": {
-  "price": 142.22,
+  "price": 140.31,
   "resistance": [
    149.77,
    151.88
   ],
   "support": [
-   140.43,
-   139.1
+   139.1,
+   138.31
   ],
   "strong_support": 102.25
  },
  "spark": [
-  157.78,
   148.4,
   144.58,
   141.8,
@@ -557,28 +556,12 @@
   152.05,
   147.23,
   143.24,
-  142.22
+  142.22,
+  140.31
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 83148,
-    "days": 6,
-    "max_shares": 47171,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

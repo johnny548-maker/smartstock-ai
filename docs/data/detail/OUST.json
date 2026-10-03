@@ -1,17 +1,9 @@
 {
  "stock": "OUST",
  "name": "Ouster Inc",
- "price": 40.34,
- "change_pct": 0.85,
+ "price": 40.87,
+ "change_pct": 1.31,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 42.74,
-   "h": 44.8,
-   "l": 40.6,
-   "c": 43.41,
-   "v": 5087700
-  },
   {
    "time": "2026-07-09",
    "o": 45.33,
@@ -483,22 +475,29 @@
    "l": 39.9,
    "c": 40.34,
    "v": 1723300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 40.4,
+   "h": 42.17,
+   "l": 39.36,
+   "c": 40.87,
+   "v": 1897600
   }
  ],
  "sr": {
-  "price": 40.34,
+  "price": 40.87,
   "resistance": [
    41.1,
    41.65
   ],
   "support": [
-   39.0,
-   35.3
+   40.49,
+   39.0
   ],
   "strong_support": 6.16
  },
  "spark": [
-  43.41,
   47.53,
   43.28,
   40.03,
@@ -557,28 +556,12 @@
   43.72,
   40.9,
   40.0,
-  40.34
+  40.34,
+  40.87
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 6659,
-    "days": 2,
-    "max_shares": 4576,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

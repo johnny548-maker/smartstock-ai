@@ -1,17 +1,9 @@
 {
  "stock": "SMTC",
  "name": "Semtech",
- "price": 178.35,
- "change_pct": -0.97,
+ "price": 186.59,
+ "change_pct": 4.62,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 125.29,
-   "h": 130.86,
-   "l": 122.89,
-   "c": 128.84,
-   "v": 3075200
-  },
   {
    "time": "2026-07-09",
    "o": 136.81,
@@ -483,12 +475,19 @@
    "l": 175.29,
    "c": 178.35,
    "v": 2321200
+  },
+  {
+   "time": "2026-10-01",
+   "o": 180.13,
+   "h": 188.35,
+   "l": 175.01,
+   "c": 186.59,
+   "v": 3381800
   }
  ],
  "sr": {
-  "price": 178.35,
+  "price": 186.59,
   "resistance": [
-   185.0,
    190.64
   ],
   "support": [
@@ -498,7 +497,6 @@
   "strong_support": 24.05
  },
  "spark": [
-  128.84,
   137.5,
   136.13,
   132.15,
@@ -557,11 +555,129 @@
   182.3,
   174.78,
   180.1,
-  178.35
+  178.35,
+  186.59
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MACOM, Texas Instruments, Semtech, Amkor, and Teradyne Stocks Trade Up, What You Need To Know",
+   "value": {
+    "headline": "MACOM, Texas Instruments, Semtech, Amkor, and Teradyne Stocks Trade Up, What You Need To Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790978763,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/macom-texas-instruments-semtech-amkor-220603502.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/macom-texas-instruments-semtech-amkor-220603502.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Semtech Stock Actionable In Buy Zone After Earnings Boost",
+   "value": {
+    "headline": "Semtech Stock Actionable In Buy Zone After Earnings Boost",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790944226,
+    "url": "https://finance.yahoo.com/m/b1c61e3e-f3db-3d4d-a352-07faadb92b16/semtech-stock-actionable-in.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/b1c61e3e-f3db-3d4d-a352-07faadb92b16/semtech-stock-actionable-in.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Are Semtech (SMTC) Shares Soaring Today",
+   "value": {
+    "headline": "Why Are Semtech (SMTC) Shares Soaring Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790896627,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-semtech-smtc-shares-soaring-231707707.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-semtech-smtc-shares-soaring-231707707.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is AI-Driven Edge Security Integration With Nvidia’s Stack Altering The Investment Case For Palo Alto Networks (PANW)?",
+   "value": {
+    "headline": "Is AI-Driven Edge Security Integration With Nvidia’s Stack Altering The Investment Case For Palo Alto Networks (PANW)?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790817817,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ai-driven-edge-security-integration-012337957.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/ai-driven-edge-security-integration-012337957.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia, AMD Collaborator Teases Breakout To Record High. These Clues Bode Well.",
+   "value": {
+    "headline": "Nvidia, AMD Collaborator Teases Breakout To Record High. These Clues Bode Well.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790799554,
+    "url": "https://finance.yahoo.com/m/d577f3fd-98fa-3537-a959-f420143a9942/nvidia%2C-amd-collaborator.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/d577f3fd-98fa-3537-a959-f420143a9942/nvidia%2C-amd-collaborator.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

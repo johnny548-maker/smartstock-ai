@@ -1,17 +1,9 @@
 {
  "stock": "NTCT",
  "name": "NetScout Systems",
- "price": 40.18,
- "change_pct": 3.03,
+ "price": 40.33,
+ "change_pct": 0.37,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 42.09,
-   "h": 43.08,
-   "l": 42.07,
-   "c": 43.0,
-   "v": 681400
-  },
   {
    "time": "2026-07-09",
    "o": 43.08,
@@ -483,10 +475,18 @@
    "l": 39.28,
    "c": 40.18,
    "v": 1205700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 40.16,
+   "h": 40.48,
+   "l": 39.65,
+   "c": 40.33,
+   "v": 490600
   }
  ],
  "sr": {
-  "price": 40.18,
+  "price": 40.33,
   "resistance": [
    40.92,
    42.37
@@ -498,7 +498,6 @@
   "strong_support": 18.12
  },
  "spark": [
-  43.0,
   44.84,
   43.68,
   43.14,
@@ -557,28 +556,12 @@
   39.44,
   39.41,
   39.0,
-  40.18
+  40.18,
+  40.33
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 10684,
-    "days": 5,
-    "max_shares": 3114,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

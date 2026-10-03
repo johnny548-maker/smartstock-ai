@@ -1,17 +1,9 @@
 {
  "stock": "NTAP",
  "name": "NetApp",
- "price": 210.08,
- "change_pct": 0.43,
+ "price": 215.05,
+ "change_pct": 2.37,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 162.25,
-   "h": 166.21,
-   "l": 161.19,
-   "c": 164.9,
-   "v": 2380700
-  },
   {
    "time": "2026-07-09",
    "o": 165.08,
@@ -483,10 +475,18 @@
    "l": 209.21,
    "c": 210.08,
    "v": 3193300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 211.75,
+   "h": 215.22,
+   "l": 208.03,
+   "c": 215.05,
+   "v": 2348700
   }
  ],
  "sr": {
-  "price": 210.08,
+  "price": 215.05,
   "resistance": [],
   "support": [
    190.89,
@@ -495,7 +495,6 @@
   "strong_support": 70.26
  },
  "spark": [
-  164.9,
   171.21,
   168.87,
   163.93,
@@ -554,28 +553,12 @@
   201.15,
   204.41,
   209.18,
-  210.08
+  210.08,
+  215.05
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 4357,
-    "days": 3,
-    "max_shares": 3229,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

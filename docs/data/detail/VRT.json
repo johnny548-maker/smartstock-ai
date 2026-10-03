@@ -1,17 +1,9 @@
 {
  "stock": "VRT",
  "name": "Vertiv Holdings",
- "price": 241.31,
- "change_pct": -2.83,
+ "price": 246.12,
+ "change_pct": 1.99,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 301.57,
-   "h": 319.57,
-   "l": 300.53,
-   "c": 317.73,
-   "v": 4425200
-  },
   {
    "time": "2026-07-09",
    "o": 333.47,
@@ -483,10 +475,18 @@
    "l": 241.27,
    "c": 241.31,
    "v": 4176500
+  },
+  {
+   "time": "2026-10-01",
+   "o": 242.92,
+   "h": 249.53,
+   "l": 238.3,
+   "c": 246.12,
+   "v": 3469200
   }
  ],
  "sr": {
-  "price": 241.31,
+  "price": 246.12,
   "resistance": [
    255.36,
    255.4
@@ -498,7 +498,6 @@
   "strong_support": 53.51
  },
  "spark": [
-  317.73,
   323.84,
   318.78,
   305.8,
@@ -557,28 +556,12 @@
   253.28,
   244.04,
   248.34,
-  241.31
+  241.31,
+  246.12
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 39048,
-    "days": 2,
-    "max_shares": 38242,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "PL",
  "name": "Planet Labs",
- "price": 16.39,
- "change_pct": 0.06,
+ "price": 16.14,
+ "change_pct": -1.53,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 28.0,
-   "h": 29.01,
-   "l": 26.84,
-   "c": 27.75,
-   "v": 9137600
-  },
   {
    "time": "2026-07-09",
    "o": 28.19,
@@ -483,10 +475,18 @@
    "l": 16.39,
    "c": 16.39,
    "v": 10282700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 16.49,
+   "h": 16.62,
+   "l": 16.11,
+   "c": 16.14,
+   "v": 8021800
   }
  ],
  "sr": {
-  "price": 16.39,
+  "price": 16.14,
   "resistance": [
    16.78,
    17.27
@@ -498,7 +498,6 @@
   "strong_support": 2.06
  },
  "spark": [
-  27.75,
   27.2,
   26.05,
   25.96,
@@ -557,28 +556,12 @@
   17.43,
   16.77,
   16.38,
-  16.39
+  16.39,
+  16.14
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 53444,
-    "days": 3,
-    "max_shares": 46122,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

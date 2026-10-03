@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 537.95,
- "change_pct": -0.3,
+ "price": 541.74,
+ "change_pct": 0.7,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 422.18,
-   "h": 448.71,
-   "l": 413.32,
-   "c": 431.26,
-   "v": 9774300
-  },
   {
    "time": "2026-07-09",
    "o": 443.1,
@@ -483,10 +475,18 @@
    "l": 537.67,
    "c": 537.95,
    "v": 4903400
+  },
+  {
+   "time": "2026-10-01",
+   "o": 541.0,
+   "h": 550.29,
+   "l": 520.18,
+   "c": 541.74,
+   "v": 6669200
   }
  ],
  "sr": {
-  "price": 537.95,
+  "price": 541.74,
   "resistance": [
    595.51
   ],
@@ -497,7 +497,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  431.26,
   449.48,
   434.25,
   426.41,
@@ -556,28 +555,12 @@
   562.89,
   543.43,
   539.59,
-  537.95
+  537.95,
+  541.74
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 390,417 股交割失敗）",
-   "value": {
-    "total_shares": 390417,
-    "days": 8,
-    "max_shares": 342719,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

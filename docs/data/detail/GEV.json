@@ -1,17 +1,9 @@
 {
  "stock": "GEV",
  "name": "GE Vernova",
- "price": 950.49,
- "change_pct": -1.25,
+ "price": 987.45,
+ "change_pct": 3.89,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 1075.0,
-   "h": 1109.2,
-   "l": 1050.96,
-   "c": 1070.99,
-   "v": 2804200
-  },
   {
    "time": "2026-07-09",
    "o": 1110.0,
@@ -483,22 +475,29 @@
    "l": 947.42,
    "c": 950.49,
    "v": 1776000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 947.42,
+   "h": 1003.78,
+   "l": 942.0,
+   "c": 987.45,
+   "v": 2945000
   }
  ],
  "sr": {
-  "price": 950.49,
+  "price": 987.45,
   "resistance": [
-   971.34,
-   979.0
+   1006.87,
+   1046.93
   ],
   "support": [
-   921.53,
-   897.68
+   982.0,
+   979.64
   ],
   "strong_support": 251.38
  },
  "spark": [
-  1070.99,
   1075.26,
   1091.57,
   1042.6,
@@ -557,28 +556,12 @@
   957.63,
   949.77,
   962.49,
-  950.49
+  950.49,
+  987.45
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 8596,
-    "days": 2,
-    "max_shares": 8564,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

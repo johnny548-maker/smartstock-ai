@@ -1,17 +1,9 @@
 {
  "stock": "CALX",
  "name": "Calix Inc",
- "price": 34.36,
- "change_pct": 2.48,
+ "price": 34.9,
+ "change_pct": 1.57,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 37.96,
-   "h": 38.58,
-   "l": 37.59,
-   "c": 37.77,
-   "v": 928100
-  },
   {
    "time": "2026-07-09",
    "o": 37.89,
@@ -483,22 +475,29 @@
    "l": 33.33,
    "c": 34.36,
    "v": 1134000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 34.53,
+   "h": 35.15,
+   "l": 34.03,
+   "c": 34.9,
+   "v": 1368300
   }
  ],
  "sr": {
-  "price": 34.36,
+  "price": 34.9,
   "resistance": [
-   34.82,
-   35.74
+   35.74,
+   36.46
   ],
   "support": [
-   34.26,
-   34.01
+   34.86,
+   34.26
   ],
   "strong_support": 28.61
  },
  "spark": [
-  37.77,
   39.73,
   40.39,
   39.73,
@@ -557,28 +556,12 @@
   33.14,
   33.19,
   33.53,
-  34.36
+  34.36,
+  34.9
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 22,
-    "days": 2,
-    "max_shares": 18,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

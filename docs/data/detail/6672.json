@@ -1,17 +1,9 @@
 {
  "stock": "6672",
  "name": "騰輝電子-KY",
- "price": 405.5,
- "change_pct": 9.89,
+ "price": 439.0,
+ "change_pct": 8.26,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 304.0,
-   "h": 306.0,
-   "l": 290.0,
-   "c": 306.0,
-   "v": 4686219
-  },
   {
    "time": "2026-07-09",
    "o": 307.0,
@@ -483,10 +475,18 @@
    "l": 369.5,
    "c": 405.5,
    "v": 18165844
+  },
+  {
+   "time": "2026-10-02",
+   "o": 413.0,
+   "h": 439.0,
+   "l": 404.0,
+   "c": 439.0,
+   "v": 16415507
   }
  ],
  "sr": {
-  "price": 405.5,
+  "price": 439.0,
   "resistance": [],
   "support": [
    285.0,
@@ -495,7 +495,6 @@
   "strong_support": 51.78
  },
  "spark": [
-  306.0,
   298.0,
   298.0,
   275.0,
@@ -554,10 +553,11 @@
   337.5,
   335.5,
   369.0,
-  405.5
+  405.5,
+  439.0
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-10-01",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-02",
  "fundamental": {
   "rev_yoy": 133.2,
   "rev_accel": true,
@@ -568,36 +568,83 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 1,634,485 股",
+   "value": {
+    "foreign": 1617604,
+    "trust": -2000,
+    "dealer": 18881,
+    "total": 1634485
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -205
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 66.3 / 殖利率 0.76% / PB 7.46",
+   "value": {
+    "pe": 66.31,
+    "yield": 0.76,
+    "pb": 7.46
+   },
+   "severity": "info",
+   "as_of": "2026-10-02",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 486,
+    "short_today": 281,
     "outstanding": 81620212,
-    "short_pct": 0.0005954407469561584
+    "short_pct": 0.00034427746891909565
    },
    "severity": "info",
-   "as_of": "2026-10-02",
+   "as_of": "2026-10-03",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "大戶吸籌",
+   "value": 41.93,
+   "severity": "info",
+   "as_of": "20261002",
+   "note": "大戶持股%=41.93；WoW+8.29；股東人數-3086"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "【量大強漲股整理】台股漲價潮全面擴散,下一波接棒主角換誰當?!",
+   "label": "騰輝電子8月獲利大增逾5倍 EPS達2元",
    "value": {
-    "headline": "【量大強漲股整理】台股漲價潮全面擴散,下一波接棒主角換誰當?!",
+    "headline": "騰輝電子8月獲利大增逾5倍 EPS達2元",
     "sources": [
      "cnyes"
     ],
     "source_count": 1,
-    "ts": 1790849551,
-    "url": "cnyes:6619710",
+    "ts": 1790935350,
+    "url": "cnyes:6620534",
     "urls": [
-     "cnyes:6619710"
+     "cnyes:6620534"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-02",
+   "as_of": "2026-10-03",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -612,7 +659,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-02",
+   "as_of": "2026-10-03",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
@@ -949,6 +996,10 @@
    {
     "t": "2026-10-02",
     "v": 22076
+   },
+   {
+    "t": "2026-10-03",
+    "v": 23711
    }
   ],
   "holder_pct": [
@@ -1019,6 +1070,10 @@
    {
     "t": "2026-09-24",
     "v": 33.64
+   },
+   {
+    "t": "2026-10-02",
+    "v": 41.93
    }
   ],
   "rev_yoy": [

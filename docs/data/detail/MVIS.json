@@ -2,16 +2,8 @@
  "stock": "MVIS",
  "name": "MicroVision",
  "price": 1.5,
- "change_pct": 2.74,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 5.7,
-   "h": 6.15,
-   "l": 5.55,
-   "c": 5.85,
-   "v": 404080
-  },
   {
    "time": "2026-07-09",
    "o": 5.7,
@@ -483,6 +475,14 @@
    "l": 1.44,
    "c": 1.5,
    "v": 802500
+  },
+  {
+   "time": "2026-10-01",
+   "o": 1.5,
+   "h": 1.52,
+   "l": 1.43,
+   "c": 1.5,
+   "v": 797900
   }
  ],
  "sr": {
@@ -497,7 +497,6 @@
   "strong_support": 1.41
  },
  "spark": [
-  5.85,
   6.0,
   5.7,
   5.7,
@@ -556,28 +555,12 @@
   1.6,
   1.46,
   1.46,
+  1.5,
   1.5
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 191,412 股交割失敗）",
-   "value": {
-    "total_shares": 191412,
-    "days": 7,
-    "max_shares": 84850,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

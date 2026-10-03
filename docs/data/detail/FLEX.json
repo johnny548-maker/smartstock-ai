@@ -1,17 +1,9 @@
 {
  "stock": "FLEX",
  "name": "Flex Ltd",
- "price": 109.99,
- "change_pct": -3.37,
+ "price": 112.78,
+ "change_pct": 2.54,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 129.2,
-   "h": 133.75,
-   "l": 127.95,
-   "c": 133.37,
-   "v": 4411400
-  },
   {
    "time": "2026-07-09",
    "o": 138.53,
@@ -483,22 +475,29 @@
    "l": 109.61,
    "c": 109.99,
    "v": 3264800
+  },
+  {
+   "time": "2026-10-01",
+   "o": 111.41,
+   "h": 113.5,
+   "l": 108.06,
+   "c": 112.78,
+   "v": 2095600
   }
  ],
  "sr": {
-  "price": 109.99,
+  "price": 112.78,
   "resistance": [
    116.17,
    117.68
   ],
   "support": [
-   105.85,
-   104.9
+   111.38,
+   105.85
   ],
   "strong_support": 30.05
  },
  "spark": [
-  133.37,
   139.94,
   135.8,
   129.5,
@@ -557,28 +556,12 @@
   114.68,
   113.04,
   113.83,
-  109.99
+  109.99,
+  112.78
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 589,
-    "days": 2,
-    "max_shares": 503,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

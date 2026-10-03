@@ -1,17 +1,9 @@
 {
  "stock": "AMKR",
  "name": "Amkor Technology",
- "price": 52.38,
- "change_pct": -3.25,
+ "price": 52.9,
+ "change_pct": 0.99,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 64.4,
-   "h": 67.56,
-   "l": 63.45,
-   "c": 66.79,
-   "v": 4553200
-  },
   {
    "time": "2026-07-09",
    "o": 71.3,
@@ -483,13 +475,21 @@
    "l": 52.23,
    "c": 52.38,
    "v": 4538500
+  },
+  {
+   "time": "2026-10-01",
+   "o": 52.69,
+   "h": 53.71,
+   "l": 51.68,
+   "c": 52.9,
+   "v": 3614500
   }
  ],
  "sr": {
-  "price": 52.38,
+  "price": 52.9,
   "resistance": [
-   52.78,
-   53.27
+   53.27,
+   53.94
   ],
   "support": [
    46.95,
@@ -498,7 +498,6 @@
   "strong_support": 13.82
  },
  "spark": [
-  66.79,
   72.03,
   70.34,
   65.94,
@@ -557,28 +556,12 @@
   53.61,
   53.18,
   54.14,
-  52.38
+  52.38,
+  52.9
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 16742,
-    "days": 4,
-    "max_shares": 16626,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

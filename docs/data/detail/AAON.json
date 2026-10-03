@@ -1,17 +1,9 @@
 {
  "stock": "AAON",
  "name": "AAON Inc",
- "price": 82.76,
- "change_pct": -2.76,
+ "price": 82.28,
+ "change_pct": -0.58,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 107.79,
-   "h": 109.66,
-   "l": 103.85,
-   "c": 107.84,
-   "v": 929400
-  },
   {
    "time": "2026-07-09",
    "o": 110.92,
@@ -483,13 +475,21 @@
    "l": 82.1,
    "c": 82.76,
    "v": 972400
+  },
+  {
+   "time": "2026-10-01",
+   "o": 81.8,
+   "h": 83.87,
+   "l": 81.0,
+   "c": 82.28,
+   "v": 1052600
   }
  ],
  "sr": {
-  "price": 82.76,
+  "price": 82.28,
   "resistance": [
-   83.09,
-   83.84
+   82.32,
+   82.35
   ],
   "support": [
    78.41,
@@ -498,7 +498,6 @@
   "strong_support": 61.66
  },
  "spark": [
-  107.84,
   110.11,
   114.01,
   112.05,
@@ -557,28 +556,12 @@
   89.1,
   85.34,
   85.11,
-  82.76
+  82.76,
+  82.28
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 19031,
-    "days": 2,
-    "max_shares": 18672,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

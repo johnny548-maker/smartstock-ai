@@ -1,17 +1,9 @@
 {
  "stock": "CIFR",
  "name": "Cipher Mining",
- "price": 15.82,
- "change_pct": -4.18,
+ "price": 15.46,
+ "change_pct": -2.31,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 20.39,
-   "h": 21.86,
-   "l": 20.14,
-   "c": 21.85,
-   "v": 22317000
-  },
   {
    "time": "2026-07-09",
    "o": 22.62,
@@ -483,22 +475,29 @@
    "l": 15.81,
    "c": 15.82,
    "v": 29023000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 15.73,
+   "h": 15.86,
+   "l": 14.88,
+   "c": 15.46,
+   "v": 39601900
   }
  ],
  "sr": {
-  "price": 15.82,
+  "price": 15.46,
   "resistance": [
-   16.28,
-   16.67
+   15.54,
+   16.28
   ],
   "support": [
-   15.54,
-   15.04
+   15.04,
+   14.89
   ],
   "strong_support": 2.18
  },
  "spark": [
-  21.85,
   23.26,
   22.11,
   20.08,
@@ -557,28 +556,12 @@
   17.73,
   16.74,
   16.51,
-  15.82
+  15.82,
+  15.46
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 598,468 股交割失敗）",
-   "value": {
-    "total_shares": 598468,
-    "days": 9,
-    "max_shares": 128190,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

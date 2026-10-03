@@ -1,17 +1,9 @@
 {
  "stock": "PRIM",
  "name": "Primoris Services",
- "price": 74.52,
- "change_pct": 0.43,
+ "price": 76.25,
+ "change_pct": 2.32,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 85.55,
-   "h": 89.78,
-   "l": 85.43,
-   "c": 89.4,
-   "v": 1237400
-  },
   {
    "time": "2026-07-09",
    "o": 92.1,
@@ -483,22 +475,29 @@
    "l": 72.94,
    "c": 74.52,
    "v": 1443200
+  },
+  {
+   "time": "2026-10-01",
+   "o": 74.72,
+   "h": 76.73,
+   "l": 72.9,
+   "c": 76.25,
+   "v": 1348000
   }
  ],
  "sr": {
-  "price": 74.52,
+  "price": 76.25,
   "resistance": [
-   76.14,
-   76.46
+   76.46,
+   77.18
   ],
   "support": [
-   74.01,
-   71.33
+   74.94,
+   74.58
   ],
   "strong_support": 48.87
  },
  "spark": [
-  89.4,
   89.33,
   86.51,
   85.13,
@@ -557,28 +556,12 @@
   72.57,
   71.04,
   74.2,
-  74.52
+  74.52,
+  76.25
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 210,
-    "days": 2,
-    "max_shares": 209,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

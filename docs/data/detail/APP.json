@@ -1,17 +1,9 @@
 {
  "stock": "APP",
  "name": "AppLovin",
- "price": 290.43,
- "change_pct": -4.98,
+ "price": 281.31,
+ "change_pct": -3.14,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 524.7,
-   "h": 527.2,
-   "l": 507.0,
-   "c": 522.18,
-   "v": 4826900
-  },
   {
    "time": "2026-07-09",
    "o": 504.95,
@@ -483,22 +475,29 @@
    "l": 290.36,
    "c": 290.43,
    "v": 6734300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 291.0,
+   "h": 291.55,
+   "l": 275.13,
+   "c": 281.31,
+   "v": 8021700
   }
  ],
  "sr": {
-  "price": 290.43,
+  "price": 281.31,
   "resistance": [
    292.86,
    299.72
   ],
   "support": [
-   288.92,
-   246.0
+   246.0,
+   244.0
   ],
   "strong_support": 139.4
  },
  "spark": [
-  522.18,
   520.43,
   506.98,
   442.85,
@@ -557,28 +556,12 @@
   310.75,
   308.24,
   305.66,
-  290.43
+  290.43,
+  281.31
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 11428,
-    "days": 3,
-    "max_shares": 10847,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

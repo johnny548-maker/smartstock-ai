@@ -2,16 +2,8 @@
  "stock": "HAYW",
  "name": "Hayward Holdings",
  "price": 12.24,
- "change_pct": -0.81,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 16.23,
-   "h": 16.25,
-   "l": 15.7,
-   "c": 15.85,
-   "v": 2218300
-  },
   {
    "time": "2026-07-09",
    "o": 15.97,
@@ -483,6 +475,14 @@
    "l": 12.24,
    "c": 12.24,
    "v": 3041000
+  },
+  {
+   "time": "2026-10-01",
+   "o": 12.25,
+   "h": 12.31,
+   "l": 12.02,
+   "c": 12.24,
+   "v": 3269500
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 11.1
  },
  "spark": [
-  15.85,
   16.07,
   15.92,
   15.58,
@@ -557,28 +556,12 @@
   12.63,
   12.52,
   12.34,
+  12.24,
   12.24
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 21465,
-    "days": 2,
-    "max_shares": 21442,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

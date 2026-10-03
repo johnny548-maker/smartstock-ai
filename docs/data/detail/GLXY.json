@@ -1,17 +1,9 @@
 {
  "stock": "GLXY",
  "name": "Galaxy Digital",
- "price": 22.74,
- "change_pct": -1.43,
+ "price": 23.02,
+ "change_pct": 1.23,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 23.99,
-   "h": 24.94,
-   "l": 23.5,
-   "c": 24.86,
-   "v": 8233600
-  },
   {
    "time": "2026-07-09",
    "o": 25.52,
@@ -483,22 +475,29 @@
    "l": 22.67,
    "c": 22.74,
    "v": 4608600
+  },
+  {
+   "time": "2026-10-01",
+   "o": 22.92,
+   "h": 23.59,
+   "l": 22.07,
+   "c": 23.02,
+   "v": 5841000
   }
  ],
  "sr": {
-  "price": 22.74,
+  "price": 23.02,
   "resistance": [
-   22.83,
-   23.49
+   23.49,
+   24.4
   ],
   "support": [
-   22.36,
-   22.25
+   22.95,
+   22.81
   ],
   "strong_support": 16.43
  },
  "spark": [
-  24.86,
   25.1,
   24.88,
   23.35,
@@ -557,28 +556,12 @@
   24.24,
   23.21,
   23.07,
-  22.74
+  22.74,
+  23.02
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 330,887 股交割失敗）",
-   "value": {
-    "total_shares": 330887,
-    "days": 6,
-    "max_shares": 227798,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "PLAB",
  "name": "Photronics",
- "price": 30.78,
- "change_pct": -0.93,
+ "price": 30.83,
+ "change_pct": 0.16,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 27.2,
-   "h": 28.22,
-   "l": 27.1,
-   "c": 28.14,
-   "v": 1231800
-  },
   {
    "time": "2026-07-09",
    "o": 29.43,
@@ -483,10 +475,18 @@
    "l": 30.49,
    "c": 30.78,
    "v": 671800
+  },
+  {
+   "time": "2026-10-01",
+   "o": 30.87,
+   "h": 31.68,
+   "l": 30.67,
+   "c": 30.83,
+   "v": 1700400
   }
  ],
  "sr": {
-  "price": 30.78,
+  "price": 30.83,
   "resistance": [
    31.6,
    31.64
@@ -498,7 +498,6 @@
   "strong_support": 16.46
  },
  "spark": [
-  28.14,
   29.19,
   29.9,
   28.56,
@@ -557,28 +556,12 @@
   30.4,
   30.5,
   31.07,
-  30.78
+  30.78,
+  30.83
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 1,352,374 股交割失敗）",
-   "value": {
-    "total_shares": 1352374,
-    "days": 3,
-    "max_shares": 1352327,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-02",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

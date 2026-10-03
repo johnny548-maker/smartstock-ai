@@ -1,17 +1,9 @@
 {
  "stock": "COHU",
  "name": "Cohu Inc",
- "price": 68.14,
- "change_pct": 3.29,
+ "price": 70.34,
+ "change_pct": 3.23,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 50.16,
-   "h": 52.66,
-   "l": 49.65,
-   "c": 52.12,
-   "v": 1277400
-  },
   {
    "time": "2026-07-09",
    "o": 56.49,
@@ -483,10 +475,18 @@
    "l": 66.68,
    "c": 68.14,
    "v": 1161400
+  },
+  {
+   "time": "2026-10-01",
+   "o": 68.36,
+   "h": 70.69,
+   "l": 67.37,
+   "c": 70.34,
+   "v": 1184400
   }
  ],
  "sr": {
-  "price": 68.14,
+  "price": 70.34,
   "resistance": [
    70.92,
    74.6
@@ -498,7 +498,6 @@
   "strong_support": 12.57
  },
  "spark": [
-  52.12,
   55.14,
   56.17,
   52.81,
@@ -557,11 +556,129 @@
   67.0,
   66.07,
   65.97,
-  68.14
+  68.14,
+  70.34
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-09",
+ "spark_end": "2026-10-01",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Teradyne Expands Memory Test Portfolio: Can It Beat KLAC & COHU?",
+   "value": {
+    "headline": "Teradyne Expands Memory Test Portfolio: Can It Beat KLAC & COHU?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790934420,
+    "url": "https://finance.yahoo.com/technology/articles/teradyne-expands-memory-test-portfolio-094700286.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/teradyne-expands-memory-test-portfolio-094700286.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Did You Miss Out on Nvidia and Micron Technology? This Super Semiconductor Stock Could Soar Over the Next Few Years.",
+   "value": {
+    "headline": "Did You Miss Out on Nvidia and Micron Technology? This Super Semiconductor Stock Could Soar Over the Next Few Years.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790782140,
+    "url": "https://www.fool.com/investing/2026/09/30/did-miss-out-nvidia-micron-semiconductor-stock-soa/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/09/30/did-miss-out-nvidia-micron-semiconductor-stock-soa/?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Cohu to Participate in the 18th Annual CEO Investor Summit on October 13",
+   "value": {
+    "headline": "Cohu to Participate in the 18th Annual CEO Investor Summit on October 13",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790712300,
+    "url": "https://finance.yahoo.com/technology/articles/cohu-participate-18th-annual-ceo-200500336.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/cohu-participate-18th-annual-ceo-200500336.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "QuickLogic Announces Participation in 18th Annual CEO Investor Summit held October 13th During SEMICON West in San Franc",
+   "value": {
+    "headline": "QuickLogic Announces Participation in 18th Annual CEO Investor Summit held October 13th During SEMICON West in San Francisco",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790682360,
+    "url": "https://finance.yahoo.com/technology/articles/quicklogic-announces-participation-18th-annual-114600852.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/quicklogic-announces-participation-18th-annual-114600852.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Teradyne Strengthens AI Test Portfolio: Can It Beat KLAC & COHU?",
+   "value": {
+    "headline": "Teradyne Strengthens AI Test Portfolio: Can It Beat KLAC & COHU?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790262960,
+    "url": "https://finance.yahoo.com/technology/ai/articles/teradyne-strengthens-ai-test-portfolio-151600517.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/teradyne-strengthens-ai-test-portfolio-151600517.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-03",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }
