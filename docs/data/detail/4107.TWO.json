@@ -1,8 +1,8 @@
 {
  "stock": "4107.TWO",
  "name": "邦特",
- "price": 110.0,
- "change_pct": -0.45,
+ "price": 110.5,
+ "change_pct": 0.45,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -403,15 +403,25 @@
    "l": 110.0,
    "c": 110.0,
    "v": 17575
+  },
+  {
+   "time": "2026-10-05",
+   "o": 110.0,
+   "h": 110.5,
+   "l": 109.5,
+   "c": 110.5,
+   "v": 52319
   }
  ],
  "sr": {
-  "price": 110.0,
+  "price": 110.5,
   "resistance": [
    117.0,
    118.0
   ],
-  "support": [],
+  "support": [
+   110.0
+  ],
   "strong_support": 110.0
  },
  "spark": [
@@ -464,10 +474,11 @@
   110.5,
   110.5,
   110.5,
-  110.0
+  110.0,
+  110.5
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-03",
+ "spark_end": "2026-10-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

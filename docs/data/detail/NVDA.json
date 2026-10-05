@@ -1,33 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 228.38,
- "change_pct": 0.51,
+ "name": "NVIDIA",
+ "price": 238.9,
+ "change_pct": 2.12,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 194.96,
-   "h": 204.93,
-   "l": 194.84,
-   "c": 203.89,
-   "v": 147419100
-  },
-  {
-   "time": "2026-07-09",
-   "o": 204.23,
-   "h": 204.36,
-   "l": 198.74,
-   "c": 202.55,
-   "v": 132037400
-  },
-  {
-   "time": "2026-07-10",
-   "o": 201.77,
-   "h": 210.76,
-   "l": 201.69,
-   "c": 210.72,
-   "v": 148421000
-  },
   {
    "time": "2026-07-13",
    "o": 208.31,
@@ -483,24 +459,42 @@
    "l": 228.17,
    "c": 228.38,
    "v": 121732200
+  },
+  {
+   "time": "2026-10-01",
+   "o": 229.98,
+   "h": 232.29,
+   "l": 228.16,
+   "c": 230.86,
+   "v": 98591400
+  },
+  {
+   "time": "2026-10-02",
+   "o": 236.06,
+   "h": 237.88,
+   "l": 233.6,
+   "c": 233.95,
+   "v": 134914600
+  },
+  {
+   "time": "2026-10-05",
+   "o": 236.09,
+   "h": 240.1,
+   "l": 235.15,
+   "c": 238.9,
+   "v": 123621798
   }
  ],
  "sr": {
-  "price": 228.38,
-  "resistance": [
-   229.98,
-   230.21
-  ],
+  "price": 238.9,
+  "resistance": [],
   "support": [
    221.09,
    215.96
   ],
-  "strong_support": 189.8
+  "strong_support": 163.9
  },
  "spark": [
-  203.89,
-  202.55,
-  210.72,
   203.3,
   211.56,
   212.26,
@@ -557,14 +551,139 @@
   225.07,
   228.86,
   227.21,
-  228.38
+  228.38,
+  230.86,
+  233.95,
+  238.9
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
- "fundamental": null,
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
+ "fundamental": {
+  "pe_trailing": 30.202276,
+  "pe_forward": 15.12099,
+  "eps_trailing": 7.91,
+  "eps_forward": 15.79923,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+   "value": {
+    "headline": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791232363,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia Stock Hits Record as Key Supplier’s Revenue Booms on AI Demand",
+   "value": {
+    "headline": "Nvidia Stock Hits Record as Key Supplier’s Revenue Booms on AI Demand",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791231660,
+    "url": "https://finance.yahoo.com/m/687e77fb-486c-339d-9a49-1b7cbc3224cb/nvidia-stock-hits-record-as.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/687e77fb-486c-339d-9a49-1b7cbc3224cb/nvidia-stock-hits-record-as.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Could Buying XRP Today Set You Up for Life?",
+   "value": {
+    "headline": "Could Buying XRP Today Set You Up for Life?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791231600,
+    "url": "https://www.fool.com/investing/2026/10/05/could-buying-xrp-today-set-you-up-for-life/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/05/could-buying-xrp-today-set-you-up-for-life/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Vistra, An S&P 500 Nuclear Stock, Pops Above Key Level. Here's Why.",
+   "value": {
+    "headline": "Vistra, An S&P 500 Nuclear Stock, Pops Above Key Level. Here's Why.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791230917,
+    "url": "https://finance.yahoo.com/m/95c4ecec-3f4e-3f41-8ce2-1886dd794c15/vistra%2C-an-s%26p-500-nuclear.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/95c4ecec-3f4e-3f41-8ce2-1886dd794c15/vistra%2C-an-s%26p-500-nuclear.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Are stocks expensive? This 30-year-low stat says otherwise.",
+   "value": {
+    "headline": "Are stocks expensive? This 30-year-low stat says otherwise.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791230719,
+    "url": "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 15,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
   {
    "source": "sec_ftd",
    "kind": "chip",
@@ -577,7 +696,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-02",
+   "as_of": "2026-10-05",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

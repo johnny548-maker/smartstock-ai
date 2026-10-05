@@ -1,33 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 458.74,
- "change_pct": 0.39,
+ "price": 485.8,
+ "change_pct": 2.75,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 427.85,
-   "h": 439.31,
-   "l": 427.6,
-   "c": 435.81,
-   "v": 11411200
-  },
-  {
-   "time": "2026-07-09",
-   "o": 445.53,
-   "h": 446.49,
-   "l": 435.22,
-   "c": 435.79,
-   "v": 11455600
-  },
-  {
-   "time": "2026-07-10",
-   "o": 437.5,
-   "h": 438.48,
-   "l": 426.95,
-   "c": 432.95,
-   "v": 9595100
-  },
   {
    "time": "2026-07-13",
    "o": 432.66,
@@ -474,23 +450,44 @@
    "h": 459.43,
    "l": 447.07,
    "c": 456.94,
-   "v": 9926500
+   "v": 9939600
   },
   {
    "time": "2026-09-30",
    "o": 456.74,
    "h": 461.87,
    "l": 454.9,
-   "c": 458.74,
-   "v": 4670262
+   "c": 456.19,
+   "v": 8974800
+  },
+  {
+   "time": "2026-10-01",
+   "o": 457.27,
+   "h": 460.42,
+   "l": 453.46,
+   "c": 459.2,
+   "v": 8214300
+  },
+  {
+   "time": "2026-10-02",
+   "o": 465.64,
+   "h": 474.79,
+   "l": 464.1,
+   "c": 472.78,
+   "v": 9916700
+  },
+  {
+   "time": "2026-10-05",
+   "o": 478.77,
+   "h": 487.46,
+   "l": 476.4,
+   "c": 485.8,
+   "v": 10809907
   }
  ],
  "sr": {
-  "price": 458.74,
-  "resistance": [
-   475.51,
-   477.72
-  ],
+  "price": 485.8,
+  "resistance": [],
   "support": [
    418.07,
    411.45
@@ -498,9 +495,6 @@
   "strong_support": 264.03
  },
  "spark": [
-  435.81,
-  435.79,
-  432.95,
   420.45,
   419.27,
   418.36,
@@ -557,14 +551,17 @@
   450.61,
   452.88,
   456.94,
-  458.74
+  456.19,
+  459.2,
+  472.78,
+  485.8
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": {
-  "pe_trailing": 34.157852,
-  "pe_forward": 20.923052,
-  "eps_trailing": 13.43,
+  "pe_trailing": 35.30523,
+  "pe_forward": 22.157253,
+  "eps_trailing": 13.76,
   "eps_forward": 21.9251,
   "stale": false,
   "source": "yfinance"
@@ -575,131 +572,146 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Alphabet Stock Popped on Wednesday",
+   "label": "Intel Stock Drops as Elon Musk Deals a Setback to the Chip Maker. Why You Shouldn’t Panic.",
    "value": {
-    "headline": "Why Alphabet Stock Popped on Wednesday",
+    "headline": "Intel Stock Drops as Elon Musk Deals a Setback to the Chip Maker. Why You Shouldn’t Panic.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784767,
-    "url": "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
+    "ts": 1791231180,
+    "url": "https://finance.yahoo.com/m/7ada7199-cb94-3586-911f-48d268e568a0/intel-stock-drops-as-elon.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
+     "https://finance.yahoo.com/m/7ada7199-cb94-3586-911f-48d268e568a0/intel-stock-drops-as-elon.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
+   "label": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
    "value": {
-    "headline": "FormFactor Stock Jumps As Chip-Gear Firm Gets Fresh Buy Rating",
+    "headline": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784110,
-    "url": "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss",
+    "ts": 1791227969,
+    "url": "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/eec9e762-04ac-3154-a994-67a856c216b9/formfactor-stock-jumps-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC (TSM) is a Great Momentum Stock: Should You Buy?",
+   "label": "Nvidia, Intel, Micron, XP Inc., PTC, Vaxcyte, Western Digital, and More Stocks That Explain Today’s Market",
    "value": {
-    "headline": "TSMC (TSM) is a Great Momentum Stock: Should You Buy?",
+    "headline": "Nvidia, Intel, Micron, XP Inc., PTC, Vaxcyte, Western Digital, and More Stocks That Explain Today’s Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790780402,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-great-momentum-stock-150002955.html?.tsrc=rss",
+    "ts": 1791225060,
+    "url": "https://finance.yahoo.com/m/29d68e20-e649-3819-9021-a07b7ebc77c5/nvidia%2C-intel%2C-micron%2C-xp.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-great-momentum-stock-150002955.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/29d68e20-e649-3819-9021-a07b7ebc77c5/nvidia%2C-intel%2C-micron%2C-xp.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TSMC's $265 Billion U.S. Expansion May Be Getting Even Bigger",
+   "label": "IBD Stock Of The Day TSMC Breaks Out On Terafab Chatter",
    "value": {
-    "headline": "TSMC's $265 Billion U.S. Expansion May Be Getting Even Bigger",
+    "headline": "IBD Stock Of The Day TSMC Breaks Out On Terafab Chatter",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790778320,
-    "url": "https://finance.yahoo.com/technology/articles/tsmcs-265-billion-u-expansion-142520071.html?.tsrc=rss",
+    "ts": 1791224963,
+    "url": "https://finance.yahoo.com/m/f2ea941d-e757-3f02-9977-1a8fe998c983/ibd-stock-of-the-day-tsmc.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/tsmcs-265-billion-u-expansion-142520071.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/f2ea941d-e757-3f02-9977-1a8fe998c983/ibd-stock-of-the-day-tsmc.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Target upgraded, Moderna downgraded: Wall Street's top analyst calls",
+   "label": "3 Stocks From AI & Energy to Buy Before Q3 Earnings Kick Off",
    "value": {
-    "headline": "Target upgraded, Moderna downgraded: Wall Street's top analyst calls",
+    "headline": "3 Stocks From AI & Energy to Buy Before Q3 Earnings Kick Off",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790775637,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/target-upgraded-moderna-downgraded-wall-134037091.html?.tsrc=rss",
+    "ts": 1791223200,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-ai-energy-buy-180000127.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/target-upgraded-moderna-downgraded-wall-134037091.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/3-stocks-ai-energy-buy-180000127.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-09-30",
+   "severity": "info",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 119 分 / 40 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 119,
+    "comments": 40,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
    "value": {
-    "total_shares": 29731,
-    "days": 6,
-    "max_shares": 15565,
+    "total_shares": 38192,
+    "days": 5,
+    "max_shares": 29714,
     "persistent": true,
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

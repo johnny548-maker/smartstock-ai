@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 981.0,
- "change_pct": 0.62,
+ "price": 996.0,
+ "change_pct": 1.53,
  "ohlc": [
-  {
-   "time": "2026-07-09",
-   "o": 810.0,
-   "h": 825.0,
-   "l": 775.0,
-   "c": 775.0,
-   "v": 2242170
-  },
   {
    "time": "2026-07-10",
    "o": 775.0,
@@ -483,10 +475,18 @@
    "l": 948.0,
    "c": 981.0,
    "v": 6603220
+  },
+  {
+   "time": "2026-10-05",
+   "o": 984.0,
+   "h": 1005.0,
+   "l": 970.0,
+   "c": 996.0,
+   "v": 1320646
   }
  ],
  "sr": {
-  "price": 981.0,
+  "price": 996.0,
   "resistance": [
    1010.09
   ],
@@ -497,7 +497,6 @@
   "strong_support": 58.24
  },
  "spark": [
-  775.0,
   775.0,
   826.0,
   870.0,
@@ -556,10 +555,11 @@
   903.0,
   887.0,
   975.0,
-  981.0
+  981.0,
+  996.0
  ],
- "spark_start": "2026-07-09",
- "spark_end": "2026-10-02",
+ "spark_start": "2026-07-10",
+ "spark_end": "2026-10-05",
  "fundamental": {
   "rev_yoy": 153.0,
   "rev_accel": true,
@@ -570,33 +570,6 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 525,286 股",
-   "value": {
-    "foreign": 489781,
-    "trust": 65000,
-    "dealer": -29495,
-    "total": 525286
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 68.8 / 殖利率 0.40% / PB 20.45",
-   "value": {
-    "pe": 68.79,
-    "yield": 0.4,
-    "pb": 20.45
-   },
-   "severity": "info",
-   "as_of": "2026-10-02",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_punish",
    "kind": "risk",
    "label": "🚫 處置股（第1次） 處置期間：115/10/05～115/10/12",
@@ -606,7 +579,7 @@
     "period": "115/10/05～115/10/12"
    },
    "severity": "warn",
-   "as_of": "2026-10-03",
+   "as_of": "2026-10-05",
    "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
   },
   {
@@ -619,52 +592,8 @@
     "short_pct": 0.0003172706111975903
    },
    "severity": "info",
-   "as_of": "2026-10-03",
+   "as_of": "2026-10-05",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 56.74,
-   "severity": "info",
-   "as_of": "20261002",
-   "note": "大戶持股%=56.74；WoW+3.85；股東人數-1861"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3檔處置股下周一抓去關 準千金股大量遭處置至10/12",
-   "value": {
-    "headline": "3檔處置股下周一抓去關 準千金股大量遭處置至10/12",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1790951344,
-    "url": "cnyes:6620657",
-    "urls": [
-     "cnyes:6620657"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1004,6 +933,10 @@
    {
     "t": "2026-10-03",
     "v": 776
+   },
+   {
+    "t": "2026-10-05",
+    "v": 911
    }
   ],
   "holder_pct": [

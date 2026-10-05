@@ -1,25 +1,9 @@
 {
  "stock": "MXL",
  "name": "MaxLinear",
- "price": 92.12,
- "change_pct": 2.0,
+ "price": 105.49,
+ "change_pct": -0.42,
  "ohlc": [
-  {
-   "time": "2026-07-09",
-   "o": 90.68,
-   "h": 97.25,
-   "l": 90.2,
-   "c": 95.8,
-   "v": 2789000
-  },
-  {
-   "time": "2026-07-10",
-   "o": 92.31,
-   "h": 94.78,
-   "l": 88.76,
-   "c": 91.3,
-   "v": 1416400
-  },
   {
    "time": "2026-07-13",
    "o": 86.64,
@@ -483,13 +467,29 @@
    "l": 90.41,
    "c": 92.12,
    "v": 2301800
+  },
+  {
+   "time": "2026-10-02",
+   "o": 94.46,
+   "h": 106.54,
+   "l": 93.7,
+   "c": 105.93,
+   "v": 4783400
+  },
+  {
+   "time": "2026-10-05",
+   "o": 106.0,
+   "h": 108.33,
+   "l": 102.88,
+   "c": 105.49,
+   "v": 2668782
   }
  ],
  "sr": {
-  "price": 92.12,
+  "price": 105.49,
   "resistance": [
-   94.55,
-   96.22
+   106.28,
+   128.3
   ],
   "support": [
    82.21,
@@ -498,8 +498,6 @@
   "strong_support": 8.35
  },
  "spark": [
-  95.8,
-  91.3,
   89.3,
   92.59,
   88.84,
@@ -557,11 +555,130 @@
   90.0,
   92.72,
   90.31,
-  92.12
+  92.12,
+  105.93,
+  105.49
  ],
- "spark_start": "2026-07-09",
- "spark_end": "2026-10-01",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Maxlinear (MXL) Soars 15% Ahead of Q3 Earnings — Here’s What You Should Expect",
+   "value": {
+    "headline": "Maxlinear (MXL) Soars 15% Ahead of Q3 Earnings — Here’s What You Should Expect",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791005485,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-soars-15-ahead-053125899.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-soars-15-ahead-053125899.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why MaxLinear Stock Gained 50.7% Last Month",
+   "value": {
+    "headline": "Why MaxLinear Stock Gained 50.7% Last Month",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790972821,
+    "url": "https://www.fool.com/investing/2026/10/02/why-maxlinear-stock-gained-50-7-last-month/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/02/why-maxlinear-stock-gained-50-7-last-month/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear, Inc. Announces Conference Call to Review Third Quarter 2026 Financial Results Thursday, Oct. 22, 2026 at 1:30",
+   "value": {
+    "headline": "MaxLinear, Inc. Announces Conference Call to Review Third Quarter 2026 Financial Results Thursday, Oct. 22, 2026 at 1:30 p.m. Pacific Time; 4:30 p.m. Eastern Time",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790886900,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-inc-announces-conference-call-203500313.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/maxlinear-inc-announces-conference-call-203500313.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Launches PumaTM 9, Enabling Operators to Accelerate AI-ready DOCSIS® 4.0/3.1+ Multigigabit Services while Slas",
+   "value": {
+    "headline": "MaxLinear Launches PumaTM 9, Enabling Operators to Accelerate AI-ready DOCSIS® 4.0/3.1+ Multigigabit Services while Slashing Deployment Costs",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790598900,
+    "url": "https://finance.yahoo.com/technology/articles/maxlinear-launches-puma-9-enabling-123500721.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/maxlinear-launches-puma-9-enabling-123500721.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
+   "value": {
+    "headline": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1787941560,
+    "url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

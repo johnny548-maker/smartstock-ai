@@ -1,33 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 601.9,
- "change_pct": -0.93,
+ "price": 631.75,
+ "change_pct": -0.34,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 504.81,
-   "h": 522.98,
-   "l": 498.15,
-   "c": 517.41,
-   "v": 23768500
-  },
-  {
-   "time": "2026-07-09",
-   "o": 537.27,
-   "h": 559.5,
-   "l": 535.2,
-   "c": 546.72,
-   "v": 26900800
-  },
-  {
-   "time": "2026-07-10",
-   "o": 544.01,
-   "h": 560.25,
-   "l": 540.05,
-   "c": 557.89,
-   "v": 20704500
-  },
   {
    "time": "2026-07-13",
    "o": 537.5,
@@ -474,32 +450,53 @@
    "h": 624.13,
    "l": 605.25,
    "c": 607.57,
-   "v": 16449600
+   "v": 16513900
   },
   {
    "time": "2026-09-30",
-   "o": 609.33,
+   "o": 609.89,
    "h": 615.17,
    "l": 600.1,
-   "c": 601.9,
-   "v": 7703433
+   "c": 611.76,
+   "v": 16749100
+  },
+  {
+   "time": "2026-10-01",
+   "o": 612.7,
+   "h": 619.3,
+   "l": 601.5,
+   "c": 615.73,
+   "v": 17134500
+  },
+  {
+   "time": "2026-10-02",
+   "o": 635.95,
+   "h": 645.46,
+   "l": 628.55,
+   "c": 633.91,
+   "v": 19825500
+  },
+  {
+   "time": "2026-10-05",
+   "o": 630.6,
+   "h": 633.5,
+   "l": 620.0,
+   "c": 631.75,
+   "v": 13391976
   }
  ],
  "sr": {
-  "price": 601.9,
+  "price": 631.75,
   "resistance": [
    639.0
   ],
   "support": [
-   498.15,
-   495.35
+   596.07,
+   498.15
   ],
   "strong_support": 188.22
  },
  "spark": [
-  517.41,
-  546.72,
-  557.89,
   534.39,
   548.13,
   529.14,
@@ -556,15 +553,18 @@
   630.63,
   607.87,
   607.57,
-  601.9
+  611.76,
+  615.73,
+  633.91,
+  631.75
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": {
-  "pe_trailing": 159.65518,
-  "pe_forward": 38.637104,
-  "eps_trailing": 3.77,
-  "eps_forward": 15.57829,
+  "pe_trailing": 161.1607,
+  "pe_forward": 40.416763,
+  "eps_trailing": 3.92,
+  "eps_forward": 15.63089,
   "stale": false,
   "source": "yfinance"
  },
@@ -574,131 +574,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jim Cramer delivers unmistakable verdict on AMD’s future after 281% run",
+   "label": "Are stocks expensive? This 30-year-low stat says otherwise.",
    "value": {
-    "headline": "Jim Cramer delivers unmistakable verdict on AMD’s future after 281% run",
+    "headline": "Are stocks expensive? This 30-year-low stat says otherwise.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790785020,
-    "url": "https://www.thestreet.com/investing/stocks/jim-cramer-delivers-unmistakable-verdict-on-amds-future-after-281-run?.tsrc=rss",
+    "ts": 1791230719,
+    "url": "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/jim-cramer-delivers-unmistakable-verdict-on-amds-future-after-281-run?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "HPE, IBD Stock Of The Day, Breaks Out On Hiked Guidance, AI Momentum",
+   "label": "TSMC stock hits all-time high after Elon Musk confirms early Terafab talks",
    "value": {
-    "headline": "HPE, IBD Stock Of The Day, Breaks Out On Hiked Guidance, AI Momentum",
+    "headline": "TSMC stock hits all-time high after Elon Musk confirms early Terafab talks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784655,
-    "url": "https://finance.yahoo.com/m/c04bcab1-069f-3d62-901d-22e4449eb944/hpe%2C-ibd-stock-of-the-day%2C.html?.tsrc=rss",
+    "ts": 1791217744,
+    "url": "https://finance.yahoo.com/markets/stocks/article/tsmc-stock-hits-all-time-high-after-elon-musk-confirms-early-terafab-talks-162904771.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c04bcab1-069f-3d62-901d-22e4449eb944/hpe%2C-ibd-stock-of-the-day%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/article/tsmc-stock-hits-all-time-high-after-elon-musk-confirms-early-terafab-talks-162904771.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "EMS Broadens Product Offering Across Fencing and Hurricane Protection with Acquisition of AMD Supply",
+   "label": "Chip Stocks Pause After Two-Day Pop. AMD Stock Gets Price-Target Hikes.",
    "value": {
-    "headline": "EMS Broadens Product Offering Across Fencing and Hurricane Protection with Acquisition of AMD Supply",
+    "headline": "Chip Stocks Pause After Two-Day Pop. AMD Stock Gets Price-Target Hikes.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790781180,
-    "url": "https://finance.yahoo.com/small-business/articles/ems-broadens-product-offering-across-151300626.html?.tsrc=rss",
+    "ts": 1791217527,
+    "url": "https://finance.yahoo.com/m/07d008da-b90c-37c0-a2e6-660f1e8e1c0d/chip-stocks-pause-after.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/ems-broadens-product-offering-across-151300626.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/07d008da-b90c-37c0-a2e6-660f1e8e1c0d/chip-stocks-pause-after.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
+   "label": "Amazon stock is trading at its lowest valuation ever as a public company, despite AI boom",
    "value": {
-    "headline": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
+    "headline": "Amazon stock is trading at its lowest valuation ever as a public company, despite AI boom",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790780852,
-    "url": "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss",
+    "ts": 1791215238,
+    "url": "https://finance.yahoo.com/markets/stocks/article/amazon-stock-is-trading-at-its-lowest-valuation-ever-as-a-public-company-despite-ai-boom-154718912.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/article/amazon-stock-is-trading-at-its-lowest-valuation-ever-as-a-public-company-despite-ai-boom-154718912.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Hewlett Packard Enterprise Jumps 5% on AMD Order; Dell and Super Micro Barely Move",
+   "label": "Is Marvell Stock Increasing Your Market Risk?",
    "value": {
-    "headline": "Hewlett Packard Enterprise Jumps 5% on AMD Order; Dell and Super Micro Barely Move",
+    "headline": "Is Marvell Stock Increasing Your Market Risk?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790779293,
-    "url": "https://247wallst.com/investing/2026/09/30/hewlett-packard-enterprise-jumps-5-on-amd-order-dell-and-super-micro-barely-move/?.tsrc=rss",
+    "ts": 1791214894,
+    "url": "https://www.trefis.com/articles/617534/is-marvell-stock-increasing-your-market-risk/2026-10-05?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/30/hewlett-packard-enterprise-jumps-5-on-amd-order-dell-and-super-micro-barely-move/?.tsrc=rss"
+     "https://www.trefis.com/articles/617534/is-marvell-stock-increasing-your-market-risk/2026-10-05?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 249,645 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 254,173 股交割失敗）",
    "value": {
-    "total_shares": 249645,
-    "days": 5,
-    "max_shares": 162653,
+    "total_shares": 254173,
+    "days": 9,
+    "max_shares": 104880,
     "persistent": true,
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-05",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

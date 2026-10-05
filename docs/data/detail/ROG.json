@@ -1,25 +1,9 @@
 {
  "stock": "ROG",
  "name": "Rogers Corp",
- "price": 155.8,
- "change_pct": 1.84,
+ "price": 159.1,
+ "change_pct": -0.56,
  "ohlc": [
-  {
-   "time": "2026-07-09",
-   "o": 139.5,
-   "h": 141.28,
-   "l": 137.0,
-   "c": 139.04,
-   "v": 274300
-  },
-  {
-   "time": "2026-07-10",
-   "o": 137.25,
-   "h": 140.22,
-   "l": 135.75,
-   "c": 137.52,
-   "v": 156600
-  },
   {
    "time": "2026-07-13",
    "o": 135.64,
@@ -483,11 +467,28 @@
    "l": 150.0,
    "c": 155.8,
    "v": 316700
+  },
+  {
+   "time": "2026-10-02",
+   "o": 159.27,
+   "h": 162.71,
+   "l": 156.16,
+   "c": 160.0,
+   "v": 219300
+  },
+  {
+   "time": "2026-10-05",
+   "o": 160.0,
+   "h": 161.36,
+   "l": 158.91,
+   "c": 159.1,
+   "v": 260261
   }
  ],
  "sr": {
-  "price": 155.8,
+  "price": 159.1,
   "resistance": [
+   165.94,
    169.0
   ],
   "support": [
@@ -497,8 +498,6 @@
   "strong_support": 51.43
  },
  "spark": [
-  139.04,
-  137.52,
   134.83,
   137.59,
   138.39,
@@ -556,128 +555,13 @@
   136.64,
   138.17,
   152.99,
-  155.8
+  155.8,
+  160.0,
+  159.1
  ],
- "spark_start": "2026-07-09",
- "spark_end": "2026-10-01",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Rogers Corp. (ROG) Moves 10.7% Higher: Will This Strength Last?",
-   "value": {
-    "headline": "Rogers Corp. (ROG) Moves 10.7% Higher: Will This Strength Last?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790848860,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/rogers-corp-rog-moves-10-100100924.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/rogers-corp-rog-moves-10-100100924.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Roche presents new data at EURETINA, highlighting Vabysmo’s real-world effectiveness and safety across major retinal con",
-   "value": {
-    "headline": "Roche presents new data at EURETINA, highlighting Vabysmo’s real-world effectiveness and safety across major retinal conditions",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790834400,
-    "url": "https://finance.yahoo.com/healthcare/articles/roche-presents-data-euretina-highlighting-060000101.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/healthcare/articles/roche-presents-data-euretina-highlighting-060000101.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Roche’s giredestrant combination significantly improved progression-free survival in ER-positive advanced breast cancer ",
-   "value": {
-    "headline": "Roche’s giredestrant combination significantly improved progression-free survival in ER-positive advanced breast cancer in phase III evERA data published in The New England Journal of Medicine",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790830800,
-    "url": "https://finance.yahoo.com/healthcare/articles/roche-giredestrant-combination-significantly-improved-050000433.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/healthcare/articles/roche-giredestrant-combination-significantly-improved-050000433.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Rogers Stock Surges 11% After Investor Day. Here’s Why",
-   "value": {
-    "headline": "Rogers Stock Surges 11% After Investor Day. Here’s Why",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790820018,
-    "url": "https://www.tikr.com/blog/rogers-stock-surges-11-after-investor-day-heres-why?ref=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.tikr.com/blog/rogers-stock-surges-11-after-investor-day-heres-why?ref=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Rogers (ROG) Shares Skyrocket, What You Need To Know",
-   "value": {
-    "headline": "Rogers (ROG) Shares Skyrocket, What You Need To Know",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790805913,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/rogers-rog-shares-skyrocket-know-220513411.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/rogers-rog-shares-skyrocket-know-220513411.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

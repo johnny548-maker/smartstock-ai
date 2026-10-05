@@ -1,25 +1,9 @@
 {
  "stock": "TSEM",
  "name": "Tower Semiconductor",
- "price": 241.3,
- "change_pct": 6.1,
+ "price": 249.57,
+ "change_pct": 3.62,
  "ohlc": [
-  {
-   "time": "2026-07-09",
-   "o": 224.97,
-   "h": 235.57,
-   "l": 224.48,
-   "c": 226.58,
-   "v": 1695000
-  },
-  {
-   "time": "2026-07-10",
-   "o": 220.31,
-   "h": 224.34,
-   "l": 215.69,
-   "c": 222.75,
-   "v": 791000
-  },
   {
    "time": "2026-07-13",
    "o": 212.77,
@@ -483,10 +467,26 @@
    "l": 233.0,
    "c": 241.3,
    "v": 2069700
+  },
+  {
+   "time": "2026-10-02",
+   "o": 245.98,
+   "h": 249.49,
+   "l": 240.54,
+   "c": 240.86,
+   "v": 1997700
+  },
+  {
+   "time": "2026-10-05",
+   "o": 242.0,
+   "h": 250.0,
+   "l": 240.56,
+   "c": 249.57,
+   "v": 1657011
   }
  ],
  "sr": {
-  "price": 241.3,
+  "price": 249.57,
   "resistance": [
    262.87,
    274.0
@@ -498,8 +498,6 @@
   "strong_support": 28.64
  },
  "spark": [
-  226.58,
-  222.75,
   229.68,
   255.49,
   251.0,
@@ -557,143 +555,13 @@
   226.04,
   234.43,
   227.43,
-  241.3
+  241.3,
+  240.86,
+  249.57
  ],
- "spark_start": "2026-07-09",
- "spark_end": "2026-10-01",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Tower Semiconductor (TSEM) Jumped, What Is Behind The Latest Attention?",
-   "value": {
-    "headline": "Tower Semiconductor (TSEM) Jumped, What Is Behind The Latest Attention?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790510995,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tower-semiconductor-tsem-jumped-behind-120955082.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/tower-semiconductor-tsem-jumped-behind-120955082.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Chip Stocks Rise After Two-Day Skid. Tower Semiconductor Among Leaders.",
-   "value": {
-    "headline": "Chip Stocks Rise After Two-Day Skid. Tower Semiconductor Among Leaders.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790368042,
-    "url": "https://finance.yahoo.com/m/e8d77e14-816c-34fc-b096-d352c43da62e/chip-stocks-rise-after.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/e8d77e14-816c-34fc-b096-d352c43da62e/chip-stocks-rise-after.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Mizuho bullish on Tower Semiconductor, points to AI optical growth",
-   "value": {
-    "headline": "Mizuho bullish on Tower Semiconductor, points to AI optical growth",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790349696,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/mizuho-bullish-tower-semiconductor-points-152136878.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/mizuho-bullish-tower-semiconductor-points-152136878.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Twilio downgraded, Synopsys upgraded: Wall Street's top analyst calls",
-   "value": {
-    "headline": "Twilio downgraded, Synopsys upgraded: Wall Street's top analyst calls",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790343814,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ibm-upgrade-spacex-initiation-among-133301562.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ibm-upgrade-spacex-initiation-among-133301562.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Tower Semiconductor plans $4bn Japan chip hub – report",
-   "value": {
-    "headline": "Tower Semiconductor plans $4bn Japan chip hub – report",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790340000,
-    "url": "https://www.investmentmonitor.ai/news/tower-semiconductor-4bn-japan-chip-hub/?.tsrc=rss",
-    "urls": [
-     "https://www.investmentmonitor.ai/news/tower-semiconductor-4bn-japan-chip-hub/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-03",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 347,
-    "days": 6,
-    "max_shares": 98,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-03",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,41 +1,9 @@
 {
  "stock": "MSFT",
- "name": "Microsoft Corporation - Common Stock",
- "price": 508.96,
- "change_pct": -0.05,
+ "name": "微軟",
+ "price": 525.18,
+ "change_pct": 1.48,
  "ohlc": [
-  {
-   "time": "2026-07-07",
-   "o": 391.75,
-   "h": 394.83,
-   "l": 387.49,
-   "c": 388.11,
-   "v": 29297500
-  },
-  {
-   "time": "2026-07-08",
-   "o": 383.31,
-   "h": 384.59,
-   "l": 380.61,
-   "c": 382.62,
-   "v": 25908300
-  },
-  {
-   "time": "2026-07-09",
-   "o": 373.75,
-   "h": 383.93,
-   "l": 372.65,
-   "c": 383.64,
-   "v": 31083200
-  },
-  {
-   "time": "2026-07-10",
-   "o": 387.07,
-   "h": 391.17,
-   "l": 380.78,
-   "c": 384.38,
-   "v": 24644600
-  },
   {
    "time": "2026-07-13",
    "o": 387.02,
@@ -483,25 +451,52 @@
    "l": 502.4,
    "c": 508.96,
    "v": 21341800
+  },
+  {
+   "time": "2026-09-30",
+   "o": 511.61,
+   "h": 519.83,
+   "l": 510.31,
+   "c": 512.9,
+   "v": 27223300
+  },
+  {
+   "time": "2026-10-01",
+   "o": 519.88,
+   "h": 522.85,
+   "l": 512.17,
+   "c": 512.8,
+   "v": 19731900
+  },
+  {
+   "time": "2026-10-02",
+   "o": 519.39,
+   "h": 522.5,
+   "l": 513.66,
+   "c": 517.53,
+   "v": 17803300
+  },
+  {
+   "time": "2026-10-05",
+   "o": 521.62,
+   "h": 532.35,
+   "l": 521.53,
+   "c": 525.18,
+   "v": 25102509
   }
  ],
  "sr": {
-  "price": 508.96,
+  "price": 525.18,
   "resistance": [
-   509.95,
-   512.76
+   549.2
   ],
   "support": [
-   491.22,
-   487.23
+   501.87,
+   491.22
   ],
-  "strong_support": 372.65
+  "strong_support": 348.54
  },
  "spark": [
-  388.11,
-  382.62,
-  383.64,
-  384.38,
   390.26,
   384.21,
   394.89,
@@ -557,11 +552,171 @@
   497.93,
   516.17,
   509.22,
-  508.96
+  508.96,
+  512.9,
+  512.8,
+  517.53,
+  525.18
  ],
- "spark_start": "2026-07-07",
- "spark_end": "2026-09-29",
- "fundamental": null,
- "levels": null,
- "generated_for": "detail"
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
+ "fundamental": {
+  "pe_trailing": 29.257936,
+  "pe_forward": 22.208858,
+  "eps_trailing": 17.95,
+  "eps_forward": 23.64732,
+  "stale": false,
+  "source": "yfinance"
+ },
+ "levels": {
+  "entry": 525.18,
+  "stop": 500.85,
+  "target": 586.02,
+  "atr_bracket": 586.02,
+  "measured_move": 547.58,
+  "target_band": [
+   547.58,
+   586.02
+  ],
+  "stop_pct": -4.6,
+  "target_pct": 11.6,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 487.57,
+  "chandelier": 497.58,
+  "fib_targets": []
+ },
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+   "value": {
+    "headline": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791232363,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
+   "value": {
+    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791229360,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+   "value": {
+    "headline": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791227969,
+    "url": "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Microsoft Nears $4 Trillion as AI Safety Fears Become a Selling Point",
+   "value": {
+    "headline": "Microsoft Nears $4 Trillion as AI Safety Fears Become a Selling Point",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791227040,
+    "url": "https://finance.yahoo.com/m/ff4a9680-d1cb-30b3-8e76-84c7de6ef6e0/microsoft-nears-%244-trillion.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/ff4a9680-d1cb-30b3-8e76-84c7de6ef6e0/microsoft-nears-%244-trillion.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+   "value": {
+    "headline": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791226722,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 16,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 69237,
+    "days": 8,
+    "max_shares": 42926,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-05",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
