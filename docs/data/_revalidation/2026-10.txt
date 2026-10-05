@@ -1,0 +1,80 @@
+[universe csv] universe_15y_draft.csv → 669 tickers (busted peers appended: True); cache-first + sanitize
+[load] 25/669 cache=0 miss=25 dropped=0
+[load] 50/669 cache=0 miss=50 dropped=0
+[load] 75/669 cache=0 miss=75 dropped=0
+[load] 100/669 cache=0 miss=100 dropped=0
+[load] 125/669 cache=0 miss=125 dropped=0
+[load] 150/669 cache=0 miss=150 dropped=0
+[load] 175/669 cache=0 miss=175 dropped=0
+[load] 200/669 cache=0 miss=200 dropped=0
+[load] 225/669 cache=0 miss=225 dropped=0
+[load] 250/669 cache=0 miss=250 dropped=0
+[load] 275/669 cache=0 miss=275 dropped=0
+[load] 300/669 cache=0 miss=300 dropped=0
+[load] 325/669 cache=0 miss=325 dropped=0
+[load] 350/669 cache=0 miss=350 dropped=0
+[load] 375/669 cache=0 miss=375 dropped=0
+[load] 400/669 cache=0 miss=400 dropped=0
+[load] 425/669 cache=0 miss=425 dropped=0
+[load] 450/669 cache=0 miss=450 dropped=0
+[load] 475/669 cache=0 miss=475 dropped=0
+[load] 500/669 cache=0 miss=500 dropped=0
+[load] 525/669 cache=0 miss=525 dropped=0
+[load] 550/669 cache=0 miss=550 dropped=0
+[load] 575/669 cache=0 miss=575 dropped=0
+[load] 600/669 cache=0 miss=600 dropped=0
+[load] 625/669 cache=0 miss=625 dropped=0
+[load] 650/669 cache=0 miss=650 dropped=0
+[load] 669/669 cache=0 miss=669 dropped=0
+[load done] hist=658 cache=0 fetched=658 dropped=['6669.TW', '3661.TW', '6919.TW', '6446.TW', '6805.TW', '6526.TW'] skipped=['AVB', 'SATS', 'EA', 'EQR', 'NKLA'] repaired=42
+[PIT] point-in-time membership applied (652 dated names; 658→658)
+Got 658 histories (16 busted peers resolved). Fills: next-open=True, slippage=ADV-scaled (base/k/cap per config), fee=30.0bps (net-of-cost)
+
+signal                 fired   prec  lift   CIlo CI>base        p  Bonf   BH  KEEP    UP  FLAT  DOWN    p50
+-----------------------------------------------------------------------------------------------------------
+[signal 1/15] Trend Template fired=58123 prec=6.85%
+[signal 2/15] VCP 收縮 fired=12201 prec=5.66%
+[signal 3/15] Pocket pivot fired=21289 prec=6.86%
+[signal 4/15] Power pivot(放量突破) fired=739 prec=9.74%
+[signal 5/15] 首次新高(久盤後) fired=703 prec=5.83%
+[signal 6/15] VDU→Thrust(量縮噴出) fired=1320 prec=10.53%
+[signal 7/15] U/D量比吸籌 fired=46891 prec=10.52%
+[signal 8/15] A/D吸籌A/B級 fired=95975 prec=6.49%
+[signal 9/15] RS線新高(純) fired=16660 prec=6.34%
+[signal 10/15] VCP∧TrendTemplate fired=3528 prec=6.15%
+[signal 11/15] RS純∧TrendTemplate fired=8460 prec=6.78%
+[signal 12/15] PowerPivot∧TrendTmpl fired=457 prec=11.38%
+[signal 13/15] Mom12-1>0 fired=148799 prec=6.02%
+[signal 14/15] Close>SMA200 fired=143708 prec=5.94%
+[signal 15/15] Mom12-1∧SMA200 fired=120181 prec=5.74%
+Trend Template         58123  6.85%  1.02  6.65%       n   0.1411     n    n    no  1.00  1.07  1.11   3.0%
+VCP 收縮                 12201  5.66%  0.84  5.26%       n   1.0000     n    n    no  0.83  0.92  0.68   2.3%
+Pocket pivot           21289  6.86%  1.02  6.53%       n   0.2418     n    n    no  1.02  1.04  1.27   2.7%
+Power pivot(放量突破)        739  9.74%  1.45  7.81%       Y   0.0007     Y    Y   YES  1.53  1.36  1.73   3.8%
+首次新高(久盤後)                703  5.83%  0.87  4.33%       n   0.8497     n    n    no  1.15  0.64  0.54  -0.1%
+VDU→Thrust(量縮噴出)        1320 10.53%  1.56  8.99%       Y   0.0000     Y    Y   YES  1.62  1.59  1.28   2.7%
+U/D量比吸籌                46891 10.52%  1.56 10.24%       Y   0.0000     Y    Y   YES  1.52  1.70  1.77   2.6%
+A/D吸籌A/B級              95975  6.49%  0.96  6.33%       n   0.9992     n    n    no  0.95  1.03  1.01   2.6%
+RS線新高(純)               16660  6.34%  0.94  5.98%       n   0.9813     n    n    no  0.84  1.02  1.09   3.3%
+VCP∧TrendTemplate       3528  6.15%  0.91  5.40%       n   0.9236     n    n    no  0.90  1.02  0.35   2.5%
+RS純∧TrendTemplate       8460  6.78%  1.01  6.27%       n   0.4432     n    n    no  0.86  1.19  1.21   3.3%
+PowerPivot∧TrendTmpl     457 11.38%  1.69  8.78%       Y   0.0001     Y    Y   YES  1.77  1.39  3.05   4.4%
+Mom12-1>0             148799  6.02%  0.89  5.90%       n   1.0000     n    n    no  0.91  0.91  0.91   2.9%
+Close>SMA200          143708  5.94%  0.88  5.82%       n   1.0000     n    n    no  0.88  0.92  0.93   2.9%
+Mom12-1∧SMA200        120181  5.74%  0.85  5.61%       n   1.0000     n    n    no  0.86  0.89  0.90   2.8%
+
+base rate=6.74%  horizon=60  explosive=+25%
+coverage: 658 names (16 busted-peer stress names) · net-of-cost (slip 15.0bps + fee 30.0bps) · next-open fill
+survivorship: partial — busted peers still trade; true delisted names are absent (yfinance survivors). Lift remains an optimistic upper bound.
+
+KEEP (CI>base AND Bonferroni α/m AND BH q=0.10) — multiple-testing-corrected — eligible for live weight:
+  PowerPivot∧TrendTmpl   lift 1.69 (flat-regime 1.39)
+  VDU→Thrust(量縮噴出)       lift 1.56 (flat-regime 1.59)
+  U/D量比吸籌                lift 1.56 (flat-regime 1.70)
+  Power pivot(放量突破)      lift 1.45 (flat-regime 1.36)
+
+ARRIVAL TIME (bars-to-+25%, capped 120) — the honest 'when':
+  Trend Template         median 68 bars (IQR 42-94), never-hit 73%
+  Pocket pivot           median 66 bars (IQR 39-92), never-hit 75%
+  Power pivot(放量突破)      median 63 bars (IQR 34-86), never-hit 67%
+  RS純∧TrendTemplate      median 68 bars (IQR 39-93), never-hit 73%
