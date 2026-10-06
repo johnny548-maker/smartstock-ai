@@ -1,0 +1,54 @@
+[A5 重查] FULL universe universe_15y_draft.csv x 15y (streaming, cache-first, PIT) ...
+[PIT] 652/653 dated
+universe=669  IC_MIN=0.05
+
+[scan] 50/669 used=47
+[scan] 100/669 used=95
+[scan] 150/669 used=143
+[scan] 200/669 used=193
+[scan] 250/669 used=242
+[scan] 300/669 used=292
+[scan] 350/669 used=338
+[scan] 400/669 used=388
+[scan] 450/669 used=438
+[scan] 500/669 used=488
+[scan] 550/669 used=537
+[scan] 600/669 used=587
+[scan] 650/669 used=637
+
+scored 640 names
+
+factor family   dates  topDecileFwd   uniFwd    edge   rankIC    gate
+------------------------------------------------------------------------
+trend            2242         8.22%    5.83%   2.39%   0.0144 demote?
+momentum         2242         7.88%    5.83%   2.05%   0.0112 demote?
+volume           2242         7.77%    5.83%   1.94%  -0.0014 demote?
+vol_stable       2242         8.36%    5.83%   2.53%  -0.0119 demote?
+rs               2242         10.0%    5.83%   4.17%   0.0273 demote?
+high52           2242         6.59%    5.83%   0.76%  -0.0244 demote?
+rsi              2242         8.47%    5.83%   2.64%  -0.0133 demote?
+obv              2242         8.31%    5.83%   2.48%   0.0011 demote?
+
+IC_MIN floor = 0.05. Families below floor (A5 demotion CANDIDATES — REPORTED ONLY, need user sign-off; flipping a base weight changes every pick):
+  trend          rank-IC 0.0144 < 0.05
+  momentum       rank-IC 0.0112 < 0.05
+  volume         rank-IC -0.0014 < 0.05
+  vol_stable     rank-IC -0.0119 < 0.05
+  rs             rank-IC 0.0273 < 0.05
+  high52         rank-IC -0.0244 < 0.05
+  rsi            rank-IC -0.0133 < 0.05
+  obv            rank-IC 0.0011 < 0.05
+
+DRY-RUN demotion override (strategy.ic_gate_factor_pts) — NOT written to config:
+  FACTOR_PTS['trend']: 25 -> 0
+  FACTOR_PTS['momentum']: 25 -> 0
+  FACTOR_PTS['volume']: 20 -> 0
+  FACTOR_PTS['rs_strong']: 20 -> 0
+  FACTOR_PTS['rs_mild']: 15 -> 0
+  FACTOR_PTS['near_mid']: 10 -> 0
+  FACTOR_PTS['rsi_oversold']: 5 -> 0
+  ⚠ Applying these flips changes EVERY daily pick + breaks test_golden_overlays — needs explicit user sign-off, then a golden re-baseline.
+
+NOTE: full opportunity universe (small/mid-caps included; survivorship still a partial upper bound). NOT applied — strategy.ic_gate_factor_pts is the lever once a family is user-approved for demotion.
+
+[out] docs/data/_factor_ic_state.json
