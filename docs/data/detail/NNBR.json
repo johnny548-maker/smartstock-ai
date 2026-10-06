@@ -1,9 +1,17 @@
 {
  "stock": "NNBR",
  "name": "NN Inc",
- "price": 4.24,
- "change_pct": -5.99,
+ "price": 4.51,
+ "change_pct": 24.24,
  "ohlc": [
+  {
+   "time": "2026-07-10",
+   "o": 3.56,
+   "h": 3.56,
+   "l": 3.38,
+   "c": 3.48,
+   "v": 988300
+  },
   {
    "time": "2026-07-13",
    "o": 3.46,
@@ -475,21 +483,12 @@
    "l": 3.67,
    "c": 4.51,
    "v": 14659200
-  },
-  {
-   "time": "2026-10-05",
-   "o": 4.59,
-   "h": 4.59,
-   "l": 4.21,
-   "c": 4.24,
-   "v": 3179621
   }
  ],
  "sr": {
-  "price": 4.24,
+  "price": 4.51,
   "resistance": [
-   4.25,
-   4.39
+   4.67
   ],
   "support": [
    3.88,
@@ -498,6 +497,7 @@
   "strong_support": 1.1
  },
  "spark": [
+  3.48,
   3.42,
   3.42,
   3.35,
@@ -556,12 +556,143 @@
   3.88,
   3.67,
   3.63,
-  4.51,
-  4.24
+  4.51
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
+ "spark_start": "2026-07-10",
+ "spark_end": "2026-10-02",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why NN (NNBR) Stock Is Trading Lower Today",
+   "value": {
+    "headline": "Why NN (NNBR) Stock Is Trading Lower Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791244980,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-nn-nnbr-stock-trading-000300647.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-nn-nnbr-stock-trading-000300647.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "EVgo, Advanced Energy, NN, Blink Charging, and Ameresco Shares Are Soaring, What You Need To Know",
+   "value": {
+    "headline": "EVgo, Advanced Energy, NN, Blink Charging, and Ameresco Shares Are Soaring, What You Need To Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790982603,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/evgo-advanced-energy-nn-blink-231003737.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/evgo-advanced-energy-nn-blink-231003737.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NN, Inc. Announces $50 Million Net Private Placement of Common Stock and Pre-Funded Warrants",
+   "value": {
+    "headline": "NN, Inc. Announces $50 Million Net Private Placement of Common Stock and Pre-Funded Warrants",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790942400,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-inc-announces-50-million-120000961.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nn-inc-announces-50-million-120000961.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Ameresco, NN, FuelCell Energy, Vertiv, and Blue Bird Shares Plummet, What You Need To Know",
+   "value": {
+    "headline": "Ameresco, NN, FuelCell Energy, Vertiv, and Blue Bird Shares Plummet, What You Need To Know",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790292058,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ameresco-nn-fuelcell-energy-vertiv-232058638.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ameresco-nn-fuelcell-energy-vertiv-232058638.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stocks making big moves yesterday: Beyond Meat, GEO Group, Instacart, LendingTree, and NN",
+   "value": {
+    "headline": "Stocks making big moves yesterday: Beyond Meat, GEO Group, Instacart, LendingTree, and NN",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1790273818,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-making-big-moves-yesterday-181658795.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/stocks-making-big-moves-yesterday-181658795.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-06",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 288,731 股交割失敗）",
+   "value": {
+    "total_shares": 288731,
+    "days": 3,
+    "max_shares": 121415,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-06",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

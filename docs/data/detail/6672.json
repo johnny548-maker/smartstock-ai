@@ -578,44 +578,46 @@
     "total": -420902
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-06",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -205
-   },
-   "severity": "info",
-   "as_of": "2026-10-05",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 66.3 / 殖利率 0.76% / PB 7.46",
+   "label": "PE 68.1 / 殖利率 0.74% / PB 7.66",
    "value": {
-    "pe": 66.31,
-    "yield": 0.76,
-    "pb": 7.46
+    "pe": 68.13,
+    "yield": 0.74,
+    "pb": 7.66
    },
    "severity": "info",
-   "as_of": "2026-10-02",
+   "as_of": "2026-10-05",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "twse_punish",
+   "kind": "risk",
+   "label": "🚫 處置股（第1次） 處置期間：115/10/06～115/10/13",
+   "value": {
+    "level": 1,
+    "reason": "連續三次",
+    "period": "115/10/06～115/10/13"
+   },
+   "severity": "warn",
+   "as_of": "2026-10-06",
+   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
   },
   {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 281,
+    "short_today": 432,
     "outstanding": 81620212,
-    "short_pct": 0.00034427746891909565
+    "short_pct": 0.0005292806639610296
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-06",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
@@ -969,6 +971,10 @@
    {
     "t": "2026-10-05",
     "v": 23290
+   },
+   {
+    "t": "2026-10-06",
+    "v": 22869
    }
   ],
   "holder_pct": [
