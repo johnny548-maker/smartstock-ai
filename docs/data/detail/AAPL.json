@@ -1,33 +1,9 @@
 {
  "stock": "AAPL",
- "name": "蘋果",
- "price": 336.67,
- "change_pct": 2.21,
+ "name": "Apple Inc. - Common Stock",
+ "price": 332.89,
+ "change_pct": -0.24,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 311.64,
-   "h": 314.55,
-   "l": 306.79,
-   "c": 313.12,
-   "v": 41323500
-  },
-  {
-   "time": "2026-07-09",
-   "o": 310.24,
-   "h": 316.26,
-   "l": 307.89,
-   "c": 315.95,
-   "v": 48124500
-  },
-  {
-   "time": "2026-07-10",
-   "o": 314.45,
-   "h": 316.64,
-   "l": 311.9,
-   "c": 315.05,
-   "v": 34132300
-  },
   {
    "time": "2026-07-13",
    "o": 316.75,
@@ -474,33 +450,54 @@
    "h": 337.09,
    "l": 328.7,
    "c": 329.4,
-   "v": 38427200
+   "v": 38478000
   },
   {
    "time": "2026-09-30",
    "o": 330.8,
    "h": 339.5,
    "l": 330.14,
-   "c": 336.67,
-   "v": 18766174
+   "c": 333.02,
+   "v": 49988600
+  },
+  {
+   "time": "2026-10-01",
+   "o": 330.0,
+   "h": 332.48,
+   "l": 325.81,
+   "c": 330.32,
+   "v": 36306300
+  },
+  {
+   "time": "2026-10-02",
+   "o": 333.26,
+   "h": 334.54,
+   "l": 330.61,
+   "c": 333.69,
+   "v": 33278600
+  },
+  {
+   "time": "2026-10-05",
+   "o": 332.82,
+   "h": 336.21,
+   "l": 331.65,
+   "c": 332.89,
+   "v": 34400900
   }
  ],
  "sr": {
-  "price": 336.67,
+  "price": 332.89,
   "resistance": [
-   344.27,
-   345.34
+   334.7,
+   336.22
   ],
   "support": [
    319.07,
    309.9
   ],
-  "strong_support": 242.76
+  "strong_support": 299.74
  },
  "spark": [
-  313.12,
-  315.95,
-  315.05,
   317.04,
   314.59,
   327.22,
@@ -557,167 +554,14 @@
   341.07,
   338.4,
   329.4,
-  336.67
+  333.02,
+  330.32,
+  333.69,
+  332.89
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
- "fundamental": {
-  "pe_trailing": 38.56512,
-  "pe_forward": 35.123756,
-  "eps_trailing": 8.73,
-  "eps_forward": 9.58535,
-  "stale": false,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 336.67,
-  "stop": 323.29,
-  "target": 370.13,
-  "atr_bracket": 370.13,
-  "measured_move": 351.68,
-  "target_band": [
-   351.68,
-   370.13
-  ],
-  "stop_pct": -4.0,
-  "target_pct": 9.9,
-  "rr": 2.5,
-  "atr_pct": 2.0,
-  "swing_stop": 332.29,
-  "chandelier": 323.0,
-  "fib_targets": []
- },
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
-   "value": {
-    "headline": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790784455,
-    "url": "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
-   "value": {
-    "headline": "Corning vs. Honeywell International: Which Technology Stock Is a Better Buy in 2026?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790783488,
-    "url": "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/09/30/corning-vs-honeywell-international-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-   "value": {
-    "headline": "Stock Market Today: Nasdaq Leads Rise; AI Giant Microsoft Tests A New Entry (Live Coverage)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790782834,
-    "url": "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/6f982775-a9dc-3e50-86f2-0a4313c1c6ce/stock-market-today%3A-nasdaq.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "QUALCOMM (QCOM) Renewed A Global Patent License Effective April 2027",
-   "value": {
-    "headline": "QUALCOMM (QCOM) Renewed A Global Patent License Effective April 2027",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790780957,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-qcom-renewed-global-patent-150917138.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/qualcomm-qcom-renewed-global-patent-150917138.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
-   "value": {
-    "headline": "Jensen Huang's biggest Q3 moves, Rubrik CEO talks tech & cybersecurity",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790780852,
-    "url": "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/jensen-huangs-biggest-q3-moves-rubrik-ceo-talks-tech--cybersecurity-150732044.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 16,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-09-30",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 11659,
-    "days": 5,
-    "max_shares": 3910,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-09-30",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
+ "fundamental": null,
+ "levels": null,
+ "generated_for": "detail"
 }

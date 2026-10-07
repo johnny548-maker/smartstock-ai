@@ -1,17 +1,9 @@
 {
  "stock": "MXL",
  "name": "MaxLinear",
- "price": 105.93,
- "change_pct": 14.99,
+ "price": 105.49,
+ "change_pct": -0.42,
  "ohlc": [
-  {
-   "time": "2026-07-10",
-   "o": 92.31,
-   "h": 94.78,
-   "l": 88.76,
-   "c": 91.3,
-   "v": 1416400
-  },
   {
    "time": "2026-07-13",
    "o": 86.64,
@@ -483,10 +475,18 @@
    "l": 93.7,
    "c": 105.93,
    "v": 4783400
+  },
+  {
+   "time": "2026-10-05",
+   "o": 105.43,
+   "h": 108.33,
+   "l": 102.88,
+   "c": 105.49,
+   "v": 2817600
   }
  ],
  "sr": {
-  "price": 105.93,
+  "price": 105.49,
   "resistance": [
    106.28,
    128.3
@@ -498,7 +498,6 @@
   "strong_support": 8.35
  },
  "spark": [
-  91.3,
   89.3,
   92.59,
   88.84,
@@ -557,14 +556,55 @@
   92.72,
   90.31,
   92.12,
-  105.93
+  105.93,
+  105.49
  ],
- "spark_start": "2026-07-10",
- "spark_end": "2026-10-02",
+ "spark_start": "2026-07-13",
+ "spark_end": "2026-10-05",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can MaxLinear’s (MXL) Puma 9 Platform Reframe Its Role In Next‐Gen Connectivity Infrastructure?",
+   "value": {
+    "headline": "Can MaxLinear’s (MXL) Puma 9 Platform Reframe Its Role In Next‐Gen Connectivity Infrastructure?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791306547,
+    "url": "https://finance.yahoo.com/technology/articles/maxlinear-mxl-puma-9-platform-170907214.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/articles/maxlinear-mxl-puma-9-platform-170907214.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MaxLinear Introduces TopazTM, One of the Industry's Most Advanced AI-Ready PON HGU Chips for 10G and Beyond",
+   "value": {
+    "headline": "MaxLinear Introduces TopazTM, One of the Industry's Most Advanced AI-Ready PON HGU Chips for 10G and Beyond",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791290100,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-topaz-one-industrys-123500089.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-topaz-one-industrys-123500089.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -582,7 +622,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-06",
+   "as_of": "2026-10-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -602,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-06",
+   "as_of": "2026-10-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -622,47 +662,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MaxLinear Launches PumaTM 9, Enabling Operators to Accelerate AI-ready DOCSIS® 4.0/3.1+ Multigigabit Services while Slas",
-   "value": {
-    "headline": "MaxLinear Launches PumaTM 9, Enabling Operators to Accelerate AI-ready DOCSIS® 4.0/3.1+ Multigigabit Services while Slashing Deployment Costs",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1790598900,
-    "url": "https://finance.yahoo.com/technology/articles/maxlinear-launches-puma-9-enabling-123500721.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/maxlinear-launches-puma-9-enabling-123500721.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
-   "value": {
-    "headline": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1787941560,
-    "url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-06",
+   "as_of": "2026-10-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -677,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-06",
+   "as_of": "2026-10-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]
