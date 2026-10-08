@@ -1,8 +1,8 @@
 {
  "stock": "8069.TWO",
  "name": "元太",
- "price": 146.5,
- "change_pct": 0.0,
+ "price": 145.0,
+ "change_pct": -1.02,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -419,16 +419,26 @@
    "l": 143.5,
    "c": 146.5,
    "v": 7480096
+  },
+  {
+   "time": "2026-10-08",
+   "o": 149.0,
+   "h": 149.0,
+   "l": 145.0,
+   "c": 145.0,
+   "v": 6506236
   }
  ],
  "sr": {
-  "price": 146.5,
+  "price": 145.0,
   "resistance": [
    198.0,
    204.5
   ],
-  "support": [],
-  "strong_support": 172.5
+  "support": [
+   142.5
+  ],
+  "strong_support": 142.5
  },
  "spark": [
   204.0,
@@ -482,10 +492,11 @@
   144.0,
   143.5,
   146.5,
-  146.5
+  146.5,
+  145.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-06",
+ "spark_end": "2026-10-08",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
