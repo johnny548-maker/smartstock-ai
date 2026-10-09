@@ -1,33 +1,9 @@
 {
  "stock": "AMZN",
- "name": "Amazon.com, Inc. - Common Stock",
- "price": 251.4,
- "change_pct": -0.05,
+ "name": "亞馬遜",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 244.68,
-   "h": 249.65,
-   "l": 244.18,
-   "c": 247.31,
-   "v": 34636100
-  },
-  {
-   "time": "2026-07-14",
-   "o": 245.55,
-   "h": 248.56,
-   "l": 243.8,
-   "c": 247.49,
-   "v": 30108100
-  },
-  {
-   "time": "2026-07-15",
-   "o": 249.75,
-   "h": 256.48,
-   "l": 249.75,
-   "c": 254.96,
-   "v": 45240600
-  },
   {
    "time": "2026-07-16",
    "o": 255.12,
@@ -483,24 +459,39 @@
    "l": 250.18,
    "c": 251.4,
    "v": 39273900
+  },
+  {
+   "time": "2026-10-06",
+   "o": 253.4,
+   "h": 256.68,
+   "l": 251.08,
+   "c": 256.29,
+   "v": 34120800
+  },
+  {
+   "time": "2026-10-07",
+   "o": 254.23,
+   "h": 260.14,
+   "l": 253.17,
+   "c": 259.92,
+   "v": 36225800
+  },
+  {
+   "time": "2026-10-08",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 37077426
   }
  ],
  "sr": {
-  "price": 251.4,
-  "resistance": [
-   258.08,
-   259.49
-  ],
-  "support": [
-   244.73,
-   244.3
-  ],
-  "strong_support": 226.16
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 196.0
  },
  "spark": [
-  247.31,
-  247.49,
-  254.96,
   249.89,
   247.23,
   249.99,
@@ -557,48 +548,168 @@
   249.15,
   248.23,
   251.52,
-  251.4
+  251.4,
+  256.29,
+  259.92,
+  null
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
- "fundamental": null,
+ "spark_start": "2026-07-16",
+ "spark_end": "2026-10-08",
+ "fundamental": {
+  "pe_trailing": 20.439259,
+  "pe_forward": 24.273798,
+  "eps_trailing": 12.43,
+  "eps_forward": 10.46643,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "雲端雙雄搶電 亞馬遜、Google砸1,300億 與美核電龍頭簽能源合約 台廠沾光",
+   "label": "Is the Market Underestimating Amazon’s (AMZN) Moat?",
    "value": {
-    "headline": "雲端雙雄搶電 亞馬遜、Google砸1,300億 與美核電龍頭簽能源合約 台廠沾光",
+    "headline": "Is the Market Underestimating Amazon’s (AMZN) Moat?",
     "sources": [
-     "udn"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791312562,
-    "url": "https://money.udn.com/money/story/11162/9799149",
+    "ts": 1791500822,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/market-underestimating-amazon-amzn-moat-230702371.html?.tsrc=rss",
     "urls": [
-     "https://money.udn.com/money/story/11162/9799149"
+     "https://finance.yahoo.com/markets/stocks/articles/market-underestimating-amazon-amzn-moat-230702371.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-07",
+   "as_of": "2026-10-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Does Western Digital Offer That Apple Does Not?",
+   "value": {
+    "headline": "What Does Western Digital Offer That Apple Does Not?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791500201,
+    "url": "https://www.trefis.com/articles/617933/what-does-western-digital-offer-that-apple-does-not/2026-10-08?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/617933/what-does-western-digital-offer-that-apple-does-not/2026-10-08?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Amazon (AMZN) Is Spending Billions on AI and Driver Pay. Will the Investments Pay Off?",
+   "value": {
+    "headline": "Amazon (AMZN) Is Spending Billions on AI and Driver Pay. Will the Investments Pay Off?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791498826,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-spending-billions-ai-223346855.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-spending-billions-ai-223346855.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Jeff Bezos explains why Amazon is still cutting jobs",
+   "value": {
+    "headline": "Jeff Bezos explains why Amazon is still cutting jobs",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791497820,
+    "url": "https://www.thestreet.com/employment/amazon-job-cuts-layoffs-bezos-pandemic-over-hiring?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/employment/amazon-job-cuts-layoffs-bezos-pandemic-over-hiring?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-10-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Where Could Walmart's Next Growth Come From?",
+   "value": {
+    "headline": "Where Could Walmart's Next Growth Come From?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791491656,
+    "url": "https://www.trefis.com/articles/617950/where-could-walmarts-next-growth-come-from/2026-10-08?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/617950/where-could-walmarts-next-growth-come-from/2026-10-08?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 9 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 9,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn"
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-07",
+   "as_of": "2026-10-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 11 篇 / 38 分 / 50 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 38,
+    "comments": 50,
+    "n": 11,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-09",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 6370,
+    "days": 4,
+    "max_shares": 5765,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-09",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }
