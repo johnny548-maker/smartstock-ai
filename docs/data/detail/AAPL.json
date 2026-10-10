@@ -1,41 +1,9 @@
 {
  "stock": "AAPL",
- "name": "Apple Inc. - Common Stock",
- "price": 332.89,
- "change_pct": -0.24,
+ "name": "蘋果",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 316.75,
-   "h": 323.17,
-   "l": 315.51,
-   "c": 317.04,
-   "v": 43257800
-  },
-  {
-   "time": "2026-07-14",
-   "o": 313.49,
-   "h": 315.92,
-   "l": 311.64,
-   "c": 314.59,
-   "v": 36336800
-  },
-  {
-   "time": "2026-07-15",
-   "o": 317.35,
-   "h": 328.45,
-   "l": 317.05,
-   "c": 327.22,
-   "v": 60957600
-  },
-  {
-   "time": "2026-07-16",
-   "o": 327.73,
-   "h": 334.39,
-   "l": 326.51,
-   "c": 332.97,
-   "v": 62970600
-  },
   {
    "time": "2026-07-17",
    "o": 331.69,
@@ -483,25 +451,47 @@
    "l": 331.65,
    "c": 332.89,
    "v": 34400900
+  },
+  {
+   "time": "2026-10-06",
+   "o": 332.28,
+   "h": 334.38,
+   "l": 330.62,
+   "c": 333.63,
+   "v": 30449000
+  },
+  {
+   "time": "2026-10-07",
+   "o": 336.96,
+   "h": 338.67,
+   "l": 332.78,
+   "c": 336.67,
+   "v": 34147900
+  },
+  {
+   "time": "2026-10-08",
+   "o": 336.82,
+   "h": 341.57,
+   "l": 335.9,
+   "c": 340.42,
+   "v": 35332400
+  },
+  {
+   "time": "2026-10-09",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 37821157
   }
  ],
  "sr": {
-  "price": 332.89,
-  "resistance": [
-   334.7,
-   336.22
-  ],
-  "support": [
-   319.07,
-   309.9
-  ],
-  "strong_support": 299.74
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 242.76
  },
  "spark": [
-  317.04,
-  314.59,
-  327.22,
-  332.97,
   333.45,
   326.31,
   327.46,
@@ -557,11 +547,155 @@
   333.02,
   330.32,
   333.69,
-  332.89
+  332.89,
+  333.63,
+  336.67,
+  340.42,
+  null
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
- "fundamental": null,
+ "spark_start": "2026-07-17",
+ "spark_end": "2026-10-09",
+ "fundamental": {
+  "pe_trailing": 38.605507,
+  "pe_forward": 35.11173,
+  "eps_trailing": 8.72,
+  "eps_forward": 9.58768,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Apple (AAPL) Stock Is Trading Lower Today",
+   "value": {
+    "headline": "Why Apple (AAPL) Stock Is Trading Lower Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791587710,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-apple-aapl-stock-trading-231510875.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-apple-aapl-stock-trading-231510875.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Black British Business Awards 2026 winners revealed",
+   "value": {
+    "headline": "Black British Business Awards 2026 winners revealed",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791586471,
+    "url": "https://uk.finance.yahoo.com/news/black-british-business-awards-2026-225431625.html?.tsrc=rss",
+    "urls": [
+     "https://uk.finance.yahoo.com/news/black-british-business-awards-2026-225431625.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Dell Stock Paying You Enough For The Swings?",
+   "value": {
+    "headline": "Is Dell Stock Paying You Enough For The Swings?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791582568,
+    "url": "https://www.trefis.com/articles/618175/is-dell-stock-paying-you-enough-for-the-swings/2026-10-09?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/618175/is-dell-stock-paying-you-enough-for-the-swings/2026-10-09?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Apple’s App Store Growth Improved in September. What UBS Sees Coming in October Is Harder",
+   "value": {
+    "headline": "Apple’s App Store Growth Improved in September. What UBS Sees Coming in October Is Harder",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791581928,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-app-store-growth-improved-213848032.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/apple-app-store-growth-improved-213848032.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Video game console sales are plummeting. Can GTA VI turn things around?",
+   "value": {
+    "headline": "Video game console sales are plummeting. Can GTA VI turn things around?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791579188,
+    "url": "https://finance.yahoo.com/video/video-game-console-sales-are-plummeting-can-gta-vi-turn-things-around-205308657.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/video-game-console-sales-are-plummeting-can-gta-vi-turn-things-around-205308657.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 14,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cna",
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-10",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 19418,
+    "days": 5,
+    "max_shares": 15390,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-10",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
