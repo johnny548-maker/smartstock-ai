@@ -1,49 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 525.18,
- "change_pct": 1.48,
+ "price": 540.34,
+ "change_pct": 0.98,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 387.02,
-   "h": 392.91,
-   "l": 383.43,
-   "c": 390.26,
-   "v": 28914900
-  },
-  {
-   "time": "2026-07-14",
-   "o": 382.1,
-   "h": 387.46,
-   "l": 377.94,
-   "c": 384.21,
-   "v": 27863900
-  },
-  {
-   "time": "2026-07-15",
-   "o": 387.07,
-   "h": 398.21,
-   "l": 385.67,
-   "c": 394.89,
-   "v": 36253700
-  },
-  {
-   "time": "2026-07-16",
-   "o": 397.56,
-   "h": 405.23,
-   "l": 391.31,
-   "c": 400.35,
-   "v": 37047400
-  },
-  {
-   "time": "2026-07-17",
-   "o": 394.12,
-   "h": 397.64,
-   "l": 388.66,
-   "c": 393.08,
-   "v": 33049800
-  },
   {
    "time": "2026-07-20",
    "o": 390.67,
@@ -474,34 +434,69 @@
    "h": 522.5,
    "l": 513.66,
    "c": 517.53,
-   "v": 17803300
+   "v": 17822300
   },
   {
    "time": "2026-10-05",
    "o": 521.62,
    "h": 532.35,
-   "l": 521.53,
+   "l": 521.47,
    "c": 525.18,
-   "v": 25102509
+   "v": 26604800
+  },
+  {
+   "time": "2026-10-06",
+   "o": 531.68,
+   "h": 535.69,
+   "l": 528.78,
+   "c": 529.3,
+   "v": 21107500
+  },
+  {
+   "time": "2026-10-07",
+   "o": 530.73,
+   "h": 531.73,
+   "l": 524.69,
+   "c": 529.76,
+   "v": 16790200
+  },
+  {
+   "time": "2026-10-08",
+   "o": 529.81,
+   "h": 533.51,
+   "l": 518.79,
+   "c": 522.61,
+   "v": 20228700
+  },
+  {
+   "time": "2026-10-09",
+   "o": 528.24,
+   "h": 537.22,
+   "l": 526.24,
+   "c": 535.07,
+   "v": 18483600
+  },
+  {
+   "time": "2026-10-12",
+   "o": 538.07,
+   "h": 542.74,
+   "l": 535.7,
+   "c": 540.34,
+   "v": 13191103
   }
  ],
  "sr": {
-  "price": 525.18,
+  "price": 540.34,
   "resistance": [
    549.2
   ],
   "support": [
-   501.87,
-   491.22
+   491.22,
+   489.22
   ],
   "strong_support": 348.54
  },
  "spark": [
-  390.26,
-  384.21,
-  394.89,
-  400.35,
-  393.08,
   401.53,
   397.0,
   389.61,
@@ -556,151 +551,161 @@
   512.9,
   512.8,
   517.53,
-  525.18
+  525.18,
+  529.3,
+  529.76,
+  522.61,
+  535.07,
+  540.34
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 29.257936,
-  "pe_forward": 22.208858,
+  "pe_trailing": 30.106403,
+  "pe_forward": 22.82395,
   "eps_trailing": 17.95,
-  "eps_forward": 23.64732,
+  "eps_forward": 23.67732,
   "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 525.18,
-  "stop": 500.85,
-  "target": 586.02,
-  "atr_bracket": 586.02,
-  "measured_move": 547.58,
+  "entry": 540.34,
+  "stop": 515.93,
+  "target": 601.37,
+  "atr_bracket": 601.37,
+  "measured_move": 580.16,
   "target_band": [
-   547.58,
-   586.02
+   580.16,
+   590.74,
+   601.37
   ],
-  "stop_pct": -4.6,
-  "target_pct": 11.6,
+  "stop_pct": -4.5,
+  "target_pct": 11.3,
   "rr": 2.5,
   "atr_pct": 2.3,
-  "swing_stop": 487.57,
-  "chandelier": 497.58,
-  "fib_targets": []
+  "swing_stop": 515.13,
+  "chandelier": 507.78,
+  "fib_targets": [
+   575.36,
+   590.74,
+   607.73
+  ]
  },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
    "value": {
-    "headline": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791232363,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss",
+    "ts": 1791834428,
+    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
+   "label": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
    "value": {
-    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
+    "headline": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791229360,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss",
+    "ts": 1791833401,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
    "value": {
-    "headline": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791227969,
-    "url": "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
+    "ts": 1791828773,
+    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft Nears $4 Trillion as AI Safety Fears Become a Selling Point",
+   "label": "Microsoft Ramps Up Homegrown AI Chip Push",
    "value": {
-    "headline": "Microsoft Nears $4 Trillion as AI Safety Fears Become a Selling Point",
+    "headline": "Microsoft Ramps Up Homegrown AI Chip Push",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791227040,
-    "url": "https://finance.yahoo.com/m/ff4a9680-d1cb-30b3-8e76-84c7de6ef6e0/microsoft-nears-%244-trillion.html?.tsrc=rss",
+    "ts": 1791828333,
+    "url": "https://finance.yahoo.com/video/microsoft-ramps-homegrown-ai-chip-180533179.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ff4a9680-d1cb-30b3-8e76-84c7de6ef6e0/microsoft-nears-%244-trillion.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-ramps-homegrown-ai-chip-180533179.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+   "label": "Bull market turns 4: Buy highs or wait for a dip?",
    "value": {
-    "headline": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+    "headline": "Bull market turns 4: Buy highs or wait for a dip?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791226722,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss",
+    "ts": 1791828254,
+    "url": "https://www.thestreet.com/video/bull-market-turns-4-buy-highs-or-wait-for-dip?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss"
+     "https://www.thestreet.com/video/bull-market-turns-4-buy-highs-or-wait-for-dip?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 12 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 12,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +720,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

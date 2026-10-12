@@ -1,73 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": 351.82,
- "change_pct": 3.2,
+ "price": 352.88,
+ "change_pct": 0.35,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 364.53,
-   "h": 367.6,
-   "l": 357.79,
-   "c": 361.69,
-   "v": 22094800
-  },
-  {
-   "time": "2026-07-09",
-   "o": 354.08,
-   "h": 359.42,
-   "l": 350.85,
-   "c": 358.66,
-   "v": 24729100
-  },
-  {
-   "time": "2026-07-10",
-   "o": 357.3,
-   "h": 357.59,
-   "l": 352.52,
-   "c": 356.95,
-   "v": 18146100
-  },
-  {
-   "time": "2026-07-13",
-   "o": 355.96,
-   "h": 357.9,
-   "l": 351.52,
-   "c": 352.28,
-   "v": 15901700
-  },
-  {
-   "time": "2026-07-14",
-   "o": 350.97,
-   "h": 359.93,
-   "l": 350.86,
-   "c": 359.28,
-   "v": 18259400
-  },
-  {
-   "time": "2026-07-15",
-   "o": 357.74,
-   "h": 373.41,
-   "l": 357.53,
-   "c": 370.68,
-   "v": 28284600
-  },
-  {
-   "time": "2026-07-16",
-   "o": 372.82,
-   "h": 375.03,
-   "l": 352.07,
-   "c": 354.23,
-   "v": 41158500
-  },
-  {
-   "time": "2026-07-17",
-   "o": 345.78,
-   "h": 348.3,
-   "l": 341.14,
-   "c": 346.55,
-   "v": 29959300
-  },
   {
    "time": "2026-07-20",
    "o": 350.65,
@@ -474,38 +410,94 @@
    "h": 342.84,
    "l": 338.02,
    "c": 340.92,
-   "v": 21010200
+   "v": 21066900
   },
   {
    "time": "2026-09-30",
-   "o": 344.21,
+   "o": 344.15,
    "h": 352.6,
-   "l": 344.08,
-   "c": 351.82,
-   "v": 14369203
+   "l": 340.99,
+   "c": 344.08,
+   "v": 37373700
+  },
+  {
+   "time": "2026-10-01",
+   "o": 350.79,
+   "h": 353.22,
+   "l": 335.51,
+   "c": 338.24,
+   "v": 33269300
+  },
+  {
+   "time": "2026-10-02",
+   "o": 341.32,
+   "h": 345.77,
+   "l": 341.16,
+   "c": 343.5,
+   "v": 23772100
+  },
+  {
+   "time": "2026-10-05",
+   "o": 342.59,
+   "h": 348.09,
+   "l": 342.4,
+   "c": 346.47,
+   "v": 25630600
+  },
+  {
+   "time": "2026-10-06",
+   "o": 347.37,
+   "h": 349.09,
+   "l": 344.68,
+   "c": 347.68,
+   "v": 18715600
+  },
+  {
+   "time": "2026-10-07",
+   "o": 346.72,
+   "h": 350.8,
+   "l": 343.07,
+   "c": 350.5,
+   "v": 20911600
+  },
+  {
+   "time": "2026-10-08",
+   "o": 353.14,
+   "h": 356.83,
+   "l": 346.52,
+   "c": 348.29,
+   "v": 23511100
+  },
+  {
+   "time": "2026-10-09",
+   "o": 351.4,
+   "h": 354.7,
+   "l": 350.31,
+   "c": 351.66,
+   "v": 17259800
+  },
+  {
+   "time": "2026-10-12",
+   "o": 351.94,
+   "h": 356.5,
+   "l": 350.5,
+   "c": 352.88,
+   "v": 12841078
   }
  ],
  "sr": {
-  "price": 351.82,
+  "price": 352.88,
   "resistance": [
-   364.17,
-   372.92
+   353.22,
+   364.17
   ],
   "support": [
    350.85,
    346.14
   ],
-  "strong_support": 235.23
+  "strong_support": 243.52
  },
  "spark": [
-  361.69,
-  358.66,
-  356.95,
-  352.28,
-  359.28,
-  370.68,
-  354.23,
-  346.55,
   351.76,
   346.93,
   341.87,
@@ -557,15 +549,23 @@
   343.92,
   342.75,
   340.92,
-  351.82
+  344.08,
+  338.24,
+  343.5,
+  346.47,
+  347.68,
+  350.5,
+  348.29,
+  351.66,
+  352.88
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 17.643955,
-  "pe_forward": 23.343369,
-  "eps_trailing": 19.94,
-  "eps_forward": 15.07154,
+  "pe_trailing": 17.702961,
+  "pe_forward": 23.191809,
+  "eps_trailing": 19.93,
+  "eps_forward": 15.21313,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,146 +575,146 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
+   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
    "value": {
-    "headline": "OpenAI's Dots agents will matter for crypto investors. Here's why.",
+    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784827,
-    "url": "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss",
+    "ts": 1791834428,
+    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/openais-dots-agents-will-matter-for-crypto-investors-heres-why-161347522.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Alphabet Stock Popped on Wednesday",
+   "label": "Warren Buffett Bought This Magnificent Artificial Intelligence (AI) Stock a Year Ago. Here's Why It's Still a Buy Today.",
    "value": {
-    "headline": "Why Alphabet Stock Popped on Wednesday",
+    "headline": "Warren Buffett Bought This Magnificent Artificial Intelligence (AI) Stock a Year Ago. Here's Why It's Still a Buy Today.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784767,
-    "url": "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
+    "ts": 1791829200,
+    "url": "https://www.fool.com/investing/2026/10/12/warren-buffett-bought-this-magnificent-artificial/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/09/30/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/warren-buffett-bought-this-magnificent-artificial/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
    "value": {
-    "headline": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784455,
-    "url": "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss",
+    "ts": 1791828773,
+    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss"
+     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Fujifilm Expands Consumer Photo Printing Capabilities with the Introduction of \"Fujifilm for Google Photos Print Store\"",
+   "label": "How to invest in cybersecurity stocks as consumer protection lags",
    "value": {
-    "headline": "Fujifilm Expands Consumer Photo Printing Capabilities with the Introduction of \"Fujifilm for Google Photos Print Store\"",
+    "headline": "How to invest in cybersecurity stocks as consumer protection lags",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784000,
-    "url": "https://finance.yahoo.com/media-advertising/articles/fujifilm-expands-consumer-photo-printing-160000286.html?.tsrc=rss",
+    "ts": 1791828452,
+    "url": "https://finance.yahoo.com/video/how-to-invest-in-cybersecurity-stocks-as-consumer-protection-lags-180732163.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/fujifilm-expands-consumer-photo-printing-160000286.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/how-to-invest-in-cybersecurity-stocks-as-consumer-protection-lags-180732163.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The AI Revolution Could Be Microsoft’s Next Trillion-Dollar Opportunity",
+   "label": "Which AI stocks' valuations are outrunning reality?",
    "value": {
-    "headline": "The AI Revolution Could Be Microsoft’s Next Trillion-Dollar Opportunity",
+    "headline": "Which AI stocks' valuations are outrunning reality?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790782251,
-    "url": "https://247wallst.com/investing/2026/09/30/the-ai-revolution-could-be-microsofts-next-trillion-dollar-opportunity/?.tsrc=rss",
+    "ts": 1791827199,
+    "url": "https://finance.yahoo.com/video/which-ai-stocks-valuations-are-outrunning-reality-174639413.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/30/the-ai-revolution-could-be-microsofts-next-trillion-dollar-opportunity/?.tsrc=rss"
+     "https://finance.yahoo.com/video/which-ai-stocks-valuations-are-outrunning-reality-174639413.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 238 分 / 143 留言",
+   "label": "HN 討論熱度 20 篇 / 197 分 / 94 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 238,
-    "comments": 143,
+    "points": 197,
+    "comments": 94,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 205,717 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
    "value": {
-    "total_shares": 205717,
-    "days": 8,
-    "max_shares": 107800,
+    "total_shares": 7923,
+    "days": 4,
+    "max_shares": 5217,
     "persistent": true,
-    "elevated": true
+    "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

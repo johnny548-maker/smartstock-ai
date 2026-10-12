@@ -1,49 +1,9 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
- "price": 631.75,
- "change_pct": -0.34,
+ "name": "AMD",
+ "price": 594.09,
+ "change_pct": -2.3,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 537.5,
-   "h": 551.87,
-   "l": 526.92,
-   "c": 534.39,
-   "v": 22957400
-  },
-  {
-   "time": "2026-07-14",
-   "o": 567.22,
-   "h": 574.2,
-   "l": 546.77,
-   "c": 548.13,
-   "v": 21201400
-  },
-  {
-   "time": "2026-07-15",
-   "o": 556.02,
-   "h": 558.89,
-   "l": 509.57,
-   "c": 529.14,
-   "v": 27826200
-  },
-  {
-   "time": "2026-07-16",
-   "o": 509.33,
-   "h": 518.74,
-   "l": 491.8,
-   "c": 500.94,
-   "v": 27093700
-  },
-  {
-   "time": "2026-07-17",
-   "o": 476.88,
-   "h": 505.88,
-   "l": 460.21,
-   "c": 495.76,
-   "v": 32115900
-  },
   {
    "time": "2026-07-20",
    "o": 517.0,
@@ -483,25 +443,61 @@
    "l": 619.99,
    "c": 631.75,
    "v": 13717500
+  },
+  {
+   "time": "2026-10-06",
+   "o": 648.04,
+   "h": 658.52,
+   "l": 628.0,
+   "c": 649.42,
+   "v": 24245900
+  },
+  {
+   "time": "2026-10-07",
+   "o": 634.77,
+   "h": 648.48,
+   "l": 633.16,
+   "c": 645.86,
+   "v": 18561100
+  },
+  {
+   "time": "2026-10-08",
+   "o": 639.36,
+   "h": 643.85,
+   "l": 613.34,
+   "c": 620.68,
+   "v": 23488200
+  },
+  {
+   "time": "2026-10-09",
+   "o": 626.89,
+   "h": 627.37,
+   "l": 606.0,
+   "c": 608.1,
+   "v": 13694400
+  },
+  {
+   "time": "2026-10-12",
+   "o": 599.86,
+   "h": 601.77,
+   "l": 586.54,
+   "c": 594.09,
+   "v": 12811334
   }
  ],
  "sr": {
-  "price": 631.75,
+  "price": 594.09,
   "resistance": [
-   639.0
+   639.0,
+   658.52
   ],
   "support": [
-   596.07,
-   480.33
+   498.15,
+   495.35
   ],
-  "strong_support": 424.03
+  "strong_support": 188.22
  },
  "spark": [
-  534.39,
-  548.13,
-  529.14,
-  500.94,
-  495.76,
   503.57,
   544.43,
   552.33,
@@ -556,48 +552,170 @@
   611.76,
   615.73,
   633.91,
-  631.75
+  631.75,
+  649.42,
+  645.86,
+  620.68,
+  608.1,
+  594.09
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
- "fundamental": null,
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
+ "fundamental": {
+  "pe_trailing": 151.50255,
+  "pe_forward": 37.77472,
+  "eps_trailing": 3.92,
+  "eps_forward": 15.72189,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "〈台股盤前要聞〉蘇姿丰訪台AMD再擴大對台投資、台股續創高外資卻轉賣",
+   "label": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
    "value": {
-    "headline": "〈台股盤前要聞〉蘇姿丰訪台AMD再擴大對台投資、台股續創高外資卻轉賣",
+    "headline": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
     "sources": [
-     "yahoo_tw"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791321007,
-    "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%9B%A4%E5%89%8D%E8%A6%81%E8%81%9E-%E8%98%87%E5%A7%BF%E4%B8%B0%E8%A8%AA%E5%8F%B0amd%E5%86%8D%E6%93%B4%E5%A4%A7%E5%B0%8D%E5%8F%B0%E6%8A%95%E8%B3%87-%E5%8F%B0%E8%82%A1%E7%BA%8C%E5%89%B5%E9%AB%98%E5%A4%96%E8%B3%87%E5%8D%BB%E8%BD%89%E8%B3%A3-211007720.html",
+    "ts": 1791834600,
+    "url": "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss",
     "urls": [
-     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%9B%A4%E5%89%8D%E8%A6%81%E8%81%9E-%E8%98%87%E5%A7%BF%E4%B8%B0%E8%A8%AA%E5%8F%B0amd%E5%86%8D%E6%93%B4%E5%A4%A7%E5%B0%8D%E5%8F%B0%E6%8A%95%E8%B3%87-%E5%8F%B0%E8%82%A1%E7%BA%8C%E5%89%B5%E9%AB%98%E5%A4%96%E8%B3%87%E5%8D%BB%E8%BD%89%E8%B3%A3-211007720.html"
+     "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-07",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+   "value": {
+    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791834428,
+    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Does NVIDIA Offer That Marvell Does Not?",
+   "value": {
+    "headline": "What Does NVIDIA Offer That Marvell Does Not?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791832299,
+    "url": "https://www.trefis.com/articles/618311/what-does-nvidia-offer-that-marvell-does-not/2026-10-12?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/618311/what-does-nvidia-offer-that-marvell-does-not/2026-10-12?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
+   "value": {
+    "headline": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791831933,
+    "url": "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Once Wall Street’s Darling, Cerebras Stock Is Struggling",
+   "value": {
+    "headline": "Once Wall Street’s Darling, Cerebras Stock Is Struggling",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791828480,
+    "url": "https://finance.yahoo.com/m/75edfda6-e7aa-3648-bb1a-b24be9a5c218/once-wall-street%E2%80%99s-darling%2C.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/75edfda6-e7aa-3648-bb1a-b24be9a5c218/once-wall-street%E2%80%99s-darling%2C.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_tw"
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-07",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 165 分 / 121 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 165,
+    "comments": 121,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 254,173 股交割失敗）",
+   "value": {
+    "total_shares": 254173,
+    "days": 9,
+    "max_shares": 104880,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-12",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

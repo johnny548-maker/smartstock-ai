@@ -1,49 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 741.9,
- "change_pct": 1.9,
+ "price": 743.01,
+ "change_pct": 3.39,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 660.86,
-   "h": 676.09,
-   "l": 653.68,
-   "c": 656.21,
-   "v": 19840700
-  },
-  {
-   "time": "2026-07-14",
-   "o": 651.49,
-   "h": 665.97,
-   "l": 648.54,
-   "c": 660.52,
-   "v": 16748200
-  },
-  {
-   "time": "2026-07-15",
-   "o": 663.08,
-   "h": 685.54,
-   "l": 656.14,
-   "c": 680.77,
-   "v": 19003400
-  },
-  {
-   "time": "2026-07-16",
-   "o": 676.75,
-   "h": 681.36,
-   "l": 659.64,
-   "c": 664.02,
-   "v": 15816000
-  },
-  {
-   "time": "2026-07-17",
-   "o": 647.19,
-   "h": 651.69,
-   "l": 625.51,
-   "c": 645.5,
-   "v": 22267900
-  },
   {
    "time": "2026-07-20",
    "o": 646.19,
@@ -474,7 +434,7 @@
    "h": 741.58,
    "l": 726.2,
    "c": 728.08,
-   "v": 12944900
+   "v": 12964100
   },
   {
    "time": "2026-10-05",
@@ -482,27 +442,62 @@
    "h": 746.7,
    "l": 727.12,
    "c": 741.9,
-   "v": 13742504
+   "v": 15215300
+  },
+  {
+   "time": "2026-10-06",
+   "o": 746.73,
+   "h": 747.6,
+   "l": 736.69,
+   "c": 738.88,
+   "v": 12563100
+  },
+  {
+   "time": "2026-10-07",
+   "o": 738.29,
+   "h": 738.29,
+   "l": 720.15,
+   "c": 721.31,
+   "v": 13231600
+  },
+  {
+   "time": "2026-10-08",
+   "o": 724.54,
+   "h": 724.95,
+   "l": 711.68,
+   "c": 720.89,
+   "v": 16041100
+  },
+  {
+   "time": "2026-10-09",
+   "o": 726.51,
+   "h": 728.07,
+   "l": 716.2,
+   "c": 718.67,
+   "v": 12605100
+  },
+  {
+   "time": "2026-10-12",
+   "o": 727.97,
+   "h": 752.24,
+   "l": 727.78,
+   "c": 743.01,
+   "v": 21765234
   }
  ],
  "sr": {
-  "price": 741.9,
+  "price": 743.01,
   "resistance": [
-   742.09,
+   747.6,
    756.59
   ],
   "support": [
    713.19,
-   696.97
+   651.93
   ],
   "strong_support": 519.37
  },
  "spark": [
-  656.21,
-  660.52,
-  680.77,
-  664.02,
-  645.5,
   645.34,
   643.3,
   626.68,
@@ -557,149 +552,171 @@
   725.18,
   725.93,
   728.08,
-  741.9
+  741.9,
+  738.88,
+  721.31,
+  720.89,
+  718.67,
+  743.01
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 27.954031,
-  "pe_forward": 21.254269,
+  "pe_trailing": 27.992085,
+  "pe_forward": 21.505365,
   "eps_trailing": 26.54,
-  "eps_forward": 34.90593,
+  "eps_forward": 34.54533,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 743.01,
+  "stop": 698.09,
+  "target": 855.3,
+  "atr_bracket": 855.3,
+  "measured_move": 782.01,
+  "target_band": [
+   782.01,
+   855.3
+  ],
+  "stop_pct": -6.0,
+  "target_pct": 15.1,
+  "rr": 2.5,
+  "atr_pct": 3.0,
+  "swing_stop": 704.94,
+  "chandelier": 704.41,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jim Cramer Believes META Muse Will “Have Much More Market Share Than OpenAI”",
+   "label": "Sector Update: Tech Stocks Fall Late Afternoon",
    "value": {
-    "headline": "Jim Cramer Believes META Muse Will “Have Much More Market Share Than OpenAI”",
+    "headline": "Sector Update: Tech Stocks Fall Late Afternoon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791231906,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-believes-meta-muse-202506581.html?.tsrc=rss",
+    "ts": 1791834346,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-194546607.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-believes-meta-muse-202506581.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-194546607.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sector Update: Tech Stocks Mixed Late Afternoon",
+   "label": "Stock Market Today: Nasdaq Drops As Lumentum Dives; Micron Slides Competition Worries (Live Coverage)",
    "value": {
-    "headline": "Sector Update: Tech Stocks Mixed Late Afternoon",
+    "headline": "Stock Market Today: Nasdaq Drops As Lumentum Dives; Micron Slides Competition Worries (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791229360,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss",
+    "ts": 1791833848,
+    "url": "https://finance.yahoo.com/m/f6194faa-ca8b-383a-a9ab-a53b13d91fd1/stock-market-today%3A-nasdaq.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-mixed-afternoon-194240806.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/f6194faa-ca8b-383a-a9ab-a53b13d91fd1/stock-market-today%3A-nasdaq.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Simple Reason Meta and Google Will Win AI: Only “2% of US Households” Pay for It.",
+   "label": "Meta finally pushes into frontier AI with its new Muse Wonder AI model",
    "value": {
-    "headline": "The Simple Reason Meta and Google Will Win AI: Only “2% of US Households” Pay for It.",
+    "headline": "Meta finally pushes into frontier AI with its new Muse Wonder AI model",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791229332,
-    "url": "https://www.tikr.com/blog/the-simple-reason-meta-and-google-will-win-ai-only-2-of-us-households-pay-for-it?ref=yahoofinance&.tsrc=rss",
+    "ts": 1791833736,
+    "url": "https://finance.yahoo.com/video/meta-finally-pushes-into-frontier-ai-with-its-new-muse-wonder-ai-model-193536375.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/the-simple-reason-meta-and-google-will-win-ai-only-2-of-us-households-pay-for-it?ref=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/video/meta-finally-pushes-into-frontier-ai-with-its-new-muse-wonder-ai-model-193536375.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "“Zuck Is the Winner” of the White House AI Accord, and Meta’s Open-Source Risk Just Shrank",
+   "label": "Why Meta Platforms Stock Rallied Monday Morning",
    "value": {
-    "headline": "“Zuck Is the Winner” of the White House AI Accord, and Meta’s Open-Source Risk Just Shrank",
+    "headline": "Why Meta Platforms Stock Rallied Monday Morning",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791228788,
-    "url": "https://www.tikr.com/blog/zuck-is-the-winner-of-the-white-house-ai-accord-and-metas-open-source-risk-just-shrank?ref=yahoofinance&.tsrc=rss",
+    "ts": 1791833305,
+    "url": "https://www.fool.com/investing/2026/10/12/why-meta-platforms-stock-rallied-monday-morning/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/zuck-is-the-winner-of-the-white-house-ai-accord-and-metas-open-source-risk-just-shrank?ref=yahoofinance&.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/why-meta-platforms-stock-rallied-monday-morning/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+   "label": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
    "value": {
-    "headline": "Meta and Microsoft scale back internal use of Anthropic’s Claude, report says",
+    "headline": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791226722,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss",
+    "ts": 1791829200,
+    "url": "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-microsoft-scale-back-internal-185842649.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 217 分 / 173 留言",
+   "label": "HN 討論熱度 20 篇 / 485 分 / 207 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 217,
-    "comments": 173,
+    "points": 485,
+    "comments": 207,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-10-05",
+   "severity": "warn",
+   "as_of": "2026-10-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +731,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

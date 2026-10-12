@@ -1,73 +1,9 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 743.86,
- "change_pct": 0.8,
+ "price": 745.84,
+ "change_pct": -0.72,
  "ohlc": [
-  {
-   "time": "2026-07-08",
-   "o": 704.22,
-   "h": 711.52,
-   "l": 700.18,
-   "c": 710.7,
-   "v": 35603200
-  },
-  {
-   "time": "2026-07-09",
-   "o": 717.58,
-   "h": 723.48,
-   "l": 714.39,
-   "c": 722.53,
-   "v": 33654700
-  },
-  {
-   "time": "2026-07-10",
-   "o": 719.95,
-   "h": 725.63,
-   "l": 716.25,
-   "c": 724.75,
-   "v": 26415900
-  },
-  {
-   "time": "2026-07-13",
-   "o": 716.97,
-   "h": 717.99,
-   "l": 709.34,
-   "c": 711.0,
-   "v": 36552400
-  },
-  {
-   "time": "2026-07-14",
-   "o": 719.47,
-   "h": 721.54,
-   "l": 713.6,
-   "c": 718.94,
-   "v": 29448100
-  },
-  {
-   "time": "2026-07-15",
-   "o": 723.1,
-   "h": 723.61,
-   "l": 709.49,
-   "c": 716.99,
-   "v": 32627600
-  },
-  {
-   "time": "2026-07-16",
-   "o": 711.27,
-   "h": 712.86,
-   "l": 701.88,
-   "c": 705.21,
-   "v": 39402000
-  },
-  {
-   "time": "2026-07-17",
-   "o": 690.93,
-   "h": 701.57,
-   "l": 686.05,
-   "c": 694.61,
-   "v": 54109300
-  },
   {
    "time": "2026-07-20",
    "o": 701.43,
@@ -474,38 +410,94 @@
    "h": 740.58,
    "l": 735.34,
    "c": 737.93,
-   "v": 26926200
+   "v": 27052300
   },
   {
    "time": "2026-09-30",
    "o": 740.19,
-   "h": 745.08,
-   "l": 739.76,
-   "c": 743.86,
-   "v": 11768530
+   "h": 745.1,
+   "l": 739.46,
+   "c": 739.77,
+   "v": 29820400
+  },
+  {
+   "time": "2026-10-01",
+   "o": 742.51,
+   "h": 744.67,
+   "l": 736.25,
+   "c": 742.03,
+   "v": 35728900
+  },
+  {
+   "time": "2026-10-02",
+   "o": 751.31,
+   "h": 754.54,
+   "l": 747.53,
+   "c": 749.58,
+   "v": 34498900
+  },
+  {
+   "time": "2026-10-05",
+   "o": 749.35,
+   "h": 756.92,
+   "l": 749.08,
+   "c": 756.2,
+   "v": 25603200
+  },
+  {
+   "time": "2026-10-06",
+   "o": 760.52,
+   "h": 762.86,
+   "l": 759.1,
+   "c": 759.66,
+   "v": 26513600
+  },
+  {
+   "time": "2026-10-07",
+   "o": 753.79,
+   "h": 758.3,
+   "l": 751.75,
+   "c": 757.73,
+   "v": 25467900
+  },
+  {
+   "time": "2026-10-08",
+   "o": 753.97,
+   "h": 757.18,
+   "l": 743.23,
+   "c": 747.58,
+   "v": 49694800
+  },
+  {
+   "time": "2026-10-09",
+   "o": 752.55,
+   "h": 752.87,
+   "l": 748.37,
+   "c": 751.27,
+   "v": 21122000
+  },
+  {
+   "time": "2026-10-12",
+   "o": 749.64,
+   "h": 749.79,
+   "l": 744.84,
+   "c": 745.84,
+   "v": 21357309
   }
  ],
  "sr": {
-  "price": 743.86,
+  "price": 745.84,
   "resistance": [
-   744.67,
-   747.05
+   747.05,
+   748.35
   ],
   "support": [
-   703.93,
-   702.08
+   731.63,
+   703.93
   ],
   "strong_support": 554.41
  },
  "spark": [
-  710.7,
-  722.53,
-  724.75,
-  711.0,
-  718.94,
-  716.99,
-  705.21,
-  694.61,
   695.34,
   708.23,
   704.62,
@@ -557,12 +549,20 @@
   744.5,
   736.53,
   737.93,
-  743.86
+  739.77,
+  742.03,
+  749.58,
+  756.2,
+  759.66,
+  757.73,
+  747.58,
+  751.27,
+  745.84
  ],
- "spark_start": "2026-07-08",
- "spark_end": "2026-09-30",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 30.318287,
+  "pe_trailing": 28.558374,
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+   "label": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
    "value": {
-    "headline": "Alphabet Rallies 3% as Traders Weigh White House Safety Accord; Apple Gains 2.5%, Meta Platforms Treads Water",
+    "headline": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790784455,
-    "url": "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss",
+    "ts": 1791831933,
+    "url": "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/09/30/alphabet-rallies-3-as-traders-weigh-white-house-safety-accord-apple-gains-2-5-meta-platforms-treads-water/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Amid Inflation Data Release",
+   "label": "CrowdStrike Is Up 124% in 2026, Fortinet Is Up 142%: Take Profits, or Hold On for the Ride?",
    "value": {
-    "headline": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Amid Inflation Data Release",
+    "headline": "CrowdStrike Is Up 124% in 2026, Fortinet Is Up 142%: Take Profits, or Hold On for the Ride?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790774434,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132034377.html?.tsrc=rss",
+    "ts": 1791831617,
+    "url": "https://247wallst.com/investing/2026/10/12/crowdstrike-is-up-124-in-2026-fortinet-is-up-142-take-profits-or-hold-on-for-the-ride/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132034377.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/12/crowdstrike-is-up-124-in-2026-fortinet-is-up-142-take-profits-or-hold-on-for-the-ride/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Pre-Markets Up on Excellent Data from PCE and ADP",
+   "label": "Exchange-Traded Funds Fall as US Equities Turn Mixed After Midday",
    "value": {
-    "headline": "Pre-Markets Up on Excellent Data from PCE and ADP",
+    "headline": "Exchange-Traded Funds Fall as US Equities Turn Mixed After Midday",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790774220,
-    "url": "https://finance.yahoo.com/economy/articles/pre-markets-excellent-data-pce-131700684.html?.tsrc=rss",
+    "ts": 1791825109,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-fall-us-171149294.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/articles/pre-markets-excellent-data-pce-131700684.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-fall-us-171149294.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Wells Fargo Warns Rates Could Stay Higher Through 2027",
+   "label": "72 and Retired on One Fund: How Much JEPQ It Takes to Collect $4,300 a Month",
    "value": {
-    "headline": "Wells Fargo Warns Rates Could Stay Higher Through 2027",
+    "headline": "72 and Retired on One Fund: How Much JEPQ It Takes to Collect $4,300 a Month",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790771079,
-    "url": "https://finance.yahoo.com/economy/policy/articles/wells-fargo-warns-rates-could-122439871.html?.tsrc=rss",
+    "ts": 1791821870,
+    "url": "https://247wallst.com/personal-finance/2026/10/12/72-and-retired-on-one-fund-how-much-jepq-it-takes-to-collect-4300-a-month/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/policy/articles/wells-fargo-warns-rates-could-122439871.html?.tsrc=rss"
+     "https://247wallst.com/personal-finance/2026/10/12/72-and-retired-on-one-fund-how-much-jepq-it-takes-to-collect-4300-a-month/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "OpenAI Eyes $1.4 Trillion as Anthropic Heads for $2 Trillion IPO",
+   "label": "Food Network New York City Wine & Food Festival presented by Invesco QQQ Returns This Week with an All-Star Lineup",
    "value": {
-    "headline": "OpenAI Eyes $1.4 Trillion as Anthropic Heads for $2 Trillion IPO",
+    "headline": "Food Network New York City Wine & Food Festival presented by Invesco QQQ Returns This Week with an All-Star Lineup",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1790770066,
-    "url": "https://finance.yahoo.com/technology/ai/articles/openai-eyes-1-4-trillion-120746396.html?.tsrc=rss",
+    "ts": 1791817020,
+    "url": "https://finance.yahoo.com/media-advertising/articles/food-network-york-city-wine-145700615.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/openai-eyes-1-4-trillion-120746396.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/food-network-york-city-wine-145700615.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "sec_ftd",
    "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 295,083 股交割失敗）",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 9,263,334 股交割失敗）",
    "value": {
-    "total_shares": 295083,
-    "days": 7,
-    "max_shares": 232280,
+    "total_shares": 9263334,
+    "days": 9,
+    "max_shares": 6258408,
     "persistent": true,
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-09-30",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

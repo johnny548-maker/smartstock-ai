@@ -1,25 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 574.55,
- "change_pct": -0.76,
+ "price": 572.59,
+ "change_pct": -2.3,
  "ohlc": [
-  {
-   "time": "2026-07-16",
-   "o": 403.82,
-   "h": 413.15,
-   "l": 390.51,
-   "c": 390.73,
-   "v": 6441800
-  },
-  {
-   "time": "2026-07-17",
-   "o": 376.23,
-   "h": 406.48,
-   "l": 367.54,
-   "c": 395.69,
-   "v": 7290800
-  },
   {
    "time": "2026-07-20",
    "o": 399.63,
@@ -483,10 +467,26 @@
    "l": 564.51,
    "c": 574.55,
    "v": 5175200
+  },
+  {
+   "time": "2026-10-09",
+   "o": 581.65,
+   "h": 595.06,
+   "l": 566.2,
+   "c": 586.06,
+   "v": 5500400
+  },
+  {
+   "time": "2026-10-12",
+   "o": 581.73,
+   "h": 585.32,
+   "l": 565.35,
+   "c": 572.59,
+   "v": 3912864
   }
  ],
  "sr": {
-  "price": 574.55,
+  "price": 572.59,
   "resistance": [
    595.51
   ],
@@ -497,8 +497,6 @@
   "strong_support": 64.73
  },
  "spark": [
-  390.73,
-  395.69,
   381.25,
   404.15,
   441.8,
@@ -556,11 +554,145 @@
   552.29,
   574.0,
   578.96,
-  574.55
+  574.55,
+  586.06,
+  572.59
  ],
- "spark_start": "2026-07-16",
- "spark_end": "2026-10-08",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Intel aims to boost AI turnaround with new GPU chips to take on Nvidia",
+   "value": {
+    "headline": "Intel aims to boost AI turnaround with new GPU chips to take on Nvidia",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791833356,
+    "url": "https://finance.yahoo.com/technology/article/intel-aims-to-boost-ai-turnaround-with-new-gpu-chips-to-take-on-nvidia-192916083.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/article/intel-aims-to-boost-ai-turnaround-with-new-gpu-chips-to-take-on-nvidia-192916083.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
+   "value": {
+    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791828773,
+    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "HPE Partners With NVDA: Can it Help Challenge SMCI & DELL?",
+   "value": {
+    "headline": "HPE Partners With NVDA: Can it Help Challenge SMCI & DELL?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791817980,
+    "url": "https://finance.yahoo.com/technology/ai/articles/hpe-partners-nvda-help-challenge-151300392.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/hpe-partners-nvda-help-challenge-151300392.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Profitable Stocks Worth Your Attention and 1 Facing Challenges",
+   "value": {
+    "headline": "2 Profitable Stocks Worth Your Attention and 1 Facing Challenges",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791817383,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/2-profitable-stocks-worth-attention-150303916.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/2-profitable-stocks-worth-attention-150303916.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Cisco Stock Paying You Enough For The Swings?",
+   "value": {
+    "headline": "Is Cisco Stock Paying You Enough For The Swings?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791814083,
+    "url": "https://www.trefis.com/articles/618328/is-cisco-stock-paying-you-enough-for-the-swings/2026-10-12?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/618328/is-cisco-stock-paying-you-enough-for-the-swings/2026-10-12?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 14,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 390,417 股交割失敗）",
+   "value": {
+    "total_shares": 390417,
+    "days": 8,
+    "max_shares": 342719,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-12",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

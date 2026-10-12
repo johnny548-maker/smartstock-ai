@@ -1,49 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 238.9,
- "change_pct": 2.12,
+ "price": 226.66,
+ "change_pct": -1.14,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 208.31,
-   "h": 210.33,
-   "l": 202.77,
-   "c": 203.3,
-   "v": 121411000
-  },
-  {
-   "time": "2026-07-14",
-   "o": 207.97,
-   "h": 212.31,
-   "l": 203.57,
-   "c": 211.56,
-   "v": 124379600
-  },
-  {
-   "time": "2026-07-15",
-   "o": 211.72,
-   "h": 213.57,
-   "l": 205.81,
-   "c": 212.26,
-   "v": 124797200
-  },
-  {
-   "time": "2026-07-16",
-   "o": 209.94,
-   "h": 210.84,
-   "l": 205.62,
-   "c": 207.17,
-   "v": 122986100
-  },
-  {
-   "time": "2026-07-17",
-   "o": 202.41,
-   "h": 206.42,
-   "l": 197.75,
-   "c": 202.58,
-   "v": 144281900
-  },
   {
    "time": "2026-07-20",
    "o": 205.64,
@@ -474,7 +434,7 @@
    "h": 237.88,
    "l": 233.6,
    "c": 233.95,
-   "v": 134914600
+   "v": 135167800
   },
   {
    "time": "2026-10-05",
@@ -482,12 +442,55 @@
    "h": 240.1,
    "l": 235.15,
    "c": 238.9,
-   "v": 123621798
+   "v": 127171500
+  },
+  {
+   "time": "2026-10-06",
+   "o": 242.1,
+   "h": 243.37,
+   "l": 238.93,
+   "c": 239.24,
+   "v": 101701900
+  },
+  {
+   "time": "2026-10-07",
+   "o": 237.69,
+   "h": 239.08,
+   "l": 236.38,
+   "c": 237.47,
+   "v": 81772400
+  },
+  {
+   "time": "2026-10-08",
+   "o": 234.92,
+   "h": 237.07,
+   "l": 229.85,
+   "c": 230.48,
+   "v": 118697400
+  },
+  {
+   "time": "2026-10-09",
+   "o": 233.84,
+   "h": 233.92,
+   "l": 229.11,
+   "c": 229.28,
+   "v": 84470000
+  },
+  {
+   "time": "2026-10-12",
+   "o": 228.73,
+   "h": 228.86,
+   "l": 224.92,
+   "c": 226.66,
+   "v": 54045071
   }
  ],
  "sr": {
-  "price": 238.9,
-  "resistance": [],
+  "price": 226.66,
+  "resistance": [
+   227.67,
+   229.98
+  ],
   "support": [
    221.09,
    215.96
@@ -495,11 +498,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  203.3,
-  211.56,
-  212.26,
-  207.17,
-  202.58,
   203.05,
   207.06,
   211.82,
@@ -554,15 +552,20 @@
   228.38,
   230.86,
   233.95,
-  238.9
+  238.9,
+  239.24,
+  237.47,
+  230.48,
+  229.28,
+  226.66
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 30.202276,
-  "pe_forward": 15.12099,
+  "pe_trailing": 28.648546,
+  "pe_forward": 14.239126,
   "eps_trailing": 7.91,
-  "eps_forward": 15.79923,
+  "eps_forward": 15.9146,
   "stale": false,
   "source": "yfinance"
  },
@@ -572,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+   "label": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
    "value": {
-    "headline": "Update: Nasdaq Composite Reaches New High, 10-Year Yield Tops 5.3%",
+    "headline": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791232363,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss",
+    "ts": 1791834600,
+    "url": "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nasdaq-composite-reaches-high-10-203243452.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Stock Hits Record as Key Supplier’s Revenue Booms on AI Demand",
+   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
    "value": {
-    "headline": "Nvidia Stock Hits Record as Key Supplier’s Revenue Booms on AI Demand",
+    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791231660,
-    "url": "https://finance.yahoo.com/m/687e77fb-486c-339d-9a49-1b7cbc3224cb/nvidia-stock-hits-record-as.html?.tsrc=rss",
+    "ts": 1791834428,
+    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/687e77fb-486c-339d-9a49-1b7cbc3224cb/nvidia-stock-hits-record-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Could Buying XRP Today Set You Up for Life?",
+   "label": "These S&P 500 Stocks Are Down More Than 80% From Their All-Time Highs. Could They Be Good Contrarian Buys?",
    "value": {
-    "headline": "Could Buying XRP Today Set You Up for Life?",
+    "headline": "These S&P 500 Stocks Are Down More Than 80% From Their All-Time Highs. Could They Be Good Contrarian Buys?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791231600,
-    "url": "https://www.fool.com/investing/2026/10/05/could-buying-xrp-today-set-you-up-for-life/?.tsrc=rss",
+    "ts": 1791834302,
+    "url": "https://www.fool.com/investing/2026/10/12/these-s-and-p-500-stocks-are-down-more-than-80-from-their-all-time-highs-could-they-be-good-contrarian-buys/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/05/could-buying-xrp-today-set-you-up-for-life/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/these-s-and-p-500-stocks-are-down-more-than-80-from-their-all-time-highs-could-they-be-good-contrarian-buys/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Vistra, An S&P 500 Nuclear Stock, Pops Above Key Level. Here's Why.",
+   "label": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
    "value": {
-    "headline": "Vistra, An S&P 500 Nuclear Stock, Pops Above Key Level. Here's Why.",
+    "headline": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791230917,
-    "url": "https://finance.yahoo.com/m/95c4ecec-3f4e-3f41-8ce2-1886dd794c15/vistra%2C-an-s%26p-500-nuclear.html?.tsrc=rss",
+    "ts": 1791834281,
+    "url": "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/95c4ecec-3f4e-3f41-8ce2-1886dd794c15/vistra%2C-an-s%26p-500-nuclear.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Are stocks expensive? This 30-year-low stat says otherwise.",
+   "label": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
    "value": {
-    "headline": "Are stocks expensive? This 30-year-low stat says otherwise.",
+    "headline": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791230719,
-    "url": "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss",
+    "ts": 1791833401,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/are-stocks-expensive-this-30-year-low-stat-says-otherwise-200519109.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 2 篇 / 59 分 / 9 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 59,
+    "comments": 9,
+    "n": 2,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-12",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -696,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

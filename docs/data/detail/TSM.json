@@ -1,49 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": 485.8,
- "change_pct": 2.75,
+ "price": 445.38,
+ "change_pct": -1.75,
  "ohlc": [
-  {
-   "time": "2026-07-13",
-   "o": 432.66,
-   "h": 436.82,
-   "l": 419.17,
-   "c": 420.45,
-   "v": 14329800
-  },
-  {
-   "time": "2026-07-14",
-   "o": 429.72,
-   "h": 429.91,
-   "l": 417.74,
-   "c": 419.27,
-   "v": 14279000
-  },
-  {
-   "time": "2026-07-15",
-   "o": 424.61,
-   "h": 427.74,
-   "l": 409.65,
-   "c": 418.36,
-   "v": 17012300
-  },
-  {
-   "time": "2026-07-16",
-   "o": 404.21,
-   "h": 414.84,
-   "l": 402.42,
-   "c": 408.64,
-   "v": 24891300
-  },
-  {
-   "time": "2026-07-17",
-   "o": 391.07,
-   "h": 403.62,
-   "l": 384.99,
-   "c": 397.3,
-   "v": 20986500
-  },
   {
    "time": "2026-07-20",
    "o": 406.62,
@@ -474,20 +434,63 @@
    "h": 474.79,
    "l": 464.1,
    "c": 472.78,
-   "v": 9916700
+   "v": 9930800
   },
   {
    "time": "2026-10-05",
    "o": 478.77,
-   "h": 487.46,
+   "h": 487.47,
    "l": 476.4,
    "c": 485.8,
-   "v": 10809907
+   "v": 10916400
+  },
+  {
+   "time": "2026-10-06",
+   "o": 484.23,
+   "h": 486.0,
+   "l": 481.48,
+   "c": 482.3,
+   "v": 8346200
+  },
+  {
+   "time": "2026-10-07",
+   "o": 472.6,
+   "h": 475.8,
+   "l": 471.3,
+   "c": 472.2,
+   "v": 7304800
+  },
+  {
+   "time": "2026-10-08",
+   "o": 466.32,
+   "h": 471.19,
+   "l": 452.88,
+   "c": 457.99,
+   "v": 13421700
+  },
+  {
+   "time": "2026-10-09",
+   "o": 464.21,
+   "h": 464.83,
+   "l": 449.75,
+   "c": 453.31,
+   "v": 9225100
+  },
+  {
+   "time": "2026-10-12",
+   "o": 453.55,
+   "h": 454.4,
+   "l": 445.03,
+   "c": 445.38,
+   "v": 6820375
   }
  ],
  "sr": {
-  "price": 485.8,
-  "resistance": [],
+  "price": 445.38,
+  "resistance": [
+   447.91,
+   475.51
+  ],
   "support": [
    418.07,
    411.45
@@ -495,11 +498,6 @@
   "strong_support": 264.03
  },
  "spark": [
-  420.45,
-  419.27,
-  418.36,
-  408.64,
-  397.3,
   401.22,
   423.47,
   420.08,
@@ -554,15 +552,20 @@
   456.19,
   459.2,
   472.78,
-  485.8
+  485.8,
+  482.3,
+  472.2,
+  457.99,
+  453.31,
+  445.38
  ],
- "spark_start": "2026-07-13",
- "spark_end": "2026-10-05",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 35.30523,
-  "pe_forward": 22.157253,
+  "pe_trailing": 32.373547,
+  "pe_forward": 20.24106,
   "eps_trailing": 13.76,
-  "eps_forward": 21.9251,
+  "eps_forward": 22.00774,
   "stale": false,
   "source": "yfinance"
  },
@@ -572,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intel Stock Drops as Elon Musk Deals a Setback to the Chip Maker. Why You Shouldn’t Panic.",
+   "label": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
    "value": {
-    "headline": "Intel Stock Drops as Elon Musk Deals a Setback to the Chip Maker. Why You Shouldn’t Panic.",
+    "headline": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791231180,
-    "url": "https://finance.yahoo.com/m/7ada7199-cb94-3586-911f-48d268e568a0/intel-stock-drops-as-elon.html?.tsrc=rss",
+    "ts": 1791834281,
+    "url": "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/7ada7199-cb94-3586-911f-48d268e568a0/intel-stock-drops-as-elon.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+   "label": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
    "value": {
-    "headline": "Stock Market Today: Dow Up As Taiwan Semi Clears Buy Point; These Brazil Plays Offer Entries (Live Coverage)",
+    "headline": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791227969,
-    "url": "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss",
+    "ts": 1791833401,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/b052bf47-576e-3ce4-8529-4e950340dfb3/stock-market-today%3A-dow-up-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia, Intel, Micron, XP Inc., PTC, Vaxcyte, Western Digital, and More Stocks That Explain Today’s Market",
+   "label": "ASML vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "Nvidia, Intel, Micron, XP Inc., PTC, Vaxcyte, Western Digital, and More Stocks That Explain Today’s Market",
+    "headline": "ASML vs. Taiwan Semiconductor Manufacturing: Which Technology Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791225060,
-    "url": "https://finance.yahoo.com/m/29d68e20-e649-3819-9021-a07b7ebc77c5/nvidia%2C-intel%2C-micron%2C-xp.html?.tsrc=rss",
+    "ts": 1791832802,
+    "url": "https://www.fool.com/coverage/better-buy/2026/10/12/asml-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/29d68e20-e649-3819-9021-a07b7ebc77c5/nvidia%2C-intel%2C-micron%2C-xp.html?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/10/12/asml-vs-taiwan-semiconductor-manufacturing-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "IBD Stock Of The Day TSMC Breaks Out On Terafab Chatter",
+   "label": "Taiwan Semiconductor Stock Hits a New All-Time: Is it Too Late to Invest?",
    "value": {
-    "headline": "IBD Stock Of The Day TSMC Breaks Out On Terafab Chatter",
+    "headline": "Taiwan Semiconductor Stock Hits a New All-Time: Is it Too Late to Invest?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791224963,
-    "url": "https://finance.yahoo.com/m/f2ea941d-e757-3f02-9977-1a8fe998c983/ibd-stock-of-the-day-tsmc.html?.tsrc=rss",
+    "ts": 1791825602,
+    "url": "https://www.fool.com/investing/2026/10/12/taiwan-semiconductor-stock-hits-a-new-all-time-is-it-too-late-to-invest/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f2ea941d-e757-3f02-9977-1a8fe998c983/ibd-stock-of-the-day-tsmc.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/taiwan-semiconductor-stock-hits-a-new-all-time-is-it-too-late-to-invest/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 Stocks From AI & Energy to Buy Before Q3 Earnings Kick Off",
+   "label": "Taiwan Semiconductor Manufacturing Just Dropped a Major Bombshell Investors Must Be Aware Of",
    "value": {
-    "headline": "3 Stocks From AI & Energy to Buy Before Q3 Earnings Kick Off",
+    "headline": "Taiwan Semiconductor Manufacturing Just Dropped a Major Bombshell Investors Must Be Aware Of",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791223200,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-ai-energy-buy-180000127.html?.tsrc=rss",
+    "ts": 1791824820,
+    "url": "https://www.fool.com/investing/2026/10/12/taiwan-semiconductor-just-dropped-a-major-bombshel/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-stocks-ai-energy-buy-180000127.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/taiwan-semiconductor-just-dropped-a-major-bombshel/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 119 分 / 40 留言",
+   "label": "HN 討論熱度 20 篇 / 101 分 / 47 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 119,
-    "comments": 40,
+    "points": 101,
+    "comments": 47,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -711,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-05",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

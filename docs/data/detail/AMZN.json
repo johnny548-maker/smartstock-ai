@@ -1,25 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": null,
- "change_pct": null,
+ "price": 259.55,
+ "change_pct": -1.1,
  "ohlc": [
-  {
-   "time": "2026-07-16",
-   "o": 255.12,
-   "h": 258.08,
-   "l": 248.0,
-   "c": 249.89,
-   "v": 45343700
-  },
-  {
-   "time": "2026-07-17",
-   "o": 244.46,
-   "h": 250.24,
-   "l": 243.59,
-   "c": 247.23,
-   "v": 43572400
-  },
   {
    "time": "2026-07-20",
    "o": 248.76,
@@ -478,22 +462,42 @@
   },
   {
    "time": "2026-10-08",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 37077426
+   "o": 259.74,
+   "h": 259.86,
+   "l": 253.78,
+   "c": 254.06,
+   "v": 38649900
+  },
+  {
+   "time": "2026-10-09",
+   "o": 256.5,
+   "h": 262.8,
+   "l": 256.0,
+   "c": 262.43,
+   "v": 34710500
+  },
+  {
+   "time": "2026-10-12",
+   "o": 262.55,
+   "h": 263.7,
+   "l": 259.28,
+   "c": 259.55,
+   "v": 18373431
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 259.55,
+  "resistance": [
+   261.12,
+   266.4
+  ],
+  "support": [
+   257.04,
+   256.16
+  ],
   "strong_support": 196.0
  },
  "spark": [
-  249.89,
-  247.23,
   249.99,
   247.55,
   244.85,
@@ -551,149 +555,173 @@
   251.4,
   256.29,
   259.92,
-  null
+  254.06,
+  262.43,
+  259.55
  ],
- "spark_start": "2026-07-16",
- "spark_end": "2026-10-08",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 20.439259,
-  "pe_forward": 24.273798,
+  "pe_trailing": 20.872889,
+  "pe_forward": 24.760176,
   "eps_trailing": 12.43,
-  "eps_forward": 10.46643,
+  "eps_forward": 10.47852,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 259.55,
+  "stop": 248.41,
+  "target": 287.41,
+  "atr_bracket": 287.41,
+  "measured_move": 274.68,
+  "target_band": [
+   269.31,
+   274.68,
+   287.41
+  ],
+  "stop_pct": -4.3,
+  "target_pct": 10.7,
+  "rr": 2.5,
+  "atr_pct": 2.1,
+  "swing_stop": 243.06,
+  "chandelier": 246.91,
+  "fib_targets": [
+   264.05,
+   269.31,
+   275.11
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is the Market Underestimating Amazon’s (AMZN) Moat?",
+   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
    "value": {
-    "headline": "Is the Market Underestimating Amazon’s (AMZN) Moat?",
+    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791500822,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/market-underestimating-amazon-amzn-moat-230702371.html?.tsrc=rss",
+    "ts": 1791834428,
+    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/market-underestimating-amazon-amzn-moat-230702371.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Does Western Digital Offer That Apple Does Not?",
+   "label": "Should You Buy Target Stock At This Price?",
    "value": {
-    "headline": "What Does Western Digital Offer That Apple Does Not?",
+    "headline": "Should You Buy Target Stock At This Price?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791500201,
-    "url": "https://www.trefis.com/articles/617933/what-does-western-digital-offer-that-apple-does-not/2026-10-08?.tsrc=rss",
+    "ts": 1791833337,
+    "url": "https://www.trefis.com/articles/618313/should-you-buy-target-stock-at-this-price/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/617933/what-does-western-digital-offer-that-apple-does-not/2026-10-08?.tsrc=rss"
+     "https://www.trefis.com/articles/618313/should-you-buy-target-stock-at-this-price/2026-10-12?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon (AMZN) Is Spending Billions on AI and Driver Pay. Will the Investments Pay Off?",
+   "label": "Better High-Yield Dividend Stock: UPS vs. General Mills",
    "value": {
-    "headline": "Amazon (AMZN) Is Spending Billions on AI and Driver Pay. Will the Investments Pay Off?",
+    "headline": "Better High-Yield Dividend Stock: UPS vs. General Mills",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791498826,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-spending-billions-ai-223346855.html?.tsrc=rss",
+    "ts": 1791833219,
+    "url": "https://www.tikr.com/blog/better-high-yield-dividend-stock-ups-vs-general-mills?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-spending-billions-ai-223346855.html?.tsrc=rss"
+     "https://www.tikr.com/blog/better-high-yield-dividend-stock-ups-vs-general-mills?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jeff Bezos explains why Amazon is still cutting jobs",
+   "label": "What Could Netflix Stock Be Worth In Three Years?",
    "value": {
-    "headline": "Jeff Bezos explains why Amazon is still cutting jobs",
+    "headline": "What Could Netflix Stock Be Worth In Three Years?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791497820,
-    "url": "https://www.thestreet.com/employment/amazon-job-cuts-layoffs-bezos-pandemic-over-hiring?.tsrc=rss",
+    "ts": 1791831463,
+    "url": "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/employment/amazon-job-cuts-layoffs-bezos-pandemic-over-hiring?.tsrc=rss"
+     "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-09",
+   "severity": "info",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Where Could Walmart's Next Growth Come From?",
+   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
    "value": {
-    "headline": "Where Could Walmart's Next Growth Come From?",
+    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791491656,
-    "url": "https://www.trefis.com/articles/617950/where-could-walmarts-next-growth-come-from/2026-10-08?.tsrc=rss",
+    "ts": 1791828773,
+    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/617950/where-could-walmarts-next-growth-come-from/2026-10-08?.tsrc=rss"
+     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 9 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 9,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 11 篇 / 38 分 / 50 留言",
+   "label": "HN 討論熱度 5 篇 / 57 分 / 37 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 38,
-    "comments": 50,
-    "n": 11,
+    "points": 57,
+    "comments": 37,
+    "n": 5,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -708,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-09",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

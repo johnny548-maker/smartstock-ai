@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": null,
- "change_pct": null,
+ "price": 340.39,
+ "change_pct": 1.11,
  "ohlc": [
-  {
-   "time": "2026-07-17",
-   "o": 331.69,
-   "h": 334.7,
-   "l": 328.72,
-   "c": 333.45,
-   "v": 63407100
-  },
   {
    "time": "2026-07-20",
    "o": 333.22,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-10-09",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 37821157
+   "o": 331.7,
+   "h": 338.61,
+   "l": 330.7,
+   "c": 336.64,
+   "v": 37855000
+  },
+  {
+   "time": "2026-10-12",
+   "o": 338.16,
+   "h": 342.63,
+   "l": 337.6,
+   "c": 340.39,
+   "v": 18377652
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 340.39,
+  "resistance": [
+   342.99,
+   344.27
+  ],
+  "support": [
+   325.81,
+   319.07
+  ],
   "strong_support": 242.76
  },
  "spark": [
-  333.45,
   326.31,
   327.46,
   325.61,
@@ -551,13 +556,14 @@
   333.63,
   336.67,
   340.42,
-  null
+  336.64,
+  340.39
  ],
- "spark_start": "2026-07-17",
- "spark_end": "2026-10-09",
+ "spark_start": "2026-07-20",
+ "spark_end": "2026-10-12",
  "fundamental": {
-  "pe_trailing": 38.605507,
-  "pe_forward": 35.11173,
+  "pe_trailing": 39.048164,
+  "pe_forward": 35.514328,
   "eps_trailing": 8.72,
   "eps_forward": 9.58768,
   "stale": false,
@@ -569,117 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Apple (AAPL) Stock Is Trading Lower Today",
+   "label": "What Could Netflix Stock Be Worth In Three Years?",
    "value": {
-    "headline": "Why Apple (AAPL) Stock Is Trading Lower Today",
+    "headline": "What Could Netflix Stock Be Worth In Three Years?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791587710,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-apple-aapl-stock-trading-231510875.html?.tsrc=rss",
+    "ts": 1791831463,
+    "url": "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-apple-aapl-stock-trading-231510875.html?.tsrc=rss"
+     "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Black British Business Awards 2026 winners revealed",
+   "label": "How Apple Plans to Compete in the Home: Power On",
    "value": {
-    "headline": "Black British Business Awards 2026 winners revealed",
+    "headline": "How Apple Plans to Compete in the Home: Power On",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791586471,
-    "url": "https://uk.finance.yahoo.com/news/black-british-business-awards-2026-225431625.html?.tsrc=rss",
+    "ts": 1791830534,
+    "url": "https://finance.yahoo.com/video/apple-plans-compete-home-power-184214442.html?.tsrc=rss",
     "urls": [
-     "https://uk.finance.yahoo.com/news/black-british-business-awards-2026-225431625.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/apple-plans-compete-home-power-184214442.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Dell Stock Paying You Enough For The Swings?",
+   "label": "Apple cuts iPhone 18 Pro orders as AI raises the bill",
    "value": {
-    "headline": "Is Dell Stock Paying You Enough For The Swings?",
+    "headline": "Apple cuts iPhone 18 Pro orders as AI raises the bill",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791582568,
-    "url": "https://www.trefis.com/articles/618175/is-dell-stock-paying-you-enough-for-the-swings/2026-10-09?.tsrc=rss",
+    "ts": 1791829020,
+    "url": "https://www.thestreet.com/investing/apple-cuts-iphone-18-pro-orders-as-ai-raises-the-bill?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/618175/is-dell-stock-paying-you-enough-for-the-swings/2026-10-09?.tsrc=rss"
+     "https://www.thestreet.com/investing/apple-cuts-iphone-18-pro-orders-as-ai-raises-the-bill?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-10",
+   "severity": "warn",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple’s App Store Growth Improved in September. What UBS Sees Coming in October Is Harder",
+   "label": "Why Apple May Have a SpaceX Problem",
    "value": {
-    "headline": "Apple’s App Store Growth Improved in September. What UBS Sees Coming in October Is Harder",
+    "headline": "Why Apple May Have a SpaceX Problem",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791581928,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-app-store-growth-improved-213848032.html?.tsrc=rss",
+    "ts": 1791828540,
+    "url": "https://finance.yahoo.com/m/e09f7136-234e-350a-ae4f-2ccab8e5b211/why-apple-may-have-a-spacex.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/apple-app-store-growth-improved-213848032.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/e09f7136-234e-350a-ae4f-2ccab8e5b211/why-apple-may-have-a-spacex.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Video game console sales are plummeting. Can GTA VI turn things around?",
+   "label": "How to invest in cybersecurity stocks as consumer protection lags",
    "value": {
-    "headline": "Video game console sales are plummeting. Can GTA VI turn things around?",
+    "headline": "How to invest in cybersecurity stocks as consumer protection lags",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791579188,
-    "url": "https://finance.yahoo.com/video/video-game-console-sales-are-plummeting-can-gta-vi-turn-things-around-205308657.html?.tsrc=rss",
+    "ts": 1791828452,
+    "url": "https://finance.yahoo.com/video/how-to-invest-in-cybersecurity-stocks-as-consumer-protection-lags-180732163.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/video-game-console-sales-are-plummeting-can-gta-vi-turn-things-around-205308657.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/how-to-invest-in-cybersecurity-stocks-as-consumer-protection-lags-180732163.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -694,7 +700,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-10",
+   "as_of": "2026-10-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
