@@ -1,8 +1,8 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 259.55,
- "change_pct": -1.1,
+ "price": 259.53,
+ "change_pct": -1.11,
  "ohlc": [
   {
    "time": "2026-07-20",
@@ -474,19 +474,19 @@
    "h": 262.8,
    "l": 256.0,
    "c": 262.43,
-   "v": 34710500
+   "v": 34770000
   },
   {
    "time": "2026-10-12",
-   "o": 262.55,
+   "o": 262.5,
    "h": 263.7,
-   "l": 259.28,
-   "c": 259.55,
-   "v": 18373431
+   "l": 259.27,
+   "c": 259.53,
+   "v": 26524900
   }
  ],
  "sr": {
-  "price": 259.55,
+  "price": 259.53,
   "resistance": [
    261.12,
    266.4
@@ -557,7 +557,7 @@
   259.92,
   254.06,
   262.43,
-  259.55
+  259.53
  ],
  "spark_start": "2026-07-20",
  "spark_end": "2026-10-12",
@@ -566,19 +566,19 @@
   "pe_forward": 24.760176,
   "eps_trailing": 12.43,
   "eps_forward": 10.47852,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 259.55,
-  "stop": 248.41,
-  "target": 287.41,
-  "atr_bracket": 287.41,
+  "entry": 259.53,
+  "stop": 248.38,
+  "target": 287.39,
+  "atr_bracket": 287.39,
   "measured_move": 274.68,
   "target_band": [
    269.31,
    274.68,
-   287.41
+   287.39
   ],
   "stop_pct": -4.3,
   "target_pct": 10.7,
@@ -597,116 +597,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+   "label": "/C O R R E C T I O N - Duracell/",
    "value": {
-    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+    "headline": "/C O R R E C T I O N - Duracell/",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834428,
-    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
+    "ts": 1791847380,
+    "url": "https://finance.yahoo.com/media-advertising/articles/partnership-amazon-duracell-powers-austin-130000926.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/partnership-amazon-duracell-powers-austin-130000926.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Buy Target Stock At This Price?",
+   "label": "Is Meta's Next Big Thing Already Here?",
    "value": {
-    "headline": "Should You Buy Target Stock At This Price?",
+    "headline": "Is Meta's Next Big Thing Already Here?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833337,
-    "url": "https://www.trefis.com/articles/618313/should-you-buy-target-stock-at-this-price/2026-10-12?.tsrc=rss",
+    "ts": 1791844720,
+    "url": "https://www.trefis.com/articles/618323/is-metas-next-big-thing-already-here/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/618313/should-you-buy-target-stock-at-this-price/2026-10-12?.tsrc=rss"
+     "https://www.trefis.com/articles/618323/is-metas-next-big-thing-already-here/2026-10-12?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Better High-Yield Dividend Stock: UPS vs. General Mills",
+   "label": "Kroger to cut 3K corporate jobs over the next 3 years",
    "value": {
-    "headline": "Better High-Yield Dividend Stock: UPS vs. General Mills",
+    "headline": "Kroger to cut 3K corporate jobs over the next 3 years",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833219,
-    "url": "https://www.tikr.com/blog/better-high-yield-dividend-stock-ups-vs-general-mills?ref=yahoofinance&.tsrc=rss",
+    "ts": 1791843771,
+    "url": "https://www.grocerydive.com/news/kroger-corporate-layoffs-3000-employees/832811/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/better-high-yield-dividend-stock-ups-vs-general-mills?ref=yahoofinance&.tsrc=rss"
+     "https://www.grocerydive.com/news/kroger-corporate-layoffs-3000-employees/832811/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-12",
+   "severity": "warn",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Could Netflix Stock Be Worth In Three Years?",
+   "label": "Why Every Snap Investor Is Looking At This One Number",
    "value": {
-    "headline": "What Could Netflix Stock Be Worth In Three Years?",
+    "headline": "Why Every Snap Investor Is Looking At This One Number",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791831463,
-    "url": "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss",
+    "ts": 1791842522,
+    "url": "https://www.trefis.com/articles/618338/why-every-snap-investor-is-looking-at-this-one-number/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/618353/what-could-netflix-stock-be-worth-in-three-years/2026-10-12?.tsrc=rss"
+     "https://www.trefis.com/articles/618338/why-every-snap-investor-is-looking-at-this-one-number/2026-10-12?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
+   "label": "Is It Too Late To Buy Shopify Stock?",
    "value": {
-    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
+    "headline": "Is It Too Late To Buy Shopify Stock?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791828773,
-    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
+    "ts": 1791841084,
+    "url": "https://www.trefis.com/articles/618350/is-it-too-late-to-buy-shopify-stock/2026-10-12?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
+     "https://www.trefis.com/articles/618350/is-it-too-late-to-buy-shopify-stock/2026-10-12?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -721,7 +721,7 @@
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

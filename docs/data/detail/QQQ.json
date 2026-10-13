@@ -1,8 +1,8 @@
 {
  "stock": "QQQ",
  "name": "Nasdaq100 ETF",
- "price": 745.84,
- "change_pct": -0.72,
+ "price": 746.04,
+ "change_pct": -0.7,
  "ohlc": [
   {
    "time": "2026-07-20",
@@ -474,19 +474,19 @@
    "h": 752.87,
    "l": 748.37,
    "c": 751.27,
-   "v": 21122000
+   "v": 21162000
   },
   {
    "time": "2026-10-12",
-   "o": 749.64,
+   "o": 749.69,
    "h": 749.79,
-   "l": 744.84,
-   "c": 745.84,
-   "v": 21357309
+   "l": 744.85,
+   "c": 746.04,
+   "v": 24936300
   }
  ],
  "sr": {
-  "price": 745.84,
+  "price": 746.04,
   "resistance": [
    747.05,
    748.35
@@ -557,7 +557,7 @@
   757.73,
   747.58,
   751.27,
-  745.84
+  746.04
  ],
  "spark_start": "2026-07-20",
  "spark_end": "2026-10-12",
@@ -566,12 +566,92 @@
   "pe_forward": null,
   "eps_trailing": null,
   "eps_forward": null,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Foc",
+   "value": {
+    "headline": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Focus",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791846618,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "JEPQ Pays 11.27%. This Lesser-Known Nasdaq ETF Is Paying 13.58% Monthly",
+   "value": {
+    "headline": "JEPQ Pays 11.27%. This Lesser-Known Nasdaq ETF Is Paying 13.58% Monthly",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791842617,
+    "url": "https://247wallst.com/investing/etf/2026/10/12/jepq-pays-11-27-this-lesser-known-nasdaq-etf-is-paying-13-58-monthly/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/etf/2026/10/12/jepq-pays-11-27-this-lesser-known-nasdaq-etf-is-paying-13-58-monthly/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Compounding Catch: How TQQQ’s 3x Daily Target Became a 5.93x Windfall",
+   "value": {
+    "headline": "The Compounding Catch: How TQQQ’s 3x Daily Target Became a 5.93x Windfall",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791835428,
+    "url": "https://247wallst.com/investing/etf/2026/10/12/the-compounding-catch-how-tqqqs-3x-daily-target-became-a-5-93x-windfall/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/etf/2026/10/12/the-compounding-catch-how-tqqqs-3x-daily-target-became-a-5-93x-windfall/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The AI Rally, Mega-Cap Dominance & What Comes Next",
+   "value": {
+    "headline": "The AI Rally, Mega-Cap Dominance & What Comes Next",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791833940,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ai-rally-mega-cap-dominance-193900376.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ai-rally-mega-cap-dominance-193900376.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -589,102 +669,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "CrowdStrike Is Up 124% in 2026, Fortinet Is Up 142%: Take Profits, or Hold On for the Ride?",
-   "value": {
-    "headline": "CrowdStrike Is Up 124% in 2026, Fortinet Is Up 142%: Take Profits, or Hold On for the Ride?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791831617,
-    "url": "https://247wallst.com/investing/2026/10/12/crowdstrike-is-up-124-in-2026-fortinet-is-up-142-take-profits-or-hold-on-for-the-ride/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/12/crowdstrike-is-up-124-in-2026-fortinet-is-up-142-take-profits-or-hold-on-for-the-ride/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Exchange-Traded Funds Fall as US Equities Turn Mixed After Midday",
-   "value": {
-    "headline": "Exchange-Traded Funds Fall as US Equities Turn Mixed After Midday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791825109,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-fall-us-171149294.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-fall-us-171149294.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "72 and Retired on One Fund: How Much JEPQ It Takes to Collect $4,300 a Month",
-   "value": {
-    "headline": "72 and Retired on One Fund: How Much JEPQ It Takes to Collect $4,300 a Month",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791821870,
-    "url": "https://247wallst.com/personal-finance/2026/10/12/72-and-retired-on-one-fund-how-much-jepq-it-takes-to-collect-4300-a-month/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/personal-finance/2026/10/12/72-and-retired-on-one-fund-how-much-jepq-it-takes-to-collect-4300-a-month/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Food Network New York City Wine & Food Festival presented by Invesco QQQ Returns This Week with an All-Star Lineup",
-   "value": {
-    "headline": "Food Network New York City Wine & Food Festival presented by Invesco QQQ Returns This Week with an All-Star Lineup",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791817020,
-    "url": "https://finance.yahoo.com/media-advertising/articles/food-network-york-city-wine-145700615.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/food-network-york-city-wine-145700615.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

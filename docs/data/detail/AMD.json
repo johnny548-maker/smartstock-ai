@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 594.09,
- "change_pct": -2.3,
+ "price": 594.24,
+ "change_pct": -2.28,
  "ohlc": [
   {
    "time": "2026-07-20",
@@ -474,19 +474,19 @@
    "h": 627.37,
    "l": 606.0,
    "c": 608.1,
-   "v": 13694400
+   "v": 13733300
   },
   {
    "time": "2026-10-12",
-   "o": 599.86,
+   "o": 599.93,
    "h": 601.77,
    "l": 586.54,
-   "c": 594.09,
-   "v": 12811334
+   "c": 594.24,
+   "v": 15327700
   }
  ],
  "sr": {
-  "price": 594.09,
+  "price": 594.24,
   "resistance": [
    639.0,
    658.52
@@ -557,7 +557,7 @@
   645.86,
   620.68,
   608.1,
-  594.09
+  594.24
  ],
  "spark_start": "2026-07-20",
  "spark_end": "2026-10-12",
@@ -566,12 +566,92 @@
   "pe_forward": 37.77472,
   "eps_trailing": 3.92,
   "eps_forward": 15.72189,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
+   "value": {
+    "headline": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791842611,
+    "url": "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Changed In Qualcomm's Story?",
+   "value": {
+    "headline": "What Changed In Qualcomm's Story?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791842137,
+    "url": "https://www.trefis.com/articles/618342/what-changed-in-qualcomms-story/2026-10-12?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/articles/618342/what-changed-in-qualcomms-story/2026-10-12?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Advanced Micro Devices (AMD) Dipped More Than Broader Market Today",
+   "value": {
+    "headline": "Why Advanced Micro Devices (AMD) Dipped More Than Broader Market Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791837902,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-advanced-micro-devices-amd-204502569.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-advanced-micro-devices-amd-204502569.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "It’s a High-Stakes Earnings Season, Especially for AI Stocks",
+   "value": {
+    "headline": "It’s a High-Stakes Earnings Season, Especially for AI Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1791837300,
+    "url": "https://finance.yahoo.com/m/a36783a7-2be6-3b0b-8d99-d3deb3dc63de/it%E2%80%99s-a-high-stakes-earnings.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/a36783a7-2be6-3b0b-8d99-d3deb3dc63de/it%E2%80%99s-a-high-stakes-earnings.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -589,102 +669,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
-   "value": {
-    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791834428,
-    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What Does NVIDIA Offer That Marvell Does Not?",
-   "value": {
-    "headline": "What Does NVIDIA Offer That Marvell Does Not?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791832299,
-    "url": "https://www.trefis.com/articles/618311/what-does-nvidia-offer-that-marvell-does-not/2026-10-12?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/618311/what-does-nvidia-offer-that-marvell-does-not/2026-10-12?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
-   "value": {
-    "headline": "Intel Is Up 174% in 2026 and AMD Is Up 175%: Take Profits, or Hold On for the Ride?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791831933,
-    "url": "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/12/intel-is-up-174-in-2026-and-amd-is-up-175-take-profits-or-hold-on-for-the-ride/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Once Wall Street’s Darling, Cerebras Stock Is Struggling",
-   "value": {
-    "headline": "Once Wall Street’s Darling, Cerebras Stock Is Struggling",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791828480,
-    "url": "https://finance.yahoo.com/m/75edfda6-e7aa-3648-bb1a-b24be9a5c218/once-wall-street%E2%80%99s-darling%2C.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/75edfda6-e7aa-3648-bb1a-b24be9a5c218/once-wall-street%E2%80%99s-darling%2C.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,8 +1,8 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 226.66,
- "change_pct": -1.14,
+ "price": 226.32,
+ "change_pct": -1.29,
  "ohlc": [
   {
    "time": "2026-07-20",
@@ -474,19 +474,19 @@
    "h": 233.92,
    "l": 229.11,
    "c": 229.28,
-   "v": 84470000
+   "v": 84645600
   },
   {
    "time": "2026-10-12",
    "o": 228.73,
    "h": 228.86,
-   "l": 224.92,
-   "c": 226.66,
-   "v": 54045071
+   "l": 224.9,
+   "c": 226.32,
+   "v": 70089000
   }
  ],
  "sr": {
-  "price": 226.66,
+  "price": 226.32,
   "resistance": [
    227.67,
    229.98
@@ -557,7 +557,7 @@
   237.47,
   230.48,
   229.28,
-  226.66
+  226.32
  ],
  "spark_start": "2026-07-20",
  "spark_end": "2026-10-12",
@@ -566,125 +566,142 @@
   "pe_forward": 14.239126,
   "eps_trailing": 7.91,
   "eps_forward": 15.9146,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 226.32,
+  "stop": 215.79,
+  "target": 252.64,
+  "atr_bracket": 252.64,
+  "measured_move": 265.65,
+  "target_band": [
+   252.64,
+   265.65
+  ],
+  "stop_pct": -4.7,
+  "target_pct": 11.6,
+  "rr": 2.5,
+  "atr_pct": 2.3,
+  "swing_stop": 219.51,
+  "chandelier": 227.61,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
+   "label": "35.16 Billion Reasons Micron Stock Is Headed to $3,000",
    "value": {
-    "headline": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
+    "headline": "35.16 Billion Reasons Micron Stock Is Headed to $3,000",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834600,
-    "url": "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss",
+    "ts": 1791850800,
+    "url": "https://www.fool.com/investing/2026/10/12/3516-billion-reasons-micron-stock-is-headed-to-300/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/3516-billion-reasons-micron-stock-is-headed-to-300/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+   "label": "Why Shopify Stock Popped by Nearly 5% Today",
    "value": {
-    "headline": "Microsoft just reclaimed its $4T market cap, thanks to its Maia 300 AI chip",
+    "headline": "Why Shopify Stock Popped by Nearly 5% Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834428,
-    "url": "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss",
+    "ts": 1791850611,
+    "url": "https://www.fool.com/investing/2026/10/12/why-shopify-stock-popped-by-nearly-5-today/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/microsoft-just-reclaimed-its-4t-market-cap-thanks-to-its-maia-300-ai-chip-194708647.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/why-shopify-stock-popped-by-nearly-5-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "These S&P 500 Stocks Are Down More Than 80% From Their All-Time Highs. Could They Be Good Contrarian Buys?",
+   "label": "Nvidia’s 'Reflection' move could put customers on edge",
    "value": {
-    "headline": "These S&P 500 Stocks Are Down More Than 80% From Their All-Time Highs. Could They Be Good Contrarian Buys?",
+    "headline": "Nvidia’s 'Reflection' move could put customers on edge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834302,
-    "url": "https://www.fool.com/investing/2026/10/12/these-s-and-p-500-stocks-are-down-more-than-80-from-their-all-time-highs-could-they-be-good-contrarian-buys/?.tsrc=rss",
+    "ts": 1791849780,
+    "url": "https://www.thestreet.com/investing/nvidias-reflection-move-could-put-customers-on-edge?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/12/these-s-and-p-500-stocks-are-down-more-than-80-from-their-all-time-highs-could-they-be-good-contrarian-buys/?.tsrc=rss"
+     "https://www.thestreet.com/investing/nvidias-reflection-move-could-put-customers-on-edge?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
+   "label": "$2.9 Billion Contract in Hand, Anduril May Already Be America's Second-Biggest Navy Warship Builder",
    "value": {
-    "headline": "Is ASML Holding NV's Stock a Buy Ahead of Its Q3 Earnings Report Wednesday?",
+    "headline": "$2.9 Billion Contract in Hand, Anduril May Already Be America's Second-Biggest Navy Warship Builder",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834281,
-    "url": "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss",
+    "ts": 1791849000,
+    "url": "https://www.fool.com/investing/2026/10/12/anduril-americas-second-biggest-navy-shipbuilder/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/12/is-asml-holding-nvs-stock-a-buy-ahead-of-its-qx-earnings-report-tomorrow/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/anduril-americas-second-biggest-navy-shipbuilder/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
+   "label": "Why Harmony Biosciences Stock Got Mashed on Monday",
    "value": {
-    "headline": "Maia 300: Microsoft Builds the Exit From a Compute Landlord Model It Helped Finance",
+    "headline": "Why Harmony Biosciences Stock Got Mashed on Monday",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833401,
-    "url": "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss",
+    "ts": 1791848192,
+    "url": "https://www.fool.com/investing/2026/10/12/why-harmony-biosciences-stock-got-mashed-on-monday/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/maia-300-microsoft-builds-exit-193001930.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/12/why-harmony-biosciences-stock-got-mashed-on-monday/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +731,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

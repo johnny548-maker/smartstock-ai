@@ -1,8 +1,8 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 743.01,
- "change_pct": 3.39,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-07-20",
@@ -478,23 +478,17 @@
   },
   {
    "time": "2026-10-12",
-   "o": 727.97,
-   "h": 752.24,
-   "l": 727.78,
-   "c": 743.01,
-   "v": 21765234
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 24749285
   }
  ],
  "sr": {
-  "price": 743.01,
-  "resistance": [
-   747.6,
-   756.59
-  ],
-  "support": [
-   713.19,
-   651.93
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 519.37
  },
  "spark": [
@@ -557,7 +551,7 @@
   721.31,
   720.89,
   718.67,
-  743.01
+  null
  ],
  "spark_start": "2026-07-20",
  "spark_end": "2026-10-12",
@@ -566,142 +560,125 @@
   "pe_forward": 21.505365,
   "eps_trailing": 26.54,
   "eps_forward": 34.54533,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 743.01,
-  "stop": 698.09,
-  "target": 855.3,
-  "atr_bracket": 855.3,
-  "measured_move": 782.01,
-  "target_band": [
-   782.01,
-   855.3
-  ],
-  "stop_pct": -6.0,
-  "target_pct": 15.1,
-  "rr": 2.5,
-  "atr_pct": 3.0,
-  "swing_stop": 704.94,
-  "chandelier": 704.41,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Sector Update: Tech Stocks Fall Late Afternoon",
+   "label": "Alphabet vs. Meta Platforms: Which Stock Is a Better Buy in 2026?",
    "value": {
-    "headline": "Sector Update: Tech Stocks Fall Late Afternoon",
+    "headline": "Alphabet vs. Meta Platforms: Which Stock Is a Better Buy in 2026?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791834346,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-194546607.html?.tsrc=rss",
+    "ts": 1791851501,
+    "url": "https://www.fool.com/coverage/better-buy/2026/10/12/alphabet-vs-meta-platforms-which-stock-is-a-better-buy-in-2026/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-194546607.html?.tsrc=rss"
+     "https://www.fool.com/coverage/better-buy/2026/10/12/alphabet-vs-meta-platforms-which-stock-is-a-better-buy-in-2026/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Drops As Lumentum Dives; Micron Slides Competition Worries (Live Coverage)",
+   "label": "Muse Wonder Puts Meta's Aggressive AI Push in Focus",
    "value": {
-    "headline": "Stock Market Today: Nasdaq Drops As Lumentum Dives; Micron Slides Competition Worries (Live Coverage)",
+    "headline": "Muse Wonder Puts Meta's Aggressive AI Push in Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833848,
-    "url": "https://finance.yahoo.com/m/f6194faa-ca8b-383a-a9ab-a53b13d91fd1/stock-market-today%3A-nasdaq.html?.tsrc=rss",
+    "ts": 1791847633,
+    "url": "https://finance.yahoo.com/video/muse-wonder-puts-metas-aggressive-232713761.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f6194faa-ca8b-383a-a9ab-a53b13d91fd1/stock-market-today%3A-nasdaq.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/muse-wonder-puts-metas-aggressive-232713761.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta finally pushes into frontier AI with its new Muse Wonder AI model",
+   "label": "Will Meta’s Muse AI Platform Push Change Meta Platforms' (META) Core Investment Narrative?",
    "value": {
-    "headline": "Meta finally pushes into frontier AI with its new Muse Wonder AI model",
+    "headline": "Will Meta’s Muse AI Platform Push Change Meta Platforms' (META) Core Investment Narrative?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833736,
-    "url": "https://finance.yahoo.com/video/meta-finally-pushes-into-frontier-ai-with-its-new-muse-wonder-ai-model-193536375.html?.tsrc=rss",
+    "ts": 1791847436,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-muse-ai-platform-push-232356331.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/meta-finally-pushes-into-frontier-ai-with-its-new-muse-wonder-ai-model-193536375.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-muse-ai-platform-push-232356331.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Meta Platforms Stock Rallied Monday Morning",
+   "label": "Dow Jones Futures: Micron, Nvidia Lead AI Trade Lower; Apple, Meta Rally Near Buy Points",
    "value": {
-    "headline": "Why Meta Platforms Stock Rallied Monday Morning",
+    "headline": "Dow Jones Futures: Micron, Nvidia Lead AI Trade Lower; Apple, Meta Rally Near Buy Points",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791833305,
-    "url": "https://www.fool.com/investing/2026/10/12/why-meta-platforms-stock-rallied-monday-morning/?.tsrc=rss",
+    "ts": 1791847013,
+    "url": "https://finance.yahoo.com/m/1b66e790-9e3e-3d5c-a8bf-167703811db3/dow-jones-futures%3A-micron%2C.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/12/why-meta-platforms-stock-rallied-monday-morning/?.tsrc=rss"
+     "https://finance.yahoo.com/m/1b66e790-9e3e-3d5c-a8bf-167703811db3/dow-jones-futures%3A-micron%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
+   "label": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Foc",
    "value": {
-    "headline": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
+    "headline": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791829200,
-    "url": "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html?.tsrc=rss",
+    "ts": 1791846618,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +693,7 @@
     "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -731,7 +708,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-12",
+   "as_of": "2026-10-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
