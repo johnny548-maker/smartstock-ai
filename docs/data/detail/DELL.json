@@ -1,33 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 586.06,
- "change_pct": 2.0,
+ "price": 521.98,
+ "change_pct": -8.82,
  "ohlc": [
-  {
-   "time": "2026-07-17",
-   "o": 376.23,
-   "h": 406.48,
-   "l": 367.54,
-   "c": 395.69,
-   "v": 7290800
-  },
-  {
-   "time": "2026-07-20",
-   "o": 399.63,
-   "h": 402.53,
-   "l": 380.42,
-   "c": 381.25,
-   "v": 4725800
-  },
-  {
-   "time": "2026-07-21",
-   "o": 394.5,
-   "h": 407.98,
-   "l": 393.94,
-   "c": 404.15,
-   "v": 5277300
-  },
   {
    "time": "2026-07-22",
    "o": 414.34,
@@ -482,24 +458,46 @@
    "h": 595.06,
    "l": 566.2,
    "c": 586.06,
-   "v": 5500400
+   "v": 5516000
+  },
+  {
+   "time": "2026-10-12",
+   "o": 581.73,
+   "h": 585.32,
+   "l": 565.0,
+   "c": 576.76,
+   "v": 5254700
+  },
+  {
+   "time": "2026-10-13",
+   "o": 556.62,
+   "h": 579.74,
+   "l": 548.4,
+   "c": 572.47,
+   "v": 5535400
+  },
+  {
+   "time": "2026-10-14",
+   "o": 547.99,
+   "h": 547.17,
+   "l": 521.17,
+   "c": 521.98,
+   "v": 3917092
   }
  ],
  "sr": {
-  "price": 586.06,
+  "price": 521.98,
   "resistance": [
+   595.06,
    595.51
   ],
   "support": [
-   530.45,
-   520.18
+   520.18,
+   506.25
   ],
   "strong_support": 64.73
  },
  "spark": [
-  395.69,
-  381.25,
-  404.15,
   441.8,
   439.34,
   437.5,
@@ -556,143 +554,14 @@
   574.0,
   578.96,
   574.55,
-  586.06
+  586.06,
+  576.76,
+  572.47,
+  521.98
  ],
- "spark_start": "2026-07-17",
- "spark_end": "2026-10-09",
+ "spark_start": "2026-07-22",
+ "spark_end": "2026-10-14",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Did The Market Read Super Micro Computer Stock Right?",
-   "value": {
-    "headline": "Did The Market Read Super Micro Computer Stock Right?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791846589,
-    "url": "https://www.trefis.com/articles/618322/did-the-market-read-super-micro-computer-stock-right/2026-10-12?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/618322/did-the-market-read-super-micro-computer-stock-right/2026-10-12?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Intel aims to boost AI turnaround with new GPU chips to take on Nvidia",
-   "value": {
-    "headline": "Intel aims to boost AI turnaround with new GPU chips to take on Nvidia",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791833356,
-    "url": "https://finance.yahoo.com/technology/article/intel-aims-to-boost-ai-turnaround-with-new-gpu-chips-to-take-on-nvidia-192916083.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/article/intel-aims-to-boost-ai-turnaround-with-new-gpu-chips-to-take-on-nvidia-192916083.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
-   "value": {
-    "headline": "The bull market’s four-year run, EV demand, and interest rates threaten earnings",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791828773,
-    "url": "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/the-bull-markets-four-year-run-ev-demand-and-interest-rates-threaten-earnings-181253135.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "HPE Partners With NVDA: Can it Help Challenge SMCI & DELL?",
-   "value": {
-    "headline": "HPE Partners With NVDA: Can it Help Challenge SMCI & DELL?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791817980,
-    "url": "https://finance.yahoo.com/technology/ai/articles/hpe-partners-nvda-help-challenge-151300392.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/hpe-partners-nvda-help-challenge-151300392.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "2 Profitable Stocks Worth Your Attention and 1 Facing Challenges",
-   "value": {
-    "headline": "2 Profitable Stocks Worth Your Attention and 1 Facing Challenges",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791817383,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/2-profitable-stocks-worth-attention-150303916.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/2-profitable-stocks-worth-attention-150303916.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 14,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 390,417 股交割失敗）",
-   "value": {
-    "total_shares": 390417,
-    "days": 8,
-    "max_shares": 342719,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-13",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

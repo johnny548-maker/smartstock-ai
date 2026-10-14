@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 742.89,
+ "change_pct": -2.57,
  "ohlc": [
-  {
-   "time": "2026-07-20",
-   "o": 646.19,
-   "h": 652.78,
-   "l": 635.51,
-   "c": 645.34,
-   "v": 10225200
-  },
-  {
-   "time": "2026-07-21",
-   "o": 653.66,
-   "h": 655.36,
-   "l": 642.69,
-   "c": 643.3,
-   "v": 9140500
-  },
   {
    "time": "2026-07-22",
    "o": 647.19,
@@ -474,26 +458,46 @@
    "h": 728.07,
    "l": 716.2,
    "c": 718.67,
-   "v": 12605100
+   "v": 12619900
   },
   {
    "time": "2026-10-12",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 24749285
+   "o": 728.5,
+   "h": 752.24,
+   "l": 727.64,
+   "c": 742.96,
+   "v": 24882400
+  },
+  {
+   "time": "2026-10-13",
+   "o": 735.99,
+   "h": 771.27,
+   "l": 734.84,
+   "c": 762.5,
+   "v": 22679300
+  },
+  {
+   "time": "2026-10-14",
+   "o": 760.75,
+   "h": 761.48,
+   "l": 741.34,
+   "c": 742.89,
+   "v": 6033851
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 742.89,
+  "resistance": [
+   747.6,
+   756.59
+  ],
+  "support": [
+   713.19,
+   711.68
+  ],
   "strong_support": 519.37
  },
  "spark": [
-  645.34,
-  643.3,
   626.68,
   605.62,
   594.72,
@@ -551,16 +555,18 @@
   721.31,
   720.89,
   718.67,
-  null
+  742.96,
+  762.5,
+  742.89
  ],
- "spark_start": "2026-07-20",
- "spark_end": "2026-10-12",
+ "spark_start": "2026-07-22",
+ "spark_end": "2026-10-14",
  "fundamental": {
-  "pe_trailing": 27.992085,
-  "pe_forward": 21.505365,
+  "pe_trailing": 27.991333,
+  "pe_forward": 21.438059,
   "eps_trailing": 26.54,
-  "eps_forward": 34.54533,
-  "stale": true,
+  "eps_forward": 34.65286,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet vs. Meta Platforms: Which Stock Is a Better Buy in 2026?",
+   "label": "Muse Got Meta to Consumer-Scale Agentic Execution First And That Matters",
    "value": {
-    "headline": "Alphabet vs. Meta Platforms: Which Stock Is a Better Buy in 2026?",
+    "headline": "Muse Got Meta to Consumer-Scale Agentic Execution First And That Matters",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791851501,
-    "url": "https://www.fool.com/coverage/better-buy/2026/10/12/alphabet-vs-meta-platforms-which-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+    "ts": 1791989141,
+    "url": "https://247wallst.com/investing/2026/10/14/muse-got-meta-to-consumer-scale-agentic-execution-first-and-that-matters/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/10/12/alphabet-vs-meta-platforms-which-stock-is-a-better-buy-in-2026/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/14/muse-got-meta-to-consumer-scale-agentic-execution-first-and-that-matters/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-13",
+   "severity": "warn",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Muse Wonder Puts Meta's Aggressive AI Push in Focus",
+   "label": "What a $1.3 Billion Bumble Deal Says About Where AI Leaves Human Connection",
    "value": {
-    "headline": "Muse Wonder Puts Meta's Aggressive AI Push in Focus",
+    "headline": "What a $1.3 Billion Bumble Deal Says About Where AI Leaves Human Connection",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791847633,
-    "url": "https://finance.yahoo.com/video/muse-wonder-puts-metas-aggressive-232713761.html?.tsrc=rss",
+    "ts": 1791987155,
+    "url": "https://beincrypto.com/bumble-acquisition-ithaca-ai-bet/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/muse-wonder-puts-metas-aggressive-232713761.html?.tsrc=rss"
+     "https://beincrypto.com/bumble-acquisition-ithaca-ai-bet/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Will Meta’s Muse AI Platform Push Change Meta Platforms' (META) Core Investment Narrative?",
+   "label": "FBI arrests OpenAI employee for planting listening device in office",
    "value": {
-    "headline": "Will Meta’s Muse AI Platform Push Change Meta Platforms' (META) Core Investment Narrative?",
+    "headline": "FBI arrests OpenAI employee for planting listening device in office",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791847436,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-muse-ai-platform-push-232356331.html?.tsrc=rss",
+    "ts": 1791985488,
+    "url": "https://finance.yahoo.com/video/fbi-arrests-openai-employee-for-planting-listening-device-in-office-134448529.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-muse-ai-platform-push-232356331.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/fbi-arrests-openai-employee-for-planting-listening-device-in-office-134448529.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Micron, Nvidia Lead AI Trade Lower; Apple, Meta Rally Near Buy Points",
+   "label": "Why Meta's AI bet could be mispriced",
    "value": {
-    "headline": "Dow Jones Futures: Micron, Nvidia Lead AI Trade Lower; Apple, Meta Rally Near Buy Points",
+    "headline": "Why Meta's AI bet could be mispriced",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791847013,
-    "url": "https://finance.yahoo.com/m/1b66e790-9e3e-3d5c-a8bf-167703811db3/dow-jones-futures%3A-micron%2C.html?.tsrc=rss",
+    "ts": 1791985168,
+    "url": "https://finance.yahoo.com/video/why-metas-ai-bet-could-be-mispriced-133928464.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/1b66e790-9e3e-3d5c-a8bf-167703811db3/dow-jones-futures%3A-micron%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/why-metas-ai-bet-could-be-mispriced-133928464.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Foc",
+   "label": "Guggenheim lifts Meta target as Muse usage builds",
    "value": {
-    "headline": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Focus",
+    "headline": "Guggenheim lifts Meta target as Muse usage builds",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791846618,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss",
+    "ts": 1791984532,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/guggenheim-lifts-meta-target-muse-132852462.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/guggenheim-lifts-meta-target-muse-132852462.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 485 分 / 207 留言",
+   "label": "HN 討論熱度 20 篇 / 236 分 / 106 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 485,
-    "comments": 207,
+    "points": 236,
+    "comments": 106,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-10-13",
+   "severity": "info",
+   "as_of": "2026-10-14",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -708,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

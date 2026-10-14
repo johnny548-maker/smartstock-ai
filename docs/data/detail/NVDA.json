@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": 226.32,
- "change_pct": -1.29,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 223.57,
+ "change_pct": -2.17,
  "ohlc": [
-  {
-   "time": "2026-07-20",
-   "o": 205.64,
-   "h": 207.51,
-   "l": 202.05,
-   "c": 203.05,
-   "v": 88701500
-  },
-  {
-   "time": "2026-07-21",
-   "o": 207.31,
-   "h": 208.42,
-   "l": 203.78,
-   "c": 207.06,
-   "v": 108685600
-  },
   {
    "time": "2026-07-22",
    "o": 205.58,
@@ -482,11 +466,27 @@
    "h": 228.86,
    "l": 224.9,
    "c": 226.32,
-   "v": 70089000
+   "v": 70690300
+  },
+  {
+   "time": "2026-10-13",
+   "o": 224.34,
+   "h": 228.64,
+   "l": 223.06,
+   "c": 228.52,
+   "v": 83846800
+  },
+  {
+   "time": "2026-10-14",
+   "o": 225.6,
+   "h": 226.0,
+   "l": 223.35,
+   "c": 223.57,
+   "v": 30454287
   }
  ],
  "sr": {
-  "price": 226.32,
+  "price": 223.57,
   "resistance": [
    227.67,
    229.98
@@ -495,11 +495,9 @@
    221.09,
    215.96
   ],
-  "strong_support": 163.9
+  "strong_support": 189.8
  },
  "spark": [
-  203.05,
-  207.06,
   211.82,
   208.53,
   206.61,
@@ -557,182 +555,13 @@
   237.47,
   230.48,
   229.28,
-  226.32
+  226.32,
+  228.52,
+  223.57
  ],
- "spark_start": "2026-07-20",
- "spark_end": "2026-10-12",
- "fundamental": {
-  "pe_trailing": 28.648546,
-  "pe_forward": 14.239126,
-  "eps_trailing": 7.91,
-  "eps_forward": 15.9146,
-  "stale": true,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 226.32,
-  "stop": 215.79,
-  "target": 252.64,
-  "atr_bracket": 252.64,
-  "measured_move": 265.65,
-  "target_band": [
-   252.64,
-   265.65
-  ],
-  "stop_pct": -4.7,
-  "target_pct": 11.6,
-  "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 219.51,
-  "chandelier": 227.61,
-  "fib_targets": []
- },
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "35.16 Billion Reasons Micron Stock Is Headed to $3,000",
-   "value": {
-    "headline": "35.16 Billion Reasons Micron Stock Is Headed to $3,000",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791850800,
-    "url": "https://www.fool.com/investing/2026/10/12/3516-billion-reasons-micron-stock-is-headed-to-300/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/12/3516-billion-reasons-micron-stock-is-headed-to-300/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Shopify Stock Popped by Nearly 5% Today",
-   "value": {
-    "headline": "Why Shopify Stock Popped by Nearly 5% Today",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791850611,
-    "url": "https://www.fool.com/investing/2026/10/12/why-shopify-stock-popped-by-nearly-5-today/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/12/why-shopify-stock-popped-by-nearly-5-today/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia’s 'Reflection' move could put customers on edge",
-   "value": {
-    "headline": "Nvidia’s 'Reflection' move could put customers on edge",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791849780,
-    "url": "https://www.thestreet.com/investing/nvidias-reflection-move-could-put-customers-on-edge?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/investing/nvidias-reflection-move-could-put-customers-on-edge?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "$2.9 Billion Contract in Hand, Anduril May Already Be America's Second-Biggest Navy Warship Builder",
-   "value": {
-    "headline": "$2.9 Billion Contract in Hand, Anduril May Already Be America's Second-Biggest Navy Warship Builder",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791849000,
-    "url": "https://www.fool.com/investing/2026/10/12/anduril-americas-second-biggest-navy-shipbuilder/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/12/anduril-americas-second-biggest-navy-shipbuilder/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Harmony Biosciences Stock Got Mashed on Monday",
-   "value": {
-    "headline": "Why Harmony Biosciences Stock Got Mashed on Monday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791848192,
-    "url": "https://www.fool.com/investing/2026/10/12/why-harmony-biosciences-stock-got-mashed-on-monday/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/12/why-harmony-biosciences-stock-got-mashed-on-monday/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 2 篇 / 59 分 / 9 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 59,
-    "comments": 9,
-    "n": 2,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 228,010 股交割失敗）",
-   "value": {
-    "total_shares": 228010,
-    "days": 6,
-    "max_shares": 203811,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-13",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "spark_start": "2026-07-22",
+ "spark_end": "2026-10-14",
+ "fundamental": null,
+ "levels": null,
+ "generated_for": "detail"
 }

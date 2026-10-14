@@ -1,25 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 541.15,
- "change_pct": 1.14,
+ "price": 538.37,
+ "change_pct": -0.93,
  "ohlc": [
-  {
-   "time": "2026-07-20",
-   "o": 390.67,
-   "h": 402.42,
-   "l": 388.92,
-   "c": 401.53,
-   "v": 27915800
-  },
-  {
-   "time": "2026-07-21",
-   "o": 398.06,
-   "h": 400.72,
-   "l": 395.58,
-   "c": 397.0,
-   "v": 24126600
-  },
   {
    "time": "2026-07-22",
    "o": 398.83,
@@ -482,23 +466,37 @@
    "h": 542.74,
    "l": 535.7,
    "c": 541.15,
-   "v": 18292000
+   "v": 18314900
+  },
+  {
+   "time": "2026-10-13",
+   "o": 544.64,
+   "h": 551.15,
+   "l": 543.06,
+   "c": 543.45,
+   "v": 23824500
+  },
+  {
+   "time": "2026-10-14",
+   "o": 545.15,
+   "h": 545.74,
+   "l": 537.42,
+   "c": 538.37,
+   "v": 5658249
   }
  ],
  "sr": {
-  "price": 541.15,
+  "price": 538.37,
   "resistance": [
    549.2
   ],
   "support": [
-   491.22,
-   489.22
+   518.79,
+   491.22
   ],
   "strong_support": 348.54
  },
  "spark": [
-  401.53,
-  397.0,
   389.61,
   380.86,
   380.98,
@@ -556,35 +554,37 @@
   529.76,
   522.61,
   535.07,
-  541.15
+  541.15,
+  543.45,
+  538.37
  ],
- "spark_start": "2026-07-20",
- "spark_end": "2026-10-12",
+ "spark_start": "2026-07-22",
+ "spark_end": "2026-10-14",
  "fundamental": {
-  "pe_trailing": 30.106403,
-  "pe_forward": 22.82395,
+  "pe_trailing": 29.993872,
+  "pe_forward": 22.74175,
   "eps_trailing": 17.95,
-  "eps_forward": 23.67732,
-  "stale": true,
+  "eps_forward": 23.67408,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 541.15,
-  "stop": 516.74,
-  "target": 602.18,
-  "atr_bracket": 602.18,
+  "entry": 538.37,
+  "stop": 514.62,
+  "target": 597.76,
+  "atr_bracket": 597.76,
   "measured_move": 580.16,
   "target_band": [
    580.16,
    590.74,
-   602.18
+   597.76
   ],
-  "stop_pct": -4.5,
-  "target_pct": 11.3,
+  "stop_pct": -4.4,
+  "target_pct": 11.0,
   "rr": 2.5,
-  "atr_pct": 2.3,
-  "swing_stop": 515.13,
-  "chandelier": 507.78,
+  "atr_pct": 2.2,
+  "swing_stop": 515.23,
+  "chandelier": 516.57,
   "fib_targets": [
    575.36,
    590.74,
@@ -596,101 +596,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Foc",
+   "label": "Othello Raises $8 Million for Real-Time AI Sales Coaching During Live Calls",
    "value": {
-    "headline": "S&P 500, Nasdaq 100 End Lower On Chipmaker Weakness, While Salesforce Gains Aid Dow — META, MSFT, BMBL, CRM, SNAP In Focus",
+    "headline": "Othello Raises $8 Million for Real-Time AI Sales Coaching During Live Calls",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791846618,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss",
+    "ts": 1791988980,
+    "url": "https://finance.yahoo.com/technology/ai/articles/othello-raises-8-million-real-144300024.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-100-end-lower-on-chipmaker-weakness/cZxIpqHRB8Y?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/othello-raises-8-million-real-144300024.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Find Strong Cloud Stocks Using This Zacks Tool",
+   "label": "These 3 Oil Giants Make Money Beyond the Wellhead. That’s Good News for Dividends",
    "value": {
-    "headline": "Find Strong Cloud Stocks Using This Zacks Tool",
+    "headline": "These 3 Oil Giants Make Money Beyond the Wellhead. That’s Good News for Dividends",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791846000,
-    "url": "https://finance.yahoo.com/technology/articles/strong-cloud-stocks-using-zacks-230000113.html?.tsrc=rss",
+    "ts": 1791987334,
+    "url": "https://247wallst.com/investing/2026/10/14/these-3-oil-giants-make-money-beyond-the-wellhead-thats-good-news-for-dividends/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/strong-cloud-stocks-using-zacks-230000113.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/14/these-3-oil-giants-make-money-beyond-the-wellhead-thats-good-news-for-dividends/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Meta's Next Big Thing Already Here?",
+   "label": "Michael Burry Questions Microsoft’s AI Spending. Is Its Valuation Misleading?",
    "value": {
-    "headline": "Is Meta's Next Big Thing Already Here?",
+    "headline": "Michael Burry Questions Microsoft’s AI Spending. Is Its Valuation Misleading?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791844720,
-    "url": "https://www.trefis.com/articles/618323/is-metas-next-big-thing-already-here/2026-10-12?.tsrc=rss",
+    "ts": 1791985767,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-questions-microsoft-ai-134927433.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/618323/is-metas-next-big-thing-already-here/2026-10-12?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/michael-burry-questions-microsoft-ai-134927433.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Are QBTS Stock Investors Overlooking?",
+   "label": "Chevron’s Big Rally Couldn’t Erase a Decade of Underperformance",
    "value": {
-    "headline": "What Are QBTS Stock Investors Overlooking?",
+    "headline": "Chevron’s Big Rally Couldn’t Erase a Decade of Underperformance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791842847,
-    "url": "https://www.trefis.com/articles/618340/what-are-qbts-stock-investors-overlooking/2026-10-12?.tsrc=rss",
+    "ts": 1791983748,
+    "url": "https://247wallst.com/investing/2026/10/14/chevrons-big-rally-couldnt-erase-a-decade-of-underperformance/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/618340/what-are-qbts-stock-investors-overlooking/2026-10-12?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/14/chevrons-big-rally-couldnt-erase-a-decade-of-underperformance/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
+   "label": "Voice AI model built to accurately capture real multilingual medical conversations",
    "value": {
-    "headline": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
+    "headline": "Voice AI model built to accurately capture real multilingual medical conversations",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791842611,
-    "url": "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss",
+    "ts": 1791983640,
+    "url": "https://finance.yahoo.com/healthcare/articles/voice-ai-model-built-accurately-131400498.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss"
+     "https://finance.yahoo.com/healthcare/articles/voice-ai-model-built-accurately-131400498.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-13",
+   "severity": "info",
+   "as_of": "2026-10-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -705,7 +705,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -720,7 +720,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
