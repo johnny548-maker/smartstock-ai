@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 345.67,
- "change_pct": 1.29,
+ "price": 344.64,
+ "change_pct": 0.49,
  "ohlc": [
-  {
-   "time": "2026-07-22",
-   "o": 327.59,
-   "h": 328.72,
-   "l": 323.06,
-   "c": 325.61,
-   "v": 38755900
-  },
   {
    "time": "2026-07-23",
    "o": 321.45,
@@ -474,20 +466,30 @@
    "h": 348.15,
    "l": 340.74,
    "c": 341.27,
-   "v": 38946900
+   "v": 38983800
   },
   {
    "time": "2026-10-14",
    "o": 344.61,
-   "h": 347.07,
-   "l": 343.65,
-   "c": 345.67,
-   "v": 13696300
+   "h": 347.09,
+   "l": 341.72,
+   "c": 342.96,
+   "v": 49861700
+  },
+  {
+   "time": "2026-10-15",
+   "o": 346.95,
+   "h": 347.85,
+   "l": 344.15,
+   "c": 344.64,
+   "v": 12337873
   }
  ],
  "sr": {
-  "price": 345.67,
-  "resistance": [],
+  "price": 344.64,
+  "resistance": [
+   345.34
+  ],
   "support": [
    325.81,
    319.07
@@ -495,7 +497,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  325.61,
   321.38,
   332.73,
   336.62,
@@ -554,16 +555,17 @@
   336.64,
   340.97,
   341.27,
-  345.67
+  342.96,
+  344.64
  ],
- "spark_start": "2026-07-22",
- "spark_end": "2026-10-14",
+ "spark_start": "2026-07-23",
+ "spark_end": "2026-10-15",
  "fundamental": {
   "pe_trailing": 39.64392,
   "pe_forward": 36.04519,
   "eps_trailing": 8.72,
   "eps_forward": 9.5906,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -572,132 +574,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Agentic AI Skepticism: Apple and Salesforce Face a Common Issue",
+   "label": "As AI stocks plunge, Apple is riding high",
    "value": {
-    "headline": "Agentic AI Skepticism: Apple and Salesforce Face a Common Issue",
+    "headline": "As AI stocks plunge, Apple is riding high",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791989154,
-    "url": "https://247wallst.com/investing/2026/10/14/agentic-ai-skepticism-apple-and-salesforce-face-a-common-issue/?.tsrc=rss",
+    "ts": 1792076652,
+    "url": "https://finance.yahoo.com/technology/article/as-ai-stocks-plunge-apple-is-riding-high-150412052.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/14/agentic-ai-skepticism-apple-and-salesforce-face-a-common-issue/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/as-ai-stocks-plunge-apple-is-riding-high-150412052.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-14",
+   "severity": "warn",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Qualcomm Vs. Intel: The Market is Refuting Both AI Rebrand Attempts",
+   "label": "Robinhood, Cboe Expand Prediction Market Offerings After SEC Win",
    "value": {
-    "headline": "Qualcomm Vs. Intel: The Market is Refuting Both AI Rebrand Attempts",
+    "headline": "Robinhood, Cboe Expand Prediction Market Offerings After SEC Win",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791989152,
-    "url": "https://247wallst.com/investing/2026/10/14/qualcomm-vs-intel-the-market-is-refuting-both-ai-rebrand-attempts/?.tsrc=rss",
+    "ts": 1792075914,
+    "url": "https://finance.yahoo.com/m/43e15f4c-378a-35ca-8bcb-ce6c42c9c5ef/robinhood%2C-cboe-expand.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/14/qualcomm-vs-intel-the-market-is-refuting-both-ai-rebrand-attempts/?.tsrc=rss"
+     "https://finance.yahoo.com/m/43e15f4c-378a-35ca-8bcb-ce6c42c9c5ef/robinhood%2C-cboe-expand.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple is finally taking the smart home seriously",
+   "label": "Japan Is Putting Up to $21 Billion Into New GlobalFoundries Chip Plants in New York",
    "value": {
-    "headline": "Apple is finally taking the smart home seriously",
+    "headline": "Japan Is Putting Up to $21 Billion Into New GlobalFoundries Chip Plants in New York",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791984289,
-    "url": "https://finance.yahoo.com/technology/article/apple-is-finally-taking-the-smart-home-seriously-132449980.html?.tsrc=rss",
+    "ts": 1792075578,
+    "url": "https://247wallst.com/investing/2026/10/15/japan-is-putting-up-to-21-billion-into-new-globalfoundries-chip-plants-in-new-york/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/apple-is-finally-taking-the-smart-home-seriously-132449980.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/15/japan-is-putting-up-to-21-billion-into-new-globalfoundries-chip-plants-in-new-york/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Global X Launches PowerStock ETF Suite to Give Canadians 33% More Exposure to Their Highest Conviction Stocks",
+   "label": "iPhone Duo: Damaging Apple’s new folding phone could cost you $1,499",
    "value": {
-    "headline": "Global X Launches PowerStock ETF Suite to Give Canadians 33% More Exposure to Their Highest Conviction Stocks",
+    "headline": "iPhone Duo: Damaging Apple’s new folding phone could cost you $1,499",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791979200,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/global-x-launches-powerstock-etf-120000112.html?.tsrc=rss",
+    "ts": 1792074016,
+    "url": "https://www.independent.co.uk/tech/iphone-duo-apple-price-cost-repair-b3067484.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/global-x-launches-powerstock-etf-120000112.html?.tsrc=rss"
+     "https://www.independent.co.uk/tech/iphone-duo-apple-price-cost-repair-b3067484.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The S&P 500 Is Dangerously Concentrated in 5 Tech Giants. Are They Still Buys?",
+   "label": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
    "value": {
-    "headline": "The S&P 500 Is Dangerously Concentrated in 5 Tech Giants. Are They Still Buys?",
+    "headline": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791978000,
-    "url": "https://www.fool.com/investing/2026/10/14/sp-500-concentrated-tech-giant-buy-stocks/?.tsrc=rss",
+    "ts": 1792074000,
+    "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/14/sp-500-concentrated-tech-giant-buy-stocks/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 134 分 / 96 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 134,
-    "comments": 96,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -711,7 +698,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

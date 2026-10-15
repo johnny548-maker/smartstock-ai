@@ -1,17 +1,9 @@
 {
  "stock": "6213",
  "name": "聯茂",
- "price": 856.0,
- "change_pct": 7.67,
+ "price": 799.0,
+ "change_pct": -6.66,
  "ohlc": [
-  {
-   "time": "2026-07-20",
-   "o": 332.0,
-   "h": 343.0,
-   "l": 312.0,
-   "c": 322.5,
-   "v": 36054394
-  },
   {
    "time": "2026-07-21",
    "o": 334.0,
@@ -482,11 +474,19 @@
    "h": 858.0,
    "l": 813.0,
    "c": 856.0,
-   "v": 4847238
+   "v": 4616131
+  },
+  {
+   "time": "2026-10-15",
+   "o": 801.0,
+   "h": 836.0,
+   "l": 779.0,
+   "c": 799.0,
+   "v": 6872113
   }
  ],
  "sr": {
-  "price": 856.0,
+  "price": 799.0,
   "resistance": [],
   "support": [
    493.5,
@@ -495,7 +495,6 @@
   "strong_support": 46.77
  },
  "spark": [
-  322.5,
   354.5,
   367.0,
   343.5,
@@ -554,10 +553,11 @@
   806.0,
   812.0,
   795.0,
-  856.0
+  856.0,
+  799.0
  ],
- "spark_start": "2026-07-20",
- "spark_end": "2026-10-14",
+ "spark_start": "2026-07-21",
+ "spark_end": "2026-10-15",
  "fundamental": {
   "rev_yoy": 110.7,
   "rev_accel": true,
@@ -570,39 +570,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 306,309 股",
+   "label": "三大法人賣超 1,362,887 股",
    "value": {
-    "foreign": 53222,
-    "trust": 93000,
-    "dealer": 160087,
-    "total": 306309
+    "foreign": -1676972,
+    "trust": 695000,
+    "dealer": -380915,
+    "total": -1362887
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -100
-   },
-   "severity": "info",
-   "as_of": "2026-10-14",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 123.3 / 殖利率 0.38% / PB 12.79",
+   "label": "PE 132.7 / 殖利率 0.35% / PB 13.78",
    "value": {
-    "pe": 123.26,
-    "yield": 0.38,
-    "pb": 12.79
+    "pe": 132.71,
+    "yield": 0.35,
+    "pb": 13.78
    },
    "severity": "info",
-   "as_of": "2026-10-13",
+   "as_of": "2026-10-14",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -615,7 +604,7 @@
     "period": "115/10/08～115/10/19"
    },
    "severity": "warn",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
   },
   {
@@ -623,12 +612,12 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 1005,
+    "short_today": 1022,
     "outstanding": 363597218,
-    "short_pct": 0.00027640475511008997
+    "short_pct": 0.00028108025843036013
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
@@ -643,76 +632,36 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "鉅亨速報 - Factset 最新調查:聯茂(6213-TW)EPS預估上修至17.47元,預估目標價為660元",
+   "label": "AI訂單做到做不完! 聯茂高階CCL追上來 特殊基板市占衝全球第二",
    "value": {
-    "headline": "鉅亨速報 - Factset 最新調查:聯茂(6213-TW)EPS預估上修至17.47元,預估目標價為660元",
+    "headline": "AI訂單做到做不完! 聯茂高階CCL追上來 特殊基板市占衝全球第二",
     "sources": [
-     "cnyes"
+     "udn"
     ],
     "source_count": 1,
-    "ts": 1791987080,
-    "url": "cnyes:6630547",
+    "ts": 1792063020,
+    "url": "https://money.udn.com/money/story/5612/9817448",
     "urls": [
-     "cnyes:6630547"
+     "https://money.udn.com/money/story/5612/9817448"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "鉅亨速報 - Factset 最新調查:聯茂(6213-TW)目標價調升至660元,幅度約8.2%",
-   "value": {
-    "headline": "鉅亨速報 - Factset 最新調查:聯茂(6213-TW)目標價調升至660元,幅度約8.2%",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1791987025,
-    "url": "cnyes:6630546",
-    "urls": [
-     "cnyes:6630546"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-14",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "CCL三雄誰最會賺?台光電(2383)、台燿(6274)、聯茂(6213) 產品布局、漲價動能全解析",
-   "value": {
-    "headline": "CCL三雄誰最會賺?台光電(2383)、台燿(6274)、聯茂(6213) 產品布局、漲價動能全解析",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1791972007,
-    "url": "cnyes:6630357",
-    "urls": [
-     "cnyes:6630357"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 3 則（最高 1 來源確認）",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 3,
+    "headline_count": 1,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes"
+     "udn"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
@@ -1089,6 +1038,10 @@
    {
     "t": "2026-10-14",
     "v": 52268
+   },
+   {
+    "t": "2026-10-15",
+    "v": 50905
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 742.89,
- "change_pct": -2.57,
+ "price": 733.03,
+ "change_pct": -0.61,
  "ohlc": [
-  {
-   "time": "2026-07-22",
-   "o": 647.19,
-   "h": 648.49,
-   "l": 623.51,
-   "c": 626.68,
-   "v": 11019600
-  },
   {
    "time": "2026-07-23",
    "o": 607.93,
@@ -474,22 +466,30 @@
    "h": 771.27,
    "l": 734.84,
    "c": 762.5,
-   "v": 22679300
+   "v": 22706200
   },
   {
    "time": "2026-10-14",
    "o": 760.75,
-   "h": 761.48,
-   "l": 741.34,
-   "c": 742.89,
-   "v": 6033851
+   "h": 761.5,
+   "l": 734.29,
+   "c": 737.54,
+   "v": 16127600
+  },
+  {
+   "time": "2026-10-15",
+   "o": 726.1,
+   "h": 735.7,
+   "l": 715.58,
+   "c": 733.03,
+   "v": 5252576
   }
  ],
  "sr": {
-  "price": 742.89,
+  "price": 733.03,
   "resistance": [
-   747.6,
-   756.59
+   742.09,
+   747.6
   ],
   "support": [
    713.19,
@@ -498,7 +498,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  626.68,
   605.62,
   594.72,
   593.4,
@@ -557,150 +556,154 @@
   718.67,
   742.96,
   762.5,
-  742.89
+  737.54,
+  733.03
  ],
- "spark_start": "2026-07-22",
- "spark_end": "2026-10-14",
+ "spark_start": "2026-07-23",
+ "spark_end": "2026-10-15",
  "fundamental": {
   "pe_trailing": 27.991333,
   "pe_forward": 21.438059,
   "eps_trailing": 26.54,
   "eps_forward": 34.65286,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 733.03,
+  "stop": 689.34,
+  "target": 842.27,
+  "atr_bracket": 842.27,
+  "measured_move": 830.86,
+  "target_band": [
+   830.86,
+   842.27
+  ],
+  "stop_pct": -6.0,
+  "target_pct": 14.9,
+  "rr": 2.5,
+  "atr_pct": 3.0,
+  "swing_stop": 705.13,
+  "chandelier": 701.19,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Muse Got Meta to Consumer-Scale Agentic Execution First And That Matters",
+   "label": "Consumer goods giants step up ad intensity as other big spenders pull back: report",
    "value": {
-    "headline": "Muse Got Meta to Consumer-Scale Agentic Execution First And That Matters",
+    "headline": "Consumer goods giants step up ad intensity as other big spenders pull back: report",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791989141,
-    "url": "https://247wallst.com/investing/2026/10/14/muse-got-meta-to-consumer-scale-agentic-execution-first-and-that-matters/?.tsrc=rss",
+    "ts": 1792075680,
+    "url": "https://www.marketingdive.com/news/consumer-goods-giants-step-up-ad-intensity-as-other-big-spenders-pull-back/833102/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/14/muse-got-meta-to-consumer-scale-agentic-execution-first-and-that-matters/?.tsrc=rss"
+     "https://www.marketingdive.com/news/consumer-goods-giants-step-up-ad-intensity-as-other-big-spenders-pull-back/833102/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-14",
+   "severity": "info",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What a $1.3 Billion Bumble Deal Says About Where AI Leaves Human Connection",
+   "label": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
    "value": {
-    "headline": "What a $1.3 Billion Bumble Deal Says About Where AI Leaves Human Connection",
+    "headline": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791987155,
-    "url": "https://beincrypto.com/bumble-acquisition-ithaca-ai-bet/?.tsrc=rss",
+    "ts": 1792075502,
+    "url": "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/bumble-acquisition-ithaca-ai-bet/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "FBI arrests OpenAI employee for planting listening device in office",
+   "label": "Unum Group Declares Quarterly Dividend of $0.505 Per Share of Its Common Stock",
    "value": {
-    "headline": "FBI arrests OpenAI employee for planting listening device in office",
+    "headline": "Unum Group Declares Quarterly Dividend of $0.505 Per Share of Its Common Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791985488,
-    "url": "https://finance.yahoo.com/video/fbi-arrests-openai-employee-for-planting-listening-device-in-office-134448529.html?.tsrc=rss",
+    "ts": 1792074600,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/unum-group-declares-quarterly-dividend-143000472.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/fbi-arrests-openai-employee-for-planting-listening-device-in-office-134448529.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/unum-group-declares-quarterly-dividend-143000472.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Meta's AI bet could be mispriced",
+   "label": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
    "value": {
-    "headline": "Why Meta's AI bet could be mispriced",
+    "headline": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791985168,
-    "url": "https://finance.yahoo.com/video/why-metas-ai-bet-could-be-mispriced-133928464.html?.tsrc=rss",
+    "ts": 1792074000,
+    "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/why-metas-ai-bet-could-be-mispriced-133928464.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Guggenheim lifts Meta target as Muse usage builds",
+   "label": "Prediction: Broadcom Could Be the AI Winner After Nvidia",
    "value": {
-    "headline": "Guggenheim lifts Meta target as Muse usage builds",
+    "headline": "Prediction: Broadcom Could Be the AI Winner After Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791984532,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/guggenheim-lifts-meta-target-muse-132852462.html?.tsrc=rss",
+    "ts": 1792073708,
+    "url": "https://247wallst.com/investing/2026/10/15/prediction-broadcom-could-be-the-ai-winner-after-nvidia/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/guggenheim-lifts-meta-target-muse-132852462.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/15/prediction-broadcom-could-be-the-ai-winner-after-nvidia/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 236 分 / 106 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 236,
-    "comments": 106,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-14",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +717,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

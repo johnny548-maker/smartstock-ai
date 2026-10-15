@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 538.37,
- "change_pct": -0.93,
+ "price": 538.05,
+ "change_pct": 0.82,
  "ohlc": [
-  {
-   "time": "2026-07-22",
-   "o": 398.83,
-   "h": 400.25,
-   "l": 386.23,
-   "c": 389.61,
-   "v": 28142500
-  },
   {
    "time": "2026-07-23",
    "o": 389.24,
@@ -474,19 +466,27 @@
    "h": 551.15,
    "l": 543.06,
    "c": 543.45,
-   "v": 23824500
+   "v": 23852000
   },
   {
    "time": "2026-10-14",
-   "o": 545.15,
-   "h": 545.74,
-   "l": 537.42,
-   "c": 538.37,
-   "v": 5658249
+   "o": 545.27,
+   "h": 545.75,
+   "l": 532.54,
+   "c": 533.69,
+   "v": 22200800
+  },
+  {
+   "time": "2026-10-15",
+   "o": 533.66,
+   "h": 539.32,
+   "l": 531.22,
+   "c": 538.05,
+   "v": 6943658
   }
  ],
  "sr": {
-  "price": 538.37,
+  "price": 538.05,
   "resistance": [
    549.2
   ],
@@ -497,7 +497,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  389.61,
   380.86,
   380.98,
   388.37,
@@ -556,156 +555,135 @@
   535.07,
   541.15,
   543.45,
-  538.37
+  533.69,
+  538.05
  ],
- "spark_start": "2026-07-22",
- "spark_end": "2026-10-14",
+ "spark_start": "2026-07-23",
+ "spark_end": "2026-10-15",
  "fundamental": {
   "pe_trailing": 29.993872,
   "pe_forward": 22.74175,
   "eps_trailing": 17.95,
   "eps_forward": 23.67408,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 538.37,
-  "stop": 514.62,
-  "target": 597.76,
-  "atr_bracket": 597.76,
-  "measured_move": 580.16,
-  "target_band": [
-   580.16,
-   590.74,
-   597.76
-  ],
-  "stop_pct": -4.4,
-  "target_pct": 11.0,
-  "rr": 2.5,
-  "atr_pct": 2.2,
-  "swing_stop": 515.23,
-  "chandelier": 516.57,
-  "fib_targets": [
-   575.36,
-   590.74,
-   607.73
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Othello Raises $8 Million for Real-Time AI Sales Coaching During Live Calls",
+   "label": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
    "value": {
-    "headline": "Othello Raises $8 Million for Real-Time AI Sales Coaching During Live Calls",
+    "headline": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791988980,
-    "url": "https://finance.yahoo.com/technology/ai/articles/othello-raises-8-million-real-144300024.html?.tsrc=rss",
+    "ts": 1792075502,
+    "url": "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/othello-raises-8-million-real-144300024.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "These 3 Oil Giants Make Money Beyond the Wellhead. That’s Good News for Dividends",
+   "label": "Microsoft (MSFT), Why Is It Back In The Spotlight?",
    "value": {
-    "headline": "These 3 Oil Giants Make Money Beyond the Wellhead. That’s Good News for Dividends",
+    "headline": "Microsoft (MSFT), Why Is It Back In The Spotlight?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791987334,
-    "url": "https://247wallst.com/investing/2026/10/14/these-3-oil-giants-make-money-beyond-the-wellhead-thats-good-news-for-dividends/?.tsrc=rss",
+    "ts": 1792073479,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-why-back-spotlight-141119833.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/14/these-3-oil-giants-make-money-beyond-the-wellhead-thats-good-news-for-dividends/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-why-back-spotlight-141119833.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Michael Burry Questions Microsoft’s AI Spending. Is Its Valuation Misleading?",
+   "label": "North.cloud Raises $60M Series B to Unify Spend Intelligence and Enable Full Automation Across Cloud, AI, and Data",
    "value": {
-    "headline": "Michael Burry Questions Microsoft’s AI Spending. Is Its Valuation Misleading?",
+    "headline": "North.cloud Raises $60M Series B to Unify Spend Intelligence and Enable Full Automation Across Cloud, AI, and Data",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791985767,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-questions-microsoft-ai-134927433.html?.tsrc=rss",
+    "ts": 1792072800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/north-cloud-raises-60m-series-140000691.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/michael-burry-questions-microsoft-ai-134927433.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/north-cloud-raises-60m-series-140000691.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Chevron’s Big Rally Couldn’t Erase a Decade of Underperformance",
+   "label": "Microsoft’s Brad Smith Says Green-Card Curbs Could “Cripple” U.S. Tech. Here’s How Much It Hits Microsoft",
    "value": {
-    "headline": "Chevron’s Big Rally Couldn’t Erase a Decade of Underperformance",
+    "headline": "Microsoft’s Brad Smith Says Green-Card Curbs Could “Cripple” U.S. Tech. Here’s How Much It Hits Microsoft",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791983748,
-    "url": "https://247wallst.com/investing/2026/10/14/chevrons-big-rally-couldnt-erase-a-decade-of-underperformance/?.tsrc=rss",
+    "ts": 1792072710,
+    "url": "https://www.tikr.com/blog/microsofts-brad-smith-says-green-card-curbs-could-cripple-u-s-tech-heres-how-much-it-hits-microsoft?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/14/chevrons-big-rally-couldnt-erase-a-decade-of-underperformance/?.tsrc=rss"
+     "https://www.tikr.com/blog/microsofts-brad-smith-says-green-card-curbs-could-cripple-u-s-tech-heres-how-much-it-hits-microsoft?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Voice AI model built to accurately capture real multilingual medical conversations",
+   "label": "Microsoft (MSFT): Can Security Bundles Generate More Profit per Customer?",
    "value": {
-    "headline": "Voice AI model built to accurately capture real multilingual medical conversations",
+    "headline": "Microsoft (MSFT): Can Security Bundles Generate More Profit per Customer?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1791983640,
-    "url": "https://finance.yahoo.com/healthcare/articles/voice-ai-model-built-accurately-131400498.html?.tsrc=rss",
+    "ts": 1792072376,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-security-bundles-generate-135256407.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/healthcare/articles/voice-ai-model-built-accurately-131400498.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-security-bundles-generate-135256407.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -720,7 +698,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-14",
+   "as_of": "2026-10-15",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
