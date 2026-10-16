@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 344.64,
- "change_pct": 0.49,
+ "price": 344.94,
+ "change_pct": 0.86,
  "ohlc": [
-  {
-   "time": "2026-07-23",
-   "o": 321.45,
-   "h": 323.02,
-   "l": 319.07,
-   "c": 321.38,
-   "v": 40840800
-  },
   {
    "time": "2026-07-24",
    "o": 321.51,
@@ -474,21 +466,30 @@
    "h": 347.09,
    "l": 341.72,
    "c": 342.96,
-   "v": 49861700
+   "v": 50061100
   },
   {
    "time": "2026-10-15",
    "o": 346.95,
    "h": 347.85,
-   "l": 344.15,
-   "c": 344.64,
-   "v": 12337873
+   "l": 341.6,
+   "c": 342.0,
+   "v": 39678300
+  },
+  {
+   "time": "2026-10-16",
+   "o": 346.08,
+   "h": 347.82,
+   "l": 342.03,
+   "c": 344.94,
+   "v": 20469439
   }
  ],
  "sr": {
-  "price": 344.64,
+  "price": 344.94,
   "resistance": [
-   345.34
+   345.34,
+   348.15
   ],
   "support": [
    325.81,
@@ -497,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  321.38,
   332.73,
   336.62,
   339.79,
@@ -556,16 +556,17 @@
   340.97,
   341.27,
   342.96,
-  344.64
+  342.0,
+  344.94
  ],
- "spark_start": "2026-07-23",
- "spark_end": "2026-10-15",
+ "spark_start": "2026-07-24",
+ "spark_end": "2026-10-16",
  "fundamental": {
-  "pe_trailing": 39.64392,
-  "pe_forward": 36.04519,
+  "pe_trailing": 39.553898,
+  "pe_forward": 36.01121,
   "eps_trailing": 8.72,
-  "eps_forward": 9.5906,
-  "stale": true,
+  "eps_forward": 9.57785,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "As AI stocks plunge, Apple is riding high",
+   "label": "Apple Called Top Defensive Play With AI Stocks Under Pressure",
    "value": {
-    "headline": "As AI stocks plunge, Apple is riding high",
+    "headline": "Apple Called Top Defensive Play With AI Stocks Under Pressure",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792076652,
-    "url": "https://finance.yahoo.com/technology/article/as-ai-stocks-plunge-apple-is-riding-high-150412052.html?.tsrc=rss",
+    "ts": 1792161451,
+    "url": "https://finance.yahoo.com/m/045f87ac-8907-3285-9a92-e85a335bbc48/apple-called-top-defensive.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/as-ai-stocks-plunge-apple-is-riding-high-150412052.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/045f87ac-8907-3285-9a92-e85a335bbc48/apple-called-top-defensive.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-15",
+   "severity": "info",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Robinhood, Cboe Expand Prediction Market Offerings After SEC Win",
+   "label": "Apple’s $1,999 Foldable Is Backordered to 2027. Here’s What That Does and Doesn’t Mean",
    "value": {
-    "headline": "Robinhood, Cboe Expand Prediction Market Offerings After SEC Win",
+    "headline": "Apple’s $1,999 Foldable Is Backordered to 2027. Here’s What That Does and Doesn’t Mean",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792075914,
-    "url": "https://finance.yahoo.com/m/43e15f4c-378a-35ca-8bcb-ce6c42c9c5ef/robinhood%2C-cboe-expand.html?.tsrc=rss",
+    "ts": 1792161236,
+    "url": "https://www.tikr.com/blog/apples-1999-foldable-is-backordered-to-2027-heres-what-that-does-and-doesnt-mean?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/43e15f4c-378a-35ca-8bcb-ce6c42c9c5ef/robinhood%2C-cboe-expand.html?.tsrc=rss"
+     "https://www.tikr.com/blog/apples-1999-foldable-is-backordered-to-2027-heres-what-that-does-and-doesnt-mean?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Japan Is Putting Up to $21 Billion Into New GlobalFoundries Chip Plants in New York",
+   "label": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
    "value": {
-    "headline": "Japan Is Putting Up to $21 Billion Into New GlobalFoundries Chip Plants in New York",
+    "headline": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792075578,
-    "url": "https://247wallst.com/investing/2026/10/15/japan-is-putting-up-to-21-billion-into-new-globalfoundries-chip-plants-in-new-york/?.tsrc=rss",
+    "ts": 1792161077,
+    "url": "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/15/japan-is-putting-up-to-21-billion-into-new-globalfoundries-chip-plants-in-new-york/?.tsrc=rss"
+     "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "iPhone Duo: Damaging Apple’s new folding phone could cost you $1,499",
+   "label": "Stock Market Today: Dow Rises But Nasdaq Slammed; Restaurant Play Matches Its High (Live Coverage)",
    "value": {
-    "headline": "iPhone Duo: Damaging Apple’s new folding phone could cost you $1,499",
+    "headline": "Stock Market Today: Dow Rises But Nasdaq Slammed; Restaurant Play Matches Its High (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792074016,
-    "url": "https://www.independent.co.uk/tech/iphone-duo-apple-price-cost-repair-b3067484.html?.tsrc=rss",
+    "ts": 1792161019,
+    "url": "https://finance.yahoo.com/m/13e48d09-0976-3082-81ba-a828960757d8/stock-market-today%3A-dow-rises.html?.tsrc=rss",
     "urls": [
-     "https://www.independent.co.uk/tech/iphone-duo-apple-price-cost-repair-b3067484.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/13e48d09-0976-3082-81ba-a828960757d8/stock-market-today%3A-dow-rises.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+   "label": "AAPL Stock Gains As Strong Demand Reportedly Pushes iPhone Duo Delivery To December",
    "value": {
-    "headline": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+    "headline": "AAPL Stock Gains As Strong Demand Reportedly Pushes iPhone Duo Delivery To December",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792074000,
-    "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss",
+    "ts": 1792159448,
+    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-gains-as-strong-demand-reportedly-pushes-i-phone-duo-delivery-to-december/cZxK5AjRBsm?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-gains-as-strong-demand-reportedly-pushes-i-phone-duo-delivery-to-december/cZxK5AjRBsm?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -683,8 +684,23 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 141 分 / 38 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 141,
+    "comments": 38,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-16",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -698,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

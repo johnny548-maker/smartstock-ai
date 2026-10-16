@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 733.03,
- "change_pct": -0.61,
+ "price": 723.58,
+ "change_pct": -1.78,
  "ohlc": [
-  {
-   "time": "2026-07-23",
-   "o": 607.93,
-   "h": 614.17,
-   "l": 596.75,
-   "c": 605.62,
-   "v": 15494800
-  },
   {
    "time": "2026-07-24",
    "o": 604.82,
@@ -474,19 +466,27 @@
    "h": 761.5,
    "l": 734.29,
    "c": 737.54,
-   "v": 16127600
+   "v": 16236300
   },
   {
    "time": "2026-10-15",
-   "o": 726.1,
-   "h": 735.7,
+   "o": 726.56,
+   "h": 743.97,
    "l": 715.58,
-   "c": 733.03,
-   "v": 5252576
+   "c": 736.72,
+   "v": 16868800
+  },
+  {
+   "time": "2026-10-16",
+   "o": 736.7,
+   "h": 738.49,
+   "l": 719.9,
+   "c": 723.58,
+   "v": 5012081
   }
  ],
  "sr": {
-  "price": 733.03,
+  "price": 723.58,
   "resistance": [
    742.09,
    747.6
@@ -498,7 +498,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  605.62,
   594.72,
   593.4,
   592.94,
@@ -557,136 +556,120 @@
   742.96,
   762.5,
   737.54,
-  733.03
+  736.72,
+  723.58
  ],
- "spark_start": "2026-07-23",
- "spark_end": "2026-10-15",
+ "spark_start": "2026-07-24",
+ "spark_end": "2026-10-16",
  "fundamental": {
-  "pe_trailing": 27.991333,
-  "pe_forward": 21.438059,
+  "pe_trailing": 27.263748,
+  "pe_forward": 20.980349,
   "eps_trailing": 26.54,
-  "eps_forward": 34.65286,
-  "stale": true,
+  "eps_forward": 34.48846,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 733.03,
-  "stop": 689.34,
-  "target": 842.27,
-  "atr_bracket": 842.27,
-  "measured_move": 830.86,
-  "target_band": [
-   830.86,
-   842.27
-  ],
-  "stop_pct": -6.0,
-  "target_pct": 14.9,
-  "rr": 2.5,
-  "atr_pct": 3.0,
-  "swing_stop": 705.13,
-  "chandelier": 701.19,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Consumer goods giants step up ad intensity as other big spenders pull back: report",
+   "label": "AI infrastructure stocks sell off, but the data center boom rolls on",
    "value": {
-    "headline": "Consumer goods giants step up ad intensity as other big spenders pull back: report",
+    "headline": "AI infrastructure stocks sell off, but the data center boom rolls on",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792075680,
-    "url": "https://www.marketingdive.com/news/consumer-goods-giants-step-up-ad-intensity-as-other-big-spenders-pull-back/833102/?.tsrc=rss",
+    "ts": 1792161792,
+    "url": "https://finance.yahoo.com/video/ai-infrastructure-stocks-sell-off-but-the-data-center-boom-rolls-on-144312585.html?.tsrc=rss",
     "urls": [
-     "https://www.marketingdive.com/news/consumer-goods-giants-step-up-ad-intensity-as-other-big-spenders-pull-back/833102/?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-infrastructure-stocks-sell-off-but-the-data-center-boom-rolls-on-144312585.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
+   "label": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
    "value": {
-    "headline": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
+    "headline": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792075502,
-    "url": "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss",
+    "ts": 1792161077,
+    "url": "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss"
+     "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Unum Group Declares Quarterly Dividend of $0.505 Per Share of Its Common Stock",
+   "label": "Tesla Roadster Debut, Tech Sell-Off, and a college alternative for entrepreneurship",
    "value": {
-    "headline": "Unum Group Declares Quarterly Dividend of $0.505 Per Share of Its Common Stock",
+    "headline": "Tesla Roadster Debut, Tech Sell-Off, and a college alternative for entrepreneurship",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792074600,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/unum-group-declares-quarterly-dividend-143000472.html?.tsrc=rss",
+    "ts": 1792160010,
+    "url": "https://finance.yahoo.com/video/tesla-roadster-debut-tech-sell-off-and-a-college-alternative-for-entrepreneurship-141330415.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/unum-group-declares-quarterly-dividend-143000472.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/tesla-roadster-debut-tech-sell-off-and-a-college-alternative-for-entrepreneurship-141330415.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-15",
+   "severity": "warn",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+   "label": "Meta Releases Open-Weight Muse Spark Model for Developers and Coding Agents",
    "value": {
-    "headline": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+    "headline": "Meta Releases Open-Weight Muse Spark Model for Developers and Coding Agents",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792074000,
-    "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss",
+    "ts": 1792159039,
+    "url": "https://www.tikr.com/blog/meta-stock-open-weight-muse-spark-model?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?.tsrc=rss"
+     "https://www.tikr.com/blog/meta-stock-open-weight-muse-spark-model?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: Broadcom Could Be the AI Winner After Nvidia",
+   "label": "First Week of Q3 Earnings in the Books",
    "value": {
-    "headline": "Prediction: Broadcom Could Be the AI Winner After Nvidia",
+    "headline": "First Week of Q3 Earnings in the Books",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792073708,
-    "url": "https://247wallst.com/investing/2026/10/15/prediction-broadcom-could-be-the-ai-winner-after-nvidia/?.tsrc=rss",
+    "ts": 1792158060,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/first-week-q3-earnings-books-134100481.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/15/prediction-broadcom-could-be-the-ai-winner-after-nvidia/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/first-week-q3-earnings-books-134100481.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -697,12 +680,11 @@
     "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -717,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

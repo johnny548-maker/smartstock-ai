@@ -1,17 +1,9 @@
 {
  "stock": "2615",
  "name": "萬海",
- "price": 119.0,
- "change_pct": -4.8,
+ "price": 122.5,
+ "change_pct": 2.94,
  "ohlc": [
-  {
-   "time": "2026-07-21",
-   "o": 81.8,
-   "h": 85.8,
-   "l": 81.6,
-   "c": 85.2,
-   "v": 25788513
-  },
   {
    "time": "2026-07-22",
    "o": 85.2,
@@ -482,11 +474,19 @@
    "h": 126.0,
    "l": 119.0,
    "c": 119.0,
-   "v": 17467439
+   "v": 17343519
+  },
+  {
+   "time": "2026-10-16",
+   "o": 121.0,
+   "h": 127.0,
+   "l": 119.5,
+   "c": 122.5,
+   "v": 17760672
   }
  ],
  "sr": {
-  "price": 119.0,
+  "price": 122.5,
   "resistance": [
    124.03,
    125.0
@@ -498,7 +498,6 @@
   "strong_support": 56.77
  },
  "spark": [
-  85.2,
   85.1,
   84.5,
   87.0,
@@ -557,10 +556,11 @@
   121.0,
   121.5,
   125.0,
-  119.0
+  119.0,
+  122.5
  ],
- "spark_start": "2026-07-21",
- "spark_end": "2026-10-15",
+ "spark_start": "2026-07-22",
+ "spark_end": "2026-10-16",
  "fundamental": {
   "rev_yoy": 97.6,
   "rev_accel": true,
@@ -571,16 +571,54 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人賣超 789,589 股",
+   "value": {
+    "foreign": -1333413,
+    "trust": 90396,
+    "dealer": 453428,
+    "total": -789589
+   },
+   "severity": "info",
+   "as_of": "2026-10-16",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -101
+   },
+   "severity": "info",
+   "as_of": "2026-10-16",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 8.2 / 殖利率 2.52% / PB 1.16",
+   "value": {
+    "pe": 8.17,
+    "yield": 2.52,
+    "pb": 1.16
+   },
+   "severity": "info",
+   "as_of": "2026-10-15",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 1084,
+    "short_today": 983,
     "outstanding": 2806146293,
-    "short_pct": 3.8629489941563786e-05
+    "short_pct": 3.503024779756199e-05
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   }
  ],
@@ -961,6 +999,10 @@
    {
     "t": "2026-10-15",
     "v": 178831
+   },
+   {
+    "t": "2026-10-16",
+    "v": 178041
    }
   ],
   "holder_pct": [

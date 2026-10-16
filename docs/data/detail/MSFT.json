@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 538.05,
- "change_pct": 0.82,
+ "price": 534.74,
+ "change_pct": -0.87,
  "ohlc": [
-  {
-   "time": "2026-07-23",
-   "o": 389.24,
-   "h": 391.04,
-   "l": 376.68,
-   "c": 380.86,
-   "v": 30351800
-  },
   {
    "time": "2026-07-24",
    "o": 386.32,
@@ -474,21 +466,30 @@
    "h": 545.75,
    "l": 532.54,
    "c": 533.69,
-   "v": 22200800
+   "v": 22324300
   },
   {
    "time": "2026-10-15",
-   "o": 533.66,
-   "h": 539.32,
+   "o": 533.32,
+   "h": 541.13,
    "l": 531.22,
-   "c": 538.05,
-   "v": 6943658
+   "c": 539.44,
+   "v": 24132000
+  },
+  {
+   "time": "2026-10-16",
+   "o": 541.06,
+   "h": 543.81,
+   "l": 533.97,
+   "c": 534.74,
+   "v": 6323769
   }
  ],
  "sr": {
-  "price": 538.05,
+  "price": 534.74,
   "resistance": [
-   549.2
+   549.2,
+   551.15
   ],
   "support": [
    518.79,
@@ -497,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  380.86,
   380.98,
   388.37,
   392.61,
@@ -556,16 +556,17 @@
   541.15,
   543.45,
   533.69,
-  538.05
+  539.44,
+  534.74
  ],
- "spark_start": "2026-07-23",
- "spark_end": "2026-10-15",
+ "spark_start": "2026-07-24",
+ "spark_end": "2026-10-16",
  "fundamental": {
-  "pe_trailing": 29.993872,
-  "pe_forward": 22.74175,
+  "pe_trailing": 29.785515,
+  "pe_forward": 22.53893,
   "eps_trailing": 17.95,
-  "eps_forward": 23.67408,
-  "stale": true,
+  "eps_forward": 23.72118,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
+   "label": "Nvidia and Apple Donate Millions for Planned White House Project",
    "value": {
-    "headline": "From Search Destruction to Efficiency, I Have Faith in Alphabet’s Abilities",
+    "headline": "Nvidia and Apple Donate Millions for Planned White House Project",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792075502,
-    "url": "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss",
+    "ts": 1792158945,
+    "url": "https://www.tikr.com/blog/nvidia-stock-white-house-ballroom-donation?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/15/from-search-destruction-to-efficiency-i-have-faith-in-alphabets-abilities/?.tsrc=rss"
+     "https://www.tikr.com/blog/nvidia-stock-white-house-ballroom-donation?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft (MSFT), Why Is It Back In The Spotlight?",
+   "label": "How Much Of Apple Stock Rides On One Product?",
    "value": {
-    "headline": "Microsoft (MSFT), Why Is It Back In The Spotlight?",
+    "headline": "How Much Of Apple Stock Rides On One Product?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792073479,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-why-back-spotlight-141119833.html?.tsrc=rss",
+    "ts": 1792157901,
+    "url": "https://www.trefis.com/articles/619026/how-much-of-apple-stock-rides-on-one-product/2026-10-16?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-why-back-spotlight-141119833.html?.tsrc=rss"
+     "https://www.trefis.com/articles/619026/how-much-of-apple-stock-rides-on-one-product/2026-10-16?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "North.cloud Raises $60M Series B to Unify Spend Intelligence and Enable Full Automation Across Cloud, AI, and Data",
+   "label": "Cathie Wood Bought CoreWeave Two Days in a Row as Its Bonds Cratered",
    "value": {
-    "headline": "North.cloud Raises $60M Series B to Unify Spend Intelligence and Enable Full Automation Across Cloud, AI, and Data",
+    "headline": "Cathie Wood Bought CoreWeave Two Days in a Row as Its Bonds Cratered",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792072800,
-    "url": "https://finance.yahoo.com/technology/ai/articles/north-cloud-raises-60m-series-140000691.html?.tsrc=rss",
+    "ts": 1792157589,
+    "url": "https://247wallst.com/investing/2026/10/16/cathie-wood-bought-coreweave-two-days-in-a-row-as-its-bonds-cratered/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/north-cloud-raises-60m-series-140000691.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/16/cathie-wood-bought-coreweave-two-days-in-a-row-as-its-bonds-cratered/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft’s Brad Smith Says Green-Card Curbs Could “Cripple” U.S. Tech. Here’s How Much It Hits Microsoft",
+   "label": "How Bad Would Outspending Its Cash Flow Be For Meta Stock?",
    "value": {
-    "headline": "Microsoft’s Brad Smith Says Green-Card Curbs Could “Cripple” U.S. Tech. Here’s How Much It Hits Microsoft",
+    "headline": "How Bad Would Outspending Its Cash Flow Be For Meta Stock?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792072710,
-    "url": "https://www.tikr.com/blog/microsofts-brad-smith-says-green-card-curbs-could-cripple-u-s-tech-heres-how-much-it-hits-microsoft?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792157134,
+    "url": "https://www.trefis.com/articles/619028/how-bad-would-outspending-its-cash-flow-be-for-meta-stock/2026-10-16?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/microsofts-brad-smith-says-green-card-curbs-could-cripple-u-s-tech-heres-how-much-it-hits-microsoft?ref=yahoofinance&.tsrc=rss"
+     "https://www.trefis.com/articles/619028/how-bad-would-outspending-its-cash-flow-be-for-meta-stock/2026-10-16?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft (MSFT): Can Security Bundles Generate More Profit per Customer?",
+   "label": "Microsoft’s AI Chief Says It Built a Better Model Than OpenAI’s With a Quarter of the Computing Power",
    "value": {
-    "headline": "Microsoft (MSFT): Can Security Bundles Generate More Profit per Customer?",
+    "headline": "Microsoft’s AI Chief Says It Built a Better Model Than OpenAI’s With a Quarter of the Computing Power",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792072376,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-security-bundles-generate-135256407.html?.tsrc=rss",
+    "ts": 1792155449,
+    "url": "https://247wallst.com/investing/2026/10/16/microsofts-ai-chief-says-it-built-a-better-model-than-openais-with-a-quarter-of-the-computing-power/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-security-bundles-generate-135256407.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/16/microsofts-ai-chief-says-it-built-a-better-model-than-openais-with-a-quarter-of-the-computing-power/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -698,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-15",
+   "as_of": "2026-10-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
