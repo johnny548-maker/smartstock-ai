@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 344.94,
- "change_pct": 0.86,
+ "price": 341.69,
+ "change_pct": -0.52,
  "ohlc": [
-  {
-   "time": "2026-07-24",
-   "o": 321.51,
-   "h": 334.08,
-   "l": 321.34,
-   "c": 332.73,
-   "v": 47489400
-  },
   {
    "time": "2026-07-27",
    "o": 334.25,
@@ -474,22 +466,30 @@
    "h": 347.85,
    "l": 341.6,
    "c": 342.0,
-   "v": 39678300
+   "v": 39767300
   },
   {
    "time": "2026-10-16",
-   "o": 346.08,
+   "o": 346.09,
    "h": 347.82,
-   "l": 342.03,
-   "c": 344.94,
-   "v": 20469439
+   "l": 340.46,
+   "c": 343.46,
+   "v": 59895300
+  },
+  {
+   "time": "2026-10-19",
+   "o": 340.98,
+   "h": 345.99,
+   "l": 340.11,
+   "c": 341.69,
+   "v": 17211613
   }
  ],
  "sr": {
-  "price": 344.94,
+  "price": 341.69,
   "resistance": [
-   345.34,
-   348.15
+   342.99,
+   344.27
   ],
   "support": [
    325.81,
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  332.73,
   336.62,
   339.79,
   337.9,
@@ -557,149 +556,167 @@
   341.27,
   342.96,
   342.0,
-  344.94
+  343.46,
+  341.69
  ],
- "spark_start": "2026-07-24",
- "spark_end": "2026-10-16",
+ "spark_start": "2026-07-27",
+ "spark_end": "2026-10-19",
  "fundamental": {
-  "pe_trailing": 39.553898,
-  "pe_forward": 36.01121,
+  "pe_trailing": 39.18463,
+  "pe_forward": 35.67502,
   "eps_trailing": 8.72,
   "eps_forward": 9.57785,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 341.69,
+  "stop": 328.86,
+  "target": 373.77,
+  "atr_bracket": 373.77,
+  "measured_move": 365.6,
+  "target_band": [
+   365.6,
+   373.77
+  ],
+  "stop_pct": -3.8,
+  "target_pct": 9.4,
+  "rr": 2.5,
+  "atr_pct": 1.9,
+  "swing_stop": 328.77,
+  "chandelier": 328.83,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Called Top Defensive Play With AI Stocks Under Pressure",
+   "label": "Apple Stock Holds Strong Amid Healthy iPhone Duo Preorders",
    "value": {
-    "headline": "Apple Called Top Defensive Play With AI Stocks Under Pressure",
+    "headline": "Apple Stock Holds Strong Amid Healthy iPhone Duo Preorders",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161451,
-    "url": "https://finance.yahoo.com/m/045f87ac-8907-3285-9a92-e85a335bbc48/apple-called-top-defensive.html?.tsrc=rss",
+    "ts": 1792428585,
+    "url": "https://finance.yahoo.com/m/ed0b8ee3-bbf6-3cb8-840e-4138b476aa07/apple-stock-holds-strong-amid.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/045f87ac-8907-3285-9a92-e85a335bbc48/apple-called-top-defensive.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/ed0b8ee3-bbf6-3cb8-840e-4138b476aa07/apple-stock-holds-strong-amid.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple’s $1,999 Foldable Is Backordered to 2027. Here’s What That Does and Doesn’t Mean",
+   "label": "Samsung is making an unexpected move against Apple",
    "value": {
-    "headline": "Apple’s $1,999 Foldable Is Backordered to 2027. Here’s What That Does and Doesn’t Mean",
+    "headline": "Samsung is making an unexpected move against Apple",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161236,
-    "url": "https://www.tikr.com/blog/apples-1999-foldable-is-backordered-to-2027-heres-what-that-does-and-doesnt-mean?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792428420,
+    "url": "https://www.thestreet.com/investing/samsung-galaxy-studio-headphones-unexpected-move-against-apple?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/apples-1999-foldable-is-backordered-to-2027-heres-what-that-does-and-doesnt-mean?ref=yahoofinance&.tsrc=rss"
+     "https://www.thestreet.com/investing/samsung-galaxy-studio-headphones-unexpected-move-against-apple?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
+   "label": "Deep Hardware-Software Integration Drives Apple’s (AAPL) Underappreciated AI Advantage",
    "value": {
-    "headline": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
+    "headline": "Deep Hardware-Software Integration Drives Apple’s (AAPL) Underappreciated AI Advantage",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161077,
-    "url": "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss",
+    "ts": 1792427470,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/deep-hardware-software-integration-drives-163110026.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/deep-hardware-software-integration-drives-163110026.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Rises But Nasdaq Slammed; Restaurant Play Matches Its High (Live Coverage)",
+   "label": "Apple announces another event – with a whole new kind of MacBook expected",
    "value": {
-    "headline": "Stock Market Today: Dow Rises But Nasdaq Slammed; Restaurant Play Matches Its High (Live Coverage)",
+    "headline": "Apple announces another event – with a whole new kind of MacBook expected",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161019,
-    "url": "https://finance.yahoo.com/m/13e48d09-0976-3082-81ba-a828960757d8/stock-market-today%3A-dow-rises.html?.tsrc=rss",
+    "ts": 1792426760,
+    "url": "https://www.independent.co.uk/tech/apple-event-macbook-pro-launch-release-date-b3069412.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/13e48d09-0976-3082-81ba-a828960757d8/stock-market-today%3A-dow-rises.html?.tsrc=rss"
+     "https://www.independent.co.uk/tech/apple-event-macbook-pro-launch-release-date-b3069412.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AAPL Stock Gains As Strong Demand Reportedly Pushes iPhone Duo Delivery To December",
+   "label": "Apple’s iPhone Duo Sold Out In Minutes. The Last Time Apple Reinvented The Phone, One Apple Supplier’s Stock Soared Abou",
    "value": {
-    "headline": "AAPL Stock Gains As Strong Demand Reportedly Pushes iPhone Duo Delivery To December",
+    "headline": "Apple’s iPhone Duo Sold Out In Minutes. The Last Time Apple Reinvented The Phone, One Apple Supplier’s Stock Soared About 1,200% In A Decade",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792159448,
-    "url": "https://stocktwits.com/news-articles/markets/equity/aapl-stock-gains-as-strong-demand-reportedly-pushes-i-phone-duo-delivery-to-december/cZxK5AjRBsm?.tsrc=rss",
+    "ts": 1792424972,
+    "url": "https://247wallst.com/investing/2026/10/19/apples-iphone-duo-sold-out-in-minutes-the-last-time-apple-reinvented-the-phone-one-apple-suppliers-stock-soared-about-1200-in-a-decade/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/aapl-stock-gains-as-strong-demand-reportedly-pushes-i-phone-duo-delivery-to-december/cZxK5AjRBsm?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/19/apples-iphone-duo-sold-out-in-minutes-the-last-time-apple-reinvented-the-phone-one-apple-suppliers-stock-soared-about-1200-in-a-decade/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 141 分 / 38 留言",
+   "label": "HN 討論熱度 20 篇 / 357 分 / 339 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 141,
-    "comments": 38,
+    "points": 357,
+    "comments": 339,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-10-16",
+   "severity": "warn",
+   "as_of": "2026-10-19",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +731,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

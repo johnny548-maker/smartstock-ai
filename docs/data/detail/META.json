@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 723.58,
- "change_pct": -1.78,
+ "price": 701.36,
+ "change_pct": -1.12,
  "ohlc": [
-  {
-   "time": "2026-07-24",
-   "o": 604.82,
-   "h": 609.5,
-   "l": 593.98,
-   "c": 594.72,
-   "v": 11503500
-  },
   {
    "time": "2026-07-27",
    "o": 606.74,
@@ -474,31 +466,38 @@
    "h": 743.97,
    "l": 715.58,
    "c": 736.72,
-   "v": 16868800
+   "v": 16891500
   },
   {
    "time": "2026-10-16",
    "o": 736.7,
    "h": 738.49,
-   "l": 719.9,
-   "c": 723.58,
-   "v": 5012081
+   "l": 702.71,
+   "c": 709.33,
+   "v": 20594600
+  },
+  {
+   "time": "2026-10-19",
+   "o": 707.06,
+   "h": 708.7,
+   "l": 693.86,
+   "c": 701.36,
+   "v": 8613753
   }
  ],
  "sr": {
-  "price": 723.58,
+  "price": 701.36,
   "resistance": [
-   742.09,
-   747.6
+   708.6,
+   742.09
   ],
   "support": [
-   713.19,
-   711.68
+   651.93,
+   644.84
   ],
   "strong_support": 519.37
  },
  "spark": [
-  594.72,
   593.4,
   592.94,
   585.15,
@@ -557,15 +556,16 @@
   762.5,
   737.54,
   736.72,
-  723.58
+  709.33,
+  701.36
  ],
- "spark_start": "2026-07-24",
- "spark_end": "2026-10-16",
+ "spark_start": "2026-07-27",
+ "spark_end": "2026-10-19",
  "fundamental": {
-  "pe_trailing": 27.263748,
-  "pe_forward": 20.980349,
+  "pe_trailing": 26.435944,
+  "pe_forward": 20.262127,
   "eps_trailing": 26.54,
-  "eps_forward": 34.48846,
+  "eps_forward": 34.62667,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,117 +575,133 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI infrastructure stocks sell off, but the data center boom rolls on",
+   "label": "Meta Stock Extends Slide As Big Earnings Test Approaches",
    "value": {
-    "headline": "AI infrastructure stocks sell off, but the data center boom rolls on",
+    "headline": "Meta Stock Extends Slide As Big Earnings Test Approaches",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161792,
-    "url": "https://finance.yahoo.com/video/ai-infrastructure-stocks-sell-off-but-the-data-center-boom-rolls-on-144312585.html?.tsrc=rss",
+    "ts": 1792425633,
+    "url": "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-infrastructure-stocks-sell-off-but-the-data-center-boom-rolls-on-144312585.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
+   "label": "Investor: ‘I Turned AMD Into $16 Million and Sold Everything, Did I Quit Too Soon?’",
    "value": {
-    "headline": "Meta, Tesla, SpaceX Take Center Stage As Earnings Season Kicks Into High Gear. Everything You Need To Know.",
+    "headline": "Investor: ‘I Turned AMD Into $16 Million and Sold Everything, Did I Quit Too Soon?’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792161077,
-    "url": "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss",
+    "ts": 1792425588,
+    "url": "https://247wallst.com/investing/2026/10/19/investor-i-turned-amd-into-16-million-and-sold-everything-did-i-quit-too-soon/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/2d4828fd-50a1-3a19-a228-a9c50416123d/meta%2C-tesla%2C-spacex-take.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/19/investor-i-turned-amd-into-16-million-and-sold-everything-did-i-quit-too-soon/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tesla Roadster Debut, Tech Sell-Off, and a college alternative for entrepreneurship",
+   "label": "META Stock Gets A Price Target Hike From Morgan Stanley – But Firm Flags Daily Active User Growth For Muse",
    "value": {
-    "headline": "Tesla Roadster Debut, Tech Sell-Off, and a college alternative for entrepreneurship",
+    "headline": "META Stock Gets A Price Target Hike From Morgan Stanley – But Firm Flags Daily Active User Growth For Muse",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792160010,
-    "url": "https://finance.yahoo.com/video/tesla-roadster-debut-tech-sell-off-and-a-college-alternative-for-entrepreneurship-141330415.html?.tsrc=rss",
+    "ts": 1792424806,
+    "url": "https://stocktwits.com/news-articles/markets/equity/meta-stock-gets-a-price-target-hike-from-morgan-stanley-but-firm-flags-daily-active-user-growth-for-muse/cZx8rDBRBMu?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/tesla-roadster-debut-tech-sell-off-and-a-college-alternative-for-entrepreneurship-141330415.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/meta-stock-gets-a-price-target-hike-from-morgan-stanley-but-firm-flags-daily-active-user-growth-for-muse/cZx8rDBRBMu?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-16",
+   "severity": "info",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Releases Open-Weight Muse Spark Model for Developers and Coding Agents",
+   "label": "This Week’s Tech Earnings Could Be a ‘Validation Moment’ for the AI Trade",
    "value": {
-    "headline": "Meta Releases Open-Weight Muse Spark Model for Developers and Coding Agents",
+    "headline": "This Week’s Tech Earnings Could Be a ‘Validation Moment’ for the AI Trade",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792159039,
-    "url": "https://www.tikr.com/blog/meta-stock-open-weight-muse-spark-model?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792424658,
+    "url": "https://www.investopedia.com/market-update-this-weeks-tech-earnings-could-be-a-validation-moment-for-the-ai-trade-12182053?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/meta-stock-open-weight-muse-spark-model?ref=yahoofinance&.tsrc=rss"
+     "https://www.investopedia.com/market-update-this-weeks-tech-earnings-could-be-a-validation-moment-for-the-ai-trade-12182053?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "First Week of Q3 Earnings in the Books",
+   "label": "Veteran Strategist Warns: Meta Skyrocketed Off-Balance-Sheet Financing by 17X, From “$35 Billion to $600 Billion”",
    "value": {
-    "headline": "First Week of Q3 Earnings in the Books",
+    "headline": "Veteran Strategist Warns: Meta Skyrocketed Off-Balance-Sheet Financing by 17X, From “$35 Billion to $600 Billion”",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792158060,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/first-week-q3-earnings-books-134100481.html?.tsrc=rss",
+    "ts": 1792422601,
+    "url": "https://www.tikr.com/blog/veteran-strategist-warns-meta-skyrocketed-off-balance-sheet-financing-by-17x-from-35-billion-to-600-billion?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/first-week-q3-earnings-books-134100481.html?.tsrc=rss"
+     "https://www.tikr.com/blog/veteran-strategist-warns-meta-skyrocketed-off-balance-sheet-financing-by-17x-from-35-billion-to-600-billion?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 77 分 / 18 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 77,
+    "comments": 18,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-19",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

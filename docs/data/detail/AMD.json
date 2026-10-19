@@ -1,49 +1,9 @@
 {
  "stock": "AMD",
- "name": "AMD",
- "price": 594.24,
- "change_pct": -2.28,
+ "name": "Advanced Micro Devices, Inc. - Common Stock",
+ "price": 543.38,
+ "change_pct": 2.77,
  "ohlc": [
-  {
-   "time": "2026-07-20",
-   "o": 517.0,
-   "h": 522.44,
-   "l": 502.36,
-   "c": 503.57,
-   "v": 23440700
-  },
-  {
-   "time": "2026-07-21",
-   "o": 526.0,
-   "h": 548.14,
-   "l": 522.6,
-   "c": 544.43,
-   "v": 29045100
-  },
-  {
-   "time": "2026-07-22",
-   "o": 526.88,
-   "h": 561.47,
-   "l": 526.6,
-   "c": 552.33,
-   "v": 24776700
-  },
-  {
-   "time": "2026-07-23",
-   "o": 544.74,
-   "h": 556.49,
-   "l": 525.0,
-   "c": 539.69,
-   "v": 27155100
-  },
-  {
-   "time": "2026-07-24",
-   "o": 546.92,
-   "h": 549.0,
-   "l": 518.0,
-   "c": 521.95,
-   "v": 27200700
-  },
   {
    "time": "2026-07-27",
    "o": 527.51,
@@ -482,27 +442,62 @@
    "h": 601.77,
    "l": 586.54,
    "c": 594.24,
-   "v": 15327700
+   "v": 15379900
+  },
+  {
+   "time": "2026-10-13",
+   "o": 577.5,
+   "h": 606.2,
+   "l": 570.6,
+   "c": 605.53,
+   "v": 17932700
+  },
+  {
+   "time": "2026-10-14",
+   "o": 589.57,
+   "h": 591.88,
+   "l": 567.0,
+   "c": 570.82,
+   "v": 22319500
+  },
+  {
+   "time": "2026-10-15",
+   "o": 540.0,
+   "h": 568.62,
+   "l": 530.09,
+   "c": 562.23,
+   "v": 28834600
+  },
+  {
+   "time": "2026-10-16",
+   "o": 547.55,
+   "h": 550.96,
+   "l": 526.83,
+   "c": 528.75,
+   "v": 22481800
+  },
+  {
+   "time": "2026-10-19",
+   "o": 551.97,
+   "h": 554.41,
+   "l": 539.5,
+   "c": 543.38,
+   "v": 12338766
   }
  ],
  "sr": {
-  "price": 594.24,
+  "price": 543.38,
   "resistance": [
    639.0,
    658.52
   ],
   "support": [
-   498.15,
-   495.35
+   480.33,
+   463.21
   ],
-  "strong_support": 188.22
+  "strong_support": 424.03
  },
  "spark": [
-  503.57,
-  544.43,
-  552.33,
-  539.69,
-  521.95,
   494.95,
   454.62,
   429.56,
@@ -557,165 +552,16 @@
   645.86,
   620.68,
   608.1,
-  594.24
+  594.24,
+  605.53,
+  570.82,
+  562.23,
+  528.75,
+  543.38
  ],
- "spark_start": "2026-07-20",
- "spark_end": "2026-10-12",
- "fundamental": {
-  "pe_trailing": 151.50255,
-  "pe_forward": 37.77472,
-  "eps_trailing": 3.92,
-  "eps_forward": 15.72189,
-  "stale": true,
-  "source": "yfinance"
- },
+ "spark_start": "2026-07-27",
+ "spark_end": "2026-10-19",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
-   "value": {
-    "headline": "Microsoft's AI chief on whether Maia 300 cuts its Nvidia dependence: 'Competition is good'",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791842611,
-    "url": "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/microsofts-ai-chief-on-whether-maia-300-cuts-its-nvidia-dependence-competition-is-good-221114572.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What Changed In Qualcomm's Story?",
-   "value": {
-    "headline": "What Changed In Qualcomm's Story?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791842137,
-    "url": "https://www.trefis.com/articles/618342/what-changed-in-qualcomms-story/2026-10-12?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/articles/618342/what-changed-in-qualcomms-story/2026-10-12?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Advanced Micro Devices (AMD) Dipped More Than Broader Market Today",
-   "value": {
-    "headline": "Why Advanced Micro Devices (AMD) Dipped More Than Broader Market Today",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791837902,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-advanced-micro-devices-amd-204502569.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-advanced-micro-devices-amd-204502569.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "It’s a High-Stakes Earnings Season, Especially for AI Stocks",
-   "value": {
-    "headline": "It’s a High-Stakes Earnings Season, Especially for AI Stocks",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791837300,
-    "url": "https://finance.yahoo.com/m/a36783a7-2be6-3b0b-8d99-d3deb3dc63de/it%E2%80%99s-a-high-stakes-earnings.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/a36783a7-2be6-3b0b-8d99-d3deb3dc63de/it%E2%80%99s-a-high-stakes-earnings.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
-   "value": {
-    "headline": "Nvidia and AMD Reached a Historic Valuation Split. 1 Stock Is Far Safer.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1791834600,
-    "url": "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/12/nvidia-and-amd-reached-a-historic-valuation-split/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 17,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 165 分 / 121 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 165,
-    "comments": 121,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-13",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 254,173 股交割失敗）",
-   "value": {
-    "total_shares": 254173,
-    "days": 9,
-    "max_shares": 104880,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-13",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -482,7 +482,7 @@
    "h": 599.0,
    "l": 537.0,
    "c": 591.0,
-   "v": 1336714
+   "v": 1259501
   }
  ],
  "sr": {
@@ -572,15 +572,15 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 287,116 股",
+   "label": "三大法人賣超 344,899 股",
    "value": {
-    "foreign": 141305,
-    "trust": 168000,
-    "dealer": -22189,
-    "total": 287116
+    "foreign": -325173,
+    "trust": 24000,
+    "dealer": -43726,
+    "total": -344899
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
   },
   {
@@ -588,85 +588,46 @@
    "kind": "chip",
    "label": "融券餘額下降（回補）",
    "value": {
-    "short_net": -24
+    "short_net": -6
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 86.1 / 殖利率 0.59% / PB 9.68",
+   "label": "PE 89.3 / 殖利率 0.57% / PB 10.04",
    "value": {
-    "pe": 86.1,
-    "yield": 0.59,
-    "pb": 9.68
+    "pe": 89.27,
+    "yield": 0.57,
+    "pb": 10.04
    },
    "severity": "info",
-   "as_of": "2026-10-15",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第2次） 處置期間：115/10/12～115/10/16",
-   "value": {
-    "level": 2,
-    "reason": "連續三次",
-    "period": "115/10/12～115/10/16"
-   },
-   "severity": "risk",
    "as_of": "2026-10-16",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 376,
+    "short_today": 370,
     "outstanding": 82311633,
-    "short_pct": 0.0004568005594057404
+    "short_pct": 0.0004495111887769254
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "〈台股盤後〉台積電休息 PCB、玻纖布題材強勁 終場漲141點站回4萬7",
-   "value": {
-    "headline": "〈台股盤後〉台積電休息 PCB、玻纖布題材強勁 終場漲141點站回4萬7",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1792133119,
-    "url": "cnyes:6631985",
-    "urls": [
-     "cnyes:6631985"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-16",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-16",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 42.8,
+   "severity": "warn",
+   "as_of": "20261016",
+   "note": "大戶持股%=42.80；WoW-0.22；股東人數+1034"
   }
  ],
  "trends": {
@@ -1050,6 +1011,10 @@
    {
     "t": "2026-10-16",
     "v": 25119
+   },
+   {
+    "t": "2026-10-19",
+    "v": 24774
    }
   ],
   "holder_pct": [
@@ -1128,6 +1093,10 @@
    {
     "t": "2026-10-08",
     "v": 43.02
+   },
+   {
+    "t": "2026-10-16",
+    "v": 42.8
    }
   ],
   "rev_yoy": [

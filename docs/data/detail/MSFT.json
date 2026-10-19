@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 534.74,
- "change_pct": -0.87,
+ "price": 533.12,
+ "change_pct": 0.77,
  "ohlc": [
-  {
-   "time": "2026-07-24",
-   "o": 386.32,
-   "h": 388.3,
-   "l": 379.93,
-   "c": 380.98,
-   "v": 27659400
-  },
   {
    "time": "2026-07-27",
    "o": 389.35,
@@ -474,19 +466,27 @@
    "h": 541.13,
    "l": 531.22,
    "c": 539.44,
-   "v": 24132000
+   "v": 24151200
   },
   {
    "time": "2026-10-16",
-   "o": 541.06,
-   "h": 543.81,
-   "l": 533.97,
-   "c": 534.74,
-   "v": 6323769
+   "o": 541.31,
+   "h": 543.82,
+   "l": 524.43,
+   "c": 529.05,
+   "v": 24815100
+  },
+  {
+   "time": "2026-10-19",
+   "o": 528.74,
+   "h": 535.57,
+   "l": 528.48,
+   "c": 533.12,
+   "v": 8662615
   }
  ],
  "sr": {
-  "price": 534.74,
+  "price": 533.12,
   "resistance": [
    549.2,
    551.15
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  380.98,
   388.37,
   392.61,
   389.81,
@@ -557,134 +556,152 @@
   543.45,
   533.69,
   539.44,
-  534.74
+  529.05,
+  533.12
  ],
- "spark_start": "2026-07-24",
- "spark_end": "2026-10-16",
+ "spark_start": "2026-07-27",
+ "spark_end": "2026-10-19",
  "fundamental": {
-  "pe_trailing": 29.785515,
-  "pe_forward": 22.53893,
+  "pe_trailing": 29.701113,
+  "pe_forward": 22.475063,
   "eps_trailing": 17.95,
   "eps_forward": 23.72118,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 533.12,
+  "stop": 510.23,
+  "target": 590.34,
+  "atr_bracket": 590.34,
+  "measured_move": 583.51,
+  "target_band": [
+   583.51,
+   590.34
+  ],
+  "stop_pct": -4.3,
+  "target_pct": 10.7,
+  "rr": 2.5,
+  "atr_pct": 2.1,
+  "swing_stop": 515.36,
+  "chandelier": 515.23,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia and Apple Donate Millions for Planned White House Project",
+   "label": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
    "value": {
-    "headline": "Nvidia and Apple Donate Millions for Planned White House Project",
+    "headline": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792158945,
-    "url": "https://www.tikr.com/blog/nvidia-stock-white-house-ballroom-donation?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792428357,
+    "url": "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/nvidia-stock-white-house-ballroom-donation?ref=yahoofinance&.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Much Of Apple Stock Rides On One Product?",
+   "label": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
    "value": {
-    "headline": "How Much Of Apple Stock Rides On One Product?",
+    "headline": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792157901,
-    "url": "https://www.trefis.com/articles/619026/how-much-of-apple-stock-rides-on-one-product/2026-10-16?.tsrc=rss",
+    "ts": 1792426846,
+    "url": "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/619026/how-much-of-apple-stock-rides-on-one-product/2026-10-16?.tsrc=rss"
+     "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cathie Wood Bought CoreWeave Two Days in a Row as Its Bonds Cratered",
+   "label": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
    "value": {
-    "headline": "Cathie Wood Bought CoreWeave Two Days in a Row as Its Bonds Cratered",
+    "headline": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792157589,
-    "url": "https://247wallst.com/investing/2026/10/16/cathie-wood-bought-coreweave-two-days-in-a-row-as-its-bonds-cratered/?.tsrc=rss",
+    "ts": 1792426544,
+    "url": "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/16/cathie-wood-bought-coreweave-two-days-in-a-row-as-its-bonds-cratered/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Bad Would Outspending Its Cash Flow Be For Meta Stock?",
+   "label": "Marvell Technology (MRVL) Forms Cloud Security Alliance After New CXL And Connectivity Launches",
    "value": {
-    "headline": "How Bad Would Outspending Its Cash Flow Be For Meta Stock?",
+    "headline": "Marvell Technology (MRVL) Forms Cloud Security Alliance After New CXL And Connectivity Launches",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792157134,
-    "url": "https://www.trefis.com/articles/619028/how-bad-would-outspending-its-cash-flow-be-for-meta-stock/2026-10-16?.tsrc=rss",
+    "ts": 1792426419,
+    "url": "https://finance.yahoo.com/technology/articles/marvell-technology-mrvl-forms-cloud-161339233.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/619028/how-bad-would-outspending-its-cash-flow-be-for-meta-stock/2026-10-16?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/marvell-technology-mrvl-forms-cloud-161339233.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft’s AI Chief Says It Built a Better Model Than OpenAI’s With a Quarter of the Computing Power",
+   "label": "Meta Stock Extends Slide As Big Earnings Test Approaches",
    "value": {
-    "headline": "Microsoft’s AI Chief Says It Built a Better Model Than OpenAI’s With a Quarter of the Computing Power",
+    "headline": "Meta Stock Extends Slide As Big Earnings Test Approaches",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792155449,
-    "url": "https://247wallst.com/investing/2026/10/16/microsofts-ai-chief-says-it-built-a-better-model-than-openais-with-a-quarter-of-the-computing-power/?.tsrc=rss",
+    "ts": 1792425633,
+    "url": "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/16/microsofts-ai-chief-says-it-built-a-better-model-than-openais-with-a-quarter-of-the-computing-power/?.tsrc=rss"
+     "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
