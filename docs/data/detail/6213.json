@@ -1,25 +1,9 @@
 {
  "stock": "6213",
  "name": "聯茂",
- "price": 774.0,
- "change_pct": -3.13,
+ "price": 749.0,
+ "change_pct": -2.35,
  "ohlc": [
-  {
-   "time": "2026-07-22",
-   "o": 373.0,
-   "h": 387.5,
-   "l": 363.0,
-   "c": 367.0,
-   "v": 27805035
-  },
-  {
-   "time": "2026-07-23",
-   "o": 373.0,
-   "h": 376.0,
-   "l": 330.5,
-   "c": 343.5,
-   "v": 27632060
-  },
   {
    "time": "2026-07-24",
    "o": 332.0,
@@ -483,11 +467,29 @@
    "l": 746.0,
    "c": 774.0,
    "v": 4585404
+  },
+  {
+   "time": "2026-10-19",
+   "o": 728.0,
+   "h": 785.0,
+   "l": 721.0,
+   "c": 767.0,
+   "v": 4316654
+  },
+  {
+   "time": "2026-10-20",
+   "o": 779.0,
+   "h": 792.0,
+   "l": 742.0,
+   "c": 749.0,
+   "v": 16529272
   }
  ],
  "sr": {
-  "price": 774.0,
-  "resistance": [],
+  "price": 749.0,
+  "resistance": [
+   858.0
+  ],
   "support": [
    731.0,
    493.5
@@ -495,8 +497,6 @@
   "strong_support": 46.77
  },
  "spark": [
-  367.0,
-  343.5,
   309.5,
   307.0,
   276.5,
@@ -554,10 +554,12 @@
   795.0,
   856.0,
   799.0,
-  774.0
+  774.0,
+  767.0,
+  749.0
  ],
- "spark_start": "2026-07-22",
- "spark_end": "2026-10-16",
+ "spark_start": "2026-07-24",
+ "spark_end": "2026-10-20",
  "fundamental": {
   "rev_yoy": 110.7,
   "rev_accel": true,
@@ -570,54 +572,52 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 153,800 股",
+   "label": "三大法人賣超 1,321,003 股",
    "value": {
-    "foreign": 1000,
-    "trust": 86000,
-    "dealer": 66800,
-    "total": 153800
+    "foreign": -1126914,
+    "trust": 95973,
+    "dealer": -290062,
+    "total": -1321003
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -125
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 120.0 / 殖利率 0.39% / PB 12.46",
+   "label": "PE 118.9 / 殖利率 0.39% / PB 12.34",
    "value": {
-    "pe": 120.0,
+    "pe": 118.91,
     "yield": 0.39,
-    "pb": 12.46
+    "pb": 12.34
    },
    "severity": "info",
-   "as_of": "2026-10-16",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
-   "source": "twse_punish",
-   "kind": "risk",
-   "label": "🚫 處置股（第1次） 處置期間：115/10/08～115/10/19",
-   "value": {
-    "level": 1,
-    "reason": "連續三次及當日沖銷標準",
-    "period": "115/10/08～115/10/19"
-   },
-   "severity": "warn",
    "as_of": "2026-10-19",
-   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 1102,
+    "short_today": 977,
     "outstanding": 363597218,
-    "short_pct": 0.0003030826269963375
+    "short_pct": 0.0002687039261119979
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
@@ -628,6 +628,85 @@
    "severity": "warn",
    "as_of": "20261016",
    "note": "大戶持股%=67.44；WoW-0.05；股東人數+2041"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "聯茂:高階材料需求旺到2029年 布局中國泰國擴產｜2 來源確認",
+   "value": {
+    "headline": "聯茂:高階材料需求旺到2029年 布局中國泰國擴產",
+    "sources": [
+     "cna",
+     "udn"
+    ],
+    "source_count": 2,
+    "ts": 1792496407,
+    "url": "https://www.cna.com.tw/news/afe/202610200326.aspx",
+    "urls": [
+     "https://money.udn.com/money/story/5612/9826980",
+     "https://www.cna.com.tw/news/afe/202610200326.aspx"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "聯茂中長期擴產腳步不停歇 高階產品產能持續提升",
+   "value": {
+    "headline": "聯茂中長期擴產腳步不停歇 高階產品產能持續提升",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1792486329,
+    "url": "cnyes:6634255",
+    "urls": [
+     "cnyes:6634255"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "金居籌設在大馬檳城新建HVLP4高階銅箔 規劃年產3萬噸",
+   "value": {
+    "headline": "金居籌設在大馬檳城新建HVLP4高階銅箔 規劃年產3萬噸",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1792482044,
+    "url": "cnyes:6634187",
+    "urls": [
+     "cnyes:6634187"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 3 則（最高 2 來源確認）",
+   "value": {
+    "headline_count": 3,
+    "max_source_count": 2,
+    "distinct_sources": [
+     "cna",
+     "cnyes",
+     "udn"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1015,6 +1094,10 @@
    {
     "t": "2026-10-19",
     "v": 51310
+   },
+   {
+    "t": "2026-10-20",
+    "v": 49989
    }
   ],
   "holder_pct": [

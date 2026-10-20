@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 533.12,
- "change_pct": 0.77,
+ "price": 529.36,
+ "change_pct": -0.78,
  "ohlc": [
-  {
-   "time": "2026-07-27",
-   "o": 389.35,
-   "h": 393.46,
-   "l": 387.26,
-   "c": 388.37,
-   "v": 27856200
-  },
   {
    "time": "2026-07-28",
    "o": 392.42,
@@ -474,19 +466,27 @@
    "h": 543.82,
    "l": 524.43,
    "c": 529.05,
-   "v": 24815100
+   "v": 24845700
   },
   {
    "time": "2026-10-19",
-   "o": 528.74,
+   "o": 528.7,
    "h": 535.57,
-   "l": 528.48,
-   "c": 533.12,
-   "v": 8662615
+   "l": 528.06,
+   "c": 533.52,
+   "v": 17984300
+  },
+  {
+   "time": "2026-10-20",
+   "o": 533.91,
+   "h": 534.21,
+   "l": 525.9,
+   "c": 529.36,
+   "v": 4017781
   }
  ],
  "sr": {
-  "price": 533.12,
+  "price": 529.36,
   "resistance": [
    549.2,
    551.15
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  388.37,
   392.61,
   389.81,
   450.25,
@@ -557,151 +556,135 @@
   533.69,
   539.44,
   529.05,
-  533.12
+  533.52,
+  529.36
  ],
- "spark_start": "2026-07-27",
- "spark_end": "2026-10-19",
+ "spark_start": "2026-07-28",
+ "spark_end": "2026-10-20",
  "fundamental": {
   "pe_trailing": 29.701113,
   "pe_forward": 22.475063,
   "eps_trailing": 17.95,
   "eps_forward": 23.72118,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 533.12,
-  "stop": 510.23,
-  "target": 590.34,
-  "atr_bracket": 590.34,
-  "measured_move": 583.51,
-  "target_band": [
-   583.51,
-   590.34
-  ],
-  "stop_pct": -4.3,
-  "target_pct": 10.7,
-  "rr": 2.5,
-  "atr_pct": 2.1,
-  "swing_stop": 515.36,
-  "chandelier": 515.23,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
+   "label": "Splashtop Agentic Packr Automates App Packaging for Microsoft Intune",
    "value": {
-    "headline": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
+    "headline": "Splashtop Agentic Packr Automates App Packaging for Microsoft Intune",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792428357,
-    "url": "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss",
+    "ts": 1792508400,
+    "url": "https://finance.yahoo.com/technology/ai/articles/splashtop-agentic-packr-automates-app-150000714.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/splashtop-agentic-packr-automates-app-150000714.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
+   "label": "Anthropic in talks for second multibillion-dollar Nscale deal - CNBC",
    "value": {
-    "headline": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
+    "headline": "Anthropic in talks for second multibillion-dollar Nscale deal - CNBC",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426846,
-    "url": "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792508068,
+    "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-talks-second-multibillion-dollar-145428986.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/anthropic-talks-second-multibillion-dollar-145428986.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
+   "label": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
    "value": {
-    "headline": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
+    "headline": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426544,
-    "url": "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss",
+    "ts": 1792507537,
+    "url": "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Marvell Technology (MRVL) Forms Cloud Security Alliance After New CXL And Connectivity Launches",
+   "label": "This Billionaire Investor Called the Stock Market a ‘Hollow Tree’ — Here Are the Disturbing Numbers That Say He’s Right",
    "value": {
-    "headline": "Marvell Technology (MRVL) Forms Cloud Security Alliance After New CXL And Connectivity Launches",
+    "headline": "This Billionaire Investor Called the Stock Market a ‘Hollow Tree’ — Here Are the Disturbing Numbers That Say He’s Right",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426419,
-    "url": "https://finance.yahoo.com/technology/articles/marvell-technology-mrvl-forms-cloud-161339233.html?.tsrc=rss",
+    "ts": 1792507347,
+    "url": "https://247wallst.com/investing/2026/10/20/this-billionaire-investor-called-the-stock-market-a-hollow-tree-here-are-the-disturbing-numbers-that-say-hes-right/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/marvell-technology-mrvl-forms-cloud-161339233.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/this-billionaire-investor-called-the-stock-market-a-hollow-tree-here-are-the-disturbing-numbers-that-say-hes-right/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Stock Extends Slide As Big Earnings Test Approaches",
+   "label": "Microsoft, Alphabet Bar Their Tokenized Shares From OKX-ICE Venue as Objections Hit 16",
    "value": {
-    "headline": "Meta Stock Extends Slide As Big Earnings Test Approaches",
+    "headline": "Microsoft, Alphabet Bar Their Tokenized Shares From OKX-ICE Venue as Objections Hit 16",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792425633,
-    "url": "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss",
+    "ts": 1792506960,
+    "url": "https://unchainedcrypto.com/microsoft-alphabet-bar-their-tokenized-shares-from-okx-ice-venue-as-objections-hit-16/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss"
+     "https://unchainedcrypto.com/microsoft-alphabet-bar-their-tokenized-shares-from-okx-ice-venue-as-objections-hit-16/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

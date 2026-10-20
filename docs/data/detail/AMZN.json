@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 262.36,
- "change_pct": 4.94,
+ "price": 262.86,
+ "change_pct": 0.16,
  "ohlc": [
-  {
-   "time": "2026-07-27",
-   "o": 235.67,
-   "h": 235.89,
-   "l": 230.99,
-   "c": 231.39,
-   "v": 34999500
-  },
   {
    "time": "2026-07-28",
    "o": 232.85,
@@ -474,19 +466,27 @@
    "h": 255.54,
    "l": 248.6,
    "c": 250.0,
-   "v": 40306000
+   "v": 40427300
   },
   {
    "time": "2026-10-19",
-   "o": 255.34,
-   "h": 263.44,
+   "o": 255.25,
+   "h": 263.72,
    "l": 255.22,
-   "c": 262.36,
-   "v": 29724516
+   "c": 262.45,
+   "v": 56068100
+  },
+  {
+   "time": "2026-10-20",
+   "o": 264.03,
+   "h": 265.34,
+   "l": 260.42,
+   "c": 262.86,
+   "v": 14658769
   }
  ],
  "sr": {
-  "price": 262.36,
+  "price": 262.86,
   "resistance": [
    263.7,
    266.4
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  231.39,
   230.86,
   226.65,
   235.5,
@@ -557,152 +556,173 @@
   254.08,
   254.76,
   250.0,
-  262.36
+  262.45,
+  262.86
  ],
- "spark_start": "2026-07-27",
- "spark_end": "2026-10-19",
+ "spark_start": "2026-07-28",
+ "spark_end": "2026-10-20",
  "fundamental": {
   "pe_trailing": 21.10732,
   "pe_forward": 25.123074,
   "eps_trailing": 12.43,
   "eps_forward": 10.44315,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 262.36,
-  "stop": 249.17,
-  "target": 295.35,
-  "atr_bracket": 295.35,
+  "entry": 262.86,
+  "stop": 249.84,
+  "target": 295.44,
+  "atr_bracket": 295.44,
   "measured_move": 282.67,
   "target_band": [
+   279.29,
    282.67,
-   295.35
+   295.44
   ],
   "stop_pct": -5.0,
-  "target_pct": 12.6,
+  "target_pct": 12.4,
   "rr": 2.5,
   "atr_pct": 2.5,
-  "swing_stop": 242.75,
-  "chandelier": 245.69,
-  "fib_targets": []
+  "swing_stop": 246.65,
+  "chandelier": 247.19,
+  "fib_targets": [
+   272.73,
+   279.29,
+   286.54
+  ]
  },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
+   "label": "3M Jumps 6% on Expanded Amazon Data Center Deal and Earnings Beat; Coherent Edges Higher, Corning Stays Flat",
    "value": {
-    "headline": "What Wall Street Expects from The Q3 Cloud and Infrastructure Scorecard: Microsoft Vs. Amazon",
+    "headline": "3M Jumps 6% on Expanded Amazon Data Center Deal and Earnings Beat; Coherent Edges Higher, Corning Stays Flat",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792428357,
-    "url": "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss",
+    "ts": 1792508325,
+    "url": "https://247wallst.com/investing/2026/10/20/3m-jumps-6-on-expanded-amazon-data-center-deal-and-earnings-beat-coherent-edges-higher-corning-stays-flat/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/what-wall-street-expects-from-the-q3-cloud-and-infrastructure-scorecard-microsoft-vs-amazon/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/3m-jumps-6-on-expanded-amazon-data-center-deal-and-earnings-beat-coherent-edges-higher-corning-stays-flat/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Midday, Oct. 19: Tech Stocks Rebound as AI Confidence Returns",
+   "label": "Amazon Boosts Holiday Hiring Plans As Its Stock Adds To A Rebound",
    "value": {
-    "headline": "Stock Market Midday, Oct. 19: Tech Stocks Rebound as AI Confidence Returns",
+    "headline": "Amazon Boosts Holiday Hiring Plans As Its Stock Adds To A Rebound",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792427869,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/10/19/stock-market-midday-oct-19-tech-stocks-rebound-as-ai-confidence-returns/?.tsrc=rss",
+    "ts": 1792507597,
+    "url": "https://finance.yahoo.com/m/d1768e1a-bb18-3879-9ecb-9b4e00bca7ca/amazon-boosts-holiday-hiring.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/10/19/stock-market-midday-oct-19-tech-stocks-rebound-as-ai-confidence-returns/?.tsrc=rss"
+     "https://finance.yahoo.com/m/d1768e1a-bb18-3879-9ecb-9b4e00bca7ca/amazon-boosts-holiday-hiring.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "2 \"Magnificent Seven\" Stocks to Buy and Hold for the Rest of the Decade",
+   "label": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
    "value": {
-    "headline": "2 \"Magnificent Seven\" Stocks to Buy and Hold for the Rest of the Decade",
+    "headline": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426800,
-    "url": "https://www.fool.com/investing/2026/10/19/2-magnificent-seven-stocks-to-buy-and-hold-for-the/?.tsrc=rss",
+    "ts": 1792507537,
+    "url": "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/19/2-magnificent-seven-stocks-to-buy-and-hold-for-the/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
+   "label": "3M Beat Estimates and Raised Guidance. Why an Amazon Deal Is Driving the Stock.",
    "value": {
-    "headline": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
+    "headline": "3M Beat Estimates and Raised Guidance. Why an Amazon Deal Is Driving the Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426544,
-    "url": "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss",
+    "ts": 1792506420,
+    "url": "https://finance.yahoo.com/m/17a4793e-73d6-3dea-87b1-744b1a00939c/3m-beat-estimates-and-raised.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss"
+     "https://finance.yahoo.com/m/17a4793e-73d6-3dea-87b1-744b1a00939c/3m-beat-estimates-and-raised.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "X-Energy, Amazon, AEP Partner To Evaluate Feasibility Of 960 MW Nuclear Project In Indiana – A Look At The Key Highlight",
+   "label": "Amazon to hire over 300,000 holiday workers, up 20% from last year",
    "value": {
-    "headline": "X-Energy, Amazon, AEP Partner To Evaluate Feasibility Of 960 MW Nuclear Project In Indiana – A Look At The Key Highlights",
+    "headline": "Amazon to hire over 300,000 holiday workers, up 20% from last year",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426457,
-    "url": "https://stocktwits.com/news-articles/markets/equity/x-energy-amazon-aep-partner-to-evaluate-feasibility-of-960-mw-nuclear-project-in-indiana-a-look-at-the-key-highlights/cZx8tFKRBMv?.tsrc=rss",
+    "ts": 1792504340,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-hire-over-300-000-135220725.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/x-energy-amazon-aep-partner-to-evaluate-feasibility-of-960-mw-nuclear-project-in-indiana-a-look-at-the-key-highlights/cZx8tFKRBMv?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amazon-hire-over-300-000-135220725.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 11 篇 / 97 分 / 60 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 97,
+    "comments": 60,
+    "n": 11,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-20",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -716,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

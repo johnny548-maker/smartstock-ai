@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 701.36,
- "change_pct": -1.12,
+ "price": 691.4,
+ "change_pct": -1.99,
  "ohlc": [
-  {
-   "time": "2026-07-27",
-   "o": 606.74,
-   "h": 610.78,
-   "l": 592.66,
-   "c": 593.4,
-   "v": 11195300
-  },
   {
    "time": "2026-07-28",
    "o": 596.35,
@@ -474,19 +466,27 @@
    "h": 738.49,
    "l": 702.71,
    "c": 709.33,
-   "v": 20594600
+   "v": 20643800
   },
   {
    "time": "2026-10-19",
-   "o": 707.06,
-   "h": 708.7,
+   "o": 707.16,
+   "h": 708.83,
    "l": 693.86,
-   "c": 701.36,
-   "v": 8613753
+   "c": 705.44,
+   "v": 16235800
+  },
+  {
+   "time": "2026-10-20",
+   "o": 694.3,
+   "h": 696.51,
+   "l": 681.05,
+   "c": 691.4,
+   "v": 7126122
   }
  ],
  "sr": {
-  "price": 701.36,
+  "price": 691.4,
   "resistance": [
    708.6,
    742.09
@@ -498,7 +498,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  593.4,
   592.94,
   585.15,
   538.6,
@@ -557,16 +556,17 @@
   737.54,
   736.72,
   709.33,
-  701.36
+  705.44,
+  691.4
  ],
- "spark_start": "2026-07-27",
- "spark_end": "2026-10-19",
+ "spark_start": "2026-07-28",
+ "spark_end": "2026-10-20",
  "fundamental": {
   "pe_trailing": 26.435944,
   "pe_forward": 20.262127,
   "eps_trailing": 26.54,
   "eps_forward": 34.62667,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,133 +575,118 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Stock Extends Slide As Big Earnings Test Approaches",
+   "label": "Alphabet's Cloud Growth, TPU Sales Could Drive Q3 Upside, BofA Says",
    "value": {
-    "headline": "Meta Stock Extends Slide As Big Earnings Test Approaches",
+    "headline": "Alphabet's Cloud Growth, TPU Sales Could Drive Q3 Upside, BofA Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792425633,
-    "url": "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss",
+    "ts": 1792509007,
+    "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-apos-cloud-growth-tpu-151007904.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c48341ec-b155-3cee-9458-5db9f5d5549c/meta-stock-extends-slide-as.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/alphabet-apos-cloud-growth-tpu-151007904.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Investor: ‘I Turned AMD Into $16 Million and Sold Everything, Did I Quit Too Soon?’",
+   "label": "Mark Zuckerberg once trashed Apple. Now he’s thanking its new CEO — and had to do it on Elon Musk’s X, not Threads",
    "value": {
-    "headline": "Investor: ‘I Turned AMD Into $16 Million and Sold Everything, Did I Quit Too Soon?’",
+    "headline": "Mark Zuckerberg once trashed Apple. Now he’s thanking its new CEO — and had to do it on Elon Musk’s X, not Threads",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792425588,
-    "url": "https://247wallst.com/investing/2026/10/19/investor-i-turned-amd-into-16-million-and-sold-everything-did-i-quit-too-soon/?.tsrc=rss",
+    "ts": 1792508400,
+    "url": "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-once-trashed-apple-150000909.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/investor-i-turned-amd-into-16-million-and-sold-everything-did-i-quit-too-soon/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-once-trashed-apple-150000909.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "META Stock Gets A Price Target Hike From Morgan Stanley – But Firm Flags Daily Active User Growth For Muse",
+   "label": "Can MongoDB (MDB) Hold Its Guidance After Losing Its Chief Executive?",
    "value": {
-    "headline": "META Stock Gets A Price Target Hike From Morgan Stanley – But Firm Flags Daily Active User Growth For Muse",
+    "headline": "Can MongoDB (MDB) Hold Its Guidance After Losing Its Chief Executive?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792424806,
-    "url": "https://stocktwits.com/news-articles/markets/equity/meta-stock-gets-a-price-target-hike-from-morgan-stanley-but-firm-flags-daily-active-user-growth-for-muse/cZx8rDBRBMu?.tsrc=rss",
+    "ts": 1792507842,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/mongodb-mdb-hold-guidance-losing-145042146.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/meta-stock-gets-a-price-target-hike-from-morgan-stanley-but-firm-flags-daily-active-user-growth-for-muse/cZx8rDBRBMu?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/mongodb-mdb-hold-guidance-losing-145042146.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-19",
+   "severity": "warn",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This Week’s Tech Earnings Could Be a ‘Validation Moment’ for the AI Trade",
+   "label": "AMD Stock Price Prediction: Is the AI Chip Opportunity Bigger Than Wall Street Thinks?",
    "value": {
-    "headline": "This Week’s Tech Earnings Could Be a ‘Validation Moment’ for the AI Trade",
+    "headline": "AMD Stock Price Prediction: Is the AI Chip Opportunity Bigger Than Wall Street Thinks?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792424658,
-    "url": "https://www.investopedia.com/market-update-this-weeks-tech-earnings-could-be-a-validation-moment-for-the-ai-trade-12182053?.tsrc=rss",
+    "ts": 1792506619,
+    "url": "https://247wallst.com/investing/2026/10/20/amd-stock-price-prediction-is-the-ai-chip-opportunity-bigger-than-wall-street-thinks/?.tsrc=rss",
     "urls": [
-     "https://www.investopedia.com/market-update-this-weeks-tech-earnings-could-be-a-validation-moment-for-the-ai-trade-12182053?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/amd-stock-price-prediction-is-the-ai-chip-opportunity-bigger-than-wall-street-thinks/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Veteran Strategist Warns: Meta Skyrocketed Off-Balance-Sheet Financing by 17X, From “$35 Billion to $600 Billion”",
+   "label": "Anthropic Will Be The Last AI IPO Of 2026, As Industry Collapses",
    "value": {
-    "headline": "Veteran Strategist Warns: Meta Skyrocketed Off-Balance-Sheet Financing by 17X, From “$35 Billion to $600 Billion”",
+    "headline": "Anthropic Will Be The Last AI IPO Of 2026, As Industry Collapses",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792422601,
-    "url": "https://www.tikr.com/blog/veteran-strategist-warns-meta-skyrocketed-off-balance-sheet-financing-by-17x-from-35-billion-to-600-billion?ref=yahoofinance&.tsrc=rss",
+    "ts": 1792504520,
+    "url": "https://247wallst.com/investing/2026/10/20/anthropic-will-be-the-last-ai-ipo-of-2026-as-industry-collapses/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/veteran-strategist-warns-meta-skyrocketed-off-balance-sheet-financing-by-17x-from-35-billion-to-600-billion?ref=yahoofinance&.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/20/anthropic-will-be-the-last-ai-ipo-of-2026-as-industry-collapses/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 77 分 / 18 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 77,
-    "comments": 18,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -715,7 +700,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
