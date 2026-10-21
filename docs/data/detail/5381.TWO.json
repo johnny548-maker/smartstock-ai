@@ -1,8 +1,8 @@
 {
  "stock": "5381.TWO",
  "name": "光譜",
- "price": 21.0,
- "change_pct": -0.24,
+ "price": 21.05,
+ "change_pct": 0.24,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -467,15 +467,25 @@
    "l": 20.9,
    "c": 21.0,
    "v": 579994
+  },
+  {
+   "time": "2026-10-21",
+   "o": 21.45,
+   "h": 21.85,
+   "l": 20.95,
+   "c": 21.05,
+   "v": 541015
   }
  ],
  "sr": {
-  "price": 21.0,
+  "price": 21.05,
   "resistance": [
    24.2,
    27.3
   ],
-  "support": [],
+  "support": [
+   21.0
+  ],
   "strong_support": 21.0
  },
  "spark": [
@@ -536,10 +546,11 @@
   21.75,
   21.75,
   21.05,
-  21.0
+  21.0,
+  21.05
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-20",
+ "spark_end": "2026-10-21",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

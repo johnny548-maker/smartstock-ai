@@ -1,49 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 223.57,
- "change_pct": -2.17,
+ "name": "NVIDIA",
+ "price": 219.99,
+ "change_pct": 1.63,
  "ohlc": [
-  {
-   "time": "2026-07-22",
-   "o": 205.58,
-   "h": 214.15,
-   "l": 204.72,
-   "c": 211.82,
-   "v": 137645600
-  },
-  {
-   "time": "2026-07-23",
-   "o": 209.23,
-   "h": 210.63,
-   "l": 205.73,
-   "c": 208.53,
-   "v": 110505300
-  },
-  {
-   "time": "2026-07-24",
-   "o": 207.22,
-   "h": 211.67,
-   "l": 204.58,
-   "c": 206.61,
-   "v": 114836800
-  },
-  {
-   "time": "2026-07-27",
-   "o": 207.97,
-   "h": 208.52,
-   "l": 195.22,
-   "c": 196.29,
-   "v": 154353700
-  },
-  {
-   "time": "2026-07-28",
-   "o": 194.78,
-   "h": 198.48,
-   "l": 192.52,
-   "c": 196.79,
-   "v": 134111500
-  },
   {
    "time": "2026-07-29",
    "o": 195.63,
@@ -474,35 +434,70 @@
    "h": 228.64,
    "l": 223.06,
    "c": 228.52,
-   "v": 83846800
+   "v": 84036900
   },
   {
    "time": "2026-10-14",
-   "o": 225.6,
+   "o": 225.53,
    "h": 226.0,
-   "l": 223.35,
-   "c": 223.57,
-   "v": 30454287
+   "l": 219.64,
+   "c": 221.3,
+   "v": 118730100
+  },
+  {
+   "time": "2026-10-15",
+   "o": 215.3,
+   "h": 218.47,
+   "l": 212.85,
+   "c": 217.23,
+   "v": 127087900
+  },
+  {
+   "time": "2026-10-16",
+   "o": 216.56,
+   "h": 218.68,
+   "l": 213.32,
+   "c": 214.13,
+   "v": 121252500
+  },
+  {
+   "time": "2026-10-19",
+   "o": 218.1,
+   "h": 219.62,
+   "l": 214.7,
+   "c": 217.09,
+   "v": 98684700
+  },
+  {
+   "time": "2026-10-20",
+   "o": 215.98,
+   "h": 218.46,
+   "l": 212.77,
+   "c": 216.47,
+   "v": 78967900
+  },
+  {
+   "time": "2026-10-21",
+   "o": 220.96,
+   "h": 222.16,
+   "l": 217.66,
+   "c": 219.99,
+   "v": 34850070
   }
  ],
  "sr": {
-  "price": 223.57,
+  "price": 219.99,
   "resistance": [
    227.67,
    229.98
   ],
   "support": [
-   221.09,
-   215.96
+   215.96,
+   214.86
   ],
-  "strong_support": 189.8
+  "strong_support": 163.9
  },
  "spark": [
-  211.82,
-  208.53,
-  206.61,
-  196.29,
-  196.79,
   189.8,
   194.82,
   200.53,
@@ -557,11 +552,157 @@
   229.28,
   226.32,
   228.52,
-  223.57
+  221.3,
+  217.23,
+  214.13,
+  217.09,
+  216.47,
+  219.99
  ],
- "spark_start": "2026-07-22",
- "spark_end": "2026-10-14",
- "fundamental": null,
+ "spark_start": "2026-07-29",
+ "spark_end": "2026-10-21",
+ "fundamental": {
+  "pe_trailing": 27.810366,
+  "pe_forward": 13.822527,
+  "eps_trailing": 7.91,
+  "eps_forward": 15.9146,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI bottlenecks 'keep shifting': Nvidia CEO Jensen Huang explains",
+   "value": {
+    "headline": "AI bottlenecks 'keep shifting': Nvidia CEO Jensen Huang explains",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1792595715,
+    "url": "https://finance.yahoo.com/video/ai-bottlenecks-keep-shifting-nvidia-ceo-jensen-huang-explains-151515581.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/ai-bottlenecks-keep-shifting-nvidia-ceo-jensen-huang-explains-151515581.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia (NVDA) Is Trading Like Growth Will Stop. The Numbers Say Otherwise.",
+   "value": {
+    "headline": "Nvidia (NVDA) Is Trading Like Growth Will Stop. The Numbers Say Otherwise.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1792595692,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-trading-growth-stop-151452484.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-trading-growth-stop-151452484.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Elon Musk Thinks Elon Musk’s Companies Should Merge",
+   "value": {
+    "headline": "Elon Musk Thinks Elon Musk’s Companies Should Merge",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1792595216,
+    "url": "https://app.moby.co/home/news/news-elon-musk-thinks-elon-musks-companies-should-merge?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+    "urls": [
+     "https://app.moby.co/home/news/news-elon-musk-thinks-elon-musks-companies-should-merge?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "New FT Poll Shows: The Future of AI Could Be Good News for International Stocks",
+   "value": {
+    "headline": "New FT Poll Shows: The Future of AI Could Be Good News for International Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1792595100,
+    "url": "https://www.fool.com/investing/2026/10/21/new-ft-poll-shows-the-future-of-ai-could-be-good/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/21/new-ft-poll-shows-the-future-of-ai-could-be-good/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Elon Musk May Have Ended the October AI Crash as NVIDIA, Intel, and SanDisk Rally after One SpaceX Quote",
+   "value": {
+    "headline": "Elon Musk May Have Ended the October AI Crash as NVIDIA, Intel, and SanDisk Rally after One SpaceX Quote",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1792595065,
+    "url": "https://247wallst.com/investing/2026/10/21/elon-musk-may-have-ended-the-october-ai-crash-as-nvidia-intel-and-sandisk-rally-after-one-spacex-quote/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/10/21/elon-musk-may-have-ended-the-october-ai-crash-as-nvidia-intel-and-sandisk-rally-after-one-spacex-quote/?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 21,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "udn",
+     "yahoo_tw",
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 228,010 股交割失敗）",
+   "value": {
+    "total_shares": 228010,
+    "days": 6,
+    "max_shares": 203811,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

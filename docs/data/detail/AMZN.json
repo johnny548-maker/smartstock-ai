@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 262.86,
- "change_pct": 0.16,
+ "price": 261.57,
+ "change_pct": -0.4,
  "ohlc": [
-  {
-   "time": "2026-07-28",
-   "o": 232.85,
-   "h": 233.11,
-   "l": 228.1,
-   "c": 230.86,
-   "v": 44521600
-  },
   {
    "time": "2026-07-29",
    "o": 229.32,
@@ -474,19 +466,27 @@
    "h": 263.72,
    "l": 255.22,
    "c": 262.45,
-   "v": 56068100
+   "v": 56188800
   },
   {
    "time": "2026-10-20",
-   "o": 264.03,
+   "o": 264.08,
    "h": 265.34,
    "l": 260.42,
-   "c": 262.86,
-   "v": 14658769
+   "c": 262.63,
+   "v": 34767800
+  },
+  {
+   "time": "2026-10-21",
+   "o": 262.99,
+   "h": 263.07,
+   "l": 259.34,
+   "c": 261.57,
+   "v": 11704121
   }
  ],
  "sr": {
-  "price": 262.86,
+  "price": 261.57,
   "resistance": [
    263.7,
    266.4
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  230.86,
   226.65,
   235.5,
   271.58,
@@ -557,35 +556,36 @@
   254.76,
   250.0,
   262.45,
-  262.86
+  262.63,
+  261.57
  ],
- "spark_start": "2026-07-28",
- "spark_end": "2026-10-20",
+ "spark_start": "2026-07-29",
+ "spark_end": "2026-10-21",
  "fundamental": {
-  "pe_trailing": 21.10732,
-  "pe_forward": 25.123074,
+  "pe_trailing": 21.043602,
+  "pe_forward": 25.047232,
   "eps_trailing": 12.43,
   "eps_forward": 10.44315,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 262.86,
-  "stop": 249.84,
-  "target": 295.44,
-  "atr_bracket": 295.44,
+  "entry": 261.57,
+  "stop": 248.82,
+  "target": 293.44,
+  "atr_bracket": 293.44,
   "measured_move": 282.67,
   "target_band": [
    279.29,
    282.67,
-   295.44
+   293.44
   ],
-  "stop_pct": -5.0,
-  "target_pct": 12.4,
+  "stop_pct": -4.9,
+  "target_pct": 12.2,
   "rr": 2.5,
-  "atr_pct": 2.5,
-  "swing_stop": 246.65,
-  "chandelier": 247.19,
+  "atr_pct": 2.4,
+  "swing_stop": 246.69,
+  "chandelier": 247.49,
   "fib_targets": [
    272.73,
    279.29,
@@ -597,131 +597,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3M Jumps 6% on Expanded Amazon Data Center Deal and Earnings Beat; Coherent Edges Higher, Corning Stays Flat",
+   "label": "Amazon (AMZN): Can Custom AI Silicon Outpace Capex Commitments?",
    "value": {
-    "headline": "3M Jumps 6% on Expanded Amazon Data Center Deal and Earnings Beat; Coherent Edges Higher, Corning Stays Flat",
+    "headline": "Amazon (AMZN): Can Custom AI Silicon Outpace Capex Commitments?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792508325,
-    "url": "https://247wallst.com/investing/2026/10/20/3m-jumps-6-on-expanded-amazon-data-center-deal-and-earnings-beat-coherent-edges-higher-corning-stays-flat/?.tsrc=rss",
+    "ts": 1792595782,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-custom-ai-silicon-151622246.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/3m-jumps-6-on-expanded-amazon-data-center-deal-and-earnings-beat-coherent-edges-higher-corning-stays-flat/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-custom-ai-silicon-151622246.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Boosts Holiday Hiring Plans As Its Stock Adds To A Rebound",
+   "label": "Anthropic Has Locked In Over $600 Billion of Computing, More Than Intel Is Worth. It Still Wants More and That’s Big New",
    "value": {
-    "headline": "Amazon Boosts Holiday Hiring Plans As Its Stock Adds To A Rebound",
+    "headline": "Anthropic Has Locked In Over $600 Billion of Computing, More Than Intel Is Worth. It Still Wants More and That’s Big News for AMD.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792507597,
-    "url": "https://finance.yahoo.com/m/d1768e1a-bb18-3879-9ecb-9b4e00bca7ca/amazon-boosts-holiday-hiring.html?.tsrc=rss",
+    "ts": 1792595780,
+    "url": "https://247wallst.com/investing/2026/10/21/anthropic-has-locked-in-over-600-billion-of-computing-more-than-intel-is-worth-it-still-wants-more-and-thats-big-news-for-amd/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/d1768e1a-bb18-3879-9ecb-9b4e00bca7ca/amazon-boosts-holiday-hiring.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/anthropic-has-locked-in-over-600-billion-of-computing-more-than-intel-is-worth-it-still-wants-more-and-thats-big-news-for-amd/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
+   "label": "Elon Musk Says SpaceX Could Exit 2027 with Up to $1 Trillion in Sales Run Rate. That’s Higher Than Any Company on Earth.",
    "value": {
-    "headline": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
+    "headline": "Elon Musk Says SpaceX Could Exit 2027 with Up to $1 Trillion in Sales Run Rate. That’s Higher Than Any Company on Earth.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792507537,
-    "url": "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss",
+    "ts": 1792594212,
+    "url": "https://247wallst.com/investing/2026/10/21/elon-musk-says-spacex-could-exit-2027-with-up-to-1-trillion-in-sales-run-rate-thats-higher-than-any-company-on-earth/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/elon-musk-says-spacex-could-exit-2027-with-up-to-1-trillion-in-sales-run-rate-thats-higher-than-any-company-on-earth/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3M Beat Estimates and Raised Guidance. Why an Amazon Deal Is Driving the Stock.",
+   "label": "1 Number Every UPS Investor Should Watch in Q3 Earnings",
    "value": {
-    "headline": "3M Beat Estimates and Raised Guidance. Why an Amazon Deal Is Driving the Stock.",
+    "headline": "1 Number Every UPS Investor Should Watch in Q3 Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792506420,
-    "url": "https://finance.yahoo.com/m/17a4793e-73d6-3dea-87b1-744b1a00939c/3m-beat-estimates-and-raised.html?.tsrc=rss",
+    "ts": 1792594200,
+    "url": "https://www.fool.com/investing/2026/10/21/1-number-every-ups-investor-should-watch-in-q3/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/17a4793e-73d6-3dea-87b1-744b1a00939c/3m-beat-estimates-and-raised.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/21/1-number-every-ups-investor-should-watch-in-q3/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon to hire over 300,000 holiday workers, up 20% from last year",
+   "label": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
    "value": {
-    "headline": "Amazon to hire over 300,000 holiday workers, up 20% from last year",
+    "headline": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792504340,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-hire-over-300-000-135220725.html?.tsrc=rss",
+    "ts": 1792593947,
+    "url": "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amazon-hire-over-300-000-135220725.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 11 篇 / 97 分 / 60 留言",
+   "label": "HN 討論熱度 13 篇 / 112 分 / 63 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 97,
-    "comments": 60,
-    "n": 11,
+    "points": 112,
+    "comments": 63,
+    "n": 13,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +736,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

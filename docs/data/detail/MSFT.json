@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 529.36,
- "change_pct": -0.78,
+ "price": 530.42,
+ "change_pct": -0.27,
  "ohlc": [
-  {
-   "time": "2026-07-28",
-   "o": 392.42,
-   "h": 399.57,
-   "l": 390.56,
-   "c": 392.61,
-   "v": 32367500
-  },
   {
    "time": "2026-07-29",
    "o": 392.66,
@@ -474,31 +466,38 @@
    "h": 535.57,
    "l": 528.06,
    "c": 533.52,
-   "v": 17984300
+   "v": 17994900
   },
   {
    "time": "2026-10-20",
    "o": 533.91,
    "h": 534.21,
-   "l": 525.9,
-   "c": 529.36,
-   "v": 4017781
+   "l": 525.84,
+   "c": 531.87,
+   "v": 14503700
+  },
+  {
+   "time": "2026-10-21",
+   "o": 529.44,
+   "h": 531.48,
+   "l": 525.02,
+   "c": 530.42,
+   "v": 4262965
   }
  ],
  "sr": {
-  "price": 529.36,
+  "price": 530.42,
   "resistance": [
    549.2,
    551.15
   ],
   "support": [
-   518.79,
-   491.22
+   524.43,
+   518.79
   ],
   "strong_support": 348.54
  },
  "spark": [
-  392.61,
   389.81,
   450.25,
   463.85,
@@ -557,16 +556,17 @@
   539.44,
   529.05,
   533.52,
-  529.36
+  531.87,
+  530.42
  ],
- "spark_start": "2026-07-28",
- "spark_end": "2026-10-20",
+ "spark_start": "2026-07-29",
+ "spark_end": "2026-10-21",
  "fundamental": {
-  "pe_trailing": 29.701113,
-  "pe_forward": 22.475063,
+  "pe_trailing": 29.549858,
+  "pe_forward": 22.381714,
   "eps_trailing": 17.95,
-  "eps_forward": 23.72118,
-  "stale": true,
+  "eps_forward": 23.69881,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Splashtop Agentic Packr Automates App Packaging for Microsoft Intune",
+   "label": "What Will $5,000 Invested in Microsoft Stock Be Worth in 5 Years?",
    "value": {
-    "headline": "Splashtop Agentic Packr Automates App Packaging for Microsoft Intune",
+    "headline": "What Will $5,000 Invested in Microsoft Stock Be Worth in 5 Years?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792508400,
-    "url": "https://finance.yahoo.com/technology/ai/articles/splashtop-agentic-packr-automates-app-150000714.html?.tsrc=rss",
+    "ts": 1792594811,
+    "url": "https://247wallst.com/investing/2026/10/21/what-will-5000-invested-in-microsoft-stock-be-worth-in-5-years/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/splashtop-agentic-packr-automates-app-150000714.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/what-will-5000-invested-in-microsoft-stock-be-worth-in-5-years/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic in talks for second multibillion-dollar Nscale deal - CNBC",
+   "label": "The World’s Greatest Hedge Fund Investor Ken Griffin Just Said AI Is ‘Almost Certainly’ a Bubble. But He’s Not Betting A",
    "value": {
-    "headline": "Anthropic in talks for second multibillion-dollar Nscale deal - CNBC",
+    "headline": "The World’s Greatest Hedge Fund Investor Ken Griffin Just Said AI Is ‘Almost Certainly’ a Bubble. But He’s Not Betting Against it Long Term",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792508068,
-    "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-talks-second-multibillion-dollar-145428986.html?.tsrc=rss",
+    "ts": 1792594530,
+    "url": "https://247wallst.com/investing/2026/10/21/the-worlds-greatest-hedge-fund-investor-ken-griffin-just-said-ai-is-almost-certainly-a-bubble-but-hes-not-betting-against-it-long-term/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/anthropic-talks-second-multibillion-dollar-145428986.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/the-worlds-greatest-hedge-fund-investor-ken-griffin-just-said-ai-is-almost-certainly-a-bubble-but-hes-not-betting-against-it-long-term/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
+   "label": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
    "value": {
-    "headline": "Q3 TrendsSuggest Amazon Will Rise on Oct. 29 But That’s Not Why I’m Buying",
+    "headline": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792507537,
-    "url": "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss",
+    "ts": 1792593947,
+    "url": "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/q3-trendssuggest-amazon-will-rise-on-oct-29-but-thats-not-why-im-buying/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "This Billionaire Investor Called the Stock Market a ‘Hollow Tree’ — Here Are the Disturbing Numbers That Say He’s Right",
+   "label": "Credo Technology Crumbled By 15% Over 3 Months But Has 80% Gains In Store According to Two Wall Street Firms",
    "value": {
-    "headline": "This Billionaire Investor Called the Stock Market a ‘Hollow Tree’ — Here Are the Disturbing Numbers That Say He’s Right",
+    "headline": "Credo Technology Crumbled By 15% Over 3 Months But Has 80% Gains In Store According to Two Wall Street Firms",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792507347,
-    "url": "https://247wallst.com/investing/2026/10/20/this-billionaire-investor-called-the-stock-market-a-hollow-tree-here-are-the-disturbing-numbers-that-say-hes-right/?.tsrc=rss",
+    "ts": 1792593904,
+    "url": "https://247wallst.com/investing/2026/10/21/credo-technology-crumbled-by-15-over-3-months-but-has-80-gains-in-store-according-to-two-wall-street-firms/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/this-billionaire-investor-called-the-stock-market-a-hollow-tree-here-are-the-disturbing-numbers-that-say-hes-right/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/21/credo-technology-crumbled-by-15-over-3-months-but-has-80-gains-in-store-according-to-two-wall-street-firms/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft, Alphabet Bar Their Tokenized Shares From OKX-ICE Venue as Objections Hit 16",
+   "label": "Is Veeva Systems Stock Really Expensive?",
    "value": {
-    "headline": "Microsoft, Alphabet Bar Their Tokenized Shares From OKX-ICE Venue as Objections Hit 16",
+    "headline": "Is Veeva Systems Stock Really Expensive?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792506960,
-    "url": "https://unchainedcrypto.com/microsoft-alphabet-bar-their-tokenized-shares-from-okx-ice-venue-as-objections-hit-16/?.tsrc=rss",
+    "ts": 1792593375,
+    "url": "https://www.trefis.com/articles/619739/is-veeva-systems-stock-really-expensive/2026-10-21?.tsrc=rss",
     "urls": [
-     "https://unchainedcrypto.com/microsoft-alphabet-bar-their-tokenized-shares-from-okx-ice-venue-as-objections-hit-16/?.tsrc=rss"
+     "https://www.trefis.com/articles/619739/is-veeva-systems-stock-really-expensive/2026-10-21?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

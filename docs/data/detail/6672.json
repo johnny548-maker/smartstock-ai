@@ -1,17 +1,9 @@
 {
  "stock": "6672",
  "name": "騰輝電子-KY",
- "price": 570.0,
- "change_pct": 1.42,
+ "price": 627.0,
+ "change_pct": 10.0,
  "ohlc": [
-  {
-   "time": "2026-07-24",
-   "o": 231.0,
-   "h": 243.5,
-   "l": 224.0,
-   "c": 224.5,
-   "v": 3538200
-  },
   {
    "time": "2026-07-27",
    "o": 225.5,
@@ -482,14 +474,20 @@
    "h": 588.0,
    "l": 560.0,
    "c": 570.0,
-   "v": 6313534
+   "v": 6172354
+  },
+  {
+   "time": "2026-10-21",
+   "o": 615.0,
+   "h": 627.0,
+   "l": 615.0,
+   "c": 627.0,
+   "v": 1242434
   }
  ],
  "sr": {
-  "price": 570.0,
-  "resistance": [
-   605.0
-  ],
+  "price": 627.0,
+  "resistance": [],
   "support": [
    285.0,
    261.5
@@ -497,7 +495,6 @@
   "strong_support": 51.78
  },
  "spark": [
-  224.5,
   221.0,
   199.5,
   185.5,
@@ -556,10 +553,11 @@
   570.0,
   591.0,
   562.0,
-  570.0
+  570.0,
+  627.0
  ],
- "spark_start": "2026-07-24",
- "spark_end": "2026-10-20",
+ "spark_start": "2026-07-27",
+ "spark_end": "2026-10-21",
  "fundamental": {
   "rev_yoy": 201.7,
   "rev_accel": true,
@@ -572,39 +570,28 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人賣超 27,308 股",
+   "label": "三大法人買超 480,936 股",
    "value": {
-    "foreign": -17153,
-    "trust": 40000,
-    "dealer": -50155,
-    "total": -27308
+    "foreign": 433500,
+    "trust": 0,
+    "dealer": 47436,
+    "total": 480936
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -36
-   },
-   "severity": "info",
-   "as_of": "2026-10-20",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 84.9 / 殖利率 0.60% / PB 9.55",
+   "label": "PE 86.1 / 殖利率 0.59% / PB 9.68",
    "value": {
-    "pe": 84.89,
-    "yield": 0.6,
-    "pb": 9.55
+    "pe": 86.1,
+    "yield": 0.59,
+    "pb": 9.68
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-20",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -612,12 +599,12 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 334,
+    "short_today": 348,
     "outstanding": 82311633,
-    "short_pct": 0.0004057749650040353
+    "short_pct": 0.0004227834964712703
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   },
   {
@@ -632,36 +619,76 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "金居籌設在大馬檳城新建HVLP4高階銅箔 規劃年產3萬噸",
+   "label": "【量大強漲股整理】錯過台股反彈下一波新主流,準備出列!",
    "value": {
-    "headline": "金居籌設在大馬檳城新建HVLP4高階銅箔 規劃年產3萬噸",
+    "headline": "【量大強漲股整理】錯過台股反彈下一波新主流,準備出列!",
     "sources": [
      "cnyes"
     ],
     "source_count": 1,
-    "ts": 1792482044,
-    "url": "cnyes:6634187",
+    "ts": 1792578117,
+    "url": "cnyes:6635152",
     "urls": [
-     "cnyes:6634187"
+     "cnyes:6635152"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "金居自結9月獲利年增89%、EPS 0.8元 擬再投資百億新建高階銅箔廠",
+   "value": {
+    "headline": "金居自結9月獲利年增89%、EPS 0.8元 擬再投資百億新建高階銅箔廠",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1792570613,
+    "url": "cnyes:6635020",
+    "urls": [
+     "cnyes:6635020"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "〈台股盤後〉台指期結算甩尾漲594.84點 收46887.77點重新站回5日線",
+   "value": {
+    "headline": "〈台股盤後〉台指期結算甩尾漲594.84點 收46887.77點重新站回5日線",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1792564428,
+    "url": "cnyes:6634947",
+    "urls": [
+     "cnyes:6634947"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 3 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 3,
     "max_source_count": 1,
     "distinct_sources": [
      "cnyes"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
@@ -1054,6 +1081,10 @@
    {
     "t": "2026-10-20",
     "v": 24747
+   },
+   {
+    "t": "2026-10-21",
+    "v": 25228
    }
   ],
   "holder_pct": [

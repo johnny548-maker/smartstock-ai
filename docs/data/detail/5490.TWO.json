@@ -1,8 +1,8 @@
 {
  "stock": "5490.TWO",
  "name": "同亨",
- "price": 25.1,
- "change_pct": 0.2,
+ "price": 25.2,
+ "change_pct": 0.4,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -467,15 +467,25 @@
    "l": 24.55,
    "c": 25.1,
    "v": 169282
+  },
+  {
+   "time": "2026-10-21",
+   "o": 25.2,
+   "h": 25.2,
+   "l": 24.95,
+   "c": 25.2,
+   "v": 149818
   }
  ],
  "sr": {
-  "price": 25.1,
+  "price": 25.2,
   "resistance": [
    29.9,
    32.45
   ],
-  "support": [],
+  "support": [
+   25.1
+  ],
   "strong_support": 25.1
  },
  "spark": [
@@ -536,10 +546,11 @@
   25.25,
   25.25,
   25.05,
-  25.1
+  25.1,
+  25.2
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-10-20",
+ "spark_end": "2026-10-21",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
