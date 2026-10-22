@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 691.4,
- "change_pct": -1.99,
+ "price": 658.67,
+ "change_pct": -5.57,
  "ohlc": [
-  {
-   "time": "2026-07-28",
-   "o": 596.35,
-   "h": 600.53,
-   "l": 586.54,
-   "c": 592.94,
-   "v": 12009300
-  },
-  {
-   "time": "2026-07-29",
-   "o": 592.78,
-   "h": 599.5,
-   "l": 581.76,
-   "c": 585.15,
-   "v": 22371100
-  },
   {
    "time": "2026-07-30",
    "o": 525.59,
@@ -474,22 +458,38 @@
    "h": 708.83,
    "l": 693.86,
    "c": 705.44,
-   "v": 16235800
+   "v": 16260900
   },
   {
    "time": "2026-10-20",
-   "o": 694.3,
+   "o": 694.98,
    "h": 696.51,
    "l": 681.05,
-   "c": 691.4,
-   "v": 7126122
+   "c": 694.25,
+   "v": 17049100
+  },
+  {
+   "time": "2026-10-21",
+   "o": 697.6,
+   "h": 713.22,
+   "l": 689.68,
+   "c": 697.52,
+   "v": 28638700
+  },
+  {
+   "time": "2026-10-22",
+   "o": 675.79,
+   "h": 681.07,
+   "l": 648.26,
+   "c": 658.67,
+   "v": 19597758
   }
  ],
  "sr": {
-  "price": 691.4,
+  "price": 658.67,
   "resistance": [
-   708.6,
-   742.09
+   659.3,
+   661.65
   ],
   "support": [
    651.93,
@@ -498,8 +498,6 @@
   "strong_support": 519.37
  },
  "spark": [
-  592.94,
-  585.15,
   538.6,
   556.27,
   589.77,
@@ -557,16 +555,18 @@
   736.72,
   709.33,
   705.44,
-  691.4
+  694.25,
+  697.52,
+  658.67
  ],
- "spark_start": "2026-07-28",
- "spark_end": "2026-10-20",
+ "spark_start": "2026-07-30",
+ "spark_end": "2026-10-22",
  "fundamental": {
-  "pe_trailing": 26.435944,
-  "pe_forward": 20.262127,
-  "eps_trailing": 26.54,
-  "eps_forward": 34.62667,
-  "stale": true,
+  "pe_trailing": 22.471853,
+  "pe_forward": 18.848368,
+  "eps_trailing": 29.31,
+  "eps_forward": 34.94467,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet's Cloud Growth, TPU Sales Could Drive Q3 Upside, BofA Says",
+   "label": "Meta stock drops more than 6% despite strong Q3 results, stock split",
    "value": {
-    "headline": "Alphabet's Cloud Growth, TPU Sales Could Drive Q3 Upside, BofA Says",
+    "headline": "Meta stock drops more than 6% despite strong Q3 results, stock split",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792509007,
-    "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-apos-cloud-growth-tpu-151007904.html?.tsrc=rss",
+    "ts": 1792681938,
+    "url": "https://finance.yahoo.com/technology/article/meta-stock-drops-more-than-6-despite-strong-q3-results-stock-split-151218152.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/alphabet-apos-cloud-growth-tpu-151007904.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/meta-stock-drops-more-than-6-despite-strong-q3-results-stock-split-151218152.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mark Zuckerberg once trashed Apple. Now he’s thanking its new CEO — and had to do it on Elon Musk’s X, not Threads",
+   "label": "Meta Platforms' Core Growth, Muse Opportunity Support Further Upside, Morgan Stanley Says",
    "value": {
-    "headline": "Mark Zuckerberg once trashed Apple. Now he’s thanking its new CEO — and had to do it on Elon Musk’s X, not Threads",
+    "headline": "Meta Platforms' Core Growth, Muse Opportunity Support Further Upside, Morgan Stanley Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792508400,
-    "url": "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-once-trashed-apple-150000909.html?.tsrc=rss",
+    "ts": 1792681225,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-core-growth-150025125.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-once-trashed-apple-150000909.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-core-growth-150025125.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Can MongoDB (MDB) Hold Its Guidance After Losing Its Chief Executive?",
+   "label": "Stock Market Today: Nasdaq Hit As Meta, Alphabet Slide Below Key Levels (Live Coverage)",
    "value": {
-    "headline": "Can MongoDB (MDB) Hold Its Guidance After Losing Its Chief Executive?",
+    "headline": "Stock Market Today: Nasdaq Hit As Meta, Alphabet Slide Below Key Levels (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792507842,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/mongodb-mdb-hold-guidance-losing-145042146.html?.tsrc=rss",
+    "ts": 1792681205,
+    "url": "https://finance.yahoo.com/m/a6067e2b-5ce6-3182-915b-58daa8b6d0f9/stock-market-today%3A-nasdaq.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/mongodb-mdb-hold-guidance-losing-145042146.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/a6067e2b-5ce6-3182-915b-58daa8b6d0f9/stock-market-today%3A-nasdaq.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-10-20",
+   "severity": "info",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Price Prediction: Is the AI Chip Opportunity Bigger Than Wall Street Thinks?",
+   "label": "Meta Platforms' AI Story Gains Traction After Q3 Revenue Beat, BofA Says",
    "value": {
-    "headline": "AMD Stock Price Prediction: Is the AI Chip Opportunity Bigger Than Wall Street Thinks?",
+    "headline": "Meta Platforms' AI Story Gains Traction After Q3 Revenue Beat, BofA Says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792506619,
-    "url": "https://247wallst.com/investing/2026/10/20/amd-stock-price-prediction-is-the-ai-chip-opportunity-bigger-than-wall-street-thinks/?.tsrc=rss",
+    "ts": 1792681044,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-ai-story-145724947.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/amd-stock-price-prediction-is-the-ai-chip-opportunity-bigger-than-wall-street-thinks/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-ai-story-145724947.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Will Be The Last AI IPO Of 2026, As Industry Collapses",
+   "label": "How agentic AI shopping changes consumer staples: P&G CFO",
    "value": {
-    "headline": "Anthropic Will Be The Last AI IPO Of 2026, As Industry Collapses",
+    "headline": "How agentic AI shopping changes consumer staples: P&G CFO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792504520,
-    "url": "https://247wallst.com/investing/2026/10/20/anthropic-will-be-the-last-ai-ipo-of-2026-as-industry-collapses/?.tsrc=rss",
+    "ts": 1792680070,
+    "url": "https://finance.yahoo.com/video/how-agentic-ai-shopping-changes-consumer-staples-pg-cfo-144110714.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/20/anthropic-will-be-the-last-ai-ipo-of-2026-as-industry-collapses/?.tsrc=rss"
+     "https://finance.yahoo.com/video/how-agentic-ai-shopping-changes-consumer-staples-pg-cfo-144110714.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -700,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-20",
+   "as_of": "2026-10-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

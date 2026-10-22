@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 261.57,
- "change_pct": -0.4,
+ "price": 252.45,
+ "change_pct": -3.78,
  "ohlc": [
-  {
-   "time": "2026-07-29",
-   "o": 229.32,
-   "h": 232.82,
-   "l": 226.16,
-   "c": 226.65,
-   "v": 44957500
-  },
   {
    "time": "2026-07-30",
    "o": 233.35,
@@ -474,31 +466,38 @@
    "h": 265.34,
    "l": 260.42,
    "c": 262.63,
-   "v": 34767800
+   "v": 34927200
   },
   {
    "time": "2026-10-21",
-   "o": 262.99,
-   "h": 263.07,
-   "l": 259.34,
-   "c": 261.57,
-   "v": 11704121
+   "o": 262.71,
+   "h": 264.36,
+   "l": 259.29,
+   "c": 262.37,
+   "v": 31139400
+  },
+  {
+   "time": "2026-10-22",
+   "o": 258.13,
+   "h": 258.36,
+   "l": 251.33,
+   "c": 252.45,
+   "v": 16507121
   }
  ],
  "sr": {
-  "price": 261.57,
+  "price": 252.45,
   "resistance": [
-   263.7,
-   266.4
+   256.18,
+   258.08
   ],
   "support": [
-   257.04,
-   256.16
+   251.93,
+   248.6
   ],
   "strong_support": 196.0
  },
  "spark": [
-  226.65,
   235.5,
   271.58,
   284.02,
@@ -557,171 +556,150 @@
   250.0,
   262.45,
   262.63,
-  261.57
+  262.37,
+  252.45
  ],
- "spark_start": "2026-07-29",
- "spark_end": "2026-10-21",
+ "spark_start": "2026-07-30",
+ "spark_end": "2026-10-22",
  "fundamental": {
-  "pe_trailing": 21.043602,
-  "pe_forward": 25.047232,
+  "pe_trailing": 20.31094,
+  "pe_forward": 24.163769,
   "eps_trailing": 12.43,
-  "eps_forward": 10.44315,
+  "eps_forward": 10.44808,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 261.57,
-  "stop": 248.82,
-  "target": 293.44,
-  "atr_bracket": 293.44,
-  "measured_move": 282.67,
-  "target_band": [
-   279.29,
-   282.67,
-   293.44
-  ],
-  "stop_pct": -4.9,
-  "target_pct": 12.2,
-  "rr": 2.5,
-  "atr_pct": 2.4,
-  "swing_stop": 246.69,
-  "chandelier": 247.49,
-  "fib_targets": [
-   272.73,
-   279.29,
-   286.54
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon (AMZN): Can Custom AI Silicon Outpace Capex Commitments?",
+   "label": "If You Invest $1,000 in Amazon Each Month Starting Now, This is What You’d Have in 5 Years",
    "value": {
-    "headline": "Amazon (AMZN): Can Custom AI Silicon Outpace Capex Commitments?",
+    "headline": "If You Invest $1,000 in Amazon Each Month Starting Now, This is What You’d Have in 5 Years",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792595782,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-custom-ai-silicon-151622246.html?.tsrc=rss",
+    "ts": 1792681235,
+    "url": "https://247wallst.com/investing/2026/10/22/if-you-invest-1000-in-amazon-each-month-starting-now-this-is-what-youd-have-in-5-years/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-amzn-custom-ai-silicon-151622246.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/22/if-you-invest-1000-in-amazon-each-month-starting-now-this-is-what-youd-have-in-5-years/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Has Locked In Over $600 Billion of Computing, More Than Intel Is Worth. It Still Wants More and That’s Big New",
+   "label": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
    "value": {
-    "headline": "Anthropic Has Locked In Over $600 Billion of Computing, More Than Intel Is Worth. It Still Wants More and That’s Big News for AMD.",
+    "headline": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792595780,
-    "url": "https://247wallst.com/investing/2026/10/21/anthropic-has-locked-in-over-600-billion-of-computing-more-than-intel-is-worth-it-still-wants-more-and-thats-big-news-for-amd/?.tsrc=rss",
+    "ts": 1792681200,
+    "url": "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/21/anthropic-has-locked-in-over-600-billion-of-computing-more-than-intel-is-worth-it-still-wants-more-and-thats-big-news-for-amd/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Elon Musk Says SpaceX Could Exit 2027 with Up to $1 Trillion in Sales Run Rate. That’s Higher Than Any Company on Earth.",
+   "label": "The Biggest Price Hike in 49 Years Just Hit a Christmas Staple — and Families Could Feel It This Holiday Season",
    "value": {
-    "headline": "Elon Musk Says SpaceX Could Exit 2027 with Up to $1 Trillion in Sales Run Rate. That’s Higher Than Any Company on Earth.",
+    "headline": "The Biggest Price Hike in 49 Years Just Hit a Christmas Staple — and Families Could Feel It This Holiday Season",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792594212,
-    "url": "https://247wallst.com/investing/2026/10/21/elon-musk-says-spacex-could-exit-2027-with-up-to-1-trillion-in-sales-run-rate-thats-higher-than-any-company-on-earth/?.tsrc=rss",
+    "ts": 1792679710,
+    "url": "https://247wallst.com/investing/2026/10/22/the-biggest-price-hike-in-49-years-just-hit-a-christmas-staple-and-families-could-feel-it-this-holiday-season/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/21/elon-musk-says-spacex-could-exit-2027-with-up-to-1-trillion-in-sales-run-rate-thats-higher-than-any-company-on-earth/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/22/the-biggest-price-hike-in-49-years-just-hit-a-christmas-staple-and-families-could-feel-it-this-holiday-season/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 Number Every UPS Investor Should Watch in Q3 Earnings",
+   "label": "Should You Buy Jim Cramer and Ken Fisher’s Top AI Stock Pick Ahead of Earnings?",
    "value": {
-    "headline": "1 Number Every UPS Investor Should Watch in Q3 Earnings",
+    "headline": "Should You Buy Jim Cramer and Ken Fisher’s Top AI Stock Pick Ahead of Earnings?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792594200,
-    "url": "https://www.fool.com/investing/2026/10/21/1-number-every-ups-investor-should-watch-in-q3/?.tsrc=rss",
+    "ts": 1792678940,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/buy-jim-cramer-ken-fisher-142220229.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/21/1-number-every-ups-investor-should-watch-in-q3/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/buy-jim-cramer-ken-fisher-142220229.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
+   "label": "Is UBER Stock Worth Betting on Now, Riding on Its Expansion Drive?",
    "value": {
-    "headline": "The Market Will Wake Up to Microsoft’s Value Sooner or Later",
+    "headline": "Is UBER Stock Worth Betting on Now, Riding on Its Expansion Drive?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792593947,
-    "url": "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss",
+    "ts": 1792678320,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/uber-stock-worth-betting-now-141200699.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/21/the-market-will-wake-up-to-microsofts-value-sooner-or-later/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/uber-stock-worth-betting-now-141200699.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 13 篇 / 112 分 / 63 留言",
+   "label": "HN 討論熱度 13 篇 / 111 分 / 14 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 112,
-    "comments": 63,
+    "points": 111,
+    "comments": 14,
     "n": 13,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -736,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-21",
+   "as_of": "2026-10-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

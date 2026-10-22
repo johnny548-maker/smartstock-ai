@@ -1,33 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 341.69,
- "change_pct": -0.52,
+ "price": 345.52,
+ "change_pct": 0.44,
  "ohlc": [
-  {
-   "time": "2026-07-27",
-   "o": 334.25,
-   "h": 339.28,
-   "l": 333.73,
-   "c": 336.62,
-   "v": 49604300
-  },
-  {
-   "time": "2026-07-28",
-   "o": 339.74,
-   "h": 342.59,
-   "l": 335.31,
-   "c": 339.79,
-   "v": 51859000
-  },
-  {
-   "time": "2026-07-29",
-   "o": 339.44,
-   "h": 344.27,
-   "l": 337.06,
-   "c": 337.9,
-   "v": 56090800
-  },
   {
    "time": "2026-07-30",
    "o": 332.81,
@@ -474,22 +450,45 @@
    "h": 347.82,
    "l": 340.46,
    "c": 343.46,
-   "v": 59895300
+   "v": 59946400
   },
   {
    "time": "2026-10-19",
-   "o": 340.98,
-   "h": 345.99,
-   "l": 340.11,
-   "c": 341.69,
-   "v": 17211613
+   "o": 340.78,
+   "h": 346.0,
+   "l": 340.12,
+   "c": 342.94,
+   "v": 34573200
+  },
+  {
+   "time": "2026-10-20",
+   "o": 339.86,
+   "h": 343.06,
+   "l": 338.7,
+   "c": 339.5,
+   "v": 35851400
+  },
+  {
+   "time": "2026-10-21",
+   "o": 339.36,
+   "h": 345.25,
+   "l": 338.83,
+   "c": 343.99,
+   "v": 35577700
+  },
+  {
+   "time": "2026-10-22",
+   "o": 344.93,
+   "h": 347.28,
+   "l": 342.28,
+   "c": 345.52,
+   "v": 10488860
   }
  ],
  "sr": {
-  "price": 341.69,
+  "price": 345.52,
   "resistance": [
-   342.99,
-   344.27
+   348.15
   ],
   "support": [
    325.81,
@@ -498,9 +497,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  336.62,
-  339.79,
-  337.9,
   333.14,
   308.64,
   303.16,
@@ -557,166 +553,152 @@
   342.96,
   342.0,
   343.46,
-  341.69
+  342.94,
+  339.5,
+  343.99,
+  345.52
  ],
- "spark_start": "2026-07-27",
- "spark_end": "2026-10-19",
+ "spark_start": "2026-07-30",
+ "spark_end": "2026-10-22",
  "fundamental": {
-  "pe_trailing": 39.18463,
-  "pe_forward": 35.67502,
+  "pe_trailing": 39.62385,
+  "pe_forward": 36.101852,
   "eps_trailing": 8.72,
-  "eps_forward": 9.57785,
+  "eps_forward": 9.5707,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 341.69,
-  "stop": 328.86,
-  "target": 373.77,
-  "atr_bracket": 373.77,
-  "measured_move": 365.6,
-  "target_band": [
-   365.6,
-   373.77
-  ],
-  "stop_pct": -3.8,
-  "target_pct": 9.4,
-  "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 328.77,
-  "chandelier": 328.83,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Stock Holds Strong Amid Healthy iPhone Duo Preorders",
+   "label": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
    "value": {
-    "headline": "Apple Stock Holds Strong Amid Healthy iPhone Duo Preorders",
+    "headline": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792428585,
-    "url": "https://finance.yahoo.com/m/ed0b8ee3-bbf6-3cb8-840e-4138b476aa07/apple-stock-holds-strong-amid.html?.tsrc=rss",
+    "ts": 1792681200,
+    "url": "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ed0b8ee3-bbf6-3cb8-840e-4138b476aa07/apple-stock-holds-strong-amid.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Samsung is making an unexpected move against Apple",
+   "label": "iPhone Duo already backordered until 2027 as pre-order sales soar",
    "value": {
-    "headline": "Samsung is making an unexpected move against Apple",
+    "headline": "iPhone Duo already backordered until 2027 as pre-order sales soar",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792428420,
-    "url": "https://www.thestreet.com/investing/samsung-galaxy-studio-headphones-unexpected-move-against-apple?.tsrc=rss",
+    "ts": 1792679813,
+    "url": "https://www.cbsnews.com/news/iphone-duo-pre-order-sales-apple-foldable/?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/samsung-galaxy-studio-headphones-unexpected-move-against-apple?.tsrc=rss"
+     "https://www.cbsnews.com/news/iphone-duo-pre-order-sales-apple-foldable/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Deep Hardware-Software Integration Drives Apple’s (AAPL) Underappreciated AI Advantage",
+   "label": "What Intel, Boeing, Nike Have In Common With Each Other — And Apple",
    "value": {
-    "headline": "Deep Hardware-Software Integration Drives Apple’s (AAPL) Underappreciated AI Advantage",
+    "headline": "What Intel, Boeing, Nike Have In Common With Each Other — And Apple",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792427470,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/deep-hardware-software-integration-drives-163110026.html?.tsrc=rss",
+    "ts": 1792679342,
+    "url": "https://finance.yahoo.com/m/901193fa-8922-3df6-9417-b947a80babdc/what-intel%2C-boeing%2C-nike-have.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/deep-hardware-software-integration-drives-163110026.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/901193fa-8922-3df6-9417-b947a80babdc/what-intel%2C-boeing%2C-nike-have.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple announces another event – with a whole new kind of MacBook expected",
+   "label": "One Reason Alphabet Stock Looks Better Than Its Price",
    "value": {
-    "headline": "Apple announces another event – with a whole new kind of MacBook expected",
+    "headline": "One Reason Alphabet Stock Looks Better Than Its Price",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792426760,
-    "url": "https://www.independent.co.uk/tech/apple-event-macbook-pro-launch-release-date-b3069412.html?.tsrc=rss",
+    "ts": 1792678074,
+    "url": "https://www.trefis.com/articles/619946/one-reason-alphabet-stock-looks-better-than-its-price/2026-10-22?.tsrc=rss",
     "urls": [
-     "https://www.independent.co.uk/tech/apple-event-macbook-pro-launch-release-date-b3069412.html?.tsrc=rss"
+     "https://www.trefis.com/articles/619946/one-reason-alphabet-stock-looks-better-than-its-price/2026-10-22?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple’s iPhone Duo Sold Out In Minutes. The Last Time Apple Reinvented The Phone, One Apple Supplier’s Stock Soared Abou",
+   "label": "Nvidia, Apple, Alphabet, Microsoft, and Amazon Now Make Up 30.8% of VOO and 49.2% of VUG. Here's a Better Low-Cost Vangu",
    "value": {
-    "headline": "Apple’s iPhone Duo Sold Out In Minutes. The Last Time Apple Reinvented The Phone, One Apple Supplier’s Stock Soared About 1,200% In A Decade",
+    "headline": "Nvidia, Apple, Alphabet, Microsoft, and Amazon Now Make Up 30.8% of VOO and 49.2% of VUG. Here's a Better Low-Cost Vanguard ETF to Buy Now.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792424972,
-    "url": "https://247wallst.com/investing/2026/10/19/apples-iphone-duo-sold-out-in-minutes-the-last-time-apple-reinvented-the-phone-one-apple-suppliers-stock-soared-about-1200-in-a-decade/?.tsrc=rss",
+    "ts": 1792677900,
+    "url": "https://www.fool.com/investing/2026/10/22/nvidia-apple-alphabet-microsoft-and-amazon-now-mak/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/19/apples-iphone-duo-sold-out-in-minutes-the-last-time-apple-reinvented-the-phone-one-apple-suppliers-stock-soared-about-1200-in-a-decade/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/22/nvidia-apple-alphabet-microsoft-and-amazon-now-mak/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 357 分 / 339 留言",
+   "label": "HN 討論熱度 20 篇 / 210 分 / 131 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 357,
-    "comments": 339,
+    "points": 210,
+    "comments": 131,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-10-19",
+   "severity": "info",
+   "as_of": "2026-10-22",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -731,7 +713,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-19",
+   "as_of": "2026-10-22",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
