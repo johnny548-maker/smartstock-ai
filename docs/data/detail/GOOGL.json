@@ -1,41 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet",
- "price": 344.55,
- "change_pct": 1.16,
+ "name": "Alphabet Inc. - Class A Common Stock",
+ "price": 323.77,
+ "change_pct": -0.14,
  "ohlc": [
-  {
-   "time": "2026-07-27",
-   "o": 324.83,
-   "h": 330.21,
-   "l": 324.24,
-   "c": 326.35,
-   "v": 28471600
-  },
-  {
-   "time": "2026-07-28",
-   "o": 327.69,
-   "h": 335.66,
-   "l": 324.23,
-   "c": 333.5,
-   "v": 29511900
-  },
-  {
-   "time": "2026-07-29",
-   "o": 334.46,
-   "h": 342.28,
-   "l": 331.41,
-   "c": 336.49,
-   "v": 27501600
-  },
-  {
-   "time": "2026-07-30",
-   "o": 333.99,
-   "h": 336.29,
-   "l": 330.13,
-   "c": 333.45,
-   "v": 30168000
-  },
   {
    "time": "2026-07-31",
    "o": 340.61,
@@ -474,34 +442,59 @@
    "h": 350.66,
    "l": 339.08,
    "c": 340.59,
-   "v": 28516200
+   "v": 28641900
   },
   {
    "time": "2026-10-19",
    "o": 343.67,
    "h": 346.58,
    "l": 341.85,
-   "c": 344.55,
-   "v": 9474911
+   "c": 344.18,
+   "v": 19808300
+  },
+  {
+   "time": "2026-10-20",
+   "o": 343.65,
+   "h": 344.77,
+   "l": 338.36,
+   "c": 340.28,
+   "v": 18316900
+  },
+  {
+   "time": "2026-10-21",
+   "o": 336.98,
+   "h": 337.27,
+   "l": 330.38,
+   "c": 334.76,
+   "v": 29165500
+  },
+  {
+   "time": "2026-10-22",
+   "o": 330.46,
+   "h": 331.43,
+   "l": 322.0,
+   "c": 324.22,
+   "v": 27586400
+  },
+  {
+   "time": "2026-10-23",
+   "o": 320.88,
+   "h": 324.53,
+   "l": 320.18,
+   "c": 323.77,
+   "v": 5885950
   }
  ],
  "sr": {
-  "price": 344.55,
+  "price": 323.77,
   "resistance": [
-   348.32,
+   344.46,
    349.91
   ],
-  "support": [
-   341.14,
-   340.66
-  ],
-  "strong_support": 270.0
+  "support": [],
+  "strong_support": 327.74
  },
  "spark": [
-  326.35,
-  333.5,
-  336.49,
-  333.45,
   355.9,
   373.27,
   377.41,
@@ -557,165 +550,15 @@
   347.64,
   349.22,
   340.59,
-  344.55
+  344.18,
+  340.28,
+  334.76,
+  324.22,
+  323.77
  ],
- "spark_start": "2026-07-27",
- "spark_end": "2026-10-19",
- "fundamental": {
-  "pe_trailing": 17.288008,
-  "pe_forward": 22.531948,
-  "eps_trailing": 19.93,
-  "eps_forward": 15.29162,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-07-31",
+ "spark_end": "2026-10-23",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Alphabet Poised for Strong Third-Quarter Search Revenue Growth, Deutsche Bank Says",
-   "value": {
-    "headline": "Alphabet Poised for Strong Third-Quarter Search Revenue Growth, Deutsche Bank Says",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792428574,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-poised-strong-third-quarter-164934022.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/alphabet-poised-strong-third-quarter-164934022.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
-   "value": {
-    "headline": "Chamath: Even Google “Tin Cups for Memory” Thanks to Nvidia. Here’s What Happens Next",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792426846,
-    "url": "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.tikr.com/blog/chamath-even-google-tin-cups-for-memory-thanks-to-nvidia-heres-what-happens-next?ref=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "2 \"Magnificent Seven\" Stocks to Buy and Hold for the Rest of the Decade",
-   "value": {
-    "headline": "2 \"Magnificent Seven\" Stocks to Buy and Hold for the Rest of the Decade",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792426800,
-    "url": "https://www.fool.com/investing/2026/10/19/2-magnificent-seven-stocks-to-buy-and-hold-for-the/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/19/2-magnificent-seven-stocks-to-buy-and-hold-for-the/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What Google’s virtual power plant in PJM says about the race for electricity",
-   "value": {
-    "headline": "What Google’s virtual power plant in PJM says about the race for electricity",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792426588,
-    "url": "https://www.utilitydive.com/news/what-googles-virtual-power-plant-in-pjm-says-about-the-race-for-electricit/833290/?.tsrc=rss",
-    "urls": [
-     "https://www.utilitydive.com/news/what-googles-virtual-power-plant-in-pjm-says-about-the-race-for-electricit/833290/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
-   "value": {
-    "headline": "Amazon Jumps 5% as Morgan Stanley Names It Top Pick on Faster AWS Growth; Microsoft and Alphabet Edge Higher",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792426544,
-    "url": "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/19/amazon-jumps-5-as-morgan-stanley-names-it-top-pick-on-faster-aws-growth-microsoft-and-alphabet-edge-higher/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 15,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 269 分 / 96 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 269,
-    "comments": 96,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-19",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 7923,
-    "days": 4,
-    "max_shares": 5217,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-19",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

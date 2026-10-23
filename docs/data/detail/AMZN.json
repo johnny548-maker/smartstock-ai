@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 252.45,
- "change_pct": -3.78,
+ "price": 249.04,
+ "change_pct": -0.54,
  "ohlc": [
-  {
-   "time": "2026-07-30",
-   "o": 233.35,
-   "h": 239.82,
-   "l": 231.06,
-   "c": 235.5,
-   "v": 101839800
-  },
   {
    "time": "2026-07-31",
    "o": 265.0,
@@ -474,31 +466,38 @@
    "h": 264.36,
    "l": 259.29,
    "c": 262.37,
-   "v": 31139400
+   "v": 31214700
   },
   {
    "time": "2026-10-22",
-   "o": 258.13,
-   "h": 258.36,
-   "l": 251.33,
-   "c": 252.45,
-   "v": 16507121
+   "o": 258.18,
+   "h": 258.41,
+   "l": 248.0,
+   "c": 250.38,
+   "v": 48658900
+  },
+  {
+   "time": "2026-10-23",
+   "o": 248.55,
+   "h": 249.65,
+   "l": 246.45,
+   "c": 249.04,
+   "v": 10608644
   }
  ],
  "sr": {
-  "price": 252.45,
+  "price": 249.04,
   "resistance": [
-   256.18,
-   258.08
+   249.51,
+   249.71
   ],
   "support": [
-   251.93,
-   248.6
+   248.6,
+   244.73
   ],
   "strong_support": 196.0
  },
  "spark": [
-  235.5,
   271.58,
   284.02,
   277.42,
@@ -557,16 +556,17 @@
   262.45,
   262.63,
   262.37,
-  252.45
+  250.38,
+  249.04
  ],
- "spark_start": "2026-07-30",
- "spark_end": "2026-10-22",
+ "spark_start": "2026-07-31",
+ "spark_end": "2026-10-23",
  "fundamental": {
   "pe_trailing": 20.31094,
   "pe_forward": 24.163769,
   "eps_trailing": 12.43,
   "eps_forward": 10.44808,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "If You Invest $1,000 in Amazon Each Month Starting Now, This is What You’d Have in 5 Years",
+   "label": "Facing Investing Fears",
    "value": {
-    "headline": "If You Invest $1,000 in Amazon Each Month Starting Now, This is What You’d Have in 5 Years",
+    "headline": "Facing Investing Fears",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681235,
-    "url": "https://247wallst.com/investing/2026/10/22/if-you-invest-1000-in-amazon-each-month-starting-now-this-is-what-youd-have-in-5-years/?.tsrc=rss",
+    "ts": 1792766941,
+    "url": "https://www.fool.com/investing/2026/10/23/facing-investing-fears/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/22/if-you-invest-1000-in-amazon-each-month-starting-now-this-is-what-youd-have-in-5-years/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/23/facing-investing-fears/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
+   "label": "The case for why 'load-bearing' AI companies should not be bailed out",
    "value": {
-    "headline": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
+    "headline": "The case for why 'load-bearing' AI companies should not be bailed out",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681200,
-    "url": "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss",
+    "ts": 1792765949,
+    "url": "https://finance.yahoo.com/video/the-case-for-why-load-bearing-ai-companies-should-not-be-bailed-out-143229389.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/the-case-for-why-load-bearing-ai-companies-should-not-be-bailed-out-143229389.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Biggest Price Hike in 49 Years Just Hit a Christmas Staple — and Families Could Feel It This Holiday Season",
+   "label": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
    "value": {
-    "headline": "The Biggest Price Hike in 49 Years Just Hit a Christmas Staple — and Families Could Feel It This Holiday Season",
+    "headline": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792679710,
-    "url": "https://247wallst.com/investing/2026/10/22/the-biggest-price-hike-in-49-years-just-hit-a-christmas-staple-and-families-could-feel-it-this-holiday-season/?.tsrc=rss",
+    "ts": 1792765614,
+    "url": "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/22/the-biggest-price-hike-in-49-years-just-hit-a-christmas-staple-and-families-could-feel-it-this-holiday-season/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Buy Jim Cramer and Ken Fisher’s Top AI Stock Pick Ahead of Earnings?",
+   "label": "Ed Zitron: Jensen Huang creating artificial demand is 'morally reprehensible'",
    "value": {
-    "headline": "Should You Buy Jim Cramer and Ken Fisher’s Top AI Stock Pick Ahead of Earnings?",
+    "headline": "Ed Zitron: Jensen Huang creating artificial demand is 'morally reprehensible'",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792678940,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/buy-jim-cramer-ken-fisher-142220229.html?.tsrc=rss",
+    "ts": 1792765457,
+    "url": "https://finance.yahoo.com/video/ed-zitron-jensen-huang-creating-artificial-demand-is-morally-reprehensible-143004633.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/buy-jim-cramer-ken-fisher-142220229.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/ed-zitron-jensen-huang-creating-artificial-demand-is-morally-reprehensible-143004633.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is UBER Stock Worth Betting on Now, Riding on Its Expansion Drive?",
+   "label": "Hedge Funds Are Shorting Stocks at Near-Record Levels",
    "value": {
-    "headline": "Is UBER Stock Worth Betting on Now, Riding on Its Expansion Drive?",
+    "headline": "Hedge Funds Are Shorting Stocks at Near-Record Levels",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792678320,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/uber-stock-worth-betting-now-141200699.html?.tsrc=rss",
+    "ts": 1792764900,
+    "url": "https://247wallst.com/investing/2026/10/23/hedge-funds-are-shorting-stocks-at-near-record-levels/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/uber-stock-worth-betting-now-141200699.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/23/hedge-funds-are-shorting-stocks-at-near-record-levels/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 13 篇 / 111 分 / 14 留言",
+   "label": "HN 討論熱度 14 篇 / 869 分 / 773 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 111,
-    "comments": 14,
-    "n": 13,
+    "points": 869,
+    "comments": 773,
+    "n": 14,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-10-22",
+   "severity": "warn",
+   "as_of": "2026-10-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

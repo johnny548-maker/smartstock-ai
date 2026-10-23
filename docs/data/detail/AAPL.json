@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 345.52,
- "change_pct": 0.44,
+ "price": 347.74,
+ "change_pct": -0.14,
  "ohlc": [
-  {
-   "time": "2026-07-30",
-   "o": 332.81,
-   "h": 334.46,
-   "l": 329.31,
-   "c": 333.14,
-   "v": 74817800
-  },
   {
    "time": "2026-07-31",
    "o": 304.55,
@@ -474,30 +466,37 @@
    "h": 345.25,
    "l": 338.83,
    "c": 343.99,
-   "v": 35577700
+   "v": 35614100
   },
   {
    "time": "2026-10-22",
-   "o": 344.93,
-   "h": 347.28,
+   "o": 344.94,
+   "h": 348.36,
    "l": 342.28,
-   "c": 345.52,
-   "v": 10488860
+   "c": 348.22,
+   "v": 46718600
+  },
+  {
+   "time": "2026-10-23",
+   "o": 349.11,
+   "h": 351.73,
+   "l": 346.43,
+   "c": 347.74,
+   "v": 14004650
   }
  ],
  "sr": {
-  "price": 345.52,
+  "price": 347.74,
   "resistance": [
    348.15
   ],
   "support": [
-   325.81,
-   319.07
+   338.7,
+   325.81
   ],
   "strong_support": 242.76
  },
  "spark": [
-  333.14,
   308.64,
   303.16,
   309.11,
@@ -556,16 +555,17 @@
   342.94,
   339.5,
   343.99,
-  345.52
+  348.22,
+  347.74
  ],
- "spark_start": "2026-07-30",
- "spark_end": "2026-10-22",
+ "spark_start": "2026-07-31",
+ "spark_end": "2026-10-23",
  "fundamental": {
   "pe_trailing": 39.62385,
   "pe_forward": 36.101852,
   "eps_trailing": 8.72,
   "eps_forward": 9.5707,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,132 +574,118 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
+   "label": "How Apple dethroned Nvidia to become world's most valuable company",
    "value": {
-    "headline": "Alliance for Open Media Sees Rapid AV2 Adoption Across the Video Ecosystem Just Four Months After Release",
+    "headline": "How Apple dethroned Nvidia to become world's most valuable company",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681200,
-    "url": "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss",
+    "ts": 1792768099,
+    "url": "https://finance.yahoo.com/video/how-apple-dethroned-nvidia-to-become-worlds-most-valuable-company-150819601.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/alliance-open-media-sees-rapid-150000402.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/how-apple-dethroned-nvidia-to-become-worlds-most-valuable-company-150819601.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "iPhone Duo already backordered until 2027 as pre-order sales soar",
+   "label": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
    "value": {
-    "headline": "iPhone Duo already backordered until 2027 as pre-order sales soar",
+    "headline": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792679813,
-    "url": "https://www.cbsnews.com/news/iphone-duo-pre-order-sales-apple-foldable/?.tsrc=rss",
+    "ts": 1792765614,
+    "url": "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss",
     "urls": [
-     "https://www.cbsnews.com/news/iphone-duo-pre-order-sales-apple-foldable/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Intel, Boeing, Nike Have In Common With Each Other — And Apple",
+   "label": "Apple Overtakes Nvidia As World's Most Valuable Company — iPhone Duo Hits Stores Amid Strong Demand",
    "value": {
-    "headline": "What Intel, Boeing, Nike Have In Common With Each Other — And Apple",
+    "headline": "Apple Overtakes Nvidia As World's Most Valuable Company — iPhone Duo Hits Stores Amid Strong Demand",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792679342,
-    "url": "https://finance.yahoo.com/m/901193fa-8922-3df6-9417-b947a80babdc/what-intel%2C-boeing%2C-nike-have.html?.tsrc=rss",
+    "ts": 1792764556,
+    "url": "https://stocktwits.com/news-articles/markets/equity/apple-overtakes-nvidia-as-world-s-most-valuable-company-i-phone-duo-hits-stores-amid-strong-demand/cZxy1DyRBx8?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/901193fa-8922-3df6-9417-b947a80babdc/what-intel%2C-boeing%2C-nike-have.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/apple-overtakes-nvidia-as-world-s-most-valuable-company-i-phone-duo-hits-stores-amid-strong-demand/cZxy1DyRBx8?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "One Reason Alphabet Stock Looks Better Than Its Price",
+   "label": "Apple is catching up to Nvidia's market cap, and investors are waiting on Anthropic's IPO",
    "value": {
-    "headline": "One Reason Alphabet Stock Looks Better Than Its Price",
+    "headline": "Apple is catching up to Nvidia's market cap, and investors are waiting on Anthropic's IPO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792678074,
-    "url": "https://www.trefis.com/articles/619946/one-reason-alphabet-stock-looks-better-than-its-price/2026-10-22?.tsrc=rss",
+    "ts": 1792764114,
+    "url": "https://finance.yahoo.com/video/apple-is-catching-up-to-nvidias-market-cap-and-investors-are-waiting-on-anthropics-ipo-140154994.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/articles/619946/one-reason-alphabet-stock-looks-better-than-its-price/2026-10-22?.tsrc=rss"
+     "https://finance.yahoo.com/video/apple-is-catching-up-to-nvidias-market-cap-and-investors-are-waiting-on-anthropics-ipo-140154994.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia, Apple, Alphabet, Microsoft, and Amazon Now Make Up 30.8% of VOO and 49.2% of VUG. Here's a Better Low-Cost Vangu",
+   "label": "Apple Duo goes on sale in-store as iPhone 18 demand disappoints",
    "value": {
-    "headline": "Nvidia, Apple, Alphabet, Microsoft, and Amazon Now Make Up 30.8% of VOO and 49.2% of VUG. Here's a Better Low-Cost Vanguard ETF to Buy Now.",
+    "headline": "Apple Duo goes on sale in-store as iPhone 18 demand disappoints",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792677900,
-    "url": "https://www.fool.com/investing/2026/10/22/nvidia-apple-alphabet-microsoft-and-amazon-now-mak/?.tsrc=rss",
+    "ts": 1792764107,
+    "url": "https://finance.yahoo.com/video/apple-duo-goes-on-sale-in-store-as-iphone-18-demand-disappoints-140147846.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/22/nvidia-apple-alphabet-microsoft-and-amazon-now-mak/?.tsrc=rss"
+     "https://finance.yahoo.com/video/apple-duo-goes-on-sale-in-store-as-iphone-18-demand-disappoints-140147846.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 210 分 / 131 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 210,
-    "comments": 131,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -713,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
