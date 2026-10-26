@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 347.74,
- "change_pct": -0.14,
+ "price": 342.45,
+ "change_pct": -1.52,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 304.55,
-   "h": 310.42,
-   "l": 299.74,
-   "c": 308.64,
-   "v": 132489100
-  },
   {
    "time": "2026-08-03",
    "o": 309.31,
@@ -474,21 +466,30 @@
    "h": 348.36,
    "l": 342.28,
    "c": 348.22,
-   "v": 46718600
+   "v": 46898900
   },
   {
    "time": "2026-10-23",
-   "o": 349.11,
+   "o": 349.12,
    "h": 351.73,
-   "l": 346.43,
-   "c": 347.74,
-   "v": 14004650
+   "l": 345.75,
+   "c": 347.73,
+   "v": 39496500
+  },
+  {
+   "time": "2026-10-26",
+   "o": 343.9,
+   "h": 347.09,
+   "l": 341.03,
+   "c": 342.45,
+   "v": 15096570
   }
  ],
  "sr": {
-  "price": 347.74,
+  "price": 342.45,
   "resistance": [
-   348.15
+   342.99,
+   344.27
   ],
   "support": [
    338.7,
@@ -497,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  308.64,
   303.16,
   309.11,
   310.73,
@@ -556,136 +556,178 @@
   339.5,
   343.99,
   348.22,
-  347.74
+  347.73,
+  342.45
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": {
-  "pe_trailing": 39.62385,
-  "pe_forward": 36.101852,
+  "pe_trailing": 39.29007,
+  "pe_forward": 35.830498,
   "eps_trailing": 8.72,
-  "eps_forward": 9.5707,
-  "stale": true,
+  "eps_forward": 9.56195,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 342.45,
+  "stop": 329.66,
+  "target": 374.43,
+  "atr_bracket": 374.43,
+  "measured_move": 365.6,
+  "target_band": [
+   365.6,
+   366.93,
+   374.43
+  ],
+  "stop_pct": -3.7,
+  "target_pct": 9.3,
+  "rr": 2.5,
+  "atr_pct": 1.9,
+  "swing_stop": 336.78,
+  "chandelier": 332.48,
+  "fib_targets": [
+   360.9,
+   366.93,
+   373.6
+  ]
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Apple dethroned Nvidia to become world's most valuable company",
+   "label": "蘋果新iPad mini首換OLED螢幕 售價2.29萬元起｜2 來源確認",
    "value": {
-    "headline": "How Apple dethroned Nvidia to become world's most valuable company",
+    "headline": "蘋果新iPad mini首換OLED螢幕 售價2.29萬元起",
     "sources": [
-     "yahoo_us"
+     "cna",
+     "udn"
     ],
-    "source_count": 1,
-    "ts": 1792768099,
-    "url": "https://finance.yahoo.com/video/how-apple-dethroned-nvidia-to-become-worlds-most-valuable-company-150819601.html?.tsrc=rss",
+    "source_count": 2,
+    "ts": 1793024707,
+    "url": "https://www.cna.com.tw/news/ait/202610260248.aspx",
     "urls": [
-     "https://finance.yahoo.com/video/how-apple-dethroned-nvidia-to-become-worlds-most-valuable-company-150819601.html?.tsrc=rss"
+     "https://money.udn.com/money/story/11162/9838352",
+     "https://www.cna.com.tw/news/ait/202610260248.aspx"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
+   "label": "Prediction: The Next Chapter for Apple Could Be Its Most Important Yet",
    "value": {
-    "headline": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
+    "headline": "Prediction: The Next Chapter for Apple Could Be Its Most Important Yet",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792765614,
-    "url": "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss",
+    "ts": 1793026803,
+    "url": "https://247wallst.com/investing/2026/10/26/prediction-the-next-chapter-for-apple-could-be-its-most-important-yet/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/26/prediction-the-next-chapter-for-apple-could-be-its-most-important-yet/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Overtakes Nvidia As World's Most Valuable Company — iPhone Duo Hits Stores Amid Strong Demand",
+   "label": "Retiree Alleges Morgan Stanley Covered Call Strategy Cost Him His Apple and NVIDIA Shares; Reif Law Group Files Financia",
    "value": {
-    "headline": "Apple Overtakes Nvidia As World's Most Valuable Company — iPhone Duo Hits Stores Amid Strong Demand",
+    "headline": "Retiree Alleges Morgan Stanley Covered Call Strategy Cost Him His Apple and NVIDIA Shares; Reif Law Group Files Financial Elder Abuse Claims",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792764556,
-    "url": "https://stocktwits.com/news-articles/markets/equity/apple-overtakes-nvidia-as-world-s-most-valuable-company-i-phone-duo-hits-stores-amid-strong-demand/cZxy1DyRBx8?.tsrc=rss",
+    "ts": 1793026800,
+    "url": "https://finance.yahoo.com/markets/options/articles/retiree-alleges-morgan-stanley-covered-150000527.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/apple-overtakes-nvidia-as-world-s-most-valuable-company-i-phone-duo-hits-stores-amid-strong-demand/cZxy1DyRBx8?.tsrc=rss"
+     "https://finance.yahoo.com/markets/options/articles/retiree-alleges-morgan-stanley-covered-150000527.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple is catching up to Nvidia's market cap, and investors are waiting on Anthropic's IPO",
+   "label": "Apple’s $5 Trillion Dilemma: 3 Reasons Earnings Could Spark a Breakout on Nov. 2 — or a Meltdown",
    "value": {
-    "headline": "Apple is catching up to Nvidia's market cap, and investors are waiting on Anthropic's IPO",
+    "headline": "Apple’s $5 Trillion Dilemma: 3 Reasons Earnings Could Spark a Breakout on Nov. 2 — or a Meltdown",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792764114,
-    "url": "https://finance.yahoo.com/video/apple-is-catching-up-to-nvidias-market-cap-and-investors-are-waiting-on-anthropics-ipo-140154994.html?.tsrc=rss",
+    "ts": 1793022144,
+    "url": "https://247wallst.com/investing/2026/10/26/apples-5-trillion-dilemma-3-reasons-earnings-could-spark-a-breakout-on-nov-2-or-a-meltdown/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/apple-is-catching-up-to-nvidias-market-cap-and-investors-are-waiting-on-anthropics-ipo-140154994.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/10/26/apples-5-trillion-dilemma-3-reasons-earnings-could-spark-a-breakout-on-nov-2-or-a-meltdown/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Duo goes on sale in-store as iPhone 18 demand disappoints",
+   "label": "T-Mobile Shakes Up Wireless Again with First-Ever T-Mix: Built for Value, Powered by Customer Choice",
    "value": {
-    "headline": "Apple Duo goes on sale in-store as iPhone 18 demand disappoints",
+    "headline": "T-Mobile Shakes Up Wireless Again with First-Ever T-Mix: Built for Value, Powered by Customer Choice",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792764107,
-    "url": "https://finance.yahoo.com/video/apple-duo-goes-on-sale-in-store-as-iphone-18-demand-disappoints-140147846.html?.tsrc=rss",
+    "ts": 1793020080,
+    "url": "https://finance.yahoo.com/technology/articles/t-mobile-shakes-wireless-again-130800131.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/apple-duo-goes-on-sale-in-store-as-iphone-18-demand-disappoints-140147846.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/t-mobile-shakes-wireless-again-130800131.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 2 來源確認）",
    "value": {
-    "headline_count": 18,
-    "max_source_count": 1,
+    "headline_count": 15,
+    "max_source_count": 2,
     "distinct_sources": [
+     "cna",
+     "cnyes",
      "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 291 分 / 293 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 291,
+    "comments": 293,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-10-26",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +741,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-26",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

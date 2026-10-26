@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": 214.39,
- "change_pct": -3.41,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 215.38,
+ "change_pct": 2.1,
  "ohlc": [
-  {
-   "time": "2026-07-30",
-   "o": 193.23,
-   "h": 197.03,
-   "l": 191.31,
-   "c": 194.82,
-   "v": 129010200
-  },
-  {
-   "time": "2026-07-31",
-   "o": 198.22,
-   "h": 201.77,
-   "l": 194.73,
-   "c": 200.53,
-   "v": 139961200
-  },
   {
    "time": "2026-08-03",
    "o": 197.47,
@@ -474,32 +458,46 @@
    "h": 222.19,
    "l": 217.66,
    "c": 221.97,
-   "v": 86620400
+   "v": 87085700
   },
   {
    "time": "2026-10-22",
-   "o": 217.23,
+   "o": 217.13,
    "h": 218.88,
-   "l": 212.56,
-   "c": 214.39,
-   "v": 42641362
+   "l": 211.26,
+   "c": 212.21,
+   "v": 125407600
+  },
+  {
+   "time": "2026-10-23",
+   "o": 210.99,
+   "h": 213.85,
+   "l": 210.18,
+   "c": 210.96,
+   "v": 79987200
+  },
+  {
+   "time": "2026-10-26",
+   "o": 213.12,
+   "h": 217.75,
+   "l": 212.61,
+   "c": 215.38,
+   "v": 48133217
   }
  ],
  "sr": {
-  "price": 214.39,
+  "price": 215.38,
   "resistance": [
-   216.34,
+   222.19,
    227.67
   ],
   "support": [
-   208.93,
-   208.3
+   214.86,
+   208.93
   ],
-  "strong_support": 163.9
+  "strong_support": 207.02
  },
  "spark": [
-  194.82,
-  200.53,
   206.41,
   211.7,
   218.97,
@@ -557,165 +555,13 @@
   217.09,
   216.47,
   221.97,
-  214.39
+  212.21,
+  210.96,
+  215.38
  ],
- "spark_start": "2026-07-30",
- "spark_end": "2026-10-22",
- "fundamental": {
-  "pe_trailing": 27.09608,
-  "pe_forward": 13.467507,
-  "eps_trailing": 7.91,
-  "eps_forward": 15.9146,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
+ "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "TeraFab's $16.8 billion bet to start producing 100K chips a month",
-   "value": {
-    "headline": "TeraFab's $16.8 billion bet to start producing 100K chips a month",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792682424,
-    "url": "https://finance.yahoo.com/video/terafabs-168-billion-bet-to-start-producing-100k-chips-a-month-152024748.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/terafabs-168-billion-bet-to-start-producing-100k-chips-a-month-152024748.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "If a Stock Market Crash Is Coming, History Says Investors Who Do This 1 Thing Always Win Out",
-   "value": {
-    "headline": "If a Stock Market Crash Is Coming, History Says Investors Who Do This 1 Thing Always Win Out",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792682400,
-    "url": "https://www.fool.com/investing/2026/10/22/if-a-stock-market-crash-is-coming-history-says-inv/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/22/if-a-stock-market-crash-is-coming-history-says-inv/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-10-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Elon Musk Predicts SpaceX Could Reach $1 Trillion in Annual Revenue Run Rate by Year-End 2027. Here's What Needs to Happ",
-   "value": {
-    "headline": "Elon Musk Predicts SpaceX Could Reach $1 Trillion in Annual Revenue Run Rate by Year-End 2027. Here's What Needs to Happen.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792682400,
-    "url": "https://www.fool.com/investing/2026/10/22/elon-musks-1-trillion-spacex-prediction-sounds-rid/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/10/22/elon-musks-1-trillion-spacex-prediction-sounds-rid/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Tesla Will Make Millions of Optimus Robots. Texas Instruments Can Get Paid on Every One",
-   "value": {
-    "headline": "Tesla Will Make Millions of Optimus Robots. Texas Instruments Can Get Paid on Every One",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792682117,
-    "url": "https://247wallst.com/investing/2026/10/22/tesla-will-make-millions-of-optimus-robots-texas-instruments-can-get-paid-on-every-one/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/22/tesla-will-make-millions-of-optimus-robots-texas-instruments-can-get-paid-on-every-one/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia has a $35 billion problem most companies would want",
-   "value": {
-    "headline": "Nvidia has a $35 billion problem most companies would want",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792681620,
-    "url": "https://www.thestreet.com/investing/nvidia-has-a-35-billion-problem-most-companies-would-want?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/investing/nvidia-has-a-35-billion-problem-most-companies-would-want?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-22",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 4 篇 / 332 分 / 113 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 332,
-    "comments": 113,
-    "n": 4,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-10-22",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日、累計 228,010 股交割失敗）",
-   "value": {
-    "total_shares": 228010,
-    "days": 6,
-    "max_shares": 203811,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-22",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
