@@ -1,9 +1,17 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 99.88,
- "change_pct": -0.74,
+ "price": 100.62,
+ "change_pct": 7.17,
  "ohlc": [
+  {
+   "time": "2026-07-31",
+   "o": 78.44,
+   "h": 81.57,
+   "l": 77.44,
+   "c": 79.79,
+   "v": 1901700
+  },
   {
    "time": "2026-08-03",
    "o": 80.54,
@@ -475,18 +483,10 @@
    "l": 91.72,
    "c": 100.62,
    "v": 1899000
-  },
-  {
-   "time": "2026-10-26",
-   "o": 100.89,
-   "h": 102.0,
-   "l": 96.91,
-   "c": 99.88,
-   "v": 473409
   }
  ],
  "sr": {
-  "price": 99.88,
+  "price": 100.62,
   "resistance": [
    103.39,
    105.76
@@ -498,6 +498,7 @@
   "strong_support": 27.0
  },
  "spark": [
+  79.79,
   82.4,
   86.22,
   84.52,
@@ -556,144 +557,11 @@
   92.37,
   96.3,
   93.89,
-  100.62,
-  99.88
+  100.62
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
+ "spark_start": "2026-07-31",
+ "spark_end": "2026-10-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 software stocks with competitive advantages",
-   "value": {
-    "headline": "3 software stocks with competitive advantages",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792782279,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-software-stocks-competitive-advantages-190439047.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-software-stocks-competitive-advantages-190439047.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "JFrog Jumped 6% on BofA Price Target Hike as Software Stocks Extend Their Rally",
-   "value": {
-    "headline": "JFrog Jumped 6% on BofA Price Target Hike as Software Stocks Extend Their Rally",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792780267,
-    "url": "https://www.tikr.com/blog/jfrog-jumped-6-on-bofa-price-target-hike-as-software-stocks-extend-their-rally?ref=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.tikr.com/blog/jfrog-jumped-6-on-bofa-price-target-hike-as-software-stocks-extend-their-rally?ref=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "1 cash-producing stock with impressive fundamentals and 2 facing headwinds",
-   "value": {
-    "headline": "1 cash-producing stock with impressive fundamentals and 2 facing headwinds",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792696193,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/1-cash-producing-stock-impressive-190953637.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/1-cash-producing-stock-impressive-190953637.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Rapid7, CrowdStrike, Cloudflare, Okta, and JFrog shares skyrocket, what you need to know",
-   "value": {
-    "headline": "Rapid7, CrowdStrike, Cloudflare, Okta, and JFrog shares skyrocket, what you need to know",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792615119,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/rapid7-crowdstrike-cloudflare-okta-jfrog-203839922.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/rapid7-crowdstrike-cloudflare-okta-jfrog-203839922.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "JFrog Closes the Shadow AI Blind Spot: Unveils AI-SEC to Control Every AI Agent, Skill, and Model, from Developer to Pro",
-   "value": {
-    "headline": "JFrog Closes the Shadow AI Blind Spot: Unveils AI-SEC to Control Every AI Agent, Skill, and Model, from Developer to Production",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1792566000,
-    "url": "https://finance.yahoo.com/technology/ai/articles/jfrog-closes-shadow-ai-blind-070000132.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/jfrog-closes-shadow-ai-blind-070000132.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 13,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 254,
-    "days": 2,
-    "max_shares": 161,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-26",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

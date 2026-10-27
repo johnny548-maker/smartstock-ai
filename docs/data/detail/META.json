@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 658.67,
- "change_pct": -5.57,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-07-30",
-   "o": 525.59,
-   "h": 539.45,
-   "l": 524.08,
-   "c": 538.6,
-   "v": 42271500
-  },
-  {
-   "time": "2026-07-31",
-   "o": 543.17,
-   "h": 557.89,
-   "l": 539.79,
-   "c": 556.27,
-   "v": 24261500
-  },
   {
    "time": "2026-08-03",
    "o": 561.8,
@@ -474,32 +458,40 @@
    "h": 713.22,
    "l": 689.68,
    "c": 697.52,
-   "v": 28638700
+   "v": 29203900
   },
   {
    "time": "2026-10-22",
-   "o": 675.79,
+   "o": 676.35,
    "h": 681.07,
-   "l": 648.26,
-   "c": 658.67,
-   "v": 19597758
+   "l": 639.69,
+   "c": 648.85,
+   "v": 40571000
+  },
+  {
+   "time": "2026-10-23",
+   "o": 638.18,
+   "h": 648.04,
+   "l": 633.27,
+   "c": 642.62,
+   "v": 14761500
+  },
+  {
+   "time": "2026-10-26",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 30797210
   }
  ],
  "sr": {
-  "price": 658.67,
-  "resistance": [
-   659.3,
-   661.65
-  ],
-  "support": [
-   651.93,
-   644.84
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 519.37
  },
  "spark": [
-  538.6,
-  556.27,
   589.77,
   587.48,
   588.31,
@@ -557,15 +549,17 @@
   705.44,
   694.25,
   697.52,
-  658.67
+  648.85,
+  642.62,
+  null
  ],
- "spark_start": "2026-07-30",
- "spark_end": "2026-10-22",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": {
-  "pe_trailing": 22.471853,
-  "pe_forward": 18.848368,
+  "pe_trailing": 21.513477,
+  "pe_forward": 17.9903,
   "eps_trailing": 29.31,
-  "eps_forward": 34.94467,
+  "eps_forward": 35.05,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,117 +569,134 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta stock drops more than 6% despite strong Q3 results, stock split",
+   "label": "Anthropic’s 7 Founders Will Use New Stock Class to Take Control of the Business",
    "value": {
-    "headline": "Meta stock drops more than 6% despite strong Q3 results, stock split",
+    "headline": "Anthropic’s 7 Founders Will Use New Stock Class to Take Control of the Business",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681938,
-    "url": "https://finance.yahoo.com/technology/article/meta-stock-drops-more-than-6-despite-strong-q3-results-stock-split-151218152.html?.tsrc=rss",
+    "ts": 1793053920,
+    "url": "https://finance.yahoo.com/m/2c95fa38-17ca-3767-aadc-3985c6ab4039/anthropic%E2%80%99s-7-founders-will.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/meta-stock-drops-more-than-6-despite-strong-q3-results-stock-split-151218152.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/2c95fa38-17ca-3767-aadc-3985c6ab4039/anthropic%E2%80%99s-7-founders-will.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Platforms' Core Growth, Muse Opportunity Support Further Upside, Morgan Stanley Says",
+   "label": "Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
    "value": {
-    "headline": "Meta Platforms' Core Growth, Muse Opportunity Support Further Upside, Morgan Stanley Says",
+    "headline": "Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681225,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-core-growth-150025125.html?.tsrc=rss",
+    "ts": 1793051400,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-today-oct-26-ai-optimism-lifts-nasdaq-as-tech-stocks-rebound/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-core-growth-150025125.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-today-oct-26-ai-optimism-lifts-nasdaq-as-tech-stocks-rebound/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Nasdaq Hit As Meta, Alphabet Slide Below Key Levels (Live Coverage)",
+   "label": "Why Google might avoid an earnings 'reckoning' this week",
    "value": {
-    "headline": "Stock Market Today: Nasdaq Hit As Meta, Alphabet Slide Below Key Levels (Live Coverage)",
+    "headline": "Why Google might avoid an earnings 'reckoning' this week",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681205,
-    "url": "https://finance.yahoo.com/m/a6067e2b-5ce6-3182-915b-58daa8b6d0f9/stock-market-today%3A-nasdaq.html?.tsrc=rss",
+    "ts": 1793048630,
+    "url": "https://finance.yahoo.com/markets/stocks/article/why-google-might-avoid-an-earnings-reckoning-this-week-210350868.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a6067e2b-5ce6-3182-915b-58daa8b6d0f9/stock-market-today%3A-nasdaq.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/article/why-google-might-avoid-an-earnings-reckoning-this-week-210350868.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Platforms' AI Story Gains Traction After Q3 Revenue Beat, BofA Says",
+   "label": "CleanSpark Stock Fell 39% in October. Its Landlord Bet Now Rides on Meta’s Credit",
    "value": {
-    "headline": "Meta Platforms' AI Story Gains Traction After Q3 Revenue Beat, BofA Says",
+    "headline": "CleanSpark Stock Fell 39% in October. Its Landlord Bet Now Rides on Meta’s Credit",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792681044,
-    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-ai-story-145724947.html?.tsrc=rss",
+    "ts": 1793048577,
+    "url": "https://www.tikr.com/blog/cleanspark-stock-fell-39-in-october-its-landlord-bet-now-rides-on-metas-credit?ref=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-apos-ai-story-145724947.html?.tsrc=rss"
+     "https://www.tikr.com/blog/cleanspark-stock-fell-39-in-october-its-landlord-bet-now-rides-on-metas-credit?ref=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How agentic AI shopping changes consumer staples: P&G CFO",
+   "label": "1 small-cap stock to target this week and 2 we find risky",
    "value": {
-    "headline": "How agentic AI shopping changes consumer staples: P&G CFO",
+    "headline": "1 small-cap stock to target this week and 2 we find risky",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792680070,
-    "url": "https://finance.yahoo.com/video/how-agentic-ai-shopping-changes-consumer-staples-pg-cfo-144110714.html?.tsrc=rss",
+    "ts": 1793048087,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/1-small-cap-stock-target-205447287.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/how-agentic-ai-shopping-changes-consumer-staples-pg-cfo-144110714.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/1-small-cap-stock-target-205447287.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 482 分 / 204 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 482,
+    "comments": 204,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-10-27",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +710,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-22",
+   "as_of": "2026-10-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
