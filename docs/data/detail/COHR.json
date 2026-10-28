@@ -1,17 +1,9 @@
 {
  "stock": "COHR",
  "name": "Coherent Corp",
- "price": 209.29,
- "change_pct": 0.71,
+ "price": 221.5,
+ "change_pct": 5.83,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 275.9,
-   "h": 281.99,
-   "l": 257.13,
-   "c": 262.89,
-   "v": 5475200
-  },
   {
    "time": "2026-08-03",
    "o": 254.86,
@@ -482,23 +474,30 @@
    "h": 215.38,
    "l": 203.55,
    "c": 209.29,
-   "v": 6154200
+   "v": 6178900
+  },
+  {
+   "time": "2026-10-26",
+   "o": 212.61,
+   "h": 225.66,
+   "l": 208.86,
+   "c": 221.5,
+   "v": 7686100
   }
  ],
  "sr": {
-  "price": 209.29,
+  "price": 221.5,
   "resistance": [
-   210.9,
-   241.5
+   241.5,
+   247.15
   ],
   "support": [
-   204.57,
-   183.55
+   220.68,
+   215.55
   ],
   "strong_support": 45.58
  },
  "spark": [
-  262.89,
   288.14,
   323.73,
   328.22,
@@ -557,11 +556,29 @@
   231.8,
   237.53,
   207.82,
-  209.29
+  209.29,
+  221.5
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 27928,
+    "days": 4,
+    "max_shares": 20145,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

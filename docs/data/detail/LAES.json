@@ -1,17 +1,9 @@
 {
  "stock": "LAES",
  "name": "SEALSQ Corp",
- "price": 1.55,
- "change_pct": 0.0,
+ "price": 1.52,
+ "change_pct": -1.94,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 2.44,
-   "h": 2.47,
-   "l": 2.33,
-   "c": 2.36,
-   "v": 18677300
-  },
   {
    "time": "2026-08-03",
    "o": 2.34,
@@ -482,11 +474,19 @@
    "h": 1.58,
    "l": 1.52,
    "c": 1.55,
-   "v": 2573800
+   "v": 2588800
+  },
+  {
+   "time": "2026-10-26",
+   "o": 1.57,
+   "h": 1.6,
+   "l": 1.5,
+   "c": 1.52,
+   "v": 3799500
   }
  ],
  "sr": {
-  "price": 1.55,
+  "price": 1.52,
   "resistance": [
    2.48,
    2.5
@@ -498,7 +498,6 @@
   "strong_support": 0.31
  },
  "spark": [
-  2.36,
   2.51,
   2.54,
   2.46,
@@ -557,11 +556,29 @@
   1.66,
   1.64,
   1.55,
-  1.55
+  1.55,
+  1.52
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 118,647 股交割失敗）",
+   "value": {
+    "total_shares": 118647,
+    "days": 9,
+    "max_shares": 42055,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

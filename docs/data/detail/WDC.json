@@ -1,17 +1,9 @@
 {
  "stock": "WDC",
  "name": "Western Digital",
- "price": 343.67,
- "change_pct": -2.97,
+ "price": 356.13,
+ "change_pct": 3.63,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 568.93,
-   "h": 579.81,
-   "l": 530.38,
-   "c": 544.67,
-   "v": 9502300
-  },
   {
    "time": "2026-08-03",
    "o": 524.19,
@@ -482,14 +474,22 @@
    "h": 360.66,
    "l": 339.55,
    "c": 343.67,
-   "v": 13924000
+   "v": 13953700
+  },
+  {
+   "time": "2026-10-26",
+   "o": 346.28,
+   "h": 364.13,
+   "l": 340.3,
+   "c": 356.13,
+   "v": 9711900
   }
  ],
  "sr": {
-  "price": 343.67,
+  "price": 356.13,
   "resistance": [
-   416.13,
-   475.66
+   381.88,
+   416.13
   ],
   "support": [
    331.81,
@@ -498,7 +498,6 @@
   "strong_support": 28.69
  },
  "spark": [
-  544.67,
   527.05,
   548.38,
   519.0,
@@ -557,11 +556,29 @@
   364.32,
   378.51,
   354.19,
-  343.67
+  343.67,
+  356.13
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 22928,
+    "days": 2,
+    "max_shares": 21749,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

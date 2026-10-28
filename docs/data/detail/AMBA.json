@@ -1,17 +1,9 @@
 {
  "stock": "AMBA",
  "name": "Ambarella",
- "price": 66.5,
- "change_pct": 5.35,
+ "price": 66.82,
+ "change_pct": 0.48,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 76.74,
-   "h": 91.34,
-   "l": 74.07,
-   "c": 86.0,
-   "v": 9207200
-  },
   {
    "time": "2026-08-03",
    "o": 84.0,
@@ -483,10 +475,18 @@
    "l": 61.77,
    "c": 66.5,
    "v": 1523700
+  },
+  {
+   "time": "2026-10-26",
+   "o": 66.45,
+   "h": 67.5,
+   "l": 64.54,
+   "c": 66.82,
+   "v": 1059000
   }
  ],
  "sr": {
-  "price": 66.5,
+  "price": 66.82,
   "resistance": [
    68.3,
    68.62
@@ -498,7 +498,6 @@
   "strong_support": 38.86
  },
  "spark": [
-  86.0,
   82.68,
   82.23,
   81.85,
@@ -557,11 +556,29 @@
   63.22,
   66.0,
   63.12,
-  66.5
+  66.5,
+  66.82
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 2024,
+    "days": 2,
+    "max_shares": 1794,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

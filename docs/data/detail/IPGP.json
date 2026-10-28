@@ -1,17 +1,9 @@
 {
  "stock": "IPGP",
  "name": "IPG Photonics",
- "price": 71.07,
- "change_pct": 2.39,
+ "price": 72.81,
+ "change_pct": 2.45,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 88.6,
-   "h": 88.73,
-   "l": 83.64,
-   "c": 85.06,
-   "v": 408800
-  },
   {
    "time": "2026-08-03",
    "o": 83.59,
@@ -483,22 +475,29 @@
    "l": 68.27,
    "c": 71.07,
    "v": 314400
+  },
+  {
+   "time": "2026-10-26",
+   "o": 72.07,
+   "h": 73.94,
+   "l": 70.76,
+   "c": 72.81,
+   "v": 305300
   }
  ],
  "sr": {
-  "price": 71.07,
+  "price": 72.81,
   "resistance": [
-   72.23,
+   74.79,
    75.0
   ],
   "support": [
-   69.41,
-   69.22
+   72.8,
+   71.97
   ],
   "strong_support": 48.59
  },
  "spark": [
-  85.06,
   87.2,
   94.07,
   91.75,
@@ -557,11 +556,29 @@
   72.49,
   74.03,
   69.41,
-  71.07
+  71.07,
+  72.81
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 29129,
+    "days": 2,
+    "max_shares": 17895,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

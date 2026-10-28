@@ -1,17 +1,9 @@
 {
  "stock": "BTDR",
  "name": "Bitdeer Technologies",
- "price": 6.96,
- "change_pct": -4.4,
+ "price": 7.09,
+ "change_pct": 1.87,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 11.52,
-   "h": 11.77,
-   "l": 10.47,
-   "c": 10.52,
-   "v": 12157300
-  },
   {
    "time": "2026-08-03",
    "o": 10.28,
@@ -482,23 +474,30 @@
    "h": 7.28,
    "l": 6.78,
    "c": 6.96,
-   "v": 14388100
+   "v": 14406100
+  },
+  {
+   "time": "2026-10-26",
+   "o": 6.86,
+   "h": 7.36,
+   "l": 6.64,
+   "c": 7.09,
+   "v": 12402200
   }
  ],
  "sr": {
-  "price": 6.96,
+  "price": 7.09,
   "resistance": [
    8.34,
    8.94
   ],
   "support": [
-   6.92,
-   6.84
+   7.08,
+   7.06
   ],
   "strong_support": 6.84
  },
  "spark": [
-  10.52,
   11.37,
   11.38,
   11.06,
@@ -557,11 +556,29 @@
   7.84,
   8.06,
   7.28,
-  6.96
+  6.96,
+  7.09
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 209,323 股交割失敗）",
+   "value": {
+    "total_shares": 209323,
+    "days": 8,
+    "max_shares": 114467,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

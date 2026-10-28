@@ -1,17 +1,9 @@
 {
  "stock": "RMBS",
  "name": "Rambus",
- "price": 85.65,
- "change_pct": -0.09,
+ "price": 90.32,
+ "change_pct": 5.45,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 93.74,
-   "h": 95.5,
-   "l": 89.09,
-   "c": 91.03,
-   "v": 2435700
-  },
   {
    "time": "2026-08-03",
    "o": 87.51,
@@ -483,22 +475,29 @@
    "l": 84.43,
    "c": 85.65,
    "v": 2893600
+  },
+  {
+   "time": "2026-10-26",
+   "o": 86.05,
+   "h": 92.64,
+   "l": 83.5,
+   "c": 90.32,
+   "v": 3759200
   }
  ],
  "sr": {
-  "price": 85.65,
+  "price": 90.32,
   "resistance": [
-   89.41,
-   92.9
+   92.9,
+   95.0
   ],
   "support": [
-   82.72,
-   82.51
+   90.1,
+   89.35
   ],
   "strong_support": 40.12
  },
  "spark": [
-  91.03,
   92.21,
   100.55,
   97.3,
@@ -557,11 +556,29 @@
   92.42,
   92.8,
   85.73,
-  85.65
+  85.65,
+  90.32
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
+   "value": {
+    "total_shares": 7770,
+    "days": 2,
+    "max_shares": 6717,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

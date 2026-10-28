@@ -1,17 +1,9 @@
 {
  "stock": "SYNA",
  "name": "Synaptics",
- "price": 117.26,
- "change_pct": 0.19,
+ "price": 117.35,
+ "change_pct": 0.08,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 112.61,
-   "h": 112.92,
-   "l": 106.96,
-   "c": 107.32,
-   "v": 866200
-  },
   {
    "time": "2026-08-03",
    "o": 104.44,
@@ -483,13 +475,21 @@
    "l": 117.05,
    "c": 117.26,
    "v": 762300
+  },
+  {
+   "time": "2026-10-26",
+   "o": 117.22,
+   "h": 117.79,
+   "l": 117.15,
+   "c": 117.35,
+   "v": 838000
   }
  ],
  "sr": {
-  "price": 117.26,
+  "price": 117.35,
   "resistance": [
-   121.98,
-   123.21
+   118.22,
+   121.98
   ],
   "support": [
    116.85,
@@ -498,7 +498,6 @@
   "strong_support": 41.8
  },
  "spark": [
-  107.32,
   105.72,
   106.56,
   100.12,
@@ -557,11 +556,29 @@
   117.48,
   117.5,
   117.04,
-  117.26
+  117.26,
+  117.35
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 13903,
+    "days": 3,
+    "max_shares": 12909,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

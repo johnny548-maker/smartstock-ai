@@ -1,17 +1,9 @@
 {
  "stock": "GILT",
  "name": "Gilat Satellite Networks",
- "price": 7.44,
- "change_pct": -0.13,
+ "price": 7.63,
+ "change_pct": 2.55,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 11.2,
-   "h": 11.3,
-   "l": 10.75,
-   "c": 11.05,
-   "v": 261600
-  },
   {
    "time": "2026-08-03",
    "o": 11.05,
@@ -483,13 +475,21 @@
    "l": 7.23,
    "c": 7.44,
    "v": 645300
+  },
+  {
+   "time": "2026-10-26",
+   "o": 7.57,
+   "h": 7.73,
+   "l": 7.45,
+   "c": 7.63,
+   "v": 695000
   }
  ],
  "sr": {
-  "price": 7.44,
+  "price": 7.63,
   "resistance": [
-   7.51,
-   7.76
+   7.76,
+   7.83
   ],
   "support": [
    7.22,
@@ -498,7 +498,6 @@
   "strong_support": 5.06
  },
  "spark": [
-  11.05,
   11.7,
   11.91,
   11.62,
@@ -557,11 +556,29 @@
   7.78,
   7.87,
   7.45,
-  7.44
+  7.44,
+  7.63
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 44110,
+    "days": 3,
+    "max_shares": 20357,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

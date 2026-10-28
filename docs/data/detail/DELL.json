@@ -1,17 +1,9 @@
 {
  "stock": "DELL",
  "name": "Dell Technologies",
- "price": 456.44,
- "change_pct": 0.77,
+ "price": 467.09,
+ "change_pct": 2.33,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 418.42,
-   "h": 430.83,
-   "l": 399.7,
-   "c": 404.81,
-   "v": 4853900
-  },
   {
    "time": "2026-08-03",
    "o": 397.13,
@@ -483,13 +475,21 @@
    "l": 449.72,
    "c": 456.44,
    "v": 4327600
+  },
+  {
+   "time": "2026-10-26",
+   "o": 466.2,
+   "h": 475.38,
+   "l": 450.9,
+   "c": 467.09,
+   "v": 4767900
   }
  ],
  "sr": {
-  "price": 456.44,
+  "price": 467.09,
   "resistance": [
-   462.08,
-   468.05
+   468.05,
+   485.03
   ],
   "support": [
    439.5,
@@ -498,7 +498,6 @@
   "strong_support": 64.65
  },
  "spark": [
-  404.81,
   428.43,
   466.62,
   462.06,
@@ -557,11 +556,29 @@
   461.56,
   485.88,
   452.95,
-  456.44
+  456.44,
+  467.09
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 390,417 股交割失敗）",
+   "value": {
+    "total_shares": 390417,
+    "days": 8,
+    "max_shares": 342719,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

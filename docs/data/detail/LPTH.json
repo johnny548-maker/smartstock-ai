@@ -1,17 +1,9 @@
 {
  "stock": "LPTH",
  "name": "LightPath Technologies",
- "price": 7.29,
- "change_pct": 3.85,
+ "price": 7.43,
+ "change_pct": 1.92,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 10.58,
-   "h": 10.65,
-   "l": 10.05,
-   "c": 10.37,
-   "v": 1727600
-  },
   {
    "time": "2026-08-03",
    "o": 10.32,
@@ -483,13 +475,21 @@
    "l": 6.82,
    "c": 7.29,
    "v": 2868800
+  },
+  {
+   "time": "2026-10-26",
+   "o": 7.26,
+   "h": 7.71,
+   "l": 7.13,
+   "c": 7.43,
+   "v": 2681500
   }
  ],
  "sr": {
-  "price": 7.29,
+  "price": 7.43,
   "resistance": [
-   7.34,
-   8.43
+   8.43,
+   9.0
   ],
   "support": [
    7.01,
@@ -498,7 +498,6 @@
   "strong_support": 1.4
  },
  "spark": [
-  10.37,
   11.18,
   12.49,
   11.99,
@@ -557,11 +556,29 @@
   7.54,
   7.55,
   7.02,
-  7.29
+  7.29,
+  7.43
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日、累計 125,899 股交割失敗）",
+   "value": {
+    "total_shares": 125899,
+    "days": 4,
+    "max_shares": 103139,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

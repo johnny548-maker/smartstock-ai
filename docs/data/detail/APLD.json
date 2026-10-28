@@ -1,17 +1,9 @@
 {
  "stock": "APLD",
  "name": "Applied Digital",
- "price": 18.25,
- "change_pct": -4.4,
+ "price": 17.83,
+ "change_pct": -2.3,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 30.0,
-   "h": 30.24,
-   "l": 26.94,
-   "c": 27.39,
-   "v": 22020000
-  },
   {
    "time": "2026-08-03",
    "o": 27.01,
@@ -482,14 +474,22 @@
    "h": 19.49,
    "l": 18.14,
    "c": 18.25,
-   "v": 18145100
+   "v": 18271000
+  },
+  {
+   "time": "2026-10-26",
+   "o": 17.82,
+   "h": 18.67,
+   "l": 17.5,
+   "c": 17.83,
+   "v": 27142000
   }
  ],
  "sr": {
-  "price": 18.25,
+  "price": 17.83,
   "resistance": [
-   25.61,
-   26.6
+   21.56,
+   25.61
   ],
   "support": [
    17.65,
@@ -498,7 +498,6 @@
   "strong_support": 3.31
  },
  "spark": [
-  27.39,
   29.49,
   31.27,
   29.87,
@@ -557,11 +556,29 @@
   19.33,
   20.98,
   19.09,
-  18.25
+  18.25,
+  17.83
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 634,659 股交割失敗）",
+   "value": {
+    "total_shares": 634659,
+    "days": 8,
+    "max_shares": 443408,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

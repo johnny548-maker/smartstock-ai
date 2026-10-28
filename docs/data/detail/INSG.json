@@ -1,17 +1,9 @@
 {
  "stock": "INSG",
  "name": "Inseego Corp",
- "price": 4.24,
- "change_pct": 1.19,
+ "price": 4.43,
+ "change_pct": 4.48,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 6.91,
-   "h": 7.1,
-   "l": 6.75,
-   "c": 7.03,
-   "v": 211900
-  },
   {
    "time": "2026-08-03",
    "o": 7.04,
@@ -483,10 +475,18 @@
    "l": 4.13,
    "c": 4.24,
    "v": 139600
+  },
+  {
+   "time": "2026-10-26",
+   "o": 4.23,
+   "h": 4.51,
+   "l": 4.13,
+   "c": 4.43,
+   "v": 150900
   }
  ],
  "sr": {
-  "price": 4.24,
+  "price": 4.43,
   "resistance": [
    4.57,
    4.64
@@ -498,7 +498,6 @@
   "strong_support": 3.58
  },
  "spark": [
-  7.03,
   7.37,
   7.75,
   7.43,
@@ -557,11 +556,29 @@
   4.3,
   4.41,
   4.19,
-  4.24
+  4.24,
+  4.43
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 18816,
+    "days": 4,
+    "max_shares": 15276,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

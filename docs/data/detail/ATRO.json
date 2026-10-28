@@ -1,17 +1,9 @@
 {
  "stock": "ATRO",
  "name": "Astronics Corp",
- "price": 57.89,
- "change_pct": -2.21,
+ "price": 59.86,
+ "change_pct": 3.4,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 69.39,
-   "h": 70.01,
-   "l": 67.34,
-   "c": 69.49,
-   "v": 295400
-  },
   {
    "time": "2026-08-03",
    "o": 69.71,
@@ -483,22 +475,29 @@
    "l": 56.2,
    "c": 57.89,
    "v": 747900
+  },
+  {
+   "time": "2026-10-26",
+   "o": 58.63,
+   "h": 60.3,
+   "l": 58.09,
+   "c": 59.86,
+   "v": 268800
   }
  ],
  "sr": {
-  "price": 57.89,
+  "price": 59.86,
   "resistance": [
    61.44,
    63.3
   ],
   "support": [
-   57.47,
-   57.24
+   58.68,
+   57.47
   ],
   "strong_support": 11.28
  },
  "spark": [
-  69.49,
   71.12,
   75.58,
   77.14,
@@ -557,11 +556,29 @@
   59.85,
   61.82,
   59.2,
-  57.89
+  57.89,
+  59.86
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 21147,
+    "days": 5,
+    "max_shares": 8551,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

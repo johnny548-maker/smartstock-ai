@@ -1,17 +1,9 @@
 {
  "stock": "FLNC",
  "name": "Fluence Energy",
- "price": 5.59,
- "change_pct": -1.93,
+ "price": 5.5,
+ "change_pct": -1.61,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 15.12,
-   "h": 15.12,
-   "l": 13.42,
-   "c": 13.93,
-   "v": 7627700
-  },
   {
    "time": "2026-08-03",
    "o": 13.48,
@@ -482,11 +474,19 @@
    "h": 5.68,
    "l": 5.51,
    "c": 5.59,
-   "v": 4796800
+   "v": 4808900
+  },
+  {
+   "time": "2026-10-26",
+   "o": 5.5,
+   "h": 5.66,
+   "l": 5.32,
+   "c": 5.5,
+   "v": 5814700
   }
  ],
  "sr": {
-  "price": 5.59,
+  "price": 5.5,
   "resistance": [
    5.77,
    5.88
@@ -498,7 +498,6 @@
   "strong_support": 3.46
  },
  "spark": [
-  13.93,
   14.56,
   15.67,
   14.23,
@@ -557,11 +556,29 @@
   5.93,
   6.0,
   5.7,
-  5.59
+  5.59,
+  5.5
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 335,909 股交割失敗）",
+   "value": {
+    "total_shares": 335909,
+    "days": 5,
+    "max_shares": 225392,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "LASR",
  "name": "nLIGHT",
- "price": 36.34,
- "change_pct": 0.66,
+ "price": 36.71,
+ "change_pct": 1.02,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 69.84,
-   "h": 71.99,
-   "l": 66.73,
-   "c": 68.8,
-   "v": 816300
-  },
   {
    "time": "2026-08-03",
    "o": 65.9,
@@ -483,13 +475,21 @@
    "l": 35.16,
    "c": 36.34,
    "v": 976200
+  },
+  {
+   "time": "2026-10-26",
+   "o": 36.47,
+   "h": 37.35,
+   "l": 36.02,
+   "c": 36.71,
+   "v": 861400
   }
  ],
  "sr": {
-  "price": 36.34,
+  "price": 36.71,
   "resistance": [
-   38.62,
-   38.63
+   37.38,
+   38.62
   ],
   "support": [
    36.26,
@@ -498,7 +498,6 @@
   "strong_support": 6.2
  },
  "spark": [
-  68.8,
   70.11,
   77.18,
   75.25,
@@ -557,11 +556,29 @@
   36.22,
   37.13,
   36.1,
-  36.34
+  36.34,
+  36.71
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
+   "value": {
+    "total_shares": 13797,
+    "days": 3,
+    "max_shares": 8727,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

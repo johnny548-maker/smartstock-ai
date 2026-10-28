@@ -1,17 +1,9 @@
 {
  "stock": "NNBR",
  "name": "NN Inc",
- "price": 3.3,
- "change_pct": -0.9,
+ "price": 3.36,
+ "change_pct": 1.82,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 3.35,
-   "h": 3.43,
-   "l": 3.21,
-   "c": 3.31,
-   "v": 782300
-  },
   {
    "time": "2026-08-03",
    "o": 3.39,
@@ -483,22 +475,29 @@
    "l": 3.25,
    "c": 3.3,
    "v": 2018500
+  },
+  {
+   "time": "2026-10-26",
+   "o": 3.33,
+   "h": 3.52,
+   "l": 3.32,
+   "c": 3.36,
+   "v": 1584300
   }
  ],
  "sr": {
-  "price": 3.3,
+  "price": 3.36,
   "resistance": [
    3.39,
    3.4
   ],
   "support": [
-   3.29,
-   3.28
+   3.3,
+   3.29
   ],
   "strong_support": 1.1
  },
  "spark": [
-  3.31,
   3.62,
   3.85,
   3.9,
@@ -557,11 +556,29 @@
   3.55,
   3.47,
   3.33,
-  3.3
+  3.3,
+  3.36
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 3 個交割日、累計 288,731 股交割失敗）",
+   "value": {
+    "total_shares": 288731,
+    "days": 3,
+    "max_shares": 121415,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

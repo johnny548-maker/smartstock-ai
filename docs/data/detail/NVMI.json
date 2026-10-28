@@ -1,17 +1,9 @@
 {
  "stock": "NVMI",
  "name": "Nova Ltd",
- "price": 311.35,
- "change_pct": 0.39,
+ "price": 316.33,
+ "change_pct": 1.6,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 402.9,
-   "h": 417.77,
-   "l": 388.07,
-   "c": 390.87,
-   "v": 388300
-  },
   {
    "time": "2026-08-03",
    "o": 378.18,
@@ -483,13 +475,21 @@
    "l": 304.73,
    "c": 311.35,
    "v": 347700
+  },
+  {
+   "time": "2026-10-26",
+   "o": 315.1,
+   "h": 320.78,
+   "l": 311.11,
+   "c": 316.33,
+   "v": 182300
   }
  ],
  "sr": {
-  "price": 311.35,
+  "price": 316.33,
   "resistance": [
    320.0,
-   336.96
+   332.4
   ],
   "support": [
    301.75,
@@ -498,7 +498,6 @@
   "strong_support": 154.0
  },
  "spark": [
-  390.87,
   393.69,
   413.5,
   402.38,
@@ -557,11 +556,29 @@
   320.03,
   331.22,
   310.13,
-  311.35
+  311.35,
+  316.33
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
+   "value": {
+    "total_shares": 40090,
+    "days": 6,
+    "max_shares": 30245,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

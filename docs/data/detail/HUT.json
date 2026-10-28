@@ -1,17 +1,9 @@
 {
  "stock": "HUT",
  "name": "Hut 8 Corp",
- "price": 61.23,
- "change_pct": -4.28,
+ "price": 62.97,
+ "change_pct": 2.84,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 114.22,
-   "h": 116.72,
-   "l": 104.62,
-   "c": 107.63,
-   "v": 4589700
-  },
   {
    "time": "2026-08-03",
    "o": 103.9,
@@ -483,13 +475,21 @@
    "l": 60.9,
    "c": 61.23,
    "v": 4264400
+  },
+  {
+   "time": "2026-10-26",
+   "o": 60.06,
+   "h": 66.58,
+   "l": 58.75,
+   "c": 62.97,
+   "v": 4586800
   }
  ],
  "sr": {
-  "price": 61.23,
+  "price": 62.97,
   "resistance": [
-   61.82,
-   62.54
+   66.07,
+   83.18
   ],
   "support": [
    54.65,
@@ -498,7 +498,6 @@
   "strong_support": 10.04
  },
  "spark": [
-  107.63,
   112.08,
   101.16,
   92.76,
@@ -557,11 +556,29 @@
   69.04,
   71.58,
   63.97,
-  61.23
+  61.23,
+  62.97
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 267,630 股交割失敗）",
+   "value": {
+    "total_shares": 267630,
+    "days": 8,
+    "max_shares": 140700,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

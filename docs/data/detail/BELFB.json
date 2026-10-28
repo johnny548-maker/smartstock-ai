@@ -1,17 +1,9 @@
 {
  "stock": "BELFB",
  "name": "Bel Fuse",
- "price": 199.51,
- "change_pct": -0.15,
+ "price": 209.41,
+ "change_pct": 4.96,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 269.11,
-   "h": 283.56,
-   "l": 266.74,
-   "c": 271.88,
-   "v": 421500
-  },
   {
    "time": "2026-08-03",
    "o": 267.61,
@@ -483,22 +475,29 @@
    "l": 194.25,
    "c": 199.51,
    "v": 183100
+  },
+  {
+   "time": "2026-10-26",
+   "o": 204.85,
+   "h": 212.79,
+   "l": 201.5,
+   "c": 209.41,
+   "v": 162000
   }
  ],
  "sr": {
-  "price": 199.51,
+  "price": 209.41,
   "resistance": [
-   205.81,
+   221.7,
    226.6
   ],
   "support": [
-   193.48,
-   189.2
+   200.26,
+   193.48
   ],
   "strong_support": 57.8
  },
  "spark": [
-  271.88,
   274.74,
   300.55,
   293.92,
@@ -557,11 +556,29 @@
   212.4,
   220.55,
   199.81,
-  199.51
+  199.51,
+  209.41
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 132,
+    "days": 4,
+    "max_shares": 46,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

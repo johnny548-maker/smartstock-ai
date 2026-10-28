@@ -1,17 +1,9 @@
 {
  "stock": "WULF",
  "name": "TeraWulf",
- "price": 11.32,
- "change_pct": 0.0,
+ "price": 11.98,
+ "change_pct": 5.83,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 18.55,
-   "h": 18.96,
-   "l": 17.5,
-   "c": 17.66,
-   "v": 30696500
-  },
   {
    "time": "2026-08-03",
    "o": 17.36,
@@ -482,23 +474,30 @@
    "h": 11.95,
    "l": 11.07,
    "c": 11.32,
-   "v": 36282000
+   "v": 36319300
+  },
+  {
+   "time": "2026-10-26",
+   "o": 11.3,
+   "h": 12.47,
+   "l": 11.08,
+   "c": 11.98,
+   "v": 50475200
   }
  ],
  "sr": {
-  "price": 11.32,
+  "price": 11.98,
   "resistance": [
-   11.79,
+   13.06,
    13.73
   ],
   "support": [
-   11.25,
-   11.13
+   11.78,
+   11.74
   ],
   "strong_support": 2.06
  },
  "spark": [
-  17.66,
   18.83,
   18.88,
   18.07,
@@ -557,11 +556,29 @@
   12.01,
   12.76,
   11.32,
-  11.32
+  11.32,
+  11.98
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 814,669 股交割失敗）",
+   "value": {
+    "total_shares": 814669,
+    "days": 7,
+    "max_shares": 520287,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

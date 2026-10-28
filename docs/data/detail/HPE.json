@@ -1,17 +1,9 @@
 {
  "stock": "HPE",
  "name": "Hewlett Packard Enterprise",
- "price": 56.69,
- "change_pct": 2.2,
+ "price": 58.72,
+ "change_pct": 3.58,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 48.88,
-   "h": 49.76,
-   "l": 46.7,
-   "c": 47.78,
-   "v": 17247400
-  },
   {
    "time": "2026-08-03",
    "o": 47.39,
@@ -483,13 +475,21 @@
    "l": 54.64,
    "c": 56.69,
    "v": 16996000
+  },
+  {
+   "time": "2026-10-26",
+   "o": 57.22,
+   "h": 59.4,
+   "l": 56.83,
+   "c": 58.72,
+   "v": 9771100
   }
  ],
  "sr": {
-  "price": 56.69,
+  "price": 58.72,
   "resistance": [
-   61.99,
-   63.28
+   59.5,
+   61.99
   ],
   "support": [
    54.88,
@@ -498,7 +498,6 @@
   "strong_support": 11.61
  },
  "spark": [
-  47.78,
   50.11,
   52.26,
   53.09,
@@ -557,11 +556,29 @@
   56.09,
   58.17,
   55.47,
-  56.69
+  56.69,
+  58.72
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-03",
+ "spark_end": "2026-10-26",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
+   "value": {
+    "total_shares": 41300,
+    "days": 5,
+    "max_shares": 23444,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-10-28",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }
