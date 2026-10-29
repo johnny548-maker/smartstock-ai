@@ -1,17 +1,9 @@
 {
  "stock": "INVZ",
  "name": "Innoviz Technologies",
- "price": 0.22,
- "change_pct": -1.79,
+ "price": 0.23,
+ "change_pct": 5.02,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 0.43,
-   "h": 0.43,
-   "l": 0.4,
-   "c": 0.41,
-   "v": 3403200
-  },
   {
    "time": "2026-08-04",
    "o": 0.43,
@@ -483,19 +475,28 @@
    "l": 0.22,
    "c": 0.22,
    "v": 2962500
+  },
+  {
+   "time": "2026-10-27",
+   "o": 0.22,
+   "h": 0.23,
+   "l": 0.22,
+   "c": 0.23,
+   "v": 1448100
   }
  ],
  "sr": {
-  "price": 0.22,
+  "price": 0.23,
   "resistance": [
    0.36,
    0.37
   ],
-  "support": [],
-  "strong_support": 0.29
+  "support": [
+   0.21
+  ],
+  "strong_support": 0.21
  },
  "spark": [
-  0.41,
   0.42,
   0.4,
   0.41,
@@ -554,10 +555,11 @@
   0.23,
   0.21,
   0.22,
-  0.22
+  0.22,
+  0.23
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
+ "spark_start": "2026-08-04",
+ "spark_end": "2026-10-27",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
@@ -574,7 +576,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-10-28",
+   "as_of": "2026-10-29",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

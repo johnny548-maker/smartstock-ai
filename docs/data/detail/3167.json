@@ -1,17 +1,9 @@
 {
  "stock": "3167",
  "name": "大量",
- "price": 960.0,
- "change_pct": 3.9,
+ "price": 1030.0,
+ "change_pct": 7.29,
  "ohlc": [
-  {
-   "time": "2026-07-30",
-   "o": 434.5,
-   "h": 472.0,
-   "l": 434.5,
-   "c": 442.0,
-   "v": 3094316
-  },
   {
    "time": "2026-07-31",
    "o": 486.0,
@@ -483,13 +475,20 @@
    "l": 884.0,
    "c": 960.0,
    "v": 794565
+  },
+  {
+   "time": "2026-10-28",
+   "o": 990.0,
+   "h": 1030.0,
+   "l": 975.0,
+   "c": 1030.0,
+   "v": 739755
   }
  ],
  "sr": {
-  "price": 960.0,
+  "price": 1030.0,
   "resistance": [
-   971.0,
-   1010.09
+   1090.0
   ],
   "support": [
    951.0,
@@ -498,7 +497,6 @@
   "strong_support": 58.24
  },
  "spark": [
-  442.0,
   486.0,
   534.0,
   587.0,
@@ -557,10 +555,11 @@
   1000.0,
   924.0,
   924.0,
-  960.0
+  960.0,
+  1030.0
  ],
- "spark_start": "2026-07-30",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-07-31",
+ "spark_end": "2026-10-28",
  "fundamental": {
   "rev_yoy": 172.3,
   "rev_accel": true,
@@ -571,64 +570,17 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 112,003 股",
-   "value": {
-    "foreign": 119286,
-    "trust": 0,
-    "dealer": -7283,
-    "total": 112003
-   },
-   "severity": "info",
-   "as_of": "2026-10-28",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -20
-   },
-   "severity": "info",
-   "as_of": "2026-10-28",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 67.3 / 殖利率 0.41% / PB 20.01",
-   "value": {
-    "pe": 67.32,
-    "yield": 0.41,
-    "pb": 20.01
-   },
-   "severity": "info",
-   "as_of": "2026-10-27",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 109,
+    "short_today": 67,
     "outstanding": 89513491,
-    "short_pct": 0.0001217693542976667
+    "short_pct": 7.484905264168504e-05
    },
    "severity": "info",
-   "as_of": "2026-10-28",
+   "as_of": "2026-10-29",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "tdcc",
-   "kind": "chip",
-   "label": "大戶吸籌",
-   "value": 57.76,
-   "severity": "info",
-   "as_of": "20261022",
-   "note": "大戶持股%=57.76；WoW+0.21；股東人數-766"
   }
  ],
  "trends": {
@@ -1044,6 +996,10 @@
    {
     "t": "2026-10-28",
     "v": 3237
+   },
+   {
+    "t": "2026-10-29",
+    "v": 3313
    }
   ],
   "holder_pct": [
