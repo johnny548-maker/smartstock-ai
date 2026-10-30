@@ -1,17 +1,9 @@
 {
  "stock": "UCTT",
  "name": "Ultra Clean Holdings",
- "price": 51.48,
- "change_pct": 10.21,
+ "price": 55.88,
+ "change_pct": 8.55,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 96.1,
-   "h": 98.68,
-   "l": 82.85,
-   "c": 84.54,
-   "v": 3205500
-  },
   {
    "time": "2026-08-05",
    "o": 82.05,
@@ -483,22 +475,29 @@
    "l": 46.91,
    "c": 51.48,
    "v": 2197500
+  },
+  {
+   "time": "2026-10-28",
+   "o": 53.94,
+   "h": 56.68,
+   "l": 51.67,
+   "c": 55.88,
+   "v": 4059700
   }
  ],
  "sr": {
-  "price": 51.48,
+  "price": 55.88,
   "resistance": [
    58.7,
    59.35
   ],
   "support": [
-   48.71,
-   43.96
+   54.54,
+   52.0
   ],
   "strong_support": 16.66
  },
  "spark": [
-  84.54,
   80.2,
   83.14,
   87.25,
@@ -557,28 +556,12 @@
   44.46,
   45.32,
   46.71,
-  51.48
+  51.48,
+  55.88
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 4239,
-    "days": 2,
-    "max_shares": 3485,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

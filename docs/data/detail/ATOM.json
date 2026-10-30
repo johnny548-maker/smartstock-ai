@@ -1,17 +1,9 @@
 {
  "stock": "ATOM",
  "name": "Atomera",
- "price": 2.92,
- "change_pct": 1.74,
+ "price": 3.01,
+ "change_pct": 3.08,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 5.63,
-   "h": 5.89,
-   "l": 5.57,
-   "c": 5.65,
-   "v": 1263500
-  },
   {
    "time": "2026-08-05",
    "o": 5.14,
@@ -483,10 +475,18 @@
    "l": 2.83,
    "c": 2.92,
    "v": 771500
+  },
+  {
+   "time": "2026-10-28",
+   "o": 2.92,
+   "h": 3.04,
+   "l": 2.89,
+   "c": 3.01,
+   "v": 541900
   }
  ],
  "sr": {
-  "price": 2.92,
+  "price": 3.01,
   "resistance": [
    3.44,
    3.48
@@ -498,7 +498,6 @@
   "strong_support": 1.89
  },
  "spark": [
-  5.65,
   5.24,
   5.32,
   5.48,
@@ -557,28 +556,12 @@
   3.08,
   2.94,
   2.87,
-  2.92
+  2.92,
+  3.01
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 17454,
-    "days": 4,
-    "max_shares": 17433,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

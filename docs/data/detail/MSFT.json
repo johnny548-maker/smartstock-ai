@@ -1,33 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 529.82,
- "change_pct": 1.01,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 475.24,
-   "h": 490.73,
-   "l": 474.11,
-   "c": 486.73,
-   "v": 66762100
-  },
-  {
-   "time": "2026-08-04",
-   "o": 480.0,
-   "h": 498.5,
-   "l": 478.27,
-   "c": 491.88,
-   "v": 50455500
-  },
-  {
-   "time": "2026-08-05",
-   "o": 495.43,
-   "h": 497.3,
-   "l": 484.77,
-   "c": 486.54,
-   "v": 33388900
-  },
   {
    "time": "2026-08-06",
    "o": 487.63,
@@ -478,28 +454,44 @@
   },
   {
    "time": "2026-10-26",
-   "o": 527.41,
-   "h": 531.1,
+   "o": 527.4,
+   "h": 533.25,
    "l": 521.69,
-   "c": 529.82,
-   "v": 7022957
+   "c": 532.6,
+   "v": 19021000
+  },
+  {
+   "time": "2026-10-27",
+   "o": 532.35,
+   "h": 534.7,
+   "l": 528.33,
+   "c": 531.33,
+   "v": 19532300
+  },
+  {
+   "time": "2026-10-28",
+   "o": 531.82,
+   "h": 535.0,
+   "l": 526.14,
+   "c": 531.01,
+   "v": 28594200
+  },
+  {
+   "time": "2026-10-29",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 39119013
   }
  ],
  "sr": {
-  "price": 529.82,
-  "resistance": [
-   551.15
-  ],
-  "support": [
-   524.43,
-   518.79
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 348.54
  },
  "spark": [
-  486.73,
-  491.88,
-  486.54,
   498.92,
   499.05,
   505.11,
@@ -556,13 +548,16 @@
   532.95,
   521.08,
   524.51,
-  529.82
+  532.6,
+  531.33,
+  531.01,
+  null
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
+ "spark_start": "2026-08-06",
+ "spark_end": "2026-10-29",
  "fundamental": {
-  "pe_trailing": 29.514761,
-  "pe_forward": 22.363708,
+  "pe_trailing": 29.534262,
+  "pe_forward": 22.378483,
   "eps_trailing": 17.95,
   "eps_forward": 23.68972,
   "stale": false,
@@ -574,116 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft offers voluntary exit packages to 60,000 staff",
+   "label": "Billionaire Bill Gates Just Issued a Blunt Warning About Artificial Intelligence",
    "value": {
-    "headline": "Microsoft offers voluntary exit packages to 60,000 staff",
+    "headline": "Billionaire Bill Gates Just Issued a Blunt Warning About Artificial Intelligence",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793032896,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-offers-voluntary-exit-packages-164136211.html?.tsrc=rss",
+    "ts": 1793312400,
+    "url": "https://www.fool.com/investing/2026/10/29/billionaire-bill-gates-just-issued-a-blunt-warning/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/microsoft-offers-voluntary-exit-packages-164136211.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/29/billionaire-bill-gates-just-issued-a-blunt-warning/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-26",
+   "severity": "warn",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: This Magnificent Seven Stock Could Be a $1 Trillion Opportunity",
+   "label": "IBM (IBM) Debuts AI Agent Security Controls For Hybrid Cloud",
    "value": {
-    "headline": "Prediction: This Magnificent Seven Stock Could Be a $1 Trillion Opportunity",
+    "headline": "IBM (IBM) Debuts AI Agent Security Controls For Hybrid Cloud",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793032238,
-    "url": "https://247wallst.com/investing/2026/10/26/prediction-this-magnificent-seven-stock-could-be-a-1-trillion-opportunity/?.tsrc=rss",
+    "ts": 1793312157,
+    "url": "https://finance.yahoo.com/technology/ai/articles/ibm-ibm-debuts-ai-agent-221557150.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/26/prediction-this-magnificent-seven-stock-could-be-a-1-trillion-opportunity/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/ibm-ibm-debuts-ai-agent-221557150.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft offers buyouts to 60,000 workers as AI reshapes workforce",
+   "label": "Does The Move In CrowdStrike Stock Change Anything?",
    "value": {
-    "headline": "Microsoft offers buyouts to 60,000 workers as AI reshapes workforce",
+    "headline": "Does The Move In CrowdStrike Stock Change Anything?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793031286,
-    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-offers-buyouts-60-000-161446010.html?.tsrc=rss",
+    "ts": 1793310236,
+    "url": "https://www.trefis.com/stock/crwd/articles/621280/does-the-move-in-crowdstrike-stock-change-anything/2026-10-29?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/microsoft-offers-buyouts-60-000-161446010.html?.tsrc=rss"
+     "https://www.trefis.com/stock/crwd/articles/621280/does-the-move-in-crowdstrike-stock-change-anything/2026-10-29?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft offers voluntary buyout to 60,000 employees",
+   "label": "Things to consider if a company that made AI-related job cuts wants to rehire you",
    "value": {
-    "headline": "Microsoft offers voluntary buyout to 60,000 employees",
+    "headline": "Things to consider if a company that made AI-related job cuts wants to rehire you",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793030411,
-    "url": "https://finance.yahoo.com/technology/article/microsoft-offers-voluntary-buyout-to-60000-employees-160011034.html?.tsrc=rss",
+    "ts": 1793310217,
+    "url": "https://www.independent.co.uk/tech/ai-layoffs-rehire-artificial-intelligence-b3076034.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/microsoft-offers-voluntary-buyout-to-60000-employees-160011034.html?.tsrc=rss"
+     "https://www.independent.co.uk/tech/ai-layoffs-rehire-artificial-intelligence-b3076034.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-26",
+   "severity": "warn",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "As Anthropic’s IPO Looms, The Company Faces A Significant Risk From A Surprising Place, Midterm State And Local Election",
+   "label": "Big Tech Earnings Couldn’t Ignite Chip Stocks. What The Semis Need Now.",
    "value": {
-    "headline": "As Anthropic’s IPO Looms, The Company Faces A Significant Risk From A Surprising Place, Midterm State And Local Elections",
+    "headline": "Big Tech Earnings Couldn’t Ignite Chip Stocks. What The Semis Need Now.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793030349,
-    "url": "https://247wallst.com/investing/2026/10/26/as-anthropics-ipo-looms-the-company-faces-a-significant-risk-from-a-surprising-place-midterm-state-and-local-elections/?.tsrc=rss",
+    "ts": 1793310000,
+    "url": "https://finance.yahoo.com/m/792cbf7a-885c-3a76-8cf5-7e84ab8048cf/big-tech-earnings-couldn%E2%80%99t.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/26/as-anthropics-ipo-looms-the-company-faces-a-significant-risk-from-a-surprising-place-midterm-state-and-local-elections/?.tsrc=rss"
+     "https://finance.yahoo.com/m/792cbf7a-885c-3a76-8cf5-7e84ab8048cf/big-tech-earnings-couldn%E2%80%99t.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -698,7 +693,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

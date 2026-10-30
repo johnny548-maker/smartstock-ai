@@ -1,17 +1,9 @@
 {
  "stock": "WOK",
  "name": "WORK Medical Technology Group LTD - Class A Ordinary Shares",
- "price": 1.17,
- "change_pct": 3.54,
+ "price": 1.15,
+ "change_pct": -1.71,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 2.03,
-   "h": 2.2,
-   "l": 2.03,
-   "c": 2.15,
-   "v": 123600
-  },
   {
    "time": "2026-08-05",
    "o": 2.19,
@@ -483,21 +475,29 @@
    "l": 1.13,
    "c": 1.17,
    "v": 22600
+  },
+  {
+   "time": "2026-10-28",
+   "o": 1.15,
+   "h": 1.16,
+   "l": 1.14,
+   "c": 1.15,
+   "v": 17100
   }
  ],
  "sr": {
-  "price": 1.17,
+  "price": 1.15,
   "resistance": [
    1.97,
    1.98
   ],
   "support": [
+   1.09,
    1.01
   ],
   "strong_support": 1.01
  },
  "spark": [
-  2.15,
   2.13,
   2.07,
   2.12,
@@ -556,28 +556,12 @@
   1.13,
   1.11,
   1.13,
-  1.17
+  1.17,
+  1.15
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
-   "value": {
-    "total_shares": 7011,
-    "days": 7,
-    "max_shares": 2055,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

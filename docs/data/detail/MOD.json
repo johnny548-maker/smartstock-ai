@@ -1,17 +1,9 @@
 {
  "stock": "MOD",
  "name": "Modine Manufacturing",
- "price": 136.51,
- "change_pct": 4.79,
+ "price": 143.54,
+ "change_pct": 5.15,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 205.61,
-   "h": 208.0,
-   "l": 194.31,
-   "c": 201.71,
-   "v": 1416200
-  },
   {
    "time": "2026-08-05",
    "o": 197.39,
@@ -483,22 +475,29 @@
    "l": 133.03,
    "c": 136.51,
    "v": 1093400
+  },
+  {
+   "time": "2026-10-28",
+   "o": 143.01,
+   "h": 144.87,
+   "l": 139.01,
+   "c": 143.54,
+   "v": 1380100
   }
  ],
  "sr": {
-  "price": 136.51,
+  "price": 143.54,
   "resistance": [
-   136.52,
-   139.96
+   144.93,
+   145.3
   ],
   "support": [
-   134.04,
-   133.0
+   143.0,
+   141.57
   ],
   "strong_support": 64.79
  },
  "spark": [
-  201.71,
   194.61,
   192.52,
   195.6,
@@ -557,28 +556,12 @@
   135.17,
   133.34,
   130.27,
-  136.51
+  136.51,
+  143.54
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 44403,
-    "days": 2,
-    "max_shares": 44353,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

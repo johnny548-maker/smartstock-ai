@@ -1,17 +1,9 @@
 {
  "stock": "POET",
  "name": "POET Technologies",
- "price": 5.69,
- "change_pct": 5.96,
+ "price": 5.84,
+ "change_pct": 2.64,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 8.35,
-   "h": 8.68,
-   "l": 8.13,
-   "c": 8.57,
-   "v": 24487300
-  },
   {
    "time": "2026-08-05",
    "o": 8.24,
@@ -483,22 +475,29 @@
    "l": 5.42,
    "c": 5.69,
    "v": 6119500
+  },
+  {
+   "time": "2026-10-28",
+   "o": 5.75,
+   "h": 5.85,
+   "l": 5.63,
+   "c": 5.84,
+   "v": 6562100
   }
  ],
  "sr": {
-  "price": 5.69,
+  "price": 5.84,
   "resistance": [
-   5.75,
-   5.76
+   5.94,
+   6.23
   ],
   "support": [
-   5.31,
-   5.28
+   5.81,
+   5.31
   ],
   "strong_support": 3.09
  },
  "spark": [
-  8.57,
   8.09,
   8.53,
   8.91,
@@ -557,28 +556,12 @@
   5.33,
   5.46,
   5.37,
-  5.69
+  5.69,
+  5.84
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 7 個交割日、累計 646,872 股交割失敗）",
-   "value": {
-    "total_shares": 646872,
-    "days": 7,
-    "max_shares": 355472,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

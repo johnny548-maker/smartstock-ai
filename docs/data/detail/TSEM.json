@@ -1,17 +1,9 @@
 {
  "stock": "TSEM",
  "name": "Tower Semiconductor",
- "price": 189.08,
- "change_pct": 5.78,
+ "price": 193.52,
+ "change_pct": 2.35,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 225.44,
-   "h": 250.36,
-   "l": 206.4,
-   "c": 239.53,
-   "v": 6331100
-  },
   {
    "time": "2026-08-05",
    "o": 229.8,
@@ -483,22 +475,29 @@
    "l": 177.77,
    "c": 189.08,
    "v": 2623500
+  },
+  {
+   "time": "2026-10-28",
+   "o": 187.69,
+   "h": 197.66,
+   "l": 187.43,
+   "c": 193.52,
+   "v": 1782700
   }
  ],
  "sr": {
-  "price": 189.08,
+  "price": 193.52,
   "resistance": [
    195.36,
    226.6
   ],
   "support": [
-   185.07,
-   184.14
+   190.55,
+   185.07
   ],
   "strong_support": 28.64
  },
  "spark": [
-  239.53,
   211.14,
   224.7,
   252.49,
@@ -557,28 +556,12 @@
   167.71,
   167.56,
   178.75,
-  189.08
+  189.08,
+  193.52
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 347,
-    "days": 6,
-    "max_shares": 98,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

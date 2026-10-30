@@ -1,17 +1,9 @@
 {
  "stock": "ESTC",
  "name": "Elastic NV",
- "price": 105.52,
- "change_pct": -0.72,
+ "price": 106.58,
+ "change_pct": 1.0,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 67.67,
-   "h": 71.45,
-   "l": 67.06,
-   "c": 71.06,
-   "v": 1779700
-  },
   {
    "time": "2026-08-05",
    "o": 72.62,
@@ -483,10 +475,18 @@
    "l": 103.59,
    "c": 105.52,
    "v": 1295000
+  },
+  {
+   "time": "2026-10-28",
+   "o": 105.34,
+   "h": 107.48,
+   "l": 104.99,
+   "c": 106.58,
+   "v": 1548800
   }
  ],
  "sr": {
-  "price": 105.52,
+  "price": 106.58,
   "resistance": [
    108.0,
    108.41
@@ -498,7 +498,6 @@
   "strong_support": 42.05
  },
  "spark": [
-  71.06,
   69.72,
   69.95,
   75.11,
@@ -557,28 +556,12 @@
   98.21,
   102.43,
   106.29,
-  105.52
+  105.52,
+  106.58
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日、累計 422,722 股交割失敗）",
-   "value": {
-    "total_shares": 422722,
-    "days": 5,
-    "max_shares": 266841,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

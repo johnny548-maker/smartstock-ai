@@ -1,17 +1,9 @@
 {
  "stock": "CRUS",
  "name": "Cirrus Logic",
- "price": 114.27,
- "change_pct": 1.12,
+ "price": 113.08,
+ "change_pct": -1.04,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 129.08,
-   "h": 133.76,
-   "l": 127.05,
-   "c": 133.59,
-   "v": 549400
-  },
   {
    "time": "2026-08-05",
    "o": 132.09,
@@ -483,22 +475,29 @@
    "l": 112.47,
    "c": 114.27,
    "v": 566000
+  },
+  {
+   "time": "2026-10-28",
+   "o": 114.27,
+   "h": 114.27,
+   "l": 111.75,
+   "c": 113.08,
+   "v": 1117400
   }
  ],
  "sr": {
-  "price": 114.27,
+  "price": 113.08,
   "resistance": [
-   118.12,
-   118.62
+   113.14,
+   118.12
   ],
   "support": [
-   113.31,
-   111.0
+   111.0,
+   109.88
   ],
   "strong_support": 75.83
  },
  "spark": [
-  133.59,
   129.42,
   123.51,
   124.92,
@@ -557,28 +556,12 @@
   110.49,
   112.32,
   113.0,
-  114.27
+  114.27,
+  113.08
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 27307,
-    "days": 2,
-    "max_shares": 27139,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

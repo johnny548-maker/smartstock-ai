@@ -1,17 +1,9 @@
 {
  "stock": "BE",
  "name": "Bloom Energy",
- "price": 218.5,
- "change_pct": 7.15,
+ "price": 228.08,
+ "change_pct": 4.38,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 225.38,
-   "h": 237.45,
-   "l": 219.21,
-   "c": 228.11,
-   "v": 18854900
-  },
   {
    "time": "2026-08-05",
    "o": 223.79,
@@ -483,13 +475,21 @@
    "l": 211.29,
    "c": 218.5,
    "v": 15725200
+  },
+  {
+   "time": "2026-10-28",
+   "o": 225.97,
+   "h": 231.66,
+   "l": 217.9,
+   "c": 228.08,
+   "v": 13466100
   }
  ],
  "sr": {
-  "price": 218.5,
+  "price": 228.08,
   "resistance": [
-   227.99,
-   229.55
+   229.55,
+   241.37
   ],
   "support": [
    216.04,
@@ -498,7 +498,6 @@
   "strong_support": 12.78
  },
  "spark": [
-  228.11,
   234.33,
   228.96,
   219.34,
@@ -557,28 +556,12 @@
   217.77,
   193.3,
   203.92,
-  218.5
+  218.5,
+  228.08
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 44510,
-    "days": 5,
-    "max_shares": 35556,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

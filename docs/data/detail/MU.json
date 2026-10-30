@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 928.76,
- "change_pct": 2.77,
+ "price": 983.23,
+ "change_pct": 5.86,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 866.68,
-   "h": 902.29,
-   "l": 858.36,
-   "c": 892.53,
-   "v": 37478600
-  },
   {
    "time": "2026-08-05",
    "o": 885.16,
@@ -483,13 +475,21 @@
    "l": 910.67,
    "c": 928.76,
    "v": 23194900
+  },
+  {
+   "time": "2026-10-28",
+   "o": 961.71,
+   "h": 990.0,
+   "l": 959.34,
+   "c": 983.23,
+   "v": 30711300
   }
  ],
  "sr": {
-  "price": 928.76,
+  "price": 983.23,
   "resistance": [
-   930.73,
-   989.8
+   989.8,
+   1011.61
   ],
   "support": [
    918.74,
@@ -498,7 +498,6 @@
   "strong_support": 61.37
  },
  "spark": [
-  892.53,
   893.05,
   881.33,
   877.43,
@@ -557,63 +556,12 @@
   856.49,
   877.55,
   903.7,
-  928.76
+  928.76,
+  983.23
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "美光勞資協議爆無效?勞部:一般契約不受3年限制 若不服可循司法途徑",
-   "value": {
-    "headline": "美光勞資協議爆無效?勞部:一般契約不受3年限制 若不服可循司法途徑",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1793190501,
-    "url": "cnyes:6639817",
-    "urls": [
-     "cnyes:6639817"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-29",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-29",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 35068,
-    "days": 4,
-    "max_shares": 33868,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

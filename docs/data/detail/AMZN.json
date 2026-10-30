@@ -1,41 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 249.04,
- "change_pct": -0.54,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-07-31",
-   "o": 265.0,
-   "h": 273.23,
-   "l": 262.01,
-   "c": 271.58,
-   "v": 129054800
-  },
-  {
-   "time": "2026-08-03",
-   "o": 278.29,
-   "h": 287.2,
-   "l": 278.0,
-   "c": 284.02,
-   "v": 90830200
-  },
-  {
-   "time": "2026-08-04",
-   "o": 276.06,
-   "h": 281.07,
-   "l": 275.82,
-   "c": 277.42,
-   "v": 69748100
-  },
-  {
-   "time": "2026-08-05",
-   "o": 281.59,
-   "h": 282.79,
-   "l": 270.73,
-   "c": 272.65,
-   "v": 45119800
-  },
   {
    "time": "2026-08-06",
    "o": 272.77,
@@ -474,34 +442,56 @@
    "h": 258.41,
    "l": 248.0,
    "c": 250.38,
-   "v": 48658900
+   "v": 48814000
   },
   {
    "time": "2026-10-23",
-   "o": 248.55,
-   "h": 249.65,
+   "o": 248.85,
+   "h": 250.01,
    "l": 246.45,
-   "c": 249.04,
-   "v": 10608644
+   "c": 248.0,
+   "v": 25569000
+  },
+  {
+   "time": "2026-10-26",
+   "o": 249.47,
+   "h": 250.79,
+   "l": 247.23,
+   "c": 249.09,
+   "v": 32696400
+  },
+  {
+   "time": "2026-10-27",
+   "o": 250.43,
+   "h": 254.68,
+   "l": 248.71,
+   "c": 253.1,
+   "v": 34477800
+  },
+  {
+   "time": "2026-10-28",
+   "o": 253.0,
+   "h": 255.36,
+   "l": 251.98,
+   "c": 254.6,
+   "v": 34915900
+  },
+  {
+   "time": "2026-10-29",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 79750364
   }
  ],
  "sr": {
-  "price": 249.04,
-  "resistance": [
-   249.51,
-   249.71
-  ],
-  "support": [
-   248.6,
-   244.73
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 196.0
  },
  "spark": [
-  271.58,
-  284.02,
-  277.42,
-  272.65,
   272.26,
   274.48,
   278.09,
@@ -557,16 +547,20 @@
   262.63,
   262.37,
   250.38,
-  249.04
+  248.0,
+  249.09,
+  253.1,
+  254.6,
+  null
  ],
- "spark_start": "2026-07-31",
- "spark_end": "2026-10-23",
+ "spark_start": "2026-08-06",
+ "spark_end": "2026-10-29",
  "fundamental": {
-  "pe_trailing": 20.31094,
-  "pe_forward": 24.163769,
+  "pe_trailing": 19.613031,
+  "pe_forward": 23.328983,
   "eps_trailing": 12.43,
-  "eps_forward": 10.44808,
-  "stale": true,
+  "eps_forward": 10.45009,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,132 +569,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Facing Investing Fears",
+   "label": "Dow Jones Futures: Amazon, Intel Lead Earnings Losers After Google, ServiceNow, Fortinet Hit Nasdaq",
    "value": {
-    "headline": "Facing Investing Fears",
+    "headline": "Dow Jones Futures: Amazon, Intel Lead Earnings Losers After Google, ServiceNow, Fortinet Hit Nasdaq",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792766941,
-    "url": "https://www.fool.com/investing/2026/10/23/facing-investing-fears/?.tsrc=rss",
+    "ts": 1793319516,
+    "url": "https://finance.yahoo.com/m/0a5ce393-a6df-312b-af64-1893a264d0df/dow-jones-futures%3A-amazon%2C.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/23/facing-investing-fears/?.tsrc=rss"
+     "https://finance.yahoo.com/m/0a5ce393-a6df-312b-af64-1893a264d0df/dow-jones-futures%3A-amazon%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The case for why 'load-bearing' AI companies should not be bailed out",
+   "label": "Amazon.com Q3 Earnings Call Highlights",
    "value": {
-    "headline": "The case for why 'load-bearing' AI companies should not be bailed out",
+    "headline": "Amazon.com Q3 Earnings Call Highlights",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792765949,
-    "url": "https://finance.yahoo.com/video/the-case-for-why-load-bearing-ai-companies-should-not-be-bailed-out-143229389.html?.tsrc=rss",
+    "ts": 1793319256,
+    "url": "https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/the-case-for-why-load-bearing-ai-companies-should-not-be-bailed-out-143229389.html?.tsrc=rss"
+     "https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
+   "label": "Nasdaq 100 Futures Dip On Weak Intel, Amazon Earnings With Bloated Capex Worries Weighing On Sentiment — AMZN, INTC, SBU",
    "value": {
-    "headline": "Apple is taking Wall Street's top spot back from Nvidia — for the fifth time",
+    "headline": "Nasdaq 100 Futures Dip On Weak Intel, Amazon Earnings With Bloated Capex Worries Weighing On Sentiment — AMZN, INTC, SBUX, PLTR, ASTS In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792765614,
-    "url": "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss",
+    "ts": 1793318055,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-dip-on-weak-intel-amazon-earnings-with-bloated-capex-worries-weighing-on-sentiment-amzn-intc-sbux-pltr-asts-in-focus/cZUXcXOR9Ri?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-dip-on-weak-intel-amazon-earnings-with-bloated-capex-worries-weighing-on-sentiment-amzn-intc-sbux-pltr-asts-in-focus/cZUXcXOR9Ri?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Ed Zitron: Jensen Huang creating artificial demand is 'morally reprehensible'",
+   "label": "Andy Jassy says Prime Video is on track to earn ‘tens of billions of dollars’",
    "value": {
-    "headline": "Ed Zitron: Jensen Huang creating artificial demand is 'morally reprehensible'",
+    "headline": "Andy Jassy says Prime Video is on track to earn ‘tens of billions of dollars’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792765457,
-    "url": "https://finance.yahoo.com/video/ed-zitron-jensen-huang-creating-artificial-demand-is-morally-reprehensible-143004633.html?.tsrc=rss",
+    "ts": 1793317496,
+    "url": "https://finance.yahoo.com/media-advertising/articles/andy-jassy-says-prime-video-234456821.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ed-zitron-jensen-huang-creating-artificial-demand-is-morally-reprehensible-143004633.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/andy-jassy-says-prime-video-234456821.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Hedge Funds Are Shorting Stocks at Near-Record Levels",
+   "label": "AWS will be a $1T business, Jassy says. But first, it will spend big.",
    "value": {
-    "headline": "Hedge Funds Are Shorting Stocks at Near-Record Levels",
+    "headline": "AWS will be a $1T business, Jassy says. But first, it will spend big.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1792764900,
-    "url": "https://247wallst.com/investing/2026/10/23/hedge-funds-are-shorting-stocks-at-near-record-levels/?.tsrc=rss",
+    "ts": 1793317342,
+    "url": "https://finance.yahoo.com/technology/ai/articles/aws-1t-business-jassy-says-234222706.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/10/23/hedge-funds-are-shorting-stocks-at-near-record-levels/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/aws-1t-business-jassy-says-234222706.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 14 篇 / 869 分 / 773 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 869,
-    "comments": 773,
-    "n": 14,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-10-23",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +693,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-10-23",
+   "as_of": "2026-10-30",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

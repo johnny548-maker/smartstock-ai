@@ -1,17 +1,9 @@
 {
  "stock": "ANET",
  "name": "Arista Networks",
- "price": 187.0,
- "change_pct": 5.51,
+ "price": 186.72,
+ "change_pct": -0.15,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 187.7,
-   "h": 194.35,
-   "l": 187.01,
-   "c": 190.51,
-   "v": 14097400
-  },
   {
    "time": "2026-08-05",
    "o": 210.19,
@@ -483,10 +475,18 @@
    "l": 180.0,
    "c": 187.0,
    "v": 5653600
+  },
+  {
+   "time": "2026-10-28",
+   "o": 190.17,
+   "h": 191.11,
+   "l": 184.77,
+   "c": 186.72,
+   "v": 5004800
   }
  ],
  "sr": {
-  "price": 187.0,
+  "price": 186.72,
   "resistance": [
    188.99,
    189.82
@@ -498,7 +498,6 @@
   "strong_support": 59.43
  },
  "spark": [
-  190.51,
   197.31,
   192.32,
   188.67,
@@ -557,28 +556,12 @@
   171.07,
   172.37,
   177.24,
-  187.0
+  187.0,
+  186.72
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 626,
-    "days": 4,
-    "max_shares": 500,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

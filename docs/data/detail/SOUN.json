@@ -1,17 +1,9 @@
 {
  "stock": "SOUN",
  "name": "SoundHound AI",
- "price": 4.37,
- "change_pct": 3.07,
+ "price": 4.44,
+ "change_pct": 1.6,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 6.18,
-   "h": 6.53,
-   "l": 6.16,
-   "c": 6.51,
-   "v": 22893100
-  },
   {
    "time": "2026-08-05",
    "o": 6.51,
@@ -483,19 +475,28 @@
    "l": 4.28,
    "c": 4.37,
    "v": 18066200
+  },
+  {
+   "time": "2026-10-28",
+   "o": 4.37,
+   "h": 4.45,
+   "l": 4.26,
+   "c": 4.44,
+   "v": 12958400
   }
  ],
  "sr": {
-  "price": 4.37,
+  "price": 4.44,
   "resistance": [
    6.21,
    6.6
   ],
-  "support": [],
+  "support": [
+   4.39
+  ],
   "strong_support": 4.39
  },
  "spark": [
-  6.51,
   6.43,
   7.08,
   8.02,
@@ -554,28 +555,12 @@
   4.5,
   4.43,
   4.24,
-  4.37
+  4.37,
+  4.44
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 2,305,033 股交割失敗）",
-   "value": {
-    "total_shares": 2305033,
-    "days": 9,
-    "max_shares": 609221,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

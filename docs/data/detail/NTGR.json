@@ -1,17 +1,9 @@
 {
  "stock": "NTGR",
  "name": "NETGEAR",
- "price": 23.4,
- "change_pct": 3.54,
+ "price": 23.49,
+ "change_pct": 0.38,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 24.58,
-   "h": 24.76,
-   "l": 24.02,
-   "c": 24.56,
-   "v": 325200
-  },
   {
    "time": "2026-08-05",
    "o": 24.32,
@@ -483,22 +475,29 @@
    "l": 22.53,
    "c": 23.4,
    "v": 382100
+  },
+  {
+   "time": "2026-10-28",
+   "o": 23.77,
+   "h": 23.92,
+   "l": 23.24,
+   "c": 23.49,
+   "v": 257300
   }
  ],
  "sr": {
-  "price": 23.4,
+  "price": 23.49,
   "resistance": [
    23.69,
    23.78
   ],
   "support": [
-   22.99,
-   22.66
+   23.46,
+   22.99
   ],
   "strong_support": 18.75
  },
  "spark": [
-  24.56,
   24.38,
   24.3,
   23.67,
@@ -557,28 +556,12 @@
   22.31,
   22.46,
   22.6,
-  23.4
+  23.4,
+  23.49
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 1386,
-    "days": 2,
-    "max_shares": 832,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

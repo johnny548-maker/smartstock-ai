@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 100.46,
- "change_pct": 0.85,
+ "price": 100.47,
+ "change_pct": 0.01,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 82.22,
-   "h": 86.96,
-   "l": 82.01,
-   "c": 86.22,
-   "v": 1841600
-  },
   {
    "time": "2026-08-05",
    "o": 86.85,
@@ -483,10 +475,18 @@
    "l": 99.26,
    "c": 100.46,
    "v": 1290700
+  },
+  {
+   "time": "2026-10-28",
+   "o": 101.65,
+   "h": 103.4,
+   "l": 99.65,
+   "c": 100.47,
+   "v": 1412800
   }
  ],
  "sr": {
-  "price": 100.46,
+  "price": 100.47,
   "resistance": [
    103.39,
    105.76
@@ -498,7 +498,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  86.22,
   84.52,
   83.04,
   89.52,
@@ -557,28 +556,12 @@
   93.89,
   100.62,
   99.61,
-  100.46
+  100.46,
+  100.47
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 254,
-    "days": 2,
-    "max_shares": 161,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

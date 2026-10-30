@@ -1,17 +1,9 @@
 {
  "stock": "EOSE",
  "name": "Eos Energy Enterprises",
- "price": 1.82,
- "change_pct": 12.35,
+ "price": 1.95,
+ "change_pct": 7.14,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 3.92,
-   "h": 4.42,
-   "l": 3.88,
-   "c": 4.35,
-   "v": 48714800
-  },
   {
    "time": "2026-08-05",
    "o": 3.58,
@@ -483,10 +475,18 @@
    "l": 1.65,
    "c": 1.82,
    "v": 24203100
+  },
+  {
+   "time": "2026-10-28",
+   "o": 1.84,
+   "h": 1.98,
+   "l": 1.76,
+   "c": 1.95,
+   "v": 27283900
   }
  ],
  "sr": {
-  "price": 1.82,
+  "price": 1.95,
   "resistance": [
    3.38,
    3.42
@@ -495,7 +495,6 @@
   "strong_support": 2.06
  },
  "spark": [
-  4.35,
   3.82,
   3.94,
   4.15,
@@ -554,28 +553,12 @@
   1.71,
   1.73,
   1.62,
-  1.82
+  1.82,
+  1.95
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 4,146,242 股交割失敗）",
-   "value": {
-    "total_shares": 4146242,
-    "days": 9,
-    "max_shares": 2325829,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

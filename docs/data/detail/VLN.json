@@ -1,17 +1,9 @@
 {
  "stock": "VLN",
  "name": "Valens Semiconductor",
- "price": 1.69,
- "change_pct": 4.97,
+ "price": 1.67,
+ "change_pct": -1.18,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 1.73,
-   "h": 1.78,
-   "l": 1.71,
-   "c": 1.75,
-   "v": 896900
-  },
   {
    "time": "2026-08-05",
    "o": 1.77,
@@ -483,22 +475,29 @@
    "l": 1.63,
    "c": 1.69,
    "v": 413800
+  },
+  {
+   "time": "2026-10-28",
+   "o": 1.69,
+   "h": 1.7,
+   "l": 1.63,
+   "c": 1.67,
+   "v": 254000
   }
  ],
  "sr": {
-  "price": 1.69,
+  "price": 1.67,
   "resistance": [
    1.75,
    1.76
   ],
   "support": [
-   1.67,
-   1.66
+   1.66,
+   1.64
   ],
   "strong_support": 1.1
  },
  "spark": [
-  1.75,
   1.69,
   1.68,
   1.74,
@@ -557,28 +556,12 @@
   1.47,
   1.56,
   1.61,
-  1.69
+  1.69,
+  1.67
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 2 個交割日）",
-   "value": {
-    "total_shares": 16188,
-    "days": 2,
-    "max_shares": 13803,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

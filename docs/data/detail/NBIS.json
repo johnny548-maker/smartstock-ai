@@ -1,17 +1,9 @@
 {
  "stock": "NBIS",
  "name": "Nebius Group",
- "price": 170.47,
- "change_pct": 11.22,
+ "price": 182.34,
+ "change_pct": 6.96,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 216.41,
-   "h": 229.47,
-   "l": 215.5,
-   "c": 225.74,
-   "v": 21356700
-  },
   {
    "time": "2026-08-05",
    "o": 219.95,
@@ -483,22 +475,29 @@
    "l": 158.3,
    "c": 170.47,
    "v": 20596400
+  },
+  {
+   "time": "2026-10-28",
+   "o": 173.49,
+   "h": 182.74,
+   "l": 168.92,
+   "c": 182.34,
+   "v": 25056800
   }
  ],
  "sr": {
-  "price": 170.47,
+  "price": 182.34,
   "resistance": [
    197.89,
    226.81
   ],
   "support": [
-   164.31,
-   154.04
+   180.63,
+   172.25
   ],
   "strong_support": 17.39
  },
  "spark": [
-  225.74,
   218.99,
   189.88,
   187.97,
@@ -557,28 +556,12 @@
   159.17,
   158.74,
   153.27,
-  170.47
+  170.47,
+  182.34
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 362,403 股交割失敗）",
-   "value": {
-    "total_shares": 362403,
-    "days": 9,
-    "max_shares": 121719,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

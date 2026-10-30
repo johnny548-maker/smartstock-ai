@@ -1,17 +1,9 @@
 {
  "stock": "IESC",
  "name": "IES Holdings",
- "price": 227.41,
- "change_pct": 4.83,
+ "price": 225.53,
+ "change_pct": -0.83,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 374.23,
-   "h": 385.38,
-   "l": 364.68,
-   "c": 380.18,
-   "v": 317600
-  },
   {
    "time": "2026-08-05",
    "o": 385.89,
@@ -483,10 +475,18 @@
    "l": 220.0,
    "c": 227.41,
    "v": 327000
+  },
+  {
+   "time": "2026-10-28",
+   "o": 238.2,
+   "h": 238.2,
+   "l": 222.0,
+   "c": 225.53,
+   "v": 749000
   }
  ],
  "sr": {
-  "price": 227.41,
+  "price": 225.53,
   "resistance": [
    231.35,
    241.18
@@ -498,7 +498,6 @@
   "strong_support": 73.25
  },
  "spark": [
-  380.18,
   392.02,
   384.21,
   381.36,
@@ -557,28 +556,12 @@
   220.75,
   213.54,
   216.94,
-  227.41
+  227.41,
+  225.53
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 3 個交割日）",
-   "value": {
-    "total_shares": 15998,
-    "days": 3,
-    "max_shares": 11086,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

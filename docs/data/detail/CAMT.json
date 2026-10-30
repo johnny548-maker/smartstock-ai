@@ -1,17 +1,9 @@
 {
  "stock": "CAMT",
  "name": "Camtek",
- "price": 128.9,
- "change_pct": 4.53,
+ "price": 128.78,
+ "change_pct": -0.09,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 143.87,
-   "h": 152.0,
-   "l": 141.79,
-   "c": 151.62,
-   "v": 847700
-  },
   {
    "time": "2026-08-05",
    "o": 148.4,
@@ -483,10 +475,18 @@
    "l": 124.5,
    "c": 128.9,
    "v": 252600
+  },
+  {
+   "time": "2026-10-28",
+   "o": 128.8,
+   "h": 129.68,
+   "l": 126.42,
+   "c": 128.78,
+   "v": 602400
   }
  ],
  "sr": {
-  "price": 128.9,
+  "price": 128.78,
   "resistance": [
    129.41,
    150.4
@@ -498,7 +498,6 @@
   "strong_support": 47.41
  },
  "spark": [
-  151.62,
   147.6,
   149.67,
   155.35,
@@ -557,28 +556,12 @@
   119.48,
   121.16,
   123.31,
-  128.9
+  128.9,
+  128.78
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 108,346 股交割失敗）",
-   "value": {
-    "total_shares": 108346,
-    "days": 9,
-    "max_shares": 45094,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }

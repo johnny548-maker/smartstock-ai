@@ -1,17 +1,9 @@
 {
  "stock": "CLS",
  "name": "Celestica",
- "price": 276.54,
- "change_pct": 12.12,
+ "price": 299.8,
+ "change_pct": 8.41,
  "ohlc": [
-  {
-   "time": "2026-08-04",
-   "o": 355.21,
-   "h": 374.59,
-   "l": 344.35,
-   "c": 371.15,
-   "v": 3078100
-  },
   {
    "time": "2026-08-05",
    "o": 369.97,
@@ -483,22 +475,29 @@
    "l": 261.5,
    "c": 276.54,
    "v": 8158800
+  },
+  {
+   "time": "2026-10-28",
+   "o": 285.14,
+   "h": 308.21,
+   "l": 283.11,
+   "c": 299.8,
+   "v": 6064700
   }
  ],
  "sr": {
-  "price": 276.54,
+  "price": 299.8,
   "resistance": [
-   278.0,
-   296.85
+   301.68,
+   307.1
   ],
   "support": [
-   275.77,
-   273.99
+   297.35,
+   293.08
   ],
   "strong_support": 58.05
  },
  "spark": [
-  371.15,
   362.76,
   314.53,
   317.83,
@@ -557,28 +556,12 @@
   269.01,
   260.01,
   246.65,
-  276.54
+  276.54,
+  299.8
  ],
- "spark_start": "2026-08-04",
- "spark_end": "2026-10-27",
+ "spark_start": "2026-08-05",
+ "spark_end": "2026-10-28",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 9231,
-    "days": 5,
-    "max_shares": 5008,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-29",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
