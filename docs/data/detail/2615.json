@@ -1,17 +1,9 @@
 {
  "stock": "2615",
  "name": "萬海",
- "price": 115.0,
- "change_pct": -2.95,
+ "price": 120.0,
+ "change_pct": 4.35,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 84.7,
-   "h": 86.3,
-   "l": 84.2,
-   "c": 86.1,
-   "v": 6585914
-  },
   {
    "time": "2026-08-04",
    "o": 85.1,
@@ -483,13 +475,21 @@
    "l": 115.0,
    "c": 115.0,
    "v": 7284785
+  },
+  {
+   "time": "2026-10-30",
+   "o": 114.0,
+   "h": 120.5,
+   "l": 113.5,
+   "c": 120.0,
+   "v": 14089713
   }
  ],
  "sr": {
-  "price": 115.0,
+  "price": 120.0,
   "resistance": [
-   118.5,
-   124.03
+   124.03,
+   125.0
   ],
   "support": [
    111.0,
@@ -498,7 +498,6 @@
   "strong_support": 56.77
  },
  "spark": [
-  86.1,
   86.1,
   85.4,
   84.3,
@@ -557,10 +556,11 @@
   119.5,
   116.5,
   118.5,
-  115.0
+  115.0,
+  120.0
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-29",
+ "spark_start": "2026-08-04",
+ "spark_end": "2026-10-30",
  "fundamental": {
   "rev_yoy": 97.6,
   "rev_accel": true,
@@ -571,17 +571,88 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 2,756,399 股",
+   "value": {
+    "foreign": 2557782,
+    "trust": 47000,
+    "dealer": 151617,
+    "total": 2756399
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 8.2 / 殖利率 2.50% / PB 1.17",
+   "value": {
+    "pe": 8.24,
+    "yield": 2.5,
+    "pb": 1.17
+   },
+   "severity": "info",
+   "as_of": "2026-10-30",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 901,
+    "short_today": 951,
     "outstanding": 2806146293,
-    "short_pct": 3.210809080936252e-05
+    "short_pct": 3.3889893850947564e-05
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 89.78,
+   "severity": "warn",
+   "as_of": "20261030",
+   "note": "大戶持股%=89.78；WoW-0.01；股東人數-648"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "【量大強漲股整理】台股殺破半年線...現在該砍還是抱?抓緊下一波【潛力股】兩大面向,錯過捶心肝!",
+   "value": {
+    "headline": "【量大強漲股整理】台股殺破半年線...現在該砍還是抱?抓緊下一波【潛力股】兩大面向,錯過捶心肝!",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1793354432,
+    "url": "cnyes:6642055",
+    "urls": [
+     "cnyes:6642055"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1005,6 +1076,10 @@
    {
     "t": "2026-10-30",
     "v": 185329
+   },
+   {
+    "t": "2026-10-31",
+    "v": 188086
    }
   ],
   "holder_pct": [
@@ -1091,6 +1166,10 @@
    {
     "t": "2026-10-22",
     "v": 89.79
+   },
+   {
+    "t": "2026-10-30",
+    "v": 89.78
    }
   ],
   "rev_yoy": [

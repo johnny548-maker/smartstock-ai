@@ -5,14 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-06",
-   "o": 272.77,
-   "h": 275.48,
-   "l": 271.06,
-   "c": 272.26,
-   "v": 30672900
-  },
-  {
    "time": "2026-08-07",
    "o": 272.87,
    "h": 278.31,
@@ -478,11 +470,19 @@
   },
   {
    "time": "2026-10-29",
+   "o": 246.95,
+   "h": 249.14,
+   "l": 241.24,
+   "c": 243.79,
+   "v": 85234400
+  },
+  {
+   "time": "2026-10-30",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 79750364
+   "v": 104652185
   }
  ],
  "sr": {
@@ -492,7 +492,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  272.26,
   274.48,
   278.09,
   272.27,
@@ -551,16 +550,17 @@
   249.09,
   253.1,
   254.6,
+  243.79,
   null
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
+ "spark_start": "2026-08-07",
+ "spark_end": "2026-10-30",
  "fundamental": {
   "pe_trailing": 19.613031,
   "pe_forward": 23.328983,
   "eps_trailing": 12.43,
   "eps_forward": 10.45009,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,101 +569,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Amazon, Intel Lead Earnings Losers After Google, ServiceNow, Fortinet Hit Nasdaq",
+   "label": "S&P 500, Nasdaq End Third Straight Week Lower As Investors Move Away From Tech, AI — AMZN, INTC, LLY, RBLX In Focus",
    "value": {
-    "headline": "Dow Jones Futures: Amazon, Intel Lead Earnings Losers After Google, ServiceNow, Fortinet Hit Nasdaq",
+    "headline": "S&P 500, Nasdaq End Third Straight Week Lower As Investors Move Away From Tech, AI — AMZN, INTC, LLY, RBLX In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793319516,
-    "url": "https://finance.yahoo.com/m/0a5ce393-a6df-312b-af64-1893a264d0df/dow-jones-futures%3A-amazon%2C.html?.tsrc=rss",
+    "ts": 1793405139,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-third-straight-week-lower-as-investors-move-away-from-tech-ai-amzn-intc-lly-rblx-in-focus/cZUKKlTR9cJ?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0a5ce393-a6df-312b-af64-1893a264d0df/dow-jones-futures%3A-amazon%2C.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-third-straight-week-lower-as-investors-move-away-from-tech-ai-amzn-intc-lly-rblx-in-focus/cZUKKlTR9cJ?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon.com Q3 Earnings Call Highlights",
+   "label": "Review & Preview: Ending on a Down Note",
    "value": {
-    "headline": "Amazon.com Q3 Earnings Call Highlights",
+    "headline": "Review & Preview: Ending on a Down Note",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793319256,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1793404500,
+    "url": "https://finance.yahoo.com/m/b0499f52-933b-3c3a-a9fe-a4d478f02828/review-%26-preview%3A-ending-on-a.html?.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/m/b0499f52-933b-3c3a-a9fe-a4d478f02828/review-%26-preview%3A-ending-on-a.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq 100 Futures Dip On Weak Intel, Amazon Earnings With Bloated Capex Worries Weighing On Sentiment — AMZN, INTC, SBU",
+   "label": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
    "value": {
-    "headline": "Nasdaq 100 Futures Dip On Weak Intel, Amazon Earnings With Bloated Capex Worries Weighing On Sentiment — AMZN, INTC, SBUX, PLTR, ASTS In Focus",
+    "headline": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793318055,
-    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-dip-on-weak-intel-amazon-earnings-with-bloated-capex-worries-weighing-on-sentiment-amzn-intc-sbux-pltr-asts-in-focus/cZUXcXOR9Ri?.tsrc=rss",
+    "ts": 1793404201,
+    "url": "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-dip-on-weak-intel-amazon-earnings-with-bloated-capex-worries-weighing-on-sentiment-amzn-intc-sbux-pltr-asts-in-focus/cZUXcXOR9Ri?.tsrc=rss"
+     "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Andy Jassy says Prime Video is on track to earn ‘tens of billions of dollars’",
+   "label": "Learn Why The Bull Case For Verizon Communications (VZ) Could Change Following Raised Outlook",
    "value": {
-    "headline": "Andy Jassy says Prime Video is on track to earn ‘tens of billions of dollars’",
+    "headline": "Learn Why The Bull Case For Verizon Communications (VZ) Could Change Following Raised Outlook",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793317496,
-    "url": "https://finance.yahoo.com/media-advertising/articles/andy-jassy-says-prime-video-234456821.html?.tsrc=rss",
+    "ts": 1793398385,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-verizon-221305487.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/andy-jassy-says-prime-video-234456821.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-verizon-221305487.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AWS will be a $1T business, Jassy says. But first, it will spend big.",
+   "label": "Apple overtakes Nvidia to become world’s most valuable company amid tech selloff",
    "value": {
-    "headline": "AWS will be a $1T business, Jassy says. But first, it will spend big.",
+    "headline": "Apple overtakes Nvidia to become world’s most valuable company amid tech selloff",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793317342,
-    "url": "https://finance.yahoo.com/technology/ai/articles/aws-1t-business-jassy-says-234222706.html?.tsrc=rss",
+    "ts": 1793396873,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-overtakes-nvidia-become-world-214753575.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/aws-1t-business-jassy-says-234222706.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apple-overtakes-nvidia-become-world-214753575.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-30",
+   "severity": "warn",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,27 +674,13 @@
     "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-10-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 6370,
-    "days": 4,
-    "max_shares": 5765,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-30",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

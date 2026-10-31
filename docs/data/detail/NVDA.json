@@ -1,41 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 215.38,
- "change_pct": 2.1,
+ "name": "NVIDIA",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 197.47,
-   "h": 208.51,
-   "l": 196.63,
-   "c": 206.41,
-   "v": 128406900
-  },
-  {
-   "time": "2026-08-04",
-   "o": 211.06,
-   "h": 212.82,
-   "l": 208.82,
-   "c": 211.7,
-   "v": 134922000
-  },
-  {
-   "time": "2026-08-05",
-   "o": 216.62,
-   "h": 221.97,
-   "l": 216.16,
-   "c": 218.97,
-   "v": 158187400
-  },
-  {
-   "time": "2026-08-06",
-   "o": 221.28,
-   "h": 223.38,
-   "l": 216.76,
-   "c": 218.75,
-   "v": 113940600
-  },
   {
    "time": "2026-08-07",
    "o": 221.29,
@@ -474,34 +442,56 @@
    "h": 213.85,
    "l": 210.18,
    "c": 210.96,
-   "v": 79987200
+   "v": 80189800
   },
   {
    "time": "2026-10-26",
-   "o": 213.12,
+   "o": 213.11,
    "h": 217.75,
    "l": 212.61,
+   "c": 216.0,
+   "v": 90829300
+  },
+  {
+   "time": "2026-10-27",
+   "o": 218.31,
+   "h": 219.19,
+   "l": 215.53,
+   "c": 217.94,
+   "v": 84799700
+  },
+  {
+   "time": "2026-10-28",
+   "o": 219.92,
+   "h": 219.99,
+   "l": 214.47,
    "c": 215.38,
-   "v": 48133217
+   "v": 93030200
+  },
+  {
+   "time": "2026-10-29",
+   "o": 214.36,
+   "h": 215.33,
+   "l": 212.08,
+   "c": 213.66,
+   "v": 77568100
+  },
+  {
+   "time": "2026-10-30",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 165923799
   }
  ],
  "sr": {
-  "price": 215.38,
-  "resistance": [
-   222.19,
-   227.67
-  ],
-  "support": [
-   214.86,
-   208.93
-  ],
-  "strong_support": 207.02
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 163.9
  },
  "spark": [
-  206.41,
-  211.7,
-  218.97,
-  218.75,
   223.71,
   217.31,
   217.26,
@@ -557,11 +547,141 @@
   221.97,
   212.21,
   210.96,
-  215.38
+  216.0,
+  217.94,
+  215.38,
+  213.66,
+  null
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
- "fundamental": null,
+ "spark_start": "2026-08-07",
+ "spark_end": "2026-10-30",
+ "fundamental": {
+  "pe_trailing": 25.87105,
+  "pe_forward": 12.858633,
+  "eps_trailing": 7.91,
+  "eps_forward": 15.9146,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+   "value": {
+    "headline": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793404201,
+    "url": "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Arm Holdings Stock Plummeted by Nearly 10% Today",
+   "value": {
+    "headline": "Why Arm Holdings Stock Plummeted by Nearly 10% Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793403858,
+    "url": "https://www.fool.com/investing/2026/10/30/why-arm-holdings-stock-plummeted-by-nearly-10-today/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/30/why-arm-holdings-stock-plummeted-by-nearly-10-today/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Intel Stock a Buy After Its Post-Earnings Plunge?",
+   "value": {
+    "headline": "Is Intel Stock a Buy After Its Post-Earnings Plunge?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793403242,
+    "url": "https://www.fool.com/investing/2026/10/30/is-intel-stock-a-buy-after-its-post-earnings-plunge/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/30/is-intel-stock-a-buy-after-its-post-earnings-plunge/?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Bright Horizons Family Solutions Stock Swooned on Friday",
+   "value": {
+    "headline": "Why Bright Horizons Family Solutions Stock Swooned on Friday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793400024,
+    "url": "https://www.fool.com/investing/2026/10/30/why-bright-horizons-family-solutions-stock-swooned-on-friday/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/10/30/why-bright-horizons-family-solutions-stock-swooned-on-friday/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia has a stake in SpaceX that came from an unexpected place",
+   "value": {
+    "headline": "Nvidia has a stake in SpaceX that came from an unexpected place",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793399580,
+    "url": "https://www.thestreet.com/investing/stocks/nvidia-has-a-stake-in-spacex-that-came-from-an-unexpected-place?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/investing/stocks/nvidia-has-a-stake-in-spacex-that-came-from-an-unexpected-place?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 21,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes",
+     "udn",
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-10-31",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

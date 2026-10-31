@@ -1,17 +1,9 @@
 {
  "stock": "SERV",
  "name": "Serve Robotics",
- "price": 3.02,
- "change_pct": 2.72,
+ "price": 2.84,
+ "change_pct": -5.96,
  "ohlc": [
-  {
-   "time": "2026-08-05",
-   "o": 5.73,
-   "h": 5.79,
-   "l": 5.5,
-   "c": 5.66,
-   "v": 3520500
-  },
   {
    "time": "2026-08-06",
    "o": 5.51,
@@ -483,19 +475,28 @@
    "l": 2.87,
    "c": 3.02,
    "v": 2873400
+  },
+  {
+   "time": "2026-10-29",
+   "o": 2.99,
+   "h": 3.07,
+   "l": 2.82,
+   "c": 2.84,
+   "v": 3712900
   }
  ],
  "sr": {
-  "price": 3.02,
+  "price": 2.84,
   "resistance": [
    4.67,
    4.92
   ],
-  "support": [],
-  "strong_support": 4.17
+  "support": [
+   2.62
+  ],
+  "strong_support": 2.62
  },
  "spark": [
-  5.66,
   5.68,
   5.09,
   4.92,
@@ -554,10 +555,11 @@
   2.78,
   2.64,
   2.94,
-  3.02
+  3.02,
+  2.84
  ],
- "spark_start": "2026-08-05",
- "spark_end": "2026-10-28",
+ "spark_start": "2026-08-06",
+ "spark_end": "2026-10-29",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

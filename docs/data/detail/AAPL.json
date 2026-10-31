@@ -1,33 +1,9 @@
 {
  "stock": "AAPL",
- "name": "蘋果",
- "price": 342.45,
- "change_pct": -1.52,
+ "name": "Apple Inc. - Common Stock",
+ "price": 348.91,
+ "change_pct": 1.48,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 309.31,
-   "h": 311.53,
-   "l": 302.3,
-   "c": 303.16,
-   "v": 75052000
-  },
-  {
-   "time": "2026-08-04",
-   "o": 302.47,
-   "h": 310.15,
-   "l": 301.06,
-   "c": 309.11,
-   "v": 68001000
-  },
-  {
-   "time": "2026-08-05",
-   "o": 309.09,
-   "h": 311.44,
-   "l": 305.41,
-   "c": 310.73,
-   "v": 49438800
-  },
   {
    "time": "2026-08-06",
    "o": 314.07,
@@ -474,33 +450,53 @@
    "h": 351.73,
    "l": 345.75,
    "c": 347.73,
-   "v": 39496500
+   "v": 39539700
   },
   {
    "time": "2026-10-26",
-   "o": 343.9,
+   "o": 343.92,
    "h": 347.09,
    "l": 341.03,
-   "c": 342.45,
-   "v": 15096570
+   "c": 343.91,
+   "v": 42743600
+  },
+  {
+   "time": "2026-10-27",
+   "o": 343.17,
+   "h": 347.78,
+   "l": 342.39,
+   "c": 347.1,
+   "v": 39984400
+  },
+  {
+   "time": "2026-10-28",
+   "o": 346.92,
+   "h": 347.18,
+   "l": 343.52,
+   "c": 343.83,
+   "v": 35714300
+  },
+  {
+   "time": "2026-10-29",
+   "o": 348.0,
+   "h": 351.43,
+   "l": 347.3,
+   "c": 348.91,
+   "v": 42582100
   }
  ],
  "sr": {
-  "price": 342.45,
+  "price": 348.91,
   "resistance": [
-   342.99,
-   344.27
+   351.73
   ],
   "support": [
    338.7,
    325.81
   ],
-  "strong_support": 242.76
+  "strong_support": 300.57
  },
  "spark": [
-  303.16,
-  309.11,
-  310.73,
   312.14,
   313.06,
   308.26,
@@ -557,192 +553,54 @@
   343.99,
   348.22,
   347.73,
-  342.45
+  343.91,
+  347.1,
+  343.83,
+  348.91
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
- "fundamental": {
-  "pe_trailing": 39.29007,
-  "pe_forward": 35.830498,
-  "eps_trailing": 8.72,
-  "eps_forward": 9.56195,
-  "stale": false,
-  "source": "yfinance"
- },
- "levels": {
-  "entry": 342.45,
-  "stop": 329.66,
-  "target": 374.43,
-  "atr_bracket": 374.43,
-  "measured_move": 365.6,
-  "target_band": [
-   365.6,
-   366.93,
-   374.43
-  ],
-  "stop_pct": -3.7,
-  "target_pct": 9.3,
-  "rr": 2.5,
-  "atr_pct": 1.9,
-  "swing_stop": 336.78,
-  "chandelier": 332.48,
-  "fib_targets": [
-   360.9,
-   366.93,
-   373.6
-  ]
- },
+ "spark_start": "2026-08-06",
+ "spark_end": "2026-10-29",
+ "fundamental": null,
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "蘋果新iPad mini首換OLED螢幕 售價2.29萬元起｜2 來源確認",
+   "label": "調降台灣App Store佣金 蘋果:致力打造蓬勃安全平台｜2 來源確認",
    "value": {
-    "headline": "蘋果新iPad mini首換OLED螢幕 售價2.29萬元起",
+    "headline": "調降台灣App Store佣金 蘋果:致力打造蓬勃安全平台",
     "sources": [
      "cna",
      "udn"
     ],
     "source_count": 2,
-    "ts": 1793024707,
-    "url": "https://www.cna.com.tw/news/ait/202610260248.aspx",
+    "ts": 1793369840,
+    "url": "https://www.cna.com.tw/news/afe/202610300333.aspx",
     "urls": [
-     "https://money.udn.com/money/story/11162/9838352",
-     "https://www.cna.com.tw/news/ait/202610260248.aspx"
+     "https://money.udn.com/money/story/5612/9847927",
+     "https://www.cna.com.tw/news/afe/202610300333.aspx"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Prediction: The Next Chapter for Apple Could Be Its Most Important Yet",
-   "value": {
-    "headline": "Prediction: The Next Chapter for Apple Could Be Its Most Important Yet",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793026803,
-    "url": "https://247wallst.com/investing/2026/10/26/prediction-the-next-chapter-for-apple-could-be-its-most-important-yet/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/26/prediction-the-next-chapter-for-apple-could-be-its-most-important-yet/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Retiree Alleges Morgan Stanley Covered Call Strategy Cost Him His Apple and NVIDIA Shares; Reif Law Group Files Financia",
-   "value": {
-    "headline": "Retiree Alleges Morgan Stanley Covered Call Strategy Cost Him His Apple and NVIDIA Shares; Reif Law Group Files Financial Elder Abuse Claims",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793026800,
-    "url": "https://finance.yahoo.com/markets/options/articles/retiree-alleges-morgan-stanley-covered-150000527.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/options/articles/retiree-alleges-morgan-stanley-covered-150000527.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Apple’s $5 Trillion Dilemma: 3 Reasons Earnings Could Spark a Breakout on Nov. 2 — or a Meltdown",
-   "value": {
-    "headline": "Apple’s $5 Trillion Dilemma: 3 Reasons Earnings Could Spark a Breakout on Nov. 2 — or a Meltdown",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793022144,
-    "url": "https://247wallst.com/investing/2026/10/26/apples-5-trillion-dilemma-3-reasons-earnings-could-spark-a-breakout-on-nov-2-or-a-meltdown/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/10/26/apples-5-trillion-dilemma-3-reasons-earnings-could-spark-a-breakout-on-nov-2-or-a-meltdown/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "T-Mobile Shakes Up Wireless Again with First-Ever T-Mix: Built for Value, Powered by Customer Choice",
-   "value": {
-    "headline": "T-Mobile Shakes Up Wireless Again with First-Ever T-Mix: Built for Value, Powered by Customer Choice",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793020080,
-    "url": "https://finance.yahoo.com/technology/articles/t-mobile-shakes-wireless-again-130800131.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/articles/t-mobile-shakes-wireless-again-130800131.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-31",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 2 來源確認）",
+   "label": "新聞聲量 1 則（最高 2 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 1,
     "max_source_count": 2,
     "distinct_sources": [
      "cna",
-     "cnyes",
-     "udn",
-     "yahoo_us"
+     "udn"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-26",
+   "as_of": "2026-10-31",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 291 分 / 293 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 291,
-    "comments": 293,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-10-26",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 5 個交割日）",
-   "value": {
-    "total_shares": 19418,
-    "days": 5,
-    "max_shares": 15390,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-26",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }
