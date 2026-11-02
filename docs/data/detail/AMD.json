@@ -1,25 +1,9 @@
 {
  "stock": "AMD",
- "name": "Advanced Micro Devices, Inc. - Common Stock",
- "price": 566.42,
- "change_pct": -2.08,
+ "name": "AMD",
+ "price": 471.59,
+ "change_pct": -6.58,
  "ohlc": [
-  {
-   "time": "2026-08-06",
-   "o": 471.75,
-   "h": 496.72,
-   "l": 469.5,
-   "c": 489.28,
-   "v": 24675300
-  },
-  {
-   "time": "2026-08-07",
-   "o": 497.94,
-   "h": 498.99,
-   "l": 476.06,
-   "c": 483.36,
-   "v": 26618800
-  },
   {
    "time": "2026-08-10",
    "o": 477.09,
@@ -483,23 +467,37 @@
    "l": 560.57,
    "c": 566.42,
    "v": 16873300
+  },
+  {
+   "time": "2026-10-30",
+   "o": 508.53,
+   "h": 520.4,
+   "l": 492.21,
+   "c": 504.8,
+   "v": 39589800
+  },
+  {
+   "time": "2026-11-02",
+   "o": 510.65,
+   "h": 512.82,
+   "l": 470.33,
+   "c": 471.59,
+   "v": 23163089
   }
  ],
  "sr": {
-  "price": 566.42,
+  "price": 471.59,
   "resistance": [
-   639.0,
-   658.52
+   491.12,
+   517.35
   ],
   "support": [
-   502.6,
-   480.33
+   463.21,
+   460.21
   ],
-  "strong_support": 440.5
+  "strong_support": 188.22
  },
  "spark": [
-  489.28,
-  483.36,
   469.56,
   474.32,
   482.93,
@@ -557,11 +555,137 @@
   531.28,
   560.26,
   578.44,
-  566.42
+  566.42,
+  504.8,
+  471.59
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
- "fundamental": null,
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
+ "fundamental": {
+  "pe_trailing": 120.3227,
+  "pe_forward": 29.480427,
+  "eps_trailing": 3.92,
+  "eps_forward": 15.99926,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Qualcomm (QCOM) Joins $700 Million Hark Funding Round In AI Assistant Bet",
+   "value": {
+    "headline": "Qualcomm (QCOM) Joins $700 Million Hark Funding Round In AI Assistant Bet",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646556,
+    "url": "https://finance.yahoo.com/technology/ai/articles/qualcomm-qcom-joins-700-million-190916281.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/qualcomm-qcom-joins-700-million-190916281.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD to report Q3 results following disappointing showing from Intel",
+   "value": {
+    "headline": "AMD to report Q3 results following disappointing showing from Intel",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646207,
+    "url": "https://finance.yahoo.com/technology/article/amd-to-report-q3-results-following-disappointing-showing-from-intel-190327545.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/article/amd-to-report-q3-results-following-disappointing-showing-from-intel-190327545.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Active Fund Managers Staged a Big Comeback. Can It Last?",
+   "value": {
+    "headline": "Active Fund Managers Staged a Big Comeback. Can It Last?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793645580,
+    "url": "https://finance.yahoo.com/m/a846b60e-6197-3dc2-ad09-3f876aca94a8/active-fund-managers-staged-a.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/a846b60e-6197-3dc2-ad09-3f876aca94a8/active-fund-managers-staged-a.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD Heads Into Earnings With AI Guidance in the Spotlight",
+   "value": {
+    "headline": "AMD Heads Into Earnings With AI Guidance in the Spotlight",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793645067,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amd-heads-earnings-ai-guidance-184427144.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/amd-heads-earnings-ai-guidance-184427144.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Cathie Wood Makes Major Shift After Big Tech Gains",
+   "value": {
+    "headline": "Cathie Wood Makes Major Shift After Big Tech Gains",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793644820,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-makes-major-shift-184020110.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-makes-major-shift-184020110.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

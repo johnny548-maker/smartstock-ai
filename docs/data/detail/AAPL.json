@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
- "name": "Apple Inc. - Common Stock",
- "price": 348.91,
- "change_pct": 1.48,
+ "name": "蘋果",
+ "price": 338.88,
+ "change_pct": -1.67,
  "ohlc": [
-  {
-   "time": "2026-08-06",
-   "o": 314.07,
-   "h": 316.02,
-   "l": 308.96,
-   "c": 312.14,
-   "v": 46139900
-  },
-  {
-   "time": "2026-08-07",
-   "o": 311.18,
-   "h": 314.54,
-   "l": 310.47,
-   "c": 313.06,
-   "v": 34437200
-  },
   {
    "time": "2026-08-10",
    "o": 306.83,
@@ -483,22 +467,37 @@
    "l": 347.3,
    "c": 348.91,
    "v": 42582100
+  },
+  {
+   "time": "2026-10-30",
+   "o": 346.72,
+   "h": 349.19,
+   "l": 334.35,
+   "c": 344.63,
+   "v": 67797500
+  },
+  {
+   "time": "2026-11-02",
+   "o": 342.67,
+   "h": 343.78,
+   "l": 335.84,
+   "c": 338.88,
+   "v": 34929133
   }
  ],
  "sr": {
-  "price": 348.91,
+  "price": 338.88,
   "resistance": [
-   351.73
+   342.99,
+   344.27
   ],
   "support": [
    338.7,
    325.81
   ],
-  "strong_support": 300.57
+  "strong_support": 242.76
  },
  "spark": [
-  312.14,
-  313.06,
   308.26,
   304.91,
   302.25,
@@ -556,51 +555,169 @@
   343.91,
   347.1,
   343.83,
-  348.91
+  348.91,
+  344.63,
+  338.88
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
- "fundamental": null,
- "levels": null,
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
+ "fundamental": {
+  "pe_trailing": 38.861237,
+  "pe_forward": 35.451733,
+  "eps_trailing": 8.72,
+  "eps_forward": 9.55863,
+  "stale": false,
+  "source": "yfinance"
+ },
+ "levels": {
+  "entry": 338.88,
+  "stop": 325.29,
+  "target": 372.86,
+  "atr_bracket": 372.86,
+  "measured_move": 361.83,
+  "target_band": [
+   361.83,
+   372.86
+  ],
+  "stop_pct": -4.0,
+  "target_pct": 10.0,
+  "rr": 2.5,
+  "atr_pct": 2.0,
+  "swing_stop": 338.99,
+  "chandelier": 332.32,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "調降台灣App Store佣金 蘋果:致力打造蓬勃安全平台｜2 來源確認",
+   "label": "Apple could owe iPhone owners up to $95. Here's how to claim it.",
    "value": {
-    "headline": "調降台灣App Store佣金 蘋果:致力打造蓬勃安全平台",
+    "headline": "Apple could owe iPhone owners up to $95. Here's how to claim it.",
     "sources": [
-     "cna",
-     "udn"
+     "yahoo_us"
     ],
-    "source_count": 2,
-    "ts": 1793369840,
-    "url": "https://www.cna.com.tw/news/afe/202610300333.aspx",
+    "source_count": 1,
+    "ts": 1793651282,
+    "url": "https://finance.yahoo.com/personal-finance/banking/article/apple-could-owe-iphone-owners-up-to-95-heres-how-to-claim-it-202802769.html?.tsrc=rss",
     "urls": [
-     "https://money.udn.com/money/story/5612/9847927",
-     "https://www.cna.com.tw/news/afe/202610300333.aspx"
+     "https://finance.yahoo.com/personal-finance/banking/article/apple-could-owe-iphone-owners-up-to-95-heres-how-to-claim-it-202802769.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Apple Is Up 24% in 2026: Will AAPL Stock Hit $300 or $400 Next?",
+   "value": {
+    "headline": "Apple Is Up 24% in 2026: Will AAPL Stock Hit $300 or $400 Next?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793649471,
+    "url": "https://247wallst.com/investing/2026/11/02/apple-is-up-24-in-2026-will-aapl-stock-hit-300-or-400-next/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/11/02/apple-is-up-24-in-2026-will-aapl-stock-hit-300-or-400-next/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "This Will be John Ternus's First Earnings Call as CEO",
+   "value": {
+    "headline": "This Will be John Ternus's First Earnings Call as CEO",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793647882,
+    "url": "https://finance.yahoo.com/m/3c7d592d-9a8c-3b21-8708-8e9eaf5546b1/this-will-be-john-ternus%27s.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/3c7d592d-9a8c-3b21-8708-8e9eaf5546b1/this-will-be-john-ternus%27s.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Big Tech’s AI Binge Is Sinking the Market. Can Santa Save It?",
+   "value": {
+    "headline": "Big Tech’s AI Binge Is Sinking the Market. Can Santa Save It?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793647800,
+    "url": "https://finance.yahoo.com/m/7d60c51a-20ab-3000-9a96-9d35b4cb51b5/big-tech%E2%80%99s-ai-binge-is.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/7d60c51a-20ab-3000-9a96-9d35b4cb51b5/big-tech%E2%80%99s-ai-binge-is.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Rebounds After Friday’s Selloff as Oil Slides",
+   "value": {
+    "headline": "Dow Rebounds After Friday’s Selloff as Oil Slides",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793647380,
+    "url": "https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?.tsrc=rss",
+    "urls": [
+     "https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 2 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
-    "max_source_count": 2,
+    "headline_count": 16,
+    "max_source_count": 1,
     "distinct_sources": [
-     "cna",
-     "udn"
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 239 分 / 162 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 239,
+    "comments": 162,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]
 }

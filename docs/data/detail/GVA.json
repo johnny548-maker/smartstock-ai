@@ -1,25 +1,9 @@
 {
  "stock": "GVA",
  "name": "Granite Construction",
- "price": 121.69,
- "change_pct": 8.97,
+ "price": 129.28,
+ "change_pct": 4.58,
  "ohlc": [
-  {
-   "time": "2026-08-06",
-   "o": 124.65,
-   "h": 125.5,
-   "l": 120.8,
-   "c": 121.46,
-   "v": 814000
-  },
-  {
-   "time": "2026-08-07",
-   "o": 124.18,
-   "h": 128.62,
-   "l": 123.31,
-   "c": 128.18,
-   "v": 929200
-  },
   {
    "time": "2026-08-10",
    "o": 127.96,
@@ -483,23 +467,37 @@
    "l": 111.47,
    "c": 121.69,
    "v": 1645200
+  },
+  {
+   "time": "2026-10-30",
+   "o": 121.5,
+   "h": 126.18,
+   "l": 120.43,
+   "c": 123.62,
+   "v": 1072200
+  },
+  {
+   "time": "2026-11-02",
+   "o": 126.09,
+   "h": 131.84,
+   "l": 125.28,
+   "c": 129.28,
+   "v": 541278
   }
  ],
  "sr": {
-  "price": 121.69,
+  "price": 129.28,
   "resistance": [
-   122.21,
-   122.71
+   129.32,
+   136.21
   ],
   "support": [
-   121.66,
-   120.8
+   127.42,
+   126.04
   ],
   "strong_support": 68.61
  },
  "spark": [
-  121.46,
-  128.18,
   125.83,
   125.23,
   126.05,
@@ -557,11 +555,130 @@
   108.38,
   110.48,
   111.67,
-  121.69
+  121.69,
+  123.62,
+  129.28
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Granite Construction (GVA) Q3 Results Put Margin Pressure In Focus",
+   "value": {
+    "headline": "Granite Construction (GVA) Q3 Results Put Margin Pressure In Focus",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793463090,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/granite-construction-gva-q3-results-161130978.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/granite-construction-gva-q3-results-161130978.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Investors Are Reacting To Granite Construction (GVA) Raised 2026 Revenue Guidance",
+   "value": {
+    "headline": "How Investors Are Reacting To Granite Construction (GVA) Raised 2026 Revenue Guidance",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793401951,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/investors-reacting-granite-construction-gva-231231280.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/investors-reacting-granite-construction-gva-231231280.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Construction Stocks Begin Turnaround Even As AI Spending Fears Mount",
+   "value": {
+    "headline": "Construction Stocks Begin Turnaround Even As AI Spending Fears Mount",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793375909,
+    "url": "https://finance.yahoo.com/m/44221ab5-3c1b-3a78-8746-dcf4997bde1f/construction-stocks-begin.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/44221ab5-3c1b-3a78-8746-dcf4997bde1f/construction-stocks-begin.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Granite rides infrastructure spending to revenue growth, record backlog",
+   "value": {
+    "headline": "Granite rides infrastructure spending to revenue growth, record backlog",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793369040,
+    "url": "https://www.constructiondive.com/news/granite-earnings-infrastructure-spending-record-backlog/873282/?.tsrc=rss",
+    "urls": [
+     "https://www.constructiondive.com/news/granite-earnings-infrastructure-spending-record-backlog/873282/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Granite Construction Q3 Earnings Call Highlights",
+   "value": {
+    "headline": "Granite Construction Q3 Earnings Call Highlights",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793358877,
+    "url": "https://www.marketbeat.com/instant-alerts/transcript-granite-construction-q3-earnings-call-highlights-2026-10-30/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/transcript-granite-construction-q3-earnings-call-highlights-2026-10-30/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

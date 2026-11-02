@@ -1,49 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 610.47,
+ "change_pct": -0.73,
  "ohlc": [
-  {
-   "time": "2026-08-03",
-   "o": 561.8,
-   "h": 597.05,
-   "l": 558.92,
-   "c": 589.77,
-   "v": 25938100
-  },
-  {
-   "time": "2026-08-04",
-   "o": 581.04,
-   "h": 592.32,
-   "l": 577.79,
-   "c": 587.48,
-   "v": 17959200
-  },
-  {
-   "time": "2026-08-05",
-   "o": 599.99,
-   "h": 600.53,
-   "l": 579.66,
-   "c": 588.31,
-   "v": 14897200
-  },
-  {
-   "time": "2026-08-06",
-   "o": 586.49,
-   "h": 594.84,
-   "l": 585.54,
-   "c": 589.43,
-   "v": 11811500
-  },
-  {
-   "time": "2026-08-07",
-   "o": 585.18,
-   "h": 598.27,
-   "l": 585.16,
-   "c": 591.63,
-   "v": 11250300
-  },
   {
    "time": "2026-08-10",
    "o": 598.66,
@@ -474,29 +434,70 @@
    "h": 648.04,
    "l": 633.27,
    "c": 642.62,
-   "v": 14761500
+   "v": 14791600
   },
   {
    "time": "2026-10-26",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 30797210
+   "o": 638.36,
+   "h": 647.69,
+   "l": 627.8,
+   "c": 630.56,
+   "v": 30913600
+  },
+  {
+   "time": "2026-10-27",
+   "o": 627.07,
+   "h": 628.46,
+   "l": 619.21,
+   "c": 620.19,
+   "v": 51334100
+  },
+  {
+   "time": "2026-10-28",
+   "o": 621.85,
+   "h": 624.42,
+   "l": 609.0,
+   "c": 612.49,
+   "v": 35110900
+  },
+  {
+   "time": "2026-10-29",
+   "o": 621.29,
+   "h": 634.68,
+   "l": 616.8,
+   "c": 624.52,
+   "v": 31276200
+  },
+  {
+   "time": "2026-10-30",
+   "o": 614.51,
+   "h": 626.37,
+   "l": 610.13,
+   "c": 614.99,
+   "v": 25295900
+  },
+  {
+   "time": "2026-11-02",
+   "o": 614.44,
+   "h": 621.69,
+   "l": 608.99,
+   "c": 610.47,
+   "v": 12519906
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 610.47,
+  "resistance": [
+   611.95,
+   622.66
+  ],
+  "support": [
+   607.98,
+   599.17
+  ],
   "strong_support": 519.37
  },
  "spark": [
-  589.77,
-  587.48,
-  588.31,
-  589.43,
-  591.63,
   594.45,
   598.65,
   578.39,
@@ -551,15 +552,20 @@
   697.52,
   648.85,
   642.62,
-  null
+  630.56,
+  620.19,
+  612.49,
+  624.52,
+  614.99,
+  610.47
  ],
- "spark_start": "2026-08-03",
- "spark_end": "2026-10-26",
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
  "fundamental": {
-  "pe_trailing": 21.513477,
-  "pe_forward": 17.9903,
+  "pe_trailing": 20.828728,
+  "pe_forward": 17.231552,
   "eps_trailing": 29.31,
-  "eps_forward": 35.05,
+  "eps_forward": 35.42861,
   "stale": false,
   "source": "yfinance"
  },
@@ -569,149 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic’s 7 Founders Will Use New Stock Class to Take Control of the Business",
+   "label": "Scott Galloway: Zuckerberg Is “Clearly Coming for YouTube” and Its 16% of TV Time",
    "value": {
-    "headline": "Anthropic’s 7 Founders Will Use New Stock Class to Take Control of the Business",
+    "headline": "Scott Galloway: Zuckerberg Is “Clearly Coming for YouTube” and Its 16% of TV Time",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793053920,
-    "url": "https://finance.yahoo.com/m/2c95fa38-17ca-3767-aadc-3985c6ab4039/anthropic%E2%80%99s-7-founders-will.html?.tsrc=rss",
+    "ts": 1793650103,
+    "url": "https://www.tikr.com/blog/scott-galloway-zuckerberg-is-clearly-coming-for-youtube-and-its-16-of-tv-time?ref=yahoofinance&tlnk=yf-261102-r3g7mrwf&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/2c95fa38-17ca-3767-aadc-3985c6ab4039/anthropic%E2%80%99s-7-founders-will.html?.tsrc=rss"
+     "https://www.tikr.com/blog/scott-galloway-zuckerberg-is-clearly-coming-for-youtube-and-its-16-of-tv-time?ref=yahoofinance&tlnk=yf-261102-r3g7mrwf&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-27",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
+   "label": "Meta Settles Another Lawsuit Over Being Addictive As Legal Reckoning Continues. Its Stock Edged Down.",
    "value": {
-    "headline": "Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
+    "headline": "Meta Settles Another Lawsuit Over Being Addictive As Legal Reckoning Continues. Its Stock Edged Down.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793051400,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-today-oct-26-ai-optimism-lifts-nasdaq-as-tech-stocks-rebound/?.tsrc=rss",
+    "ts": 1793649621,
+    "url": "https://www.ibtimes.com/meta-settles-lawsuit-over-harmful-social-media-products-3809294?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-today-oct-26-ai-optimism-lifts-nasdaq-as-tech-stocks-rebound/?.tsrc=rss"
+     "https://www.ibtimes.com/meta-settles-lawsuit-over-harmful-social-media-products-3809294?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-27",
+   "severity": "warn",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Google might avoid an earnings 'reckoning' this week",
+   "label": "Here’s Why Janus Henderson is Bullish On Meta Platforms, Inc. (META)",
    "value": {
-    "headline": "Why Google might avoid an earnings 'reckoning' this week",
+    "headline": "Here’s Why Janus Henderson is Bullish On Meta Platforms, Inc. (META)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793048630,
-    "url": "https://finance.yahoo.com/markets/stocks/article/why-google-might-avoid-an-earnings-reckoning-this-week-210350868.html?.tsrc=rss",
+    "ts": 1793649394,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-janus-henderson-bullish-meta-212034266.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/article/why-google-might-avoid-an-earnings-reckoning-this-week-210350868.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/why-janus-henderson-bullish-meta-212034266.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-27",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CleanSpark Stock Fell 39% in October. Its Landlord Bet Now Rides on Meta’s Credit",
+   "label": "Bond Market Signals Distress About CoreWeave. Here's How To Profit From It.",
    "value": {
-    "headline": "CleanSpark Stock Fell 39% in October. Its Landlord Bet Now Rides on Meta’s Credit",
+    "headline": "Bond Market Signals Distress About CoreWeave. Here's How To Profit From It.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793048577,
-    "url": "https://www.tikr.com/blog/cleanspark-stock-fell-39-in-october-its-landlord-bet-now-rides-on-metas-credit?ref=yahoofinance&.tsrc=rss",
+    "ts": 1793648050,
+    "url": "https://finance.yahoo.com/m/2335cbaf-5233-3425-9f7a-d062d58167f8/bond-market-signals-distress.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/cleanspark-stock-fell-39-in-october-its-landlord-bet-now-rides-on-metas-credit?ref=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/m/2335cbaf-5233-3425-9f7a-d062d58167f8/bond-market-signals-distress.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-27",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 small-cap stock to target this week and 2 we find risky",
+   "label": "Big Tech’s AI Binge Is Sinking the Market. Can Santa Save It?",
    "value": {
-    "headline": "1 small-cap stock to target this week and 2 we find risky",
+    "headline": "Big Tech’s AI Binge Is Sinking the Market. Can Santa Save It?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793048087,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/1-small-cap-stock-target-205447287.html?.tsrc=rss",
+    "ts": 1793647800,
+    "url": "https://finance.yahoo.com/m/7d60c51a-20ab-3000-9a96-9d35b4cb51b5/big-tech%E2%80%99s-ai-binge-is.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/1-small-cap-stock-target-205447287.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/7d60c51a-20ab-3000-9a96-9d35b4cb51b5/big-tech%E2%80%99s-ai-binge-is.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-10-27",
+   "severity": "warn",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-27",
+   "as_of": "2026-11-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 482 分 / 204 留言",
+   "label": "HN 討論熱度 20 篇 / 333 分 / 226 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 482,
-    "comments": 204,
+    "points": 333,
+    "comments": 226,
     "n": 20,
     "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-10-27",
+   "as_of": "2026-11-02",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 6 個交割日）",
-   "value": {
-    "total_shares": 43646,
-    "days": 6,
-    "max_shares": 26242,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-27",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

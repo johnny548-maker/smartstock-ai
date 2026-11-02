@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": null,
- "change_pct": null,
+ "price": 247.38,
+ "change_pct": 2.92,
  "ohlc": [
-  {
-   "time": "2026-08-07",
-   "o": 272.87,
-   "h": 278.31,
-   "l": 272.75,
-   "c": 274.48,
-   "v": 33861400
-  },
   {
    "time": "2026-08-10",
    "o": 274.01,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-10-30",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 104652185
+   "o": 232.54,
+   "h": 241.55,
+   "l": 229.36,
+   "c": 240.35,
+   "v": 104775800
+  },
+  {
+   "time": "2026-11-02",
+   "o": 243.09,
+   "h": 253.81,
+   "l": 242.28,
+   "c": 247.38,
+   "v": 42089706
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 247.38,
+  "resistance": [
+   247.78,
+   248.94
+  ],
+  "support": [
+   246.45,
+   244.73
+  ],
   "strong_support": 196.0
  },
  "spark": [
-  274.48,
   278.09,
   272.27,
   267.28,
@@ -551,16 +556,17 @@
   253.1,
   254.6,
   243.79,
-  null
+  240.35,
+  247.38
  ],
- "spark_start": "2026-08-07",
- "spark_end": "2026-10-30",
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
  "fundamental": {
-  "pe_trailing": 19.613031,
-  "pe_forward": 23.328983,
-  "eps_trailing": 12.43,
-  "eps_forward": 10.45009,
-  "stale": true,
+  "pe_trailing": 19.997574,
+  "pe_forward": 22.66227,
+  "eps_trailing": 12.37,
+  "eps_forward": 10.9155,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq End Third Straight Week Lower As Investors Move Away From Tech, AI — AMZN, INTC, LLY, RBLX In Focus",
+   "label": "The 3 Best Artificial Intelligence (AI) Stocks to Buy in November",
    "value": {
-    "headline": "S&P 500, Nasdaq End Third Straight Week Lower As Investors Move Away From Tech, AI — AMZN, INTC, LLY, RBLX In Focus",
+    "headline": "The 3 Best Artificial Intelligence (AI) Stocks to Buy in November",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793405139,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-third-straight-week-lower-as-investors-move-away-from-tech-ai-amzn-intc-lly-rblx-in-focus/cZUKKlTR9cJ?.tsrc=rss",
+    "ts": 1793649721,
+    "url": "https://www.fool.com/investing/2026/11/02/best-artificial-intelligence-ai-stocks-to-buy-nov/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-third-straight-week-lower-as-investors-move-away-from-tech-ai-amzn-intc-lly-rblx-in-focus/cZUKKlTR9cJ?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/02/best-artificial-intelligence-ai-stocks-to-buy-nov/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Review & Preview: Ending on a Down Note",
+   "label": "Amazon, retailers paid more for freight in 3Q",
    "value": {
-    "headline": "Review & Preview: Ending on a Down Note",
+    "headline": "Amazon, retailers paid more for freight in 3Q",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793404500,
-    "url": "https://finance.yahoo.com/m/b0499f52-933b-3c3a-a9fe-a4d478f02828/review-%26-preview%3A-ending-on-a.html?.tsrc=rss",
+    "ts": 1793647809,
+    "url": "https://finance.yahoo.com/economy/articles/amazon-retailers-paid-more-freight-193009743.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/b0499f52-933b-3c3a-a9fe-a4d478f02828/review-%26-preview%3A-ending-on-a.html?.tsrc=rss"
+     "https://finance.yahoo.com/economy/articles/amazon-retailers-paid-more-freight-193009743.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+   "label": "Dow Rebounds After Friday’s Selloff as Oil Slides",
    "value": {
-    "headline": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+    "headline": "Dow Rebounds After Friday’s Selloff as Oil Slides",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793404201,
-    "url": "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss",
+    "ts": 1793647380,
+    "url": "https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-31",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Learn Why The Bull Case For Verizon Communications (VZ) Could Change Following Raised Outlook",
-   "value": {
-    "headline": "Learn Why The Bull Case For Verizon Communications (VZ) Could Change Following Raised Outlook",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793398385,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-verizon-221305487.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-verizon-221305487.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-31",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Apple overtakes Nvidia to become world’s most valuable company amid tech selloff",
-   "value": {
-    "headline": "Apple overtakes Nvidia to become world’s most valuable company amid tech selloff",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793396873,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-overtakes-nvidia-become-world-214753575.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/apple-overtakes-nvidia-become-world-214753575.html?.tsrc=rss"
+     "https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "How Spangle Helps Enterprise Retailers Win the Shift in Product Discovery",
+   "value": {
+    "headline": "How Spangle Helps Enterprise Retailers Win the Shift in Product Discovery",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646993,
+    "url": "https://wwd.com/sourcing-journal/industry-news/how-spangle-helps-retailers-win-in-product-discovery-1239396346/?.tsrc=rss",
+    "urls": [
+     "https://wwd.com/sourcing-journal/industry-news/how-spangle-helps-retailers-win-in-product-discovery-1239396346/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today: Dow Rallies As Marvell, Lumentum Crater; These Stocks Clear Entries (Live Coverage)",
+   "value": {
+    "headline": "Stock Market Today: Dow Rallies As Marvell, Lumentum Crater; These Stocks Clear Entries (Live Coverage)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646574,
+    "url": "https://finance.yahoo.com/m/d2c3bbee-4bc3-3931-9b35-8ffcd691e60c/stock-market-today%3A-dow.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/d2c3bbee-4bc3-3931-9b35-8ffcd691e60c/stock-market-today%3A-dow.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,12 +680,11 @@
     "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

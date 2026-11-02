@@ -1,25 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": null,
- "change_pct": null,
+ "price": 512.41,
+ "change_pct": -1.82,
  "ohlc": [
-  {
-   "time": "2026-08-06",
-   "o": 487.63,
-   "h": 500.62,
-   "l": 487.6,
-   "c": 498.92,
-   "v": 36441500
-  },
-  {
-   "time": "2026-08-07",
-   "o": 498.27,
-   "h": 504.23,
-   "l": 497.79,
-   "c": 499.05,
-   "v": 28846200
-  },
   {
    "time": "2026-08-10",
    "o": 502.49,
@@ -478,22 +462,42 @@
   },
   {
    "time": "2026-10-29",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 39119013
+   "o": 540.22,
+   "h": 541.29,
+   "l": 519.56,
+   "c": 530.14,
+   "v": 39333200
+  },
+  {
+   "time": "2026-10-30",
+   "o": 525.27,
+   "h": 526.0,
+   "l": 514.35,
+   "c": 521.91,
+   "v": 35618300
+  },
+  {
+   "time": "2026-11-02",
+   "o": 524.1,
+   "h": 529.63,
+   "l": 512.12,
+   "c": 512.41,
+   "v": 20926602
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 512.41,
+  "resistance": [
+   512.76,
+   515.65
+  ],
+  "support": [
+   491.22,
+   489.22
+  ],
   "strong_support": 348.54
  },
  "spark": [
-  498.92,
-  499.05,
   505.11,
   502.86,
   491.5,
@@ -551,150 +555,154 @@
   532.6,
   531.33,
   531.01,
-  null
+  530.14,
+  521.91,
+  512.41
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
+ "spark_start": "2026-08-10",
+ "spark_end": "2026-11-02",
  "fundamental": {
-  "pe_trailing": 29.534262,
-  "pe_forward": 22.378483,
-  "eps_trailing": 17.95,
-  "eps_forward": 23.68972,
+  "pe_trailing": 26.742956,
+  "pe_forward": 21.199156,
+  "eps_trailing": 19.16,
+  "eps_forward": 24.17054,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 512.41,
+  "stop": 487.86,
+  "target": 573.78,
+  "atr_bracket": 573.78,
+  "measured_move": 566.88,
+  "target_band": [
+   566.88,
+   573.78
+  ],
+  "stop_pct": -4.8,
+  "target_pct": 12.0,
+  "rr": 2.5,
+  "atr_pct": 2.4,
+  "swing_stop": 512.02,
+  "chandelier": 515.57,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Bill Gates Just Issued a Blunt Warning About Artificial Intelligence",
+   "label": "Microsoft Corporation (MSFT) Delivers Strong Azure Growth as AI Demand Exceeds Supply",
    "value": {
-    "headline": "Billionaire Bill Gates Just Issued a Blunt Warning About Artificial Intelligence",
+    "headline": "Microsoft Corporation (MSFT) Delivers Strong Azure Growth as AI Demand Exceeds Supply",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793312400,
-    "url": "https://www.fool.com/investing/2026/10/29/billionaire-bill-gates-just-issued-a-blunt-warning/?.tsrc=rss",
+    "ts": 1793650347,
+    "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-corporation-msft-delivers-strong-201227945.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/29/billionaire-bill-gates-just-issued-a-blunt-warning/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-10-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "IBM (IBM) Debuts AI Agent Security Controls For Hybrid Cloud",
-   "value": {
-    "headline": "IBM (IBM) Debuts AI Agent Security Controls For Hybrid Cloud",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793312157,
-    "url": "https://finance.yahoo.com/technology/ai/articles/ibm-ibm-debuts-ai-agent-221557150.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/ibm-ibm-debuts-ai-agent-221557150.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/microsoft-corporation-msft-delivers-strong-201227945.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Does The Move In CrowdStrike Stock Change Anything?",
+   "label": "Apple Is Up 24% in 2026: Will AAPL Stock Hit $300 or $400 Next?",
    "value": {
-    "headline": "Does The Move In CrowdStrike Stock Change Anything?",
+    "headline": "Apple Is Up 24% in 2026: Will AAPL Stock Hit $300 or $400 Next?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793310236,
-    "url": "https://www.trefis.com/stock/crwd/articles/621280/does-the-move-in-crowdstrike-stock-change-anything/2026-10-29?.tsrc=rss",
+    "ts": 1793649471,
+    "url": "https://247wallst.com/investing/2026/11/02/apple-is-up-24-in-2026-will-aapl-stock-hit-300-or-400-next/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/crwd/articles/621280/does-the-move-in-crowdstrike-stock-change-anything/2026-10-29?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/02/apple-is-up-24-in-2026-will-aapl-stock-hit-300-or-400-next/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Things to consider if a company that made AI-related job cuts wants to rehire you",
+   "label": "Bond Market Signals Distress About CoreWeave. Here's How To Profit From It.",
    "value": {
-    "headline": "Things to consider if a company that made AI-related job cuts wants to rehire you",
+    "headline": "Bond Market Signals Distress About CoreWeave. Here's How To Profit From It.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793310217,
-    "url": "https://www.independent.co.uk/tech/ai-layoffs-rehire-artificial-intelligence-b3076034.html?.tsrc=rss",
+    "ts": 1793648050,
+    "url": "https://finance.yahoo.com/m/2335cbaf-5233-3425-9f7a-d062d58167f8/bond-market-signals-distress.html?.tsrc=rss",
     "urls": [
-     "https://www.independent.co.uk/tech/ai-layoffs-rehire-artificial-intelligence-b3076034.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-10-30",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Big Tech Earnings Couldn’t Ignite Chip Stocks. What The Semis Need Now.",
-   "value": {
-    "headline": "Big Tech Earnings Couldn’t Ignite Chip Stocks. What The Semis Need Now.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793310000,
-    "url": "https://finance.yahoo.com/m/792cbf7a-885c-3a76-8cf5-7e84ab8048cf/big-tech-earnings-couldn%E2%80%99t.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/792cbf7a-885c-3a76-8cf5-7e84ab8048cf/big-tech-earnings-couldn%E2%80%99t.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/2335cbaf-5233-3425-9f7a-d062d58167f8/bond-market-signals-distress.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Estée Lauder Companies (EL) Partners With Microsoft On AI And Data Tools",
+   "value": {
+    "headline": "Estée Lauder Companies (EL) Partners With Microsoft On AI And Data Tools",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646518,
+    "url": "https://finance.yahoo.com/technology/ai/articles/est-e-lauder-companies-el-190838896.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/est-e-lauder-companies-el-190838896.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AMD to report Q3 results following disappointing showing from Intel",
+   "value": {
+    "headline": "AMD to report Q3 results following disappointing showing from Intel",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793646207,
+    "url": "https://finance.yahoo.com/technology/article/amd-to-report-q3-results-following-disappointing-showing-from-intel-190327545.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/article/amd-to-report-q3-results-following-disappointing-showing-from-intel-190327545.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-02",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-30",
+   "as_of": "2026-11-02",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
-   "value": {
-    "total_shares": 69237,
-    "days": 8,
-    "max_shares": 42926,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-10-30",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }
