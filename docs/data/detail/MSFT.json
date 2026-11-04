@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 507.12,
- "change_pct": -2.83,
+ "price": 520.99,
+ "change_pct": 2.74,
  "ohlc": [
-  {
-   "time": "2026-08-10",
-   "o": 502.49,
-   "h": 512.76,
-   "l": 501.33,
-   "c": 505.11,
-   "v": 31206100
-  },
   {
    "time": "2026-08-11",
    "o": 503.38,
@@ -474,7 +466,7 @@
    "h": 526.0,
    "l": 514.35,
    "c": 521.91,
-   "v": 35618300
+   "v": 35652000
   },
   {
    "time": "2026-11-02",
@@ -482,23 +474,30 @@
    "h": 529.63,
    "l": 504.96,
    "c": 507.12,
-   "v": 34738903
+   "v": 34743300
+  },
+  {
+   "time": "2026-11-03",
+   "o": 509.01,
+   "h": 523.44,
+   "l": 507.85,
+   "c": 520.99,
+   "v": 19912678
   }
  ],
  "sr": {
-  "price": 507.12,
+  "price": 520.99,
   "resistance": [
-   509.31,
-   509.95
+   541.29,
+   551.15
   ],
   "support": [
-   491.22,
-   489.22
+   518.79,
+   515.7
   ],
   "strong_support": 348.54
  },
  "spark": [
-  505.11,
   502.86,
   491.5,
   495.95,
@@ -557,16 +556,17 @@
   531.01,
   530.14,
   521.91,
-  507.12
+  507.12,
+  520.99
  ],
- "spark_start": "2026-08-10",
- "spark_end": "2026-11-02",
+ "spark_start": "2026-08-11",
+ "spark_end": "2026-11-03",
  "fundamental": {
-  "pe_trailing": 26.742956,
-  "pe_forward": 21.199156,
+  "pe_trailing": 27.191545,
+  "pe_forward": 21.546915,
   "eps_trailing": 19.16,
-  "eps_forward": 24.17054,
-  "stale": true,
+  "eps_forward": 24.17933,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Is Boeing (BA) Pushing Deeper Into Cargo And Airline Data Tools?",
+   "label": "Stock Market Election Night: Futures Fall As Votes Trickle In; AMD, Arista Rise On Earnings",
    "value": {
-    "headline": "Why Is Boeing (BA) Pushing Deeper Into Cargo And Airline Data Tools?",
+    "headline": "Stock Market Election Night: Futures Fall As Votes Trickle In; AMD, Arista Rise On Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793665312,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-boeing-ba-pushing-deeper-002152370.html?.tsrc=rss",
+    "ts": 1793753292,
+    "url": "https://finance.yahoo.com/m/e5be454d-07fd-3d94-8114-a4e8ff2910de/stock-market-election-night%3A.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-boeing-ba-pushing-deeper-002152370.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/e5be454d-07fd-3d94-8114-a4e8ff2910de/stock-market-election-night%3A.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Lost $500 Billion in Market Value. Should You Really Buy AI Stocks Now?",
+   "label": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
    "value": {
-    "headline": "Alphabet Lost $500 Billion in Market Value. Should You Really Buy AI Stocks Now?",
+    "headline": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793661901,
-    "url": "https://www.fool.com/investing/2026/11/02/alphabet-lost-usd500-billion-in-market-value-should-you-really-buy-ai-stocks-now/?.tsrc=rss",
+    "ts": 1793745360,
+    "url": "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/02/alphabet-lost-usd500-billion-in-market-value-should-you-really-buy-ai-stocks-now/?.tsrc=rss"
+     "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Has Lost $766 Billion in October, Its Worst Month Ever. UBS Warns Against Running for the Exits.",
+   "label": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
    "value": {
-    "headline": "Alphabet Has Lost $766 Billion in October, Its Worst Month Ever. UBS Warns Against Running for the Exits.",
+    "headline": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793661513,
-    "url": "https://247wallst.com/videos/alphabet-has-lost-766-billion-in-october-its-worst-month-ever-ubs-warns-against-running-for-the-exits/?.tsrc=rss",
+    "ts": 1793742574,
+    "url": "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/videos/alphabet-has-lost-766-billion-in-october-its-worst-month-ever-ubs-warns-against-running-for-the-exits/?.tsrc=rss"
+     "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Accenture vs. Microsoft: Which Technology Stock Is a Better Buy for 2027?",
+   "label": "Stock Market Today: Dow Dips Amid Midterm Elections; Palantir Slips, DuPont Surges Past Entry",
    "value": {
-    "headline": "Accenture vs. Microsoft: Which Technology Stock Is a Better Buy for 2027?",
+    "headline": "Stock Market Today: Dow Dips Amid Midterm Elections; Palantir Slips, DuPont Surges Past Entry",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793660320,
-    "url": "https://www.fool.com/coverage/better-buy/2026/11/02/accenture-vs-microsoft-which-technology-stock-is-a-better-buy-for-2027/?.tsrc=rss",
+    "ts": 1793741269,
+    "url": "https://finance.yahoo.com/m/810dfed2-d215-3d61-b039-c22ccd3cf6d4/stock-market-today%3A-dow-dips.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/11/02/accenture-vs-microsoft-which-technology-stock-is-a-better-buy-for-2027/?.tsrc=rss"
+     "https://finance.yahoo.com/m/810dfed2-d215-3d61-b039-c22ccd3cf6d4/stock-market-today%3A-dow-dips.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 2: Apple Stock Slides Ahead of Earnings, but Its Latest Results Tell a Different Story",
+   "label": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
    "value": {
-    "headline": "Stock Market Today, Nov. 2: Apple Stock Slides Ahead of Earnings, but Its Latest Results Tell a Different Story",
+    "headline": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793659502,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/02/stock-market-today-nov-2-apple-stock-slides-ahead-of-earnings-but-its-latest-results-tell-a-different-story/?.tsrc=rss",
+    "ts": 1793739900,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/02/stock-market-today-nov-2-apple-stock-slides-ahead-of-earnings-but-its-latest-results-tell-a-different-story/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-03",
+   "as_of": "2026-11-04",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

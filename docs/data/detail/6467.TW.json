@@ -1,17 +1,9 @@
 {
  "stock": "6467.TW",
  "name": "泰合",
- "price": 224.0,
- "change_pct": 9.8,
+ "price": 246.0,
+ "change_pct": 9.82,
  "ohlc": [
-  {
-   "time": "2026-08-05",
-   "o": 116.5,
-   "h": 117.5,
-   "l": 112.5,
-   "c": 112.5,
-   "v": 101283
-  },
   {
    "time": "2026-08-06",
    "o": 114.5,
@@ -483,22 +475,29 @@
    "l": 203.0,
    "c": 224.0,
    "v": 547052
+  },
+  {
+   "time": "2026-11-03",
+   "o": 230.0,
+   "h": 246.0,
+   "l": 230.0,
+   "c": 246.0,
+   "v": 1547510
   }
  ],
  "sr": {
-  "price": 224.0,
+  "price": 246.0,
   "resistance": [
-   228.5,
-   237.5
+   250.5,
+   302.0
   ],
   "support": [
-   217.5,
-   212.0
+   235.5,
+   217.5
   ],
   "strong_support": 43.15
  },
  "spark": [
-  112.5,
   114.5,
   113.5,
   114.5,
@@ -557,13 +556,52 @@
   220.5,
   202.5,
   204.0,
-  224.0
+  224.0,
+  246.0
  ],
- "spark_start": "2026-08-05",
- "spark_end": "2026-11-02",
+ "spark_start": "2026-08-06",
+ "spark_end": "2026-11-03",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 452,421 股",
+   "value": {
+    "foreign": 388693,
+    "trust": 0,
+    "dealer": 63728,
+    "total": 452421
+   },
+   "severity": "info",
+   "as_of": "2026-11-04",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PB 37.39",
+   "value": {
+    "pe": null,
+    "yield": null,
+    "pb": 37.39
+   },
+   "severity": "info",
+   "as_of": "2026-11-03",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 25.54,
+   "severity": "warn",
+   "as_of": "20261030",
+   "note": "大戶持股%=25.54；WoW-0.03；股東人數-292"
+  }
+ ],
  "trends": {
   "inst_cum": [
    {
@@ -613,6 +651,10 @@
    {
     "t": "2026-11-03",
     "v": 1720
+   },
+   {
+    "t": "2026-11-04",
+    "v": 2173
    }
   ],
   "holder_pct": [

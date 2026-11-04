@@ -2,16 +2,8 @@
  "stock": "NNBR",
  "name": "NN Inc",
  "price": 3.72,
- "change_pct": -5.34,
+ "change_pct": -0.0,
  "ohlc": [
-  {
-   "time": "2026-08-10",
-   "o": 3.74,
-   "h": 3.79,
-   "l": 3.59,
-   "c": 3.63,
-   "v": 5125600
-  },
   {
    "time": "2026-08-11",
    "o": 3.7,
@@ -482,7 +474,15 @@
    "h": 3.98,
    "l": 3.62,
    "c": 3.72,
-   "v": 2787728
+   "v": 2787700
+  },
+  {
+   "time": "2026-11-03",
+   "o": 3.75,
+   "h": 3.83,
+   "l": 3.7,
+   "c": 3.72,
+   "v": 1705959
   }
  ],
  "sr": {
@@ -498,7 +498,6 @@
   "strong_support": 1.1
  },
  "spark": [
-  3.63,
   3.65,
   3.66,
   3.61,
@@ -557,128 +556,12 @@
   3.8,
   3.96,
   3.93,
+  3.72,
   3.72
  ],
- "spark_start": "2026-08-10",
- "spark_end": "2026-11-02",
+ "spark_start": "2026-08-11",
+ "spark_end": "2026-11-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN, Inc. (NNBR) Stock Slides As Q3 Earnings Fuel Turnaround Questions",
-   "value": {
-    "headline": "NN, Inc. (NNBR) Stock Slides As Q3 Earnings Fuel Turnaround Questions",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793369540,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nn-inc-nnbr-stock-slides-141220111.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nn-inc-nnbr-stock-slides-141220111.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NNBR Q3 deep dive: growth in data center and defense electronics supports raised outlook",
-   "value": {
-    "headline": "NNBR Q3 deep dive: growth in data center and defense electronics supports raised outlook",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793314298,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nnbr-q3-deep-dive-growth-225138907.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nnbr-q3-deep-dive-growth-225138907.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What NN (NNBR) Said on Its Q3 Earnings Call",
-   "value": {
-    "headline": "What NN (NNBR) Said on Its Q3 Earnings Call",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793308460,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-what-nn-nnbr-said-on-its-q3-earnings-call-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-what-nn-nnbr-said-on-its-q3-earnings-call-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "NN, Inc. Q3 2026 Earnings Call Summary",
-   "value": {
-    "headline": "NN, Inc. Q3 2026 Earnings Call Summary",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793277000,
-    "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-nn-inc-q3-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
-    "urls": [
-     "https://app.moby.co/home/research/tools/earningsCalendar/earnings-nn-inc-q3-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 of Wall Street’s favorite stocks walking a fine line",
-   "value": {
-    "headline": "3 of Wall Street’s favorite stocks walking a fine line",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793271085,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-wall-street-favorite-stocks-105125191.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-wall-street-favorite-stocks-105125191.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-03",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }
