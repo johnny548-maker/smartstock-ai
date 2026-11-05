@@ -1,162 +1,162 @@
 {
-  "asof": "2026-10-05",
+  "asof": "2026-11-05",
   "config": {
     "horizon": 60,
     "step": 10,
     "min_bars": 200,
     "adv_slippage": true,
-    "n_dates": 3418
+    "n_dates": 3419
   },
   "per_signal": {
     "Trend Template": {
-      "n_fired": 58134,
-      "sharpe": 0.241,
+      "n_fired": 57684,
+      "sharpe": 0.2351,
       "dsr": 1.0,
-      "skew": 3.892,
-      "kurt": 51.058,
+      "skew": 3.974,
+      "kurt": 53.769,
       "wf_stable": false,
-      "wf_min_lift": 0.579,
-      "wf_mean_lift": 0.996
+      "wf_min_lift": 0.617,
+      "wf_mean_lift": 1.04
     },
     "VCP 收縮": {
-      "n_fired": 12105,
-      "sharpe": 0.2021,
+      "n_fired": 12273,
+      "sharpe": 0.2132,
       "dsr": 1.0,
-      "skew": 2.249,
-      "kurt": 25.089,
+      "skew": 1.835,
+      "kurt": 20.018,
       "wf_stable": false,
-      "wf_min_lift": 0.618,
-      "wf_mean_lift": 0.837
+      "wf_min_lift": 0.584,
+      "wf_mean_lift": 0.802
     },
     "Pocket pivot": {
-      "n_fired": 22098,
-      "sharpe": 0.2123,
+      "n_fired": 21891,
+      "sharpe": 0.2302,
       "dsr": 1.0,
-      "skew": 3.411,
-      "kurt": 54.225,
+      "skew": 2.655,
+      "kurt": 25.705,
       "wf_stable": false,
-      "wf_min_lift": 0.873,
-      "wf_mean_lift": 0.964
+      "wf_min_lift": 0.731,
+      "wf_mean_lift": 1.009
     },
     "Power pivot(放量突破)": {
-      "n_fired": 758,
-      "sharpe": 0.2078,
+      "n_fired": 766,
+      "sharpe": 0.2516,
       "dsr": 1.0,
-      "skew": 3.23,
-      "kurt": 20.53,
+      "skew": 2.966,
+      "kurt": 19.664,
       "wf_stable": false,
-      "wf_min_lift": 0.492,
-      "wf_mean_lift": 1.206
+      "wf_min_lift": 0.282,
+      "wf_mean_lift": 1.208
     },
     "首次新高(久盤後)": {
-      "n_fired": 690,
-      "sharpe": 0.1319,
-      "dsr": 0.976,
-      "skew": 2.858,
-      "kurt": 26.057,
+      "n_fired": 642,
+      "sharpe": 0.1796,
+      "dsr": 0.9997,
+      "skew": 3.336,
+      "kurt": 30.235,
       "wf_stable": false,
-      "wf_min_lift": 0.178,
-      "wf_mean_lift": 0.726
+      "wf_min_lift": 0.527,
+      "wf_mean_lift": 0.858
     },
     "VDU→Thrust(量縮噴出)": {
-      "n_fired": 1352,
-      "sharpe": 0.2407,
-      "dsr": 1.0,
-      "skew": 6.273,
-      "kurt": 102.394,
-      "wf_stable": true,
-      "wf_min_lift": 1.066,
-      "wf_mean_lift": 1.329
-    },
-    "U/D量比吸籌": {
-      "n_fired": 46936,
-      "sharpe": 0.2446,
-      "dsr": 1.0,
-      "skew": 3.64,
-      "kurt": 39.355,
-      "wf_stable": true,
-      "wf_min_lift": 1.377,
-      "wf_mean_lift": 1.602
-    },
-    "A/D吸籌A/B級": {
-      "n_fired": 96416,
-      "sharpe": 0.2183,
-      "dsr": 1.0,
-      "skew": 4.036,
-      "kurt": 62.147,
-      "wf_stable": false,
-      "wf_min_lift": 0.616,
-      "wf_mean_lift": 0.937
-    },
-    "RS線新高(純)": {
-      "n_fired": 16464,
-      "sharpe": 0.2451,
-      "dsr": 1.0,
-      "skew": 2.398,
-      "kurt": 24.618,
-      "wf_stable": false,
-      "wf_min_lift": 0.593,
-      "wf_mean_lift": 1.013
-    },
-    "VCP∧TrendTemplate": {
-      "n_fired": 3598,
-      "sharpe": 0.2329,
-      "dsr": 1.0,
-      "skew": 3.495,
-      "kurt": 32.325,
-      "wf_stable": false,
-      "wf_min_lift": 0.593,
-      "wf_mean_lift": 0.978
-    },
-    "RS純∧TrendTemplate": {
-      "n_fired": 8263,
-      "sharpe": 0.2461,
-      "dsr": 1.0,
-      "skew": 3.184,
-      "kurt": 31.063,
-      "wf_stable": false,
-      "wf_min_lift": 0.552,
-      "wf_mean_lift": 1.206
-    },
-    "PowerPivot∧TrendTmpl": {
-      "n_fired": 476,
-      "sharpe": 0.2177,
-      "dsr": 1.0,
-      "skew": 3.059,
-      "kurt": 17.593,
-      "wf_stable": false,
-      "wf_min_lift": 0.723,
-      "wf_mean_lift": 1.734
-    },
-    "Mom12-1>0": {
-      "n_fired": 148659,
-      "sharpe": 0.2454,
-      "dsr": 1.0,
-      "skew": 2.915,
-      "kurt": 36.593,
-      "wf_stable": false,
-      "wf_min_lift": 0.761,
-      "wf_mean_lift": 0.906
-    },
-    "Close>SMA200": {
-      "n_fired": 143998,
-      "sharpe": 0.2388,
-      "dsr": 1.0,
-      "skew": 3.656,
-      "kurt": 54.107,
-      "wf_stable": false,
-      "wf_min_lift": 0.602,
-      "wf_mean_lift": 0.845
-    },
-    "Mom12-1∧SMA200": {
-      "n_fired": 120288,
+      "n_fired": 1194,
       "sharpe": 0.2387,
       "dsr": 1.0,
-      "skew": 3.248,
-      "kurt": 40.874,
+      "skew": 3.061,
+      "kurt": 22.753,
+      "wf_stable": true,
+      "wf_min_lift": 1.207,
+      "wf_mean_lift": 1.8
+    },
+    "U/D量比吸籌": {
+      "n_fired": 46740,
+      "sharpe": 0.2434,
+      "dsr": 1.0,
+      "skew": 3.687,
+      "kurt": 39.037,
+      "wf_stable": true,
+      "wf_min_lift": 1.393,
+      "wf_mean_lift": 1.655
+    },
+    "A/D吸籌A/B級": {
+      "n_fired": 95563,
+      "sharpe": 0.2167,
+      "dsr": 1.0,
+      "skew": 3.893,
+      "kurt": 56.783,
       "wf_stable": false,
-      "wf_min_lift": 0.621,
-      "wf_mean_lift": 0.846
+      "wf_min_lift": 0.677,
+      "wf_mean_lift": 0.971
+    },
+    "RS線新高(純)": {
+      "n_fired": 17077,
+      "sharpe": 0.2275,
+      "dsr": 1.0,
+      "skew": 3.504,
+      "kurt": 52.236,
+      "wf_stable": false,
+      "wf_min_lift": 0.729,
+      "wf_mean_lift": 0.933
+    },
+    "VCP∧TrendTemplate": {
+      "n_fired": 3548,
+      "sharpe": 0.2362,
+      "dsr": 1.0,
+      "skew": 2.862,
+      "kurt": 24.984,
+      "wf_stable": false,
+      "wf_min_lift": 0.549,
+      "wf_mean_lift": 0.842
+    },
+    "RS純∧TrendTemplate": {
+      "n_fired": 8757,
+      "sharpe": 0.2361,
+      "dsr": 1.0,
+      "skew": 4.465,
+      "kurt": 60.541,
+      "wf_stable": false,
+      "wf_min_lift": 0.729,
+      "wf_mean_lift": 1.081
+    },
+    "PowerPivot∧TrendTmpl": {
+      "n_fired": 500,
+      "sharpe": 0.3042,
+      "dsr": 1.0,
+      "skew": 2.843,
+      "kurt": 17.294,
+      "wf_stable": false,
+      "wf_min_lift": 0.504,
+      "wf_mean_lift": 1.258
+    },
+    "Mom12-1>0": {
+      "n_fired": 148265,
+      "sharpe": 0.2416,
+      "dsr": 1.0,
+      "skew": 2.877,
+      "kurt": 35.839,
+      "wf_stable": false,
+      "wf_min_lift": 0.76,
+      "wf_mean_lift": 0.914
+    },
+    "Close>SMA200": {
+      "n_fired": 143454,
+      "sharpe": 0.2356,
+      "dsr": 1.0,
+      "skew": 3.565,
+      "kurt": 51.087,
+      "wf_stable": false,
+      "wf_min_lift": 0.655,
+      "wf_mean_lift": 0.863
+    },
+    "Mom12-1∧SMA200": {
+      "n_fired": 119637,
+      "sharpe": 0.2322,
+      "dsr": 1.0,
+      "skew": 3.209,
+      "kurt": 40.338,
+      "wf_stable": false,
+      "wf_min_lift": 0.678,
+      "wf_mean_lift": 0.868
     }
   },
   "family": {
@@ -165,7 +165,7 @@
     "pbo_status": "COMPUTED",
     "pbo_combos": 12870,
     "spa_pvalue": 0.0,
-    "spa_tstat": 21.369,
+    "spa_tstat": 23.425,
     "spa_best_trial": "Mom12-1>0"
   },
   "note": "OVERLAY-NOT-SCORER: robustness badge only. DSR haircuts Sharpe by n_trials+skew/kurt; PBO=P(IS-best underperforms OOS median); SPA p=family data-snooping. pbo=null (pbo_status=INCONCLUSIVE) means the CSCV could NOT be computed — read it as unknown, NEVER as a low-PBO pass. Survivor-only universe — an optimistic upper bound."
