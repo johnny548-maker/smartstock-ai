@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet Inc. - Class A Common Stock",
- "price": 280.03,
- "change_pct": 0.37,
+ "name": "Alphabet",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-11",
-   "o": 355.66,
-   "h": 356.58,
-   "l": 343.17,
-   "c": 343.58,
-   "v": 29081800
-  },
   {
    "time": "2026-08-12",
    "o": 346.09,
@@ -479,23 +471,27 @@
   {
    "time": "2026-11-03",
    "o": 280.23,
-   "h": 281.6,
+   "h": 281.61,
    "l": 277.2,
    "c": 280.03,
-   "v": 34646571
+   "v": 34974500
+  },
+  {
+   "time": "2026-11-04",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 51316963
   }
  ],
  "sr": {
-  "price": 280.03,
-  "resistance": [
-   326.41,
-   344.46
-  ],
+  "price": null,
+  "resistance": [],
   "support": [],
-  "strong_support": 327.74
+  "strong_support": 270.0
  },
  "spark": [
-  343.58,
   343.32,
   346.14,
   345.68,
@@ -554,11 +550,151 @@
   283.82,
   279.84,
   278.99,
-  280.03
+  280.03,
+  null
  ],
- "spark_start": "2026-08-11",
- "spark_end": "2026-11-03",
- "fundamental": null,
+ "spark_start": "2026-08-12",
+ "spark_end": "2026-11-04",
+ "fundamental": {
+  "pe_trailing": 15.0877285,
+  "pe_forward": 18.64862,
+  "eps_trailing": 19.15,
+  "eps_forward": 15.49337,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+   "value": {
+    "headline": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793840673,
+    "url": "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Is Going On With Zoom Stock?",
+   "value": {
+    "headline": "What Is Going On With Zoom Stock?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793839141,
+    "url": "https://www.trefis.com/stock/zm/articles/622277/what-is-going-on-with-zoom-stock/2026-11-04?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/zm/articles/622277/what-is-going-on-with-zoom-stock/2026-11-04?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Alphabet Stock Popped on Wednesday",
+   "value": {
+    "headline": "Why Alphabet Stock Popped on Wednesday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793837581,
+    "url": "https://www.fool.com/investing/2026/11/04/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/04/why-alphabet-stock-popped-on-wednesday/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Q3 Earnings Scorecard: Solid Beats, Upward Revisions, and AI Drivers",
+   "value": {
+    "headline": "Q3 Earnings Scorecard: Solid Beats, Upward Revisions, and AI Drivers",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793835540,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/q3-earnings-scorecard-solid-beats-233900397.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/q3-earnings-scorecard-solid-beats-233900397.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Isomorphic Labs in Talks for About $5 Billion in Funding",
+   "value": {
+    "headline": "Isomorphic Labs in Talks for About $5 Billion in Funding",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793832704,
+    "url": "https://finance.yahoo.com/technology/ai/articles/isomorphic-labs-talks-5-billion-225144910.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/isomorphic-labs-talks-5-billion-225144910.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 17,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 689 分 / 170 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 689,
+    "comments": 170,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-11-05",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  }
+ ]
 }

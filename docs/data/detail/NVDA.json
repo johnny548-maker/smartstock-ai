@@ -5,30 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-07",
-   "o": 221.29,
-   "h": 224.51,
-   "l": 220.41,
-   "c": 223.71,
-   "v": 105669400
-  },
-  {
-   "time": "2026-08-10",
-   "o": 223.15,
-   "h": 223.89,
-   "l": 216.53,
-   "c": 217.31,
-   "v": 115846600
-  },
-  {
-   "time": "2026-08-11",
-   "o": 221.92,
-   "h": 221.95,
-   "l": 215.96,
-   "c": 217.26,
-   "v": 101273100
-  },
-  {
    "time": "2026-08-12",
    "o": 220.79,
    "h": 224.85,
@@ -478,11 +454,35 @@
   },
   {
    "time": "2026-10-30",
+   "o": 208.94,
+   "h": 209.06,
+   "l": 200.92,
+   "c": 204.64,
+   "v": 168386400
+  },
+  {
+   "time": "2026-11-02",
+   "o": 207.53,
+   "h": 209.98,
+   "l": 201.66,
+   "c": 202.06,
+   "v": 119272200
+  },
+  {
+   "time": "2026-11-03",
+   "o": 207.96,
+   "h": 209.14,
+   "l": 205.93,
+   "c": 206.69,
+   "v": 91943400
+  },
+  {
+   "time": "2026-11-04",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 165923799
+   "v": 147804408
   }
  ],
  "sr": {
@@ -492,9 +492,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  223.71,
-  217.31,
-  217.26,
   223.84,
   225.05,
   224.91,
@@ -551,13 +548,16 @@
   217.94,
   215.38,
   213.66,
+  204.64,
+  202.06,
+  206.69,
   null
  ],
- "spark_start": "2026-08-07",
- "spark_end": "2026-10-30",
+ "spark_start": "2026-08-12",
+ "spark_end": "2026-11-04",
  "fundamental": {
-  "pe_trailing": 25.87105,
-  "pe_forward": 12.858633,
+  "pe_trailing": 25.300886,
+  "pe_forward": 12.575246,
   "eps_trailing": 7.91,
   "eps_forward": 15.9146,
   "stale": false,
@@ -569,118 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+   "label": "Physical AI Empowers Smart Mobility: LUXEED Builds a New Full-Scenario Intelligent Ecosystem",
    "value": {
-    "headline": "Amazon Just Lost $42 Billion in Free Cash Flow. Is It a Red Flag for Investors?",
+    "headline": "Physical AI Empowers Smart Mobility: LUXEED Builds a New Full-Scenario Intelligent Ecosystem",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793404201,
-    "url": "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss",
+    "ts": 1793840520,
+    "url": "https://finance.yahoo.com/technology/ai/articles/physical-ai-empowers-smart-mobility-010200324.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/30/amazon-just-lost-usd42-billion-in-free-cash-flow-is-it-a-red-flag-for-investors/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/physical-ai-empowers-smart-mobility-010200324.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Arm Holdings Stock Plummeted by Nearly 10% Today",
+   "label": "Here's What $10,000 Invested in SpaceX and Nvidia Could Be Worth by 2030",
    "value": {
-    "headline": "Why Arm Holdings Stock Plummeted by Nearly 10% Today",
+    "headline": "Here's What $10,000 Invested in SpaceX and Nvidia Could Be Worth by 2030",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793403858,
-    "url": "https://www.fool.com/investing/2026/10/30/why-arm-holdings-stock-plummeted-by-nearly-10-today/?.tsrc=rss",
+    "ts": 1793839740,
+    "url": "https://www.fool.com/investing/2026/11/04/heres-what-10000-invested-in-spacex-and-nvidia-cou/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/30/why-arm-holdings-stock-plummeted-by-nearly-10-today/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/04/heres-what-10000-invested-in-spacex-and-nvidia-cou/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Intel Stock a Buy After Its Post-Earnings Plunge?",
+   "label": "Did IBM Just Tell the Truth About AI?",
    "value": {
-    "headline": "Is Intel Stock a Buy After Its Post-Earnings Plunge?",
+    "headline": "Did IBM Just Tell the Truth About AI?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793403242,
-    "url": "https://www.fool.com/investing/2026/10/30/is-intel-stock-a-buy-after-its-post-earnings-plunge/?.tsrc=rss",
+    "ts": 1793839599,
+    "url": "https://www.fool.com/investing/2026/11/04/did-ibm-just-tell-the-truth-about-ai/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/30/is-intel-stock-a-buy-after-its-post-earnings-plunge/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/04/did-ibm-just-tell-the-truth-about-ai/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "5-star analyst resets Nvidia stock target after Intel crash",
+   "value": {
+    "headline": "5-star analyst resets Nvidia stock target after Intel crash",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793839020,
+    "url": "https://www.thestreet.com/investing/stocks/melius-nvidia-target-cut-intel?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/investing/stocks/melius-nvidia-target-cut-intel?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Bright Horizons Family Solutions Stock Swooned on Friday",
+   "label": "Prediction: This Is How Much IonQ Stock Will Be Worth by the End of 2027",
    "value": {
-    "headline": "Why Bright Horizons Family Solutions Stock Swooned on Friday",
+    "headline": "Prediction: This Is How Much IonQ Stock Will Be Worth by the End of 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793400024,
-    "url": "https://www.fool.com/investing/2026/10/30/why-bright-horizons-family-solutions-stock-swooned-on-friday/?.tsrc=rss",
+    "ts": 1793838000,
+    "url": "https://www.fool.com/investing/2026/11/04/prediction-this-is-how-much-ionq-stock-will-be-wor/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/10/30/why-bright-horizons-family-solutions-stock-swooned-on-friday/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/04/prediction-this-is-how-much-ionq-stock-will-be-wor/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia has a stake in SpaceX that came from an unexpected place",
-   "value": {
-    "headline": "Nvidia has a stake in SpaceX that came from an unexpected place",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793399580,
-    "url": "https://www.thestreet.com/investing/stocks/nvidia-has-a-stake-in-spacex-that-came-from-an-unexpected-place?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/investing/stocks/nvidia-has-a-stake-in-spacex-that-came-from-an-unexpected-place?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

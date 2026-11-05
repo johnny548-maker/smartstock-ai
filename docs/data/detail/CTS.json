@@ -479,10 +479,10 @@
   {
    "time": "2026-11-03",
    "o": 63.5,
-   "h": 64.89,
+   "h": 64.9,
    "l": 62.92,
    "c": 62.92,
-   "v": 235665
+   "v": 235700
   }
  ],
  "sr": {
@@ -563,5 +563,122 @@
  "spark_end": "2026-11-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "CTS Q3 deep dive: medical and industrial expansion drive margin gains and outlook upgrade",
+   "value": {
+    "headline": "CTS Q3 deep dive: medical and industrial expansion drive margin gains and outlook upgrade",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793425649,
+    "url": "https://finance.yahoo.com/healthcare/articles/cts-q3-deep-dive-medical-054729256.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/healthcare/articles/cts-q3-deep-dive-medical-054729256.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "5 must-read analyst questions from CTS’s Q3 earnings call",
+   "value": {
+    "headline": "5 must-read analyst questions from CTS’s Q3 earnings call",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793357489,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-105129091.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-105129091.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Earnings Beat Might Change CTS Stock Narrative",
+   "value": {
+    "headline": "Earnings Beat Might Change CTS Stock Narrative",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793294077,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/earnings-beat-might-change-cts-171437704.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/earnings-beat-might-change-cts-171437704.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is CTS (CTS) Stock Outpacing Its Computer and Technology Peers This Year?",
+   "value": {
+    "headline": "Is CTS (CTS) Stock Outpacing Its Computer and Technology Peers This Year?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793277602,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cts-cts-stock-outpacing-computer-124002671.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/cts-cts-stock-outpacing-computer-124002671.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "CTS (CTS) Lifted Guidance, Is It Still A Bargain?",
+   "value": {
+    "headline": "CTS (CTS) Lifted Guidance, Is It Still A Bargain?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793261844,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cts-cts-lifted-guidance-still-081724611.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/cts-cts-lifted-guidance-still-081724611.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

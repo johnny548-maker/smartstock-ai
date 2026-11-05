@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 520.99,
- "change_pct": 2.74,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-11",
-   "o": 503.38,
-   "h": 504.38,
-   "l": 498.61,
-   "c": 502.86,
-   "v": 23049800
-  },
   {
    "time": "2026-08-12",
    "o": 499.05,
@@ -480,25 +472,26 @@
    "time": "2026-11-03",
    "o": 509.01,
    "h": 523.44,
-   "l": 507.85,
+   "l": 507.82,
    "c": 520.99,
-   "v": 19912678
+   "v": 20010200
+  },
+  {
+   "time": "2026-11-04",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 50697927
   }
  ],
  "sr": {
-  "price": 520.99,
-  "resistance": [
-   541.29,
-   551.15
-  ],
-  "support": [
-   518.79,
-   515.7
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 348.54
  },
  "spark": [
-  502.86,
   491.5,
   495.95,
   494.47,
@@ -557,13 +550,14 @@
   530.14,
   521.91,
   507.12,
-  520.99
+  520.99,
+  null
  ],
- "spark_start": "2026-08-11",
- "spark_end": "2026-11-03",
+ "spark_start": "2026-08-12",
+ "spark_end": "2026-11-04",
  "fundamental": {
-  "pe_trailing": 27.191545,
-  "pe_forward": 21.546915,
+  "pe_trailing": 29.00835,
+  "pe_forward": 22.986574,
   "eps_trailing": 19.16,
   "eps_forward": 24.17933,
   "stale": false,
@@ -575,116 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Election Night: Futures Fall As Votes Trickle In; AMD, Arista Rise On Earnings",
+   "label": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
    "value": {
-    "headline": "Stock Market Election Night: Futures Fall As Votes Trickle In; AMD, Arista Rise On Earnings",
+    "headline": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793753292,
-    "url": "https://finance.yahoo.com/m/e5be454d-07fd-3d94-8114-a4e8ff2910de/stock-market-election-night%3A.html?.tsrc=rss",
+    "ts": 1793840673,
+    "url": "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/e5be454d-07fd-3d94-8114-a4e8ff2910de/stock-market-election-night%3A.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
+   "label": "Arista Networks stock gets fresh backing from Jim Cramer and Wall Street",
    "value": {
-    "headline": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
+    "headline": "Arista Networks stock gets fresh backing from Jim Cramer and Wall Street",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793745360,
-    "url": "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss",
+    "ts": 1793839505,
+    "url": "https://www.thestreet.com/investing/stocks/arista-networks-stock-gets-fresh-backing-from-jim-cramer-and-wall-street-anet?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/arista-networks-stock-gets-fresh-backing-from-jim-cramer-and-wall-street-anet?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
+   "label": "What Is Going On With Zoom Stock?",
    "value": {
-    "headline": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
+    "headline": "What Is Going On With Zoom Stock?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793742574,
-    "url": "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss",
+    "ts": 1793839141,
+    "url": "https://www.trefis.com/stock/zm/articles/622277/what-is-going-on-with-zoom-stock/2026-11-04?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss"
+     "https://www.trefis.com/stock/zm/articles/622277/what-is-going-on-with-zoom-stock/2026-11-04?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Dips Amid Midterm Elections; Palantir Slips, DuPont Surges Past Entry",
+   "label": "Why an equal-weight S&P 500 fund can reduce Big Tech risk",
    "value": {
-    "headline": "Stock Market Today: Dow Dips Amid Midterm Elections; Palantir Slips, DuPont Surges Past Entry",
+    "headline": "Why an equal-weight S&P 500 fund can reduce Big Tech risk",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793741269,
-    "url": "https://finance.yahoo.com/m/810dfed2-d215-3d61-b039-c22ccd3cf6d4/stock-market-today%3A-dow-dips.html?.tsrc=rss",
+    "ts": 1793832848,
+    "url": "https://www.thestreet.com/investing/why-an-equal-weight-sp-500-fund-can-reduce-big-tech-risk?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/810dfed2-d215-3d61-b039-c22ccd3cf6d4/stock-market-today%3A-dow-dips.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/why-an-equal-weight-sp-500-fund-can-reduce-big-tech-risk?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
+   "label": "Stock Market Today, Nov. 4: Oracle Falls on Canceled $7 Billion Tencent Chip-Leasing Deal",
    "value": {
-    "headline": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
+    "headline": "Stock Market Today, Nov. 4: Oracle Falls on Canceled $7 Billion Tencent Chip-Leasing Deal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793739900,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss",
+    "ts": 1793830802,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-oracle-falls-on-canceled-7-billion-tencent-chip-leasing-deal/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-oracle-falls-on-canceled-7-billion-tencent-chip-leasing-deal/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-05",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

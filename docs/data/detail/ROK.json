@@ -480,9 +480,9 @@
    "time": "2026-11-03",
    "o": 445.88,
    "h": 454.13,
-   "l": 443.89,
+   "l": 443.9,
    "c": 446.38,
-   "v": 608546
+   "v": 619700
   }
  ],
  "sr": {
@@ -563,5 +563,122 @@
  "spark_end": "2026-11-03",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MKS (MKSI) Beats Q3 Earnings and Revenue Estimates",
+   "value": {
+    "headline": "MKS (MKSI) Beats Q3 Earnings and Revenue Estimates",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793835920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/mks-mksi-beats-q3-earnings-234520423.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/mks-mksi-beats-q3-earnings-234520423.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Rockwell Automation Gears Up to Report Q4 Earnings: What to Expect?",
+   "value": {
+    "headline": "Rockwell Automation Gears Up to Report Q4 Earnings: What to Expect?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793719200,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-gears-report-q4-152000555.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-gears-report-q4-152000555.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Exploring Analyst Estimates for Rockwell Automation (ROK) Q4 Earnings, Beyond Revenue and EPS",
+   "value": {
+    "headline": "Exploring Analyst Estimates for Rockwell Automation (ROK) Q4 Earnings, Beyond Revenue and EPS",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793711707,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/exploring-analyst-estimates-rockwell-automation-131507100.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/exploring-analyst-estimates-rockwell-automation-131507100.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Rockwell Automation (ROK) Stock Looks Above Fair Value As Shares Ran 74%",
+   "value": {
+    "headline": "Rockwell Automation (ROK) Stock Looks Above Fair Value As Shares Ran 74%",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793448763,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-rok-stock-looks-121243962.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-rok-stock-looks-121243962.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Should SecureOT Cybersecurity Launch Require Action From Rockwell Automation (ROK) Investors?",
+   "value": {
+    "headline": "Should SecureOT Cybersecurity Launch Require Action From Rockwell Automation (ROK) Investors?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793427357,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/secureot-cybersecurity-launch-require-action-061557654.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/secureot-cybersecurity-launch-require-action-061557654.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 16,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-05",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }
