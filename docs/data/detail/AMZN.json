@@ -5,14 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-12",
-   "o": 273.18,
-   "h": 273.46,
-   "l": 267.1,
-   "c": 267.28,
-   "v": 29941100
-  },
-  {
    "time": "2026-08-13",
    "o": 267.24,
    "h": 269.58,
@@ -478,11 +470,19 @@
   },
   {
    "time": "2026-11-04",
+   "o": 264.82,
+   "h": 271.49,
+   "l": 263.85,
+   "c": 266.03,
+   "v": 93162200
+  },
+  {
+   "time": "2026-11-05",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 92981289
+   "v": 83761273
   }
  ],
  "sr": {
@@ -492,7 +492,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  267.28,
   265.13,
   262.65,
   261.31,
@@ -551,13 +550,14 @@
   240.35,
   245.63,
   250.69,
+  266.03,
   null
  ],
- "spark_start": "2026-08-12",
- "spark_end": "2026-11-04",
+ "spark_start": "2026-08-13",
+ "spark_end": "2026-11-05",
  "fundamental": {
-  "pe_trailing": 21.506063,
-  "pe_forward": 24.371632,
+  "pe_trailing": 21.03557,
+  "pe_forward": 23.838448,
   "eps_trailing": 12.37,
   "eps_forward": 10.91556,
   "stale": false,
@@ -569,131 +569,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+   "label": "Amazon Challenges Google Shopping With Direct Product Feeds",
    "value": {
-    "headline": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+    "headline": "Amazon Challenges Google Shopping With Direct Product Feeds",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793840673,
-    "url": "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss",
+    "ts": 1793921247,
+    "url": "https://www.mediapost.com/publications/article/419260/amazon-challenges-google-shopping-with-direct-prod.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a147bf9a-4218-3171-97a4-fb80fda211eb/dow-jones-futures-rise-after.html?.tsrc=rss"
+     "https://www.mediapost.com/publications/article/419260/amazon-challenges-google-shopping-with-direct-prod.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon workers in the Greater Toronto Area launch fight for better jobs with Unifor",
+   "label": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
    "value": {
-    "headline": "Amazon workers in the Greater Toronto Area launch fight for better jobs with Unifor",
+    "headline": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793835780,
-    "url": "https://finance.yahoo.com/small-business/articles/amazon-workers-greater-toronto-area-234300921.html?.tsrc=rss",
+    "ts": 1793919577,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/amazon-workers-greater-toronto-area-234300921.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-05",
+   "severity": "warn",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Is Walmart (WMT) Betting On With Its New AI Shopping Agent?",
+   "label": "Quantinuum’s Revenue Triples. What It Really Wants Is Quantum for the Masses.",
    "value": {
-    "headline": "What Is Walmart (WMT) Betting On With Its New AI Shopping Agent?",
+    "headline": "Quantinuum’s Revenue Triples. What It Really Wants Is Quantum for the Masses.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793834206,
-    "url": "https://finance.yahoo.com/technology/ai/articles/walmart-wmt-betting-ai-shopping-231646446.html?.tsrc=rss",
+    "ts": 1793918160,
+    "url": "https://finance.yahoo.com/m/eae58bbe-804f-3cec-a52f-bfe61c6d7dcb/quantinuum%E2%80%99s-revenue-triples..html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/walmart-wmt-betting-ai-shopping-231646446.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/eae58bbe-804f-3cec-a52f-bfe61c6d7dcb/quantinuum%E2%80%99s-revenue-triples..html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Qualcomm’s Stock Falls After It Warns Chip Margins Are Getting Squeezed",
+   "label": "Baird Cut Its Qualcomm Target to $320. It Still Sees 104% Upside",
    "value": {
-    "headline": "Qualcomm’s Stock Falls After It Warns Chip Margins Are Getting Squeezed",
+    "headline": "Baird Cut Its Qualcomm Target to $320. It Still Sees 104% Upside",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793831220,
-    "url": "https://finance.yahoo.com/m/1c74714d-b3e8-378c-98a9-4f7059eb768b/qualcomm%E2%80%99s-stock-falls-after.html?.tsrc=rss",
+    "ts": 1793916975,
+    "url": "https://www.tikr.com/blog/baird-cut-its-qualcomm-target-to-320-it-still-sees-104-upside?ref=yahoofinance&tlnk=yf-261105-m8g363m2&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/1c74714d-b3e8-378c-98a9-4f7059eb768b/qualcomm%E2%80%99s-stock-falls-after.html?.tsrc=rss"
+     "https://www.tikr.com/blog/baird-cut-its-qualcomm-target-to-320-it-still-sees-104-upside?ref=yahoofinance&tlnk=yf-261105-m8g363m2&.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-05",
+   "severity": "warn",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 4: Amazon Jumps 6% From New Perspective on AWS Growth and AI Strategy Following Election Result",
+   "label": "Affirm delivers quarterly results and guidance beat, raises full-year GMV outlook",
    "value": {
-    "headline": "Stock Market Today, Nov. 4: Amazon Jumps 6% From New Perspective on AWS Growth and AI Strategy Following Election Results",
+    "headline": "Affirm delivers quarterly results and guidance beat, raises full-year GMV outlook",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793830408,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-amazon-jumps-6-from-new-perspective-on-aws-growth-and-ai-strategy-following-election-results/?.tsrc=rss",
+    "ts": 1793915710,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/affirm-delivers-quarterly-results-guidance-215510525.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-amazon-jumps-6-from-new-perspective-on-aws-growth-and-ai-strategy-following-election-results/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/affirm-delivers-quarterly-results-guidance-215510525.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 8 篇 / 97 分 / 35 留言",
+   "label": "HN 討論熱度 6 篇 / 109 分 / 35 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 97,
+    "points": 109,
     "comments": 35,
-    "n": 8,
+    "n": 6,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]

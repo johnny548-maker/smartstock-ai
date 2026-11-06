@@ -5,14 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-12",
-   "o": 220.79,
-   "h": 224.85,
-   "l": 219.95,
-   "c": 223.84,
-   "v": 108783600
-  },
-  {
    "time": "2026-08-13",
    "o": 224.81,
    "h": 226.98,
@@ -478,11 +470,19 @@
   },
   {
    "time": "2026-11-04",
+   "o": 203.5,
+   "h": 206.79,
+   "l": 199.68,
+   "c": 200.13,
+   "v": 149033300
+  },
+  {
+   "time": "2026-11-05",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 147804408
+   "v": 301617834
   }
  ],
  "sr": {
@@ -492,7 +492,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  223.84,
   225.05,
   224.91,
   224.76,
@@ -551,13 +550,14 @@
   204.64,
   202.06,
   206.69,
+  200.13,
   null
  ],
- "spark_start": "2026-08-12",
- "spark_end": "2026-11-04",
+ "spark_start": "2026-08-13",
+ "spark_end": "2026-11-05",
  "fundamental": {
-  "pe_trailing": 25.300886,
-  "pe_forward": 12.575246,
+  "pe_trailing": 22.958282,
+  "pe_forward": 11.410906,
   "eps_trailing": 7.91,
   "eps_forward": 15.9146,
   "stale": false,
@@ -569,116 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Physical AI Empowers Smart Mobility: LUXEED Builds a New Full-Scenario Intelligent Ecosystem",
+   "label": "S&P 500, Nasdaq, Dow Futures Dip As Investors Step Back From AI And Tech With Nasdaq In Correction Territory — NVDA, AAP",
    "value": {
-    "headline": "Physical AI Empowers Smart Mobility: LUXEED Builds a New Full-Scenario Intelligent Ecosystem",
+    "headline": "S&P 500, Nasdaq, Dow Futures Dip As Investors Step Back From AI And Tech With Nasdaq In Correction Territory — NVDA, AAPL, UBER, SOXX In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793840520,
-    "url": "https://finance.yahoo.com/technology/ai/articles/physical-ai-empowers-smart-mobility-010200324.html?.tsrc=rss",
+    "ts": 1793926830,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-futures-dip-as-investors-step-back-from-ai-and-tech-with-nasdaq-in-correction-territory-nvda-aapl-uber-soxx-in-focus/cNGlIylR94A?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/physical-ai-empowers-smart-mobility-010200324.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-futures-dip-as-investors-step-back-from-ai-and-tech-with-nasdaq-in-correction-territory-nvda-aapl-uber-soxx-in-focus/cNGlIylR94A?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Here's What $10,000 Invested in SpaceX and Nvidia Could Be Worth by 2030",
+   "label": "Dow Jones Futures Fall, Techs Bounce After Nasdaq Dives 5.5%; Nvidia, Sandisk, CoreWeave, SpaceX Plunge",
    "value": {
-    "headline": "Here's What $10,000 Invested in SpaceX and Nvidia Could Be Worth by 2030",
+    "headline": "Dow Jones Futures Fall, Techs Bounce After Nasdaq Dives 5.5%; Nvidia, Sandisk, CoreWeave, SpaceX Plunge",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793839740,
-    "url": "https://www.fool.com/investing/2026/11/04/heres-what-10000-invested-in-spacex-and-nvidia-cou/?.tsrc=rss",
+    "ts": 1793926471,
+    "url": "https://finance.yahoo.com/m/0cd2227b-7753-3d54-a8c5-286efe82ac39/dow-jones-futures-fall%2C-techs.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/04/heres-what-10000-invested-in-spacex-and-nvidia-cou/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-05",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Did IBM Just Tell the Truth About AI?",
-   "value": {
-    "headline": "Did IBM Just Tell the Truth About AI?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793839599,
-    "url": "https://www.fool.com/investing/2026/11/04/did-ibm-just-tell-the-truth-about-ai/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/04/did-ibm-just-tell-the-truth-about-ai/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-05",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "5-star analyst resets Nvidia stock target after Intel crash",
-   "value": {
-    "headline": "5-star analyst resets Nvidia stock target after Intel crash",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793839020,
-    "url": "https://www.thestreet.com/investing/stocks/melius-nvidia-target-cut-intel?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/investing/stocks/melius-nvidia-target-cut-intel?.tsrc=rss"
+     "https://finance.yahoo.com/m/0cd2227b-7753-3d54-a8c5-286efe82ac39/dow-jones-futures-fall%2C-techs.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Prediction: This Is How Much IonQ Stock Will Be Worth by the End of 2027",
+   "label": "Is Appian a Buy After Its Latest Earnings Report?",
    "value": {
-    "headline": "Prediction: This Is How Much IonQ Stock Will Be Worth by the End of 2027",
+    "headline": "Is Appian a Buy After Its Latest Earnings Report?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793838000,
-    "url": "https://www.fool.com/investing/2026/11/04/prediction-this-is-how-much-ionq-stock-will-be-wor/?.tsrc=rss",
+    "ts": 1793926201,
+    "url": "https://www.fool.com/investing/2026/11/05/is-appian-a-buy-after-its-latest-earnings-report/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/04/prediction-this-is-how-much-ionq-stock-will-be-wor/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/05/is-appian-a-buy-after-its-latest-earnings-report/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Krispy Kreme Stock Crushed It Today",
+   "value": {
+    "headline": "Why Krispy Kreme Stock Crushed It Today",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793925956,
+    "url": "https://www.fool.com/investing/2026/11/05/why-krispy-kreme-stock-crushed-it-today/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/05/why-krispy-kreme-stock-crushed-it-today/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-06",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Box Unveils AI Agent Tools and NVIDIA Partnership at BoxWorks 2026",
+   "value": {
+    "headline": "Box Unveils AI Agent Tools and NVIDIA Partnership at BoxWorks 2026",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793924072,
+    "url": "https://www.marketbeat.com/instant-alerts/event-box-unveils-ai-agent-tools-and-nvidia-partnership-at-boxworks-2026-2026-11-05/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/instant-alerts/event-box-unveils-ai-agent-tools-and-nvidia-partnership-at-boxworks-2026-2026-11-05/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

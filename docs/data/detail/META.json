@@ -1,25 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 621.03,
- "change_pct": 2.36,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-11",
-   "o": 597.53,
-   "h": 611.95,
-   "l": 592.93,
-   "c": 598.65,
-   "v": 13146900
-  },
-  {
-   "time": "2026-08-12",
-   "o": 600.6,
-   "h": 604.02,
-   "l": 577.75,
-   "c": 578.39,
-   "v": 16186900
-  },
   {
    "time": "2026-08-13",
    "o": 580.25,
@@ -482,24 +466,32 @@
    "h": 624.84,
    "l": 610.1,
    "c": 621.03,
-   "v": 13536034
+   "v": 13731300
+  },
+  {
+   "time": "2026-11-04",
+   "o": 641.15,
+   "h": 643.09,
+   "l": 624.5,
+   "c": 630.0,
+   "v": 32441800
+  },
+  {
+   "time": "2026-11-05",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 28382653
   }
  ],
  "sr": {
-  "price": 621.03,
-  "resistance": [
-   622.66,
-   623.91
-  ],
-  "support": [
-   607.98,
-   599.17
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 519.37
  },
  "spark": [
-  598.65,
-  578.39,
   594.5,
   589.38,
   568.52,
@@ -557,13 +549,15 @@
   624.52,
   614.99,
   606.73,
-  621.03
+  621.03,
+  630.0,
+  null
  ],
- "spark_start": "2026-08-11",
- "spark_end": "2026-11-03",
+ "spark_start": "2026-08-13",
+ "spark_end": "2026-11-05",
  "fundamental": {
-  "pe_trailing": 21.188334,
-  "pe_forward": 17.45062,
+  "pe_trailing": 20.64415,
+  "pe_forward": 17.002434,
   "eps_trailing": 29.31,
   "eps_forward": 35.58785,
   "stale": false,
@@ -575,131 +569,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq Recover From AI Rout On US Midterm Election Day — META, AAPL, AMD, SKHY In Focus",
+   "label": "Apple, Alphabet, and Meta: 3 Big Takeaways from Recent Earnings",
    "value": {
-    "headline": "S&P 500, Nasdaq Recover From AI Rout On US Midterm Election Day — META, AAPL, AMD, SKHY In Focus",
+    "headline": "Apple, Alphabet, and Meta: 3 Big Takeaways from Recent Earnings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793748595,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-recover-from-ai-rout-on-us-midterm-election-day-meta-aapl-amd-skhy-in-focus/cNGXlSbR9dS?.tsrc=rss",
+    "ts": 1793919600,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-alphabet-meta-3-big-230000891.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-recover-from-ai-rout-on-us-midterm-election-day-meta-aapl-amd-skhy-in-focus/cNGXlSbR9dS?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apple-alphabet-meta-3-big-230000891.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
+   "label": "1 Unstoppable Cryptocurrency That Could Join Bitcoin in the $1 Trillion Club",
    "value": {
-    "headline": "AMD Earnings Show Big Tech Can’t Get Enough AI Chips",
+    "headline": "1 Unstoppable Cryptocurrency That Could Join Bitcoin in the $1 Trillion Club",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793745360,
-    "url": "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss",
+    "ts": 1793919060,
+    "url": "https://www.fool.com/investing/2026/11/05/1-cryptocurrency-with-trillion-dollar-potential/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/464f29a2-b094-3735-af07-154189326e16/amd-earnings-show-big-tech.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/05/1-cryptocurrency-with-trillion-dollar-potential/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
+   "label": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
    "value": {
-    "headline": "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
+    "headline": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793742574,
-    "url": "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss",
+    "ts": 1793913956,
+    "url": "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/personal-finance/2026/11/03/do-you-know-how-much-of-your-401k-is-riding-on-the-ai-trade-voters-want-paused/?.tsrc=rss"
+     "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia vs. SK Hynix: Comparing Quarterly Revenue Trajectories",
+   "label": "SpaceX Stock Is Still Falling. It Trades at Apple’s Valuation.",
    "value": {
-    "headline": "Nvidia vs. SK Hynix: Comparing Quarterly Revenue Trajectories",
+    "headline": "SpaceX Stock Is Still Falling. It Trades at Apple’s Valuation.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793740603,
-    "url": "https://www.fool.com/coverage/charts/2026/11/03/nvidia-vs-sk-hynix-comparing-quarterly-revenue-trajectories/?.tsrc=rss",
+    "ts": 1793913600,
+    "url": "https://finance.yahoo.com/m/12c89445-f84d-308c-a32e-1b9535c6322f/spacex-stock-is-still.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/charts/2026/11/03/nvidia-vs-sk-hynix-comparing-quarterly-revenue-trajectories/?.tsrc=rss"
+     "https://finance.yahoo.com/m/12c89445-f84d-308c-a32e-1b9535c6322f/spacex-stock-is-still.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
+   "label": "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI",
    "value": {
-    "headline": "Arista Networks, Inc. Reports Third Quarter 2026 Financial Results",
+    "headline": "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793739900,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss",
+    "ts": 1793912813,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/best-mag7-dip-buys-nvidia-210653656.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/arista-networks-inc-reports-third-210500149.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/best-mag7-dip-buys-nvidia-210653656.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 133 分 / 18 留言",
+   "label": "HN 討論熱度 20 篇 / 193 分 / 65 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 133,
-    "comments": 18,
+    "points": 193,
+    "comments": 65,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-06",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]
