@@ -1,25 +1,9 @@
 {
  "stock": "HAYW",
  "name": "Hayward Holdings",
- "price": 16.98,
- "change_pct": 2.91,
+ "price": 16.24,
+ "change_pct": -0.79,
  "ohlc": [
-  {
-   "time": "2026-08-12",
-   "o": 15.62,
-   "h": 15.71,
-   "l": 15.15,
-   "c": 15.3,
-   "v": 1542800
-  },
-  {
-   "time": "2026-08-13",
-   "o": 15.39,
-   "h": 15.45,
-   "l": 15.16,
-   "c": 15.29,
-   "v": 1374700
-  },
   {
    "time": "2026-08-14",
    "o": 15.23,
@@ -483,13 +467,29 @@
    "l": 16.8,
    "c": 16.98,
    "v": 8639500
+  },
+  {
+   "time": "2026-11-05",
+   "o": 16.89,
+   "h": 17.15,
+   "l": 16.08,
+   "c": 16.37,
+   "v": 4677700
+  },
+  {
+   "time": "2026-11-06",
+   "o": 15.93,
+   "h": 16.33,
+   "l": 15.88,
+   "c": 16.24,
+   "v": 2495469
   }
  ],
  "sr": {
-  "price": 16.98,
+  "price": 16.24,
   "resistance": [
-   17.24,
-   17.42
+   16.28,
+   16.32
   ],
   "support": [
    15.73,
@@ -498,8 +498,6 @@
   "strong_support": 11.1
  },
  "spark": [
-  15.3,
-  15.29,
   15.16,
   14.76,
   14.61,
@@ -557,128 +555,13 @@
   16.12,
   16.81,
   16.5,
-  16.98
+  16.98,
+  16.37,
+  16.24
  ],
- "spark_start": "2026-08-12",
- "spark_end": "2026-11-04",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "FPA Queens Road Small Cap Value Fund Initiates a New Position in Hayward Holdings (HAYW)",
-   "value": {
-    "headline": "FPA Queens Road Small Cap Value Fund Initiates a New Position in Hayward Holdings (HAYW)",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793649293,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/fpa-queens-road-small-cap-195453906.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/fpa-queens-road-small-cap-195453906.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Are Investors Paying Less For Hayward's Profit?",
-   "value": {
-    "headline": "Why Are Investors Paying Less For Hayward's Profit?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793454170,
-    "url": "https://www.trefis.com/stock/hayw/articles/621572/why-are-investors-paying-less-for-haywards-profit/2026-10-31?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/stock/hayw/articles/621572/why-are-investors-paying-less-for-haywards-profit/2026-10-31?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "5 must-read analyst questions from Hayward’s Q3 earnings call",
-   "value": {
-    "headline": "5 must-read analyst questions from Hayward’s Q3 earnings call",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793445809,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-112329860.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-112329860.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Hayward (HAYW) Stock Gains Ground As Q3 Earnings Lift Margins",
-   "value": {
-    "headline": "Hayward (HAYW) Stock Gains Ground As Q3 Earnings Lift Margins",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793358720,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/hayward-hayw-stock-gains-ground-111200792.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/hayward-hayw-stock-gains-ground-111200792.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why is Hayward (HAYW) stock soaring today",
-   "value": {
-    "headline": "Why is Hayward (HAYW) stock soaring today",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793239594,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/why-hayward-hayw-stock-soaring-020634372.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/why-hayward-hayw-stock-soaring-020634372.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

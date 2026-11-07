@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": null,
- "change_pct": null,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 186.64,
+ "change_pct": 2.78,
  "ohlc": [
-  {
-   "time": "2026-08-13",
-   "o": 224.81,
-   "h": 226.98,
-   "l": 223.46,
-   "c": 225.05,
-   "v": 98867200
-  },
   {
    "time": "2026-08-14",
    "o": 226.52,
@@ -478,21 +470,31 @@
   },
   {
    "time": "2026-11-05",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 301617834
+   "o": 196.07,
+   "h": 196.25,
+   "l": 181.46,
+   "c": 181.6,
+   "v": 306127800
+  },
+  {
+   "time": "2026-11-06",
+   "o": 191.1,
+   "h": 194.9,
+   "l": 185.22,
+   "c": 186.64,
+   "v": 179308722
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
+  "price": 186.64,
+  "resistance": [
+   219.99,
+   222.19
+  ],
   "support": [],
-  "strong_support": 163.9
+  "strong_support": 207.02
  },
  "spark": [
-  225.05,
   224.91,
   224.76,
   219.49,
@@ -551,134 +553,48 @@
   202.06,
   206.69,
   200.13,
-  null
+  181.6,
+  186.64
  ],
- "spark_start": "2026-08-13",
- "spark_end": "2026-11-05",
- "fundamental": {
-  "pe_trailing": 22.958282,
-  "pe_forward": 11.410906,
-  "eps_trailing": 7.91,
-  "eps_forward": 15.9146,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
+ "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq, Dow Futures Dip As Investors Step Back From AI And Tech With Nasdaq In Correction Territory — NVDA, AAP",
+   "label": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
    "value": {
-    "headline": "S&P 500, Nasdaq, Dow Futures Dip As Investors Step Back From AI And Tech With Nasdaq In Correction Territory — NVDA, AAPL, UBER, SOXX In Focus",
+    "headline": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
     "sources": [
-     "yahoo_us"
+     "cnyes"
     ],
     "source_count": 1,
-    "ts": 1793926830,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-futures-dip-as-investors-step-back-from-ai-and-tech-with-nasdaq-in-correction-territory-nvda-aapl-uber-soxx-in-focus/cNGlIylR94A?.tsrc=rss",
+    "ts": 1793977254,
+    "url": "cnyes:6651653",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-futures-dip-as-investors-step-back-from-ai-and-tech-with-nasdaq-in-correction-territory-nvda-aapl-uber-soxx-in-focus/cNGlIylR94A?.tsrc=rss"
+     "cnyes:6651653"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Dow Jones Futures Fall, Techs Bounce After Nasdaq Dives 5.5%; Nvidia, Sandisk, CoreWeave, SpaceX Plunge",
-   "value": {
-    "headline": "Dow Jones Futures Fall, Techs Bounce After Nasdaq Dives 5.5%; Nvidia, Sandisk, CoreWeave, SpaceX Plunge",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793926471,
-    "url": "https://finance.yahoo.com/m/0cd2227b-7753-3d54-a8c5-286efe82ac39/dow-jones-futures-fall%2C-techs.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/0cd2227b-7753-3d54-a8c5-286efe82ac39/dow-jones-futures-fall%2C-techs.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Is Appian a Buy After Its Latest Earnings Report?",
-   "value": {
-    "headline": "Is Appian a Buy After Its Latest Earnings Report?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793926201,
-    "url": "https://www.fool.com/investing/2026/11/05/is-appian-a-buy-after-its-latest-earnings-report/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/05/is-appian-a-buy-after-its-latest-earnings-report/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Krispy Kreme Stock Crushed It Today",
-   "value": {
-    "headline": "Why Krispy Kreme Stock Crushed It Today",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793925956,
-    "url": "https://www.fool.com/investing/2026/11/05/why-krispy-kreme-stock-crushed-it-today/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/05/why-krispy-kreme-stock-crushed-it-today/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Box Unveils AI Agent Tools and NVIDIA Partnership at BoxWorks 2026",
-   "value": {
-    "headline": "Box Unveils AI Agent Tools and NVIDIA Partnership at BoxWorks 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793924072,
-    "url": "https://www.marketbeat.com/instant-alerts/event-box-unveils-ai-agent-tools-and-nvidia-partnership-at-boxworks-2026-2026-11-05/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/event-box-unveils-ai-agent-tools-and-nvidia-partnership-at-boxworks-2026-2026-11-05/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 1,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_us"
+     "cnyes"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]

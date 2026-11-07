@@ -1,25 +1,9 @@
 {
  "stock": "NDSN",
  "name": "Nordson Corp",
- "price": 330.7,
- "change_pct": -0.11,
+ "price": 309.86,
+ "change_pct": -0.2,
  "ohlc": [
-  {
-   "time": "2026-08-12",
-   "o": 312.72,
-   "h": 313.62,
-   "l": 308.48,
-   "c": 310.33,
-   "v": 332800
-  },
-  {
-   "time": "2026-08-13",
-   "o": 310.43,
-   "h": 311.22,
-   "l": 306.04,
-   "c": 309.06,
-   "v": 234700
-  },
   {
    "time": "2026-08-14",
    "o": 308.66,
@@ -483,23 +467,37 @@
    "l": 319.32,
    "c": 330.7,
    "v": 397900
+  },
+  {
+   "time": "2026-11-05",
+   "o": 330.75,
+   "h": 332.55,
+   "l": 309.75,
+   "c": 310.49,
+   "v": 438300
+  },
+  {
+   "time": "2026-11-06",
+   "o": 311.5,
+   "h": 314.35,
+   "l": 308.88,
+   "c": 309.86,
+   "v": 405234
   }
  ],
  "sr": {
-  "price": 330.7,
+  "price": 309.86,
   "resistance": [
-   332.55,
-   338.1
+   313.62,
+   314.73
   ],
   "support": [
-   322.21,
-   318.68
+   306.03,
+   302.01
   ],
   "strong_support": 161.81
  },
  "spark": [
-  310.33,
-  309.06,
   307.8,
   308.9,
   303.3,
@@ -557,128 +555,13 @@
   322.67,
   327.58,
   331.06,
-  330.7
+  330.7,
+  310.49,
+  309.86
  ],
- "spark_start": "2026-08-12",
- "spark_end": "2026-11-04",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 Dividend Aristocrats With the Most Room to Keep Raising Their Dividends",
-   "value": {
-    "headline": "3 Dividend Aristocrats With the Most Room to Keep Raising Their Dividends",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793800372,
-    "url": "https://247wallst.com/investing/2026/11/04/3-dividend-aristocrats-with-the-most-room-to-keep-raising-their-dividends/?.tsrc=rss",
-    "urls": [
-     "https://247wallst.com/investing/2026/11/04/3-dividend-aristocrats-with-the-most-room-to-keep-raising-their-dividends/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nordson EFD to Preview New Dispensing Technologies for Medical Device Assembly at COMPAMED 2026",
-   "value": {
-    "headline": "Nordson EFD to Preview New Dispensing Technologies for Medical Device Assembly at COMPAMED 2026",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793606400,
-    "url": "https://finance.yahoo.com/healthcare/articles/nordson-efd-preview-dispensing-technologies-080000407.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/healthcare/articles/nordson-efd-preview-dispensing-technologies-080000407.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nordson (NDSN) vs. IEX and DOV: Can Semiconductor Expansion Turn Precision Manufacturing Into a Growth Story?",
-   "value": {
-    "headline": "Nordson (NDSN) vs. IEX and DOV: Can Semiconductor Expansion Turn Precision Manufacturing Into a Growth Story?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793397967,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nordson-ndsn-vs-iex-dov-220607466.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nordson-ndsn-vs-iex-dov-220607466.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Earnings Preview: What to Expect From Nordson’s Report",
-   "value": {
-    "headline": "Earnings Preview: What to Expect From Nordson’s Report",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793274457,
-    "url": "https://www.barchart.com/story/news/8525233/earnings-preview-what-to-expect-from-nordsons-report?.tsrc=rss",
-    "urls": [
-     "https://www.barchart.com/story/news/8525233/earnings-preview-what-to-expect-from-nordsons-report?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 low-volatility stocks that fall short",
-   "value": {
-    "headline": "3 low-volatility stocks that fall short",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793038007,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/3-low-volatility-stocks-fall-180647163.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/3-low-volatility-stocks-fall-180647163.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-06",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

@@ -1,17 +1,9 @@
 {
  "stock": "6834",
  "name": "天二科技",
- "price": 92.7,
- "change_pct": -10.0,
+ "price": 88.6,
+ "change_pct": -4.42,
  "ohlc": [
-  {
-   "time": "2026-08-10",
-   "o": 94.8,
-   "h": 96.6,
-   "l": 93.4,
-   "c": 96.6,
-   "v": 4514003
-  },
   {
    "time": "2026-08-11",
    "o": 96.6,
@@ -483,10 +475,18 @@
    "l": 92.7,
    "c": 92.7,
    "v": 3119387
+  },
+  {
+   "time": "2026-11-06",
+   "o": 83.5,
+   "h": 93.6,
+   "l": 83.5,
+   "c": 88.6,
+   "v": 3847483
   }
  ],
  "sr": {
-  "price": 92.7,
+  "price": 88.6,
   "resistance": [
    98.9,
    99.9
@@ -498,7 +498,6 @@
   "strong_support": 21.89
  },
  "spark": [
-  96.6,
   106.0,
   107.0,
   107.5,
@@ -557,10 +556,11 @@
   113.0,
   103.0,
   103.0,
-  92.7
+  92.7,
+  88.6
  ],
- "spark_start": "2026-08-10",
- "spark_end": "2026-11-05",
+ "spark_start": "2026-08-11",
+ "spark_end": "2026-11-06",
  "fundamental": {
   "rev_yoy": 132.4,
   "rev_accel": true,
@@ -571,17 +571,50 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -15
+   },
+   "severity": "info",
+   "as_of": "2026-11-07",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 38.5 / 殖利率 0.45% / PB 5.08",
+   "value": {
+    "pe": 38.52,
+    "yield": 0.45,
+    "pb": 5.08
+   },
+   "severity": "info",
+   "as_of": "2026-11-06",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 82,
+    "short_today": 67,
     "outstanding": 88471082,
-    "short_pct": 9.268565292329079e-05
+    "short_pct": 7.573096031537175e-05
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "tdcc",
+   "kind": "chip",
+   "label": "散戶化/出貨",
+   "value": 59.98,
+   "severity": "warn",
+   "as_of": "20261106",
+   "note": "大戶持股%=59.98；WoW-0.20；股東人數-119"
   }
  ],
  "trends": {
@@ -1119,6 +1152,10 @@
    {
     "t": "2026-10-30",
     "v": 60.18
+   },
+   {
+    "t": "2026-11-06",
+    "v": 59.98
    }
   ],
   "rev_yoy": [

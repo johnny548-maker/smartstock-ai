@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": null,
- "change_pct": null,
+ "price": 259.3,
+ "change_pct": -0.35,
  "ohlc": [
-  {
-   "time": "2026-08-13",
-   "o": 267.24,
-   "h": 269.58,
-   "l": 264.71,
-   "c": 265.13,
-   "v": 32170200
-  },
   {
    "time": "2026-08-14",
    "o": 264.88,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-05",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 83761273
+   "o": 271.43,
+   "h": 273.23,
+   "l": 252.27,
+   "c": 260.21,
+   "v": 85796800
+  },
+  {
+   "time": "2026-11-06",
+   "o": 259.81,
+   "h": 264.18,
+   "l": 258.53,
+   "c": 259.3,
+   "v": 41256664
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 259.3,
+  "resistance": [
+   259.49,
+   261.12
+  ],
+  "support": [
+   257.04,
+   256.16
+  ],
   "strong_support": 196.0
  },
  "spark": [
-  265.13,
   262.65,
   261.31,
   259.45,
@@ -551,119 +556,137 @@
   245.63,
   250.69,
   266.03,
-  null
+  260.21,
+  259.3
  ],
- "spark_start": "2026-08-13",
- "spark_end": "2026-11-05",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": {
   "pe_trailing": 21.03557,
   "pe_forward": 23.838448,
   "eps_trailing": 12.37,
   "eps_forward": 10.91556,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 259.3,
+  "stop": 241.15,
+  "target": 304.68,
+  "atr_bracket": 304.68,
+  "measured_move": 264.27,
+  "target_band": [
+   264.27,
+   304.68
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.8,
+  "swing_stop": 226.43,
+  "chandelier": 246.64,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Challenges Google Shopping With Direct Product Feeds",
+   "label": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
    "value": {
-    "headline": "Amazon Challenges Google Shopping With Direct Product Feeds",
+    "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793921247,
-    "url": "https://www.mediapost.com/publications/article/419260/amazon-challenges-google-shopping-with-direct-prod.html?.tsrc=rss",
+    "ts": 1794008496,
+    "url": "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss",
     "urls": [
-     "https://www.mediapost.com/publications/article/419260/amazon-challenges-google-shopping-with-direct-prod.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
+   "label": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
    "value": {
-    "headline": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
+    "headline": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793919577,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/?.tsrc=rss",
+    "ts": 1794006704,
+    "url": "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-07",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+   "value": {
+    "headline": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794001595,
+    "url": "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Quantinuum’s Revenue Triples. What It Really Wants Is Quantum for the Masses.",
+   "label": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
    "value": {
-    "headline": "Quantinuum’s Revenue Triples. What It Really Wants Is Quantum for the Masses.",
+    "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793918160,
-    "url": "https://finance.yahoo.com/m/eae58bbe-804f-3cec-a52f-bfe61c6d7dcb/quantinuum%E2%80%99s-revenue-triples..html?.tsrc=rss",
+    "ts": 1793999411,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/eae58bbe-804f-3cec-a52f-bfe61c6d7dcb/quantinuum%E2%80%99s-revenue-triples..html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Baird Cut Its Qualcomm Target to $320. It Still Sees 104% Upside",
+   "label": "Data centers are unpopular — and a key motor of economic growth",
    "value": {
-    "headline": "Baird Cut Its Qualcomm Target to $320. It Still Sees 104% Upside",
+    "headline": "Data centers are unpopular — and a key motor of economic growth",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793916975,
-    "url": "https://www.tikr.com/blog/baird-cut-its-qualcomm-target-to-320-it-still-sees-104-upside?ref=yahoofinance&tlnk=yf-261105-m8g363m2&.tsrc=rss",
+    "ts": 1793999344,
+    "url": "https://www.cbsnews.com/news/data-centers-ai-investment-stocks-economy/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/baird-cut-its-qualcomm-target-to-320-it-still-sees-104-upside?ref=yahoofinance&tlnk=yf-261105-m8g363m2&.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-06",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Affirm delivers quarterly results and guidance beat, raises full-year GMV outlook",
-   "value": {
-    "headline": "Affirm delivers quarterly results and guidance beat, raises full-year GMV outlook",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1793915710,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/affirm-delivers-quarterly-results-guidance-215510525.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/affirm-delivers-quarterly-results-guidance-215510525.html?.tsrc=rss"
+     "https://www.cbsnews.com/news/data-centers-ai-investment-stocks-economy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -678,22 +701,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 6 篇 / 109 分 / 35 留言",
+   "label": "HN 討論熱度 10 篇 / 138 分 / 41 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 109,
-    "comments": 35,
-    "n": 6,
+    "points": 138,
+    "comments": 41,
+    "n": 10,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]

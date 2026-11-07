@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 610.15,
+ "change_pct": 0.84,
  "ohlc": [
-  {
-   "time": "2026-08-13",
-   "o": 580.25,
-   "h": 595.38,
-   "l": 578.93,
-   "c": 594.5,
-   "v": 11164200
-  },
   {
    "time": "2026-08-14",
    "o": 596.51,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-05",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 28382653
+   "o": 632.3,
+   "h": 634.99,
+   "l": 583.8,
+   "c": 605.08,
+   "v": 28676200
+  },
+  {
+   "time": "2026-11-06",
+   "o": 607.33,
+   "h": 625.55,
+   "l": 606.82,
+   "c": 610.15,
+   "v": 15657463
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 610.15,
+  "resistance": [
+   611.95,
+   622.66
+  ],
+  "support": [
+   607.98,
+   598.97
+  ],
   "strong_support": 519.37
  },
  "spark": [
-  594.5,
   589.38,
   568.52,
   543.24,
@@ -551,16 +556,17 @@
   606.73,
   621.03,
   630.0,
-  null
+  605.08,
+  610.15
  ],
- "spark_start": "2026-08-13",
- "spark_end": "2026-11-05",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": {
   "pe_trailing": 20.64415,
   "pe_forward": 17.002434,
   "eps_trailing": 29.31,
   "eps_forward": 35.58785,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple, Alphabet, and Meta: 3 Big Takeaways from Recent Earnings",
+   "label": "Viasat Q2 Earnings Call Highlights",
    "value": {
-    "headline": "Apple, Alphabet, and Meta: 3 Big Takeaways from Recent Earnings",
+    "headline": "Viasat Q2 Earnings Call Highlights",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793919600,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-alphabet-meta-3-big-230000891.html?.tsrc=rss",
+    "ts": 1794010473,
+    "url": "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/apple-alphabet-meta-3-big-230000891.html?.tsrc=rss"
+     "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "1 Unstoppable Cryptocurrency That Could Join Bitcoin in the $1 Trillion Club",
+   "label": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
    "value": {
-    "headline": "1 Unstoppable Cryptocurrency That Could Join Bitcoin in the $1 Trillion Club",
+    "headline": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793919060,
-    "url": "https://www.fool.com/investing/2026/11/05/1-cryptocurrency-with-trillion-dollar-potential/?.tsrc=rss",
+    "ts": 1794006704,
+    "url": "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/05/1-cryptocurrency-with-trillion-dollar-potential/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
+   "label": "Nuclear Reactor Firm Oklo Beats Earnings Expectations. That’s Not Why the Stock Is Up.",
    "value": {
-    "headline": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
+    "headline": "Nuclear Reactor Firm Oklo Beats Earnings Expectations. That’s Not Why the Stock Is Up.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793913956,
-    "url": "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss",
+    "ts": 1794006420,
+    "url": "https://finance.yahoo.com/m/f6bb533b-3d0c-39bc-adfc-c5131b00ffb9/nuclear-reactor-firm-oklo.html?.tsrc=rss",
     "urls": [
-     "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss"
+     "https://finance.yahoo.com/m/f6bb533b-3d0c-39bc-adfc-c5131b00ffb9/nuclear-reactor-firm-oklo.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "SpaceX Stock Is Still Falling. It Trades at Apple’s Valuation.",
+   "label": "Should You Be Worried About Booking Holdings Stock?",
    "value": {
-    "headline": "SpaceX Stock Is Still Falling. It Trades at Apple’s Valuation.",
+    "headline": "Should You Be Worried About Booking Holdings Stock?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793913600,
-    "url": "https://finance.yahoo.com/m/12c89445-f84d-308c-a32e-1b9535c6322f/spacex-stock-is-still.html?.tsrc=rss",
+    "ts": 1794005972,
+    "url": "https://www.trefis.com/stock/bkng/articles/623212/should-you-be-worried-about-booking-holdings-stock/2026-11-06?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/12c89445-f84d-308c-a32e-1b9535c6322f/spacex-stock-is-still.html?.tsrc=rss"
+     "https://www.trefis.com/stock/bkng/articles/623212/should-you-be-worried-about-booking-holdings-stock/2026-11-06?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI",
+   "label": "Meta Pauses Data-Scraping Terms Following Publisher Criticism",
    "value": {
-    "headline": "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI",
+    "headline": "Meta Pauses Data-Scraping Terms Following Publisher Criticism",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793912813,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/best-mag7-dip-buys-nvidia-210653656.html?.tsrc=rss",
+    "ts": 1794004174,
+    "url": "https://www.mediapost.com/publications/article/419294/meta-pauses-data-scraping-terms-following-publishe.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/best-mag7-dip-buys-nvidia-210653656.html?.tsrc=rss"
+     "https://www.mediapost.com/publications/article/419294/meta-pauses-data-scraping-terms-following-publishe.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 193 分 / 65 留言",
+   "label": "HN 討論熱度 20 篇 / 216 分 / 132 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 193,
-    "comments": 65,
+    "points": 216,
+    "comments": 132,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]

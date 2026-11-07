@@ -1,33 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 331.9,
- "change_pct": -1.9,
+ "price": 342.37,
+ "change_pct": -0.52,
  "ohlc": [
-  {
-   "time": "2026-08-11",
-   "o": 307.75,
-   "h": 309.97,
-   "l": 302.79,
-   "c": 304.91,
-   "v": 37476700
-  },
-  {
-   "time": "2026-08-12",
-   "o": 305.1,
-   "h": 305.66,
-   "l": 300.57,
-   "c": 302.25,
-   "v": 41657800
-  },
-  {
-   "time": "2026-08-13",
-   "o": 304.21,
-   "h": 306.0,
-   "l": 302.05,
-   "c": 305.26,
-   "v": 40349300
-  },
   {
    "time": "2026-08-14",
    "o": 306.0,
@@ -482,25 +458,46 @@
    "h": 334.5,
    "l": 325.33,
    "c": 331.9,
-   "v": 61365001
+   "v": 63160000
+  },
+  {
+   "time": "2026-11-04",
+   "o": 341.57,
+   "h": 354.5,
+   "l": 340.99,
+   "c": 349.51,
+   "v": 89637700
+  },
+  {
+   "time": "2026-11-05",
+   "o": 353.89,
+   "h": 355.38,
+   "l": 342.06,
+   "c": 344.17,
+   "v": 75678900
+  },
+  {
+   "time": "2026-11-06",
+   "o": 338.73,
+   "h": 345.79,
+   "l": 338.3,
+   "c": 342.37,
+   "v": 43750861
   }
  ],
  "sr": {
-  "price": 331.9,
+  "price": 342.37,
   "resistance": [
-   334.7,
-   336.22
+   342.99,
+   344.27
   ],
   "support": [
-   325.81,
-   319.07
+   338.7,
+   325.81
   ],
   "strong_support": 242.76
  },
  "spark": [
-  304.91,
-  302.25,
-  305.26,
   305.93,
   305.59,
   310.03,
@@ -557,15 +554,18 @@
   348.91,
   344.63,
   338.32,
-  331.9
+  331.9,
+  349.51,
+  344.17,
+  342.37
  ],
- "spark_start": "2026-08-11",
- "spark_end": "2026-11-03",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": {
-  "pe_trailing": 36.95991,
-  "pe_forward": 31.073286,
+  "pe_trailing": 38.125835,
+  "pe_forward": 32.152912,
   "eps_trailing": 8.98,
-  "eps_forward": 10.6812,
+  "eps_forward": 10.64818,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "蘋果iOS 27.3開發者測試版上線 Siri AI支援繁中",
+   "label": "Viasat Q2 Earnings Call Highlights",
    "value": {
-    "headline": "蘋果iOS 27.3開發者測試版上線 Siri AI支援繁中",
+    "headline": "Viasat Q2 Earnings Call Highlights",
     "sources": [
-     "udn"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793753670,
-    "url": "https://money.udn.com/money/story/5612/9855887",
+    "ts": 1794010473,
+    "url": "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
     "urls": [
-     "https://money.udn.com/money/story/5612/9855887"
+     "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple: 3 Key Takeaways for Long-Term Investors",
+   "label": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
    "value": {
-    "headline": "Apple: 3 Key Takeaways for Long-Term Investors",
+    "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793753330,
-    "url": "https://www.fool.com/earnings/takeaways/2026/11/03/apple-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
+    "ts": 1794008496,
+    "url": "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/earnings/takeaways/2026/11/03/apple-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
+     "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jim Cramer Says the Executioner Is “Axing Palantir and Apple.” What Investors Should Make of It",
+   "label": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
    "value": {
-    "headline": "Jim Cramer Says the Executioner Is “Axing Palantir and Apple.” What Investors Should Make of It",
+    "headline": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793750957,
-    "url": "https://247wallst.com/investing/2026/11/03/jim-cramer-says-the-executioner-is-axing-palantir-and-apple-what-investors-should-make-of-it/?.tsrc=rss",
+    "ts": 1794001595,
+    "url": "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/03/jim-cramer-says-the-executioner-is-axing-palantir-and-apple-what-investors-should-make-of-it/?.tsrc=rss"
+     "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq Recover From AI Rout On US Midterm Election Day — META, AAPL, AMD, SKHY In Focus",
+   "label": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
    "value": {
-    "headline": "S&P 500, Nasdaq Recover From AI Rout On US Midterm Election Day — META, AAPL, AMD, SKHY In Focus",
+    "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793748595,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-recover-from-ai-rout-on-us-midterm-election-day-meta-aapl-amd-skhy-in-focus/cNGXlSbR9dS?.tsrc=rss",
+    "ts": 1793999411,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-recover-from-ai-rout-on-us-midterm-election-day-meta-aapl-amd-skhy-in-focus/cNGXlSbR9dS?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 3: Markets Edge Higher as Semiconductor Stocks Rebound",
+   "label": "Dan Ives: “20% of the World” Will Access AI Through an Apple Device",
    "value": {
-    "headline": "Stock Market Today, Nov. 3: Markets Edge Higher as Semiconductor Stocks Rebound",
+    "headline": "Dan Ives: “20% of the World” Will Access AI Through an Apple Device",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793747039,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/03/stock-market-today-nov-3-markets-edge-higher-as-semiconductor-stocks-rebound/?.tsrc=rss",
+    "ts": 1793993184,
+    "url": "https://www.tikr.com/blog/dan-ives-20-of-the-world-will-access-ai-through-an-apple-device?ref=yahoofinance&tlnk=yf-261106-pxjfqqvq&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/03/stock-market-today-nov-3-markets-edge-higher-as-semiconductor-stocks-rebound/?.tsrc=rss"
+     "https://www.tikr.com/blog/dan-ives-20-of-the-world-will-access-ai-through-an-apple-device?ref=yahoofinance&tlnk=yf-261106-pxjfqqvq&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 14 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 14,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 232 分 / 97 留言",
+   "label": "HN 討論熱度 20 篇 / 244 分 / 149 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 232,
-    "comments": 97,
+    "points": 244,
+    "comments": 149,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-04",
+   "as_of": "2026-11-07",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   }
  ]

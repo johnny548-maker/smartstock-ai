@@ -1,8 +1,8 @@
 {
  "stock": "5520.TWO",
  "name": "力泰",
- "price": 80.8,
- "change_pct": -2.65,
+ "price": 81.0,
+ "change_pct": 0.25,
  "ohlc": [
   {
    "time": "2026-06-20",
@@ -355,15 +355,25 @@
    "l": 80.8,
    "c": 80.8,
    "v": 9063
+  },
+  {
+   "time": "2026-11-07",
+   "o": 79.0,
+   "h": 81.0,
+   "l": 78.0,
+   "c": 81.0,
+   "v": 10002
   }
  ],
  "sr": {
-  "price": 80.8,
+  "price": 81.0,
   "resistance": [
    83.0,
    83.9
   ],
-  "support": [],
+  "support": [
+   80.8
+  ],
   "strong_support": 80.8
  },
  "spark": [
@@ -410,10 +420,11 @@
   83.0,
   83.9,
   83.0,
-  80.8
+  80.8,
+  81.0
  ],
  "spark_start": "2026-06-20",
- "spark_end": "2026-11-06",
+ "spark_end": "2026-11-07",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

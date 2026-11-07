@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": null,
- "change_pct": null,
+ "price": 530.61,
+ "change_pct": -0.99,
  "ohlc": [
-  {
-   "time": "2026-08-13",
-   "o": 492.34,
-   "h": 500.4,
-   "l": 492.08,
-   "c": 495.95,
-   "v": 23039000
-  },
   {
    "time": "2026-08-14",
    "o": 495.43,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-05",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 41558807
+   "o": 554.94,
+   "h": 557.62,
+   "l": 532.68,
+   "c": 535.93,
+   "v": 42507900
+  },
+  {
+   "time": "2026-11-06",
+   "o": 525.69,
+   "h": 538.3,
+   "l": 524.61,
+   "c": 530.61,
+   "v": 26346052
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 530.61,
+  "resistance": [
+   541.29,
+   551.15
+  ],
+  "support": [
+   524.43,
+   518.79
+  ],
   "strong_support": 348.54
  },
  "spark": [
-  495.95,
   494.47,
   479.45,
   480.73,
@@ -551,16 +556,17 @@
   507.12,
   520.99,
   555.8,
-  null
+  535.93,
+  530.61
  ],
- "spark_start": "2026-08-13",
- "spark_end": "2026-11-05",
+ "spark_start": "2026-08-14",
+ "spark_end": "2026-11-06",
  "fundamental": {
   "pe_trailing": 27.971294,
   "pe_forward": 22.164799,
   "eps_trailing": 19.16,
   "eps_forward": 24.17933,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,116 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "IREN (IREN) Draws Tighter Oversight On Neocloud Data Center Projects",
+   "label": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
    "value": {
-    "headline": "IREN (IREN) Draws Tighter Oversight On Neocloud Data Center Projects",
+    "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793920885,
-    "url": "https://finance.yahoo.com/technology/ai/articles/iren-iren-draws-tighter-oversight-232125190.html?.tsrc=rss",
+    "ts": 1794008496,
+    "url": "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/iren-iren-draws-tighter-oversight-232125190.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Docusign vs. Monday.com: Which Technology Stock Is a Better Buy for 2027?",
+   "label": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
    "value": {
-    "headline": "Docusign vs. Monday.com: Which Technology Stock Is a Better Buy for 2027?",
+    "headline": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793917982,
-    "url": "https://www.fool.com/coverage/better-buy/2026/11/05/docusign-vs-monday-com-which-technology-stock-is-a-better-buy-for-2027/?.tsrc=rss",
+    "ts": 1794006704,
+    "url": "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/11/05/docusign-vs-monday-com-which-technology-stock-is-a-better-buy-for-2027/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Oil's Sudden Price Drop Surprises Citi's Chronert",
+   "label": "A Retiree Who Bought 1,000 Oracle Shares at $39 Just Watched Microsoft Walk Away",
    "value": {
-    "headline": "Oil's Sudden Price Drop Surprises Citi's Chronert",
+    "headline": "A Retiree Who Bought 1,000 Oracle Shares at $39 Just Watched Microsoft Walk Away",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793914130,
-    "url": "https://finance.yahoo.com/video/oils-sudden-price-drop-surprises-212850303.html?.tsrc=rss",
+    "ts": 1794005321,
+    "url": "https://247wallst.com/investing/2026/11/06/a-retiree-who-bought-1000-oracle-shares-at-39-just-watched-microsoft-walk-away/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/oils-sudden-price-drop-surprises-212850303.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/06/a-retiree-who-bought-1000-oracle-shares-at-39-just-watched-microsoft-walk-away/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
+   "label": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
    "value": {
-    "headline": "dYdX Team’s Arcus Opens Stock-Token Collateral to All Perps Traders, With a $20,000 Cap",
+    "headline": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793913956,
-    "url": "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss",
+    "ts": 1794001595,
+    "url": "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss",
     "urls": [
-     "https://unchainedcrypto.com/dydx-teams-arcus-opens-stock-token-collateral-to-all-perps-traders-with-a-20000-cap/?.tsrc=rss"
+     "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-06",
+   "severity": "warn",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Surveil Recognized as a Pioneer in the October 2026 Gartner(R) Emerging Market Quadrant for AI FinOps Tools - Startup Ve",
+   "label": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
    "value": {
-    "headline": "Surveil Recognized as a Pioneer in the October 2026 Gartner(R) Emerging Market Quadrant for AI FinOps Tools - Startup Vendors",
+    "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793913900,
-    "url": "https://finance.yahoo.com/technology/ai/articles/surveil-recognized-pioneer-october-2026-212500980.html?.tsrc=rss",
+    "ts": 1793999411,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/surveil-recognized-pioneer-october-2026-212500980.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-06",
+   "as_of": "2026-11-07",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ]
