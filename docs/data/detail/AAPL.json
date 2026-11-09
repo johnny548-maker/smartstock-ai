@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 342.37,
- "change_pct": -0.52,
+ "price": 351.3,
+ "change_pct": 2.61,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 306.0,
-   "h": 307.49,
-   "l": 304.3,
-   "c": 305.93,
-   "v": 28229400
-  },
   {
    "time": "2026-08-17",
    "o": 306.21,
@@ -482,14 +474,22 @@
    "h": 345.79,
    "l": 338.3,
    "c": 342.37,
-   "v": 43750861
+   "v": 44676300
+  },
+  {
+   "time": "2026-11-09",
+   "o": 344.93,
+   "h": 352.28,
+   "l": 344.78,
+   "c": 351.3,
+   "v": 28021028
   }
  ],
  "sr": {
-  "price": 342.37,
+  "price": 351.3,
   "resistance": [
-   342.99,
-   344.27
+   351.43,
+   351.73
   ],
   "support": [
    338.7,
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  305.93,
   305.59,
   310.03,
   316.83,
@@ -557,15 +556,16 @@
   331.9,
   349.51,
   344.17,
-  342.37
+  342.37,
+  351.3
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
  "fundamental": {
-  "pe_trailing": 38.125835,
-  "pe_forward": 32.152912,
+  "pe_trailing": 39.12027,
+  "pe_forward": 33.292835,
   "eps_trailing": 8.98,
-  "eps_forward": 10.64818,
+  "eps_forward": 10.55182,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,132 +575,149 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Viasat Q2 Earnings Call Highlights",
+   "label": "Apple Makes Major AI Pricing Move as New Revenue Opportunity Emerges",
    "value": {
-    "headline": "Viasat Q2 Earnings Call Highlights",
+    "headline": "Apple Makes Major AI Pricing Move as New Revenue Opportunity Emerges",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794010473,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1794250631,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-makes-major-ai-pricing-185711619.html?.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-makes-major-ai-pricing-185711619.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+   "label": "蘋果秀機器人大腦 人形產品出現重大突破 鴻準受惠將拿下大單",
    "value": {
-    "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+    "headline": "蘋果秀機器人大腦 人形產品出現重大突破 鴻準受惠將拿下大單",
     "sources": [
-     "yahoo_us"
+     "udn"
     ],
     "source_count": 1,
-    "ts": 1794008496,
-    "url": "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss",
+    "ts": 1794249612,
+    "url": "https://money.udn.com/money/story/5612/9867805",
     "urls": [
-     "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss"
+     "https://money.udn.com/money/story/5612/9867805"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+   "label": "宇樹將成為蘋果機器人關鍵夥伴 上銀、雅特力跟進搶商機",
    "value": {
-    "headline": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+    "headline": "宇樹將成為蘋果機器人關鍵夥伴 上銀、雅特力跟進搶商機",
     "sources": [
-     "yahoo_us"
+     "udn"
     ],
     "source_count": 1,
-    "ts": 1794001595,
-    "url": "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss",
+    "ts": 1794249496,
+    "url": "https://money.udn.com/money/story/5612/9867809",
     "urls": [
-     "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss"
+     "https://money.udn.com/money/story/5612/9867809"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-07",
+   "severity": "info",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
+   "label": "Nvidia has a 'deep bench' if Jensen Huang steps aside, tech investor says",
    "value": {
-    "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
+    "headline": "Nvidia has a 'deep bench' if Jensen Huang steps aside, tech investor says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793999411,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss",
+    "ts": 1794248347,
+    "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-has-a-deep-bench-if-jensen-huang-steps-aside-tech-investor-says-181907948.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/article/nvidia-has-a-deep-bench-if-jensen-huang-steps-aside-tech-investor-says-181907948.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dan Ives: “20% of the World” Will Access AI Through an Apple Device",
+   "label": "Nvidia's Huang scandal rattles AI industry built around him",
    "value": {
-    "headline": "Dan Ives: “20% of the World” Will Access AI Through an Apple Device",
+    "headline": "Nvidia's Huang scandal rattles AI industry built around him",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793993184,
-    "url": "https://www.tikr.com/blog/dan-ives-20-of-the-world-will-access-ai-through-an-apple-device?ref=yahoofinance&tlnk=yf-261106-pxjfqqvq&.tsrc=rss",
+    "ts": 1794247531,
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidias-huang-scandal-rattles-ai-180531112.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/dan-ives-20-of-the-world-will-access-ai-through-an-apple-device?ref=yahoofinance&tlnk=yf-261106-pxjfqqvq&.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/nvidias-huang-scandal-rattles-ai-180531112.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 244 分 / 149 留言",
+   "label": "HN 討論熱度 20 篇 / 159 分 / 52 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 244,
-    "comments": 149,
+    "points": 159,
+    "comments": 52,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日、累計 165,606 股交割失敗）",
+   "value": {
+    "total_shares": 165606,
+    "days": 8,
+    "max_shares": 156354,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-11-09",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

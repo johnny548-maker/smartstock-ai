@@ -1,17 +1,9 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 690.0,
- "change_pct": 5.12,
+ "price": 732.09,
+ "change_pct": 6.1,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 979.17,
-   "h": 983.85,
-   "l": 956.05,
-   "c": 971.51,
-   "v": 27881100
-  },
   {
    "time": "2026-08-17",
    "o": 999.39,
@@ -478,15 +470,23 @@
   },
   {
    "time": "2026-11-06",
-   "o": 708.34,
+   "o": 708.35,
    "h": 724.8,
    "l": 676.0,
    "c": 690.0,
-   "v": 44672754
+   "v": 44765100
+  },
+  {
+   "time": "2026-11-09",
+   "o": 703.59,
+   "h": 744.46,
+   "l": 689.65,
+   "c": 732.09,
+   "v": 25633354
   }
  ],
  "sr": {
-  "price": 690.0,
+  "price": 732.09,
   "resistance": [
    818.42,
    928.45
@@ -498,7 +498,6 @@
   "strong_support": 61.37
  },
  "spark": [
-  971.51,
   1011.59,
   940.61,
   936.96,
@@ -557,48 +556,12 @@
   855.1,
   795.23,
   656.39,
-  690.0
+  690.0,
+  732.09
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
-   "value": {
-    "headline": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1793977254,
-    "url": "cnyes:6651653",
-    "urls": [
-     "cnyes:6651653"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-07",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-07",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

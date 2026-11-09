@@ -1,17 +1,9 @@
 {
  "stock": "EXTR",
  "name": "Extreme Networks",
- "price": 24.03,
- "change_pct": 14.16,
+ "price": 25.45,
+ "change_pct": 5.91,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 24.05,
-   "h": 25.2,
-   "l": 24.05,
-   "c": 24.41,
-   "v": 1317700
-  },
   {
    "time": "2026-08-17",
    "o": 24.02,
@@ -479,17 +471,25 @@
   {
    "time": "2026-11-06",
    "o": 24.04,
-   "h": 26.28,
+   "h": 26.3,
    "l": 23.5,
    "c": 24.03,
-   "v": 4887787
+   "v": 4887800
+  },
+  {
+   "time": "2026-11-09",
+   "o": 24.3,
+   "h": 25.54,
+   "l": 24.08,
+   "c": 25.45,
+   "v": 1333362
   }
  ],
  "sr": {
-  "price": 24.03,
+  "price": 25.45,
   "resistance": [
-   25.13,
-   25.18
+   26.3,
+   31.03
   ],
   "support": [
    23.49,
@@ -498,7 +498,6 @@
   "strong_support": 10.1
  },
  "spark": [
-  24.41,
   24.28,
   23.75,
   22.79,
@@ -557,11 +556,129 @@
   22.81,
   22.84,
   21.05,
-  24.03
+  24.03,
+  25.45
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Extreme Networks (EXTR) Still Worth More Than Its Price?",
+   "value": {
+    "headline": "Is Extreme Networks (EXTR) Still Worth More Than Its Price?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794121684,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/extreme-networks-extr-still-worth-070804601.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/extreme-networks-extr-still-worth-070804601.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Extreme Networks (EXTR) Could Be 28% Below Fair Value Following Strong Results And Guidance",
+   "value": {
+    "headline": "Extreme Networks (EXTR) Could Be 28% Below Fair Value Following Strong Results And Guidance",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794111765,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/extreme-networks-extr-could-28-042245719.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/extreme-networks-extr-could-28-042245719.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Is Behind The Move In Arista Stock?",
+   "value": {
+    "headline": "What Is Behind The Move In Arista Stock?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794055791,
+    "url": "https://www.trefis.com/stock/anet/articles/623737/what-is-behind-the-move-in-arista-stock/2026-11-07?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/anet/articles/623737/what-is-behind-the-move-in-arista-stock/2026-11-07?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Changed In Arista's Story?",
+   "value": {
+    "headline": "What Changed In Arista's Story?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793987842,
+    "url": "https://www.trefis.com/stock/anet/articles/623302/what-changed-in-aristas-story/2026-11-06?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/anet/articles/623302/what-changed-in-aristas-story/2026-11-06?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Is Arista Stock Falling?",
+   "value": {
+    "headline": "Why Is Arista Stock Falling?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793982908,
+    "url": "https://www.trefis.com/stock/anet/articles/623355/why-is-arista-stock-falling/2026-11-06?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/anet/articles/623355/why-is-arista-stock-falling/2026-11-06?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-09",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

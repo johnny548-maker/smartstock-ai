@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 530.61,
- "change_pct": -0.99,
+ "price": 546.64,
+ "change_pct": 3.02,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 495.43,
-   "h": 499.07,
-   "l": 492.99,
-   "c": 494.47,
-   "v": 16217600
-  },
   {
    "time": "2026-08-17",
    "o": 489.22,
@@ -479,17 +471,25 @@
   {
    "time": "2026-11-06",
    "o": 525.69,
-   "h": 538.3,
-   "l": 524.61,
+   "h": 538.33,
+   "l": 524.47,
    "c": 530.61,
-   "v": 26346052
+   "v": 26938400
+  },
+  {
+   "time": "2026-11-09",
+   "o": 544.48,
+   "h": 548.28,
+   "l": 538.7,
+   "c": 546.64,
+   "v": 15723996
   }
  ],
  "sr": {
-  "price": 530.61,
+  "price": 546.64,
   "resistance": [
-   541.29,
-   551.15
+   551.15,
+   559.15
   ],
   "support": [
    524.43,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  494.47,
   479.45,
   480.73,
   483.4,
@@ -557,136 +556,168 @@
   520.99,
   555.8,
   535.93,
-  530.61
+  530.61,
+  546.64
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
  "fundamental": {
-  "pe_trailing": 27.971294,
-  "pe_forward": 22.164799,
+  "pe_trailing": 28.530272,
+  "pe_forward": 22.592453,
   "eps_trailing": 19.16,
-  "eps_forward": 24.17933,
-  "stale": true,
+  "eps_forward": 24.19569,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 546.64,
+  "stop": 513.55,
+  "target": 629.34,
+  "atr_bracket": 629.34,
+  "measured_move": 613.34,
+  "target_band": [
+   613.34,
+   629.34
+  ],
+  "stop_pct": -6.1,
+  "target_pct": 15.1,
+  "rr": 2.5,
+  "atr_pct": 3.0,
+  "swing_stop": 500.0,
+  "chandelier": 515.21,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+   "label": "Adobe (ADBE) Expands AI Reach, Is The 25% Discount Too Wide?",
    "value": {
-    "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+    "headline": "Adobe (ADBE) Expands AI Reach, Is The 25% Discount Too Wide?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794008496,
-    "url": "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss",
+    "ts": 1794254832,
+    "url": "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-expands-ai-reach-200712841.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/283e1bd9-349e-390b-a32b-b4ed9a9034f3/dow-jones-futures%3A-market.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-expands-ai-reach-200712841.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
+   "label": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
    "value": {
-    "headline": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
+    "headline": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794006704,
-    "url": "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss",
+    "ts": 1794254197,
+    "url": "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss"
+     "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A Retiree Who Bought 1,000 Oracle Shares at $39 Just Watched Microsoft Walk Away",
+   "label": "The Stock Market Is “Petrified of Oracle’s Balance Sheet” as Microsoft Walks Away",
    "value": {
-    "headline": "A Retiree Who Bought 1,000 Oracle Shares at $39 Just Watched Microsoft Walk Away",
+    "headline": "The Stock Market Is “Petrified of Oracle’s Balance Sheet” as Microsoft Walks Away",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794005321,
-    "url": "https://247wallst.com/investing/2026/11/06/a-retiree-who-bought-1000-oracle-shares-at-39-just-watched-microsoft-walk-away/?.tsrc=rss",
+    "ts": 1794253738,
+    "url": "https://www.tikr.com/blog/the-stock-market-is-petrified-of-oracles-balance-sheet-as-microsoft-walks-away?ref=yahoofinance&tlnk=yf-261109-qqf46fhh&.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/06/a-retiree-who-bought-1000-oracle-shares-at-39-just-watched-microsoft-walk-away/?.tsrc=rss"
+     "https://www.tikr.com/blog/the-stock-market-is-petrified-of-oracles-balance-sheet-as-microsoft-walks-away?ref=yahoofinance&tlnk=yf-261109-qqf46fhh&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+   "label": "$300,000 in Cisco, IBM and Microsoft Could Pay You $5,150 a Year",
    "value": {
-    "headline": "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+    "headline": "$300,000 in Cisco, IBM and Microsoft Could Pay You $5,150 a Year",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794001595,
-    "url": "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss",
+    "ts": 1794251875,
+    "url": "https://247wallst.com/investing/2026/11/09/300000-in-cisco-ibm-and-microsoft-could-pay-you-5150-a-year/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/aeb920dc-4bcd-3531-8458-6a642b7135df/tech-stock-sell-off-%27golden.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/09/300000-in-cisco-ibm-and-microsoft-could-pay-you-5150-a-year/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-07",
+   "severity": "info",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
+   "label": "His Tech Employer Offers Him Nine Months of Pay to Retire at 55. His Social Security Window Won’t Open for Another Seven",
    "value": {
-    "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
+    "headline": "His Tech Employer Offers Him Nine Months of Pay to Retire at 55. His Social Security Window Won’t Open for Another Seven Years",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793999411,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss",
+    "ts": 1794251135,
+    "url": "https://247wallst.com/personal-finance/social-security/2026/11/09/his-tech-employer-offers-him-nine-months-of-pay-to-retire-at-55-his-social-security-window-wont-open-for-another-seven-years/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/5-latest-jim-cramer-stock-211011014.html?.tsrc=rss"
+     "https://247wallst.com/personal-finance/social-security/2026/11/09/his-tech-employer-offers-him-nine-months-of-pay-to-retire-at-55-his-social-security-window-wont-open-for-another-seven-years/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 145,826 股交割失敗）",
+   "value": {
+    "total_shares": 145826,
+    "days": 9,
+    "max_shares": 135349,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-11-09",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

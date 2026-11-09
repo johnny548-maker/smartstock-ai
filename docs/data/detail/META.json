@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 610.15,
- "change_pct": 0.84,
+ "price": 645.44,
+ "change_pct": 5.78,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 596.51,
-   "h": 601.39,
-   "l": 588.83,
-   "c": 589.38,
-   "v": 8758000
-  },
   {
    "time": "2026-08-17",
    "o": 589.28,
@@ -479,26 +471,33 @@
   {
    "time": "2026-11-06",
    "o": 607.33,
-   "h": 625.55,
-   "l": 606.82,
+   "h": 625.6,
+   "l": 606.66,
    "c": 610.15,
-   "v": 15657463
+   "v": 15682300
+  },
+  {
+   "time": "2026-11-09",
+   "o": 631.05,
+   "h": 647.25,
+   "l": 630.0,
+   "c": 645.44,
+   "v": 13807067
   }
  ],
  "sr": {
-  "price": 610.15,
+  "price": 645.44,
   "resistance": [
-   611.95,
-   622.66
+   659.3,
+   661.65
   ],
   "support": [
-   607.98,
-   598.97
+   644.84,
+   641.85
   ],
   "strong_support": 519.37
  },
  "spark": [
-  589.38,
   568.52,
   543.24,
   545.6,
@@ -557,16 +556,17 @@
   621.03,
   630.0,
   605.08,
-  610.15
+  610.15,
+  645.44
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
  "fundamental": {
-  "pe_trailing": 20.64415,
-  "pe_forward": 17.002434,
+  "pe_trailing": 22.023201,
+  "pe_forward": 18.138214,
   "eps_trailing": 29.31,
   "eps_forward": 35.58785,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Viasat Q2 Earnings Call Highlights",
+   "label": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
    "value": {
-    "headline": "Viasat Q2 Earnings Call Highlights",
+    "headline": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794010473,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1794254197,
+    "url": "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-viasat-q2-earnings-call-highlights-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
+   "label": "Eaton Lost 23% in a Month. RBC Sees 58% Upside From Here",
    "value": {
-    "headline": "If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Stock Through a Democratic Congress, It Would Be This One",
+    "headline": "Eaton Lost 23% in a Month. RBC Sees 58% Upside From Here",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794006704,
-    "url": "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss",
+    "ts": 1794253013,
+    "url": "https://www.tikr.com/blog/eaton-lost-23-in-a-month-rbc-sees-58-upside-from-here?ref=yahoofinance&tlnk=yf-261109-cx2p5v44&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/06/if-i-could-buy-and-hold-only-1-artificial-intellig/?.tsrc=rss"
+     "https://www.tikr.com/blog/eaton-lost-23-in-a-month-rbc-sees-58-upside-from-here?ref=yahoofinance&tlnk=yf-261109-cx2p5v44&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nuclear Reactor Firm Oklo Beats Earnings Expectations. That’s Not Why the Stock Is Up.",
+   "label": "Instagram makes major AI change for millions of teen users",
    "value": {
-    "headline": "Nuclear Reactor Firm Oklo Beats Earnings Expectations. That’s Not Why the Stock Is Up.",
+    "headline": "Instagram makes major AI change for millions of teen users",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794006420,
-    "url": "https://finance.yahoo.com/m/f6bb533b-3d0c-39bc-adfc-c5131b00ffb9/nuclear-reactor-firm-oklo.html?.tsrc=rss",
+    "ts": 1794250166,
+    "url": "https://finance.yahoo.com/technology/ai/articles/instagram-makes-major-ai-change-184926635.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f6bb533b-3d0c-39bc-adfc-c5131b00ffb9/nuclear-reactor-firm-oklo.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/instagram-makes-major-ai-change-184926635.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Should You Be Worried About Booking Holdings Stock?",
+   "label": "Oklo Is Down 86% From Its High. Will Shares Soar When Meta's Reactor Comes Online?",
    "value": {
-    "headline": "Should You Be Worried About Booking Holdings Stock?",
+    "headline": "Oklo Is Down 86% From Its High. Will Shares Soar When Meta's Reactor Comes Online?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794005972,
-    "url": "https://www.trefis.com/stock/bkng/articles/623212/should-you-be-worried-about-booking-holdings-stock/2026-11-06?.tsrc=rss",
+    "ts": 1794249780,
+    "url": "https://www.fool.com/investing/2026/11/09/oklo-down-86-from-its-high-will-shares-soar-when/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/bkng/articles/623212/should-you-be-worried-about-booking-holdings-stock/2026-11-06?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/09/oklo-down-86-from-its-high-will-shares-soar-when/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Pauses Data-Scraping Terms Following Publisher Criticism",
+   "label": "Why Meta Platforms Stock Rallied on Monday",
    "value": {
-    "headline": "Meta Pauses Data-Scraping Terms Following Publisher Criticism",
+    "headline": "Why Meta Platforms Stock Rallied on Monday",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794004174,
-    "url": "https://www.mediapost.com/publications/article/419294/meta-pauses-data-scraping-terms-following-publishe.html?.tsrc=rss",
+    "ts": 1794248619,
+    "url": "https://www.fool.com/investing/2026/11/09/why-meta-platforms-stock-rallied-on-monday/?.tsrc=rss",
     "urls": [
-     "https://www.mediapost.com/publications/article/419294/meta-pauses-data-scraping-terms-following-publishe.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/09/why-meta-platforms-stock-rallied-on-monday/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -680,27 +680,44 @@
     "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
+     "yahoo_tw",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-09",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 216 分 / 132 留言",
+   "label": "HN 討論熱度 20 篇 / 399 分 / 102 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 216,
-    "comments": 132,
+    "points": 399,
+    "comments": 102,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-11-07",
+   "severity": "warn",
+   "as_of": "2026-11-09",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 87306,
+    "days": 8,
+    "max_shares": 76235,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-09",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }
