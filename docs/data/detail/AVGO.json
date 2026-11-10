@@ -1,65 +1,9 @@
 {
  "stock": "AVGO",
- "name": "Broadcom Inc. - Common Stock",
- "price": 345.0,
- "change_pct": -1.94,
+ "name": "博通",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-06",
-   "o": 419.79,
-   "h": 427.25,
-   "l": 410.01,
-   "c": 419.81,
-   "v": 13907500
-  },
-  {
-   "time": "2026-08-07",
-   "o": 427.62,
-   "h": 430.06,
-   "l": 420.84,
-   "c": 426.98,
-   "v": 14698300
-  },
-  {
-   "time": "2026-08-10",
-   "o": 426.21,
-   "h": 431.94,
-   "l": 419.4,
-   "c": 421.63,
-   "v": 13854100
-  },
-  {
-   "time": "2026-08-11",
-   "o": 425.3,
-   "h": 425.98,
-   "l": 412.48,
-   "c": 415.32,
-   "v": 12882700
-  },
-  {
-   "time": "2026-08-12",
-   "o": 425.49,
-   "h": 425.72,
-   "l": 413.86,
-   "c": 415.29,
-   "v": 15859200
-  },
-  {
-   "time": "2026-08-13",
-   "o": 415.05,
-   "h": 424.15,
-   "l": 410.66,
-   "c": 417.06,
-   "v": 13180500
-  },
-  {
-   "time": "2026-08-14",
-   "o": 411.21,
-   "h": 411.75,
-   "l": 387.79,
-   "c": 392.28,
-   "v": 29513600
-  },
   {
    "time": "2026-08-17",
    "o": 396.54,
@@ -483,28 +427,71 @@
    "l": 338.8,
    "c": 345.0,
    "v": 17052700
+  },
+  {
+   "time": "2026-10-30",
+   "o": 330.72,
+   "h": 331.98,
+   "l": 319.3,
+   "c": 326.08,
+   "v": 36511800
+  },
+  {
+   "time": "2026-11-02",
+   "o": 328.37,
+   "h": 333.56,
+   "l": 321.87,
+   "c": 322.23,
+   "v": 20326900
+  },
+  {
+   "time": "2026-11-03",
+   "o": 328.97,
+   "h": 335.74,
+   "l": 326.6,
+   "c": 332.13,
+   "v": 17274500
+  },
+  {
+   "time": "2026-11-04",
+   "o": 326.86,
+   "h": 334.12,
+   "l": 321.74,
+   "c": 325.48,
+   "v": 23881800
+  },
+  {
+   "time": "2026-11-05",
+   "o": 311.89,
+   "h": 314.0,
+   "l": 290.12,
+   "c": 291.53,
+   "v": 53835500
+  },
+  {
+   "time": "2026-11-06",
+   "o": 311.13,
+   "h": 311.52,
+   "l": 289.77,
+   "c": 293.69,
+   "v": 32379300
+  },
+  {
+   "time": "2026-11-09",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 36557862
   }
  ],
  "sr": {
-  "price": 345.0,
-  "resistance": [
-   361.86,
-   366.55
-  ],
-  "support": [
-   343.29,
-   341.71
-  ],
-  "strong_support": 320.23
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 288.98
  },
  "spark": [
-  419.81,
-  426.98,
-  421.63,
-  415.32,
-  415.29,
-  417.06,
-  392.28,
   391.72,
   379.31,
   361.82,
@@ -557,11 +544,157 @@
   329.17,
   342.33,
   351.81,
-  345.0
+  345.0,
+  326.08,
+  322.23,
+  332.13,
+  325.48,
+  291.53,
+  293.69,
+  null
  ],
- "spark_start": "2026-08-06",
- "spark_end": "2026-10-29",
- "fundamental": null,
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
+ "fundamental": {
+  "pe_trailing": 40.802044,
+  "pe_forward": 16.41299,
+  "eps_trailing": 7.83,
+  "eps_forward": 19.46507,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
+   "value": {
+    "headline": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794265634,
+    "url": "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI infrastructure spending is still accelerating—but can it last?",
+   "value": {
+    "headline": "AI infrastructure spending is still accelerating—but can it last?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794262439,
+    "url": "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Unless Nvidia Removes Jensen Huang, the Stock Is Worth Holding",
+   "value": {
+    "headline": "Unless Nvidia Removes Jensen Huang, the Stock Is Worth Holding",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794259500,
+    "url": "https://finance.yahoo.com/m/8ff940db-1410-329b-a621-969229eccd32/unless-nvidia-removes-jensen.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/8ff940db-1410-329b-a621-969229eccd32/unless-nvidia-removes-jensen.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Josh Brown: If Nvidia’s Earnings Come In “5% Lower,” the Stock “Could Fall 40%”",
+   "value": {
+    "headline": "Josh Brown: If Nvidia’s Earnings Come In “5% Lower,” the Stock “Could Fall 40%”",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794259299,
+    "url": "https://www.tikr.com/blog/josh-brown-if-nvidias-earnings-come-in-5-lower-the-stock-could-fall-40?ref=yahoofinance&tlnk=yf-261109-m9qhh4fg&.tsrc=rss",
+    "urls": [
+     "https://www.tikr.com/blog/josh-brown-if-nvidias-earnings-come-in-5-lower-the-stock-could-fall-40?ref=yahoofinance&tlnk=yf-261109-m9qhh4fg&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The Real Winner of Google’s $135 Billion Chip Forecast: Broadcom",
+   "value": {
+    "headline": "The Real Winner of Google’s $135 Billion Chip Forecast: Broadcom",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794257131,
+    "url": "https://www.tikr.com/blog/the-real-winner-of-googles-135-billion-chip-forecast-broadcom?ref=yahoofinance&tlnk=yf-261109-h64jj3hh&.tsrc=rss",
+    "urls": [
+     "https://www.tikr.com/blog/the-real-winner-of-googles-135-billion-chip-forecast-broadcom?ref=yahoofinance&tlnk=yf-261109-h64jj3hh&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 17,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
+   "value": {
+    "total_shares": 19734,
+    "days": 7,
+    "max_shares": 10036,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-10",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

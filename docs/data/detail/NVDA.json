@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 186.64,
- "change_pct": 2.78,
+ "name": "NVIDIA",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-14",
-   "o": 226.52,
-   "h": 227.24,
-   "l": 224.25,
-   "c": 224.91,
-   "v": 75680900
-  },
   {
    "time": "2026-08-17",
    "o": 225.73,
@@ -482,20 +474,24 @@
    "h": 194.9,
    "l": 185.22,
    "c": 186.64,
-   "v": 179308722
+   "v": 179722400
+  },
+  {
+   "time": "2026-11-09",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 456756830
   }
  ],
  "sr": {
-  "price": 186.64,
-  "resistance": [
-   219.99,
-   222.19
-  ],
+  "price": null,
+  "resistance": [],
   "support": [],
-  "strong_support": 207.02
+  "strong_support": 163.9
  },
  "spark": [
-  224.91,
   224.76,
   219.49,
   217.32,
@@ -554,48 +550,151 @@
   206.69,
   200.13,
   181.6,
-  186.64
+  186.64,
+  null
  ],
- "spark_start": "2026-08-14",
- "spark_end": "2026-11-06",
- "fundamental": null,
+ "spark_start": "2026-08-17",
+ "spark_end": "2026-11-09",
+ "fundamental": {
+  "pe_trailing": 22.587864,
+  "pe_forward": 11.217311,
+  "eps_trailing": 7.91,
+  "eps_forward": 15.92806,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
+   "label": "Why Lincoln Educational Stock Surged Today",
    "value": {
-    "headline": "快訊/傳輝達找台積電生產3D DRAMAI記憶體供應鏈恐迎新變局",
+    "headline": "Why Lincoln Educational Stock Surged Today",
     "sources": [
-     "cnyes"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1793977254,
-    "url": "cnyes:6651653",
+    "ts": 1794273613,
+    "url": "https://www.fool.com/investing/2026/11/09/why-lincoln-educational-stock-surged-today/?.tsrc=rss",
     "urls": [
-     "cnyes:6651653"
+     "https://www.fool.com/investing/2026/11/09/why-lincoln-educational-stock-surged-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+   "value": {
+    "headline": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794273600,
+    "url": "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Does Nvidia (NVDA) Need To Prove As AI Rivalry And CEO Scrutiny Build?",
+   "value": {
+    "headline": "What Does Nvidia (NVDA) Need To Prove As AI Rivalry And CEO Scrutiny Build?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794273397,
+    "url": "https://finance.yahoo.com/technology/ai/articles/does-nvidia-nvda-prove-ai-011637196.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/does-nvidia-nvda-prove-ai-011637196.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+   "value": {
+    "headline": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794273150,
+    "url": "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Over 50? 3 Things You Should Be Doing to Prepare for Retirement Already",
+   "value": {
+    "headline": "Over 50? 3 Things You Should Be Doing to Prepare for Retirement Already",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794272582,
+    "url": "https://www.fool.com/retirement/2026/11/09/over-50-3-things-you-should-be-doing-to-prepare-for-retirement-already/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/retirement/2026/11/09/over-50-3-things-you-should-be-doing-to-prepare-for-retirement-already/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes"
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-07",
+   "as_of": "2026-11-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 129,602 股交割失敗）",
+   "value": {
+    "total_shares": 129602,
+    "days": 9,
+    "max_shares": 63726,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-11-10",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

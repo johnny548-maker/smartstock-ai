@@ -1,8 +1,8 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 508.45,
- "change_pct": 13.23,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-08-17",
@@ -478,23 +478,17 @@
   },
   {
    "time": "2026-11-09",
-   "o": 473.39,
-   "h": 515.18,
-   "l": 468.21,
-   "c": 508.45,
-   "v": 41834633
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 50860939
   }
  ],
  "sr": {
-  "price": 508.45,
-  "resistance": [
-   517.35,
-   526.79
-  ],
-  "support": [
-   502.6,
-   498.15
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 188.22
  },
  "spark": [
@@ -557,7 +551,7 @@
   488.78,
   404.4,
   449.04,
-  508.45
+  null
  ],
  "spark_start": "2026-08-17",
  "spark_end": "2026-11-09",
@@ -566,142 +560,125 @@
   "pe_forward": 28.799212,
   "eps_trailing": 4.68,
   "eps_forward": 17.65274,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 508.45,
-  "stop": 472.86,
-  "target": 597.43,
-  "atr_bracket": 597.43,
-  "measured_move": 563.15,
-  "target_band": [
-   563.15,
-   597.43
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 8.1,
-  "swing_stop": 389.78,
-  "chandelier": 515.92,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Lands Key Role in Google's New AI Chip System as Nvidia Rivalry Intensifies",
+   "label": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
    "value": {
-    "headline": "AMD Lands Key Role in Google's New AI Chip System as Nvidia Rivalry Intensifies",
+    "headline": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794251808,
-    "url": "https://www.benzinga.com/markets/prediction-markets/26/11/63061050/amd-google-tpu?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "ts": 1794273600,
+    "url": "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss",
     "urls": [
-     "https://www.benzinga.com/markets/prediction-markets/26/11/63061050/amd-google-tpu?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Unless Nvidia Removes Jensen Huang, the Stock Is Worth Holding",
+   "label": "Stock Market Today, Nov. 9: AMD Jumps on Oppenheimer Upgrade and Google Cloud Chip Selection",
    "value": {
-    "headline": "Unless Nvidia Removes Jensen Huang, the Stock Is Worth Holding",
+    "headline": "Stock Market Today, Nov. 9: AMD Jumps on Oppenheimer Upgrade and Google Cloud Chip Selection",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794251280,
-    "url": "https://finance.yahoo.com/m/8ff940db-1410-329b-a621-969229eccd32/unless-nvidia-removes-jensen.html?.tsrc=rss",
+    "ts": 1794263402,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-amd-jumps-on-oppenheimer-upgrade-and-google-cloud-chip-selection/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/8ff940db-1410-329b-a621-969229eccd32/unless-nvidia-removes-jensen.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-amd-jumps-on-oppenheimer-upgrade-and-google-cloud-chip-selection/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Rises On Google Cloud Deal, Wall Street Upgrade",
+   "label": "AI infrastructure spending is still accelerating—but can it last?",
    "value": {
-    "headline": "AMD Stock Rises On Google Cloud Deal, Wall Street Upgrade",
+    "headline": "AI infrastructure spending is still accelerating—but can it last?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794248314,
-    "url": "https://finance.yahoo.com/m/544d9f43-0b7f-3c42-b942-64d1474d8198/amd-stock-rises-on-google.html?.tsrc=rss",
+    "ts": 1794262439,
+    "url": "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/544d9f43-0b7f-3c42-b942-64d1474d8198/amd-stock-rises-on-google.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Could Jump 34%. No, It’s Got Nothing to Do With the Nvidia Turmoil.",
+   "label": "Advanced Micro Devices (AMD) Lands EPYC Role In New AI Security System",
    "value": {
-    "headline": "AMD Stock Could Jump 34%. No, It’s Got Nothing to Do With the Nvidia Turmoil.",
+    "headline": "Advanced Micro Devices (AMD) Lands EPYC Role In New AI Security System",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794247320,
-    "url": "https://finance.yahoo.com/m/7bcea03a-9f2e-3518-97dc-b837344745d8/amd-stock-could-jump-34%25.-no%2C.html?.tsrc=rss",
+    "ts": 1794262125,
+    "url": "https://finance.yahoo.com/technology/ai/articles/advanced-micro-devices-amd-lands-220845589.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/7bcea03a-9f2e-3518-97dc-b837344745d8/amd-stock-could-jump-34%25.-no%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/advanced-micro-devices-amd-lands-220845589.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet Stocks Rise 3.16% as Google Unveils Two New TPU Systems",
+   "label": "Stock Market Today: Dow Jumps, These Stocks Test Entries; Warren Buffett Play Clears Buy Zone",
    "value": {
-    "headline": "Alphabet Stocks Rise 3.16% as Google Unveils Two New TPU Systems",
+    "headline": "Stock Market Today: Dow Jumps, These Stocks Test Entries; Warren Buffett Play Clears Buy Zone",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794247086,
-    "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-stocks-rise-3-16-175806057.html?.tsrc=rss",
+    "ts": 1794260466,
+    "url": "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/alphabet-stocks-rise-3-16-175806057.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +693,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

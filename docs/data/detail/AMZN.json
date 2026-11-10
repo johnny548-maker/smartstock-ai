@@ -1,8 +1,8 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 268.11,
- "change_pct": 3.4,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
   {
    "time": "2026-08-17",
@@ -478,23 +478,17 @@
   },
   {
    "time": "2026-11-09",
-   "o": 269.32,
-   "h": 275.31,
-   "l": 267.57,
-   "c": 268.11,
-   "v": 37531523
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 50588278
   }
  ],
  "sr": {
-  "price": 268.11,
-  "resistance": [
-   274.75,
-   278.56
-  ],
-  "support": [
-   257.04,
-   256.16
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 196.0
  },
  "spark": [
@@ -557,7 +551,7 @@
   266.03,
   260.21,
   259.3,
-  268.11
+  null
  ],
  "spark_start": "2026-08-17",
  "spark_end": "2026-11-09",
@@ -566,141 +560,125 @@
   "pe_forward": 24.58812,
   "eps_trailing": 12.37,
   "eps_forward": 10.90364,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 268.11,
-  "stop": 249.34,
-  "target": 315.03,
-  "atr_bracket": 315.03,
-  "measured_move": null,
-  "target_band": [
-   315.03
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 3.9,
-  "swing_stop": 226.19,
-  "chandelier": 247.37,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Pops, Multiple Stocks Clear Entries; Jensen Huang Details Emerge (Live Coverage)",
+   "label": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
    "value": {
-    "headline": "Stock Market Today: Dow Pops, Multiple Stocks Clear Entries; Jensen Huang Details Emerge (Live Coverage)",
+    "headline": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794257180,
-    "url": "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow-pops%2C.html?.tsrc=rss",
+    "ts": 1794273150,
+    "url": "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow-pops%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia $5T CEO scandal, AI legislation headaches, and Tesla returns deposits for Cybertrucks",
+   "label": "Securitize to Acquire River One, Expanding Into $6 Trillion Asset-Backed Finance Market",
    "value": {
-    "headline": "Nvidia $5T CEO scandal, AI legislation headaches, and Tesla returns deposits for Cybertrucks",
+    "headline": "Securitize to Acquire River One, Expanding Into $6 Trillion Asset-Backed Finance Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794249822,
-    "url": "https://finance.yahoo.com/video/nvidia-5t-ceo-scandal-ai-legislation-headaches-and-tesla-returns-deposits-for-cybertrucks-184342686.html?.tsrc=rss",
+    "ts": 1794267060,
+    "url": "https://www.cryptoprowl.com/releases/securitize-to-acquire-river-one-expanding-into-6-trillion-asset-backed-finance-market-7783?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nvidia-5t-ceo-scandal-ai-legislation-headaches-and-tesla-returns-deposits-for-cybertrucks-184342686.html?.tsrc=rss"
+     "https://www.cryptoprowl.com/releases/securitize-to-acquire-river-one-expanding-into-6-trillion-asset-backed-finance-market-7783?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI Agents Are “an Existential Risk to DoorDash”? Seriously? I’ll Take the Under",
+   "label": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
    "value": {
-    "headline": "AI Agents Are “an Existential Risk to DoorDash”? Seriously? I’ll Take the Under",
+    "headline": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794249809,
-    "url": "https://www.tikr.com/blog/ai-agents-are-an-existential-risk-to-doordash-seriously-ill-take-the-under?ref=yahoofinance&tlnk=yf-261109-c7x94h33&.tsrc=rss",
+    "ts": 1794265634,
+    "url": "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/ai-agents-are-an-existential-risk-to-doordash-seriously-ill-take-the-under?ref=yahoofinance&tlnk=yf-261109-c7x94h33&.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Makes $3.4 Billion Power Bet As Electricity Concerns Grow",
+   "label": "Trade Desk’s Earnings Beat Defies Analysts’ ‘Lost Year’ Projections",
    "value": {
-    "headline": "Anthropic Makes $3.4 Billion Power Bet As Electricity Concerns Grow",
+    "headline": "Trade Desk’s Earnings Beat Defies Analysts’ ‘Lost Year’ Projections",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794249624,
-    "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-makes-3-4-billion-184024502.html?.tsrc=rss",
+    "ts": 1794261960,
+    "url": "https://finance.yahoo.com/m/0aae3af7-cc7f-3af0-af9a-6d803d85246a/trade-desk%E2%80%99s-earnings-beat.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/anthropic-makes-3-4-billion-184024502.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/0aae3af7-cc7f-3af0-af9a-6d803d85246a/trade-desk%E2%80%99s-earnings-beat.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Airtable plugin making $270K per year",
+   "label": "Jeff Bezos says your family is 'not going to need' 2 paychecks thanks to AI",
    "value": {
-    "headline": "Airtable plugin making $270K per year",
+    "headline": "Jeff Bezos says your family is 'not going to need' 2 paychecks thanks to AI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794249132,
-    "url": "https://starterstory.videonest.co/videos/1787548/airtable-plugin-making-270k-per-year-9gzzVN4ZCR?.tsrc=rss",
+    "ts": 1794261780,
+    "url": "https://www.thestreet.com/technology/jeff-bezos-predictions-ai-impact-on-jobs?.tsrc=rss",
     "urls": [
-     "https://starterstory.videonest.co/videos/1787548/airtable-plugin-making-270k-per-year-9gzzVN4ZCR?.tsrc=rss"
+     "https://www.thestreet.com/technology/jeff-bezos-predictions-ai-impact-on-jobs?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +693,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-10",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
