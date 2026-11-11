@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 351.3,
- "change_pct": 2.61,
+ "price": 348.51,
+ "change_pct": -0.62,
  "ohlc": [
-  {
-   "time": "2026-08-17",
-   "o": 306.21,
-   "h": 307.66,
-   "l": 302.94,
-   "c": 305.59,
-   "v": 38169300
-  },
   {
    "time": "2026-08-18",
    "o": 307.58,
@@ -474,19 +466,27 @@
    "h": 345.79,
    "l": 338.3,
    "c": 342.37,
-   "v": 44676300
+   "v": 44703800
   },
   {
    "time": "2026-11-09",
-   "o": 344.93,
-   "h": 352.28,
+   "o": 345.0,
+   "h": 352.33,
    "l": 344.78,
-   "c": 351.3,
-   "v": 28021028
+   "c": 350.69,
+   "v": 48753100
+  },
+  {
+   "time": "2026-11-10",
+   "o": 351.55,
+   "h": 353.87,
+   "l": 346.46,
+   "c": 348.51,
+   "v": 29726781
   }
  ],
  "sr": {
-  "price": 351.3,
+  "price": 348.51,
   "resistance": [
    351.43,
    351.73
@@ -498,7 +498,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  305.59,
   310.03,
   316.83,
   311.3,
@@ -557,13 +556,14 @@
   349.51,
   344.17,
   342.37,
-  351.3
+  350.69,
+  348.51
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-18",
+ "spark_end": "2026-11-10",
  "fundamental": {
-  "pe_trailing": 39.12027,
-  "pe_forward": 33.292835,
+  "pe_trailing": 38.80958,
+  "pe_forward": 33.028427,
   "eps_trailing": 8.98,
   "eps_forward": 10.55182,
   "stale": false,
@@ -575,133 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Makes Major AI Pricing Move as New Revenue Opportunity Emerges",
+   "label": "What Could Lift Netflix Stock From Here?",
    "value": {
-    "headline": "Apple Makes Major AI Pricing Move as New Revenue Opportunity Emerges",
+    "headline": "What Could Lift Netflix Stock From Here?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794250631,
-    "url": "https://finance.yahoo.com/technology/ai/articles/apple-makes-major-ai-pricing-185711619.html?.tsrc=rss",
+    "ts": 1794353669,
+    "url": "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/apple-makes-major-ai-pricing-185711619.html?.tsrc=rss"
+     "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "蘋果秀機器人大腦 人形產品出現重大突破 鴻準受惠將拿下大單",
+   "label": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
    "value": {
-    "headline": "蘋果秀機器人大腦 人形產品出現重大突破 鴻準受惠將拿下大單",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1794249612,
-    "url": "https://money.udn.com/money/story/5612/9867805",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9867805"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "宇樹將成為蘋果機器人關鍵夥伴 上銀、雅特力跟進搶商機",
-   "value": {
-    "headline": "宇樹將成為蘋果機器人關鍵夥伴 上銀、雅特力跟進搶商機",
-    "sources": [
-     "udn"
-    ],
-    "source_count": 1,
-    "ts": 1794249496,
-    "url": "https://money.udn.com/money/story/5612/9867809",
-    "urls": [
-     "https://money.udn.com/money/story/5612/9867809"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nvidia has a 'deep bench' if Jensen Huang steps aside, tech investor says",
-   "value": {
-    "headline": "Nvidia has a 'deep bench' if Jensen Huang steps aside, tech investor says",
+    "headline": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794248347,
-    "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-has-a-deep-bench-if-jensen-huang-steps-aside-tech-investor-says-181907948.html?.tsrc=rss",
+    "ts": 1794353580,
+    "url": "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/article/nvidia-has-a-deep-bench-if-jensen-huang-steps-aside-tech-investor-says-181907948.html?.tsrc=rss"
+     "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia's Huang scandal rattles AI industry built around him",
+   "label": "Nvidia's trillion-dollar bind: Can it afford to lose Jensen Huang?",
    "value": {
-    "headline": "Nvidia's Huang scandal rattles AI industry built around him",
+    "headline": "Nvidia's trillion-dollar bind: Can it afford to lose Jensen Huang?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794247531,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidias-huang-scandal-rattles-ai-180531112.html?.tsrc=rss",
+    "ts": 1794348183,
+    "url": "https://www.cbsnews.com/news/jensen-huang-affair-nvidia-ceo-dilemma/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidias-huang-scandal-rattles-ai-180531112.html?.tsrc=rss"
+     "https://www.cbsnews.com/news/jensen-huang-affair-nvidia-ceo-dilemma/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta's Ember is a bet on cheaper models with competitors",
+   "value": {
+    "headline": "Meta's Ember is a bet on cheaper models with competitors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794347728,
+    "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Apple users get urgent security warning over iPhone flaw",
+   "value": {
+    "headline": "Apple users get urgent security warning over iPhone flaw",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794342711,
+    "url": "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 21 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 21,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 159 分 / 52 留言",
+   "label": "HN 討論熱度 20 篇 / 162 分 / 81 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 159,
-    "comments": 52,
+    "points": 162,
+    "comments": 81,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -716,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

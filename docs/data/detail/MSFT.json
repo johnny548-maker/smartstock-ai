@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 546.64,
- "change_pct": 3.02,
+ "price": 533.16,
+ "change_pct": -2.2,
  "ohlc": [
-  {
-   "time": "2026-08-17",
-   "o": 489.22,
-   "h": 491.73,
-   "l": 477.51,
-   "c": 479.45,
-   "v": 29635800
-  },
   {
    "time": "2026-08-18",
    "o": 480.64,
@@ -474,22 +466,30 @@
    "h": 538.33,
    "l": 524.47,
    "c": 530.61,
-   "v": 26938400
+   "v": 26956400
   },
   {
    "time": "2026-11-09",
-   "o": 544.48,
+   "o": 544.49,
    "h": 548.28,
    "l": 538.7,
-   "c": 546.64,
-   "v": 15723996
+   "c": 545.18,
+   "v": 25337400
+  },
+  {
+   "time": "2026-11-10",
+   "o": 543.41,
+   "h": 544.15,
+   "l": 526.36,
+   "c": 533.16,
+   "v": 26910016
   }
  ],
  "sr": {
-  "price": 546.64,
+  "price": 533.16,
   "resistance": [
-   551.15,
-   559.15
+   541.29,
+   551.15
   ],
   "support": [
    524.43,
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  479.45,
   480.73,
   483.4,
   481.15,
@@ -557,151 +556,136 @@
   555.8,
   535.93,
   530.61,
-  546.64
+  545.18,
+  533.16
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-18",
+ "spark_end": "2026-11-10",
  "fundamental": {
-  "pe_trailing": 28.530272,
-  "pe_forward": 22.592453,
+  "pe_trailing": 27.826721,
+  "pe_forward": 22.035328,
   "eps_trailing": 19.16,
   "eps_forward": 24.19569,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 546.64,
-  "stop": 513.55,
-  "target": 629.34,
-  "atr_bracket": 629.34,
-  "measured_move": 613.34,
-  "target_band": [
-   613.34,
-   629.34
-  ],
-  "stop_pct": -6.1,
-  "target_pct": 15.1,
-  "rr": 2.5,
-  "atr_pct": 3.0,
-  "swing_stop": 500.0,
-  "chandelier": 515.21,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Adobe (ADBE) Expands AI Reach, Is The 25% Discount Too Wide?",
+   "label": "Dow Jones Futures Rise, CoreWave Jumps After Stocks Fall On Nvidia, Surging Treasury Yields",
    "value": {
-    "headline": "Adobe (ADBE) Expands AI Reach, Is The 25% Discount Too Wide?",
+    "headline": "Dow Jones Futures Rise, CoreWave Jumps After Stocks Fall On Nvidia, Surging Treasury Yields",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794254832,
-    "url": "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-expands-ai-reach-200712841.html?.tsrc=rss",
+    "ts": 1794358417,
+    "url": "https://finance.yahoo.com/m/656fca57-9896-3dfb-96e8-e0af2bc227df/dow-jones-futures-rise%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-expands-ai-reach-200712841.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/656fca57-9896-3dfb-96e8-e0af2bc227df/dow-jones-futures-rise%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
+   "label": "What Nebius Group Buyers Were Betting On",
    "value": {
-    "headline": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
+    "headline": "What Nebius Group Buyers Were Betting On",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794254197,
-    "url": "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss",
+    "ts": 1794352640,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nebius-group-buyers-were-betting-231720905.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/nebius-group-buyers-were-betting-231720905.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Stock Market Is “Petrified of Oracle’s Balance Sheet” as Microsoft Walks Away",
+   "label": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
    "value": {
-    "headline": "The Stock Market Is “Petrified of Oracle’s Balance Sheet” as Microsoft Walks Away",
+    "headline": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794253738,
-    "url": "https://www.tikr.com/blog/the-stock-market-is-petrified-of-oracles-balance-sheet-as-microsoft-walks-away?ref=yahoofinance&tlnk=yf-261109-qqf46fhh&.tsrc=rss",
+    "ts": 1794351780,
+    "url": "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/the-stock-market-is-petrified-of-oracles-balance-sheet-as-microsoft-walks-away?ref=yahoofinance&tlnk=yf-261109-qqf46fhh&.tsrc=rss"
+     "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "$300,000 in Cisco, IBM and Microsoft Could Pay You $5,150 a Year",
+   "label": "IREN Stock Falls Even as JPMorgan Goes Bullish",
    "value": {
-    "headline": "$300,000 in Cisco, IBM and Microsoft Could Pay You $5,150 a Year",
+    "headline": "IREN Stock Falls Even as JPMorgan Goes Bullish",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794251875,
-    "url": "https://247wallst.com/investing/2026/11/09/300000-in-cisco-ibm-and-microsoft-could-pay-you-5150-a-year/?.tsrc=rss",
+    "ts": 1794350697,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/iren-stock-falls-even-jpmorgan-224457686.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/09/300000-in-cisco-ibm-and-microsoft-could-pay-you-5150-a-year/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/iren-stock-falls-even-jpmorgan-224457686.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "His Tech Employer Offers Him Nine Months of Pay to Retire at 55. His Social Security Window Won’t Open for Another Seven",
+   "label": "How does this simple website make $23K/month",
    "value": {
-    "headline": "His Tech Employer Offers Him Nine Months of Pay to Retire at 55. His Social Security Window Won’t Open for Another Seven Years",
+    "headline": "How does this simple website make $23K/month",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794251135,
-    "url": "https://247wallst.com/personal-finance/social-security/2026/11/09/his-tech-employer-offers-him-nine-months-of-pay-to-retire-at-55-his-social-security-window-wont-open-for-another-seven-years/?.tsrc=rss",
+    "ts": 1794349962,
+    "url": "https://starterstory.videonest.co/videos/1787552/how-does-this-simple-website-make-23k-month-e5PgqkKXxw?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/personal-finance/social-security/2026/11/09/his-tech-employer-offers-him-nine-months-of-pay-to-retire-at-55-his-social-security-window-wont-open-for-another-seven-years/?.tsrc=rss"
+     "https://starterstory.videonest.co/videos/1787552/how-does-this-simple-website-make-23k-month-e5PgqkKXxw?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +700,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

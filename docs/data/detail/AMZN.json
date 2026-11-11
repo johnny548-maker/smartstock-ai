@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": null,
- "change_pct": null,
+ "price": 270.87,
+ "change_pct": 1.48,
  "ohlc": [
-  {
-   "time": "2026-08-17",
-   "o": 265.44,
-   "h": 265.75,
-   "l": 258.34,
-   "c": 261.31,
-   "v": 43896500
-  },
   {
    "time": "2026-08-18",
    "o": 260.63,
@@ -474,25 +466,38 @@
    "h": 264.18,
    "l": 258.53,
    "c": 259.3,
-   "v": 42497100
+   "v": 42571500
   },
   {
    "time": "2026-11-09",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 50588278
+   "o": 269.32,
+   "h": 275.34,
+   "l": 266.91,
+   "c": 266.93,
+   "v": 51523200
+  },
+  {
+   "time": "2026-11-10",
+   "o": 266.33,
+   "h": 272.88,
+   "l": 266.14,
+   "c": 270.87,
+   "v": 38874955
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 270.87,
+  "resistance": [
+   274.75,
+   278.56
+  ],
+  "support": [
+   257.04,
+   256.16
+  ],
   "strong_support": 196.0
  },
  "spark": [
-  261.31,
   259.45,
   265.84,
   260.11,
@@ -551,134 +556,151 @@
   266.03,
   260.21,
   259.3,
-  null
+  266.93,
+  270.87
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-18",
+ "spark_end": "2026-11-10",
  "fundamental": {
-  "pe_trailing": 21.673405,
-  "pe_forward": 24.58812,
+  "pe_trailing": 21.897331,
+  "pe_forward": 24.842163,
   "eps_trailing": 12.37,
   "eps_forward": 10.90364,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 270.87,
+  "stop": 251.91,
+  "target": 318.27,
+  "atr_bracket": 318.27,
+  "measured_move": null,
+  "target_band": [
+   318.27
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 3.9,
+  "swing_stop": 226.16,
+  "chandelier": 247.67,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+   "label": "Amazon’s Cloud Computing Business Already Brings in More Revenue Than 476 Companies in the S&P 500. Here’s What It Would",
    "value": {
-    "headline": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+    "headline": "Amazon’s Cloud Computing Business Already Brings in More Revenue Than 476 Companies in the S&P 500. Here’s What It Would Take to Reach $1 Trillion.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273150,
-    "url": "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss",
+    "ts": 1794358262,
+    "url": "https://www.fool.com/investing/2026/11/10/amazon-cloud-computing-brings-in-more-revenue-than-476-companies-in-the-sp-500/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/10/amazon-cloud-computing-brings-in-more-revenue-than-476-companies-in-the-sp-500/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Securitize to Acquire River One, Expanding Into $6 Trillion Asset-Backed Finance Market",
+   "label": "What Could Lift Netflix Stock From Here?",
    "value": {
-    "headline": "Securitize to Acquire River One, Expanding Into $6 Trillion Asset-Backed Finance Market",
+    "headline": "What Could Lift Netflix Stock From Here?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794267060,
-    "url": "https://www.cryptoprowl.com/releases/securitize-to-acquire-river-one-expanding-into-6-trillion-asset-backed-finance-market-7783?.tsrc=rss",
+    "ts": 1794353669,
+    "url": "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/securitize-to-acquire-river-one-expanding-into-6-trillion-asset-backed-finance-market-7783?.tsrc=rss"
+     "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
+   "label": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
    "value": {
-    "headline": "‘Big Short’ Investor Steve Eisman Says OpenAI’s Collapse Could Trigger an Immediate Recession",
+    "headline": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794265634,
-    "url": "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss",
+    "ts": 1794353580,
+    "url": "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/09/big-short-investor-steve-eisman-says-openais-collapse-could-trigger-an-immediate-recession/?.tsrc=rss"
+     "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trade Desk’s Earnings Beat Defies Analysts’ ‘Lost Year’ Projections",
+   "label": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
    "value": {
-    "headline": "Trade Desk’s Earnings Beat Defies Analysts’ ‘Lost Year’ Projections",
+    "headline": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794261960,
-    "url": "https://finance.yahoo.com/m/0aae3af7-cc7f-3af0-af9a-6d803d85246a/trade-desk%E2%80%99s-earnings-beat.html?.tsrc=rss",
+    "ts": 1794347345,
+    "url": "https://finance.yahoo.com/m/c7fbd2af-5702-3c77-9aa6-7c6578bb8abb/stock-market-today%3A-dow-dips.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0aae3af7-cc7f-3af0-af9a-6d803d85246a/trade-desk%E2%80%99s-earnings-beat.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/c7fbd2af-5702-3c77-9aa6-7c6578bb8abb/stock-market-today%3A-dow-dips.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jeff Bezos says your family is 'not going to need' 2 paychecks thanks to AI",
+   "label": "Why the Data Center Backlash Could Fall Flat: Increased Costs “a Trade That These Hyperscalers Are Still Going to Want t",
    "value": {
-    "headline": "Jeff Bezos says your family is 'not going to need' 2 paychecks thanks to AI",
+    "headline": "Why the Data Center Backlash Could Fall Flat: Increased Costs “a Trade That These Hyperscalers Are Still Going to Want to Make”",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794261780,
-    "url": "https://www.thestreet.com/technology/jeff-bezos-predictions-ai-impact-on-jobs?.tsrc=rss",
+    "ts": 1794346697,
+    "url": "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6&.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/technology/jeff-bezos-predictions-ai-impact-on-jobs?.tsrc=rss"
+     "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +715,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

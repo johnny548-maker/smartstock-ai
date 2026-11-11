@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": null,
- "change_pct": null,
+ "price": 515.21,
+ "change_pct": 1.3,
  "ohlc": [
-  {
-   "time": "2026-08-17",
-   "o": 514.16,
-   "h": 517.35,
-   "l": 504.52,
-   "c": 506.0,
-   "v": 20057600
-  },
   {
    "time": "2026-08-18",
    "o": 487.56,
@@ -474,25 +466,38 @@
    "h": 459.8,
    "l": 433.3,
    "c": 449.04,
-   "v": 45682000
+   "v": 45759800
   },
   {
    "time": "2026-11-09",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 50860939
+   "o": 473.39,
+   "h": 515.18,
+   "l": 468.21,
+   "c": 508.58,
+   "v": 51261000
+  },
+  {
+   "time": "2026-11-10",
+   "o": 503.0,
+   "h": 539.25,
+   "l": 495.0,
+   "c": 515.21,
+   "v": 46958570
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 515.21,
+  "resistance": [
+   517.35,
+   526.79
+  ],
+  "support": [
+   502.6,
+   498.15
+  ],
   "strong_support": 188.22
  },
  "spark": [
-  506.0,
   484.39,
   466.42,
   469.46,
@@ -551,134 +556,152 @@
   488.78,
   404.4,
   449.04,
-  null
+  508.58,
+  515.21
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-18",
+ "spark_end": "2026-11-10",
  "fundamental": {
-  "pe_trailing": 108.62928,
-  "pe_forward": 28.799212,
+  "pe_trailing": 110.087616,
+  "pe_forward": 29.125237,
   "eps_trailing": 4.68,
-  "eps_forward": 17.65274,
-  "stale": true,
+  "eps_forward": 17.68947,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 515.21,
+  "stop": 479.15,
+  "target": 605.37,
+  "atr_bracket": 605.37,
+  "measured_move": 563.15,
+  "target_band": [
+   563.15,
+   605.37
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 8.3,
+  "swing_stop": 389.3,
+  "chandelier": 491.63,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+   "label": "2 Reasons AMD Can Still Outperform by 2030",
    "value": {
-    "headline": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+    "headline": "2 Reasons AMD Can Still Outperform by 2030",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273600,
-    "url": "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss",
+    "ts": 1794353582,
+    "url": "https://www.fool.com/investing/2026/11/10/2-reasons-amd-can-still-outperform-by-2030/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/10/2-reasons-amd-can-still-outperform-by-2030/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 9: AMD Jumps on Oppenheimer Upgrade and Google Cloud Chip Selection",
+   "label": "5 Stocks Analysts Just Upgraded",
    "value": {
-    "headline": "Stock Market Today, Nov. 9: AMD Jumps on Oppenheimer Upgrade and Google Cloud Chip Selection",
+    "headline": "5 Stocks Analysts Just Upgraded",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794263402,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-amd-jumps-on-oppenheimer-upgrade-and-google-cloud-chip-selection/?.tsrc=rss",
+    "ts": 1794349306,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-stocks-analysts-just-upgraded-222146322.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-amd-jumps-on-oppenheimer-upgrade-and-google-cloud-chip-selection/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/5-stocks-analysts-just-upgraded-222146322.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AI infrastructure spending is still accelerating—but can it last?",
+   "label": "Anthropic, Nvidia, CoreWeave, Take-Two, D-Wave, Securitize, and More That Explain Today’s Market",
    "value": {
-    "headline": "AI infrastructure spending is still accelerating—but can it last?",
+    "headline": "Anthropic, Nvidia, CoreWeave, Take-Two, D-Wave, Securitize, and More That Explain Today’s Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794262439,
-    "url": "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss",
+    "ts": 1794346920,
+    "url": "https://finance.yahoo.com/m/7a09187f-b3a7-3224-bf52-479775b74718/anthropic%2C-nvidia%2C-coreweave%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/7a09187f-b3a7-3224-bf52-479775b74718/anthropic%2C-nvidia%2C-coreweave%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Advanced Micro Devices (AMD) Lands EPYC Role In New AI Security System",
+   "label": "AMD stock jumps 13% after 5-star analyst resets price target",
    "value": {
-    "headline": "Advanced Micro Devices (AMD) Lands EPYC Role In New AI Security System",
+    "headline": "AMD stock jumps 13% after 5-star analyst resets price target",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794262125,
-    "url": "https://finance.yahoo.com/technology/ai/articles/advanced-micro-devices-amd-lands-220845589.html?.tsrc=rss",
+    "ts": 1794344820,
+    "url": "https://www.thestreet.com/investing/stocks/amd-advanced-micro-devices-stock-jumps-13-percent?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/advanced-micro-devices-amd-lands-220845589.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/amd-advanced-micro-devices-stock-jumps-13-percent?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Jumps, These Stocks Test Entries; Warren Buffett Play Clears Buy Zone",
+   "label": "Nvidia’s 70% to 80% Margins Are “Like Throwing Chum in the Water,” Says Its Biographer",
    "value": {
-    "headline": "Stock Market Today: Dow Jumps, These Stocks Test Entries; Warren Buffett Play Clears Buy Zone",
+    "headline": "Nvidia’s 70% to 80% Margins Are “Like Throwing Chum in the Water,” Says Its Biographer",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794260466,
-    "url": "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow.html?.tsrc=rss",
+    "ts": 1794340526,
+    "url": "https://www.tikr.com/blog/nvidias-70-to-80-margins-are-like-throwing-chum-in-the-water-says-its-biographer?ref=yahoofinance&tlnk=yf-261110-23ph5h8g&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6fc3228f-8806-33c0-9e3b-4402850ebacd/stock-market-today%3A-dow.html?.tsrc=rss"
+     "https://www.tikr.com/blog/nvidias-70-to-80-margins-are-like-throwing-chum-in-the-water-says-its-biographer?ref=yahoofinance&tlnk=yf-261110-23ph5h8g&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

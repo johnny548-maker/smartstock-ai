@@ -1,8 +1,8 @@
 {
  "stock": "2636",
  "name": "台驊控股",
- "price": 69.6,
- "change_pct": 3.26,
+ "price": 69.3,
+ "change_pct": 2.82,
  "ohlc": [
   {
    "time": "2026-08-13",
@@ -480,20 +480,20 @@
    "time": "2026-11-10",
    "o": 69.7,
    "h": 70.2,
-   "l": 69.2,
-   "c": 69.6,
-   "v": 59551
+   "l": 69.1,
+   "c": 69.3,
+   "v": 270299
   }
  ],
  "sr": {
-  "price": 69.6,
+  "price": 69.3,
   "resistance": [
    71.2,
    71.3
   ],
   "support": [
-   69.55,
-   68.9
+   68.9,
+   68.57
   ],
   "strong_support": 50.58
  },
@@ -557,7 +557,7 @@
   68.6,
   66.4,
   67.4,
-  69.6
+  69.3
  ],
  "spark_start": "2026-08-13",
  "spark_end": "2026-11-10",
@@ -580,46 +580,8 @@
     "short_pct": 0.0
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "〈台股盤前要聞〉10月進出口創單月新高連36紅、台達電及國巨10月營收同寫新猷｜2 來源確認",
-   "value": {
-    "headline": "〈台股盤前要聞〉10月進出口創單月新高連36紅、台達電及國巨10月營收同寫新猷",
-    "sources": [
-     "cnyes",
-     "yahoo_tw"
-    ],
-    "source_count": 2,
-    "ts": 1794258603,
-    "url": "cnyes:6654744",
-    "urls": [
-     "cnyes:6654744",
-     "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E7%9B%A4%E5%89%8D%E8%A6%81%E8%81%9E-10%E6%9C%88%E9%80%B2%E5%87%BA%E5%8F%A3%E5%89%B5%E5%96%AE%E6%9C%88%E6%96%B0%E9%AB%98%E9%80%A336%E7%B4%85-%E5%8F%B0%E9%81%94%E9%9B%BB%E5%8F%8A%E5%9C%8B%E5%B7%A810%E6%9C%88%E7%87%9F%E6%94%B6%E5%90%8C%E5%AF%AB%E6%96%B0%E7%8C%B7-211003366.html"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-10",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 2 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 2,
-    "distinct_sources": [
-     "cnyes",
-     "yahoo_tw"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-10",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1075,6 +1037,10 @@
    {
     "t": "2026-11-10",
     "v": 7822
+   },
+   {
+    "t": "2026-11-11",
+    "v": 7861
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 645.44,
- "change_pct": 5.78,
+ "price": 641.39,
+ "change_pct": 0.0,
  "ohlc": [
-  {
-   "time": "2026-08-17",
-   "o": 589.28,
-   "h": 589.77,
-   "l": 564.3,
-   "c": 568.52,
-   "v": 17225600
-  },
   {
    "time": "2026-08-18",
    "o": 557.04,
@@ -474,31 +466,38 @@
    "h": 625.6,
    "l": 606.66,
    "c": 610.15,
-   "v": 15682300
+   "v": 15705500
   },
   {
    "time": "2026-11-09",
    "o": 631.05,
    "h": 647.25,
    "l": 630.0,
-   "c": 645.44,
-   "v": 13807067
+   "c": 641.37,
+   "v": 19143300
+  },
+  {
+   "time": "2026-11-10",
+   "o": 637.25,
+   "h": 647.28,
+   "l": 635.5,
+   "c": 641.39,
+   "v": 13007238
   }
  ],
  "sr": {
-  "price": 645.44,
+  "price": 641.39,
   "resistance": [
-   659.3,
-   661.65
+   641.9,
+   659.3
   ],
   "support": [
-   644.84,
-   641.85
+   636.45,
+   632.87
   ],
   "strong_support": 519.37
  },
  "spark": [
-  568.52,
   543.24,
   545.6,
   545.4,
@@ -557,13 +556,14 @@
   630.0,
   605.08,
   610.15,
-  645.44
+  641.37,
+  641.39
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-18",
+ "spark_end": "2026-11-10",
  "fundamental": {
-  "pe_trailing": 22.023201,
-  "pe_forward": 18.138214,
+  "pe_trailing": 21.882977,
+  "pe_forward": 18.022726,
   "eps_trailing": 29.31,
   "eps_forward": 35.58785,
   "stale": false,
@@ -575,134 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
+   "label": "HIMS Stock Faces Dual Blow From Expanded FTC Privacy Lawsuit After Selloff Driven By Q3 Subscriber Loss",
    "value": {
-    "headline": "Trump’s Former AI Czar Says “I Get Really Worried About 2028”: That’s a Big Problem for Nvidia",
+    "headline": "HIMS Stock Faces Dual Blow From Expanded FTC Privacy Lawsuit After Selloff Driven By Q3 Subscriber Loss",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794254197,
-    "url": "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss",
+    "ts": 1794352226,
+    "url": "https://stocktwits.com/news-articles/markets/equity/hims-stock-faces-dual-blow-from-expanded-ftc-privacy-lawsuit-after-selloff-driven-by-q3-subscriber-loss/cNGuUbdR9Ji?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/trumps-former-ai-czar-says-i-get-really-worried-about-2028-thats-a-big-problem-for-nvidia?ref=yahoofinance&tlnk=yf-261109-7822xmhh&.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/hims-stock-faces-dual-blow-from-expanded-ftc-privacy-lawsuit-after-selloff-driven-by-q3-subscriber-loss/cNGuUbdR9Ji?.tsrc=rss"
     ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Eaton Lost 23% in a Month. RBC Sees 58% Upside From Here",
-   "value": {
-    "headline": "Eaton Lost 23% in a Month. RBC Sees 58% Upside From Here",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794253013,
-    "url": "https://www.tikr.com/blog/eaton-lost-23-in-a-month-rbc-sees-58-upside-from-here?ref=yahoofinance&tlnk=yf-261109-cx2p5v44&.tsrc=rss",
-    "urls": [
-     "https://www.tikr.com/blog/eaton-lost-23-in-a-month-rbc-sees-58-upside-from-here?ref=yahoofinance&tlnk=yf-261109-cx2p5v44&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Instagram makes major AI change for millions of teen users",
-   "value": {
-    "headline": "Instagram makes major AI change for millions of teen users",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794250166,
-    "url": "https://finance.yahoo.com/technology/ai/articles/instagram-makes-major-ai-change-184926635.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/instagram-makes-major-ai-change-184926635.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Oklo Is Down 86% From Its High. Will Shares Soar When Meta's Reactor Comes Online?",
-   "value": {
-    "headline": "Oklo Is Down 86% From Its High. Will Shares Soar When Meta's Reactor Comes Online?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794249780,
-    "url": "https://www.fool.com/investing/2026/11/09/oklo-down-86-from-its-high-will-shares-soar-when/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/09/oklo-down-86-from-its-high-will-shares-soar-when/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Meta Platforms Stock Rallied on Monday",
-   "value": {
-    "headline": "Why Meta Platforms Stock Rallied on Monday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794248619,
-    "url": "https://www.fool.com/investing/2026/11/09/why-meta-platforms-stock-rallied-on-monday/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/09/why-meta-platforms-stock-rallied-on-monday/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 19,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "udn",
-     "yahoo_tw",
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-09",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 399 分 / 102 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 399,
-    "comments": 102,
-    "n": 20,
-    "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+   "value": {
+    "headline": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794351780,
+    "url": "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Stock Market Today, Nov. 10: Wall Street's Rally Hits a Roadblock as Hot Inflation Raises the Stakes for the Fed",
+   "value": {
+    "headline": "Stock Market Today, Nov. 10: Wall Street's Rally Hits a Roadblock as Hot Inflation Raises the Stakes for the Fed",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794351007,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-wall-street-s-rally-hits-a-roadblock-as-hot-inflation-raises-the-stakes-for-the-fed/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-wall-street-s-rally-hits-a-roadblock-as-hot-inflation-raises-the-stakes-for-the-fed/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Halliburton Announces Dividend",
+   "value": {
+    "headline": "Halliburton Announces Dividend",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794348900,
+    "url": "https://finance.yahoo.com/energy/articles/halliburton-announces-dividend-221500696.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/energy/articles/halliburton-announces-dividend-221500696.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Meta's Ember is a bet on cheaper models with competitors",
+   "value": {
+    "headline": "Meta's Ember is a bet on cheaper models with competitors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794347728,
+    "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 17,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-11",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "sec_ftd",
@@ -716,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-09",
+   "as_of": "2026-11-11",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
