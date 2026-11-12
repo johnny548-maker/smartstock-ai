@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 348.51,
- "change_pct": -0.62,
+ "price": 355.63,
+ "change_pct": 2.04,
  "ohlc": [
-  {
-   "time": "2026-08-18",
-   "o": 307.58,
-   "h": 311.49,
-   "l": 305.74,
-   "c": 310.03,
-   "v": 53424500
-  },
   {
    "time": "2026-08-19",
    "o": 310.14,
@@ -478,19 +470,24 @@
   },
   {
    "time": "2026-11-10",
-   "o": 351.55,
+   "o": 351.35,
    "h": 353.87,
    "l": 346.46,
    "c": 348.51,
-   "v": 29726781
+   "v": 29756100
+  },
+  {
+   "time": "2026-11-11",
+   "o": 349.58,
+   "h": 355.9,
+   "l": 349.33,
+   "c": 355.63,
+   "v": 34023762
   }
  ],
  "sr": {
-  "price": 348.51,
-  "resistance": [
-   351.43,
-   351.73
-  ],
+  "price": 355.63,
+  "resistance": [],
   "support": [
    338.7,
    325.81
@@ -498,7 +495,6 @@
   "strong_support": 242.76
  },
  "spark": [
-  310.03,
   316.83,
   311.3,
   309.35,
@@ -557,16 +553,17 @@
   344.17,
   342.37,
   350.69,
-  348.51
+  348.51,
+  355.63
  ],
- "spark_start": "2026-08-18",
- "spark_end": "2026-11-10",
+ "spark_start": "2026-08-19",
+ "spark_end": "2026-11-11",
  "fundamental": {
   "pe_trailing": 38.80958,
   "pe_forward": 33.028427,
   "eps_trailing": 8.98,
   "eps_forward": 10.55182,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +572,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Could Lift Netflix Stock From Here?",
+   "label": "Stock Market Today, Nov. 11: Stock Market Today, Nov. 11: Nasdaq Surges as CoreWeave's 25% Rally Reignites the AI Trade",
    "value": {
-    "headline": "What Could Lift Netflix Stock From Here?",
+    "headline": "Stock Market Today, Nov. 11: Stock Market Today, Nov. 11: Nasdaq Surges as CoreWeave's 25% Rally Reignites the AI Trade",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794353669,
-    "url": "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss",
+    "ts": 1794437102,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-stock-market-today-nov-11-nasdaq-surges-as-coreweave-s-25-rally-reignites-the-ai-trade/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-stock-market-today-nov-11-nasdaq-surges-as-coreweave-s-25-rally-reignites-the-ai-trade/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
+   "label": "Apple Shares (AAPL) Look Expensive Heading into 2027",
    "value": {
-    "headline": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
+    "headline": "Apple Shares (AAPL) Look Expensive Heading into 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794353580,
-    "url": "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss",
+    "ts": 1794431700,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-shares-aapl-look-expensive-211500629.html?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apple-shares-aapl-look-expensive-211500629.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia's trillion-dollar bind: Can it afford to lose Jensen Huang?",
+   "label": "Is Dell Stock Priced Right Against Its Peers?",
    "value": {
-    "headline": "Nvidia's trillion-dollar bind: Can it afford to lose Jensen Huang?",
+    "headline": "Is Dell Stock Priced Right Against Its Peers?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794348183,
-    "url": "https://www.cbsnews.com/news/jensen-huang-affair-nvidia-ceo-dilemma/?.tsrc=rss",
+    "ts": 1794430140,
+    "url": "https://www.trefis.com/stock/dell/articles/624271/is-dell-stock-priced-right-against-its-peers/2026-11-11?.tsrc=rss",
     "urls": [
-     "https://www.cbsnews.com/news/jensen-huang-affair-nvidia-ceo-dilemma/?.tsrc=rss"
+     "https://www.trefis.com/stock/dell/articles/624271/is-dell-stock-priced-right-against-its-peers/2026-11-11?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta's Ember is a bet on cheaper models with competitors",
+   "label": "Google rolls out Gemini AI voice assistant to Apple CarPlay dashboards",
    "value": {
-    "headline": "Meta's Ember is a bet on cheaper models with competitors",
+    "headline": "Google rolls out Gemini AI voice assistant to Apple CarPlay dashboards",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794347728,
-    "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss",
+    "ts": 1794428020,
+    "url": "https://finance.yahoo.com/technology/ai/articles/google-rolls-gemini-ai-voice-201340171.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/google-rolls-gemini-ai-voice-201340171.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple users get urgent security warning over iPhone flaw",
+   "label": "Micron Stock Fell 30% in a Week. Bernstein Says It Could Nearly Double",
    "value": {
-    "headline": "Apple users get urgent security warning over iPhone flaw",
+    "headline": "Micron Stock Fell 30% in a Week. Bernstein Says It Could Nearly Double",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794342711,
-    "url": "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw?.tsrc=rss",
+    "ts": 1794425088,
+    "url": "https://www.tikr.com/blog/micron-stock-fell-30-in-a-week-bernstein-says-it-could-nearly-double?ref=yahoofinance&tlnk=yf-261111-vf93wfjf&.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw?.tsrc=rss"
+     "https://www.tikr.com/blog/micron-stock-fell-30-in-a-week-bernstein-says-it-could-nearly-double?ref=yahoofinance&tlnk=yf-261111-vf93wfjf&.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-11",
+   "severity": "info",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 162 分 / 81 留言",
+   "label": "HN 討論熱度 20 篇 / 248 分 / 83 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 162,
-    "comments": 81,
+    "points": 248,
+    "comments": 83,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +711,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

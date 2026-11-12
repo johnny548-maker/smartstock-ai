@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 270.87,
- "change_pct": 1.48,
+ "price": 266.17,
+ "change_pct": -1.74,
  "ohlc": [
-  {
-   "time": "2026-08-18",
-   "o": 260.63,
-   "h": 262.18,
-   "l": 257.73,
-   "c": 259.45,
-   "v": 33171300
-  },
   {
    "time": "2026-08-19",
    "o": 260.85,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-11-10",
-   "o": 266.33,
+   "o": 266.21,
    "h": 272.88,
    "l": 266.14,
    "c": 270.87,
-   "v": 38874955
+   "v": 38968300
+  },
+  {
+   "time": "2026-11-11",
+   "o": 273.27,
+   "h": 274.87,
+   "l": 265.62,
+   "c": 266.17,
+   "v": 37223624
   }
  ],
  "sr": {
-  "price": 270.87,
+  "price": 266.17,
   "resistance": [
-   274.75,
-   278.56
+   266.4,
+   267.56
   ],
   "support": [
    257.04,
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  259.45,
   265.84,
   260.11,
   258.63,
@@ -557,33 +556,35 @@
   260.21,
   259.3,
   266.93,
-  270.87
+  270.87,
+  266.17
  ],
- "spark_start": "2026-08-18",
- "spark_end": "2026-11-10",
+ "spark_start": "2026-08-19",
+ "spark_end": "2026-11-11",
  "fundamental": {
   "pe_trailing": 21.897331,
   "pe_forward": 24.842163,
   "eps_trailing": 12.37,
   "eps_forward": 10.90364,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 270.87,
-  "stop": 251.91,
-  "target": 318.27,
-  "atr_bracket": 318.27,
-  "measured_move": null,
+  "entry": 266.17,
+  "stop": 247.54,
+  "target": 312.75,
+  "atr_bracket": 312.75,
+  "measured_move": 321.32,
   "target_band": [
-   318.27
+   312.75,
+   321.32
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
   "atr_pct": 3.9,
-  "swing_stop": 226.16,
-  "chandelier": 247.67,
+  "swing_stop": 226.27,
+  "chandelier": 247.01,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -591,116 +592,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon’s Cloud Computing Business Already Brings in More Revenue Than 476 Companies in the S&P 500. Here’s What It Would",
+   "label": "Amazon (AMZN) Could Face Trial In Italy Over Unpaid Import VAT",
    "value": {
-    "headline": "Amazon’s Cloud Computing Business Already Brings in More Revenue Than 476 Companies in the S&P 500. Here’s What It Would Take to Reach $1 Trillion.",
+    "headline": "Amazon (AMZN) Could Face Trial In Italy Over Unpaid Import VAT",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794358262,
-    "url": "https://www.fool.com/investing/2026/11/10/amazon-cloud-computing-brings-in-more-revenue-than-476-companies-in-the-sp-500/?.tsrc=rss",
+    "ts": 1794435016,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-could-face-trial-221016549.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/10/amazon-cloud-computing-brings-in-more-revenue-than-476-companies-in-the-sp-500/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-could-face-trial-221016549.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Could Lift Netflix Stock From Here?",
+   "label": "Generac: 3 Key Takeaways for Long-Term Investors",
    "value": {
-    "headline": "What Could Lift Netflix Stock From Here?",
+    "headline": "Generac: 3 Key Takeaways for Long-Term Investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794353669,
-    "url": "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss",
+    "ts": 1794434702,
+    "url": "https://www.fool.com/earnings/takeaways/2026/11/11/generac-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss"
+     "https://www.fool.com/earnings/takeaways/2026/11/11/generac-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
+   "label": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
    "value": {
-    "headline": "Bullish’s New President Backs Issuer-First Model for Tokenized Stocks",
+    "headline": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794353580,
-    "url": "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss",
+    "ts": 1794433426,
+    "url": "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html?.tsrc=rss",
     "urls": [
-     "https://www.cryptoprowl.com/releases/bullishs-new-president-backs-issuer-first-model-for-tokenized-stocks-7830?.tsrc=rss"
+     "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
+   "label": "Cathie Wood's ARK Pares Amazon, Adds These Aerospace Stocks",
    "value": {
-    "headline": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
+    "headline": "Cathie Wood's ARK Pares Amazon, Adds These Aerospace Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794347345,
-    "url": "https://finance.yahoo.com/m/c7fbd2af-5702-3c77-9aa6-7c6578bb8abb/stock-market-today%3A-dow-dips.html?.tsrc=rss",
+    "ts": 1794431439,
+    "url": "https://finance.yahoo.com/m/a05afc08-5415-3fe5-b6d1-9c1540a56a42/cathie-wood%27s-ark-pares.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c7fbd2af-5702-3c77-9aa6-7c6578bb8abb/stock-market-today%3A-dow-dips.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/a05afc08-5415-3fe5-b6d1-9c1540a56a42/cathie-wood%27s-ark-pares.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why the Data Center Backlash Could Fall Flat: Increased Costs “a Trade That These Hyperscalers Are Still Going to Want t",
+   "label": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
    "value": {
-    "headline": "Why the Data Center Backlash Could Fall Flat: Increased Costs “a Trade That These Hyperscalers Are Still Going to Want to Make”",
+    "headline": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794346697,
-    "url": "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6&.tsrc=rss",
+    "ts": 1794431278,
+    "url": "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6&.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -715,7 +717,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 641.39,
- "change_pct": 0.0,
+ "price": 628.77,
+ "change_pct": -1.97,
  "ohlc": [
-  {
-   "time": "2026-08-18",
-   "o": 557.04,
-   "h": 560.22,
-   "l": 542.78,
-   "c": 543.24,
-   "v": 27094900
-  },
   {
    "time": "2026-08-19",
    "o": 540.91,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-11-10",
-   "o": 637.25,
+   "o": 637.98,
    "h": 647.28,
    "l": 635.5,
    "c": 641.39,
-   "v": 13007238
+   "v": 13030600
+  },
+  {
+   "time": "2026-11-11",
+   "o": 646.73,
+   "h": 648.45,
+   "l": 628.02,
+   "c": 628.77,
+   "v": 15429277
   }
  ],
  "sr": {
-  "price": 641.39,
+  "price": 628.77,
   "resistance": [
-   641.9,
-   659.3
+   641.3,
+   641.9
   ],
   "support": [
-   636.45,
-   632.87
+   627.36,
+   626.54
   ],
   "strong_support": 519.37
  },
  "spark": [
-  543.24,
   545.6,
   545.4,
   549.47,
@@ -557,16 +556,17 @@
   605.08,
   610.15,
   641.37,
-  641.39
+  641.39,
+  628.77
  ],
- "spark_start": "2026-08-18",
- "spark_end": "2026-11-10",
+ "spark_start": "2026-08-19",
+ "spark_end": "2026-11-11",
  "fundamental": {
   "pe_trailing": 21.882977,
   "pe_forward": 18.022726,
   "eps_trailing": 29.31,
   "eps_forward": 35.58785,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "HIMS Stock Faces Dual Blow From Expanded FTC Privacy Lawsuit After Selloff Driven By Q3 Subscriber Loss",
+   "label": "Meta Platforms (META) Braces For EU Rules With 6% Revenue Penalty Risk",
    "value": {
-    "headline": "HIMS Stock Faces Dual Blow From Expanded FTC Privacy Lawsuit After Selloff Driven By Q3 Subscriber Loss",
+    "headline": "Meta Platforms (META) Braces For EU Rules With 6% Revenue Penalty Risk",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794352226,
-    "url": "https://stocktwits.com/news-articles/markets/equity/hims-stock-faces-dual-blow-from-expanded-ftc-privacy-lawsuit-after-selloff-driven-by-q3-subscriber-loss/cNGuUbdR9Ji?.tsrc=rss",
+    "ts": 1794439040,
+    "url": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-braces-eu-231720243.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/hims-stock-faces-dual-blow-from-expanded-ftc-privacy-lawsuit-after-selloff-driven-by-q3-subscriber-loss/cNGuUbdR9Ji?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-braces-eu-231720243.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-11",
+   "severity": "info",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+   "label": "Hugging Face co-founder says AI hacks show even the biggest labs haven't figured out AI alignment",
    "value": {
-    "headline": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+    "headline": "Hugging Face co-founder says AI hacks show even the biggest labs haven't figured out AI alignment",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794351780,
-    "url": "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss",
+    "ts": 1794434400,
+    "url": "https://finance.yahoo.com/technology/article/hugging-face-co-founder-says-ai-hacks-show-even-the-biggest-labs-havent-figured-out-ai-alignment-220000796.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/hugging-face-co-founder-says-ai-hacks-show-even-the-biggest-labs-havent-figured-out-ai-alignment-220000796.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 10: Wall Street's Rally Hits a Roadblock as Hot Inflation Raises the Stakes for the Fed",
+   "label": "FIS to Present at Upcoming Conference",
    "value": {
-    "headline": "Stock Market Today, Nov. 10: Wall Street's Rally Hits a Roadblock as Hot Inflation Raises the Stakes for the Fed",
+    "headline": "FIS to Present at Upcoming Conference",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794351007,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-wall-street-s-rally-hits-a-roadblock-as-hot-inflation-raises-the-stakes-for-the-fed/?.tsrc=rss",
+    "ts": 1794432600,
+    "url": "https://finance.yahoo.com/technology/articles/fis-present-upcoming-conference-213000800.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-wall-street-s-rally-hits-a-roadblock-as-hot-inflation-raises-the-stakes-for-the-fed/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/fis-present-upcoming-conference-213000800.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Halliburton Announces Dividend",
+   "label": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
    "value": {
-    "headline": "Halliburton Announces Dividend",
+    "headline": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794348900,
-    "url": "https://finance.yahoo.com/energy/articles/halliburton-announces-dividend-221500696.html?.tsrc=rss",
+    "ts": 1794431278,
+    "url": "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/halliburton-announces-dividend-221500696.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta's Ember is a bet on cheaper models with competitors",
+   "label": "Pixelworks Reports Third Quarter 2026 Financial Results",
    "value": {
-    "headline": "Meta's Ember is a bet on cheaper models with competitors",
+    "headline": "Pixelworks Reports Third Quarter 2026 Financial Results",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794347728,
-    "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss",
+    "ts": 1794431100,
+    "url": "https://finance.yahoo.com/technology/articles/pixelworks-reports-third-quarter-2026-210500790.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/pixelworks-reports-third-quarter-2026-210500790.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

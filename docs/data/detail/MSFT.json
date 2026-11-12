@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 533.16,
- "change_pct": -2.2,
+ "price": 521.12,
+ "change_pct": -2.26,
  "ohlc": [
-  {
-   "time": "2026-08-18",
-   "o": 480.64,
-   "h": 483.36,
-   "l": 476.25,
-   "c": 480.73,
-   "v": 24087600
-  },
   {
    "time": "2026-08-19",
    "o": 479.17,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-11-10",
-   "o": 543.41,
-   "h": 544.15,
-   "l": 526.36,
+   "o": 542.98,
+   "h": 544.19,
+   "l": 526.37,
    "c": 533.16,
-   "v": 26910016
+   "v": 26940900
+  },
+  {
+   "time": "2026-11-11",
+   "o": 534.22,
+   "h": 534.76,
+   "l": 518.45,
+   "c": 521.12,
+   "v": 28565538
   }
  ],
  "sr": {
-  "price": 533.16,
+  "price": 521.12,
   "resistance": [
    541.29,
    551.15
   ],
   "support": [
-   524.43,
-   518.79
+   518.79,
+   515.7
   ],
   "strong_support": 348.54
  },
  "spark": [
-  480.73,
   483.4,
   481.15,
   483.24,
@@ -557,16 +556,17 @@
   535.93,
   530.61,
   545.18,
-  533.16
+  533.16,
+  521.12
  ],
- "spark_start": "2026-08-18",
- "spark_end": "2026-11-10",
+ "spark_start": "2026-08-19",
+ "spark_end": "2026-11-11",
  "fundamental": {
   "pe_trailing": 27.826721,
   "pe_forward": 22.035328,
   "eps_trailing": 19.16,
   "eps_forward": 24.19569,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise, CoreWave Jumps After Stocks Fall On Nvidia, Surging Treasury Yields",
+   "label": "Market Chatter: Microsoft Wants to Power Data Centers Without Subsidies or Higher Costs for Others",
    "value": {
-    "headline": "Dow Jones Futures Rise, CoreWave Jumps After Stocks Fall On Nvidia, Surging Treasury Yields",
+    "headline": "Market Chatter: Microsoft Wants to Power Data Centers Without Subsidies or Higher Costs for Others",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794358417,
-    "url": "https://finance.yahoo.com/m/656fca57-9896-3dfb-96e8-e0af2bc227df/dow-jones-futures-rise%2C.html?.tsrc=rss",
+    "ts": 1794442098,
+    "url": "https://finance.yahoo.com/technology/articles/market-chatter-microsoft-wants-power-000818359.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/656fca57-9896-3dfb-96e8-e0af2bc227df/dow-jones-futures-rise%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/market-chatter-microsoft-wants-power-000818359.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Nebius Group Buyers Were Betting On",
+   "label": "Fusion's Next Race Is Over Superconducting Tape, Not Plasma",
    "value": {
-    "headline": "What Nebius Group Buyers Were Betting On",
+    "headline": "Fusion's Next Race Is Over Superconducting Tape, Not Plasma",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794352640,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nebius-group-buyers-were-betting-231720905.html?.tsrc=rss",
+    "ts": 1794438000,
+    "url": "https://finance.yahoo.com/energy/articles/fusions-next-race-over-superconducting-230000192.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nebius-group-buyers-were-betting-231720905.html?.tsrc=rss"
+     "https://finance.yahoo.com/energy/articles/fusions-next-race-over-superconducting-230000192.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+   "label": "Stock Market Today, Nov. 11: IREN Rises as AI Cloud Peers Rally on CoreWeave Results",
    "value": {
-    "headline": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+    "headline": "Stock Market Today, Nov. 11: IREN Rises as AI Cloud Peers Rally on CoreWeave Results",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794351780,
-    "url": "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss",
+    "ts": 1794435901,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-iren-rises-as-ai-cloud-peers-rally-on-coreweave-results/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/0cd31936-82e3-3051-8fb2-6e33049f3cb0/coreweave-earnings-were.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-iren-rises-as-ai-cloud-peers-rally-on-coreweave-results/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "IREN Stock Falls Even as JPMorgan Goes Bullish",
+   "label": "Stocks Slide as AI Trade Roars Back | Closing Bell",
    "value": {
-    "headline": "IREN Stock Falls Even as JPMorgan Goes Bullish",
+    "headline": "Stocks Slide as AI Trade Roars Back | Closing Bell",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794350697,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/iren-stock-falls-even-jpmorgan-224457686.html?.tsrc=rss",
+    "ts": 1794434683,
+    "url": "https://finance.yahoo.com/video/stocks-slide-ai-trade-roars-220443238.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/iren-stock-falls-even-jpmorgan-224457686.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/stocks-slide-ai-trade-roars-220443238.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How does this simple website make $23K/month",
+   "label": "Is the AI boom hiding a jobs crisis for graduates?",
    "value": {
-    "headline": "How does this simple website make $23K/month",
+    "headline": "Is the AI boom hiding a jobs crisis for graduates?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794349962,
-    "url": "https://starterstory.videonest.co/videos/1787552/how-does-this-simple-website-make-23k-month-e5PgqkKXxw?.tsrc=rss",
+    "ts": 1794433503,
+    "url": "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html?.tsrc=rss",
     "urls": [
-     "https://starterstory.videonest.co/videos/1787552/how-does-this-simple-website-make-23k-month-e5PgqkKXxw?.tsrc=rss"
+     "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
-     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -700,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-11",
+   "as_of": "2026-11-12",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
