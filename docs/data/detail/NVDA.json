@@ -5,30 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-17",
-   "o": 225.73,
-   "h": 227.67,
-   "l": 224.61,
-   "c": 224.76,
-   "v": 93678700
-  },
-  {
-   "time": "2026-08-18",
-   "o": 220.2,
-   "h": 221.39,
-   "l": 218.45,
-   "c": 219.49,
-   "v": 103128200
-  },
-  {
-   "time": "2026-08-19",
-   "o": 221.42,
-   "h": 222.62,
-   "l": 216.52,
-   "c": 217.32,
-   "v": 96797300
-  },
-  {
    "time": "2026-08-20",
    "o": 218.12,
    "h": 219.61,
@@ -474,15 +450,39 @@
    "h": 194.9,
    "l": 185.22,
    "c": 186.64,
-   "v": 179722400
+   "v": 180212300
   },
   {
    "time": "2026-11-09",
+   "o": 173.07,
+   "h": 179.92,
+   "l": 170.24,
+   "c": 178.67,
+   "v": 462719300
+  },
+  {
+   "time": "2026-11-10",
+   "o": 173.97,
+   "h": 174.69,
+   "l": 165.89,
+   "c": 168.89,
+   "v": 429273200
+  },
+  {
+   "time": "2026-11-11",
+   "o": 172.8,
+   "h": 177.54,
+   "l": 170.77,
+   "c": 173.73,
+   "v": 339214800
+  },
+  {
+   "time": "2026-11-12",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 456756830
+   "v": 740019481
   }
  ],
  "sr": {
@@ -492,9 +492,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  224.76,
-  219.49,
-  217.32,
   216.61,
   214.48,
   208.25,
@@ -551,15 +548,18 @@
   200.13,
   181.6,
   186.64,
+  178.67,
+  168.89,
+  173.73,
   null
  ],
- "spark_start": "2026-08-17",
- "spark_end": "2026-11-09",
+ "spark_start": "2026-08-20",
+ "spark_end": "2026-11-12",
  "fundamental": {
-  "pe_trailing": 22.587864,
-  "pe_forward": 11.217311,
+  "pe_trailing": 21.010115,
+  "pe_forward": 10.485418,
   "eps_trailing": 7.91,
-  "eps_forward": 15.92806,
+  "eps_forward": 15.84963,
   "stale": false,
   "source": "yfinance"
  },
@@ -569,116 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Why Lincoln Educational Stock Surged Today",
+   "label": "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
    "value": {
-    "headline": "Why Lincoln Educational Stock Surged Today",
+    "headline": "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273613,
-    "url": "https://www.fool.com/investing/2026/11/09/why-lincoln-educational-stock-surged-today/?.tsrc=rss",
+    "ts": 1794533004,
+    "url": "https://finance.yahoo.com/m/4a3dff17-3e8e-33ca-823f-8ac12eff6a4a/dow-jones-futures-rise-after.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/09/why-lincoln-educational-stock-surged-today/?.tsrc=rss"
+     "https://finance.yahoo.com/m/4a3dff17-3e8e-33ca-823f-8ac12eff6a4a/dow-jones-futures-rise-after.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+   "label": "CoreWeave stock sinks nearly 7% after Nvidia CEO Jensen Huang resigns",
    "value": {
-    "headline": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+    "headline": "CoreWeave stock sinks nearly 7% after Nvidia CEO Jensen Huang resigns",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273600,
-    "url": "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss",
+    "ts": 1794532921,
+    "url": "https://www.thestreet.com/investing/stocks/coreweave-stock-sinks-nearly-7-after-nvidia-ceo-jensen-huang-resigns?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/09/the-ai-trade-looks-like-its-falling-apart-amds-ear/?.tsrc=rss"
+     "https://www.thestreet.com/investing/stocks/coreweave-stock-sinks-nearly-7-after-nvidia-ceo-jensen-huang-resigns?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-10",
+   "severity": "warn",
+   "as_of": "2026-11-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Does Nvidia (NVDA) Need To Prove As AI Rivalry And CEO Scrutiny Build?",
+   "label": "Nebius Group (NBIS) Takes a Beating — This Tech Giant Is to Blame",
    "value": {
-    "headline": "What Does Nvidia (NVDA) Need To Prove As AI Rivalry And CEO Scrutiny Build?",
+    "headline": "Nebius Group (NBIS) Takes a Beating — This Tech Giant Is to Blame",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273397,
-    "url": "https://finance.yahoo.com/technology/ai/articles/does-nvidia-nvda-prove-ai-011637196.html?.tsrc=rss",
+    "ts": 1794532353,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-takes-beating-011233005.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/does-nvidia-nvda-prove-ai-011637196.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-takes-beating-011233005.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+   "label": "Super Micro (SMCI) Takes Another Hit as Fresh Probe Weighs on Shares",
    "value": {
-    "headline": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+    "headline": "Super Micro (SMCI) Takes Another Hit as Fresh Probe Weighs on Shares",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794273150,
-    "url": "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss",
+    "ts": 1794532038,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-takes-another-010718435.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-takes-another-010718435.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-10",
+   "severity": "warn",
+   "as_of": "2026-11-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Over 50? 3 Things You Should Be Doing to Prepare for Retirement Already",
+   "label": "Is Nvidia a buy after its CEO-resignation pullback?",
    "value": {
-    "headline": "Over 50? 3 Things You Should Be Doing to Prepare for Retirement Already",
+    "headline": "Is Nvidia a buy after its CEO-resignation pullback?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794272582,
-    "url": "https://www.fool.com/retirement/2026/11/09/over-50-3-things-you-should-be-doing-to-prepare-for-retirement-already/?.tsrc=rss",
+    "ts": 1794531770,
+    "url": "https://www.thestreet.com/investing/is-nvidia-a-buy-after-its-ceo-resignation-pullback?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/retirement/2026/11/09/over-50-3-things-you-should-be-doing-to-prepare-for-retirement-already/?.tsrc=rss"
+     "https://www.thestreet.com/investing/is-nvidia-a-buy-after-its-ceo-resignation-pullback?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +693,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

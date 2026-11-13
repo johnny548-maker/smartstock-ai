@@ -478,11 +478,11 @@
   },
   {
    "time": "2026-11-11",
-   "o": 118.4,
+   "o": 118.41,
    "h": 123.18,
    "l": 114.38,
    "c": 122.77,
-   "v": 3424746
+   "v": 3425500
   }
  ],
  "sr": {
@@ -563,5 +563,123 @@
  "spark_end": "2026-11-11",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Artisan Partners Trimmed Lattice Semiconductor Corporation (LSCC) Despite Its Long-Term Appeal",
+   "value": {
+    "headline": "Artisan Partners Trimmed Lattice Semiconductor Corporation (LSCC) Despite Its Long-Term Appeal",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794502539,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/artisan-partners-trimmed-lattice-semiconductor-165539148.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/artisan-partners-trimmed-lattice-semiconductor-165539148.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Lattice (LSCC) Might be Well Poised for a Surge",
+   "value": {
+    "headline": "Why Lattice (LSCC) Might be Well Poised for a Surge",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794500402,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-lattice-lscc-might-well-162002710.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/why-lattice-lscc-might-well-162002710.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Can Lattice (LSCC) Climb 29.97% to Reach the Level Wall Street Analysts Expect?",
+   "value": {
+    "headline": "Can Lattice (LSCC) Climb 29.97% to Reach the Level Wall Street Analysts Expect?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794491701,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lattice-lscc-climb-29-97-135501542.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lattice-lscc-climb-29-97-135501542.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Lattice Semiconductor (LSCC) Recently Broke Out Above the 200-Day Moving Average",
+   "value": {
+    "headline": "Lattice Semiconductor (LSCC) Recently Broke Out Above the 200-Day Moving Average",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794490201,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-lscc-recently-broke-133001373.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-lscc-recently-broke-133001262.html?.tsrc=rss",
+     "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-lscc-recently-broke-133001373.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "SK hynix Rides the AI Data Center Boom and HBM4 Ramp-Up",
+   "value": {
+    "headline": "SK hynix Rides the AI Data Center Boom and HBM4 Ramp-Up",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794414120,
+    "url": "https://finance.yahoo.com/technology/ai/articles/sk-hynix-rides-ai-data-162200615.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/sk-hynix-rides-ai-data-162200615.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-13",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }
