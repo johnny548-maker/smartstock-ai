@@ -1,8 +1,8 @@
 {
  "stock": "2636",
  "name": "台驊控股",
- "price": 71.1,
- "change_pct": 0.71,
+ "price": 71.0,
+ "change_pct": 0.57,
  "ohlc": [
   {
    "time": "2026-08-18",
@@ -480,13 +480,13 @@
    "time": "2026-11-13",
    "o": 70.6,
    "h": 71.3,
-   "l": 70.6,
-   "c": 71.1,
-   "v": 51002
+   "l": 70.4,
+   "c": 71.0,
+   "v": 347002
   }
  ],
  "sr": {
-  "price": 71.1,
+  "price": 71.0,
   "resistance": [
    71.2,
    71.3
@@ -557,7 +557,7 @@
   69.3,
   70.0,
   70.6,
-  71.1
+  71.0
  ],
  "spark_start": "2026-08-18",
  "spark_end": "2026-11-13",
@@ -580,8 +580,43 @@
     "short_pct": 0.0
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "〈航運指數〉運價淡季修正 地中海航線逆勢彈升有亮點",
+   "value": {
+    "headline": "〈航運指數〉運價淡季修正 地中海航線逆勢彈升有亮點",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1794568273,
+    "url": "cnyes:6661825",
+    "urls": [
+     "cnyes:6661825"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1049,6 +1084,10 @@
    {
     "t": "2026-11-13",
     "v": 7935
+   },
+   {
+    "t": "2026-11-14",
+    "v": 7995
    }
   ],
   "holder_pct": [

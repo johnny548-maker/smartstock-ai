@@ -1,17 +1,9 @@
 {
  "stock": "EOSE",
  "name": "Eos Energy Enterprises",
- "price": 1.99,
- "change_pct": 14.37,
+ "price": 1.81,
+ "change_pct": -9.05,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 3.66,
-   "h": 3.76,
-   "l": 3.5,
-   "c": 3.74,
-   "v": 27179300
-  },
   {
    "time": "2026-08-20",
    "o": 3.67,
@@ -483,19 +475,28 @@
    "l": 1.84,
    "c": 1.99,
    "v": 25932900
+  },
+  {
+   "time": "2026-11-12",
+   "o": 1.85,
+   "h": 1.96,
+   "l": 1.8,
+   "c": 1.81,
+   "v": 16029800
   }
  ],
  "sr": {
-  "price": 1.99,
+  "price": 1.81,
   "resistance": [
    2.07,
    2.33
   ],
-  "support": [],
-  "strong_support": 2.06
+  "support": [
+   1.66
+  ],
+  "strong_support": 1.66
  },
  "spark": [
-  3.74,
   3.46,
   3.81,
   3.46,
@@ -554,10 +555,11 @@
   1.74,
   1.88,
   1.74,
-  1.99
+  1.99,
+  1.81
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
+ "spark_start": "2026-08-20",
+ "spark_end": "2026-11-12",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"

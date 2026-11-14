@@ -5,14 +5,6 @@
  "change_pct": null,
  "ohlc": [
   {
-   "time": "2026-08-20",
-   "o": 218.12,
-   "h": 219.61,
-   "l": 215.42,
-   "c": 216.61,
-   "v": 92457000
-  },
-  {
    "time": "2026-08-21",
    "o": 218.18,
    "h": 218.5,
@@ -478,11 +470,19 @@
   },
   {
    "time": "2026-11-12",
+   "o": 151.01,
+   "h": 167.14,
+   "l": 148.8,
+   "c": 166.19,
+   "v": 747707600
+  },
+  {
+   "time": "2026-11-13",
    "o": null,
    "h": null,
    "l": null,
    "c": null,
-   "v": 740019481
+   "v": 362490337
   }
  ],
  "sr": {
@@ -492,7 +492,6 @@
   "strong_support": 163.9
  },
  "spark": [
-  216.61,
   214.48,
   208.25,
   212.81,
@@ -551,16 +550,17 @@
   178.67,
   168.89,
   173.73,
+  166.19,
   null
  ],
- "spark_start": "2026-08-20",
- "spark_end": "2026-11-12",
+ "spark_start": "2026-08-21",
+ "spark_end": "2026-11-13",
  "fundamental": {
   "pe_trailing": 21.010115,
   "pe_forward": 10.485418,
   "eps_trailing": 7.91,
   "eps_forward": 15.84963,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,116 +569,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
+   "label": "Jensen Huang Just Resigned From Nvidia. A Study of 187 Forced CEO Exits Shows What Could Happen Next",
    "value": {
-    "headline": "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
+    "headline": "Jensen Huang Just Resigned From Nvidia. A Study of 187 Forced CEO Exits Shows What Could Happen Next",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794533004,
-    "url": "https://finance.yahoo.com/m/4a3dff17-3e8e-33ca-823f-8ac12eff6a4a/dow-jones-futures-rise-after.html?.tsrc=rss",
+    "ts": 1794617220,
+    "url": "https://247wallst.com/investing/2026/11/13/jensen-huang-just-resigned-from-nvidia-a-study-of-187-forced-ceo-exits-shows-what-could-happen-next/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/4a3dff17-3e8e-33ca-823f-8ac12eff6a4a/dow-jones-futures-rise-after.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/13/jensen-huang-just-resigned-from-nvidia-a-study-of-187-forced-ceo-exits-shows-what-could-happen-next/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CoreWeave stock sinks nearly 7% after Nvidia CEO Jensen Huang resigns",
+   "label": "Dow Jones Futures: Market Rally Shaky As Nvidia Earnings, Anthropic IPO Loom; SpaceX Starship Flight 15 Booster Diverts.",
    "value": {
-    "headline": "CoreWeave stock sinks nearly 7% after Nvidia CEO Jensen Huang resigns",
+    "headline": "Dow Jones Futures: Market Rally Shaky As Nvidia Earnings, Anthropic IPO Loom; SpaceX Starship Flight 15 Booster Diverts.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794532921,
-    "url": "https://www.thestreet.com/investing/stocks/coreweave-stock-sinks-nearly-7-after-nvidia-ceo-jensen-huang-resigns?.tsrc=rss",
+    "ts": 1794616901,
+    "url": "https://finance.yahoo.com/m/53e50dc8-f137-3f6c-bfd6-912334fef9f1/dow-jones-futures%3A-market.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/coreweave-stock-sinks-nearly-7-after-nvidia-ceo-jensen-huang-resigns?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Nebius Group (NBIS) Takes a Beating — This Tech Giant Is to Blame",
-   "value": {
-    "headline": "Nebius Group (NBIS) Takes a Beating — This Tech Giant Is to Blame",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794532353,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-takes-beating-011233005.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-takes-beating-011233005.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/53e50dc8-f137-3f6c-bfd6-912334fef9f1/dow-jones-futures%3A-market.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Super Micro (SMCI) Takes Another Hit as Fresh Probe Weighs on Shares",
+   "label": "SpaceX’s Starship Just Did Something for Only the 2nd Time. Saturday Could Be Even Bigger.",
    "value": {
-    "headline": "Super Micro (SMCI) Takes Another Hit as Fresh Probe Weighs on Shares",
+    "headline": "SpaceX’s Starship Just Did Something for Only the 2nd Time. Saturday Could Be Even Bigger.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794532038,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-takes-another-010718435.html?.tsrc=rss",
+    "ts": 1794616501,
+    "url": "https://www.fool.com/investing/2026/11/13/spacex-s-starship-just-did-something-for-only-the-2nd-time-saturday-could-be-even-bigger/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-takes-another-010718435.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-13",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Is Nvidia a buy after its CEO-resignation pullback?",
-   "value": {
-    "headline": "Is Nvidia a buy after its CEO-resignation pullback?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794531770,
-    "url": "https://www.thestreet.com/investing/is-nvidia-a-buy-after-its-ceo-resignation-pullback?.tsrc=rss",
-    "urls": [
-     "https://www.thestreet.com/investing/is-nvidia-a-buy-after-its-ceo-resignation-pullback?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/13/spacex-s-starship-just-did-something-for-only-the-2nd-time-saturday-could-be-even-bigger/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is Apple Stock a Buy Right Now?",
+   "value": {
+    "headline": "Is Apple Stock a Buy Right Now?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794616020,
+    "url": "https://www.fool.com/investing/2026/11/13/is-apple-stock-a-buy-right-now/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/13/is-apple-stock-a-buy-right-now/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Scott Bessent and Lutnick clash over Nvidia chips and China",
+   "value": {
+    "headline": "Scott Bessent and Lutnick clash over Nvidia chips and China",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794614129,
+    "url": "https://www.thestreet.com/technology/scott-bessent-and-lutnick-clash-over-nvidia-chips-and-china?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/technology/scott-bessent-and-lutnick-clash-over-nvidia-chips-and-china?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +693,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

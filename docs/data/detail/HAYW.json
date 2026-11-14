@@ -1,17 +1,9 @@
 {
  "stock": "HAYW",
  "name": "Hayward Holdings",
- "price": 16.77,
- "change_pct": 0.96,
+ "price": 16.69,
+ "change_pct": -0.48,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 14.81,
-   "h": 15.28,
-   "l": 14.8,
-   "c": 15.1,
-   "v": 2569200
-  },
   {
    "time": "2026-08-20",
    "o": 14.82,
@@ -483,13 +475,21 @@
    "l": 16.37,
    "c": 16.77,
    "v": 2859800
+  },
+  {
+   "time": "2026-11-12",
+   "o": 16.78,
+   "h": 16.99,
+   "l": 16.51,
+   "c": 16.69,
+   "v": 6032800
   }
  ],
  "sr": {
-  "price": 16.77,
+  "price": 16.69,
   "resistance": [
-   16.81,
-   16.84
+   16.75,
+   16.81
   ],
   "support": [
    15.88,
@@ -498,7 +498,6 @@
   "strong_support": 11.1
  },
  "spark": [
-  15.1,
   14.72,
   14.58,
   14.5,
@@ -557,11 +556,129 @@
   16.24,
   16.89,
   16.61,
-  16.77
+  16.77,
+  16.69
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
+ "spark_start": "2026-08-20",
+ "spark_end": "2026-11-12",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Hayward: 3 Key Takeaways for Long-Term Investors",
+   "value": {
+    "headline": "Hayward: 3 Key Takeaways for Long-Term Investors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794521102,
+    "url": "https://www.fool.com/earnings/takeaways/2026/11/12/hayward-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/earnings/takeaways/2026/11/12/hayward-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "FPA Queens Road Small Cap Value Fund Initiates a New Position in Hayward Holdings (HAYW)",
+   "value": {
+    "headline": "FPA Queens Road Small Cap Value Fund Initiates a New Position in Hayward Holdings (HAYW)",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793649293,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/fpa-queens-road-small-cap-195453906.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/fpa-queens-road-small-cap-195453906.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Are Investors Paying Less For Hayward's Profit?",
+   "value": {
+    "headline": "Why Are Investors Paying Less For Hayward's Profit?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793454170,
+    "url": "https://www.trefis.com/stock/hayw/articles/621572/why-are-investors-paying-less-for-haywards-profit/2026-10-31?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/hayw/articles/621572/why-are-investors-paying-less-for-haywards-profit/2026-10-31?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "5 must-read analyst questions from Hayward’s Q3 earnings call",
+   "value": {
+    "headline": "5 must-read analyst questions from Hayward’s Q3 earnings call",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793445809,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-112329860.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/5-must-read-analyst-questions-112329860.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Hayward (HAYW) Stock Gains Ground As Q3 Earnings Lift Margins",
+   "value": {
+    "headline": "Hayward (HAYW) Stock Gains Ground As Q3 Earnings Lift Margins",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1793358720,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/hayward-hayw-stock-gains-ground-111200792.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/hayward-hayw-stock-gains-ground-111200792.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-14",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

@@ -1,8 +1,8 @@
 {
  "stock": "3715",
  "name": "定穎投控",
- "price": 144.0,
- "change_pct": 0.35,
+ "price": 141.5,
+ "change_pct": -1.39,
  "ohlc": [
   {
    "time": "2026-08-18",
@@ -480,16 +480,16 @@
    "time": "2026-11-13",
    "o": 147.0,
    "h": 150.5,
-   "l": 141.0,
-   "c": 144.0,
-   "v": 29155381
+   "l": 137.0,
+   "c": 141.5,
+   "v": 59959741
   }
  ],
  "sr": {
-  "price": 144.0,
+  "price": 141.5,
   "resistance": [
-   145.0,
-   149.06
+   144.0,
+   145.0
   ],
   "support": [
    138.62,
@@ -557,7 +557,7 @@
   119.0,
   130.5,
   143.5,
-  144.0
+  141.5
  ],
  "spark_start": "2026-08-18",
  "spark_end": "2026-11-13",
@@ -571,43 +571,16 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 3,076,654 股",
-   "value": {
-    "foreign": 2968356,
-    "trust": 0,
-    "dealer": 108298,
-    "total": 3076654
-   },
-   "severity": "info",
-   "as_of": "2026-11-13",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "殖利率 0.75% / PB 3.87",
-   "value": {
-    "pe": null,
-    "yield": 0.75,
-    "pb": 3.87
-   },
-   "severity": "info",
-   "as_of": "2026-11-12",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 1825,
+    "short_today": 901,
     "outstanding": 283574584,
-    "short_pct": 0.0006435696649033963
+    "short_pct": 0.0003177294619605261
    },
    "severity": "info",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-14",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   }
  ],
@@ -1076,6 +1049,10 @@
    {
     "t": "2026-11-13",
     "v": 50
+   },
+   {
+    "t": "2026-11-14",
+    "v": 4177
    }
   ],
   "holder_pct": [
