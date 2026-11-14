@@ -1,0 +1,6 @@
+SmartStock iteration-2 aux combo — asof 2026-11-14
+backfill coverage (per raw panel [min..max] cached date): {'instflow': ['2015-06-15', '2026-11-13'], 'pb': ['2017-04-13', '2026-11-13'], 'yield': ['2017-04-13', '2026-11-13'], 'margin': ['2012-01-02', '2026-11-13']}
+excluded (no keyless multi-year history): margincontra, revmom, quality, size
+IC screen (search-span, floor 0.05, next-bar fill): {"instflow": -0.01733423943348889, "value": 0.06484062680399805}
+survivors: ['value']  | n_trials=3
+GATE pass=False dsr=0.9734558012545412 spa_p=None flat_lift=None lockbox={'calmar': 0.054, 'cagr': 0.0109, 'max_dd': -0.2024}

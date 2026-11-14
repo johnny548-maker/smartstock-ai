@@ -1,0 +1,184 @@
+{
+  "asof": "2026-11-14",
+  "backfill_coverage": {
+    "instflow": [
+      "2015-06-15",
+      "2026-11-13"
+    ],
+    "pb": [
+      "2017-04-13",
+      "2026-11-13"
+    ],
+    "yield": [
+      "2017-04-13",
+      "2026-11-13"
+    ],
+    "margin": [
+      "2012-01-02",
+      "2026-11-13"
+    ]
+  },
+  "ic": {
+    "instflow": -0.01733423943348889,
+    "value": 0.06484062680399805
+  },
+  "survivors": [
+    "value"
+  ],
+  "ic_min": 0.05,
+  "n_trials": 3,
+  "excluded": [
+    "margincontra",
+    "revmom",
+    "quality",
+    "size"
+  ],
+  "gate": {
+    "pass": false,
+    "n_trials": 3,
+    "dsr": 0.9734558012545412,
+    "dsr_pass": true,
+    "pbo": 0.6300699300699301,
+    "pbo_pass": false,
+    "pbo_status": "FAIL",
+    "spa_p": null,
+    "spa_pass": false,
+    "lockbox": {
+      "calmar": 0.054,
+      "cagr": 0.0109,
+      "max_dd": -0.2024
+    },
+    "lockbox_pass": true,
+    "flat_lift": null,
+    "flat_pass": false,
+    "n_search": 1832,
+    "n_lock": 458,
+    "sr_daily": 0.0676832782222995,
+    "skew": -1.4126528596852561,
+    "kurt": 19.088179486096003,
+    "dsr_sensitivity": {
+      "trials": [
+        {
+          "n_trials": 1,
+          "dsr": 0.996938580420542,
+          "pass": true
+        },
+        {
+          "n_trials": 3,
+          "dsr": 0.9734558012545412,
+          "pass": true
+        },
+        {
+          "n_trials": 5,
+          "dsr": 0.9465941193489564,
+          "pass": false
+        },
+        {
+          "n_trials": 10,
+          "dsr": 0.8945758050460786,
+          "pass": false
+        },
+        {
+          "n_trials": 45,
+          "dsr": 0.7342620461313769,
+          "pass": false
+        },
+        {
+          "n_trials": 100,
+          "dsr": 0.6355763548109633,
+          "pass": false
+        }
+      ],
+      "n_star": 5,
+      "threshold": 0.95,
+      "sharpe": 0.0676832782222995,
+      "n_obs": 1832,
+      "skew": -1.4126528596852561,
+      "kurt": 19.088179486096003,
+      "source": "combo"
+    },
+    "lockbox_ledger": {
+      "key": "66ee2fd45f3788462ac3bdf57a89d6c0893072f56115be1f05b68f365715993b",
+      "prior_evals": 0,
+      "lockbox_reused": false,
+      "window": [
+        "2024-12-23",
+        "2026-11-13"
+      ],
+      "universe_id": "370ca10dbbe826e2",
+      "sleeves": [
+        "lowvol",
+        "mom",
+        "strev",
+        "value"
+      ],
+      "context": "combo",
+      "recorded": true,
+      "ledger_path": "/home/runner/work/smartstock-ai/smartstock-ai/.lockbox_ledger.json"
+    },
+    "sleeves": [
+      "lowvol",
+      "mom",
+      "strev",
+      "value"
+    ],
+    "combo_configs": {
+      "lowvol": {
+        "family": "lowvol",
+        "vol_target": false,
+        "sigma_target": null,
+        "top_n": 20,
+        "rebalance": "monthly",
+        "lookback": 60,
+        "trend_ma": null
+      },
+      "strev": {
+        "family": "strev",
+        "vol_target": false,
+        "sigma_target": null,
+        "top_n": 20,
+        "rebalance": "monthly",
+        "lookback": 21,
+        "trend_ma": null
+      },
+      "mom": {
+        "family": "mom",
+        "vol_target": true,
+        "sigma_target": 0.2,
+        "top_n": 20,
+        "rebalance": "quarterly",
+        "lookback": 126,
+        "trend_ma": null
+      },
+      "value": {
+        "family": "value",
+        "vol_target": false,
+        "sigma_target": null,
+        "top_n": 20,
+        "rebalance": "monthly",
+        "lookback": 20,
+        "trend_ma": null
+      }
+    }
+  },
+  "lockbox_ledger": {
+    "key": "66ee2fd45f3788462ac3bdf57a89d6c0893072f56115be1f05b68f365715993b",
+    "prior_evals": 0,
+    "lockbox_reused": false,
+    "window": [
+      "2024-12-23",
+      "2026-11-13"
+    ],
+    "universe_id": "370ca10dbbe826e2",
+    "sleeves": [
+      "lowvol",
+      "mom",
+      "strev",
+      "value"
+    ],
+    "context": "combo",
+    "recorded": true,
+    "ledger_path": "/home/runner/work/smartstock-ai/smartstock-ai/.lockbox_ledger.json"
+  },
+  "lockbox_contaminated": false
+}
