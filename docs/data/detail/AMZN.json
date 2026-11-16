@@ -1,33 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 266.17,
- "change_pct": -1.74,
+ "price": 257.82,
+ "change_pct": -3.32,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 260.85,
-   "h": 266.4,
-   "l": 258.58,
-   "c": 265.84,
-   "v": 35762400
-  },
-  {
-   "time": "2026-08-20",
-   "o": 263.16,
-   "h": 263.84,
-   "l": 259.52,
-   "c": 260.11,
-   "v": 28374100
-  },
-  {
-   "time": "2026-08-21",
-   "o": 260.74,
-   "h": 261.09,
-   "l": 257.04,
-   "c": 258.63,
-   "v": 35723000
-  },
   {
    "time": "2026-08-24",
    "o": 259.6,
@@ -478,18 +454,42 @@
   },
   {
    "time": "2026-11-11",
-   "o": 273.27,
+   "o": 273.52,
    "h": 274.87,
    "l": 265.62,
    "c": 266.17,
-   "v": 37223624
+   "v": 37943300
+  },
+  {
+   "time": "2026-11-12",
+   "o": 267.92,
+   "h": 273.6,
+   "l": 267.2,
+   "c": 267.44,
+   "v": 34501500
+  },
+  {
+   "time": "2026-11-13",
+   "o": 269.56,
+   "h": 270.05,
+   "l": 263.91,
+   "c": 266.66,
+   "v": 31076200
+  },
+  {
+   "time": "2026-11-16",
+   "o": 262.71,
+   "h": 262.92,
+   "l": 256.68,
+   "c": 257.82,
+   "v": 34698118
   }
  ],
  "sr": {
-  "price": 266.17,
+  "price": 257.82,
   "resistance": [
-   266.4,
-   267.56
+   258.08,
+   259.49
   ],
   "support": [
    257.04,
@@ -498,9 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  265.84,
-  260.11,
-  258.63,
   262.07,
   261.06,
   260.28,
@@ -557,34 +554,37 @@
   259.3,
   266.93,
   270.87,
-  266.17
+  266.17,
+  267.44,
+  266.66,
+  257.82
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
+ "spark_start": "2026-08-24",
+ "spark_end": "2026-11-16",
  "fundamental": {
-  "pe_trailing": 21.897331,
-  "pe_forward": 24.842163,
+  "pe_trailing": 20.843168,
+  "pe_forward": 23.597666,
   "eps_trailing": 12.37,
-  "eps_forward": 10.90364,
-  "stale": true,
+  "eps_forward": 10.92608,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 266.17,
-  "stop": 247.54,
-  "target": 312.75,
-  "atr_bracket": 312.75,
+  "entry": 257.82,
+  "stop": 239.77,
+  "target": 302.93,
+  "atr_bracket": 302.93,
   "measured_move": 321.32,
   "target_band": [
-   312.75,
+   302.93,
    321.32
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 3.9,
-  "swing_stop": 226.27,
-  "chandelier": 247.01,
+  "atr_pct": 4.3,
+  "swing_stop": 226.05,
+  "chandelier": 246.31,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -592,117 +592,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon (AMZN) Could Face Trial In Italy Over Unpaid Import VAT",
+   "label": "Stock Market Today: Dow Dives As Nvidia Makes Huang Decision; These AI Plays Plunge (Live Coverage)",
    "value": {
-    "headline": "Amazon (AMZN) Could Face Trial In Italy Over Unpaid Import VAT",
+    "headline": "Stock Market Today: Dow Dives As Nvidia Makes Huang Decision; These AI Plays Plunge (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794435016,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-could-face-trial-221016549.html?.tsrc=rss",
+    "ts": 1794859589,
+    "url": "https://finance.yahoo.com/m/befe3344-5a22-304e-a07d-6ff7ad87bf49/stock-market-today%3A-dow-dives.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-could-face-trial-221016549.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/befe3344-5a22-304e-a07d-6ff7ad87bf49/stock-market-today%3A-dow-dives.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-12",
+   "severity": "warn",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Generac: 3 Key Takeaways for Long-Term Investors",
+   "label": "EXCLUSIVE: Zalando’s New Retail Media Boss Wants to Give Fashion Brands Data ‘Superpower’",
    "value": {
-    "headline": "Generac: 3 Key Takeaways for Long-Term Investors",
+    "headline": "EXCLUSIVE: Zalando’s New Retail Media Boss Wants to Give Fashion Brands Data ‘Superpower’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794434702,
-    "url": "https://www.fool.com/earnings/takeaways/2026/11/11/generac-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
+    "ts": 1794859100,
+    "url": "https://wwd.com/business-news/retail/exclusive-zalandos-new-hire-wants-to-give-brands-data-superpower-1239417600/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/earnings/takeaways/2026/11/11/generac-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
+     "https://wwd.com/business-news/retail/exclusive-zalandos-new-hire-wants-to-give-brands-data-superpower-1239417600/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
+   "label": "Dan Ives Has One IPO in Mind as a Test for AI Stocks",
    "value": {
-    "headline": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
+    "headline": "Dan Ives Has One IPO in Mind as a Test for AI Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794433426,
-    "url": "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html?.tsrc=rss",
+    "ts": 1794857841,
+    "url": "https://finance.yahoo.com/technology/ai/articles/dan-ives-one-ipo-mind-193721606.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/dan-ives-one-ipo-mind-193721606.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Cathie Wood's ARK Pares Amazon, Adds These Aerospace Stocks",
+   "label": "Trump to Name Nvidia, Amazon and Microsoft AI “National Champions” as Bessent Demands a Shakeup",
    "value": {
-    "headline": "Cathie Wood's ARK Pares Amazon, Adds These Aerospace Stocks",
+    "headline": "Trump to Name Nvidia, Amazon and Microsoft AI “National Champions” as Bessent Demands a Shakeup",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794431439,
-    "url": "https://finance.yahoo.com/m/a05afc08-5415-3fe5-b6d1-9c1540a56a42/cathie-wood%27s-ark-pares.html?.tsrc=rss",
+    "ts": 1794857353,
+    "url": "https://www.tikr.com/blog/trump-to-name-nvidia-amazon-and-microsoft-ai-national-champions-as-bessent-demands-a-shakeup?ref=yahoofinance&tlnk=yf-261116-r77v6cf3&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/a05afc08-5415-3fe5-b6d1-9c1540a56a42/cathie-wood%27s-ark-pares.html?.tsrc=rss"
+     "https://www.tikr.com/blog/trump-to-name-nvidia-amazon-and-microsoft-ai-national-champions-as-bessent-demands-a-shakeup?ref=yahoofinance&tlnk=yf-261116-r77v6cf3&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
+   "label": "Amazon Stocks Fall 2.56% as AWS Sells Data Center Control in $5 Billion Deal",
    "value": {
-    "headline": "Meta Platforms Infrastructure Head Santosh Janardhan to Depart in Early 2027",
+    "headline": "Amazon Stocks Fall 2.56% as AWS Sells Data Center Control in $5 Billion Deal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794431278,
-    "url": "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss",
+    "ts": 1794857113,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-fall-2-56-192513974.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/meta-platforms-infrastructure-head-santosh-210758445.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-fall-2-56-192513974.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -717,7 +716,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,33 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 552.9,
- "change_pct": 7.32,
+ "price": 503.64,
+ "change_pct": -5.7,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 486.08,
-   "h": 487.01,
-   "l": 462.55,
-   "c": 466.42,
-   "v": 19208400
-  },
-  {
-   "time": "2026-08-20",
-   "o": 465.67,
-   "h": 475.53,
-   "l": 460.27,
-   "c": 469.46,
-   "v": 15178900
-  },
-  {
-   "time": "2026-08-21",
-   "o": 476.5,
-   "h": 477.36,
-   "l": 462.11,
-   "c": 473.25,
-   "v": 14343900
-  },
   {
    "time": "2026-08-24",
    "o": 468.54,
@@ -478,18 +454,42 @@
   },
   {
    "time": "2026-11-11",
-   "o": 543.06,
+   "o": 543.08,
    "h": 567.65,
    "l": 522.65,
    "c": 552.9,
-   "v": 43171056
+   "v": 45872800
+  },
+  {
+   "time": "2026-11-12",
+   "o": 569.28,
+   "h": 594.0,
+   "l": 554.9,
+   "c": 585.3,
+   "v": 55411500
+  },
+  {
+   "time": "2026-11-13",
+   "o": 566.79,
+   "h": 571.14,
+   "l": 520.01,
+   "c": 534.06,
+   "v": 49163200
+  },
+  {
+   "time": "2026-11-16",
+   "o": 503.45,
+   "h": 526.2,
+   "l": 501.45,
+   "c": 503.64,
+   "v": 29636786
   }
  ],
  "sr": {
-  "price": 552.9,
+  "price": 503.64,
   "resistance": [
-   556.79,
-   558.37
+   517.35,
+   526.79
   ],
   "support": [
    502.6,
@@ -498,9 +498,6 @@
   "strong_support": 188.22
  },
  "spark": [
-  466.42,
-  469.46,
-  473.25,
   456.75,
   479.18,
   480.93,
@@ -557,34 +554,37 @@
   449.04,
   508.58,
   515.21,
-  552.9
+  552.9,
+  585.3,
+  534.06,
+  503.64
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
+ "spark_start": "2026-08-24",
+ "spark_end": "2026-11-16",
  "fundamental": {
-  "pe_trailing": 110.087616,
-  "pe_forward": 29.125237,
+  "pe_trailing": 107.66667,
+  "pe_forward": 28.567135,
   "eps_trailing": 4.68,
-  "eps_forward": 17.68947,
-  "stale": true,
+  "eps_forward": 17.63845,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 552.9,
-  "stop": 514.2,
-  "target": 649.66,
-  "atr_bracket": 649.66,
-  "measured_move": 563.15,
+  "entry": 503.64,
+  "stop": 468.39,
+  "target": 591.78,
+  "atr_bracket": 591.78,
+  "measured_move": 785.9,
   "target_band": [
-   563.15,
-   649.66
+   591.78,
+   785.9
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 7.7,
-  "swing_stop": 389.25,
-  "chandelier": 487.42,
+  "atr_pct": 9.5,
+  "swing_stop": 387.74,
+  "chandelier": 471.93,
   "fib_targets": []
  },
  "generated_for": "detail",
@@ -592,116 +592,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Techs Tumble As Nvidia May Oust CEO Huang; AI Stocks Slide, But Not AMD",
+   "label": "Microsoft Stocks Move Lower as $1 Billion Anthropic Bet Precedes Ignite",
    "value": {
-    "headline": "Dow Jones Futures: Techs Tumble As Nvidia May Oust CEO Huang; AI Stocks Slide, But Not AMD",
+    "headline": "Microsoft Stocks Move Lower as $1 Billion Anthropic Bet Precedes Ignite",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794442802,
-    "url": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs.html?.tsrc=rss",
+    "ts": 1794858595,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-move-lower-1-194955766.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-move-lower-1-194955766.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Intel “Trades at 34x PE for Just 11%” Growth, Says Dan Niles. Now Shareholders Are Suing",
+   "value": {
+    "headline": "Intel “Trades at 34x PE for Just 11%” Growth, Says Dan Niles. Now Shareholders Are Suing",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794857974,
+    "url": "https://www.tikr.com/blog/intel-trades-at-34x-pe-for-just-11-growth-says-dan-niles-now-shareholders-are-suing?ref=yahoofinance&tlnk=yf-261116-8m293332&.tsrc=rss",
+    "urls": [
+     "https://www.tikr.com/blog/intel-trades-at-34x-pe-for-just-11-growth-says-dan-niles-now-shareholders-are-suing?ref=yahoofinance&tlnk=yf-261116-8m293332&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Mattered Most In Cerebras's Latest Quarter?",
+   "value": {
+    "headline": "What Mattered Most In Cerebras's Latest Quarter?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794857394,
+    "url": "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "NVDL 2X NVIDIA ETF Sinks 9% as NVIDIA Falls 4% on Jensen Huang Fallout Ahead of Earnings; AMD Drops 5%",
+   "value": {
+    "headline": "NVDL 2X NVIDIA ETF Sinks 9% as NVIDIA Falls 4% on Jensen Huang Fallout Ahead of Earnings; AMD Drops 5%",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794855738,
+    "url": "https://247wallst.com/investing/2026/11/16/nvdl-2x-nvidia-etf-sinks-9-as-nvidia-falls-4-on-jensen-huang-fallout-ahead-of-earnings-amd-drops-5/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/11/16/nvdl-2x-nvidia-etf-sinks-9-as-nvidia-falls-4-on-jensen-huang-fallout-ahead-of-earnings-amd-drops-5/?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "More Bad News for NVIDIA. With Board Planning to Boot Jensen Huang, Sam Altman Reveals Master Plan to Stop Buying Their ",
+   "label": "AMD-Powered Lux Supercomputer Opens to Scientific Users at Oak Ridge, Becoming First AI Factory for DOE’s Genesis Missio",
    "value": {
-    "headline": "More Bad News for NVIDIA. With Board Planning to Boot Jensen Huang, Sam Altman Reveals Master Plan to Stop Buying Their Chips",
+    "headline": "AMD-Powered Lux Supercomputer Opens to Scientific Users at Oak Ridge, Becoming First AI Factory for DOE’s Genesis Mission",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794442771,
-    "url": "https://247wallst.com/investing/2026/11/11/more-bad-news-for-nvidia-with-board-planning-to-boot-jensen-huang-sam-altman-reveals-master-plan-to-stop-buying-their-chips/?.tsrc=rss",
+    "ts": 1794855600,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amd-powered-lux-supercomputer-opens-190000361.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/11/more-bad-news-for-nvidia-with-board-planning-to-boot-jensen-huang-sam-altman-reveals-master-plan-to-stop-buying-their-chips/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amd-powered-lux-supercomputer-opens-190000361.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 11: Intel Climbs on Broader Chip Rally as AI Infrastructure Demand Lifts Semiconductor Stocks",
-   "value": {
-    "headline": "Stock Market Today, Nov. 11: Intel Climbs on Broader Chip Rally as AI Infrastructure Demand Lifts Semiconductor Stocks",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794438274,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-intel-climbs-on-broader-chip-rally-as-ai-infrastructure-demand-lifts-semiconductor-stocks/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-intel-climbs-on-broader-chip-rally-as-ai-infrastructure-demand-lifts-semiconductor-stocks/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 11: Advanced Micro Devices Jumps -- and Not Only Because of CoreWeave's Results",
-   "value": {
-    "headline": "Stock Market Today, Nov. 11: Advanced Micro Devices Jumps -- and Not Only Because of CoreWeave's Results",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794437554,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-advanced-micro-devices-jumps-and-not-only-because-of-coreweave-s-results/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-advanced-micro-devices-jumps-and-not-only-because-of-coreweave-s-results/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-12",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Lisa Su Just Delivered Fantastic News for AMD Investors",
-   "value": {
-    "headline": "Lisa Su Just Delivered Fantastic News for AMD Investors",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794433560,
-    "url": "https://www.fool.com/investing/2026/11/11/lisa-su-just-delivered-fantastic-news-for-amd-inve/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/11/lisa-su-just-delivered-fantastic-news-for-amd-inve/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-12",
+   "severity": "warn",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

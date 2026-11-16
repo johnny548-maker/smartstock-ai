@@ -1,33 +1,9 @@
 {
  "stock": "AVGO",
- "name": "Broadcom Inc. - Common Stock",
- "price": 345.22,
- "change_pct": 3.99,
+ "name": "博通",
+ "price": 332.37,
+ "change_pct": -4.22,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 371.72,
-   "h": 373.23,
-   "l": 356.96,
-   "c": 361.82,
-   "v": 35091400
-  },
-  {
-   "time": "2026-08-20",
-   "o": 363.73,
-   "h": 366.45,
-   "l": 361.59,
-   "c": 363.37,
-   "v": 19729800
-  },
-  {
-   "time": "2026-08-21",
-   "o": 370.02,
-   "h": 374.45,
-   "l": 364.39,
-   "c": 367.78,
-   "v": 19037100
-  },
   {
    "time": "2026-08-24",
    "o": 364.31,
@@ -478,29 +454,50 @@
   },
   {
    "time": "2026-11-11",
-   "o": 350.22,
+   "o": 350.0,
    "h": 356.85,
-   "l": 344.32,
+   "l": 344.31,
    "c": 345.22,
-   "v": 32713658
+   "v": 33642500
+  },
+  {
+   "time": "2026-11-12",
+   "o": 356.8,
+   "h": 369.82,
+   "l": 354.72,
+   "c": 364.36,
+   "v": 43768100
+  },
+  {
+   "time": "2026-11-13",
+   "o": 356.54,
+   "h": 358.47,
+   "l": 337.67,
+   "c": 347.01,
+   "v": 31602000
+  },
+  {
+   "time": "2026-11-16",
+   "o": 332.7,
+   "h": 337.74,
+   "l": 327.8,
+   "c": 332.37,
+   "v": 16189867
   }
  ],
  "sr": {
-  "price": 345.22,
+  "price": 332.37,
   "resistance": [
-   352.4,
-   361.86
+   337.04,
+   338.13
   ],
   "support": [
-   343.29,
-   341.71
+   329.35,
+   328.69
   ],
-  "strong_support": 289.77
+  "strong_support": 288.98
  },
  "spark": [
-  361.82,
-  363.37,
-  367.78,
   358.11,
   356.09,
   354.94,
@@ -557,11 +554,153 @@
   293.69,
   319.48,
   331.98,
-  345.22
+  345.22,
+  364.36,
+  347.01,
+  332.37
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
- "fundamental": null,
+ "spark_start": "2026-08-24",
+ "spark_end": "2026-11-16",
+ "fundamental": {
+  "pe_trailing": 42.450832,
+  "pe_forward": 17.121115,
+  "eps_trailing": 7.83,
+  "eps_forward": 19.41404,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "INTW 2X Intel ETF Tumbles 13% as Intel Drops Amid Shareholder Lawsuit and AI Chip Selloff; Taiwan Semiconductor Falls 5%",
+   "value": {
+    "headline": "INTW 2X Intel ETF Tumbles 13% as Intel Drops Amid Shareholder Lawsuit and AI Chip Selloff; Taiwan Semiconductor Falls 5%",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794859392,
+    "url": "https://247wallst.com/investing/2026/11/16/intw-2x-intel-etf-tumbles-13-as-intel-drops-amid-shareholder-lawsuit-and-ai-chip-selloff-taiwan-semiconductor-falls-5/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/11/16/intw-2x-intel-etf-tumbles-13-as-intel-drops-amid-shareholder-lawsuit-and-ai-chip-selloff-taiwan-semiconductor-falls-5/?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Mattered Most In Cerebras's Latest Quarter?",
+   "value": {
+    "headline": "What Mattered Most In Cerebras's Latest Quarter?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794857394,
+    "url": "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "ACC Granted Leave to Intervene Before EU General Court in Broadcom Legal Privilege Case",
+   "value": {
+    "headline": "ACC Granted Leave to Intervene Before EU General Court in Broadcom Legal Privilege Case",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794854880,
+    "url": "https://finance.yahoo.com/small-business/articles/acc-granted-leave-intervene-eu-184800926.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/small-business/articles/acc-granted-leave-intervene-eu-184800926.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
+   "value": {
+    "headline": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794854801,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/altimeter-capital-invest-5-billion-184641881.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/altimeter-capital-invest-5-billion-184641881.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Broadcom Stocks Slide 4.76% as Downgrade Keeps AI Financing Fears in Focus",
+   "value": {
+    "headline": "Broadcom Stocks Slide 4.76% as Downgrade Keeps AI Financing Fears in Focus",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794853109,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-stocks-slide-4-76-181829964.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/broadcom-stocks-slide-4-76-181829964.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-16",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-16",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 7 個交割日）",
+   "value": {
+    "total_shares": 19734,
+    "days": 7,
+    "max_shares": 10036,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-16",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

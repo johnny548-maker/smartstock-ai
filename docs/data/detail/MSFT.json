@@ -1,33 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 521.12,
- "change_pct": -2.26,
+ "price": 518.27,
+ "change_pct": -1.07,
  "ohlc": [
-  {
-   "time": "2026-08-19",
-   "o": 479.17,
-   "h": 488.38,
-   "l": 478.46,
-   "c": 483.4,
-   "v": 19961900
-  },
-  {
-   "time": "2026-08-20",
-   "o": 483.3,
-   "h": 484.16,
-   "l": 479.5,
-   "c": 481.15,
-   "v": 20020800
-  },
-  {
-   "time": "2026-08-21",
-   "o": 479.88,
-   "h": 486.36,
-   "l": 478.53,
-   "c": 483.24,
-   "v": 22510800
-  },
   {
    "time": "2026-08-24",
    "o": 483.21,
@@ -478,29 +454,50 @@
   },
   {
    "time": "2026-11-11",
-   "o": 534.22,
+   "o": 534.24,
    "h": 534.76,
    "l": 518.45,
-   "c": 521.12,
-   "v": 28565538
+   "c": 521.13,
+   "v": 29076800
+  },
+  {
+   "time": "2026-11-12",
+   "o": 521.1,
+   "h": 529.66,
+   "l": 520.0,
+   "c": 523.0,
+   "v": 18644000
+  },
+  {
+   "time": "2026-11-13",
+   "o": 519.75,
+   "h": 526.42,
+   "l": 513.82,
+   "c": 523.88,
+   "v": 26155900
+  },
+  {
+   "time": "2026-11-16",
+   "o": 525.09,
+   "h": 527.95,
+   "l": 516.92,
+   "c": 518.27,
+   "v": 16826206
   }
  ],
  "sr": {
-  "price": 521.12,
+  "price": 518.27,
   "resistance": [
    541.29,
    551.15
   ],
   "support": [
-   518.79,
-   515.7
+   515.7,
+   504.96
   ],
   "strong_support": 348.54
  },
  "spark": [
-  483.4,
-  481.15,
-  483.24,
   487.31,
   491.71,
   496.37,
@@ -557,16 +554,19 @@
   530.61,
   545.18,
   533.16,
-  521.12
+  521.13,
+  523.0,
+  523.88,
+  518.27
  ],
- "spark_start": "2026-08-19",
- "spark_end": "2026-11-11",
+ "spark_start": "2026-08-24",
+ "spark_end": "2026-11-16",
  "fundamental": {
-  "pe_trailing": 27.826721,
-  "pe_forward": 22.035328,
+  "pe_trailing": 27.050625,
+  "pe_forward": 21.420755,
   "eps_trailing": 19.16,
   "eps_forward": 24.19569,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Market Chatter: Microsoft Wants to Power Data Centers Without Subsidies or Higher Costs for Others",
+   "label": "Customers of at least 4 major US banks report outages days after Microsoft issues",
    "value": {
-    "headline": "Market Chatter: Microsoft Wants to Power Data Centers Without Subsidies or Higher Costs for Others",
+    "headline": "Customers of at least 4 major US banks report outages days after Microsoft issues",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794442098,
-    "url": "https://finance.yahoo.com/technology/articles/market-chatter-microsoft-wants-power-000818359.html?.tsrc=rss",
+    "ts": 1794861101,
+    "url": "https://www.independent.co.uk/tech/us-bank-outages-chase-wells-fargo-zelle-b3085937.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/market-chatter-microsoft-wants-power-000818359.html?.tsrc=rss"
+     "https://www.independent.co.uk/tech/us-bank-outages-chase-wells-fargo-zelle-b3085937.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Fusion's Next Race Is Over Superconducting Tape, Not Plasma",
+   "label": "Chase, Bank of America, other banks hit by online service outages",
    "value": {
-    "headline": "Fusion's Next Race Is Over Superconducting Tape, Not Plasma",
+    "headline": "Chase, Bank of America, other banks hit by online service outages",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794438000,
-    "url": "https://finance.yahoo.com/energy/articles/fusions-next-race-over-superconducting-230000192.html?.tsrc=rss",
+    "ts": 1794860814,
+    "url": "https://finance.yahoo.com/video/chase-bank-america-other-banks-202654532.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/energy/articles/fusions-next-race-over-superconducting-230000192.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/chase-bank-america-other-banks-202654532.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 11: IREN Rises as AI Cloud Peers Rally on CoreWeave Results",
+   "label": "OpenAI Hit With Lawsuit by California AG Over Alleged Inadequate Safeguards, Monitoring of AI Models",
    "value": {
-    "headline": "Stock Market Today, Nov. 11: IREN Rises as AI Cloud Peers Rally on CoreWeave Results",
+    "headline": "OpenAI Hit With Lawsuit by California AG Over Alleged Inadequate Safeguards, Monitoring of AI Models",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794435901,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-iren-rises-as-ai-cloud-peers-rally-on-coreweave-results/?.tsrc=rss",
+    "ts": 1794859388,
+    "url": "https://finance.yahoo.com/technology/ai/articles/openai-hit-lawsuit-california-ag-200308857.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-iren-rises-as-ai-cloud-peers-rally-on-coreweave-results/?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/openai-hit-lawsuit-california-ag-200308857.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-12",
+   "severity": "warn",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stocks Slide as AI Trade Roars Back | Closing Bell",
+   "label": "Microsoft Stocks Move Lower as $1 Billion Anthropic Bet Precedes Ignite",
    "value": {
-    "headline": "Stocks Slide as AI Trade Roars Back | Closing Bell",
+    "headline": "Microsoft Stocks Move Lower as $1 Billion Anthropic Bet Precedes Ignite",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794434683,
-    "url": "https://finance.yahoo.com/video/stocks-slide-ai-trade-roars-220443238.html?.tsrc=rss",
+    "ts": 1794858595,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-move-lower-1-194955766.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/stocks-slide-ai-trade-roars-220443238.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-move-lower-1-194955766.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is the AI boom hiding a jobs crisis for graduates?",
+   "label": "Microsoft 365 outage: what it means for the stock and market positioning",
    "value": {
-    "headline": "Is the AI boom hiding a jobs crisis for graduates?",
+    "headline": "Microsoft 365 outage: what it means for the stock and market positioning",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794433503,
-    "url": "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html?.tsrc=rss",
+    "ts": 1794858265,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-365-outage-means-stock-194425498.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-365-outage-means-stock-194425498.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-12",
+   "as_of": "2026-11-16",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
