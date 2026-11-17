@@ -1,9 +1,17 @@
 {
  "stock": "MU",
  "name": "Micron Technology",
- "price": 719.08,
- "change_pct": -7.61,
+ "price": 778.31,
+ "change_pct": -2.52,
  "ohlc": [
+  {
+   "time": "2026-08-21",
+   "o": 989.52,
+   "h": 989.8,
+   "l": 958.11,
+   "c": 966.63,
+   "v": 21823400
+  },
   {
    "time": "2026-08-24",
    "o": 934.63,
@@ -475,29 +483,22 @@
    "l": 750.25,
    "c": 778.31,
    "v": 27792200
-  },
-  {
-   "time": "2026-11-16",
-   "o": 735.06,
-   "h": 739.12,
-   "l": 717.4,
-   "c": 719.08,
-   "v": 21292891
   }
  ],
  "sr": {
-  "price": 719.08,
+  "price": 778.31,
   "resistance": [
    818.42,
-   827.58
+   928.45
   ],
   "support": [
-   652.01,
-   650.0
+   737.76,
+   652.01
   ],
   "strong_support": 61.37
  },
  "spark": [
+  966.63,
   910.29,
   932.82,
   938.25,
@@ -556,49 +557,11 @@
   725.11,
   811.3,
   798.44,
-  778.31,
-  719.08
+  778.31
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-21",
+ "spark_end": "2026-11-13",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "台鏈聚光!前10月僑外資、對外投資雙創新高 外資投資衝破208億美元",
-   "value": {
-    "headline": "台鏈聚光!前10月僑外資、對外投資雙創新高 外資投資衝破208億美元",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1794821161,
-    "url": "cnyes:6663974",
-    "urls": [
-     "cnyes:6663974"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-16",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-16",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  }
- ]
+ "generated_for": "detail"
 }

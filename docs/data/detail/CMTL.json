@@ -1,9 +1,17 @@
 {
  "stock": "CMTL",
  "name": "Comtech Telecommunications",
- "price": 1.1,
- "change_pct": -8.33,
+ "price": 1.2,
+ "change_pct": -0.83,
  "ohlc": [
+  {
+   "time": "2026-08-21",
+   "o": 1.75,
+   "h": 1.78,
+   "l": 1.72,
+   "c": 1.77,
+   "v": 468000
+  },
   {
    "time": "2026-08-24",
    "o": 1.76,
@@ -475,26 +483,22 @@
    "l": 1.17,
    "c": 1.2,
    "v": 118600
-  },
-  {
-   "time": "2026-11-16",
-   "o": 1.18,
-   "h": 1.2,
-   "l": 1.1,
-   "c": 1.1,
-   "v": 102525
   }
  ],
  "sr": {
-  "price": 1.1,
+  "price": 1.2,
   "resistance": [
-   1.27,
-   1.38
+   1.38,
+   1.47
   ],
-  "support": [],
+  "support": [
+   1.19,
+   1.15
+  ],
   "strong_support": 1.14
  },
  "spark": [
+  1.77,
   1.77,
   1.77,
   1.76,
@@ -553,11 +557,10 @@
   1.19,
   1.26,
   1.21,
-  1.2,
-  1.1
+  1.2
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-21",
+ "spark_end": "2026-11-13",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail"
