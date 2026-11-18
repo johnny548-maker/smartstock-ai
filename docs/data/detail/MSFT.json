@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": null,
- "change_pct": null,
+ "price": 506.24,
+ "change_pct": -2.27,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 483.21,
-   "h": 490.61,
-   "l": 481.86,
-   "c": 487.31,
-   "v": 17230800
-  },
   {
    "time": "2026-08-25",
    "o": 485.44,
@@ -474,25 +466,38 @@
    "h": 526.42,
    "l": 513.82,
    "c": 523.88,
-   "v": 26155900
+   "v": 26189200
   },
   {
    "time": "2026-11-16",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 29564193
+   "o": 525.09,
+   "h": 527.95,
+   "l": 516.82,
+   "c": 517.99,
+   "v": 30218600
+  },
+  {
+   "time": "2026-11-17",
+   "o": 514.01,
+   "h": 515.64,
+   "l": 496.51,
+   "c": 506.24,
+   "v": 27250041
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 506.24,
+  "resistance": [
+   509.95,
+   512.76
+  ],
+  "support": [
+   504.96,
+   491.22
+  ],
   "strong_support": 348.54
  },
  "spark": [
-  487.31,
   491.71,
   496.37,
   505.06,
@@ -551,16 +556,17 @@
   521.13,
   523.0,
   523.88,
-  null
+  517.99,
+  506.24
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-25",
+ "spark_end": "2026-11-17",
  "fundamental": {
-  "pe_trailing": 27.050625,
-  "pe_forward": 21.420755,
+  "pe_trailing": 26.421711,
+  "pe_forward": 20.921688,
   "eps_trailing": 19.16,
-  "eps_forward": 24.19569,
-  "stale": true,
+  "eps_forward": 24.1969,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bill Ackman Adds More To Netflix In Q3; Exits Hertz, Cuts Microsoft",
+   "label": "Amazon.com (AMZN) Set For White House AI National Champion Status",
    "value": {
-    "headline": "Bill Ackman Adds More To Netflix In Q3; Exits Hertz, Cuts Microsoft",
+    "headline": "Amazon.com (AMZN) Set For White House AI National Champion Status",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794874087,
-    "url": "https://stocktwits.com/news-articles/markets/equity/bill-ackman-adds-more-to-netflix-in-q3-exits-hertz-cuts-microsoft/cNbaf33R9gj?.tsrc=rss",
+    "ts": 1794961175,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/bill-ackman-adds-more-to-netflix-in-q3-exits-hertz-cuts-microsoft/cNbaf33R9gj?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Baseten Brings High-Performance Inference for Open Models to Microsoft Foundry",
+   "value": {
+    "headline": "Baseten Brings High-Performance Inference for Open Models to Microsoft Foundry",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794957300,
+    "url": "https://finance.yahoo.com/technology/ai/articles/baseten-brings-high-performance-inference-231500946.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/baseten-brings-high-performance-inference-231500946.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+   "value": {
+    "headline": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794955620,
+    "url": "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Learn Why The Bull Case For IBM Stock Could Change Following Quantum Computing Expansion",
+   "label": "Bill Ackman’s $14 billion bet beyond the Magnificent 7",
    "value": {
-    "headline": "Learn Why The Bull Case For IBM Stock Could Change Following Quantum Computing Expansion",
+    "headline": "Bill Ackman’s $14 billion bet beyond the Magnificent 7",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794871169,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-ibm-231929118.html?.tsrc=rss",
+    "ts": 1794954780,
+    "url": "https://www.thestreet.com/investing/bill-ackman-sells-microsoft-buys-netflix-13f?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-ibm-231929118.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/bill-ackman-sells-microsoft-buys-netflix-13f?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Armada Named a Priority Team Leader in the American SI Exports Program",
+   "label": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
    "value": {
-    "headline": "Armada Named a Priority Team Leader in the American SI Exports Program",
+    "headline": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794870540,
-    "url": "https://finance.yahoo.com/technology/articles/armada-named-priority-team-leader-230900257.html?.tsrc=rss",
+    "ts": 1794954744,
+    "url": "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/armada-named-priority-team-leader-230900257.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Daniel Loeb’s Third Point Returned to Nvidia Stock Just Before Its Fall",
-   "value": {
-    "headline": "Daniel Loeb’s Third Point Returned to Nvidia Stock Just Before Its Fall",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794870180,
-    "url": "https://finance.yahoo.com/m/04da2c81-3de5-3ff0-bb2d-6210189e6e20/daniel-loeb%E2%80%99s-third-point.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/04da2c81-3de5-3ff0-bb2d-6210189e6e20/daniel-loeb%E2%80%99s-third-point.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "A Third Outage Strikes, This Time at Chase, Big Banks. The Stocks Are Falling.",
-   "value": {
-    "headline": "A Third Outage Strikes, This Time at Chase, Big Banks. The Stocks Are Falling.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794867480,
-    "url": "https://finance.yahoo.com/m/8966c28b-5797-3a88-8c32-01d28a7b29a1/a-third-outage-strikes%2C-this.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/m/8966c28b-5797-3a88-8c32-01d28a7b29a1/a-third-outage-strikes%2C-this.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

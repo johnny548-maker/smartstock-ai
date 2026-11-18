@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": null,
- "change_pct": null,
+ "price": 503.41,
+ "change_pct": -0.17,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 468.54,
-   "h": 468.54,
-   "l": 451.0,
-   "c": 456.75,
-   "v": 16602200
-  },
   {
    "time": "2026-08-25",
    "o": 474.2,
@@ -474,25 +466,38 @@
    "h": 571.14,
    "l": 520.01,
    "c": 534.06,
-   "v": 49163200
+   "v": 49387600
   },
   {
    "time": "2026-11-16",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 35785537
+   "o": 503.45,
+   "h": 526.2,
+   "l": 501.3,
+   "c": 504.28,
+   "v": 37115600
+  },
+  {
+   "time": "2026-11-17",
+   "o": 511.6,
+   "h": 511.85,
+   "l": 480.5,
+   "c": 503.41,
+   "v": 34975206
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 503.41,
+  "resistance": [
+   517.35,
+   526.79
+  ],
+  "support": [
+   502.6,
+   498.15
+  ],
   "strong_support": 188.22
  },
  "spark": [
-  456.75,
   479.18,
   480.93,
   476.67,
@@ -551,16 +556,17 @@
   552.9,
   585.3,
   534.06,
-  null
+  504.28,
+  503.41
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-25",
+ "spark_end": "2026-11-17",
  "fundamental": {
-  "pe_trailing": 107.66667,
-  "pe_forward": 28.567135,
+  "pe_trailing": 107.566246,
+  "pe_forward": 28.540813,
   "eps_trailing": 4.68,
-  "eps_forward": 17.63845,
-  "stale": true,
+  "eps_forward": 17.63825,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: AMD, Nvidia, Micron Lead AI Trade Lower With Nvidia Earnings On Deck",
+   "label": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
    "value": {
-    "headline": "Dow Jones Futures: AMD, Nvidia, Micron Lead AI Trade Lower With Nvidia Earnings On Deck",
+    "headline": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794877779,
-    "url": "https://finance.yahoo.com/m/d0a3411e-5f2b-302d-801a-a42b1d7ca5ea/dow-jones-futures%3A-amd%2C.html?.tsrc=rss",
+    "ts": 1794963337,
+    "url": "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/d0a3411e-5f2b-302d-801a-a42b1d7ca5ea/dow-jones-futures%3A-amd%2C.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Learn Why The Bull Case For IBM Stock Could Change Following Quantum Computing Expansion",
+   "label": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
    "value": {
-    "headline": "Learn Why The Bull Case For IBM Stock Could Change Following Quantum Computing Expansion",
+    "headline": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794871169,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-ibm-231929118.html?.tsrc=rss",
+    "ts": 1794955973,
+    "url": "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-ibm-231929118.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "David Tepper’s Appaloosa Goes Big on SpaceX, While Slashing Alphabet Stake",
+   "label": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
    "value": {
-    "headline": "David Tepper’s Appaloosa Goes Big on SpaceX, While Slashing Alphabet Stake",
+    "headline": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794870540,
-    "url": "https://finance.yahoo.com/m/f487537a-09c4-3b0f-beb6-14e5629c10ed/david-tepper%E2%80%99s-appaloosa-goes.html?.tsrc=rss",
+    "ts": 1794954190,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f487537a-09c4-3b0f-beb6-14e5629c10ed/david-tepper%E2%80%99s-appaloosa-goes.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "4 Chip Stocks Down as Much as 36% From Their Highs to Buy and Hold for the Next Decade",
+   "label": "AMD, Broadcom, CoreWeave stocks rise on Nvidia earnings beat",
    "value": {
-    "headline": "4 Chip Stocks Down as Much as 36% From Their Highs to Buy and Hold for the Next Decade",
+    "headline": "AMD, Broadcom, CoreWeave stocks rise on Nvidia earnings beat",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794870062,
-    "url": "https://www.fool.com/investing/2026/11/16/4-chip-stocks-down-as-much-as-36-from-their-highs-to-buy-and-hold-for-the-next-decade/?.tsrc=rss",
+    "ts": 1794952919,
+    "url": "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/16/4-chip-stocks-down-as-much-as-36-from-their-highs-to-buy-and-hold-for-the-next-decade/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia is not considering rehiring Jensen Huang, and Amazon's data center gets bought",
+   "label": "Earnings Boost Other Chip and AI Stocks",
    "value": {
-    "headline": "Nvidia is not considering rehiring Jensen Huang, and Amazon's data center gets bought",
+    "headline": "Earnings Boost Other Chip and AI Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794867245,
-    "url": "https://finance.yahoo.com/video/nvidia-is-not-considering-rehiring-jensen-huang-and-amazons-data-center-gets-bought-221405344.html?.tsrc=rss",
+    "ts": 1794952375,
+    "url": "https://finance.yahoo.com/m/8b12a732-4329-3c3e-95c3-e04f416a7ffa/earnings-boost-other-chip-and.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nvidia-is-not-considering-rehiring-jensen-huang-and-amazons-data-center-gets-bought-221405344.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/8b12a732-4329-3c3e-95c3-e04f416a7ffa/earnings-boost-other-chip-and.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 50 分 / 12 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 50,
+    "comments": 12,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -693,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-18",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

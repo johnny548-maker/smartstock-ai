@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 257.82,
- "change_pct": -3.32,
+ "price": 257.89,
+ "change_pct": 0.05,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 259.6,
-   "h": 263.32,
-   "l": 259.05,
-   "c": 262.07,
-   "v": 28070500
-  },
   {
    "time": "2026-08-25",
    "o": 262.51,
@@ -474,19 +466,27 @@
    "h": 270.05,
    "l": 263.91,
    "c": 266.66,
-   "v": 31076200
+   "v": 31148500
   },
   {
    "time": "2026-11-16",
-   "o": 262.71,
+   "o": 262.4,
    "h": 262.92,
    "l": 256.68,
-   "c": 257.82,
-   "v": 34698118
+   "c": 257.75,
+   "v": 48054200
+  },
+  {
+   "time": "2026-11-17",
+   "o": 257.35,
+   "h": 259.9,
+   "l": 254.0,
+   "c": 257.89,
+   "v": 37098176
   }
  ],
  "sr": {
-  "price": 257.82,
+  "price": 257.89,
   "resistance": [
    258.08,
    259.49
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  262.07,
   261.06,
   260.28,
   256.26,
@@ -557,151 +556,135 @@
   266.17,
   267.44,
   266.66,
-  257.82
+  257.75,
+  257.89
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-25",
+ "spark_end": "2026-11-17",
  "fundamental": {
-  "pe_trailing": 20.843168,
-  "pe_forward": 23.597666,
+  "pe_trailing": 20.84802,
+  "pe_forward": 23.60316,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 257.82,
-  "stop": 239.77,
-  "target": 302.93,
-  "atr_bracket": 302.93,
-  "measured_move": 321.32,
-  "target_band": [
-   302.93,
-   321.32
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.3,
-  "swing_stop": 226.05,
-  "chandelier": 246.31,
-  "fib_targets": []
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today: Dow Dives As Nvidia Makes Huang Decision; These AI Plays Plunge (Live Coverage)",
+   "label": "Amazon.com (AMZN) Set For White House AI National Champion Status",
    "value": {
-    "headline": "Stock Market Today: Dow Dives As Nvidia Makes Huang Decision; These AI Plays Plunge (Live Coverage)",
+    "headline": "Amazon.com (AMZN) Set For White House AI National Champion Status",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794859589,
-    "url": "https://finance.yahoo.com/m/befe3344-5a22-304e-a07d-6ff7ad87bf49/stock-market-today%3A-dow-dives.html?.tsrc=rss",
+    "ts": 1794961175,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/befe3344-5a22-304e-a07d-6ff7ad87bf49/stock-market-today%3A-dow-dives.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-16",
+   "severity": "info",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "EXCLUSIVE: Zalando’s New Retail Media Boss Wants to Give Fashion Brands Data ‘Superpower’",
+   "label": "Jim Cramer Warns the Anthropic IPO Windfall Is Going to the Super Rich. Here’s the Backlash He Sees Coming",
    "value": {
-    "headline": "EXCLUSIVE: Zalando’s New Retail Media Boss Wants to Give Fashion Brands Data ‘Superpower’",
+    "headline": "Jim Cramer Warns the Anthropic IPO Windfall Is Going to the Super Rich. Here’s the Backlash He Sees Coming",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794859100,
-    "url": "https://wwd.com/business-news/retail/exclusive-zalandos-new-hire-wants-to-give-brands-data-superpower-1239417600/?.tsrc=rss",
+    "ts": 1794960452,
+    "url": "https://247wallst.com/investing/2026/11/17/jim-cramer-warns-the-anthropic-ipo-windfall-is-going-to-the-super-rich-heres-the-backlash-he-sees-coming/?.tsrc=rss",
     "urls": [
-     "https://wwd.com/business-news/retail/exclusive-zalandos-new-hire-wants-to-give-brands-data-superpower-1239417600/?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/17/jim-cramer-warns-the-anthropic-ipo-windfall-is-going-to-the-super-rich-heres-the-backlash-he-sees-coming/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dan Ives Has One IPO in Mind as a Test for AI Stocks",
+   "label": "Jeff Bezos’ Former Hedge Fund Is Buying Bitcoin Again",
    "value": {
-    "headline": "Dan Ives Has One IPO in Mind as a Test for AI Stocks",
+    "headline": "Jeff Bezos’ Former Hedge Fund Is Buying Bitcoin Again",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794857841,
-    "url": "https://finance.yahoo.com/technology/ai/articles/dan-ives-one-ipo-mind-193721606.html?.tsrc=rss",
+    "ts": 1794954556,
+    "url": "https://beincrypto.com/de-shaw-bitcoin-etf-strategy-strive/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/dan-ives-one-ipo-mind-193721606.html?.tsrc=rss"
+     "https://beincrypto.com/de-shaw-bitcoin-etf-strategy-strive/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump to Name Nvidia, Amazon and Microsoft AI “National Champions” as Bessent Demands a Shakeup",
+   "label": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
    "value": {
-    "headline": "Trump to Name Nvidia, Amazon and Microsoft AI “National Champions” as Bessent Demands a Shakeup",
+    "headline": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794857353,
-    "url": "https://www.tikr.com/blog/trump-to-name-nvidia-amazon-and-microsoft-ai-national-champions-as-bessent-demands-a-shakeup?ref=yahoofinance&tlnk=yf-261116-r77v6cf3&.tsrc=rss",
+    "ts": 1794954545,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-google-together-own-nearly-222905510.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/trump-to-name-nvidia-amazon-and-microsoft-ai-national-champions-as-bessent-demands-a-shakeup?ref=yahoofinance&tlnk=yf-261116-r77v6cf3&.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-google-together-own-nearly-222905510.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon Stocks Fall 2.56% as AWS Sells Data Center Control in $5 Billion Deal",
+   "label": "Amazon and Google Could Own $400 Billion of Anthropic Stock",
    "value": {
-    "headline": "Amazon Stocks Fall 2.56% as AWS Sells Data Center Control in $5 Billion Deal",
+    "headline": "Amazon and Google Could Own $400 Billion of Anthropic Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794857113,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-fall-2-56-192513974.html?.tsrc=rss",
+    "ts": 1794954420,
+    "url": "https://finance.yahoo.com/m/c079c6dc-3303-33b1-9922-5e6afaa91e87/amazon-and-google-could-own.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-fall-2-56-192513974.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/c079c6dc-3303-33b1-9922-5e6afaa91e87/amazon-and-google-could-own.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -716,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

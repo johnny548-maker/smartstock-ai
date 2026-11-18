@@ -1,17 +1,9 @@
 {
  "stock": "AVGO",
  "name": "博通",
- "price": 332.37,
- "change_pct": -4.22,
+ "price": 341.6,
+ "change_pct": 2.46,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 364.31,
-   "h": 365.5,
-   "l": 358.06,
-   "c": 358.11,
-   "v": 18717200
-  },
   {
    "time": "2026-08-25",
    "o": 360.44,
@@ -474,31 +466,38 @@
    "h": 358.47,
    "l": 337.67,
    "c": 347.01,
-   "v": 31602000
+   "v": 31654200
   },
   {
    "time": "2026-11-16",
-   "o": 332.7,
+   "o": 332.49,
    "h": 337.74,
    "l": 327.8,
-   "c": 332.37,
-   "v": 16189867
+   "c": 333.4,
+   "v": 27023000
+  },
+  {
+   "time": "2026-11-17",
+   "o": 335.59,
+   "h": 341.74,
+   "l": 330.13,
+   "c": 341.6,
+   "v": 25732265
   }
  ],
  "sr": {
-  "price": 332.37,
+  "price": 341.6,
   "resistance": [
-   337.04,
-   338.13
+   350.41,
+   351.2
   ],
   "support": [
-   329.35,
-   328.69
+   335.2,
+   329.35
   ],
   "strong_support": 288.98
  },
  "spark": [
-  358.11,
   356.09,
   354.94,
   370.86,
@@ -557,13 +556,14 @@
   345.22,
   364.36,
   347.01,
-  332.37
+  333.4,
+  341.6
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
+ "spark_start": "2026-08-25",
+ "spark_end": "2026-11-17",
  "fundamental": {
-  "pe_trailing": 42.450832,
-  "pe_forward": 17.121115,
+  "pe_trailing": 43.627075,
+  "pe_forward": 17.595514,
   "eps_trailing": 7.83,
   "eps_forward": 19.41404,
   "stale": false,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "INTW 2X Intel ETF Tumbles 13% as Intel Drops Amid Shareholder Lawsuit and AI Chip Selloff; Taiwan Semiconductor Falls 5%",
+   "label": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
    "value": {
-    "headline": "INTW 2X Intel ETF Tumbles 13% as Intel Drops Amid Shareholder Lawsuit and AI Chip Selloff; Taiwan Semiconductor Falls 5%",
+    "headline": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794859392,
-    "url": "https://247wallst.com/investing/2026/11/16/intw-2x-intel-etf-tumbles-13-as-intel-drops-amid-shareholder-lawsuit-and-ai-chip-selloff-taiwan-semiconductor-falls-5/?.tsrc=rss",
+    "ts": 1794963337,
+    "url": "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/16/intw-2x-intel-etf-tumbles-13-as-intel-drops-amid-shareholder-lawsuit-and-ai-chip-selloff-taiwan-semiconductor-falls-5/?.tsrc=rss"
+     "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+   "value": {
+    "headline": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794955973,
+    "url": "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss",
+    "urls": [
+     "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "TD Cowen Cut Its Broadcom Target to $425. It Still Sees 24% Upside",
+   "value": {
+    "headline": "TD Cowen Cut Its Broadcom Target to $425. It Still Sees 24% Upside",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794955962,
+    "url": "https://www.tikr.com/blog/td-cowen-cut-its-broadcom-target-to-425-it-still-sees-24-upside?ref=yahoofinance&tlnk=yf-261117-7jhqfrh2&.tsrc=rss",
+    "urls": [
+     "https://www.tikr.com/blog/td-cowen-cut-its-broadcom-target-to-425-it-still-sees-24-upside?ref=yahoofinance&tlnk=yf-261117-7jhqfrh2&.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Mattered Most In Cerebras's Latest Quarter?",
+   "label": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
    "value": {
-    "headline": "What Mattered Most In Cerebras's Latest Quarter?",
+    "headline": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794857394,
-    "url": "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss",
+    "ts": 1794954190,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "ACC Granted Leave to Intervene Before EU General Court in Broadcom Legal Privilege Case",
+   "label": "Arista Networks And 2 Other High Growth Stocks To Watch",
    "value": {
-    "headline": "ACC Granted Leave to Intervene Before EU General Court in Broadcom Legal Privilege Case",
+    "headline": "Arista Networks And 2 Other High Growth Stocks To Watch",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794854880,
-    "url": "https://finance.yahoo.com/small-business/articles/acc-granted-leave-intervene-eu-184800926.html?.tsrc=rss",
+    "ts": 1794953377,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-2-other-high-220937929.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/small-business/articles/acc-granted-leave-intervene-eu-184800926.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/arista-networks-2-other-high-220937929.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
-   "value": {
-    "headline": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794854801,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/altimeter-capital-invest-5-billion-184641881.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/altimeter-capital-invest-5-billion-184641881.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-16",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Broadcom Stocks Slide 4.76% as Downgrade Keeps AI Financing Fears in Focus",
-   "value": {
-    "headline": "Broadcom Stocks Slide 4.76% as Downgrade Keeps AI Financing Fears in Focus",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794853109,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-stocks-slide-4-76-181829964.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/broadcom-stocks-slide-4-76-181829964.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,8 +684,23 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 269 分 / 84 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 269,
+    "comments": 84,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-18",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-18",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

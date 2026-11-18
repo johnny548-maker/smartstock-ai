@@ -1,25 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 113.6,
- "change_pct": 2.71,
+ "price": 105.1,
+ "change_pct": -4.4,
  "ohlc": [
-  {
-   "time": "2026-08-21",
-   "o": 89.6,
-   "h": 92.32,
-   "l": 86.04,
-   "c": 92.13,
-   "v": 1796700
-  },
-  {
-   "time": "2026-08-24",
-   "o": 90.8,
-   "h": 91.36,
-   "l": 88.43,
-   "c": 90.14,
-   "v": 1119900
-  },
   {
    "time": "2026-08-25",
    "o": 92.25,
@@ -483,11 +467,29 @@
    "l": 107.62,
    "c": 113.6,
    "v": 2277000
+  },
+  {
+   "time": "2026-11-16",
+   "o": 110.79,
+   "h": 112.0,
+   "l": 108.0,
+   "c": 109.94,
+   "v": 1579000
+  },
+  {
+   "time": "2026-11-17",
+   "o": 108.51,
+   "h": 111.44,
+   "l": 101.33,
+   "c": 105.1,
+   "v": 2560833
   }
  ],
  "sr": {
-  "price": 113.6,
-  "resistance": [],
+  "price": 105.1,
+  "resistance": [
+   105.76
+  ],
   "support": [
    86.77,
    86.04
@@ -495,8 +497,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  92.13,
-  90.14,
   89.48,
   92.8,
   104.03,
@@ -554,143 +554,13 @@
   103.55,
   109.51,
   110.6,
-  113.6
+  113.6,
+  109.94,
+  105.1
  ],
- "spark_start": "2026-08-21",
- "spark_end": "2026-11-13",
+ "spark_start": "2026-08-25",
+ "spark_end": "2026-11-17",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail",
- "overlays": [
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
-   "value": {
-    "headline": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794827061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
-   "value": {
-    "headline": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794796869,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What iShares Russell 2000 Index Fund (IWM) Bought: LifeStance Leads on Nov. 11",
-   "value": {
-    "headline": "What iShares Russell 2000 Index Fund (IWM) Bought: LifeStance Leads on Nov. 11",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794567852,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-index-fund-110412446.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-index-fund-110412446.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "3 AI Infrastructure Stocks To Watch As Nvidia Chip Curbs Reshape Cloud Spending",
-   "value": {
-    "headline": "3 AI Infrastructure Stocks To Watch As Nvidia Chip Curbs Reshape Cloud Spending",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794517989,
-    "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-watch-211309585.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-watch-211309585.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What iShares Russell 2000 (IWM) Sold: Glaukos Leads on Nov. 10",
-   "value": {
-    "headline": "What iShares Russell 2000 (IWM) Sold: Glaukos Leads on Nov. 10",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794481501,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-sold-110501746.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-sold-110501746.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 20,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "yahoo_us"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
-   "value": {
-    "total_shares": 25410,
-    "days": 4,
-    "max_shares": 18925,
-    "persistent": true,
-    "elevated": false
-   },
-   "severity": "warn",
-   "as_of": "2026-11-17",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
-  }
- ]
+ "generated_for": "detail"
 }
