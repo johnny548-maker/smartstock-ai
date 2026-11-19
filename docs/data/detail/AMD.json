@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 503.41,
- "change_pct": -0.17,
+ "price": 530.14,
+ "change_pct": 5.31,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 474.2,
-   "h": 481.5,
-   "l": 469.07,
-   "c": 479.18,
-   "v": 19001400
-  },
   {
    "time": "2026-08-26",
    "o": 475.07,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-11-17",
-   "o": 511.6,
-   "h": 511.85,
+   "o": 512.12,
+   "h": 512.12,
    "l": 480.5,
    "c": 503.41,
-   "v": 34975206
+   "v": 36294700
+  },
+  {
+   "time": "2026-11-18",
+   "o": 510.07,
+   "h": 532.17,
+   "l": 495.2,
+   "c": 530.14,
+   "v": 33451755
   }
  ],
  "sr": {
-  "price": 503.41,
+  "price": 530.14,
   "resistance": [
-   517.35,
-   526.79
+   546.44,
+   556.79
   ],
   "support": [
    502.6,
@@ -498,7 +498,6 @@
   "strong_support": 188.22
  },
  "spark": [
-  479.18,
   480.93,
   476.67,
   465.58,
@@ -557,16 +556,17 @@
   585.3,
   534.06,
   504.28,
-  503.41
+  503.41,
+  530.14
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "pe_trailing": 107.566246,
   "pe_forward": 28.540813,
   "eps_trailing": 4.68,
   "eps_forward": 17.63825,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
+   "label": "What Explains Natera Stock's Nearly 10% Drop?",
    "value": {
-    "headline": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
+    "headline": "What Explains Natera Stock's Nearly 10% Drop?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794963337,
-    "url": "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss",
+    "ts": 1795045718,
+    "url": "https://www.trefis.com/stock/ntra/articles/625786/what-explains-natera-stocks-nearly-10-drop/2026-11-18?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss"
+     "https://www.trefis.com/stock/ntra/articles/625786/what-explains-natera-stocks-nearly-10-drop/2026-11-18?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+   "label": "What Moved Coupang Stock Over 5% Lower?",
    "value": {
-    "headline": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+    "headline": "What Moved Coupang Stock Over 5% Lower?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794955973,
-    "url": "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss",
+    "ts": 1795045376,
+    "url": "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss"
+     "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
+   "label": "How AI Data Center Expansion Will Impact nVent Electric Stock",
    "value": {
-    "headline": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
+    "headline": "How AI Data Center Expansion Will Impact nVent Electric Stock",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954190,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss",
+    "ts": 1795044274,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ai-data-center-expansion-impact-232434949.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/ai-data-center-expansion-impact-232434949.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD, Broadcom, CoreWeave stocks rise on Nvidia earnings beat",
+   "label": "Is the AI party over? Anthropic is about to find out.",
    "value": {
-    "headline": "AMD, Broadcom, CoreWeave stocks rise on Nvidia earnings beat",
+    "headline": "Is the AI party over? Anthropic is about to find out.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794952919,
-    "url": "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html?.tsrc=rss",
+    "ts": 1795042800,
+    "url": "https://finance.yahoo.com/technology/article/is-the-ai-party-over-anthropic-is-about-to-find-out-230000591.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/article/is-the-ai-party-over-anthropic-is-about-to-find-out-230000591.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Earnings Boost Other Chip and AI Stocks",
+   "label": "Dan Ives’ Top 10 AI Revolution Stock Picks: Inside The IVES ETF",
    "value": {
-    "headline": "Earnings Boost Other Chip and AI Stocks",
+    "headline": "Dan Ives’ Top 10 AI Revolution Stock Picks: Inside The IVES ETF",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794952375,
-    "url": "https://finance.yahoo.com/m/8b12a732-4329-3c3e-95c3-e04f416a7ffa/earnings-boost-other-chip-and.html?.tsrc=rss",
+    "ts": 1795041583,
+    "url": "https://finance.yahoo.com/technology/ai/articles/dan-ives-top-10-ai-223943794.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/8b12a732-4329-3c3e-95c3-e04f416a7ffa/earnings-boost-other-chip-and.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/dan-ives-top-10-ai-223943794.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 50 分 / 12 留言",
+   "label": "HN 討論熱度 20 篇 / 57 分 / 7 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 50,
-    "comments": 12,
+    "points": 57,
+    "comments": 7,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

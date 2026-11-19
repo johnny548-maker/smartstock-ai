@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 105.1,
- "change_pct": -4.4,
+ "price": 114.38,
+ "change_pct": 8.83,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 92.25,
-   "h": 93.0,
-   "l": 87.67,
-   "c": 89.48,
-   "v": 1441100
-  },
   {
    "time": "2026-08-26",
    "o": 88.12,
@@ -478,18 +470,24 @@
   },
   {
    "time": "2026-11-17",
-   "o": 108.51,
+   "o": 108.63,
    "h": 111.44,
    "l": 101.33,
    "c": 105.1,
-   "v": 2560833
+   "v": 2561100
+  },
+  {
+   "time": "2026-11-18",
+   "o": 106.91,
+   "h": 117.91,
+   "l": 106.0,
+   "c": 114.38,
+   "v": 3123151
   }
  ],
  "sr": {
-  "price": 105.1,
-  "resistance": [
-   105.76
-  ],
+  "price": 114.38,
+  "resistance": [],
   "support": [
    86.77,
    86.04
@@ -497,7 +495,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  89.48,
   92.8,
   104.03,
   98.74,
@@ -556,11 +553,144 @@
   110.6,
   113.6,
   109.94,
-  105.1
+  105.1,
+  114.38
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What iShares Russell 2000 Index Fund (IWM) Bought: First Advantage Leads on Nov. 16",
+   "value": {
+    "headline": "What iShares Russell 2000 Index Fund (IWM) Bought: First Advantage Leads on Nov. 16",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794999900,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-index-fund-110500361.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-index-fund-110500361.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Michael Burry Still Bearish On Nvidia, AI Trade, Buys These Software Names",
+   "value": {
+    "headline": "Michael Burry Still Bearish On Nvidia, AI Trade, Buys These Software Names",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794929390,
+    "url": "https://finance.yahoo.com/m/fb87e84e-214e-3d35-8a3a-327f3a77f0ca/michael-burry-still-bearish.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/fb87e84e-214e-3d35-8a3a-327f3a77f0ca/michael-burry-still-bearish.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "MongoDB's Biggest Advantage May Be GitLab's Biggest Weakness",
+   "value": {
+    "headline": "MongoDB's Biggest Advantage May Be GitLab's Biggest Weakness",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794918900,
+    "url": "https://www.marketbeat.com/articles/mongodbs-biggest-advantage-may-be-gitlabs-biggest-weakness/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "urls": [
+     "https://www.marketbeat.com/articles/mongodbs-biggest-advantage-may-be-gitlabs-biggest-weakness/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
+   "value": {
+    "headline": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794827061,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
+   "value": {
+    "headline": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794796869,
+    "url": "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 25410,
+    "days": 4,
+    "max_shares": 18925,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-19",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

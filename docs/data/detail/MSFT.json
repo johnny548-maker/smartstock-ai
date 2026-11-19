@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 506.24,
- "change_pct": -2.27,
+ "price": 508.29,
+ "change_pct": 0.4,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 485.44,
-   "h": 492.44,
-   "l": 484.3,
-   "c": 491.71,
-   "v": 19519000
-  },
   {
    "time": "2026-08-26",
    "o": 487.85,
@@ -478,15 +470,23 @@
   },
   {
    "time": "2026-11-17",
-   "o": 514.01,
+   "o": 514.57,
    "h": 515.64,
    "l": 496.51,
    "c": 506.24,
-   "v": 27250041
+   "v": 27992800
+  },
+  {
+   "time": "2026-11-18",
+   "o": 505.11,
+   "h": 510.44,
+   "l": 501.08,
+   "c": 508.29,
+   "v": 21349348
   }
  ],
  "sr": {
-  "price": 506.24,
+  "price": 508.29,
   "resistance": [
    509.95,
    512.76
@@ -498,7 +498,6 @@
   "strong_support": 348.54
  },
  "spark": [
-  491.71,
   496.37,
   505.06,
   513.53,
@@ -557,16 +556,17 @@
   523.0,
   523.88,
   517.99,
-  506.24
+  506.24,
+  508.29
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "pe_trailing": 26.421711,
   "pe_forward": 20.921688,
   "eps_trailing": 19.16,
   "eps_forward": 24.1969,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon.com (AMZN) Set For White House AI National Champion Status",
+   "label": "Anthropic's $81.3B haul makes it the largest tech IPO ever",
    "value": {
-    "headline": "Amazon.com (AMZN) Set For White House AI National Champion Status",
+    "headline": "Anthropic's $81.3B haul makes it the largest tech IPO ever",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794961175,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss",
+    "ts": 1795046917,
+    "url": "https://pitchbook.com/news/articles/anthropics-81-3b-haul-makes-it-the-second-largest-tech-ipo-ever?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss"
+     "https://pitchbook.com/news/articles/anthropics-81-3b-haul-makes-it-the-second-largest-tech-ipo-ever?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Baseten Brings High-Performance Inference for Open Models to Microsoft Foundry",
+   "label": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
    "value": {
-    "headline": "Baseten Brings High-Performance Inference for Open Models to Microsoft Foundry",
+    "headline": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794957300,
-    "url": "https://finance.yahoo.com/technology/ai/articles/baseten-brings-high-performance-inference-231500946.html?.tsrc=rss",
+    "ts": 1795045306,
+    "url": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/baseten-brings-high-performance-inference-231500946.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+   "label": "Costco generators sell out as tech outages spark panic buying",
    "value": {
-    "headline": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+    "headline": "Costco generators sell out as tech outages spark panic buying",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794955620,
-    "url": "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss",
+    "ts": 1795044348,
+    "url": "https://www.usatoday.com/story/money/2026/11/18/tech-outages-spark-costco-panic-buying/92851472007/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss"
+     "https://www.usatoday.com/story/money/2026/11/18/tech-outages-spark-costco-panic-buying/92851472007/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-18",
+   "severity": "info",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bill Ackman’s $14 billion bet beyond the Magnificent 7",
+   "label": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang’s exit",
    "value": {
-    "headline": "Bill Ackman’s $14 billion bet beyond the Magnificent 7",
+    "headline": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang’s exit",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954780,
-    "url": "https://www.thestreet.com/investing/bill-ackman-sells-microsoft-buys-netflix-13f?.tsrc=rss",
+    "ts": 1795043848,
+    "url": "https://finance.yahoo.com/technology/articles/microsoft-ceo-satya-nadella-remains-231728146.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/bill-ackman-sells-microsoft-buys-netflix-13f?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/microsoft-ceo-satya-nadella-remains-231728146.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
+   "label": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
    "value": {
-    "headline": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
+    "headline": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954744,
-    "url": "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss",
+    "ts": 1795042691,
+    "url": "https://finance.yahoo.com/technology/ai/articles/satya-nadella-predicts-ai-agents-225811295.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/satya-nadella-predicts-ai-agents-225811295.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA",
- "price": null,
- "change_pct": null,
+ "name": "NVIDIA Corporation - Common Stock",
+ "price": 150.96,
+ "change_pct": -2.89,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 215.29,
-   "h": 215.35,
-   "l": 207.02,
-   "c": 208.25,
-   "v": 135187300
-  },
-  {
-   "time": "2026-08-25",
-   "o": 210.79,
-   "h": 214.49,
-   "l": 209.88,
-   "c": 212.81,
-   "v": 122309000
-  },
   {
    "time": "2026-08-26",
    "o": 212.4,
@@ -474,26 +458,45 @@
    "h": 170.0,
    "l": 158.39,
    "c": 162.85,
-   "v": 363819700
+   "v": 365796600
   },
   {
    "time": "2026-11-16",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 329959344
+   "o": 159.02,
+   "h": 163.2,
+   "l": 155.01,
+   "c": 156.14,
+   "v": 333822100
+  },
+  {
+   "time": "2026-11-17",
+   "o": 156.9,
+   "h": 158.19,
+   "l": 150.33,
+   "c": 155.46,
+   "v": 406985100
+  },
+  {
+   "time": "2026-11-18",
+   "o": 159.19,
+   "h": 159.7,
+   "l": 150.4,
+   "c": 150.96,
+   "v": 343007056
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
-  "strong_support": 163.9
+  "price": 150.96,
+  "resistance": [
+   219.99,
+   222.19
+  ],
+  "support": [
+   148.8
+  ],
+  "strong_support": 148.8
  },
  "spark": [
-  208.25,
-  212.81,
   209.43,
   227.73,
   217.31,
@@ -551,150 +554,50 @@
   173.73,
   166.19,
   162.85,
-  null
+  156.14,
+  155.46,
+  150.96
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
- "fundamental": {
-  "pe_trailing": 19.73957,
-  "pe_forward": 9.855444,
-  "eps_trailing": 7.91,
-  "eps_forward": 15.84302,
-  "stale": false,
-  "source": "yfinance"
- },
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
+ "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia earnings to test AI boom after Huang's exit",
+   "label": "台玻:展望穩定訂單看好到2027 高毛利產品出貨維持穩定成長",
    "value": {
-    "headline": "Nvidia earnings to test AI boom after Huang's exit",
+    "headline": "台玻:展望穩定訂單看好到2027 高毛利產品出貨維持穩定成長",
     "sources": [
-     "yahoo_us"
+     "cnyes"
     ],
     "source_count": 1,
-    "ts": 1794879839,
-    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-earnings-test-ai-boom-014359078.html?.tsrc=rss",
+    "ts": 1794995048,
+    "url": "cnyes:6666371",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/nvidia-earnings-test-ai-boom-014359078.html?.tsrc=rss"
+     "cnyes:6666371"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Prediction: Nov. 18 Will Be a Huge Day for AI Power Stocks. Here’s Why.",
-   "value": {
-    "headline": "Prediction: Nov. 18 Will Be a Huge Day for AI Power Stocks. Here’s Why.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794878702,
-    "url": "https://www.fool.com/investing/2026/11/16/prediction-nov-18-will-be-a-huge-day-for-ai-power-stocks-heres-why/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/16/prediction-nov-18-will-be-a-huge-day-for-ai-power-stocks-heres-why/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What SharonAI (SHAZ) Said on Its Q3 Earnings Call",
-   "value": {
-    "headline": "What SharonAI (SHAZ) Said on Its Q3 Earnings Call",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794878106,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-what-sharonai-shaz-said-on-its-q3-earnings-call-2026-11-16/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-    "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-what-sharonai-shaz-said-on-its-q3-earnings-call-2026-11-16/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "SpaceX Just Brought a Starship Back From Orbit and Caught It. Here's the Part of the Business That Gains the Most.",
-   "value": {
-    "headline": "SpaceX Just Brought a Starship Back From Orbit and Caught It. Here's the Part of the Business That Gains the Most.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794877982,
-    "url": "https://www.fool.com/investing/2026/11/16/spacex-just-brought-a-starship-back-from-orbit-and-caught-it-here-s-the-part-of-the-business-that-gains-the-most/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/16/spacex-just-brought-a-starship-back-from-orbit-and-caught-it-here-s-the-part-of-the-business-that-gains-the-most/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "This Is a Huge Week for the Stock Market: Nvidia Earnings, Fed Minutes, and Anthropic’s IPO",
-   "value": {
-    "headline": "This Is a Huge Week for the Stock Market: Nvidia Earnings, Fed Minutes, and Anthropic’s IPO",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794877801,
-    "url": "https://www.fool.com/investing/2026/11/16/this-is-a-huge-week-for-the-stock-market-nvidia-earnings-fed-minutes-and-anthropic-s-ipo/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/16/this-is-a-huge-week-for-the-stock-market-nvidia-earnings-fed-minutes-and-anthropic-s-ipo/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 1,
     "max_source_count": 1,
     "distinct_sources": [
-     "yahoo_us"
+     "cnyes"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-17",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "sec_ftd",
-   "kind": "chip",
-   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 129,602 股交割失敗）",
-   "value": {
-    "total_shares": 129602,
-    "days": 9,
-    "max_shares": 63726,
-    "persistent": true,
-    "elevated": true
-   },
-   "severity": "warn",
-   "as_of": "2026-11-17",
-   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

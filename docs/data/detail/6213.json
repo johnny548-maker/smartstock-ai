@@ -1,17 +1,9 @@
 {
  "stock": "6213",
  "name": "聯茂",
- "price": 432.0,
- "change_pct": -10.0,
+ "price": 438.5,
+ "change_pct": 1.5,
  "ohlc": [
-  {
-   "time": "2026-08-20",
-   "o": 508.0,
-   "h": 510.0,
-   "l": 490.0,
-   "c": 510.0,
-   "v": 3068481
-  },
   {
    "time": "2026-08-21",
    "o": 534.0,
@@ -483,10 +475,18 @@
    "l": 432.0,
    "c": 432.0,
    "v": 16802269
+  },
+  {
+   "time": "2026-11-18",
+   "o": 447.0,
+   "h": 450.5,
+   "l": 397.0,
+   "c": 438.5,
+   "v": 27159230
   }
  ],
  "sr": {
-  "price": 432.0,
+  "price": 438.5,
   "resistance": [
    555.0,
    599.0
@@ -498,7 +498,6 @@
   "strong_support": 46.77
  },
  "spark": [
-  510.0,
   513.0,
   482.5,
   530.0,
@@ -557,10 +556,11 @@
   522.0,
   533.0,
   480.0,
-  432.0
+  432.0,
+  438.5
  ],
- "spark_start": "2026-08-20",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-21",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "rev_yoy": 119.5,
   "rev_accel": true,
@@ -575,13 +575,48 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 853,
+    "short_today": 322,
     "outstanding": 363597218,
-    "short_pct": 0.0002346002548347331
+    "short_pct": 8.855953347805868e-05
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "名師操盤》台股「大轉折」關鍵!臻鼎-KY、聯茂3檔嚴重超跌",
+   "value": {
+    "headline": "名師操盤》台股「大轉折」關鍵!臻鼎-KY、聯茂3檔嚴重超跌",
+    "sources": [
+     "yahoo_tw"
+    ],
+    "source_count": 1,
+    "ts": 1795039530,
+    "url": "https://tw.stock.yahoo.com/news/%E5%90%8D%E5%B8%AB%E6%93%8D%E7%9B%A4-%E5%8F%B0%E8%82%A1-%E5%A4%A7%E8%BD%89%E6%8A%98-%E9%97%9C%E9%8D%B5-%E8%87%BB%E9%BC%8E-220530118.html",
+    "urls": [
+     "https://tw.stock.yahoo.com/news/%E5%90%8D%E5%B8%AB%E6%93%8D%E7%9B%A4-%E5%8F%B0%E8%82%A1-%E5%A4%A7%E8%BD%89%E6%8A%98-%E9%97%9C%E9%8D%B5-%E8%87%BB%E9%BC%8E-220530118.html"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_tw"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1065,6 +1100,10 @@
    {
     "t": "2026-11-18",
     "v": 7240
+   },
+   {
+    "t": "2026-11-19",
+    "v": 8017
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 351.91,
- "change_pct": -0.25,
+ "price": 352.45,
+ "change_pct": 0.15,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 310.55,
-   "h": 313.35,
-   "l": 307.98,
-   "c": 309.66,
-   "v": 25869800
-  },
   {
    "time": "2026-08-26",
    "o": 310.06,
@@ -478,17 +470,26 @@
   },
   {
    "time": "2026-11-17",
-   "o": 352.92,
+   "o": 352.83,
    "h": 355.36,
    "l": 349.67,
    "c": 351.91,
-   "v": 36248936
+   "v": 37407500
+  },
+  {
+   "time": "2026-11-18",
+   "o": 351.87,
+   "h": 356.42,
+   "l": 351.47,
+   "c": 352.45,
+   "v": 33393854
   }
  ],
  "sr": {
-  "price": 351.91,
+  "price": 352.45,
   "resistance": [
-   355.11
+   355.11,
+   360.83
   ],
   "support": [
    338.44,
@@ -497,7 +498,6 @@
   "strong_support": 242.57
  },
  "spark": [
-  309.66,
   313.21,
   314.34,
   319.46,
@@ -556,16 +556,17 @@
   354.88,
   356.27,
   352.78,
-  351.91
+  351.91,
+  352.45
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "pe_trailing": 39.188198,
   "pe_forward": 33.288498,
   "eps_trailing": 8.98,
   "eps_forward": 10.57152,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -574,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+   "label": "Alphabet vs. Apple: Which Warren Buffett Stock Is the Better Buy?",
    "value": {
-    "headline": "National Security Outage Is Just One Reason for Today’s Software Stock Selloff",
+    "headline": "Alphabet vs. Apple: Which Warren Buffett Stock Is the Better Buy?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794955620,
-    "url": "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss",
+    "ts": 1795045502,
+    "url": "https://www.fool.com/investing/2026/11/18/alphabet-vs-apple-which-warren-buffett-stock-is-the-better-buy/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/87274442-810a-3ca3-a85b-4660398273da/national-security-outage-is.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/18/alphabet-vs-apple-which-warren-buffett-stock-is-the-better-buy/?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-18",
+   "severity": "info",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
+   "label": "Ken Griffin Dumps SpaceX, Amazon; Buys ARKK and Bets Big on Marvell",
    "value": {
-    "headline": "Nvidia with a positive Q3 despite SEC probing Nvidia amid Huang Scandal",
+    "headline": "Ken Griffin Dumps SpaceX, Amazon; Buys ARKK and Bets Big on Marvell",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954744,
-    "url": "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss",
+    "ts": 1795041005,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ken-griffin-dumps-spacex-amazon-223005217.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nvidia-with-a-positive-q3-despite-sec-probing-nvidia-amid-huang-scandal-223224298.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/ken-griffin-dumps-spacex-amazon-223005217.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Fund Manager Lists Three Reasons He Still Won’t Buy Tesla Stock",
+   "label": "I Listened to MP Materials' Earnings Call. Here's the 1 Thing That Stuck With Me.",
    "value": {
-    "headline": "Fund Manager Lists Three Reasons He Still Won’t Buy Tesla Stock",
+    "headline": "I Listened to MP Materials' Earnings Call. Here's the 1 Thing That Stuck With Me.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794953029,
-    "url": "https://stocktwits.com/news-articles/markets/equity/fund-manager-lists-three-reasons-he-still-won-t-buy-tesla-stock/cNbOJB3R9hQ?.tsrc=rss",
+    "ts": 1795040700,
+    "url": "https://www.fool.com/investing/2026/11/18/i-listened-to-xs-earnings-call-heres-the-1-thing-t/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/fund-manager-lists-three-reasons-he-still-won-t-buy-tesla-stock/cNbOJB3R9hQ?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/18/i-listened-to-xs-earnings-call-heres-the-1-thing-t/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Pay outage blocks instant crypto purchases",
+   "label": "Memory supply constraints will be even 'tighter' in 2027: Micron CTO",
    "value": {
-    "headline": "Apple Pay outage blocks instant crypto purchases",
+    "headline": "Memory supply constraints will be even 'tighter' in 2027: Micron CTO",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794952487,
-    "url": "https://www.thestreet.com/crypto/markets/apple-pay-outage-blocks-instant-crypto-purchases?.tsrc=rss",
+    "ts": 1795039095,
+    "url": "https://finance.yahoo.com/video/memory-supply-constraints-will-be-even-tighter-in-2027-micron-cto-215815321.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/crypto/markets/apple-pay-outage-blocks-instant-crypto-purchases?.tsrc=rss"
+     "https://finance.yahoo.com/video/memory-supply-constraints-will-be-even-tighter-in-2027-micron-cto-215815321.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Warren Buffett Buys: 3 Forever Stocks the Billionaire Investor Has Invested In",
+   "label": "Citi CEO Expects More Tech Outages",
    "value": {
-    "headline": "Warren Buffett Buys: 3 Forever Stocks the Billionaire Investor Has Invested In",
+    "headline": "Citi CEO Expects More Tech Outages",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794951902,
-    "url": "https://www.fool.com/investing/2026/11/17/warren-buffett-buys-3-forever-stocks-the-billionaire-investor-has-invested-in/?.tsrc=rss",
+    "ts": 1795038633,
+    "url": "https://finance.yahoo.com/video/citi-ceo-expects-more-tech-215033505.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/17/warren-buffett-buys-3-forever-stocks-the-billionaire-investor-has-invested-in/?.tsrc=rss"
+     "https://finance.yahoo.com/video/citi-ceo-expects-more-tech-215033505.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 836 分 / 417 留言",
+   "label": "HN 討論熱度 20 篇 / 81 分 / 35 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 836,
-    "comments": 417,
+    "points": 81,
+    "comments": 35,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-11-18",
+   "severity": "info",
+   "as_of": "2026-11-19",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -713,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

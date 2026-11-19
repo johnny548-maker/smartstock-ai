@@ -1,17 +1,9 @@
 {
  "stock": "AVGO",
  "name": "博通",
- "price": 341.6,
- "change_pct": 2.46,
+ "price": 354.05,
+ "change_pct": 3.64,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 360.44,
-   "h": 362.33,
-   "l": 354.66,
-   "c": 356.09,
-   "v": 18014900
-  },
   {
    "time": "2026-08-26",
    "o": 356.47,
@@ -479,26 +471,33 @@
   {
    "time": "2026-11-17",
    "o": 335.59,
-   "h": 341.74,
+   "h": 344.0,
    "l": 330.13,
    "c": 341.6,
-   "v": 25732265
+   "v": 26184000
+  },
+  {
+   "time": "2026-11-18",
+   "o": 348.7,
+   "h": 357.34,
+   "l": 340.74,
+   "c": 354.05,
+   "v": 25906478
   }
  ],
  "sr": {
-  "price": 341.6,
+  "price": 354.05,
   "resistance": [
-   350.41,
-   351.2
+   357.52,
+   358.68
   ],
   "support": [
-   335.2,
-   329.35
+   349.42,
+   346.89
   ],
   "strong_support": 288.98
  },
  "spark": [
-  356.09,
   354.94,
   370.86,
   368.12,
@@ -557,16 +556,17 @@
   364.36,
   347.01,
   333.4,
-  341.6
+  341.6,
+  354.05
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "pe_trailing": 43.627075,
   "pe_forward": 17.595514,
   "eps_trailing": 7.83,
   "eps_forward": 19.41404,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
+   "label": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadc",
    "value": {
-    "headline": "Dow Jones Futures Rise, Techs Jump As Nvidia Beats, Says This On Jensen Huang; Target, Anthropic IPO Ahead",
+    "headline": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadcom).",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794963337,
-    "url": "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss",
+    "ts": 1795044902,
+    "url": "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-rise%2C-techs.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+   "label": "Stock Market Today, Nov. 18: Nvidia Slips on Strong Results as Succession and China Business Risks Weigh",
    "value": {
-    "headline": "Nvidia Is Only 17% of SMH. After Its Beat, the Chip ETF Jumped Almost as Much as Nvidia Did",
+    "headline": "Stock Market Today, Nov. 18: Nvidia Slips on Strong Results as Succession and China Business Risks Weigh",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794955973,
-    "url": "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss",
+    "ts": 1795039895,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/18/stock-market-today-nov-18-nvidia-slips-on-strong-results-as-succession-and-china-business-risks-weigh/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/17/nvidia-is-only-17-of-smh-after-its-beat-the-chip-etf-jumped-almost-as-much-as-nvidia-did/?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/18/stock-market-today-nov-18-nvidia-slips-on-strong-results-as-succession-and-china-business-risks-weigh/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "TD Cowen Cut Its Broadcom Target to $425. It Still Sees 24% Upside",
+   "label": "Anthropic Prices IPO at $83 a Share",
    "value": {
-    "headline": "TD Cowen Cut Its Broadcom Target to $425. It Still Sees 24% Upside",
+    "headline": "Anthropic Prices IPO at $83 a Share",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794955962,
-    "url": "https://www.tikr.com/blog/td-cowen-cut-its-broadcom-target-to-425-it-still-sees-24-upside?ref=yahoofinance&tlnk=yf-261117-7jhqfrh2&.tsrc=rss",
+    "ts": 1795038432,
+    "url": "https://finance.yahoo.com/m/73934389-7de3-3893-b9af-2b11996e8414/anthropic-prices-ipo-at-%2483-a.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/td-cowen-cut-its-broadcom-target-to-425-it-still-sees-24-upside?ref=yahoofinance&tlnk=yf-261117-7jhqfrh2&.tsrc=rss"
+     "https://finance.yahoo.com/m/73934389-7de3-3893-b9af-2b11996e8414/anthropic-prices-ipo-at-%2483-a.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-18",
+   "severity": "info",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
+   "label": "Marvell And Intel Halved: How Long Until They Recover?",
    "value": {
-    "headline": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
+    "headline": "Marvell And Intel Halved: How Long Until They Recover?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954190,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss",
+    "ts": 1795037340,
+    "url": "https://www.trefis.com/stock/mrvl/articles/626099/marvell-and-intel-halved-how-long-until-they-recover/2026-11-18?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/?.tsrc=rss"
+     "https://www.trefis.com/stock/mrvl/articles/626099/marvell-and-intel-halved-how-long-until-they-recover/2026-11-18?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Arista Networks And 2 Other High Growth Stocks To Watch",
+   "label": "Amazon and Google Have a Stake",
    "value": {
-    "headline": "Arista Networks And 2 Other High Growth Stocks To Watch",
+    "headline": "Amazon and Google Have a Stake",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794953377,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-2-other-high-220937929.html?.tsrc=rss",
+    "ts": 1795036982,
+    "url": "https://finance.yahoo.com/m/d531fa3b-8542-340b-825c-bb4b95cd1a7b/amazon-and-google-have-a-stake.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/arista-networks-2-other-high-220937929.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/d531fa3b-8542-340b-825c-bb4b95cd1a7b/amazon-and-google-have-a-stake.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 269 分 / 84 留言",
+   "label": "HN 討論熱度 20 篇 / 146 分 / 58 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 269,
-    "comments": 84,
+    "points": 146,
+    "comments": 58,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

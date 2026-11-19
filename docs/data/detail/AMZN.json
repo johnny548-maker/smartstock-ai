@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 257.89,
- "change_pct": 0.05,
+ "price": 267.74,
+ "change_pct": 3.82,
  "ohlc": [
-  {
-   "time": "2026-08-25",
-   "o": 262.51,
-   "h": 263.89,
-   "l": 259.83,
-   "c": 261.06,
-   "v": 25550200
-  },
   {
    "time": "2026-08-26",
    "o": 261.28,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-11-17",
-   "o": 257.35,
+   "o": 257.55,
    "h": 259.9,
    "l": 254.0,
    "c": 257.89,
-   "v": 37098176
+   "v": 38685200
+  },
+  {
+   "time": "2026-11-18",
+   "o": 259.81,
+   "h": 268.29,
+   "l": 259.63,
+   "c": 267.74,
+   "v": 40845576
   }
  ],
  "sr": {
-  "price": 257.89,
+  "price": 267.74,
   "resistance": [
-   258.08,
-   259.49
+   274.75,
+   275.34
   ],
   "support": [
    257.04,
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  261.06,
   260.28,
   256.26,
   266.43,
@@ -557,134 +556,152 @@
   267.44,
   266.66,
   257.75,
-  257.89
+  257.89,
+  267.74
  ],
- "spark_start": "2026-08-25",
- "spark_end": "2026-11-17",
+ "spark_start": "2026-08-26",
+ "spark_end": "2026-11-18",
  "fundamental": {
   "pe_trailing": 20.84802,
   "pe_forward": 23.60316,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
-  "stale": false,
+  "stale": true,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 267.74,
+  "stop": 249.0,
+  "target": 314.59,
+  "atr_bracket": 314.59,
+  "measured_move": 321.32,
+  "target_band": [
+   314.59,
+   321.32
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.1,
+  "swing_stop": 226.06,
+  "chandelier": 246.9,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon.com (AMZN) Set For White House AI National Champion Status",
+   "label": "Brookie Beauty LLC Announces TreStyler Launch and International Media Expansion",
    "value": {
-    "headline": "Amazon.com (AMZN) Set For White House AI National Champion Status",
+    "headline": "Brookie Beauty LLC Announces TreStyler Launch and International Media Expansion",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794961175,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss",
+    "ts": 1795045740,
+    "url": "https://finance.yahoo.com/media-advertising/articles/brookie-beauty-llc-announces-trestyler-234900589.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-set-white-001935047.html?.tsrc=rss"
+     "https://finance.yahoo.com/media-advertising/articles/brookie-beauty-llc-announces-trestyler-234900589.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jim Cramer Warns the Anthropic IPO Windfall Is Going to the Super Rich. Here’s the Backlash He Sees Coming",
+   "label": "Blackstone Digital Infrastructure: 3 Key Takeaways for Long-Term Investors",
    "value": {
-    "headline": "Jim Cramer Warns the Anthropic IPO Windfall Is Going to the Super Rich. Here’s the Backlash He Sees Coming",
+    "headline": "Blackstone Digital Infrastructure: 3 Key Takeaways for Long-Term Investors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794960452,
-    "url": "https://247wallst.com/investing/2026/11/17/jim-cramer-warns-the-anthropic-ipo-windfall-is-going-to-the-super-rich-heres-the-backlash-he-sees-coming/?.tsrc=rss",
+    "ts": 1795045615,
+    "url": "https://www.fool.com/earnings/takeaways/2026/11/18/blackstone-digital-infrastructure-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/17/jim-cramer-warns-the-anthropic-ipo-windfall-is-going-to-the-super-rich-heres-the-backlash-he-sees-coming/?.tsrc=rss"
+     "https://www.fool.com/earnings/takeaways/2026/11/18/blackstone-digital-infrastructure-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jeff Bezos’ Former Hedge Fund Is Buying Bitcoin Again",
+   "label": "What Moved Coupang Stock Over 5% Lower?",
    "value": {
-    "headline": "Jeff Bezos’ Former Hedge Fund Is Buying Bitcoin Again",
+    "headline": "What Moved Coupang Stock Over 5% Lower?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954556,
-    "url": "https://beincrypto.com/de-shaw-bitcoin-etf-strategy-strive/?.tsrc=rss",
+    "ts": 1795045376,
+    "url": "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/de-shaw-bitcoin-etf-strategy-strive/?.tsrc=rss"
+     "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
+   "label": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
    "value": {
-    "headline": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
+    "headline": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954545,
-    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-google-together-own-nearly-222905510.html?.tsrc=rss",
+    "ts": 1795045306,
+    "url": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/amazon-google-together-own-nearly-222905510.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon and Google Could Own $400 Billion of Anthropic Stock",
+   "label": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadc",
    "value": {
-    "headline": "Amazon and Google Could Own $400 Billion of Anthropic Stock",
+    "headline": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadcom).",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794954420,
-    "url": "https://finance.yahoo.com/m/c079c6dc-3303-33b1-9922-5e6afaa91e87/amazon-and-google-could-own.html?.tsrc=rss",
+    "ts": 1795044902,
+    "url": "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/c079c6dc-3303-33b1-9922-5e6afaa91e87/amazon-and-google-could-own.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +716,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-19",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
