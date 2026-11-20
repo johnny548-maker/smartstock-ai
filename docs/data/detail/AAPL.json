@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 352.45,
- "change_pct": 0.15,
+ "price": 349.21,
+ "change_pct": -0.92,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 310.06,
-   "h": 315.19,
-   "l": 308.57,
-   "c": 313.21,
-   "v": 34024500
-  },
   {
    "time": "2026-08-27",
    "o": 310.31,
@@ -478,18 +470,26 @@
   },
   {
    "time": "2026-11-18",
-   "o": 351.87,
+   "o": 351.94,
    "h": 356.42,
    "l": 351.47,
    "c": 352.45,
-   "v": 33393854
+   "v": 34209900
+  },
+  {
+   "time": "2026-11-19",
+   "o": 352.91,
+   "h": 355.28,
+   "l": 346.47,
+   "c": 349.21,
+   "v": 40469518
   }
  ],
  "sr": {
-  "price": 352.45,
+  "price": 349.21,
   "resistance": [
-   355.11,
-   360.83
+   351.16,
+   351.46
   ],
   "support": [
    338.44,
@@ -498,7 +498,6 @@
   "strong_support": 242.57
  },
  "spark": [
-  313.21,
   314.34,
   319.46,
   316.61,
@@ -557,16 +556,17 @@
   356.27,
   352.78,
   351.91,
-  352.45
+  352.45,
+  349.21
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-27",
+ "spark_end": "2026-11-19",
  "fundamental": {
-  "pe_trailing": 39.188198,
-  "pe_forward": 33.288498,
+  "pe_trailing": 38.887527,
+  "pe_forward": 33.029312,
   "eps_trailing": 8.98,
-  "eps_forward": 10.57152,
-  "stale": true,
+  "eps_forward": 10.57273,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Alphabet vs. Apple: Which Warren Buffett Stock Is the Better Buy?",
+   "label": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In",
    "value": {
-    "headline": "Alphabet vs. Apple: Which Warren Buffett Stock Is the Better Buy?",
+    "headline": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In Focus",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045502,
-    "url": "https://www.fool.com/investing/2026/11/18/alphabet-vs-apple-which-warren-buffett-stock-is-the-better-buy/?.tsrc=rss",
+    "ts": 1795129265,
+    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/18/alphabet-vs-apple-which-warren-buffett-stock-is-the-better-buy/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Ken Griffin Dumps SpaceX, Amazon; Buys ARKK and Bets Big on Marvell",
+   "label": "3 ETFs for the 58-Year-Old Who Opened the 401(k) Brokerage Window and Did Not Know What to Buy",
    "value": {
-    "headline": "Ken Griffin Dumps SpaceX, Amazon; Buys ARKK and Bets Big on Marvell",
+    "headline": "3 ETFs for the 58-Year-Old Who Opened the 401(k) Brokerage Window and Did Not Know What to Buy",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795041005,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ken-griffin-dumps-spacex-amazon-223005217.html?.tsrc=rss",
+    "ts": 1795127820,
+    "url": "https://247wallst.com/investing/etf/2026/11/19/3-etfs-for-the-58-year-old-who-opened-the-401k-brokerage-window-and-did-not-know-what-to-buy/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ken-griffin-dumps-spacex-amazon-223005217.html?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/11/19/3-etfs-for-the-58-year-old-who-opened-the-401k-brokerage-window-and-did-not-know-what-to-buy/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "I Listened to MP Materials' Earnings Call. Here's the 1 Thing That Stuck With Me.",
+   "label": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
    "value": {
-    "headline": "I Listened to MP Materials' Earnings Call. Here's the 1 Thing That Stuck With Me.",
+    "headline": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795040700,
-    "url": "https://www.fool.com/investing/2026/11/18/i-listened-to-xs-earnings-call-heres-the-1-thing-t/?.tsrc=rss",
+    "ts": 1795125712,
+    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/18/i-listened-to-xs-earnings-call-heres-the-1-thing-t/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Memory supply constraints will be even 'tighter' in 2027: Micron CTO",
+   "label": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
    "value": {
-    "headline": "Memory supply constraints will be even 'tighter' in 2027: Micron CTO",
+    "headline": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795039095,
-    "url": "https://finance.yahoo.com/video/memory-supply-constraints-will-be-even-tighter-in-2027-micron-cto-215815321.html?.tsrc=rss",
+    "ts": 1795125240,
+    "url": "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/memory-supply-constraints-will-be-even-tighter-in-2027-micron-cto-215815321.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-19",
+   "severity": "warn",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Citi CEO Expects More Tech Outages",
+   "label": "Bridgewater Warns of AI Security Risk as Anthropic Shares Rise in Debut",
    "value": {
-    "headline": "Citi CEO Expects More Tech Outages",
+    "headline": "Bridgewater Warns of AI Security Risk as Anthropic Shares Rise in Debut",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795038633,
-    "url": "https://finance.yahoo.com/video/citi-ceo-expects-more-tech-215033505.html?.tsrc=rss",
+    "ts": 1795122960,
+    "url": "https://finance.yahoo.com/m/ac0c7cd3-afc9-37c1-b745-d9478a2ec38a/bridgewater-warns-of-ai.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/citi-ceo-expects-more-tech-215033505.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/ac0c7cd3-afc9-37c1-b745-d9478a2ec38a/bridgewater-warns-of-ai.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +684,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 81 分 / 35 留言",
+   "label": "HN 討論熱度 20 篇 / 521 分 / 213 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 81,
-    "comments": 35,
+    "points": 521,
+    "comments": 213,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-11-19",
+   "severity": "warn",
+   "as_of": "2026-11-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

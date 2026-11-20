@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 508.29,
- "change_pct": 0.4,
+ "price": 498.3,
+ "change_pct": -1.97,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 487.85,
-   "h": 497.4,
-   "l": 487.31,
-   "c": 496.37,
-   "v": 20758900
-  },
   {
    "time": "2026-08-27",
    "o": 494.88,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-11-18",
-   "o": 505.11,
+   "o": 505.5,
    "h": 510.44,
    "l": 501.08,
    "c": 508.29,
-   "v": 21349348
+   "v": 22050100
+  },
+  {
+   "time": "2026-11-19",
+   "o": 519.5,
+   "h": 526.49,
+   "l": 498.16,
+   "c": 498.3,
+   "v": 28435392
   }
  ],
  "sr": {
-  "price": 508.29,
+  "price": 498.3,
   "resistance": [
    509.95,
    512.76
   ],
   "support": [
-   504.96,
-   491.22
+   491.22,
+   487.23
   ],
   "strong_support": 348.54
  },
  "spark": [
-  496.37,
   505.06,
   513.53,
   507.29,
@@ -557,16 +556,17 @@
   523.88,
   517.99,
   506.24,
-  508.29
+  508.29,
+  498.3
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-27",
+ "spark_end": "2026-11-19",
  "fundamental": {
-  "pe_trailing": 26.421711,
-  "pe_forward": 20.921688,
+  "pe_trailing": 26.007307,
+  "pe_forward": 20.590195,
   "eps_trailing": 19.16,
-  "eps_forward": 24.1969,
-  "stale": true,
+  "eps_forward": 24.20084,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic's $81.3B haul makes it the largest tech IPO ever",
+   "label": "IBM (IBM) Stock May Be 27% Below Fair Value On Quantum Platform News",
    "value": {
-    "headline": "Anthropic's $81.3B haul makes it the largest tech IPO ever",
+    "headline": "IBM (IBM) Stock May Be 27% Below Fair Value On Quantum Platform News",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795046917,
-    "url": "https://pitchbook.com/news/articles/anthropics-81-3b-haul-makes-it-the-second-largest-tech-ipo-ever?.tsrc=rss",
+    "ts": 1795134028,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ibm-ibm-stock-may-27-002028644.html?.tsrc=rss",
     "urls": [
-     "https://pitchbook.com/news/articles/anthropics-81-3b-haul-makes-it-the-second-largest-tech-ipo-ever?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/ibm-ibm-stock-may-27-002028644.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
+   "label": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
    "value": {
-    "headline": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
+    "headline": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045306,
-    "url": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss",
+    "ts": 1795133116,
+    "url": "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss"
+     "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Costco generators sell out as tech outages spark panic buying",
+   "label": "Microsoft reveals 80% server failure behind global outage",
    "value": {
-    "headline": "Costco generators sell out as tech outages spark panic buying",
+    "headline": "Microsoft reveals 80% server failure behind global outage",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795044348,
-    "url": "https://www.usatoday.com/story/money/2026/11/18/tech-outages-spark-costco-panic-buying/92851472007/?.tsrc=rss",
+    "ts": 1795126620,
+    "url": "https://www.thestreet.com/investing/microsoft-reveals-80-server-failure-behind-global-outage?.tsrc=rss",
     "urls": [
-     "https://www.usatoday.com/story/money/2026/11/18/tech-outages-spark-costco-panic-buying/92851472007/?.tsrc=rss"
+     "https://www.thestreet.com/investing/microsoft-reveals-80-server-failure-behind-global-outage?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang’s exit",
+   "label": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
    "value": {
-    "headline": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang’s exit",
+    "headline": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795043848,
-    "url": "https://finance.yahoo.com/technology/articles/microsoft-ceo-satya-nadella-remains-231728146.html?.tsrc=rss",
+    "ts": 1795125712,
+    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/microsoft-ceo-satya-nadella-remains-231728146.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
+   "label": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
    "value": {
-    "headline": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
+    "headline": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795042691,
-    "url": "https://finance.yahoo.com/technology/ai/articles/satya-nadella-predicts-ai-agents-225811295.html?.tsrc=rss",
+    "ts": 1795125240,
+    "url": "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/satya-nadella-predicts-ai-agents-225811295.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-19",
+   "severity": "warn",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

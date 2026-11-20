@@ -1,17 +1,9 @@
 {
  "stock": "6834",
  "name": "天二科技",
- "price": 83.7,
- "change_pct": -2.45,
+ "price": 79.1,
+ "change_pct": -5.5,
  "ohlc": [
-  {
-   "time": "2026-08-21",
-   "o": 93.4,
-   "h": 95.0,
-   "l": 89.7,
-   "c": 89.7,
-   "v": 2122306
-  },
   {
    "time": "2026-08-24",
    "o": 90.2,
@@ -483,22 +475,29 @@
    "l": 80.2,
    "c": 83.7,
    "v": 2285698
+  },
+  {
+   "time": "2026-11-19",
+   "o": 85.0,
+   "h": 85.3,
+   "l": 75.8,
+   "c": 79.1,
+   "v": 2886340
   }
  ],
  "sr": {
-  "price": 83.7,
+  "price": 79.1,
   "resistance": [
    84.53,
    98.9
   ],
   "support": [
-   83.5,
-   70.2
+   70.2,
+   62.65
   ],
   "strong_support": 21.89
  },
  "spark": [
-  89.7,
   89.9,
   90.1,
   90.2,
@@ -557,10 +556,11 @@
   101.5,
   91.4,
   85.8,
-  83.7
+  83.7,
+  79.1
  ],
- "spark_start": "2026-08-21",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-24",
+ "spark_end": "2026-11-19",
  "fundamental": {
   "rev_yoy": 179.6,
   "rev_accel": true,
@@ -571,16 +571,43 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 248,911 股",
+   "value": {
+    "foreign": 255562,
+    "trust": 0,
+    "dealer": -6651,
+    "total": 248911
+   },
+   "severity": "info",
+   "as_of": "2026-11-20",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 26.3 / 殖利率 0.51% / PB 4.24",
+   "value": {
+    "pe": 26.28,
+    "yield": 0.51,
+    "pb": 4.24
+   },
+   "severity": "info",
+   "as_of": "2026-11-19",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 227,
+    "short_today": 267,
     "outstanding": 88471082,
-    "short_pct": 0.0002565810147998416
+    "short_pct": 0.0003017935284209591
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   }
  ],
@@ -1069,6 +1096,10 @@
    {
     "t": "2026-11-19",
     "v": -9163
+   },
+   {
+    "t": "2026-11-20",
+    "v": -8914
    }
   ],
   "holder_pct": [

@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 267.74,
- "change_pct": 3.82,
+ "price": 257.37,
+ "change_pct": -3.87,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 261.28,
-   "h": 262.05,
-   "l": 258.24,
-   "c": 260.28,
-   "v": 21528400
-  },
   {
    "time": "2026-08-27",
    "o": 259.23,
@@ -480,16 +472,24 @@
    "time": "2026-11-18",
    "o": 259.81,
    "h": 268.29,
-   "l": 259.63,
+   "l": 259.51,
    "c": 267.74,
-   "v": 40845576
+   "v": 41289500
+  },
+  {
+   "time": "2026-11-19",
+   "o": 272.58,
+   "h": 274.0,
+   "l": 256.75,
+   "c": 257.37,
+   "v": 52082830
   }
  ],
  "sr": {
-  "price": 267.74,
+  "price": 257.37,
   "resistance": [
-   274.75,
-   275.34
+   258.08,
+   259.49
   ],
   "support": [
    257.04,
@@ -498,7 +498,6 @@
   "strong_support": 196.0
  },
  "spark": [
-  260.28,
   256.26,
   266.43,
   259.77,
@@ -557,152 +556,174 @@
   266.66,
   257.75,
   257.89,
-  267.74
+  267.74,
+  257.37
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-27",
+ "spark_end": "2026-11-19",
  "fundamental": {
-  "pe_trailing": 20.84802,
-  "pe_forward": 23.60316,
+  "pe_trailing": 20.805983,
+  "pe_forward": 23.555567,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 267.74,
-  "stop": 249.0,
-  "target": 314.59,
-  "atr_bracket": 314.59,
+  "entry": 257.37,
+  "stop": 239.35,
+  "target": 302.41,
+  "atr_bracket": 302.41,
   "measured_move": 321.32,
   "target_band": [
-   314.59,
-   321.32
+   302.41,
+   321.32,
+   328.4
   ],
   "stop_pct": -7.0,
   "target_pct": 17.5,
   "rr": 2.5,
-  "atr_pct": 4.1,
-  "swing_stop": 226.06,
-  "chandelier": 246.9,
-  "fib_targets": []
+  "atr_pct": 4.4,
+  "swing_stop": 250.64,
+  "chandelier": 245.22,
+  "fib_targets": [
+   312.49,
+   328.4,
+   345.96
+  ]
  },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Brookie Beauty LLC Announces TreStyler Launch and International Media Expansion",
+   "label": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
    "value": {
-    "headline": "Brookie Beauty LLC Announces TreStyler Launch and International Media Expansion",
+    "headline": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045740,
-    "url": "https://finance.yahoo.com/media-advertising/articles/brookie-beauty-llc-announces-trestyler-234900589.html?.tsrc=rss",
+    "ts": 1795133116,
+    "url": "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/media-advertising/articles/brookie-beauty-llc-announces-trestyler-234900589.html?.tsrc=rss"
+     "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Blackstone Digital Infrastructure: 3 Key Takeaways for Long-Term Investors",
+   "label": "Anthropic Just Went Public at $1.5 Trillion. VOO Won’t Own a Share Until Late 2027 at the Earliest",
    "value": {
-    "headline": "Blackstone Digital Infrastructure: 3 Key Takeaways for Long-Term Investors",
+    "headline": "Anthropic Just Went Public at $1.5 Trillion. VOO Won’t Own a Share Until Late 2027 at the Earliest",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045615,
-    "url": "https://www.fool.com/earnings/takeaways/2026/11/18/blackstone-digital-infrastructure-3-key-takeaways-for-long-term-investors/?.tsrc=rss",
+    "ts": 1795132361,
+    "url": "https://247wallst.com/investing/etf/2026/11/19/anthropic-just-went-public-at-1-5-trillion-voo-wont-own-a-share-until-late-2027-at-the-earliest/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/earnings/takeaways/2026/11/18/blackstone-digital-infrastructure-3-key-takeaways-for-long-term-investors/?.tsrc=rss"
+     "https://247wallst.com/investing/etf/2026/11/19/anthropic-just-went-public-at-1-5-trillion-voo-wont-own-a-share-until-late-2027-at-the-earliest/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Moved Coupang Stock Over 5% Lower?",
+   "label": "NYC lawmakers weigh compromise on Amazon delivery worker bill, Bloomberg reports",
    "value": {
-    "headline": "What Moved Coupang Stock Over 5% Lower?",
+    "headline": "NYC lawmakers weigh compromise on Amazon delivery worker bill, Bloomberg reports",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045376,
-    "url": "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss",
+    "ts": 1795132033,
+    "url": "https://finance.yahoo.com/economy/policy/articles/nyc-lawmakers-weigh-compromise-amazon-234713116.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss"
+     "https://finance.yahoo.com/economy/policy/articles/nyc-lawmakers-weigh-compromise-amazon-234713116.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
+   "label": "Jeff Bezos says 2 policies drive up housing costs, and it's 'not hard to figure out'",
    "value": {
-    "headline": "Morgan Stanley Says These 4 Companies Will Spend $1.6 Trillion on AI Infrastructure in 2027",
+    "headline": "Jeff Bezos says 2 policies drive up housing costs, and it's 'not hard to figure out'",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045306,
-    "url": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss",
+    "ts": 1795129620,
+    "url": "https://www.thestreet.com/real-estate/jeff-bezos-says-2-policies-drive-up-housing-costs-subsidize-demand-constrain-supply?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-says-4-companies-234321356.html?.tsrc=rss"
+     "https://www.thestreet.com/real-estate/jeff-bezos-says-2-policies-drive-up-housing-costs-subsidize-demand-constrain-supply?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadc",
+   "label": "Morgan Stanley’s Vintage Values 2027: 5 Stocks Analysts See Climbing Further",
    "value": {
-    "headline": "Thinking About Buying Anthropic’s IPO on Nov. 19? Here’s an AI Stock I’d Consider First (Hint: It’s Not Nvidia or Broadcom).",
+    "headline": "Morgan Stanley’s Vintage Values 2027: 5 Stocks Analysts See Climbing Further",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795044902,
-    "url": "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss",
+    "ts": 1795127555,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-vintage-values-2027-223235273.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/18/thinking-about-buying-anthropic-s-ipo-on-nov-19-here-s-an-ai-stock-i-d-consider-first-hint-it-s-not-nvidia-or-broadcom/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-vintage-values-2027-223235273.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 13 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 13,
     "max_source_count": 1,
     "distinct_sources": [
+     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 8 篇 / 51 分 / 18 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 51,
+    "comments": 18,
+    "n": 8,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-20",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -716,7 +737,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 530.14,
- "change_pct": 5.31,
+ "price": 489.19,
+ "change_pct": -7.72,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 475.07,
-   "h": 491.12,
-   "l": 474.58,
-   "c": 480.93,
-   "v": 14348100
-  },
   {
    "time": "2026-08-27",
    "o": 481.5,
@@ -478,27 +470,34 @@
   },
   {
    "time": "2026-11-18",
-   "o": 510.07,
+   "o": 509.89,
    "h": 532.17,
    "l": 495.2,
    "c": 530.14,
-   "v": 33451755
+   "v": 34028600
+  },
+  {
+   "time": "2026-11-19",
+   "o": 543.48,
+   "h": 555.01,
+   "l": 470.56,
+   "c": 489.19,
+   "v": 70838807
   }
  ],
  "sr": {
-  "price": 530.14,
+  "price": 489.19,
   "resistance": [
-   546.44,
-   556.79
+   491.12,
+   517.35
   ],
   "support": [
-   502.6,
-   498.15
+   480.33,
+   463.21
   ],
   "strong_support": 188.22
  },
  "spark": [
-  480.93,
   476.67,
   465.58,
   470.72,
@@ -557,16 +556,17 @@
   534.06,
   504.28,
   503.41,
-  530.14
+  530.14,
+  489.19
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-27",
+ "spark_end": "2026-11-19",
  "fundamental": {
-  "pe_trailing": 107.566246,
-  "pe_forward": 28.540813,
+  "pe_trailing": 104.52778,
+  "pe_forward": 27.73461,
   "eps_trailing": 4.68,
   "eps_forward": 17.63825,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Explains Natera Stock's Nearly 10% Drop?",
+   "label": "Dow Jones Futures: Ugly Market Reversal To New Lows As Anthropic IPO Debuts, AMD Dives",
    "value": {
-    "headline": "What Explains Natera Stock's Nearly 10% Drop?",
+    "headline": "Dow Jones Futures: Ugly Market Reversal To New Lows As Anthropic IPO Debuts, AMD Dives",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045718,
-    "url": "https://www.trefis.com/stock/ntra/articles/625786/what-explains-natera-stocks-nearly-10-drop/2026-11-18?.tsrc=rss",
+    "ts": 1795134162,
+    "url": "https://finance.yahoo.com/m/9e02231d-41cd-31ac-b37f-993325b8a4ca/dow-jones-futures%3A-ugly.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/ntra/articles/625786/what-explains-natera-stocks-nearly-10-drop/2026-11-18?.tsrc=rss"
+     "https://finance.yahoo.com/m/9e02231d-41cd-31ac-b37f-993325b8a4ca/dow-jones-futures%3A-ugly.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "What Moved Coupang Stock Over 5% Lower?",
+   "label": "Is Tech in a Bear Market? 20 Tech Stocks Fall Up to 76% From Highs",
    "value": {
-    "headline": "What Moved Coupang Stock Over 5% Lower?",
+    "headline": "Is Tech in a Bear Market? 20 Tech Stocks Fall Up to 76% From Highs",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795045376,
-    "url": "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss",
+    "ts": 1795128039,
+    "url": "https://beincrypto.com/tech-stocks-bear-market-record-highs/?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/cpng/articles/625841/what-moved-coupang-stock-over-5-lower/2026-11-18?.tsrc=rss"
+     "https://beincrypto.com/tech-stocks-bear-market-record-highs/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How AI Data Center Expansion Will Impact nVent Electric Stock",
+   "label": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
    "value": {
-    "headline": "How AI Data Center Expansion Will Impact nVent Electric Stock",
+    "headline": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795044274,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ai-data-center-expansion-impact-232434949.html?.tsrc=rss",
+    "ts": 1795126825,
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ai-data-center-expansion-impact-232434949.html?.tsrc=rss"
+     "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is the AI party over? Anthropic is about to find out.",
+   "label": "John Forsyth, Cirrus Logic President and CEO, Elected Chair of Semiconductor Industry Association",
    "value": {
-    "headline": "Is the AI party over? Anthropic is about to find out.",
+    "headline": "John Forsyth, Cirrus Logic President and CEO, Elected Chair of Semiconductor Industry Association",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795042800,
-    "url": "https://finance.yahoo.com/technology/article/is-the-ai-party-over-anthropic-is-about-to-find-out-230000591.html?.tsrc=rss",
+    "ts": 1795125600,
+    "url": "https://finance.yahoo.com/technology/articles/john-forsyth-cirrus-logic-president-220000273.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/article/is-the-ai-party-over-anthropic-is-about-to-find-out-230000591.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/john-forsyth-cirrus-logic-president-220000273.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dan Ives’ Top 10 AI Revolution Stock Picks: Inside The IVES ETF",
+   "label": "Anthropic, AMD, Alphabet, Palo Alto, Take-Two, Walmart, and More Stocks That Explain Today’s Market",
    "value": {
-    "headline": "Dan Ives’ Top 10 AI Revolution Stock Picks: Inside The IVES ETF",
+    "headline": "Anthropic, AMD, Alphabet, Palo Alto, Take-Two, Walmart, and More Stocks That Explain Today’s Market",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795041583,
-    "url": "https://finance.yahoo.com/technology/ai/articles/dan-ives-top-10-ai-223943794.html?.tsrc=rss",
+    "ts": 1795124820,
+    "url": "https://finance.yahoo.com/m/65710a12-1ba7-3685-a3c3-30d9e0878af7/anthropic%2C-amd%2C-alphabet%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/dan-ives-top-10-ai-223943794.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/65710a12-1ba7-3685-a3c3-30d9e0878af7/anthropic%2C-amd%2C-alphabet%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 15 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 15,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 57 分 / 7 留言",
+   "label": "HN 討論熱度 20 篇 / 115 分 / 30 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 57,
-    "comments": 7,
+    "points": 115,
+    "comments": 30,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +714,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

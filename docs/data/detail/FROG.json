@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 114.38,
- "change_pct": 8.83,
+ "price": 109.27,
+ "change_pct": -4.47,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 88.12,
-   "h": 93.75,
-   "l": 87.15,
-   "c": 92.8,
-   "v": 1142700
-  },
   {
    "time": "2026-08-27",
    "o": 96.4,
@@ -482,11 +474,19 @@
    "h": 117.91,
    "l": 106.0,
    "c": 114.38,
-   "v": 3123151
+   "v": 3124000
+  },
+  {
+   "time": "2026-11-19",
+   "o": 118.02,
+   "h": 121.85,
+   "l": 108.63,
+   "c": 109.27,
+   "v": 3016115
   }
  ],
  "sr": {
-  "price": 114.38,
+  "price": 109.27,
   "resistance": [],
   "support": [
    86.77,
@@ -495,7 +495,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  92.8,
   104.03,
   98.74,
   100.07,
@@ -554,14 +553,55 @@
   113.6,
   109.94,
   105.1,
-  114.38
+  114.38,
+  109.27
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
+ "spark_start": "2026-08-27",
+ "spark_end": "2026-11-19",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Is GitLab Stock Worth The Wait?",
+   "value": {
+    "headline": "Is GitLab Stock Worth The Wait?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795087347,
+    "url": "https://www.trefis.com/stock/gtlb/articles/626874/is-gitlab-stock-worth-the-wait/2026-11-19?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/gtlb/articles/626874/is-gitlab-stock-worth-the-wait/2026-11-19?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "iShares Russell 2000 (IWM) Buys $1.4 Million More Glaukos on Tuesday",
+   "value": {
+    "headline": "iShares Russell 2000 (IWM) Buys $1.4 Million More Glaukos on Tuesday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795086297,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110457366.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110457366.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-20",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -579,7 +619,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -599,7 +639,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -619,47 +659,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
-   "value": {
-    "headline": "iShares Russell 2000 (IWM) Buys $56.7 Million More Teekay Tankers on Thursday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794827061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110421262.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-19",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
-   "value": {
-    "headline": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1794796869,
-    "url": "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss",
-    "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/why-did-aapl-zeta-frog-stocks-jump-to-52-week-highs-last-week-c/cNb77TzR9X5?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,7 +674,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -689,7 +689,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
