@@ -1,25 +1,9 @@
 {
  "stock": "NVDA",
- "name": "NVIDIA Corporation - Common Stock",
- "price": 150.96,
- "change_pct": -2.89,
+ "name": "NVIDIA",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-26",
-   "o": 212.4,
-   "h": 213.36,
-   "l": 209.0,
-   "c": 209.43,
-   "v": 179900000
-  },
-  {
-   "time": "2026-08-27",
-   "o": 222.61,
-   "h": 230.21,
-   "l": 220.65,
-   "c": 227.73,
-   "v": 298909800
-  },
   {
    "time": "2026-08-28",
    "o": 227.11,
@@ -482,23 +466,32 @@
    "h": 159.7,
    "l": 150.4,
    "c": 150.96,
-   "v": 343007056
+   "v": 349791400
+  },
+  {
+   "time": "2026-11-19",
+   "o": 152.92,
+   "h": 158.13,
+   "l": 145.71,
+   "c": 145.98,
+   "v": 322940100
+  },
+  {
+   "time": "2026-11-20",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 626274281
   }
  ],
  "sr": {
-  "price": 150.96,
-  "resistance": [
-   219.99,
-   222.19
-  ],
-  "support": [
-   148.8
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 148.8
  },
  "spark": [
-  209.43,
-  227.73,
   217.31,
   220.53,
   217.2,
@@ -556,48 +549,153 @@
   162.85,
   156.14,
   155.46,
-  150.96
+  150.96,
+  145.98,
+  null
  ],
- "spark_start": "2026-08-26",
- "spark_end": "2026-11-18",
- "fundamental": null,
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-20",
+ "fundamental": {
+  "pe_trailing": 13.483351,
+  "pe_forward": 7.5596437,
+  "eps_trailing": 9.31,
+  "eps_forward": 16.60528,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "台玻:展望穩定訂單看好到2027 高毛利產品出貨維持穩定成長",
+   "label": "Nasdaq 100 Ends Worst Week Since 2020, S&P 500 In Correction Territory As AI Rout Sours Sentiment — ANT, NVDA, TTWO, ZS,",
    "value": {
-    "headline": "台玻:展望穩定訂單看好到2027 高毛利產品出貨維持穩定成長",
+    "headline": "Nasdaq 100 Ends Worst Week Since 2020, S&P 500 In Correction Territory As AI Rout Sours Sentiment — ANT, NVDA, TTWO, ZS, CRWD In Focus",
     "sources": [
-     "cnyes"
+     "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1794995048,
-    "url": "cnyes:6666371",
+    "ts": 1795224625,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-ends-worst-week-since-2020-s-and-p-500-in-correction-territory-as-ai-rout-sours-sentiment-ant-nvda-ttwo-zs-crwd-in-focus/cNbm3xQR91W?.tsrc=rss",
     "urls": [
-     "cnyes:6666371"
+     "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-ends-worst-week-since-2020-s-and-p-500-in-correction-territory-as-ai-rout-sours-sentiment-ant-nvda-ttwo-zs-crwd-in-focus/cNbm3xQR91W?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "value": {
+    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795223061,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Review & Preview: Hype Halted",
+   "value": {
+    "headline": "Review & Preview: Hype Halted",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795222500,
+    "url": "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Has AI's honeymoon ended on Wall Street?",
+   "value": {
+    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795221964,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "The S&P 500 Has More Than Tripled in 10 Years, Even After Its Latest Pullback. Here’s What $1,000 in VOO Could Have Beco",
+   "value": {
+    "headline": "The S&P 500 Has More Than Tripled in 10 Years, Even After Its Latest Pullback. Here’s What $1,000 in VOO Could Have Become.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795221813,
+    "url": "https://www.fool.com/investing/2026/11/20/s-and-p-500-tripled-10-years-even-after-latest-pullback-what-usd1-000-in-voo-could-have-become/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/20/s-and-p-500-tripled-10-years-even-after-latest-pullback-what-usd1-000-in-voo-could-have-become/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 1,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes"
+     "cnyes",
+     "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 9 個交割日、累計 129,602 股交割失敗）",
+   "value": {
+    "total_shares": 129602,
+    "days": 9,
+    "max_shares": 63726,
+    "persistent": true,
+    "elevated": true
+   },
+   "severity": "warn",
+   "as_of": "2026-11-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
 }

@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": 596.22,
- "change_pct": -3.27,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 576.03,
-   "h": 587.93,
-   "l": 567.17,
-   "c": 570.65,
-   "v": 15221400
-  },
   {
    "time": "2026-08-28",
    "o": 571.1,
@@ -478,27 +470,28 @@
   },
   {
    "time": "2026-11-19",
-   "o": 625.0,
-   "h": 630.01,
-   "l": 595.79,
+   "o": 624.66,
+   "h": 630.06,
+   "l": 595.78,
    "c": 596.22,
-   "v": 15233936
+   "v": 15358500
+  },
+  {
+   "time": "2026-11-20",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 25589154
   }
  ],
  "sr": {
-  "price": 596.22,
-  "resistance": [
-   605.33,
-   611.95
-  ],
-  "support": [
-   593.79,
-   591.58
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 519.37
  },
  "spark": [
-  570.65,
   577.56,
   571.89,
   578.08,
@@ -557,13 +550,14 @@
   626.41,
   618.87,
   616.38,
-  596.22
+  596.22,
+  null
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-20",
  "fundamental": {
-  "pe_trailing": 20.341862,
-  "pe_forward": 16.71247,
+  "pe_trailing": 19.134768,
+  "pe_forward": 15.720743,
   "eps_trailing": 29.31,
   "eps_forward": 35.67516,
   "stale": false,
@@ -575,131 +569,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In",
+   "label": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
    "value": {
-    "headline": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In Focus",
+    "headline": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795129265,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss",
+    "ts": 1795224747,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/bill-ackman-top-10-stocks-013227518.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/bill-ackman-top-10-stocks-013227518.html?.tsrc=rss",
+     "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 19: Alphabet Shares Fall as Anthropic Nasdaq Debut Puts Fresh Value on Google's Stake",
+   "label": "George Soros Raised His Meta (META) Stake by 596%. Then the Stock Fell",
    "value": {
-    "headline": "Stock Market Today, Nov. 19: Alphabet Shares Fall as Anthropic Nasdaq Debut Puts Fresh Value on Google's Stake",
+    "headline": "George Soros Raised His Meta (META) Stake by 596%. Then the Stock Fell",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795126710,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-alphabet-shares-fall-as-anthropic-nasdaq-debut-puts-fresh-value-on-googles-stake/?.tsrc=rss",
+    "ts": 1795223400,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/george-soros-raised-meta-meta-011000430.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-alphabet-shares-fall-as-anthropic-nasdaq-debut-puts-fresh-value-on-googles-stake/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/george-soros-raised-meta-meta-011000430.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Just Finished Its First Day as a Public Company. Five of the Six Biggest Tech IPOs Since Facebook Were Underwa",
+   "label": "Has AI's honeymoon ended on Wall Street?",
    "value": {
-    "headline": "Anthropic Just Finished Its First Day as a Public Company. Five of the Six Biggest Tech IPOs Since Facebook Were Underwater Six Months After Theirs, and Elon Musk’s SpaceX Is Following the Script",
+    "headline": "Has AI's honeymoon ended on Wall Street?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795126382,
-    "url": "https://247wallst.com/investing/2026/11/19/anthropic-just-finished-its-first-day-as-a-public-company-five-of-the-six-biggest-tech-ipos-since-facebook-were-underwater-six-months-after-theirs-and-elon-musks-spacex-is-following-the-script/?.tsrc=rss",
+    "ts": 1795221964,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/19/anthropic-just-finished-its-first-day-as-a-public-company-five-of-the-six-biggest-tech-ipos-since-facebook-were-underwater-six-months-after-theirs-and-elon-musks-spacex-is-following-the-script/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "META Plans To Reportedly Charge $300 For Muse Charm Gadget In Hope To Revive Hardware Business",
+   "label": "Shots Fired: Meta Will Reportedly Sell a $300 Muse Charm With Free Verizon 5G as Apple Builds Its Agent",
    "value": {
-    "headline": "META Plans To Reportedly Charge $300 For Muse Charm Gadget In Hope To Revive Hardware Business",
+    "headline": "Shots Fired: Meta Will Reportedly Sell a $300 Muse Charm With Free Verizon 5G as Apple Builds Its Agent",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795125811,
-    "url": "https://stocktwits.com/news-articles/markets/equity/meta-plans-to-reportedly-charge-300-for-muse-charm-gadget-in-hope-to-revive-hardware-business/cNbinkUR90H?.tsrc=rss",
+    "ts": 1795212018,
+    "url": "https://www.tikr.com/blog/shots-fired-meta-will-reportedly-sell-a-300-muse-charm-with-free-verizon-5g-as-apple-builds-its-agent?ref=yahoofinance&tlnk=yf-261120-pg825wq7&.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/meta-plans-to-reportedly-charge-300-for-muse-charm-gadget-in-hope-to-revive-hardware-business/cNbinkUR90H?.tsrc=rss"
+     "https://www.tikr.com/blog/shots-fired-meta-will-reportedly-sell-a-300-muse-charm-with-free-verizon-5g-as-apple-builds-its-agent?ref=yahoofinance&tlnk=yf-261120-pg825wq7&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The 25 Biggest US IPOs of All Time",
+   "label": "Billionaire Dan Loeb’s “Bear Math”: AI Needs $2-3 Trillion of New Yearly Revenue. He Sold Amazon",
    "value": {
-    "headline": "The 25 Biggest US IPOs of All Time",
+    "headline": "Billionaire Dan Loeb’s “Bear Math”: AI Needs $2-3 Trillion of New Yearly Revenue. He Sold Amazon",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795124338,
-    "url": "https://www.kiplinger.com/slideshow/investing/t052-s001-the-25-biggest-ipos-in-u-s-history/index.html?.tsrc=rss",
+    "ts": 1795211948,
+    "url": "https://www.tikr.com/blog/billionaire-dan-loebs-bear-math-ai-needs-2-3-trillion-of-new-yearly-revenue-he-sold-amazon?ref=yahoofinance&tlnk=yf-261120-5qww8h93&.tsrc=rss",
     "urls": [
-     "https://www.kiplinger.com/slideshow/investing/t052-s001-the-25-biggest-ipos-in-u-s-history/index.html?.tsrc=rss"
+     "https://www.tikr.com/blog/billionaire-dan-loebs-bear-math-ai-needs-2-3-trillion-of-new-yearly-revenue-he-sold-amazon?ref=yahoofinance&tlnk=yf-261120-5qww8h93&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 17 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 72 分 / 19 留言",
+   "label": "HN 討論熱度 20 篇 / 86 分 / 17 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 72,
-    "comments": 19,
+    "points": 86,
+    "comments": 17,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +709,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

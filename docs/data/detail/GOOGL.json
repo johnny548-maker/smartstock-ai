@@ -1,41 +1,9 @@
 {
  "stock": "GOOGL",
- "name": "Alphabet Inc. - Class A Common Stock",
- "price": 284.51,
- "change_pct": -3.81,
+ "name": "Alphabet",
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-24",
-   "o": 343.4,
-   "h": 351.37,
-   "l": 342.27,
-   "c": 347.84,
-   "v": 26338200
-  },
-  {
-   "time": "2026-08-25",
-   "o": 349.42,
-   "h": 349.94,
-   "l": 345.38,
-   "c": 346.74,
-   "v": 20649700
-  },
-  {
-   "time": "2026-08-26",
-   "o": 346.4,
-   "h": 346.66,
-   "l": 339.96,
-   "c": 341.78,
-   "v": 20420300
-  },
-  {
-   "time": "2026-08-27",
-   "o": 339.45,
-   "h": 341.47,
-   "l": 338.3,
-   "c": 340.43,
-   "v": 23391400
-  },
   {
    "time": "2026-08-28",
    "o": 340.49,
@@ -474,34 +442,56 @@
    "h": 304.97,
    "l": 293.44,
    "c": 295.77,
-   "v": 30712800
+   "v": 30798600
   },
   {
    "time": "2026-11-16",
    "o": 293.81,
-   "h": 294.13,
-   "l": 283.55,
-   "c": 284.51,
-   "v": 20621846
+   "h": 294.14,
+   "l": 282.96,
+   "c": 283.72,
+   "v": 34747200
+  },
+  {
+   "time": "2026-11-17",
+   "o": 283.4,
+   "h": 284.09,
+   "l": 278.46,
+   "c": 280.2,
+   "v": 32175900
+  },
+  {
+   "time": "2026-11-18",
+   "o": 282.75,
+   "h": 284.97,
+   "l": 279.69,
+   "c": 282.44,
+   "v": 27401800
+  },
+  {
+   "time": "2026-11-19",
+   "o": 294.3,
+   "h": 295.43,
+   "l": 272.36,
+   "c": 272.66,
+   "v": 49718500
+  },
+  {
+   "time": "2026-11-20",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 57297123
   }
  ],
  "sr": {
-  "price": 284.51,
-  "resistance": [
-   296.49,
-   326.41
-  ],
-  "support": [
-   277.07,
-   276.92
-  ],
-  "strong_support": 276.92
+  "price": null,
+  "resistance": [],
+  "support": [],
+  "strong_support": 271.77
  },
  "spark": [
-  347.84,
-  346.74,
-  341.78,
-  340.43,
   346.37,
   339.13,
   334.8,
@@ -557,11 +547,169 @@
   293.45,
   298.7,
   295.77,
-  284.51
+  283.72,
+  280.2,
+  282.44,
+  272.66,
+  null
  ],
- "spark_start": "2026-08-24",
- "spark_end": "2026-11-16",
- "fundamental": null,
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-20",
+ "fundamental": {
+  "pe_trailing": 13.853265,
+  "pe_forward": 17.342186,
+  "eps_trailing": 19.15,
+  "eps_forward": 15.29738,
+  "stale": false,
+  "source": "yfinance"
+ },
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "value": {
+    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795223061,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Morgan Stanley sends a strong signal to Google stock investors",
+   "value": {
+    "headline": "Morgan Stanley sends a strong signal to Google stock investors",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795222980,
+    "url": "https://www.thestreet.com/investing/stocks/morgan-stanley-sends-a-strong-signal-to-google-stock-investors?.tsrc=rss",
+    "urls": [
+     "https://www.thestreet.com/investing/stocks/morgan-stanley-sends-a-strong-signal-to-google-stock-investors?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Review & Preview: Hype Halted",
+   "value": {
+    "headline": "Review & Preview: Hype Halted",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795222500,
+    "url": "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss"
+    ]
+   },
+   "severity": "warn",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Has AI's honeymoon ended on Wall Street?",
+   "value": {
+    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795221964,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Zero To Sixty: Tesla Expands Cybercab To Dallas As Waymo Pauses Freeway Operations This Week",
+   "value": {
+    "headline": "Zero To Sixty: Tesla Expands Cybercab To Dallas As Waymo Pauses Freeway Operations This Week",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795221941,
+    "url": "https://stocktwits.com/news-articles/markets/equity/zero-to-sixty-tesla-expands-cybercab-to-dallas-as-waymo-pauses-freeway-operations-this-week/cNbm5YSR91g?.tsrc=rss",
+    "urls": [
+     "https://stocktwits.com/news-articles/markets/equity/zero-to-sixty-tesla-expands-cybercab-to-dallas-as-waymo-pauses-freeway-operations-this-week/cNbm5YSR91g?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 16,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-21",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 419 分 / 263 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 419,
+    "comments": 263,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "warn",
+   "as_of": "2026-11-21",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 8 個交割日）",
+   "value": {
+    "total_shares": 15198,
+    "days": 8,
+    "max_shares": 6288,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-21",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

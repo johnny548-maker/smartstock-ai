@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 489.19,
- "change_pct": -7.72,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 481.5,
-   "h": 483.0,
-   "l": 469.63,
-   "c": 476.67,
-   "v": 16441800
-  },
   {
    "time": "2026-08-28",
    "o": 472.52,
@@ -478,27 +470,28 @@
   },
   {
    "time": "2026-11-19",
-   "o": 543.48,
+   "o": 542.17,
    "h": 555.01,
    "l": 470.56,
    "c": 489.19,
-   "v": 70838807
+   "v": 71660700
+  },
+  {
+   "time": "2026-11-20",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 69985844
   }
  ],
  "sr": {
-  "price": 489.19,
-  "resistance": [
-   491.12,
-   517.35
-  ],
-  "support": [
-   480.33,
-   463.21
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 188.22
  },
  "spark": [
-  476.67,
   465.58,
   470.72,
   459.61,
@@ -557,14 +550,15 @@
   504.28,
   503.41,
   530.14,
-  489.19
+  489.19,
+  null
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-20",
  "fundamental": {
-  "pe_trailing": 104.52778,
-  "pe_forward": 27.73461,
-  "eps_trailing": 4.68,
+  "pe_trailing": 98.23843,
+  "pe_forward": 24.060778,
+  "eps_trailing": 4.32,
   "eps_forward": 17.63825,
   "stale": false,
   "source": "yfinance"
@@ -575,101 +569,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Ugly Market Reversal To New Lows As Anthropic IPO Debuts, AMD Dives",
+   "label": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD ",
    "value": {
-    "headline": "Dow Jones Futures: Ugly Market Reversal To New Lows As Anthropic IPO Debuts, AMD Dives",
+    "headline": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD Has Fallen 31% Since",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795134162,
-    "url": "https://finance.yahoo.com/m/9e02231d-41cd-31ac-b37f-993325b8a4ca/dow-jones-futures%3A-ugly.html?.tsrc=rss",
+    "ts": 1795218424,
+    "url": "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/9e02231d-41cd-31ac-b37f-993325b8a4ca/dow-jones-futures%3A-ugly.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Tech in a Bear Market? 20 Tech Stocks Fall Up to 76% From Highs",
+   "label": "At AI Summit, Industry Titans Wave Off Market Woes—and Defend Jensen Huang",
    "value": {
-    "headline": "Is Tech in a Bear Market? 20 Tech Stocks Fall Up to 76% From Highs",
+    "headline": "At AI Summit, Industry Titans Wave Off Market Woes—and Defend Jensen Huang",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795128039,
-    "url": "https://beincrypto.com/tech-stocks-bear-market-record-highs/?.tsrc=rss",
+    "ts": 1795217280,
+    "url": "https://finance.yahoo.com/m/b4ceaf2c-2be0-3edd-98d2-13d5b3cc7cca/at-ai-summit%2C-industry-titans.html?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/tech-stocks-bear-market-record-highs/?.tsrc=rss"
+     "https://finance.yahoo.com/m/b4ceaf2c-2be0-3edd-98d2-13d5b3cc7cca/at-ai-summit%2C-industry-titans.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
+   "label": "Anthropic’s Day Two Drop Fuels Broader Tech Rout; Dan Ives Points To ‘Perfect Storm’",
    "value": {
-    "headline": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
+    "headline": "Anthropic’s Day Two Drop Fuels Broader Tech Rout; Dan Ives Points To ‘Perfect Storm’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795126825,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/?.tsrc=rss",
+    "ts": 1795213831,
+    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-s-day-two-drop-fuels-broader-tech-rout-dan-ives-points-to-perfect-storm/cNbSHWSR91O?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/anthropic-s-day-two-drop-fuels-broader-tech-rout-dan-ives-points-to-perfect-storm/cNbSHWSR91O?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "John Forsyth, Cirrus Logic President and CEO, Elected Chair of Semiconductor Industry Association",
+   "label": "The Fear Gauge Hit 40. This Is What the Market Is Worried About.",
    "value": {
-    "headline": "John Forsyth, Cirrus Logic President and CEO, Elected Chair of Semiconductor Industry Association",
+    "headline": "The Fear Gauge Hit 40. This Is What the Market Is Worried About.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795125600,
-    "url": "https://finance.yahoo.com/technology/articles/john-forsyth-cirrus-logic-president-220000273.html?.tsrc=rss",
+    "ts": 1795213560,
+    "url": "https://finance.yahoo.com/m/f1ef20dd-1915-38ad-9581-22cac677d2a9/the-fear-gauge-hit-40.-this.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/john-forsyth-cirrus-logic-president-220000273.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/f1ef20dd-1915-38ad-9581-22cac677d2a9/the-fear-gauge-hit-40.-this.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic, AMD, Alphabet, Palo Alto, Take-Two, Walmart, and More Stocks That Explain Today’s Market",
+   "label": "Trump’s Treasury Secretary Keeps Nvidia’s H200 China Policy as House Data Show Nearly 880,000 AI Chips Approved",
    "value": {
-    "headline": "Anthropic, AMD, Alphabet, Palo Alto, Take-Two, Walmart, and More Stocks That Explain Today’s Market",
+    "headline": "Trump’s Treasury Secretary Keeps Nvidia’s H200 China Policy as House Data Show Nearly 880,000 AI Chips Approved",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795124820,
-    "url": "https://finance.yahoo.com/m/65710a12-1ba7-3685-a3c3-30d9e0878af7/anthropic%2C-amd%2C-alphabet%2C.html?.tsrc=rss",
+    "ts": 1795211917,
+    "url": "https://www.tikr.com/blog/trumps-treasury-secretary-keeps-nvidias-h200-china-policy-as-house-data-show-nearly-880000-ai-chips-approved?ref=yahoofinance&tlnk=yf-261120-rx666q2r&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/65710a12-1ba7-3685-a3c3-30d9e0878af7/anthropic%2C-amd%2C-alphabet%2C.html?.tsrc=rss"
+     "https://www.tikr.com/blog/trumps-treasury-secretary-keeps-nvidias-h200-china-policy-as-house-data-show-nearly-880000-ai-chips-approved?ref=yahoofinance&tlnk=yf-261120-rx666q2r&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,23 +678,8 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 115 分 / 30 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 115,
-    "comments": 30,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-11-20",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -714,7 +693,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

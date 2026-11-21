@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 257.37,
- "change_pct": -3.87,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 259.23,
-   "h": 259.66,
-   "l": 255.02,
-   "c": 256.26,
-   "v": 35927800
-  },
   {
    "time": "2026-08-28",
    "o": 258.32,
@@ -478,27 +470,28 @@
   },
   {
    "time": "2026-11-19",
-   "o": 272.58,
+   "o": 272.56,
    "h": 274.0,
    "l": 256.75,
    "c": 257.37,
-   "v": 52082830
+   "v": 53117900
+  },
+  {
+   "time": "2026-11-20",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 74106823
   }
  ],
  "sr": {
-  "price": 257.37,
-  "resistance": [
-   258.08,
-   259.49
-  ],
-  "support": [
-   257.04,
-   256.16
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 196.0
  },
  "spark": [
-  256.26,
   266.43,
   259.77,
   254.92,
@@ -557,172 +550,150 @@
   257.75,
   257.89,
   267.74,
-  257.37
+  257.37,
+  null
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-20",
  "fundamental": {
-  "pe_trailing": 20.805983,
-  "pe_forward": 23.555567,
+  "pe_trailing": 19.953114,
+  "pe_forward": 22.589987,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
   "stale": false,
   "source": "yfinance"
  },
- "levels": {
-  "entry": 257.37,
-  "stop": 239.35,
-  "target": 302.41,
-  "atr_bracket": 302.41,
-  "measured_move": 321.32,
-  "target_band": [
-   302.41,
-   321.32,
-   328.4
-  ],
-  "stop_pct": -7.0,
-  "target_pct": 17.5,
-  "rr": 2.5,
-  "atr_pct": 4.4,
-  "swing_stop": 250.64,
-  "chandelier": 245.22,
-  "fib_targets": [
-   312.49,
-   328.4,
-   345.96
-  ]
- },
+ "levels": null,
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
+   "label": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
    "value": {
-    "headline": "Anthropic’s Margins Will Be “Probably Better Than a Hyperscaler,” Says Its Most Bullish Analyst. Here’s What That Takes",
+    "headline": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795133116,
-    "url": "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss",
+    "ts": 1795225117,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/anthropics-margins-will-be-probably-better-than-a-hyperscaler-says-its-most-bullish-analyst-heres-what-that-takes?ref=yahoofinance&tlnk=yf-261119-7x5g2cff&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Just Went Public at $1.5 Trillion. VOO Won’t Own a Share Until Late 2027 at the Earliest",
+   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
    "value": {
-    "headline": "Anthropic Just Went Public at $1.5 Trillion. VOO Won’t Own a Share Until Late 2027 at the Earliest",
+    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795132361,
-    "url": "https://247wallst.com/investing/etf/2026/11/19/anthropic-just-went-public-at-1-5-trillion-voo-wont-own-a-share-until-late-2027-at-the-earliest/?.tsrc=rss",
+    "ts": 1795223061,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/11/19/anthropic-just-went-public-at-1-5-trillion-voo-wont-own-a-share-until-late-2027-at-the-earliest/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "NYC lawmakers weigh compromise on Amazon delivery worker bill, Bloomberg reports",
+   "label": "Has AI's honeymoon ended on Wall Street?",
    "value": {
-    "headline": "NYC lawmakers weigh compromise on Amazon delivery worker bill, Bloomberg reports",
+    "headline": "Has AI's honeymoon ended on Wall Street?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795132033,
-    "url": "https://finance.yahoo.com/economy/policy/articles/nyc-lawmakers-weigh-compromise-amazon-234713116.html?.tsrc=rss",
+    "ts": 1795221964,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/economy/policy/articles/nyc-lawmakers-weigh-compromise-amazon-234713116.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jeff Bezos says 2 policies drive up housing costs, and it's 'not hard to figure out'",
+   "label": "Dow Jones Futures: Market Has Worst Week Since Covid Amid Nvidia, Anthropic. Does Fear Gauge Offer Hope?",
    "value": {
-    "headline": "Jeff Bezos says 2 policies drive up housing costs, and it's 'not hard to figure out'",
+    "headline": "Dow Jones Futures: Market Has Worst Week Since Covid Amid Nvidia, Anthropic. Does Fear Gauge Offer Hope?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795129620,
-    "url": "https://www.thestreet.com/real-estate/jeff-bezos-says-2-policies-drive-up-housing-costs-subsidize-demand-constrain-supply?.tsrc=rss",
+    "ts": 1795221267,
+    "url": "https://finance.yahoo.com/m/9ef9da98-bccf-3565-9a30-9bc3e57ad4b9/dow-jones-futures%3A-market-has.html?.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/real-estate/jeff-bezos-says-2-policies-drive-up-housing-costs-subsidize-demand-constrain-supply?.tsrc=rss"
+     "https://finance.yahoo.com/m/9ef9da98-bccf-3565-9a30-9bc3e57ad4b9/dow-jones-futures%3A-market-has.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Morgan Stanley’s Vintage Values 2027: 5 Stocks Analysts See Climbing Further",
+   "label": "Generac Stock In Focus After Earnings Beat And Amazon Supply Deal",
    "value": {
-    "headline": "Morgan Stanley’s Vintage Values 2027: 5 Stocks Analysts See Climbing Further",
+    "headline": "Generac Stock In Focus After Earnings Beat And Amazon Supply Deal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795127555,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-vintage-values-2027-223235273.html?.tsrc=rss",
+    "ts": 1795220377,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/generac-stock-focus-earnings-beat-001937973.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-vintage-values-2027-223235273.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/generac-stock-focus-earnings-beat-001937973.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 13 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 13,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
-     "udn",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 8 篇 / 51 分 / 18 留言",
+   "label": "HN 討論熱度 9 篇 / 168 分 / 50 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 51,
-    "comments": 18,
-    "n": 8,
+    "points": 168,
+    "comments": 50,
+    "n": 9,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -737,7 +708,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
