@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": null,
- "change_pct": null,
+ "price": 492.5,
+ "change_pct": 1.65,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 504.36,
-   "h": 516.78,
-   "l": 503.9,
-   "c": 512.54,
-   "v": 29207300
-  },
   {
    "time": "2026-08-31",
    "o": 509.4,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 47123194
+   "o": 493.74,
+   "h": 503.8,
+   "l": 481.03,
+   "c": 484.52,
+   "v": 47123700
+  },
+  {
+   "time": "2026-11-23",
+   "o": 506.05,
+   "h": 509.15,
+   "l": 492.02,
+   "c": 492.5,
+   "v": 30090263
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 492.5,
+  "resistance": [
+   508.97,
+   511.78
+  ],
+  "support": [
+   490.27,
+   486.29
+  ],
   "strong_support": 347.87
  },
  "spark": [
-  512.54,
   506.31,
   500.05,
   495.86,
@@ -551,15 +556,16 @@
   505.26,
   507.31,
   498.3,
-  null
+  484.52,
+  492.5
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 25.2881,
-  "pe_forward": 20.018377,
+  "pe_trailing": 25.704594,
+  "pe_forward": 20.350533,
   "eps_trailing": 19.16,
-  "eps_forward": 24.20376,
+  "eps_forward": 24.20084,
   "stale": false,
   "source": "yfinance"
  },
@@ -569,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+   "label": "China Is “Only 12 Hours” Behind US AI Labs. ByteDance’s Reported Azure Deal Puts Microsoft in the Middle",
    "value": {
-    "headline": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+    "headline": "China Is “Only 12 Hours” Behind US AI Labs. ByteDance’s Reported Azure Deal Puts Microsoft in the Middle",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795225117,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss",
+    "ts": 1795469943,
+    "url": "https://www.tikr.com/blog/china-is-only-12-hours-behind-us-ai-labs-bytedances-reported-azure-deal-puts-microsoft-in-the-middle?ref=yahoofinance&tlnk=yf-261123-434gxg43&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss"
+     "https://www.tikr.com/blog/china-is-only-12-hours-behind-us-ai-labs-bytedances-reported-azure-deal-puts-microsoft-in-the-middle?ref=yahoofinance&tlnk=yf-261123-434gxg43&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has AI's honeymoon ended on Wall Street?",
+   "label": "Leading CHROs and Business Executives to Convene at i4cp's 2027 Next Practices Now Conference",
    "value": {
-    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "headline": "Leading CHROs and Business Executives to Convene at i4cp's 2027 Next Practices Now Conference",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221964,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "ts": 1795469100,
+    "url": "https://finance.yahoo.com/small-business/articles/leading-chros-business-executives-convene-212500658.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+     "https://finance.yahoo.com/small-business/articles/leading-chros-business-executives-convene-212500658.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "severity": "warn",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Allooloo Tops 100M Capital Markets AI Agent Traffic a Month",
+   "label": "Billionaire Andreas Halvorsen Exited Microsoft and Made TSMC His Top Holding at $1.8 Billion",
    "value": {
-    "headline": "Allooloo Tops 100M Capital Markets AI Agent Traffic a Month",
+    "headline": "Billionaire Andreas Halvorsen Exited Microsoft and Made TSMC His Top Holding at $1.8 Billion",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795219560,
-    "url": "https://finance.yahoo.com/technology/ai/articles/allooloo-tops-100m-capital-markets-000600422.html?.tsrc=rss",
+    "ts": 1795467446,
+    "url": "https://247wallst.com/investing/2026/11/23/billionaire-andreas-halvorsen-exited-microsoft-and-made-tsmc-his-top-holding-at-1-8-billion/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/allooloo-tops-100m-capital-markets-000600422.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/23/billionaire-andreas-halvorsen-exited-microsoft-and-made-tsmc-his-top-holding-at-1-8-billion/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "CrowdStrike, Zscaler Merger Would Create Cybersecurity Giant",
+   "label": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
    "value": {
-    "headline": "CrowdStrike, Zscaler Merger Would Create Cybersecurity Giant",
+    "headline": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795218974,
-    "url": "https://finance.yahoo.com/m/6ad57889-68e7-393a-836e-1d70098a15da/crowdstrike%2C-zscaler-merger.html?.tsrc=rss",
+    "ts": 1795464490,
+    "url": "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/6ad57889-68e7-393a-836e-1d70098a15da/crowdstrike%2C-zscaler-merger.html?.tsrc=rss"
+     "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD ",
+   "label": "Palantir Rips 10% to Lead Software Stocks. Cloudflare and ServiceNow Also Join ‘Jensen Rally’",
    "value": {
-    "headline": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD Has Fallen 31% Since",
+    "headline": "Palantir Rips 10% to Lead Software Stocks. Cloudflare and ServiceNow Also Join ‘Jensen Rally’",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795218424,
-    "url": "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss",
+    "ts": 1795464489,
+    "url": "https://247wallst.com/videos/palantir-rips-10-to-lead-software-stocks-cloudflare-and-servicenow-also-join-jensen-rally/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss"
+     "https://247wallst.com/videos/palantir-rips-10-to-lead-software-stocks-cloudflare-and-servicenow-also-join-jensen-rally/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

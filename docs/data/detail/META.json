@@ -1,17 +1,9 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 597.6,
+ "change_pct": 6.55,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 571.1,
-   "h": 588.73,
-   "l": 570.55,
-   "c": 577.56,
-   "v": 16042400
-  },
   {
    "time": "2026-08-31",
    "o": 577.17,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 25589154
+   "o": 583.91,
+   "h": 588.69,
+   "l": 558.68,
+   "c": 560.84,
+   "v": 25589800
+  },
+  {
+   "time": "2026-11-23",
+   "o": 591.78,
+   "h": 602.46,
+   "l": 579.78,
+   "c": 597.6,
+   "v": 19011217
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 597.6,
+  "resistance": [
+   605.33,
+   611.95
+  ],
+  "support": [
+   593.79,
+   591.58
+  ],
   "strong_support": 519.37
  },
  "spark": [
-  577.56,
   571.89,
   578.08,
   592.38,
@@ -551,13 +556,14 @@
   618.87,
   616.38,
   596.22,
-  null
+  560.84,
+  597.6
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 19.134768,
-  "pe_forward": 15.720743,
+  "pe_trailing": 20.388945,
+  "pe_forward": 16.75115,
   "eps_trailing": 29.31,
   "eps_forward": 35.67516,
   "stale": false,
@@ -569,132 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+   "label": "Meta’s AI Chief Warns “Superintelligence Is Arriving.” Lawmakers Are Now Quoting Him to Push a Ban",
    "value": {
-    "headline": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+    "headline": "Meta’s AI Chief Warns “Superintelligence Is Arriving.” Lawmakers Are Now Quoting Him to Push a Ban",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795224747,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bill-ackman-top-10-stocks-013227518.html?.tsrc=rss",
+    "ts": 1795469595,
+    "url": "https://www.tikr.com/blog/metas-ai-chief-warns-superintelligence-is-arriving-lawmakers-are-now-quoting-him-to-push-a-ban?ref=yahoofinance&tlnk=yf-261123-9pc7cv6p&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/bill-ackman-top-10-stocks-013227518.html?.tsrc=rss",
-     "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss"
+     "https://www.tikr.com/blog/metas-ai-chief-warns-superintelligence-is-arriving-lawmakers-are-now-quoting-him-to-push-a-ban?ref=yahoofinance&tlnk=yf-261123-9pc7cv6p&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "George Soros Raised His Meta (META) Stake by 596%. Then the Stock Fell",
+   "label": "AMD’s Blockbuster Q3 Report Is Getting Lost in the Pullback",
    "value": {
-    "headline": "George Soros Raised His Meta (META) Stake by 596%. Then the Stock Fell",
+    "headline": "AMD’s Blockbuster Q3 Report Is Getting Lost in the Pullback",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795223400,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/george-soros-raised-meta-meta-011000430.html?.tsrc=rss",
+    "ts": 1795468920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-blockbuster-q3-report-getting-212200835.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/george-soros-raised-meta-meta-011000430.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amd-blockbuster-q3-report-getting-212200835.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has AI's honeymoon ended on Wall Street?",
+   "label": "Emerging Growth Research Releases Q2:FY27 Quarterly Update on Virtuix Holdings",
    "value": {
-    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "headline": "Emerging Growth Research Releases Q2:FY27 Quarterly Update on Virtuix Holdings",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221964,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "ts": 1795468500,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/emerging-growth-research-releases-q2-211500324.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/emerging-growth-research-releases-q2-211500324.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Shots Fired: Meta Will Reportedly Sell a $300 Muse Charm With Free Verizon 5G as Apple Builds Its Agent",
+   "label": "Clariant confirms talks regarding a potential acquisition of Ashland",
    "value": {
-    "headline": "Shots Fired: Meta Will Reportedly Sell a $300 Muse Charm With Free Verizon 5G as Apple Builds Its Agent",
+    "headline": "Clariant confirms talks regarding a potential acquisition of Ashland",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795212018,
-    "url": "https://www.tikr.com/blog/shots-fired-meta-will-reportedly-sell-a-300-muse-charm-with-free-verizon-5g-as-apple-builds-its-agent?ref=yahoofinance&tlnk=yf-261120-pg825wq7&.tsrc=rss",
+    "ts": 1795467600,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/clariant-confirms-talks-regarding-potential-210000088.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/shots-fired-meta-will-reportedly-sell-a-300-muse-charm-with-free-verizon-5g-as-apple-builds-its-agent?ref=yahoofinance&tlnk=yf-261120-pg825wq7&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/clariant-confirms-talks-regarding-potential-210000088.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Dan Loeb’s “Bear Math”: AI Needs $2-3 Trillion of New Yearly Revenue. He Sold Amazon",
+   "label": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
    "value": {
-    "headline": "Billionaire Dan Loeb’s “Bear Math”: AI Needs $2-3 Trillion of New Yearly Revenue. He Sold Amazon",
+    "headline": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795211948,
-    "url": "https://www.tikr.com/blog/billionaire-dan-loebs-bear-math-ai-needs-2-3-trillion-of-new-yearly-revenue-he-sold-amazon?ref=yahoofinance&tlnk=yf-261120-5qww8h93&.tsrc=rss",
+    "ts": 1795464490,
+    "url": "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/billionaire-dan-loebs-bear-math-ai-needs-2-3-trillion-of-new-yearly-revenue-he-sold-amazon?ref=yahoofinance&tlnk=yf-261120-5qww8h93&.tsrc=rss"
+     "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 86 分 / 17 留言",
+   "label": "HN 討論熱度 20 篇 / 314 分 / 226 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 86,
-    "comments": 17,
+    "points": 314,
+    "comments": 226,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "severity": "warn",
+   "as_of": "2026-11-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -709,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

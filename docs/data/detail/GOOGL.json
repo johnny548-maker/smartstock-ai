@@ -1,17 +1,9 @@
 {
  "stock": "GOOGL",
  "name": "Alphabet",
- "price": null,
- "change_pct": null,
+ "price": 282.1,
+ "change_pct": 6.34,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 340.49,
-   "h": 348.92,
-   "l": 340.05,
-   "c": 346.37,
-   "v": 25347200
-  },
   {
    "time": "2026-08-31",
    "o": 343.61,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 57297123
+   "o": 274.5,
+   "h": 283.15,
+   "l": 264.22,
+   "c": 265.29,
+   "v": 57302800
+  },
+  {
+   "time": "2026-11-23",
+   "o": 284.27,
+   "h": 285.14,
+   "l": 275.36,
+   "c": 282.1,
+   "v": 44078624
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 282.1,
+  "resistance": [
+   296.49,
+   304.97
+  ],
+  "support": [
+   277.07,
+   276.92
+  ],
   "strong_support": 271.77
  },
  "spark": [
-  346.37,
   339.13,
   334.8,
   336.9,
@@ -551,13 +556,14 @@
   280.2,
   282.44,
   272.66,
-  null
+  265.29,
+  282.1
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 13.853265,
-  "pe_forward": 17.342186,
+  "pe_trailing": 14.731071,
+  "pe_forward": 18.441067,
   "eps_trailing": 19.15,
   "eps_forward": 15.29738,
   "stale": false,
@@ -569,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "label": "Stock Market Today: Dow, Nasdaq Surge As Jensen Huang Makes This Nvidia Promise; Anthropic Falls (Live Coverage)",
    "value": {
-    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "headline": "Stock Market Today: Dow, Nasdaq Surge As Jensen Huang Makes This Nvidia Promise; Anthropic Falls (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795223061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "ts": 1795470982,
+    "url": "https://finance.yahoo.com/m/8751de70-467e-380a-82cb-f4ee42adc461/stock-market-today%3A-dow%2C.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/8751de70-467e-380a-82cb-f4ee42adc461/stock-market-today%3A-dow%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Morgan Stanley sends a strong signal to Google stock investors",
+   "label": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
    "value": {
-    "headline": "Morgan Stanley sends a strong signal to Google stock investors",
+    "headline": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795222980,
-    "url": "https://www.thestreet.com/investing/stocks/morgan-stanley-sends-a-strong-signal-to-google-stock-investors?.tsrc=rss",
+    "ts": 1795470284,
+    "url": "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss",
     "urls": [
-     "https://www.thestreet.com/investing/stocks/morgan-stanley-sends-a-strong-signal-to-google-stock-investors?.tsrc=rss"
+     "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Review & Preview: Hype Halted",
+   "label": "Google AI Bridges Search And Wallet To Unlock Spending Signals",
    "value": {
-    "headline": "Review & Preview: Hype Halted",
+    "headline": "Google AI Bridges Search And Wallet To Unlock Spending Signals",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795222500,
-    "url": "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss",
+    "ts": 1795469948,
+    "url": "https://www.mediapost.com/publications/article/419633/google-ai-bridges-search-and-wallet-to-unlock-spen.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss"
+     "https://www.mediapost.com/publications/article/419633/google-ai-bridges-search-and-wallet-to-unlock-spen.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-21",
+   "severity": "info",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has AI's honeymoon ended on Wall Street?",
+   "label": "Jensen Huang's reinstatement changes how politics, business interact forever",
    "value": {
-    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "headline": "Jensen Huang's reinstatement changes how politics, business interact forever",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221964,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "ts": 1795469137,
+    "url": "https://finance.yahoo.com/video/jensen-huangs-reinstatement-changes-how-politics-business-interact-forever-212537409.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/jensen-huangs-reinstatement-changes-how-politics-business-interact-forever-212537409.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Zero To Sixty: Tesla Expands Cybercab To Dallas As Waymo Pauses Freeway Operations This Week",
+   "label": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
    "value": {
-    "headline": "Zero To Sixty: Tesla Expands Cybercab To Dallas As Waymo Pauses Freeway Operations This Week",
+    "headline": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221941,
-    "url": "https://stocktwits.com/news-articles/markets/equity/zero-to-sixty-tesla-expands-cybercab-to-dallas-as-waymo-pauses-freeway-operations-this-week/cNbm5YSR91g?.tsrc=rss",
+    "ts": 1795464490,
+    "url": "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/zero-to-sixty-tesla-expands-cybercab-to-dallas-as-waymo-pauses-freeway-operations-this-week/cNbm5YSR91g?.tsrc=rss"
+     "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 16 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 16,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 419 分 / 263 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 419,
-    "comments": 263,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "warn",
-   "as_of": "2026-11-21",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -708,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

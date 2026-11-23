@@ -1,25 +1,9 @@
 {
  "stock": "LSCC",
  "name": "Lattice Semiconductor",
- "price": 110.92,
- "change_pct": -0.62,
+ "price": 112.95,
+ "change_pct": 14.89,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 121.13,
-   "h": 122.25,
-   "l": 119.4,
-   "c": 120.47,
-   "v": 963500
-  },
-  {
-   "time": "2026-08-28",
-   "o": 119.76,
-   "h": 120.15,
-   "l": 113.88,
-   "c": 114.4,
-   "v": 1175200
-  },
   {
    "time": "2026-08-31",
    "o": 115.56,
@@ -483,23 +467,37 @@
    "l": 110.33,
    "c": 110.92,
    "v": 2765500
+  },
+  {
+   "time": "2026-11-20",
+   "o": 107.89,
+   "h": 107.89,
+   "l": 97.1,
+   "c": 98.31,
+   "v": 3494300
+  },
+  {
+   "time": "2026-11-23",
+   "o": 112.96,
+   "h": 115.24,
+   "l": 109.6,
+   "c": 112.95,
+   "v": 2253177
   }
  ],
  "sr": {
-  "price": 110.92,
+  "price": 112.95,
   "resistance": [
-   110.99,
-   111.2
+   120.28,
+   122.25
   ],
   "support": [
-   109.53,
-   109.35
+   112.55,
+   112.45
   ],
   "strong_support": 34.69
  },
  "spark": [
-  120.47,
-  114.4,
   115.34,
   111.68,
   113.88,
@@ -557,11 +555,130 @@
   108.17,
   109.8,
   111.61,
-  110.92
+  110.92,
+  98.31,
+  112.95
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Lattice Semiconductor Stock Jumps 14% as Chips Rally on Nvidia on Monday",
+   "value": {
+    "headline": "Lattice Semiconductor Stock Jumps 14% as Chips Rally on Nvidia on Monday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795453329,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-stock-jumps-14-170209404.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-stock-jumps-14-170209404.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "LSCC Rides on Balanced Organic & Inorganic Growth: Should You Buy?",
+   "value": {
+    "headline": "LSCC Rides on Balanced Organic & Inorganic Growth: Should You Buy?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795436100,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lscc-rides-balanced-organic-inorganic-121500392.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/lscc-rides-balanced-organic-inorganic-121500392.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "A $12 Billion Fund Just Bought These 3 Stocks",
+   "value": {
+    "headline": "A $12 Billion Fund Just Bought These 3 Stocks",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795186684,
+    "url": "https://www.tikr.com/blog/a-12-billion-fund-just-bought-these-3-stocks?ref=yahoofinance&tlnk=yf-261120-cx98ghv4&.tsrc=rss",
+    "urls": [
+     "https://www.tikr.com/blog/a-12-billion-fund-just-bought-these-3-stocks?ref=yahoofinance&tlnk=yf-261120-cx98ghv4&.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Have Lattice Stock Holders Had To Sit Through?",
+   "value": {
+    "headline": "What Have Lattice Stock Holders Had To Sit Through?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795107886,
+    "url": "https://www.trefis.com/stock/lscc/articles/626876/what-have-lattice-stock-holders-had-to-sit-through/2026-11-19?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/lscc/articles/626876/what-have-lattice-stock-holders-had-to-sit-through/2026-11-19?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "3 AI Data Center Stocks Retail Investors Are Watching After Nvidia News",
+   "value": {
+    "headline": "3 AI Data Center Stocks Retail Investors Are Watching After Nvidia News",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1794964265,
+    "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-data-center-stocks-011105971.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/3-ai-data-center-stocks-011105971.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 18,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  }
+ ]
 }

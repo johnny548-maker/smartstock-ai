@@ -1,17 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": null,
- "change_pct": null,
+ "price": 453.46,
+ "change_pct": 6.85,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 472.52,
-   "h": 478.75,
-   "l": 465.29,
-   "c": 465.58,
-   "v": 15373900
-  },
   {
    "time": "2026-08-31",
    "o": 466.22,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 69985844
+   "o": 471.73,
+   "h": 474.79,
+   "l": 418.76,
+   "c": 424.39,
+   "v": 69989800
+  },
+  {
+   "time": "2026-11-23",
+   "o": 476.92,
+   "h": 477.38,
+   "l": 432.03,
+   "c": 453.46,
+   "v": 53693661
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 453.46,
+  "resistance": [
+   469.22,
+   491.12
+  ],
+  "support": [
+   451.0,
+   440.5
+  ],
   "strong_support": 188.22
  },
  "spark": [
-  465.58,
   470.72,
   459.61,
   457.06,
@@ -551,14 +556,15 @@
   503.41,
   530.14,
   489.19,
-  null
+  424.39,
+  453.46
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 98.23843,
-  "pe_forward": 24.060778,
-  "eps_trailing": 4.32,
+  "pe_trailing": 96.893166,
+  "pe_forward": 25.708899,
+  "eps_trailing": 4.68,
   "eps_forward": 17.63825,
   "stale": false,
   "source": "yfinance"
@@ -569,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD ",
+   "label": "Stock Market Today: Dow, Nasdaq Surge As Jensen Huang Makes This Nvidia Promise; Anthropic Falls (Live Coverage)",
    "value": {
-    "headline": "Mets Owner Steve Cohen’s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD Has Fallen 31% Since",
+    "headline": "Stock Market Today: Dow, Nasdaq Surge As Jensen Huang Makes This Nvidia Promise; Anthropic Falls (Live Coverage)",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795218424,
-    "url": "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss",
+    "ts": 1795470982,
+    "url": "https://finance.yahoo.com/m/8751de70-467e-380a-82cb-f4ee42adc461/stock-market-today%3A-dow%2C.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/20/mets-owner-steve-cohens-fund-dumped-nearly-all-of-its-amd-and-bet-1-billion-that-microsoft-is-the-safer-ai-stock-amd-has-fallen-31-since/?.tsrc=rss"
+     "https://finance.yahoo.com/m/8751de70-467e-380a-82cb-f4ee42adc461/stock-market-today%3A-dow%2C.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "At AI Summit, Industry Titans Wave Off Market Woes—and Defend Jensen Huang",
+   "label": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
    "value": {
-    "headline": "At AI Summit, Industry Titans Wave Off Market Woes—and Defend Jensen Huang",
+    "headline": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795217280,
-    "url": "https://finance.yahoo.com/m/b4ceaf2c-2be0-3edd-98d2-13d5b3cc7cca/at-ai-summit%2C-industry-titans.html?.tsrc=rss",
+    "ts": 1795470284,
+    "url": "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/b4ceaf2c-2be0-3edd-98d2-13d5b3cc7cca/at-ai-summit%2C-industry-titans.html?.tsrc=rss"
+     "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic’s Day Two Drop Fuels Broader Tech Rout; Dan Ives Points To ‘Perfect Storm’",
+   "label": "Meta’s AI Chief Warns “Superintelligence Is Arriving.” Lawmakers Are Now Quoting Him to Push a Ban",
    "value": {
-    "headline": "Anthropic’s Day Two Drop Fuels Broader Tech Rout; Dan Ives Points To ‘Perfect Storm’",
+    "headline": "Meta’s AI Chief Warns “Superintelligence Is Arriving.” Lawmakers Are Now Quoting Him to Push a Ban",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795213831,
-    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-s-day-two-drop-fuels-broader-tech-rout-dan-ives-points-to-perfect-storm/cNbSHWSR91O?.tsrc=rss",
+    "ts": 1795469595,
+    "url": "https://www.tikr.com/blog/metas-ai-chief-warns-superintelligence-is-arriving-lawmakers-are-now-quoting-him-to-push-a-ban?ref=yahoofinance&tlnk=yf-261123-9pc7cv6p&.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/anthropic-s-day-two-drop-fuels-broader-tech-rout-dan-ives-points-to-perfect-storm/cNbSHWSR91O?.tsrc=rss"
+     "https://www.tikr.com/blog/metas-ai-chief-warns-superintelligence-is-arriving-lawmakers-are-now-quoting-him-to-push-a-ban?ref=yahoofinance&tlnk=yf-261123-9pc7cv6p&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "The Fear Gauge Hit 40. This Is What the Market Is Worried About.",
+   "label": "ASML Stock’s Sell-Off Looks Excessive Against Its Growth Outlook",
    "value": {
-    "headline": "The Fear Gauge Hit 40. This Is What the Market Is Worried About.",
+    "headline": "ASML Stock’s Sell-Off Looks Excessive Against Its Growth Outlook",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795213560,
-    "url": "https://finance.yahoo.com/m/f1ef20dd-1915-38ad-9581-22cac677d2a9/the-fear-gauge-hit-40.-this.html?.tsrc=rss",
+    "ts": 1795469100,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/asml-stock-sell-off-looks-212500722.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/f1ef20dd-1915-38ad-9581-22cac677d2a9/the-fear-gauge-hit-40.-this.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/asml-stock-sell-off-looks-212500722.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "severity": "warn",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump’s Treasury Secretary Keeps Nvidia’s H200 China Policy as House Data Show Nearly 880,000 AI Chips Approved",
+   "label": "AMD’s Blockbuster Q3 Report Is Getting Lost in the Pullback",
    "value": {
-    "headline": "Trump’s Treasury Secretary Keeps Nvidia’s H200 China Policy as House Data Show Nearly 880,000 AI Chips Approved",
+    "headline": "AMD’s Blockbuster Q3 Report Is Getting Lost in the Pullback",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795211917,
-    "url": "https://www.tikr.com/blog/trumps-treasury-secretary-keeps-nvidias-h200-china-policy-as-house-data-show-nearly-880000-ai-chips-approved?ref=yahoofinance&tlnk=yf-261120-rx666q2r&.tsrc=rss",
+    "ts": 1795468920,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-blockbuster-q3-report-getting-212200835.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/trumps-treasury-secretary-keeps-nvidias-h200-china-policy-as-house-data-show-nearly-880000-ai-chips-approved?ref=yahoofinance&tlnk=yf-261120-rx666q2r&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amd-blockbuster-q3-report-getting-212200835.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

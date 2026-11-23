@@ -1,25 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 349.21,
- "change_pct": -0.92,
+ "price": 349.08,
+ "change_pct": 1.9,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 310.31,
-   "h": 315.16,
-   "l": 309.17,
-   "c": 314.34,
-   "v": 32419200
-  },
-  {
-   "time": "2026-08-28",
-   "o": 316.61,
-   "h": 322.13,
-   "l": 315.21,
-   "c": 319.46,
-   "v": 38649400
-  },
   {
    "time": "2026-08-31",
    "o": 319.36,
@@ -482,11 +466,27 @@
    "h": 355.28,
    "l": 346.47,
    "c": 349.21,
-   "v": 40469518
+   "v": 40906900
+  },
+  {
+   "time": "2026-11-20",
+   "o": 352.87,
+   "h": 354.34,
+   "l": 340.56,
+   "c": 342.56,
+   "v": 80464200
+  },
+  {
+   "time": "2026-11-23",
+   "o": 347.87,
+   "h": 352.6,
+   "l": 345.44,
+   "c": 349.08,
+   "v": 56997299
   }
  ],
  "sr": {
-  "price": 349.21,
+  "price": 349.08,
   "resistance": [
    351.16,
    351.46
@@ -498,8 +498,6 @@
   "strong_support": 242.57
  },
  "spark": [
-  314.34,
-  319.46,
   316.61,
   324.88,
   324.71,
@@ -557,119 +555,138 @@
   352.78,
   351.91,
   352.45,
-  349.21
+  349.21,
+  342.56,
+  349.08
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 38.887527,
-  "pe_forward": 33.029312,
+  "pe_trailing": 38.87305,
+  "pe_forward": 33.017014,
   "eps_trailing": 8.98,
   "eps_forward": 10.57273,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 349.08,
+  "stop": 330.78,
+  "target": 394.84,
+  "atr_bracket": 394.84,
+  "measured_move": 383.62,
+  "target_band": [
+   383.62,
+   394.84
+  ],
+  "stop_pct": -5.2,
+  "target_pct": 13.1,
+  "rr": 2.5,
+  "atr_pct": 2.6,
+  "swing_stop": 335.3,
+  "chandelier": 334.37,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In",
+   "label": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
    "value": {
-    "headline": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence — ANT, META, AAPL, GME In Focus",
+    "headline": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795129265,
-    "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss",
+    "ts": 1795464990,
+    "url": "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-anthropic-trading-debut-fails-to-provide-adequate-confidence/cNbio2mR90v?.tsrc=rss"
+     "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "3 ETFs for the 58-Year-Old Who Opened the 401(k) Brokerage Window and Did Not Know What to Buy",
+   "label": "CrowdStrike Shares Fall 10% After a $44 Billion Zscaler Deal Despite an Earnings Beat and Raised Guidance",
    "value": {
-    "headline": "3 ETFs for the 58-Year-Old Who Opened the 401(k) Brokerage Window and Did Not Know What to Buy",
+    "headline": "CrowdStrike Shares Fall 10% After a $44 Billion Zscaler Deal Despite an Earnings Beat and Raised Guidance",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795127820,
-    "url": "https://247wallst.com/investing/etf/2026/11/19/3-etfs-for-the-58-year-old-who-opened-the-401k-brokerage-window-and-did-not-know-what-to-buy/?.tsrc=rss",
+    "ts": 1795463723,
+    "url": "https://247wallst.com/videos/crowdstrike-shares-fall-10-after-a-44-billion-zscaler-deal-despite-an-earnings-beat-and-raised-guidance/?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/11/19/3-etfs-for-the-58-year-old-who-opened-the-401k-brokerage-window-and-did-not-know-what-to-buy/?.tsrc=rss"
+     "https://247wallst.com/videos/crowdstrike-shares-fall-10-after-a-44-billion-zscaler-deal-despite-an-earnings-beat-and-raised-guidance/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
+   "label": "Alphabet Soars 6% as Jensen Huang’s Return to Nvidia Reignites AI Stocks",
    "value": {
-    "headline": "Anthropic Closes Up 17% While Nasdaq Falls; Mohamed El-Erian Calls It ‘Making Room’ For AI",
+    "headline": "Alphabet Soars 6% as Jensen Huang’s Return to Nvidia Reignites AI Stocks",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795125712,
-    "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss",
+    "ts": 1795460431,
+    "url": "https://www.tikr.com/blog/alphabet-soars-6-as-jensen-huangs-return-to-nvidia-reignites-ai-stocks?ref=yahoofinance&tlnk=yf-261123-hwv86p83&.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/anthropic-closes-up-17-while-nasdaq-falls-mohamed-el-erian-calls-it-making-room-for-ai/cNbinSRR90u?.tsrc=rss"
+     "https://www.tikr.com/blog/alphabet-soars-6-as-jensen-huangs-return-to-nvidia-reignites-ai-stocks?ref=yahoofinance&tlnk=yf-261123-hwv86p83&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
+   "label": "Nvidia's Forecast Needs $1.4 Trillion Of AI Spending In 2027. Who Pays?",
    "value": {
-    "headline": "Intuit Stock Tumbles After Earnings Beat. It’s Selling Mailchimp.",
+    "headline": "Nvidia's Forecast Needs $1.4 Trillion Of AI Spending In 2027. Who Pays?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795125240,
-    "url": "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss",
+    "ts": 1795456856,
+    "url": "https://www.trefis.com/stock/nvda/articles/627446/nvidia-s-forecast-needs-1-4-trillion-of-ai-spending-in-2027-who-pays/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/e048c82e-5ac0-39ba-8972-165e8a9c92e3/intuit-stock-tumbles-after.html?.tsrc=rss"
+     "https://www.trefis.com/stock/nvda/articles/627446/nvidia-s-forecast-needs-1-4-trillion-of-ai-spending-in-2027-who-pays/2026-11-23?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-20",
+   "severity": "info",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bridgewater Warns of AI Security Risk as Anthropic Shares Rise in Debut",
+   "label": "Nvidia Is Now Second To Apple In The World’s Most Valued Companies On Jensen Huang Optimism",
    "value": {
-    "headline": "Bridgewater Warns of AI Security Risk as Anthropic Shares Rise in Debut",
+    "headline": "Nvidia Is Now Second To Apple In The World’s Most Valued Companies On Jensen Huang Optimism",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795122960,
-    "url": "https://finance.yahoo.com/m/ac0c7cd3-afc9-37c1-b745-d9478a2ec38a/bridgewater-warns-of-ai.html?.tsrc=rss",
+    "ts": 1795454730,
+    "url": "https://stocktwits.com/news-articles/markets/equity/nvidia-is-now-second-to-apple-in-the-world-s-most-valued-companies-on-jensen-huang-optimism/cNbpeYcR9j0?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/ac0c7cd3-afc9-37c1-b745-d9478a2ec38a/bridgewater-warns-of-ai.html?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/nvidia-is-now-second-to-apple-in-the-world-s-most-valued-companies-on-jensen-huang-optimism/cNbpeYcR9j0?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -684,22 +701,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 521 分 / 213 留言",
+   "label": "HN 討論熱度 20 篇 / 431 分 / 83 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 521,
-    "comments": 213,
+    "points": 431,
+    "comments": 83,
     "n": 20,
     "window_hours": 72
    },
    "severity": "warn",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -714,7 +731,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

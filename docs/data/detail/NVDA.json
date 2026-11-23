@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": null,
- "change_pct": null,
+ "price": 165.05,
+ "change_pct": 31.48,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 227.11,
-   "h": 229.0,
-   "l": 216.57,
-   "c": 217.31,
-   "v": 195116400
-  },
   {
    "time": "2026-08-31",
    "o": 218.63,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 626274281
+   "o": 143.52,
+   "h": 143.73,
+   "l": 124.5,
+   "c": 125.53,
+   "v": 626373200
+  },
+  {
+   "time": "2026-11-23",
+   "o": 167.04,
+   "h": 171.5,
+   "l": 156.93,
+   "c": 165.05,
+   "v": 776225888
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 165.05,
+  "resistance": [
+   180.81,
+   184.27
+  ],
+  "support": [
+   163.9,
+   148.8
+  ],
   "strong_support": 148.8
  },
  "spark": [
-  217.31,
   220.53,
   217.2,
   224.16,
@@ -551,119 +556,137 @@
   155.46,
   150.96,
   145.98,
-  null
+  125.53,
+  165.05
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 13.483351,
-  "pe_forward": 7.5596437,
+  "pe_trailing": 17.728249,
+  "pe_forward": 9.93961,
   "eps_trailing": 9.31,
   "eps_forward": 16.60528,
   "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 165.05,
+  "stop": 153.5,
+  "target": 193.93,
+  "atr_bracket": 193.93,
+  "measured_move": 229.8,
+  "target_band": [
+   193.93,
+   229.8
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 9.5,
+  "swing_stop": 144.11,
+  "chandelier": 183.21,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq 100 Ends Worst Week Since 2020, S&P 500 In Correction Territory As AI Rout Sours Sentiment — ANT, NVDA, TTWO, ZS,",
+   "label": "Nvidia's stability is a systemic issue for the US now, this AI CEO says",
    "value": {
-    "headline": "Nasdaq 100 Ends Worst Week Since 2020, S&P 500 In Correction Territory As AI Rout Sours Sentiment — ANT, NVDA, TTWO, ZS, CRWD In Focus",
+    "headline": "Nvidia's stability is a systemic issue for the US now, this AI CEO says",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795224625,
-    "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-ends-worst-week-since-2020-s-and-p-500-in-correction-territory-as-ai-rout-sours-sentiment-ant-nvda-ttwo-zs-crwd-in-focus/cNbm3xQR91W?.tsrc=rss",
+    "ts": 1795471235,
+    "url": "https://finance.yahoo.com/video/nvidias-stability-is-a-systemic-issue-for-the-us-now-this-ai-ceo-says-220035003.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-ends-worst-week-since-2020-s-and-p-500-in-correction-territory-as-ai-rout-sours-sentiment-ant-nvda-ttwo-zs-crwd-in-focus/cNbm3xQR91W?.tsrc=rss"
+     "https://finance.yahoo.com/video/nvidias-stability-is-a-systemic-issue-for-the-us-now-this-ai-ceo-says-220035003.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "label": "Lego is Building a Billion-Dollar Factory in Portugal",
    "value": {
-    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "headline": "Lego is Building a Billion-Dollar Factory in Portugal",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795223061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "ts": 1795471128,
+    "url": "https://app.moby.co/home/news/news-lego-is-building-a-billion-dollar-factory-in-portugal?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+     "https://app.moby.co/home/news/news-lego-is-building-a-billion-dollar-factory-in-portugal?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Review & Preview: Hype Halted",
+   "label": "Update: Wall Street Posts Best Day Since April 2025 as Nvidia's Rally Lifts Tech Sector",
    "value": {
-    "headline": "Review & Preview: Hype Halted",
+    "headline": "Update: Wall Street Posts Best Day Since April 2025 as Nvidia's Rally Lifts Tech Sector",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795222500,
-    "url": "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss",
+    "ts": 1795471104,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-posts-best-day-215824353.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/7f9bf2d2-c34f-310e-9971-12201d455bb0/review-%26-preview%3A-hype-halted.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/wall-street-posts-best-day-215824353.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang Return; Elon Musk-Led SpaceX, Tesla Rally",
+   "value": {
+    "headline": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang Return; Elon Musk-Led SpaceX, Tesla Rally",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795471041,
+    "url": "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "AI executives celebrate Huang’s return, safety experts worry",
+   "value": {
+    "headline": "AI executives celebrate Huang’s return, safety experts worry",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795471019,
+    "url": "https://www.usatoday.com/story/tech/2026/11/23/jensen-huang-ai-industry-support-safety-experts-concern/92931115007/?.tsrc=rss",
+    "urls": [
+     "https://www.usatoday.com/story/tech/2026/11/23/jensen-huang-ai-industry-support-safety-experts-concern/92931115007/?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Has AI's honeymoon ended on Wall Street?",
-   "value": {
-    "headline": "Has AI's honeymoon ended on Wall Street?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795221964,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "The S&P 500 Has More Than Tripled in 10 Years, Even After Its Latest Pullback. Here’s What $1,000 in VOO Could Have Beco",
-   "value": {
-    "headline": "The S&P 500 Has More Than Tripled in 10 Years, Even After Its Latest Pullback. Here’s What $1,000 in VOO Could Have Become.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795221813,
-    "url": "https://www.fool.com/investing/2026/11/20/s-and-p-500-tripled-10-years-even-after-latest-pullback-what-usd1-000-in-voo-could-have-become/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/20/s-and-p-500-tripled-10-years-even-after-latest-pullback-what-usd1-000-in-voo-could-have-become/?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,12 +697,11 @@
     "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
-     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -694,7 +716,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

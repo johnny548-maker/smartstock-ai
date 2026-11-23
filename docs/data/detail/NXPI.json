@@ -1,25 +1,9 @@
 {
  "stock": "NXPI",
  "name": "NXP Semiconductors",
- "price": 251.76,
- "change_pct": -0.28,
+ "price": 256.03,
+ "change_pct": 8.88,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 224.56,
-   "h": 227.06,
-   "l": 222.0,
-   "c": 224.85,
-   "v": 2564200
-  },
-  {
-   "time": "2026-08-28",
-   "o": 224.65,
-   "h": 224.83,
-   "l": 219.56,
-   "c": 222.58,
-   "v": 3328900
-  },
   {
    "time": "2026-08-31",
    "o": 225.21,
@@ -483,13 +467,29 @@
    "l": 249.49,
    "c": 251.76,
    "v": 3478700
+  },
+  {
+   "time": "2026-11-20",
+   "o": 250.22,
+   "h": 253.91,
+   "l": 233.69,
+   "c": 235.15,
+   "v": 9772800
+  },
+  {
+   "time": "2026-11-23",
+   "o": 259.08,
+   "h": 260.42,
+   "l": 252.3,
+   "c": 256.03,
+   "v": 6156192
   }
  ],
  "sr": {
-  "price": 251.76,
+  "price": 256.03,
   "resistance": [
-   253.04,
-   272.08
+   272.08,
+   274.21
   ],
   "support": [
    242.13,
@@ -498,8 +498,6 @@
   "strong_support": 144.18
  },
  "spark": [
-  224.85,
-  222.58,
   223.63,
   221.4,
   227.48,
@@ -557,11 +555,145 @@
   254.19,
   252.51,
   252.47,
-  251.76
+  251.76,
+  235.15,
+  256.03
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": null,
  "levels": null,
- "generated_for": "detail"
+ "generated_for": "detail",
+ "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Analog Devices Isn't Restocking. It Trades Like Nvidia Now",
+   "value": {
+    "headline": "Analog Devices Isn't Restocking. It Trades Like Nvidia Now",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795448751,
+    "url": "https://www.trefis.com/stock/adi/articles/627692/analog-devices-isn-t-restocking-it-trades-like-nvidia-now/2026-11-23?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/adi/articles/627692/analog-devices-isn-t-restocking-it-trades-like-nvidia-now/2026-11-23?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Could You Have Spotted Monolithic Power Stock's 52% Run?",
+   "value": {
+    "headline": "Could You Have Spotted Monolithic Power Stock's 52% Run?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795242767,
+    "url": "https://www.trefis.com/stock/mpwr/articles/627264/could-you-have-spotted-monolithic-power-stocks-52-run/2026-11-20?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/mpwr/articles/627264/could-you-have-spotted-monolithic-power-stocks-52-run/2026-11-20?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "What Could NXP Semiconductors (NXPI) New Robotics Platform Mean For Investors?",
+   "value": {
+    "headline": "What Could NXP Semiconductors (NXPI) New Robotics Platform Mean For Investors?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795177055,
+    "url": "https://finance.yahoo.com/technology/ai/articles/could-nxp-semiconductors-nxpi-robotics-121735177.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/technology/ai/articles/could-nxp-semiconductors-nxpi-robotics-121735177.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Ambarella Stock Soars on Reports NXP Semiconductors Deal Is Drawing to a Close",
+   "value": {
+    "headline": "Ambarella Stock Soars on Reports NXP Semiconductors Deal Is Drawing to a Close",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795117905,
+    "url": "https://www.barchart.com/story/news/8923632/ambarella-stock-soars-on-reports-nxp-semiconductors-deal-is-drawing-to-a-close?.tsrc=rss",
+    "urls": [
+     "https://www.barchart.com/story/news/8923632/ambarella-stock-soars-on-reports-nxp-semiconductors-deal-is-drawing-to-a-close?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Ambarella Stock Soars on Potential Billion-Dollar Chip Deal",
+   "value": {
+    "headline": "Ambarella Stock Soars on Potential Billion-Dollar Chip Deal",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795111481,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ambarella-stock-soars-potential-billion-180441846.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ambarella-stock-soars-potential-billion-180441846.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 19,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "yahoo_us"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "sec_ftd",
+   "kind": "chip",
+   "label": "FTD 交割失敗偏高（連續 4 個交割日）",
+   "value": {
+    "total_shares": 55167,
+    "days": 4,
+    "max_shares": 55029,
+    "persistent": true,
+    "elevated": false
+   },
+   "severity": "warn",
+   "as_of": "2026-11-23",
+   "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
+  }
+ ]
 }

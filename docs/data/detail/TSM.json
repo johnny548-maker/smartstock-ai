@@ -1,17 +1,9 @@
 {
  "stock": "TSM",
  "name": "台積電 ADR",
- "price": null,
- "change_pct": null,
+ "price": 363.6,
+ "change_pct": 14.08,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 426.35,
-   "h": 427.97,
-   "l": 416.2,
-   "c": 416.4,
-   "v": 8896900
-  },
   {
    "time": "2026-08-31",
    "o": 416.11,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 37156375
+   "o": 338.24,
+   "h": 343.75,
+   "l": 318.48,
+   "c": 318.71,
+   "v": 37170000
+  },
+  {
+   "time": "2026-11-23",
+   "o": 385.49,
+   "h": 386.9,
+   "l": 361.69,
+   "c": 363.6,
+   "v": 31507758
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 363.6,
+  "resistance": [
+   377.04,
+   380.25
+  ],
+  "support": [
+   358.75,
+   351.19
+  ],
   "strong_support": 272.93
  },
  "spark": [
-  416.4,
   414.21,
   412.89,
   414.39,
@@ -551,13 +556,14 @@
   359.69,
   362.62,
   352.09,
-  null
+  318.71,
+  363.6
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 20.655216,
-  "pe_forward": 13.628653,
+  "pe_trailing": 23.564486,
+  "pe_forward": 15.548236,
   "eps_trailing": 15.43,
   "eps_forward": 23.38529,
   "stale": false,
@@ -569,101 +575,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "label": "Why TSMC Stock Soared Today",
    "value": {
-    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "headline": "Why TSMC Stock Soared Today",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795223061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "ts": 1795468849,
+    "url": "https://www.fool.com/investing/2026/11/23/why-tsmc-stock-soared-today/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/23/why-tsmc-stock-soared-today/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Stocks Jump 17.07% in Record Debut as $26 Billion Chipmaker Placement Lands",
+   "label": "Billionaire Andreas Halvorsen Exited Microsoft and Made TSMC His Top Holding at $1.8 Billion",
    "value": {
-    "headline": "Anthropic Stocks Jump 17.07% in Record Debut as $26 Billion Chipmaker Placement Lands",
+    "headline": "Billionaire Andreas Halvorsen Exited Microsoft and Made TSMC His Top Holding at $1.8 Billion",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795210910,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/anthropic-stocks-jump-17-07-214150203.html?.tsrc=rss",
+    "ts": 1795467446,
+    "url": "https://247wallst.com/investing/2026/11/23/billionaire-andreas-halvorsen-exited-microsoft-and-made-tsmc-his-top-holding-at-1-8-billion/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/anthropic-stocks-jump-17-07-214150203.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/23/billionaire-andreas-halvorsen-exited-microsoft-and-made-tsmc-his-top-holding-at-1-8-billion/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "A $9.7 Billion Fund Bought These 3 Stocks Last Quarter",
+   "label": "Jensen Huang’s Return Just Added About $500 Billion to Micron, Dell, TSMC and the AI Stocks That Depend on Nvidia",
    "value": {
-    "headline": "A $9.7 Billion Fund Bought These 3 Stocks Last Quarter",
+    "headline": "Jensen Huang’s Return Just Added About $500 Billion to Micron, Dell, TSMC and the AI Stocks That Depend on Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795210524,
-    "url": "https://www.tikr.com/blog/a-9-7-billion-fund-bought-these-3-stocks-last-quarter?ref=yahoofinance&tlnk=yf-261120-83gq9xg9&.tsrc=rss",
+    "ts": 1795464780,
+    "url": "https://247wallst.com/investing/2026/11/23/jensen-huangs-return-just-added-about-500-billion-to-micron-dell-tsmc-and-the-ai-stocks-that-depend-on-nvidia/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/a-9-7-billion-fund-bought-these-3-stocks-last-quarter?ref=yahoofinance&tlnk=yf-261120-83gq9xg9&.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/23/jensen-huangs-return-just-added-about-500-billion-to-micron-dell-tsmc-and-the-ai-stocks-that-depend-on-nvidia/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Following Jensen Huang Exit, Investors Fear Nvidia’s AI Lead Will Collapse",
+   "label": "Why Anthropic’s Stock Is Sitting Out Nvidia’s Big Rally",
    "value": {
-    "headline": "Following Jensen Huang Exit, Investors Fear Nvidia’s AI Lead Will Collapse",
+    "headline": "Why Anthropic’s Stock Is Sitting Out Nvidia’s Big Rally",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795198615,
-    "url": "https://247wallst.com/videos/following-jensen-huang-exit-investors-fear-nvidias-ai-lead-will-collapse/?.tsrc=rss",
+    "ts": 1795463880,
+    "url": "https://finance.yahoo.com/m/4b0c6858-bbdf-3949-a696-c72d26b74377/why-anthropic%E2%80%99s-stock-is.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/videos/following-jensen-huang-exit-investors-fear-nvidias-ai-lead-will-collapse/?.tsrc=rss"
+     "https://finance.yahoo.com/m/4b0c6858-bbdf-3949-a696-c72d26b74377/why-anthropic%E2%80%99s-stock-is.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Goldman Sachs Cut Its Broadcom Target to $460, and the Reason Has Nothing to Do With Broadcom’s Earnings",
+   "label": "History Says TSMC Stock Falls Before Its Sales",
    "value": {
-    "headline": "Goldman Sachs Cut Its Broadcom Target to $460, and the Reason Has Nothing to Do With Broadcom’s Earnings",
+    "headline": "History Says TSMC Stock Falls Before Its Sales",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795196514,
-    "url": "https://www.tikr.com/blog/goldman-sachs-cut-its-broadcom-target-to-460-and-the-reason-has-nothing-to-do-with-broadcoms-earnings?ref=yahoofinance&tlnk=yf-261120-qgp5f5w5&.tsrc=rss",
+    "ts": 1795462630,
+    "url": "https://www.trefis.com/stock/tsm/articles/627659/history-says-tsmc-stock-falls-before-its-sales/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/goldman-sachs-cut-its-broadcom-target-to-460-and-the-reason-has-nothing-to-do-with-broadcoms-earnings?ref=yahoofinance&tlnk=yf-261120-qgp5f5w5&.tsrc=rss"
+     "https://www.trefis.com/stock/tsm/articles/627659/history-says-tsmc-stock-falls-before-its-sales/2026-11-23?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-21",
+   "severity": "info",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -678,7 +684,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

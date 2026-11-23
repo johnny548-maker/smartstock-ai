@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": null,
- "change_pct": null,
+ "price": 255.39,
+ "change_pct": 3.47,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 258.32,
-   "h": 267.56,
-   "l": 257.78,
-   "c": 266.43,
-   "v": 49547400
-  },
   {
    "time": "2026-08-31",
    "o": 263.83,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 74106823
+   "o": 253.48,
+   "h": 259.97,
+   "l": 245.31,
+   "c": 246.82,
+   "v": 74108100
+  },
+  {
+   "time": "2026-11-23",
+   "o": 260.26,
+   "h": 262.48,
+   "l": 251.25,
+   "c": 255.39,
+   "v": 52860784
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 255.39,
+  "resistance": [
+   256.18,
+   258.08
+  ],
+  "support": [
+   255.19,
+   251.93
+  ],
   "strong_support": 196.0
  },
  "spark": [
-  266.43,
   259.77,
   254.92,
   254.98,
@@ -551,13 +556,14 @@
   257.89,
   267.74,
   257.37,
-  null
+  246.82,
+  255.39
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 19.953114,
-  "pe_forward": 22.589987,
+  "pe_trailing": 20.645918,
+  "pe_forward": 23.37435,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
   "stale": false,
@@ -569,132 +575,117 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+   "label": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang Return; Elon Musk-Led SpaceX, Tesla Rally",
    "value": {
-    "headline": "Billionaire Bill Ackman’s Top 5 Stocks After Selling Stakes to Open a Brand-New Position",
+    "headline": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang Return; Elon Musk-Led SpaceX, Tesla Rally",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795225117,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss",
+    "ts": 1795471041,
+    "url": "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-top-5-013837421.html?.tsrc=rss"
+     "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top 5 Stocks to Buy According to Billionaire George Soros",
+   "label": "China Is “Only 12 Hours” Behind US AI Labs. ByteDance’s Reported Azure Deal Puts Microsoft in the Middle",
    "value": {
-    "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+    "headline": "China Is “Only 12 Hours” Behind US AI Labs. ByteDance’s Reported Azure Deal Puts Microsoft in the Middle",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795223061,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss",
+    "ts": 1795469943,
+    "url": "https://www.tikr.com/blog/china-is-only-12-hours-behind-us-ai-labs-bytedances-reported-azure-deal-puts-microsoft-in-the-middle?ref=yahoofinance&tlnk=yf-261123-434gxg43&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-5-stocks-buy-according-010421254.html?.tsrc=rss"
+     "https://www.tikr.com/blog/china-is-only-12-hours-behind-us-ai-labs-bytedances-reported-azure-deal-puts-microsoft-in-the-middle?ref=yahoofinance&tlnk=yf-261123-434gxg43&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Has AI's honeymoon ended on Wall Street?",
+   "label": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
    "value": {
-    "headline": "Has AI's honeymoon ended on Wall Street?",
+    "headline": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221964,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss",
+    "ts": 1795464490,
+    "url": "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html?.tsrc=rss"
+     "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures: Market Has Worst Week Since Covid Amid Nvidia, Anthropic. Does Fear Gauge Offer Hope?",
+   "label": "Why Jensen Huang is the 'key man' behind the market rally",
    "value": {
-    "headline": "Dow Jones Futures: Market Has Worst Week Since Covid Amid Nvidia, Anthropic. Does Fear Gauge Offer Hope?",
+    "headline": "Why Jensen Huang is the 'key man' behind the market rally",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795221267,
-    "url": "https://finance.yahoo.com/m/9ef9da98-bccf-3565-9a30-9bc3e57ad4b9/dow-jones-futures%3A-market-has.html?.tsrc=rss",
+    "ts": 1795462729,
+    "url": "https://finance.yahoo.com/video/why-jensen-huang-is-the-key-man-behind-the-market-rally-193849634.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/9ef9da98-bccf-3565-9a30-9bc3e57ad4b9/dow-jones-futures%3A-market-has.html?.tsrc=rss"
+     "https://finance.yahoo.com/video/why-jensen-huang-is-the-key-man-behind-the-market-rally-193849634.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Generac Stock In Focus After Earnings Beat And Amazon Supply Deal",
+   "label": "Warning for SpaceX: Europe’s “Move Away From Starlink Has Already Begun,” Says Anne Applebaum",
    "value": {
-    "headline": "Generac Stock In Focus After Earnings Beat And Amazon Supply Deal",
+    "headline": "Warning for SpaceX: Europe’s “Move Away From Starlink Has Already Begun,” Says Anne Applebaum",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795220377,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/generac-stock-focus-earnings-beat-001937973.html?.tsrc=rss",
+    "ts": 1795461843,
+    "url": "https://www.tikr.com/blog/warning-for-spacex-europes-move-away-from-starlink-has-already-begun-says-anne-applebaum?ref=yahoofinance&tlnk=yf-261123-537rf528&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/generac-stock-focus-earnings-beat-001937973.html?.tsrc=rss"
+     "https://www.tikr.com/blog/warning-for-spacex-europes-move-away-from-starlink-has-already-begun-says-anne-applebaum?ref=yahoofinance&tlnk=yf-261123-537rf528&.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "severity": "warn",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 9 篇 / 168 分 / 50 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 168,
-    "comments": 50,
-    "n": 9,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-11-21",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -708,7 +699,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,25 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 109.27,
- "change_pct": -4.47,
+ "price": 106.66,
+ "change_pct": 5.64,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 96.4,
-   "h": 104.83,
-   "l": 96.4,
-   "c": 104.03,
-   "v": 3824600
-  },
-  {
-   "time": "2026-08-28",
-   "o": 103.65,
-   "h": 105.76,
-   "l": 98.01,
-   "c": 98.74,
-   "v": 2608500
-  },
   {
    "time": "2026-08-31",
    "o": 98.43,
@@ -483,10 +467,26 @@
    "l": 108.63,
    "c": 109.27,
    "v": 3017400
+  },
+  {
+   "time": "2026-11-20",
+   "o": 106.0,
+   "h": 108.17,
+   "l": 100.13,
+   "c": 100.96,
+   "v": 2397000
+  },
+  {
+   "time": "2026-11-23",
+   "o": 109.32,
+   "h": 110.87,
+   "l": 104.96,
+   "c": 106.66,
+   "v": 1724814
   }
  ],
  "sr": {
-  "price": 109.27,
+  "price": 106.66,
   "resistance": [],
   "support": [
    86.77,
@@ -495,8 +495,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  104.03,
-  98.74,
   100.07,
   91.78,
   91.73,
@@ -554,14 +552,36 @@
   109.94,
   105.1,
   114.38,
-  109.27
+  109.27,
+  100.96,
+  106.66
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-19",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "iShares Russell 2000 (IWM) Adds Glaukos and JFrog on Thursday",
+   "value": {
+    "headline": "iShares Russell 2000 (IWM) Adds Glaukos and JFrog on Thursday",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795431891,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-adds-110451676.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-adds-110451676.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -579,7 +599,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -599,7 +619,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -619,7 +639,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -639,27 +659,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "iShares Russell 2000 (IWM) Buys $1.4 Million More Glaukos on Tuesday",
-   "value": {
-    "headline": "iShares Russell 2000 (IWM) Buys $1.4 Million More Glaukos on Tuesday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795086297,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110457366.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-buys-110457366.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,7 +674,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -689,7 +689,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

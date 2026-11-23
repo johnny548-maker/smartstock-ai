@@ -1,17 +1,9 @@
 {
  "stock": "AVGO",
  "name": "博通",
- "price": null,
- "change_pct": null,
+ "price": 313.55,
+ "change_pct": 3.0,
  "ohlc": [
-  {
-   "time": "2026-08-28",
-   "o": 372.92,
-   "h": 375.91,
-   "l": 364.69,
-   "c": 368.12,
-   "v": 16596100
-  },
   {
    "time": "2026-08-31",
    "o": 368.85,
@@ -478,21 +470,34 @@
   },
   {
    "time": "2026-11-20",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 59550482
+   "o": 343.01,
+   "h": 343.01,
+   "l": 301.02,
+   "c": 304.41,
+   "v": 59562800
+  },
+  {
+   "time": "2026-11-23",
+   "o": 320.86,
+   "h": 324.44,
+   "l": 304.56,
+   "c": 313.55,
+   "v": 40921621
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 313.55,
+  "resistance": [
+   325.37,
+   337.04
+  ],
+  "support": [
+   312.39,
+   306.82
+  ],
   "strong_support": 288.98
  },
  "spark": [
-  368.12,
   369.67,
   369.01,
   366.57,
@@ -551,15 +556,16 @@
   341.6,
   354.05,
   346.65,
-  null
+  304.41,
+  313.55
  ],
- "spark_start": "2026-08-28",
- "spark_end": "2026-11-20",
+ "spark_start": "2026-08-31",
+ "spark_end": "2026-11-23",
  "fundamental": {
-  "pe_trailing": 38.877396,
-  "pe_forward": 15.67989,
+  "pe_trailing": 40.044697,
+  "pe_forward": 16.174044,
   "eps_trailing": 7.83,
-  "eps_forward": 19.41404,
+  "eps_forward": 19.386,
   "stale": false,
   "source": "yfinance"
  },
@@ -569,131 +575,131 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Data Center AI Chips Could Change the Winners: Broadcom and Marvell",
+   "label": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
    "value": {
-    "headline": "Data Center AI Chips Could Change the Winners: Broadcom and Marvell",
+    "headline": "Plot Twist: Cathie Wood Sold Nvidia Over “Losing Jensen.” Nvidia Just Rehired Him, but Her Other Worry Remains",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795217154,
-    "url": "https://247wallst.com/investing/2026/11/20/data-center-ai-chips-could-change-the-winners-broadcom-and-marvell/?.tsrc=rss",
+    "ts": 1795470284,
+    "url": "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/2026/11/20/data-center-ai-chips-could-change-the-winners-broadcom-and-marvell/?.tsrc=rss"
+     "https://www.tikr.com/blog/plot-twist-cathie-wood-sold-nvidia-over-losing-jensen-nvidia-just-rehired-him-but-her-other-worry-remains?ref=yahoofinance&tlnk=yf-261123-x8fr8xv5&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Stock Market Today, Nov. 20: Stocks Plunge as AI Trade Unwinds",
+   "label": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
    "value": {
-    "headline": "Stock Market Today, Nov. 20: Stocks Plunge as AI Trade Unwinds",
+    "headline": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795214113,
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-today-nov-20-stocks-plunge-as-ai-trade-unwinds/?.tsrc=rss",
+    "ts": 1795464990,
+    "url": "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-today-nov-20-stocks-plunge-as-ai-trade-unwinds/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Tech sees huge sell-off as Anthropic IPO fails to lift the market",
-   "value": {
-    "headline": "Tech sees huge sell-off as Anthropic IPO fails to lift the market",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795213165,
-    "url": "https://finance.yahoo.com/video/tech-sees-huge-sell-off-as-anthropic-ipo-fails-to-lift-the-market-221925316.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/video/tech-sees-huge-sell-off-as-anthropic-ipo-fails-to-lift-the-market-221925316.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-21",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Anthropic Stocks Jump 17.07% in Record Debut as $26 Billion Chipmaker Placement Lands",
-   "value": {
-    "headline": "Anthropic Stocks Jump 17.07% in Record Debut as $26 Billion Chipmaker Placement Lands",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795210910,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/anthropic-stocks-jump-17-07-214150203.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/anthropic-stocks-jump-17-07-214150203.html?.tsrc=rss"
+     "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nasdaq turns negative: Why Anthropic & other tech stocks are getting crushed",
+   "label": "Jensen Huang’s Return Just Added About $500 Billion to Micron, Dell, TSMC and the AI Stocks That Depend on Nvidia",
    "value": {
-    "headline": "Nasdaq turns negative: Why Anthropic & other tech stocks are getting crushed",
+    "headline": "Jensen Huang’s Return Just Added About $500 Billion to Micron, Dell, TSMC and the AI Stocks That Depend on Nvidia",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795210726,
-    "url": "https://finance.yahoo.com/video/nasdaq-turns-negative-why-anthropic--other-tech-stocks-are-getting-crushed-213846825.html?.tsrc=rss",
+    "ts": 1795464780,
+    "url": "https://247wallst.com/investing/2026/11/23/jensen-huangs-return-just-added-about-500-billion-to-micron-dell-tsmc-and-the-ai-stocks-that-depend-on-nvidia/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/nasdaq-turns-negative-why-anthropic--other-tech-stocks-are-getting-crushed-213846825.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/23/jensen-huangs-return-just-added-about-500-billion-to-micron-dell-tsmc-and-the-ai-stocks-that-depend-on-nvidia/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
+   "value": {
+    "headline": "Google Can Spend $48 Billion More On AI From Its Own Cash. Is That Enough For Nvidia?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795464490,
+    "url": "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/googl/articles/627438/google-can-spend-48-billion-more-on-ai-from-its-own-cash-is-that-enough-for-nvidia/2026-11-23?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Why Did Broadcom Stock Drop On Friday?",
+   "value": {
+    "headline": "Why Did Broadcom Stock Drop On Friday?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795460704,
+    "url": "https://www.trefis.com/stock/avgo/articles/627781/why-did-broadcom-stock-drop-on-friday/2026-11-23?.tsrc=rss",
+    "urls": [
+     "https://www.trefis.com/stock/avgo/articles/627781/why-did-broadcom-stock-drop-on-friday/2026-11-23?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-23",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 15 則（最高 1 來源確認）",
+   "label": "新聞聲量 20 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 15,
+    "headline_count": 20,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 137 分 / 96 留言",
+   "label": "HN 討論熱度 20 篇 / 67 分 / 29 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 137,
-    "comments": 96,
+    "points": 67,
+    "comments": 29,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -708,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
