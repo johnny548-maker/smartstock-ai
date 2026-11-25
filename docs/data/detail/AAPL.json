@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 349.08,
- "change_pct": 1.9,
+ "price": 354.07,
+ "change_pct": 1.43,
  "ohlc": [
-  {
-   "time": "2026-08-31",
-   "o": 319.36,
-   "h": 321.0,
-   "l": 312.56,
-   "c": 316.61,
-   "v": 41242700
-  },
   {
    "time": "2026-09-01",
    "o": 316.74,
@@ -482,14 +474,22 @@
    "h": 352.6,
    "l": 345.44,
    "c": 349.08,
-   "v": 58538400
+   "v": 58588700
+  },
+  {
+   "time": "2026-11-24",
+   "o": 348.06,
+   "h": 354.4,
+   "l": 345.88,
+   "c": 354.07,
+   "v": 41214200
   }
  ],
  "sr": {
-  "price": 349.08,
+  "price": 354.07,
   "resistance": [
-   351.16,
-   351.46
+   355.11,
+   360.83
   ],
   "support": [
    338.44,
@@ -498,7 +498,6 @@
   "strong_support": 242.57
  },
  "spark": [
-  316.61,
   324.88,
   324.71,
   327.96,
@@ -557,136 +556,142 @@
   352.45,
   349.21,
   342.56,
-  349.08
+  349.08,
+  354.07
  ],
- "spark_start": "2026-08-31",
- "spark_end": "2026-11-23",
+ "spark_start": "2026-09-01",
+ "spark_end": "2026-11-24",
  "fundamental": {
-  "pe_trailing": 38.87305,
-  "pe_forward": 33.017014,
+  "pe_trailing": 39.428734,
+  "pe_forward": 33.488987,
   "eps_trailing": 8.98,
   "eps_forward": 10.57273,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 349.08,
-  "stop": 330.78,
-  "target": 394.84,
-  "atr_bracket": 394.84,
+  "entry": 354.07,
+  "stop": 337.77,
+  "target": 394.81,
+  "atr_bracket": 394.81,
   "measured_move": 383.62,
   "target_band": [
+   377.43,
    383.62,
-   394.84
+   394.81
   ],
-  "stop_pct": -5.2,
-  "target_pct": 13.1,
+  "stop_pct": -4.6,
+  "target_pct": 11.5,
   "rr": 2.5,
-  "atr_pct": 2.6,
-  "swing_stop": 335.3,
-  "chandelier": 334.37,
-  "fib_targets": []
+  "atr_pct": 2.3,
+  "swing_stop": 338.12,
+  "chandelier": 334.02,
+  "fib_targets": [
+   369.54,
+   377.43,
+   386.13
+  ]
  },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "QQQ Paid a $300,000 Holder $1,524 in Dividends Over the Past Year While VYM Paid $7,164",
+   "label": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
    "value": {
-    "headline": "QQQ Paid a $300,000 Holder $1,524 in Dividends Over the Past Year While VYM Paid $7,164",
+    "headline": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795485819,
-    "url": "https://247wallst.com/investing/etf/2026/11/23/qqq-paid-a-300000-holder-1524-in-dividends-over-the-past-year-while-vym-paid-7164/?.tsrc=rss",
+    "ts": 1795561228,
+    "url": "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss",
     "urls": [
-     "https://247wallst.com/investing/etf/2026/11/23/qqq-paid-a-300000-holder-1524-in-dividends-over-the-past-year-while-vym-paid-7164/?.tsrc=rss"
+     "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Own HP Stock? Memory Costs Are The Risk",
+   "label": "Maple raises $5.3M to build AI products that protect your data, even from itself",
    "value": {
-    "headline": "Own HP Stock? Memory Costs Are The Risk",
+    "headline": "Maple raises $5.3M to build AI products that protect your data, even from itself",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795478309,
-    "url": "https://www.trefis.com/stock/hpq/articles/627662/own-hp-stock-memory-costs-are-the-risk/2026-11-23?.tsrc=rss",
+    "ts": 1795555192,
+    "url": "https://finance.yahoo.com/technology/ai/articles/maple-raises-5-3m-build-211952973.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/hpq/articles/627662/own-hp-stock-memory-costs-are-the-risk/2026-11-23?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/maple-raises-5-3m-build-211952973.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Chamath Says Microsoft “Clearly Is Going to Need to Have a Frontier Model.” Nadella Is Betting It Won’t",
+   "label": "Is Apple (AAPL) Above Fair Value As ETF Buying Returns?",
    "value": {
-    "headline": "Chamath Says Microsoft “Clearly Is Going to Need to Have a Frontier Model.” Nadella Is Betting It Won’t",
+    "headline": "Is Apple (AAPL) Above Fair Value As ETF Buying Returns?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795474231,
-    "url": "https://www.tikr.com/blog/chamath-says-microsoft-clearly-is-going-to-need-to-have-a-frontier-model-nadella-is-betting-it-wont?ref=yahoofinance&tlnk=yf-261123-rjg9hgh9&.tsrc=rss",
+    "ts": 1795554804,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-above-fair-value-211324050.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/chamath-says-microsoft-clearly-is-going-to-need-to-have-a-frontier-model-nadella-is-betting-it-wont?ref=yahoofinance&tlnk=yf-261123-rjg9hgh9&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-above-fair-value-211324050.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "How Risky Is Snap Stock Now?",
+   "label": "Top Analyst Reports for Apple, Philip Morris & Intel",
    "value": {
-    "headline": "How Risky Is Snap Stock Now?",
+    "headline": "Top Analyst Reports for Apple, Philip Morris & Intel",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795470876,
-    "url": "https://www.trefis.com/stock/snap/articles/627539/how-risky-is-snap-stock-now/2026-11-23?.tsrc=rss",
+    "ts": 1795553580,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-apple-philip-205300421.html?.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/snap/articles/627539/how-risky-is-snap-stock-now/2026-11-23?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-apple-philip-205300421.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
+   "label": "Trump Warns of “Paying 200 Percent on Chips” in Two Years. That Pushes TSMC Toward a $22.6 Billion Texas Plant",
    "value": {
-    "headline": "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
+    "headline": "Trump Warns of “Paying 200 Percent on Chips” in Two Years. That Pushes TSMC Toward a $22.6 Billion Texas Plant",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795464990,
-    "url": "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss",
+    "ts": 1795550362,
+    "url": "https://www.tikr.com/blog/trump-warns-of-paying-200-percent-on-chips-in-two-years-that-pushes-tsmc-toward-a-22-6-billion-texas-plant?ref=yahoofinance&tlnk=yf-261124-hf56p374&.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/charts/2026/11/23/apple-vs-broadcom-comparing-revenue-trends-amid-the-artificial-intelligence-boom/?.tsrc=rss"
+     "https://www.tikr.com/blog/trump-warns-of-paying-200-percent-on-chips-in-two-years-that-pushes-tsmc-toward-a-22-6-billion-texas-plant?ref=yahoofinance&tlnk=yf-261124-hf56p374&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -701,22 +706,22 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 431 分 / 83 留言",
+   "label": "HN 討論熱度 20 篇 / 100 分 / 32 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 431,
-    "comments": 83,
+    "points": 100,
+    "comments": 32,
     "n": 20,
     "window_hours": 72
    },
-   "severity": "warn",
-   "as_of": "2026-11-24",
+   "severity": "info",
+   "as_of": "2026-11-25",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -731,7 +736,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

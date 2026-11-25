@@ -1,17 +1,9 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": 165.05,
- "change_pct": 31.48,
+ "price": 155.38,
+ "change_pct": -5.86,
  "ohlc": [
-  {
-   "time": "2026-08-31",
-   "o": 218.63,
-   "h": 221.05,
-   "l": 215.97,
-   "c": 220.53,
-   "v": 124702700
-  },
   {
    "time": "2026-09-01",
    "o": 216.51,
@@ -482,23 +474,29 @@
    "h": 171.5,
    "l": 156.93,
    "c": 165.05,
-   "v": 779184200
+   "v": 782593300
+  },
+  {
+   "time": "2026-11-24",
+   "o": 159.1,
+   "h": 159.92,
+   "l": 150.5,
+   "c": 155.38,
+   "v": 383594200
   }
  ],
  "sr": {
-  "price": 165.05,
+  "price": 155.38,
   "resistance": [
    180.81,
    184.27
   ],
   "support": [
-   163.9,
    148.8
   ],
   "strong_support": 148.8
  },
  "spark": [
-  220.53,
   217.2,
   224.16,
   228.19,
@@ -557,16 +555,17 @@
   150.96,
   145.98,
   125.53,
-  165.05
+  165.05,
+  155.38
  ],
- "spark_start": "2026-08-31",
- "spark_end": "2026-11-23",
+ "spark_start": "2026-09-01",
+ "spark_end": "2026-11-24",
  "fundamental": {
-  "pe_trailing": 17.728249,
-  "pe_forward": 9.93961,
+  "pe_trailing": 16.68958,
+  "pe_forward": 9.357265,
   "eps_trailing": 9.31,
   "eps_forward": 16.60528,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,101 +574,101 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "In Taiwan, investors 'really happy' at Jensen Huang's return",
+   "label": "1 Reason I Haven’t Bought Oklo Stock -- and Probably Never Will",
    "value": {
-    "headline": "In Taiwan, investors 'really happy' at Jensen Huang's return",
+    "headline": "1 Reason I Haven’t Bought Oklo Stock -- and Probably Never Will",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795492336,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-investors-really-happy-jensen-035216471.html?.tsrc=rss",
+    "ts": 1795573202,
+    "url": "https://www.fool.com/investing/2026/11/24/1-reason-i-haven-t-bought-oklo-stock-and-probably-never-will/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/taiwan-investors-really-happy-jensen-035216471.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/24/1-reason-i-haven-t-bought-oklo-stock-and-probably-never-will/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Dips Overnight After Nvidia-Triggered Rally: AMD Registers 337M Shares For Resale Tied To OpenAI, Meta Warrant",
+   "label": "Dow Jones Futures Fall After AI Stocks Tumble; Trump Says 'Not Too Late' For Nvidia Stake",
    "value": {
-    "headline": "AMD Stock Dips Overnight After Nvidia-Triggered Rally: AMD Registers 337M Shares For Resale Tied To OpenAI, Meta Warrants",
+    "headline": "Dow Jones Futures Fall After AI Stocks Tumble; Trump Says 'Not Too Late' For Nvidia Stake",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795492068,
-    "url": "https://stocktwits.com/news-articles/markets/equity/amd-stock-dips-overnight-after-nvidia-triggered-rally-amd-registers-337-m-shares-for-resale-tied-to-open-ai-meta-warrants/cNbru6MR9jU?.tsrc=rss",
+    "ts": 1795572860,
+    "url": "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures-fall-after.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/amd-stock-dips-overnight-after-nvidia-triggered-rally-amd-registers-337-m-shares-for-resale-tied-to-open-ai-meta-warrants/cNbru6MR9jU?.tsrc=rss"
+     "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures-fall-after.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-24",
+   "severity": "warn",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "NASA Is Handing Out Moon Contracts Again. Intuitive Machines, Firefly, and Redwire All Got Paid. Only 1 Has the Balance ",
+   "label": "Nvidia’s Rebound, Falling Oil And A Strong Dollar: Three Signals Complicating The Fed’s December Decision",
    "value": {
-    "headline": "NASA Is Handing Out Moon Contracts Again. Intuitive Machines, Firefly, and Redwire All Got Paid. Only 1 Has the Balance Sheet to Keep Winning.",
+    "headline": "Nvidia’s Rebound, Falling Oil And A Strong Dollar: Three Signals Complicating The Fed’s December Decision",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795492022,
-    "url": "https://www.fool.com/investing/2026/11/23/nasa-is-handing-out-moon-contracts-again-intuitive-machines-firefly-and-redwire-all-got-paid-only-1-has-the-balance-sheet-to-keep-winning/?.tsrc=rss",
+    "ts": 1795572572,
+    "url": "https://stocktwits.com/news-articles/markets/equity/fed-december-rate-hike-oil-prices-nvidia-rally-inflation/cNbuClGR9l5?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/23/nasa-is-handing-out-moon-contracts-again-intuitive-machines-firefly-and-redwire-all-got-paid-only-1-has-the-balance-sheet-to-keep-winning/?.tsrc=rss"
+     "https://stocktwits.com/news-articles/markets/equity/fed-december-rate-hike-oil-prices-nvidia-rally-inflation/cNbuClGR9l5?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia Just Built Agent Security Into Its Chips. What Does That Mean for CrowdStrike?",
+   "label": "Wall St futures fall after S&P 500, Nasdaq end lower; inflation data eyed",
    "value": {
-    "headline": "Nvidia Just Built Agent Security Into Its Chips. What Does That Mean for CrowdStrike?",
+    "headline": "Wall St futures fall after S&P 500, Nasdaq end lower; inflation data eyed",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795491422,
-    "url": "https://www.fool.com/investing/2026/11/23/nvidia-just-built-agent-security-into-its-chips-what-does-that-mean-for-crowdstrike/?.tsrc=rss",
+    "ts": 1795570947,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-fall-p-014227385.html?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/investing/2026/11/23/nvidia-just-built-agent-security-into-its-chips-what-does-that-mean-for-crowdstrike/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-fall-p-014227385.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Asian stocks rally after Wall Street rebound as Jensen Huang returns as Nvidia’s CEO",
+   "label": "Why Nvidia's rebound may not mean the S&P 500 has bottomed",
    "value": {
-    "headline": "Asian stocks rally after Wall Street rebound as Jensen Huang returns as Nvidia’s CEO",
+    "headline": "Why Nvidia's rebound may not mean the S&P 500 has bottomed",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795491085,
-    "url": "https://finance.yahoo.com/markets/world-indices/articles/asian-stocks-rally-wall-street-033125464.html?.tsrc=rss",
+    "ts": 1795569790,
+    "url": "https://www.thestreet.com/investing/why-nvidias-rebound-may-not-mean-the-sp-500-has-bottomed?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/world-indices/articles/asian-stocks-rally-wall-street-033125464.html?.tsrc=rss"
+     "https://www.thestreet.com/investing/why-nvidias-rebound-may-not-mean-the-sp-500-has-bottomed?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -680,11 +679,12 @@
     "headline_count": 17,
     "max_source_count": 1,
     "distinct_sources": [
+     "cnyes",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

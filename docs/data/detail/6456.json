@@ -1,17 +1,9 @@
 {
  "stock": "6456",
  "name": "GIS-KY",
- "price": 67.6,
- "change_pct": 3.68,
+ "price": 58.4,
+ "change_pct": -9.88,
  "ohlc": [
-  {
-   "time": "2026-08-27",
-   "o": 69.2,
-   "h": 73.5,
-   "l": 68.5,
-   "c": 71.8,
-   "v": 6223462
-  },
   {
    "time": "2026-08-28",
    "o": 72.0,
@@ -480,25 +472,32 @@
    "time": "2026-11-24",
    "o": 71.5,
    "h": 71.7,
-   "l": 67.1,
-   "c": 67.6,
-   "v": 60186941
+   "l": 64.1,
+   "c": 64.8,
+   "v": 87091666
+  },
+  {
+   "time": "2026-11-25",
+   "o": 59.0,
+   "h": 61.2,
+   "l": 58.4,
+   "c": 58.4,
+   "v": 4758037
   }
  ],
  "sr": {
-  "price": 67.6,
+  "price": 58.4,
   "resistance": [
-   69.3,
-   70.5
+   64.5,
+   65.6
   ],
   "support": [
-   67.1,
-   64.7
+   57.3,
+   52.3
   ],
   "strong_support": 35.7
  },
  "spark": [
-  71.8,
   74.3,
   71.6,
   70.4,
@@ -557,10 +556,11 @@
   75.2,
   67.7,
   65.2,
-  67.6
+  64.8,
+  58.4
  ],
- "spark_start": "2026-08-27",
- "spark_end": "2026-11-24",
+ "spark_start": "2026-08-28",
+ "spark_end": "2026-11-25",
  "fundamental": {
   "rev_yoy": 167.5,
   "rev_accel": true,
@@ -571,17 +571,65 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_punish",
+   "kind": "risk",
+   "label": "🚫 處置股（第1次） 處置期間：115/11/25～115/12/01",
+   "value": {
+    "level": 1,
+    "reason": "連續三次",
+    "period": "115/11/25～115/12/01"
+   },
+   "severity": "warn",
+   "as_of": "2026-11-25",
+   "note": "處置交易資訊 overlay（交易限制警示）— 資訊性 badge，不進評分；需回測驗證後才加權"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 118,
+    "short_today": 289,
     "outstanding": 337939800,
-    "short_pct": 3.491746163074015e-05
+    "short_pct": 8.551818992613477e-05
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "台股單日飆漲3310點仍有5檔個股明起抓去關 處置到12/1止",
+   "value": {
+    "headline": "台股單日飆漲3310點仍有5檔個股明起抓去關 處置到12/1止",
+    "sources": [
+     "cnyes"
+    ],
+    "source_count": 1,
+    "ts": 1795521877,
+    "url": "cnyes:6671009",
+    "urls": [
+     "cnyes:6671009"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "sentiment",
+   "label": "新聞聲量 1 則（最高 1 來源確認）",
+   "value": {
+    "headline_count": 1,
+    "max_source_count": 1,
+    "distinct_sources": [
+     "cnyes"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-25",
+   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1085,6 +1133,10 @@
    {
     "t": "2026-11-24",
     "v": 24218
+   },
+   {
+    "t": "2026-11-25",
+    "v": 20460
    }
   ],
   "holder_pct": [

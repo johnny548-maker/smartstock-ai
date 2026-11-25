@@ -1,17 +1,9 @@
 {
  "stock": "FROG",
  "name": "JFrog",
- "price": 106.66,
- "change_pct": 5.64,
+ "price": 104.57,
+ "change_pct": -1.96,
  "ohlc": [
-  {
-   "time": "2026-08-31",
-   "o": 98.43,
-   "h": 100.73,
-   "l": 96.06,
-   "c": 100.07,
-   "v": 2191900
-  },
   {
    "time": "2026-09-01",
    "o": 98.6,
@@ -483,11 +475,22 @@
    "l": 104.96,
    "c": 106.66,
    "v": 1725500
+  },
+  {
+   "time": "2026-11-24",
+   "o": 104.69,
+   "h": 107.17,
+   "l": 102.71,
+   "c": 104.57,
+   "v": 2215500
   }
  ],
  "sr": {
-  "price": 106.66,
-  "resistance": [],
+  "price": 104.57,
+  "resistance": [
+   105.76,
+   121.85
+  ],
   "support": [
    86.77,
    86.04
@@ -495,7 +498,6 @@
   "strong_support": 27.0
  },
  "spark": [
-  100.07,
   91.78,
   91.73,
   90.61,
@@ -554,14 +556,55 @@
   114.38,
   109.27,
   100.96,
-  106.66
+  106.66,
+  104.57
  ],
- "spark_start": "2026-08-31",
- "spark_end": "2026-11-23",
+ "spark_start": "2026-09-01",
+ "spark_end": "2026-11-24",
  "fundamental": null,
  "levels": null,
  "generated_for": "detail",
  "overlays": [
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "This Software Name Shows Why AI Bets Are Paying Off Even Now",
+   "value": {
+    "headline": "This Software Name Shows Why AI Bets Are Paying Off Even Now",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795544982,
+    "url": "https://finance.yahoo.com/m/7c327289-2fc6-3fd8-9be0-1503901d09d1/this-software-name-shows-why.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/m/7c327289-2fc6-3fd8-9be0-1503901d09d1/this-software-name-shows-why.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "iShares Russell 2000 (IWM) Adds Glaukos and Jackson Financial on Nov. 20",
+   "value": {
+    "headline": "iShares Russell 2000 (IWM) Adds Glaukos and Jackson Financial on Nov. 20",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795518178,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-adds-110258205.html?.tsrc=rss",
+    "urls": [
+     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-adds-110258205.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-25",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
   {
    "source": "news",
    "kind": "catalyst",
@@ -579,7 +622,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -599,7 +642,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -619,47 +662,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "What iShares Russell 2000 (IWM) Sold: Glaukos Leads on Wednesday",
-   "value": {
-    "headline": "What iShares Russell 2000 (IWM) Sold: Glaukos Leads on Wednesday",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795172676,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-sold-110436625.html?.tsrc=rss",
-    "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-2000-iwm-sold-110436625.html?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-24",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Is GitLab Stock Worth The Wait?",
-   "value": {
-    "headline": "Is GitLab Stock Worth The Wait?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795087347,
-    "url": "https://www.trefis.com/stock/gtlb/articles/626874/is-gitlab-stock-worth-the-wait/2026-11-19?.tsrc=rss",
-    "urls": [
-     "https://www.trefis.com/stock/gtlb/articles/626874/is-gitlab-stock-worth-the-wait/2026-11-19?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
@@ -674,7 +677,7 @@
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -689,7 +692,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
