@@ -1,25 +1,9 @@
 {
  "stock": "AMD",
  "name": "AMD",
- "price": 453.46,
- "change_pct": 6.85,
+ "price": null,
+ "change_pct": null,
  "ohlc": [
-  {
-   "time": "2026-08-31",
-   "o": 466.22,
-   "h": 475.81,
-   "l": 463.68,
-   "c": 470.72,
-   "v": 12463000
-  },
-  {
-   "time": "2026-09-01",
-   "o": 459.91,
-   "h": 461.5,
-   "l": 452.3,
-   "c": 459.61,
-   "v": 16212800
-  },
   {
    "time": "2026-09-02",
    "o": 459.51,
@@ -482,24 +466,32 @@
    "h": 477.75,
    "l": 432.01,
    "c": 453.46,
-   "v": 53837500
+   "v": 54000600
+  },
+  {
+   "time": "2026-11-24",
+   "o": 425.13,
+   "h": 428.87,
+   "l": 396.01,
+   "c": 413.27,
+   "v": 46230400
+  },
+  {
+   "time": "2026-11-25",
+   "o": null,
+   "h": null,
+   "l": null,
+   "c": null,
+   "v": 51224876
   }
  ],
  "sr": {
-  "price": 453.46,
-  "resistance": [
-   469.22,
-   491.12
-  ],
-  "support": [
-   451.0,
-   440.5
-  ],
+  "price": null,
+  "resistance": [],
+  "support": [],
   "strong_support": 188.22
  },
  "spark": [
-  470.72,
-  459.61,
   457.06,
   456.16,
   477.57,
@@ -557,16 +549,18 @@
   530.14,
   489.19,
   424.39,
-  453.46
+  453.46,
+  413.27,
+  null
  ],
- "spark_start": "2026-08-31",
- "spark_end": "2026-11-23",
+ "spark_start": "2026-09-02",
+ "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 96.893166,
-  "pe_forward": 25.708899,
+  "pe_trailing": 86.75855,
+  "pe_forward": 23.019857,
   "eps_trailing": 4.68,
   "eps_forward": 17.63825,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -575,117 +569,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Dips Overnight After Nvidia-Triggered Rally: AMD Registers 337M Shares For Resale Tied To OpenAI, Meta Warrant",
+   "label": "Big AI Buyers Want a Second Source. Is AMD (AMD) It?",
    "value": {
-    "headline": "AMD Stock Dips Overnight After Nvidia-Triggered Rally: AMD Registers 337M Shares For Resale Tied To OpenAI, Meta Warrants",
+    "headline": "Big AI Buyers Want a Second Source. Is AMD (AMD) It?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795492068,
-    "url": "https://stocktwits.com/news-articles/markets/equity/amd-stock-dips-overnight-after-nvidia-triggered-rally-amd-registers-337-m-shares-for-resale-tied-to-open-ai-meta-warrants/cNbru6MR9jU?.tsrc=rss",
+    "ts": 1795654562,
+    "url": "https://finance.yahoo.com/technology/ai/articles/big-ai-buyers-want-second-005602621.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/amd-stock-dips-overnight-after-nvidia-triggered-rally-amd-registers-337-m-shares-for-resale-tied-to-open-ai-meta-warrants/cNbru6MR9jU?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/big-ai-buyers-want-second-005602621.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Jensen Huang’s Return As Nvidia CEO Sparks AI Stock Rally, But Congressional Probes Loom – And Analysts See Risks Ahead",
+   "label": "Anthropic Earns “$80 a Year per Watt” of GPUs, Says Modal’s CEO. That’s Good News for SpaceX",
    "value": {
-    "headline": "Jensen Huang’s Return As Nvidia CEO Sparks AI Stock Rally, But Congressional Probes Loom – And Analysts See Risks Ahead",
+    "headline": "Anthropic Earns “$80 a Year per Watt” of GPUs, Says Modal’s CEO. That’s Good News for SpaceX",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795487741,
-    "url": "https://stocktwits.com/news-articles/markets/equity/jensen-huang-s-return-as-nvidia-ceo-sparks-ai-stock-rally-but-congressional-probes-loom-and-analysts-see-risks-ahead/cNbrt2TR9ju?.tsrc=rss",
+    "ts": 1795650106,
+    "url": "https://www.tikr.com/blog/anthropic-earns-80-a-year-per-watt-of-gpus-says-modals-ceo-thats-good-news-for-spacex?ref=yahoofinance&tlnk=yf-261125-5cgv35mg&.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/jensen-huang-s-return-as-nvidia-ceo-sparks-ai-stock-rally-but-congressional-probes-loom-and-analysts-see-risks-ahead/cNbrt2TR9ju?.tsrc=rss"
+     "https://www.tikr.com/blog/anthropic-earns-80-a-year-per-watt-of-gpus-says-modals-ceo-thats-good-news-for-spacex?ref=yahoofinance&tlnk=yf-261125-5cgv35mg&.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-24",
+   "severity": "info",
+   "as_of": "2026-11-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Hewlett Packard Enterprise Q4 Earnings Call Highlights",
+   "label": "Altimeter’s Brad Gerstner Says Nvidia Was Priced for “Negative Growth for 2028 and 2029.” Wall Street Expects 29%",
    "value": {
-    "headline": "Hewlett Packard Enterprise Q4 Earnings Call Highlights",
+    "headline": "Altimeter’s Brad Gerstner Says Nvidia Was Priced for “Negative Growth for 2028 and 2029.” Wall Street Expects 29%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795482806,
-    "url": "https://www.marketbeat.com/instant-alerts/transcript-hewlett-packard-enterprise-q4-earnings-call-highlights-2026-11-23/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "ts": 1795649942,
+    "url": "https://www.tikr.com/blog/altimeters-brad-gerstner-says-nvidia-was-priced-for-negative-growth-for-2028-and-2029-wall-street-expects-29?ref=yahoofinance&tlnk=yf-261125-3qj6vf95&.tsrc=rss",
     "urls": [
-     "https://www.marketbeat.com/instant-alerts/transcript-hewlett-packard-enterprise-q4-earnings-call-highlights-2026-11-23/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+     "https://www.tikr.com/blog/altimeters-brad-gerstner-says-nvidia-was-priced-for-negative-growth-for-2028-and-2029-wall-street-expects-29?ref=yahoofinance&tlnk=yf-261125-3qj6vf95&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD Stock Rallies Nearly 8% as a Bernstein Analyst Remains Bullish Despite the Hunterbrook Short Report",
+   "label": "2 Billionaire Funds Dumped AMD Last Quarter. Is It a Sell?",
    "value": {
-    "headline": "AMD Stock Rallies Nearly 8% as a Bernstein Analyst Remains Bullish Despite the Hunterbrook Short Report",
+    "headline": "2 Billionaire Funds Dumped AMD Last Quarter. Is It a Sell?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795478312,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-stock-rallies-nearly-8-235832362.html?.tsrc=rss",
+    "ts": 1795646581,
+    "url": "https://www.fool.com/investing/2026/11/25/2-billionaire-funds-dumped-amd-last-quarter-is-it-a-sell/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amd-stock-rallies-nearly-8-235832362.html?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/25/2-billionaire-funds-dumped-amd-last-quarter-is-it-a-sell/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "AMD registers up to 337 million shares for resale tied to OpenAI, Meta warrants",
+   "label": "Analysts Expect More From Marvell Than Marvell Does",
    "value": {
-    "headline": "AMD registers up to 337 million shares for resale tied to OpenAI, Meta warrants",
+    "headline": "Analysts Expect More From Marvell Than Marvell Does",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795476144,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-registers-337-million-shares-232224001.html?.tsrc=rss",
+    "ts": 1795645487,
+    "url": "https://www.trefis.com/stock/mrvl/articles/628747/analysts-expect-more-from-marvell-than-marvell-does/2026-11-25?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/amd-registers-337-million-shares-232224001.html?.tsrc=rss"
+     "https://www.trefis.com/stock/mrvl/articles/628747/analysts-expect-more-from-marvell-than-marvell-does/2026-11-25?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 17 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 17,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 20 篇 / 92 分 / 42 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 92,
+    "comments": 42,
+    "n": 20,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-26",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +708,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-26",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
