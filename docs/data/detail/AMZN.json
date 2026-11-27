@@ -1,17 +1,9 @@
 {
  "stock": "AMZN",
  "name": "亞馬遜",
- "price": 252.29,
- "change_pct": -1.21,
+ "price": 244.43,
+ "change_pct": -3.12,
  "ohlc": [
-  {
-   "time": "2026-09-01",
-   "o": 254.83,
-   "h": 255.82,
-   "l": 251.93,
-   "c": 254.92,
-   "v": 31700100
-  },
   {
    "time": "2026-09-02",
    "o": 254.26,
@@ -482,23 +474,30 @@
    "h": 255.56,
    "l": 250.53,
    "c": 252.29,
-   "v": 33845600
+   "v": 33920700
+  },
+  {
+   "time": "2026-11-25",
+   "o": 243.13,
+   "h": 246.56,
+   "l": 235.96,
+   "c": 244.43,
+   "v": 62479500
   }
  ],
  "sr": {
-  "price": 252.29,
+  "price": 244.43,
   "resistance": [
-   255.36,
-   256.18
+   246.35,
+   247.78
   ],
   "support": [
-   251.93,
-   248.6
+   244.3,
+   238.25
   ],
   "strong_support": 196.0
  },
  "spark": [
-  254.92,
   254.98,
   258.9,
   258.51,
@@ -557,13 +556,14 @@
   257.37,
   246.82,
   255.39,
-  252.29
+  252.29,
+  244.43
  ],
- "spark_start": "2026-09-01",
- "spark_end": "2026-11-24",
+ "spark_start": "2026-09-02",
+ "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 20.395311,
-  "pe_forward": 23.090624,
+  "pe_trailing": 19.759903,
+  "pe_forward": 22.371244,
   "eps_trailing": 12.37,
   "eps_forward": 10.92608,
   "stale": false,
@@ -575,117 +575,132 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "e.l.f. Beauty vs. Hershey: Which Consumer Goods Stock Is a Better Buy for 2027?",
+   "label": "Weeks Before His Wife Needs a Nursing Home, He Buys a $75,000 SUV Online. Medicaid Ignores One Car Whatever It Costs, Ta",
    "value": {
-    "headline": "e.l.f. Beauty vs. Hershey: Which Consumer Goods Stock Is a Better Buy for 2027?",
+    "headline": "Weeks Before His Wife Needs a Nursing Home, He Buys a $75,000 SUV Online. Medicaid Ignores One Car Whatever It Costs, Taking $75,000 Off the Savings It Expects Them to Spend Down",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795573370,
-    "url": "https://www.fool.com/coverage/better-buy/2026/11/24/elf-beauty-vs-hershey-which-consumer-goods-stock-is-a-better-buy-for-2027/?.tsrc=rss",
+    "ts": 1795737847,
+    "url": "https://247wallst.com/personal-finance/2026/11/26/weeks-before-his-wife-needs-a-nursing-home-he-buys-a-75000-suv-online-medicaid-ignores-one-car-whatever-it-costs-taking-75000-off-the-savings-it-expects-them-to-spend-down/?.tsrc=rss",
     "urls": [
-     "https://www.fool.com/coverage/better-buy/2026/11/24/elf-beauty-vs-hershey-which-consumer-goods-stock-is-a-better-buy-for-2027/?.tsrc=rss"
+     "https://247wallst.com/personal-finance/2026/11/26/weeks-before-his-wife-needs-a-nursing-home-he-buys-a-75000-suv-online-medicaid-ignores-one-car-whatever-it-costs-taking-75000-off-the-savings-it-expects-them-to-spend-down/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
+   "label": "Amazon tried to kill Musk’s plan for 1 million AI satellites. The FCC chair scolded it and gave SpaceX the green light",
    "value": {
-    "headline": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
+    "headline": "Amazon tried to kill Musk’s plan for 1 million AI satellites. The FCC chair scolded it and gave SpaceX the green light",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795561228,
-    "url": "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss",
+    "ts": 1795735800,
+    "url": "https://finance.yahoo.com/technology/ai/articles/amazon-tried-kill-musk-plan-233000718.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/amazon-tried-kill-musk-plan-233000718.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Amazon customers may qualify for $309.5M settlement. See how",
+   "label": "Steve Cohen’s 5 Biggest Stock Bets for 2027",
    "value": {
-    "headline": "Amazon customers may qualify for $309.5M settlement. See how",
+    "headline": "Steve Cohen’s 5 Biggest Stock Bets for 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795559564,
-    "url": "https://www.usatoday.com/story/money/2026/11/24/amazon-settlement-deadline-is-approaching-who-qualifies/92947347007/?.tsrc=rss",
+    "ts": 1795730774,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/steve-cohen-5-biggest-stock-220614898.html?.tsrc=rss",
     "urls": [
-     "https://www.usatoday.com/story/money/2026/11/24/amazon-settlement-deadline-is-approaching-who-qualifies/92947347007/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/steve-cohen-5-biggest-stock-220614898.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic falls below IPO price as Nvidia gives back gains",
+   "label": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
    "value": {
-    "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+    "headline": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795556758,
-    "url": "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html?.tsrc=rss",
+    "ts": 1795728120,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Best Buy also among companies benefiting from AI boom",
+   "label": "SpaceX Stocks Rise 1.3% as FCC Approves 1 Million Orbital Data Center Satellites",
    "value": {
-    "headline": "Best Buy also among companies benefiting from AI boom",
+    "headline": "SpaceX Stocks Rise 1.3% as FCC Approves 1 Million Orbital Data Center Satellites",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795556696,
-    "url": "https://finance.yahoo.com/video/best-buy-also-among-companies-benefiting-from-ai-boom-214456029.html?.tsrc=rss",
+    "ts": 1795720228,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-stocks-rise-1-3-191028542.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/video/best-buy-also-among-companies-benefiting-from-ai-boom-214456029.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/spacex-stocks-rise-1-3-191028542.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 20 則（最高 1 來源確認）",
+   "label": "新聞聲量 18 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 20,
+    "headline_count": 18,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
+  },
+  {
+   "source": "hackernews",
+   "kind": "sentiment",
+   "label": "HN 討論熱度 12 篇 / 264 分 / 149 留言",
+   "value": {
+    "metric": "hn_buzz",
+    "points": 264,
+    "comments": 149,
+    "n": 12,
+    "window_hours": 72
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -699,7 +714,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

@@ -1,17 +1,9 @@
 {
  "stock": "6834",
  "name": "天二科技",
- "price": 83.0,
- "change_pct": 5.73,
+ "price": 83.2,
+ "change_pct": -0.72,
  "ohlc": [
-  {
-   "time": "2026-08-31",
-   "o": 92.4,
-   "h": 96.4,
-   "l": 88.5,
-   "c": 89.9,
-   "v": 2090101
-  },
   {
    "time": "2026-09-01",
    "o": 90.1,
@@ -481,15 +473,23 @@
    "o": 80.8,
    "h": 84.6,
    "l": 80.8,
-   "c": 83.0,
-   "v": 1261737
+   "c": 83.8,
+   "v": 3679584
+  },
+  {
+   "time": "2026-11-27",
+   "o": 84.0,
+   "h": 85.8,
+   "l": 83.0,
+   "c": 83.2,
+   "v": 686888
   }
  ],
  "sr": {
-  "price": 83.0,
+  "price": 83.2,
   "resistance": [
    84.53,
-   98.9
+   87.2
   ],
   "support": [
    70.2,
@@ -498,7 +498,6 @@
   "strong_support": 21.89
  },
  "spark": [
-  89.9,
   89.9,
   92.2,
   87.2,
@@ -557,10 +556,11 @@
   79.3,
   87.2,
   78.5,
-  83.0
+  83.8,
+  83.2
  ],
- "spark_start": "2026-08-31",
- "spark_end": "2026-11-26",
+ "spark_start": "2026-09-01",
+ "spark_end": "2026-11-27",
  "fundamental": {
   "rev_yoy": 179.6,
   "rev_accel": true,
@@ -571,16 +571,54 @@
  "generated_for": "detail",
  "overlays": [
   {
+   "source": "twse_t86",
+   "kind": "inst",
+   "label": "三大法人買超 269,046 股",
+   "value": {
+    "foreign": 265205,
+    "trust": -1000,
+    "dealer": 4841,
+    "total": 269046
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -9
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
+  },
+  {
+   "source": "twse_pe",
+   "kind": "fundamental",
+   "label": "PE 27.8 / 殖利率 0.48% / PB 4.49",
+   "value": {
+    "pe": 27.84,
+    "yield": 0.48,
+    "pb": 4.49
+   },
+   "severity": "info",
+   "as_of": "2026-11-26",
+   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
+  },
+  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 32,
-    "outstanding": 88471082,
-    "short_pct": 3.617001089689397e-05
+    "short_today": 23,
+    "outstanding": 98471082,
+    "short_pct": 2.335711107551352e-05
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   }
  ],
@@ -1093,6 +1131,10 @@
    {
     "t": "2026-11-26",
     "v": -8355
+   },
+   {
+    "t": "2026-11-27",
+    "v": -8086
    }
   ],
   "holder_pct": [

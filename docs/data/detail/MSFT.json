@@ -1,17 +1,9 @@
 {
  "stock": "MSFT",
  "name": "微軟",
- "price": 496.13,
- "change_pct": 0.74,
+ "price": 489.93,
+ "change_pct": -1.25,
  "ohlc": [
-  {
-   "time": "2026-09-01",
-   "o": 496.56,
-   "h": 504.99,
-   "l": 495.82,
-   "c": 500.05,
-   "v": 21046900
-  },
   {
    "time": "2026-09-02",
    "o": 498.89,
@@ -482,23 +474,30 @@
    "h": 501.82,
    "l": 488.43,
    "c": 496.13,
-   "v": 23086900
+   "v": 23104500
+  },
+  {
+   "time": "2026-11-25",
+   "o": 485.23,
+   "h": 493.44,
+   "l": 477.39,
+   "c": 489.93,
+   "v": 26759500
   }
  ],
  "sr": {
-  "price": 496.13,
+  "price": 489.93,
   "resistance": [
    508.97,
    511.78
   ],
   "support": [
-   490.27,
-   486.29
+   486.29,
+   485.06
   ],
   "strong_support": 347.87
  },
  "spark": [
-  500.05,
   495.86,
   509.14,
   498.74,
@@ -557,15 +556,16 @@
   498.3,
   484.52,
   492.5,
-  496.13
+  496.13,
+  489.93
  ],
- "spark_start": "2026-09-01",
- "spark_end": "2026-11-24",
+ "spark_start": "2026-09-02",
+ "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 25.89405,
-  "pe_forward": 20.500528,
+  "pe_trailing": 25.57046,
+  "pe_forward": 20.241896,
   "eps_trailing": 19.16,
-  "eps_forward": 24.20084,
+  "eps_forward": 24.20376,
   "stale": false,
   "source": "yfinance"
  },
@@ -575,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Nvidia-Backed Nscale Reportedly Eyes Private Route As AI Market Sell-Off Clouds $35B IPO Plans",
+   "label": "LUNR Aerospace Appoints Draganfly CEO Cameron Chell to Board of Directors",
    "value": {
-    "headline": "Nvidia-Backed Nscale Reportedly Eyes Private Route As AI Market Sell-Off Clouds $35B IPO Plans",
+    "headline": "LUNR Aerospace Appoints Draganfly CEO Cameron Chell to Board of Directors",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795565791,
-    "url": "https://stocktwits.com/news-articles/markets/equity/nvidia-backed-nscale-reportedly-eyes-private-route-as-ai-market-sell-off-clouds-35-b-ipo-plans/cNbuDjYR9lc?.tsrc=rss",
+    "ts": 1795734000,
+    "url": "https://finance.yahoo.com/technology/articles/lunr-aerospace-appoints-draganfly-ceo-230000859.html?.tsrc=rss",
     "urls": [
-     "https://stocktwits.com/news-articles/markets/equity/nvidia-backed-nscale-reportedly-eyes-private-route-as-ai-market-sell-off-clouds-35-b-ipo-plans/cNbuDjYR9lc?.tsrc=rss"
+     "https://finance.yahoo.com/technology/articles/lunr-aerospace-appoints-draganfly-ceo-230000859.html?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Tech Stock Sell-Off: Down 13%, Is Microsoft a Buy Now?",
+   "value": {
+    "headline": "Tech Stock Sell-Off: Down 13%, Is Microsoft a Buy Now?",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795731602,
+    "url": "https://www.fool.com/investing/2026/11/26/tech-stock-sell-off-down-13-is-microsoft-a-buy-now/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/26/tech-stock-sell-off-down-13-is-microsoft-a-buy-now/?.tsrc=rss"
     ]
    },
    "severity": "warn",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Driven Tech Completes Acquisitions of ADEX and TekBay, Accelerating Enterprise AI Strategy",
+   "label": "Steve Cohen’s 5 Biggest Stock Bets for 2027",
    "value": {
-    "headline": "Driven Tech Completes Acquisitions of ADEX and TekBay, Accelerating Enterprise AI Strategy",
+    "headline": "Steve Cohen’s 5 Biggest Stock Bets for 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795561800,
-    "url": "https://finance.yahoo.com/technology/ai/articles/driven-tech-completes-acquisitions-adex-231000507.html?.tsrc=rss",
+    "ts": 1795730774,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/steve-cohen-5-biggest-stock-220614898.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/driven-tech-completes-acquisitions-adex-231000507.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/steve-cohen-5-biggest-stock-220614898.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Maverick Medical AI Surfaces CodeAgent within Microsoft Radiology Reporting Solutions to Reduce Physician Rework",
+   "label": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
    "value": {
-    "headline": "Maverick Medical AI Surfaces CodeAgent within Microsoft Radiology Reporting Solutions to Reduce Physician Rework",
+    "headline": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795560840,
-    "url": "https://finance.yahoo.com/healthcare/articles/maverick-medical-ai-surfaces-codeagent-225400029.html?.tsrc=rss",
+    "ts": 1795728120,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/healthcare/articles/maverick-medical-ai-surfaces-codeagent-225400029.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Retailers Sanguine for Black Friday",
+   "label": "Microsoft Stocks Slip 1.25% While Nadella Backs Cheaper In-House AI Models",
    "value": {
-    "headline": "Retailers Sanguine for Black Friday",
+    "headline": "Microsoft Stocks Slip 1.25% While Nadella Backs Cheaper In-House AI Models",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795559066,
-    "url": "https://wwd.com/business-news/retail/retail-outlook-mood-black-friday-1239462186/?.tsrc=rss",
+    "ts": 1795718520,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-slip-1-25-184200035.html?.tsrc=rss",
     "urls": [
-     "https://wwd.com/business-news/retail/retail-outlook-mood-black-friday-1239462186/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-slip-1-25-184200035.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "A week on, Chase still hasn’t explained its outage",
-   "value": {
-    "headline": "A week on, Chase still hasn’t explained its outage",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795558502,
-    "url": "https://www.americanbanker.com/news/a-week-on-chase-still-hasn-t-explained-its-outage?.tsrc=rss",
-    "urls": [
-     "https://www.americanbanker.com/news/a-week-on-chase-still-hasn-t-explained-its-outage?.tsrc=rss"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -699,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

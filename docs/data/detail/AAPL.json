@@ -1,17 +1,9 @@
 {
  "stock": "AAPL",
  "name": "蘋果",
- "price": 354.07,
- "change_pct": 1.43,
+ "price": 355.58,
+ "change_pct": 0.43,
  "ohlc": [
-  {
-   "time": "2026-09-01",
-   "o": 316.74,
-   "h": 327.05,
-   "l": 314.49,
-   "c": 324.88,
-   "v": 53167400
-  },
   {
    "time": "2026-09-02",
    "o": 326.62,
@@ -482,23 +474,29 @@
    "h": 354.4,
    "l": 345.88,
    "c": 354.07,
-   "v": 41214200
+   "v": 41270400
+  },
+  {
+   "time": "2026-11-25",
+   "o": 353.48,
+   "h": 356.75,
+   "l": 345.13,
+   "c": 355.58,
+   "v": 54285300
   }
  ],
  "sr": {
-  "price": 354.07,
+  "price": 355.58,
   "resistance": [
-   355.11,
    360.83
   ],
   "support": [
-   338.44,
-   325.56
+   340.56,
+   338.44
   ],
   "strong_support": 242.57
  },
  "spark": [
-  324.88,
   324.71,
   327.96,
   319.73,
@@ -557,35 +555,36 @@
   349.21,
   342.56,
   349.08,
-  354.07
+  354.07,
+  355.58
  ],
- "spark_start": "2026-09-01",
- "spark_end": "2026-11-24",
+ "spark_start": "2026-09-02",
+ "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 39.428734,
-  "pe_forward": 33.488987,
+  "pe_trailing": 39.59688,
+  "pe_forward": 33.631805,
   "eps_trailing": 8.98,
   "eps_forward": 10.57273,
   "stale": false,
   "source": "yfinance"
  },
  "levels": {
-  "entry": 354.07,
-  "stop": 337.77,
-  "target": 394.81,
-  "atr_bracket": 394.81,
+  "entry": 355.58,
+  "stop": 339.53,
+  "target": 395.71,
+  "atr_bracket": 395.71,
   "measured_move": 383.62,
   "target_band": [
    377.43,
    383.62,
-   394.81
+   395.71
   ],
-  "stop_pct": -4.6,
-  "target_pct": 11.5,
+  "stop_pct": -4.5,
+  "target_pct": 11.3,
   "rr": 2.5,
   "atr_pct": 2.3,
-  "swing_stop": 338.12,
-  "chandelier": 334.02,
+  "swing_stop": 338.15,
+  "chandelier": 333.35,
   "fib_targets": [
    369.54,
    377.43,
@@ -597,132 +596,118 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
+   "label": "Apple Enters the AI Agent Race as It Takes on OpenAI, Anthropic, and Meta. What That Means for AAPL Stock.",
    "value": {
-    "headline": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
+    "headline": "Apple Enters the AI Agent Race as It Takes on OpenAI, Anthropic, and Meta. What That Means for AAPL Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795561228,
-    "url": "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss",
+    "ts": 1795721403,
+    "url": "https://www.barchart.com/story/news/9022924/apple-enters-the-ai-agent-race-as-it-takes-on-openai-anthropic-and-meta-what-that-means-for-aapl-stock?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss"
+     "https://www.barchart.com/story/news/9022924/apple-enters-the-ai-agent-race-as-it-takes-on-openai-anthropic-and-meta-what-that-means-for-aapl-stock?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Maple raises $5.3M to build AI products that protect your data, even from itself",
+   "label": "Apple Stocks Rise as AI Selloff Spares the iPhone Maker",
    "value": {
-    "headline": "Maple raises $5.3M to build AI products that protect your data, even from itself",
+    "headline": "Apple Stocks Rise as AI Selloff Spares the iPhone Maker",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795555192,
-    "url": "https://finance.yahoo.com/technology/ai/articles/maple-raises-5-3m-build-211952973.html?.tsrc=rss",
+    "ts": 1795719638,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-stocks-rise-ai-selloff-190038273.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/ai/articles/maple-raises-5-3m-build-211952973.html?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/apple-stocks-rise-ai-selloff-190038273.html?.tsrc=rss"
     ]
    },
-   "severity": "info",
-   "as_of": "2026-11-25",
+   "severity": "warn",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Is Apple (AAPL) Above Fair Value As ETF Buying Returns?",
+   "label": "Apple Removes Talkie From App Store After Reports of Inappropriate AI Messages",
    "value": {
-    "headline": "Is Apple (AAPL) Above Fair Value As ETF Buying Returns?",
+    "headline": "Apple Removes Talkie From App Store After Reports of Inappropriate AI Messages",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795554804,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-above-fair-value-211324050.html?.tsrc=rss",
+    "ts": 1795716577,
+    "url": "https://finance.yahoo.com/technology/ai/articles/apple-removes-talkie-app-store-180937483.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-above-fair-value-211324050.html?.tsrc=rss"
+     "https://finance.yahoo.com/technology/ai/articles/apple-removes-talkie-app-store-180937483.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Top Analyst Reports for Apple, Philip Morris & Intel",
+   "label": "Apple, Exxon and Lowe’s Are Rewarding Shareholders Beyond Their Regular Dividends",
    "value": {
-    "headline": "Top Analyst Reports for Apple, Philip Morris & Intel",
+    "headline": "Apple, Exxon and Lowe’s Are Rewarding Shareholders Beyond Their Regular Dividends",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795553580,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-apple-philip-205300421.html?.tsrc=rss",
+    "ts": 1795712854,
+    "url": "https://247wallst.com/investing/2026/11/26/apple-exxon-and-lowes-are-rewarding-shareholders-beyond-their-regular-dividends/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-apple-philip-205300421.html?.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/26/apple-exxon-and-lowes-are-rewarding-shareholders-beyond-their-regular-dividends/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Trump Warns of “Paying 200 Percent on Chips” in Two Years. That Pushes TSMC Toward a $22.6 Billion Texas Plant",
+   "label": "The Economy Grew Way Faster Than First Reported: Q3 GDP Revised Up to 4.3%",
    "value": {
-    "headline": "Trump Warns of “Paying 200 Percent on Chips” in Two Years. That Pushes TSMC Toward a $22.6 Billion Texas Plant",
+    "headline": "The Economy Grew Way Faster Than First Reported: Q3 GDP Revised Up to 4.3%",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795550362,
-    "url": "https://www.tikr.com/blog/trump-warns-of-paying-200-percent-on-chips-in-two-years-that-pushes-tsmc-toward-a-22-6-billion-texas-plant?ref=yahoofinance&tlnk=yf-261124-hf56p374&.tsrc=rss",
+    "ts": 1795706889,
+    "url": "https://247wallst.com/investing/2026/11/26/the-economy-grew-way-faster-than-first-reported-q3-gdp-revised-up-to-4-3/?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/trump-warns-of-paying-200-percent-on-chips-in-two-years-that-pushes-tsmc-toward-a-22-6-billion-texas-plant?ref=yahoofinance&tlnk=yf-261124-hf56p374&.tsrc=rss"
+     "https://247wallst.com/investing/2026/11/26/the-economy-grew-way-faster-than-first-reported-q3-gdp-revised-up-to-4-3/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 19 則（最高 1 來源確認）",
+   "label": "新聞聲量 21 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 19,
+    "headline_count": 21,
     "max_source_count": 1,
     "distinct_sources": [
+     "cna",
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
-  },
-  {
-   "source": "hackernews",
-   "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 100 分 / 32 留言",
-   "value": {
-    "metric": "hn_buzz",
-    "points": 100,
-    "comments": 32,
-    "n": 20,
-    "window_hours": 72
-   },
-   "severity": "info",
-   "as_of": "2026-11-25",
-   "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
    "source": "sec_ftd",
@@ -736,7 +721,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

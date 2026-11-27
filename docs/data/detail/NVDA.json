@@ -1,8 +1,8 @@
 {
  "stock": "NVDA",
  "name": "NVIDIA",
- "price": null,
- "change_pct": null,
+ "price": 149.3,
+ "change_pct": -3.91,
  "ohlc": [
   {
    "time": "2026-09-02",
@@ -478,18 +478,24 @@
   },
   {
    "time": "2026-11-25",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 359527027
+   "o": 144.06,
+   "h": 150.37,
+   "l": 141.17,
+   "c": 149.3,
+   "v": 366571900
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
-  "strong_support": 148.8
+  "price": 149.3,
+  "resistance": [
+   180.81,
+   184.27
+  ],
+  "support": [
+   148.8,
+   124.5
+  ],
+  "strong_support": 124.5
  },
  "spark": [
   224.16,
@@ -551,16 +557,16 @@
   125.53,
   165.05,
   155.38,
-  null
+  149.3
  ],
  "spark_start": "2026-09-02",
  "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 16.68958,
-  "pe_forward": 9.357265,
+  "pe_trailing": 16.03652,
+  "pe_forward": 8.991117,
   "eps_trailing": 9.31,
   "eps_forward": 16.60528,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
  "levels": null,
@@ -569,116 +575,116 @@
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Dow Jones Futures Rise; Market Goes On Wild Ride As Nasdaq Slashes Losses",
+   "label": "Dow Jones Futures Rise; Look For This Bullish Market Signal On Black Friday",
    "value": {
-    "headline": "Dow Jones Futures Rise; Market Goes On Wild Ride As Nasdaq Slashes Losses",
+    "headline": "Dow Jones Futures Rise; Look For This Bullish Market Signal On Black Friday",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795656875,
-    "url": "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures-rise%3B.html?.tsrc=rss",
+    "ts": 1795743275,
+    "url": "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures-rise%3B-look.html?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures-rise%3B.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Broadcom Stock Hasn't Traded This Low Since July 2025. I Think It's a Buy.",
-   "value": {
-    "headline": "Broadcom Stock Hasn't Traded This Low Since July 2025. I Think It's a Buy.",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795654982,
-    "url": "https://www.fool.com/investing/2026/11/25/broadcom-stock-hasn-t-traded-this-low-since-july-2025-i-think-it-s-a-buy/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/25/broadcom-stock-hasn-t-traded-this-low-since-july-2025-i-think-it-s-a-buy/?.tsrc=rss"
+     "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures-rise%3B-look.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "'Alarming, if unsurprising': Trump administration cut corners with hasty Nvidia investigation, former CIA officer warns",
+   "label": "1 Incredibly Cheap Artificial Intelligence (AI) Stock to Buy Before It Doubles in 2027",
    "value": {
-    "headline": "'Alarming, if unsurprising': Trump administration cut corners with hasty Nvidia investigation, former CIA officer warns",
+    "headline": "1 Incredibly Cheap Artificial Intelligence (AI) Stock to Buy Before It Doubles in 2027",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795654800,
-    "url": "https://finance.yahoo.com/technology/articles/alarming-unsurprising-trump-administration-cut-010000318.html?.tsrc=rss",
+    "ts": 1795739282,
+    "url": "https://www.fool.com/investing/2026/11/26/1-incredibly-cheap-artificial-intelligence-ai-stock-to-buy-before-it-doubles-in-2027/?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/technology/articles/alarming-unsurprising-trump-administration-cut-010000318.html?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
-   "value": {
-    "headline": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795654800,
-    "url": "https://beincrypto.com/apple-stock-ai-selloff-safe-haven/?.tsrc=rss",
-    "urls": [
-     "https://beincrypto.com/apple-stock-ai-selloff-safe-haven/?.tsrc=rss"
-    ]
-   },
-   "severity": "warn",
-   "as_of": "2026-11-26",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "Vertex Pharmaceuticals Has Turned $10,000 Into $61,660 Over 10 Years. Here's What Could Come Next",
-   "value": {
-    "headline": "Vertex Pharmaceuticals Has Turned $10,000 Into $61,660 Over 10 Years. Here's What Could Come Next",
-    "sources": [
-     "yahoo_us"
-    ],
-    "source_count": 1,
-    "ts": 1795653120,
-    "url": "https://www.fool.com/investing/2026/11/25/vertex-pharmaceuticals-has-turned-10000-into-x-ove/?.tsrc=rss",
-    "urls": [
-     "https://www.fool.com/investing/2026/11/25/vertex-pharmaceuticals-has-turned-10000-into-x-ove/?.tsrc=rss"
+     "https://www.fool.com/investing/2026/11/26/1-incredibly-cheap-artificial-intelligence-ai-stock-to-buy-before-it-doubles-in-2027/?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "These 2 AI Chip Stocks Are Down 36% to 39% From Their Highs. Here’s What History Says Happens Next.",
+   "value": {
+    "headline": "These 2 AI Chip Stocks Are Down 36% to 39% From Their Highs. Here’s What History Says Happens Next.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795738802,
+    "url": "https://www.fool.com/investing/2026/11/26/these-2-ai-chip-stocks-are-down-36-to-39-from-their-highs-here-s-what-history-says-happens-next/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/26/these-2-ai-chip-stocks-are-down-36-to-39-from-their-highs-here-s-what-history-says-happens-next/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "2 Dividend Stocks to Buy in November and 1 to Leave on the Shelf",
+   "value": {
+    "headline": "2 Dividend Stocks to Buy in November and 1 to Leave on the Shelf",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795736702,
+    "url": "https://www.fool.com/investing/2026/11/26/2-dividend-stocks-to-buy-in-november-and-1-to-leave-on-the-shelf/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/26/2-dividend-stocks-to-buy-in-november-and-1-to-leave-on-the-shelf/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
+   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
+  },
+  {
+   "source": "news",
+   "kind": "catalyst",
+   "label": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Semiconductor Stock Through 2030, Th",
+   "value": {
+    "headline": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Semiconductor Stock Through 2030, This Would Be It.",
+    "sources": [
+     "yahoo_us"
+    ],
+    "source_count": 1,
+    "ts": 1795734884,
+    "url": "https://www.fool.com/investing/2026/11/26/not-nvidia-not-micron-if-i-could-buy-and-hold-only-1-artificial-intelligence-ai-semiconductor-stock-through-2030-this-would-be-it/?.tsrc=rss",
+    "urls": [
+     "https://www.fool.com/investing/2026/11/26/not-nvidia-not-micron-if-i-could-buy-and-hold-only-1-artificial-intelligence-ai-semiconductor-stock-through-2030-this-would-be-it/?.tsrc=rss"
+    ]
+   },
+   "severity": "info",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 14 則（最高 1 來源確認）",
+   "label": "新聞聲量 16 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 14,
+    "headline_count": 16,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
@@ -693,7 +699,7 @@
     "elevated": true
    },
    "severity": "warn",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]

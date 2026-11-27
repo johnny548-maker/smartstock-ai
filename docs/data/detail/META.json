@@ -1,8 +1,8 @@
 {
  "stock": "META",
  "name": "Meta",
- "price": null,
- "change_pct": null,
+ "price": 609.89,
+ "change_pct": 3.4,
  "ohlc": [
   {
    "time": "2026-09-02",
@@ -478,17 +478,23 @@
   },
   {
    "time": "2026-11-25",
-   "o": null,
-   "h": null,
-   "l": null,
-   "c": null,
-   "v": 18558019
+   "o": 575.34,
+   "h": 611.06,
+   "l": 567.75,
+   "c": 609.89,
+   "v": 18668200
   }
  ],
  "sr": {
-  "price": null,
-  "resistance": [],
-  "support": [],
+  "price": 609.89,
+  "resistance": [
+   611.95,
+   622.66
+  ],
+  "support": [
+   607.98,
+   598.97
+  ],
   "strong_support": 519.37
  },
  "spark": [
@@ -551,149 +557,166 @@
   560.84,
   597.6,
   589.82,
-  null
+  609.89
  ],
  "spark_start": "2026-09-02",
  "spark_end": "2026-11-25",
  "fundamental": {
-  "pe_trailing": 20.123508,
-  "pe_forward": 16.533073,
+  "pe_trailing": 20.808258,
+  "pe_forward": 17.09565,
   "eps_trailing": 29.31,
   "eps_forward": 35.67516,
-  "stale": true,
+  "stale": false,
   "source": "yfinance"
  },
- "levels": null,
+ "levels": {
+  "entry": 609.89,
+  "stop": 567.2,
+  "target": 716.62,
+  "atr_bracket": 716.62,
+  "measured_move": 641.2,
+  "target_band": [
+   641.2,
+   716.62
+  ],
+  "stop_pct": -7.0,
+  "target_pct": 17.5,
+  "rr": 2.5,
+  "atr_pct": 4.0,
+  "swing_stop": 551.39,
+  "chandelier": 578.6,
+  "fib_targets": []
+ },
  "generated_for": "detail",
  "overlays": [
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
+   "label": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
    "value": {
-    "headline": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
+    "headline": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795654800,
-    "url": "https://beincrypto.com/apple-stock-ai-selloff-safe-haven/?.tsrc=rss",
+    "ts": 1795728120,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss",
     "urls": [
-     "https://beincrypto.com/apple-stock-ai-selloff-safe-haven/?.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss"
     ]
    },
-   "severity": "warn",
-   "as_of": "2026-11-26",
+   "severity": "info",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "5 Best Strong Buy Growth Stocks to Buy for 2027",
+   "label": "Apple Enters the AI Agent Race as It Takes on OpenAI, Anthropic, and Meta. What That Means for AAPL Stock.",
    "value": {
-    "headline": "5 Best Strong Buy Growth Stocks to Buy for 2027",
+    "headline": "Apple Enters the AI Agent Race as It Takes on OpenAI, Anthropic, and Meta. What That Means for AAPL Stock.",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795653970,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/5-best-strong-buy-growth-004610627.html?.tsrc=rss",
+    "ts": 1795721403,
+    "url": "https://www.barchart.com/story/news/9022924/apple-enters-the-ai-agent-race-as-it-takes-on-openai-anthropic-and-meta-what-that-means-for-aapl-stock?.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/5-best-strong-buy-growth-004610627.html?.tsrc=rss"
+     "https://www.barchart.com/story/news/9022924/apple-enters-the-ai-agent-race-as-it-takes-on-openai-anthropic-and-meta-what-that-means-for-aapl-stock?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Bill Gurley: Investors Weren’t “Scrambling to Actually Own Anthropic.” That’s a Problem for Amazon and Alphabet",
+   "label": "AMD Stocks Slip 1.75% After Filing Registers 337 Million Shares for Resale",
    "value": {
-    "headline": "Bill Gurley: Investors Weren’t “Scrambling to Actually Own Anthropic.” That’s a Problem for Amazon and Alphabet",
+    "headline": "AMD Stocks Slip 1.75% After Filing Registers 337 Million Shares for Resale",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795650186,
-    "url": "https://www.tikr.com/blog/bill-gurley-investors-werent-scrambling-to-actually-own-anthropic-thats-a-problem-for-amazon-and-alphabet?ref=yahoofinance&tlnk=yf-261125-5qg4553j&.tsrc=rss",
+    "ts": 1795717768,
+    "url": "https://finance.yahoo.com/markets/stocks/articles/amd-stocks-slip-1-75-182928246.html?.tsrc=rss",
     "urls": [
-     "https://www.tikr.com/blog/bill-gurley-investors-werent-scrambling-to-actually-own-anthropic-thats-a-problem-for-amazon-and-alphabet?ref=yahoofinance&tlnk=yf-261125-5qg4553j&.tsrc=rss"
+     "https://finance.yahoo.com/markets/stocks/articles/amd-stocks-slip-1-75-182928246.html?.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Purpose Investments Announces Risk Rating Changes for Certain Investment Funds",
+   "label": "Stanley Druckenmiller, Bill Ackman and 7 Other Famous Investors Own Amazon. Here’s Who Bought and Sold Recently",
    "value": {
-    "headline": "Purpose Investments Announces Risk Rating Changes for Certain Investment Funds",
+    "headline": "Stanley Druckenmiller, Bill Ackman and 7 Other Famous Investors Own Amazon. Here’s Who Bought and Sold Recently",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795644000,
-    "url": "https://finance.yahoo.com/markets/stocks/articles/purpose-investments-announces-risk-rating-220000566.html?.tsrc=rss",
+    "ts": 1795716673,
+    "url": "https://www.tikr.com/blog/stanley-druckenmiller-bill-ackman-and-7-other-famous-investors-own-amazon-heres-who-bought-and-sold-recently?ref=yahoofinance&tlnk=yf-261126-2mffj2wm&.tsrc=rss",
     "urls": [
-     "https://finance.yahoo.com/markets/stocks/articles/purpose-investments-announces-risk-rating-220000566.html?.tsrc=rss"
+     "https://www.tikr.com/blog/stanley-druckenmiller-bill-ackman-and-7-other-famous-investors-own-amazon-heres-who-bought-and-sold-recently?ref=yahoofinance&tlnk=yf-261126-2mffj2wm&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "catalyst",
-   "label": "Anthropic Broke Its $83 IPO Price. Most Giants Recovered",
+   "label": "George Soros and 64 Other Big Funds Bought Meta Last Quarter. David Tepper and 33 Others Sold. Who’s Right?",
    "value": {
-    "headline": "Anthropic Broke Its $83 IPO Price. Most Giants Recovered",
+    "headline": "George Soros and 64 Other Big Funds Bought Meta Last Quarter. David Tepper and 33 Others Sold. Who’s Right?",
     "sources": [
      "yahoo_us"
     ],
     "source_count": 1,
-    "ts": 1795637795,
-    "url": "https://www.trefis.com/stock/ant/articles/628871/anthropic-broke-its-83-ipo-price-most-giants-recovered/2026-11-25?.tsrc=rss",
+    "ts": 1795716599,
+    "url": "https://www.tikr.com/blog/george-soros-and-64-other-big-funds-bought-meta-last-quarter-david-tepper-and-33-others-sold-whos-right?ref=yahoofinance&tlnk=yf-261126-jj5cfjgh&.tsrc=rss",
     "urls": [
-     "https://www.trefis.com/stock/ant/articles/628871/anthropic-broke-its-83-ipo-price-most-giants-recovered/2026-11-25?.tsrc=rss"
+     "https://www.tikr.com/blog/george-soros-and-64-other-big-funds-bought-meta-last-quarter-david-tepper-and-33-others-sold-whos-right?ref=yahoofinance&tlnk=yf-261126-jj5cfjgh&.tsrc=rss"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
   },
   {
    "source": "news",
    "kind": "sentiment",
-   "label": "新聞聲量 18 則（最高 1 來源確認）",
+   "label": "新聞聲量 19 則（最高 1 來源確認）",
    "value": {
-    "headline_count": 18,
+    "headline_count": 19,
     "max_source_count": 1,
     "distinct_sources": [
      "yahoo_us"
     ]
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   },
   {
    "source": "hackernews",
    "kind": "sentiment",
-   "label": "HN 討論熱度 20 篇 / 159 分 / 42 留言",
+   "label": "HN 討論熱度 20 篇 / 176 分 / 118 留言",
    "value": {
     "metric": "hn_buzz",
-    "points": 159,
-    "comments": 42,
+    "points": 176,
+    "comments": 118,
     "n": 20,
     "window_hours": 72
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "Hacker News 討論熱度＝科技圈關注度，非看多訊號；高度反指標風險，僅科技類股適用，資訊性 overlay，需回測驗證後才加權"
   },
   {
@@ -708,7 +731,7 @@
     "elevated": false
    },
    "severity": "warn",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "交割失敗(FTD)持續/偏高為資訊性籌碼面 overlay：可能反映結算壓力/軋空燃料，但放空沉重或已大跌的標的本就常態偏高 — 非買進訊號，需回測驗證後才加權"
   }
  ]
