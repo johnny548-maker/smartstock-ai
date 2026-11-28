@@ -1,8 +1,8 @@
 {
  "stock": "6834",
  "name": "天二科技",
- "price": 83.2,
- "change_pct": -0.72,
+ "price": 80.0,
+ "change_pct": -4.53,
  "ohlc": [
   {
    "time": "2026-09-01",
@@ -480,13 +480,13 @@
    "time": "2026-11-27",
    "o": 84.0,
    "h": 85.8,
-   "l": 83.0,
-   "c": 83.2,
-   "v": 686888
+   "l": 79.3,
+   "c": 80.0,
+   "v": 2128394
   }
  ],
  "sr": {
-  "price": 83.2,
+  "price": 80.0,
   "resistance": [
    84.53,
    87.2
@@ -557,7 +557,7 @@
   87.2,
   78.5,
   83.8,
-  83.2
+  80.0
  ],
  "spark_start": "2026-09-01",
  "spark_end": "2026-11-27",
@@ -571,54 +571,16 @@
  "generated_for": "detail",
  "overlays": [
   {
-   "source": "twse_t86",
-   "kind": "inst",
-   "label": "三大法人買超 269,046 股",
-   "value": {
-    "foreign": 265205,
-    "trust": -1000,
-    "dealer": 4841,
-    "total": 269046
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
-  },
-  {
-   "source": "twse_margin",
-   "kind": "chip",
-   "label": "融券餘額下降（回補）",
-   "value": {
-    "short_net": -9
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
-  },
-  {
-   "source": "twse_pe",
-   "kind": "fundamental",
-   "label": "PE 27.8 / 殖利率 0.48% / PB 4.49",
-   "value": {
-    "pe": 27.84,
-    "yield": 0.48,
-    "pb": 4.49
-   },
-   "severity": "info",
-   "as_of": "2026-11-26",
-   "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
-  },
-  {
    "source": "twse_short",
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 23,
+    "short_today": 25,
     "outstanding": 98471082,
-    "short_pct": 2.335711107551352e-05
+    "short_pct": 2.53881642125147e-05
    },
    "severity": "info",
-   "as_of": "2026-11-27",
+   "as_of": "2026-11-28",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
   }
  ],
@@ -1135,6 +1097,10 @@
    {
     "t": "2026-11-27",
     "v": -8086
+   },
+   {
+    "t": "2026-11-28",
+    "v": -8379
    }
   ],
   "holder_pct": [

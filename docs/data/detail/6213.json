@@ -1,8 +1,8 @@
 {
  "stock": "6213",
  "name": "聯茂",
- "price": 418.0,
- "change_pct": -2.56,
+ "price": 416.0,
+ "change_pct": -3.03,
  "ohlc": [
   {
    "time": "2026-09-01",
@@ -480,13 +480,13 @@
    "time": "2026-11-27",
    "o": 438.0,
    "h": 438.5,
-   "l": 415.5,
-   "c": 418.0,
-   "v": 5568790
+   "l": 410.0,
+   "c": 416.0,
+   "v": 14945810
   }
  ],
  "sr": {
-  "price": 418.0,
+  "price": 416.0,
   "resistance": [
    424.5,
    555.0
@@ -557,7 +557,7 @@
   430.0,
   390.0,
   429.0,
-  418.0
+  416.0
  ],
  "spark_start": "2026-09-01",
  "spark_end": "2026-11-27",
@@ -575,68 +575,13 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 216,
+    "short_today": 187,
     "outstanding": 363617218,
-    "short_pct": 5.940312760436994e-05
+    "short_pct": 5.142770769452397e-05
    },
    "severity": "info",
-   "as_of": "2026-11-27",
+   "as_of": "2026-11-28",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "【台股真的跌完了嗎?】4大落底訊號揭密!12月反攻強勢股藏在這?!",
-   "value": {
-    "headline": "【台股真的跌完了嗎?】4大落底訊號揭密!12月反攻強勢股藏在這?!",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1795739455,
-    "url": "cnyes:6673457",
-    "urls": [
-     "cnyes:6673457"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "大盤反攻號角響起!重磅數據+科技展倒數下波主角鎖定誰?",
-   "value": {
-    "headline": "大盤反攻號角響起!重磅數據+科技展倒數下波主角鎖定誰?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1795686282,
-    "url": "cnyes:6673002",
-    "urls": [
-     "cnyes:6673002"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 2 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 2,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1152,6 +1097,10 @@
    {
     "t": "2026-11-27",
     "v": 6514
+   },
+   {
+    "t": "2026-11-28",
+    "v": 4912
    }
   ],
   "holder_pct": [

@@ -1,8 +1,8 @@
 {
  "stock": "6672",
  "name": "騰輝電子-KY",
- "price": 397.5,
- "change_pct": -0.25,
+ "price": 389.0,
+ "change_pct": -2.38,
  "ohlc": [
   {
    "time": "2026-09-01",
@@ -480,13 +480,13 @@
    "time": "2026-11-27",
    "o": 407.5,
    "h": 415.0,
-   "l": 396.5,
-   "c": 397.5,
-   "v": 3276656
+   "l": 384.0,
+   "c": 389.0,
+   "v": 9014657
   }
  ],
  "sr": {
-  "price": 397.5,
+  "price": 389.0,
   "resistance": [
    552.0,
    577.0
@@ -557,7 +557,7 @@
   396.0,
   362.5,
   398.5,
-  397.5
+  389.0
  ],
  "spark_start": "2026-09-01",
  "spark_end": "2026-11-27",
@@ -573,28 +573,39 @@
   {
    "source": "twse_t86",
    "kind": "inst",
-   "label": "三大法人買超 415,569 股",
+   "label": "三大法人賣超 1,103,316 股",
    "value": {
-    "foreign": 370560,
+    "foreign": -1129986,
     "trust": 0,
-    "dealer": 45009,
-    "total": 415569
+    "dealer": 26670,
+    "total": -1103316
    },
    "severity": "info",
-   "as_of": "2026-11-27",
+   "as_of": "2026-11-28",
    "note": "法人買賣超為資訊性籌碼面 overlay，需回測驗證後才加權"
+  },
+  {
+   "source": "twse_margin",
+   "kind": "chip",
+   "label": "融券餘額下降（回補）",
+   "value": {
+    "short_net": -13
+   },
+   "severity": "info",
+   "as_of": "2026-11-28",
+   "note": "融券回補/軋空燃料減少，僅供參考、非操作訊號"
   },
   {
    "source": "twse_pe",
    "kind": "fundamental",
-   "label": "PE 34.5 / 殖利率 0.84% / PB 6.09",
+   "label": "PE 33.7 / 殖利率 0.86% / PB 5.95",
    "value": {
-    "pe": 34.53,
-    "yield": 0.84,
-    "pb": 6.09
+    "pe": 33.71,
+    "yield": 0.86,
+    "pb": 5.95
    },
    "severity": "info",
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "note": "本益比/殖利率/PB 來自 TWSE 公開資料，資訊性顯示用、不進評分"
   },
   {
@@ -602,48 +613,13 @@
    "kind": "chip",
    "label": "融券佔流通股 0.00%",
    "value": {
-    "short_today": 42,
+    "short_today": 29,
     "outstanding": 82311633,
-    "short_pct": 5.102559440170504e-05
+    "short_pct": 3.523195803927253e-05
    },
    "severity": "info",
-   "as_of": "2026-11-27",
+   "as_of": "2026-11-28",
    "note": "融券餘額佔已發行股數比率，資訊性籌碼 overlay；需回測驗證後才加權"
-  },
-  {
-   "source": "news",
-   "kind": "catalyst",
-   "label": "大盤反攻號角響起!重磅數據+科技展倒數下波主角鎖定誰?",
-   "value": {
-    "headline": "大盤反攻號角響起!重磅數據+科技展倒數下波主角鎖定誰?",
-    "sources": [
-     "cnyes"
-    ],
-    "source_count": 1,
-    "ts": 1795686282,
-    "url": "cnyes:6673002",
-    "urls": [
-     "cnyes:6673002"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "新聞催化為資訊性 overlay，高 buzz 常為已漲後報導，需回測"
-  },
-  {
-   "source": "news",
-   "kind": "sentiment",
-   "label": "新聞聲量 1 則（最高 1 來源確認）",
-   "value": {
-    "headline_count": 1,
-    "max_source_count": 1,
-    "distinct_sources": [
-     "cnyes"
-    ]
-   },
-   "severity": "info",
-   "as_of": "2026-11-27",
-   "note": "多來源新聞聚合（buzz）為資訊性情緒 overlay；高聲量常為已漲後，需回測"
   }
  ],
  "trends": {
@@ -1159,6 +1135,10 @@
    {
     "t": "2026-11-27",
     "v": 12019
+   },
+   {
+    "t": "2026-11-28",
+    "v": 10916
    }
   ],
   "holder_pct": [
